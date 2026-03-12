@@ -32,7 +32,7 @@ const EXPERIMENTS = [
     title: 'Session Replay',
     description:
       'Documentation narrative d\'un build en live avec Claude Code. Prompts, décisions, itérations — le making-of complet.',
-    status: 'IN PROGRESS',
+    status: 'READY',
   },
 ]
 
