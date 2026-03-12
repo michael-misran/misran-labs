@@ -122,7 +122,8 @@ function ExperimentCard({ exp }) {
   const isReady = exp.status === 'READY'
 
   return (
-    <div
+    <Link
+      to={`/experience/${exp.slug}`}
       style={{
         background: '#0a0e17',
         border: `1px solid ${hovered ? (isReady ? '#25e2cc' : '#00d4ff') : '#243545'}`,
@@ -135,6 +136,8 @@ function ExperimentCard({ exp }) {
         boxShadow: hovered
           ? `0 0 20px ${isReady ? 'rgba(37,226,204,0.12)' : 'rgba(0,212,255,0.12)'}`
           : 'none',
+        textDecoration: 'none',
+        cursor: 'pointer',
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -216,21 +219,18 @@ function ExperimentCard({ exp }) {
       </div>
 
       {/* Link */}
-      <Link
-        to={`/experience/${exp.slug}`}
+      <span
         style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: 13,
           color: '#25e2cc',
-          textDecoration: 'none',
           letterSpacing: '0.06em',
-          transition: 'color 0.15s ease',
           marginTop: 2,
         }}
       >
         Voir l'expérience →
-      </Link>
-    </div>
+      </span>
+    </Link>
   )
 }
 
