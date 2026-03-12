@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom'
+
 export default function JournalPage() {
-  return <h1>JournalPage</h1>
+  return <Navigate to="/lab" replace />
 }

@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom'
+
 export default function DesignSystemPage() {
-  return <h1>DesignSystemPage</h1>
+  return <Navigate to="/lab" replace />
 }
