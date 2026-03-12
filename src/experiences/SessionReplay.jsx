@@ -158,7 +158,7 @@ function Nav() {
 
 // ─── Session Card ─────────────────────────────────────────────────────────────
 
-function SessionCard({ session }) {
+function SessionCard({ session, onOpenLog }) {
   const [open, setOpen] = useState(false)
   const [hovered, setHovered] = useState(false)
   const isNA = session.prompt === 'N/A — session de configuration manuelle, pas de génération de code.'
@@ -278,6 +278,22 @@ function SessionCard({ session }) {
             </div>
           </div>
 
+          <div
+            onClick={e => { e.stopPropagation(); onOpenLog(session.id) }}
+            onMouseEnter={e => e.currentTarget.style.opacity = '1'}
+            onMouseLeave={e => e.currentTarget.style.opacity = '0.7'}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+              color: '#00d4ff', letterSpacing: '0.08em', cursor: 'pointer',
+              borderTop: '1px solid #1a2a3a', paddingTop: 16, marginTop: 4,
+              opacity: 0.7, transition: 'opacity 0.15s ease',
+              userSelect: 'none',
+            }}
+          >
+            {'// VIEW FULL LOG →'}
+          </div>
+
         </div>
       </div>
     </div>
@@ -287,6 +303,8 @@ function SessionCard({ session }) {
 // ─── Session Replay ───────────────────────────────────────────────────────────
 
 export default function SessionReplay() {
+  const [activeLog, setActiveLog] = useState(null)
+
   return (
     <>
       <style>{`
@@ -363,7 +381,7 @@ export default function SessionReplay() {
                 <div key={session.id} style={{ position: 'relative' }}>
                   {/* Dot */}
                   <div style={{ position: 'absolute', left: -28, top: 24, width: 8, height: 8, borderRadius: '50%', background: '#25e2cc', border: '2px solid #0a0e17', boxShadow: '0 0 6px rgba(37,226,204,0.6)', zIndex: 1 }} />
-                  <SessionCard session={session} />
+                  <SessionCard session={session} onOpenLog={setActiveLog} />
                 </div>
               ))}
             </div>
@@ -381,6 +399,54 @@ export default function SessionReplay() {
 
         </main>
       </div>
+
+      {activeLog && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 1000,
+          background: 'rgba(10,14,23,0.97)',
+          display: 'flex', flexDirection: 'column',
+        }}>
+          <div style={{
+            display: 'flex', alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '0 32px', height: 56, flexShrink: 0,
+            borderBottom: '1px solid #1a2a3a',
+            background: '#0d1220',
+          }}>
+            <span style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 12, color: '#25e2cc', letterSpacing: '0.1em',
+            }}>
+              SESSION-{activeLog} // FULL LOG
+            </span>
+            <button
+              onClick={() => setActiveLog(null)}
+              onMouseEnter={e => {
+                e.currentTarget.style.color = '#e8f4f8'
+                e.currentTarget.style.borderColor = '#e8f4f8'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.color = '#7a9bb5'
+                e.currentTarget.style.borderColor = '#1a2a3a'
+              }}
+              style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
+                color: '#7a9bb5', background: 'none',
+                border: '1px solid #1a2a3a', borderRadius: 4,
+                padding: '6px 14px', cursor: 'pointer',
+                transition: 'color 0.15s, border-color 0.15s',
+              }}
+            >
+              ✕ CLOSE
+            </button>
+          </div>
+          <iframe
+            src={`/session-logs/misran-labs-session0${activeLog}.html`}
+            style={{ flex: 1, border: 'none', width: '100%' }}
+            title={`Session ${activeLog} log`}
+          />
+        </div>
+      )}
     </>
   )
 }
