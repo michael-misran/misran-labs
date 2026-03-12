@@ -217,7 +217,7 @@ export default function DesignSystemPage() {
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#4a7a94', letterSpacing: '0.08em' }}>Buttons</span>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
-                  <div style={{ padding: '32px', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 16, flexWrap: 'wrap', borderRight: '1px solid #1a2a3a' }}>
+                  <div style={{ padding: '32px', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 16, flexWrap: 'nowrap', borderRight: '1px solid #1a2a3a' }}>
                     <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 14, color: '#25e2cc', background: 'rgba(37,226,204,0.12)', border: '1px solid #25e2cc', borderRadius: 6, padding: '11px 20px', cursor: 'pointer' }}>
                       Voir les expériences →
                     </button>
