@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import LabPage from './pages/LabPage'
+import ExperiencePage from './pages/ExperiencePage'
 import DesignSystemPage from './pages/DesignSystemPage'
 import JournalPage from './pages/JournalPage'
 import ProcessPage from './pages/ProcessPage'
@@ -11,7 +12,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/lab" element={<LabPage />} />
-      <Route path="/experience/:slug" element={<LabPage />} />
+      <Route path="/experience/:slug" element={<ExperiencePage />} />
       <Route path="/design-system" element={<DesignSystemPage />} />
       <Route path="/journal" element={<JournalPage />} />
       <Route path="/process" element={<ProcessPage />} />
