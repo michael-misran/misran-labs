@@ -217,16 +217,25 @@ export default function DesignSystemPage() {
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#4a7a94', letterSpacing: '0.08em' }}>Buttons</span>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
-                  <div style={{ padding: '32px', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 16, flexWrap: 'nowrap', borderRight: '1px solid #1a2a3a' }}>
-                    <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 14, color: '#25e2cc', background: 'rgba(37,226,204,0.12)', border: '1px solid #25e2cc', borderRadius: 6, padding: '11px 20px', cursor: 'pointer' }}>
-                      Voir les expériences →
-                    </button>
-                    <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: 14, color: '#7a9bb5', background: 'transparent', border: '1px solid #1a2a3a', borderRadius: 6, padding: '11px 20px', cursor: 'pointer' }}>
-                      Comment je travaille
-                    </button>
-                    <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: 14, color: '#7a9bb5', background: 'transparent', border: '1px solid #1a2a3a', borderRadius: 6, padding: '11px 20px', cursor: 'not-allowed', opacity: 0.4 }} disabled>
-                      Non disponible
-                    </button>
+                  <div style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'flex-start', borderRight: '1px solid #1a2a3a' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a7a94', letterSpacing: '0.08em' }}>Primary</span>
+                      <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 14, color: '#25e2cc', background: 'rgba(37,226,204,0.12)', border: '1px solid #25e2cc', borderRadius: 6, padding: '11px 20px', cursor: 'pointer' }}>
+                        Voir les expériences →
+                      </button>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a7a94', letterSpacing: '0.08em' }}>Secondary</span>
+                      <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: 14, color: '#7a9bb5', background: 'transparent', border: '1px solid #1a2a3a', borderRadius: 6, padding: '11px 20px', cursor: 'pointer' }}>
+                        Comment je travaille
+                      </button>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a7a94', letterSpacing: '0.08em' }}>Disabled</span>
+                      <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: 14, color: '#7a9bb5', background: 'transparent', border: '1px solid #1a2a3a', borderRadius: 6, padding: '11px 20px', cursor: 'not-allowed', opacity: 0.4 }} disabled>
+                        Non disponible
+                      </button>
+                    </div>
                   </div>
                   <div style={{ padding: '24px' }}>
                     <CodeBlock>{`// Primary button
