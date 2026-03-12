@@ -33,7 +33,7 @@ function Nav() {
         MISRAN LABS
       </Link>
       <div style={{ display: 'flex', gap: 36 }}>
-        {[{ label: 'Lab', to: '/lab' }, { label: 'Process', to: '/process' }, { label: 'Contact', to: '/contact' }].map(({ label, to }) => (
+        {[{ label: 'Lab', to: '/lab' }, { label: 'Process', to: '/process' }, { label: 'DS', to: '/design-system' }, { label: 'Contact', to: '/contact' }].map(({ label, to }) => (
           <Link key={to} to={to} style={{
             fontFamily: "'Inter', sans-serif", fontSize: 14,
             color: pathname === to ? '#e8f4f8' : '#7a9bb5',

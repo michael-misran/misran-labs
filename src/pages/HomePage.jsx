@@ -335,6 +335,7 @@ export default function HomePage() {
             {[
               { label: 'Lab', to: '/lab' },
               { label: 'Process', to: '/process' },
+              { label: 'DS', to: '/design-system' },
               { label: 'Contact', to: '/contact' },
             ].map(({ label, to }) => (
               <Link
