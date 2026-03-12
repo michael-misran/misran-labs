@@ -41,7 +41,7 @@ const STEPS = [
 const TOOLS = [
   { name: 'Claude claude.ai', desc: 'Conversations & stratégie' },
   { name: 'Claude Code', desc: 'Génération de code terminal' },
-  { name: 'Figma + MCP', desc: 'Design connecté au code' },
+  { name: 'Design System', desc: 'CSS tokens + composants React' },
   { name: 'Claude API', desc: 'Projets avec IA intégrée' },
   { name: 'GitHub', desc: 'Versioning & collaboration' },
   { name: 'Vercel', desc: 'Déploiement continu' },
@@ -220,7 +220,6 @@ export default function ProcessPage() {
               borderRadius: 8,
             }}
           >
-            {/* Left */}
             <p
               style={{
                 fontFamily: "'Inter', sans-serif",
@@ -233,7 +232,6 @@ export default function ProcessPage() {
               technique. Chaque décision reste la mienne. L'IA exécute.
             </p>
 
-            {/* Right: stats */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               {[
                 { num: '~10x', label: 'Vitesse d\'exécution' },
@@ -293,7 +291,6 @@ export default function ProcessPage() {
             </div>
 
             <div style={{ position: 'relative', paddingLeft: 56 }}>
-              {/* Vertical line */}
               <div
                 style={{
                   position: 'absolute',
@@ -313,7 +310,6 @@ export default function ProcessPage() {
                     marginBottom: i < STEPS.length - 1 ? 48 : 0,
                   }}
                 >
-                  {/* Number node */}
                   <div
                     style={{
                       position: 'absolute',
@@ -337,7 +333,6 @@ export default function ProcessPage() {
                     {step.num}
                   </div>
 
-                  {/* Content */}
                   <div style={{ paddingTop: 6 }}>
                     <h3
                       style={{

@@ -22,7 +22,7 @@ const CONTACT_INFO = [
 
 const QUICK_LINKS = [
   { icon: '[ GH ]', label: 'GitHub', url: 'github.com/michael-misran', href: 'https://github.com/michael-misran' },
-  { icon: '[ LI ]', label: 'LinkedIn', url: 'linkedin.com/in/michaelmisran', href: 'https://linkedin.com/in/michaelmisran' },
+  { icon: '[ LI ]', label: 'LinkedIn', url: 'linkedin.com/in/\nmichaelmisran', href: 'https://linkedin.com/in/michaelmisran' },
   { icon: '[ @ ]', label: 'Email', url: 'contact@michaelmisran.com', href: 'mailto:contact@michaelmisran.com' },
 ]
 
@@ -145,14 +145,7 @@ function Terminal() {
         <span style={{ width: 12, height: 12, borderRadius: '50%', background: '#ff5f57', display: 'inline-block' }} />
         <span style={{ width: 12, height: 12, borderRadius: '50%', background: '#ffbd2e', display: 'inline-block' }} />
         <span style={{ width: 12, height: 12, borderRadius: '50%', background: '#28c840', display: 'inline-block' }} />
-        <span
-          style={{
-            marginLeft: 12,
-            fontSize: 12,
-            color: '#4a7a94',
-            letterSpacing: '0.04em',
-          }}
-        >
+        <span style={{ marginLeft: 12, fontSize: 12, color: '#4a7a94', letterSpacing: '0.04em' }}>
           misran-labs — bash
         </span>
       </div>
@@ -179,25 +172,13 @@ function Terminal() {
         {showContact && (
           <div style={{ marginTop: 8 }}>
             {CONTACT_INFO.map(({ label, value, href }) => (
-              <div
-                key={label}
-                style={{
-                  display: 'flex',
-                  gap: 24,
-                  fontSize: 13,
-                  lineHeight: '2',
-                }}
-              >
+              <div key={label} style={{ display: 'flex', gap: 24, fontSize: 13, lineHeight: '2' }}>
                 <span style={{ color: '#25e2cc', minWidth: 80, letterSpacing: '0.06em' }}>
                   {label}
                 </span>
                 <a
                   href={href}
-                  style={{
-                    color: '#7a9bb5',
-                    textDecoration: 'none',
-                    transition: 'color 0.15s ease',
-                  }}
+                  style={{ color: '#7a9bb5', textDecoration: 'none', transition: 'color 0.15s ease' }}
                   onMouseEnter={e => (e.target.style.color = '#e8f4f8')}
                   onMouseLeave={e => (e.target.style.color = '#7a9bb5')}
                 >
@@ -210,14 +191,7 @@ function Terminal() {
 
         {/* Sent confirmation */}
         {sent && (
-          <div
-            style={{
-              marginTop: 16,
-              fontSize: 13,
-              color: '#25e2cc',
-              lineHeight: '1.9',
-            }}
-          >
+          <div style={{ marginTop: 16, fontSize: 13, color: '#25e2cc', lineHeight: '1.9' }}>
             &gt; Message reçu. Je reviens vers toi rapidement.
           </div>
         )}
@@ -228,7 +202,6 @@ function Terminal() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 0,
               marginTop: 20,
               borderTop: '1px solid #1a2a3a',
               paddingTop: 16,
@@ -344,14 +317,7 @@ export default function ContactPage() {
                 TERMINAL READY
               </span>
             </div>
-            <p
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: 15,
-                color: '#7a9bb5',
-                lineHeight: 1.7,
-              }}
-            >
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 15, color: '#7a9bb5', lineHeight: 1.7 }}>
               Ouvrir une session de collaboration
             </p>
           </div>
@@ -378,46 +344,24 @@ export default function ContactPage() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <span
                 style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: '50%',
-                  background: '#25e2cc',
+                  width: 8, height: 8, borderRadius: '50%', background: '#25e2cc',
                   display: 'inline-block',
                   animation: 'pulseDot 2s ease-in-out infinite',
                   flexShrink: 0,
                 }}
               />
-              <span
-                style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: 11,
-                  color: '#25e2cc',
-                  letterSpacing: '0.1em',
-                }}
-              >
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#25e2cc', letterSpacing: '0.1em' }}>
                 AVAILABLE FOR WORK
               </span>
             </div>
             <span style={{ color: '#1a2a3a', fontSize: 14 }}>|</span>
-            <span
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: 14,
-                color: '#7a9bb5',
-              }}
-            >
+            <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: '#7a9bb5' }}>
               Ouvert aux missions freelance et opportunités full-time à partir d'avril 2026
             </span>
           </div>
 
           {/* ── Liens rapides ── */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-              gap: 16,
-            }}
-          >
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
             {QUICK_LINKS.map(({ icon, label, url, href }) => (
               <a
                 key={label}
@@ -432,38 +376,27 @@ export default function ContactPage() {
                   border: '1px solid #1a2a3a',
                   borderRadius: 8,
                   textDecoration: 'none',
+                  overflow: 'hidden',
                   transition: 'border-color 0.2s ease, background 0.2s ease',
                 }}
               >
-                <span
-                  style={{
-                    fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: 16,
-                    color: '#25e2cc',
-                    letterSpacing: '0.06em',
-                  }}
-                >
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 16, color: '#25e2cc', letterSpacing: '0.06em' }}>
                   {icon}
                 </span>
-                <span
-                  style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    fontSize: 15,
-                    fontWeight: 600,
-                    color: '#e8f4f8',
-                  }}
-                >
+                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 15, fontWeight: 600, color: '#e8f4f8' }}>
                   {label}
                 </span>
-                <span
-                  style={{
-                    fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: 11,
-                    color: '#4a7a94',
-                    letterSpacing: '0.04em',
-                  }}
-                >
-                  {url}
+                <span style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 11,
+                  color: '#4a7a94',
+                  letterSpacing: '0.04em',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                  display: 'block',
+                }}>
+                  {url.replace('\n', '')}
                 </span>
               </a>
             ))}
