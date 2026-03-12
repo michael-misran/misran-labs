@@ -163,7 +163,7 @@ export default function DesignSystemPage() {
             <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#4a7a94', marginBottom: 24, letterSpacing: '0.04em' }}>
               // Cliquez sur un swatch pour copier la valeur hex
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 16 }}>
               {COLORS.map(c => <ColorSwatch key={c.hex} color={c} />)}
             </div>
           </section>
@@ -217,7 +217,7 @@ export default function DesignSystemPage() {
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#4a7a94', letterSpacing: '0.08em' }}>Buttons</span>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
-                  <div style={{ padding: '32px', display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', borderRight: '1px solid #1a2a3a' }}>
+                  <div style={{ padding: '32px', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 16, flexWrap: 'wrap', borderRight: '1px solid #1a2a3a' }}>
                     <button style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 14, color: '#25e2cc', background: 'rgba(37,226,204,0.12)', border: '1px solid #25e2cc', borderRadius: 6, padding: '11px 20px', cursor: 'pointer' }}>
                       Voir les expériences →
                     </button>
@@ -284,7 +284,7 @@ borderRadius: 3px
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#4a7a94', letterSpacing: '0.08em' }}>Experiment Card</span>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
-                  <div style={{ padding: '32px', borderRight: '1px solid #1a2a3a' }}>
+                  <div style={{ padding: '32px', borderRight: '1px solid #1a2a3a', maxWidth: 320 }}>
                     <div style={{ background: '#0a0e17', border: '1px solid #243545', borderRadius: 8, padding: '24px', display: 'flex', flexDirection: 'column', gap: 12 }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#7a9bb5', letterSpacing: '0.08em' }}>EXP-XXX</span>
