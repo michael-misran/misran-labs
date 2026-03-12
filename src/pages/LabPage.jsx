@@ -220,8 +220,8 @@ function ExperimentCard({ exp }) {
         to={`/experience/${exp.slug}`}
         style={{
           fontFamily: "'JetBrains Mono', monospace",
-          fontSize: 12,
-          color: hovered ? '#25e2cc' : '#7a9bb5',
+          fontSize: 13,
+          color: '#25e2cc',
           textDecoration: 'none',
           letterSpacing: '0.06em',
           transition: 'color 0.15s ease',
@@ -348,6 +348,7 @@ export default function LabPage() {
                     color: active ? '#25e2cc' : '#7a9bb5',
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
+                    boxShadow: active ? '0 0 12px rgba(37,226,204,0.3)' : 'none',
                   }}
                 >
                   {f}
