@@ -702,15 +702,18 @@ export default function HomePage() {
           </p>
           <Link
             to="/contact"
+            className="btn-primary"
             style={{
               fontFamily: "'Inter', sans-serif",
               fontWeight: 600,
               fontSize: 14,
-              color: '#0a0e17',
-              background: 'linear-gradient(90deg, #25e2cc, #00d4ff)',
+              color: '#25e2cc',
+              background: 'rgba(37, 226, 204, 0.12)',
               padding: '13px 28px',
               borderRadius: 6,
+              border: '1px solid #25e2cc',
               display: 'inline-block',
+              transition: 'background 0.2s ease',
             }}
           >
             Me contacter →
