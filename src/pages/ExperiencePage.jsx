@@ -1,8 +1,10 @@
 import { useParams, Link } from 'react-router-dom'
 import ProductBriefMachine from '../experiences/ProductBriefMachine'
+import SessionReplay from '../experiences/SessionReplay'
 
 const EXPERIENCE_MAP = {
   'exp-002': ProductBriefMachine,
+  'exp-003': SessionReplay,
 }
 
 export default function ExperiencePage() {
