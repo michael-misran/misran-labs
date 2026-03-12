@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import LabPage from './pages/LabPage'
 import DesignSystemPage from './pages/DesignSystemPage'
@@ -11,10 +11,12 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/lab" element={<LabPage />} />
+      <Route path="/experience/:slug" element={<LabPage />} />
       <Route path="/design-system" element={<DesignSystemPage />} />
       <Route path="/journal" element={<JournalPage />} />
       <Route path="/process" element={<ProcessPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
 }
