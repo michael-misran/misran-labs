@@ -26,8 +26,8 @@ const EXPERIMENTS = [
     title: 'Session Replay',
     description:
       "Documentation narrative d'un build en live avec Claude Code. Le making-of complet.",
-    status: 'IN PROGRESS',
-    stack: ['React', 'Framer Motion', 'Markdown'],
+    status: 'READY',
+    stack: ['React', 'useState', 'Accordéon'],
   },
   {
     id: 'EXP-004',
