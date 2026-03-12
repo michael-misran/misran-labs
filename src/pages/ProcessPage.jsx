@@ -12,8 +12,8 @@ const STEPS = [
     num: '02',
     title: 'DESIGN SYSTEM',
     description:
-      'Je définis les tokens, les composants, l\'identité visuelle. Figma MCP me permet de connecter design et code directement.',
-    tools: ['Figma', 'Claude MCP'],
+      'Je construis le design system directement en code — tokens CSS, composants React, cohérence visuelle sans outil intermédiaire.',
+    tools: ['CSS Tokens', 'React', 'Claude Code'],
   },
   {
     num: '03',
