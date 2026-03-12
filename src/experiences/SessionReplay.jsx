@@ -112,11 +112,35 @@ const SESSIONS = [
     decision: 'Un designer qui documente son DS en code sans Figma, c\'est rare. La page /design-system renforce le positionnement "designer qui code" sans nécessiter de mockups.',
     prompt: 'Crée DesignSystemPage.jsx avec sections Colors (swatches cliquables), Typography (3 specimens), Components (boutons + badges + card avec code tokens), Spacing (échelle visuelle).',
   },
+  {
+    id: '010',
+    date: '2026-03-12',
+    title: 'EXP-003 Session Replay',
+    summary: 'Timeline interactive des 9 sessions de build',
+    status: 'DONE',
+    duration: '2h',
+    tags: ['React', 'useState', 'Accordéon'],
+    what: 'Génération de EXP-003 SessionReplay.jsx : timeline verticale avec dot, 9 cards accordéon cliquables, sections // WHAT / // DECISION ⚡ / // PROMPT, stats row 4 métriques, CTA vers EXP-002.',
+    decision: 'Données hardcodées dans le composant plutôt que fetch JSON — zéro latence, zéro dépendance réseau. L\'expérience documente sa propre création : self-referential et indupliquable.',
+    prompt: 'Crée src/experiences/SessionReplay.jsx avec une timeline verticale de 9 sessions. Chaque card est un accordéon avec sections WHAT / DECISION / PROMPT. Stats row : 9 sessions / ~18h / 1 dev / 100% AI-assisted.',
+  },
+  {
+    id: '011',
+    date: '2026-03-12',
+    title: 'Session Log Viewer',
+    summary: 'Accès aux docs HTML de session depuis EXP-003',
+    status: 'DONE',
+    duration: '1h30',
+    tags: ['Modal', 'iframe', 'UX'],
+    what: 'Feature Session Log Viewer : lien "// VOIR LE LOG COMPLET →" dans chaque card accordéon, modale overlay 90vw×85vh avec iframe qui charge le HTML de session correspondant. Fichiers HTML copiés dans public/session-logs/ et servis statiquement par Vite.',
+    decision: 'Modale overlay avec blur(4px) plutôt que plein écran — le visiteur conserve le contexte de la page derrière et comprend immédiatement la couche superposée. Overlay cliquable pour fermer, sans librairie.',
+    prompt: 'Dans SessionReplay.jsx : ajouter useState activeLog, prop onOpenLog sur SessionCard, lien VIEW FULL LOG dans l\'accordéon avec e.stopPropagation(), modale overlay avec iframe src dynamique /session-logs/misran-labs-session{id}.html.',
+  },
 ]
 
 const STATS = [
-  { num: '9',     label: 'Sessions' },
-  { num: '~18h',  label: 'De build' },
+  { num: '11',    label: 'Sessions' },
+  { num: '~20h',  label: 'De build' },
   { num: '1',     label: 'Développeur' },
   { num: '100%',  label: 'AI-assisted' },
 ]

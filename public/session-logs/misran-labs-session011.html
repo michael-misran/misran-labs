@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misran Labs — Session 011</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap');
+    :root {
+      --bg:#0a0e17; --bg2:#0d1220; --cyan:#00d4ff; --teal:#25e2cc;
+      --text:#e8f4f8; --text2:#7a9bb5; --border:#1a2a3a;
+      --error:#ff4444; --success:#00ff88; --warn:#ffaa00;
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{ background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; line-height:1.7; }
+    body::before{
+      content:''; position:fixed; inset:0;
+      background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+      background-size:40px 40px; opacity:0.3; pointer-events:none; z-index:0;
+    }
+    .wrapper{ position:relative; z-index:1; max-width:900px; margin:0 auto; padding:60px 40px; }
+    .header{ border-bottom:1px solid var(--border); padding-bottom:40px; margin-bottom:60px; }
+    .lab-badge{
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(37,226,204,.08); border:1px solid rgba(37,226,204,.2);
+      border-radius:4px; padding:4px 12px;
+      font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal);
+      letter-spacing:.1em; text-transform:uppercase; margin-bottom:20px;
+    }
+    .lab-badge::before{ content:''; width:6px; height:6px; background:var(--teal); border-radius:50%; animation:pulse 2s infinite; }
+    @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.3} }
+    h1{ font-family:'Space Grotesk',sans-serif; font-size:42px; font-weight:700; line-height:1.1; margin-bottom:12px; }
+    h1 span{ color:var(--teal); }
+    .subtitle{ color:var(--text2); font-size:16px; max-width:640px; }
+    .meta{ display:flex; gap:24px; margin-top:24px; flex-wrap:wrap; }
+    .meta-item{ display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); }
+    .meta-item .dot{ width:4px; height:4px; background:var(--teal); border-radius:50%; }
+    .section{ margin-bottom:64px; }
+    .section-header{ display:flex; align-items:center; gap:16px; margin-bottom:32px; }
+    .step-number{
+      width:40px; height:40px; border:1px solid var(--teal); border-radius:4px;
+      display:flex; align-items:center; justify-content:center;
+      font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--teal);
+      flex-shrink:0; background:rgba(37,226,204,.05);
+    }
+    h2{ font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:600; }
+    h3{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; color:var(--teal); margin:24px 0 12px; }
+    p{ color:var(--text2); margin-bottom:16px; }
+    p strong{ color:var(--text); }
+    .success-box{ background:rgba(0,255,136,.04); border:1px solid rgba(0,255,136,.2); border-left:3px solid var(--success); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .success-box p{ margin:0; font-size:14px; color:#66ffaa; }
+    .warn-box{ background:rgba(255,170,0,.04); border:1px solid rgba(255,170,0,.2); border-left:3px solid var(--warn); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .warn-box p{ margin:0; font-size:14px; color:#ffcc66; }
+    .decision-box{ background:rgba(0,212,255,.04); border:1px solid rgba(0,212,255,.2); border-left:3px solid var(--cyan); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .decision-box p{ margin:0; font-size:14px; color:#88ddff; }
+    .info-box{ background:rgba(37,226,204,.04); border:1px solid rgba(37,226,204,.15); border-left:3px solid var(--teal); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .info-box p{ margin:0; font-size:14px; color:var(--text2); }
+    code{ font-family:'JetBrains Mono',monospace; font-size:13px; background:rgba(37,226,204,.08); color:var(--teal); padding:2px 6px; border-radius:3px; }
+    .fix-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:24px 0; }
+    .fix-card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:20px; }
+    .fix-card.fixed{ border-color:rgba(0,255,136,.2); }
+    .fix-card .f-num{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--teal); text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px; }
+    .fix-card .f-title{ font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:600; color:var(--text); margin-bottom:8px; }
+    .fix-card .f-before{ font-size:13px; color:var(--error); margin-bottom:10px; font-family:'JetBrains Mono',monospace; }
+    .fix-card .f-after{ font-size:13px; color:#66ffaa; font-family:'JetBrains Mono',monospace; }
+    .feature-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+    .feature-card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:20px; }
+    .feature-card .fc-label{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px; }
+    .feature-card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .feature-card ul li{ font-size:13px; color:var(--text2); padding-left:16px; position:relative; }
+    .feature-card ul li::before{ content:'→'; position:absolute; left:0; color:var(--teal); font-size:11px; }
+    .summary-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:32px 0; }
+    .summary-card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:24px 16px; text-align:center; }
+    .summary-card .num{ font-family:'JetBrains Mono',monospace; font-size:32px; font-weight:700; color:var(--teal); line-height:1; margin-bottom:8px; }
+    .summary-card .lbl{ font-size:12px; color:var(--text2); letter-spacing:.04em; }
+    .next-list{ list-style:none; display:flex; flex-direction:column; gap:16px; }
+    .next-list li{ display:flex; gap:16px; align-items:flex-start; background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:16px 20px; }
+    .next-list li .num{ font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; color:var(--teal); flex-shrink:0; min-width:24px; }
+    .next-list li span{ font-size:14px; color:var(--text2); line-height:1.6; }
+    hr{ border:none; border-top:1px solid var(--border); margin:64px 0; }
+    .footer{ display:flex; justify-content:space-between; align-items:center; padding-top:40px; border-top:1px solid var(--border); margin-top:40px; }
+    .footer-brand{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:700; color:var(--text2); }
+    .footer-brand span{ color:var(--teal); }
+    .footer-meta{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text2); opacity:.6; }
+    .prompt-block{ background:#060a10; border:1px solid var(--border); border-radius:6px; padding:16px 20px; margin:16px 0; }
+    .prompt-block pre{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); white-space:pre-wrap; line-height:1.8; margin:0; }
+    .badge-done{ display:inline-flex; align-items:center; gap:6px; background:rgba(0,255,136,.08); border:1px solid rgba(0,255,136,.25); border-radius:3px; padding:2px 10px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#00ff88; letter-spacing:.1em; }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="lab-badge">Misran Labs — Session Log 011</div>
+    <h1>Session Log Viewer<br><span>& fixes EXP-003</span></h1>
+    <p class="subtitle">Accès aux logs de session complets depuis EXP-003, correction des bugs de navigation, redesign en modale overlay.</p>
+    <div class="meta">
+      <div class="meta-item"><div class="dot"></div>12 mars 2026</div>
+      <div class="meta-item"><div class="dot"></div>Michael Misran</div>
+      <div class="meta-item"><div class="dot"></div>Session Log Viewer · Modal Overlay · Bugfixes</div>
+      <div class="meta-item"><div class="dot"></div>~1h30</div>
+    </div>
+  </div>
+
+  <!-- 01 — CONTEXTE -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">01</div><h2>Contexte de la session</h2></div>
+    <p>Session courte, très ciblée. L'objectif : rendre les <strong>docs HTML de session accessibles depuis EXP-003</strong> sans quitter le portfolio. Trois itérations successives pour atteindre la bonne UX — c'est exactement le type de process que le portfolio doit documenter.</p>
+    <p>Point de départ : EXP-003 Session Replay est live avec 9 cards accordéon. Les docs HTML existent en local mais sont invisibles pour le visiteur. La session 011 ferme cette lacune.</p>
+    <div class="decision-box">
+      <p>🎯 <strong>Décision d'architecture initiale :</strong> les HTML de session sont copiés dans <code>public/session-logs/</code> et servis statiquement par Vite. Zéro backend, zéro fetch asynchrone — les fichiers sont disponibles instantanément à <code>/session-logs/misran-labs-session001.html</code>.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 02 — FEATURE SESSION LOG VIEWER -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">02</div><h2>Feature : Session Log Viewer</h2></div>
+
+    <p>Le principe : un lien <code>// VOIR LE LOG COMPLET →</code> apparaît dans chaque card accordéon ouverte. Il déclenche l'affichage du HTML correspondant sans navigation.</p>
+
+    <div class="feature-row">
+      <div class="feature-card">
+        <div class="fc-label">✓ Choix techniques</div>
+        <ul>
+          <li>useState activeLog dans SessionReplay (null ou id session)</li>
+          <li>prop onOpenLog passée à chaque SessionCard</li>
+          <li>e.stopPropagation() pour ne pas toggle l'accordéon au clic</li>
+          <li>iframe src dynamique : /session-logs/misran-labs-session{id}.html</li>
+          <li>Overlay cliquable pour fermer (click en dehors)</li>
+          <li>Fichiers HTML dans public/ — servis par Vite sans config</li>
+        </ul>
+      </div>
+      <div class="feature-card">
+        <div class="fc-label">✓ Ce que ça apporte au recruteur</div>
+        <ul>
+          <li>Accès direct aux décisions architecturales session par session</li>
+          <li>Transparence totale sur la méthode de travail</li>
+          <li>Pattern UX propre : modale contextuelle, pas de navigation</li>
+          <li>Preuve d'itération : 3 versions successives documentées</li>
+          <li>Orchestration Claude Code visible — le prompt est dans le log</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Prompt Claude Code utilisé</h3>
+    <div class="prompt-block"><pre>Tu vas faire deux choses dans l'ordre.
+
+ÉTAPE 1 — Copie des fichiers HTML
+mkdir -p /Users/michaelmisran/misran-labs/public/session-logs
+cp /Users/michaelmisran/Documents/projets/misranlabs/session_log/*.html \
+   /Users/michaelmisran/misran-labs/public/session-logs/
+
+ÉTAPE 2 — Modification de SessionReplay.jsx
+1. Ajouter useState activeLog dans SessionReplay
+2. Passer onOpenLog={setActiveLog} à chaque SessionCard
+3. Ajouter lien "// VIEW FULL LOG →" dans l'accordéon
+4. Ajouter modale plein écran avec iframe et header SESSION-XXX</pre></div>
+  </div>
+
+  <hr>
+
+  <!-- 03 — BUGS ET ITÉRATIONS -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">03</div><h2>Bugs & itérations</h2></div>
+    <p>Deux bugs identifiés immédiatement au test, une demande UX sur la troisième itération.</p>
+
+    <div class="fix-grid">
+      <div class="fix-card fixed">
+        <div class="f-num">Bug 01 · Critique</div>
+        <div class="f-title">Double zéro dans l'URL iframe</div>
+        <div class="f-before">AVANT : /session-logs/misran-labs-session0{id}.html<br>→ génère session0001.html (inexistant)</div>
+        <div class="f-after">APRÈS : /session-logs/misran-labs-session{id}.html<br>→ génère session001.html ✓</div>
+      </div>
+      <div class="fix-card fixed">
+        <div class="f-num">Bug 02 · Éditorial</div>
+        <div class="f-title">Labels en anglais</div>
+        <div class="f-before">AVANT : VIEW FULL LOG → / CLOSE</div>
+        <div class="f-after">APRÈS : VOIR LE LOG COMPLET → / FERMER ✓</div>
+      </div>
+    </div>
+
+    <h3>Itération UX — Modale plein écran → Modale overlay</h3>
+    <p>La première version occupait tout l'écran sans overlay — le visiteur perdait le contexte et ne percevait pas la couche modale. Passage à une modale centrée <code>90vw × 85vh</code> avec overlay <code>blur(4px)</code> cliquable pour fermer.</p>
+
+    <div class="decision-box">
+      <p>💡 <strong>Décision UX :</strong> l'overlay semi-transparent préserve le contexte de la page derrière. Le visiteur comprend immédiatement qu'il est dans une couche superposée et peut fermer en cliquant en dehors. Pattern standard, implémenté proprement sans librairie.</p>
+    </div>
+
+    <div class="success-box">
+      <p>✓ Feature live — les 10 sessions sont accessibles depuis EXP-003 via modale overlay. Box-shadow cyan subtil sur la modale pour rester dans le design system.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 04 — BILAN -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">04</div><h2>Bilan & suite</h2></div>
+    <div class="summary-grid">
+      <div class="summary-card"><div class="num">11</div><div class="lbl">Sessions doc.</div></div>
+      <div class="summary-card"><div class="num">10</div><div class="lbl">Logs accessibles</div></div>
+      <div class="summary-card"><div class="num">3</div><div class="lbl">Itérations UX</div></div>
+      <div class="summary-card"><div class="num">~20h</div><div class="lbl">Build total</div></div>
+    </div>
+
+    <h3>Prochaines priorités</h3>
+    <ul class="next-list">
+      <li><span class="num">1</span><span><strong style="color:var(--text)">Formspree sur /contact</strong> — le formulaire terminal n'envoie pas encore de vrais emails. 15 minutes de travail, impact direct sur les conversions recruteur.</span></li>
+      <li><span class="num">2</span><span><strong style="color:var(--text)">EXP-001 UX Audit Engine</strong> — la plus complexe techniquement et la plus forte pour les recruteurs product. Upload screenshot → audit structuré avec priorisation des frictions.</span></li>
+      <li><span class="num">3</span><span><strong style="color:var(--text)">EXP-005 Micro-SaaS Generator</strong> — la plus spectaculaire visuellement. Une phrase → landing page générée en streaming. À construire après EXP-001.</span></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">Misran <span>Labs</span></div>
+    <div class="footer-meta">Session 011 · 12.03.2026 · Session Log Viewer</div>
+  </div>
+
+</div>
+</body>
+</html>
