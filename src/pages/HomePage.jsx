@@ -12,6 +12,7 @@ const BOOT_LINES = [
 const EXPERIMENTS = [
   {
     id: 'EXP-001',
+    slug: 'exp-001',
     title: 'UX Audit Engine',
     description:
       'Système automatisé d\'audit UX piloté par IA. Analyse heuristique, génération de rapports structurés, priorisation des frictions.',
@@ -19,6 +20,7 @@ const EXPERIMENTS = [
   },
   {
     id: 'EXP-002',
+    slug: 'exp-002',
     title: 'Product Brief Machine',
     description:
       'Transformer une idée floue en brief produit actionnable en moins de 5 minutes avec l\'IA comme co-pilote.',
@@ -26,6 +28,7 @@ const EXPERIMENTS = [
   },
   {
     id: 'EXP-003',
+    slug: 'exp-003',
     title: 'Session Replay',
     description:
       'Documentation narrative d\'un build en live avec Claude Code. Prompts, décisions, itérations — le making-of complet.',
@@ -176,18 +179,20 @@ function ExperimentCard({ exp }) {
   const [hovered, setHovered] = useState(false)
 
   return (
-    <div
+    <Link
+      to={`/experience/${exp.slug}`}
       style={{
         background: '#0a0e17',
         border: `1px solid ${hovered ? '#00d4ff' : '#243545'}`,
         borderRadius: 8,
         padding: '28px 24px',
-        cursor: 'default',
+        cursor: 'pointer',
         transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
         boxShadow: hovered ? '0 0 20px rgba(0,212,255,0.15)' : 'none',
         display: 'flex',
         flexDirection: 'column',
         gap: 12,
+        textDecoration: 'none',
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -248,7 +253,7 @@ function ExperimentCard({ exp }) {
       >
         {exp.description}
       </p>
-    </div>
+    </Link>
   )
 }
 
