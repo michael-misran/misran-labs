@@ -291,7 +291,7 @@ function SessionCard({ session, onOpenLog }) {
               userSelect: 'none',
             }}
           >
-            {'// VIEW FULL LOG →'}
+            {'// VOIR LE LOG COMPLET →'}
           </div>
 
         </div>
@@ -417,7 +417,7 @@ export default function SessionReplay() {
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: 12, color: '#25e2cc', letterSpacing: '0.1em',
             }}>
-              SESSION-{activeLog} // FULL LOG
+              SESSION-{activeLog} // LOG COMPLET
             </span>
             <button
               onClick={() => setActiveLog(null)}
@@ -437,11 +437,11 @@ export default function SessionReplay() {
                 transition: 'color 0.15s, border-color 0.15s',
               }}
             >
-              ✕ CLOSE
+              ✕ FERMER
             </button>
           </div>
           <iframe
-            src={`/session-logs/misran-labs-session0${activeLog}.html`}
+            src={`/session-logs/misran-labs-session${activeLog}.html`}
             style={{ flex: 1, border: 'none', width: '100%' }}
             title={`Session ${activeLog} log`}
           />
