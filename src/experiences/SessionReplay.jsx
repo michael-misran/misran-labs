@@ -401,51 +401,87 @@ export default function SessionReplay() {
       </div>
 
       {activeLog && (
-        <div style={{
-          position: 'fixed', inset: 0, zIndex: 1000,
-          background: 'rgba(10,14,23,0.97)',
-          display: 'flex', flexDirection: 'column',
-        }}>
-          <div style={{
-            display: 'flex', alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '0 32px', height: 56, flexShrink: 0,
-            borderBottom: '1px solid #1a2a3a',
-            background: '#0d1220',
-          }}>
-            <span style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 12, color: '#25e2cc', letterSpacing: '0.1em',
-            }}>
-              SESSION-{activeLog} // LOG COMPLET
-            </span>
-            <button
-              onClick={() => setActiveLog(null)}
-              onMouseEnter={e => {
-                e.currentTarget.style.color = '#e8f4f8'
-                e.currentTarget.style.borderColor = '#e8f4f8'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.color = '#7a9bb5'
-                e.currentTarget.style.borderColor = '#1a2a3a'
-              }}
-              style={{
-                fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
-                color: '#7a9bb5', background: 'none',
-                border: '1px solid #1a2a3a', borderRadius: 4,
-                padding: '6px 14px', cursor: 'pointer',
-                transition: 'color 0.15s, border-color 0.15s',
-              }}
-            >
-              ✕ FERMER
-            </button>
-          </div>
-          <iframe
-            src={`/session-logs/misran-labs-session${activeLog}.html`}
-            style={{ flex: 1, border: 'none', width: '100%' }}
-            title={`Session ${activeLog} log`}
+        <>
+          {/* Overlay */}
+          <div
+            onClick={() => setActiveLog(null)}
+            style={{
+              position: 'fixed', inset: 0, zIndex: 999,
+              background: 'rgba(5,8,15,0.85)',
+              backdropFilter: 'blur(4px)',
+            }}
           />
-        </div>
+
+          {/* Modal */}
+          <div style={{
+            position: 'fixed',
+            top: '50%', left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 1000,
+            width: '90vw', maxWidth: 1100,
+            height: '85vh',
+            background: '#0d1220',
+            border: '1px solid #1a2a3a',
+            borderRadius: 12,
+            boxShadow: '0 0 0 1px rgba(37,226,204,0.15), 0 32px 80px rgba(0,0,0,0.6)',
+            display: 'flex', flexDirection: 'column',
+            overflow: 'hidden',
+          }}>
+            {/* Header */}
+            <div style={{
+              display: 'flex', alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '0 28px', height: 52, flexShrink: 0,
+              borderBottom: '1px solid #1a2a3a',
+              background: '#080c18',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                <span style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 11, color: '#25e2cc', letterSpacing: '0.12em',
+                }}>
+                  SESSION-{activeLog} // LOG COMPLET
+                </span>
+                <span style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 10, color: '#7a9bb5',
+                  background: 'rgba(26,42,58,0.6)',
+                  border: '1px solid #1a2a3a',
+                  borderRadius: 3, padding: '2px 8px',
+                }}>
+                  Cliquer en dehors pour fermer
+                </span>
+              </div>
+              <button
+                onClick={() => setActiveLog(null)}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = '#e8f4f8'
+                  e.currentTarget.style.borderColor = '#e8f4f8'
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = '#7a9bb5'
+                  e.currentTarget.style.borderColor = '#1a2a3a'
+                }}
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+                  color: '#7a9bb5', background: 'none',
+                  border: '1px solid #1a2a3a', borderRadius: 4,
+                  padding: '5px 12px', cursor: 'pointer',
+                  transition: 'color 0.15s, border-color 0.15s',
+                }}
+              >
+                ✕ FERMER
+              </button>
+            </div>
+
+            {/* iframe */}
+            <iframe
+              src={`/session-logs/misran-labs-session${activeLog}.html`}
+              style={{ flex: 1, border: 'none', width: '100%' }}
+              title={`Session ${activeLog} log`}
+            />
+          </div>
+        </>
       )}
     </>
   )
