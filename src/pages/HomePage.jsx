@@ -179,7 +179,7 @@ function ExperimentCard({ exp }) {
     <div
       style={{
         background: '#0a0e17',
-        border: `1px solid ${hovered ? '#00d4ff' : '#1a2a3a'}`,
+        border: `1px solid ${hovered ? '#00d4ff' : '#243545'}`,
         borderRadius: 8,
         padding: '28px 24px',
         cursor: 'default',
@@ -277,6 +277,7 @@ export default function HomePage() {
           border-color: #25e2cc !important;
         }
         .exp-link:hover { color: #25e2cc !important; }
+        .btn-primary:hover { background: rgba(37, 226, 204, 0.22) !important; }
       `}</style>
 
       {!bootDone && <BootSequence onComplete={() => setBootDone(true)} />}
@@ -508,16 +509,18 @@ export default function HomePage() {
             >
               <Link
                 to="/lab"
+                className="btn-primary"
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: 600,
                   fontSize: 14,
-                  color: '#0a0e17',
-                  background: 'linear-gradient(90deg, #25e2cc, #00d4ff)',
+                  color: '#25e2cc',
+                  background: 'rgba(37, 226, 204, 0.12)',
                   padding: '12px 24px',
                   borderRadius: 6,
-                  border: 'none',
+                  border: '1px solid #25e2cc',
                   letterSpacing: '0.01em',
+                  transition: 'background 0.2s ease',
                 }}
               >
                 Voir les expériences →
