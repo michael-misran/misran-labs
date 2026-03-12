@@ -28,7 +28,7 @@ const EXPERIMENTS = [
     id: 'EXP-003',
     title: 'Session Replay',
     description:
-      'Outil d\'analyse comportementale utilisateur avec annotation IA et synthèse automatique des patterns.',
+      'Documentation narrative d\'un build en live avec Claude Code. Prompts, décisions, itérations — le making-of complet.',
     status: 'IN PROGRESS',
   },
 ]
@@ -184,7 +184,7 @@ function ExperimentCard({ exp }) {
         padding: '28px 24px',
         cursor: 'default',
         transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
-        boxShadow: hovered ? '0 0 24px rgba(0,212,255,0.12)' : 'none',
+        boxShadow: hovered ? '0 0 20px rgba(0,212,255,0.15)' : 'none',
         display: 'flex',
         flexDirection: 'column',
         gap: 12,
@@ -287,6 +287,9 @@ export default function HomePage() {
           transition: 'opacity 0.5s ease',
           minHeight: '100vh',
           background: '#0a0e17',
+          backgroundImage:
+            'linear-gradient(rgba(26,42,58,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(26,42,58,0.4) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
           color: '#e8f4f8',
           fontFamily: "'Inter', sans-serif",
         }}
@@ -600,7 +603,7 @@ export default function HomePage() {
           style={{
             maxWidth: 1080,
             margin: '0 auto',
-            padding: '80px 40px',
+            padding: '80px 40px 40px',
           }}
         >
           {/* Section header */}
