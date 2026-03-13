@@ -96,6 +96,8 @@ function Terminal() {
   const [showContact, setShowContact] = useState(false)
   const [input, setInput] = useState('')
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
   const ran = useRef(false)
   const inputRef = useRef(null)
 
@@ -112,10 +114,27 @@ function Terminal() {
     return () => timers.forEach(clearTimeout)
   }, [])
 
-  function handleSend() {
-    if (!input.trim() || sent) return
-    setSent(true)
-    setInput('')
+  async function handleSend() {
+    if (!input.trim() || sent || loading) return
+    setLoading(true)
+    setError(false)
+    try {
+      const res = await fetch('https://formspree.io/f/mjgarlpd', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ message: input }),
+      })
+      if (res.ok) {
+        setSent(true)
+        setInput('')
+      } else {
+        setError(true)
+      }
+    } catch {
+      setError(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   function handleKeyDown(e) {
@@ -193,7 +212,14 @@ function Terminal() {
         {/* Sent confirmation */}
         {sent && (
           <div style={{ marginTop: 16, fontSize: 13, color: '#25e2cc', lineHeight: '1.9' }}>
-            &gt; Message reçu. Je reviens vers toi rapidement.
+            &gt; MESSAGE TRANSMIS ✓ — Je reviens vers toi rapidement.
+          </div>
+        )}
+
+        {/* Error */}
+        {error && (
+          <div style={{ marginTop: 16, fontSize: 13, color: '#ff4444', lineHeight: '1.9' }}>
+            &gt; TRANSMISSION ÉCHOUÉE ✗ — Réessaie ou écris à contact@michaelmisran.com
           </div>
         )}
 
@@ -228,6 +254,7 @@ function Terminal() {
             />
             <button
               onClick={handleSend}
+              disabled={loading || sent}
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 11,
@@ -237,14 +264,15 @@ function Terminal() {
                 border: '1px solid #25e2cc',
                 borderRadius: 4,
                 padding: '5px 16px',
-                cursor: 'pointer',
+                cursor: loading ? 'not-allowed' : 'pointer',
                 transition: 'background 0.15s ease',
                 marginLeft: 12,
+                opacity: loading ? 0.6 : 1,
               }}
-              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(37,226,204,0.22)')}
+              onMouseEnter={e => { if (!loading) e.currentTarget.style.background = 'rgba(37,226,204,0.22)' }}
               onMouseLeave={e => (e.currentTarget.style.background = 'rgba(37,226,204,0.12)')}
             >
-              SEND
+              {loading ? 'ENVOI...' : 'SEND'}
             </button>
           </div>
         )}
