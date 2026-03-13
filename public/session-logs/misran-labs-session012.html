@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misran Labs — Session 012</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap');
+    :root {
+      --bg:#0a0e17; --bg2:#0d1220; --cyan:#00d4ff; --teal:#25e2cc;
+      --text:#e8f4f8; --text2:#7a9bb5; --border:#1a2a3a;
+      --error:#ff4444; --success:#00ff88; --warn:#ffaa00;
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{ background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; line-height:1.7; }
+    body::before{
+      content:''; position:fixed; inset:0;
+      background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+      background-size:40px 40px; opacity:0.3; pointer-events:none; z-index:0;
+    }
+    .wrapper{ position:relative; z-index:1; max-width:900px; margin:0 auto; padding:60px 40px; }
+    .header{ border-bottom:1px solid var(--border); padding-bottom:40px; margin-bottom:60px; }
+    .lab-badge{
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(37,226,204,.08); border:1px solid rgba(37,226,204,.2);
+      border-radius:4px; padding:4px 12px;
+      font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal);
+      letter-spacing:.1em; text-transform:uppercase; margin-bottom:20px;
+    }
+    .lab-badge::before{ content:''; width:6px; height:6px; background:var(--teal); border-radius:50%; animation:pulse 2s infinite; }
+    @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.3} }
+    h1{ font-family:'Space Grotesk',sans-serif; font-size:42px; font-weight:700; line-height:1.1; margin-bottom:12px; }
+    h1 span{ color:var(--teal); }
+    .subtitle{ color:var(--text2); font-size:16px; max-width:640px; }
+    .meta{ display:flex; gap:24px; margin-top:24px; flex-wrap:wrap; }
+    .meta-item{ display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); }
+    .meta-item .dot{ width:4px; height:4px; background:var(--teal); border-radius:50%; }
+    .section{ margin-bottom:64px; }
+    .section-header{ display:flex; align-items:center; gap:16px; margin-bottom:32px; }
+    .step-number{
+      width:40px; height:40px; border:1px solid var(--teal); border-radius:4px;
+      display:flex; align-items:center; justify-content:center;
+      font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--teal);
+      flex-shrink:0; background:rgba(37,226,204,.05);
+    }
+    h2{ font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:600; }
+    h3{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; color:var(--teal); margin:24px 0 12px; }
+    p{ color:var(--text2); margin-bottom:16px; }
+    p strong{ color:var(--text); }
+    .success-box{ background:rgba(0,255,136,.04); border:1px solid rgba(0,255,136,.2); border-left:3px solid var(--success); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .success-box p{ margin:0; font-size:14px; color:#66ffaa; }
+    .decision-box{ background:rgba(0,212,255,.04); border:1px solid rgba(0,212,255,.2); border-left:3px solid var(--cyan); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .decision-box p{ margin:0; font-size:14px; color:#88ddff; }
+    .warn-box{ background:rgba(255,170,0,.04); border:1px solid rgba(255,170,0,.2); border-left:3px solid var(--warn); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .warn-box p{ margin:0; font-size:14px; color:#ffcc66; }
+    code{ font-family:'JetBrains Mono',monospace; font-size:13px; background:rgba(37,226,204,.08); color:var(--teal); padding:2px 6px; border-radius:3px; }
+    .step-flow{ display:flex; gap:0; margin:24px 0; }
+    .flow-item{ flex:1; background:var(--bg2); border:1px solid var(--border); padding:20px; position:relative; }
+    .flow-item:not(:last-child)::after{ content:'→'; position:absolute; right:-14px; top:50%; transform:translateY(-50%); color:var(--teal); font-size:18px; z-index:1; }
+    .flow-item:first-child{ border-radius:8px 0 0 8px; }
+    .flow-item:last-child{ border-radius:0 8px 8px 0; }
+    .flow-item .fi-label{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:8px; }
+    .flow-item .fi-val{ font-size:13px; color:var(--text); font-weight:500; }
+    .flow-item .fi-sub{ font-size:12px; color:var(--text2); margin-top:4px; }
+    .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+    .card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:20px; }
+    .card .c-label{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px; }
+    .card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .card ul li{ font-size:13px; color:var(--text2); padding-left:16px; position:relative; }
+    .card ul li::before{ content:'→'; position:absolute; left:0; color:var(--teal); font-size:11px; }
+    .prompt-block{ background:#060a10; border:1px solid var(--border); border-radius:6px; padding:16px 20px; margin:16px 0; }
+    .prompt-block pre{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); white-space:pre-wrap; line-height:1.8; margin:0; }
+    .summary-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:32px 0; }
+    .summary-card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:24px 16px; text-align:center; }
+    .summary-card .num{ font-family:'JetBrains Mono',monospace; font-size:32px; font-weight:700; color:var(--teal); line-height:1; margin-bottom:8px; }
+    .summary-card .lbl{ font-size:12px; color:var(--text2); letter-spacing:.04em; }
+    .next-list{ list-style:none; display:flex; flex-direction:column; gap:16px; }
+    .next-list li{ display:flex; gap:16px; align-items:flex-start; background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:16px 20px; }
+    .next-list li .num{ font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; color:var(--teal); flex-shrink:0; min-width:24px; }
+    .next-list li span{ font-size:14px; color:var(--text2); line-height:1.6; }
+    hr{ border:none; border-top:1px solid var(--border); margin:64px 0; }
+    .footer{ display:flex; justify-content:space-between; align-items:center; padding-top:40px; border-top:1px solid var(--border); margin-top:40px; }
+    .footer-brand{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:700; color:var(--text2); }
+    .footer-brand span{ color:var(--teal); }
+    .footer-meta{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text2); opacity:.6; }
+    .terminal-preview{ background:#060a10; border:1px solid var(--border); border-radius:8px; overflow:hidden; margin:24px 0; }
+    .terminal-bar{ display:flex; align-items:center; gap:8px; padding:10px 16px; background:var(--bg2); border-bottom:1px solid var(--border); }
+    .terminal-bar .dot{ width:10px; height:10px; border-radius:50%; }
+    .terminal-bar .dot.r{ background:#ff5f57; }
+    .terminal-bar .dot.y{ background:#ffbd2e; }
+    .terminal-bar .dot.g{ background:#28c840; }
+    .terminal-bar .name{ font-family:'JetBrains Mono',monospace; font-size:11px; color:#4a7a94; margin-left:8px; }
+    .terminal-body{ padding:20px 24px; }
+    .t-line{ font-family:'JetBrains Mono',monospace; font-size:12px; line-height:2; }
+    .t-line.dim{ color:#4a7a94; }
+    .t-line.normal{ color:#c4d8e8; }
+    .t-line.teal{ color:var(--teal); }
+    .t-line.success{ color:var(--success); }
+    .t-line.input{ color:var(--text); }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="lab-badge">Misran Labs — Session Log 012</div>
+    <h1>Formspree<br><span>Contact fonctionnel</span></h1>
+    <p class="subtitle">Intégration Formspree sur /contact — terminal séquentiel nom → email → message, envoi réel, confirmation live.</p>
+    <div class="meta">
+      <div class="meta-item"><div class="dot"></div>13 mars 2026</div>
+      <div class="meta-item"><div class="dot"></div>Michael Misran</div>
+      <div class="meta-item"><div class="dot"></div>Formspree · Contact · UX séquentielle</div>
+      <div class="meta-item"><div class="dot"></div>~30 min</div>
+    </div>
+  </div>
+
+  <!-- 01 — CONTEXTE -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">01</div><h2>Contexte & décision technique</h2></div>
+
+    <p>Le formulaire /contact existait visuellement depuis la session 005 — terminal macOS, animations d'apparition, input ligne de commande. Mais le bouton SEND ne faisait rien : <code>setSent(true)</code> localement, aucun email réel envoyé.</p>
+    <p>La question soulevée : <strong>coder un backend email ou utiliser un service tiers ?</strong></p>
+
+    <div class="decision-box">
+      <p>⚡ <strong>Décision :</strong> Formspree plutôt qu'un backend Node.js custom (Express + SMTP + Vercel function). Justification : le portfolio montre des compétences product et orchestration IA — pas du backend mail. Le temps économisé va sur EXP-001. Formspree est d'ailleurs le choix de la majorité des portfolios professionnels, y compris chez des devs seniors.</p>
+    </div>
+
+    <p>Deuxième décision : <strong>ajouter nom + email</strong> avant le message. La version initiale ne capturait qu'un message libre — impossible de recontacter l'expéditeur. Résolu via une UX séquentielle style terminal.</p>
+  </div>
+
+  <hr>
+
+  <!-- 02 — UX SÉQUENTIELLE -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">02</div><h2>UX séquentielle — 3 étapes</h2></div>
+
+    <p>Plutôt que trois champs simultanés (classique), le terminal guide l'utilisateur étape par étape. Chaque réponse apparaît comme une ligne de log avant de passer à la suivante.</p>
+
+    <div class="step-flow">
+      <div class="flow-item">
+        <div class="fi-label">Step 1</div>
+        <div class="fi-val">Nom</div>
+        <div class="fi-sub">placeholder "Ton prénom ou nom..."</div>
+      </div>
+      <div class="flow-item">
+        <div class="fi-label">Step 2</div>
+        <div class="fi-val">Email</div>
+        <div class="fi-sub">placeholder "Ton adresse email..."</div>
+      </div>
+      <div class="flow-item">
+        <div class="fi-label">Step 3</div>
+        <div class="fi-val">Message</div>
+        <div class="fi-sub">fetch POST → Formspree</div>
+      </div>
+      <div class="flow-item">
+        <div class="fi-label">Résultat</div>
+        <div class="fi-val">Confirmation</div>
+        <div class="fi-sub">✓ ou ✗ en couleur</div>
+      </div>
+    </div>
+
+    <!-- Terminal preview -->
+    <div class="terminal-preview">
+      <div class="terminal-bar">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <span class="name">misran-labs — bash</span>
+      </div>
+      <div class="terminal-body">
+        <div class="t-line normal">&gt; Misran Labs Contact Terminal v1.0</div>
+        <div class="t-line normal">&gt; Connection established.</div>
+        <div class="t-line dim">&nbsp;</div>
+        <div class="t-line teal">&gt; NOM &nbsp;&nbsp;&nbsp; Michael MISRAN</div>
+        <div class="t-line teal">&gt; EMAIL &nbsp; misranmichael@gmail.com</div>
+        <div class="t-line dim">&nbsp;</div>
+        <div class="t-line input">&gt; test message contact 002 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ENVOYER]</div>
+        <div class="t-line dim">&nbsp;</div>
+        <div class="t-line success">&gt; MESSAGE TRANSMIS ✓ — Je reviens vers toi rapidement.</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="c-label">✓ Implémentation technique</div>
+        <ul>
+          <li>useState step : 'name' | 'email' | 'message' | 'sent' | 'error'</li>
+          <li>handleEnter() async avec machine d'états séquentielle</li>
+          <li>fetch POST vers Formspree avec { name, email, message }</li>
+          <li>Bouton dynamique : SUIVANT → / ENVOYER / ENVOI...</li>
+          <li>Disabled pendant loading et après sent</li>
+          <li>Error state : message rouge + fallback email direct</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">✓ Ce que reçoit Formspree</div>
+        <ul>
+          <li>Champ name : prénom/nom de l'expéditeur</li>
+          <li>Champ email : adresse de retour cliquable</li>
+          <li>Champ message : contenu de la prise de contact</li>
+          <li>Source : www.michaelmisran.com</li>
+          <li>Email de notification immédiat sur Gmail</li>
+          <li>Dashboard Formspree pour historique</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 03 — PROMPT -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">03</div><h2>Prompt Claude Code utilisé</h2></div>
+
+    <div class="prompt-block"><pre>Dans src/pages/ContactPage.jsx, modifie uniquement la fonction Terminal().
+
+OBJECTIF : connecter le bouton SEND à Formspree + UX séquentielle nom → email → message.
+
+1. Remplace useState sent par un state step : 'name' | 'email' | 'message' | 'sent' | 'error'
+   Ajoute : const [name, setName] = useState('')
+            const [email, setEmail] = useState('')
+            const [loading, setLoading] = useState(false)
+
+2. Remplace handleSend() par handleEnter() async — machine d'états :
+   - step 'name'    → setName(input), setInput(''), setStep('email')
+   - step 'email'   → setEmail(input), setInput(''), setStep('message')
+   - step 'message' → fetch POST https://formspree.io/f/mjgarlpd
+                       body: { name, email, message: input }
+                       setStep(res.ok ? 'sent' : 'error')
+
+3. JSX : afficher NOM et EMAIL saisis comme lignes de terminal au-dessus de l'input
+4. Bouton : 'SUIVANT →' pour name/email, 'ENVOYER' pour message, 'ENVOI...' si loading
+5. Messages : "> MESSAGE TRANSMIS ✓" en #25e2cc / "> TRANSMISSION ÉCHOUÉE ✗" en #ff4444
+
+Ne modifie rien d'autre dans le fichier.</pre></div>
+
+    <div class="success-box">
+      <p>✓ Test validé — email reçu sur Gmail avec name: "Michael MISRAN", email: "misranmichael@gmail.com", message: "test message contact 002". L'adresse email apparaît en lien cliquable dans Formspree pour répondre directement.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 04 — BILAN -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">04</div><h2>Bilan & suite</h2></div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><div class="num">12</div><div class="lbl">Sessions doc.</div></div>
+      <div class="summary-card"><div class="num">3</div><div class="lbl">Pages live</div></div>
+      <div class="summary-card"><div class="num">2</div><div class="lbl">Exp. live</div></div>
+      <div class="summary-card"><div class="num">~21h</div><div class="lbl">Build total</div></div>
+    </div>
+
+    <div class="warn-box">
+      <p>⚠ <strong>Limite Formspree Free :</strong> 50 soumissions/mois. Suffisant pour un portfolio — un recruteur qui envoie plusieurs messages serait un bon problème à avoir.</p>
+    </div>
+
+    <h3>Prochaines priorités</h3>
+    <ul class="next-list">
+      <li><span class="num">1</span><span><strong style="color:var(--text)">EXP-001 UX Audit Engine</strong> — upload screenshot → audit structuré via Claude API. La killer feature recruteur. Brief à faire avant de coder.</span></li>
+      <li><span class="num">2</span><span><strong style="color:var(--text)">Sessions 010, 011, 012 dans EXP-003</strong> — les cards SessionReplay s'arrêtent à 009. À mettre à jour + stats à 12 sessions.</span></li>
+      <li><span class="num">3</span><span><strong style="color:var(--text)">EXP-005 Micro-SaaS Generator</strong> — phrase → landing page en streaming. La plus spectaculaire visuellement.</span></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">Misran <span>Labs</span></div>
+    <div class="footer-meta">Session 012 · 13.03.2026 · Formspree Contact</div>
+  </div>
+
+</div>
+</body>
+</html>
