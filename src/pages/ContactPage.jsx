@@ -95,9 +95,10 @@ function Terminal() {
   const [visibleLines, setVisibleLines] = useState(0)
   const [showContact, setShowContact] = useState(false)
   const [input, setInput] = useState('')
-  const [sent, setSent] = useState(false)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [step, setStep] = useState('name') // 'name' | 'email' | 'message' | 'sent' | 'error'
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
   const ran = useRef(false)
   const inputRef = useRef(null)
 
@@ -114,32 +115,40 @@ function Terminal() {
     return () => timers.forEach(clearTimeout)
   }, [])
 
-  async function handleSend() {
-    if (!input.trim() || sent || loading) return
-    setLoading(true)
-    setError(false)
-    try {
-      const res = await fetch('https://formspree.io/f/mjgarlpd', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ message: input }),
-      })
-      if (res.ok) {
-        setSent(true)
-        setInput('')
-      } else {
-        setError(true)
+  async function handleEnter() {
+    if (!input.trim() || loading) return
+    if (step === 'name') {
+      setName(input)
+      setInput('')
+      setStep('email')
+    } else if (step === 'email') {
+      setEmail(input)
+      setInput('')
+      setStep('message')
+    } else if (step === 'message') {
+      setLoading(true)
+      try {
+        const res = await fetch('https://formspree.io/f/mjgarlpd', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name, email, message: input }),
+        })
+        setStep(res.ok ? 'sent' : 'error')
+        if (res.ok) setInput('')
+      } catch {
+        setStep('error')
+      } finally {
+        setLoading(false)
       }
-    } catch {
-      setError(true)
-    } finally {
-      setLoading(false)
     }
   }
 
   function handleKeyDown(e) {
-    if (e.key === 'Enter') handleSend()
+    if (e.key === 'Enter') handleEnter()
   }
+
+  const placeholders = { name: 'Ton prénom ou nom...', email: 'Ton adresse email...', message: 'Ton message...' }
+  const btnLabel = loading ? 'ENVOI...' : step === 'message' ? 'ENVOYER' : 'SUIVANT →'
 
   return (
     <div
@@ -209,22 +218,32 @@ function Terminal() {
           </div>
         )}
 
-        {/* Sent confirmation */}
-        {sent && (
+        {/* Filled fields */}
+        {name && (
+          <div style={{ marginTop: 16, fontSize: 13, color: '#c4d8e8', lineHeight: '1.9' }}>
+            &gt; NOM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{name}
+          </div>
+        )}
+        {email && (
+          <div style={{ fontSize: 13, color: '#c4d8e8', lineHeight: '1.9' }}>
+            &gt; EMAIL&nbsp;&nbsp;&nbsp;&nbsp;{email}
+          </div>
+        )}
+
+        {/* Status messages */}
+        {step === 'sent' && (
           <div style={{ marginTop: 16, fontSize: 13, color: '#25e2cc', lineHeight: '1.9' }}>
             &gt; MESSAGE TRANSMIS ✓ — Je reviens vers toi rapidement.
           </div>
         )}
-
-        {/* Error */}
-        {error && (
+        {step === 'error' && (
           <div style={{ marginTop: 16, fontSize: 13, color: '#ff4444', lineHeight: '1.9' }}>
-            &gt; TRANSMISSION ÉCHOUÉE ✗ — Réessaie ou écris à contact@michaelmisran.com
+            &gt; TRANSMISSION ÉCHOUÉE ✗ — Écris à contact@michaelmisran.com
           </div>
         )}
 
         {/* Input row */}
-        {!sent && (
+        {step !== 'sent' && (
           <div
             style={{
               display: 'flex',
@@ -234,13 +253,16 @@ function Terminal() {
               paddingTop: 16,
             }}
           >
-            <span style={{ fontSize: 13, color: '#25e2cc', marginRight: 8 }}>&gt;</span>
+            <span style={{ fontSize: 13, color: '#25e2cc', marginRight: 8 }}>
+              {step === 'name' ? '> NOM' : step === 'email' ? '> EMAIL' : '>'}
+            </span>
             <input
               ref={inputRef}
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Tape ton message..."
+              placeholder={placeholders[step] ?? ''}
+              type={step === 'email' ? 'email' : 'text'}
               style={{
                 flex: 1,
                 background: 'transparent',
@@ -250,11 +272,12 @@ function Terminal() {
                 fontSize: 13,
                 color: '#e8f4f8',
                 caretColor: '#25e2cc',
+                marginLeft: 8,
               }}
             />
             <button
-              onClick={handleSend}
-              disabled={loading || sent}
+              onClick={handleEnter}
+              disabled={loading}
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 11,
@@ -272,7 +295,7 @@ function Terminal() {
               onMouseEnter={e => { if (!loading) e.currentTarget.style.background = 'rgba(37,226,204,0.22)' }}
               onMouseLeave={e => (e.currentTarget.style.background = 'rgba(37,226,204,0.12)')}
             >
-              {loading ? 'ENVOI...' : 'SEND'}
+              {btnLabel}
             </button>
           </div>
         )}
