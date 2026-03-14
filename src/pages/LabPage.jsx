@@ -8,8 +8,8 @@ const EXPERIMENTS = [
     title: 'UX Audit Engine',
     description:
       'Upload screenshot → audit UX structuré avec annotations et recommandations.',
-    status: 'IN PROGRESS',
-    stack: ['Claude API', 'Vision', 'React', 'PDF Export'],
+    status: 'READY',
+    stack: ['React', 'FileReader', 'Streaming simulé'],
   },
   {
     id: 'EXP-002',
