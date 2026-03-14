@@ -3,38 +3,38 @@ import { Link, useLocation } from 'react-router-dom'
 const STEPS = [
   {
     num: '01',
-    title: 'BRIEF & STRATÉGIE',
-    description:
-      'Je définis le problème, les contraintes, le résultat attendu. Je structure le brief avant de toucher à l\'IA.',
-    tools: ['Claude claude.ai'],
+    title: 'BRIEF & CADRAGE',
+    description: 'Avant de toucher à l\'IA, je définis le problème en langage naturel : quel est l\'objectif, quelles sont les contraintes, quel est le résultat attendu. Cette étape est 100% humaine. Un mauvais brief = un mauvais output, peu importe l\'outil.',
+    tools: ['claude.ai', 'Markdown'],
+    example: '→ Ex: "EXP-001 doit permettre d\'uploader un screenshot et recevoir un audit structuré en streaming. Pas d\'appel API réel — simulation. Output coloré : ## teal, frictions rouge, recommandations cyan."',
   },
   {
     num: '02',
-    title: 'DESIGN SYSTEM',
-    description:
-      'Je construis le design system directement en code — tokens CSS, composants React, cohérence visuelle sans outil intermédiaire.',
-    tools: ['CSS Tokens', 'React', 'Claude Code'],
+    title: 'PROMPT STRUCTURÉ',
+    description: 'Je traduis le brief en prompt chirurgical pour Claude Code. Chaque prompt précise : le fichier cible, les états React, la logique, le layout, ce qu\'il ne faut PAS toucher. Plus le prompt est précis, moins il y a d\'itérations.',
+    tools: ['Claude Code', 'Claude claude.ai'],
+    example: '→ Pattern: "Crée [fichier]. États : [liste]. Logique : [description]. Layout : [colonnes]. Ne modifie pas [liste]."',
   },
   {
     num: '03',
-    title: 'GÉNÉRATION CODE',
-    description:
-      'Je brief Claude Code avec des prompts structurés. Il génère, je critique, je corrige, j\'itère.',
-    tools: ['Claude Code'],
+    title: 'GÉNÉRATION & CRITIQUE',
+    description: 'Claude Code génère. Je review visuellement dès le déploiement Vercel (~30s). Je note les écarts entre le brief et le résultat. Je génère un prompt de correction ciblé — jamais de réécriture complète si possible.',
+    tools: ['Claude Code', 'Vercel', 'Browser'],
+    example: '→ Ex: "Les chips sont en colonne et ressemblent à des inputs. Corriger : flex-wrap wrap, couleur teal, border rgba teal. Ne rien toucher d\'autre."',
   },
   {
     num: '04',
-    title: 'DÉPLOIEMENT',
-    description:
-      'Push GitHub → déploiement automatique Vercel. En production en 30 secondes.',
+    title: 'DÉPLOIEMENT CONTINU',
+    description: 'Chaque push GitHub déclenche un déploiement automatique sur Vercel. En production en moins de 30 secondes. Pas de pipeline à configurer, pas de serveur à maintenir.',
     tools: ['GitHub', 'Vercel'],
+    example: '→ git add -A && git commit -m "fix: chips style" && git push → live en 30s',
   },
   {
     num: '05',
-    title: 'DOCUMENTATION',
-    description:
-      'Je documente chaque session : décisions, prompts, résultats. La preuve que je maîtrise le process, pas juste l\'output.',
-    tools: ['Ce portfolio'],
+    title: 'DOCUMENTATION SESSION',
+    description: 'Après chaque session de build, je génère un doc HTML qui archive les décisions prises, les prompts utilisés, les bugs rencontrés et les solutions. 14 sessions documentées accessibles depuis EXP-003.',
+    tools: ['claude.ai', 'HTML', 'EXP-003'],
+    example: '→ Chaque log contient : // WHAT (ce qui a été fait), // DECISION ⚡ (pourquoi), // PROMPT (le prompt exact)',
   },
 ]
 
@@ -229,8 +229,7 @@ export default function ProcessPage() {
                 lineHeight: 1.8,
               }}
             >
-              Je ne remplace pas le designer ou le dev — je dirige l'IA comme un chef de projet
-              technique. Chaque décision reste la mienne. L'IA exécute.
+              Je ne code pas — j'orchestre. Chaque décision de design, d'architecture et de priorité reste la mienne. Claude Code exécute. Je dirige avec des prompts précis, je critique avec un œil de designer, j'itère avec la rigueur d'un PM.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
@@ -364,6 +363,19 @@ export default function ProcessPage() {
                         <ToolBadge key={t} label={t} />
                       ))}
                     </div>
+                    {step.example && (
+                      <p style={{
+                        fontFamily: "'JetBrains Mono', monospace",
+                        fontSize: 12,
+                        color: '#4a7a94',
+                        lineHeight: 1.7,
+                        marginTop: 12,
+                        paddingLeft: 12,
+                        borderLeft: '2px solid rgba(37,226,204,0.2)',
+                      }}>
+                        {step.example}
+                      </p>
+                    )}
                   </div>
                 </div>
               ))}
