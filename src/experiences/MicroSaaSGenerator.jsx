@@ -625,7 +625,7 @@ export default function MicroSaaSGenerator() {
               <div style={{ height: 1, background: '#1a2a3a' }} />
 
               {/* Chips */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {CHIPS.map(chip => (
                   <button
                     key={chip}
@@ -634,16 +634,22 @@ export default function MicroSaaSGenerator() {
                     style={{
                       fontFamily: "'JetBrains Mono', monospace",
                       fontSize: 11,
-                      color: input === chip ? '#25e2cc' : '#7a9bb5',
-                      background: 'transparent',
-                      border: `1px solid ${input === chip ? '#25e2cc' : '#243545'}`,
-                      borderRadius: 6,
-                      padding: '8px 14px',
-                      textAlign: 'left',
+                      color: '#25e2cc',
+                      background: 'rgba(37,226,204,0.06)',
+                      border: '1px solid rgba(37,226,204,0.2)',
+                      borderRadius: 4,
+                      padding: '4px 10px',
                       cursor: 'pointer',
-                      transition: 'all 0.15s ease',
+                      transition: 'border-color 0.15s, background 0.15s',
                       letterSpacing: '0.02em',
-                      lineHeight: 1.5,
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.borderColor = '#25e2cc'
+                      e.currentTarget.style.background = 'rgba(37,226,204,0.12)'
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.borderColor = 'rgba(37,226,204,0.2)'
+                      e.currentTarget.style.background = 'rgba(37,226,204,0.06)'
                     }}
                   >
                     {chip}
