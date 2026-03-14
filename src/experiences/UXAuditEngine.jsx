@@ -831,35 +831,37 @@ export default function UXAuditEngine() {
               )}
 
               {/* Example file chips */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <span
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: 10,
                     color: '#4a7a94',
                     letterSpacing: '0.04em',
-                    marginBottom: 2,
                   }}
                 >
-                  {'// Fichiers de démo utilisés :'}
+                  {'// Essayer avec :'}
                 </span>
-                {EXAMPLE_FILES.map(name => (
-                  <span
-                    key={name}
-                    style={{
-                      fontFamily: "'JetBrains Mono', monospace",
-                      fontSize: 11,
-                      color: '#4a7a94',
-                      background: 'transparent',
-                      border: '1px solid #1a2a3a',
-                      borderRadius: 4,
-                      padding: '6px 12px',
-                      letterSpacing: '0.02em',
-                    }}
-                  >
-                    {name}
-                  </span>
-                ))}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  {EXAMPLE_FILES.map(name => (
+                    <span
+                      key={name}
+                      style={{
+                        fontFamily: "'JetBrains Mono', monospace",
+                        fontSize: 11,
+                        color: '#25e2cc',
+                        background: 'rgba(37,226,204,0.06)',
+                        border: '1px solid rgba(37,226,204,0.2)',
+                        borderRadius: 4,
+                        padding: '4px 10px',
+                        letterSpacing: '0.02em',
+                        cursor: 'default',
+                      }}
+                    >
+                      {name}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               {/* Reset button */}
