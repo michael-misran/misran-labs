@@ -1,4 +1,5 @@
 import HomeModule from '../modules/HomeModule'
+import ApiMonitorModule from '../modules/ApiMonitorModule'
 import UXAuditEngine from '../experiences/UXAuditEngine'
 import ProductBriefMachine from '../experiences/ProductBriefMachine'
 import SessionReplay from '../experiences/SessionReplay'
@@ -7,12 +8,13 @@ import MicroSaaSGenerator from '../experiences/MicroSaaSGenerator'
 export default function ModuleZone({ activeModule, navigateTo }) {
   function renderModule() {
     switch (activeModule) {
-      case 'home':    return <HomeModule navigateTo={navigateTo} />
-      case 'exp-001': return <UXAuditEngine />
-      case 'exp-002': return <ProductBriefMachine />
-      case 'exp-003': return <SessionReplay />
-      case 'exp-005': return <MicroSaaSGenerator />
-      default:        return <HomeModule navigateTo={navigateTo} />
+      case 'home':        return <HomeModule navigateTo={navigateTo} />
+      case 'api-monitor': return <ApiMonitorModule />
+      case 'exp-001':     return <UXAuditEngine />
+      case 'exp-002':     return <ProductBriefMachine />
+      case 'exp-003':     return <SessionReplay />
+      case 'exp-005':     return <MicroSaaSGenerator />
+      default:            return <HomeModule navigateTo={navigateTo} />
     }
   }
 

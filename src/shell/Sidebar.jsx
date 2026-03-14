@@ -10,6 +10,7 @@ const MODULES = [
   { id: 'exp-002', icon: '◎', label: 'Brief Machine' },
   { id: 'exp-003', icon: '▣', label: 'Session Replay' },
   { id: 'exp-005', icon: '◉', label: 'SaaS Generator' },
+  { id: 'api-monitor', icon: '◬', label: 'API Monitor' },
 ]
 
 export default function Sidebar({ activeModule, navigateTo, moduleHistory }) {

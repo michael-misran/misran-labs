@@ -41,6 +41,14 @@ const MODULES = [
     status: 'IN PROGRESS',
     tags: ['Vision', 'Figma API'],
   },
+  {
+    id: 'api-monitor',
+    icon: '◬',
+    title: 'API Cost Monitor',
+    desc: 'Monitoring tokens · coûts · alertes budget',
+    status: 'READY',
+    tags: ['Simulation', 'Anthropic API', 'Budget'],
+  },
 ]
 
 function ModuleCard({ mod, navigateTo }) {
