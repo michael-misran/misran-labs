@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misran Labs — Session 013</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap');
+    :root {
+      --bg:#0a0e17; --bg2:#0d1220; --cyan:#00d4ff; --teal:#25e2cc;
+      --text:#e8f4f8; --text2:#7a9bb5; --border:#1a2a3a;
+      --error:#ff4444; --success:#00ff88; --warn:#ffaa00;
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{ background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; line-height:1.7; }
+    body::before{
+      content:''; position:fixed; inset:0;
+      background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+      background-size:40px 40px; opacity:0.3; pointer-events:none; z-index:0;
+    }
+    .wrapper{ position:relative; z-index:1; max-width:900px; margin:0 auto; padding:60px 40px; }
+    .header{ border-bottom:1px solid var(--border); padding-bottom:40px; margin-bottom:60px; }
+    .lab-badge{ display:inline-flex; align-items:center; gap:8px; background:rgba(37,226,204,.08); border:1px solid rgba(37,226,204,.2); border-radius:4px; padding:4px 12px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:20px; }
+    .lab-badge::before{ content:''; width:6px; height:6px; background:var(--teal); border-radius:50%; animation:pulse 2s infinite; }
+    @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.3} }
+    h1{ font-family:'Space Grotesk',sans-serif; font-size:42px; font-weight:700; line-height:1.1; margin-bottom:12px; }
+    h1 span{ color:var(--teal); }
+    .subtitle{ color:var(--text2); font-size:16px; max-width:640px; }
+    .meta{ display:flex; gap:24px; margin-top:24px; flex-wrap:wrap; }
+    .meta-item{ display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); }
+    .meta-item .dot{ width:4px; height:4px; background:var(--teal); border-radius:50%; }
+    .section{ margin-bottom:64px; }
+    .section-header{ display:flex; align-items:center; gap:16px; margin-bottom:32px; }
+    .step-number{ width:40px; height:40px; border:1px solid var(--teal); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--teal); flex-shrink:0; background:rgba(37,226,204,.05); }
+    h2{ font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:600; }
+    h3{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; color:var(--teal); margin:24px 0 12px; }
+    p{ color:var(--text2); margin-bottom:16px; }
+    p strong{ color:var(--text); }
+    .success-box{ background:rgba(0,255,136,.04); border:1px solid rgba(0,255,136,.2); border-left:3px solid var(--success); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .success-box p{ margin:0; font-size:14px; color:#66ffaa; }
+    .decision-box{ background:rgba(0,212,255,.04); border:1px solid rgba(0,212,255,.2); border-left:3px solid var(--cyan); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .decision-box p{ margin:0; font-size:14px; color:#88ddff; }
+    .warn-box{ background:rgba(255,170,0,.04); border:1px solid rgba(255,170,0,.2); border-left:3px solid var(--warn); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .warn-box p{ margin:0; font-size:14px; color:#ffcc66; }
+    code{ font-family:'JetBrains Mono',monospace; font-size:13px; background:rgba(37,226,204,.08); color:var(--teal); padding:2px 6px; border-radius:3px; }
+    .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+    .card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:20px; }
+    .card .c-label{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px; }
+    .card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .card ul li{ font-size:13px; color:var(--text2); padding-left:16px; position:relative; }
+    .card ul li::before{ content:'→'; position:absolute; left:0; color:var(--teal); font-size:11px; }
+    .fix-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+    .fix-card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:20px; }
+    .fix-card.fixed{ border-color:rgba(0,255,136,.2); }
+    .fix-card .f-num{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--teal); text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px; }
+    .fix-card .f-title{ font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:600; color:var(--text); margin-bottom:8px; }
+    .fix-card .f-before{ font-size:13px; color:var(--error); margin-bottom:10px; font-family:'JetBrains Mono',monospace; }
+    .fix-card .f-after{ font-size:13px; color:#66ffaa; font-family:'JetBrains Mono',monospace; }
+    .prompt-block{ background:#060a10; border:1px solid var(--border); border-radius:6px; padding:16px 20px; margin:16px 0; }
+    .prompt-block pre{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); white-space:pre-wrap; line-height:1.8; margin:0; }
+    .flow-row{ display:flex; gap:0; margin:24px 0; }
+    .flow-item{ flex:1; background:var(--bg2); border:1px solid var(--border); padding:16px; position:relative; }
+    .flow-item:not(:last-child)::after{ content:'→'; position:absolute; right:-12px; top:50%; transform:translateY(-50%); color:var(--teal); font-size:16px; z-index:1; }
+    .flow-item:first-child{ border-radius:8px 0 0 8px; }
+    .flow-item:last-child{ border-radius:0 8px 8px 0; }
+    .flow-item .fi-label{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px; }
+    .flow-item .fi-val{ font-size:13px; color:var(--text); font-weight:500; }
+    .summary-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:32px 0; }
+    .summary-card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:24px 16px; text-align:center; }
+    .summary-card .num{ font-family:'JetBrains Mono',monospace; font-size:32px; font-weight:700; color:var(--teal); line-height:1; margin-bottom:8px; }
+    .summary-card .lbl{ font-size:12px; color:var(--text2); letter-spacing:.04em; }
+    .next-list{ list-style:none; display:flex; flex-direction:column; gap:16px; }
+    .next-list li{ display:flex; gap:16px; align-items:flex-start; background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:16px 20px; }
+    .next-list li .num{ font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; color:var(--teal); flex-shrink:0; min-width:24px; }
+    .next-list li span{ font-size:14px; color:var(--text2); line-height:1.6; }
+    hr{ border:none; border-top:1px solid var(--border); margin:64px 0; }
+    .footer{ display:flex; justify-content:space-between; align-items:center; padding-top:40px; border-top:1px solid var(--border); margin-top:40px; }
+    .footer-brand{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:700; color:var(--text2); }
+    .footer-brand span{ color:var(--teal); }
+    .footer-meta{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text2); opacity:.6; }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <div class="lab-badge">Misran Labs — Session Log 013</div>
+    <h1>EXP-001<br><span>UX Audit Engine</span></h1>
+    <p class="subtitle">Upload screenshot → audit UX structuré en streaming simulé. Trois cas pré-définis, coloration syntaxique, scoring visuel.</p>
+    <div class="meta">
+      <div class="meta-item"><div class="dot"></div>14 mars 2026</div>
+      <div class="meta-item"><div class="dot"></div>Michael Misran</div>
+      <div class="meta-item"><div class="dot"></div>EXP-001 · FileReader · Streaming simulé · Fix chips</div>
+      <div class="meta-item"><div class="dot"></div>~1h</div>
+    </div>
+  </div>
+
+  <!-- 01 CONTEXTE -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">01</div><h2>Contexte & choix technique clé</h2></div>
+
+    <p>EXP-001 est la feature la plus différenciante du portfolio pour les recruteurs product. Le concept : uploader un screenshot d'interface et obtenir un audit UX structuré avec scoring, points de friction, et recommandations priorisées.</p>
+
+    <div class="decision-box">
+      <p>⚡ <strong>Décision critique — simulation vs API réelle :</strong> zéro appel Claude API. L'abonnement Claude Pro ne couvre pas les appels API (facturation séparée à l'usage). Simulation streaming identique à EXP-002 — trois audits hardcodés pour Airbnb, Google Analytics, LinkedIn. Les recruteurs voient le résultat et le process, pas si c'est "vrai".</p>
+    </div>
+
+    <div class="flow-row">
+      <div class="flow-item"><div class="fi-label">Upload</div><div class="fi-val">FileReader base64</div></div>
+      <div class="flow-item"><div class="fi-label">Scanning</div><div class="fi-val">5 messages séquentiels</div></div>
+      <div class="flow-item"><div class="fi-label">Match</div><div class="fi-val">filename → audit data</div></div>
+      <div class="flow-item"><div class="fi-label">Stream</div><div class="fi-val">setInterval 20ms</div></div>
+      <div class="flow-item"><div class="fi-label">Rendu</div><div class="fi-val">Coloration syntaxique</div></div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 02 FEATURE -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">02</div><h2>Architecture de l'expérience</h2></div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="c-label">Colonne gauche — INPUT</div>
+        <ul>
+          <li>Zone drag & drop avec bordure dashed → teal au hover</li>
+          <li>Preview base64 après upload</li>
+          <li>Badge statut dynamique (SCANNING / ANALYSING / AUDIT COMPLETE)</li>
+          <li>Chips "// Essayer avec :" — 3 fichiers pré-définis</li>
+          <li>Bouton NOUVELLE ANALYSE visible phase done</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">Colonne droite — OUTPUT</div>
+        <ul>
+          <li>Phase idle : message d'attente</li>
+          <li>Phase scanning : 5 messages séquentiels toutes les 500ms</li>
+          <li>Phase streaming : texte caractère par caractère (3 chars / 20ms)</li>
+          <li>## headers → Space Grotesk teal</li>
+          <li>Badges [CRITIQUE] [ATTENTION] [CORRECT] colorés</li>
+          <li>Progress bar CSS inline pour le score ██</li>
+          <li>Frictions F· en rouge, recommandations P· en cyan</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Les 3 cas pré-définis</h3>
+    <div class="two-col">
+      <div class="card">
+        <div class="c-label">audit-airbnb.png — Score 7.2/10</div>
+        <ul>
+          <li>4 frictions dont frais cachés et CTA répété</li>
+          <li>Problème de hiérarchie visuelle prix/CTA</li>
+          <li>Accessibilité partielle — contraste insuffisant</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">audit-analytics.png — Score 5.4/10</div>
+        <ul>
+          <li>6 frictions — dashboard Google Analytics</li>
+          <li>Surcharge cognitive critique : 14 métriques en first screen</li>
+          <li>Accessibilité insuffisante sur les graphiques</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="c-label">audit-linkedin.png — Score 6.1/10</div>
+      <ul style="flex-direction:row; flex-wrap:wrap; gap:16px;">
+        <li>5 frictions — onboarding 11 étapes (benchmark : 4-5)</li>
+        <li>Dark patterns identifiés : barre de progression trompeuse, case pré-cochée</li>
+        <li>Section dédiée dark patterns — signal fort pour recruteurs product éthiques</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 03 FIX -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">03</div><h2>Fix post-déploiement — chips UI</h2></div>
+
+    <p>Constat immédiat au test visuel : les chips de suggestion ressemblaient à des champs de formulaire vides — inputs en colonne, couleur grise, bordure neutre. Un recruteur pourrait penser qu'il faut y saisir quelque chose.</p>
+
+    <div class="fix-grid">
+      <div class="fix-card fixed">
+        <div class="f-num">Fix 01</div>
+        <div class="f-title">Chips en colonne → chips horizontaux</div>
+        <div class="f-before">AVANT : flex-direction column, gap 6px<br>→ ressemble à des inputs de formulaire</div>
+        <div class="f-after">APRÈS : flex-wrap wrap, gap 8px<br>→ pattern chip tag standard ✓</div>
+      </div>
+      <div class="fix-card fixed">
+        <div class="f-num">Fix 02</div>
+        <div class="f-title">Style neutre → couleur teal</div>
+        <div class="f-before">AVANT : color #4a7a94, border #1a2a3a<br>→ invisible, sans signification</div>
+        <div class="f-after">APRÈS : color #25e2cc, border teal 20%<br>→ cohérent avec le design system ✓</div>
+      </div>
+      <div class="fix-card fixed">
+        <div class="f-num">Fix 03</div>
+        <div class="f-title">Label trop littéral</div>
+        <div class="f-before">AVANT : "// Fichiers de démo utilisés :"<br>→ trahit explicitement la simulation</div>
+        <div class="f-after">APRÈS : "// Essayer avec :"<br>→ guide sans exposer le mécanisme ✓</div>
+      </div>
+      <div class="fix-card fixed">
+        <div class="f-num">Fix 04</div>
+        <div class="f-title">Workflow respecté</div>
+        <div class="f-before">AVANT : correction directe dans le fichier<br>→ bypass du workflow Claude Code</div>
+        <div class="f-after">APRÈS : correction via filesystem edit<br>→ documenté, traçable ✓</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 04 BILAN -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">04</div><h2>Bilan & suite</h2></div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><div class="num">13</div><div class="lbl">Sessions doc.</div></div>
+      <div class="summary-card"><div class="num">3</div><div class="lbl">Exp. live</div></div>
+      <div class="summary-card"><div class="num">~22h</div><div class="lbl">Build total</div></div>
+      <div class="summary-card"><div class="num">100%</div><div class="lbl">AI-assisted</div></div>
+    </div>
+
+    <div class="success-box">
+      <p>✓ EXP-001 live — audit Airbnb validé visuellement. Streaming, coloration syntaxique, badges, progress bar score tous fonctionnels.</p>
+    </div>
+
+    <h3>Prochaines priorités</h3>
+    <ul class="next-list">
+      <li><span class="num">1</span><span><strong style="color:var(--text)">Mise à jour EXP-003 Session Replay</strong> — les sessions 010→013 manquent dans la timeline. Stats à passer à 13 sessions.</span></li>
+      <li><span class="num">2</span><span><strong style="color:var(--text)">EXP-005 Micro-SaaS Generator</strong> — phrase → landing page en streaming. La plus spectaculaire visuellement. À briefer.</span></li>
+      <li><span class="num">3</span><span><strong style="color:var(--text)">Audit sécurité des session logs</strong> — vérifier qu'aucune info sensible (clés, chemins locaux, données client) n'est exposée publiquement dans les HTML.</span></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">Misran <span>Labs</span></div>
+    <div class="footer-meta">Session 013 · 14.03.2026 · EXP-001 UX Audit Engine</div>
+  </div>
+
+</div>
+</body>
+</html>
