@@ -16,7 +16,7 @@ const EXPERIMENTS = [
     title: 'UX Audit Engine',
     description:
       'Système automatisé d\'audit UX piloté par IA. Analyse heuristique, génération de rapports structurés, priorisation des frictions.',
-    status: 'IN PROGRESS',
+    status: 'READY',
   },
   {
     id: 'EXP-002',
