@@ -461,6 +461,19 @@ export default function HomePage() {
               </span>
             </div>
 
+            {/* Identité */}
+            <div style={{ marginBottom: 20 }}>
+              <span style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 12,
+                color: '#7a9bb5',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+              }}>
+                Michael Misran — Product Designer × AI
+              </span>
+            </div>
+
             {/* Title */}
             <h1
               style={{
@@ -473,18 +486,9 @@ export default function HomePage() {
                 letterSpacing: '-0.02em',
               }}
             >
-              Product Designer
+              Je conçois des produits.
               <br />
-              <span
-                style={{
-                  background: 'linear-gradient(90deg, #00d4ff, #25e2cc)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                qui code avec l'IA
-              </span>
+              <span style={{ color: '#25e2cc' }}>Je les construis avec l'IA.</span>
             </h1>
 
             {/* Subtitle */}
@@ -499,9 +503,9 @@ export default function HomePage() {
                 margin: '0 auto 36px',
               }}
             >
-              Je ne suis pas juste designer. Je ne suis pas juste dev.
-              <br />
-              Je dirige l'IA de A à Z pour livrer des produits complets.
+              Product Designer avec des compétences dev émergentes.
+              J'orchestre Claude, Figma et Claude Code pour aller de l'idée au produit
+              fonctionnel — sans équipe, sans attendre.
             </p>
 
             {/* CTAs */}
