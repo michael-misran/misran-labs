@@ -44,8 +44,8 @@ const EXPERIMENTS = [
     title: 'Micro-SaaS Generator',
     description:
       'Une phrase → landing page générée en live avec streaming temps réel.',
-    status: 'IN PROGRESS',
-    stack: ['Claude API', 'Streaming', 'React', 'Tailwind'],
+    status: 'READY',
+    stack: ['React', 'Streaming simulé', 'HTML'],
   },
 ]
 

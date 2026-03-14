@@ -2,11 +2,13 @@ import { useParams, Link } from 'react-router-dom'
 import UXAuditEngine from '../experiences/UXAuditEngine'
 import ProductBriefMachine from '../experiences/ProductBriefMachine'
 import SessionReplay from '../experiences/SessionReplay'
+import MicroSaaSGenerator from '../experiences/MicroSaaSGenerator'
 
 const EXPERIENCE_MAP = {
   'exp-001': UXAuditEngine,
   'exp-002': ProductBriefMachine,
   'exp-003': SessionReplay,
+  'exp-005': MicroSaaSGenerator,
 }
 
 export default function ExperiencePage() {
