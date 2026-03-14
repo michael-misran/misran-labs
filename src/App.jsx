@@ -1,23 +1,14 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import LabPage from './pages/LabPage'
-import ExperiencePage from './pages/ExperiencePage'
-import DesignSystemPage from './pages/DesignSystemPage'
-import JournalPage from './pages/JournalPage'
-import ProcessPage from './pages/ProcessPage'
-import ContactPage from './pages/ContactPage'
+import { useState } from 'react'
+import Shell from './shell/Shell'
 
 export default function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/lab" element={<LabPage />} />
-      <Route path="/experience/:slug" element={<ExperiencePage />} />
-      <Route path="/design-system" element={<DesignSystemPage />} />
-      <Route path="/journal" element={<JournalPage />} />
-      <Route path="/process" element={<ProcessPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
-  )
+  const [activeModule, setActiveModule] = useState('home')
+  const [moduleHistory, setModuleHistory] = useState([])
+
+  function navigateTo(id) {
+    setModuleHistory(prev => [activeModule, ...prev].slice(0, 3))
+    setActiveModule(id)
+  }
+
+  return <Shell activeModule={activeModule} navigateTo={navigateTo} moduleHistory={moduleHistory} />
 }
