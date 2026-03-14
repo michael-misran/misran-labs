@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misran Labs — Session 015</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap');
+    :root {
+      --bg:#0a0e17; --bg2:#0d1220; --cyan:#00d4ff; --teal:#25e2cc;
+      --text:#e8f4f8; --text2:#7a9bb5; --border:#1a2a3a;
+      --error:#ff4444; --success:#00ff88; --warn:#ffaa00;
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{ background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; line-height:1.7; }
+    body::before{ content:''; position:fixed; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:40px 40px; opacity:0.3; pointer-events:none; z-index:0; }
+    .wrapper{ position:relative; z-index:1; max-width:900px; margin:0 auto; padding:60px 40px; }
+    .header{ border-bottom:1px solid var(--border); padding-bottom:40px; margin-bottom:60px; }
+    .lab-badge{ display:inline-flex; align-items:center; gap:8px; background:rgba(37,226,204,.08); border:1px solid rgba(37,226,204,.2); border-radius:4px; padding:4px 12px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:20px; }
+    .lab-badge::before{ content:''; width:6px; height:6px; background:var(--teal); border-radius:50%; animation:pulse 2s infinite; }
+    @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.3} }
+    h1{ font-family:'Space Grotesk',sans-serif; font-size:42px; font-weight:700; line-height:1.1; margin-bottom:12px; }
+    h1 span{ color:var(--teal); }
+    .subtitle{ color:var(--text2); font-size:16px; max-width:640px; }
+    .meta{ display:flex; gap:24px; margin-top:24px; flex-wrap:wrap; }
+    .meta-item{ display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); }
+    .meta-item .dot{ width:4px; height:4px; background:var(--teal); border-radius:50%; }
+    .section{ margin-bottom:64px; }
+    .section-header{ display:flex; align-items:center; gap:16px; margin-bottom:32px; }
+    .step-number{ width:40px; height:40px; border:1px solid var(--teal); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--teal); flex-shrink:0; background:rgba(37,226,204,.05); }
+    h2{ font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:600; }
+    h3{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; color:var(--teal); margin:24px 0 12px; }
+    p{ color:var(--text2); margin-bottom:16px; }
+    p strong{ color:var(--text); }
+    .success-box{ background:rgba(0,255,136,.04); border:1px solid rgba(0,255,136,.2); border-left:3px solid var(--success); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .success-box p{ margin:0; font-size:14px; color:#66ffaa; }
+    .decision-box{ background:rgba(0,212,255,.04); border:1px solid rgba(0,212,255,.2); border-left:3px solid var(--cyan); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .decision-box p{ margin:0; font-size:14px; color:#88ddff; }
+    .warn-box{ background:rgba(255,170,0,.04); border:1px solid rgba(255,170,0,.2); border-left:3px solid var(--warn); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .warn-box p{ margin:0; font-size:14px; color:#ffcc66; }
+    code{ font-family:'JetBrains Mono',monospace; font-size:13px; background:rgba(37,226,204,.08); color:var(--teal); padding:2px 6px; border-radius:3px; }
+    .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+    .card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:20px; }
+    .card .c-label{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px; }
+    .card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .card ul li{ font-size:13px; color:var(--text2); padding-left:16px; position:relative; }
+    .card ul li::before{ content:'→'; position:absolute; left:0; color:var(--teal); font-size:11px; }
+    .deliverable-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:24px 0; }
+    .deliverable-card{ background:var(--bg2); border:1px solid rgba(0,255,136,.15); border-radius:8px; padding:20px; }
+    .deliverable-card .d-id{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--teal); letter-spacing:.1em; margin-bottom:8px; }
+    .deliverable-card .d-title{ font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:600; color:var(--text); margin-bottom:6px; }
+    .deliverable-card .d-desc{ font-size:12px; color:var(--text2); line-height:1.6; }
+    .summary-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:32px 0; }
+    .summary-card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:24px 16px; text-align:center; }
+    .summary-card .num{ font-family:'JetBrains Mono',monospace; font-size:32px; font-weight:700; color:var(--teal); line-height:1; margin-bottom:8px; }
+    .summary-card .lbl{ font-size:12px; color:var(--text2); letter-spacing:.04em; }
+    .next-list{ list-style:none; display:flex; flex-direction:column; gap:16px; }
+    .next-list li{ display:flex; gap:16px; align-items:flex-start; background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:16px 20px; }
+    .next-list li .num{ font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; color:var(--teal); flex-shrink:0; min-width:24px; }
+    .next-list li span{ font-size:14px; color:var(--text2); line-height:1.6; }
+    hr{ border:none; border-top:1px solid var(--border); margin:64px 0; }
+    .footer{ display:flex; justify-content:space-between; align-items:center; padding-top:40px; border-top:1px solid var(--border); margin-top:40px; }
+    .footer-brand{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:700; color:var(--text2); }
+    .footer-brand span{ color:var(--teal); }
+    .footer-meta{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text2); opacity:.6; }
+    .prompt-block{ background:#060a10; border:1px solid var(--border); border-radius:6px; padding:16px 20px; margin:16px 0; }
+    .prompt-block pre{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); white-space:pre-wrap; line-height:1.8; margin:0; }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <div class="lab-badge">Misran Labs — Session Log 015</div>
+    <h1>Portfolio<br><span>prêt recruteurs</span></h1>
+    <p class="subtitle">Session de finalisation : HomePage identité, /process convaincante, bilan état portfolio, réflexions stratégiques.</p>
+    <div class="meta">
+      <div class="meta-item"><div class="dot"></div>14 mars 2026</div>
+      <div class="meta-item"><div class="dot"></div>Michael Misran</div>
+      <div class="meta-item"><div class="dot"></div>HomePage · Process · Bilan · Stratégie</div>
+      <div class="meta-item"><div class="dot"></div>~1h</div>
+    </div>
+  </div>
+
+  <!-- 01 HOMEPAGE -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">01</div><h2>HomePage — identité visible</h2></div>
+
+    <p>Problème identifié lors du bilan : la HomePage ne montrait pas qui tu es. Pas de nom, pas de titre, pas de phrase d'accroche. Un recruteur qui arrive sur la home ne sait pas en 10 secondes s'il est sur le portfolio d'un designer senior ou junior.</p>
+
+    <div class="decision-box">
+      <p>⚡ <strong>3 modifications chirurgicales :</strong> ajout d'un label "MICHAEL MISRAN — PRODUCT DESIGNER × AI" en JetBrains Mono discret, remplacement du h1 générique par "Je conçois des produits. / Je les construis avec l'IA.", réécriture du sous-titre avec les outils concrets (Claude, Figma, Claude Code).</p>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="c-label">Avant</div>
+        <ul>
+          <li>Hero anonyme — aucun nom visible</li>
+          <li>h1 générique sans différenciateur</li>
+          <li>Description vague "produits complets"</li>
+          <li>Un recruteur RH ne comprend pas le profil</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">Après</div>
+        <ul>
+          <li>"MICHAEL MISRAN — PRODUCT DESIGNER × AI" visible immédiatement</li>
+          <li>h1 : "Je conçois des produits. Je les construis avec l'IA."</li>
+          <li>Sous-titre : Claude + Figma + Claude Code nommés</li>
+          <li>Profil lisible en 5 secondes par tout recruteur</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 02 PROCESS -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">02</div><h2>/process — de générique à convaincant</h2></div>
+
+    <p>La page /process listait 5 étapes correctes mais sans preuve. Un recruteur lisait "Je brief Claude Code avec des prompts structurés" sans jamais voir un seul prompt. C'est exactement le pattern à éviter : <strong>affirmer sans prouver.</strong></p>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="c-label">Avant — assertions vides</div>
+        <ul>
+          <li>"Je brief Claude Code avec des prompts structurés"</li>
+          <li>"Je critique, je corrige, j'itère"</li>
+          <li>Stack IA = tableau de logos sans contexte</li>
+          <li>Aucun exemple concret, aucune preuve</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">Après — preuves concrètes</div>
+        <ul>
+          <li>Chaque étape a un exemple réel en mono</li>
+          <li>Étape 01 : brief EXP-001 verbatim</li>
+          <li>Étape 03 : prompt de fix chips verbatim</li>
+          <li>Étape 04 : commande git exacte</li>
+          <li>Étape 05 : structure WHAT/DECISION/PROMPT</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Principe appliqué</h3>
+    <div class="prompt-block"><pre>→ Pattern: "Crée [fichier]. États : [liste]. Logique : [description].
+   Layout : [colonnes]. Ne modifie pas [liste]."
+
+→ Ex fix: "Les chips sont en colonne et ressemblent à des inputs.
+   Corriger : flex-wrap wrap, couleur teal, border rgba teal.
+   Ne rien toucher d'autre."</pre></div>
+
+    <div class="success-box">
+      <p>✓ La page /process est maintenant une démonstration de méthode, pas une liste de buzzwords. Un recruteur product comprend immédiatement comment tu penses et comment tu travailles.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 03 RÉFLEXIONS -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">03</div><h2>Réflexions stratégiques de session</h2></div>
+
+    <h3>Refonte da Vinci — idée écartée</h3>
+    <p>Idée impulsive évoquée en session : switcher le design Misran Labs vers un style "carnet de notes Leonardo da Vinci" (sépia, papier vieilli, annotations manuscrites). <strong>Garde-fou activé.</strong></p>
+    <div class="warn-box">
+      <p>⚠ Rebranding complet = 10-15h de travail, perte du concept Jarvis, destruction de la cohérence existante. La vraie question était : "est-ce faisable ?" — oui techniquement (CSS textures + font Caveat + palette sépia). Noté en backlog pour un futur projet dédié.</p>
+    </div>
+
+    <h3>i18n français/anglais — décision différée</h3>
+    <p>Question soulevée : ajouter un toggle FR/EN. Pertinent pour les opportunités internationales, mais une internationalisation à moitié est pire que rien. <strong>Décision : garder le français comme langue principale</strong>, le mélange FR/EN dans les badges et labels techniques est crédible dans le monde tech. À faire après la première mission.</p>
+
+    <h3>EXP-004 Design Token Extractor — en pause</h3>
+    <p>La plus complexe techniquement — nécessite de la vision IA réelle (appel Claude API) pour extraire des tokens depuis une image. Impossible à simuler de façon convaincante. <strong>Maintenu en IN PROGRESS</strong> — une roadmap visible est un signal positif, pas un aveu d'échec.</p>
+  </div>
+
+  <hr>
+
+  <!-- 04 BILAN -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">04</div><h2>Bilan — état du portfolio</h2></div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><div class="num">15</div><div class="lbl">Sessions doc.</div></div>
+      <div class="summary-card"><div class="num">3</div><div class="lbl">Exp. live</div></div>
+      <div class="summary-card"><div class="num">~24h</div><div class="lbl">Build total</div></div>
+      <div class="summary-card"><div class="num">100%</div><div class="lbl">AI-assisted</div></div>
+    </div>
+
+    <h3>Ce qui est live et fonctionnel</h3>
+    <div class="deliverable-grid">
+      <div class="deliverable-card">
+        <div class="d-id">EXP-001</div>
+        <div class="d-title">UX Audit Engine</div>
+        <div class="d-desc">Upload screenshot → audit structuré en streaming. Scoring, badges, frictions.</div>
+      </div>
+      <div class="deliverable-card">
+        <div class="d-id">EXP-002</div>
+        <div class="d-title">Product Brief Machine</div>
+        <div class="d-desc">Une phrase → brief produit complet en streaming simulé.</div>
+      </div>
+      <div class="deliverable-card">
+        <div class="d-id">EXP-003</div>
+        <div class="d-title">Session Replay</div>
+        <div class="d-desc">14 sessions documentées avec accès aux logs HTML complets.</div>
+      </div>
+      <div class="deliverable-card">
+        <div class="d-id">EXP-005</div>
+        <div class="d-title">Micro-SaaS Generator</div>
+        <div class="d-desc">Une phrase → landing page SaaS rendue en iframe. Le wow du portfolio.</div>
+      </div>
+      <div class="deliverable-card">
+        <div class="d-id">Contact</div>
+        <div class="d-title">Terminal Formspree</div>
+        <div class="d-desc">UX séquentielle nom → email → message. Emails reçus en temps réel.</div>
+      </div>
+      <div class="deliverable-card">
+        <div class="d-id">/process</div>
+        <div class="d-title">Workflow documenté</div>
+        <div class="d-desc">5 étapes avec exemples de prompts réels et commandes concrètes.</div>
+      </div>
+    </div>
+
+    <h3>Prochaines priorités</h3>
+    <ul class="next-list">
+      <li><span class="num">1</span><span><strong style="color:var(--text)">Faire relire par un pair</strong> — designer ou PM — et demander ce qu'il comprend du profil en 10 secondes sur la HomePage. Seul test qui compte avant d'envoyer aux recruteurs.</span></li>
+      <li><span class="num">2</span><span><strong style="color:var(--text)">Audit sécurité des session logs</strong> — vérifier qu'aucune info sensible n'est exposée publiquement dans les HTML (chemins locaux, emails, clés).</span></li>
+      <li><span class="num">3</span><span><strong style="color:var(--text)">Mise à jour EXP-003</strong> — sessions 014 et 015 à ajouter dans le tableau SESSIONS, stats à passer à 15.</span></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">Misran <span>Labs</span></div>
+    <div class="footer-meta">Session 015 · 14.03.2026 · Portfolio prêt recruteurs</div>
+  </div>
+
+</div>
+</body>
+</html>
