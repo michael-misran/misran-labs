@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misran Labs — Session 017</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap');
+    :root {
+      --bg:#0a0e17; --bg2:#0d1220; --cyan:#00d4ff; --teal:#25e2cc;
+      --text:#e8f4f8; --text2:#7a9bb5; --border:#1a2a3a;
+      --error:#ff4444; --success:#00ff88; --warn:#ffaa00;
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{ background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; line-height:1.7; }
+    body::before{ content:''; position:fixed; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:40px 40px; opacity:0.3; pointer-events:none; z-index:0; }
+    .wrapper{ position:relative; z-index:1; max-width:900px; margin:0 auto; padding:60px 40px; }
+    .header{ border-bottom:1px solid var(--border); padding-bottom:40px; margin-bottom:60px; }
+    .lab-badge{ display:inline-flex; align-items:center; gap:8px; background:rgba(37,226,204,.08); border:1px solid rgba(37,226,204,.2); border-radius:4px; padding:4px 12px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:20px; }
+    .lab-badge::before{ content:''; width:6px; height:6px; background:var(--teal); border-radius:50%; animation:pulse 2s infinite; }
+    @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.3} }
+    h1{ font-family:'Space Grotesk',sans-serif; font-size:42px; font-weight:700; line-height:1.1; margin-bottom:12px; }
+    h1 span{ color:var(--teal); }
+    .subtitle{ color:var(--text2); font-size:16px; max-width:640px; }
+    .meta{ display:flex; gap:24px; margin-top:24px; flex-wrap:wrap; }
+    .meta-item{ display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); }
+    .meta-item .dot{ width:4px; height:4px; background:var(--teal); border-radius:50%; }
+    .section{ margin-bottom:64px; }
+    .section-header{ display:flex; align-items:center; gap:16px; margin-bottom:32px; }
+    .step-number{ width:40px; height:40px; border:1px solid var(--teal); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--teal); flex-shrink:0; background:rgba(37,226,204,.05); }
+    h2{ font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:600; }
+    h3{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; color:var(--teal); margin:24px 0 12px; }
+    p{ color:var(--text2); margin-bottom:16px; }
+    p strong{ color:var(--text); }
+    .success-box{ background:rgba(0,255,136,.04); border:1px solid rgba(0,255,136,.2); border-left:3px solid var(--success); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .success-box p{ margin:0; font-size:14px; color:#66ffaa; }
+    .decision-box{ background:rgba(0,212,255,.04); border:1px solid rgba(0,212,255,.2); border-left:3px solid var(--cyan); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .decision-box p{ margin:0; font-size:14px; color:#88ddff; }
+    .warn-box{ background:rgba(255,170,0,.04); border:1px solid rgba(255,170,0,.2); border-left:3px solid var(--warn); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .warn-box p{ margin:0; font-size:14px; color:#ffcc66; }
+    code{ font-family:'JetBrains Mono',monospace; font-size:13px; background:rgba(37,226,204,.08); color:var(--teal); padding:2px 6px; border-radius:3px; }
+    .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+    .three-col{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:24px 0; }
+    .card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:20px; }
+    .card .c-label{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px; }
+    .card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .card ul li{ font-size:13px; color:var(--text2); padding-left:16px; position:relative; }
+    .card ul li::before{ content:'→'; position:absolute; left:0; color:var(--teal); font-size:11px; }
+    .pricing-table{ width:100%; border-collapse:collapse; margin:16px 0; }
+    .pricing-table th{ font-family:'JetBrains Mono',monospace; font-size:10px; color:#4a7a94; letter-spacing:.1em; text-transform:uppercase; padding:10px 16px; text-align:left; background:#060a10; border-bottom:1px solid var(--border); }
+    .pricing-table td{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); padding:10px 16px; border-bottom:1px solid rgba(26,42,58,0.5); }
+    .pricing-table tr:hover td{ background:rgba(26,42,58,0.3); }
+    .pricing-table .teal{ color:var(--teal); }
+    .pricing-table .green{ color:var(--success); }
+    .pricing-table .orange{ color:var(--warn); }
+    .stat-card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:20px; text-align:center; }
+    .stat-card .s-val{ font-family:'JetBrains Mono',monospace; font-size:28px; font-weight:700; color:var(--error); line-height:1; margin-bottom:8px; }
+    .stat-card .s-val.ok{ color:var(--teal); }
+    .stat-card .s-label{ font-size:11px; color:var(--text2); text-transform:uppercase; letter-spacing:.06em; }
+    .summary-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:32px 0; }
+    .summary-card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:24px 16px; text-align:center; }
+    .summary-card .num{ font-family:'JetBrains Mono',monospace; font-size:32px; font-weight:700; color:var(--teal); line-height:1; margin-bottom:8px; }
+    .summary-card .lbl{ font-size:12px; color:var(--text2); letter-spacing:.04em; }
+    .next-list{ list-style:none; display:flex; flex-direction:column; gap:16px; }
+    .next-list li{ display:flex; gap:16px; align-items:flex-start; background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:16px 20px; }
+    .next-list li .num{ font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; color:var(--teal); flex-shrink:0; min-width:24px; }
+    .next-list li span{ font-size:14px; color:var(--text2); line-height:1.6; }
+    hr{ border:none; border-top:1px solid var(--border); margin:64px 0; }
+    .footer{ display:flex; justify-content:space-between; align-items:center; padding-top:40px; border-top:1px solid var(--border); margin-top:40px; }
+    .footer-brand{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:700; color:var(--text2); }
+    .footer-brand span{ color:var(--teal); }
+    .footer-meta{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text2); opacity:.6; }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <div class="lab-badge">Misran Labs — Session Log 017</div>
+    <h1>API Cost Monitor<br><span>Module ◬</span></h1>
+    <p class="subtitle">Dashboard de monitoring des coûts API — tokens, coûts par appel, alertes budget, répartition par modèle. Données simulées, prêt pour une vraie API.</p>
+    <div class="meta">
+      <div class="meta-item"><div class="dot"></div>14 mars 2026</div>
+      <div class="meta-item"><div class="dot"></div>Michael Misran</div>
+      <div class="meta-item"><div class="dot"></div>API Monitor · Budget · Tokens · Anthropic</div>
+      <div class="meta-item"><div class="dot"></div>~30 min</div>
+    </div>
+  </div>
+
+  <!-- 01 CONTEXTE -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">01</div><h2>Pourquoi ce module</h2></div>
+
+    <p>Principe établi depuis la session 008 : <strong>zéro surcoût sans décision explicite</strong>. Toutes les expériences du lab sont simulées pour cette raison. Mais dès qu'une vraie API sera branchée, il faut pouvoir voir en temps réel ce que ça coûte — tokens consommés, coût par appel, cumul session, alertes budget.</p>
+
+    <p>Ce module est la protection active contre les mauvaises surprises. Il transforme un risque invisible (facture API inattendue) en signal visible dans l'interface du lab.</p>
+
+    <div class="decision-box">
+      <p>⚡ <strong>Décision :</strong> construire le module maintenant avec des données simulées, plutôt qu'attendre d'avoir une vraie API. La structure est en place — quand une API sera branchée, seule la source des données change. L'interface reste identique.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 02 FEATURES -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">02</div><h2>Ce que le module affiche</h2></div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="c-label">Stats row — 4 métriques</div>
+        <ul>
+          <li>SESSION COST — coût total en $ (rouge si budget dépassé)</li>
+          <li>TOKENS CONSOMMÉS — somme input + output</li>
+          <li>APPELS API — nombre de requêtes</li>
+          <li>COÛT MOYEN / APPEL — ratio coût/appels</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">Tableau des appels récents</div>
+        <ul>
+          <li>Timestamp HH:MM:SS</li>
+          <li>Module source avec badge coloré</li>
+          <li>Modèle utilisé (sonnet teal / haiku vert / opus orange)</li>
+          <li>Tokens input + output</li>
+          <li>Coût calculé en temps réel</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="c-label">Budget alert bar</div>
+        <ul>
+          <li>Barre de progression : coût / budget défini</li>
+          <li>Vert si &lt; 80% du budget</li>
+          <li>Orange si 80-100%</li>
+          <li>Rouge si dépassé — "BUDGET DÉPASSÉ" visible</li>
+          <li>Seuil actuel : $0.10 par session</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">Répartition par modèle</div>
+        <ul>
+          <li>3 cards : claude-sonnet-4, haiku-4, opus-4</li>
+          <li>Appels / tokens / coût par modèle</li>
+          <li>Barre de proportion % du coût total</li>
+          <li>Permet d'identifier quel modèle coûte le plus</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 03 TARIFS -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">03</div><h2>Tarifs Anthropic intégrés</h2></div>
+
+    <p>Les coûts sont calculés avec les tarifs officiels Anthropic au 14.03.2026. La formule appliquée sur chaque appel :</p>
+    <p><code>coût = (inputTokens / 1_000_000 × prix_input) + (outputTokens / 1_000_000 × prix_output)</code></p>
+
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Modèle</th>
+          <th>Input ($/1M tokens)</th>
+          <th>Output ($/1M tokens)</th>
+          <th>Usage recommandé</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="teal">claude-sonnet-4</td>
+          <td>$3.00</td>
+          <td>$15.00</td>
+          <td>Défaut — équilibre qualité/coût</td>
+        </tr>
+        <tr>
+          <td class="green">claude-haiku-4</td>
+          <td>$0.25</td>
+          <td>$1.25</td>
+          <td>Tâches simples — très économique</td>
+        </tr>
+        <tr>
+          <td class="orange">claude-opus-4</td>
+          <td>$15.00</td>
+          <td>$75.00</td>
+          <td>Tâches complexes — utiliser avec parcimonie</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Données simulées de la démo</h3>
+    <div class="three-col">
+      <div class="stat-card">
+        <div class="s-val">$0.1238</div>
+        <div class="s-label">Session Cost</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-val ok">10 290</div>
+        <div class="s-label">Tokens total</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-val ok">5</div>
+        <div class="s-label">Appels simulés</div>
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <p>⚠ Les données MOCK_CALLS incluent un appel claude-opus-4 à $0.0614 — soit 49.6% du coût total pour 1 seul appel sur 5. C'est intentionnel : ça illustre pourquoi il faut monitorer par modèle et utiliser opus avec parcimonie.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 04 MIGRATION VRAIE API -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">04</div><h2>Quand une vraie API sera branchée</h2></div>
+
+    <p>Le module est conçu pour être upgradé sans modifier l'interface. La seule chose qui change : la source des données.</p>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="c-label">Maintenant — simulation</div>
+        <ul>
+          <li>MOCK_CALLS hardcodé dans le module</li>
+          <li>Calculs sur données statiques</li>
+          <li>Badge SIMULATION visible</li>
+          <li>Zéro appel réseau</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">Futur — vraie API</div>
+        <ul>
+          <li>Store global (Context ou Zustand)</li>
+          <li>Chaque appel API → push dans le store</li>
+          <li>Module lit le store en temps réel</li>
+          <li>Badge LIVE remplace SIMULATION</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="success-box">
+      <p>✓ Le module est live sur michaelmisran.com — accessible depuis la sidebar sous l'icône ◬. Construit en fin de session malgré le quota Claude Code à 97%. 4 fichiers modifiés, build propre, déployé automatiquement sur Vercel.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 05 BILAN -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">05</div><h2>Bilan</h2></div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><div class="num">17</div><div class="lbl">Sessions doc.</div></div>
+      <div class="summary-card"><div class="num">6</div><div class="lbl">Modules live</div></div>
+      <div class="summary-card"><div class="num">~27h</div><div class="lbl">Build total</div></div>
+      <div class="summary-card"><div class="num">V2</div><div class="lbl">Shell actif</div></div>
+    </div>
+
+    <h3>Modules live dans le shell V2</h3>
+    <div class="three-col">
+      <div class="card">
+        <div class="c-label">◈ EXP-001</div>
+        <ul><li>UX Audit Engine — READY</li></ul>
+      </div>
+      <div class="card">
+        <div class="c-label">◎ EXP-002</div>
+        <ul><li>Brief Machine — READY</li></ul>
+      </div>
+      <div class="card">
+        <div class="c-label">▣ EXP-003</div>
+        <ul><li>Session Replay — READY</li></ul>
+      </div>
+      <div class="card">
+        <div class="c-label">◉ EXP-005</div>
+        <ul><li>SaaS Generator — READY</li></ul>
+      </div>
+      <div class="card">
+        <div class="c-label">◬ API Monitor</div>
+        <ul><li>Cost Monitor — READY</li></ul>
+      </div>
+      <div class="card">
+        <div class="c-label">◇ EXP-004</div>
+        <ul><li>Token Extractor — IN PROGRESS</li></ul>
+      </div>
+    </div>
+
+    <h3>Prochaines priorités — dès mardi</h3>
+    <ul class="next-list">
+      <li><span class="num">1</span><span><strong style="color:var(--text)">Vérifier compatibilité modules dans le shell</strong> — les expériences EXP-001 à 005 étaient des pages pleine largeur. Dans la ModuleZone, vérifier padding, overflow et hauteur disponible.</span></li>
+      <li><span class="num">2</span><span><strong style="color:var(--text)">Mettre à jour Session Replay</strong> — sessions 014 à 017 manquantes, stats à passer à 17 sessions.</span></li>
+      <li><span class="num">3</span><span><strong style="color:var(--text)">Prochain module</strong> — Notes da Vinci, Dashboard bourse, ou autre selon l'envie du moment.</span></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">Misran <span>Labs</span></div>
+    <div class="footer-meta">Session 017 · 14.03.2026 · API Cost Monitor</div>
+  </div>
+
+</div>
+</body>
+</html>

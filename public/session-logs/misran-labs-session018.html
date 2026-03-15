@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misran Labs — Session 018</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap');
+    :root {
+      --bg:#0a0e17; --bg2:#0d1220; --cyan:#00d4ff; --teal:#25e2cc;
+      --text:#e8f4f8; --text2:#7a9bb5; --border:#1a2a3a;
+      --error:#ff4444; --success:#00ff88; --warn:#ffaa00;
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{ background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; line-height:1.7; }
+    body::before{ content:''; position:fixed; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:40px 40px; opacity:0.3; pointer-events:none; z-index:0; }
+    .wrapper{ position:relative; z-index:1; max-width:900px; margin:0 auto; padding:60px 40px; }
+    .header{ border-bottom:1px solid var(--border); padding-bottom:40px; margin-bottom:60px; }
+    .lab-badge{ display:inline-flex; align-items:center; gap:8px; background:rgba(37,226,204,.08); border:1px solid rgba(37,226,204,.2); border-radius:4px; padding:4px 12px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:20px; }
+    .lab-badge::before{ content:''; width:6px; height:6px; background:var(--teal); border-radius:50%; animation:pulse 2s infinite; }
+    @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.3} }
+    h1{ font-family:'Space Grotesk',sans-serif; font-size:42px; font-weight:700; line-height:1.1; margin-bottom:12px; }
+    h1 span{ color:var(--teal); }
+    .subtitle{ color:var(--text2); font-size:16px; max-width:640px; }
+    .meta{ display:flex; gap:24px; margin-top:24px; flex-wrap:wrap; }
+    .meta-item{ display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); }
+    .meta-item .dot{ width:4px; height:4px; background:var(--teal); border-radius:50%; }
+    .section{ margin-bottom:64px; }
+    .section-header{ display:flex; align-items:center; gap:16px; margin-bottom:32px; }
+    .step-number{ width:40px; height:40px; border:1px solid var(--teal); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--teal); flex-shrink:0; background:rgba(37,226,204,.05); }
+    h2{ font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:600; }
+    h3{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; color:var(--teal); margin:24px 0 12px; }
+    p{ color:var(--text2); margin-bottom:16px; }
+    p strong{ color:var(--text); }
+    .success-box{ background:rgba(0,255,136,.04); border:1px solid rgba(0,255,136,.2); border-left:3px solid var(--success); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .success-box p{ margin:0; font-size:14px; color:#66ffaa; }
+    .decision-box{ background:rgba(0,212,255,.04); border:1px solid rgba(0,212,255,.2); border-left:3px solid var(--cyan); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .decision-box p{ margin:0; font-size:14px; color:#88ddff; }
+    .warn-box{ background:rgba(255,170,0,.04); border:1px solid rgba(255,170,0,.2); border-left:3px solid var(--warn); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .warn-box p{ margin:0; font-size:14px; color:#ffcc66; }
+    .error-box{ background:rgba(255,68,68,.04); border:1px solid rgba(255,68,68,.2); border-left:3px solid var(--error); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .error-box p{ margin:0; font-size:14px; color:#ff8888; }
+    code{ font-family:'JetBrains Mono',monospace; font-size:13px; background:rgba(37,226,204,.08); color:var(--teal); padding:2px 6px; border-radius:3px; }
+    .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+    .three-col{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:24px 0; }
+    .card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:20px; }
+    .card .c-label{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px; }
+    .card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .card ul li{ font-size:13px; color:var(--text2); padding-left:16px; position:relative; }
+    .card ul li::before{ content:'→'; position:absolute; left:0; color:var(--teal); font-size:11px; }
+
+    /* Tables */
+    .data-table{ width:100%; border-collapse:collapse; margin:16px 0; }
+    .data-table th{ font-family:'JetBrains Mono',monospace; font-size:10px; color:#4a7a94; letter-spacing:.1em; text-transform:uppercase; padding:10px 16px; text-align:left; background:#060a10; border-bottom:1px solid var(--border); }
+    .data-table td{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); padding:10px 16px; border-bottom:1px solid rgba(26,42,58,0.5); }
+    .data-table tr:hover td{ background:rgba(26,42,58,0.3); }
+    .data-table .teal{ color:var(--teal); font-weight:700; }
+    .data-table .green{ color:var(--success); }
+    .data-table .orange{ color:var(--warn); }
+    .data-table .red{ color:var(--error); }
+    .data-table .dim{ color:#4a7a94; }
+
+    /* Comparison table */
+    .compare-table{ width:100%; border-collapse:collapse; margin:24px 0; }
+    .compare-table th{ font-family:'JetBrains Mono',monospace; font-size:11px; color:#4a7a94; letter-spacing:.08em; text-transform:uppercase; padding:14px 20px; background:#060a10; border-bottom:2px solid var(--border); }
+    .compare-table th.human{ color:var(--teal); border-bottom-color:var(--teal); }
+    .compare-table th.agent{ color:var(--warn); border-bottom-color:var(--warn); }
+    .compare-table td{ padding:14px 20px; border-bottom:1px solid rgba(26,42,58,0.5); font-size:13px; vertical-align:top; }
+    .compare-table td.label{ font-family:'JetBrains Mono',monospace; font-size:11px; color:#4a7a94; letter-spacing:.06em; background:#060a10; white-space:nowrap; }
+    .compare-table td.human{ color:var(--text); background:rgba(37,226,204,0.02); border-left:2px solid rgba(37,226,204,0.2); }
+    .compare-table td.agent{ color:var(--text2); background:rgba(255,170,0,0.02); border-left:2px solid rgba(255,170,0,0.2); }
+    .compare-table .win{ color:var(--success); font-weight:600; }
+    .compare-table .lose{ color:var(--error); }
+    .compare-table tr:hover td{ filter:brightness(1.1); }
+
+    /* Cost highlight */
+    .cost-highlight{ display:flex; gap:16px; margin:24px 0; }
+    .cost-card{ flex:1; background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:24px; text-align:center; }
+    .cost-card.human{ border-color:rgba(37,226,204,0.3); }
+    .cost-card.agent{ border-color:rgba(255,170,0,0.3); }
+    .cost-card .c-type{ font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:12px; }
+    .cost-card.human .c-type{ color:var(--teal); }
+    .cost-card.agent .c-type{ color:var(--warn); }
+    .cost-card .c-amount{ font-family:'JetBrains Mono',monospace; font-size:40px; font-weight:700; line-height:1; margin-bottom:8px; }
+    .cost-card.human .c-amount{ color:var(--teal); }
+    .cost-card.agent .c-amount{ color:var(--warn); }
+    .cost-card .c-range{ font-size:12px; color:var(--text2); margin-bottom:4px; }
+    .cost-card .c-label{ font-size:11px; color:#4a7a94; }
+    .vs-badge{ display:flex; align-items:center; justify-content:center; padding:0 8px; font-family:'JetBrains Mono',monospace; font-size:14px; color:#4a7a94; }
+
+    .summary-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:32px 0; }
+    .summary-card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:24px 16px; text-align:center; }
+    .summary-card .num{ font-family:'JetBrains Mono',monospace; font-size:32px; font-weight:700; color:var(--teal); line-height:1; margin-bottom:8px; }
+    .summary-card .lbl{ font-size:12px; color:var(--text2); letter-spacing:.04em; }
+    .next-list{ list-style:none; display:flex; flex-direction:column; gap:16px; }
+    .next-list li{ display:flex; gap:16px; align-items:flex-start; background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:16px 20px; }
+    .next-list li .num{ font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; color:var(--teal); flex-shrink:0; min-width:24px; }
+    .next-list li span{ font-size:14px; color:var(--text2); line-height:1.6; }
+    hr{ border:none; border-top:1px solid var(--border); margin:64px 0; }
+    .footer{ display:flex; justify-content:space-between; align-items:center; padding-top:40px; border-top:1px solid var(--border); margin-top:40px; }
+    .footer-brand{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:700; color:var(--text2); }
+    .footer-brand span{ color:var(--teal); }
+    .footer-meta{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text2); opacity:.6; }
+    .multiplier{ display:inline-block; background:rgba(255,68,68,.1); border:1px solid rgba(255,68,68,.3); border-radius:4px; padding:2px 8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--error); }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <div class="lab-badge">Misran Labs — Session Log 018</div>
+    <h1>Facturation API<br><span>Human vs Agent</span></h1>
+    <p class="subtitle">Analyse des coûts réels du projet — estimation du surcoût extra usage, comparaison Human-directed vs agents autonomes, tableau de synthèse.</p>
+    <div class="meta">
+      <div class="meta-item"><div class="dot"></div>14 mars 2026</div>
+      <div class="meta-item"><div class="dot"></div>Michael Misran</div>
+      <div class="meta-item"><div class="dot"></div>Facturation · Tokens · Agents · ROI</div>
+      <div class="meta-item"><div class="dot"></div>~20 min</div>
+    </div>
+  </div>
+
+  <!-- 01 CONTEXTE FACTURATION -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">01</div><h2>Comment fonctionne la facturation Claude Pro</h2></div>
+
+    <p>L'abonnement Claude Pro ($20/mois) et l'API Claude sont <strong>deux produits distincts avec deux facturations distinctes</strong>. Claude Code utilise le quota de l'abonnement — pas l'API. L'extra usage est la passerelle entre les deux.</p>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="c-label">Abonnement Pro — $20/mois</div>
+        <ul>
+          <li>Quota hebdomadaire de tokens inclus</li>
+          <li>Couvre claude.ai + Claude Code</li>
+          <li>Quota atteint → bloqué jusqu'au renouvellement</li>
+          <li>Renouvellement automatique chaque semaine</li>
+          <li>Zéro facturation supplémentaire si pas d'extra usage</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">Extra Usage — pay-per-use</div>
+        <ul>
+          <li>Activable dans Settings → Usage</li>
+          <li>Facturé aux tarifs API standard (aucune majoration)</li>
+          <li>Nécessite une carte bancaire + prépaiement</li>
+          <li>Cap mensuel configurable pour éviter les surprises</li>
+          <li>Apparaît comme ligne séparée sur la facture</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Tarifs API Anthropic — 14.03.2026</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Modèle</th>
+          <th>Input ($/1M tokens)</th>
+          <th>Output ($/1M tokens)</th>
+          <th>Usage recommandé</th>
+          <th>Ratio coût</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="teal">claude-sonnet-4</td>
+          <td>$3.00</td>
+          <td>$15.00</td>
+          <td>Défaut — équilibre qualité/coût</td>
+          <td class="green">×1 (référence)</td>
+        </tr>
+        <tr>
+          <td class="green">claude-haiku-4</td>
+          <td>$0.25</td>
+          <td>$1.25</td>
+          <td>Tâches simples, volume élevé</td>
+          <td class="green">×0.08 — 12× moins cher</td>
+        </tr>
+        <tr>
+          <td class="orange">claude-opus-4</td>
+          <td>$15.00</td>
+          <td>$75.00</td>
+          <td>Tâches très complexes uniquement</td>
+          <td class="red">×5 — 5× plus cher</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warn-box">
+      <p>⚠ <strong>Risque identifié :</strong> des utilisateurs Max ont reçu des factures de $173 sans notification en temps réel à cause de bugs de reporting. Si tu actives l'extra usage, commence avec un cap très conservateur ($5-10/mois) et augmente progressivement.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 02 ESTIMATION PROJET -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">02</div><h2>Estimation du coût — 17 sessions, ~27h de build</h2></div>
+
+    <p>Si tout le travail réalisé sur Misran Labs avait été effectué en extra usage (hors quota Pro), voilà l'estimation par type de session. <strong>Modèle utilisé par Claude Code : Sonnet 4 par défaut.</strong></p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Type de session</th>
+          <th>Nb sessions</th>
+          <th>Tokens estimés</th>
+          <th>Coût estimé</th>
+          <th>Exemples</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Config & fixes simples</td>
+          <td class="dim">~4</td>
+          <td class="dim">~50K</td>
+          <td class="green">~$0.50</td>
+          <td class="dim">Infrastructure, DNS, chips fixes</td>
+        </tr>
+        <tr>
+          <td>Page / composant moyen</td>
+          <td class="dim">~6</td>
+          <td class="dim">~150K</td>
+          <td class="teal">~$1.50</td>
+          <td class="dim">LabPage, ContactPage, ProcessPage</td>
+        </tr>
+        <tr>
+          <td>Composant complexe</td>
+          <td class="dim">~4</td>
+          <td class="dim">~300K</td>
+          <td class="teal">~$3.00</td>
+          <td class="dim">EXP-001, EXP-002, EXP-005</td>
+        </tr>
+        <tr>
+          <td>V2 Shell complet</td>
+          <td class="dim">1</td>
+          <td class="dim">~800K</td>
+          <td class="orange">~$8.00</td>
+          <td class="dim">Session 016 — migration totale</td>
+        </tr>
+        <tr>
+          <td>API Monitor + intégrations</td>
+          <td class="dim">1</td>
+          <td class="dim">~200K</td>
+          <td class="teal">~$2.00</td>
+          <td class="dim">Session 017</td>
+        </tr>
+        <tr style="background:rgba(37,226,204,0.03)">
+          <td style="color:var(--text); font-weight:600">TOTAL ESTIMÉ</td>
+          <td class="teal">17 sessions</td>
+          <td class="teal">~1.5M–3M tokens</td>
+          <td class="teal" style="font-weight:700; font-size:14px">$15 — $40</td>
+          <td class="dim">Fourchette réaliste</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="three-col">
+      <div class="card" style="border-color:rgba(0,255,136,0.2); text-align:center;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#4a7a94; letter-spacing:.1em; margin-bottom:12px;">ESTIMATION BASSE</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:36px; font-weight:700; color:var(--success);">$15</div>
+        <div style="font-size:12px; color:var(--text2); margin-top:8px;">Sessions courtes, peu de contexte</div>
+      </div>
+      <div class="card" style="border-color:rgba(37,226,204,0.3); text-align:center;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#4a7a94; letter-spacing:.1em; margin-bottom:12px;">ESTIMATION RÉALISTE</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:36px; font-weight:700; color:var(--teal);">$25-35</div>
+        <div style="font-size:12px; color:var(--text2); margin-top:8px;">Contexte moyen, itérations normales</div>
+      </div>
+      <div class="card" style="border-color:rgba(255,170,0,0.2); text-align:center;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#4a7a94; letter-spacing:.1em; margin-bottom:12px;">ESTIMATION HAUTE</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:36px; font-weight:700; color:var(--warn);">$50</div>
+        <div style="font-size:12px; color:var(--text2); margin-top:8px;">Sessions longues, gros contexte</div>
+      </div>
+    </div>
+
+    <div class="success-box">
+      <p>✓ <strong>Conclusion :</strong> pour ~27h de build produisant un shell applicatif complet avec 6 modules fonctionnels, le coût en extra usage aurait été entre $15 et $40 — en plus des $20/mois d'abonnement Pro. Soit un coût total mensuel de $35 à $60 maximum pour tout ce travail.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 03 HUMAN VS AGENT -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">03</div><h2>Human-directed vs Agents autonomes</h2></div>
+
+    <p>Si le même travail avait été délégué à des agents autonomes plutôt qu'orchestré manuellement, le coût aurait été radicalement différent. Voilà pourquoi.</p>
+
+    <h3>Pourquoi les agents coûtent plus cher</h3>
+    <p>Un agent fait ce que Claude Code fait, mais en boucle autonome. À chaque itération il relit tout le contexte, réfléchit à la stratégie, génère, vérifie, corrige, recommence. Chaque tour de boucle = une nouvelle requête API complète.</p>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="c-label">1 Human qui orchestre — par tâche</div>
+        <ul>
+          <li>Toi qui lis visuellement → 0 token</li>
+          <li>Toi qui décides → 0 token</li>
+          <li>Prompt ciblé ~500 tokens input</li>
+          <li>Lecture fichiers concernés ~2000 tokens</li>
+          <li>Génération code ~3000 tokens output</li>
+          <li>Total : ~5 500 tokens / tâche</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">Agent autonome — même tâche</div>
+        <ul>
+          <li>Lecture projet entier ~15 000 tokens</li>
+          <li>Réflexion stratégique ~3 000 tokens</li>
+          <li>Génération ~3 000 tokens</li>
+          <li>Vérification automatique ~5 000 tokens</li>
+          <li>Correction si erreur → nouveau tour complet</li>
+          <li>Total : ~30 000+ tokens / tâche</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Comparaison des coûts totaux estimés</h3>
+    <div class="cost-highlight">
+      <div class="cost-card human">
+        <div class="c-type">1 Human · Claude Code</div>
+        <div class="c-amount">$30</div>
+        <div class="c-range">Fourchette : $15 — $40</div>
+        <div class="c-label">27h de build · 17 sessions</div>
+      </div>
+      <div class="vs-badge">VS</div>
+      <div class="cost-card agent">
+        <div class="c-type">Agents autonomes</div>
+        <div class="c-amount">$150</div>
+        <div class="c-range">Fourchette : $100 — $200</div>
+        <div class="c-label">Même résultat · 4-6× plus cher</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 04 TABLEAU COMPARATIF -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">04</div><h2>Tableau comparatif complet</h2></div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th style="background:#060a10; width:200px;">CRITÈRE</th>
+          <th class="human">1 HUMAN + CLAUDE CODE</th>
+          <th class="agent">AGENTS AUTONOMES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">COÛT ESTIMÉ</td>
+          <td class="human win">$15 — $40</td>
+          <td class="agent lose">$100 — $200 <span class="multiplier">×4-6</span></td>
+        </tr>
+        <tr>
+          <td class="label">TOKENS / TÂCHE</td>
+          <td class="human win">~5 500 tokens</td>
+          <td class="agent lose">~30 000+ tokens</td>
+        </tr>
+        <tr>
+          <td class="label">CONTRÔLE</td>
+          <td class="human win">Total — chaque décision est humaine</td>
+          <td class="agent lose">Limité — l'agent décide de la stratégie</td>
+        </tr>
+        <tr>
+          <td class="label">QUALITÉ OUTPUT</td>
+          <td class="human win">Validée visuellement à chaque étape</td>
+          <td class="agent">Variable — dépend des boucles de correction</td>
+        </tr>
+        <tr>
+          <td class="label">ERREURS</td>
+          <td class="human win">Détectées et corrigées immédiatement</td>
+          <td class="agent lose">Peuvent se propager sur plusieurs tours</td>
+        </tr>
+        <tr>
+          <td class="label">VITESSE</td>
+          <td class="human">Dépend de la disponibilité humaine</td>
+          <td class="agent win">Plus rapide en temps horloge</td>
+        </tr>
+        <tr>
+          <td class="label">TRAÇABILITÉ</td>
+          <td class="human win">Chaque décision documentée (session logs)</td>
+          <td class="agent">Boîte noire — difficile à auditer</td>
+        </tr>
+        <tr>
+          <td class="label">RISQUE DE DÉRIVE</td>
+          <td class="human win">Nul — tu valides avant chaque push</td>
+          <td class="agent lose">Élevé — l'agent peut modifier des fichiers non prévus</td>
+        </tr>
+        <tr>
+          <td class="label">APPRENTISSAGE</td>
+          <td class="human win">Tu montes en compétences à chaque session</td>
+          <td class="agent lose">Zéro — l'agent fait, tu ne comprends pas</td>
+        </tr>
+        <tr>
+          <td class="label">VALEUR PORTFOLIO</td>
+          <td class="human win">Forte — le process est démontrable</td>
+          <td class="agent lose">Faible — "j'ai demandé à un agent de le faire"</td>
+        </tr>
+        <tr>
+          <td class="label">ABONNEMENT REQUIS</td>
+          <td class="human win">Pro $20/mois suffit</td>
+          <td class="agent lose">Max $100-200/mois ou API heavy usage</td>
+        </tr>
+        <tr style="background:rgba(37,226,204,0.03)">
+          <td class="label" style="color:var(--teal);">VERDICT</td>
+          <td class="human" style="color:var(--success); font-weight:600;">✓ Plus efficace, moins cher, plus traçable</td>
+          <td class="agent" style="color:var(--error);">✗ Plus cher, moins contrôlable, moins pédagogique</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="decision-box">
+      <p>💡 <strong>Insight clé :</strong> être dans la boucle n'est pas un frein — c'est un avantage. Tu lis visuellement, tu décides, tu formules un prompt ciblé. Ces trois actions humaines coûtent zéro token et remplacent des dizaines de milliers de tokens de vérification automatique. Le "1 Human · 100% AI-assisted" du lab est la configuration optimale sur tous les axes : coût, qualité, contrôle, apprentissage.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 05 BILAN -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">05</div><h2>Bilan</h2></div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><div class="num">18</div><div class="lbl">Sessions doc.</div></div>
+      <div class="summary-card"><div class="num">~$30</div><div class="lbl">Coût estimé projet</div></div>
+      <div class="summary-card"><div class="num">×5</div><div class="lbl">Économie vs agents</div></div>
+      <div class="summary-card"><div class="num">$20</div><div class="lbl">Abonnement mensuel</div></div>
+    </div>
+
+    <h3>Ce que ça signifie pour la suite</h3>
+    <ul class="next-list">
+      <li><span class="num">1</span><span><strong style="color:var(--text)">Si tu actives l'extra usage mardi</strong> — commence avec un cap de $10/mois. Ça couvre largement plusieurs sessions de build sans risque de mauvaise surprise.</span></li>
+      <li><span class="num">2</span><span><strong style="color:var(--text)">Quand tu brancheras une vraie API</strong> — le module API Monitor est prêt à tracker chaque appel. Remplace MOCK_CALLS par un store global qui se remplit automatiquement.</span></li>
+      <li><span class="num">3</span><span><strong style="color:var(--text)">Pour les futurs modules</strong> — priorise Haiku 4 pour les tâches répétitives ou en volume. Sonnet 4 pour le code complexe. Opus 4 uniquement si vraiment nécessaire — il coûte 5× plus cher.</span></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">Misran <span>Labs</span></div>
+    <div class="footer-meta">Session 018 · 14.03.2026 · Facturation API · Human vs Agent</div>
+  </div>
+
+</div>
+</body>
+</html>

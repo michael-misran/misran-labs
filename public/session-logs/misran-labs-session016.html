@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misran Labs — Session 016</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap');
+    :root {
+      --bg:#0a0e17; --bg2:#0d1220; --cyan:#00d4ff; --teal:#25e2cc;
+      --text:#e8f4f8; --text2:#7a9bb5; --border:#1a2a3a;
+      --error:#ff4444; --success:#00ff88; --warn:#ffaa00;
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{ background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; line-height:1.7; }
+    body::before{ content:''; position:fixed; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:40px 40px; opacity:0.3; pointer-events:none; z-index:0; }
+    .wrapper{ position:relative; z-index:1; max-width:900px; margin:0 auto; padding:60px 40px; }
+    .header{ border-bottom:1px solid var(--border); padding-bottom:40px; margin-bottom:60px; }
+    .lab-badge{ display:inline-flex; align-items:center; gap:8px; background:rgba(37,226,204,.08); border:1px solid rgba(37,226,204,.2); border-radius:4px; padding:4px 12px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:20px; }
+    .lab-badge::before{ content:''; width:6px; height:6px; background:var(--teal); border-radius:50%; animation:pulse 2s infinite; }
+    @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.3} }
+    h1{ font-family:'Space Grotesk',sans-serif; font-size:42px; font-weight:700; line-height:1.1; margin-bottom:12px; }
+    h1 span{ color:var(--teal); }
+    .subtitle{ color:var(--text2); font-size:16px; max-width:640px; }
+    .meta{ display:flex; gap:24px; margin-top:24px; flex-wrap:wrap; }
+    .meta-item{ display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); }
+    .meta-item .dot{ width:4px; height:4px; background:var(--teal); border-radius:50%; }
+    .section{ margin-bottom:64px; }
+    .section-header{ display:flex; align-items:center; gap:16px; margin-bottom:32px; }
+    .step-number{ width:40px; height:40px; border:1px solid var(--teal); border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--teal); flex-shrink:0; background:rgba(37,226,204,.05); }
+    h2{ font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:600; }
+    h3{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; color:var(--teal); margin:24px 0 12px; }
+    p{ color:var(--text2); margin-bottom:16px; }
+    p strong{ color:var(--text); }
+    .success-box{ background:rgba(0,255,136,.04); border:1px solid rgba(0,255,136,.2); border-left:3px solid var(--success); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .success-box p{ margin:0; font-size:14px; color:#66ffaa; }
+    .decision-box{ background:rgba(0,212,255,.04); border:1px solid rgba(0,212,255,.2); border-left:3px solid var(--cyan); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .decision-box p{ margin:0; font-size:14px; color:#88ddff; }
+    .warn-box{ background:rgba(255,170,0,.04); border:1px solid rgba(255,170,0,.2); border-left:3px solid var(--warn); border-radius:4px; padding:16px 20px; margin:20px 0; }
+    .warn-box p{ margin:0; font-size:14px; color:#ffcc66; }
+    code{ font-family:'JetBrains Mono',monospace; font-size:13px; background:rgba(37,226,204,.08); color:var(--teal); padding:2px 6px; border-radius:3px; }
+    .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+    .card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:20px; }
+    .card .c-label{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--teal); letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px; }
+    .card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .card ul li{ font-size:13px; color:var(--text2); padding-left:16px; position:relative; }
+    .card ul li::before{ content:'→'; position:absolute; left:0; color:var(--teal); font-size:11px; }
+    .arch-box{ background:#060a10; border:1px solid var(--border); border-radius:8px; padding:24px; margin:24px 0; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); line-height:2; }
+    .arch-box .teal{ color:var(--teal); }
+    .arch-box .dim{ color:#4a7a94; }
+    .file-tree{ background:#060a10; border:1px solid var(--border); border-radius:6px; padding:16px 20px; margin:16px 0; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text2); line-height:2; }
+    .summary-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:32px 0; }
+    .summary-card{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:24px 16px; text-align:center; }
+    .summary-card .num{ font-family:'JetBrains Mono',monospace; font-size:32px; font-weight:700; color:var(--teal); line-height:1; margin-bottom:8px; }
+    .summary-card .lbl{ font-size:12px; color:var(--text2); letter-spacing:.04em; }
+    .module-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:24px 0; }
+    .module-card{ background:var(--bg2); border:1px solid rgba(0,255,136,.15); border-radius:8px; padding:16px; }
+    .module-card .m-icon{ font-size:16px; margin-bottom:8px; }
+    .module-card .m-title{ font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:600; color:var(--text); margin-bottom:4px; }
+    .module-card .m-desc{ font-size:11px; color:var(--text2); line-height:1.5; }
+    .next-list{ list-style:none; display:flex; flex-direction:column; gap:16px; }
+    .next-list li{ display:flex; gap:16px; align-items:flex-start; background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:16px 20px; }
+    .next-list li .num{ font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; color:var(--teal); flex-shrink:0; min-width:24px; }
+    .next-list li span{ font-size:14px; color:var(--text2); line-height:1.6; }
+    hr{ border:none; border-top:1px solid var(--border); margin:64px 0; }
+    .footer{ display:flex; justify-content:space-between; align-items:center; padding-top:40px; border-top:1px solid var(--border); margin-top:40px; }
+    .footer-brand{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:700; color:var(--text2); }
+    .footer-brand span{ color:var(--teal); }
+    .footer-meta{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text2); opacity:.6; }
+    .v-badge{ display:inline-flex; align-items:center; gap:6px; background:rgba(0,212,255,.08); border:1px solid rgba(0,212,255,.25); border-radius:4px; padding:4px 12px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--cyan); letter-spacing:.08em; margin-left:12px; vertical-align:middle; }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <div class="lab-badge">Misran Labs — Session Log 016</div>
+    <h1>Migration V2 <span class="v-badge">SHELL APP</span><br><span>Portfolio → Laboratoire</span></h1>
+    <p class="subtitle">Raser la V1 site web, construire un shell applicatif de type interface Jarvis. Topbar, sidebar collapsible, widgets live, zone modulaire. Migration réussie en une session.</p>
+    <div class="meta">
+      <div class="meta-item"><div class="dot"></div>14 mars 2026</div>
+      <div class="meta-item"><div class="dot"></div>Michael Misran</div>
+      <div class="meta-item"><div class="dot"></div>V2 · Shell · Widgets · Migration</div>
+      <div class="meta-item"><div class="dot"></div>~2h</div>
+    </div>
+  </div>
+
+  <!-- 01 PIVOT STRATÉGIQUE -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">01</div><h2>Le pivot — de portfolio à laboratoire</h2></div>
+
+    <p>La session commence par une prise de conscience claire : <strong>"Je t'utilise comme Jarvis"</strong>. Le mot portfolio est trop restrictif. Ce qui est construit ici est un environnement de travail personnel qui évolue en continu — un vrai laboratoire scientifique, pas une vitrine statique.</p>
+
+    <div class="decision-box">
+      <p>⚡ <strong>Décision radicale :</strong> supprimer toutes les pages de la V1 et reconstruire un shell applicatif de type interface Jarvis. Pas de branche, pas de sauvegarde — on avance. Même repo, même déploiement Vercel, expériences existantes conservées et migrées en modules.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="c-label">V1 — Site portfolio</div>
+        <ul>
+          <li>Navigation = liens entre pages</li>
+          <li>Chaque page recharge le layout</li>
+          <li>Pas de contexte global ni d'état persistant</li>
+          <li>Design "site web" classique</li>
+          <li>Objectif : montrer aux recruteurs</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">V2 — Shell applicatif</div>
+        <ul>
+          <li>Navigation = switching de modules</li>
+          <li>Frame persistante, seul le contenu change</li>
+          <li>État global : module actif, historique, session</li>
+          <li>Design "application desktop Jarvis"</li>
+          <li>Objectif : laboratoire personnel évolutif</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>La philosophie change également : <strong>"Si un projet ne me plaît pas je le jette"</strong> — comme Tony Stark avec ses combinaisons. Le lab est fait pour expérimenter en code réel, pas pour valider en Figma. Le code React est le Figma.</p>
+  </div>
+
+  <hr>
+
+  <!-- 02 ARCHITECTURE -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">02</div><h2>Architecture du shell</h2></div>
+
+    <div class="arch-box">
+      <div><span class="teal">┌─────────────────────────────────────────────────────┐</span></div>
+      <div><span class="teal">│</span>  TOPBAR  <span class="dim">— M.LABS · horloge · ONLINE · v2.0.0</span>         <span class="teal">│</span></div>
+      <div><span class="teal">├──────────────┬──────────────────────────────────────┤</span></div>
+      <div><span class="teal">│</span>              <span class="teal">│</span>                                      <span class="teal">│</span></div>
+      <div><span class="teal">│</span>   SIDEBAR    <span class="teal">│</span>         MODULE ZONE                  <span class="teal">│</span></div>
+      <div><span class="teal">│</span>   260px→52px <span class="teal">│</span>         (module actif)               <span class="teal">│</span></div>
+      <div><span class="teal">│</span>   collapsible<span class="teal">│</span>                                      <span class="teal">│</span></div>
+      <div><span class="teal">├──────────────┴──────────────────────────────────────┤</span></div>
+      <div><span class="teal">│</span>  STATUSBAR  <span class="dim">— v2.0.0 · breadcrumb · VERCEL</span>        <span class="teal">│</span></div>
+      <div><span class="teal">└─────────────────────────────────────────────────────┘</span></div>
+    </div>
+
+    <h3>Structure des fichiers créés</h3>
+    <div class="file-tree">
+src/<br>
+├── shell/<br>
+│   ├── Shell.jsx          <span style="color:#4a7a94">— frame globale CSS Grid</span><br>
+│   ├── Topbar.jsx         <span style="color:#4a7a94">— logo + horloge live + statuts</span><br>
+│   ├── Sidebar.jsx        <span style="color:#4a7a94">— collapsible 260px→52px + nav + widgets</span><br>
+│   ├── ModuleZone.jsx     <span style="color:#4a7a94">— zone centrale, switch modules</span><br>
+│   └── Statusbar.jsx      <span style="color:#4a7a94">— barre contextuelle bas</span><br>
+├── widgets/<br>
+│   ├── ClockWidget.jsx    <span style="color:#4a7a94">— heure/date native, setInterval 1s</span><br>
+│   ├── WeatherWidget.jsx  <span style="color:#4a7a94">— Open-Meteo API, refresh 10min</span><br>
+│   ├── UptimeWidget.jsx   <span style="color:#4a7a94">— timer session sessionStorage</span><br>
+│   └── ActiveModuleWidget.jsx <span style="color:#4a7a94">— module actif + historique 3</span><br>
+├── modules/<br>
+│   └── HomeModule.jsx     <span style="color:#4a7a94">— grille des modules disponibles</span><br>
+├── experiences/           <span style="color:#4a7a94">— conservé intact, migré en modules</span><br>
+└── App.jsx                <span style="color:#4a7a94">— state activeModule + navigateTo</span>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 03 WIDGETS LIVE -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">03</div><h2>Widgets live — zéro surcoût</h2></div>
+
+    <p>Principe maintenu depuis le début : aucun service payant sans décision explicite. Les 4 widgets de la sidebar respectent ce principe.</p>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="c-label">ClockWidget — natif JS</div>
+        <ul>
+          <li>new Date() — zéro API, zéro dépendance</li>
+          <li>HH:MM en grand + :SS en petit</li>
+          <li>Date dessous en Inter 11px</li>
+          <li>setInterval 1000ms + clearInterval unmount</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">WeatherWidget — Open-Meteo</div>
+        <ul>
+          <li>Gratuit illimité, zéro clé API requise</li>
+          <li>Coords Paris : 48.8566°N / 2.3522°E</li>
+          <li>weathercode WMO → emoji + description FR</li>
+          <li>Refresh toutes les 10 minutes</li>
+          <li>Résultat validé : 9°C ☀️ Ensoleillé Paris</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">UptimeWidget</div>
+        <ul>
+          <li>startTime stocké en sessionStorage au mount</li>
+          <li>Format HH:MM:SS mis à jour chaque seconde</li>
+          <li>Reset à chaque nouvelle session navigateur</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="c-label">ActiveModuleWidget</div>
+        <ul>
+          <li>Module actif : icône + label en temps réel</li>
+          <li>Historique des 3 derniers modules</li>
+          <li>State géré dans App.jsx, descendu via props</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 04 VISION FUTURES -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">04</div><h2>Vision — modules futurs</h2></div>
+
+    <p>Le shell est une plateforme extensible. Chaque nouvelle idée devient un module autonome dans la zone centrale. Voici le backlog des modules envisagés.</p>
+
+    <div class="module-grid">
+      <div class="module-card">
+        <div class="m-icon">◈</div>
+        <div class="m-title">UX Audit Engine</div>
+        <div class="m-desc">EXP-001 migré — READY</div>
+      </div>
+      <div class="module-card">
+        <div class="m-icon">◎</div>
+        <div class="m-title">Brief Machine</div>
+        <div class="m-desc">EXP-002 migré — READY</div>
+      </div>
+      <div class="module-card">
+        <div class="m-icon">▣</div>
+        <div class="m-title">Session Replay</div>
+        <div class="m-desc">EXP-003 migré — READY</div>
+      </div>
+      <div class="module-card">
+        <div class="m-icon">◉</div>
+        <div class="m-title">SaaS Generator</div>
+        <div class="m-desc">EXP-005 migré — READY</div>
+      </div>
+      <div class="module-card">
+        <div class="m-icon">◇</div>
+        <div class="m-title">Token Extractor</div>
+        <div class="m-desc">EXP-004 — IN PROGRESS</div>
+      </div>
+      <div class="module-card">
+        <div class="m-icon">₿</div>
+        <div class="m-title">Bourse / Marchés</div>
+        <div class="m-desc">Dashboard financier — BACKLOG</div>
+      </div>
+      <div class="module-card">
+        <div class="m-icon">🪶</div>
+        <div class="m-title">Notes da Vinci</div>
+        <div class="m-desc">Carnet manuscrit — BACKLOG</div>
+      </div>
+      <div class="module-card">
+        <div class="m-icon">⬡</div>
+        <div class="m-title">DS Reader</div>
+        <div class="m-desc">Lecteur Design System — BACKLOG</div>
+      </div>
+      <div class="module-card">
+        <div class="m-icon">◬</div>
+        <div class="m-title">API Cost Monitor</div>
+        <div class="m-desc">Tokens + coût par appel — BACKLOG</div>
+      </div>
+    </div>
+
+    <div class="decision-box">
+      <p>💡 <strong>API Cost Monitor :</strong> quand une vraie API est branchée, ce module trackera tokens input/output, coût estimé (input × $3/M + output × $15/M Sonnet), cumul session, cumul total, alertes budget. La protection contre les surcoûts devient un module visible dans le lab lui-même.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 05 BILAN -->
+  <div class="section">
+    <div class="section-header"><div class="step-number">05</div><h2>Bilan</h2></div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><div class="num">16</div><div class="lbl">Sessions doc.</div></div>
+      <div class="summary-card"><div class="num">V2</div><div class="lbl">Shell live</div></div>
+      <div class="summary-card"><div class="num">~26h</div><div class="lbl">Build total</div></div>
+      <div class="summary-card"><div class="num">∞</div><div class="lbl">Modules possibles</div></div>
+    </div>
+
+    <div class="success-box">
+      <p>✓ Shell V2 live sur michaelmisran.com — topbar horloge/météo/ONLINE, sidebar collapsible avec 4 widgets live, 5 modules disponibles, statusbar contextuelle. Migration complète en une session malgré quota Claude Code à 97%.</p>
+    </div>
+
+    <div class="warn-box">
+      <p>⚠ Quota hebdomadaire Claude Code atteint à 97% en fin de session. Renouvellement mardi. Les modules existants (EXP-001 à 005) sont migrés visuellement mais nécessitent une vérification de compatibilité avec le nouveau layout shell (padding, overflow, hauteur disponible).</p>
+    </div>
+
+    <h3>Prochaines priorités — dès mardi</h3>
+    <ul class="next-list">
+      <li><span class="num">1</span><span><strong style="color:var(--text)">Vérifier la compatibilité des modules existants</strong> — les expériences EXP-001 à 005 étaient des pages pleine largeur. Dans le shell, elles s'affichent dans la ModuleZone. Vérifier padding, overflow, responsive dans ce nouveau contexte.</span></li>
+      <li><span class="num">2</span><span><strong style="color:var(--text)">Sidebar collapsible</strong> — tester le collapse sur mobile et vérifier que les tooltips s'affichent bien en mode icônes seulement.</span></li>
+      <li><span class="num">3</span><span><strong style="color:var(--text)">Prochain module à briefe</strong> — au choix : Notes da Vinci, Dashboard bourse, ou API Cost Monitor.</span></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">Misran <span>Labs</span></div>
+    <div class="footer-meta">Session 016 · 14.03.2026 · Migration V2 Shell</div>
+  </div>
+
+</div>
+</body>
+</html>
