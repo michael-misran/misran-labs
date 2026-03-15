@@ -121,9 +121,9 @@ const SESSIONS = [
 ]
 
 const STATS = [
-  { num: '15',   label: 'Sessions' },
-  { num: '~24h', label: 'De build' },
-  { num: '1',    label: 'Développeur' },
+  { num: '17',   label: 'Sessions' },
+  { num: '~27h', label: 'De build' },
+  { num: '1',    label: 'Human' },
   { num: '100%', label: 'AI-assisted' },
 ]
 
