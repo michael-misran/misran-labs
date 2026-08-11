@@ -1,7 +1,6 @@
 import HomeModule from '../modules/HomeModule'
 import ApiMonitorModule from '../modules/ApiMonitorModule'
 import CVModule from '../modules/CVModule'
-import FigmaDSReader from '../modules/FigmaDSReader/FigmaDSReader'
 import UXAuditEngine from '../experiences/UXAuditEngine'
 import ProductBriefMachine from '../experiences/ProductBriefMachine'
 import SessionReplay from '../experiences/SessionReplay'
@@ -13,7 +12,6 @@ export default function ModuleZone({ activeModule, navigateTo }) {
       case 'home':        return <HomeModule navigateTo={navigateTo} />
       case 'api-monitor': return <ApiMonitorModule />
       case 'cv':          return <CVModule />
-      case 'figma-ds':    return <FigmaDSReader />
       case 'exp-001':     return <UXAuditEngine />
       case 'exp-002':     return <ProductBriefMachine />
       case 'exp-003':     return <SessionReplay />

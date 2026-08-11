@@ -12,7 +12,6 @@ const MODULES = [
   { id: 'exp-005', icon: '◉', label: 'SaaS Generator' },
   { id: 'api-monitor', icon: '◬', label: 'API Monitor' },
   { id: 'cv',          icon: '◫', label: 'CV' },
-  { id: 'figma-ds',   icon: '◈', label: 'Figma DS' },
 ]
 
 export default function Sidebar({ activeModule, navigateTo, moduleHistory }) {
