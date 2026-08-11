@@ -4,12 +4,15 @@ import Topbar from './Topbar'
 import Sidebar from './Sidebar'
 import Statusbar from './Statusbar'
 import { resolveRouteMeta } from './registry'
+import useIsMobile from './useIsMobile'
 
 export default function Shell() {
   const location = useLocation()
   const meta = resolveRouteMeta(location.pathname)
   const [history, setHistory] = useState([])
   const prevPathname = useRef(null)
+  const isMobile = useIsMobile()
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
   useEffect(() => {
     document.title = meta.label ? `${meta.label} — Michael Misran` : 'Michael Misran'
@@ -20,6 +23,7 @@ export default function Shell() {
       setHistory(prev => [prevPathname.current, ...prev].slice(0, 3))
     }
     prevPathname.current = location.pathname
+    setMobileNavOpen(false)
   }, [location.pathname])
 
   return (
@@ -28,6 +32,11 @@ export default function Shell() {
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body, #root { height: 100%; overflow: hidden; background: #0a0e17; }
+        a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+          outline: 2px solid #25e2cc;
+          outline-offset: 2px;
+          border-radius: 2px;
+        }
         @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
         @keyframes pulseDot {
           0%, 100% { opacity: 1; transform: scale(1); }
@@ -49,16 +58,38 @@ export default function Shell() {
           color: '#e8f4f8',
         }}
       >
-        <Topbar moduleLabel={meta.label.toUpperCase()} />
+        <Topbar
+          moduleLabel={meta.label.toUpperCase()}
+          isMobile={isMobile}
+          onToggleMobileNav={() => setMobileNavOpen(o => !o)}
+        />
 
-        <div style={{ display: 'flex', overflow: 'hidden' }}>
-          <Sidebar history={history} />
-          <div style={{ flex: 1, overflowY: 'auto', position: 'relative' }}>
+        <div style={{ display: 'flex', overflow: 'hidden', position: 'relative' }}>
+          <Sidebar
+            history={history}
+            isMobile={isMobile}
+            mobileOpen={mobileNavOpen}
+            onCloseMobile={() => setMobileNavOpen(false)}
+          />
+
+          {isMobile && mobileNavOpen && (
+            <div
+              onClick={() => setMobileNavOpen(false)}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'rgba(0,0,0,0.5)',
+                zIndex: 40,
+              }}
+            />
+          )}
+
+          <main style={{ flex: 1, overflowY: 'auto', position: 'relative' }}>
             <Outlet />
-          </div>
+          </main>
         </div>
 
-        <Statusbar moduleLabel={meta.label} />
+        <Statusbar moduleLabel={meta.label} isMobile={isMobile} />
       </div>
     </>
   )

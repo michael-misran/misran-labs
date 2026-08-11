@@ -1,23 +1,31 @@
-export default function Statusbar({ moduleLabel }) {
+export default function Statusbar({ moduleLabel, isMobile }) {
   return (
-    <div
+    <footer
       style={{
         height: 32,
         background: '#060a10',
         borderTop: '1px solid #1a2a3a',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: isMobile ? 'center' : 'space-between',
         padding: '0 20px',
         fontFamily: "'JetBrains Mono', monospace",
         fontSize: 10,
-        color: '#4a7a94',
+        color: 'var(--muted)',
         letterSpacing: '0.06em',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
       }}
     >
-      <span>MISRAN LABS v2.0.0 · LAB ENVIRONMENT</span>
-      <span>▸ {moduleLabel}</span>
-      <span>VERCEL · AUTO-DEPLOY · GITHUB</span>
-    </div>
+      {isMobile ? (
+        <span>▸ {moduleLabel}</span>
+      ) : (
+        <>
+          <span>MISRAN LABS v2.0.0 · LAB ENVIRONMENT</span>
+          <span>▸ {moduleLabel}</span>
+          <span>VERCEL · AUTO-DEPLOY · GITHUB</span>
+        </>
+      )}
+    </footer>
   )
 }

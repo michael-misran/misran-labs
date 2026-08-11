@@ -35,7 +35,7 @@ export default function UptimeWidget() {
         style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: 9,
-          color: '#4a7a94',
+          color: 'var(--muted)',
           letterSpacing: '0.1em',
           marginBottom: 6,
         }}

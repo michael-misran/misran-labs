@@ -94,12 +94,12 @@ export default function FlowDiagram({ steps, direction = 'horizontal' }) {
                     y1={y + stepH / 2}
                     x2={x + STEP_W + GAP - 8}
                     y2={y + stepH / 2}
-                    stroke="#4a7a94"
+                    stroke="var(--muted)"
                     strokeWidth={1.5}
                   />
                   <polygon
                     points={`${x + STEP_W + GAP - 8},${y + stepH / 2 - 4} ${x + STEP_W + GAP},${y + stepH / 2} ${x + STEP_W + GAP - 8},${y + stepH / 2 + 4}`}
-                    fill="#4a7a94"
+                    fill="var(--muted)"
                   />
                 </g>
               ) : (
@@ -109,12 +109,12 @@ export default function FlowDiagram({ steps, direction = 'horizontal' }) {
                     y1={y + stepH}
                     x2={x + STEP_W / 2}
                     y2={y + stepH + GAP - 8}
-                    stroke="#4a7a94"
+                    stroke="var(--muted)"
                     strokeWidth={1.5}
                   />
                   <polygon
                     points={`${x + STEP_W / 2 - 4},${y + stepH + GAP - 8} ${x + STEP_W / 2},${y + stepH + GAP} ${x + STEP_W / 2 + 4},${y + stepH + GAP - 8}`}
-                    fill="#4a7a94"
+                    fill="var(--muted)"
                   />
                 </g>
               )

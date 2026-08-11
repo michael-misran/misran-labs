@@ -14,7 +14,7 @@ function getDateStr() {
   return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`
 }
 
-export default function Topbar({ moduleLabel }) {
+export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav }) {
   const [time, setTime] = useState(getTimeStr)
   const [date] = useState(getDateStr)
 
@@ -24,7 +24,7 @@ export default function Topbar({ moduleLabel }) {
   }, [])
 
   return (
-    <nav
+    <header
       style={{
         height: 48,
         background: 'rgba(10,14,23,0.95)',
@@ -33,13 +33,30 @@ export default function Topbar({ moduleLabel }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 20px',
+        padding: isMobile ? '0 12px' : '0 20px',
         zIndex: 9999,
         position: 'relative',
       }}
     >
       {/* Left */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 0, minWidth: 0 }}>
+        {isMobile && (
+          <button
+            onClick={onToggleMobileNav}
+            aria-label="Ouvrir la navigation"
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#25e2cc',
+              fontSize: 18,
+              cursor: 'pointer',
+              padding: '4px 10px 4px 0',
+              lineHeight: 1,
+            }}
+          >
+            ☰
+          </button>
+        )}
         <span
           style={{
             fontFamily: "'Space Grotesk', sans-serif",
@@ -47,92 +64,101 @@ export default function Topbar({ moduleLabel }) {
             fontSize: 16,
             color: '#25e2cc',
             letterSpacing: '0.06em',
+            flexShrink: 0,
           }}
         >
           M.LABS
         </span>
-        <span
-          style={{
-            width: 1,
-            height: 20,
-            background: '#1a2a3a',
-            margin: '0 16px',
-            display: 'inline-block',
-          }}
-        />
-        <span
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 11,
-            color: '#7a9bb5',
-            letterSpacing: '0.08em',
-          }}
-        >
-          {moduleLabel}
-        </span>
+        {!isMobile && (
+          <>
+            <span
+              style={{
+                width: 1,
+                height: 20,
+                background: '#1a2a3a',
+                margin: '0 16px',
+                display: 'inline-block',
+              }}
+            />
+            <span
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 11,
+                color: '#7a9bb5',
+                letterSpacing: '0.08em',
+              }}
+            >
+              {moduleLabel}
+            </span>
+          </>
+        )}
       </div>
 
-      {/* Centre */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 14,
-            color: '#e8f4f8',
-            letterSpacing: '0.04em',
-          }}
-        >
-          {time}
-        </span>
-        <span style={{ color: '#1a2a3a', fontSize: 12 }}>|</span>
-        <span
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 11,
-            color: '#7a9bb5',
-            letterSpacing: '0.04em',
-          }}
-        >
-          {date}
-        </span>
-      </div>
+      {!isMobile && (
+        <>
+          {/* Centre */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 14,
+                color: '#e8f4f8',
+                letterSpacing: '0.04em',
+              }}
+            >
+              {time}
+            </span>
+            <span style={{ color: '#1a2a3a', fontSize: 12 }}>|</span>
+            <span
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 11,
+                color: '#7a9bb5',
+                letterSpacing: '0.04em',
+              }}
+            >
+              {date}
+            </span>
+          </div>
 
-      {/* Right */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          <span
-            style={{
-              width: 6,
-              height: 6,
-              borderRadius: '50%',
-              background: '#00ff88',
-              display: 'inline-block',
-              animation: 'pulseDot 2s ease-in-out infinite',
-            }}
-          />
-          <span
-            style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 10,
-              color: '#00ff88',
-              letterSpacing: '0.1em',
-            }}
-          >
-            ONLINE
-          </span>
-        </div>
-        <span style={{ width: 1, height: 16, background: '#1a2a3a', display: 'inline-block' }} />
-        <span
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 10,
-            color: '#4a7a94',
-            letterSpacing: '0.08em',
-          }}
-        >
-          v2.0.0
-        </span>
-      </div>
-    </nav>
+          {/* Right */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span
+                style={{
+                  width: 6,
+                  height: 6,
+                  borderRadius: '50%',
+                  background: '#00ff88',
+                  display: 'inline-block',
+                  animation: 'pulseDot 2s ease-in-out infinite',
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 10,
+                  color: '#00ff88',
+                  letterSpacing: '0.1em',
+                }}
+              >
+                ONLINE
+              </span>
+            </div>
+            <span style={{ width: 1, height: 16, background: '#1a2a3a', display: 'inline-block' }} />
+            <span
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 10,
+                color: 'var(--muted)',
+                letterSpacing: '0.08em',
+              }}
+            >
+              v2.0.0
+            </span>
+          </div>
+        </>
+      )}
+    </header>
   )
 }

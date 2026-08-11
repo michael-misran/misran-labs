@@ -18,7 +18,7 @@ export default function ActiveModuleWidget({ history = [] }) {
         style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: 9,
-          color: '#4a7a94',
+          color: 'var(--muted)',
           letterSpacing: '0.1em',
           marginBottom: 6,
         }}
@@ -48,7 +48,7 @@ export default function ActiveModuleWidget({ history = [] }) {
             style={{
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: 9,
-              color: '#4a7a94',
+              color: 'var(--muted)',
               letterSpacing: '0.1em',
               marginBottom: 4,
             }}
@@ -63,7 +63,7 @@ export default function ActiveModuleWidget({ history = [] }) {
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   fontSize: 10,
-                  color: '#4a7a94',
+                  color: 'var(--muted)',
                   lineHeight: 1.8,
                 }}
               >

@@ -23,7 +23,7 @@ function NavItem({ to, icon, label, collapsed }) {
             style={{
               background: 'none',
               border: 'none',
-              color: isActive ? '#25e2cc' : '#4a7a94',
+              color: isActive ? '#25e2cc' : 'var(--muted)',
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: 16,
               cursor: 'pointer',
@@ -89,7 +89,7 @@ function SectionHeader({ children }) {
         style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: 9,
-          color: '#4a7a94',
+          color: 'var(--muted)',
           letterSpacing: '0.12em',
         }}
       >
@@ -99,17 +99,35 @@ function SectionHeader({ children }) {
   )
 }
 
-export default function Sidebar({ history }) {
+export default function Sidebar({ history, isMobile, mobileOpen, onCloseMobile }) {
   const [collapsed, setCollapsed] = useState(false)
 
+  const mobileStyle = {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    width: 260,
+    minWidth: 260,
+    transform: mobileOpen ? 'translateX(0)' : 'translateX(-100%)',
+    transition: 'transform 0.25s ease',
+    zIndex: 50,
+    boxShadow: mobileOpen ? '8px 0 24px rgba(0,0,0,0.4)' : 'none',
+  }
+
+  const desktopStyle = {
+    width: collapsed ? 52 : 260,
+    minWidth: collapsed ? 52 : 260,
+    transition: 'width 0.25s ease, min-width 0.25s ease',
+  }
+
   return (
-    <div
+    <nav
+      aria-label="Navigation principale"
       style={{
-        width: collapsed ? 52 : 260,
-        minWidth: collapsed ? 52 : 260,
-        transition: 'width 0.25s ease, min-width 0.25s ease',
+        ...(isMobile ? mobileStyle : desktopStyle),
         overflow: 'hidden',
-        overflowY: collapsed ? 'hidden' : 'auto',
+        overflowY: (isMobile ? false : collapsed) ? 'hidden' : 'auto',
         background: '#0d1220',
         borderRight: '1px solid #1a2a3a',
         display: 'flex',
@@ -117,7 +135,58 @@ export default function Sidebar({ history }) {
         flexShrink: 0,
       }}
     >
-      {collapsed ? (
+      {isMobile ? (
+        /* ── Mobile drawer ── */
+        <>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '16px 16px 8px',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 9,
+                color: 'var(--muted)',
+                letterSpacing: '0.12em',
+              }}
+            >
+              {'// NAVIGATION'}
+            </span>
+            <button
+              onClick={onCloseMobile}
+              aria-label="Fermer la navigation"
+              style={{
+                background: 'none',
+                border: 'none',
+                color: 'var(--muted)',
+                fontSize: 16,
+                cursor: 'pointer',
+                padding: '2px 4px',
+                lineHeight: 1,
+              }}
+            >
+              ✕
+            </button>
+          </div>
+
+          <NavItem to="/" icon="⬡" label="Lab Home" />
+
+          <SectionHeader>{'// PORTFOLIO'}</SectionHeader>
+          <NavItem to="/portfolio" icon="◆" label="Tous les case studies" />
+          {READY_CASE_STUDIES.map(cs => (
+            <NavItem key={cs.slug} to={`/portfolio/${cs.slug}`} icon={cs.icon} label={cs.title} />
+          ))}
+
+          <SectionHeader>{'// LAB'}</SectionHeader>
+          {LAB_MODULES.map(m => (
+            <NavItem key={m.id} to={`/lab/${m.id}`} icon={m.icon} label={m.label} />
+          ))}
+        </>
+      ) : collapsed ? (
         /* ── Collapsed ── */
         <>
           <button
@@ -161,7 +230,7 @@ export default function Sidebar({ history }) {
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 9,
-                color: '#4a7a94',
+                color: 'var(--muted)',
                 letterSpacing: '0.12em',
               }}
             >
@@ -172,7 +241,7 @@ export default function Sidebar({ history }) {
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#4a7a94',
+                color: 'var(--muted)',
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 11,
                 cursor: 'pointer',
@@ -208,7 +277,7 @@ export default function Sidebar({ history }) {
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 9,
-                color: '#4a7a94',
+                color: 'var(--muted)',
                 letterSpacing: '0.12em',
               }}
             >
@@ -223,6 +292,6 @@ export default function Sidebar({ history }) {
           <ActiveModuleWidget history={history} />
         </>
       )}
-    </div>
+    </nav>
   )
 }

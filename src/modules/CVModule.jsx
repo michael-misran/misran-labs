@@ -1,8 +1,12 @@
+import useIsMobile from '../shell/useIsMobile'
+
 export default function CVModule() {
+  const isMobile = useIsMobile()
+
   return (
     <div
       style={{
-        padding: 40,
+        padding: isMobile ? 20 : 40,
         overflowY: 'auto',
         height: '100%',
         fontFamily: "'Inter', sans-serif",

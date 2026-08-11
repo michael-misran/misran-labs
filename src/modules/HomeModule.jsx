@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CASE_STUDIES } from '../portfolio/caseStudies'
+import VisuallyHidden from '../components/VisuallyHidden'
+import useIsMobile from '../shell/useIsMobile'
 
 const LAB_ITEMS = [
   {
@@ -151,9 +153,12 @@ function SectionHead({ eyebrow, subtitle }) {
 export default function HomeModule() {
   const featuredCaseStudies = CASE_STUDIES.filter(cs => cs.status === 'READY').slice(0, 3)
   const readyLabCount = LAB_ITEMS.filter(m => m.status === 'READY').length
+  const isMobile = useIsMobile()
 
   return (
-    <div style={{ padding: 40, overflowY: 'auto', height: '100%', fontFamily: "'Inter', sans-serif", color: '#e8f4f8' }}>
+    <div style={{ padding: isMobile ? 20 : 40, overflowY: 'auto', height: '100%', fontFamily: "'Inter', sans-serif", color: '#e8f4f8' }}>
+      <VisuallyHidden as="h1">Michael Misran — Product Designer & Lab Home</VisuallyHidden>
+
       {/* Portfolio — mis en avant */}
       <section style={{ marginBottom: 48 }}>
         <SectionHead eyebrow="// PORTFOLIO" subtitle="Case studies design — process, décisions, résultats." />

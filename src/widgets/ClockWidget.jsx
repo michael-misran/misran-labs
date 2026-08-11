@@ -50,7 +50,7 @@ export default function ClockWidget() {
         style={{
           fontFamily: "'Inter', sans-serif",
           fontSize: 11,
-          color: '#4a7a94',
+          color: 'var(--muted)',
           marginTop: 4,
         }}
       >

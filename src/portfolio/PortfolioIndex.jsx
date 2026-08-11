@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CASE_STUDIES } from './caseStudies'
+import VisuallyHidden from '../components/VisuallyHidden'
+import useIsMobile from '../shell/useIsMobile'
 
 function CaseStudyCard({ cs }) {
   const [hovered, setHovered] = useState(false)
@@ -85,8 +87,11 @@ function CaseStudyCard({ cs }) {
 }
 
 export default function PortfolioIndex() {
+  const isMobile = useIsMobile()
+
   return (
-    <div style={{ padding: 40, overflowY: 'auto', height: '100%', fontFamily: "'Inter', sans-serif", color: '#e8f4f8' }}>
+    <div style={{ padding: isMobile ? 20 : 40, overflowY: 'auto', height: '100%', fontFamily: "'Inter', sans-serif", color: '#e8f4f8' }}>
+      <VisuallyHidden as="h1">Portfolio — Case studies design</VisuallyHidden>
       <div style={{ marginBottom: 32 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 10 }}>
           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: '#25e2cc', letterSpacing: '0.1em', whiteSpace: 'nowrap' }}>

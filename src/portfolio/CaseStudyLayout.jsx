@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import useIsMobile from '../shell/useIsMobile'
 
 export function Section({ title, children }) {
   return (
@@ -25,10 +26,12 @@ export function Section({ title, children }) {
 }
 
 export default function CaseStudyLayout({ title, role, period, tools = [], children }) {
+  const isMobile = useIsMobile()
+
   return (
     <div
       style={{
-        padding: 40,
+        padding: isMobile ? 20 : 40,
         overflowY: 'auto',
         height: '100%',
         fontFamily: "'Inter', sans-serif",
@@ -65,19 +68,19 @@ export default function CaseStudyLayout({ title, role, period, tools = [], child
       <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', marginBottom: 32 }}>
         {role && (
           <div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: '#4a7a94', letterSpacing: '0.1em', marginBottom: 4 }}>RÔLE</div>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.1em', marginBottom: 4 }}>RÔLE</div>
             <div style={{ fontSize: 13, color: '#e8f4f8' }}>{role}</div>
           </div>
         )}
         {period && (
           <div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: '#4a7a94', letterSpacing: '0.1em', marginBottom: 4 }}>PÉRIODE</div>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.1em', marginBottom: 4 }}>PÉRIODE</div>
             <div style={{ fontSize: 13, color: '#e8f4f8' }}>{period}</div>
           </div>
         )}
         {tools.length > 0 && (
           <div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: '#4a7a94', letterSpacing: '0.1em', marginBottom: 4 }}>OUTILS</div>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.1em', marginBottom: 4 }}>OUTILS</div>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
               {tools.map(t => (
                 <span

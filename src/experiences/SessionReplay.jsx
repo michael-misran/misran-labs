@@ -221,7 +221,7 @@ function SessionCard({ session, onOpenLog }) {
           {/* Row 4: tags */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {session.tags.map(tag => (
-              <span key={tag} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a7a94', background: 'rgba(26,42,58,0.6)', border: '1px solid #1a2a3a', borderRadius: 3, padding: '2px 8px' }}>
+              <span key={tag} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'var(--muted)', background: 'rgba(26,42,58,0.6)', border: '1px solid #1a2a3a', borderRadius: 3, padding: '2px 8px' }}>
                 {tag}
               </span>
             ))}
@@ -358,7 +358,7 @@ export default function SessionReplay() {
             </p>
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               {['React', 'Framer Motion', 'Markdown'].map(tag => (
-                <span key={tag} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a7a94', background: 'rgba(26,42,58,0.6)', border: '1px solid #1a2a3a', borderRadius: 3, padding: '2px 8px' }}>
+                <span key={tag} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'var(--muted)', background: 'rgba(26,42,58,0.6)', border: '1px solid #1a2a3a', borderRadius: 3, padding: '2px 8px' }}>
                   {tag}
                 </span>
               ))}

@@ -485,7 +485,7 @@ export default function MicroSaaSGenerator() {
         .chip:hover { border-color: #25e2cc !important; color: #25e2cc !important; }
         .generate-btn:hover:not(:disabled) { background: rgba(37,226,204,0.22) !important; }
         .reset-btn:hover { background: rgba(37,226,204,0.22) !important; }
-        textarea::placeholder { color: #4a7a94; }
+        textarea::placeholder { color: var(--muted); }
         textarea:focus { outline: none; }
       `}</style>
 
@@ -610,7 +610,7 @@ export default function MicroSaaSGenerator() {
                     style={{
                       fontFamily: "'JetBrains Mono', monospace",
                       fontSize: 10,
-                      color: '#4a7a94',
+                      color: 'var(--muted)',
                       background: 'rgba(26,42,58,0.6)',
                       border: '1px solid #1a2a3a',
                       borderRadius: 3,
@@ -688,7 +688,7 @@ export default function MicroSaaSGenerator() {
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 600,
                   fontSize: 14,
-                  color: !input.trim() ? '#4a7a94' : '#25e2cc',
+                  color: !input.trim() ? 'var(--muted)' : '#25e2cc',
                   background: !input.trim() ? 'rgba(26,42,58,0.3)' : 'rgba(37,226,204,0.12)',
                   border: `1px solid ${!input.trim() ? '#243545' : '#25e2cc'}`,
                   borderRadius: 6,
@@ -780,7 +780,7 @@ export default function MicroSaaSGenerator() {
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   fontSize: 11,
-                  color: '#4a7a94',
+                  color: 'var(--muted)',
                   letterSpacing: '0.04em',
                 }}
               >
@@ -832,7 +832,7 @@ export default function MicroSaaSGenerator() {
                         borderRadius: 3,
                         border: `1px solid ${view === id && canToggle ? '#25e2cc' : '#243545'}`,
                         background: view === id && canToggle ? 'rgba(37,226,204,0.12)' : 'transparent',
-                        color: view === id && canToggle ? '#25e2cc' : '#4a7a94',
+                        color: view === id && canToggle ? '#25e2cc' : 'var(--muted)',
                         cursor: canToggle ? 'pointer' : 'not-allowed',
                         transition: 'all 0.15s ease',
                         opacity: !canToggle ? 0.5 : 1,
@@ -866,7 +866,7 @@ export default function MicroSaaSGenerator() {
                       justifyContent: 'center',
                       fontFamily: "'JetBrains Mono', monospace",
                       fontSize: 13,
-                      color: '#4a7a94',
+                      color: 'var(--muted)',
                       letterSpacing: '0.04em',
                       minHeight: 520,
                     }}

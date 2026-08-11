@@ -31,7 +31,7 @@ export default function Timeline({ milestones }) {
               fontFamily="'JetBrains Mono', monospace"
               fontSize={10}
               letterSpacing="0.08em"
-              fill="#4a7a94"
+              fill="var(--muted)"
             >
               {m.date}
             </text>

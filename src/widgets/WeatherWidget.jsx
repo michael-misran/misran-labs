@@ -43,11 +43,11 @@ export default function WeatherWidget() {
       }}
     >
       {error ? (
-        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#4a7a94' }}>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: 'var(--muted)' }}>
           N/A
         </span>
       ) : !weather ? (
-        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#4a7a94' }}>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: 'var(--muted)' }}>
           ...
         </span>
       ) : (

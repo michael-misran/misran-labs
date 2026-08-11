@@ -1,3 +1,5 @@
+import VisuallyHidden from '../components/VisuallyHidden'
+
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const PRICING = {
@@ -153,7 +155,7 @@ function CallsTable() {
           <span key={h} style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 9,
-            color: '#4a7a94',
+            color: 'var(--muted)',
             letterSpacing: '0.1em',
             textAlign: h === 'INPUT' || h === 'OUTPUT' ? 'right' : 'left',
           }}>
@@ -242,7 +244,7 @@ function ModelBreakdown() {
               { label: 'Coût',    value: fmt$(m.cost) },
             ].map(({ label, value }) => (
               <div key={label} style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: '#4a7a94' }}>{label}</span>
+                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: 'var(--muted)' }}>{label}</span>
                 <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#c4d8e8' }}>{value}</span>
               </div>
             ))}
@@ -256,7 +258,7 @@ function ModelBreakdown() {
               borderRadius: 2,
             }} />
           </div>
-          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: '#4a7a94', marginTop: 4 }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', marginTop: 4 }}>
             {m.pct.toFixed(1)}% du coût total
           </div>
         </div>
@@ -281,6 +283,7 @@ export default function ApiMonitorModule() {
       flexDirection: 'column',
       gap: 28,
     }}>
+      <VisuallyHidden as="h1">API Cost Monitor</VisuallyHidden>
 
       {/* ── Header ── */}
       <div>
@@ -329,7 +332,7 @@ export default function ApiMonitorModule() {
           <span style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 9,
-            color: '#4a7a94',
+            color: 'var(--muted)',
             border: '1px solid #1a2a3a',
             borderRadius: 3,
             padding: '2px 8px',
@@ -354,7 +357,7 @@ export default function ApiMonitorModule() {
       <p style={{
         fontFamily: "'JetBrains Mono', monospace",
         fontSize: 11,
-        color: '#4a7a94',
+        color: 'var(--muted)',
         lineHeight: 1.7,
         borderTop: '1px solid #1a2a3a',
         paddingTop: 16,

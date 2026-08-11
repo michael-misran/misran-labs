@@ -306,7 +306,7 @@ function AuditOutput({ phase, scanStep, output }) {
   const lines = output.split('\n')
 
   const phaseBadge = {
-    idle:      { label: 'EN ATTENTE',     color: '#4a7a94' },
+    idle:      { label: 'EN ATTENTE',     color: 'var(--muted)' },
     scanning:  { label: 'SCANNING...',    color: '#f59e0b' },
     streaming: { label: 'ANALYSING...',   color: '#25e2cc' },
     done:      { label: 'AUDIT COMPLETE', color: '#25e2cc' },
@@ -370,7 +370,7 @@ function AuditOutput({ phase, scanStep, output }) {
             justifyContent: 'center',
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 13,
-            color: '#4a7a94',
+            color: 'var(--muted)',
             letterSpacing: '0.04em',
           }}
         >
@@ -387,7 +387,7 @@ function AuditOutput({ phase, scanStep, output }) {
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 12,
-                color: i === scanStep - 1 ? '#c4d8e8' : '#4a7a94',
+                color: i === scanStep - 1 ? '#c4d8e8' : 'var(--muted)',
                 lineHeight: '2.1',
                 letterSpacing: '0.02em',
               }}
@@ -672,7 +672,7 @@ export default function UXAuditEngine() {
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: 10,
-                    color: '#4a7a94',
+                    color: 'var(--muted)',
                     background: 'rgba(26,42,58,0.6)',
                     border: '1px solid #1a2a3a',
                     borderRadius: 3,
@@ -756,7 +756,7 @@ export default function UXAuditEngine() {
                     style={{
                       fontFamily: "'Inter', sans-serif",
                       fontSize: 11,
-                      color: '#4a7a94',
+                      color: 'var(--muted)',
                     }}
                   >
                     PNG · JPG · WebP
@@ -836,7 +836,7 @@ export default function UXAuditEngine() {
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: 10,
-                    color: '#4a7a94',
+                    color: 'var(--muted)',
                     letterSpacing: '0.04em',
                   }}
                 >
@@ -891,7 +891,7 @@ export default function UXAuditEngine() {
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   fontSize: 11,
-                  color: '#4a7a94',
+                  color: 'var(--muted)',
                   letterSpacing: '0.04em',
                 }}
               >
