@@ -1,21 +1,12 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import ClockWidget from '../widgets/ClockWidget'
-import WeatherWidget from '../widgets/WeatherWidget'
-import UptimeWidget from '../widgets/UptimeWidget'
-import ActiveModuleWidget from '../widgets/ActiveModuleWidget'
-import { LAB_MODULES } from './registry'
-import { CASE_STUDIES } from '../portfolio/caseStudies'
+import { visibleProjects } from '../lab/projects'
 
-const READY_CASE_STUDIES = CASE_STUDIES.filter(cs => cs.status === 'READY')
+const PROJECTS = visibleProjects()
 
 function NavItem({ to, icon, label, collapsed }) {
   return (
-    <NavLink
-      to={to}
-      end
-      style={{ textDecoration: 'none' }}
-    >
+    <NavLink to={to} end style={{ textDecoration: 'none' }}>
       {({ isActive }) =>
         collapsed ? (
           <button
@@ -71,6 +62,8 @@ function NavItem({ to, icon, label, collapsed }) {
                 color: isActive ? '#e8f4f8' : '#7a9bb5',
                 transition: 'color 0.15s ease',
                 whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
               }}
             >
               {label}
@@ -82,24 +75,7 @@ function NavItem({ to, icon, label, collapsed }) {
   )
 }
 
-function SectionHeader({ children }) {
-  return (
-    <div style={{ padding: '16px 16px 8px' }}>
-      <span
-        style={{
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: 9,
-          color: 'var(--muted)',
-          letterSpacing: '0.12em',
-        }}
-      >
-        {children}
-      </span>
-    </div>
-  )
-}
-
-export default function Sidebar({ history, isMobile, mobileOpen, onCloseMobile }) {
+export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
   const [collapsed, setCollapsed] = useState(false)
 
   const mobileStyle = {
@@ -121,6 +97,15 @@ export default function Sidebar({ history, isMobile, mobileOpen, onCloseMobile }
     transition: 'width 0.25s ease, min-width 0.25s ease',
   }
 
+  const navList = (collapsed) => (
+    <>
+      <NavItem to="/" icon="⬡" label="Lab Home" collapsed={collapsed} />
+      {PROJECTS.map(p => (
+        <NavItem key={p.slug} to={`/lab/${p.slug}`} icon={p.icon} label={p.title} collapsed={collapsed} />
+      ))}
+    </>
+  )
+
   return (
     <nav
       aria-label="Navigation principale"
@@ -136,58 +121,22 @@ export default function Sidebar({ history, isMobile, mobileOpen, onCloseMobile }
       }}
     >
       {isMobile ? (
-        /* ── Mobile drawer ── */
         <>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '16px 16px 8px',
-            }}
-          >
-            <span
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 9,
-                color: 'var(--muted)',
-                letterSpacing: '0.12em',
-              }}
-            >
-              {'// NAVIGATION'}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 16px 8px' }}>
+            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.12em' }}>
+              {'// LAB'}
             </span>
             <button
               onClick={onCloseMobile}
               aria-label="Fermer la navigation"
-              style={{
-                background: 'none',
-                border: 'none',
-                color: 'var(--muted)',
-                fontSize: 16,
-                cursor: 'pointer',
-                padding: '2px 4px',
-                lineHeight: 1,
-              }}
+              style={{ background: 'none', border: 'none', color: 'var(--muted)', fontSize: 16, cursor: 'pointer', padding: '2px 4px', lineHeight: 1 }}
             >
               ✕
             </button>
           </div>
-
-          <NavItem to="/" icon="⬡" label="Lab Home" />
-
-          <SectionHeader>{'// PORTFOLIO'}</SectionHeader>
-          <NavItem to="/portfolio" icon="◆" label="Tous les case studies" />
-          {READY_CASE_STUDIES.map(cs => (
-            <NavItem key={cs.slug} to={`/portfolio/${cs.slug}`} icon={cs.icon} label={cs.title} />
-          ))}
-
-          <SectionHeader>{'// LAB'}</SectionHeader>
-          {LAB_MODULES.map(m => (
-            <NavItem key={m.id} to={`/lab/${m.id}`} icon={m.icon} label={m.label} />
-          ))}
+          {navList(false)}
         </>
       ) : collapsed ? (
-        /* ── Collapsed ── */
         <>
           <button
             onClick={() => setCollapsed(false)}
@@ -206,90 +155,22 @@ export default function Sidebar({ history, isMobile, mobileOpen, onCloseMobile }
           >
             ▶
           </button>
-          <NavItem to="/" icon="⬡" label="Lab Home" collapsed />
-          {READY_CASE_STUDIES.map(cs => (
-            <NavItem key={cs.slug} to={`/portfolio/${cs.slug}`} icon={cs.icon} label={cs.title} collapsed />
-          ))}
-          {LAB_MODULES.map(m => (
-            <NavItem key={m.id} to={`/lab/${m.id}`} icon={m.icon} label={m.label} collapsed />
-          ))}
+          {navList(true)}
         </>
       ) : (
-        /* ── Expanded ── */
         <>
-          {/* Header */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '16px 16px 8px',
-            }}
-          >
-            <span
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 9,
-                color: 'var(--muted)',
-                letterSpacing: '0.12em',
-              }}
-            >
-              {'// NAVIGATION'}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 16px 8px' }}>
+            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.12em' }}>
+              {'// LAB'}
             </span>
             <button
               onClick={() => setCollapsed(true)}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: 'var(--muted)',
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 11,
-                cursor: 'pointer',
-                padding: '2px 4px',
-                lineHeight: 1,
-              }}
+              style={{ background: 'none', border: 'none', color: 'var(--muted)', fontFamily: "'JetBrains Mono', monospace", fontSize: 11, cursor: 'pointer', padding: '2px 4px', lineHeight: 1 }}
             >
               ◀
             </button>
           </div>
-
-          <NavItem to="/" icon="⬡" label="Lab Home" />
-
-          {/* Portfolio section */}
-          <SectionHeader>{'// PORTFOLIO'}</SectionHeader>
-          <NavItem to="/portfolio" icon="◆" label="Tous les case studies" />
-          {READY_CASE_STUDIES.map(cs => (
-            <NavItem key={cs.slug} to={`/portfolio/${cs.slug}`} icon={cs.icon} label={cs.title} />
-          ))}
-
-          {/* Lab section */}
-          <SectionHeader>{'// LAB'}</SectionHeader>
-          {LAB_MODULES.map(m => (
-            <NavItem key={m.id} to={`/lab/${m.id}`} icon={m.icon} label={m.label} />
-          ))}
-
-          {/* Separator */}
-          <div style={{ height: 1, background: '#1a2a3a', margin: '8px 0' }} />
-
-          {/* System header */}
-          <div style={{ padding: '8px 16px' }}>
-            <span
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 9,
-                color: 'var(--muted)',
-                letterSpacing: '0.12em',
-              }}
-            >
-              {'// SYSTÈME'}
-            </span>
-          </div>
-
-          {/* Widgets */}
-          <ClockWidget />
-          <WeatherWidget />
-          <UptimeWidget />
-          <ActiveModuleWidget history={history} />
+          {navList(false)}
         </>
       )}
     </nav>

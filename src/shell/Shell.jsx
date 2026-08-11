@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Topbar from './Topbar'
 import Sidebar from './Sidebar'
@@ -9,8 +9,6 @@ import useIsMobile from './useIsMobile'
 export default function Shell() {
   const location = useLocation()
   const meta = resolveRouteMeta(location.pathname)
-  const [history, setHistory] = useState([])
-  const prevPathname = useRef(null)
   const isMobile = useIsMobile()
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
@@ -19,10 +17,6 @@ export default function Shell() {
   }, [meta.label])
 
   useEffect(() => {
-    if (prevPathname.current && prevPathname.current !== location.pathname) {
-      setHistory(prev => [prevPathname.current, ...prev].slice(0, 3))
-    }
-    prevPathname.current = location.pathname
     setMobileNavOpen(false)
   }, [location.pathname])
 
@@ -66,7 +60,6 @@ export default function Shell() {
 
         <div style={{ display: 'flex', overflow: 'hidden', position: 'relative' }}>
           <Sidebar
-            history={history}
             isMobile={isMobile}
             mobileOpen={mobileNavOpen}
             onCloseMobile={() => setMobileNavOpen(false)}

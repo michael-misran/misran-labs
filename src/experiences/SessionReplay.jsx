@@ -147,7 +147,7 @@ function Nav() {
       </Link>
       <div style={{ display: 'flex', gap: 36 }}>
         {[
-          { label: 'Lab', to: '/lab' },
+          { label: 'Lab', to: '/' },
           { label: 'Process', to: '/process' },
           { label: 'DS', to: '/design-system' },
           { label: 'Contact', to: '/contact' },

@@ -40,7 +40,7 @@ export default function CaseStudyLayout({ title, role, period, tools = [], child
       }}
     >
       <Link
-        to="/portfolio"
+        to="/"
         style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: 11,
@@ -50,7 +50,7 @@ export default function CaseStudyLayout({ title, role, period, tools = [], child
           marginBottom: 24,
         }}
       >
-        {'← Portfolio'}
+        {'← Lab'}
       </Link>
 
       <h1
