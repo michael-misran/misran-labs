@@ -67,13 +67,14 @@ const ITERATION_FLOW = [
   { label: 'Décision v3', sublabel: 'Un seul espace « projets », un champ type (case-study / tool) plutôt qu\'une IA séparée, featured pour la mise en avant' },
 ]
 
-export default function MisranLabsRedesign() {
+export default function MisranLabsRedesign({ project }) {
   return (
     <CaseStudyLayout
       title="Transformer un lab technique en portfolio design"
       role="Product Designer & Développeur — seul sur le projet"
       period="Août 2026"
       tools={['React', 'React Router', 'SVG fait main']}
+      phases={project?.phases}
     >
       <Section title="Contexte">
         <p>

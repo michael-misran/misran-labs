@@ -9,7 +9,7 @@ export default function ProjectPage() {
     return (
       <div style={{ padding: 40, fontFamily: "'Inter', sans-serif", color: '#7a9bb5' }}>
         <p style={{ marginBottom: 16 }}>Projet introuvable ou pas encore publié.</p>
-        <Link to="/lab" style={{ color: '#25e2cc', fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }}>
+        <Link to="/" style={{ color: '#25e2cc', fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }}>
           {'← Retour au lab'}
         </Link>
       </div>
@@ -17,5 +17,5 @@ export default function ProjectPage() {
   }
 
   const Component = project.component
-  return <Component />
+  return <Component project={project} />
 }

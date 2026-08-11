@@ -1,10 +1,27 @@
 import MisranLabsRedesign from './projects/MisranLabsRedesign'
+import ToolProcessTemplate from './ToolProcessTemplate'
 import UXAuditEngine from '../experiences/UXAuditEngine'
 import ProductBriefMachine from '../experiences/ProductBriefMachine'
 import SessionReplay from '../experiences/SessionReplay'
 import MicroSaaSGenerator from '../experiences/MicroSaaSGenerator'
 import ApiMonitorModule from '../modules/ApiMonitorModule'
 import CVModule from '../modules/CVModule'
+
+// Statut honnête par étape : 'done' | 'partial' | 'skipped'.
+// Les projets Lab sont des explorations rapides — la plupart des étapes
+// business/recherche/validation/QA/lancement n'ont pas été formalisées,
+// et ce n'est pas caché.
+const QUICK_LAB_PHASES = {
+  business: 'skipped',
+  research: 'skipped',
+  design: 'partial',
+  validation: 'skipped',
+  feasibility: 'skipped',
+  development: 'done',
+  qa: 'skipped',
+  launch: 'skipped',
+  iteration: 'skipped',
+}
 
 export const PROJECTS = [
   {
@@ -16,6 +33,17 @@ export const PROJECTS = [
     type: 'case-study',
     featured: true,
     tags: ['IA', 'Decision-making', 'React'],
+    phases: {
+      business: 'partial',
+      research: 'skipped',
+      design: 'done',
+      validation: 'skipped',
+      feasibility: 'partial',
+      development: 'done',
+      qa: 'partial',
+      launch: 'partial',
+      iteration: 'done',
+    },
     component: MisranLabsRedesign,
   },
   {
@@ -27,6 +55,7 @@ export const PROJECTS = [
     type: 'case-study',
     featured: false,
     tags: [],
+    phases: {},
     component: null,
   },
   {
@@ -38,7 +67,9 @@ export const PROJECTS = [
     type: 'tool',
     featured: false,
     tags: ['React', 'FileReader', 'Streaming'],
-    component: UXAuditEngine,
+    phases: QUICK_LAB_PHASES,
+    component: ToolProcessTemplate,
+    demoComponent: UXAuditEngine,
   },
   {
     slug: 'exp-002',
@@ -49,7 +80,9 @@ export const PROJECTS = [
     type: 'tool',
     featured: false,
     tags: ['React', 'Simulation'],
-    component: ProductBriefMachine,
+    phases: QUICK_LAB_PHASES,
+    component: ToolProcessTemplate,
+    demoComponent: ProductBriefMachine,
   },
   {
     slug: 'exp-003',
@@ -60,7 +93,9 @@ export const PROJECTS = [
     type: 'tool',
     featured: false,
     tags: ['React', 'Accordéon', 'iframe'],
-    component: SessionReplay,
+    phases: QUICK_LAB_PHASES,
+    component: ToolProcessTemplate,
+    demoComponent: SessionReplay,
   },
   {
     slug: 'exp-005',
@@ -71,7 +106,9 @@ export const PROJECTS = [
     type: 'tool',
     featured: false,
     tags: ['iframe', 'Streaming', 'HTML'],
-    component: MicroSaaSGenerator,
+    phases: QUICK_LAB_PHASES,
+    component: ToolProcessTemplate,
+    demoComponent: MicroSaaSGenerator,
   },
   {
     slug: 'api-monitor',
@@ -82,7 +119,9 @@ export const PROJECTS = [
     type: 'tool',
     featured: false,
     tags: ['Simulation', 'Anthropic API', 'Budget'],
-    component: ApiMonitorModule,
+    phases: QUICK_LAB_PHASES,
+    component: ToolProcessTemplate,
+    demoComponent: ApiMonitorModule,
   },
   {
     slug: 'cv',
@@ -93,6 +132,7 @@ export const PROJECTS = [
     type: 'tool',
     featured: false,
     tags: ['Profil'],
+    phases: { ...QUICK_LAB_PHASES, launch: 'done' },
     component: CVModule,
   },
 ]

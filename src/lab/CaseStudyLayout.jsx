@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import useIsMobile from '../shell/useIsMobile'
+import PhaseCoverage from './PhaseCoverage'
 
 export function Section({ title, children }) {
   return (
@@ -25,7 +26,7 @@ export function Section({ title, children }) {
   )
 }
 
-export default function CaseStudyLayout({ title, role, period, tools = [], children }) {
+export default function CaseStudyLayout({ title, role, period, tools = [], phases, children }) {
   const isMobile = useIsMobile()
 
   return (
@@ -102,6 +103,8 @@ export default function CaseStudyLayout({ title, role, period, tools = [], child
           </div>
         )}
       </div>
+
+      {phases && <PhaseCoverage phases={phases} />}
 
       {children}
     </div>
