@@ -15,7 +15,7 @@ export default function Timeline({ milestones }) {
         y1={16}
         x2={LINE_X}
         y2={height - 16}
-        stroke="#1a2a3a"
+        stroke="var(--border)"
         strokeWidth={1.5}
       />
 
@@ -24,7 +24,7 @@ export default function Timeline({ milestones }) {
 
         return (
           <g key={i}>
-            <circle cx={LINE_X} cy={y} r={5} fill="#0d1220" stroke="#25e2cc" strokeWidth={2} />
+            <circle cx={LINE_X} cy={y} r={5} fill="var(--bg2)" stroke="var(--teal)" strokeWidth={2} />
             <text
               x={LINE_X + 20}
               y={y - 6}
@@ -40,7 +40,7 @@ export default function Timeline({ milestones }) {
               y={y + 14}
               fontFamily="'Inter', sans-serif"
               fontSize={13}
-              fill="#e8f4f8"
+              fill="var(--text)"
             >
               {m.label}
             </text>

@@ -11,7 +11,7 @@ export const PHASES = [
 ]
 
 export const STATUS = {
-  done:    { label: 'Fait',            color: '#25e2cc' },
-  partial: { label: 'Partiel',         color: '#f59e0b' },
+  done:    { label: 'Fait',            color: 'var(--teal)' },
+  partial: { label: 'Partiel',         color: 'var(--warning)' },
   skipped: { label: 'Non applicable',  color: 'var(--muted)' },
 }

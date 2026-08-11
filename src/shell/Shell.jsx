@@ -5,12 +5,14 @@ import Sidebar from './Sidebar'
 import Statusbar from './Statusbar'
 import { resolveRouteMeta } from './registry'
 import useIsMobile from './useIsMobile'
+import useTheme from './useTheme'
 
 export default function Shell() {
   const location = useLocation()
   const meta = resolveRouteMeta(location.pathname)
   const isMobile = useIsMobile()
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const { isLight, toggle: toggleTheme } = useTheme()
 
   useEffect(() => {
     document.title = meta.label ? `${meta.label} — Michael Misran` : 'Michael Misran'
@@ -25,9 +27,9 @@ export default function Shell() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body, #root { height: 100%; overflow: hidden; background: #0a0e17; }
+        html, body, #root { height: 100%; overflow: hidden; background: var(--bg); }
         a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
-          outline: 2px solid #25e2cc;
+          outline: 2px solid var(--teal);
           outline-offset: 2px;
           border-radius: 2px;
         }
@@ -44,18 +46,20 @@ export default function Shell() {
           gridTemplateRows: '48px 1fr 32px',
           height: '100vh',
           overflow: 'hidden',
-          background: '#0a0e17',
+          background: 'var(--bg)',
           backgroundImage:
-            'linear-gradient(rgba(26,42,58,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(26,42,58,0.3) 1px, transparent 1px)',
+            'linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)',
           backgroundSize: '40px 40px',
           fontFamily: "'Inter', sans-serif",
-          color: '#e8f4f8',
+          color: 'var(--text)',
         }}
       >
         <Topbar
           moduleLabel={meta.label.toUpperCase()}
           isMobile={isMobile}
           onToggleMobileNav={() => setMobileNavOpen(o => !o)}
+          isLight={isLight}
+          onToggleTheme={toggleTheme}
         />
 
         <div style={{ display: 'flex', overflow: 'hidden', position: 'relative' }}>

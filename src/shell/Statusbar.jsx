@@ -3,8 +3,8 @@ export default function Statusbar({ moduleLabel, isMobile }) {
     <footer
       style={{
         height: 32,
-        background: '#060a10',
-        borderTop: '1px solid #1a2a3a',
+        background: 'var(--bg3)',
+        borderTop: '1px solid var(--border)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: isMobile ? 'center' : 'space-between',

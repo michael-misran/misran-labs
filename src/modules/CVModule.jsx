@@ -8,7 +8,7 @@ export default function CVModule() {
       style={{
         padding: isMobile ? 20 : 40,
         fontFamily: "'Inter', sans-serif",
-        color: '#e8f4f8',
+        color: 'var(--text)',
       }}
     >
       {/* Header */}
@@ -18,14 +18,14 @@ export default function CVModule() {
             style={{
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: 13,
-              color: '#25e2cc',
+              color: 'var(--teal)',
               letterSpacing: '0.1em',
               whiteSpace: 'nowrap',
             }}
           >
             {'// CV'}
           </span>
-          <div style={{ flex: 1, height: 1, background: '#1a2a3a' }} />
+          <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
         </div>
       </div>
 

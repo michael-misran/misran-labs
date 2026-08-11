@@ -10,13 +10,13 @@ export default function ProjectCard({ project }) {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{
-          background: '#0d1220',
-          border: `1px solid ${hovered ? '#25e2cc' : '#1a2a3a'}`,
+          background: 'var(--bg2)',
+          border: `1px solid ${hovered ? 'var(--teal)' : 'var(--border)'}`,
           borderRadius: 8,
           padding: 24,
           cursor: 'pointer',
           transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
-          boxShadow: hovered ? '0 0 20px rgba(37,226,204,0.1)' : 'none',
+          boxShadow: hovered ? '0 0 20px var(--active-tint)' : 'none',
           display: 'flex',
           flexDirection: 'column',
           gap: 12,
@@ -24,7 +24,7 @@ export default function ProjectCard({ project }) {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 18, color: '#25e2cc' }}>
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 18, color: 'var(--teal)' }}>
             {project.icon}
           </span>
           {project.type === 'case-study' && (
@@ -32,8 +32,8 @@ export default function ProjectCard({ project }) {
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 9,
-                color: '#00d4ff',
-                border: '1px solid rgba(0,212,255,0.4)',
+                color: 'var(--cyan)',
+                border: '1px solid var(--cyan)',
                 borderRadius: 3,
                 padding: '2px 7px',
                 letterSpacing: '0.1em',
@@ -44,11 +44,11 @@ export default function ProjectCard({ project }) {
           )}
         </div>
 
-        <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 16, fontWeight: 600, color: '#e8f4f8', margin: 0, lineHeight: 1.3 }}>
+        <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 16, fontWeight: 600, color: 'var(--text)', margin: 0, lineHeight: 1.3 }}>
           {project.title}
         </h3>
 
-        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: '#7a9bb5', margin: 0, lineHeight: 1.6, flex: 1 }}>
+        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: 'var(--text2)', margin: 0, lineHeight: 1.6, flex: 1 }}>
           {project.summary}
         </p>
 
@@ -60,9 +60,9 @@ export default function ProjectCard({ project }) {
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   fontSize: 10,
-                  color: '#25e2cc',
-                  background: 'rgba(37,226,204,0.06)',
-                  border: '1px solid rgba(37,226,204,0.2)',
+                  color: 'var(--teal)',
+                  background: 'var(--active-tint)',
+                  border: '1px solid var(--teal)',
                   borderRadius: 3,
                   padding: '2px 8px',
                 }}

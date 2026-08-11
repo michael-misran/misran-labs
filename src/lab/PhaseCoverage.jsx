@@ -31,7 +31,7 @@ export default function PhaseCoverage({ phases = {} }) {
                 padding: '5px 10px',
                 borderRadius: 4,
                 border: `1px solid ${s.color}`,
-                background: status === 'done' ? 'rgba(37,226,204,0.06)' : 'transparent',
+                background: status === 'done' ? 'var(--active-tint)' : 'transparent',
               }}
             >
               <span
@@ -48,7 +48,7 @@ export default function PhaseCoverage({ phases = {} }) {
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 11,
-                  color: status === 'skipped' ? 'var(--muted)' : '#e8f4f8',
+                  color: status === 'skipped' ? 'var(--muted)' : 'var(--text)',
                 }}
               >
                 {phase.label}

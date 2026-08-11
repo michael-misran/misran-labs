@@ -37,7 +37,7 @@ export const PROJECTS = [
       business: 'partial',
       research: 'skipped',
       design: 'done',
-      validation: 'skipped',
+      validation: 'partial',
       feasibility: 'partial',
       development: 'done',
       qa: 'partial',

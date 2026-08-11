@@ -28,7 +28,7 @@ export default function ToolProcessTemplate({ project }) {
             style={{
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: 12,
-              color: '#25e2cc',
+              color: 'var(--teal)',
               textDecoration: 'none',
             }}
           >

@@ -9,7 +9,7 @@ export default function HomeModule() {
   const projects = visibleProjects()
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "'Inter', sans-serif", color: '#e8f4f8' }}>
+    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "'Inter', sans-serif", color: 'var(--text)' }}>
       <VisuallyHidden as="h1">Michael Misran — Product Designer & Lab</VisuallyHidden>
 
       <div style={{ marginBottom: 32 }}>
@@ -18,16 +18,16 @@ export default function HomeModule() {
             style={{
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: 13,
-              color: '#25e2cc',
+              color: 'var(--teal)',
               letterSpacing: '0.1em',
               whiteSpace: 'nowrap',
             }}
           >
             {'// LAB'}
           </span>
-          <div style={{ flex: 1, height: 1, background: '#1a2a3a' }} />
+          <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
         </div>
-        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: '#7a9bb5' }}>
+        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: 'var(--text2)' }}>
           {projects.length} projets · Misran Labs v2.0.0
         </p>
       </div>

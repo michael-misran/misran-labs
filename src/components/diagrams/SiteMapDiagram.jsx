@@ -57,7 +57,7 @@ function Column({ tree, x, title, accent }) {
               <path
                 d={`M ${x + parent.depth * INDENT + 12} ${TOP_PAD + parent.row * ROW_H + NODE_H} V ${ny + NODE_H / 2} H ${nx}`}
                 fill="none"
-                stroke="#1a2a3a"
+                stroke="var(--border)"
                 strokeWidth={1.5}
               />
             )}
@@ -67,8 +67,8 @@ function Column({ tree, x, title, accent }) {
               width={NODE_W - r.depth * INDENT}
               height={NODE_H}
               rx={4}
-              fill="#0d1220"
-              stroke={r.depth === 0 ? accent : '#1a2a3a'}
+              fill="var(--bg2)"
+              stroke={r.depth === 0 ? accent : 'var(--border)'}
               strokeOpacity={r.depth === 0 ? 0.6 : 1}
               strokeWidth={1}
             />
@@ -77,7 +77,7 @@ function Column({ tree, x, title, accent }) {
               y={ny + NODE_H / 2 + 4}
               fontFamily="'JetBrains Mono', monospace"
               fontSize={11}
-              fill={r.depth === 0 ? '#e8f4f8' : '#7a9bb5'}
+              fill={r.depth === 0 ? 'var(--text)' : 'var(--text2)'}
             >
               {r.label}
             </text>
@@ -103,9 +103,9 @@ export default function SiteMapDiagram({ before, after }) {
       viewBox={`0 0 ${width} ${height}`}
       style={{ width: '100%', maxWidth: width, height: 'auto', display: 'block' }}
     >
-      <line x1={COL_W} y1={0} x2={COL_W} y2={height} stroke="#1a2a3a" strokeWidth={1} />
-      <Column tree={before} x={16} title="AVANT" accent="#f59e0b" />
-      <Column tree={after} x={COL_W + 16} title="APRÈS" accent="#25e2cc" />
+      <line x1={COL_W} y1={0} x2={COL_W} y2={height} stroke="var(--border)" strokeWidth={1} />
+      <Column tree={before} x={16} title="AVANT" accent="var(--warning)" />
+      <Column tree={after} x={COL_W + 16} title="APRÈS" accent="var(--teal)" />
     </svg>
   )
 }

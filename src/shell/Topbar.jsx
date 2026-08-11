@@ -14,7 +14,7 @@ function getDateStr() {
   return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`
 }
 
-export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav }) {
+export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav, isLight, onToggleTheme }) {
   const [time, setTime] = useState(getTimeStr)
   const [date] = useState(getDateStr)
 
@@ -27,9 +27,9 @@ export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav }) {
     <header
       style={{
         height: 48,
-        background: 'rgba(10,14,23,0.95)',
+        background: isLight ? 'rgba(246,248,250,0.95)' : 'rgba(10,14,23,0.95)',
         backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid #1a2a3a',
+        borderBottom: '1px solid var(--border)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -47,7 +47,7 @@ export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav }) {
             style={{
               background: 'none',
               border: 'none',
-              color: '#25e2cc',
+              color: 'var(--teal)',
               fontSize: 18,
               cursor: 'pointer',
               padding: '4px 10px 4px 0',
@@ -62,7 +62,7 @@ export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav }) {
             fontFamily: "'Space Grotesk', sans-serif",
             fontWeight: 700,
             fontSize: 16,
-            color: '#25e2cc',
+            color: 'var(--teal)',
             letterSpacing: '0.06em',
             flexShrink: 0,
           }}
@@ -75,7 +75,7 @@ export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav }) {
               style={{
                 width: 1,
                 height: 20,
-                background: '#1a2a3a',
+                background: 'var(--border)',
                 margin: '0 16px',
                 display: 'inline-block',
               }}
@@ -84,7 +84,7 @@ export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav }) {
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 11,
-                color: '#7a9bb5',
+                color: 'var(--text2)',
                 letterSpacing: '0.08em',
               }}
             >
@@ -94,6 +94,24 @@ export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav }) {
         )}
       </div>
 
+      {isMobile && (
+        <button
+          onClick={onToggleTheme}
+          aria-label={isLight ? 'Passer en mode sombre' : 'Passer en mode clair'}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: 'var(--text2)',
+            fontSize: 15,
+            cursor: 'pointer',
+            padding: 4,
+            lineHeight: 1,
+          }}
+        >
+          {isLight ? '☾' : '☀'}
+        </button>
+      )}
+
       {!isMobile && (
         <>
           {/* Centre */}
@@ -102,18 +120,18 @@ export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav }) {
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 14,
-                color: '#e8f4f8',
+                color: 'var(--text)',
                 letterSpacing: '0.04em',
               }}
             >
               {time}
             </span>
-            <span style={{ color: '#1a2a3a', fontSize: 12 }}>|</span>
+            <span style={{ color: 'var(--border)', fontSize: 12 }}>|</span>
             <span
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 11,
-                color: '#7a9bb5',
+                color: 'var(--text2)',
                 letterSpacing: '0.04em',
               }}
             >
@@ -145,7 +163,25 @@ export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav }) {
                 ONLINE
               </span>
             </div>
-            <span style={{ width: 1, height: 16, background: '#1a2a3a', display: 'inline-block' }} />
+            <span style={{ width: 1, height: 16, background: 'var(--border)', display: 'inline-block' }} />
+            <button
+              onClick={onToggleTheme}
+              aria-label={isLight ? 'Passer en mode sombre' : 'Passer en mode clair'}
+              title={isLight ? 'Mode sombre' : 'Mode clair'}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: 'var(--text2)',
+                fontSize: 13,
+                cursor: 'pointer',
+                padding: 2,
+                lineHeight: 1,
+                display: 'flex',
+              }}
+            >
+              {isLight ? '☾' : '☀'}
+            </button>
+            <span style={{ width: 1, height: 16, background: 'var(--border)', display: 'inline-block' }} />
             <span
               style={{
                 fontFamily: "'JetBrains Mono', monospace",

@@ -10,16 +10,16 @@ export function Section({ title, children }) {
           style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 11,
-            color: '#25e2cc',
+            color: 'var(--teal)',
             letterSpacing: '0.1em',
             whiteSpace: 'nowrap',
           }}
         >
           {`// ${title.toUpperCase()}`}
         </span>
-        <div style={{ flex: 1, height: 1, background: '#1a2a3a' }} />
+        <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
       </div>
-      <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: '#c8dae5', lineHeight: 1.7 }}>
+      <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'var(--prose)', lineHeight: 1.7 }}>
         {children}
       </div>
     </div>
@@ -34,7 +34,7 @@ export default function CaseStudyLayout({ title, role, period, tools = [], phase
       style={{
         padding: isMobile ? 20 : 40,
         fontFamily: "'Inter', sans-serif",
-        color: '#e8f4f8',
+        color: 'var(--text)',
         maxWidth: 880,
         margin: '0 auto',
       }}
@@ -44,7 +44,7 @@ export default function CaseStudyLayout({ title, role, period, tools = [], phase
         style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: 11,
-          color: '#7a9bb5',
+          color: 'var(--text2)',
           textDecoration: 'none',
           display: 'inline-block',
           marginBottom: 24,
@@ -69,13 +69,13 @@ export default function CaseStudyLayout({ title, role, period, tools = [], phase
         {role && (
           <div>
             <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.1em', marginBottom: 4 }}>RÔLE</div>
-            <div style={{ fontSize: 13, color: '#e8f4f8' }}>{role}</div>
+            <div style={{ fontSize: 13, color: 'var(--text)' }}>{role}</div>
           </div>
         )}
         {period && (
           <div>
             <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.1em', marginBottom: 4 }}>PÉRIODE</div>
-            <div style={{ fontSize: 13, color: '#e8f4f8' }}>{period}</div>
+            <div style={{ fontSize: 13, color: 'var(--text)' }}>{period}</div>
           </div>
         )}
         {tools.length > 0 && (
@@ -88,9 +88,9 @@ export default function CaseStudyLayout({ title, role, period, tools = [], phase
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: 10,
-                    color: '#25e2cc',
-                    background: 'rgba(37,226,204,0.06)',
-                    border: '1px solid rgba(37,226,204,0.2)',
+                    color: 'var(--teal)',
+                    background: 'var(--active-tint)',
+                    border: '1px solid var(--teal)',
                     borderRadius: 3,
                     padding: '2px 8px',
                   }}

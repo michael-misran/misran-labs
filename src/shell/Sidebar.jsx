@@ -14,7 +14,7 @@ function NavItem({ to, icon, label, collapsed }) {
             style={{
               background: 'none',
               border: 'none',
-              color: isActive ? '#25e2cc' : 'var(--muted)',
+              color: isActive ? 'var(--teal)' : 'var(--muted)',
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: 16,
               cursor: 'pointer',
@@ -29,8 +29,8 @@ function NavItem({ to, icon, label, collapsed }) {
         ) : (
           <div
             style={{
-              background: isActive ? 'rgba(37,226,204,0.06)' : 'none',
-              borderLeft: isActive ? '2px solid #25e2cc' : '2px solid transparent',
+              background: isActive ? 'var(--active-tint)' : 'none',
+              borderLeft: isActive ? '2px solid var(--teal)' : '2px solid transparent',
               width: '100%',
               display: 'flex',
               alignItems: 'center',
@@ -39,14 +39,14 @@ function NavItem({ to, icon, label, collapsed }) {
               cursor: 'pointer',
               transition: 'background 0.15s ease',
             }}
-            onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = 'rgba(26,42,58,0.4)' }}
+            onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = 'var(--hover-tint)' }}
             onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = 'none' }}
           >
             <span
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 14,
-                color: '#25e2cc',
+                color: 'var(--teal)',
                 lineHeight: 1,
                 width: 18,
                 textAlign: 'center',
@@ -59,7 +59,7 @@ function NavItem({ to, icon, label, collapsed }) {
               style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: 13,
-                color: isActive ? '#e8f4f8' : '#7a9bb5',
+                color: isActive ? 'var(--text)' : 'var(--text2)',
                 transition: 'color 0.15s ease',
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
@@ -113,8 +113,8 @@ export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
         ...(isMobile ? mobileStyle : desktopStyle),
         overflow: 'hidden',
         overflowY: (isMobile ? false : collapsed) ? 'hidden' : 'auto',
-        background: '#0d1220',
-        borderRight: '1px solid #1a2a3a',
+        background: 'var(--bg2)',
+        borderRight: '1px solid var(--border)',
         display: 'flex',
         flexDirection: 'column',
         flexShrink: 0,
@@ -143,14 +143,14 @@ export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
             style={{
               background: 'none',
               border: 'none',
-              color: '#7a9bb5',
+              color: 'var(--text2)',
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: 12,
               cursor: 'pointer',
               padding: '12px 0',
               width: '100%',
               textAlign: 'center',
-              borderBottom: '1px solid #1a2a3a',
+              borderBottom: '1px solid var(--border)',
             }}
           >
             ▶
