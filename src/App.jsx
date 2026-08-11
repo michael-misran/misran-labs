@@ -1,14 +1,19 @@
-import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Shell from './shell/Shell'
+import ModuleZone from './shell/ModuleZone'
+import HomeModule from './modules/HomeModule'
+import PortfolioIndex from './portfolio/PortfolioIndex'
+import CaseStudyPage from './portfolio/CaseStudyPage'
 
 export default function App() {
-  const [activeModule, setActiveModule] = useState('home')
-  const [moduleHistory, setModuleHistory] = useState([])
-
-  function navigateTo(id) {
-    setModuleHistory(prev => [activeModule, ...prev].slice(0, 3))
-    setActiveModule(id)
-  }
-
-  return <Shell activeModule={activeModule} navigateTo={navigateTo} moduleHistory={moduleHistory} />
+  return (
+    <Routes>
+      <Route path="/" element={<Shell />}>
+        <Route index element={<HomeModule />} />
+        <Route path="portfolio" element={<PortfolioIndex />} />
+        <Route path="portfolio/:slug" element={<CaseStudyPage />} />
+        <Route path="lab/:moduleId" element={<ModuleZone />} />
+      </Route>
+    </Routes>
+  )
 }

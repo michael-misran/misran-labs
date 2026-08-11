@@ -1,13 +1,9 @@
-const MODULE_INFO = {
-  home:      { icon: '⬡', label: 'Lab Home' },
-  'exp-001': { icon: '◈', label: 'UX Audit' },
-  'exp-002': { icon: '◎', label: 'Brief Machine' },
-  'exp-003': { icon: '▣', label: 'Session Replay' },
-  'exp-005': { icon: '◉', label: 'SaaS Generator' },
-}
+import { useLocation } from 'react-router-dom'
+import { resolveRouteMeta } from '../shell/registry'
 
-export default function ActiveModuleWidget({ activeModule, moduleHistory }) {
-  const active = MODULE_INFO[activeModule] ?? { icon: '◌', label: activeModule }
+export default function ActiveModuleWidget({ history = [] }) {
+  const location = useLocation()
+  const active = resolveRouteMeta(location.pathname)
 
   return (
     <div
@@ -46,7 +42,7 @@ export default function ActiveModuleWidget({ activeModule, moduleHistory }) {
       </div>
 
       {/* History */}
-      {moduleHistory.length > 0 && (
+      {history.length > 0 && (
         <>
           <div
             style={{
@@ -59,8 +55,8 @@ export default function ActiveModuleWidget({ activeModule, moduleHistory }) {
           >
             HISTORIQUE
           </div>
-          {moduleHistory.map((id, i) => {
-            const m = MODULE_INFO[id] ?? { icon: '◌', label: id }
+          {history.map((pathname, i) => {
+            const m = resolveRouteMeta(pathname)
             return (
               <div
                 key={i}

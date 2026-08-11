@@ -1,20 +1,105 @@
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import ClockWidget from '../widgets/ClockWidget'
 import WeatherWidget from '../widgets/WeatherWidget'
 import UptimeWidget from '../widgets/UptimeWidget'
 import ActiveModuleWidget from '../widgets/ActiveModuleWidget'
+import { LAB_MODULES } from './registry'
+import { CASE_STUDIES } from '../portfolio/caseStudies'
 
-const MODULES = [
-  { id: 'home',    icon: '⬡', label: 'Lab Home' },
-  { id: 'exp-001', icon: '◈', label: 'UX Audit' },
-  { id: 'exp-002', icon: '◎', label: 'Brief Machine' },
-  { id: 'exp-003', icon: '▣', label: 'Session Replay' },
-  { id: 'exp-005', icon: '◉', label: 'SaaS Generator' },
-  { id: 'api-monitor', icon: '◬', label: 'API Monitor' },
-  { id: 'cv',          icon: '◫', label: 'CV' },
-]
+const READY_CASE_STUDIES = CASE_STUDIES.filter(cs => cs.status === 'READY')
 
-export default function Sidebar({ activeModule, navigateTo, moduleHistory }) {
+function NavItem({ to, icon, label, collapsed }) {
+  return (
+    <NavLink
+      to={to}
+      end
+      style={{ textDecoration: 'none' }}
+    >
+      {({ isActive }) =>
+        collapsed ? (
+          <button
+            title={label}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: isActive ? '#25e2cc' : '#4a7a94',
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 16,
+              cursor: 'pointer',
+              padding: '12px 0',
+              width: '100%',
+              textAlign: 'center',
+              transition: 'color 0.15s ease',
+            }}
+          >
+            {icon}
+          </button>
+        ) : (
+          <div
+            style={{
+              background: isActive ? 'rgba(37,226,204,0.06)' : 'none',
+              borderLeft: isActive ? '2px solid #25e2cc' : '2px solid transparent',
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 12,
+              padding: '10px 16px',
+              cursor: 'pointer',
+              transition: 'background 0.15s ease',
+            }}
+            onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = 'rgba(26,42,58,0.4)' }}
+            onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = 'none' }}
+          >
+            <span
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 14,
+                color: '#25e2cc',
+                lineHeight: 1,
+                width: 18,
+                textAlign: 'center',
+                flexShrink: 0,
+              }}
+            >
+              {icon}
+            </span>
+            <span
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: 13,
+                color: isActive ? '#e8f4f8' : '#7a9bb5',
+                transition: 'color 0.15s ease',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {label}
+            </span>
+          </div>
+        )
+      }
+    </NavLink>
+  )
+}
+
+function SectionHeader({ children }) {
+  return (
+    <div style={{ padding: '16px 16px 8px' }}>
+      <span
+        style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 9,
+          color: '#4a7a94',
+          letterSpacing: '0.12em',
+        }}
+      >
+        {children}
+      </span>
+    </div>
+  )
+}
+
+export default function Sidebar({ history }) {
   const [collapsed, setCollapsed] = useState(false)
 
   return (
@@ -24,6 +109,7 @@ export default function Sidebar({ activeModule, navigateTo, moduleHistory }) {
         minWidth: collapsed ? 52 : 260,
         transition: 'width 0.25s ease, min-width 0.25s ease',
         overflow: 'hidden',
+        overflowY: collapsed ? 'hidden' : 'auto',
         background: '#0d1220',
         borderRight: '1px solid #1a2a3a',
         display: 'flex',
@@ -51,32 +137,18 @@ export default function Sidebar({ activeModule, navigateTo, moduleHistory }) {
           >
             ▶
           </button>
-          {MODULES.map(m => (
-            <button
-              key={m.id}
-              onClick={() => navigateTo(m.id)}
-              title={m.label}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: activeModule === m.id ? '#25e2cc' : '#4a7a94',
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 16,
-                cursor: 'pointer',
-                padding: '12px 0',
-                width: '100%',
-                textAlign: 'center',
-                transition: 'color 0.15s ease',
-              }}
-            >
-              {m.icon}
-            </button>
+          <NavItem to="/" icon="⬡" label="Lab Home" collapsed />
+          {READY_CASE_STUDIES.map(cs => (
+            <NavItem key={cs.slug} to={`/portfolio/${cs.slug}`} icon={cs.icon} label={cs.title} collapsed />
+          ))}
+          {LAB_MODULES.map(m => (
+            <NavItem key={m.id} to={`/lab/${m.id}`} icon={m.icon} label={m.label} collapsed />
           ))}
         </>
       ) : (
         /* ── Expanded ── */
         <>
-          {/* Modules header */}
+          {/* Header */}
           <div
             style={{
               display: 'flex',
@@ -93,7 +165,7 @@ export default function Sidebar({ activeModule, navigateTo, moduleHistory }) {
                 letterSpacing: '0.12em',
               }}
             >
-              {'// MODULES'}
+              {'// NAVIGATION'}
             </span>
             <button
               onClick={() => setCollapsed(true)}
@@ -112,56 +184,20 @@ export default function Sidebar({ activeModule, navigateTo, moduleHistory }) {
             </button>
           </div>
 
-          {/* Module list */}
-          {MODULES.map(m => {
-            const isActive = activeModule === m.id
-            return (
-              <button
-                key={m.id}
-                onClick={() => navigateTo(m.id)}
-                style={{
-                  background: isActive ? 'rgba(37,226,204,0.06)' : 'none',
-                  border: 'none',
-                  borderLeft: isActive ? '2px solid #25e2cc' : '2px solid transparent',
-                  width: '100%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 12,
-                  padding: '10px 16px',
-                  cursor: 'pointer',
-                  textAlign: 'left',
-                  transition: 'background 0.15s ease',
-                }}
-                onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = 'rgba(26,42,58,0.4)' }}
-                onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = 'none' }}
-              >
-                <span
-                  style={{
-                    fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: 14,
-                    color: '#25e2cc',
-                    lineHeight: 1,
-                    width: 18,
-                    textAlign: 'center',
-                    flexShrink: 0,
-                  }}
-                >
-                  {m.icon}
-                </span>
-                <span
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: 13,
-                    color: isActive ? '#e8f4f8' : '#7a9bb5',
-                    transition: 'color 0.15s ease',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {m.label}
-                </span>
-              </button>
-            )
-          })}
+          <NavItem to="/" icon="⬡" label="Lab Home" />
+
+          {/* Portfolio section */}
+          <SectionHeader>{'// PORTFOLIO'}</SectionHeader>
+          <NavItem to="/portfolio" icon="◆" label="Tous les case studies" />
+          {READY_CASE_STUDIES.map(cs => (
+            <NavItem key={cs.slug} to={`/portfolio/${cs.slug}`} icon={cs.icon} label={cs.title} />
+          ))}
+
+          {/* Lab section */}
+          <SectionHeader>{'// LAB'}</SectionHeader>
+          {LAB_MODULES.map(m => (
+            <NavItem key={m.id} to={`/lab/${m.id}`} icon={m.icon} label={m.label} />
+          ))}
 
           {/* Separator */}
           <div style={{ height: 1, background: '#1a2a3a', margin: '8px 0' }} />
@@ -184,7 +220,7 @@ export default function Sidebar({ activeModule, navigateTo, moduleHistory }) {
           <ClockWidget />
           <WeatherWidget />
           <UptimeWidget />
-          <ActiveModuleWidget activeModule={activeModule} moduleHistory={moduleHistory} />
+          <ActiveModuleWidget history={history} />
         </>
       )}
     </div>

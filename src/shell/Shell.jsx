@@ -1,18 +1,26 @@
+import { useEffect, useRef, useState } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
 import Topbar from './Topbar'
 import Sidebar from './Sidebar'
-import ModuleZone from './ModuleZone'
 import Statusbar from './Statusbar'
+import { resolveRouteMeta } from './registry'
 
-export const MODULE_LABELS = {
-  home:      'LAB HOME',
-  'exp-001': 'UX AUDIT ENGINE',
-  'exp-002': 'BRIEF MACHINE',
-  'exp-003': 'SESSION REPLAY',
-  'exp-005': 'SAAS GENERATOR',
-}
+export default function Shell() {
+  const location = useLocation()
+  const meta = resolveRouteMeta(location.pathname)
+  const [history, setHistory] = useState([])
+  const prevPathname = useRef(null)
 
-export default function Shell({ activeModule, navigateTo, moduleHistory }) {
-  const moduleLabel = MODULE_LABELS[activeModule] ?? activeModule.toUpperCase()
+  useEffect(() => {
+    document.title = meta.label ? `${meta.label} — Michael Misran` : 'Michael Misran'
+  }, [meta.label])
+
+  useEffect(() => {
+    if (prevPathname.current && prevPathname.current !== location.pathname) {
+      setHistory(prev => [prevPathname.current, ...prev].slice(0, 3))
+    }
+    prevPathname.current = location.pathname
+  }, [location.pathname])
 
   return (
     <>
@@ -41,18 +49,16 @@ export default function Shell({ activeModule, navigateTo, moduleHistory }) {
           color: '#e8f4f8',
         }}
       >
-        <Topbar moduleLabel={moduleLabel} />
+        <Topbar moduleLabel={meta.label.toUpperCase()} />
 
         <div style={{ display: 'flex', overflow: 'hidden' }}>
-          <Sidebar
-            activeModule={activeModule}
-            navigateTo={navigateTo}
-            moduleHistory={moduleHistory}
-          />
-          <ModuleZone activeModule={activeModule} navigateTo={navigateTo} />
+          <Sidebar history={history} />
+          <div style={{ flex: 1, overflowY: 'auto', position: 'relative' }}>
+            <Outlet />
+          </div>
         </div>
 
-        <Statusbar activeModule={activeModule} moduleLabel={moduleLabel} />
+        <Statusbar moduleLabel={meta.label} />
       </div>
     </>
   )

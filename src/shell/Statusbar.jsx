@@ -1,14 +1,4 @@
-const MODULE_LABELS = {
-  home:      'Lab Home',
-  'exp-001': 'UX Audit Engine',
-  'exp-002': 'Brief Machine',
-  'exp-003': 'Session Replay',
-  'exp-005': 'SaaS Generator',
-}
-
-export default function Statusbar({ activeModule }) {
-  const label = MODULE_LABELS[activeModule] ?? activeModule
-
+export default function Statusbar({ moduleLabel }) {
   return (
     <div
       style={{
@@ -26,7 +16,7 @@ export default function Statusbar({ activeModule }) {
       }}
     >
       <span>MISRAN LABS v2.0.0 · LAB ENVIRONMENT</span>
-      <span>▸ {label}</span>
+      <span>▸ {moduleLabel}</span>
       <span>VERCEL · AUTO-DEPLOY · GITHUB</span>
     </div>
   )
