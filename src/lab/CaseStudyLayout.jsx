@@ -33,11 +33,10 @@ export default function CaseStudyLayout({ title, role, period, tools = [], phase
     <div
       style={{
         padding: isMobile ? 20 : 40,
-        overflowY: 'auto',
-        height: '100%',
         fontFamily: "'Inter', sans-serif",
         color: '#e8f4f8',
         maxWidth: 880,
+        margin: '0 auto',
       }}
     >
       <Link

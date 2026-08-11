@@ -9,7 +9,7 @@ export default function HomeModule() {
   const projects = visibleProjects()
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, overflowY: 'auto', height: '100%', fontFamily: "'Inter', sans-serif", color: '#e8f4f8' }}>
+    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "'Inter', sans-serif", color: '#e8f4f8' }}>
       <VisuallyHidden as="h1">Michael Misran — Product Designer & Lab</VisuallyHidden>
 
       <div style={{ marginBottom: 32 }}>

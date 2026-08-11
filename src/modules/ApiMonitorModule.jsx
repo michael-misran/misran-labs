@@ -275,8 +275,6 @@ export default function ApiMonitorModule() {
   return (
     <div style={{
       padding: 32,
-      overflowY: 'auto',
-      height: '100%',
       fontFamily: "'Inter', sans-serif",
       color: '#e8f4f8',
       display: 'flex',

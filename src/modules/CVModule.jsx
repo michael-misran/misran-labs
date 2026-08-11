@@ -7,8 +7,6 @@ export default function CVModule() {
     <div
       style={{
         padding: isMobile ? 20 : 40,
-        overflowY: 'auto',
-        height: '100%',
         fontFamily: "'Inter', sans-serif",
         color: '#e8f4f8',
       }}
