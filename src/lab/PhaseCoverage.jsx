@@ -57,6 +57,32 @@ export default function PhaseCoverage({ phases = {} }) {
           )
         })}
       </div>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginTop: 12 }}>
+        {Object.entries(STATUS).map(([key, s]) => (
+          <div key={key} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: '50%',
+                background: s.color,
+                flexShrink: 0,
+                opacity: key === 'skipped' ? 0.5 : 1,
+              }}
+            />
+            <span
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 10,
+                color: 'var(--muted)',
+              }}
+            >
+              {s.label}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

@@ -27,7 +27,7 @@ export const PROJECTS = [
   {
     slug: 'misran-labs-redesign',
     icon: '◆',
-    title: 'Transformer un lab technique en portfolio design',
+    title: 'Création du lab',
     summary: 'Comment et pourquoi ce site a été restructuré — documenté en direct.',
     status: 'READY',
     type: 'case-study',

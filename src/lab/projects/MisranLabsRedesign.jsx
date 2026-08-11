@@ -70,7 +70,7 @@ const ITERATION_FLOW = [
 export default function MisranLabsRedesign({ project }) {
   return (
     <CaseStudyLayout
-      title="Transformer un lab technique en portfolio design"
+      title="Création du lab"
       role="Product Designer & Développeur — seul sur le projet"
       period="Août 2026"
       tools={['React', 'React Router', 'SVG fait main']}

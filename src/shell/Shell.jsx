@@ -77,7 +77,7 @@ export default function Shell() {
             />
           )}
 
-          <main style={{ flex: 1, overflowY: 'auto', position: 'relative' }}>
+          <main style={{ flex: 1, minWidth: 0, overflowY: 'auto', overflowX: 'hidden', position: 'relative' }}>
             <Outlet />
           </main>
         </div>
