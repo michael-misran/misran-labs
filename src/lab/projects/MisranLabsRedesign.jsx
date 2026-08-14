@@ -85,11 +85,13 @@ export default function MisranLabsRedesign({ project }) {
     >
       <Section title="Contexte">
         <p>
-          Misran Labs était à l'origine un environnement de démonstration technique — une série de
-          modules (UX Audit, Brief Machine, Session Replay…) montrant des compétences de builder.
-          En me repositionnant pour une recherche d'emploi product designer, ce lab seul ne suffisait
-          plus : il manquait une preuve directe de raisonnement design (recherche, décisions,
-          arbitrages), pas seulement du code qui fonctionne.
+          Misran Labs est l'endroit où je regroupe les différents projets que je développe, documentés
+          avec la même exigence à chaque fois : les étapes suivies, les réflexions et les doutes en
+          cours de route, et les chiffres quand il y en a — pas seulement le résultat fini une fois
+          poli. À l'origine, c'était un environnement de démonstration technique — une série de modules
+          montrant des compétences de builder. En me repositionnant pour une recherche d'emploi product
+          designer, ce lab seul ne suffisait plus : il manquait une preuve directe de raisonnement
+          design (recherche, décisions, arbitrages), pas seulement du code qui fonctionne.
         </p>
       </Section>
 
