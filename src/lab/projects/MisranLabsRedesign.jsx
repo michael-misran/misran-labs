@@ -57,14 +57,14 @@ const SITE_V3 = {
 }
 
 const DECISION_FLOW = [
-  { label: 'Constat', sublabel: 'Recherche de poste product designer, besoin de preuves concrètes' },
+  { label: 'Constat', sublabel: 'Le Lab doit pouvoir montrer des projets vendables, pas seulement des expérimentations techniques' },
   { label: 'Option écartée', sublabel: 'Tout supprimer et repartir sur un portfolio générique' },
   { label: 'Décision v2', sublabel: 'Garder le Lab (preuve builder) + Portfolio en premier plan, en deux sections séparées' },
 ]
 
 const ITERATION_FLOW = [
   { label: 'Remise en question', sublabel: 'Le split Portfolio/Lab segmente par audience, pas par réalité — tout est un projet du lab, y compris ce site' },
-  { label: 'Risque identifié', sublabel: 'Ne pas casser la lisibilité pour un recruteur pressé qui cherche la preuve design en premier' },
+  { label: 'Risque identifié', sublabel: 'Ne pas casser la lisibilité pour un visiteur pressé qui cherche la preuve de valeur en premier' },
   { label: 'Décision v3', sublabel: 'Un seul espace « projets », un champ type (case-study / tool) plutôt qu\'une IA séparée, featured pour la mise en avant' },
 ]
 
@@ -94,13 +94,13 @@ export default function MisranLabsRedesign({ project }) {
 
       <Section title="Problème">
         <p>
-          Un des premiers projets à passer par ce format a été la refonte de ce site lui-même,
-          déclenchée par le début d'une recherche de poste product designer : le Lab seul, avec ses
-          modules techniques, ne suffisait plus à montrer un raisonnement design (recherche, décisions,
-          arbitrages) — pas seulement du code qui fonctionne. Comment intégrer un vrai portfolio de
-          case studies sans perdre ce que le Lab démontrait déjà (capacité à livrer, à coder, à itérer
-          vite) ? Deux options s'opposaient : tout remplacer par un portfolio classique, ou superposer
-          les deux sans hiérarchie claire — au risque de noyer le message.
+          Un des premiers projets à passer par ce format a été la refonte de ce site lui-même : le Lab
+          seul, avec ses modules techniques, ne suffisait plus à présenter des projets vendables — il
+          manquait le raisonnement produit et design derrière chaque décision (recherche, arbitrages),
+          pas seulement du code qui fonctionne. Comment intégrer un vrai portfolio de case studies sans
+          perdre ce que le Lab démontrait déjà (capacité à livrer, à coder, à itérer vite) ? Deux
+          options s'opposaient : tout remplacer par un portfolio classique, ou superposer les deux sans
+          hiérarchie claire — au risque de noyer le message.
         </p>
       </Section>
 
@@ -159,7 +159,7 @@ export default function MisranLabsRedesign({ project }) {
       <Section title="Contrainte technique découverte en cours de route">
         <p>
           La navigation reposait uniquement sur un state React local (aucune URL réelle par module).
-          Or un portfolio destiné à des recruteurs a besoin de liens partageables et persistants après
+          Or un portfolio de projets vendables a besoin de liens partageables et persistants après
           un rafraîchissement de page. <code>react-router-dom</code> était déjà présente comme
           dépendance mais jamais branchée — je l'ai activée pour donner une URL propre à chaque page
           (<code>/lab/:slug</code>) plutôt que de recoder une solution maison.
