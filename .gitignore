@@ -5,3 +5,6 @@ dist/
 
 # Local only - Figma DS Reader
 src/modules/FigmaDSReader/
+
+# Local working files (may contain personal info, not site source)
+/ressources/
