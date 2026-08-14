@@ -1,10 +1,6 @@
 import MisranLabsRedesign from './projects/MisranLabsRedesign'
 import ToolProcessTemplate from './ToolProcessTemplate'
-import UXAuditEngine from '../experiences/UXAuditEngine'
-import ProductBriefMachine from '../experiences/ProductBriefMachine'
 import SessionReplay from '../experiences/SessionReplay'
-import MicroSaaSGenerator from '../experiences/MicroSaaSGenerator'
-import ApiMonitorModule from '../modules/ApiMonitorModule'
 import CVModule from '../modules/CVModule'
 
 // Statut honnête par étape : 'done' | 'partial' | 'skipped'.
@@ -59,32 +55,6 @@ export const PROJECTS = [
     component: null,
   },
   {
-    slug: 'exp-001',
-    icon: '◈',
-    title: 'UX Audit Engine',
-    summary: 'Upload screenshot → audit structuré en streaming',
-    status: 'READY',
-    type: 'tool',
-    featured: false,
-    tags: ['React', 'FileReader', 'Streaming'],
-    phases: QUICK_LAB_PHASES,
-    component: ToolProcessTemplate,
-    demoComponent: UXAuditEngine,
-  },
-  {
-    slug: 'exp-002',
-    icon: '◎',
-    title: 'Brief Machine',
-    summary: 'Une phrase → brief produit complet en 30 secondes',
-    status: 'READY',
-    type: 'tool',
-    featured: false,
-    tags: ['React', 'Simulation'],
-    phases: QUICK_LAB_PHASES,
-    component: ToolProcessTemplate,
-    demoComponent: ProductBriefMachine,
-  },
-  {
     slug: 'exp-003',
     icon: '▣',
     title: 'Session Replay',
@@ -96,32 +66,6 @@ export const PROJECTS = [
     phases: QUICK_LAB_PHASES,
     component: ToolProcessTemplate,
     demoComponent: SessionReplay,
-  },
-  {
-    slug: 'exp-005',
-    icon: '◉',
-    title: 'SaaS Generator',
-    summary: 'Une phrase → landing page SaaS rendue en iframe',
-    status: 'READY',
-    type: 'tool',
-    featured: false,
-    tags: ['iframe', 'Streaming', 'HTML'],
-    phases: QUICK_LAB_PHASES,
-    component: ToolProcessTemplate,
-    demoComponent: MicroSaaSGenerator,
-  },
-  {
-    slug: 'api-monitor',
-    icon: '◬',
-    title: 'API Cost Monitor',
-    summary: 'Monitoring tokens · coûts · alertes budget',
-    status: 'READY',
-    type: 'tool',
-    featured: false,
-    tags: ['Simulation', 'Anthropic API', 'Budget'],
-    phases: QUICK_LAB_PHASES,
-    component: ToolProcessTemplate,
-    demoComponent: ApiMonitorModule,
   },
   {
     slug: 'cv',
