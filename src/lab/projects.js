@@ -30,7 +30,7 @@ export const PROJECTS = [
     featured: true,
     tags: ['IA', 'Decision-making', 'React'],
     phases: {
-      business: 'partial',
+      business: 'skipped',
       research: 'skipped',
       design: 'done',
       validation: 'partial',
