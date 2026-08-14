@@ -88,19 +88,19 @@ export default function MisranLabsRedesign({ project }) {
           Misran Labs est l'endroit où je regroupe les différents projets que je développe, documentés
           avec la même exigence à chaque fois : les étapes suivies, les réflexions et les doutes en
           cours de route, et les chiffres quand il y en a — pas seulement le résultat fini une fois
-          poli. À l'origine, c'était un environnement de démonstration technique — une série de modules
-          montrant des compétences de builder. En me repositionnant pour une recherche d'emploi product
-          designer, ce lab seul ne suffisait plus : il manquait une preuve directe de raisonnement
-          design (recherche, décisions, arbitrages), pas seulement du code qui fonctionne.
+          poli.
         </p>
       </Section>
 
       <Section title="Problème">
         <p>
-          Comment intégrer un vrai portfolio de case studies sans perdre ce que le Lab démontrait déjà
-          (capacité à livrer, à coder, à itérer vite) ? Deux options s'opposaient : tout remplacer par
-          un portfolio classique, ou superposer les deux sans hiérarchie claire — au risque de noyer le
-          message.
+          Un des premiers projets à passer par ce format a été la refonte de ce site lui-même,
+          déclenchée par le début d'une recherche de poste product designer : le Lab seul, avec ses
+          modules techniques, ne suffisait plus à montrer un raisonnement design (recherche, décisions,
+          arbitrages) — pas seulement du code qui fonctionne. Comment intégrer un vrai portfolio de
+          case studies sans perdre ce que le Lab démontrait déjà (capacité à livrer, à coder, à itérer
+          vite) ? Deux options s'opposaient : tout remplacer par un portfolio classique, ou superposer
+          les deux sans hiérarchie claire — au risque de noyer le message.
         </p>
       </Section>
 
