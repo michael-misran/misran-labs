@@ -4,6 +4,15 @@ const NODE_W = 168
 const NODE_H = 28
 const COL_W = 260
 const TOP_PAD = 36
+const CHAR_W = 8
+const NODE_PAD = 20
+const COL_PAD = 16
+
+function nodeWidth(label, depth) {
+  const base = NODE_W - depth * INDENT
+  const fitted = label.length * CHAR_W + NODE_PAD
+  return Math.max(base, fitted)
+}
 
 function flatten(node, depth, rows) {
   const row = rows.length
@@ -13,6 +22,11 @@ function flatten(node, depth, rows) {
     flatten(child, depth + 1, rows)
   })
   return parentRow
+}
+
+function maxColWidth(rows) {
+  const widest = Math.max(0, ...rows.map(r => r.depth * INDENT + nodeWidth(r.label, r.depth)))
+  return Math.max(COL_W, widest + COL_PAD * 2)
 }
 
 function Column({ tree, x, title, accent }) {
@@ -47,6 +61,7 @@ function Column({ tree, x, title, accent }) {
       {rows.map(r => {
         const nx = x + r.depth * INDENT
         const ny = TOP_PAD + r.row * ROW_H
+        const w = nodeWidth(r.label, r.depth)
 
         const parentRow = parentOf[r.row]
         const parent = parentRow !== undefined ? byRow[parentRow] : null
@@ -64,7 +79,7 @@ function Column({ tree, x, title, accent }) {
             <rect
               x={nx}
               y={ny}
-              width={NODE_W - r.depth * INDENT}
+              width={w}
               height={NODE_H}
               rx={4}
               fill="var(--bg2)"
@@ -96,16 +111,18 @@ export default function SiteMapDiagram({ before, after }) {
 
   const maxRows = Math.max(beforeRows.length, afterRows.length)
   const height = TOP_PAD + maxRows * ROW_H + 8
-  const width = COL_W * 2
+
+  const colW = Math.max(maxColWidth(beforeRows), maxColWidth(afterRows))
+  const width = colW * 2
 
   return (
     <svg
       viewBox={`0 0 ${width} ${height}`}
       style={{ width: '100%', maxWidth: width, height: 'auto', display: 'block' }}
     >
-      <line x1={COL_W} y1={0} x2={COL_W} y2={height} stroke="var(--border)" strokeWidth={1} />
-      <Column tree={before} x={16} title="AVANT" accent="var(--warning)" />
-      <Column tree={after} x={COL_W + 16} title="APRÈS" accent="var(--teal)" />
+      <line x1={colW} y1={0} x2={colW} y2={height} stroke="var(--border)" strokeWidth={1} />
+      <Column tree={before} x={COL_PAD} title="AVANT" accent="var(--warning)" />
+      <Column tree={after} x={colW + COL_PAD} title="APRÈS" accent="var(--teal)" />
     </svg>
   )
 }
