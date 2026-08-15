@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import useIsMobile from '../shell/useIsMobile'
 import PhaseCoverage from './PhaseCoverage'
+import { useLanguage } from '../shell/LanguageContext'
+import { t } from '../i18n/ui'
 
 export function Section({ title, children }) {
   return (
@@ -28,6 +30,7 @@ export function Section({ title, children }) {
 
 export default function CaseStudyLayout({ title, role, period, tools = [], phases, children }) {
   const isMobile = useIsMobile()
+  const { lang } = useLanguage()
 
   return (
     <div
@@ -50,7 +53,7 @@ export default function CaseStudyLayout({ title, role, period, tools = [], phase
           marginBottom: 24,
         }}
       >
-        {'← Lab'}
+        {t(lang, 'backToLab')}
       </Link>
 
       <h1
@@ -68,23 +71,23 @@ export default function CaseStudyLayout({ title, role, period, tools = [], phase
       <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', marginBottom: 32 }}>
         {role && (
           <div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.1em', marginBottom: 4 }}>RÔLE</div>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.1em', marginBottom: 4 }}>{t(lang, 'role')}</div>
             <div style={{ fontSize: 13, color: 'var(--text)' }}>{role}</div>
           </div>
         )}
         {period && (
           <div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.1em', marginBottom: 4 }}>PÉRIODE</div>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.1em', marginBottom: 4 }}>{t(lang, 'period')}</div>
             <div style={{ fontSize: 13, color: 'var(--text)' }}>{period}</div>
           </div>
         )}
         {tools.length > 0 && (
           <div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.1em', marginBottom: 4 }}>OUTILS</div>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.1em', marginBottom: 4 }}>{t(lang, 'tools')}</div>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-              {tools.map(t => (
+              {tools.map(tool => (
                 <span
-                  key={t}
+                  key={tool}
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: 10,
@@ -95,7 +98,7 @@ export default function CaseStudyLayout({ title, role, period, tools = [], phase
                     padding: '2px 8px',
                   }}
                 >
-                  {t}
+                  {tool}
                 </span>
               ))}
             </div>

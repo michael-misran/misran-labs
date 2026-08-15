@@ -1,6 +1,12 @@
 import { PHASES, STATUS } from './phases'
+import { useLanguage } from '../shell/LanguageContext'
+import { t } from '../i18n/ui'
 
 export default function PhaseCoverage({ phases = {} }) {
+  const { lang } = useLanguage()
+  const phaseList = PHASES[lang] ?? PHASES.fr
+  const statusMap = STATUS[lang] ?? STATUS.fr
+
   return (
     <div style={{ marginBottom: 32 }}>
       <div
@@ -12,13 +18,13 @@ export default function PhaseCoverage({ phases = {} }) {
           marginBottom: 10,
         }}
       >
-        {'// COUVERTURE DU PROCESS'}
+        {t(lang, 'processCoverage')}
       </div>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-        {PHASES.map(phase => {
+        {phaseList.map(phase => {
           const status = phases[phase.id] ?? 'skipped'
-          const s = STATUS[status]
+          const s = statusMap[status]
 
           return (
             <div
@@ -59,7 +65,7 @@ export default function PhaseCoverage({ phases = {} }) {
       </div>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginTop: 12 }}>
-        {Object.entries(STATUS).map(([key, s]) => (
+        {Object.entries(statusMap).map(([key, s]) => (
           <div key={key} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <span
               style={{

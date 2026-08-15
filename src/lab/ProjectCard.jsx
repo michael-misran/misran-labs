@@ -1,8 +1,13 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { pt } from './projects'
+import { useLanguage } from '../shell/LanguageContext'
+import { t } from '../i18n/ui'
 
 export default function ProjectCard({ project }) {
   const [hovered, setHovered] = useState(false)
+  const { lang } = useLanguage()
+  const { title, summary, tags } = pt(project, lang)
 
   return (
     <Link to={`/lab/${project.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -39,22 +44,22 @@ export default function ProjectCard({ project }) {
                 letterSpacing: '0.1em',
               }}
             >
-              CASE STUDY
+              {t(lang, 'caseStudy')}
             </span>
           )}
         </div>
 
         <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 16, fontWeight: 600, color: 'var(--text)', margin: 0, lineHeight: 1.3 }}>
-          {project.title}
+          {title}
         </h3>
 
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: 'var(--text2)', margin: 0, lineHeight: 1.6, flex: 1 }}>
-          {project.summary}
+          {summary}
         </p>
 
-        {project.tags.length > 0 && (
+        {tags.length > 0 && (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-            {project.tags.map(tag => (
+            {tags.map(tag => (
               <span
                 key={tag}
                 style={{

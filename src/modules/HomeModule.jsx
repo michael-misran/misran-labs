@@ -1,11 +1,13 @@
-import { Link } from 'react-router-dom'
 import { visibleProjects } from '../lab/projects'
 import VisuallyHidden from '../components/VisuallyHidden'
 import useIsMobile from '../shell/useIsMobile'
 import ProjectCard from '../lab/ProjectCard'
+import { useLanguage } from '../shell/LanguageContext'
+import { t } from '../i18n/ui'
 
 export default function HomeModule() {
   const isMobile = useIsMobile()
+  const { lang } = useLanguage()
   const projects = visibleProjects()
 
   return (
@@ -23,12 +25,12 @@ export default function HomeModule() {
               whiteSpace: 'nowrap',
             }}
           >
-            {'// LAB'}
+            {t(lang, 'lab')}
           </span>
           <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
         </div>
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: 'var(--text2)' }}>
-          {projects.length} projets · Misran Labs v2.0.0
+          {t(lang, 'projectsCount', projects.length)}
         </p>
       </div>
 

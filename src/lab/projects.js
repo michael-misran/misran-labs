@@ -23,12 +23,15 @@ export const PROJECTS = [
   {
     slug: 'misran-labs-redesign',
     icon: '◆',
-    title: 'Création du lab',
-    summary: 'Comment et pourquoi ce site a été restructuré — documenté en direct.',
+    title: { fr: 'Création du lab', en: 'Building the lab' },
+    summary: {
+      fr: 'Comment et pourquoi ce site a été restructuré — documenté en direct.',
+      en: 'How and why this site was restructured — documented live.',
+    },
     status: 'READY',
     type: 'case-study',
     featured: true,
-    tags: ['IA', 'Decision-making', 'React'],
+    tags: { fr: ['IA', 'Decision-making', 'React'], en: ['AI', 'Decision-making', 'React'] },
     phases: {
       business: 'skipped',
       research: 'skipped',
@@ -45,24 +48,30 @@ export const PROJECTS = [
   {
     slug: 'a-completer-1',
     icon: '◇',
-    title: '[À COMPLÉTER]',
-    summary: 'Prochain projet — contenu à fournir.',
+    title: { fr: '[À COMPLÉTER]', en: '[TO COMPLETE]' },
+    summary: {
+      fr: 'Prochain projet — contenu à fournir.',
+      en: 'Next project — content to be added.',
+    },
     status: 'PLACEHOLDER',
     type: 'case-study',
     featured: false,
-    tags: [],
+    tags: { fr: [], en: [] },
     phases: {},
     component: null,
   },
   {
     slug: 'exp-003',
     icon: '▣',
-    title: 'Session Replay',
-    summary: 'Sessions de build documentées avec logs complets',
+    title: { fr: 'Session Replay', en: 'Session Replay' },
+    summary: {
+      fr: 'Sessions de build documentées avec logs complets',
+      en: 'Build sessions documented with full logs',
+    },
     status: 'READY',
     type: 'tool',
     featured: false,
-    tags: ['React', 'Accordéon', 'iframe'],
+    tags: { fr: ['React', 'Accordéon', 'iframe'], en: ['React', 'Accordion', 'iframe'] },
     phases: QUICK_LAB_PHASES,
     component: ToolProcessTemplate,
     demoComponent: SessionReplay,
@@ -70,12 +79,15 @@ export const PROJECTS = [
   {
     slug: 'cv',
     icon: '◫',
-    title: 'CV',
-    summary: 'Parcours et compétences',
+    title: { fr: 'CV', en: 'Resume' },
+    summary: {
+      fr: 'Parcours et compétences',
+      en: 'Background and skills',
+    },
     status: 'READY',
     type: 'tool',
     featured: false,
-    tags: ['Profil'],
+    tags: { fr: ['Profil'], en: ['Profile'] },
     phases: { ...QUICK_LAB_PHASES, launch: 'done' },
     component: CVModule,
   },
@@ -88,4 +100,12 @@ export function getProject(slug) {
 export function visibleProjects() {
   return PROJECTS.filter(p => p.status !== 'PLACEHOLDER')
     .sort((a, b) => (b.featured === true) - (a.featured === true))
+}
+
+export function pt(project, lang) {
+  return {
+    title: project.title[lang] ?? project.title.fr,
+    summary: project.summary[lang] ?? project.summary.fr,
+    tags: project.tags[lang] ?? project.tags.fr,
+  }
 }

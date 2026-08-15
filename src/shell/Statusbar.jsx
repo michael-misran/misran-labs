@@ -1,4 +1,9 @@
+import { useLanguage } from './LanguageContext'
+import { t } from '../i18n/ui'
+
 export default function Statusbar({ moduleLabel, isMobile }) {
+  const { lang } = useLanguage()
+
   return (
     <footer
       style={{
@@ -21,9 +26,9 @@ export default function Statusbar({ moduleLabel, isMobile }) {
         <span>▸ {moduleLabel}</span>
       ) : (
         <>
-          <span>MISRAN LABS v2.0.0 · LAB ENVIRONMENT</span>
+          <span>{t(lang, 'statusbarBrand')}</span>
           <span>▸ {moduleLabel}</span>
-          <span>VERCEL · AUTO-DEPLOY · GITHUB</span>
+          <span>{t(lang, 'statusbarDeploy')}</span>
         </>
       )}
     </footer>

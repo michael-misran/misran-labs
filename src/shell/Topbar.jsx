@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { useLanguage } from './LanguageContext'
+import { t } from '../i18n/ui'
 
 function pad(n) { return String(n).padStart(2, '0') }
 
@@ -14,9 +16,34 @@ function getDateStr() {
   return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`
 }
 
+function LanguageToggle({ lang, onToggle }) {
+  return (
+    <button
+      onClick={onToggle}
+      aria-label={lang === 'fr' ? 'Switch to English' : 'Passer en français'}
+      title={lang === 'fr' ? 'Switch to English' : 'Passer en français'}
+      style={{
+        background: 'none',
+        border: '1px solid var(--border)',
+        borderRadius: 3,
+        color: 'var(--text2)',
+        fontFamily: "'JetBrains Mono', monospace",
+        fontSize: 10,
+        letterSpacing: '0.08em',
+        cursor: 'pointer',
+        padding: '2px 7px',
+        lineHeight: 1.4,
+      }}
+    >
+      {lang.toUpperCase()}
+    </button>
+  )
+}
+
 export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav, isLight, onToggleTheme }) {
   const [time, setTime] = useState(getTimeStr)
   const [date] = useState(getDateStr)
+  const { lang, toggle: toggleLang } = useLanguage()
 
   useEffect(() => {
     const iv = setInterval(() => setTime(getTimeStr()), 1000)
@@ -43,7 +70,7 @@ export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav, isLig
         {isMobile && (
           <button
             onClick={onToggleMobileNav}
-            aria-label="Ouvrir la navigation"
+            aria-label={t(lang, 'openNav')}
             style={{
               background: 'none',
               border: 'none',
@@ -95,21 +122,24 @@ export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav, isLig
       </div>
 
       {isMobile && (
-        <button
-          onClick={onToggleTheme}
-          aria-label={isLight ? 'Passer en mode sombre' : 'Passer en mode clair'}
-          style={{
-            background: 'none',
-            border: 'none',
-            color: 'var(--text2)',
-            fontSize: 15,
-            cursor: 'pointer',
-            padding: 4,
-            lineHeight: 1,
-          }}
-        >
-          {isLight ? '☾' : '☀'}
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <LanguageToggle lang={lang} onToggle={toggleLang} />
+          <button
+            onClick={onToggleTheme}
+            aria-label={isLight ? t(lang, 'themeToDark') : t(lang, 'themeToLight')}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--text2)',
+              fontSize: 15,
+              cursor: 'pointer',
+              padding: 4,
+              lineHeight: 1,
+            }}
+          >
+            {isLight ? '☾' : '☀'}
+          </button>
+        </div>
       )}
 
       {!isMobile && (
@@ -163,11 +193,12 @@ export default function Topbar({ moduleLabel, isMobile, onToggleMobileNav, isLig
                 ONLINE
               </span>
             </div>
+            <LanguageToggle lang={lang} onToggle={toggleLang} />
             <span style={{ width: 1, height: 16, background: 'var(--border)', display: 'inline-block' }} />
             <button
               onClick={onToggleTheme}
-              aria-label={isLight ? 'Passer en mode sombre' : 'Passer en mode clair'}
-              title={isLight ? 'Mode sombre' : 'Mode clair'}
+              aria-label={isLight ? t(lang, 'themeToDark') : t(lang, 'themeToLight')}
+              title={isLight ? t(lang, 'themeToDark') : t(lang, 'themeToLight')}
               style={{
                 background: 'none',
                 border: 'none',

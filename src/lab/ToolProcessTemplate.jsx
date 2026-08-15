@@ -1,28 +1,30 @@
 import { Link } from 'react-router-dom'
 import CaseStudyLayout, { Section } from './CaseStudyLayout'
+import { pt } from './projects'
+import { useLanguage } from '../shell/LanguageContext'
+import { t } from '../i18n/ui'
 
 export default function ToolProcessTemplate({ project }) {
+  const { lang } = useLanguage()
+  const { title, summary, tags } = pt(project, lang)
+
   return (
     <CaseStudyLayout
-      title={project.title}
-      role="Solo — exploration lab"
-      tools={project.tags}
+      title={title}
+      role={t(lang, 'soloExploration')}
+      tools={tags}
       phases={project.phases}
     >
-      <Section title="Contexte">
-        <p>{project.summary}</p>
+      <Section title={t(lang, 'context')}>
+        <p>{summary}</p>
       </Section>
 
-      <Section title="Process">
-        <p>
-          Exploration rapide en solo, sans process formalisé au-delà des étapes marquées ci-dessus —
-          voir la carte de couverture pour le détail de ce qui a été fait, partiel, ou volontairement
-          non applicable sur ce projet.
-        </p>
+      <Section title={t(lang, 'process')}>
+        <p>{t(lang, 'soloExplorationBody')}</p>
       </Section>
 
       {project.demoComponent && (
-        <Section title="Résultat">
+        <Section title={t(lang, 'result')}>
           <Link
             to={`/lab/${project.slug}/demo`}
             style={{
@@ -32,7 +34,7 @@ export default function ToolProcessTemplate({ project }) {
               textDecoration: 'none',
             }}
           >
-            {'Voir la démo →'}
+            {t(lang, 'seeDemo')}
           </Link>
         </Section>
       )}

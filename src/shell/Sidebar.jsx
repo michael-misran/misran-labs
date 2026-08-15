@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { visibleProjects } from '../lab/projects'
+import { visibleProjects, pt } from '../lab/projects'
+import { useLanguage } from './LanguageContext'
+import { t } from '../i18n/ui'
 
 const PROJECTS = visibleProjects()
 
@@ -77,6 +79,7 @@ function NavItem({ to, icon, label, collapsed }) {
 
 export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
   const [collapsed, setCollapsed] = useState(false)
+  const { lang } = useLanguage()
 
   const mobileStyle = {
     position: 'absolute',
@@ -99,16 +102,16 @@ export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
 
   const navList = (collapsed) => (
     <>
-      <NavItem to="/" icon="⬡" label="Lab Home" collapsed={collapsed} />
+      <NavItem to="/" icon="⬡" label={t(lang, 'labHome')} collapsed={collapsed} />
       {PROJECTS.map(p => (
-        <NavItem key={p.slug} to={`/lab/${p.slug}`} icon={p.icon} label={p.title} collapsed={collapsed} />
+        <NavItem key={p.slug} to={`/lab/${p.slug}`} icon={p.icon} label={pt(p, lang).title} collapsed={collapsed} />
       ))}
     </>
   )
 
   return (
     <nav
-      aria-label="Navigation principale"
+      aria-label={t(lang, 'navAria')}
       style={{
         ...(isMobile ? mobileStyle : desktopStyle),
         overflow: 'hidden',
@@ -124,11 +127,11 @@ export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
         <>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 16px 8px' }}>
             <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.12em' }}>
-              {'// LAB'}
+              {t(lang, 'lab')}
             </span>
             <button
               onClick={onCloseMobile}
-              aria-label="Fermer la navigation"
+              aria-label={t(lang, 'closeNav')}
               style={{ background: 'none', border: 'none', color: 'var(--muted)', fontSize: 16, cursor: 'pointer', padding: '2px 4px', lineHeight: 1 }}
             >
               ✕
@@ -161,7 +164,7 @@ export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
         <>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 16px 8px' }}>
             <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: 'var(--muted)', letterSpacing: '0.12em' }}>
-              {'// LAB'}
+              {t(lang, 'lab')}
             </span>
             <button
               onClick={() => setCollapsed(true)}

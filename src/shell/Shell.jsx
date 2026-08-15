@@ -6,10 +6,12 @@ import Statusbar from './Statusbar'
 import { resolveRouteMeta } from './registry'
 import useIsMobile from './useIsMobile'
 import useTheme from './useTheme'
+import { useLanguage } from './LanguageContext'
 
 export default function Shell() {
   const location = useLocation()
-  const meta = resolveRouteMeta(location.pathname)
+  const { lang } = useLanguage()
+  const meta = resolveRouteMeta(location.pathname, lang)
   const isMobile = useIsMobile()
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const { isLight, toggle: toggleTheme } = useTheme()
