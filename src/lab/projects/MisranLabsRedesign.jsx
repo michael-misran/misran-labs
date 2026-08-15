@@ -58,11 +58,11 @@ export default function MisranLabsRedesign({ project }) {
     >
       <Section title="Contexte">
         <p>
-          Misran Labs repart de zéro aujourd'hui. Ce qu'il y avait avant n'a pas d'importance — ce qui
-          compte, c'est ce qui va être construit à partir de maintenant : un roman, un jeu vidéo, une
-          application, ou autre chose encore. Chaque projet qui passera par ce lab sera documenté avec
-          la même exigence : les étapes suivies, les réflexions et les doutes en cours de route, et les
-          chiffres quand il y en a — pas seulement le résultat fini une fois poli.
+          Misran Labs c'est un laboratoire d'expérimentation. Ce qui compte, c'est ce qui va être
+          construit et comment je vais le construire : un roman, un jeu vidéo, une application, ou
+          autre chose encore. Chaque projet qui passera par ce lab sera documenté avec la même
+          exigence : les étapes suivies, les réflexions et les doutes en cours de route, et les
+          chiffres quand il y en a.
         </p>
       </Section>
 
