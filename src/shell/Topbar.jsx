@@ -35,7 +35,7 @@ function LanguageToggle({ lang, onToggle }) {
         lineHeight: 1.4,
       }}
     >
-      {lang.toUpperCase()}
+      {lang === 'fr' ? 'EN' : 'FR'}
     </button>
   )
 }
