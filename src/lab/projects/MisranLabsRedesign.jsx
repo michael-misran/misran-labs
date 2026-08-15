@@ -1,4 +1,5 @@
 import CaseStudyLayout, { Section } from '../CaseStudyLayout'
+import FlowDiagram from '../../components/diagrams/FlowDiagram'
 import { useLanguage } from '../../shell/LanguageContext'
 
 function MethodStep({ n, title, children }) {
@@ -47,6 +48,13 @@ const CONTENT = {
         ],
       },
     ],
+    planningTitle: 'Itération — anticiper trop tôt',
+    planningIntro: "Une réflexion sur une architecture pluridisciplinaire (roman, jeu vidéo, application, outil système) avec filtres par statut et par domaine, badges système en direct, et une nouvelle trame de fiche projet en 6 étapes. Après relecture : la structure est dimensionnée pour 8+ projets alors qu'il y en a 3 aujourd'hui, elle introduit une troisième trame concurrente alors que la Méthode ci-dessus en propose déjà une, et les badges système en direct réintroduisent exactement la décoration retirée plus tôt (horloge, météo, uptime).",
+    planningFlow: [
+      { label: 'Constat', sublabel: 'Besoin d\'une architecture capable d\'accueillir des projets de nature très différente (roman, jeu vidéo, appli, outil), avec filtres par statut et par domaine' },
+      { label: 'Risque identifié', sublabel: 'Dimensionnée pour 8+ projets alors qu\'il y en a 3 ; une troisième trame de fiche projet concurrence la Méthode déjà publiée ; les badges système réintroduisent la décoration déjà retirée' },
+      { label: 'Décision', sublabel: 'Pas de filtres ni de dashboard pour l\'instant — la sidebar reste plate jusqu\'à avoir assez de projets réels. Une seule trame de référence : les 5 étapes de Méthode déjà publiées' },
+    ],
   },
   en: {
     title: 'Building the lab',
@@ -69,6 +77,13 @@ const CONTENT = {
           { label: 'If the hypothesis is refuted: ', text: 'The experiment shows the original idea was wrong or incomplete. The hypothesis is adjusted or reformulated, and the loop restarts at step 2.' },
         ],
       },
+    ],
+    planningTitle: 'Iteration — planning too far ahead',
+    planningIntro: "A reflection on a multi-disciplinary architecture (novel, video game, web app, system tool) with status and domain filters, live system badges, and a new 6-step project template. On review: the structure is sized for 8+ projects when there are only 3 today, it introduces a third, competing template when the Method above already provides one, and the live system badges bring back exactly the kind of decoration removed earlier (clock, weather, uptime).",
+    planningFlow: [
+      { label: 'Observation', sublabel: 'Need for an architecture able to hold very different kinds of projects (novel, video game, app, tool), with filters by status and by domain' },
+      { label: 'Risk identified', sublabel: 'Sized for 8+ projects when there are only 3; a third project template competes with the Method already published; system badges bring back decoration already removed' },
+      { label: 'Decision', sublabel: 'No filters or dashboard for now — the sidebar stays flat until there are enough real projects. One reference template: the 5 Method steps already published' },
     ],
   },
 }
@@ -110,6 +125,11 @@ export default function MisranLabsRedesign({ project }) {
             </MethodStep>
           ))}
         </ol>
+      </Section>
+
+      <Section title={c.planningTitle}>
+        <p style={{ marginBottom: 16 }}>{c.planningIntro}</p>
+        <FlowDiagram steps={c.planningFlow} direction="vertical" />
       </Section>
     </CaseStudyLayout>
   )
