@@ -28,9 +28,9 @@ export default function ToolProcessTemplate({ project }) {
           <Link
             to={`/lab/${project.slug}/demo`}
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "var(--font-mono)",
               fontSize: 12,
-              color: 'var(--teal)',
+              color: 'var(--primary)',
               textDecoration: 'none',
             }}
           >

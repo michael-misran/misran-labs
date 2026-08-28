@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import Topbar from './Topbar'
 import Sidebar from './Sidebar'
 import Statusbar from './Statusbar'
+import SecondarySidebar from '../design-system/SecondarySidebar'
+import { SecondarySidebarContext } from './SecondarySidebarContext'
 import { resolveRouteMeta } from './registry'
 import useIsMobile from './useIsMobile'
 import useTheme from './useTheme'
 import { useLanguage } from './LanguageContext'
+import { t } from '../i18n/ui'
 
 export default function Shell() {
   const location = useLocation()
@@ -15,6 +17,7 @@ export default function Shell() {
   const isMobile = useIsMobile()
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const { isLight, toggle: toggleTheme } = useTheme()
+  const [secondaryNav, setSecondaryNav] = useState(null)
 
   useEffect(() => {
     document.title = meta.label ? `${meta.label} — Michael Misran` : 'Michael Misran'
@@ -31,7 +34,7 @@ export default function Shell() {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body, #root { height: 100%; overflow: hidden; background: var(--bg); }
         a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
-          outline: 2px solid var(--teal);
+          outline: 2px solid var(--primary);
           outline-offset: 2px;
           border-radius: 2px;
         }
@@ -40,36 +43,63 @@ export default function Shell() {
           0%, 100% { opacity: 1; transform: scale(1); }
           50% { opacity: 0.4; transform: scale(0.7); }
         }
+        .print-only { display: none; }
+        @media print {
+          .no-print { display: none !important; }
+          .print-only { display: block !important; }
+          html, body, #root { height: auto !important; overflow: visible !important; background: #fff !important; }
+          .shell-grid { display: block !important; height: auto !important; overflow: visible !important; }
+          .shell-body { display: block !important; overflow: visible !important; }
+          .shell-main { overflow: visible !important; height: auto !important; }
+        }
       `}</style>
 
       <div
+        className="shell-grid"
         style={{
           display: 'grid',
-          gridTemplateRows: '48px 1fr 32px',
+          gridTemplateRows: '1fr 32px',
           height: '100vh',
           overflow: 'hidden',
           background: 'var(--bg)',
-          backgroundImage:
-            'linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "var(--font-body)",
           color: 'var(--text)',
         }}
       >
-        <Topbar
-          moduleLabel={meta.label.toUpperCase()}
-          isMobile={isMobile}
-          onToggleMobileNav={() => setMobileNavOpen(o => !o)}
-          isLight={isLight}
-          onToggleTheme={toggleTheme}
-        />
+        <div className="shell-body" style={{ display: 'flex', overflow: 'hidden', position: 'relative' }}>
+          <div className="no-print" style={{ display: 'contents' }}>
+            <Sidebar
+              isMobile={isMobile}
+              mobileOpen={mobileNavOpen}
+              onCloseMobile={() => setMobileNavOpen(false)}
+              isLight={isLight}
+              onToggleTheme={toggleTheme}
+            />
+          </div>
 
-        <div style={{ display: 'flex', overflow: 'hidden', position: 'relative' }}>
-          <Sidebar
-            isMobile={isMobile}
-            mobileOpen={mobileNavOpen}
-            onCloseMobile={() => setMobileNavOpen(false)}
-          />
+          {isMobile && !mobileNavOpen && (
+            <button
+              className="no-print"
+              onClick={() => setMobileNavOpen(true)}
+              aria-label={t(lang, 'openNav')}
+              style={{
+                position: 'absolute',
+                top: 12,
+                left: 12,
+                zIndex: 45,
+                background: 'var(--bg2)',
+                border: '1px solid var(--border)',
+                borderRadius: 6,
+                color: 'var(--primary)',
+                fontSize: 16,
+                cursor: 'pointer',
+                padding: '6px 10px',
+                lineHeight: 1,
+              }}
+            >
+              ☰
+            </button>
+          )}
 
           {isMobile && mobileNavOpen && (
             <div
@@ -83,12 +113,22 @@ export default function Shell() {
             />
           )}
 
-          <main style={{ flex: 1, minWidth: 0, overflowY: 'auto', overflowX: 'hidden', position: 'relative' }}>
-            <Outlet />
+          {!isMobile && secondaryNav && (
+            <div className="no-print" style={{ display: 'contents' }}>
+              <SecondarySidebar items={secondaryNav.items} active={secondaryNav.active} onChange={secondaryNav.onChange} />
+            </div>
+          )}
+
+          <main className="shell-main" style={{ flex: 1, minWidth: 0, overflowY: 'auto', overflowX: 'hidden', position: 'relative' }}>
+            <SecondarySidebarContext.Provider value={setSecondaryNav}>
+              <Outlet />
+            </SecondarySidebarContext.Provider>
           </main>
         </div>
 
-        <Statusbar moduleLabel={meta.label} isMobile={isMobile} />
+        <div className="no-print" style={{ display: 'contents' }}>
+          <Statusbar moduleLabel={meta.label} isMobile={isMobile} />
+        </div>
       </div>
     </>
   )

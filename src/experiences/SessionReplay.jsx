@@ -142,7 +142,7 @@ function Nav() {
       background: 'rgba(10,14,23,0.85)', backdropFilter: 'blur(12px)',
       borderBottom: '1px solid rgba(26,42,58,0.8)',
     }}>
-      <Link to="/" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 16, color: '#25e2cc', letterSpacing: '0.06em', textDecoration: 'none' }}>
+      <Link to="/" style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 16, color: '#25e2cc', letterSpacing: '0.06em', textDecoration: 'none' }}>
         MISRAN LABS
       </Link>
       <div style={{ display: 'flex', gap: 36 }}>
@@ -153,7 +153,7 @@ function Nav() {
           { label: 'Contact', to: '/contact' },
         ].map(({ label, to }) => (
           <Link key={to} to={to} style={{
-            fontFamily: "'Inter', sans-serif", fontSize: 14,
+            fontFamily: "var(--font-body)", fontSize: 14,
             color: pathname === to ? '#e8f4f8' : '#7a9bb5',
             textDecoration: 'none', transition: 'color 0.15s ease',
             borderBottom: pathname === to ? '1px solid #25e2cc' : '1px solid transparent',
@@ -194,34 +194,34 @@ function SessionCard({ session, onOpenLog }) {
 
           {/* Row 1: id + date + badge + duration */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#25e2cc', letterSpacing: '0.08em' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#25e2cc', letterSpacing: '0.08em' }}>
               SESSION-{session.id}
             </span>
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#7a9bb5', letterSpacing: '0.04em' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#7a9bb5', letterSpacing: '0.04em' }}>
               {session.date}
             </span>
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#25e2cc', border: '1px solid #25e2cc', borderRadius: 3, padding: '1px 7px', letterSpacing: '0.1em' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: '#25e2cc', border: '1px solid #25e2cc', borderRadius: 3, padding: '1px 7px', letterSpacing: '0.1em' }}>
               {session.status}
             </span>
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#7a9bb5' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#7a9bb5' }}>
               {session.duration}
             </span>
           </div>
 
           {/* Row 2: title */}
-          <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 18, fontWeight: 600, color: '#e8f4f8', margin: 0, lineHeight: 1.3 }}>
+          <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 18, fontWeight: 600, color: '#e8f4f8', margin: 0, lineHeight: 1.3 }}>
             {session.title}
           </h3>
 
           {/* Row 3: summary */}
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: '#7a9bb5', margin: 0, lineHeight: 1.6 }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: '#7a9bb5', margin: 0, lineHeight: 1.6 }}>
             {session.summary}
           </p>
 
           {/* Row 4: tags */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {session.tags.map(tag => (
-              <span key={tag} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'var(--muted)', background: 'rgba(26,42,58,0.6)', border: '1px solid #1a2a3a', borderRadius: 3, padding: '2px 8px' }}>
+              <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'rgba(26,42,58,0.6)', border: '1px solid #1a2a3a', borderRadius: 3, padding: '2px 8px' }}>
                 {tag}
               </span>
             ))}
@@ -230,7 +230,7 @@ function SessionCard({ session, onOpenLog }) {
 
         {/* Chevron */}
         <span style={{
-          fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#7a9bb5',
+          fontFamily: "var(--font-mono)", fontSize: 12, color: '#7a9bb5',
           transition: 'transform 0.2s ease', display: 'inline-block',
           transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
           flexShrink: 0, marginTop: 4,
@@ -249,21 +249,21 @@ function SessionCard({ session, onOpenLog }) {
 
           {/* WHAT */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#25e2cc', letterSpacing: '0.1em' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#25e2cc', letterSpacing: '0.1em' }}>
               // WHAT
             </span>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: '#7a9bb5', margin: 0, lineHeight: 1.7 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: '#7a9bb5', margin: 0, lineHeight: 1.7 }}>
               {session.what}
             </p>
           </div>
 
           {/* DECISION */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#f59e0b', letterSpacing: '0.1em' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#f59e0b', letterSpacing: '0.1em' }}>
               // DECISION ⚡
             </span>
             <div style={{ background: 'rgba(245,158,11,0.06)', borderLeft: '3px solid #f59e0b', padding: '12px 16px', borderRadius: '0 4px 4px 0' }}>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: '#fbbf24', margin: 0, lineHeight: 1.7 }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: '#fbbf24', margin: 0, lineHeight: 1.7 }}>
                 {session.decision}
               </p>
             </div>
@@ -271,16 +271,16 @@ function SessionCard({ session, onOpenLog }) {
 
           {/* PROMPT */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#00d4ff', letterSpacing: '0.1em' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#00d4ff', letterSpacing: '0.1em' }}>
               // PROMPT
             </span>
             <div style={{ background: '#060a10', border: '1px solid #1a2a3a', borderRadius: 6, padding: '14px 18px' }}>
               {isNA ? (
-                <em style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#7a9bb5', fontStyle: 'italic' }}>
+                <em style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: '#7a9bb5', fontStyle: 'italic' }}>
                   {session.prompt}
                 </em>
               ) : (
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#7a9bb5', margin: 0, lineHeight: 1.8, whiteSpace: 'pre-wrap' }}>
+                <p style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: '#7a9bb5', margin: 0, lineHeight: 1.8, whiteSpace: 'pre-wrap' }}>
                   {session.prompt}
                 </p>
               )}
@@ -293,7 +293,7 @@ function SessionCard({ session, onOpenLog }) {
             onMouseLeave={e => e.currentTarget.style.opacity = '0.7'}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
-              fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+              fontFamily: "var(--font-mono)", fontSize: 11,
               color: '#00d4ff', letterSpacing: '0.08em', cursor: 'pointer',
               borderTop: '1px solid #1a2a3a', paddingTop: 16, marginTop: 4,
               opacity: 0.7, transition: 'opacity 0.15s ease',
@@ -326,7 +326,7 @@ export default function SessionReplay() {
       <div style={{
         minHeight: '100vh', background: '#0a0e17',
         backgroundImage: 'linear-gradient(rgba(26,42,58,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(26,42,58,0.4) 1px, transparent 1px)',
-        backgroundSize: '40px 40px', color: '#e8f4f8', fontFamily: "'Inter', sans-serif",
+        backgroundSize: '40px 40px', color: '#e8f4f8', fontFamily: "var(--font-body)",
       }}>
         <Nav />
 
@@ -334,7 +334,7 @@ export default function SessionReplay() {
 
           {/* ── Header ── */}
           <div style={{ marginBottom: 40 }}>
-            <Link to="/lab" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#7a9bb5', letterSpacing: '0.06em', display: 'inline-block', marginBottom: 24, textDecoration: 'none', transition: 'color 0.15s ease' }}
+            <Link to="/lab" style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: '#7a9bb5', letterSpacing: '0.06em', display: 'inline-block', marginBottom: 24, textDecoration: 'none', transition: 'color 0.15s ease' }}
               onMouseEnter={e => (e.currentTarget.style.color = '#e8f4f8')}
               onMouseLeave={e => (e.currentTarget.style.color = '#7a9bb5')}
             >
@@ -342,23 +342,23 @@ export default function SessionReplay() {
             </Link>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#7a9bb5', border: '1px solid #243545', borderRadius: 3, padding: '2px 8px', letterSpacing: '0.08em' }}>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#7a9bb5', border: '1px solid #243545', borderRadius: 3, padding: '2px 8px', letterSpacing: '0.08em' }}>
                 EXP-003
               </span>
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#f59e0b', border: '1px solid #f59e0b', borderRadius: 3, padding: '2px 8px', letterSpacing: '0.1em' }}>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: '#f59e0b', border: '1px solid #f59e0b', borderRadius: 3, padding: '2px 8px', letterSpacing: '0.1em' }}>
                 IN PROGRESS
               </span>
             </div>
 
-            <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 700, color: '#e8f4f8', letterSpacing: '-0.02em', marginBottom: 10 }}>
+            <h1 style={{ fontFamily: "var(--font-heading)", fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 700, color: '#e8f4f8', letterSpacing: '-0.02em', marginBottom: 10 }}>
               Session Replay
             </h1>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 15, color: '#7a9bb5', marginBottom: 16 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: '#7a9bb5', marginBottom: 16 }}>
               Documentation narrative du build en live — prompts, décisions, itérations
             </p>
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               {['React', 'Framer Motion', 'Markdown'].map(tag => (
-                <span key={tag} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'var(--muted)', background: 'rgba(26,42,58,0.6)', border: '1px solid #1a2a3a', borderRadius: 3, padding: '2px 8px' }}>
+                <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'rgba(26,42,58,0.6)', border: '1px solid #1a2a3a', borderRadius: 3, padding: '2px 8px' }}>
                   {tag}
                 </span>
               ))}
@@ -369,10 +369,10 @@ export default function SessionReplay() {
           <div style={{ display: 'flex', borderTop: '1px solid #1a2a3a', borderBottom: '1px solid #1a2a3a', background: '#0d1220', marginBottom: 56, borderRadius: 8 }}>
             {STATS.map(({ num, label }, i) => (
               <div key={label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: '28px 16px', borderLeft: i > 0 ? '1px solid #1a2a3a' : 'none' }}>
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 28, fontWeight: 700, color: '#25e2cc', lineHeight: 1 }}>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 28, fontWeight: 700, color: '#25e2cc', lineHeight: 1 }}>
                   {num}
                 </span>
-                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: '#7a9bb5', letterSpacing: '0.06em', textTransform: 'uppercase', textAlign: 'center' }}>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: 11, color: '#7a9bb5', letterSpacing: '0.06em', textTransform: 'uppercase', textAlign: 'center' }}>
                   {label}
                 </span>
               </div>
@@ -398,10 +398,10 @@ export default function SessionReplay() {
 
           {/* ── CTA ── */}
           <div style={{ textAlign: 'center', marginTop: 64, padding: '48px 40px', background: '#0d1220', border: '1px solid #1a2a3a', borderRadius: 8 }}>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 15, color: '#7a9bb5', marginBottom: 24, lineHeight: 1.6 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: '#7a9bb5', marginBottom: 24, lineHeight: 1.6 }}>
               Voir le résultat → Product Brief Machine
             </p>
-            <Link to="/experience/exp-002" className="cta-btn" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 14, color: '#25e2cc', background: 'rgba(37,226,204,0.12)', padding: '12px 28px', borderRadius: 6, border: '1px solid #25e2cc', display: 'inline-block', transition: 'background 0.2s ease' }}>
+            <Link to="/experience/exp-002" className="cta-btn" style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: 14, color: '#25e2cc', background: 'rgba(37,226,204,0.12)', padding: '12px 28px', borderRadius: 6, border: '1px solid #25e2cc', display: 'inline-block', transition: 'background 0.2s ease' }}>
               Product Brief Machine →
             </Link>
           </div>
@@ -446,13 +446,13 @@ export default function SessionReplay() {
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <span style={{
-                  fontFamily: "'JetBrains Mono', monospace",
+                  fontFamily: "var(--font-mono)",
                   fontSize: 11, color: '#25e2cc', letterSpacing: '0.12em',
                 }}>
                   SESSION-{activeLog} // LOG COMPLET
                 </span>
                 <span style={{
-                  fontFamily: "'JetBrains Mono', monospace",
+                  fontFamily: "var(--font-mono)",
                   fontSize: 10, color: '#7a9bb5',
                   background: 'rgba(26,42,58,0.6)',
                   border: '1px solid #1a2a3a',
@@ -472,7 +472,7 @@ export default function SessionReplay() {
                   e.currentTarget.style.borderColor = '#1a2a3a'
                 }}
                 style={{
-                  fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+                  fontFamily: "var(--font-mono)", fontSize: 11,
                   color: '#7a9bb5', background: 'none',
                   border: '1px solid #1a2a3a', borderRadius: 4,
                   padding: '5px 12px', cursor: 'pointer',

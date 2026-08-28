@@ -10,9 +10,9 @@ export default function ProjectPage() {
 
   if (!project || !project.component) {
     return (
-      <div style={{ padding: 40, fontFamily: "'Inter', sans-serif", color: 'var(--text2)' }}>
+      <div style={{ padding: 40, fontFamily: "var(--font-body)", color: 'var(--text2)' }}>
         <p style={{ marginBottom: 16 }}>{t(lang, 'projectNotFound')}</p>
-        <Link to="/" style={{ color: 'var(--teal)', fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }}>
+        <Link to="/" style={{ color: 'var(--primary)', fontFamily: "var(--font-mono)", fontSize: 12 }}>
           {t(lang, 'backToLabLink')}
         </Link>
       </div>

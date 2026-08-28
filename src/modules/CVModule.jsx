@@ -3,12 +3,12 @@ import { useLanguage } from '../shell/LanguageContext'
 
 function SectionHeader({ children }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 8 }}>
       <span
         style={{
-          fontFamily: "'JetBrains Mono', monospace",
+          fontFamily: "var(--font-mono)",
           fontSize: 11,
-          color: 'var(--teal)',
+          color: 'var(--primary)',
           letterSpacing: '0.1em',
           whiteSpace: 'nowrap',
         }}
@@ -22,9 +22,9 @@ function SectionHeader({ children }) {
 
 function Bullets({ items }) {
   return (
-    <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+    <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 3 }}>
       {items.map((item, i) => (
-        <li key={i} style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>
+        <li key={i} style={{ fontSize: 12.5, color: 'var(--text2)', lineHeight: 1.45 }}>
           <strong style={{ color: 'var(--text)' }}>{item.label} : </strong>
           {item.text}
         </li>
@@ -35,13 +35,15 @@ function Bullets({ items }) {
 
 function RoleHeader({ title, date, size = 13 }) {
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12, marginBottom: 8, flexWrap: 'wrap' }}>
-      <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: size, fontWeight: 600, color: 'var(--text)' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12, marginBottom: 4, flexWrap: 'wrap' }}>
+      <span style={{ fontFamily: "var(--font-heading)", fontSize: size, fontWeight: 600, color: 'var(--text)' }}>
         {title}
       </span>
-      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--muted)', whiteSpace: 'nowrap' }}>
-        {date}
-      </span>
+      {date && (
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)', whiteSpace: 'nowrap' }}>
+          {date}
+        </span>
+      )}
     </div>
   )
 }
@@ -58,7 +60,7 @@ const CV = {
     subtitle: 'Senior Product Designer · DesignOps & AI Strategy',
     location: '📍 Paris & Périphérie (Hybride / Remote)',
     profileIntro: 'Product Designer Senior au profil hybride',
-    profileRest: ", appuyé sur un socle technique de 7 ans en développement Full-Stack. Spécialiste de l'industrialisation des écosystèmes design (DesignOps, Design Systems), de l'automatisation par l'Intelligence Artificielle (Figma MCP, agents custom) et du rapprochement Design-to-Code (Tokens, CI/CD GitHub). Expérience confirmée dans le pilotage de la stratégie produit au sein d'environnements internationaux complexes et distribués. Process de conception et arbitrages documentés en continu sur ce lab personnel.",
+    profileRest: ", appuyé sur un socle technique de 7 ans en développement Full-Stack. Spécialiste de l'industrialisation des écosystèmes design (DesignOps, Design Systems), de l'automatisation par l'Intelligence Artificielle (Figma MCP, agents custom) et du rapprochement Design-to-Code (Tokens, CI/CD GitHub). Expérience confirmée dans le pilotage de la stratégie produit au sein d'environnements internationaux complexes et distribués.",
     expertise: [
       { label: 'DesignOps & IA Strategy', text: "Workflows IA générative, Figma MCP, création d'agents custom, automatisation de production." },
       { label: 'Product Design & Systems', text: 'Architecture de composants, Design Tokens, gouvernance, UX Research, UX/UI.' },
@@ -106,7 +108,7 @@ const CV = {
     subtitle: 'Senior Product Designer · DesignOps & AI Strategy',
     location: '📍 Paris & Greater Paris (Hybrid / Remote)',
     profileIntro: 'Senior Product Designer with a hybrid profile',
-    profileRest: ', backed by 7 years of full-stack development experience. Specialist in scaling design ecosystems (DesignOps, Design Systems), AI-driven automation (Figma MCP, custom agents), and closing the design-to-code gap (Tokens, CI/CD GitHub). Proven track record leading product strategy within complex, distributed international environments. Design process and decisions documented continuously on this personal lab.',
+    profileRest: ', backed by 7 years of full-stack development experience. Specialist in scaling design ecosystems (DesignOps, Design Systems), AI-driven automation (Figma MCP, custom agents), and closing the design-to-code gap (Tokens, CI/CD GitHub). Proven track record leading product strategy within complex, distributed international environments.',
     expertise: [
       { label: 'DesignOps & AI Strategy', text: 'Generative AI workflows, Figma MCP, custom agent creation, production automation.' },
       { label: 'Product Design & Systems', text: 'Component architecture, Design Tokens, governance, UX Research, UX/UI.' },
@@ -153,41 +155,28 @@ export default function CVModule() {
   return (
     <div
       style={{
-        padding: isMobile ? 20 : 40,
-        fontFamily: "'Inter', sans-serif",
+        padding: isMobile ? 20 : 32,
+        fontFamily: "var(--font-body)",
         color: 'var(--text)',
         maxWidth: 820,
         margin: '0 auto',
       }}
     >
       {/* Header */}
-      <div style={{ marginBottom: 40 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 10 }}>
-          <span
-            style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 13,
-              color: 'var(--teal)',
-              letterSpacing: '0.1em',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {`// ${c.labels.cv}`}
-          </span>
-          <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
-        </div>
-
+      <div style={{ marginBottom: 20 }}>
         <h1
           style={{
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: 28,
-            fontWeight: 600,
-            margin: '0 0 6px',
+            fontFamily: "var(--font-heading)",
+            fontSize: 'clamp(28px, 4vw, 52px)',
+            fontWeight: 700,
+            letterSpacing: '-0.02em',
+            lineHeight: 1.05,
+            margin: '0 0 4px',
           }}
         >
           Michael Misran
         </h1>
-        <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--teal)', marginBottom: 14 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--primary)', marginBottom: 8 }}>
           {c.subtitle}
         </div>
 
@@ -195,27 +184,27 @@ export default function CVModule() {
           <span>{c.location}</span>
           <span>✉️ misranmichael@gmail.com</span>
           <span>📱 06 07 69 75 17</span>
-          <a href="https://www.linkedin.com/in/michael-misran" target="_blank" rel="noreferrer" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+          <a href="https://www.linkedin.com/in/michael-misran" target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none' }}>
             🔗 LinkedIn
           </a>
         </div>
       </div>
 
       {/* Profil */}
-      <div style={{ marginBottom: 36 }}>
+      <div style={{ marginBottom: 18 }}>
         <SectionHeader>{c.labels.profile}</SectionHeader>
-        <p style={{ fontSize: 13.5, color: 'var(--prose)', lineHeight: 1.7, margin: 0 }}>
+        <p style={{ fontSize: 13, color: 'var(--prose)', lineHeight: 1.5, margin: 0 }}>
           <strong style={{ color: 'var(--text)' }}>{c.profileIntro}</strong>
           {c.profileRest}
         </p>
       </div>
 
       {/* Expertise */}
-      <div style={{ marginBottom: 36 }}>
+      <div style={{ marginBottom: 18 }}>
         <SectionHeader>{c.labels.expertise}</SectionHeader>
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '12px 24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '8px 24px' }}>
           {c.expertise.map(item => (
-            <div key={item.label} style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>
+            <div key={item.label} style={{ fontSize: 12.5, color: 'var(--text2)', lineHeight: 1.45 }}>
               <strong style={{ color: 'var(--text)' }}>{item.label} : </strong>
               {item.text}
             </div>
@@ -224,18 +213,18 @@ export default function CVModule() {
       </div>
 
       {/* Expérience */}
-      <div style={{ marginBottom: 36 }}>
+      <div style={{ marginBottom: 18 }}>
         <SectionHeader>{c.labels.experience}</SectionHeader>
 
-        <div style={{ marginBottom: 28 }}>
+        <div style={{ marginBottom: 14 }}>
           <RoleHeader title={c.concentrixTitle} date={c.concentrixDate} />
           <Bullets items={c.concentrixBullets} />
         </div>
 
-        <div style={{ marginBottom: 28 }}>
-          <RoleHeader title={c.iadTitle} date={c.iadDate} />
+        <div style={{ marginBottom: 14 }}>
+          <RoleHeader title={c.iadTitle} />
 
-          <div style={{ paddingLeft: 16, borderLeft: '2px solid var(--border)', marginBottom: 16 }}>
+          <div style={{ paddingLeft: 16, borderLeft: '2px solid var(--border)', marginBottom: 8 }}>
             <RoleHeader title={c.iadDesignTitle} date={c.iadDesignDate} size={13} />
             <Bullets items={c.iadDesignBullets} />
           </div>
@@ -248,7 +237,7 @@ export default function CVModule() {
 
         <div>
           <RoleHeader title={c.planNetTitle} date={c.planNetDate} />
-          <p style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, margin: 0 }}>
+          <p style={{ fontSize: 12.5, color: 'var(--text2)', lineHeight: 1.45, margin: 0 }}>
             {c.planNetText}
           </p>
         </div>
@@ -258,7 +247,7 @@ export default function CVModule() {
       <div>
         <SectionHeader>{c.labels.education}</SectionHeader>
         <RoleHeader title={c.eduTitle} date={c.eduDate} />
-        <p style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, margin: 0 }}>
+        <p style={{ fontSize: 12.5, color: 'var(--text2)', lineHeight: 1.45, margin: 0 }}>
           {c.eduText}
         </p>
       </div>

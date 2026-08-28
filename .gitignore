@@ -8,3 +8,15 @@ src/modules/FigmaDSReader/
 
 # Local working files (may contain personal info, not site source)
 /ressources/
+
+# Private notes, dev-only route (src/lab/PrivateBacklogPage.jsx)
+/src/private/
+
+# Local exports (e.g. CV PDF) — contains personal contact info
+/dist_export/
+
+# Scratch — temporary files exchanged with Claude Code, never for commit
+/scratch/
+
+# Claude Code local permissions — personal tool config, not project source
+.claude/settings.local.json

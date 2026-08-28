@@ -24,11 +24,11 @@ export default function Timeline({ milestones }) {
 
         return (
           <g key={i}>
-            <circle cx={LINE_X} cy={y} r={5} fill="var(--bg2)" stroke="var(--teal)" strokeWidth={2} />
+            <circle cx={LINE_X} cy={y} r={5} fill="var(--bg2)" stroke="var(--primary)" strokeWidth={2} />
             <text
               x={LINE_X + 20}
               y={y - 6}
-              fontFamily="'JetBrains Mono', monospace"
+              fontFamily="var(--font-mono)"
               fontSize={10}
               letterSpacing="0.08em"
               fill="var(--muted)"
@@ -38,7 +38,7 @@ export default function Timeline({ milestones }) {
             <text
               x={LINE_X + 20}
               y={y + 14}
-              fontFamily="'Inter', sans-serif"
+              fontFamily="var(--font-body)"
               fontSize={13}
               fill="var(--text)"
             >

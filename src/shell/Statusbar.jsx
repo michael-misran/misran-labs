@@ -14,7 +14,7 @@ export default function Statusbar({ moduleLabel, isMobile }) {
         alignItems: 'center',
         justifyContent: isMobile ? 'center' : 'space-between',
         padding: '0 20px',
-        fontFamily: "'JetBrains Mono', monospace",
+        fontFamily: "var(--font-mono)",
         fontSize: 10,
         color: 'var(--muted)',
         letterSpacing: '0.06em',

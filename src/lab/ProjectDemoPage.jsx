@@ -10,9 +10,9 @@ export default function ProjectDemoPage() {
 
   if (!project || !project.demoComponent) {
     return (
-      <div style={{ padding: 40, fontFamily: "'Inter', sans-serif", color: 'var(--text2)' }}>
+      <div style={{ padding: 40, fontFamily: "var(--font-body)", color: 'var(--text2)' }}>
         <p style={{ marginBottom: 16 }}>{t(lang, 'demoNotFound')}</p>
-        <Link to={`/lab/${slug}`} style={{ color: 'var(--teal)', fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }}>
+        <Link to={`/lab/${slug}`} style={{ color: 'var(--primary)', fontFamily: "var(--font-mono)", fontSize: 12 }}>
           {t(lang, 'backToProjectLink')}
         </Link>
       </div>

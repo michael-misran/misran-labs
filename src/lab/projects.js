@@ -1,4 +1,9 @@
-import MisranLabsRedesign from './projects/MisranLabsRedesign'
+import MAIA from './projects/MAIA'
+import Conforma from './projects/Conforma'
+import DesignSystem from './projects/DesignSystem'
+import TheLostCauldronGame from './projects/TheLostCauldronGame'
+import WorkflowSolo from './projects/WorkflowSolo'
+import GameDemo from './GameDemo'
 import ToolProcessTemplate from './ToolProcessTemplate'
 import SessionReplay from '../experiences/SessionReplay'
 import CVModule from '../modules/CVModule'
@@ -21,44 +26,80 @@ const QUICK_LAB_PHASES = {
 
 export const PROJECTS = [
   {
-    slug: 'misran-labs-redesign',
-    icon: '◆',
-    title: { fr: 'Création du lab', en: 'Building the lab' },
+    slug: 'maia',
+    icon: '◇',
+    title: { fr: 'MAIA', en: 'MAIA' },
     summary: {
-      fr: 'Comment et pourquoi ce site a été restructuré — documenté en direct.',
-      en: 'How and why this site was restructured — documented live.',
+      fr: "Mon Assistant Intelligent Autonome — centraliser abonnements, factures et rappels.",
+      en: 'My own autonomous assistant — centralizing subscriptions, bills, and reminders.',
     },
     status: 'READY',
     type: 'case-study',
-    featured: true,
-    tags: { fr: ['IA', 'Decision-making', 'React'], en: ['AI', 'Decision-making', 'React'] },
-    phases: {
-      business: 'skipped',
-      research: 'skipped',
-      design: 'done',
-      validation: 'partial',
-      feasibility: 'partial',
-      development: 'done',
-      qa: 'partial',
-      launch: 'partial',
-      iteration: 'done',
-    },
-    component: MisranLabsRedesign,
+    featured: false,
+    tags: { fr: ['IA', 'React', 'Vie perso'], en: ['AI', 'React', 'Personal'] },
+    phases: {},
+    component: MAIA,
   },
   {
-    slug: 'a-completer-1',
-    icon: '◇',
-    title: { fr: '[À COMPLÉTER]', en: '[TO COMPLETE]' },
+    slug: 'conforma',
+    icon: '▦',
+    title: { fr: 'Conforma', en: 'Conforma' },
     summary: {
-      fr: 'Prochain projet — contenu à fournir.',
-      en: 'Next project — content to be added.',
+      fr: 'Vérifier un mode opératoire contre une trame de conformité, avec traçabilité de la source.',
+      en: 'Checking a procedure document against a compliance checklist, with source traceability.',
     },
-    status: 'PLACEHOLDER',
+    status: 'READY',
     type: 'case-study',
     featured: false,
-    tags: { fr: [], en: [] },
+    tags: { fr: ['IA', 'Product design', 'Conformité'], en: ['AI', 'Product design', 'Compliance'] },
     phases: {},
-    component: null,
+    component: Conforma,
+  },
+  {
+    slug: 'lost-cauldron-game',
+    icon: '▲',
+    title: { fr: 'The Lost Cauldron — Le Jeu', en: 'The Lost Cauldron — The Game' },
+    summary: {
+      fr: "Survivor-like solo (Godot) tiré de mon roman fantasy — vagues thématisées par secteur infiltré par un démon.",
+      en: 'Solo survivor-like (Godot) spun off my own fantasy novel — waves themed around a demon-infiltrated sector.',
+    },
+    status: 'READY',
+    type: 'case-study',
+    featured: false,
+    tags: { fr: ['Godot', 'GDScript', 'Game dev'], en: ['Godot', 'GDScript', 'Game dev'] },
+    phases: {},
+    component: TheLostCauldronGame,
+    demoComponent: GameDemo,
+  },
+  {
+    slug: 'design-system',
+    icon: '◐',
+    title: { fr: 'Design System', en: 'Design System' },
+    summary: {
+      fr: 'Les tokens visuels partagés du Lab — un seul endroit où les modifier.',
+      en: "The Lab's shared visual tokens — one place to change them.",
+    },
+    status: 'READY',
+    type: 'case-study',
+    featured: false,
+    tags: { fr: ['React', 'Design tokens'], en: ['React', 'Design tokens'] },
+    phases: {},
+    component: DesignSystem,
+  },
+  {
+    slug: 'workflow',
+    icon: '◈',
+    title: { fr: 'Workflow', en: 'Workflow' },
+    summary: {
+      fr: 'Le run produit-spécifique et l\'unification transverse (design system, marque blanche), en parallèle.',
+      en: 'Product-specific run and cross-product unification (design system, white label), in parallel.',
+    },
+    status: 'READY',
+    type: 'method',
+    featured: false,
+    tags: { fr: ['Process', 'Design system', 'Product design'], en: ['Process', 'Design system', 'Product design'] },
+    phases: {},
+    component: WorkflowSolo,
   },
   {
     slug: 'exp-003',

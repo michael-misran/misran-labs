@@ -23,14 +23,24 @@ export const PHASES = {
   ],
 }
 
+// One color per Méthode step (Observation, Hypothèse, Expérimentation, Analyse, Conclusion).
+// A step falls back to STATUS.skipped's gray whenever it hasn't been done.
+export const METHOD_STEP_COLORS = [
+  'var(--mandarine)',
+  'var(--violet)',
+  'var(--warning)',
+  'var(--primary)',
+  'var(--pink)',
+]
+
 export const STATUS = {
   fr: {
-    done:    { label: 'Fait',            color: 'var(--teal)' },
+    done:    { label: 'Fait',            color: 'var(--primary)' },
     partial: { label: 'Partiel',         color: 'var(--warning)' },
     skipped: { label: 'Non applicable',  color: 'var(--muted)' },
   },
   en: {
-    done:    { label: 'Done',            color: 'var(--teal)' },
+    done:    { label: 'Done',            color: 'var(--primary)' },
     partial: { label: 'Partial',         color: 'var(--warning)' },
     skipped: { label: 'Not applicable',  color: 'var(--muted)' },
   },

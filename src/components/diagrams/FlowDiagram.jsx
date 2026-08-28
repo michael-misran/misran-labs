@@ -55,17 +55,16 @@ export default function FlowDiagram({ steps, direction = 'horizontal' }) {
               y={y}
               width={STEP_W}
               height={stepH}
-              rx={6}
+              rx={20}
               fill="var(--bg2)"
-              stroke="var(--teal)"
+              stroke="var(--border)"
               strokeWidth={1}
-              strokeOpacity={0.5}
             />
             <text
               x={x + STEP_W / 2}
               y={y + PAD_TOP}
               textAnchor="middle"
-              fontFamily="'JetBrains Mono', monospace"
+              fontFamily="var(--font-mono)"
               fontSize={12}
               fontWeight={600}
               fill="var(--text)"
@@ -78,7 +77,7 @@ export default function FlowDiagram({ steps, direction = 'horizontal' }) {
                 x={x + STEP_W / 2}
                 y={y + PAD_TOP + LABEL_H + li * LINE_H}
                 textAnchor="middle"
-                fontFamily="'Inter', sans-serif"
+                fontFamily="var(--font-body)"
                 fontSize={10.5}
                 fill="var(--text2)"
               >

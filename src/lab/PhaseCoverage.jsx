@@ -1,4 +1,5 @@
 import { PHASES, STATUS } from './phases'
+import SectionTitle from '../design-system/SectionTitle'
 import { useLanguage } from '../shell/LanguageContext'
 import { t } from '../i18n/ui'
 
@@ -9,17 +10,7 @@ export default function PhaseCoverage({ phases = {} }) {
 
   return (
     <div style={{ marginBottom: 32 }}>
-      <div
-        style={{
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: 9,
-          color: 'var(--muted)',
-          letterSpacing: '0.1em',
-          marginBottom: 10,
-        }}
-      >
-        {t(lang, 'processCoverage')}
-      </div>
+      <SectionTitle>{t(lang, 'processCoverage')}</SectionTitle>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {phaseList.map(phase => {
@@ -52,7 +43,7 @@ export default function PhaseCoverage({ phases = {} }) {
               />
               <span
                 style={{
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "var(--font-body)",
                   fontSize: 11,
                   color: status === 'skipped' ? 'var(--muted)' : 'var(--text)',
                 }}
@@ -79,7 +70,7 @@ export default function PhaseCoverage({ phases = {} }) {
             />
             <span
               style={{
-                fontFamily: "'JetBrains Mono', monospace",
+                fontFamily: "var(--font-mono)",
                 fontSize: 10,
                 color: 'var(--muted)',
               }}

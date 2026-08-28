@@ -3,7 +3,7 @@ function Panel({ label, bg, bg2, text, text2, accent, border }) {
     <div style={{ flex: '1 1 220px', minWidth: 220 }}>
       <div
         style={{
-          fontFamily: "'JetBrains Mono', monospace",
+          fontFamily: "var(--font-mono)",
           fontSize: 10,
           color: 'var(--muted)',
           letterSpacing: '0.1em',
@@ -14,13 +14,13 @@ function Panel({ label, bg, bg2, text, text2, accent, border }) {
       </div>
       <div style={{ background: bg, border: `1px solid ${border}`, borderRadius: 8, padding: 14 }}>
         <div style={{ background: bg2, border: `1px solid ${border}`, borderRadius: 6, padding: 14 }}>
-          <div style={{ color: accent, fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.1em', marginBottom: 8 }}>
+          <div style={{ color: accent, fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: '0.1em', marginBottom: 8 }}>
             {'// CONTEXTE'}
           </div>
-          <div style={{ color: text, fontFamily: "'Space Grotesk', sans-serif", fontSize: 15, fontWeight: 600, marginBottom: 6 }}>
+          <div style={{ color: text, fontFamily: "var(--font-heading)", fontSize: 15, fontWeight: 600, marginBottom: 6 }}>
             Création du lab
           </div>
-          <div style={{ color: text2, fontFamily: "'Inter', sans-serif", fontSize: 12, lineHeight: 1.5 }}>
+          <div style={{ color: text2, fontFamily: "var(--font-body)", fontSize: 12, lineHeight: 1.5 }}>
             Un paragraphe de lecture pour comparer le confort visuel entre les deux thèmes.
           </div>
         </div>

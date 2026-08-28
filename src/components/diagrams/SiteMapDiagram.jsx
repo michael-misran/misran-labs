@@ -50,7 +50,7 @@ function Column({ tree, x, title, accent }) {
       <text
         x={x}
         y={16}
-        fontFamily="'JetBrains Mono', monospace"
+        fontFamily="var(--font-mono)"
         fontSize={11}
         letterSpacing="0.1em"
         fill={accent}
@@ -90,7 +90,7 @@ function Column({ tree, x, title, accent }) {
             <text
               x={nx + 10}
               y={ny + NODE_H / 2 + 4}
-              fontFamily="'JetBrains Mono', monospace"
+              fontFamily="var(--font-mono)"
               fontSize={11}
               fill={r.depth === 0 ? 'var(--text)' : 'var(--text2)'}
             >
@@ -122,7 +122,7 @@ export default function SiteMapDiagram({ before, after }) {
     >
       <line x1={colW} y1={0} x2={colW} y2={height} stroke="var(--border)" strokeWidth={1} />
       <Column tree={before} x={COL_PAD} title="AVANT" accent="var(--warning)" />
-      <Column tree={after} x={colW + COL_PAD} title="APRÈS" accent="var(--teal)" />
+      <Column tree={after} x={colW + COL_PAD} title="APRÈS" accent="var(--primary)" />
     </svg>
   )
 }
