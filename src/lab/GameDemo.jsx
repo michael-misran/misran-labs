@@ -4,13 +4,13 @@ import { t } from '../i18n/ui'
 
 const CONTENT = {
   fr: {
-    title: 'The Lost Cauldron — Secteur Religion (pilote)',
-    note: "Secteur pilote uniquement, ~3 min de run. Déplacement WASD/flèches, combat automatique. Le chargement peut prendre quelques secondes (moteur de jeu ~38 Mo).",
+    title: 'The Lost Cauldron — V0.1 (personnage placeholder)',
+    note: "Première version jouable : boucle de run complète (secteur Religion), mais avec le sprite hobbit générique en attendant Marcus. Déplacement WASD/flèches, combat automatique. Le chargement peut prendre quelques secondes (moteur de jeu ~38 Mo).",
     back: '← Retour au projet',
   },
   en: {
-    title: 'The Lost Cauldron — Religion sector (pilot)',
-    note: 'Pilot sector only, ~3 min run. WASD/arrow keys to move, combat is automatic. Loading may take a few seconds (~38MB game engine).',
+    title: 'The Lost Cauldron — V0.1 (placeholder character)',
+    note: 'First playable version: full run loop (Religion sector), but with the generic hobbit sprite standing in for Marcus. WASD/arrow keys to move, combat is automatic. Loading may take a few seconds (~38MB game engine).',
     back: '← Back to project',
   },
 }

@@ -24,7 +24,7 @@ export default function App() {
           <Route path="/" element={<Shell />}>
             <Route index element={<HomeModule />} />
             <Route path="lab/:slug" element={<ProjectPage />} />
-            <Route path="lab/:slug/demo" element={<ProjectDemoPage />} />
+            <Route path="lab/:slug/demo/:version?" element={<ProjectDemoPage />} />
             <Route
               path="prive"
               element={

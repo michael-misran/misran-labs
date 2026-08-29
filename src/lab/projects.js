@@ -4,6 +4,7 @@ import DesignSystem from './projects/DesignSystem'
 import TheLostCauldronGame from './projects/TheLostCauldronGame'
 import WorkflowSolo from './projects/WorkflowSolo'
 import GameDemo from './GameDemo'
+import GameDemoV2 from './GameDemoV2'
 import ToolProcessTemplate from './ToolProcessTemplate'
 import SessionReplay from '../experiences/SessionReplay'
 import CVModule from '../modules/CVModule'
@@ -70,6 +71,7 @@ export const PROJECTS = [
     phases: {},
     component: TheLostCauldronGame,
     demoComponent: GameDemo,
+    demoComponentV2: GameDemoV2,
   },
   {
     slug: 'design-system',

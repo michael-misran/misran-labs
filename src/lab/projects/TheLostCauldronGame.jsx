@@ -6,7 +6,6 @@ import { STATUS, METHOD_STEP_COLORS } from '../phases'
 import { useLanguage } from '../../shell/LanguageContext'
 import { useSecondarySidebar } from '../../shell/SecondarySidebarContext'
 import useIsMobile from '../../shell/useIsMobile'
-import { t } from '../../i18n/ui'
 
 function TabBar({ tabs, active, onChange }) {
   return (
@@ -188,6 +187,74 @@ function BugCard({ title, symptomLabel, symptom, causeLabel, cause, fixLabel, fi
   )
 }
 
+function SessionCard({ date, title, summary, what, decision, whatLabel, decisionLabel, demoTo, demoLabel }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div
+      onClick={() => setOpen((o) => !o)}
+      style={{
+        background: 'var(--bg2)',
+        border: `1px solid ${open ? 'var(--primary)' : 'var(--border)'}`,
+        borderLeft: `3px solid ${open ? 'var(--primary)' : 'var(--border)'}`,
+        borderRadius: 12,
+        padding: 20,
+        marginBottom: 12,
+        cursor: 'pointer',
+        transition: 'border-color 0.15s ease',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 }}>
+        <div style={{ flex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6, flexWrap: 'wrap' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.06em' }}>
+              {date}
+            </span>
+          </div>
+          <div style={{ fontFamily: "var(--font-heading)", fontSize: 15, fontWeight: 600, color: 'var(--text)', marginBottom: 4 }}>
+            {title}
+          </div>
+          <p style={{ margin: 0, fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{summary}</p>
+        </div>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--muted)', flexShrink: 0, transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.15s ease' }}>
+          ▼
+        </span>
+      </div>
+
+      <div style={{ maxHeight: open ? 500 : 0, overflow: 'hidden', transition: 'max-height 0.3s ease' }}>
+        <div style={{ borderTop: '1px solid var(--border)', marginTop: 16, paddingTop: 16, display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.08em' }}>{whatLabel}</span>
+            <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{what}</p>
+          </div>
+          <div>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.08em' }}>{decisionLabel}</span>
+            <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{decision}</p>
+          </div>
+          {demoTo && (
+            <Link
+              to={demoTo}
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                alignSelf: 'flex-start',
+                display: 'inline-block',
+                fontFamily: "var(--font-mono)",
+                fontSize: 11,
+                color: 'var(--bg)',
+                textDecoration: 'none',
+                background: 'var(--primary)',
+                borderRadius: 6,
+                padding: '6px 14px',
+              }}
+            >
+              {demoLabel}
+            </Link>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const CONTENT = {
   fr: {
     title: 'The Lost Cauldron — Le Jeu',
@@ -199,10 +266,13 @@ const CONTENT = {
       { id: 'architecture', label: 'Architecture technique' },
       { id: 'specs', label: 'Spécifications fonctionnelles' },
       { id: 'bugs', label: 'Bugs & résolutions' },
+      { id: 'journal', label: 'Journal de session' },
       { id: 'roadmap', label: 'Roadmap' },
     ],
 
     contextTitle: 'Contexte',
+    demoV1Label: 'Voir la démo V0.1 →',
+    demoV2Label: 'Voir la démo V0.2 →',
     context: "The Lost Cauldron est d'abord un roman fantasy que j'écris (démons infiltrant discrètement les hautes sphères de la société — finance, religion, médias, justice — sous couvert d'une fondation, Occasus). J'en tire un jeu vidéo : un survivor-like (type Vampire Survivors), genre le plus rapide à produire seul avec assistance IA, mais aussi le plus saturé de clones. L'objectif n'est pas un projet de plusieurs années : un jeu rapide à produire et rentable, en réutilisant l'univers déjà écrit plutôt qu'en partant de zéro.",
 
     methodTitle: 'Méthode',
@@ -222,7 +292,7 @@ const CONTENT = {
       {
         title: 'L’Expérimentation',
         status: 'done',
-        body: "Secteur pilote choisi : Religion (le démon Bélial), le plus documenté dans le lore existant (Vautrin, l'Église infiltrée). Godot 4 + GDScript, un seul secteur construit intégralement en code procédural pour aller vite, sprites d'un pack acheté (personnage hobbit) intégrés comme joueur pour voir le rendu réel plutôt qu'un prototype en formes géométriques.",
+        body: "Secteur pilote choisi : Religion (le démon Bélial), le plus documenté dans le lore existant (Vautrin, l'Église infiltrée). Godot 4 + GDScript, un seul secteur construit intégralement en code procédural pour aller vite. Premier sprite intégré comme joueur : un personnage acheté (le temps de valider le pipeline), depuis remplacé par le vrai sprite de Marcus.",
       },
       {
         title: "L'Analyse des résultats",
@@ -253,11 +323,12 @@ const CONTENT = {
     archStructureTitle: 'Structure de dossiers',
     archStructure: [
       '09_jeu/scenes/ — uniquement Main.tscn',
-      '09_jeu/scripts/ — Player, Enemy, WaveManager, UI, Main, Projectile, EnemyProjectile, XPOrb, SpriteSheetLoader',
-      '09_jeu/assets/hobbit_frames/ — 78 frames PNG individuelles du personnage joueur',
+      '09_jeu/scripts/ — Player, Enemy, WaveManager, UI, Main, Projectile, EnemyProjectile, XPOrb, SpriteSheetLoader, Ground',
+      '09_jeu/assets/marcus/ — sprite + JSON du joueur (Marcus)',
+      '09_jeu/assets/blood_monster_a/, demon_a/, black_knight_a/ — sprites des 3 ennemis du secteur Religion',
     ],
     archAssetTitle: 'Pipeline sprites (Aseprite → Godot)',
-    archAsset: "Personnage joueur : pack acheté (hobbit), animé dans Aseprite. Les frames sont chargées individuellement au runtime par un loader dédié (SpriteSheetLoader.gd) qui lit un dossier de fichiers nommés « <préfixe><numéro>.png » (ex: « Hobbit - Idle1.png »), les trie numériquement et construit une SpriteFrames Godot par animation (idle, run, attack, death, hit). Export brut des frames fait en ligne de commande via le binaire Aseprite (`aseprite -b … --sheet … --data … --script …`) plutôt qu'à la main dans l'éditeur — voir l'onglet Bugs pour le script Lua nécessaire.",
+    archAsset: "Statut : Marcus (le joueur) est le premier vrai sprite du roman intégré, au format JSON d'export Aseprite (feuille + tags). Les 3 ennemis restent pour l'instant des packs achetés (Tiny RPG Character Asset Pack), le temps que d'autres sprites soient fournis — ils seront remplacés secteur par secteur au même rythme que Marcus. Deux mécanismes de chargement coexistent dans SpriteSheetLoader.gd selon le format livré : lecture directe d'un JSON Aseprite (cas de Marcus, régions découpées dynamiquement) ou découpage d'une feuille en bandes horizontales de largeur fixe (cas des ennemis, un fichier par animation). Export brut fait en ligne de commande via le binaire Aseprite plutôt qu'à la main dans l'éditeur — voir l'onglet Bugs pour le script Lua nécessaire au cas du calque Background.",
     archVerifTitle: 'Méthode de vérification',
     archVerif: "Pas d'accès à un enregistreur d'écran système dans cet environnement (permissions manquantes). Vérification faite en lançant Godot en mode fenêtré/headless piloté par script, en forçant des états de jeu précis (ex: direction de déplacement figée), et en sauvegardant une image directement depuis la texture du viewport (`get_viewport().get_texture().get_image().save_png()`) — donc un vrai rendu du moteur, pas une capture d'écran système. Complété par des runs headless de plusieurs centaines de frames pour détecter les erreurs de script sans interface.",
 
@@ -271,15 +342,17 @@ const CONTENT = {
     ],
     specsControlsTitle: 'Contrôles',
     specsControls: [
-      'Déplacement : WASD ou flèches directionnelles, 4 directions',
+      'Déplacement : WASD, flèches directionnelles, ou manette (stick gauche analogique + croix directionnelle en repli)',
       "Combat entièrement automatique — vise l'ennemi le plus proche à portée",
-      'Échap pour quitter',
+      "Navigation manette (croix + bouton A) sur les écrans de choix de niveau et de fin de run",
+      'Échap ou bouton Start (manette) pour quitter',
     ],
     specsEnemiesTitle: 'Ennemis du secteur Religion',
     specsEnemies: [
-      'Acolyte — rapide, peu de vie, dégâts de contact',
-      'Inquisiteur — lent, très résistant, gros dégâts de contact',
-      "Encensier — garde ses distances, tire un projectile (« encens toxique ») plutôt que de foncer",
+      'Acolyte (sprite Blood Monster_A) — rapide, peu de vie, dégâts de contact',
+      'Inquisiteur (sprite Black Knight_A, chevalier à la lance) — lent, très résistant, gros dégâts de contact',
+      "Encensier (sprite Demon_A) — garde ses distances, tire un projectile (« encens toxique ») plutôt que de foncer",
+      "Les deux types au corps-à-corps jouent leur pose d'attaque à chaque coup porté, pas seulement en se déplaçant",
     ],
     specsProgressionTitle: 'Vagues et progression',
     specsProgression: [
@@ -294,12 +367,18 @@ const CONTENT = {
       "Écran de choix d'amélioration au level-up, jeu mis en pause pendant le choix",
       "Écran de fin (victoire ou défaite) avec bouton pour relancer une partie",
     ],
-    specsPlayerTitle: 'Personnage joueur',
+    specsPlayerTitle: 'Personnage joueur — Marcus',
     specsPlayer: [
-      'Animé : idle, course, attaque, mort (issues du pack de sprites)',
+      "Le protagoniste du roman (plus un sprite hobbit générique) : idle, course, attaque (fronde), mort",
       "Retourné automatiquement selon le sens du déplacement (gauche/droite), pas de sprites dos/face — convention standard du genre",
       "Légère inclinaison du personnage dans le sens de la course, pour rendre la direction lisible même quand l'animation de marche est discrète",
       "Priorité systématique donnée à l'animation de course sur la pose d'attaque tant que le joueur se déplace",
+    ],
+    specsLevelTitle: 'Décor de niveau (premier passage)',
+    specsLevel: [
+      "Tracé de rues inspiré du plan réel de la ville haute de Provins (relevé sur OpenStreetMap) : un réseau qui rayonne depuis le centre-ville plutôt qu'une grille — le centre de la carte est le centre-ville, point d'apparition du joueur",
+      "Deux mécanismes distincts : un TileMap peint (sol, rues, jardin) et des objets indépendants posés le long des rues (maisons) ou dispersés (rochers, buissons)",
+      "Tuiles et bâtiments encore en placeholders générés en code (formes et couleurs simples) — en attente d'un vrai set de tuiles",
     ],
 
     bugsTitle: 'Bugs & résolutions',
@@ -365,20 +444,117 @@ const CONTENT = {
         fix: "Typage explicite `Variant` pour toute variable portant un script personnalisé nécessitant un appel de méthode dynamique, et `const MonScript := preload(\"res://...\")` pour accéder aux enums/constantes d'un script sans dépendre du registre de classes global.",
         severity: 'minor',
       },
+      {
+        title: "Les animations du joueur disparaissent uniquement dans le build web exporté",
+        symptomLabel: 'SYMPTÔME',
+        symptom: "« Animation 'idle' doesn't exist » — le personnage ne s'affichait plus du tout une fois le jeu exporté en HTML5 et ouvert dans le navigateur, alors que tout fonctionnait sans erreur en mode développement (édition et tests headless).",
+        causeLabel: 'CAUSE',
+        cause: "Le chargeur de sprites scannait un dossier de fichiers au runtime via DirAccess.list_dir_begin() pour trouver les frames individuelles. Cette énumération de dossier ne fonctionne pas de façon fiable une fois le projet empaqueté dans un .pck exporté — même avec le filtre d'export réglé pour inclure toutes les ressources —, alors qu'elle marche parfaitement sur le système de fichiers réel en développement. Un bug invisible en local, qui ne se révèle qu'à l'export.",
+        fixLabel: 'RÉSOLUTION',
+        fix: "Remplacement du scan de dossier par un chargement direct : le nombre de frames par animation est connu à l'avance et codé en dur, chaque frame est chargée par son chemin exact (`load(\"res://...Idle1.png\")`) plutôt que découverte dynamiquement. Un chemin connu se charge toujours correctement dans un .pck, contrairement à une énumération de répertoire. Revérifié après export : plus d'erreur, animations chargées.",
+        severity: 'major',
+      },
+    ],
+
+    journalTitle: 'Journal de session',
+    journalIntro: "Chronologie de ce qui a été fait, séance par séance — pour suivre la construction du jeu au fur et à mesure plutôt que de ne voir que le résultat final. Cliquer une entrée pour le détail.",
+    journalWhatLabel: 'CE QUI A ÉTÉ FAIT',
+    journalDecisionLabel: 'DÉCISION',
+    journal: [
+      {
+        date: '27/08/2026',
+        title: 'Choix du genre et du twist',
+        summary: "Recherche de marché sur les genres solo rentables, puis choix du twist central du gameplay.",
+        what: "Comparaison de plusieurs genres solo/IA-friendly (survivor-like, roguelike deckbuilder) sur des données réelles de succès solo (Brotato, Balatro, Halls of Torment). Le survivor-like retenu pour sa vitesse de prototypage. Trois pistes de twist proposées puis réduites à une seule par discipline de scope.",
+        decision: "Vagues thématisées par secteur Occasus (un secteur = un domaine du monde infiltré par un démon) plutôt qu'une combinaison de plusieurs mécaniques — le twist le plus simple à exécuter et le plus fidèle au thème du roman.",
+      },
+      {
+        date: '27/08/2026',
+        title: 'V0 — secteur pilote jouable',
+        summary: 'Architecture Godot 100% code, boucle de jeu complète sur le secteur Religion.',
+        what: "Godot 4 + GDScript choisi comme moteur. Toutes les entités (joueur, ennemis, projectiles, orbes d'XP, vagues, interface) construites en code plutôt qu'en scènes éditées à la main — pour rester rapide à faire évoluer avec l'assistant IA. Secteur Religion (Bélial) choisi comme pilote car le mieux documenté dans le lore.",
+        decision: "Pas de fichiers .tscn par entité : tout instancié dynamiquement via `Script.new()`. Ce choix a permis d'itérer vite mais a aussi causé le bug d'export le plus sérieux de la session (voir onglet Bugs) — un compromis assumé.",
+      },
+      {
+        date: '27/08/2026',
+        title: 'Premier sprite joueur + bugs de transparence',
+        summary: "Intégration d'un personnage acheté pour valider le pipeline sprite, deux bugs de rendu résolus.",
+        what: "Un personnage acheté animé (idle/course/attaque/mort) intégré comme joueur pour voir un vrai rendu plutôt que des formes géométriques. Deux problèmes trouvés et corrigés : un calque de repère exporté par erreur (fond opaque au lieu de transparent), puis un cadrage trop large des frames.",
+        decision: "Script Lua pour nettoyer l'export Aseprite avant intégration, plutôt que de retoucher les images à la main à chaque fois — réutilisable pour tous les futurs sprites.",
+      },
+      {
+        date: '27/08/2026',
+        title: "Le vrai bug d'orientation",
+        summary: "Trois tentatives avant de trouver la vraie cause d'un personnage qui semblait glisser en arrière.",
+        what: "Effet « moonwalk » corrigé une première fois (pose d'attaque prioritaire sur la course), le symptôme persistait. Deuxième diagnostic basé sur la direction de l'arme du personnage — toujours faux. Troisième diagnostic en se fiant au visage plutôt qu'à l'arme, avec vérification par repères visuels fixes et capture d'écran programmatique plutôt qu'un jugement à l'œil sur une image figée.",
+        decision: "Ne plus se fier à un seul indice visuel pour un diagnostic d'orientation — croiser plusieurs vérifications avant de conclure. Ajout d'une légère inclinaison du personnage dans le sens de la course pour renforcer la lisibilité, indépendamment du bug.",
+      },
+      {
+        date: '27/08/2026',
+        title: 'Premiers ennemis et publication V0.1',
+        summary: "Manette ajoutée, export web réalisé, première publication sur ce site.",
+        what: "Support manette complet (stick analogique + croix, navigation des menus). Premier export HTML5/WebAssembly du secteur pilote, révélant un bug invisible en développement : le chargement de sprites par scan de dossier ne fonctionne pas dans un build empaqueté. Corrigé, puis publication comme démo jouable sur ce site (V0.1).",
+        decision: "Chargement des sprites par chemin de fichier connu plutôt que par scan de dossier — plus robuste, fonctionne aussi bien en développement qu'à l'export, retenu comme pattern par défaut pour la suite.",
+        demoTo: '/lab/lost-cauldron-game/demo',
+        demoLabel: 'Voir la démo V0.1 →',
+      },
+      {
+        date: '28/08/2026',
+        title: 'Les 3 ennemis du secteur Religion animés',
+        summary: "Cercles de couleur remplacés par de vrais sprites de monstres pour les 3 types d'ennemis.",
+        what: "Acolyte, Encensier et Inquisiteur reçoivent chacun un sprite animé (Blood Monster_A, Demon_A, puis Black Knight_A pour l'Inquisiteur — un chevalier à la lance, plutôt approprié pour ce rôle). Échelle ajustée après un premier retour (« trop petits »). Pose d'attaque ajoutée au corps-à-corps, déclenchée à chaque coup porté plutôt qu'en continu.",
+        decision: "Garder le cercle de couleur en attendant pour tout type d'ennemi sans sprite disponible plutôt que d'attendre d'avoir les trois avant d'avancer — le jeu reste jouable et testable à chaque étape.",
+      },
+      {
+        date: '28/08/2026',
+        title: 'Marcus remplace le personnage placeholder',
+        summary: "Le vrai protagoniste du roman intègre le jeu, plus fidèle au pipeline déjà construit.",
+        what: "Sprite de Marcus (même structure d'animation que le personnage acheté : idle, course, attaque, mort) intégré à la place du placeholder. Orientation revérifiée avec la même méthode que le bug précédent — correcte dès la première tentative cette fois. Mise à jour ultérieure des couleurs de l'animation de course suite à une itération graphique.",
+        decision: "Conserver exactement la même structure de tags d'animation que le personnage précédent, pour que le changement de sprite ne demande aucune modification de logique de jeu — seulement un nouveau fichier.",
+      },
+      {
+        date: '28/08/2026',
+        title: 'Premier décor de niveau',
+        summary: "D'un pack de tuiles écarté pour incohérence de ton à un tracé de rues basé sur le vrai plan de Provins.",
+        what: "Un pack de tuiles/décor exploré puis écarté (palette trop lumineuse, hors ton du secteur). Système TileMap générique construit en placeholder pour expliquer le mécanisme. Puis, sur demande, tracé de rues réel de la ville haute de Provins consulté sur OpenStreetMap et transposé en code : réseau de rues qui rayonne depuis le centre-ville plutôt qu'une grille, maisons et jardin placés en conséquence.",
+        decision: "Le centre de la carte de jeu correspond au centre-ville réel de Provins — le joueur apparaît littéralement au centre du réseau de rues, pas à un point arbitraire.",
+      },
+      {
+        date: '29/08/2026',
+        title: 'Export V0.2 et mise à jour du site',
+        summary: "Nouvelle version jouable publiée, documentation du projet mise à jour en conséquence.",
+        what: "Export web de l'état courant (Marcus, 3 ennemis animés, manette, décor de Provins) publié comme deuxième démo jouable, sans écraser la V0.1. Onglets Architecture, Spécifications, Bugs et Roadmap de cette page mis à jour pour refléter ce qui a réellement changé.",
+        decision: "Garder les deux démos en ligne plutôt que remplacer la V0.1 — permet de comparer visuellement la progression plutôt que de ne voir que le dernier état.",
+        demoTo: '/lab/lost-cauldron-game/demo/v2',
+        demoLabel: 'Voir la démo V0.2 →',
+      },
     ],
 
     roadmapTitle: 'Roadmap',
     roadmapIntro: "Pas d'engagement de date — l'étape suivante n'est pas encore tranchée, discipline de scope oblige (le facteur n°1 d'échec des jeux solo indie).",
     roadmap: [
       {
-        version: 'V0 — secteur pilote',
+        version: 'V0.1 — secteur pilote jouable',
         statusLabel: 'FAIT',
         statusColor: 'var(--primary)',
         items: [
           "Boucle complète jouable : déplacement, vagues, level-up, mort/victoire",
           "Secteur Religion (Bélial) : 3 archétypes d'ennemis",
-          'Personnage joueur animé et correctement orienté',
+          'Personnage joueur (sprite hobbit générique) animé et correctement orienté',
           'Plein écran',
+          'Export HTML5/WebAssembly et publication comme démo jouable sur ce site',
+        ],
+      },
+      {
+        version: 'V0.2 — Marcus, ennemis animés, manette',
+        statusLabel: 'FAIT',
+        statusColor: 'var(--primary)',
+        items: [
+          "Marcus (le protagoniste du roman) remplace le sprite hobbit générique",
+          "Les 3 ennemis du secteur Religion ont chacun leur sprite animé (plus de cercles de couleur)",
+          "Pose d'attaque au corps-à-corps déclenchée à chaque coup porté, pas seulement en déplacement",
+          "Support manette complet (déplacement + navigation des menus)",
+          "Premier décor de niveau : tracé de rues inspiré de la ville haute de Provins, maisons et jardin en placeholders",
         ],
       },
       {
@@ -389,6 +565,7 @@ const CONTENT = {
           "Option A — boss de fin de run (Vautrin) : donne un vrai climax à la victoire, actuellement juste un minuteur qui tombe à zéro",
           "Option B — deuxième secteur (ex: Finance/Mammon) : prouve que le twist « un secteur = une identité » tient sur plusieurs déclinaisons",
           "Option C — hub meta-progression (le pub The Lost Cauldron, déjà modélisé en 3D) : entre les runs, avant d'avoir plusieurs secteurs à débloquer",
+          "Option D — vrai set de tuiles/décor (en attente que l'auteur en trouve un sur itch.io) pour remplacer les placeholders du décor de niveau",
         ],
       },
       {
@@ -396,7 +573,7 @@ const CONTENT = {
         statusLabel: 'HYPOTHÈSE',
         statusColor: 'var(--muted)',
         items: [
-          "Dessin des sprites par l'auteur lui-même (plaisir personnel assumé) une fois le pipeline Aseprite → Godot validé sur un pack acheté",
+          "Dessin des sprites par l'auteur lui-même (plaisir personnel assumé) une fois le pipeline Aseprite → Godot validé sur des packs achetés",
           "Extension aux 8 autres secteurs Occasus du lore (médias, politique, agro-industrie, éducation, armée…) une fois le twist prouvé sur 2 secteurs",
         ],
       },
@@ -412,10 +589,13 @@ const CONTENT = {
       { id: 'architecture', label: 'Technical architecture' },
       { id: 'specs', label: 'Functional specifications' },
       { id: 'bugs', label: 'Bugs & fixes' },
+      { id: 'journal', label: 'Session log' },
       { id: 'roadmap', label: 'Roadmap' },
     ],
 
     contextTitle: 'Context',
+    demoV1Label: 'See demo V0.1 →',
+    demoV2Label: 'See demo V0.2 →',
     context: "The Lost Cauldron started as a fantasy novel I'm writing (demons quietly infiltrating the upper tiers of society — finance, religion, media, justice — under the cover of a foundation, Occasus). I'm turning it into a game: a survivor-like (Vampire Survivors-style), the fastest genre to ship solo with AI assistance, but also the most saturated with clones. The goal isn't a multi-year project: a game that's fast to build and profitable, reusing a universe I've already written instead of starting from a blank page.",
 
     methodTitle: 'Method',
@@ -435,7 +615,7 @@ const CONTENT = {
       {
         title: 'Experimentation',
         status: 'done',
-        body: "Pilot sector chosen: Religion (the demon Bélial), the best-documented one in the existing lore (Vautrin, the infiltrated Church). Godot 4 + GDScript, one sector built entirely in procedural code to move fast, sprites from a purchased pack (a hobbit character) plugged in as the player to see real rendering instead of a geometric-shape prototype.",
+        body: "Pilot sector chosen: Religion (the demon Bélial), the best-documented one in the existing lore (Vautrin, the infiltrated Church). Godot 4 + GDScript, one sector built entirely in procedural code to move fast. First sprite plugged in as the player: a purchased character (while the pipeline was being validated), since replaced by Marcus's real sprite.",
       },
       {
         title: 'Analyzing the Results',
@@ -466,11 +646,12 @@ const CONTENT = {
     archStructureTitle: 'Folder structure',
     archStructure: [
       '09_jeu/scenes/ — only Main.tscn',
-      '09_jeu/scripts/ — Player, Enemy, WaveManager, UI, Main, Projectile, EnemyProjectile, XPOrb, SpriteSheetLoader',
-      '09_jeu/assets/hobbit_frames/ — 78 individual PNG frames for the player character',
+      '09_jeu/scripts/ — Player, Enemy, WaveManager, UI, Main, Projectile, EnemyProjectile, XPOrb, SpriteSheetLoader, Ground',
+      '09_jeu/assets/marcus/ — player (Marcus) sprite + JSON',
+      '09_jeu/assets/blood_monster_a/, demon_a/, black_knight_a/ — the 3 Religion sector enemy sprites',
     ],
     archAssetTitle: 'Sprite pipeline (Aseprite → Godot)',
-    archAsset: "Player character: a purchased pack (hobbit), animated in Aseprite. Frames are loaded individually at runtime by a dedicated loader (SpriteSheetLoader.gd) that reads a folder of files named “<prefix><number>.png” (e.g. “Hobbit - Idle1.png”), sorts them numerically, and builds a Godot SpriteFrames per animation (idle, run, attack, death, hit). Raw frame export done from the command line via the Aseprite binary (`aseprite -b … --sheet … --data … --script …`) rather than by hand in the editor — see the Bugs tab for the required Lua script.",
+    archAsset: "Status: Marcus (the player) is the first real novel sprite plugged in, using Aseprite's JSON export format (sheet + tags). The 3 enemies are still purchased packs (Tiny RPG Character Asset Pack) for now, until more custom sprites are supplied — they'll be swapped sector by sector at the same pace as Marcus. Two loading mechanisms coexist in SpriteSheetLoader.gd depending on the delivered format: direct JSON parsing (Marcus's case, regions sliced dynamically) or slicing a sheet into fixed-width horizontal strips (the enemies' case, one file per animation). Raw export done from the command line via the Aseprite binary rather than by hand in the editor — see the Bugs tab for the Lua script needed for the Background-layer case.",
     archVerifTitle: 'Verification method',
     archVerif: "No access to a system screen recorder in this environment (missing permissions). Verification done by launching Godot in windowed/headless mode driven by script, forcing specific game states (e.g. a fixed movement direction), and saving an image straight from the viewport's texture (`get_viewport().get_texture().get_image().save_png()`) — a real engine render, not a system screenshot. Complemented by headless runs of several hundred frames to catch script errors with no UI at all.",
 
@@ -484,15 +665,17 @@ const CONTENT = {
     ],
     specsControlsTitle: 'Controls',
     specsControls: [
-      'Movement: WASD or arrow keys, 4 directions',
+      'Movement: WASD, arrow keys, or gamepad (analog left stick + D-pad fallback)',
       'Combat is fully automatic — targets the nearest enemy in range',
-      'Escape to quit',
+      'Gamepad navigation (D-pad + A button) on the level-up and end-of-run screens',
+      'Escape or gamepad Start to quit',
     ],
     specsEnemiesTitle: 'Religion sector enemies',
     specsEnemies: [
-      'Acolyte — fast, low HP, melee contact damage',
-      'Inquisitor — slow, very tanky, heavy melee damage',
-      'Censer-bearer — keeps its distance, fires a projectile (“toxic incense”) instead of charging in',
+      'Acolyte (Blood Monster_A sprite) — fast, low HP, melee contact damage',
+      'Inquisitor (Black Knight_A sprite, spear-wielding knight) — slow, very tanky, heavy melee damage',
+      'Censer-bearer (Demon_A sprite) — keeps its distance, fires a projectile (“toxic incense”) instead of charging in',
+      'Both melee types now play their attack pose on every hit landed, not just while moving',
     ],
     specsProgressionTitle: 'Waves and progression',
     specsProgression: [
@@ -507,12 +690,18 @@ const CONTENT = {
       'Upgrade-choice screen on level-up, game paused during the choice',
       'End screen (victory or defeat) with a button to start a new run',
     ],
-    specsPlayerTitle: 'Player character',
+    specsPlayerTitle: 'Player character — Marcus',
     specsPlayer: [
-      'Animated: idle, run, attack, death (from the sprite pack)',
+      "The novel's protagonist (no longer a generic hobbit sprite): idle, run, attack (sling), death",
       "Auto-flipped based on movement direction (left/right), no back/front sprites — standard genre convention",
       'Slight lean in the direction of travel, to keep direction readable even when the walk animation itself is subtle',
       'Run animation always takes priority over the attack pose while the player is moving',
+    ],
+    specsLevelTitle: 'Level decor (first pass)',
+    specsLevel: [
+      "Street layout inspired by the real street plan of Provins' upper town (pulled from OpenStreetMap): a network radiating from the town center rather than a grid — the map center is the town center, where the player spawns",
+      'Two distinct mechanisms: a painted TileMap (ground, streets, park) plus independent objects placed along streets (houses) or scattered (rocks, bushes)',
+      'Tiles and buildings are still code-generated placeholders (simple shapes and colors) — waiting on a real tileset',
     ],
 
     bugsTitle: 'Bugs & fixes',
@@ -578,20 +767,117 @@ const CONTENT = {
         fix: 'Explicit `Variant` typing for any variable holding a custom script that needs dynamic method calls, and `const MyScript := preload("res://...")` to reach a script’s enums/constants without depending on the global class registry.',
         severity: 'minor',
       },
+      {
+        title: 'Player animations disappear only in the exported web build',
+        symptomLabel: 'SYMPTOM',
+        symptom: "“Animation 'idle' doesn't exist” — the character stopped rendering entirely once the game was exported to HTML5 and opened in a browser, while everything worked without error in development mode (editor and headless tests).",
+        causeLabel: 'CAUSE',
+        cause: "The sprite loader scanned a folder of files at runtime via DirAccess.list_dir_begin() to find individual frames. That folder enumeration doesn't work reliably once the project is packed into an exported .pck — even with the export filter set to include all resources — while it works perfectly on the real filesystem in development. A bug invisible locally that only shows up on export.",
+        fixLabel: 'FIX',
+        fix: 'Replaced the folder scan with direct loading: the frame count per animation is known ahead of time and hardcoded, each frame is loaded by its exact path (`load("res://...Idle1.png")`) instead of being discovered dynamically. A known path always loads correctly inside a .pck, unlike a directory listing. Re-verified after export: no more error, animations load correctly.',
+        severity: 'major',
+      },
+    ],
+
+    journalTitle: 'Session log',
+    journalIntro: 'Chronology of what got done, session by session — so the build can be followed as it happens rather than only seeing the final result. Click an entry for detail.',
+    journalWhatLabel: 'WHAT GOT DONE',
+    journalDecisionLabel: 'DECISION',
+    journal: [
+      {
+        date: '08/27/2026',
+        title: 'Genre and twist chosen',
+        summary: 'Market research on profitable solo genres, then the core gameplay twist.',
+        what: 'Compared several solo/AI-friendly genres (survivor-like, roguelike deckbuilder) against real solo-success data (Brotato, Balatro, Halls of Torment). Survivor-like chosen for prototyping speed. Three twist directions proposed, narrowed to one for scope discipline.',
+        decision: 'Waves themed around Occasus sectors (one sector = one domain of the world infiltrated by a demon) rather than combining several mechanics — the simplest twist to execute and the most faithful to the novel’s theme.',
+      },
+      {
+        date: '08/27/2026',
+        title: 'V0 — playable pilot sector',
+        summary: 'Fully code-driven Godot architecture, complete game loop on the Religion sector.',
+        what: "Godot 4 + GDScript chosen as the engine. Every entity (player, enemies, projectiles, XP orbs, waves, UI) built in code rather than hand-edited scenes — to stay fast to iterate with the AI assistant. Religion sector (Bélial) chosen as the pilot as the best-documented one in the lore.",
+        decision: "No .tscn file per entity: everything instantiated dynamically via `Script.new()`. This kept iteration fast but also caused the most serious export bug of the session (see Bugs tab) — a deliberate trade-off.",
+      },
+      {
+        date: '08/27/2026',
+        title: 'First player sprite + transparency bugs',
+        summary: 'A purchased character plugged in to validate the sprite pipeline, two rendering bugs fixed.',
+        what: 'A purchased animated character (idle/run/attack/death) plugged in as the player to see real rendering instead of geometric shapes. Two problems found and fixed: a reference layer mistakenly exported (opaque background instead of transparent), then frames cropped too loosely.',
+        decision: 'A Lua script to clean the Aseprite export before integration, instead of manually retouching images every time — reusable for every future sprite.',
+      },
+      {
+        date: '08/27/2026',
+        title: 'The real orientation bug',
+        summary: 'Three attempts before finding the actual cause of a character that looked like it was sliding backward.',
+        what: "The “moonwalk” effect fixed once (attack pose taking priority over running), but the symptom persisted. Second diagnosis based on the character's weapon direction — still wrong. Third diagnosis based on the face instead of the weapon, verified with fixed visual markers and a programmatic screenshot instead of judging a single still frame by eye.",
+        decision: "Never trust a single visual cue for an orientation diagnosis — cross-check before concluding. Added a slight lean in the running direction to reinforce readability, independent of the bug itself.",
+      },
+      {
+        date: '08/27/2026',
+        title: 'First enemies and V0.1 published',
+        summary: 'Gamepad support added, web export achieved, first publish on this site.',
+        what: 'Full gamepad support (analog stick + D-pad, menu navigation). First HTML5/WebAssembly export of the pilot sector, which surfaced a bug invisible in development: loading sprites via folder scan doesn’t work inside a packed build. Fixed, then published as a playable demo on this site (V0.1).',
+        decision: 'Load sprites by known file path rather than folder scan — more robust, works the same in development and in export, kept as the default pattern going forward.',
+        demoTo: '/lab/lost-cauldron-game/demo',
+        demoLabel: 'See demo V0.1 →',
+      },
+      {
+        date: '08/28/2026',
+        title: 'All 3 Religion sector enemies animated',
+        summary: 'Colored circles replaced with real monster sprites for all three enemy types.',
+        what: 'Acolyte, Censer-bearer, and Inquisitor each get an animated sprite (Blood Monster_A, Demon_A, then Black Knight_A for the Inquisitor — a spear-wielding knight, fitting for that role). Scale adjusted after early feedback (“too small”). Attack pose added for melee enemies, triggered on every hit rather than continuously.',
+        decision: 'Keep the colored circle as a fallback for any enemy type without a sprite yet, rather than waiting to have all three — the game stays playable and testable at every step.',
+      },
+      {
+        date: '08/28/2026',
+        title: 'Marcus replaces the placeholder character',
+        summary: "The novel's real protagonist joins the game, matching the pipeline already built.",
+        what: 'Marcus sprite (same animation structure as the purchased character: idle, run, attack, death) plugged in to replace the placeholder. Orientation re-verified with the same method as the earlier bug — correct on the first try this time. Later update to the run-animation colors following an art iteration.',
+        decision: 'Keep the exact same animation tag structure as the previous character, so swapping sprites needs zero game-logic changes — just a new file.',
+      },
+      {
+        date: '08/28/2026',
+        title: 'First level decor pass',
+        summary: 'From a discarded tileset pack to a street layout based on the real map of Provins.',
+        what: "A tileset/decor pack explored then discarded (palette too bright, off-tone for the sector). A generic TileMap system built as a placeholder to explain the mechanism. Then, on request, the real street layout of Provins' upper town pulled from OpenStreetMap and translated into code: a street network radiating from the town center rather than a grid, houses and a park placed accordingly.",
+        decision: "The game map's center matches Provins' real town center — the player spawns literally at the center of the street network, not an arbitrary point.",
+      },
+      {
+        date: '08/29/2026',
+        title: 'V0.2 export and site update',
+        summary: 'New playable version published, project documentation updated to match.',
+        what: 'Web export of the current state (Marcus, 3 animated enemies, gamepad, Provins decor) published as a second playable demo, without overwriting V0.1. This page’s Architecture, Specs, Bugs, and Roadmap tabs updated to reflect what actually changed.',
+        decision: 'Keep both demos live rather than replace V0.1 — lets readers visually compare progress instead of only seeing the latest state.',
+        demoTo: '/lab/lost-cauldron-game/demo/v2',
+        demoLabel: 'See demo V0.2 →',
+      },
     ],
 
     roadmapTitle: 'Roadmap',
     roadmapIntro: "No date commitments — the next step isn't decided yet, scope discipline being the #1 failure factor for solo indie games.",
     roadmap: [
       {
-        version: 'V0 — pilot sector',
+        version: 'V0.1 — playable pilot sector',
         statusLabel: 'DONE',
         statusColor: 'var(--primary)',
         items: [
           'Full playable loop: movement, waves, level-up, death/victory',
           'Religion sector (Bélial): 3 enemy archetypes',
-          'Player character animated and correctly oriented',
+          'Player character (generic hobbit sprite) animated and correctly oriented',
           'Fullscreen',
+          'HTML5/WebAssembly export, published as a playable demo on this site',
+        ],
+      },
+      {
+        version: 'V0.2 — Marcus, animated enemies, gamepad',
+        statusLabel: 'DONE',
+        statusColor: 'var(--primary)',
+        items: [
+          "Marcus (the novel's protagonist) replaces the generic hobbit sprite",
+          'All 3 Religion sector enemies now have their own animated sprite (no more colored circles)',
+          'Melee attack pose now triggers on every hit landed, not just while moving',
+          'Full gamepad support (movement + menu navigation)',
+          "First level-decor pass: street layout inspired by Provins' upper town, placeholder houses and park",
         ],
       },
       {
@@ -602,6 +888,7 @@ const CONTENT = {
           "Option A — end-of-run boss (Vautrin): gives victory a real climax, currently just a timer hitting zero",
           "Option B — a second sector (e.g. Finance/Mammon): proves the “one sector = one identity” twist holds across variations",
           "Option C — meta-progression hub (The Lost Cauldron pub, already modeled in 3D): between runs, before there are several sectors to unlock",
+          'Option D — a real tileset/decor pack (waiting on the author to find one on itch.io) to replace the level-decor placeholders',
         ],
       },
       {
@@ -609,7 +896,7 @@ const CONTENT = {
         statusLabel: 'HYPOTHESIS',
         statusColor: 'var(--muted)',
         items: [
-          'Sprites hand-drawn by the author himself (an explicit personal pleasure) once the Aseprite → Godot pipeline is validated on a purchased pack',
+          'Sprites hand-drawn by the author himself (an explicit personal pleasure) once the Aseprite → Godot pipeline is validated on purchased packs',
           'Extend to the 8 other Occasus sectors from the lore (media, politics, agribusiness, education, military…) once the twist is proven on 2 sectors',
         ],
       },
@@ -633,21 +920,38 @@ export default function TheLostCauldronGame() {
         <>
           <Section title={c.contextTitle}>
             <p style={{ marginBottom: 16 }}>{c.context}</p>
-            <Link
-              to="/lab/lost-cauldron-game/demo"
-              style={{
-                display: 'inline-block',
-                fontFamily: "var(--font-mono)",
-                fontSize: 12,
-                color: 'var(--primary)',
-                textDecoration: 'none',
-                border: '1px solid var(--primary)',
-                borderRadius: 6,
-                padding: '8px 16px',
-              }}
-            >
-              {t(lang, 'seeDemo')}
-            </Link>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Link
+                to="/lab/lost-cauldron-game/demo/v2"
+                style={{
+                  display: 'inline-block',
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 12,
+                  color: 'var(--bg)',
+                  textDecoration: 'none',
+                  background: 'var(--primary)',
+                  borderRadius: 6,
+                  padding: '8px 16px',
+                }}
+              >
+                {c.demoV2Label}
+              </Link>
+              <Link
+                to="/lab/lost-cauldron-game/demo"
+                style={{
+                  display: 'inline-block',
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 12,
+                  color: 'var(--primary)',
+                  textDecoration: 'none',
+                  border: '1px solid var(--primary)',
+                  borderRadius: 6,
+                  padding: '8px 16px',
+                }}
+              >
+                {c.demoV1Label}
+              </Link>
+            </div>
           </Section>
 
           <Section title={c.methodTitle}>
@@ -733,6 +1037,10 @@ export default function TheLostCauldronGame() {
           <Section title={c.specsPlayerTitle}>
             <StatusList title="" items={c.specsPlayer} color="var(--primary)" />
           </Section>
+
+          <Section title={c.specsLevelTitle}>
+            <StatusList title="" items={c.specsLevel} color="var(--primary)" />
+          </Section>
         </>
       )}
 
@@ -743,6 +1051,22 @@ export default function TheLostCauldronGame() {
           </Section>
           {c.bugs.map((bug, i) => (
             <BugCard key={i} {...bug} />
+          ))}
+        </>
+      )}
+
+      {activeTab === 'journal' && (
+        <>
+          <Section title={c.journalTitle}>
+            <p style={{ marginBottom: 20 }}>{c.journalIntro}</p>
+          </Section>
+          {c.journal.map((entry, i) => (
+            <SessionCard
+              key={i}
+              {...entry}
+              whatLabel={c.journalWhatLabel}
+              decisionLabel={c.journalDecisionLabel}
+            />
           ))}
         </>
       )}
