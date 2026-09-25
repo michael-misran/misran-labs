@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 import { visibleProjects, pt } from '../lab/projects'
 import IconButton from '../design-system/IconButton'
 import { Icon } from '../design-system/kit'
-import LabLogo from '../design-system/LabLogo'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 
@@ -14,58 +13,37 @@ const PROJECTS = visibleProjects()
 // disparu : un kit est un rendu unique. Le chevron de repli était un SVG
 // maison défini à côté d'elles ; il passe sur l'icône du kit.
 
+// Plus de logo ni de wordmark ici — juste le contrôle de repli. Une seule
+// icône, un seul geste : le chevron pointe vers la droite pour déplier,
+// vers la gauche (rotation 180°, pas une seconde icône) pour replier.
 function SidebarHeader({ lang, collapsed, isMobile, onCloseMobile, onCollapse, onExpand }) {
-  if (collapsed && !isMobile) {
+  if (isMobile) {
     return (
       <div
         style={{
-          padding: '14px 0 12px',
+          padding: '10px 12px',
           borderBottom: 'var(--border-thin) solid var(--border)',
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 8,
+          justifyContent: 'flex-end',
         }}
       >
-        <div style={{ marginBottom: 4 }}>
-          <LabLogo size={22} />
-        </div>
-        <IconButton onClick={onExpand} label={t(lang, 'expandNav')}>
-          <Icon name="chevronRight" size="var(--icon-md)" />
-        </IconButton>
+        <IconButton onClick={onCloseMobile} label={t(lang, 'closeNav')}>✕</IconButton>
       </div>
     )
   }
 
   return (
-    <div style={{ padding: '16px 16px 12px', borderBottom: 'var(--border-thin) solid var(--border)' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <LabLogo size={20} variant="compact" />
-          <span
-            style={{
-              fontFamily: "var(--font-heading)",
-              fontWeight: 700,
-              fontSize: 16,
-              color: 'var(--primary)',
-              letterSpacing: '0.06em',
-              lineHeight: 1,
-            }}
-          >
-            M.LABS
-          </span>
-        </div>
-        {isMobile && <IconButton onClick={onCloseMobile} label={t(lang, 'closeNav')}>✕</IconButton>}
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            </div>
-        {!isMobile && onCollapse && (
-          <IconButton onClick={onCollapse} label={t(lang, 'collapseNav')}>
-            <Icon name="chevronRight" size="var(--icon-md)" />
-          </IconButton>
-        )}
-      </div>
+    <div
+      style={{
+        padding: collapsed ? '12px 0' : '10px 12px',
+        borderBottom: 'var(--border-thin) solid var(--border)',
+        display: 'flex',
+        justifyContent: collapsed ? 'center' : 'flex-end',
+      }}
+    >
+      <IconButton onClick={collapsed ? onExpand : onCollapse} label={t(lang, collapsed ? 'expandNav' : 'collapseNav')}>
+        <Icon name="chevronRight" size="var(--icon-md)" style={{ transform: collapsed ? 'none' : 'rotate(180deg)' }} />
+      </IconButton>
     </div>
   )
 }
