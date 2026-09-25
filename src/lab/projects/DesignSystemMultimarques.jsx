@@ -656,7 +656,7 @@ const TAB_TINTS = [
 
 function CaseTabs({ tabs, active, onChange }) {
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 8 }}>
+    <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 2, marginBottom: 8, overflowX: 'auto' }}>
       {tabs.map((tab, i) => {
         const isActive = active === tab.id
         return (
@@ -666,22 +666,25 @@ function CaseTabs({ tabs, active, onChange }) {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 8,
+              gap: 4,
+              flexShrink: 0,
               background: isActive ? 'var(--bg2)' : TAB_TINTS[i % TAB_TINTS.length],
               border: 'var(--border-thin) solid var(--border)',
               borderBottom: isActive ? 'var(--border-regular) solid var(--primary)' : 'var(--border-thin) solid var(--border)',
               borderRadius: '3px 3px 0 0',
-              padding: '9px 16px',
+              padding: '6px 7px',
               cursor: 'pointer',
-              fontFamily: "var(--font-body)",
-              fontSize: 13,
-              fontWeight: isActive ? 600 : 400,
+              fontFamily: "var(--font-mono)",
+              fontSize: 9,
+              letterSpacing: '0.02em',
+              textTransform: 'uppercase',
+              fontWeight: isActive ? 700 : 400,
               color: isActive ? 'var(--text)' : 'var(--text2)',
               whiteSpace: 'nowrap',
               transition: 'background 0.15s ease, color 0.15s ease',
             }}
           >
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: isActive ? 'var(--primary)' : 'var(--muted)' }}>
+            <span style={{ color: isActive ? 'var(--primary)' : 'var(--muted)' }}>
               {isActive ? '✛' : String(i + 1).padStart(2, '0')}
             </span>
             {tab.label}
