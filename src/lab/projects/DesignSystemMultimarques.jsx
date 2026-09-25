@@ -718,8 +718,8 @@ export default function DesignSystemMultimarques({ project }) {
   return (
     <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <CaseMasthead c={c} lang={lang} />
-      <CaseTabs tabs={c.tabs} active={activeTab} onChange={setActiveTab} />
       <CaseHero project={project} c={c} />
+      <CaseTabs tabs={c.tabs} active={activeTab} onChange={setActiveTab} />
 
       {activeTab === 'overview' && (
         <>
