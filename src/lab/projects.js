@@ -1,4 +1,3 @@
-import UIKit from './projects/UIKit'
 import DesignSystemMultimarques from './projects/DesignSystemMultimarques'
 import DesignSystem from './projects/DesignSystem'
 import TheLostCauldronGame from './projects/TheLostCauldronGame'
@@ -54,34 +53,6 @@ export const PROJECTS = [
       iteration: 'done',
     },
     component: DesignSystemMultimarques,
-  },
-  {
-    slug: 'ui-kit',
-    icon: '◧',
-    title: { fr: 'Kit UI', en: 'UI Kit' },
-    summary: {
-      fr: 'Les composants réels du Lab — surfaces, contrôles, navigation, retours — avec leurs états.',
-      en: 'The Lab’s real components — surfaces, controls, navigation, feedback — with their states.',
-    },
-    status: 'READY',
-    type: 'case-study',
-    featured: true,
-    tags: {
-      fr: ['Design system', 'React', 'Composants', 'Accessibilité'],
-      en: ['Design system', 'React', 'Components', 'Accessibility'],
-    },
-    phases: {
-      business: 'skipped',
-      research: 'skipped',
-      design: 'done',
-      validation: 'partial',
-      feasibility: 'done',
-      development: 'done',
-      qa: 'partial',
-      launch: 'done',
-      iteration: 'partial',
-    },
-    component: UIKit,
   },
   {
     slug: 'lost-cauldron-game',
