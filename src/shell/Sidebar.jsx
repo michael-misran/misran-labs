@@ -7,6 +7,14 @@ import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 
 const PROJECTS = visibleProjects()
+const PROJECTS_BY_SLUG = Object.fromEntries(PROJECTS.map(p => [p.slug, p]))
+
+// Deux sections dans la nav : le Lab (exploration, méthode) et le
+// Portfolio (les pièces qu'on montre en priorité). Une page qui n'est
+// dans aucune des deux listes reste accessible par son URL, juste hors
+// du menu — décision explicite, pas un oubli.
+const LAB_SLUGS = ['design-system', 'lost-cauldron-game', 'exp-003']
+const PORTFOLIO_SLUGS = ['cv', 'design-system-multimarques', 'workflow']
 
 // Les bascules de langue et de thème vivaient ici. La langue est remontée
 // dans la Topbar avec le sélecteur de kit, et le thème clair/sombre a
@@ -121,6 +129,26 @@ function NavItem({ to, icon, label, collapsed }) {
   )
 }
 
+function NavSectionLabel({ children, collapsed }) {
+  if (collapsed) {
+    return <div style={{ borderTop: 'var(--border-thin) solid var(--border)', margin: '8px 12px' }} />
+  }
+  return (
+    <div
+      style={{
+        padding: '16px 16px 6px',
+        fontFamily: "var(--font-mono)",
+        fontSize: 9,
+        letterSpacing: '0.1em',
+        textTransform: 'uppercase',
+        color: 'var(--muted)',
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
 export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
   const [collapsed, setCollapsed] = useState(false)
   const { lang } = useLanguage()
@@ -146,8 +174,14 @@ export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
 
   const navList = (collapsed) => (
     <>
+      <NavSectionLabel collapsed={collapsed}>{t(lang, 'navSectionLab')}</NavSectionLabel>
       <NavItem to="/" icon="⬡" label={t(lang, 'labHome')} collapsed={collapsed} />
-      {PROJECTS.map(p => (
+      {LAB_SLUGS.map(slug => PROJECTS_BY_SLUG[slug]).filter(Boolean).map(p => (
+        <NavItem key={p.slug} to={`/lab/${p.slug}`} icon={p.icon} label={pt(p, lang).title} collapsed={collapsed} />
+      ))}
+
+      <NavSectionLabel collapsed={collapsed}>{t(lang, 'navSectionPortfolio')}</NavSectionLabel>
+      {PORTFOLIO_SLUGS.map(slug => PROJECTS_BY_SLUG[slug]).filter(Boolean).map(p => (
         <NavItem key={p.slug} to={`/lab/${p.slug}`} icon={p.icon} label={pt(p, lang).title} collapsed={collapsed} />
       ))}
     </>
