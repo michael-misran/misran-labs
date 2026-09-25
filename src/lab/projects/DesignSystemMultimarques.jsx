@@ -1,8 +1,10 @@
 import { useState } from 'react'
-import CaseStudyLayout, { Section, TabBar, BulletList } from '../CaseStudyLayout'
+import { Link } from 'react-router-dom'
+import { Section, BulletList } from '../CaseStudyLayout'
+import { Stamp, Barcode } from '../../design-system/ArchiveMarks'
 import FlowDiagram from '../../components/diagrams/FlowDiagram'
 import { useLanguage } from '../../shell/LanguageContext'
-import { useSecondarySidebar } from '../../shell/SecondarySidebarContext'
+import { t } from '../../i18n/ui'
 import useIsMobile from '../../shell/useIsMobile'
 
 const DEV = import.meta.env.DEV
@@ -168,6 +170,18 @@ const CONTENT = {
       { id: 'governance', label: 'Gouvernance' },
       { id: 'results', label: 'Résultats' },
     ],
+
+    fileNo: 'DOSSIER Nº 001',
+    mastheadCenter: 'ARCHIVE DU LAB //// DOSSIER PROJET',
+    mastheadRight: 'MISRAN LABS',
+    mastheadRightSub: 'ARCHIVE VISUEL',
+    stampLabel: 'MISRAN · LABS · ARCHIVE ·',
+    roleLabel: 'RÔLE',
+    periodLabel: 'PÉRIODE',
+    toolsLabel: 'OUTILS',
+    docId: 'ID DOSSIER — ML-ARCHIVE-001',
+    clearance: 'NIVEAU DE LECTURE — PUBLIC',
+    tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
 
     planNote:
       "La grille des 5 étapes de la démarche scientifique s’applique à mes projets, pas à mon parcours : sur deux ans de poste, elle serait reconstituée après coup, donc plus belle que la réalité. Cette page suit un autre plan — contexte, problème, ce que j’ai construit, résultats.",
@@ -355,6 +369,18 @@ const CONTENT = {
       { id: 'results', label: 'Results' },
     ],
 
+    fileNo: 'FILE Nº 001',
+    mastheadCenter: 'LAB ARCHIVE //// PROJECT FILE',
+    mastheadRight: 'MISRAN LABS',
+    mastheadRightSub: 'VISUAL ARCHIVE',
+    stampLabel: 'MISRAN · LABS · ARCHIVE ·',
+    roleLabel: 'ROLE',
+    periodLabel: 'PERIOD',
+    toolsLabel: 'TOOLS',
+    docId: 'DOCUMENT ID — ML-ARCHIVE-001',
+    clearance: 'CLEARANCE LEVEL — PUBLIC',
+    tagline: 'DESIGN IS INTENT. DETAILS ARE EVERYTHING.',
+
     planNote:
       'The 5-step scientific method applies to my projects, not to my career: across two years in a role it would be reconstructed after the fact, and therefore prettier than reality. This page follows a different outline — context, problem, what I built, results.',
 
@@ -529,17 +555,178 @@ const CONTENT = {
   },
 }
 
-export default function DesignSystemMultimarques() {
+/* --- En-tête et pied de page façon dossier ----------------------------- *
+ * Cette page ne passe plus par CaseStudyLayout pour son titre : un dossier
+ * d'archive a son propre masthead, un tampon, une table de méta plutôt
+ * qu'une simple liste, et un cartouche de bas de page — le même langage
+ * que la home (voir ArchiveHome.jsx), appliqué à une fiche plutôt qu'à
+ * l'index.
+ * ------------------------------------------------------------------- */
+
+function CaseMasthead({ c, lang }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, paddingBottom: 14, borderBottom: 'var(--border-regular) solid var(--border)', marginBottom: 24, flexWrap: 'wrap' }}>
+      <div>
+        <Link to="/" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none' }}>
+          {t(lang, 'backToLab')}
+        </Link>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginTop: 4 }}>{c.fileNo}</div>
+      </div>
+      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.14em', color: 'var(--text2)', textAlign: 'center', flex: '1 1 200px' }}>
+        {c.mastheadCenter}
+      </div>
+      <div style={{ textAlign: 'right' }}>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', color: 'var(--text)' }}>{c.mastheadRight}</div>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)' }}>{c.mastheadRightSub}</div>
+      </div>
+    </div>
+  )
+}
+
+function CaseHero({ project, c }) {
+  return (
+    <div style={{ border: 'var(--border-regular) solid var(--border)', marginBottom: 32 }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, padding: '18px 24px', borderBottom: 'var(--border-thin) solid var(--border)' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 40,
+              height: 40,
+              flexShrink: 0,
+              border: 'var(--border-thin) solid var(--border)',
+              fontFamily: "var(--font-mono)",
+              fontSize: 18,
+              color: 'var(--primary)',
+            }}
+          >
+            {project?.icon ?? '◼'}
+          </span>
+          <div>
+            <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', lineHeight: 1.05, margin: '0 0 6px', color: 'var(--text)' }}>
+              {c.title}
+            </h1>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: '0.04em', color: 'var(--text2)' }}>{c.role}</div>
+          </div>
+        </div>
+        <Stamp label={c.stampLabel} size={72} />
+      </div>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <div style={{ flex: '0 0 auto', minWidth: 180, padding: '12px 24px', borderRight: 'var(--border-thin) solid var(--border)' }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: 4 }}>{c.periodLabel}</div>
+          <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text)', fontWeight: 600 }}>{c.period}</div>
+        </div>
+        <div style={{ flex: '1 1 260px', padding: '12px 24px' }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: 6 }}>{c.toolsLabel}</div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+            {c.tools.map((tool) => (
+              <span
+                key={tool}
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 10,
+                  color: 'var(--text2)',
+                  border: 'var(--border-thin) solid var(--border)',
+                  padding: '3px 8px',
+                }}
+              >
+                {tool}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Onglets du dossier — une pile de chemises légèrement décalées et
+// teintées différemment, comme un tiroir d'archives. Celui qu'on ouvre se
+// redresse et se détache du lot (teinte neutre, à plat, marqué ✛) ; les
+// autres restent en retrait, chacun avec sa propre teinte et son propre
+// angle, cascadant derrière lui.
+const TAB_TINTS = [
+  'color-mix(in srgb, var(--mandarine) 20%, var(--bg3))',
+  'color-mix(in srgb, var(--violet) 16%, var(--bg3))',
+  'color-mix(in srgb, var(--pink) 16%, var(--bg3))',
+  'color-mix(in srgb, var(--warning) 18%, var(--bg3))',
+  'color-mix(in srgb, var(--cyan) 16%, var(--bg3))',
+]
+const TAB_ROTATIONS = [-1.4, 1.2, -1, 1.6, -1.2]
+
+function CaseTabs({ tabs, active, onChange }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'flex-end', flexWrap: 'wrap', gap: 0, marginBottom: 8 }}>
+      {tabs.map((tab, i) => {
+        const isActive = active === tab.id
+        return (
+          <button
+            key={tab.id}
+            onClick={() => onChange(tab.id)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              position: 'relative',
+              zIndex: isActive ? tabs.length + 1 : i,
+              marginLeft: i === 0 ? 0 : -10,
+              marginBottom: isActive ? 0 : 8 + i * 3,
+              transform: isActive ? 'none' : `rotate(${TAB_ROTATIONS[i % TAB_ROTATIONS.length]}deg)`,
+              transformOrigin: 'bottom left',
+              background: isActive ? 'var(--bg2)' : TAB_TINTS[i % TAB_TINTS.length],
+              border: 'var(--border-thin) solid var(--border)',
+              borderBottom: isActive ? 'var(--border-regular) solid var(--bg2)' : 'var(--border-thin) solid var(--border)',
+              borderRadius: '3px 3px 0 0',
+              boxShadow: isActive ? '2px -2px 0 rgba(36,28,22,0.14)' : 'none',
+              padding: '9px 16px',
+              cursor: 'pointer',
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              fontWeight: isActive ? 600 : 400,
+              color: isActive ? 'var(--text)' : 'var(--text2)',
+              whiteSpace: 'nowrap',
+              transition: 'transform 0.15s ease, margin-bottom 0.15s ease',
+            }}
+          >
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: isActive ? 'var(--primary)' : 'var(--muted)' }}>
+              {isActive ? '✛' : String(i + 1).padStart(2, '0')}
+            </span>
+            {tab.label}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+function CaseFooter({ c }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginTop: 40, paddingTop: 16, borderTop: 'var(--border-regular) solid var(--border)' }}>
+      <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.06em', color: 'var(--muted)' }}>
+        {c.docId} — {c.clearance}
+      </div>
+      <div style={{ fontFamily: "var(--font-heading)", fontSize: 11, fontWeight: 700, letterSpacing: '0.02em', color: 'var(--text)', textAlign: 'center', flex: '1 1 240px' }}>
+        {c.tagline}
+      </div>
+      <Barcode />
+    </div>
+  )
+}
+
+export default function DesignSystemMultimarques({ project }) {
   const { lang } = useLanguage()
   const c = CONTENT[lang] ?? CONTENT.fr
   const isMobile = useIsMobile()
   const [activeTab, setActiveTab] = useState('overview')
 
-  useSecondarySidebar(c.tabs, activeTab, setActiveTab)
-
   return (
-    <CaseStudyLayout title={c.title} role={c.role} period={c.period} tools={c.tools}>
-      {isMobile && <TabBar tabs={c.tabs} active={activeTab} onChange={setActiveTab} />}
+    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+      <CaseMasthead c={c} lang={lang} />
+      <CaseTabs tabs={c.tabs} active={activeTab} onChange={setActiveTab} />
+      <CaseHero project={project} c={c} />
 
       {activeTab === 'overview' && (
         <>
@@ -663,6 +850,8 @@ export default function DesignSystemMultimarques() {
           </Section>
         </>
       )}
-    </CaseStudyLayout>
+
+      <CaseFooter c={c} />
+    </div>
   )
 }

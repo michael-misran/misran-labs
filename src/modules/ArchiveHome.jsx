@@ -4,6 +4,7 @@ import useIsMobile from '../shell/useIsMobile'
 import { useLanguage } from '../shell/LanguageContext'
 import { STATUS, METHOD_STEP_COLORS } from '../lab/phases'
 import { RULES_CONTENT } from '../lab/labRulesContent'
+import { Stamp, Barcode } from '../design-system/ArchiveMarks'
 
 // Page d'accueil du kit rétro. Ce n'est pas HomeModule recoloré : c'est une
 // composition différente — planche d'archive plutôt que grille de cards —
@@ -70,33 +71,6 @@ const COPY = {
     tagline: 'DESIGN IS INTENT. DETAILS ARE EVERYTHING.',
     sideStrip: 'MISRAN LABS — PORTFOLIO ARCHIVE — INDEX ',
   },
-}
-
-function Stamp({ label, size = 92 }) {
-  const pathId = 'archive-stamp-curve'
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" style={{ flexShrink: 0 }}>
-      <circle cx="50" cy="50" r="47" fill="none" stroke="var(--primary)" strokeWidth="1" />
-      <circle cx="50" cy="50" r="39" fill="none" stroke="var(--primary)" strokeWidth="1" />
-      <path id={pathId} d="M 50,50 m -30,0 a 30,30 0 1,1 60,0 a 30,30 0 1,1 -60,0" fill="none" />
-      <text fontSize="6" fill="var(--primary)" letterSpacing="2" fontFamily="var(--font-mono)">
-        <textPath href={`#${pathId}`} startOffset="2%">{label}</textPath>
-      </text>
-      <text x="50" y="57" textAnchor="middle" fontFamily="var(--font-heading)" fontWeight="700" fontSize="22" fill="var(--primary)">✛</text>
-    </svg>
-  )
-}
-
-function Barcode() {
-  const bars = [2, 1, 3, 1, 1, 2, 4, 1, 2, 1, 1, 3, 2, 1, 4, 1, 2, 2, 1, 3]
-  return (
-    <svg width="90" height="24" viewBox="0 0 90 24" aria-hidden="true">
-      {bars.map((w, i) => {
-        const x = bars.slice(0, i).reduce((a, b) => a + b + 1, 0)
-        return <rect key={i} x={x} y="0" width={w} height="24" fill="var(--text)" />
-      })}
-    </svg>
-  )
 }
 
 function Masthead({ c }) {
