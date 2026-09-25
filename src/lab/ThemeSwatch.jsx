@@ -1,12 +1,15 @@
-import { useKit } from '../shell/KitContext'
-import { kitLabel, kitDescription } from '../kits/registry'
 import { useLanguage } from '../shell/LanguageContext'
 
 // Ce composant comparait le thème clair et le thème sombre côte à côte,
 // avec des valeurs recopiées à la main depuis tokens.css — donc une source
-// de dérive garantie. Les thèmes n'existent plus : il montre maintenant le
-// kit actif et sa portée inversée, en lisant les tokens réels. Plus aucune
-// couleur en dur ici, et l'aperçu suit automatiquement tout kit ajouté.
+// de dérive garantie. Les thèmes n'existent plus, et le choix de kit non
+// plus : il montre la portée normale et la portée inversée de l'identité
+// unique du site, en lisant les tokens réels. Plus aucune couleur en dur.
+
+const DESCRIPTION = {
+  fr: 'Crème et corail brûlé. Filets fins, aplats nets, une seule couleur qui porte l’emphase.',
+  en: 'Cream and burnt coral. Hairline rules, flat blocks, one color carries the emphasis.',
+}
 
 function Panel({ label, invert }) {
   return (
@@ -107,13 +110,12 @@ function Panel({ label, invert }) {
 }
 
 export default function ThemeSwatch() {
-  const { kit } = useKit()
   const { lang } = useLanguage()
 
   return (
     <div>
       <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, marginBottom: 16 }}>
-        <strong style={{ color: 'var(--text)' }}>{kitLabel(kit, lang)}</strong> — {kitDescription(kit, lang)}
+        <strong style={{ color: 'var(--text)' }}>{lang === 'fr' ? 'Rétro' : 'Retro'}</strong> — {DESCRIPTION[lang] ?? DESCRIPTION.fr}
       </div>
       <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
         <Panel label="Portée normale" />

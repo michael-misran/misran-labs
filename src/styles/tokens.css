@@ -1,37 +1,21 @@
 /* ------------------------------------------------------------------ *
- * SOCLE DE TOKENS
+ * TOKENS — IDENTITÉ RÉTRO
  *
- * Ce fichier ne contient AUCUNE couleur. Il définit la liste des tokens
- * que tout kit doit fournir, des valeurs de repli neutres, et les règles
- * globales qui ne dépendent pas du kit actif.
+ * Le Lab a porté trois identités interchangeables (neumorphisme,
+ * brutalisme, rétro). Ce switch a été retiré : il ne produisait que des
+ * variations de surface, jamais une vraie rupture. L'identité rétro —
+ * papier crème, encre café, corail brûlé en accent, filets fins plutôt
+ * que bordures épaisses — est maintenant la seule, directement dans
+ * :root. Plus de [data-kit], plus de registre : un site, un rendu.
  *
- * Un kit UI vit dans src/kits/<id>.css et surcharge ces tokens sous le
- * sélecteur [data-kit="<id>"]. Le registre src/kits/registry.js liste les
- * kits disponibles et la topbar en change à chaud.
- *
- * TROIS FAMILLES DE TOKENS
- *
- *   1. EXPRESSION — couleurs, surfaces, élévations, rayons, épaisseurs,
- *      polices, casse. C'est l'identité du kit : un kit les redéfinit
- *      toutes. La frontière a bougé par rapport à la version précédente :
- *      les rayons et les épaisseurs appartiennent au kit, parce qu'un kit
- *      brutaliste a besoin de rayon 0 et de bordures épaisses là où un kit
- *      neumorphique a besoin de coins ronds et de bordures invisibles.
- *
- *   2. STRUCTURE — échelle d'espacement et tailles d'icône. Communes à
- *      tous les kits : c'est la trame de mise en page, pas le style.
- *
- *   3. PORTÉE INVERSÉE — [data-invert] remappe les tokens de surface et de
- *      texte d'un sous-arbre. Ce n'est pas un mode sombre : c'est un rôle
- *      de surface, utilisé pour une sidebar noire dans un kit clair ou
- *      pour une carte mise en avant au milieu de cartes ordinaires. Chaque
- *      kit décide de ce que son inverse veut dire.
- *
- * Il n'y a plus de thème clair / sombre : un kit est un rendu unique.
+ * [data-invert] reste un rôle de surface, pas un mode sombre : c'est le
+ * bloc corail plein cadre d'une planche de présentation — une
+ * diapositive de rupture au milieu de pages crème, pas un thème sombre
+ * du site.
  * ------------------------------------------------------------------ */
 
 :root {
-  /* --- STRUCTURE — commune à tous les kits --------------------- */
+  /* --- STRUCTURE ------------------------------------------------- */
   --space-xs: 8px;
   --space-sm: 12px;
   --space-md: 16px;
@@ -44,76 +28,107 @@
 
   --chrome-height: 32px;
 
-  /* --- EXPRESSION — valeurs de repli, neutres ------------------ *
-   * Un kit qui oublie un token retombe ici : gris lisible, formes
-   * sobres. Aucun kit ne doit s'appuyer sur ces valeurs.          */
-  --bg: #ffffff;
-  --bg2: #fafafa;
-  --bg3: #f2f2f2;
-  --primary: #333333;
-  --on-primary: #ffffff;
-  --cyan: #555555;
-  --text: #111111;
-  --text2: #555555;
-  --muted: #888888;
-  --prose: #222222;
-  --border: #dddddd;
-  --error: #b3261e;
-  --warning: #9a6700;
-  --violet: #5b4b8a;
-  --pink: #8a4b66;
-  --mandarine: #9a5a22;
-  --grid-line: rgba(0,0,0,0.06);
-  --active-tint: rgba(0,0,0,0.08);
-  --hover-tint: rgba(0,0,0,0.04);
+  /* --- EXPRESSION -------------------------------------------------- */
+  --bg: #f3ebdc;
+  --bg2: #f8f2e7;
+  --bg3: #e6dac4;
+  --cyan: #a9762c;
+  --primary: #dd5a3e;
+  --on-primary: #f8f2e7;
+  --text: #241c16;
+  --text2: #5b5044;
+  --muted: #8f8573;
+  --prose: #2c231b;
+  --border: #2a2018;
+  --error: #b23324;
+  --warning: #c1861f;
+  --violet: #8c3b3a;
+  --pink: #c97a6d;
+  --mandarine: #e0862f;
+  --grid-line: rgba(36,28,22,0.12);
+  --active-tint: rgba(221,90,62,0.12);
+  --hover-tint: rgba(36,28,22,0.05);
 
-  --surface-base: #fafafa;
-  --surface-raised: #ffffff;
-  --surface-inset: #f2f2f2;
-  --surface-pressed: #e8e8e8;
-  --hover-surface: #eeeeee;
+  --surface-base: #f3ebdc;
+  --surface-raised: #f8f2e7;
+  --surface-inset: #e6dac4;
+  --surface-pressed: #d8c9ab;
+  --hover-surface: #efe4d0;
 
   /* Un état sélectionné est une PAIRE de couleurs, comme primary /
-     on-primary. Sans le second token, un kit qui remplit la sélection
-     d'une couleur vive garde le texte de la surface d'origine — et on
-     obtient du blanc sur citron. */
-  --selected-surface: #e8e8e8;
-  --on-selected: #111111;
+     on-primary : sans le second token, une sélection en couleur vive
+     garde le texte de la surface d'origine — du blanc sur corail. */
+  --selected-surface: #dd5a3e;
+  --on-selected: #f8f2e7;
 
+  /* Pas de flou, pas de décalage lourd : une planche imprimée empile ses
+     pages avec un filet fin ou, au plus, un aplat net et court. */
   --elev-1: none;
-  --elev-2: 0 1px 2px rgba(0,0,0,0.12);
-  --elev-3: 0 2px 6px rgba(0,0,0,0.14);
-  --elev-4: 0 6px 18px rgba(0,0,0,0.18);
-  --elev-5: 0 10px 28px rgba(0,0,0,0.20);
-  --elev-inset: inset 0 1px 2px rgba(0,0,0,0.10);
-  --elev-pressed: inset 0 2px 4px rgba(0,0,0,0.16);
+  --elev-2: 0 1px 0 var(--border);
+  --elev-3: 0 2px 0 var(--border);
+  --elev-4: 3px 3px 0 rgba(36,28,22,0.18);
+  --elev-5: 5px 5px 0 rgba(36,28,22,0.22);
+  --elev-inset: inset 0 1px 0 rgba(36,28,22,0.18);
+  --elev-pressed: inset 0 2px 0 rgba(36,28,22,0.25);
 
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-xl: 12px;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   --radius-pill: 999px;
 
   --border-thin: 1px;
-  --border-regular: 2px;
-  --border-thick: 3px;
-  --icon-stroke: 2;
+  --border-regular: 1px;
+  --border-thick: 2px;
+  --icon-stroke: 1.5;
 
-  --font-heading: system-ui, sans-serif;
-  --font-body: system-ui, sans-serif;
-  --font-mono: ui-monospace, monospace;
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body: 'Work Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-  /* Casse et interlettrage : un kit brutaliste met ses libellés en
-     capitales, un kit neumorphique non. C'est une décision de kit. */
-  --label-transform: none;
-  --label-tracking: 0;
+  --label-transform: uppercase;
+  --label-tracking: 0.1em;
   --heading-transform: none;
-  --heading-tracking: -0.02em;
+  --heading-tracking: -0.01em;
+}
+
+/* Portée inversée : la diapositive corail plein cadre d'une planche
+   d'identité. Utilisée pour une carte ou une section mise en avant — le
+   chrome (sidebar, topbar, footer) reste crème : la couleur est un
+   événement, pas un décor permanent. */
+[data-invert] {
+  --bg: #dd5a3e;
+  --bg2: #e26a50;
+  --bg3: #c94f36;
+  --text: #f8f2e7;
+  --text2: #f5ddd2;
+  --muted: #f0c3b4;
+  --prose: #f8f2e7;
+  --border: #f8f2e7;
+  --primary: #f8f2e7;
+  --on-primary: #dd5a3e;
+  --active-tint: rgba(248,242,231,0.18);
+  --hover-tint: rgba(248,242,231,0.10);
+
+  --surface-base: #dd5a3e;
+  --surface-raised: #e26a50;
+  --surface-inset: #c94f36;
+  --surface-pressed: #b8452e;
+  --hover-surface: rgba(248,242,231,0.12);
+  --selected-surface: #f8f2e7;
+  --on-selected: #dd5a3e;
+
+  --elev-2: 0 1px 0 rgba(248,242,231,0.35);
+  --elev-3: 0 2px 0 rgba(248,242,231,0.35);
+  --elev-4: 3px 3px 0 rgba(0,0,0,0.15);
+  --elev-5: 5px 5px 0 rgba(0,0,0,0.18);
+  --elev-inset: inset 0 1px 0 rgba(0,0,0,0.20);
+  --elev-pressed: inset 0 2px 0 rgba(0,0,0,0.25);
 }
 
 /* Anneau de focus visible sur tout élément focalisable au clavier.
-   Exigence WCAG, indépendante du kit. */
+   Exigence WCAG. */
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
   outline: var(--border-regular) solid var(--primary);
   outline-offset: 2px;
@@ -127,9 +142,8 @@
   }
 }
 
-/* L'impression aplatit les élévations quel que soit le kit : une ombre
-   ne coûte que de l'encre sur papier. Les couleurs, elles, restent
-   celles du kit actif. */
+/* L'impression aplatit les élévations : une ombre ne coûte que de
+   l'encre sur papier. */
 @media print {
   :root {
     --elev-1: none !important;

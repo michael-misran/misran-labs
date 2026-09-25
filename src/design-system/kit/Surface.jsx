@@ -4,11 +4,10 @@
 //
 //   1 = flat  ·  2 = hover  ·  3 = raised  ·  4 = modal  ·  5 = popover
 //
-// `invert` bascule le sous-arbre sur la portée inversée du kit actif
-// (data-invert). Ce n'est pas un mode sombre : c'est un rôle de surface,
-// pour mettre un bloc en avant au milieu de blocs ordinaires. Chaque kit
-// décide de ce que son inverse veut dire — noir d'encre pour le
-// brutaliste, brun profond pour le neumorphisme.
+// `invert` bascule le sous-arbre sur la portée inversée (data-invert).
+// Ce n'est pas un mode sombre : c'est un rôle de surface, pour mettre un
+// bloc en avant au milieu de blocs ordinaires — le bloc corail plein
+// cadre d'une planche d'identité.
 
 const LEVEL_SHADOW = {
   1: 'var(--elev-1)',

@@ -17,30 +17,48 @@ export function Section({ title, children }) {
 
 // Barre d'onglets d'un case study. Une seule implémentation pour toutes les
 // pages qui en ont une — avant, chaque case study gardait sa copie locale.
+//
+// La marque d'onglet actif est une croix de repérage d'imprimerie (✛)
+// plutôt qu'un soulignement, et les onglets inactifs portent leur numéro
+// d'ordre — un sommaire de planche, pas une barre d'onglets générique.
 export function TabBar({ tabs, active, onChange }) {
   return (
     <div style={{ display: 'flex', gap: 4, borderBottom: 'var(--border-thin) solid var(--border)', marginBottom: 32, overflowX: 'auto' }}>
-      {tabs.map((tab) => (
-        <button
-          key={tab.id}
-          onClick={() => onChange(tab.id)}
-          style={{
-            background: 'none',
-            border: 'none',
-            borderBottom: active === tab.id ? 'var(--border-regular) solid var(--primary)' : 'var(--border-regular) solid transparent',
-            color: active === tab.id ? 'var(--text)' : 'var(--text2)',
-            fontFamily: "var(--font-body)",
-            fontSize: 13,
-            fontWeight: active === tab.id ? 600 : 400,
-            padding: '10px 16px',
-            cursor: 'pointer',
-            whiteSpace: 'nowrap',
-            transition: 'color 0.15s ease, border-color 0.15s ease',
-          }}
-        >
-          {tab.label}
-        </button>
-      ))}
+      {tabs.map((tab, i) => {
+        const isActive = active === tab.id
+        return (
+          <button
+            key={tab.id}
+            onClick={() => onChange(tab.id)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              background: 'none',
+              border: 'none',
+              color: isActive ? 'var(--text)' : 'var(--text2)',
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              fontWeight: isActive ? 600 : 400,
+              padding: '10px 16px',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              transition: 'color 0.15s ease, border-color 0.15s ease',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 11,
+                color: isActive ? 'var(--primary)' : 'var(--muted)',
+              }}
+            >
+              {isActive ? '✛' : String(i + 1).padStart(2, '0')}
+            </span>
+            {tab.label}
+          </button>
+        )
+      })}
     </div>
   )
 }

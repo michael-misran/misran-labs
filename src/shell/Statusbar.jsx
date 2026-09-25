@@ -1,6 +1,11 @@
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 
+// Le fil d'Ariane du footer suit le langage du reste du chrome : une
+// croix de repérage d'imprimerie, pas une flèche générique, pour que
+// « vous êtes ici » se lise pareil partout sur le site.
+const MARKER = '✛'
+
 export default function Statusbar({ moduleLabel, isMobile }) {
   const { lang } = useLanguage()
 
@@ -24,11 +29,11 @@ export default function Statusbar({ moduleLabel, isMobile }) {
       }}
     >
       {isMobile ? (
-        <span>▸ {moduleLabel}</span>
+        <span>{MARKER} {moduleLabel}</span>
       ) : (
         <>
           <span>{t(lang, 'statusbarBrand')}</span>
-          <span>▸ {moduleLabel}</span>
+          <span>{MARKER} {moduleLabel}</span>
           <span>{t(lang, 'statusbarDeploy')}</span>
         </>
       )}

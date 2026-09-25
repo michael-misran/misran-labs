@@ -114,7 +114,7 @@ const CONTENT = {
     title: 'Kit UI',
     role: 'Design system appliqué — composants React, tokens partagés avec le site',
     period: 'Septembre 2026',
-    tools: ['React', 'Tokens CSS', 'Élévations neumorphiques', 'SVG'],
+    tools: ['React', 'Tokens CSS', 'Élévations plates', 'SVG'],
     tabs: [
       { id: 'foundations', label: 'Fondations' },
       { id: 'controls', label: 'Contrôles' },
@@ -125,9 +125,9 @@ const CONTENT = {
     ],
 
     intro:
-      "Ce kit n’est pas une planche de démonstration : ce sont les composants réels du Lab, importés depuis src/design-system/kit/ et rendus ici avec leurs états. Change de kit dans la barre du haut et cette page change avec tout le site — aucun composant n’est réécrit, seuls les tokens changent.",
+      "Ce kit n’est pas une planche de démonstration : ce sont les composants réels du Lab, importés depuis src/design-system/kit/ et rendus ici avec leurs états. Aucune valeur codée en dur sur cette page — tout vient de src/styles/tokens.css, comme partout ailleurs sur le site.",
     themeNote:
-      "Il n’y a pas de mode clair / sombre : un kit est un rendu unique, et c’est le kit qu’on change. Ce qui existe en revanche, c’est la portée inversée — un sous-arbre qui bascule sur les surfaces inverses du kit actif. Ce n’est pas un thème : c’est un rôle de surface, pour une colonne de navigation noire ou une carte mise en avant au milieu de cartes ordinaires.",
+      "Il n’y a pas de mode clair / sombre : le site a un rendu unique. Ce qui existe en revanche, c’est la portée inversée — un sous-arbre qui bascule sur les surfaces inverses. Ce n’est pas un thème : c’est un rôle de surface, pour une carte mise en avant au milieu de cartes ordinaires, ou un bloc plein cadre dans une planche.",
 
     scopeTitle: 'Portée inversée',
     scopeIntro:
@@ -238,8 +238,8 @@ const CONTENT = {
     ],
     honestyTitle: 'Ce qui reste à faire',
     honesty: [
-      "Le contraste : le neumorphisme repose sur des écarts de luminosité faibles. Le texte et l’accent passent AA, mais les reliefs eux-mêmes ne sont pas un signal fiable en plein soleil ou sur un écran mal calibré. C’est pour ça que chaque état a un second marqueur.",
-      "La portée inversée du neumorphisme est posée mais peu éprouvée : les reliefs y sont retournés à la main, et seul un usage réel dira s’ils tiennent. Le kit brutaliste, lui, n’a pas ce problème — ses décalages nets fonctionnent dans les deux portées.",
+      "Le contraste : le corail sur crème (--primary sur --bg) tourne autour de 3:1 — suffisant pour une bordure ou une icône, insuffisant pour du texte de lecture au seuil AA (4.5:1). Le corail n’est donc jamais utilisé seul pour du texte courant ; le texte reste sur --text, qui lui passe AA.",
+      "Le site a porté trois identités interchangeables (neumorphisme, brutalisme, rétro). Le switch a été retiré : il ne produisait que des variations de surface, jamais une vraie rupture d’expérience. Une identité assumée jusqu’au bout plutôt que trois demi-mesures — la Conclusion et l’Itération de la grille du Lab, appliquée au Lab lui-même.",
       "Le curseur et l’interrupteur ne gèrent pas encore le glissement tactile de façon idéale sur mobile — l’input natif est là et fonctionne, l’affinage reste à faire.",
     ],
   },
@@ -248,7 +248,7 @@ const CONTENT = {
     title: 'UI Kit',
     role: 'Design system in practice — React components, tokens shared with the site',
     period: 'September 2026',
-    tools: ['React', 'CSS tokens', 'Neumorphic elevations', 'SVG'],
+    tools: ['React', 'CSS tokens', 'Flat elevations', 'SVG'],
     tabs: [
       { id: 'foundations', label: 'Foundations' },
       { id: 'controls', label: 'Controls' },
@@ -259,9 +259,9 @@ const CONTENT = {
     ],
 
     intro:
-      'This kit is not a demo board: these are the Lab’s real components, imported from src/design-system/kit/ and rendered here with their states. Switch kits in the top bar and this page changes along with the whole site — no component is rewritten, only the tokens change.',
+      'This kit is not a demo board: these are the Lab’s real components, imported from src/design-system/kit/ and rendered here with their states. Nothing on this page is hardcoded — it all comes from src/styles/tokens.css, same as everywhere else on the site.',
     themeNote:
-      'There is no light / dark mode: a kit is a single rendering, and the kit is what you switch. What does exist is the inverted scope — a subtree that flips to the active kit’s inverse surfaces. That is not a theme: it is a surface role, for a black navigation column or an emphasised card among ordinary ones.',
+      'There is no light / dark mode: the site has a single rendering. What does exist is the inverted scope — a subtree that flips to the inverse surfaces. That is not a theme: it is a surface role, for an emphasised card among ordinary ones, or a full-bleed block inside a plate.',
 
     scopeTitle: 'Inverted scope',
     scopeIntro:
@@ -372,8 +372,8 @@ const CONTENT = {
     ],
     honestyTitle: 'What is still open',
     honesty: [
-      'Contrast: neumorphism relies on small luminance differences. Text and accent pass AA, but the reliefs themselves are not a reliable signal in bright sunlight or on a poorly calibrated screen. That is why every state has a second marker.',
-      'Neumorphism’s inverted scope is in place but lightly tested: its reliefs were flipped by hand, and only real use will tell whether they hold. The brutalist kit has no such problem — its hard offsets work in both scopes.',
+      'Contrast: coral on cream (--primary on --bg) sits around 3:1 — enough for a border or an icon, not enough for running text at the AA threshold (4.5:1). Coral is therefore never used alone for body text; text stays on --text, which does pass AA.',
+      'The site carried three interchangeable identities (neumorphism, brutalism, retro). The switch was removed: it only ever produced surface variation, never a real experiential break. One identity, committed to fully, beats three half-measures — the Lab’s own Conclusion and Iteration step, applied to the Lab itself.',
       'The slider and the switch do not yet handle touch dragging ideally on mobile — the native input is there and works, the polish is not done.',
     ],
   },
