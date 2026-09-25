@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { visibleProjects, pt } from '../lab/projects'
+import { visibleProjects, pt, dossierNo } from '../lab/projects'
 import IconButton from '../design-system/IconButton'
 import { Icon } from '../design-system/kit'
 import { useLanguage } from './LanguageContext'
@@ -56,7 +56,7 @@ function SidebarHeader({ lang, collapsed, isMobile, onCloseMobile, onCollapse, o
   )
 }
 
-function NavItem({ to, icon, label, collapsed }) {
+function NavItem({ to, number, label, collapsed }) {
   return (
     <NavLink to={to} end style={{ textDecoration: 'none' }}>
       {({ isActive }) =>
@@ -68,7 +68,8 @@ function NavItem({ to, icon, label, collapsed }) {
               border: 'none',
               color: isActive ? 'var(--primary)' : 'var(--muted)',
               fontFamily: "var(--font-mono)",
-              fontSize: 16,
+              fontSize: 11,
+              letterSpacing: '0.03em',
               cursor: 'pointer',
               padding: '12px 0',
               width: '100%',
@@ -76,7 +77,7 @@ function NavItem({ to, icon, label, collapsed }) {
               transition: 'color 0.15s ease',
             }}
           >
-            {icon}
+            {number}
           </button>
         ) : (
           <div
@@ -99,15 +100,15 @@ function NavItem({ to, icon, label, collapsed }) {
             <span
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: 14,
-                color: 'var(--primary)',
+                fontSize: 10,
+                color: isActive ? 'var(--on-selected)' : 'var(--primary)',
                 lineHeight: 1,
-                width: 18,
+                width: 24,
                 textAlign: 'center',
                 flexShrink: 0,
               }}
             >
-              {icon}
+              {number}
             </span>
             <span
               style={{
@@ -175,14 +176,14 @@ export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
   const navList = (collapsed) => (
     <>
       <NavSectionLabel collapsed={collapsed}>{t(lang, 'navSectionLab')}</NavSectionLabel>
-      <NavItem to="/" icon="⬡" label={t(lang, 'labHome')} collapsed={collapsed} />
+      <NavItem to="/" number="✛" label={t(lang, 'labHome')} collapsed={collapsed} />
       {LAB_SLUGS.map(slug => PROJECTS_BY_SLUG[slug]).filter(Boolean).map(p => (
-        <NavItem key={p.slug} to={`/lab/${p.slug}`} icon={p.icon} label={pt(p, lang).title} collapsed={collapsed} />
+        <NavItem key={p.slug} to={`/lab/${p.slug}`} number={dossierNo(p.slug)} label={pt(p, lang).title} collapsed={collapsed} />
       ))}
 
       <NavSectionLabel collapsed={collapsed}>{t(lang, 'navSectionPortfolio')}</NavSectionLabel>
       {PORTFOLIO_SLUGS.map(slug => PROJECTS_BY_SLUG[slug]).filter(Boolean).map(p => (
-        <NavItem key={p.slug} to={`/lab/${p.slug}`} icon={p.icon} label={pt(p, lang).title} collapsed={collapsed} />
+        <NavItem key={p.slug} to={`/lab/${p.slug}`} number={dossierNo(p.slug)} label={pt(p, lang).title} collapsed={collapsed} />
       ))}
     </>
   )

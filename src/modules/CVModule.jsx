@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import useIsMobile from '../shell/useIsMobile'
 import { useLanguage } from '../shell/LanguageContext'
 import { Stamp, Barcode } from '../design-system/ArchiveMarks'
+import { dossierNo } from '../lab/projects'
 import { t } from '../i18n/ui'
 
 function SectionHeader({ children }) {
@@ -195,19 +196,15 @@ function CVHero({ project, c }) {
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
           <span
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: 40,
-              height: 40,
               flexShrink: 0,
-              border: 'var(--border-thin) solid var(--border)',
-              fontFamily: "var(--font-mono)",
-              fontSize: 18,
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              fontSize: 26,
+              lineHeight: 1,
               color: 'var(--primary)',
             }}
           >
-            {project?.icon ?? '◫'}
+            {dossierNo(project?.slug) ?? '006'}
           </span>
           <div>
             <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', lineHeight: 1.05, margin: '0 0 6px', color: 'var(--text)' }}>

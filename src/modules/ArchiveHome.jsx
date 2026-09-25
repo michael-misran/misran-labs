@@ -202,11 +202,10 @@ function FileEntry({ project, index, c, lang }) {
         onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--hover-tint)' }}
         onMouseLeave={(e) => { e.currentTarget.style.background = 'none' }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div>
           <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--muted)' }}>
             {lang === 'fr' ? 'DOSSIER' : 'FILE'} {String(index + 1).padStart(3, '0')}
           </span>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 18, color: 'var(--primary)' }}>{project.icon}</span>
         </div>
 
         <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 18, fontWeight: 700, color: 'var(--text)', margin: 0, lineHeight: 1.2 }}>

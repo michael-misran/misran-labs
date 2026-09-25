@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Section, BulletList } from '../CaseStudyLayout'
+import { dossierNo } from '../projects'
 import { Stamp, Barcode } from '../../design-system/ArchiveMarks'
 import FlowDiagram from '../../components/diagrams/FlowDiagram'
 import { useLanguage } from '../../shell/LanguageContext'
@@ -590,19 +591,15 @@ function CaseHero({ project, c }) {
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
           <span
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: 40,
-              height: 40,
               flexShrink: 0,
-              border: 'var(--border-thin) solid var(--border)',
-              fontFamily: "var(--font-mono)",
-              fontSize: 18,
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              fontSize: 26,
+              lineHeight: 1,
               color: 'var(--primary)',
             }}
           >
-            {project?.icon ?? '◼'}
+            {dossierNo(project?.slug) ?? '001'}
           </span>
           <div>
             <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', lineHeight: 1.05, margin: '0 0 6px', color: 'var(--text)' }}>

@@ -143,6 +143,14 @@ export function visibleProjects() {
     .sort((a, b) => (b.featured === true) - (a.featured === true))
 }
 
+// Numéro de dossier d'un projet — sa position dans l'index de la home,
+// pas un identifiant qu'on choisit à la main. Une seule source de vérité
+// pour "DOSSIER Nº 00X", repris dans la sidebar et sur chaque fiche.
+export function dossierNo(slug) {
+  const i = visibleProjects().findIndex(p => p.slug === slug)
+  return i === -1 ? null : String(i + 1).padStart(3, '0')
+}
+
 export function pt(project, lang) {
   return {
     title: project.title[lang] ?? project.title.fr,
