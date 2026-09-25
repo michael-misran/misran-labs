@@ -1,0 +1,127 @@
+/* ------------------------------------------------------------------ *
+ * KIT — BRUTALISTE
+ * Fond papier, noir d'encre, accent citron vert, un violet pour les
+ * blocs de mise en avant. Rayon zéro, bordures noires épaisses, et des
+ * ombres qui ne sont pas des ombres : des décalages nets, sans flou.
+ *
+ * Le noir n'est pas un mode sombre ici : c'est un rôle de surface.
+ * La colonne de navigation et certaines cartes basculent sur la portée
+ * inversée pour créer la hiérarchie — voir [data-invert] plus bas et
+ * .shell-chrome, qui inverse le chrome uniquement dans ce kit.
+ * ------------------------------------------------------------------ */
+
+[data-kit="brutalist"] {
+  --bg: #eeeeea;
+  --bg2: #f7f7f4;
+  --bg3: #111111;
+  --cyan: #6b4cf6;
+  --primary: #111111;
+  --on-primary: #f2ff4f;
+  --text: #111111;
+  --text2: #3d3d3d;
+  --muted: #7a7a76;
+  --prose: #1c1c1c;
+  --border: #111111;
+  --error: #d83a2b;
+  --warning: #e0a000;
+  --violet: #6b4cf6;
+  --pink: #e0468c;
+  --mandarine: #f2ff4f;
+  --grid-line: rgba(17,17,17,0.10);
+  --active-tint: #f2ff4f;
+  --hover-tint: rgba(17,17,17,0.06);
+
+  --surface-base: #eeeeea;
+  --surface-raised: #f7f7f4;
+  --surface-inset: #e2e2dd;
+  --surface-pressed: #d5d5cf;
+  --hover-surface: #f2ff4f;
+  --selected-surface: #111111;
+  --on-selected: #f2ff4f;
+
+  /* Pas de flou : le brutalisme décale les blocs, il ne les fait pas
+     flotter. L'échelle d'élévation devient une échelle de décalage. */
+  --elev-1: none;
+  --elev-2: 2px 2px 0 var(--border);
+  --elev-3: 4px 4px 0 var(--border);
+  --elev-4: 6px 6px 0 var(--border);
+  --elev-5: 8px 8px 0 var(--border);
+  --elev-inset: inset 2px 2px 0 rgba(17,17,17,0.18);
+  --elev-pressed: inset 3px 3px 0 rgba(17,17,17,0.28);
+
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-pill: 0px;
+
+  --border-thin: 2px;
+  --border-regular: 2px;
+  --border-thick: 4px;
+  --icon-stroke: 2.5;
+
+  --font-heading: 'Archivo Black', 'Arial Black', sans-serif;
+  --font-body: 'Archivo', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --label-transform: uppercase;
+  --label-tracking: 0.08em;
+  --heading-transform: uppercase;
+  --heading-tracking: -0.03em;
+}
+
+/* Portée inversée du brutaliste : noir d'encre, accent citron. C'est ce
+   qui donne la sidebar noire et les cartes de mise en avant. */
+[data-kit="brutalist"] [data-invert] {
+  --bg: #111111;
+  --bg2: #1a1a1a;
+  --bg3: #000000;
+  --text: #f7f7f4;
+  --text2: #b8b8b3;
+  --muted: #8a8a85;
+  --prose: #ededea;
+  --border: #f7f7f4;
+  --primary: #f2ff4f;
+  --on-primary: #111111;
+  --active-tint: #f2ff4f;
+  --hover-tint: rgba(247,247,244,0.10);
+
+  --surface-base: #111111;
+  --surface-raised: #1a1a1a;
+  --surface-inset: #0a0a0a;
+  --surface-pressed: #000000;
+  --hover-surface: rgba(242,255,79,0.16);
+  --selected-surface: #f2ff4f;
+  --on-selected: #111111;
+
+  --elev-2: 2px 2px 0 var(--border);
+  --elev-3: 4px 4px 0 var(--border);
+  --elev-4: 6px 6px 0 var(--border);
+  --elev-5: 8px 8px 0 var(--border);
+}
+
+/* Dans ce kit, le chrome (colonnes de navigation, topbar, footer) est
+   noir. C'est le kit qui en décide, pas les composants de shell : eux
+   portent juste la classe .shell-chrome. */
+[data-kit="brutalist"] .shell-chrome {
+  --bg: #111111;
+  --bg2: #1a1a1a;
+  --bg3: #111111;
+  --text: #f7f7f4;
+  --text2: #b8b8b3;
+  --muted: #8a8a85;
+  --border: #2e2e2e;
+  --primary: #f2ff4f;
+  --on-primary: #111111;
+  --active-tint: #f2ff4f;
+  --hover-tint: rgba(247,247,244,0.10);
+
+  --surface-base: #111111;
+  --surface-raised: #1a1a1a;
+  --surface-inset: #000000;
+  --surface-pressed: #f2ff4f;
+  --hover-surface: rgba(247,247,244,0.10);
+  --selected-surface: #f2ff4f;
+  --on-selected: #111111;
+}

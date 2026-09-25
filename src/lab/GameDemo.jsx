@@ -37,7 +37,7 @@ export default function GameDemo() {
           gap: 16,
           flexWrap: 'wrap',
           padding: '12px 20px',
-          borderBottom: '1px solid var(--border)',
+          borderBottom: 'var(--border-thin) solid var(--border)',
           background: 'var(--bg2)',
         }}
       >

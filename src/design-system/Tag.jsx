@@ -1,5 +1,6 @@
-// Tag / pill role: tool tags, project tags — a bordered, tinted label.
-// Color is the one thing that varies by context; shape stays fixed.
+// Étiquette du Lab : tags de projet et d'outil. Forme fixe, seule la couleur
+// varie selon le contexte. Rayon et épaisseur passent par les tokens
+// structurels, comme tout le reste depuis l'arrivée du kit.
 export default function Tag({ children, color = 'var(--primary)' }) {
   return (
     <span
@@ -8,8 +9,8 @@ export default function Tag({ children, color = 'var(--primary)' }) {
         fontSize: 10,
         color,
         background: 'var(--active-tint)',
-        border: `1px solid ${color}`,
-        borderRadius: 3,
+        border: `var(--border-thin) solid ${color}`,
+        borderRadius: 'var(--radius-xs)',
         padding: '2px 8px',
       }}
     >

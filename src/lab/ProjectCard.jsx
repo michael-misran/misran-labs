@@ -2,9 +2,13 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { pt } from './projects'
 import Tag from '../design-system/Tag'
+import { Badge } from '../design-system/kit'
 import { useLanguage } from '../shell/LanguageContext'
 import { t } from '../i18n/ui'
 
+// Carte de projet de la home. Suit le contrat du kit : élévation 3 au repos,
+// 4 au survol. Avant, la carte changeait sa couleur de bordure et ajoutait
+// une lueur — deux signaux que le reste du système n'utilise pas.
 export default function ProjectCard({ project }) {
   const [hovered, setHovered] = useState(false)
   const { lang } = useLanguage()
@@ -16,38 +20,39 @@ export default function ProjectCard({ project }) {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{
-          background: 'var(--bg2)',
-          border: `1px solid ${hovered ? 'var(--primary)' : 'var(--border)'}`,
-          borderRadius: 20,
-          padding: 24,
+          background: 'var(--surface-raised)',
+          boxShadow: hovered ? 'var(--elev-4)' : 'var(--elev-3)',
+          border: 'none',
+          borderRadius: 'var(--radius-xl)',
+          padding: 'var(--space-lg)',
           cursor: 'pointer',
-          transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
-          boxShadow: hovered ? '0 0 20px var(--active-tint)' : 'none',
+          transition: 'box-shadow 0.18s ease',
           display: 'flex',
           flexDirection: 'column',
           gap: 12,
           height: '100%',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 18, color: 'var(--primary)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 38,
+              height: 38,
+              flexShrink: 0,
+              borderRadius: 'var(--radius-sm)',
+              background: 'var(--surface-inset)',
+              boxShadow: 'var(--elev-inset)',
+              color: 'var(--primary)',
+              fontFamily: "var(--font-mono)",
+              fontSize: 16,
+            }}
+          >
             {project.icon}
           </span>
-          {project.type === 'case-study' && (
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 9,
-                color: 'var(--cyan)',
-                border: '1px solid var(--cyan)',
-                borderRadius: 3,
-                padding: '2px 7px',
-                letterSpacing: '0.1em',
-              }}
-            >
-              {t(lang, 'caseStudy')}
-            </span>
-          )}
+          {project.type === 'case-study' && <Badge tone="soft">{t(lang, 'caseStudy')}</Badge>}
         </div>
 
         <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 16, fontWeight: 600, color: 'var(--text)', margin: 0, lineHeight: 1.3 }}>

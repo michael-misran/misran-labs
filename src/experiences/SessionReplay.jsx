@@ -38,7 +38,7 @@ const SESSIONS = [
     tags: ['React', 'Animation', 'Design'],
     what: 'Génération complète de la HomePage : boot sequence typewriter plein écran, hero 100vh, badge AVAILABLE FOR WORK pulsant, stats row, 3 cards experiments, CTA.',
     decision: 'Boot sequence comme première impression — montre immédiatement le concept "lab scientifique / Jarvis" sans texte d\'explication.',
-    prompt: 'Crée src/pages/HomePage.jsx avec une boot sequence typewriter de 5 lignes plein écran, puis une transition vers le hero. Design system : bg #0a0e17, accent #25e2cc, fonts Space Grotesk + Inter + JetBrains Mono.',
+    prompt: 'Crée src/pages/HomePage.jsx avec une boot sequence typewriter de 5 lignes plein écran, puis une transition vers le hero. Design system : bg var(--bg), accent var(--primary), fonts Space Grotesk + Inter + JetBrains Mono.',
   },
   {
     id: '004',
@@ -139,10 +139,10 @@ function Nav() {
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       padding: '0 40px', height: 64,
-      background: 'rgba(10,14,23,0.85)', backdropFilter: 'blur(12px)',
-      borderBottom: '1px solid rgba(26,42,58,0.8)',
+      background: 'color-mix(in srgb, var(--bg) 85%, transparent)', backdropFilter: 'blur(12px)',
+      borderBottom: 'var(--border-thin) solid var(--active-tint)',
     }}>
-      <Link to="/" style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 16, color: '#25e2cc', letterSpacing: '0.06em', textDecoration: 'none' }}>
+      <Link to="/" style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 16, color: 'var(--primary)', letterSpacing: '0.06em', textDecoration: 'none' }}>
         MISRAN LABS
       </Link>
       <div style={{ display: 'flex', gap: 36 }}>
@@ -154,9 +154,9 @@ function Nav() {
         ].map(({ label, to }) => (
           <Link key={to} to={to} style={{
             fontFamily: "var(--font-body)", fontSize: 14,
-            color: pathname === to ? '#e8f4f8' : '#7a9bb5',
+            color: pathname === to ? 'var(--text)' : 'var(--text2)',
             textDecoration: 'none', transition: 'color 0.15s ease',
-            borderBottom: pathname === to ? '1px solid #25e2cc' : '1px solid transparent',
+            borderBottom: pathname === to ? 'var(--border-thin) solid var(--primary)' : 'var(--border-thin) solid transparent',
             paddingBottom: 2,
           }}>{label}</Link>
         ))}
@@ -178,10 +178,10 @@ function SessionCard({ session, onOpenLog }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: '#0d1220',
-        border: `${open ? '1px' : '1px'} solid ${open || hovered ? '#25e2cc' : '#1a2a3a'}`,
-        borderLeft: open ? '3px solid #25e2cc' : '1px solid #1a2a3a',
-        borderRadius: 8,
+        background: 'var(--bg2)',
+        border: `${open ? '1px' : '1px'} solid ${open || hovered ? 'var(--primary)' : 'var(--border)'}`,
+        borderLeft: open ? 'var(--border-thick) solid var(--primary)' : 'var(--border-thin) solid var(--border)',
+        borderRadius: 'var(--radius-sm)',
         padding: '20px 24px',
         cursor: 'pointer',
         transition: 'border-color 0.2s ease',
@@ -194,34 +194,34 @@ function SessionCard({ session, onOpenLog }) {
 
           {/* Row 1: id + date + badge + duration */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#25e2cc', letterSpacing: '0.08em' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', letterSpacing: '0.08em' }}>
               SESSION-{session.id}
             </span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#7a9bb5', letterSpacing: '0.04em' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', letterSpacing: '0.04em' }}>
               {session.date}
             </span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: '#25e2cc', border: '1px solid #25e2cc', borderRadius: 3, padding: '1px 7px', letterSpacing: '0.1em' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--primary)', border: 'var(--border-thin) solid var(--primary)', borderRadius: 'var(--radius-xs)', padding: '1px 7px', letterSpacing: '0.1em' }}>
               {session.status}
             </span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#7a9bb5' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)' }}>
               {session.duration}
             </span>
           </div>
 
           {/* Row 2: title */}
-          <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 18, fontWeight: 600, color: '#e8f4f8', margin: 0, lineHeight: 1.3 }}>
+          <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 18, fontWeight: 600, color: 'var(--text)', margin: 0, lineHeight: 1.3 }}>
             {session.title}
           </h3>
 
           {/* Row 3: summary */}
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: '#7a9bb5', margin: 0, lineHeight: 1.6 }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--text2)', margin: 0, lineHeight: 1.6 }}>
             {session.summary}
           </p>
 
           {/* Row 4: tags */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {session.tags.map(tag => (
-              <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'rgba(26,42,58,0.6)', border: '1px solid #1a2a3a', borderRadius: 3, padding: '2px 8px' }}>
+              <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'var(--active-tint)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: '2px 8px' }}>
                 {tag}
               </span>
             ))}
@@ -230,7 +230,7 @@ function SessionCard({ session, onOpenLog }) {
 
         {/* Chevron */}
         <span style={{
-          fontFamily: "var(--font-mono)", fontSize: 12, color: '#7a9bb5',
+          fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text2)',
           transition: 'transform 0.2s ease', display: 'inline-block',
           transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
           flexShrink: 0, marginTop: 4,
@@ -245,25 +245,25 @@ function SessionCard({ session, onOpenLog }) {
         overflow: 'hidden',
         transition: 'max-height 0.35s ease',
       }}>
-        <div style={{ borderTop: '1px solid #1a2a3a', marginTop: 16, paddingTop: 20, display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div style={{ borderTop: 'var(--border-thin) solid var(--border)', marginTop: 16, paddingTop: 20, display: 'flex', flexDirection: 'column', gap: 20 }}>
 
           {/* WHAT */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#25e2cc', letterSpacing: '0.1em' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', letterSpacing: '0.1em' }}>
               // WHAT
             </span>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: '#7a9bb5', margin: 0, lineHeight: 1.7 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--text2)', margin: 0, lineHeight: 1.7 }}>
               {session.what}
             </p>
           </div>
 
           {/* DECISION */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#f59e0b', letterSpacing: '0.1em' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--warning)', letterSpacing: '0.1em' }}>
               // DECISION ⚡
             </span>
-            <div style={{ background: 'rgba(245,158,11,0.06)', borderLeft: '3px solid #f59e0b', padding: '12px 16px', borderRadius: '0 4px 4px 0' }}>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: '#fbbf24', margin: 0, lineHeight: 1.7 }}>
+            <div style={{ background: 'color-mix(in srgb, var(--warning) 6%, transparent)', borderLeft: 'var(--border-thick) solid var(--warning)', padding: '12px 16px', borderRadius: '0 4px 4px 0' }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--warning)', margin: 0, lineHeight: 1.7 }}>
                 {session.decision}
               </p>
             </div>
@@ -271,16 +271,16 @@ function SessionCard({ session, onOpenLog }) {
 
           {/* PROMPT */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#00d4ff', letterSpacing: '0.1em' }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.1em' }}>
               // PROMPT
             </span>
-            <div style={{ background: '#060a10', border: '1px solid #1a2a3a', borderRadius: 6, padding: '14px 18px' }}>
+            <div style={{ background: 'var(--bg3)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-sm)', padding: '14px 18px' }}>
               {isNA ? (
-                <em style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: '#7a9bb5', fontStyle: 'italic' }}>
+                <em style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text2)', fontStyle: 'italic' }}>
                   {session.prompt}
                 </em>
               ) : (
-                <p style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: '#7a9bb5', margin: 0, lineHeight: 1.8, whiteSpace: 'pre-wrap' }}>
+                <p style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text2)', margin: 0, lineHeight: 1.8, whiteSpace: 'pre-wrap' }}>
                   {session.prompt}
                 </p>
               )}
@@ -294,8 +294,8 @@ function SessionCard({ session, onOpenLog }) {
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               fontFamily: "var(--font-mono)", fontSize: 11,
-              color: '#00d4ff', letterSpacing: '0.08em', cursor: 'pointer',
-              borderTop: '1px solid #1a2a3a', paddingTop: 16, marginTop: 4,
+              color: 'var(--cyan)', letterSpacing: '0.08em', cursor: 'pointer',
+              borderTop: 'var(--border-thin) solid var(--border)', paddingTop: 16, marginTop: 4,
               opacity: 0.7, transition: 'opacity 0.15s ease',
               userSelect: 'none',
             }}
@@ -318,15 +318,15 @@ export default function SessionReplay() {
     <>
       <style>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: #0a0e17; }
+        body { background: var(--bg); }
         a { text-decoration: none; }
-        .cta-btn:hover { background: rgba(37,226,204,0.22) !important; }
+        .cta-btn:hover { background: color-mix(in srgb, var(--primary) 22%, transparent) !important; }
       `}</style>
 
       <div style={{
-        minHeight: '100vh', background: '#0a0e17',
-        backgroundImage: 'linear-gradient(rgba(26,42,58,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(26,42,58,0.4) 1px, transparent 1px)',
-        backgroundSize: '40px 40px', color: '#e8f4f8', fontFamily: "var(--font-body)",
+        minHeight: '100vh', background: 'var(--bg)',
+        backgroundImage: 'linear-gradient(var(--hover-tint) 1px, transparent 1px), linear-gradient(90deg, var(--hover-tint) 1px, transparent 1px)',
+        backgroundSize: '40px 40px', color: 'var(--text)', fontFamily: "var(--font-body)",
       }}>
         <Nav />
 
@@ -334,31 +334,31 @@ export default function SessionReplay() {
 
           {/* ── Header ── */}
           <div style={{ marginBottom: 40 }}>
-            <Link to="/lab" style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: '#7a9bb5', letterSpacing: '0.06em', display: 'inline-block', marginBottom: 24, textDecoration: 'none', transition: 'color 0.15s ease' }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#e8f4f8')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#7a9bb5')}
+            <Link to="/lab" style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text2)', letterSpacing: '0.06em', display: 'inline-block', marginBottom: 24, textDecoration: 'none', transition: 'color 0.15s ease' }}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'var(--text2)')}
             >
               ← Lab
             </Link>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: '#7a9bb5', border: '1px solid #243545', borderRadius: 3, padding: '2px 8px', letterSpacing: '0.08em' }}>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: '2px 8px', letterSpacing: '0.08em' }}>
                 EXP-003
               </span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: '#f59e0b', border: '1px solid #f59e0b', borderRadius: 3, padding: '2px 8px', letterSpacing: '0.1em' }}>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--warning)', border: 'var(--border-thin) solid var(--warning)', borderRadius: 'var(--radius-xs)', padding: '2px 8px', letterSpacing: '0.1em' }}>
                 IN PROGRESS
               </span>
             </div>
 
-            <h1 style={{ fontFamily: "var(--font-heading)", fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 700, color: '#e8f4f8', letterSpacing: '-0.02em', marginBottom: 10 }}>
+            <h1 style={{ fontFamily: "var(--font-heading)", fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.02em', marginBottom: 10 }}>
               Session Replay
             </h1>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: '#7a9bb5', marginBottom: 16 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', marginBottom: 16 }}>
               Documentation narrative du build en live — prompts, décisions, itérations
             </p>
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               {['React', 'Framer Motion', 'Markdown'].map(tag => (
-                <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'rgba(26,42,58,0.6)', border: '1px solid #1a2a3a', borderRadius: 3, padding: '2px 8px' }}>
+                <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'var(--active-tint)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: '2px 8px' }}>
                   {tag}
                 </span>
               ))}
@@ -366,13 +366,13 @@ export default function SessionReplay() {
           </div>
 
           {/* ── Stats ── */}
-          <div style={{ display: 'flex', borderTop: '1px solid #1a2a3a', borderBottom: '1px solid #1a2a3a', background: '#0d1220', marginBottom: 56, borderRadius: 8 }}>
+          <div style={{ display: 'flex', borderTop: 'var(--border-thin) solid var(--border)', borderBottom: 'var(--border-thin) solid var(--border)', background: 'var(--bg2)', marginBottom: 56, borderRadius: 'var(--radius-sm)' }}>
             {STATS.map(({ num, label }, i) => (
-              <div key={label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: '28px 16px', borderLeft: i > 0 ? '1px solid #1a2a3a' : 'none' }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 28, fontWeight: 700, color: '#25e2cc', lineHeight: 1 }}>
+              <div key={label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: '28px 16px', borderLeft: i > 0 ? 'var(--border-thin) solid var(--border)' : 'none' }}>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 28, fontWeight: 700, color: 'var(--primary)', lineHeight: 1 }}>
                   {num}
                 </span>
-                <span style={{ fontFamily: "var(--font-body)", fontSize: 11, color: '#7a9bb5', letterSpacing: '0.06em', textTransform: 'uppercase', textAlign: 'center' }}>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: 11, color: 'var(--text2)', letterSpacing: '0.06em', textTransform: 'uppercase', textAlign: 'center' }}>
                   {label}
                 </span>
               </div>
@@ -383,13 +383,13 @@ export default function SessionReplay() {
           <div style={{ position: 'relative', paddingLeft: 32 }}>
 
             {/* Vertical line */}
-            <div style={{ position: 'absolute', left: 7, top: 8, bottom: 8, width: 2, background: 'rgba(37,226,204,0.3)', borderRadius: 1 }} />
+            <div style={{ position: 'absolute', left: 7, top: 8, bottom: 8, width: 2, background: 'color-mix(in srgb, var(--primary) 30%, transparent)', borderRadius: 'var(--radius-xs)' }} />
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               {SESSIONS.map(session => (
                 <div key={session.id} style={{ position: 'relative' }}>
                   {/* Dot */}
-                  <div style={{ position: 'absolute', left: -28, top: 24, width: 8, height: 8, borderRadius: '50%', background: '#25e2cc', border: '2px solid #0a0e17', boxShadow: '0 0 6px rgba(37,226,204,0.6)', zIndex: 1 }} />
+                  <div style={{ position: 'absolute', left: -28, top: 24, width: 8, height: 8, borderRadius: '50%', background: 'var(--primary)', border: 'var(--border-regular) solid var(--bg)', boxShadow: '0 0 6px color-mix(in srgb, var(--primary) 60%, transparent)', zIndex: 1 }} />
                   <SessionCard session={session} onOpenLog={setActiveLog} />
                 </div>
               ))}
@@ -397,11 +397,11 @@ export default function SessionReplay() {
           </div>
 
           {/* ── CTA ── */}
-          <div style={{ textAlign: 'center', marginTop: 64, padding: '48px 40px', background: '#0d1220', border: '1px solid #1a2a3a', borderRadius: 8 }}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: '#7a9bb5', marginBottom: 24, lineHeight: 1.6 }}>
+          <div style={{ textAlign: 'center', marginTop: 64, padding: '48px 40px', background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-sm)' }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', marginBottom: 24, lineHeight: 1.6 }}>
               Voir le résultat → Product Brief Machine
             </p>
-            <Link to="/experience/exp-002" className="cta-btn" style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: 14, color: '#25e2cc', background: 'rgba(37,226,204,0.12)', padding: '12px 28px', borderRadius: 6, border: '1px solid #25e2cc', display: 'inline-block', transition: 'background 0.2s ease' }}>
+            <Link to="/experience/exp-002" className="cta-btn" style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: 14, color: 'var(--primary)', background: 'color-mix(in srgb, var(--primary) 12%, transparent)', padding: '12px 28px', borderRadius: 'var(--radius-sm)', border: 'var(--border-thin) solid var(--primary)', display: 'inline-block', transition: 'background 0.2s ease' }}>
               Product Brief Machine →
             </Link>
           </div>
@@ -416,7 +416,7 @@ export default function SessionReplay() {
             onClick={() => setActiveLog(null)}
             style={{
               position: 'fixed', inset: 0, zIndex: 999,
-              background: 'rgba(5,8,15,0.85)',
+              background: 'color-mix(in srgb, var(--bg3) 85%, transparent)',
               backdropFilter: 'blur(4px)',
             }}
           />
@@ -429,10 +429,10 @@ export default function SessionReplay() {
             zIndex: 1000,
             width: '90vw', maxWidth: 1100,
             height: '85vh',
-            background: '#0d1220',
-            border: '1px solid #1a2a3a',
-            borderRadius: 12,
-            boxShadow: '0 0 0 1px rgba(37,226,204,0.15), 0 32px 80px rgba(0,0,0,0.6)',
+            background: 'var(--bg2)',
+            border: 'var(--border-thin) solid var(--border)',
+            borderRadius: 'var(--radius-md)',
+            boxShadow: 'var(--elev-5)',
             display: 'flex', flexDirection: 'column',
             overflow: 'hidden',
           }}>
@@ -441,22 +441,22 @@ export default function SessionReplay() {
               display: 'flex', alignItems: 'center',
               justifyContent: 'space-between',
               padding: '0 28px', height: 52, flexShrink: 0,
-              borderBottom: '1px solid #1a2a3a',
-              background: '#080c18',
+              borderBottom: 'var(--border-thin) solid var(--border)',
+              background: 'var(--bg3)',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <span style={{
                   fontFamily: "var(--font-mono)",
-                  fontSize: 11, color: '#25e2cc', letterSpacing: '0.12em',
+                  fontSize: 11, color: 'var(--primary)', letterSpacing: '0.12em',
                 }}>
                   SESSION-{activeLog} // LOG COMPLET
                 </span>
                 <span style={{
                   fontFamily: "var(--font-mono)",
-                  fontSize: 10, color: '#7a9bb5',
-                  background: 'rgba(26,42,58,0.6)',
-                  border: '1px solid #1a2a3a',
-                  borderRadius: 3, padding: '2px 8px',
+                  fontSize: 10, color: 'var(--text2)',
+                  background: 'var(--active-tint)',
+                  border: 'var(--border-thin) solid var(--border)',
+                  borderRadius: 'var(--radius-xs)', padding: '2px 8px',
                 }}>
                   Cliquer en dehors pour fermer
                 </span>
@@ -464,17 +464,17 @@ export default function SessionReplay() {
               <button
                 onClick={() => setActiveLog(null)}
                 onMouseEnter={e => {
-                  e.currentTarget.style.color = '#e8f4f8'
-                  e.currentTarget.style.borderColor = '#e8f4f8'
+                  e.currentTarget.style.color = 'var(--text)'
+                  e.currentTarget.style.borderColor = 'var(--text)'
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.color = '#7a9bb5'
-                  e.currentTarget.style.borderColor = '#1a2a3a'
+                  e.currentTarget.style.color = 'var(--text2)'
+                  e.currentTarget.style.borderColor = 'var(--border)'
                 }}
                 style={{
                   fontFamily: "var(--font-mono)", fontSize: 11,
-                  color: '#7a9bb5', background: 'none',
-                  border: '1px solid #1a2a3a', borderRadius: 4,
+                  color: 'var(--text2)', background: 'none',
+                  border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)',
                   padding: '5px 12px', cursor: 'pointer',
                   transition: 'color 0.15s, border-color 0.15s',
                 }}

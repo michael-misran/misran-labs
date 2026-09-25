@@ -15,7 +15,86 @@ export function Section({ title, children }) {
   )
 }
 
-export default function CaseStudyLayout({ title, phases, children }) {
+// Barre d'onglets d'un case study. Une seule implémentation pour toutes les
+// pages qui en ont une — avant, chaque case study gardait sa copie locale.
+export function TabBar({ tabs, active, onChange }) {
+  return (
+    <div style={{ display: 'flex', gap: 4, borderBottom: 'var(--border-thin) solid var(--border)', marginBottom: 32, overflowX: 'auto' }}>
+      {tabs.map((tab) => (
+        <button
+          key={tab.id}
+          onClick={() => onChange(tab.id)}
+          style={{
+            background: 'none',
+            border: 'none',
+            borderBottom: active === tab.id ? 'var(--border-regular) solid var(--primary)' : 'var(--border-regular) solid transparent',
+            color: active === tab.id ? 'var(--text)' : 'var(--text2)',
+            fontFamily: "var(--font-body)",
+            fontSize: 13,
+            fontWeight: active === tab.id ? 600 : 400,
+            padding: '10px 16px',
+            cursor: 'pointer',
+            whiteSpace: 'nowrap',
+            transition: 'color 0.15s ease, border-color 0.15s ease',
+          }}
+        >
+          {tab.label}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+// Liste à puces au format de lecture des case studies.
+export function BulletList({ items }) {
+  return (
+    <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+      {items.map((it, i) => <li key={i}>{it}</li>)}
+    </ul>
+  )
+}
+
+// Période, rôle et outils d'un projet. Chaque case study passait déjà
+// role / period / tools à CaseStudyLayout, mais rien ne les affichait :
+// les trois infos étaient silencieusement ignorées. C'est ici qu'elles vivent
+// maintenant, donc toutes les pages les récupèrent d'un coup.
+function ProjectMeta({ role, period, tools }) {
+  if (!role && !period && !(tools && tools.length)) return null
+
+  return (
+    <div style={{ marginBottom: 36, display: 'flex', flexDirection: 'column', gap: 6 }}>
+      {period && (
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)', letterSpacing: '0.06em' }}>
+          {period}
+        </div>
+      )}
+      {role && (
+        <div style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--text2)' }}>{role}</div>
+      )}
+      {tools && tools.length > 0 && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 6 }}>
+          {tools.map((tool) => (
+            <span
+              key={tool}
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 10,
+                color: 'var(--text2)',
+                border: 'var(--border-thin) solid var(--border)',
+                borderRadius: 'var(--radius-xs)',
+                padding: '3px 8px',
+              }}
+            >
+              {tool}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default function CaseStudyLayout({ title, role, period, tools, phases, children }) {
   const isMobile = useIsMobile()
   const { lang } = useLanguage()
 
@@ -55,6 +134,8 @@ export default function CaseStudyLayout({ title, phases, children }) {
       >
         {title}
       </h1>
+
+      <ProjectMeta role={role} period={period} tools={tools} />
 
       {phases && <PhaseCoverage phases={phases} />}
 

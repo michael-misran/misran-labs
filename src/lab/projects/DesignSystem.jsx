@@ -10,6 +10,7 @@ import { useLanguage } from '../../shell/LanguageContext'
 import { t } from '../../i18n/ui'
 import useIsMobile from '../../shell/useIsMobile'
 import { useSecondarySidebar } from '../../shell/SecondarySidebarContext'
+import { Tabs as KitTabs } from '../../design-system/kit'
 
 function Hero({ badge, title, subtitle }) {
   return (
@@ -34,30 +35,12 @@ function Hero({ badge, title, subtitle }) {
   )
 }
 
+// Les onglets de cette page passaient par une barre soulignée qui lui était
+// propre. Ils utilisent maintenant Tabs du kit, comme partout ailleurs.
 function TabBar({ tabs, active, onChange }) {
   return (
-    <div style={{ display: 'flex', gap: 4, borderBottom: '1px solid var(--border)', marginBottom: 32, overflowX: 'auto' }}>
-      {tabs.map((tab) => (
-        <button
-          key={tab.id}
-          onClick={() => onChange(tab.id)}
-          style={{
-            background: 'none',
-            border: 'none',
-            borderBottom: active === tab.id ? '2px solid var(--primary)' : '2px solid transparent',
-            color: active === tab.id ? 'var(--text)' : 'var(--text2)',
-            fontFamily: "var(--font-body)",
-            fontSize: 13,
-            fontWeight: active === tab.id ? 600 : 400,
-            padding: '10px 16px',
-            cursor: 'pointer',
-            whiteSpace: 'nowrap',
-            transition: 'color 0.15s ease, border-color 0.15s ease',
-          }}
-        >
-          {tab.label}
-        </button>
-      ))}
+    <div style={{ marginBottom: 32, overflowX: 'auto' }}>
+      <KitTabs tabs={tabs} active={active} onChange={onChange} />
     </div>
   )
 }
@@ -67,8 +50,8 @@ function RoleCard({ name, spec, usage, children }) {
     <div
       style={{
         background: 'var(--bg2)',
-        border: '1px solid var(--border)',
-        borderRadius: 20,
+        border: 'var(--border-thin) solid var(--border)',
+        borderRadius: 'var(--radius-xl)',
         padding: 24,
         display: 'flex',
         flexDirection: 'column',
@@ -87,7 +70,7 @@ function RoleCard({ name, spec, usage, children }) {
 
 function FontCard({ family, cssFamily, role, usage, weights }) {
   return (
-    <div style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 20, padding: 24 }}>
+    <div style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 24 }}>
       <div style={{ fontFamily: cssFamily, fontSize: 48, fontWeight: 600, color: 'var(--text)', lineHeight: 1, marginBottom: 18 }}>
         Aa
       </div>
@@ -101,7 +84,7 @@ function FontCard({ family, cssFamily, role, usage, weights }) {
 
 function PaletteSwatch({ name, varName }) {
   return (
-    <div style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 20, overflow: 'hidden' }}>
+    <div style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', overflow: 'hidden' }}>
       <div style={{ height: 56, background: `var(${varName})` }} />
       <div style={{ padding: '10px 14px' }}>
         <div style={{ fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 600, color: 'var(--text)', marginBottom: 2 }}>{name}</div>
@@ -114,7 +97,7 @@ function PaletteSwatch({ name, varName }) {
 function ColorRole({ varName, name, desc }) {
   return (
     <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-      <span style={{ width: 14, height: 14, borderRadius: '50%', background: `var(${varName})`, flexShrink: 0, marginTop: 2, border: '1px solid var(--border)' }} />
+      <span style={{ width: 14, height: 14, borderRadius: '50%', background: `var(${varName})`, flexShrink: 0, marginTop: 2, border: 'var(--border-thin) solid var(--border)' }} />
       <div>
         <div style={{ fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 2 }}>{name}</div>
         <div style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text2)', lineHeight: 1.5 }}>{desc}</div>
@@ -125,7 +108,7 @@ function ColorRole({ varName, name, desc }) {
 
 function UpdateCard({ date, title, desc }) {
   return (
-    <div style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 20, padding: 20 }}>
+    <div style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 20 }}>
       <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)', marginBottom: 8 }}>{date}</div>
       <div style={{ fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 6 }}>{title}</div>
       <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.5 }}>{desc}</div>
@@ -135,7 +118,7 @@ function UpdateCard({ date, title, desc }) {
 
 function RoadmapCard({ version, statusLabel, statusColor, items }) {
   return (
-    <div style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 20, padding: 20, marginBottom: 16 }}>
+    <div style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 20, marginBottom: 16 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
         <span style={{ fontFamily: "var(--font-heading)", fontSize: 16, fontWeight: 600, color: 'var(--text)' }}>
           {version}
@@ -145,8 +128,8 @@ function RoadmapCard({ version, statusLabel, statusColor, items }) {
             fontFamily: "var(--font-mono)",
             fontSize: 10,
             color: statusColor,
-            border: `1px solid ${statusColor}`,
-            borderRadius: 4,
+            border: `var(--border-thin) solid ${statusColor}`,
+            borderRadius: 'var(--radius-xs)',
             padding: '2px 8px',
             whiteSpace: 'nowrap',
           }}
@@ -169,13 +152,14 @@ function NavCard({ title, desc, onClick }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: 'var(--bg2)',
-        border: `1px solid ${hovered ? 'var(--primary)' : 'var(--border)'}`,
-        borderRadius: 20,
-        padding: 20,
+        background: 'var(--surface-raised)',
+        boxShadow: hovered ? 'var(--elev-4)' : 'var(--elev-3)',
+        border: 'none',
+        borderRadius: 'var(--radius-xl)',
+        padding: 'var(--space-lg)',
         textAlign: 'left',
         cursor: 'pointer',
-        transition: 'border-color 0.15s ease',
+        transition: 'box-shadow 0.18s ease',
         display: 'flex',
         flexDirection: 'column',
         gap: 6,
@@ -209,14 +193,14 @@ const CONTENT = {
     ],
     updatesTitle: 'Dernières mises à jour',
     updates: [
-      { date: '25 août 2026', title: 'Bouton icône unifié', desc: "Une seule règle pour tout bouton icône interactif du shell (langue, thème, repli du menu…) : transparent au repos, carré #EDECE8 (radius 6px) au survol. src/design-system/IconButton.jsx." },
+      { date: '25 août 2026', title: 'Bouton icône unifié', desc: "Une seule règle pour tout bouton icône interactif du shell (langue, thème, repli du menu…) : transparent au repos, carré var(--hover-surface) (radius 6px) au survol. src/design-system/IconButton.jsx." },
       { date: '21 août 2026', title: 'Structure en onglets', desc: "Vue d'ensemble, Couleurs, Typographies, Espacement — plutôt qu'une seule longue page." },
       { date: '21 août 2026', title: 'Rôles de couleur documentés', desc: "Chaque couleur du Lab associée à ce qu'elle veut dire, pas juste sa valeur hexadécimale." },
       { date: '21 août 2026', title: 'FieldLabel et Tag extraits', desc: "Deux duplications de plus supprimées en creusant l'audit — 15 occurrences pour le seul label de champ." },
     ],
     nextTitle: 'Prochaines étapes',
     next: [
-      { tab: 'colors', title: 'Couleurs', desc: 'La palette, ce que chaque couleur signifie, et les deux thèmes côte à côte.' },
+      { tab: 'colors', title: 'Couleurs', desc: 'La palette du kit actif, ce que chaque couleur signifie, et sa portée inversée côte à côte.' },
       { tab: 'fonts', title: 'Typographies', desc: 'Les 3 polices du Lab et les rôles qui en découlent.' },
       { tab: 'spacing', title: 'Espacement', desc: 'La règle qui garde un écart identique entre toutes les sections.' },
     ],
@@ -235,7 +219,7 @@ const CONTENT = {
       { name: 'Corps de texte', spec: 'Inter · 14px · 1.7', usage: 'src/lab/CaseStudyLayout.jsx (Section)', render: 'body', text: "Un paragraphe de lecture, comme celui-ci." },
       { name: 'Label de champ', spec: 'JetBrains Mono · 9px · muted', usage: 'src/design-system/FieldLabel.jsx', render: 'fieldLabel', text: 'RÔLE' },
       { name: 'Tag', spec: 'JetBrains Mono · 10px · couleur paramétrable', usage: 'src/design-system/Tag.jsx', render: 'tag', text: 'React' },
-      { name: 'Bouton icône', spec: '25×25 · transparent · #EDECE8 au survol · radius 6px', usage: 'src/design-system/IconButton.jsx', render: 'iconButton', text: '' },
+      { name: 'Bouton icône', spec: '25×25 · transparent · var(--hover-surface) au survol · radius 6px', usage: 'src/design-system/IconButton.jsx', render: 'iconButton', text: '' },
     ],
     spacingTitle: 'Espacement entre sections',
     spacingBody: "Chaque section (le titre + son contenu) est enveloppée par src/design-system/Section.jsx, qui fixe l'espace après la section à 40px. Avant, certaines sections définissaient cette marge elles-mêmes et d'autres l'oubliaient. Maintenant une seule règle, appliquée automatiquement partout où Section est utilisé.",
@@ -263,7 +247,7 @@ const CONTENT = {
     colorRolesIntro: "Ce que chaque couleur veut dire, pas juste sa valeur — c'est ce qui évite qu'une couleur soit réutilisée pour un sens contradictoire d'un endroit à l'autre.",
     colorRoles: [
       { varName: '--primary', name: 'Accent principal', desc: "Interactif, actif, validé — liens, boutons, statut « fait »." },
-      { varName: '--cyan', name: 'Accent secondaire', desc: "Deuxième teinte d'accent, utilisée pour distinguer une catégorie de l'accent principal (ex : statut « à traiter » dans MAIA)." },
+      { varName: '--cyan', name: 'Accent secondaire', desc: "Deuxième teinte d'accent, utilisée pour distinguer une catégorie de l'accent principal (ex : un warning contextuel dans SessionReplay)." },
       { varName: '--violet', name: 'Catégorielle', desc: "Couleur dédiée à une catégorie spécifique parmi plusieurs (types de contrat, étapes de méthode…), pas un sens fixe en soi." },
       { varName: '--pink', name: 'Catégorielle', desc: "Autre couleur de la même famille catégorielle, pour distinguer visuellement plusieurs options d'un même menu." },
       { varName: '--warning', name: 'Attention', desc: "Statut intermédiaire ou à surveiller — facture en attente, candidature envoyée sans réponse." },
@@ -279,21 +263,21 @@ const CONTENT = {
     tokensIntro: "Tous les tokens définis dans src/styles/tokens.css, avec où et comment ils sont réellement utilisés dans le code — pas juste leur valeur.",
     tokens: [
       { varName: '--bg', type: 'color', usage: 'Fond de la page et du shell principal.' },
-      { varName: '--bg2', type: 'color', usage: "Fond des cards et panels (RoleCard, FontCard, ProjectCard, diagrammes, pages MAIA/Conforma)." },
+      { varName: '--bg2', type: 'color', usage: "Fond des cards et panels (RoleCard, FontCard, ProjectCard, diagrammes)." },
       { varName: '--bg3', type: 'color', usage: 'Fond des menus — Sidebar, menu secondaire, Statusbar.' },
       { varName: '--primary', type: 'color', usage: 'Accent principal — liens, icônes actives, statut « fait ».' },
-      { varName: '--cyan', type: 'color', usage: "Accent secondaire — distingue une catégorie de l'accent principal (ProjectCard, MAIA)." },
-      { varName: '--violet', type: 'color', usage: 'Couleur catégorielle, sans sens fixe (maiaShared.jsx).' },
-      { varName: '--pink', type: 'color', usage: 'Autre couleur catégorielle, même famille que --violet (maiaShared.jsx).' },
+      { varName: '--cyan', type: 'color', usage: "Accent secondaire — distingue une catégorie de l'accent principal (ProjectCard, SessionReplay)." },
+      { varName: '--violet', type: 'color', usage: 'Couleur catégorielle, sans sens fixe — définie mais pas encore consommée ailleurs dans le code.' },
+      { varName: '--pink', type: 'color', usage: 'Autre couleur catégorielle, même famille que --violet — définie mais pas encore consommée ailleurs dans le code.' },
       { varName: '--mandarine', type: 'color', usage: "Listée dans la palette mais pas encore appliquée ailleurs dans l'UI." },
-      { varName: '--warning', type: 'color', usage: 'Statut intermédiaire — facture en attente, candidature sans réponse (MAIA, Conforma).' },
-      { varName: '--error', type: 'color', usage: 'Refus, échec, action destructive (MAIA, Conforma).' },
+      { varName: '--warning', type: 'color', usage: 'Statut intermédiaire ou point d’attention — sévérité « majeure » du changelog, notes de décision (TheLostCauldronGame, SessionReplay).' },
+      { varName: '--error', type: 'color', usage: 'Refus, échec, action destructive — défini mais pas encore déclenché ailleurs dans le code.' },
       { varName: '--text', type: 'color', usage: 'Texte principal — titres, contenu, labels de menu.' },
       { varName: '--text2', type: 'color', usage: 'Texte secondaire — métadonnées, descriptions.' },
       { varName: '--muted', type: 'color', usage: 'Texte discret — labels de champ (FieldLabel), statut neutre.' },
       { varName: '--prose', type: 'color', usage: 'Texte de paragraphe long (Section, CV, Home).' },
       { varName: '--border', type: 'color', usage: 'Contours de champs et de cards, lignes de séparation.' },
-      { varName: '--grid-line', type: 'color', usage: 'Grille décorative de fond (CommunicationPage).' },
+      { varName: '--grid-line', type: 'color', usage: 'Grille décorative de fond — définie mais pas encore consommée ailleurs dans le code.' },
       { varName: '--active-tint', type: 'color', usage: 'Fond des items de menu sélectionnés (Sidebar, menu secondaire, Tag, ProjectCard).' },
       { varName: '--hover-tint', type: 'color', usage: 'Fond au survol des items de menu (Sidebar, menu secondaire).' },
       { varName: '--font-heading', type: 'font', cssFamily: "var(--font-heading)", usage: 'Police des titres (Space Grotesk) — h1 de page, Hero, cards.' },
@@ -334,14 +318,14 @@ const CONTENT = {
     ],
     updatesTitle: 'Latest updates',
     updates: [
-      { date: 'Aug 25, 2026', title: 'Unified icon button', desc: 'One rule for every interactive icon button in the shell (language, theme, menu collapse…): transparent at rest, #EDECE8 square (6px radius) on hover. src/design-system/IconButton.jsx.' },
+      { date: 'Aug 25, 2026', title: 'Unified icon button', desc: 'One rule for every interactive icon button in the shell (language, theme, menu collapse…): transparent at rest, var(--hover-surface) square (6px radius) on hover. src/design-system/IconButton.jsx.' },
       { date: 'Aug 21, 2026', title: 'Tabbed structure', desc: 'Overview, Colors, Fonts, Spacing — instead of one long page.' },
       { date: 'Aug 21, 2026', title: 'Color roles documented', desc: "Every color in the Lab paired with what it means, not just its hex value." },
       { date: 'Aug 21, 2026', title: 'FieldLabel and Tag extracted', desc: 'Two more duplications removed while auditing — 15 occurrences for the field label alone.' },
     ],
     nextTitle: 'Next steps',
     next: [
-      { tab: 'colors', title: 'Colors', desc: 'The palette, what each color means, and both themes side by side.' },
+      { tab: 'colors', title: 'Colors', desc: 'The active kit’s palette, what each color means, and its inverted scope side by side.' },
       { tab: 'fonts', title: 'Fonts', desc: "The Lab's 3 typefaces and the roles built on top of them." },
       { tab: 'spacing', title: 'Spacing', desc: 'The rule that keeps the gap identical across every section.' },
     ],
@@ -360,7 +344,7 @@ const CONTENT = {
       { name: 'Body text', spec: 'Inter · 14px · 1.7', usage: 'src/lab/CaseStudyLayout.jsx (Section)', render: 'body', text: 'A paragraph of reading text, like this one.' },
       { name: 'Field label', spec: 'JetBrains Mono · 9px · muted', usage: 'src/design-system/FieldLabel.jsx', render: 'fieldLabel', text: 'ROLE' },
       { name: 'Tag', spec: 'JetBrains Mono · 10px · configurable color', usage: 'src/design-system/Tag.jsx', render: 'tag', text: 'React' },
-      { name: 'Icon button', spec: '25×25 · transparent · #EDECE8 on hover · 6px radius', usage: 'src/design-system/IconButton.jsx', render: 'iconButton', text: '' },
+      { name: 'Icon button', spec: '25×25 · transparent · var(--hover-surface) on hover · 6px radius', usage: 'src/design-system/IconButton.jsx', render: 'iconButton', text: '' },
     ],
     spacingTitle: 'Spacing between sections',
     spacingBody: "Every section (the title plus its content) is wrapped by src/design-system/Section.jsx, which fixes the gap after the section at 40px. Before, some sections defined that margin themselves and others forgot to. Now there's one rule, applied automatically wherever Section is used.",
@@ -388,7 +372,7 @@ const CONTENT = {
     colorRolesIntro: "What each color means, not just its value — that's what keeps a color from being reused for a contradictory meaning somewhere else.",
     colorRoles: [
       { varName: '--primary', name: 'Primary accent', desc: 'Interactive, active, done — links, buttons, "done" status.' },
-      { varName: '--cyan', name: 'Secondary accent', desc: "Second accent hue, used to tell a category apart from the primary accent (e.g. \"to process\" status in MAIA)." },
+      { varName: '--cyan', name: 'Secondary accent', desc: "Second accent hue, used to tell a category apart from the primary accent (e.g. a contextual warning in SessionReplay)." },
       { varName: '--violet', name: 'Categorical', desc: "Dedicated to one specific category among several (contract types, method steps…), no fixed meaning on its own." },
       { varName: '--pink', name: 'Categorical', desc: 'Another color from the same categorical family, to visually tell apart several options of the same menu.' },
       { varName: '--warning', name: 'Attention', desc: 'An in-between or worth-watching status — a pending bill, an application sent with no reply yet.' },
@@ -404,21 +388,21 @@ const CONTENT = {
     tokensIntro: "Every token defined in src/styles/tokens.css, with where and how it's actually used in the code — not just its value.",
     tokens: [
       { varName: '--bg', type: 'color', usage: 'Background of the page and the main shell.' },
-      { varName: '--bg2', type: 'color', usage: 'Background of cards and panels (RoleCard, FontCard, ProjectCard, diagrams, MAIA/Conforma pages).' },
+      { varName: '--bg2', type: 'color', usage: 'Background of cards and panels (RoleCard, FontCard, ProjectCard, diagrams).' },
       { varName: '--bg3', type: 'color', usage: 'Background of the menus — Sidebar, secondary sidebar, Statusbar.' },
       { varName: '--primary', type: 'color', usage: 'Primary accent — links, active icons, "done" status.' },
-      { varName: '--cyan', type: 'color', usage: 'Secondary accent — tells a category apart from the primary accent (ProjectCard, MAIA).' },
-      { varName: '--violet', type: 'color', usage: 'Categorical color, no fixed meaning (maiaShared.jsx).' },
-      { varName: '--pink', type: 'color', usage: 'Another categorical color, same family as --violet (maiaShared.jsx).' },
+      { varName: '--cyan', type: 'color', usage: 'Secondary accent — tells a category apart from the primary accent (ProjectCard, SessionReplay).' },
+      { varName: '--violet', type: 'color', usage: 'Categorical color, no fixed meaning — defined but not yet consumed elsewhere in the code.' },
+      { varName: '--pink', type: 'color', usage: 'Another categorical color, same family as --violet — defined but not yet consumed elsewhere in the code.' },
       { varName: '--mandarine', type: 'color', usage: "Listed in the palette but not yet applied elsewhere in the UI." },
-      { varName: '--warning', type: 'color', usage: 'In-between status — a pending bill, an application with no reply (MAIA, Conforma).' },
-      { varName: '--error', type: 'color', usage: 'Rejection, failure, destructive action (MAIA, Conforma).' },
+      { varName: '--warning', type: 'color', usage: 'In-between or worth-watching status — "major" changelog severity, decision notes (TheLostCauldronGame, SessionReplay).' },
+      { varName: '--error', type: 'color', usage: 'Rejection, failure, destructive action — defined but not yet triggered elsewhere in the code.' },
       { varName: '--text', type: 'color', usage: 'Primary text — headings, content, menu labels.' },
       { varName: '--text2', type: 'color', usage: 'Secondary text — metadata, descriptions.' },
       { varName: '--muted', type: 'color', usage: 'Muted text — field labels (FieldLabel), neutral status.' },
       { varName: '--prose', type: 'color', usage: 'Long-form paragraph text (Section, CV, Home).' },
       { varName: '--border', type: 'color', usage: 'Field and card outlines, dividing lines.' },
-      { varName: '--grid-line', type: 'color', usage: 'Decorative background grid (CommunicationPage).' },
+      { varName: '--grid-line', type: 'color', usage: 'Decorative background grid — defined but not yet consumed elsewhere in the code.' },
       { varName: '--active-tint', type: 'color', usage: 'Background of selected menu items (Sidebar, secondary sidebar, Tag, ProjectCard).' },
       { varName: '--hover-tint', type: 'color', usage: 'Background on menu item hover (Sidebar, secondary sidebar).' },
       { varName: '--font-heading', type: 'font', cssFamily: "var(--font-heading)", usage: 'Heading typeface (Space Grotesk) — page h1, Hero, cards.' },
@@ -445,11 +429,11 @@ const CONTENT = {
 
 function TokenTable({ tokens }) {
   return (
-    <div style={{ overflowX: 'auto', border: '1px solid var(--border)', borderRadius: 20 }}>
+    <div style={{ overflowX: 'auto', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <tbody>
           {tokens.map((tok) => (
-            <tr key={tok.varName} style={{ borderBottom: '1px solid var(--border)' }}>
+            <tr key={tok.varName} style={{ borderBottom: 'var(--border-thin) solid var(--border)' }}>
               <td style={{ padding: '14px 16px', whiteSpace: 'nowrap', verticalAlign: 'middle' }}>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--primary)' }}>
                   {tok.varName}
@@ -464,9 +448,9 @@ function TokenTable({ tokens }) {
                       display: 'inline-block',
                       width: 20,
                       height: 20,
-                      borderRadius: 6,
+                      borderRadius: 'var(--radius-sm)',
                       background: `var(${tok.varName})`,
-                      border: '1px solid var(--border)',
+                      border: 'var(--border-thin) solid var(--border)',
                     }}
                   />
                 )}

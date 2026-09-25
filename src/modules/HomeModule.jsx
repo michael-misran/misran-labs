@@ -67,8 +67,8 @@ function LabRules({ lang }) {
     <div
       style={{
         background: 'var(--bg2)',
-        border: '1px solid var(--border)',
-        borderRadius: 20,
+        border: 'var(--border-thin) solid var(--border)',
+        borderRadius: 'var(--radius-xl)',
         padding: 24,
         marginBottom: 32,
       }}

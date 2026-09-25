@@ -1,112 +1,155 @@
+/* ------------------------------------------------------------------ *
+ * SOCLE DE TOKENS
+ *
+ * Ce fichier ne contient AUCUNE couleur. Il définit la liste des tokens
+ * que tout kit doit fournir, des valeurs de repli neutres, et les règles
+ * globales qui ne dépendent pas du kit actif.
+ *
+ * Un kit UI vit dans src/kits/<id>.css et surcharge ces tokens sous le
+ * sélecteur [data-kit="<id>"]. Le registre src/kits/registry.js liste les
+ * kits disponibles et la topbar en change à chaud.
+ *
+ * TROIS FAMILLES DE TOKENS
+ *
+ *   1. EXPRESSION — couleurs, surfaces, élévations, rayons, épaisseurs,
+ *      polices, casse. C'est l'identité du kit : un kit les redéfinit
+ *      toutes. La frontière a bougé par rapport à la version précédente :
+ *      les rayons et les épaisseurs appartiennent au kit, parce qu'un kit
+ *      brutaliste a besoin de rayon 0 et de bordures épaisses là où un kit
+ *      neumorphique a besoin de coins ronds et de bordures invisibles.
+ *
+ *   2. STRUCTURE — échelle d'espacement et tailles d'icône. Communes à
+ *      tous les kits : c'est la trame de mise en page, pas le style.
+ *
+ *   3. PORTÉE INVERSÉE — [data-invert] remappe les tokens de surface et de
+ *      texte d'un sous-arbre. Ce n'est pas un mode sombre : c'est un rôle
+ *      de surface, utilisé pour une sidebar noire dans un kit clair ou
+ *      pour une carte mise en avant au milieu de cartes ordinaires. Chaque
+ *      kit décide de ce que son inverse veut dire.
+ *
+ * Il n'y a plus de thème clair / sombre : un kit est un rendu unique.
+ * ------------------------------------------------------------------ */
+
 :root {
-  --bg: #0a0e17;
-  --bg2: #0d1220;
-  --bg3: #060a10;
-  --cyan: #00d4ff;
-  --primary: #25e2cc;
-  --text: #e8f4f8;
-  --text2: #7a9bb5;
-  --muted: #5a8199;
-  --prose: #c8dae5;
-  --border: #1a2a3a;
-  --error: #ff4444;
-  --warning: #f59e0b;
-  --violet: #8b5cf6;
-  --pink: #f472b6;
-  --mandarine: #ff8a3d;
-  --grid-line: rgba(26,42,58,0.3);
-  --active-tint: rgba(26,42,58,0.65);
-  --hover-tint: rgba(26,42,58,0.4);
-  --font-heading: 'Space Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* --- STRUCTURE — commune à tous les kits --------------------- */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  --icon-sm: 16px;
+  --icon-md: 20px;
+  --icon-lg: 24px;
+
+  --chrome-height: 32px;
+
+  /* --- EXPRESSION — valeurs de repli, neutres ------------------ *
+   * Un kit qui oublie un token retombe ici : gris lisible, formes
+   * sobres. Aucun kit ne doit s'appuyer sur ces valeurs.          */
+  --bg: #ffffff;
+  --bg2: #fafafa;
+  --bg3: #f2f2f2;
+  --primary: #333333;
+  --on-primary: #ffffff;
+  --cyan: #555555;
+  --text: #111111;
+  --text2: #555555;
+  --muted: #888888;
+  --prose: #222222;
+  --border: #dddddd;
+  --error: #b3261e;
+  --warning: #9a6700;
+  --violet: #5b4b8a;
+  --pink: #8a4b66;
+  --mandarine: #9a5a22;
+  --grid-line: rgba(0,0,0,0.06);
+  --active-tint: rgba(0,0,0,0.08);
+  --hover-tint: rgba(0,0,0,0.04);
+
+  --surface-base: #fafafa;
+  --surface-raised: #ffffff;
+  --surface-inset: #f2f2f2;
+  --surface-pressed: #e8e8e8;
+  --hover-surface: #eeeeee;
+
+  /* Un état sélectionné est une PAIRE de couleurs, comme primary /
+     on-primary. Sans le second token, un kit qui remplit la sélection
+     d'une couleur vive garde le texte de la surface d'origine — et on
+     obtient du blanc sur citron. */
+  --selected-surface: #e8e8e8;
+  --on-selected: #111111;
+
+  --elev-1: none;
+  --elev-2: 0 1px 2px rgba(0,0,0,0.12);
+  --elev-3: 0 2px 6px rgba(0,0,0,0.14);
+  --elev-4: 0 6px 18px rgba(0,0,0,0.18);
+  --elev-5: 0 10px 28px rgba(0,0,0,0.20);
+  --elev-inset: inset 0 1px 2px rgba(0,0,0,0.10);
+  --elev-pressed: inset 0 2px 4px rgba(0,0,0,0.16);
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-pill: 999px;
+
+  --border-thin: 1px;
+  --border-regular: 2px;
+  --border-thick: 3px;
+  --icon-stroke: 2;
+
+  --font-heading: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+
+  /* Casse et interlettrage : un kit brutaliste met ses libellés en
+     capitales, un kit neumorphique non. C'est une décision de kit. */
+  --label-transform: none;
+  --label-tracking: 0;
+  --heading-transform: none;
+  --heading-tracking: -0.02em;
 }
 
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme]) {
-    --bg: #fcfcfb;
-    --bg2: #ffffff;
-    --bg3: #f0eee6;
-    --cyan: #036a87;
-    --primary: #7a5230;
-    --text: #101214;
-    --text2: #4b6478;
-    --muted: #576d82;
-    --prose: #2b3a47;
-    --border: rgba(0,0,0,0.2);
-    --error: #c0392b;
-    --warning: #b45309;
-    --violet: #6d28d9;
-    --pink: #be185d;
-    --mandarine: #c2570a;
-    --grid-line: rgba(19,38,54,0.06);
-    --active-tint: rgba(19,38,54,0.12);
-    --hover-tint: rgba(19,38,54,0.05);
+/* Anneau de focus visible sur tout élément focalisable au clavier.
+   Exigence WCAG, indépendante du kit. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: var(--border-regular) solid var(--primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-:root[data-theme="light"] {
-  --bg: #fcfcfb;
-  --bg2: #ffffff;
-  --bg3: #f0eee6;
-  --cyan: #036a87;
-  --primary: #7a5230;
-  --text: #101214;
-  --text2: #4b6478;
-  --muted: #576d82;
-  --prose: #2b3a47;
-  --border: rgba(0,0,0,0.2);
-  --error: #c0392b;
-  --warning: #b45309;
-  --violet: #6d28d9;
-  --pink: #be185d;
-  --mandarine: #c2570a;
-  --grid-line: rgba(19,38,54,0.06);
-  --active-tint: rgba(19,38,54,0.12);
-  --hover-tint: rgba(19,38,54,0.05);
-}
-
-/* Printing always uses the light palette, regardless of the active theme —
-   dark-theme text colors would be invisible on a printed white page. */
+/* L'impression aplatit les élévations quel que soit le kit : une ombre
+   ne coûte que de l'encre sur papier. Les couleurs, elles, restent
+   celles du kit actif. */
 @media print {
   :root {
-    --bg: #fcfcfb !important;
-    --bg2: #ffffff !important;
-    --bg3: #f0eee6 !important;
-    --cyan: #036a87 !important;
-    --primary: #7a5230 !important;
-    --text: #101214 !important;
-    --text2: #4b6478 !important;
-    --muted: #576d82 !important;
-    --prose: #2b3a47 !important;
-    --border: rgba(0,0,0,0.2) !important;
-    --error: #c0392b !important;
-    --warning: #b45309 !important;
-    --violet: #6d28d9 !important;
-    --pink: #be185d !important;
-    --mandarine: #c2570a !important;
-    --active-tint: rgba(19,38,54,0.12) !important;
-    --hover-tint: rgba(19,38,54,0.05) !important;
+    --elev-1: none !important;
+    --elev-2: none !important;
+    --elev-3: none !important;
+    --elev-4: none !important;
+    --elev-5: none !important;
+    --elev-inset: none !important;
+    --elev-pressed: none !important;
+    --hover-surface: transparent !important;
   }
 }
 
-:root[data-theme="dark"] {
-  --bg: #0a0e17;
-  --bg2: #0d1220;
-  --bg3: #060a10;
-  --cyan: #00d4ff;
-  --primary: #25e2cc;
-  --text: #e8f4f8;
-  --text2: #7a9bb5;
-  --muted: #5a8199;
-  --prose: #c8dae5;
-  --border: #1a2a3a;
-  --error: #ff4444;
-  --warning: #f59e0b;
-  --violet: #8b5cf6;
-  --pink: #f472b6;
-  --mandarine: #ff8a3d;
-  --grid-line: rgba(26,42,58,0.3);
-  --active-tint: rgba(26,42,58,0.65);
-  --hover-tint: rgba(26,42,58,0.4);
+/* Animations partagées, consommées par Button (chargement), Spinner
+   et Skeleton. */
+@keyframes kit-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes kit-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
 }

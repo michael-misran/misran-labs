@@ -6,10 +6,11 @@ export default function Statusbar({ moduleLabel, isMobile }) {
 
   return (
     <footer
+      className="shell-chrome"
       style={{
-        height: 32,
+        height: 'var(--chrome-height)',
         background: 'var(--bg3)',
-        borderTop: '1px solid var(--border)',
+        borderTop: 'var(--border-thin) solid var(--border)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: isMobile ? 'center' : 'space-between',

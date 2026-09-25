@@ -26,8 +26,8 @@ export default function PhaseCoverage({ phases = {} }) {
                 alignItems: 'center',
                 gap: 6,
                 padding: '5px 10px',
-                borderRadius: 4,
-                border: `1px solid ${s.color}`,
+                borderRadius: 'var(--radius-xs)',
+                border: `var(--border-thin) solid ${s.color}`,
                 background: status === 'done' ? 'var(--active-tint)' : 'transparent',
               }}
             >

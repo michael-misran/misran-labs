@@ -1,5 +1,5 @@
-import MAIA from './projects/MAIA'
-import Conforma from './projects/Conforma'
+import UIKit from './projects/UIKit'
+import DesignSystemMultimarques from './projects/DesignSystemMultimarques'
 import DesignSystem from './projects/DesignSystem'
 import TheLostCauldronGame from './projects/TheLostCauldronGame'
 import WorkflowSolo from './projects/WorkflowSolo'
@@ -27,34 +27,61 @@ const QUICK_LAB_PHASES = {
 
 export const PROJECTS = [
   {
-    slug: 'maia',
-    icon: '◇',
-    title: { fr: 'MAIA', en: 'MAIA' },
+    slug: 'design-system-multimarques',
+    icon: '◼',
+    title: { fr: 'Design System multi-marques', en: 'Multi-brand Design System' },
     summary: {
-      fr: "Mon Assistant Intelligent Autonome — centraliser abonnements, factures et rappels.",
-      en: 'My own autonomous assistant — centralizing subscriptions, bills, and reminders.',
+      fr: 'Design system multi-marques, tokens en trois tiers et pipeline Figma vers GitHub.',
+      en: 'Multi-brand design system, three-tier tokens and a Figma-to-GitHub pipeline.',
     },
     status: 'READY',
     type: 'case-study',
-    featured: false,
-    tags: { fr: ['IA', 'React', 'Vie perso'], en: ['AI', 'React', 'Personal'] },
-    phases: {},
-    component: MAIA,
+    featured: true,
+    tags: {
+      fr: ['Design system', 'DesignOps', 'Design tokens', 'Figma'],
+      en: ['Design system', 'DesignOps', 'Design tokens', 'Figma'],
+    },
+    // Estimation prudente — à ajuster, toi seul sais ce qui a réellement été fait.
+    phases: {
+      business: 'partial',
+      research: 'partial',
+      design: 'done',
+      validation: 'partial',
+      feasibility: 'done',
+      development: 'done',
+      qa: 'partial',
+      launch: 'done',
+      iteration: 'done',
+    },
+    component: DesignSystemMultimarques,
   },
   {
-    slug: 'conforma',
-    icon: '▦',
-    title: { fr: 'Conforma', en: 'Conforma' },
+    slug: 'ui-kit',
+    icon: '◧',
+    title: { fr: 'Kit UI', en: 'UI Kit' },
     summary: {
-      fr: 'Vérifier un mode opératoire contre une trame de conformité, avec traçabilité de la source.',
-      en: 'Checking a procedure document against a compliance checklist, with source traceability.',
+      fr: 'Les composants réels du Lab — surfaces, contrôles, navigation, retours — avec leurs états.',
+      en: 'The Lab’s real components — surfaces, controls, navigation, feedback — with their states.',
     },
     status: 'READY',
     type: 'case-study',
-    featured: false,
-    tags: { fr: ['IA', 'Product design', 'Conformité'], en: ['AI', 'Product design', 'Compliance'] },
-    phases: {},
-    component: Conforma,
+    featured: true,
+    tags: {
+      fr: ['Design system', 'React', 'Composants', 'Accessibilité'],
+      en: ['Design system', 'React', 'Components', 'Accessibility'],
+    },
+    phases: {
+      business: 'skipped',
+      research: 'skipped',
+      design: 'done',
+      validation: 'partial',
+      feasibility: 'done',
+      development: 'done',
+      qa: 'partial',
+      launch: 'done',
+      iteration: 'partial',
+    },
+    component: UIKit,
   },
   {
     slug: 'lost-cauldron-game',

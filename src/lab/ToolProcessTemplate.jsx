@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import CaseStudyLayout, { Section } from './CaseStudyLayout'
+import { LinkButton } from '../design-system/kit'
 import { pt } from './projects'
 import { useLanguage } from '../shell/LanguageContext'
 import { t } from '../i18n/ui'
@@ -25,17 +25,9 @@ export default function ToolProcessTemplate({ project }) {
 
       {project.demoComponent && (
         <Section title={t(lang, 'result')}>
-          <Link
-            to={`/lab/${project.slug}/demo`}
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 12,
-              color: 'var(--primary)',
-              textDecoration: 'none',
-            }}
-          >
+          <LinkButton to={`/lab/${project.slug}/demo`} trailing="→">
             {t(lang, 'seeDemo')}
-          </Link>
+          </LinkButton>
         </Section>
       )}
     </CaseStudyLayout>

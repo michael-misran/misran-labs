@@ -1,39 +1,12 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import CaseStudyLayout, { Section } from '../CaseStudyLayout'
+import CaseStudyLayout, { Section, TabBar } from '../CaseStudyLayout'
+import { LinkButton } from '../../design-system/kit'
 import SectionTitle from '../../design-system/SectionTitle'
 import { STATUS, METHOD_STEP_COLORS } from '../phases'
 import { useLanguage } from '../../shell/LanguageContext'
 import { useSecondarySidebar } from '../../shell/SecondarySidebarContext'
 import useIsMobile from '../../shell/useIsMobile'
-
-function TabBar({ tabs, active, onChange }) {
-  return (
-    <div style={{ display: 'flex', gap: 4, borderBottom: '1px solid var(--border)', marginBottom: 32, overflowX: 'auto' }}>
-      {tabs.map((tab) => (
-        <button
-          key={tab.id}
-          onClick={() => onChange(tab.id)}
-          style={{
-            background: 'none',
-            border: 'none',
-            borderBottom: active === tab.id ? '2px solid var(--primary)' : '2px solid transparent',
-            color: active === tab.id ? 'var(--text)' : 'var(--text2)',
-            fontFamily: "var(--font-body)",
-            fontSize: 13,
-            fontWeight: active === tab.id ? 600 : 400,
-            padding: '10px 16px',
-            cursor: 'pointer',
-            whiteSpace: 'nowrap',
-            transition: 'color 0.15s ease, border-color 0.15s ease',
-          }}
-        >
-          {tab.label}
-        </button>
-      ))}
-    </div>
-  )
-}
 
 function MethodCoverage({ steps, lang, coverageLabel }) {
   const statusMap = STATUS[lang] ?? STATUS.fr
@@ -54,8 +27,8 @@ function MethodCoverage({ steps, lang, coverageLabel }) {
                 alignItems: 'center',
                 gap: 6,
                 padding: '5px 10px',
-                borderRadius: 4,
-                border: `1px solid ${color}`,
+                borderRadius: 'var(--radius-xs)',
+                border: `var(--border-thin) solid ${color}`,
                 background: `color-mix(in srgb, ${color} 12%, transparent)`,
               }}
             >
@@ -122,8 +95,8 @@ function RoadmapCard({ version, statusLabel, statusColor, items }) {
     <div
       style={{
         background: 'var(--bg2)',
-        border: '1px solid var(--border)',
-        borderRadius: 20,
+        border: 'var(--border-thin) solid var(--border)',
+        borderRadius: 'var(--radius-xl)',
         padding: 20,
         marginBottom: 16,
       }}
@@ -137,8 +110,8 @@ function RoadmapCard({ version, statusLabel, statusColor, items }) {
             fontFamily: "var(--font-mono)",
             fontSize: 10,
             color: statusColor,
-            border: `1px solid ${statusColor}`,
-            borderRadius: 4,
+            border: `var(--border-thin) solid ${statusColor}`,
+            borderRadius: 'var(--radius-xs)',
             padding: '2px 8px',
             whiteSpace: 'nowrap',
           }}
@@ -159,9 +132,9 @@ function BugCard({ title, symptomLabel, symptom, causeLabel, cause, fixLabel, fi
     <div
       style={{
         background: 'var(--bg2)',
-        border: '1px solid var(--border)',
-        borderLeft: `3px solid ${color}`,
-        borderRadius: 12,
+        border: 'var(--border-thin) solid var(--border)',
+        borderLeft: `var(--border-thick) solid ${color}`,
+        borderRadius: 'var(--radius-md)',
         padding: 20,
         marginBottom: 16,
       }}
@@ -194,9 +167,9 @@ function SessionCard({ date, title, summary, what, decision, whatLabel, decision
       onClick={() => setOpen((o) => !o)}
       style={{
         background: 'var(--bg2)',
-        border: `1px solid ${open ? 'var(--primary)' : 'var(--border)'}`,
-        borderLeft: `3px solid ${open ? 'var(--primary)' : 'var(--border)'}`,
-        borderRadius: 12,
+        border: `var(--border-thin) solid ${open ? 'var(--primary)' : 'var(--border)'}`,
+        borderLeft: `var(--border-thick) solid ${open ? 'var(--primary)' : 'var(--border)'}`,
+        borderRadius: 'var(--radius-md)',
         padding: 20,
         marginBottom: 12,
         cursor: 'pointer',
@@ -221,7 +194,7 @@ function SessionCard({ date, title, summary, what, decision, whatLabel, decision
       </div>
 
       <div style={{ maxHeight: open ? 500 : 0, overflow: 'hidden', transition: 'max-height 0.3s ease' }}>
-        <div style={{ borderTop: '1px solid var(--border)', marginTop: 16, paddingTop: 16, display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <div style={{ borderTop: 'var(--border-thin) solid var(--border)', marginTop: 16, paddingTop: 16, display: 'flex', flexDirection: 'column', gap: 14 }}>
           <div>
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.08em' }}>{whatLabel}</span>
             <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{what}</p>
@@ -231,23 +204,15 @@ function SessionCard({ date, title, summary, what, decision, whatLabel, decision
             <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{decision}</p>
           </div>
           {demoTo && (
-            <Link
+            <LinkButton
               to={demoTo}
+              size="sm"
+              trailing="→"
               onClick={(e) => e.stopPropagation()}
-              style={{
-                alignSelf: 'flex-start',
-                display: 'inline-block',
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                color: 'var(--bg)',
-                textDecoration: 'none',
-                background: 'var(--primary)',
-                borderRadius: 6,
-                padding: '6px 14px',
-              }}
+              style={{ alignSelf: 'flex-start' }}
             >
               {demoLabel}
-            </Link>
+            </LinkButton>
           )}
         </div>
       </div>
@@ -921,36 +886,12 @@ export default function TheLostCauldronGame() {
           <Section title={c.contextTitle}>
             <p style={{ marginBottom: 16 }}>{c.context}</p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <Link
-                to="/lab/lost-cauldron-game/demo/v2"
-                style={{
-                  display: 'inline-block',
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 12,
-                  color: 'var(--bg)',
-                  textDecoration: 'none',
-                  background: 'var(--primary)',
-                  borderRadius: 6,
-                  padding: '8px 16px',
-                }}
-              >
+              <LinkButton to="/lab/lost-cauldron-game/demo/v2" trailing="→">
                 {c.demoV2Label}
-              </Link>
-              <Link
-                to="/lab/lost-cauldron-game/demo"
-                style={{
-                  display: 'inline-block',
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 12,
-                  color: 'var(--primary)',
-                  textDecoration: 'none',
-                  border: '1px solid var(--primary)',
-                  borderRadius: 6,
-                  padding: '8px 16px',
-                }}
-              >
+              </LinkButton>
+              <LinkButton to="/lab/lost-cauldron-game/demo" variant="ghost" trailing="→">
                 {c.demoV1Label}
-              </Link>
+              </LinkButton>
             </div>
           </Section>
 

@@ -224,12 +224,12 @@ export default function CVModule() {
         <div style={{ marginBottom: 14 }}>
           <RoleHeader title={c.iadTitle} />
 
-          <div style={{ paddingLeft: 16, borderLeft: '2px solid var(--border)', marginBottom: 8 }}>
+          <div style={{ paddingLeft: 16, borderLeft: 'var(--border-regular) solid var(--border)', marginBottom: 8 }}>
             <RoleHeader title={c.iadDesignTitle} date={c.iadDesignDate} size={13} />
             <Bullets items={c.iadDesignBullets} />
           </div>
 
-          <div style={{ paddingLeft: 16, borderLeft: '2px solid var(--border)' }}>
+          <div style={{ paddingLeft: 16, borderLeft: 'var(--border-regular) solid var(--border)' }}>
             <RoleHeader title={c.iadDevTitle} date={c.iadDevDate} size={13} />
             <Bullets items={c.iadDevBullets} />
           </div>

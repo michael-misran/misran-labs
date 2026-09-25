@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 // Bouton icône du Lab — règle unique pour tout bouton icône interactif :
-// transparent au repos, carré #EDECE8 (radius 6px) au survol. Utilisé pour
+// transparent au repos, carré var(--hover-surface) (radius 6px) au survol. Utilisé pour
 // la langue, le thème, le repli du menu, la fermeture mobile, etc.
 export default function IconButton({ onClick, label, children, size = 25 }) {
   const [hovered, setHovered] = useState(false)
@@ -13,9 +13,9 @@ export default function IconButton({ onClick, label, children, size = 25 }) {
       aria-label={label}
       title={label}
       style={{
-        background: hovered ? '#EDECE8' : 'none',
+        background: hovered ? 'var(--hover-surface)' : 'none',
         border: 'none',
-        borderRadius: 6,
+        borderRadius: 'var(--radius-sm)',
         color: 'var(--text)',
         cursor: 'pointer',
         width: size,

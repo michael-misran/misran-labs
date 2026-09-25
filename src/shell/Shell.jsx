@@ -6,7 +6,7 @@ import SecondarySidebar from '../design-system/SecondarySidebar'
 import { SecondarySidebarContext } from './SecondarySidebarContext'
 import { resolveRouteMeta } from './registry'
 import useIsMobile from './useIsMobile'
-import useTheme from './useTheme'
+import Topbar from './Topbar'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 
@@ -16,7 +16,6 @@ export default function Shell() {
   const meta = resolveRouteMeta(location.pathname, lang)
   const isMobile = useIsMobile()
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const { isLight, toggle: toggleTheme } = useTheme()
   const [secondaryNav, setSecondaryNav] = useState(null)
 
   useEffect(() => {
@@ -30,11 +29,10 @@ export default function Shell() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body, #root { height: 100%; overflow: hidden; background: var(--bg); }
         a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
-          outline: 2px solid var(--primary);
+          outline: var(--border-regular) solid var(--primary);
           outline-offset: 2px;
           border-radius: 2px;
         }
@@ -47,7 +45,7 @@ export default function Shell() {
         @media print {
           .no-print { display: none !important; }
           .print-only { display: block !important; }
-          html, body, #root { height: auto !important; overflow: visible !important; background: #fff !important; }
+          html, body, #root { height: auto !important; overflow: visible !important; background: var(--bg) !important; }
           .shell-grid { display: block !important; height: auto !important; overflow: visible !important; }
           .shell-body { display: block !important; overflow: visible !important; }
           .shell-main { overflow: visible !important; height: auto !important; }
@@ -58,7 +56,7 @@ export default function Shell() {
         className="shell-grid"
         style={{
           display: 'grid',
-          gridTemplateRows: '1fr 32px',
+          gridTemplateRows: 'var(--chrome-height) 1fr var(--chrome-height)',
           height: '100vh',
           overflow: 'hidden',
           background: 'var(--bg)',
@@ -66,14 +64,16 @@ export default function Shell() {
           color: 'var(--text)',
         }}
       >
+        <div className="no-print" style={{ display: 'contents' }}>
+          <Topbar isMobile={isMobile} />
+        </div>
+
         <div className="shell-body" style={{ display: 'flex', overflow: 'hidden', position: 'relative' }}>
           <div className="no-print" style={{ display: 'contents' }}>
             <Sidebar
               isMobile={isMobile}
               mobileOpen={mobileNavOpen}
               onCloseMobile={() => setMobileNavOpen(false)}
-              isLight={isLight}
-              onToggleTheme={toggleTheme}
             />
           </div>
 
@@ -84,12 +84,12 @@ export default function Shell() {
               aria-label={t(lang, 'openNav')}
               style={{
                 position: 'absolute',
-                top: 12,
+                top: 'calc(var(--chrome-height) + 12px)',
                 left: 12,
                 zIndex: 45,
                 background: 'var(--bg2)',
-                border: '1px solid var(--border)',
-                borderRadius: 6,
+                border: 'var(--border-thin) solid var(--border)',
+                borderRadius: 'var(--radius-sm)',
                 color: 'var(--primary)',
                 fontSize: 16,
                 cursor: 'pointer',
@@ -107,7 +107,7 @@ export default function Shell() {
               style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'rgba(0,0,0,0.5)',
+                background: 'color-mix(in srgb, var(--bg3) 55%, transparent)',
                 zIndex: 40,
               }}
             />

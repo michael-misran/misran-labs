@@ -1,27 +1,104 @@
-function Panel({ label, bg, bg2, text, text2, accent, border }) {
+import { useKit } from '../shell/KitContext'
+import { kitLabel, kitDescription } from '../kits/registry'
+import { useLanguage } from '../shell/LanguageContext'
+
+// Ce composant comparait le thème clair et le thème sombre côte à côte,
+// avec des valeurs recopiées à la main depuis tokens.css — donc une source
+// de dérive garantie. Les thèmes n'existent plus : il montre maintenant le
+// kit actif et sa portée inversée, en lisant les tokens réels. Plus aucune
+// couleur en dur ici, et l'aperçu suit automatiquement tout kit ajouté.
+
+function Panel({ label, invert }) {
   return (
-    <div style={{ flex: '1 1 220px', minWidth: 220 }}>
+    <div style={{ flex: '1 1 240px', minWidth: 240 }}>
       <div
         style={{
           fontFamily: "var(--font-mono)",
           fontSize: 10,
           color: 'var(--muted)',
           letterSpacing: '0.1em',
+          textTransform: 'uppercase',
           marginBottom: 8,
         }}
       >
         {label}
       </div>
-      <div style={{ background: bg, border: `1px solid ${border}`, borderRadius: 8, padding: 14 }}>
-        <div style={{ background: bg2, border: `1px solid ${border}`, borderRadius: 6, padding: 14 }}>
-          <div style={{ color: accent, fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: '0.1em', marginBottom: 8 }}>
+
+      <div
+        data-invert={invert ? '' : undefined}
+        style={{
+          background: 'var(--bg)',
+          border: 'var(--border-thin) solid var(--border)',
+          borderRadius: 'var(--radius-lg)',
+          padding: 14,
+        }}
+      >
+        <div
+          style={{
+            background: 'var(--surface-raised)',
+            boxShadow: 'var(--elev-3)',
+            borderRadius: 'var(--radius-md)',
+            padding: 14,
+          }}
+        >
+          <div
+            style={{
+              color: 'var(--primary)',
+              fontFamily: "var(--font-mono)",
+              fontSize: 11,
+              letterSpacing: 'var(--label-tracking)',
+              textTransform: 'var(--label-transform)',
+              marginBottom: 8,
+            }}
+          >
             {'// CONTEXTE'}
           </div>
-          <div style={{ color: text, fontFamily: "var(--font-heading)", fontSize: 15, fontWeight: 600, marginBottom: 6 }}>
+          <div
+            style={{
+              color: 'var(--text)',
+              fontFamily: "var(--font-heading)",
+              fontSize: 15,
+              fontWeight: 600,
+              letterSpacing: 'var(--heading-tracking)',
+              textTransform: 'var(--heading-transform)',
+              marginBottom: 6,
+            }}
+          >
             Création du lab
           </div>
-          <div style={{ color: text2, fontFamily: "var(--font-body)", fontSize: 12, lineHeight: 1.5 }}>
-            Un paragraphe de lecture pour comparer le confort visuel entre les deux thèmes.
+          <div style={{ color: 'var(--text2)', fontFamily: "var(--font-body)", fontSize: 12, lineHeight: 1.5, marginBottom: 12 }}>
+            Un paragraphe de lecture pour juger le confort visuel du kit.
+          </div>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <span
+              style={{
+                background: 'var(--primary)',
+                color: 'var(--on-primary)',
+                boxShadow: 'var(--elev-2)',
+                borderRadius: 'var(--radius-pill)',
+                fontFamily: "var(--font-body)",
+                fontSize: 11,
+                fontWeight: 600,
+                padding: '6px 14px',
+                letterSpacing: 'var(--label-tracking)',
+                textTransform: 'var(--label-transform)',
+              }}
+            >
+              Action
+            </span>
+            <span
+              style={{
+                background: 'var(--surface-inset)',
+                boxShadow: 'var(--elev-inset)',
+                borderRadius: 'var(--radius-sm)',
+                fontFamily: "var(--font-mono)",
+                fontSize: 10,
+                color: 'var(--text2)',
+                padding: '6px 10px',
+              }}
+            >
+              creux
+            </span>
           </div>
         </div>
       </div>
@@ -30,26 +107,18 @@ function Panel({ label, bg, bg2, text, text2, accent, border }) {
 }
 
 export default function ThemeSwatch() {
+  const { kit } = useKit()
+  const { lang } = useLanguage()
+
   return (
-    <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-      <Panel
-        label="SOMBRE"
-        bg="#0a0e17"
-        bg2="#0d1220"
-        text="#e8f4f8"
-        text2="#7a9bb5"
-        accent="#25e2cc"
-        border="#1a2a3a"
-      />
-      <Panel
-        label="CLAIR"
-        bg="#f6f8fa"
-        bg2="#ffffff"
-        text="#12202c"
-        text2="#4b6478"
-        accent="#087a6e"
-        border="#dde5ec"
-      />
+    <div>
+      <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, marginBottom: 16 }}>
+        <strong style={{ color: 'var(--text)' }}>{kitLabel(kit, lang)}</strong> — {kitDescription(kit, lang)}
+      </div>
+      <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+        <Panel label="Portée normale" />
+        <Panel label="Portée inversée" invert />
+      </div>
     </div>
   )
 }

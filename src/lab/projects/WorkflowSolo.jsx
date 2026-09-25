@@ -19,7 +19,7 @@ function Table({ columns, rows }) {
                   color: 'var(--muted)',
                   letterSpacing: '0.08em',
                   padding: '0 12px 10px 0',
-                  borderBottom: '1px solid var(--border)',
+                  borderBottom: 'var(--border-thin) solid var(--border)',
                   whiteSpace: 'nowrap',
                 }}
               >
@@ -40,7 +40,7 @@ function Table({ columns, rows }) {
                     color: j === 0 ? 'var(--text)' : 'var(--text2)',
                     fontWeight: j === 0 ? 600 : 400,
                     padding: '12px 12px 12px 0',
-                    borderBottom: '1px solid var(--border)',
+                    borderBottom: 'var(--border-thin) solid var(--border)',
                     lineHeight: 1.5,
                   }}
                 >
@@ -60,8 +60,8 @@ function StakeholderCard({ name, brings, bringsLabel, ritual, ritualLabel, outpu
     <div
       style={{
         background: 'var(--bg2)',
-        border: '1px solid var(--border)',
-        borderRadius: 20,
+        border: 'var(--border-thin) solid var(--border)',
+        borderRadius: 'var(--radius-xl)',
         padding: 24,
         display: 'flex',
         flexDirection: 'column',
@@ -87,7 +87,7 @@ function StakeholderCard({ name, brings, bringsLabel, ritual, ritualLabel, outpu
       ))}
       <div
         style={{
-          borderTop: '1px solid var(--border)',
+          borderTop: 'var(--border-thin) solid var(--border)',
           paddingTop: 12,
           marginTop: 2,
         }}
