@@ -643,11 +643,9 @@ function CaseHero({ project, c }) {
   )
 }
 
-// Onglets du dossier — une pile de chemises légèrement décalées et
-// teintées différemment, comme un tiroir d'archives. Celui qu'on ouvre se
-// redresse et se détache du lot (teinte neutre, à plat, marqué ✛) ; les
-// autres restent en retrait, chacun avec sa propre teinte et son propre
-// angle, cascadant derrière lui.
+// Onglets du dossier — côte à côte, chacun avec sa propre teinte comme un
+// intercalaire de tiroir d'archives. Celui qu'on ouvre se détache du lot
+// (teinte neutre, à plat, marqué ✛) sans empiéter sur ses voisins.
 const TAB_TINTS = [
   'color-mix(in srgb, var(--mandarine) 20%, var(--bg3))',
   'color-mix(in srgb, var(--violet) 16%, var(--bg3))',
@@ -655,11 +653,10 @@ const TAB_TINTS = [
   'color-mix(in srgb, var(--warning) 18%, var(--bg3))',
   'color-mix(in srgb, var(--cyan) 16%, var(--bg3))',
 ]
-const TAB_ROTATIONS = [-1.4, 1.2, -1, 1.6, -1.2]
 
 function CaseTabs({ tabs, active, onChange }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-end', flexWrap: 'wrap', gap: 0, marginBottom: 8 }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 8 }}>
       {tabs.map((tab, i) => {
         const isActive = active === tab.id
         return (
@@ -670,17 +667,10 @@ function CaseTabs({ tabs, active, onChange }) {
               display: 'flex',
               alignItems: 'center',
               gap: 8,
-              position: 'relative',
-              zIndex: isActive ? tabs.length + 1 : i,
-              marginLeft: i === 0 ? 0 : -10,
-              marginBottom: isActive ? 0 : 8 + i * 3,
-              transform: isActive ? 'none' : `rotate(${TAB_ROTATIONS[i % TAB_ROTATIONS.length]}deg)`,
-              transformOrigin: 'bottom left',
               background: isActive ? 'var(--bg2)' : TAB_TINTS[i % TAB_TINTS.length],
               border: 'var(--border-thin) solid var(--border)',
-              borderBottom: isActive ? 'var(--border-regular) solid var(--bg2)' : 'var(--border-thin) solid var(--border)',
+              borderBottom: isActive ? 'var(--border-regular) solid var(--primary)' : 'var(--border-thin) solid var(--border)',
               borderRadius: '3px 3px 0 0',
-              boxShadow: isActive ? '2px -2px 0 rgba(36,28,22,0.14)' : 'none',
               padding: '9px 16px',
               cursor: 'pointer',
               fontFamily: "var(--font-body)",
@@ -688,7 +678,7 @@ function CaseTabs({ tabs, active, onChange }) {
               fontWeight: isActive ? 600 : 400,
               color: isActive ? 'var(--text)' : 'var(--text2)',
               whiteSpace: 'nowrap',
-              transition: 'transform 0.15s ease, margin-bottom 0.15s ease',
+              transition: 'background 0.15s ease, color 0.15s ease',
             }}
           >
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: isActive ? 'var(--primary)' : 'var(--muted)' }}>
