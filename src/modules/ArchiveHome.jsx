@@ -170,15 +170,31 @@ function ProtocolPlate({ c, lang }) {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 0 }}>
-        {steps.map((step, i) => (
-          <div key={i} style={{ padding: '14px 20px', borderRight: 'var(--border-thin) solid var(--border)', borderTop: 'var(--border-thin) solid var(--border)' }}>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 4 }}>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: METHOD_STEP_COLORS[i] }}>0{i + 1}</span>
-              <span style={{ fontFamily: "var(--font-heading)", fontSize: 13, fontWeight: 600, color: 'var(--text)' }}>{step.title}</span>
+        {steps.map((step, i) => {
+          // Le dernier step (05) tombe seul sous la première colonne quand la
+          // grille en compte 4 — les filets des autres colonnes n'avaient
+          // alors rien pour aller jusqu'en bas. Il occupe toute la largeur
+          // de sa ligne pour fermer la grille proprement, quel que soit le
+          // nombre de colonnes qu'auto-fit produit à une largeur donnée.
+          const isLast = i === steps.length - 1
+          return (
+            <div
+              key={i}
+              style={{
+                gridColumn: isLast ? '1 / -1' : undefined,
+                padding: '14px 20px',
+                borderRight: isLast ? 'none' : 'var(--border-thin) solid var(--border)',
+                borderTop: 'var(--border-thin) solid var(--border)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 4 }}>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: METHOD_STEP_COLORS[i] }}>0{i + 1}</span>
+                <span style={{ fontFamily: "var(--font-heading)", fontSize: 13, fontWeight: 600, color: 'var(--text)' }}>{step.title}</span>
+              </div>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text2)', lineHeight: 1.5, margin: 0, maxWidth: isLast ? '60ch' : undefined }}>{step.desc}</p>
             </div>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text2)', lineHeight: 1.5, margin: 0 }}>{step.desc}</p>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, padding: '12px 20px', borderTop: 'var(--border-thin) solid var(--border)' }}>
