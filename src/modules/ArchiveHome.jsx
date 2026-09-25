@@ -320,7 +320,7 @@ export default function ArchiveHome() {
             <div style={{ fontFamily: "var(--font-heading)", fontWeight: 900, fontSize: 64, lineHeight: 0.85, color: 'var(--text)', marginBottom: 6 }}>M.</div>
             <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 28, color: 'var(--primary)', lineHeight: 1, marginBottom: 8 }}>PORTFOLIO</div>
             <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: '0.08em', color: 'var(--text2)', marginBottom: 14 }}>{c.heroTag}</div>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, maxWidth: '34ch' }}>{c.heroDesc}</p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, maxWidth: '34ch', margin: '0 0 14px' }}>{c.heroDesc}</p>
 
             <OverviewBox c={c} count={projects.length} />
             <AccentSwatch c={c} />
