@@ -1,21 +1,36 @@
 /* ------------------------------------------------------------------ *
  * TOKENS — IDENTITÉ RÉTRO
  *
- * Le Lab a porté trois identités interchangeables (neumorphisme,
- * brutalisme, rétro). Ce switch a été retiré : il ne produisait que des
- * variations de surface, jamais une vraie rupture. L'identité rétro —
- * papier crème, encre café, corail brûlé en accent, filets fins plutôt
- * que bordures épaisses — est maintenant la seule, directement dans
- * :root. Plus de [data-kit], plus de registre : un site, un rendu.
+ * Trois niveaux, une règle : un token ne porte jamais une valeur brute
+ * s'il existe un niveau au-dessus de lui. C'est la même architecture que
+ * celle documentée dans la fiche Design System multi-marques — appliquée
+ * ici, pas juste racontée.
  *
+ *   1. PRIMITIVE — valeurs brutes. Une échelle de teintes, aucune
+ *      intention. Ne s'applique jamais directement à un composant.
+ *   2. SEMANTIC — un rôle nommé (--bg, --primary, --text...). Alias d'un
+ *      primitive, c'est ce que les composants consomment au quotidien.
+ *      Ce sont les mêmes noms qu'avant cette réorganisation : renommer
+ *      des dizaines de fichiers pour un gain nul n'est pas la priorité.
+ *   3. COMPONENT — porté à un seul composant. Créé uniquement quand ce
+ *      composant s'écarte réellement de l'intention d'un sémantique.
+ *      Aujourd'hui, un seul cas le justifie : les teintes de la pile
+ *      d'onglets des fiches (CaseFile.jsx) — cinq variantes dérivées des
+ *      couleurs catégorielles, qui vivaient avant en JS et qu'aucune
+ *      autre page ne réutilise.
+ *
+ * Le Lab a porté trois identités interchangeables (neumorphisme,
+ * brutalisme, rétro) ; ce switch a été retiré, voir l'historique Git.
  * [data-invert] reste un rôle de surface, pas un mode sombre : c'est le
- * bloc corail plein cadre d'une planche de présentation — une
- * diapositive de rupture au milieu de pages crème, pas un thème sombre
- * du site.
+ * bloc corail plein cadre d'une planche de présentation.
  * ------------------------------------------------------------------ */
 
 :root {
-  /* --- STRUCTURE ------------------------------------------------- */
+  /* --- STRUCTURE ---------------------------------------------------- *
+   * Échelle d'espacement et tailles d'icône : une trame de mise en page,
+   * pas une couleur. Déjà un rôle nommé (xs/sm/md/lg), sans variation
+   * par composant à ce jour — un troisième niveau n'y ajouterait rien,
+   * donc il n'y en a pas. */
   --space-xs: 8px;
   --space-sm: 12px;
   --space-md: 16px;
@@ -28,38 +43,69 @@
 
   --chrome-height: 32px;
 
-  /* --- EXPRESSION -------------------------------------------------- */
-  --bg: #f3ebdc;
-  --bg2: #f8f2e7;
-  --bg3: #e6dac4;
-  --cyan: #a9762c;
-  --primary: #dd5a3e;
-  --on-primary: #f8f2e7;
-  --text: #241c16;
-  --text2: #5b5044;
-  --muted: #8f8573;
-  --prose: #2c231b;
-  --border: #2a2018;
-  --error: #b23324;
-  --warning: #c1861f;
-  --violet: #8c3b3a;
-  --pink: #c97a6d;
-  --mandarine: #e0862f;
+  /* --- 1. PRIMITIVE — palette brute --------------------------------- *
+   * Une échelle de crème (clair → foncé), une échelle d'encre, une
+   * échelle de corail, et une teinte par couleur catégorielle. Aucun de
+   * ces tokens n'a de rôle : --primitive-cream-100 ne "veut" rien dire,
+   * --bg si. */
+  --primitive-cream-50: #f8f2e7;
+  --primitive-cream-100: #f3ebdc;
+  --primitive-cream-150: #efe4d0;
+  --primitive-cream-200: #e6dac4;
+  --primitive-cream-300: #d8c9ab;
+
+  --primitive-ink-400: #8f8573;
+  --primitive-ink-600: #5b5044;
+  --primitive-ink-800: #2c231b;
+  --primitive-ink-850: #2a2018;
+  --primitive-ink-900: #241c16;
+
+  --primitive-coral-400: #e26a50;
+  --primitive-coral-500: #dd5a3e;
+  --primitive-coral-600: #c94f36;
+  --primitive-coral-700: #b8452e;
+  --primitive-coral-tint-100: #f5ddd2;
+  --primitive-coral-tint-200: #f0c3b4;
+
+  --primitive-ochre-500: #a9762c;
+  --primitive-plum-500: #8c3b3a;
+  --primitive-rose-500: #c97a6d;
+  --primitive-tangerine-500: #e0862f;
+  --primitive-rust-500: #b23324;
+  --primitive-amber-500: #c1861f;
+
+  /* --- 2. SEMANTIC — rôles, alias des primitives -------------------- */
+  --bg: var(--primitive-cream-100);
+  --bg2: var(--primitive-cream-50);
+  --bg3: var(--primitive-cream-200);
+  --cyan: var(--primitive-ochre-500);
+  --primary: var(--primitive-coral-500);
+  --on-primary: var(--primitive-cream-50);
+  --text: var(--primitive-ink-900);
+  --text2: var(--primitive-ink-600);
+  --muted: var(--primitive-ink-400);
+  --prose: var(--primitive-ink-800);
+  --border: var(--primitive-ink-850);
+  --error: var(--primitive-rust-500);
+  --warning: var(--primitive-amber-500);
+  --violet: var(--primitive-plum-500);
+  --pink: var(--primitive-rose-500);
+  --mandarine: var(--primitive-tangerine-500);
   --grid-line: rgba(36,28,22,0.12);
   --active-tint: rgba(221,90,62,0.12);
   --hover-tint: rgba(36,28,22,0.05);
 
-  --surface-base: #f3ebdc;
-  --surface-raised: #f8f2e7;
-  --surface-inset: #e6dac4;
-  --surface-pressed: #d8c9ab;
-  --hover-surface: #efe4d0;
+  --surface-base: var(--primitive-cream-100);
+  --surface-raised: var(--primitive-cream-50);
+  --surface-inset: var(--primitive-cream-200);
+  --surface-pressed: var(--primitive-cream-300);
+  --hover-surface: var(--primitive-cream-150);
 
   /* Un état sélectionné est une PAIRE de couleurs, comme primary /
      on-primary : sans le second token, une sélection en couleur vive
      garde le texte de la surface d'origine — du blanc sur corail. */
-  --selected-surface: #dd5a3e;
-  --on-selected: #f8f2e7;
+  --selected-surface: var(--primitive-coral-500);
+  --on-selected: var(--primitive-cream-50);
 
   /* Pas de flou, pas de décalage lourd : une planche imprimée empile ses
      pages avec un filet fin ou, au plus, un aplat net et court. */
@@ -91,33 +137,46 @@
   --label-tracking: 0.1em;
   --heading-transform: none;
   --heading-tracking: -0.01em;
+
+  /* --- 3. COMPONENT — porté à un seul composant ---------------------- *
+   * La pile d'onglets des fiches d'archive (CaseFile.jsx) a besoin de
+   * cinq teintes distinctes qu'aucun rôle sémantique ne porte seul :
+   * chaque teinte catégorielle mélangée à la surface de fond. Nommé par
+   * le composant qui le consomme, pas par la couleur — si CaseFile
+   * change de palette, ces cinq lignes suffisent. */
+  --case-tabs-tint-1: color-mix(in srgb, var(--mandarine) 20%, var(--bg3));
+  --case-tabs-tint-2: color-mix(in srgb, var(--violet) 16%, var(--bg3));
+  --case-tabs-tint-3: color-mix(in srgb, var(--pink) 16%, var(--bg3));
+  --case-tabs-tint-4: color-mix(in srgb, var(--warning) 18%, var(--bg3));
+  --case-tabs-tint-5: color-mix(in srgb, var(--cyan) 16%, var(--bg3));
 }
 
 /* Portée inversée : la diapositive corail plein cadre d'une planche
    d'identité. Utilisée pour une carte ou une section mise en avant — le
    chrome (sidebar, topbar, footer) reste crème : la couleur est un
-   événement, pas un décor permanent. */
+   événement, pas un décor permanent. Toujours semantic → primitive :
+   pas une seule valeur brute réintroduite ici. */
 [data-invert] {
-  --bg: #dd5a3e;
-  --bg2: #e26a50;
-  --bg3: #c94f36;
-  --text: #f8f2e7;
-  --text2: #f5ddd2;
-  --muted: #f0c3b4;
-  --prose: #f8f2e7;
-  --border: #f8f2e7;
-  --primary: #f8f2e7;
-  --on-primary: #dd5a3e;
+  --bg: var(--primitive-coral-500);
+  --bg2: var(--primitive-coral-400);
+  --bg3: var(--primitive-coral-600);
+  --text: var(--primitive-cream-50);
+  --text2: var(--primitive-coral-tint-100);
+  --muted: var(--primitive-coral-tint-200);
+  --prose: var(--primitive-cream-50);
+  --border: var(--primitive-cream-50);
+  --primary: var(--primitive-cream-50);
+  --on-primary: var(--primitive-coral-500);
   --active-tint: rgba(248,242,231,0.18);
   --hover-tint: rgba(248,242,231,0.10);
 
-  --surface-base: #dd5a3e;
-  --surface-raised: #e26a50;
-  --surface-inset: #c94f36;
-  --surface-pressed: #b8452e;
+  --surface-base: var(--primitive-coral-500);
+  --surface-raised: var(--primitive-coral-400);
+  --surface-inset: var(--primitive-coral-600);
+  --surface-pressed: var(--primitive-coral-700);
   --hover-surface: rgba(248,242,231,0.12);
-  --selected-surface: #f8f2e7;
-  --on-selected: #dd5a3e;
+  --selected-surface: var(--primitive-cream-50);
+  --on-selected: var(--primitive-coral-500);
 
   --elev-2: 0 1px 0 rgba(248,242,231,0.35);
   --elev-3: 0 2px 0 rgba(248,242,231,0.35);

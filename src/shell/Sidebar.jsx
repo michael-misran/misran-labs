@@ -13,7 +13,7 @@ const PROJECTS_BY_SLUG = Object.fromEntries(PROJECTS.map(p => [p.slug, p]))
 // Portfolio (les pièces qu'on montre en priorité). Une page qui n'est
 // dans aucune des deux listes reste accessible par son URL, juste hors
 // du menu — décision explicite, pas un oubli.
-const LAB_SLUGS = ['design-system', 'lost-cauldron-game', 'exp-003']
+const LAB_SLUGS = ['design-system', 'lab-tokens', 'lost-cauldron-game', 'exp-003']
 const PORTFOLIO_SLUGS = ['cv', 'design-system-multimarques', 'workflow']
 
 // Les bascules de langue et de thème vivaient ici. La langue est remontée

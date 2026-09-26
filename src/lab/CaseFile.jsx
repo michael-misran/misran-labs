@@ -112,12 +112,17 @@ export function CaseHero({ project, c, children }) {
 // Onglets du dossier — côte à côte, chacun avec sa propre teinte comme un
 // intercalaire de tiroir d'archives. Celui qu'on ouvre se détache du lot
 // (teinte neutre, à plat, marqué ✛) sans empiéter sur ses voisins.
+//
+// Les teintes sont des tokens de niveau composant (--case-tabs-tint-N,
+// voir tokens.css) : ce sont les seules du site à en avoir besoin, donc
+// la décision vit à côté des autres composants sans rôle sémantique, pas
+// recalculée ici à chaque rendu.
 const TAB_TINTS = [
-  'color-mix(in srgb, var(--mandarine) 20%, var(--bg3))',
-  'color-mix(in srgb, var(--violet) 16%, var(--bg3))',
-  'color-mix(in srgb, var(--pink) 16%, var(--bg3))',
-  'color-mix(in srgb, var(--warning) 18%, var(--bg3))',
-  'color-mix(in srgb, var(--cyan) 16%, var(--bg3))',
+  'var(--case-tabs-tint-1)',
+  'var(--case-tabs-tint-2)',
+  'var(--case-tabs-tint-3)',
+  'var(--case-tabs-tint-4)',
+  'var(--case-tabs-tint-5)',
 ]
 
 export function CaseTabs({ tabs, active, onChange }) {

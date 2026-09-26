@@ -1,5 +1,6 @@
 import DesignSystemMultimarques from './projects/DesignSystemMultimarques'
 import DesignSystem from './projects/DesignSystem'
+import LabTokens from './projects/LabTokens'
 import TheLostCauldronGame from './projects/TheLostCauldronGame'
 import WorkflowSolo from './projects/WorkflowSolo'
 import GameDemo from './GameDemo'
@@ -131,6 +132,21 @@ export const PROJECTS = [
     tags: { fr: ['Profil'], en: ['Profile'] },
     phases: { ...QUICK_LAB_PHASES, launch: 'done' },
     component: CVModule,
+  },
+  {
+    slug: 'lab-tokens',
+    icon: '▦',
+    title: { fr: 'Tokens du Lab', en: 'Lab Tokens' },
+    summary: {
+      fr: 'Datatable filtrable des tokens primitives, sémantiques et composant du Lab.',
+      en: "Filterable datatable of the Lab's primitive, semantic, and component tokens.",
+    },
+    status: 'READY',
+    type: 'case-study',
+    featured: false,
+    tags: { fr: ['Design tokens', 'React'], en: ['Design tokens', 'React'] },
+    phases: {},
+    component: LabTokens,
   },
 ]
 
