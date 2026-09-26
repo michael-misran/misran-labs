@@ -1,7 +1,9 @@
-import CaseStudyLayout, { Section } from '../CaseStudyLayout'
+import { Section } from '../CaseStudyLayout'
+import { CaseMasthead, CaseHero, CaseFooter } from '../CaseFile'
 import FlowDiagram from '../../components/diagrams/FlowDiagram'
 import SectionTitle from '../../design-system/SectionTitle'
 import { useLanguage } from '../../shell/LanguageContext'
+import useIsMobile from '../../shell/useIsMobile'
 
 function Table({ columns, rows }) {
   return (
@@ -106,6 +108,14 @@ function StakeholderCard({ name, brings, bringsLabel, ritual, ritualLabel, outpu
 const CONTENT = {
   fr: {
     title: 'Workflow multi-produits — Guideline',
+    fileNo: 'DOSSIER Nº 004',
+    mastheadCenter: 'ARCHIVE DU LAB //// MÉTHODE',
+    mastheadRight: 'MISRAN LABS',
+    mastheadRightSub: 'ARCHIVE VISUEL',
+    stampLabel: 'MISRAN · LABS · ARCHIVE ·',
+    docId: 'ID DOSSIER — ML-ARCHIVE-004',
+    clearance: 'NIVEAU DE LECTURE — PUBLIC',
+    tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
     intro:
       "Deux responsabilités simultanées, jamais séquentielles : répondre aux besoins spécifiques de chaque produit (le run), et maintenir un design system et une cohérence de marque blanche communs à tous les produits (l'unification). Le risque du poste : le run mange 100% du temps et l'unification devient un chantier qu'on ne fait jamais.",
     introRulesLabel: 'Les règles :',
@@ -209,6 +219,14 @@ const CONTENT = {
   },
   en: {
     title: 'Multi-product Workflow — Guideline',
+    fileNo: 'FILE Nº 004',
+    mastheadCenter: 'LAB ARCHIVE //// METHOD',
+    mastheadRight: 'MISRAN LABS',
+    mastheadRightSub: 'VISUAL ARCHIVE',
+    stampLabel: 'MISRAN · LABS · ARCHIVE ·',
+    docId: 'DOCUMENT ID — ML-ARCHIVE-004',
+    clearance: 'CLEARANCE LEVEL — PUBLIC',
+    tagline: 'DESIGN IS INTENT. DETAILS ARE EVERYTHING.',
     intro:
       "Two responsibilities running at once, never sequentially: answering each product's specific needs (the run), and keeping a design system and white-label consistency shared across every product (unification). The risk of the role: the run eats 100% of the time and unification becomes a project that never happens.",
     introRulesLabel: 'The rules:',
@@ -312,12 +330,16 @@ const CONTENT = {
   },
 }
 
-export default function WorkflowSolo() {
+export default function WorkflowSolo({ project }) {
   const { lang } = useLanguage()
   const c = CONTENT[lang] ?? CONTENT.fr
+  const isMobile = useIsMobile()
 
   return (
-    <CaseStudyLayout title={c.title}>
+    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+      <CaseMasthead c={c} lang={lang} />
+      <CaseHero project={project} c={c} />
+
       <div style={{ maxWidth: 720, marginBottom: 40 }}>
         <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--prose)', lineHeight: 1.7, margin: '0 0 20px' }}>
           {c.intro}
@@ -395,6 +417,8 @@ export default function WorkflowSolo() {
           ))}
         </div>
       </Section>
-    </CaseStudyLayout>
+
+      <CaseFooter c={c} />
+    </div>
   )
 }

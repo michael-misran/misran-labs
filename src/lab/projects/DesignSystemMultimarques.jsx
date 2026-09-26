@@ -1,11 +1,8 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { Section, BulletList } from '../CaseStudyLayout'
-import { dossierNo } from '../projects'
-import { Stamp, Barcode } from '../../design-system/ArchiveMarks'
+import { CaseMasthead, CaseHero, CaseMetaRow, CaseTabs, CaseFooter } from '../CaseFile'
 import FlowDiagram from '../../components/diagrams/FlowDiagram'
 import { useLanguage } from '../../shell/LanguageContext'
-import { t } from '../../i18n/ui'
 import useIsMobile from '../../shell/useIsMobile'
 
 const DEV = import.meta.env.DEV
@@ -556,156 +553,6 @@ const CONTENT = {
   },
 }
 
-/* --- En-tête et pied de page façon dossier ----------------------------- *
- * Cette page ne passe plus par CaseStudyLayout pour son titre : un dossier
- * d'archive a son propre masthead, un tampon, une table de méta plutôt
- * qu'une simple liste, et un cartouche de bas de page — le même langage
- * que la home (voir ArchiveHome.jsx), appliqué à une fiche plutôt qu'à
- * l'index.
- * ------------------------------------------------------------------- */
-
-function CaseMasthead({ c, lang }) {
-  return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, paddingBottom: 14, borderBottom: 'var(--border-regular) solid var(--border)', marginBottom: 24, flexWrap: 'wrap' }}>
-      <div>
-        <Link to="/" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none' }}>
-          {t(lang, 'backToLab')}
-        </Link>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginTop: 4 }}>{c.fileNo}</div>
-      </div>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.14em', color: 'var(--text2)', textAlign: 'center', flex: '1 1 200px' }}>
-        {c.mastheadCenter}
-      </div>
-      <div style={{ textAlign: 'right' }}>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', color: 'var(--text)' }}>{c.mastheadRight}</div>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)' }}>{c.mastheadRightSub}</div>
-      </div>
-    </div>
-  )
-}
-
-function CaseHero({ project, c }) {
-  return (
-    <div style={{ border: 'var(--border-regular) solid var(--border)', marginBottom: 32 }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, padding: '18px 24px', borderBottom: 'var(--border-thin) solid var(--border)' }}>
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
-          <span
-            style={{
-              flexShrink: 0,
-              fontFamily: "var(--font-heading)",
-              fontWeight: 700,
-              fontSize: 26,
-              lineHeight: 1,
-              color: 'var(--primary)',
-            }}
-          >
-            {dossierNo(project?.slug) ?? '001'}
-          </span>
-          <div>
-            <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', lineHeight: 1.05, margin: '0 0 6px', color: 'var(--text)' }}>
-              {c.title}
-            </h1>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: '0.04em', color: 'var(--text2)' }}>{c.role}</div>
-          </div>
-        </div>
-        <Stamp label={c.stampLabel} size={72} />
-      </div>
-
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        <div style={{ flex: '0 0 auto', minWidth: 180, padding: '12px 24px', borderRight: 'var(--border-thin) solid var(--border)' }}>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: 4 }}>{c.periodLabel}</div>
-          <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text)', fontWeight: 600 }}>{c.period}</div>
-        </div>
-        <div style={{ flex: '1 1 260px', padding: '12px 24px' }}>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: 6 }}>{c.toolsLabel}</div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-            {c.tools.map((tool) => (
-              <span
-                key={tool}
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 10,
-                  color: 'var(--text2)',
-                  border: 'var(--border-thin) solid var(--border)',
-                  padding: '3px 8px',
-                }}
-              >
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// Onglets du dossier — côte à côte, chacun avec sa propre teinte comme un
-// intercalaire de tiroir d'archives. Celui qu'on ouvre se détache du lot
-// (teinte neutre, à plat, marqué ✛) sans empiéter sur ses voisins.
-const TAB_TINTS = [
-  'color-mix(in srgb, var(--mandarine) 20%, var(--bg3))',
-  'color-mix(in srgb, var(--violet) 16%, var(--bg3))',
-  'color-mix(in srgb, var(--pink) 16%, var(--bg3))',
-  'color-mix(in srgb, var(--warning) 18%, var(--bg3))',
-  'color-mix(in srgb, var(--cyan) 16%, var(--bg3))',
-]
-
-function CaseTabs({ tabs, active, onChange }) {
-  return (
-    <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 2, marginBottom: 8, overflowX: 'auto' }}>
-      {tabs.map((tab, i) => {
-        const isActive = active === tab.id
-        return (
-          <button
-            key={tab.id}
-            onClick={() => onChange(tab.id)}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 4,
-              flexShrink: 0,
-              background: isActive ? 'var(--bg2)' : TAB_TINTS[i % TAB_TINTS.length],
-              border: 'var(--border-thin) solid var(--border)',
-              borderBottom: isActive ? 'var(--border-regular) solid var(--primary)' : 'var(--border-thin) solid var(--border)',
-              borderRadius: '3px 3px 0 0',
-              padding: '6px 7px',
-              cursor: 'pointer',
-              fontFamily: "var(--font-mono)",
-              fontSize: 9,
-              letterSpacing: '0.02em',
-              textTransform: 'uppercase',
-              fontWeight: isActive ? 700 : 400,
-              color: isActive ? 'var(--text)' : 'var(--text2)',
-              whiteSpace: 'nowrap',
-              transition: 'background 0.15s ease, color 0.15s ease',
-            }}
-          >
-            <span style={{ color: isActive ? 'var(--primary)' : 'var(--muted)' }}>
-              {isActive ? '✛' : String(i + 1).padStart(2, '0')}
-            </span>
-            {tab.label}
-          </button>
-        )
-      })}
-    </div>
-  )
-}
-
-function CaseFooter({ c }) {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginTop: 40, paddingTop: 16, borderTop: 'var(--border-regular) solid var(--border)' }}>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.06em', color: 'var(--muted)' }}>
-        {c.docId} — {c.clearance}
-      </div>
-      <div style={{ fontFamily: "var(--font-heading)", fontSize: 11, fontWeight: 700, letterSpacing: '0.02em', color: 'var(--text)', textAlign: 'center', flex: '1 1 240px' }}>
-        {c.tagline}
-      </div>
-      <Barcode />
-    </div>
-  )
-}
-
 export default function DesignSystemMultimarques({ project }) {
   const { lang } = useLanguage()
   const c = CONTENT[lang] ?? CONTENT.fr
@@ -715,7 +562,12 @@ export default function DesignSystemMultimarques({ project }) {
   return (
     <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <CaseMasthead c={c} lang={lang} />
-      <CaseHero project={project} c={c} />
+      <CaseHero project={project} c={c}>
+        <CaseMetaRow columns={[
+          { label: c.periodLabel, value: c.period, grow: false },
+          { label: c.toolsLabel, chips: c.tools },
+        ]} />
+      </CaseHero>
       <CaseTabs tabs={c.tabs} active={activeTab} onChange={setActiveTab} />
 
       {activeTab === 'overview' && (

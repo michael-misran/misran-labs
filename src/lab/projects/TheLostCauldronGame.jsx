@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import CaseStudyLayout, { Section, TabBar } from '../CaseStudyLayout'
+import { Section } from '../CaseStudyLayout'
+import { CaseMasthead, CaseHero, CaseMetaRow, CaseTabs, CaseFooter } from '../CaseFile'
 import { LinkButton } from '../../design-system/kit'
 import SectionTitle from '../../design-system/SectionTitle'
 import { STATUS, METHOD_STEP_COLORS } from '../phases'
 import { useLanguage } from '../../shell/LanguageContext'
-import { useSecondarySidebar } from '../../shell/SecondarySidebarContext'
 import useIsMobile from '../../shell/useIsMobile'
 
 function MethodCoverage({ steps, lang, coverageLabel }) {
@@ -226,6 +226,16 @@ const CONTENT = {
     role: 'Game Designer & Développeur — seul sur le projet (assisté par IA)',
     period: 'Août 2026',
     tools: ['Godot 4.6 (GDScript)', 'Aseprite (pipeline sprites)', 'Claude Code'],
+    fileNo: 'DOSSIER Nº 002',
+    mastheadCenter: 'ARCHIVE DU LAB //// DOSSIER PROJET',
+    mastheadRight: 'MISRAN LABS',
+    mastheadRightSub: 'ARCHIVE VISUEL',
+    stampLabel: 'MISRAN · LABS · ARCHIVE ·',
+    periodLabel: 'PÉRIODE',
+    toolsLabel: 'OUTILS',
+    docId: 'ID DOSSIER — ML-ARCHIVE-002',
+    clearance: 'NIVEAU DE LECTURE — PUBLIC',
+    tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
     tabs: [
       { id: 'overview', label: 'Vue d’ensemble' },
       { id: 'architecture', label: 'Architecture technique' },
@@ -549,6 +559,16 @@ const CONTENT = {
     role: 'Game Designer & Developer — solo project (AI-assisted)',
     period: 'August 2026',
     tools: ['Godot 4.6 (GDScript)', 'Aseprite (sprite pipeline)', 'Claude Code'],
+    fileNo: 'FILE Nº 002',
+    mastheadCenter: 'LAB ARCHIVE //// PROJECT FILE',
+    mastheadRight: 'MISRAN LABS',
+    mastheadRightSub: 'VISUAL ARCHIVE',
+    stampLabel: 'MISRAN · LABS · ARCHIVE ·',
+    periodLabel: 'PERIOD',
+    toolsLabel: 'TOOLS',
+    docId: 'DOCUMENT ID — ML-ARCHIVE-002',
+    clearance: 'CLEARANCE LEVEL — PUBLIC',
+    tagline: 'DESIGN IS INTENT. DETAILS ARE EVERYTHING.',
     tabs: [
       { id: 'overview', label: 'Overview' },
       { id: 'architecture', label: 'Technical architecture' },
@@ -869,17 +889,22 @@ const CONTENT = {
   },
 }
 
-export default function TheLostCauldronGame() {
+export default function TheLostCauldronGame({ project }) {
   const { lang } = useLanguage()
   const c = CONTENT[lang] ?? CONTENT.fr
   const isMobile = useIsMobile()
   const [activeTab, setActiveTab] = useState('overview')
 
-  useSecondarySidebar(c.tabs, activeTab, setActiveTab)
-
   return (
-    <CaseStudyLayout title={c.title} role={c.role} period={c.period} tools={c.tools}>
-      {isMobile && <TabBar tabs={c.tabs} active={activeTab} onChange={setActiveTab} />}
+    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+      <CaseMasthead c={c} lang={lang} />
+      <CaseHero project={project} c={c}>
+        <CaseMetaRow columns={[
+          { label: c.periodLabel, value: c.period, grow: false },
+          { label: c.toolsLabel, chips: c.tools },
+        ]} />
+      </CaseHero>
+      <CaseTabs tabs={c.tabs} active={activeTab} onChange={setActiveTab} />
 
       {activeTab === 'overview' && (
         <>
@@ -1020,6 +1045,8 @@ export default function TheLostCauldronGame() {
           ))}
         </Section>
       )}
-    </CaseStudyLayout>
+
+      <CaseFooter c={c} />
+    </div>
   )
 }

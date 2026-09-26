@@ -1,9 +1,6 @@
-import { Link } from 'react-router-dom'
 import useIsMobile from '../shell/useIsMobile'
 import { useLanguage } from '../shell/LanguageContext'
-import { Stamp, Barcode } from '../design-system/ArchiveMarks'
-import { dossierNo } from '../lab/projects'
-import { t } from '../i18n/ui'
+import { CaseMasthead, CaseHero, CaseFooter } from '../lab/CaseFile'
 
 function SectionHeader({ children }) {
   return (
@@ -169,82 +166,6 @@ const CV = {
   },
 }
 
-function CVMasthead({ c, lang }) {
-  return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, paddingBottom: 14, borderBottom: 'var(--border-regular) solid var(--border)', marginBottom: 24, flexWrap: 'wrap' }}>
-      <div>
-        <Link to="/" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none' }}>
-          {t(lang, 'backToLab')}
-        </Link>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginTop: 4 }}>{c.fileNo}</div>
-      </div>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.14em', color: 'var(--text2)', textAlign: 'center', flex: '1 1 200px' }}>
-        {c.mastheadCenter}
-      </div>
-      <div style={{ textAlign: 'right' }}>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', color: 'var(--text)' }}>{c.mastheadRight}</div>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)' }}>{c.mastheadRightSub}</div>
-      </div>
-    </div>
-  )
-}
-
-function CVHero({ project, c }) {
-  return (
-    <div style={{ border: 'var(--border-regular) solid var(--border)', marginBottom: 24 }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, padding: '18px 24px', borderBottom: 'var(--border-thin) solid var(--border)' }}>
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
-          <span
-            style={{
-              flexShrink: 0,
-              fontFamily: "var(--font-heading)",
-              fontWeight: 700,
-              fontSize: 26,
-              lineHeight: 1,
-              color: 'var(--primary)',
-            }}
-          >
-            {dossierNo(project?.slug) ?? '006'}
-          </span>
-          <div>
-            <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', lineHeight: 1.05, margin: '0 0 6px', color: 'var(--text)' }}>
-              Michael Misran
-            </h1>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: '0.04em', color: 'var(--text2)' }}>{c.subtitle}</div>
-          </div>
-        </div>
-        <Stamp label={c.stampLabel} size={72} />
-      </div>
-
-      <div style={{ padding: '12px 24px' }}>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: 6 }}>{c.contactLabel}</div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 18px', fontSize: 12, color: 'var(--text2)' }}>
-          <span>{c.location}</span>
-          <span>✉️ misranmichael@gmail.com</span>
-          <span>📱 06 07 69 75 17</span>
-          <a href="https://www.linkedin.com/in/michael-misran" target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none' }}>
-            🔗 LinkedIn
-          </a>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function CVFooter({ c }) {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginTop: 32, paddingTop: 16, borderTop: 'var(--border-regular) solid var(--border)' }}>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.06em', color: 'var(--muted)' }}>
-        {c.docId} — {c.clearance}
-      </div>
-      <div style={{ fontFamily: "var(--font-heading)", fontSize: 11, fontWeight: 700, letterSpacing: '0.02em', color: 'var(--text)', textAlign: 'center', flex: '1 1 240px' }}>
-        {c.tagline}
-      </div>
-      <Barcode />
-    </div>
-  )
-}
-
 export default function CVModule({ project }) {
   const isMobile = useIsMobile()
   const { lang } = useLanguage()
@@ -260,8 +181,20 @@ export default function CVModule({ project }) {
         margin: '0 auto',
       }}
     >
-      <CVMasthead c={c} lang={lang} />
-      <CVHero project={project} c={c} />
+      <CaseMasthead c={c} lang={lang} />
+      <CaseHero project={project} c={{ ...c, title: 'Michael Misran', role: c.subtitle }}>
+        <div style={{ padding: '12px 24px' }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: 6 }}>{c.contactLabel}</div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 18px', fontSize: 12, color: 'var(--text2)' }}>
+            <span>{c.location}</span>
+            <span>✉️ misranmichael@gmail.com</span>
+            <span>📱 06 07 69 75 17</span>
+            <a href="https://www.linkedin.com/in/michael-misran" target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none' }}>
+              🔗 LinkedIn
+            </a>
+          </div>
+        </div>
+      </CaseHero>
 
       {/* Profil */}
       <div style={{ marginBottom: 18 }}>
@@ -325,7 +258,7 @@ export default function CVModule({ project }) {
         </p>
       </div>
 
-      <CVFooter c={c} />
+      <CaseFooter c={c} />
     </div>
   )
 }

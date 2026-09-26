@@ -1,49 +1,13 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import Section from '../../design-system/Section'
 import SectionTitle from '../../design-system/SectionTitle'
 import FieldLabel from '../../design-system/FieldLabel'
 import Tag from '../../design-system/Tag'
 import IconButton from '../../design-system/IconButton'
 import ThemeSwatch from '../ThemeSwatch'
+import { CaseMasthead, CaseHero, CaseTabs, CaseFooter } from '../CaseFile'
 import { useLanguage } from '../../shell/LanguageContext'
-import { t } from '../../i18n/ui'
 import useIsMobile from '../../shell/useIsMobile'
-import { useSecondarySidebar } from '../../shell/SecondarySidebarContext'
-import { Tabs as KitTabs } from '../../design-system/kit'
-
-function Hero({ badge, title, subtitle }) {
-  return (
-    <div style={{ marginBottom: 32 }}>
-      <h1
-        style={{
-          fontFamily: "var(--font-heading)",
-          fontSize: 52,
-          fontWeight: 700,
-          lineHeight: 1.05,
-          letterSpacing: '-0.02em',
-          margin: '0 0 20px',
-          color: 'var(--text)',
-        }}
-      >
-        {title}
-      </h1>
-      <p style={{ fontFamily: "var(--font-body)", fontSize: 16, color: 'var(--prose)', lineHeight: 1.6, maxWidth: 580, margin: 0 }}>
-        {subtitle}
-      </p>
-    </div>
-  )
-}
-
-// Les onglets de cette page passaient par une barre soulignée qui lui était
-// propre. Ils utilisent maintenant Tabs du kit, comme partout ailleurs.
-function TabBar({ tabs, active, onChange }) {
-  return (
-    <div style={{ marginBottom: 32, overflowX: 'auto' }}>
-      <KitTabs tabs={tabs} active={active} onChange={onChange} />
-    </div>
-  )
-}
 
 function RoleCard({ name, spec, usage, children }) {
   return (
@@ -177,8 +141,17 @@ function NavCard({ title, desc, onClick }) {
 const CONTENT = {
   fr: {
     badge: 'Design System',
+    title: 'Design System',
     heroTitle: 'Design System',
     heroSubtitle: "Design system du Lab.",
+    fileNo: 'DOSSIER Nº 003',
+    mastheadCenter: 'ARCHIVE DU LAB //// DOSSIER PROJET',
+    mastheadRight: 'MISRAN LABS',
+    mastheadRightSub: 'ARCHIVE VISUEL',
+    stampLabel: 'MISRAN · LABS · ARCHIVE ·',
+    docId: 'ID DOSSIER — ML-ARCHIVE-003',
+    clearance: 'NIVEAU DE LECTURE — PUBLIC',
+    tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
     tabs: [
       { id: 'overview', label: 'Vue d’ensemble' },
       { id: 'colors', label: 'Couleurs' },
@@ -207,16 +180,16 @@ const CONTENT = {
     fontsTitle: 'Typographies',
     fontsIntro: "Trois polices, trois rôles distincts. Aucune ne doit empiéter sur le rôle d'une autre — c'est ce qui évite qu'un titre et un label se ressemblent, ou qu'un même rôle finisse rendu différemment à deux endroits.",
     fonts: [
-      { family: 'Space Grotesk', cssFamily: "var(--font-heading)", role: 'DISPLAY — TITRES', usage: 'Titres de page et de card. Une police avec du caractère, réservée aux moments où on veut marquer une hiérarchie forte.', weights: '600 / 700' },
-      { family: 'Inter', cssFamily: "var(--font-body)", role: 'CORPS DE TEXTE — LECTURE', usage: 'Paragraphes, texte courant. Optimisée pour la lisibilité à petite taille, sur écran.', weights: '400 / 600' },
+      { family: 'Fraunces', cssFamily: "var(--font-heading)", role: 'DISPLAY — TITRES', usage: 'Titres de page et de card. Une police avec du caractère, réservée aux moments où on veut marquer une hiérarchie forte.', weights: '600 / 900' },
+      { family: 'Work Sans', cssFamily: "var(--font-body)", role: 'CORPS DE TEXTE — LECTURE', usage: 'Paragraphes, texte courant. Optimisée pour la lisibilité à petite taille, sur écran.', weights: '400 / 600' },
       { family: 'JetBrains Mono', cssFamily: "var(--font-mono)", role: 'TECHNIQUE — LABELS, TAGS, CODE', usage: 'Titres de section ("// TITRE"), labels de champ, tags, badges. Tout ce qui a une saveur technique ou système.', weights: '400 / 600 / 700' },
     ],
     rolesTitle: 'Rôles typographiques',
     rolesIntro: "Chaque rôle utilisé plus d'une fois dans le Lab est extrait en composant. Le nom du rôle, le spécimen rendu avec son vrai style, et où il vit dans le code.",
     roles: [
-      { name: 'Titre de page', spec: 'Space Grotesk · 52px · 700', usage: 'src/lab/CaseStudyLayout.jsx (h1)', render: 'pageTitle', text: 'Titre de page' },
+      { name: 'Titre de page', spec: 'Fraunces · 34px · 700', usage: 'src/lab/CaseFile.jsx (CaseHero h1)', render: 'pageTitle', text: 'Titre de page' },
       { name: 'Titre de section', spec: 'JetBrains Mono · 12px · principal', usage: 'src/design-system/SectionTitle.jsx', render: 'sectionTitle', text: 'Titre de section' },
-      { name: 'Corps de texte', spec: 'Inter · 14px · 1.7', usage: 'src/lab/CaseStudyLayout.jsx (Section)', render: 'body', text: "Un paragraphe de lecture, comme celui-ci." },
+      { name: 'Corps de texte', spec: 'Work Sans · 14px · 1.7', usage: 'src/lab/CaseStudyLayout.jsx (Section)', render: 'body', text: "Un paragraphe de lecture, comme celui-ci." },
       { name: 'Label de champ', spec: 'JetBrains Mono · 9px · muted', usage: 'src/design-system/FieldLabel.jsx', render: 'fieldLabel', text: 'RÔLE' },
       { name: 'Tag', spec: 'JetBrains Mono · 10px · couleur paramétrable', usage: 'src/design-system/Tag.jsx', render: 'tag', text: 'React' },
       { name: 'Bouton icône', spec: '25×25 · transparent · var(--hover-surface) au survol · radius 6px', usage: 'src/design-system/IconButton.jsx', render: 'iconButton', text: '' },
@@ -280,8 +253,8 @@ const CONTENT = {
       { varName: '--grid-line', type: 'color', usage: 'Grille décorative de fond — définie mais pas encore consommée ailleurs dans le code.' },
       { varName: '--active-tint', type: 'color', usage: 'Fond des items de menu sélectionnés (Sidebar, menu secondaire, Tag).' },
       { varName: '--hover-tint', type: 'color', usage: 'Fond au survol des items de menu (Sidebar, menu secondaire).' },
-      { varName: '--font-heading', type: 'font', cssFamily: "var(--font-heading)", usage: 'Police des titres (Space Grotesk) — h1 de page, Hero, cards.' },
-      { varName: '--font-body', type: 'font', cssFamily: "var(--font-body)", usage: 'Police du corps de texte (Inter) — paragraphes, labels, contenu courant.' },
+      { varName: '--font-heading', type: 'font', cssFamily: "var(--font-heading)", usage: 'Police des titres (Fraunces) — h1 de page, planche héro, cards.' },
+      { varName: '--font-body', type: 'font', cssFamily: "var(--font-body)", usage: 'Police du corps de texte (Work Sans) — paragraphes, labels, contenu courant.' },
       { varName: '--font-mono', type: 'font', cssFamily: "var(--font-mono)", usage: 'Police technique (JetBrains Mono) — titres de section, tags, labels de champ, code.' },
     ],
     roadmapTitle: 'Roadmap',
@@ -302,8 +275,17 @@ const CONTENT = {
   },
   en: {
     badge: 'Design System',
+    title: 'Design System',
     heroTitle: 'Design System',
     heroSubtitle: "The Lab's design system.",
+    fileNo: 'FILE Nº 003',
+    mastheadCenter: 'LAB ARCHIVE //// PROJECT FILE',
+    mastheadRight: 'MISRAN LABS',
+    mastheadRightSub: 'VISUAL ARCHIVE',
+    stampLabel: 'MISRAN · LABS · ARCHIVE ·',
+    docId: 'DOCUMENT ID — ML-ARCHIVE-003',
+    clearance: 'CLEARANCE LEVEL — PUBLIC',
+    tagline: 'DESIGN IS INTENT. DETAILS ARE EVERYTHING.',
     tabs: [
       { id: 'overview', label: 'Overview' },
       { id: 'colors', label: 'Colors' },
@@ -332,16 +314,16 @@ const CONTENT = {
     fontsTitle: 'Fonts',
     fontsIntro: "Three typefaces, three distinct roles. None should encroach on another's job — that's what keeps a heading and a label from looking alike, or the same role rendering differently in two places.",
     fonts: [
-      { family: 'Space Grotesk', cssFamily: "var(--font-heading)", role: 'DISPLAY — HEADINGS', usage: 'Page and card titles. A typeface with character, reserved for moments that need a strong hierarchy.', weights: '600 / 700' },
-      { family: 'Inter', cssFamily: "var(--font-body)", role: 'BODY — READING', usage: 'Paragraphs, running text. Optimized for legibility at small sizes, on screen.', weights: '400 / 600' },
+      { family: 'Fraunces', cssFamily: "var(--font-heading)", role: 'DISPLAY — HEADINGS', usage: 'Page and card titles. A typeface with character, reserved for moments that need a strong hierarchy.', weights: '600 / 900' },
+      { family: 'Work Sans', cssFamily: "var(--font-body)", role: 'BODY — READING', usage: 'Paragraphs, running text. Optimized for legibility at small sizes, on screen.', weights: '400 / 600' },
       { family: 'JetBrains Mono', cssFamily: "var(--font-mono)", role: 'TECHNICAL — LABELS, TAGS, CODE', usage: 'Section titles ("// TITLE"), field labels, tags, badges. Anything with a technical or system flavor.', weights: '400 / 600 / 700' },
     ],
     rolesTitle: 'Typographic roles',
     rolesIntro: "Every role used more than once in the Lab is extracted into a component. The role name, the specimen rendered with its actual style, and where it lives in the code.",
     roles: [
-      { name: 'Page title', spec: 'Space Grotesk · 52px · 700', usage: 'src/lab/CaseStudyLayout.jsx (h1)', render: 'pageTitle', text: 'Page title' },
+      { name: 'Page title', spec: 'Fraunces · 34px · 700', usage: 'src/lab/CaseFile.jsx (CaseHero h1)', render: 'pageTitle', text: 'Page title' },
       { name: 'Section title', spec: 'JetBrains Mono · 12px · primary', usage: 'src/design-system/SectionTitle.jsx', render: 'sectionTitle', text: 'Section title' },
-      { name: 'Body text', spec: 'Inter · 14px · 1.7', usage: 'src/lab/CaseStudyLayout.jsx (Section)', render: 'body', text: 'A paragraph of reading text, like this one.' },
+      { name: 'Body text', spec: 'Work Sans · 14px · 1.7', usage: 'src/lab/CaseStudyLayout.jsx (Section)', render: 'body', text: 'A paragraph of reading text, like this one.' },
       { name: 'Field label', spec: 'JetBrains Mono · 9px · muted', usage: 'src/design-system/FieldLabel.jsx', render: 'fieldLabel', text: 'ROLE' },
       { name: 'Tag', spec: 'JetBrains Mono · 10px · configurable color', usage: 'src/design-system/Tag.jsx', render: 'tag', text: 'React' },
       { name: 'Icon button', spec: '25×25 · transparent · var(--hover-surface) on hover · 6px radius', usage: 'src/design-system/IconButton.jsx', render: 'iconButton', text: '' },
@@ -405,8 +387,8 @@ const CONTENT = {
       { varName: '--grid-line', type: 'color', usage: 'Decorative background grid — defined but not yet consumed elsewhere in the code.' },
       { varName: '--active-tint', type: 'color', usage: 'Background of selected menu items (Sidebar, secondary sidebar, Tag).' },
       { varName: '--hover-tint', type: 'color', usage: 'Background on menu item hover (Sidebar, secondary sidebar).' },
-      { varName: '--font-heading', type: 'font', cssFamily: "var(--font-heading)", usage: 'Heading typeface (Space Grotesk) — page h1, Hero, cards.' },
-      { varName: '--font-body', type: 'font', cssFamily: "var(--font-body)", usage: 'Body typeface (Inter) — paragraphs, labels, running content.' },
+      { varName: '--font-heading', type: 'font', cssFamily: "var(--font-heading)", usage: 'Heading typeface (Fraunces) — page h1, hero plate, cards.' },
+      { varName: '--font-body', type: 'font', cssFamily: "var(--font-body)", usage: 'Body typeface (Work Sans) — paragraphs, labels, running content.' },
       { varName: '--font-mono', type: 'font', cssFamily: "var(--font-mono)", usage: 'Technical typeface (JetBrains Mono) — section titles, tags, field labels, code.' },
     ],
     roadmapTitle: 'Roadmap',
@@ -497,33 +479,17 @@ function RoleSpecimen({ render, text }) {
   return null
 }
 
-export default function DesignSystem() {
+export default function DesignSystem({ project }) {
   const { lang } = useLanguage()
   const c = CONTENT[lang] ?? CONTENT.fr
   const [activeTab, setActiveTab] = useState('overview')
   const isMobile = useIsMobile()
 
-  useSecondarySidebar(c.tabs, activeTab, setActiveTab)
-
   return (
-    <div style={{ padding: 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
-      <Link
-        to="/"
-        style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: 11,
-          color: 'var(--text2)',
-          textDecoration: 'none',
-          display: 'inline-block',
-          marginBottom: 24,
-        }}
-      >
-        {t(lang, 'backToLab')}
-      </Link>
-
-      <Hero badge={c.badge} title={c.heroTitle} subtitle={c.heroSubtitle} />
-
-      {isMobile && <TabBar tabs={c.tabs} active={activeTab} onChange={setActiveTab} />}
+    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+      <CaseMasthead c={c} lang={lang} />
+      <CaseHero project={project} c={c} />
+      <CaseTabs tabs={c.tabs} active={activeTab} onChange={setActiveTab} />
 
       {activeTab === 'overview' && (
         <>
@@ -619,6 +585,8 @@ export default function DesignSystem() {
           ))}
         </Section>
       )}
+
+      <CaseFooter c={c} />
     </div>
   )
 }
