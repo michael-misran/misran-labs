@@ -1,7 +1,7 @@
 # Mission tokens-fix — PROGRESS
 
-**Statut :** étape 4 faite (semantics et `[data-invert]` en alias, section STRUCTURE supprimée ; plus aucune valeur brute hors section 1, hors décalages d'ombre et `@media print`)
-**Prochaine action :** étape 5 — `./snapshot.sh snapshot-apres.json` puis comparaison avec l'avant
+**Statut :** étape 5 faite — snapshot après : 120 tokens (86 d'origine + 34 primitives), **0 différence** sur les 86 d'origine, `:root` et `[data-invert]`
+**Prochaine action :** étape 6 — LabTokens.jsx (catégories de primitives, `pointsTo`/`value`, aperçus, textes FR/EN)
 **Blocages :** preview « dev » indisponible en session planifiée → snapshots via `./snapshot.sh <fichier.json>` (Chrome headless). Vérifs navigateur de l'étape 7 à adapter.
 
 ## Référence état initial (étape 1)

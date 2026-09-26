@@ -14,6 +14,7 @@ for i in $(seq 1 30); do
   sleep 1
 done
 kill $PID 2>/dev/null || true
+wait $PID 2>/dev/null || true
 python3 - "$TMP/dom.html" "$1" <<'PY'
 import re, html, json, sys
 d = open(sys.argv[1]).read()
@@ -21,4 +22,4 @@ j = json.loads(html.unescape(re.search(r'<pre id="out">(.*?)</pre>', d, re.S).gr
 json.dump(j, open(sys.argv[2], 'w'), indent=2, ensure_ascii=False)
 print(len(j['root']), 'tokens relevés')
 PY
-rm -rf "$TMP"
+rm -rf "$TMP" 2>/dev/null || true
