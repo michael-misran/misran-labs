@@ -1,7 +1,7 @@
 # Mission tokens-fix — PROGRESS
 
-**Statut :** étape 3 faite (primitives D1–D5 ajoutées en section 1 ; rien encore ne les consomme)
-**Prochaine action :** étape 4 — semantics en alias, suppression section STRUCTURE, `[data-invert]`, commentaires
+**Statut :** étape 4 faite (semantics et `[data-invert]` en alias, section STRUCTURE supprimée ; plus aucune valeur brute hors section 1, hors décalages d'ombre et `@media print`)
+**Prochaine action :** étape 5 — `./snapshot.sh snapshot-apres.json` puis comparaison avec l'avant
 **Blocages :** preview « dev » indisponible en session planifiée → snapshots via `./snapshot.sh <fichier.json>` (Chrome headless). Vérifs navigateur de l'étape 7 à adapter.
 
 ## Référence état initial (étape 1)
