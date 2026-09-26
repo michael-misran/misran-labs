@@ -1,7 +1,7 @@
 # Mission utilisation-ia — PROGRESS
 
-**Statut :** étape 7 terminée — tous les critères passent
-**Prochaine action :** étape 8 (RAPPORT.md, session principale Sonnet) — dernière étape
+**Statut :** mission terminée — toutes les étapes du PLAN sont cochées, RAPPORT.md écrit
+**Prochaine action :** aucune — reste à Michael : vérification finale, push, PR, fusion (voir CLAUDE.md « Clôturer une mission »)
 **Blocages :** aucun
 
 ## Vérification indépendante (étape 7)
