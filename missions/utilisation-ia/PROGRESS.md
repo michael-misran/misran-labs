@@ -1,8 +1,13 @@
 # Mission utilisation-ia — PROGRESS
 
-**Statut :** étape 3 terminée
-**Prochaine action :** étape 4 (registre + squelette, session principale Sonnet)
+**Statut :** étape 4 terminée
+**Prochaine action :** étape 5 (rédaction FR, session principale Sonnet)
 **Blocages :** aucun
+
+## Registre + squelette (étape 4)
+- `src/lab/projects.js` : entrée `utilisation-ia` ajoutée à la fin de `PROJECTS` → `dossierNo('utilisation-ia') = '008'`.
+- `src/shell/Sidebar.jsx` : `LAB_SLUGS` a `'utilisation-ia'` juste après `'lab-tokens'`.
+- `src/lab/projects/UtilisationIA.jsx` : squelette (CaseMasthead/CaseHero/CaseFooter + une Section placeholder), `npm run build` OK.
 
 ## Architecture (étape 3)
 Plan complet dans DECISIONS.md : 14 sections + intro, 7 schémas avec données exactes (FR/EN), décision `<pre>` (pas `SiteMapDiagram`) pour les arborescences §7/§10, composant local `DiagramBox` pour les schémas 4 et 5 (organigramme des modèles, local vs cloud). Aucun risque de confidentialité trouvé dans CONTENU.md ; garde-fous notés pour la rédaction (ne pas citer le token, le compte GitHub, les heures de commit, le contenu de settings.json).

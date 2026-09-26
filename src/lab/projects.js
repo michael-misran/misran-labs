@@ -3,6 +3,7 @@ import DesignSystem from './projects/DesignSystem'
 import LabTokens from './projects/LabTokens'
 import TheLostCauldronGame from './projects/TheLostCauldronGame'
 import WorkflowSolo from './projects/WorkflowSolo'
+import UtilisationIA from './projects/UtilisationIA'
 import GameDemo from './GameDemo'
 import GameDemoV2 from './GameDemoV2'
 import ToolProcessTemplate from './ToolProcessTemplate'
@@ -147,6 +148,24 @@ export const PROJECTS = [
     tags: { fr: ['Design tokens', 'React'], en: ['Design tokens', 'React'] },
     phases: {},
     component: LabTokens,
+  },
+  {
+    slug: 'utilisation-ia',
+    icon: '◧',
+    title: { fr: "Utilisation de l'IA", en: 'How I use AI' },
+    summary: {
+      fr: "Comment j'ai mis en place des missions autonomes que Claude mène seul, du brief à la pull request.",
+      en: 'How I set up autonomous missions that Claude runs on its own, from brief to pull request.',
+    },
+    status: 'READY',
+    type: 'case-study',
+    featured: false,
+    tags: {
+      fr: ['Missions autonomes', 'Claude Code', 'Automatisation'],
+      en: ['Autonomous missions', 'Claude Code', 'Automation'],
+    },
+    phases: {},
+    component: UtilisationIA,
   },
 ]
 
