@@ -1,8 +1,11 @@
 # Mission utilisation-ia — PROGRESS
 
-**Statut :** étapes 5 et 6 terminées (faites ensemble)
-**Prochaine action :** étape 7 (vérification, verificateur Haiku)
+**Statut :** étape 7 terminée — tous les critères passent
+**Prochaine action :** étape 8 (RAPPORT.md, session principale Sonnet) — dernière étape
 **Blocages :** aucun
+
+## Vérification indépendante (étape 7)
+Le verificateur (Haiku) a contrôlé les 6 critères de SPEC.md avec `vite preview` (build statique, faute de pouvoir lancer `npm run dev` en session non supervisée) : sidebar/dossier 008 OK, §0-§12 de CONTENU.md et les 7 schémas tous couverts, 0 erreur console FR/EN/home, 0 débordement à 375 px, greps confidentialité/couleurs propres, build OK, lint 6 erreurs préexistantes (aucune nouvelle). Verdict : tous les critères passent, aucune correction nécessaire.
 
 ## Rédaction FR + EN (étapes 5-6)
 `UtilisationIA.jsx` couvre les 14 sections + intro de l'architecture (DECISIONS.md étape 3), les 7 schémas (Timeline, 3× FlowDiagram vertical, 2 SVG `DiagramBox` maison, 2 blocs `<pre>`), en FR et en EN. Vérifié par la session : build OK, lint 6 erreurs préexistantes (aucune nouvelle), greps couleurs/confidentialité propres, rendu sans erreur console en FR et EN via `vite preview` (serveur statique — la session ne peut pas lancer `npm run dev` sans supervision), 0 débordement horizontal à 375 px, entrée bien positionnée dans la sidebar et sur la home.

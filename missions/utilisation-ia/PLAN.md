@@ -10,5 +10,5 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 4. Registre + squelette : entrée dans `projects.js`, `LAB_SLUGS` dans `Sidebar.jsx`, composant `UtilisationIA.jsx` avec en-tête/pied qui s'affiche → session principale (Sonnet)
 - [x] 5. Rédaction FR à partir de CONTENU.md (seule source de faits) : toutes les sections et tous les schémas selon l'architecture de l'étape 3 → session principale (Sonnet)
 - [x] 6. Traduction EN (D8) → session principale (Sonnet) — faite en même temps que l'étape 5, voir DECISIONS.md
-- [ ] 7. Vérification : critères 1 à 6, dont la couverture des §0 à §12 de CONTENU.md (navigateur FR/EN, console, 375 px, greps, build, lint) → verificateur (Haiku)
+- [x] 7. Vérification : critères 1 à 6, dont la couverture des §0 à §12 de CONTENU.md (navigateur FR/EN, console, 375 px, greps, build, lint) → verificateur (Haiku)
 - [ ] 8. Corrections éventuelles issues de l'étape 7, puis RAPPORT.md → session principale (Sonnet)
