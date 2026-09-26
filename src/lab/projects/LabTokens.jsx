@@ -60,6 +60,59 @@ const TOKEN_GROUPS = [
     ],
   },
   {
+    category: { fr: 'Couleurs — primitives (avec transparence)', en: 'Colors — primitives (with transparency)' },
+    rows: [
+      { name: '--primitive-ink-900-a05', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(36,28,22,0.05)' },
+      { name: '--primitive-ink-900-a12', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(36,28,22,0.12)' },
+      { name: '--primitive-ink-900-a18', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(36,28,22,0.18)' },
+      { name: '--primitive-ink-900-a22', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(36,28,22,0.22)' },
+      { name: '--primitive-ink-900-a25', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(36,28,22,0.25)' },
+      { name: '--primitive-coral-500-a12', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(221,90,62,0.12)' },
+      { name: '--primitive-cream-50-a10', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(248,242,231,0.10)' },
+      { name: '--primitive-cream-50-a12', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(248,242,231,0.12)' },
+      { name: '--primitive-cream-50-a18', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(248,242,231,0.18)' },
+      { name: '--primitive-cream-50-a35', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(248,242,231,0.35)' },
+      { name: '--primitive-black-a15', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(0,0,0,0.15)' },
+      { name: '--primitive-black-a18', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(0,0,0,0.18)' },
+      { name: '--primitive-black-a20', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(0,0,0,0.20)' },
+      { name: '--primitive-black-a25', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(0,0,0,0.25)' },
+    ],
+  },
+  {
+    category: { fr: 'Dimensions — primitives', en: 'Dimensions — primitives' },
+    rows: [
+      { name: '--primitive-size-1', tier: 'primitive', type: 'dimension', pointsTo: null, value: '1px' },
+      { name: '--primitive-size-2', tier: 'primitive', type: 'dimension', pointsTo: null, value: '2px' },
+      { name: '--primitive-size-4', tier: 'primitive', type: 'dimension', pointsTo: null, value: '4px' },
+      { name: '--primitive-size-8', tier: 'primitive', type: 'dimension', pointsTo: null, value: '8px' },
+      { name: '--primitive-size-10', tier: 'primitive', type: 'dimension', pointsTo: null, value: '10px' },
+      { name: '--primitive-size-12', tier: 'primitive', type: 'dimension', pointsTo: null, value: '12px' },
+      { name: '--primitive-size-16', tier: 'primitive', type: 'dimension', pointsTo: null, value: '16px' },
+      { name: '--primitive-size-20', tier: 'primitive', type: 'dimension', pointsTo: null, value: '20px' },
+      { name: '--primitive-size-24', tier: 'primitive', type: 'dimension', pointsTo: null, value: '24px' },
+      { name: '--primitive-size-32', tier: 'primitive', type: 'dimension', pointsTo: null, value: '32px' },
+      { name: '--primitive-size-full', tier: 'primitive', type: 'dimension', pointsTo: null, value: '999px' },
+    ],
+  },
+  {
+    category: { fr: 'Polices — primitives', en: 'Fonts — primitives' },
+    rows: [
+      { name: '--primitive-font-fraunces', tier: 'primitive', type: 'font', pointsTo: null, value: "'Fraunces', Georgia, serif" },
+      { name: '--primitive-font-work-sans', tier: 'primitive', type: 'font', pointsTo: null, value: "'Work Sans', system-ui, sans-serif" },
+      { name: '--primitive-font-jetbrains-mono', tier: 'primitive', type: 'font', pointsTo: null, value: "'JetBrains Mono', monospace" },
+    ],
+  },
+  {
+    category: { fr: 'Texte — primitives', en: 'Text — primitives' },
+    rows: [
+      { name: '--primitive-tracking-tight', tier: 'primitive', type: 'text', pointsTo: null, value: '-0.01em' },
+      { name: '--primitive-tracking-wide', tier: 'primitive', type: 'text', pointsTo: null, value: '0.1em' },
+      { name: '--primitive-case-upper', tier: 'primitive', type: 'text', pointsTo: null, value: 'uppercase' },
+      { name: '--primitive-case-none', tier: 'primitive', type: 'text', pointsTo: null, value: 'none' },
+      { name: '--primitive-stroke-1-5', tier: 'primitive', type: 'border', pointsTo: null, value: '1.5' },
+    ],
+  },
+  {
     category: { fr: 'Couleurs — rôles sémantiques', en: 'Colors — semantic roles' },
     rows: [
       { name: '--bg', tier: 'semantic', type: 'color', pointsTo: '--primitive-cream-100', value: '#f3ebdc' },
@@ -78,9 +131,9 @@ const TOKEN_GROUPS = [
       { name: '--muted', tier: 'semantic', type: 'color', pointsTo: '--primitive-ink-400', value: '#8f8573' },
       { name: '--prose', tier: 'semantic', type: 'color', pointsTo: '--primitive-ink-800', value: '#2c231b' },
       { name: '--border', tier: 'semantic', type: 'color', pointsTo: '--primitive-ink-850', value: '#2a2018' },
-      { name: '--grid-line', tier: 'semantic', type: 'color', pointsTo: null, value: 'rgba(36,28,22,.12)' },
-      { name: '--active-tint', tier: 'semantic', type: 'color', pointsTo: null, value: 'rgba(221,90,62,.12)' },
-      { name: '--hover-tint', tier: 'semantic', type: 'color', pointsTo: null, value: 'rgba(36,28,22,.05)' },
+      { name: '--grid-line', tier: 'semantic', type: 'color', pointsTo: '--primitive-ink-900-a12', value: 'rgba(36,28,22,0.12)' },
+      { name: '--active-tint', tier: 'semantic', type: 'color', pointsTo: '--primitive-coral-500-a12', value: 'rgba(221,90,62,0.12)' },
+      { name: '--hover-tint', tier: 'semantic', type: 'color', pointsTo: '--primitive-ink-900-a05', value: 'rgba(36,28,22,0.05)' },
     ],
   },
   {
@@ -108,54 +161,55 @@ const TOKEN_GROUPS = [
   {
     category: { fr: 'Élévation', en: 'Elevation' },
     rows: [
-      { name: '--elev-1', tier: 'semantic', type: 'elevation', pointsTo: null, value: 'none' },
+      { name: '--primitive-shadow-none', tier: 'primitive', type: 'elevation', pointsTo: null, value: 'none' },
+      { name: '--elev-1', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-shadow-none', value: 'none' },
       { name: '--elev-2', tier: 'semantic', type: 'elevation', pointsTo: '--border', value: '0 1px 0' },
       { name: '--elev-3', tier: 'semantic', type: 'elevation', pointsTo: '--border', value: '0 2px 0' },
-      { name: '--elev-4', tier: 'semantic', type: 'elevation', pointsTo: null, value: '3px 3px 0 rgba(…,.18)' },
-      { name: '--elev-5', tier: 'semantic', type: 'elevation', pointsTo: null, value: '5px 5px 0 rgba(…,.22)' },
-      { name: '--elev-inset', tier: 'semantic', type: 'elevation', pointsTo: null, value: 'inset 0 1px 0 rgba(…,.18)' },
-      { name: '--elev-pressed', tier: 'semantic', type: 'elevation', pointsTo: null, value: 'inset 0 2px 0 rgba(…,.25)' },
+      { name: '--elev-4', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-ink-900-a18', value: '3px 3px 0 rgba(36,28,22,0.18)' },
+      { name: '--elev-5', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-ink-900-a22', value: '5px 5px 0 rgba(36,28,22,0.22)' },
+      { name: '--elev-inset', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-ink-900-a18', value: 'inset 0 1px 0 rgba(36,28,22,0.18)' },
+      { name: '--elev-pressed', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-ink-900-a25', value: 'inset 0 2px 0 rgba(36,28,22,0.25)' },
     ],
   },
   {
     category: { fr: 'Rayons & bordures', en: 'Radius & borders' },
     rows: [
-      { name: '--radius-xs', tier: 'semantic', type: 'radius', pointsTo: null, value: '4px' },
-      { name: '--radius-sm', tier: 'semantic', type: 'radius', pointsTo: null, value: '8px' },
-      { name: '--radius-md', tier: 'semantic', type: 'radius', pointsTo: null, value: '10px' },
-      { name: '--radius-lg', tier: 'semantic', type: 'radius', pointsTo: null, value: '16px' },
-      { name: '--radius-xl', tier: 'semantic', type: 'radius', pointsTo: null, value: '24px' },
-      { name: '--radius-pill', tier: 'semantic', type: 'radius', pointsTo: null, value: '999px' },
-      { name: '--border-thin', tier: 'semantic', type: 'border', pointsTo: null, value: '1px' },
-      { name: '--border-regular', tier: 'semantic', type: 'border', pointsTo: null, value: '1px' },
-      { name: '--border-thick', tier: 'semantic', type: 'border', pointsTo: null, value: '2px' },
-      { name: '--icon-stroke', tier: 'semantic', type: 'border', pointsTo: null, value: '1.5' },
+      { name: '--radius-xs', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-4', value: '4px' },
+      { name: '--radius-sm', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-8', value: '8px' },
+      { name: '--radius-md', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-10', value: '10px' },
+      { name: '--radius-lg', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-16', value: '16px' },
+      { name: '--radius-xl', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-24', value: '24px' },
+      { name: '--radius-pill', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-full', value: '999px' },
+      { name: '--border-thin', tier: 'semantic', type: 'border', pointsTo: '--primitive-size-1', value: '1px' },
+      { name: '--border-regular', tier: 'semantic', type: 'border', pointsTo: '--primitive-size-1', value: '1px' },
+      { name: '--border-thick', tier: 'semantic', type: 'border', pointsTo: '--primitive-size-2', value: '2px' },
+      { name: '--icon-stroke', tier: 'semantic', type: 'border', pointsTo: '--primitive-stroke-1-5', value: '1.5' },
     ],
   },
   {
     category: { fr: 'Typographie', en: 'Typography' },
     rows: [
-      { name: '--font-heading', tier: 'semantic', type: 'font', pointsTo: null, value: "'Fraunces', Georgia, serif" },
-      { name: '--font-body', tier: 'semantic', type: 'font', pointsTo: null, value: "'Work Sans', system-ui, sans-serif" },
-      { name: '--font-mono', tier: 'semantic', type: 'font', pointsTo: null, value: "'JetBrains Mono', monospace" },
-      { name: '--label-transform', tier: 'semantic', type: 'text', pointsTo: null, value: 'uppercase' },
-      { name: '--label-tracking', tier: 'semantic', type: 'text', pointsTo: null, value: '0.1em' },
-      { name: '--heading-transform', tier: 'semantic', type: 'text', pointsTo: null, value: 'none' },
-      { name: '--heading-tracking', tier: 'semantic', type: 'text', pointsTo: null, value: '-0.01em' },
+      { name: '--font-heading', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-fraunces', value: "'Fraunces', Georgia, serif" },
+      { name: '--font-body', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-work-sans', value: "'Work Sans', system-ui, sans-serif" },
+      { name: '--font-mono', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-jetbrains-mono', value: "'JetBrains Mono', monospace" },
+      { name: '--label-transform', tier: 'semantic', type: 'text', pointsTo: '--primitive-case-upper', value: 'uppercase' },
+      { name: '--label-tracking', tier: 'semantic', type: 'text', pointsTo: '--primitive-tracking-wide', value: '0.1em' },
+      { name: '--heading-transform', tier: 'semantic', type: 'text', pointsTo: '--primitive-case-none', value: 'none' },
+      { name: '--heading-tracking', tier: 'semantic', type: 'text', pointsTo: '--primitive-tracking-tight', value: '-0.01em' },
     ],
   },
   {
     category: { fr: 'Structure — espacement & icônes', en: 'Structure — spacing & icons' },
     rows: [
-      { name: '--space-xs', tier: 'semantic', type: 'spacing', pointsTo: null, value: '8px' },
-      { name: '--space-sm', tier: 'semantic', type: 'spacing', pointsTo: null, value: '12px' },
-      { name: '--space-md', tier: 'semantic', type: 'spacing', pointsTo: null, value: '16px' },
-      { name: '--space-lg', tier: 'semantic', type: 'spacing', pointsTo: null, value: '24px' },
-      { name: '--space-xl', tier: 'semantic', type: 'spacing', pointsTo: null, value: '32px' },
-      { name: '--icon-sm', tier: 'semantic', type: 'spacing', pointsTo: null, value: '16px' },
-      { name: '--icon-md', tier: 'semantic', type: 'spacing', pointsTo: null, value: '20px' },
-      { name: '--icon-lg', tier: 'semantic', type: 'spacing', pointsTo: null, value: '24px' },
-      { name: '--chrome-height', tier: 'semantic', type: 'spacing', pointsTo: null, value: '32px' },
+      { name: '--space-xs', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-8', value: '8px' },
+      { name: '--space-sm', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-12', value: '12px' },
+      { name: '--space-md', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-16', value: '16px' },
+      { name: '--space-lg', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-24', value: '24px' },
+      { name: '--space-xl', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-32', value: '32px' },
+      { name: '--icon-sm', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-16', value: '16px' },
+      { name: '--icon-md', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-20', value: '20px' },
+      { name: '--icon-lg', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-24', value: '24px' },
+      { name: '--chrome-height', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-32', value: '32px' },
     ],
   },
 ]
@@ -208,12 +262,14 @@ const CONTENT = {
 // La règle est sans exception : tout token semantic pointe vers une
 // primitive. Elle ne dit rien du type — un premier passage ne vérifiait
 // que les couleurs, en supposant que police/rayon/espacement n'avaient
-// pas besoin d'un niveau primitive parce que ce niveau n'existe pas
+// pas besoin d'un niveau primitive parce que ce niveau n'existait pas
 // encore pour eux dans tokens.css. C'était une exception inventée pour
 // combler un trou dans l'architecture, pas une lecture de la règle telle
-// qu'énoncée. Elle est retirée ici : la règle s'applique à tout semantic,
-// et c'est le manque de primitives pour ces catégories qui est l'erreur
-// — pas quelque chose à masquer dans le détecteur.
+// qu'énoncée. Elle a été retirée : la règle s'applique à tout semantic.
+// Le trou a ensuite été comblé à la source — primitives de dimensions,
+// polices, texte et couleurs transparentes — plutôt que masqué ici.
+// Pour une ombre, c'est sa couleur qui pointe vers une primitive ; les
+// décalages restent littéraux.
 function getViolation(row) {
   if (row.tier !== 'semantic') return null
   if (row.pointsTo) return null
@@ -456,7 +512,9 @@ function FragmentGroup({ group, lang, c }) {
         return (
         <tr key={row.name} style={violation ? { background: 'color-mix(in srgb, var(--error) 8%, transparent)' } : undefined}>
           <td style={{ padding: '8px 12px', borderBottom: 'var(--border-thin) solid var(--border)', borderLeft: violation ? 'var(--border-thick) solid var(--error)' : 'var(--border-thick) solid transparent' }}>
-            {row.type === 'color' && <Swatch name={row.name} />}
+            {row.type === 'color'
+              ? <Swatch name={row.name} />
+              : <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)' }}>—</span>}
           </td>
           <td style={{ padding: '8px 12px', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text)', whiteSpace: 'nowrap' }}>
             {row.name}

@@ -1,7 +1,7 @@
 # Mission tokens-fix — PROGRESS
 
-**Statut :** étape 5 faite — snapshot après : 120 tokens (86 d'origine + 34 primitives), **0 différence** sur les 86 d'origine, `:root` et `[data-invert]`
-**Prochaine action :** étape 6 — LabTokens.jsx (catégories de primitives, `pointsTo`/`value`, aperçus, textes FR/EN)
+**Statut :** étape 6 faite — LabTokens.jsx : 34 primitives documentées (4 nouvelles catégories + `--primitive-shadow-none` dans Élévation), 34 semantics avec `pointsTo`/`value`, 0 semantic sans `pointsTo`. Build OK, lint = 6 erreurs préexistantes, aucune dans LabTokens.jsx.
+**Prochaine action :** étape 7 — vérification finale (rendu de la page, console, build, lint)
 **Blocages :** preview « dev » indisponible en session planifiée → snapshots via `./snapshot.sh <fichier.json>` (Chrome headless). Vérifs navigateur de l'étape 7 à adapter.
 
 ## Référence état initial (étape 1)
