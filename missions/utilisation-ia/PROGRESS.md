@@ -1,8 +1,11 @@
 # Mission utilisation-ia — PROGRESS
 
-**Statut :** étape 2 terminée
-**Prochaine action :** étape 3 (architecture de la page, expert Opus)
+**Statut :** étape 3 terminée
+**Prochaine action :** étape 4 (registre + squelette, session principale Sonnet)
 **Blocages :** aucun
+
+## Architecture (étape 3)
+Plan complet dans DECISIONS.md : 14 sections + intro, 7 schémas avec données exactes (FR/EN), décision `<pre>` (pas `SiteMapDiagram`) pour les arborescences §7/§10, composant local `DiagramBox` pour les schémas 4 et 5 (organigramme des modèles, local vs cloud). Aucun risque de confidentialité trouvé dans CONTENU.md ; garde-fous notés pour la rédaction (ne pas citer le token, le compte GitHub, les heures de commit, le contenu de settings.json).
 
 ## Référence état initial (étape 1)
 - `npm run build` : OK
