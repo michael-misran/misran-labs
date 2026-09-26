@@ -1,8 +1,11 @@
 # Mission utilisation-ia — PROGRESS
 
-**Statut :** étape 4 terminée
-**Prochaine action :** étape 5 (rédaction FR, session principale Sonnet)
+**Statut :** étapes 5 et 6 terminées (faites ensemble)
+**Prochaine action :** étape 7 (vérification, verificateur Haiku)
 **Blocages :** aucun
+
+## Rédaction FR + EN (étapes 5-6)
+`UtilisationIA.jsx` couvre les 14 sections + intro de l'architecture (DECISIONS.md étape 3), les 7 schémas (Timeline, 3× FlowDiagram vertical, 2 SVG `DiagramBox` maison, 2 blocs `<pre>`), en FR et en EN. Vérifié par la session : build OK, lint 6 erreurs préexistantes (aucune nouvelle), greps couleurs/confidentialité propres, rendu sans erreur console en FR et EN via `vite preview` (serveur statique — la session ne peut pas lancer `npm run dev` sans supervision), 0 débordement horizontal à 375 px, entrée bien positionnée dans la sidebar et sur la home.
 
 ## Registre + squelette (étape 4)
 - `src/lab/projects.js` : entrée `utilisation-ia` ajoutée à la fin de `PROJECTS` → `dossierNo('utilisation-ia') = '008'`.
