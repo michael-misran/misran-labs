@@ -1,8 +1,8 @@
 # Mission tokens-fix — PROGRESS
 
-**Statut :** étape 6 faite — LabTokens.jsx : 34 primitives documentées (4 nouvelles catégories + `--primitive-shadow-none` dans Élévation), 34 semantics avec `pointsTo`/`value`, 0 semantic sans `pointsTo`. Build OK, lint = 6 erreurs préexistantes, aucune dans LabTokens.jsx.
-**Prochaine action :** étape 7 — vérification finale (rendu de la page, console, build, lint)
-**Blocages :** preview « dev » indisponible en session planifiée → snapshots via `./snapshot.sh <fichier.json>` (Chrome headless). Vérifs navigateur de l'étape 7 à adapter.
+**Statut :** étape 7 faite — rendu React (SSR Vite, sans port) : page Tokens FR et EN = 120 tokens, 0 erreur ; `/` et `/lab/lab-tokens` sans console.error/warn ; build OK ; lint = 6 erreurs préexistantes inchangées.
+**Prochaine action :** étape 8 — RAPPORT.md
+**Blocages :** aucun. Limite : pas de navigateur réel sur l'app (serveur de dev refusé en session planifiée) → erreurs console runtime (effets, hydratation) à confirmer par Michael.
 
 ## Référence état initial (étape 1)
 - `npm run build` : OK

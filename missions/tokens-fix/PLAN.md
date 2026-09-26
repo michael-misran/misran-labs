@@ -9,5 +9,5 @@ Cocher `[x]` chaque étape terminée, puis mettre à jour PROGRESS.md et commite
 - [x] 4. tokens.css — convertir les semantics en alias (section 2), supprimer la section STRUCTURE (D7), convertir `[data-invert]` (D6), mettre à jour les commentaires.
 - [x] 5. Snapshot après + comparaison avec l'avant → doit être identique. Si différence : corriger et recommencer cette étape. Délégation : `verificateur`.
 - [x] 6. LabTokens.jsx — nouvelles catégories de primitives, `pointsTo`/`value` des semantics corrigés, aperçus (D8), relecture des textes FR/EN.
-- [ ] 7. Vérification finale : page Tokens du Lab (`/lab/lab-tokens`) (FR + EN) → 0 erreur, pas d'erreur console ; page d'accueil sans erreur console ; build ; lint. Délégation : `verificateur`.
+- [x] 7. Vérification finale : page Tokens du Lab (`/lab/lab-tokens`) (FR + EN) → 0 erreur, pas d'erreur console ; page d'accueil sans erreur console ; build ; lint. Délégation : `verificateur`.
 - [ ] 8. RAPPORT.md : fait / pas fait, comment vérifier, décisions, délégations (résumé de DELEGATIONS.md), recommandations hors périmètre.
