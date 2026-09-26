@@ -1,8 +1,8 @@
 # Mission tokens-fix — PROGRESS
 
-**Statut :** prête à démarrer l'exécution
-**Prochaine action :** étape 2 (snapshot avant), page `/lab/lab-tokens` (preview « dev », port 5173)
-**Blocages :** aucun
+**Statut :** étape 2 faite (snapshot avant, 86 tokens, `:root` + `[data-invert]`)
+**Prochaine action :** étape 3 — primitives D1 à D5 dans tokens.css
+**Blocages :** preview « dev » indisponible en session planifiée → snapshots via `./snapshot.sh <fichier.json>` (Chrome headless). Vérifs navigateur de l'étape 7 à adapter.
 
 ## Référence état initial (étape 1)
 - `npm run build` : OK
