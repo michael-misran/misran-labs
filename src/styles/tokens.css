@@ -43,11 +43,12 @@
 
   --chrome-height: 32px;
 
-  /* --- 1. PRIMITIVE — palette brute --------------------------------- *
+  /* --- 1. PRIMITIVE — valeurs brutes -------------------------------- *
    * Une échelle de crème (clair → foncé), une échelle d'encre, une
-   * échelle de corail, et une teinte par couleur catégorielle. Aucun de
-   * ces tokens n'a de rôle : --primitive-cream-100 ne "veut" rien dire,
-   * --bg si. */
+   * échelle de corail, une teinte par couleur catégorielle, puis leurs
+   * variantes transparentes, une échelle de dimensions, les polices et
+   * les réglages de texte. Aucun de ces tokens n'a de rôle :
+   * --primitive-cream-100 ne "veut" rien dire, --bg si. */
   --primitive-cream-50: #f8f2e7;
   --primitive-cream-100: #f3ebdc;
   --primitive-cream-150: #efe4d0;
@@ -73,6 +74,53 @@
   --primitive-tangerine-500: #e0862f;
   --primitive-rust-500: #b23324;
   --primitive-amber-500: #c1861f;
+
+  /* Couleurs avec transparence : suffixe -aNN = opacité en centièmes.
+     Valeurs rgba recopiées telles quelles depuis les anciens semantics. */
+  --primitive-ink-900-a05: rgba(36,28,22,0.05);
+  --primitive-ink-900-a12: rgba(36,28,22,0.12);
+  --primitive-ink-900-a18: rgba(36,28,22,0.18);
+  --primitive-ink-900-a22: rgba(36,28,22,0.22);
+  --primitive-ink-900-a25: rgba(36,28,22,0.25);
+  --primitive-coral-500-a12: rgba(221,90,62,0.12);
+  --primitive-cream-50-a10: rgba(248,242,231,0.10);
+  --primitive-cream-50-a12: rgba(248,242,231,0.12);
+  --primitive-cream-50-a18: rgba(248,242,231,0.18);
+  --primitive-cream-50-a35: rgba(248,242,231,0.35);
+  --primitive-black-a15: rgba(0,0,0,0.15);
+  --primitive-black-a18: rgba(0,0,0,0.18);
+  --primitive-black-a20: rgba(0,0,0,0.20);
+  --primitive-black-a25: rgba(0,0,0,0.25);
+
+  /* Ombre nulle : une élévation absente reste une valeur de l'échelle. */
+  --primitive-shadow-none: none;
+
+  /* Échelle de dimensions, nommée par sa valeur en px. Sert aux
+     espacements, icônes, rayons et épaisseurs de bordure. */
+  --primitive-size-1: 1px;
+  --primitive-size-2: 2px;
+  --primitive-size-4: 4px;
+  --primitive-size-8: 8px;
+  --primitive-size-10: 10px;
+  --primitive-size-12: 12px;
+  --primitive-size-16: 16px;
+  --primitive-size-20: 20px;
+  --primitive-size-24: 24px;
+  --primitive-size-32: 32px;
+  --primitive-size-full: 999px;
+
+  /* Piles de polices, fallbacks compris. */
+  --primitive-font-fraunces: 'Fraunces', Georgia, serif;
+  --primitive-font-work-sans: 'Work Sans', system-ui, sans-serif;
+  --primitive-font-jetbrains-mono: 'JetBrains Mono', monospace;
+
+  /* Texte : approche, casse, épaisseur de trait d'icône. Des mots-clés
+     CSS aussi : la règle ne fait pas d'exception. */
+  --primitive-tracking-tight: -0.01em;
+  --primitive-tracking-wide: 0.1em;
+  --primitive-case-upper: uppercase;
+  --primitive-case-none: none;
+  --primitive-stroke-1-5: 1.5;
 
   /* --- 2. SEMANTIC — rôles, alias des primitives -------------------- */
   --bg: var(--primitive-cream-100);

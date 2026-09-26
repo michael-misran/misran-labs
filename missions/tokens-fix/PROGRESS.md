@@ -1,7 +1,7 @@
 # Mission tokens-fix — PROGRESS
 
-**Statut :** étape 2 faite (snapshot avant, 86 tokens, `:root` + `[data-invert]`)
-**Prochaine action :** étape 3 — primitives D1 à D5 dans tokens.css
+**Statut :** étape 3 faite (primitives D1–D5 ajoutées en section 1 ; rien encore ne les consomme)
+**Prochaine action :** étape 4 — semantics en alias, suppression section STRUCTURE, `[data-invert]`, commentaires
 **Blocages :** preview « dev » indisponible en session planifiée → snapshots via `./snapshot.sh <fichier.json>` (Chrome headless). Vérifs navigateur de l'étape 7 à adapter.
 
 ## Référence état initial (étape 1)
