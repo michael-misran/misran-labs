@@ -1,0 +1,31 @@
+<!doctype html>
+<!-- Relevé des valeurs calculées des tokens (mission tokens-fix).
+     Usage : Chrome headless --dump-dom sur ce fichier ; le JSON sort dans <pre id="out">. -->
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../src/styles/tokens.css">
+</head><body>
+<div data-invert id="inv"></div>
+<pre id="out"></pre>
+<script>
+window.addEventListener('load', () => {
+  // noms de tous les tokens déclarés dans :root et [data-invert] (hors @media)
+  const noms = new Set();
+  for (const sheet of document.styleSheets) {
+    for (const rule of sheet.cssRules) {
+      if (rule.selectorText === ':root' || rule.selectorText === '[data-invert]') {
+        for (const p of rule.style) if (p.startsWith('--')) noms.add(p);
+      }
+    }
+  }
+  const norm = v => v.trim().replace(/\s+/g, ' ').replace(/\s*,\s*/g, ',');
+  const releve = el => {
+    const cs = getComputedStyle(el), o = {};
+    [...noms].sort().forEach(n => { o[n] = norm(cs.getPropertyValue(n)); });
+    return o;
+  };
+  document.getElementById('out').textContent = JSON.stringify({
+    root: releve(document.documentElement),
+    invert: releve(document.getElementById('inv')),
+  }, null, 2);
+});
+</script></body></html>
