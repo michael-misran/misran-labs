@@ -22,6 +22,24 @@ Une mission = un dossier `missions/<nom>/` :
 | `DELEGATIONS.md` | Journal de chaque sous-agent lancé : agent, modèle, tâche, résultat. |
 | `RAPPORT.md` | Écrit à la fin : ce qui est fait, pas fait, comment vérifier. |
 
+### Lancer une mission (session interactive avec Michael)
+Quand Michael donne un brief (« mission : … ») :
+1. Explorer le code concerné, puis rédiger `SPEC.md` : contexte, objectif, **décisions d'architecture tranchées** (numérotées D1, D2…), critères d'acceptation vérifiables, hors périmètre. Ne poser à Michael que les questions qu'on ne peut vraiment pas trancher seul.
+2. Rédiger `PLAN.md` : étapes courtes, chacune avec son agent et son modèle (voir « Modèle par étape »). Initialiser `PROGRESS.md`, `DECISIONS.md`, `DELEGATIONS.md`.
+3. Relever l'état initial (build, lint) dans `PROGRESS.md` comme référence.
+4. Créer la branche `auto/<nom>`, commiter le cadrage dessus. L'arbre de travail doit être propre, sinon la tâche programmée refuse de démarrer.
+5. Dire à Michael que la tâche programmée `misran-labs-missions` (toutes les 2h, sur Sonnet) prendra le relais, ou qu'il peut la lancer tout de suite avec « Run now » dans Scheduled.
+
+### Clôturer une mission (session interactive avec Michael)
+Quand Michael dit qu'une mission est terminée :
+1. Lire `RAPPORT.md`, `DECISIONS.md`, `DELEGATIONS.md` et résumer à Michael : résultat, modèles réellement utilisés, points à vérifier.
+2. Vérifier soi-même dans le navigateur ce que la session n'a pas pu vérifier.
+3. Vérifier qu'aucun secret ni donnée personnelle n'est dans les changements (le dépôt est **public**).
+4. Push de la branche : bloqué par `settings.json`, Michael lance `git push -u origin auto/<nom>` lui-même. Lui donner le lien de prévisualisation Vercel (`gh api repos/michael-misran/misran-labs/commits/auto/<nom>/statuses`).
+5. Après sa validation : ouvrir la pull request avec `gh pr create` ; Michael clique sur « Merge » (fusion interdite à Claude). Puis Michael fait `git checkout main` et `git pull`.
+
+Michael n'est pas à l'aise avec Git/GitHub : expliquer chaque étape simplement, commande à lancer dans son propre bloc.
+
 ### Reprise
 Toute session de mission commence par lire `SPEC.md`, `PLAN.md`, `PROGRESS.md`, puis reprend à la première étape non cochée. Ne jamais refaire une étape cochée.
 Le travail doit pouvoir s'interrompre à tout moment (limite de quota) : fichiers de suivi à jour et commit après **chaque** étape.
