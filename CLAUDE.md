@@ -49,6 +49,8 @@ Session principale : Sonnet (exécution du plan). Sous-agents autorisés sans de
 
 Ne pas déléguer ce qui est plus court à faire soi-même. Chaque délégation est consignée dans `DELEGATIONS.md`.
 
+**Modèle par étape.** Au cadrage, chaque étape du `PLAN.md` se termine par `→ <agent> (<modèle>)`, selon sa difficulté. La session d'exécution suit cette indication ; elle peut appeler `expert` en plus si une étape bloque, jamais en moins (une étape marquée `expert` n'est pas faite par Sonnet seul). Tout écart est noté dans `DECISIONS.md`.
+
 ## Conventions
 - Commentaires en français.
 - Priorité : fidélité visuelle > qualité du code.
