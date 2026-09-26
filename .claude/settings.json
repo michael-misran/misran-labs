@@ -4,7 +4,8 @@
       "Bash(npm run build)", "Bash(npm run lint)",
       "Bash(git status*)", "Bash(git diff*)", "Bash(git log*)",
       "Bash(git add*)", "Bash(git commit*)", "Bash(git checkout auto/*)",
-      "Edit(src/**)", "Edit(missions/**)", "Write(missions/**)"
+      "Edit(src/**)", "Edit(missions/**)", "Write(missions/**)",
+      "mcp__Claude_Browser"
     ],
     "deny": [
       "Bash(git push*)", "Bash(git merge*)", "Bash(git rebase*)",
