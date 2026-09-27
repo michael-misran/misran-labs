@@ -1,0 +1,98 @@
+{
+  "numero": 1,
+  "date": "2026-09-28",
+  "titre": {
+    "fr": "Prix en baisse, agents en expansion",
+    "en": "Prices down, agents expanding"
+  },
+  "edito": {
+    "fr": "Cette semaine, deux nouvelles familles de modèles — Opus 5.5 chez Anthropic, Sol et Luna chez OpenAI — ont nettement baissé leurs prix sans sacrifier la performance. En parallèle, GitHub et Cursor ont poussé leurs agents plus loin dans le cycle de développement, au-delà du simple chat : une interface générée à la volée d'un côté, une surveillance de déploiement et une revue de sécurité automatisées de l'autre.",
+    "en": "This week, two new model families — Anthropic's Opus 5.5, OpenAI's Sol and Luna — cut prices noticeably without sacrificing performance. At the same time, GitHub and Cursor pushed their agents further into the development cycle, beyond plain chat: an interface generated on the fly on one side, automated deployment monitoring and security review on the other."
+  },
+  "articles": [
+    {
+      "titre": {
+        "fr": "Claude Opus 5.5 : moins cher et plus rapide",
+        "en": "Claude Opus 5.5: cheaper and faster"
+      },
+      "resume": {
+        "fr": "Anthropic a annoncé Claude Opus 5.5 le 22 septembre 2026. Le modèle atteint le niveau de Claude Fable 5.1 sur la plupart des tâches, avec des gains marqués en codage agentif, en travail de connaissance et en utilisation d'ordinateur. Il est facturé 4 $ / 20 $ par million de tokens en entrée/sortie (contre 5 $ / 25 $ pour Opus 5) et 0,20 $ par million de tokens en lecture de cache ; selon Anthropic, le coût total baisse d'environ 40 % sur des charges de travail typiques. Il génère ses réponses plus de 30 % plus vite qu'Opus 5 et il est disponible sur la Claude Platform, AWS, Google Cloud et Microsoft Azure.",
+        "en": "Anthropic announced Claude Opus 5.5 on September 22, 2026. The model matches Claude Fable 5.1 on most tasks, with clear gains in agentic coding, knowledge work, and computer use. It is priced at $4 / $20 per million input/output tokens (down from $5 / $25 for Opus 5) and $0.20 per million cached-read tokens; according to Anthropic, total cost drops by about 40% on typical workloads. It generates output more than 30% faster than Opus 5 and is available on the Claude Platform, AWS, Google Cloud, and Microsoft Azure."
+      },
+      "pourquoi": {
+        "fr": "Pour les équipes qui construisent des agents ou des outils de code, un modèle de ce niveau à prix réduit et vitesse accrue change directement le calcul coût/latence des applications en production.",
+        "en": "For teams building agents or coding tools, a model at this level with a lower price and higher speed directly changes the cost/latency math for production applications."
+      },
+      "categorie": "modeles",
+      "sources": [
+        {
+          "titre": "Claude Opus 5.5 — Anthropic",
+          "url": "https://www.anthropic.com/claude-opus-5-5"
+        }
+      ]
+    },
+    {
+      "titre": {
+        "fr": "OpenAI élargit GPT-6 avec Sol et Luna",
+        "en": "OpenAI expands GPT-6 with Sol and Luna"
+      },
+      "resume": {
+        "fr": "OpenAI a présenté deux nouveaux modèles, GPT-6 Sol et GPT-6 Luna, entraînés avec des méthodes proches de celles de GPT-6 Astra mais optimisés pour le coût. Sol vise le travail professionnel quotidien à 2 $ / 10 $ par million de tokens en entrée/sortie, Luna cible le haut volume et la rapidité à 0,10 $ / 0,50 $, soit des prix divisés par deux par rapport aux tarifs promotionnels de GPT-5.6. Sur plusieurs benchmarks publics de codage et d'agents cités par OpenAI, Sol rivalise avec des modèles concurrents plus chers pour une fraction du coût par tâche. Sol et Luna sont disponibles dans ChatGPT Work et Codex pour les utilisateurs Plus, Pro, Business, Enterprise et Edu, ainsi que dans l'API sous les noms gpt-6-sol et gpt-6-luna.",
+        "en": "OpenAI introduced two new models, GPT-6 Sol and GPT-6 Luna, trained with methods similar to GPT-6 Astra but optimized for cost. Sol targets everyday professional work at $2 / $10 per million input/output tokens, while Luna targets high-volume, fast responses at $0.10 / $0.50, half the promotional GPT-5.6 prices. On several public coding and agent benchmarks cited by OpenAI, Sol rivals pricier competing models at a fraction of the cost per task. Sol and Luna are available in ChatGPT Work and Codex for Plus, Pro, Business, Enterprise, and Edu users, and in the API as gpt-6-sol and gpt-6-luna."
+      },
+      "pourquoi": {
+        "fr": "Une baisse de prix de 50 % sur des modèles déjà orientés coût rend l'itération à grande échelle avec des agents de code ou de test nettement plus abordable pour les équipes produit.",
+        "en": "A 50% price cut on already cost-oriented models makes large-scale iteration with coding or testing agents notably more affordable for product teams."
+      },
+      "categorie": "modeles",
+      "sources": [
+        {
+          "titre": "Introducing GPT-6 Sol and Luna — OpenAI",
+          "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        }
+      ]
+    },
+    {
+      "titre": {
+        "fr": "GitHub Copilot sort du chat avec les Canvases",
+        "en": "GitHub Copilot moves beyond chat with Canvases"
+      },
+      "resume": {
+        "fr": "GitHub a publié le 25 septembre 2026 un article présentant les « Canvases » de l'app Copilot, une alternative au fil de discussion pour piloter un agent. Un canvas est une interface partagée entre l'utilisateur et l'agent, générée à partir de la commande `/create-canvas` suivie d'une description en langage naturel du workflow souhaité. Il peut prendre la forme d'un tableau kanban, d'un tableau de triage, d'une checklist de livraison, d'un tableau de bord, d'un formulaire ou d'une feuille de calcul. L'utilisateur et l'agent peuvent tous deux modifier ce canvas en temps réel, sans étape supplémentaire de synchronisation.",
+        "en": "On September 25, 2026, GitHub published an article introducing \"Canvases\" in the Copilot app, an alternative to the chat thread for driving an agent. A canvas is an interface shared between the user and the agent, generated from the `/create-canvas` command followed by a natural-language description of the desired workflow. It can take the form of a kanban board, an issue triage board, a release checklist, a dashboard, a form, or a spreadsheet. Both the user and the agent can update the canvas in real time, with no extra sync step."
+      },
+      "pourquoi": {
+        "fr": "Pour un designer ou un développeur qui pilote des tâches complexes avec un agent, une interface visuelle générée à la volée peut remplacer avantageusement de longs échanges en langage naturel pour des workflows structurés (suivi, triage, checklists).",
+        "en": "For a designer or developer driving complex tasks with an agent, a visual interface generated on the fly can usefully replace long natural-language exchanges for structured workflows such as tracking, triage, or checklists."
+      },
+      "categorie": "workflow",
+      "sources": [
+        {
+          "titre": "GitHub Copilot app for beginners: how to build custom workflows with Canvases — GitHub Blog",
+          "url": "https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-how-to-build-custom-workflows-with-canvases/"
+        }
+      ]
+    },
+    {
+      "titre": {
+        "fr": "Cursor ajoute deux agents pour la fin de cycle : Rollouts et Security Review",
+        "en": "Cursor adds two agents for the end of the cycle: Rollouts and Security Review"
+      },
+      "resume": {
+        "fr": "Cursor a annoncé le 23 septembre 2026 deux nouveaux agents destinés à la phase finale d'un projet de code. Rollouts surveille chaque déploiement environnement par environnement, établit un plan de suivi et signale les régressions détectées après mise en production. Security Review examine chaque pull request à la recherche de failles exploitables (injections, contournements d'authentification, secrets dans le code, SSRF, dépendances vulnérables…) ; chaque découverte indique une sévérité, le chemin d'attaque et un correctif proposé. Les deux agents sont disponibles pour les plans Teams et Enterprise depuis l'onglet automatisations, et Cursor offre pendant 10 jours des crédits pour essayer Rollouts.",
+        "en": "On September 23, 2026, Cursor announced two new agents aimed at the final phase of a coding project. Rollouts monitors each deployment environment by environment, sets up a monitoring plan, and flags regressions detected after release. Security Review scans every pull request for exploitable flaws (injection, authentication bypasses, secrets in code, SSRF, vulnerable dependencies…); each finding comes with a severity, the attack path, and a proposed fix. Both agents are available on Teams and Enterprise plans from the automations tab, and for 10 days Cursor is including credits to try Rollouts."
+      },
+      "pourquoi": {
+        "fr": "Ça déplace une partie du travail de vérification post-déploiement et de revue de sécurité vers des agents automatisés, ce qui peut alléger la charge des développeurs sur des tâches répétitives et à fort enjeu.",
+        "en": "This shifts part of post-deployment verification and security review onto automated agents, which can lighten the load on developers for repetitive, high-stakes tasks."
+      },
+      "categorie": "dev",
+      "sources": [
+        {
+          "titre": "Cursor Changelog",
+          "url": "https://www.cursor.com/changelog"
+        }
+      ]
+    }
+  ]
+}
