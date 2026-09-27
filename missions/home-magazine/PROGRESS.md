@@ -1,7 +1,7 @@
 # Mission home-magazine — PROGRESS
 
-**Statut :** prête à démarrer (en file d'attente derrière workflow-grille)
-**Prochaine action :** étape 2 (direction visuelle, expert Opus)
+**Statut :** direction visuelle tranchée
+**Prochaine action :** étape 3 (implémentation dans ArchiveHome.jsx)
 **Blocages :** aucun
 
 ## Référence état initial (étape 1)
