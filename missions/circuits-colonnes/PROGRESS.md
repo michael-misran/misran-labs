@@ -1,7 +1,7 @@
 # Mission circuits-colonnes — PROGRESS
 
-**Statut :** étape 3 terminée (FlowDiagram mode grid)
-**Prochaine action :** étape 4 (UtilisationIA.jsx en grid/columns=3 sur ordinateur, vertical sur mobile)
+**Statut :** étape 4 terminée (UtilisationIA.jsx bascule grid/vertical)
+**Prochaine action :** étape 5 (mesures après + vérification des critères — verificateur Haiku)
 **Blocages :** aucun
 
 ## Référence état initial (étape 1)
@@ -17,3 +17,6 @@
 
 ## Étape 3 — mode grid dans FlowDiagram.jsx
 `direction="grid"` + prop `columns` (défaut 3) ajoutés. Disposition en serpentin calculée via `positions[i]` (row/col), flèches horizontales dans le sens de lecture de chaque ligne, flèche verticale en bout de ligne vers la ligne suivante (même colonne). Les branches `horizontal` et `vertical` sont restées inchangées ligne à ligne (aucune modification de leur code). Lint clean sur le fichier. `npm run build` à revérifier à l'étape 5.
+
+## Étape 4 — bascule des 3 schémas dans UtilisationIA.jsx
+`resumeLoop`, `gitFlow`, `finalFlow` : `direction={isMobile ? 'vertical' : 'grid'} columns={3}`. `isMobile` déjà en scope (ligne 677 du fichier). Lint clean.

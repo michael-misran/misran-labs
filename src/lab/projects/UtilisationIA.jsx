@@ -729,7 +729,7 @@ export default function UtilisationIA({ project }) {
         <ul style={{ margin: '0 0 24px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {c.responses.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
-        <FlowDiagram steps={c.resumeLoop} direction="vertical" />
+        <FlowDiagram steps={c.resumeLoop} direction={isMobile ? 'vertical' : 'grid'} columns={3} />
         <p style={{ marginTop: 20, marginBottom: 0 }}>{c.noCostP}</p>
       </Section>
 
@@ -775,7 +775,7 @@ export default function UtilisationIA({ project }) {
         <ol style={{ margin: '0 0 20px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
           {c.wrapupItems.map((item, i) => <li key={i}>{item}</li>)}
         </ol>
-        <FlowDiagram steps={c.gitFlow} direction="vertical" />
+        <FlowDiagram steps={c.gitFlow} direction={isMobile ? 'vertical' : 'grid'} columns={3} />
       </Section>
 
       <Section title={c.improvementsTitle}>
@@ -787,7 +787,7 @@ export default function UtilisationIA({ project }) {
       </Section>
 
       <Section title={c.finalLoopTitle}>
-        <FlowDiagram steps={c.finalFlow} direction="vertical" />
+        <FlowDiagram steps={c.finalFlow} direction={isMobile ? 'vertical' : 'grid'} columns={3} />
         <div style={{ marginTop: 24 }}>
           <SectionTitle>{c.remainingTitle}</SectionTitle>
           <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
