@@ -32,6 +32,8 @@ Quand Michael donne un brief (« mission : … ») :
 
 ### Clôturer une mission (session interactive avec Michael)
 **Règle par défaut (validée par Michael le 2026-09-27)** : quand Michael dit « clôture les missions » (ou qu'une mission est terminée), Claude fait toute la clôture d'un coup, sur Mac comme depuis le téléphone ; Michael n'a plus qu'à fusionner.
+
+**Jamais dans une session de routine** (tâche programmée « missions autonomes » ou « magazine »), même si Michael y écrit « clôture » : ces sessions n'ont pas accès au navigateur, donc pas de vérification complète. Y répondre seulement : « Pour clôturer, passe par la session tour de contrôle (celle où Remote Control est activé) » — sans pousser ni ouvrir de pull request. (Exception : la routine du Magazine publie son propre numéro, voir « Magazine ».)
 1. Trouver les missions terminées : branches `auto/*` (hors `auto/magazine-*`) dont `missions/<nom>/RAPPORT.md` existe.
 2. Pour chacune : lire `RAPPORT.md`, `DECISIONS.md`, `DELEGATIONS.md` ; vérifier soi-même dans le navigateur (passer sur la branche, preview « dev », puis arrêter le serveur et revenir sur `main`) ; vérifier qu'aucun secret ni donnée personnelle n'est dans `git diff main...auto/<nom>` (le dépôt est **public**).
 3. Si tout est bon : pousser la branche (`git push -u origin auto/<nom>`, jamais `main`) et ouvrir la pull request (`gh pr create`, résumé du RAPPORT + modèles utilisés). Si un point bloque : ne pas pousser cette mission, l'expliquer à Michael.
