@@ -556,6 +556,12 @@ const CONTENT = {
       { date: '07 · 11:09 → 11:22 PM', label: 'Autonomous run: 13 min, 7 commits' },
       { date: '08', label: 'Wrap-up: push, preview, PR #1, merge' },
       { date: '09', label: 'Global /mission skill for every project' },
+      { date: '10', label: 'Mission 3: grid diagrams, end of interruptions' },
+      { date: '11', label: 'The Magazine, its test and the fact-checker' },
+      { date: '12', label: 'The mission queue' },
+      { date: '13', label: 'Piloting from the phone' },
+      { date: '14', label: 'The main-push compromise' },
+      { date: '15', label: 'This update (mission 7)' },
     ],
 
     startTitle: 'Starting point: local AI',
@@ -648,6 +654,8 @@ const CONTENT = {
       haiku1: { label: 'HAIKU', sublabel: 'explorateur: code search' },
       haiku2: { label: 'HAIKU', sublabel: 'verificateur: build, lint, browser' },
       expert: { label: 'OPUS', sublabel: 'expert: tricky step or 2 failures' },
+      veilleur: { label: 'HAIKU', sublabel: 'veilleur: web research for the Magazine' },
+      relecteur: { label: 'SONNET', sublabel: 'relecteur: fact-checks the Magazine' },
     },
     modelsTableCols: ['Role', 'Model', 'When'],
     modelsTableRows: [
@@ -655,6 +663,8 @@ const CONTENT = {
       ['Project lead / developer', 'Sonnet', 'Every scheduled run'],
       ['Workers: explorateur, verificateur', 'Haiku', 'Simple or bulky tasks'],
       ['expert', 'Opus', 'A tricky step flagged in the plan, or after 2 failures'],
+      ['veilleur', 'Haiku', 'Weekly research for the Magazine'],
+      ['relecteur', 'Sonnet', 'Fact-check before every Magazine issue'],
     ],
     whoChoosesP: "Who decides: the execution session's model is set once (the scheduled task's setting); the Sonnet project lead then picks the sub-agents. Improvement added after the first test: at framing time, every plan step now carries its own model, Sonnet follows it and can call in the expert on top, never instead.",
 
@@ -702,7 +712,7 @@ const CONTENT = {
       { label: 'main', sublabel: 'The published version: the live site is built from it' },
       { label: 'auto/<name>', sublabel: 'A draft, sitting next to the published version' },
       { label: 'Commits (Claude)', sublabel: 'One per step, allowed on auto/* only' },
-      { label: 'Push (me)', sublabel: 'The branch goes up to GitHub. Code on GitHub is not the live site' },
+      { label: 'Push (Claude)', sublabel: 'The mission branch goes up to GitHub at wrap-up; pushing main stays reserved for me, on request' },
       { label: 'Vercel preview', sublabel: 'Built automatically for the branch, which I check' },
       { label: 'Pull request (Claude)', sublabel: 'Proposes bringing the draft into main' },
       { label: 'Merge (me)', sublabel: 'Click "Merge", then git pull' },
@@ -718,31 +728,110 @@ const CONTENT = {
     ],
     globalTreeLabel: 'Structure of the global skill:',
 
+    thirdMissionTitle: 'Mission 3, and the end of interruptions',
+    thirdMissionP1:
+      "Third mission, circuits-colonnes: show the page's long vertical diagrams across several columns on desktop. At framing time, Opus recounted and found three diagrams affected, not two — all three moved to a grid. New \"snake\" mode (1 → 2 → 3, then 6 ← 5 ← 4…) across 3 columns, unchanged on mobile: heights divided by 2.75 to 3.5 (916 → 258 px for the longest one). Done in 15 minutes, on Haiku and Sonnet — no Opus, the architecture was already settled.",
+    autonomyBlockersLabel: 'What was still interrupting the run:',
+    autonomyBlockers: [
+      "The routine's default permission mode.",
+      'Creating code files, not allowed.',
+      'Compound commands (&&, loops), not recognized by the permission rules.',
+    ],
+    autonomyFixesLabel: 'Fixes:',
+    autonomyFixes: [
+      'Routine switched to Auto mode.',
+      'Permissions filled out.',
+      'One simple command per call.',
+      'Stop any servers started before finishing.',
+      'Only the main session commits, signed with every model that worked on it.',
+    ],
+    autonomyResultP: 'Result: mission 3 reported zero permission prompts.',
+
+    magazineTitle: 'The Magazine',
+    magazineIntro:
+      "The idea: an AI-watch magazine on the site, fed by a routine. My calls: one issue a week, Monday morning; published by pull request, which I review and merge; angled at designers and developers; bilingual FR/EN.",
+    magazineMissionP:
+      'Fourth mission: the /magazine route (list of issues) and /magazine/<date> (editorial, articles, "Why it matters", sources). One issue = one JSON file, validated on load — an invalid file just doesn\'t render, without breaking the page. Issue 0, "Introduction", with no invented news. Models: Opus for visual direction, Sonnet, Haiku.',
+    magazineRoutineLabel: 'The Monday routine, 7:30 AM:',
+    magazineRoutineSteps: [
+      "veilleur (Haiku) collects the week's announcements from official sources.",
+      'Sonnet picks 3 to 5 topics, checks each source, writes it up in FR then EN.',
+      "relecteur (Sonnet) checks every claim against its sources.",
+      'The routine pushes its branch and opens the pull request — the sole exception to routines never pushing.',
+    ],
+    magazineTestP:
+      "The test (7 minutes) produced issue 1. Reopening the sources one by one, I found three inaccuracies typical of an AI summary — true numbers wired to the wrong claim (a total-cost drop presented as a unit-price cut, trial credits attributed to the wrong product, public benchmarks presented as internal evaluations). Fixed before publishing, and it's why relecteur exists: mandatory for every issue since.",
+
+    queueTitle: 'The mission queue',
+    queueP1:
+      "Question: can several missions be framed ahead of time? Problem: a mission's files only exist on its own branch; the routine only looked at the branch it was on, so a second mission would have been invisible.",
+    queueP2:
+      'Fix: the routine searches the auto/* branches, picks the oldest one without a report, then chains to the next if quota remains. Every mission branches off main and gets its own pull request.',
+    queueP3:
+      'First use: missions 5 (workflow-grille) and 6 (home-magazine) ran back-to-back, in a single run, in about 30 minutes.',
+
+    phoneTitle: 'Piloting from the phone',
+    phoneP1:
+      'I already knew about Remote Control. I looked at the cloud (the "brain" and the "hands" both inside an Anthropic machine, Mac allowed to be off), then set it aside for now: it would have meant copying the skill into the repo, replacing scheduled tasks with cloud routines, and the verification browser is limited there.',
+    phoneP2:
+      'The interactive session becomes a control tower: Remote Control turned on, I message it from the Claude app on my phone ("run the missions routine"), it starts the routine, gets notified when it\'s done, checks it, and wraps up.',
+    phoneFlow: [
+      { label: '1 · Phone', sublabel: 'Me, from the Claude app: "run the missions routine"' },
+      { label: '2 · Control tower', sublabel: 'The interactive session, with Remote Control on' },
+      { label: '3 · Routine', sublabel: 'Works through the mission queue, notifies when done' },
+      { label: '4 · Check (Claude)', sublabel: 'In the browser, no sensitive data' },
+      { label: '5 · Pull requests (Claude)', sublabel: 'Branches pushed, pull requests opened' },
+      { label: '6 · Merge', sublabel: 'Me, from the GitHub app on my phone' },
+    ],
+    phoneClosureP:
+      'Since 09/27, "close the missions" is enough, from the Mac or the phone: Claude finds the finished missions, reads their reports, checks in the browser, makes sure no sensitive data is leaving the public repo, pushes each branch, opens the pull requests, and summarizes. If something blocks, it doesn\'t push and explains why. I merge; Claude brings the Mac back up to date.',
+
+    mainPushTitle: 'Pushing main: a compromise',
+    mainPushP1:
+      'I suggested dropping the ban on pushing main ("worst case, we roll back on Vercel"). Claude pointed out that pushing main puts the site into production immediately, and that permission settings apply to every session — including overnight routines with no one watching.',
+    mainPushP2:
+      "Compromise reached: Claude may push main only in a session where I'm present, on my explicit request; routines and autonomous missions, never. Force-pushing and merging stay off-limits to Claude in every case.",
+    mainPushP3:
+      'A notable detail: before this compromise, right after I said "go ahead," Claude refused to work around the lock by phrasing the command differently — a guardrail is only worth anything if it can\'t be talked around.',
+
+    statsTitle: 'The numbers so far',
+    statsTableCols: ['Mission', 'Duration', 'Models'],
+    statsTableRows: [
+      ['1. tokens-fix', '13 min', "Opus alone (the routine's model wasn't set yet)"],
+      ['2. utilisation-ia', '66 min', 'Haiku, Opus, Sonnet as planned'],
+      ['3. circuits-colonnes', '15 min', 'Haiku, Sonnet'],
+      ['4. magazine', '—', 'Opus, Sonnet, Haiku'],
+      ['5. workflow-grille', '~30 min (5 and 6 together)', 'Haiku, Sonnet'],
+      ['6. home-magazine', '(same run)', 'Opus, Sonnet, Haiku'],
+      ['7. utilisation-ia-maj', '—', "see the mission's DELEGATIONS.md"],
+    ],
+    statsNoteP:
+      'Plus a weekly routine: the Magazine (issue 1 dated 09/28, merged 09/27 after fixes). Trend: fewer and fewer interventions from me, with Opus reserved for the steps that actually need it — framing, visual direction.',
+
     finalLoopTitle: 'The final loop',
     finalFlow: [
       { label: '1 · Brief', sublabel: 'Me: "mission: …"' },
       { label: '2 · Framing (Opus)', sublabel: 'A settled spec + a plan, with one model per step' },
       { label: '3 · auto/<name> branch', sublabel: 'Commits allowed only on auto/* branches' },
-      { label: '4 · Scheduled task (Sonnet)', sublabel: 'Every 2 hours; picks up again after each quota cut-off' },
+      { label: '4 · Scheduled task (Sonnet)', sublabel: 'Works through the queue; picks up again after each quota cut-off' },
       { label: '5 · Steps + commits', sublabel: 'One commit per step; hands off to Haiku or Opus as planned' },
       { label: '6 · Report', sublabel: 'RAPPORT.md, written by the session' },
-      { label: '7 · Check', sublabel: 'With me, in a real browser; no secrets in the changes' },
-      { label: '8 · Push (me)', sublabel: 'Blocked for Claude by the permissions' },
-      { label: '9 · Pull request (Claude)', sublabel: 'Once the Vercel preview has been checked' },
-      { label: '10 · Merge (me)', sublabel: 'Click "Merge", then git pull' },
+      { label: '7 · "Close the missions"', sublabel: 'Me, in one line' },
+      { label: '8 · Check, push, pull requests', sublabel: 'Claude: browser check, no sensitive data' },
+      { label: '9 · Merge (me)', sublabel: 'Click "Merge", then git pull' },
     ],
     remainingTitle: "What still falls to me",
     remaining: [
       'The brief.',
       'The first-pass permissions.',
       "Each scheduled task's model.",
-      'The push and the merge.',
+      'The merge (and pushing main, on my explicit request).',
       'External accounts and services.',
       'Legal sign-off.',
     ],
 
     metaTitle: 'Turtles all the way down',
-    metaP: 'This page is the system\'s second mission: framed by Opus from the content I supplied, then written, laid out and checked by the scheduled task, without me. The missions/utilisation-ia/ folder in the repo keeps the trail (spec, plan, decisions, delegations, report).',
+    metaP: "This page was written by the system's second mission, from the content I supplied. It's now maintained by the system itself: this update is its seventh mission, framed then run without me, from brief to pull request. The missions/ folder in the repo keeps the trail, mission by mission (spec, plan, decisions, delegations, report).",
 
     treeProject: TREE_PROJECT_EN,
     treeGlobal: TREE_GLOBAL_EN,
