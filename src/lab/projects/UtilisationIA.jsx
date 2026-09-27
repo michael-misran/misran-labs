@@ -58,18 +58,24 @@ function DiagramBox({ x, y, w, h, label, sublabel, accent, dashed }) {
 function ModelOrgChart({ c }) {
   return (
     <div style={{ overflowX: 'auto' }}>
-      <svg viewBox="0 0 480 348" style={{ width: '100%', minWidth: 440, maxWidth: 480, height: 'auto', display: 'block' }}>
+      <svg viewBox="0 0 480 480" style={{ width: '100%', minWidth: 440, maxWidth: 480, height: 'auto', display: 'block' }}>
         <line x1={240} y1={92} x2={240} y2={120} stroke="var(--muted)" strokeWidth={1.5} />
         <line x1={240} y1={212} x2={240} y2={232} stroke="var(--muted)" strokeWidth={1.5} />
         <line x1={82} y1={232} x2={398} y2={232} stroke="var(--muted)" strokeWidth={1.5} />
         <line x1={82} y1={232} x2={82} y2={252} stroke="var(--muted)" strokeWidth={1.5} />
         <line x1={240} y1={232} x2={240} y2={252} stroke="var(--muted)" strokeWidth={1.5} />
         <line x1={398} y1={232} x2={398} y2={252} stroke="var(--muted)" strokeWidth={1.5} />
+        <line x1={240} y1={344} x2={240} y2={362} stroke="var(--muted)" strokeWidth={1.5} />
+        <line x1={160} y1={362} x2={320} y2={362} stroke="var(--muted)" strokeWidth={1.5} />
+        <line x1={160} y1={362} x2={160} y2={378} stroke="var(--muted)" strokeWidth={1.5} />
+        <line x1={320} y1={362} x2={320} y2={378} stroke="var(--muted)" strokeWidth={1.5} />
         <DiagramBox x={120} y={0} w={240} h={92} accent label={c.top.label} sublabel={c.top.sublabel} />
         <DiagramBox x={120} y={120} w={240} h={92} label={c.mid.label} sublabel={c.mid.sublabel} />
         <DiagramBox x={8} y={252} w={148} h={92} label={c.haiku1.label} sublabel={c.haiku1.sublabel} />
         <DiagramBox x={166} y={252} w={148} h={92} label={c.haiku2.label} sublabel={c.haiku2.sublabel} />
         <DiagramBox x={324} y={252} w={148} h={92} dashed label={c.expert.label} sublabel={c.expert.sublabel} />
+        <DiagramBox x={90} y={378} w={140} h={92} label={c.veilleur.label} sublabel={c.veilleur.sublabel} />
+        <DiagramBox x={250} y={378} w={140} h={92} label={c.relecteur.label} sublabel={c.relecteur.sublabel} />
       </svg>
     </div>
   )
@@ -245,6 +251,12 @@ const CONTENT = {
       { date: '07 · 23 H 09 → 23 H 22', label: 'Exécution autonome : 13 min, 7 commits' },
       { date: '08', label: 'Clôture : push, prévisualisation, PR #1, fusion' },
       { date: '09', label: 'Skill global /mission pour tous les projets' },
+      { date: '10', label: 'Mission 3 : schémas en grille, fin des interruptions' },
+      { date: '11', label: 'Le Magazine, son test et le relecteur' },
+      { date: '12', label: "La file d'attente de missions" },
+      { date: '13', label: 'Piloter depuis le téléphone' },
+      { date: '14', label: 'Le compromis sur le push de main' },
+      { date: '15', label: 'Cette mise à jour (mission 7)' },
     ],
 
     startTitle: "Point de départ : l'IA locale",
@@ -337,6 +349,8 @@ const CONTENT = {
       haiku1: { label: 'HAIKU', sublabel: 'explorateur : recherche' },
       haiku2: { label: 'HAIKU', sublabel: 'verificateur : build, lint, navigateur' },
       expert: { label: 'OPUS', sublabel: 'expert : étape délicate ou 2 échecs' },
+      veilleur: { label: 'HAIKU', sublabel: 'veilleur : veille web pour le Magazine' },
+      relecteur: { label: 'SONNET', sublabel: 'relecteur : vérification factuelle du Magazine' },
     },
     modelsTableCols: ['Rôle', 'Modèle', 'Quand'],
     modelsTableRows: [
@@ -344,6 +358,8 @@ const CONTENT = {
       ['Chef de projet / développeur', 'Sonnet', 'Toutes les exécutions programmées'],
       ['Exécutants : explorateur, verificateur', 'Haiku', 'Tâches simples ou volumineuses'],
       ['expert', 'Opus', 'Étape délicate marquée dans le plan, ou après 2 échecs'],
+      ['veilleur', 'Haiku', 'Veille hebdomadaire pour le Magazine'],
+      ['relecteur', 'Sonnet', 'Vérification factuelle avant chaque numéro du Magazine'],
     ],
     whoChoosesP: "Qui choisit : le modèle de la session d'exécution est fixé une fois (réglage de la tâche programmée) ; le chef de projet Sonnet choisit ensuite les sous-agents. Amélioration ajoutée après le premier test : au cadrage, chaque étape du plan porte son modèle, Sonnet suit l'indication et peut appeler l'expert en plus, jamais en moins.",
 
@@ -391,7 +407,7 @@ const CONTENT = {
       { label: 'main', sublabel: 'La version publiée : le site en ligne est construit à partir d\'elle' },
       { label: 'auto/<nom>', sublabel: 'Un brouillon, à côté de la version publiée' },
       { label: 'Commits (Claude)', sublabel: 'Un par étape, libres sur auto/* uniquement' },
-      { label: 'Push (moi)', sublabel: "La branche part sur GitHub. Le code sur GitHub n'est pas le site en ligne" },
+      { label: 'Push (Claude)', sublabel: "La branche de mission part sur GitHub à la clôture ; pousser main reste réservé à moi, sur ma demande" },
       { label: 'Prévisualisation Vercel', sublabel: 'Construite automatiquement pour la branche, que je vérifie' },
       { label: 'Pull request (Claude)', sublabel: 'Propose de faire entrer le brouillon dans main' },
       { label: 'Fusion (moi)', sublabel: 'Clic « Merge », puis git pull' },
@@ -407,31 +423,110 @@ const CONTENT = {
     ],
     globalTreeLabel: 'Structure du skill global :',
 
+    thirdMissionTitle: 'La 3ᵉ mission, et la fin des interruptions',
+    thirdMissionP1:
+      "Troisième mission, circuits-colonnes : afficher les longs schémas verticaux de cette page sur plusieurs colonnes, sur ordinateur. Au cadrage, Opus a recompté et trouvé trois schémas concernés, pas deux — les trois sont passés en grille. Nouveau mode « serpentin » (1 → 2 → 3, puis 6 ← 5 ← 4…) sur 3 colonnes, inchangé sur mobile : les hauteurs sont divisées par 2,75 à 3,5 (916 → 258 px pour le plus long). Exécutée en 15 minutes, sur Haiku et Sonnet — pas d'Opus, l'architecture était déjà tranchée.",
+    autonomyBlockersLabel: "Ce qui interrompait encore l'exécution :",
+    autonomyBlockers: [
+      'Le mode de permission par défaut de la routine.',
+      "La création de fichiers de code, pas autorisée.",
+      "Les commandes composées (&&, boucles), pas reconnues par les autorisations.",
+    ],
+    autonomyFixesLabel: 'Corrections :',
+    autonomyFixes: [
+      'Routine passée en mode Auto.',
+      'Autorisations complétées.',
+      'Une commande simple par appel.',
+      'Arrêter les serveurs lancés avant de terminer.',
+      "Seule la session principale commite, avec la signature de chaque modèle ayant travaillé.",
+    ],
+    autonomyResultP: "Résultat : la 3ᵉ mission n'a signalé aucune demande d'autorisation.",
+
+    magazineTitle: 'Le Magazine',
+    magazineIntro:
+      "Idée : un magazine de veille IA sur le site, alimenté par une routine. Mes décisions : un numéro par semaine, le lundi matin ; publication par pull request, que je relis et fusionne ; angle designers et développeurs ; bilingue FR/EN.",
+    magazineMissionP:
+      "Quatrième mission : la rubrique /magazine (liste des numéros) et /magazine/<date> (édito, articles, « Pourquoi ça compte », sources). Un numéro = un fichier JSON, validé au chargement — un fichier invalide n'est pas affiché, sans casser la page. Un numéro 0 « Présentation », sans actualité inventée. Modèles : Opus pour la direction visuelle, Sonnet, Haiku.",
+    magazineRoutineLabel: 'La routine du lundi, 7 h 30 :',
+    magazineRoutineSteps: [
+      'veilleur (Haiku) collecte les annonces de la semaine sur des sources officielles.',
+      'Sonnet sélectionne 3 à 5 sujets, vérifie chaque source, rédige en FR puis EN.',
+      'relecteur (Sonnet) vérifie chaque affirmation contre ses sources.',
+      "La routine pousse sa branche et ouvre la pull request — seule exception au « jamais de push » des routines.",
+    ],
+    magazineTestP:
+      "Le test (7 minutes) a produit le numéro 1. En rouvrant les sources une par une, j'ai trouvé trois inexactitudes typiques d'un résumé IA — des chiffres vrais mais mal reliés (une baisse de coût total présentée comme une baisse de prix unitaire, des crédits d'essai attribués au mauvais produit, des benchmarks publics présentés comme des évaluations internes). Corrigées avant publication, et création du relecteur : désormais obligatoire à chaque numéro.",
+
+    queueTitle: "La file d'attente",
+    queueP1:
+      "Question : peut-on cadrer plusieurs missions d'avance ? Problème : les fichiers d'une mission n'existent que sur sa branche ; la routine ne regardait que la branche ouverte, une deuxième mission aurait été invisible.",
+    queueP2:
+      "Solution : la routine cherche les missions dans les branches auto/*, prend la plus ancienne sans rapport, puis enchaîne sur la suivante s'il reste du quota. Chaque mission part de main et donne sa propre pull request.",
+    queueP3:
+      "Premier usage : les missions 5 (workflow-grille) et 6 (home-magazine) exécutées à la suite, en une seule fois, en environ 30 minutes.",
+
+    phoneTitle: 'Piloter depuis le téléphone',
+    phoneP1:
+      "Je connaissais déjà Remote Control. J'ai regardé le cloud (le « cerveau » et les « mains » dans un ordinateur d'Anthropic, Mac éteint possible), puis écarté pour l'instant : il aurait fallu recopier le skill dans le dépôt, remplacer les tâches programmées par des routines cloud, et le navigateur de vérification y est limité.",
+    phoneP2:
+      "La session interactive devient une tour de contrôle : Remote Control activé, je lui écris depuis l'app sur mon téléphone (« lance la routine des missions »), elle démarre la routine, est prévenue à la fin, vérifie et fait la clôture.",
+    phoneFlow: [
+      { label: '1 · Téléphone', sublabel: 'Moi, depuis l\'app Claude : « lance la routine des missions »' },
+      { label: '2 · Tour de contrôle', sublabel: 'La session interactive, avec Remote Control activé' },
+      { label: '3 · Routine', sublabel: "Traite la file d'attente de missions, prévient à la fin" },
+      { label: '4 · Vérification (Claude)', sublabel: 'Dans le navigateur, aucune donnée sensible' },
+      { label: '5 · Pull requests (Claude)', sublabel: 'Push des branches, ouverture des pull requests' },
+      { label: '6 · Fusion', sublabel: 'Moi, depuis l\'app GitHub sur mon téléphone' },
+    ],
+    phoneClosureP:
+      "Depuis le 27/09, « clôture les missions » suffit, au Mac comme au téléphone : Claude trouve les missions terminées, lit leurs rapports, vérifie dans le navigateur, contrôle qu'aucune donnée sensible ne part sur le dépôt public, pousse chaque branche, ouvre les pull requests et résume. Si un point bloque, il ne pousse pas et explique. Je fusionne ; Claude remet le Mac à jour.",
+
+    mainPushTitle: 'Le push de main : un compromis',
+    mainPushP1:
+      "J'ai proposé de retirer l'interdiction de pousser main (« au pire on rollback sur Vercel »). Claude a rappelé que pousser main met le site en production immédiatement, et que les réglages de permissions valent pour toutes les sessions — y compris les routines de nuit, sans personne pour regarder.",
+    mainPushP2:
+      "Compromis retenu : Claude peut pousser main uniquement dans une session où je suis présent, sur ma demande explicite ; les routines et missions autonomes, jamais. Forcer un push et fusionner restent interdits à tous, dans tous les cas.",
+    mainPushP3:
+      "Détail notable : avant ce compromis, alors que je venais de dire « vas-y », Claude a refusé de contourner le verrou en écrivant la commande autrement — un garde-fou n'a de valeur que s'il n'est pas contourné.",
+
+    statsTitle: 'Bilan chiffré',
+    statsTableCols: ['Mission', 'Durée', 'Modèles'],
+    statsTableRows: [
+      ['1. tokens-fix', '13 min', 'Opus seul (modèle de la routine pas encore réglé)'],
+      ['2. utilisation-ia', '66 min', 'Haiku, Opus, Sonnet selon le plan'],
+      ['3. circuits-colonnes', '15 min', 'Haiku, Sonnet'],
+      ['4. magazine', '—', 'Opus, Sonnet, Haiku'],
+      ['5. workflow-grille', '~30 min (5 et 6 ensemble)', 'Haiku, Sonnet'],
+      ['6. home-magazine', '(même exécution)', 'Opus, Sonnet, Haiku'],
+      ['7. utilisation-ia-maj', '—', 'voir DELEGATIONS.md de la mission'],
+    ],
+    statsNoteP:
+      "Plus une routine hebdomadaire : le Magazine (numéro 1 daté du 28/09, fusionné le 27/09 après corrections). Tendance : de moins en moins d'interventions de moi, et Opus réservé aux étapes qui en ont besoin — cadrage, direction visuelle.",
+
     finalLoopTitle: 'Le circuit final',
     finalFlow: [
       { label: '1 · Brief', sublabel: 'Moi : « mission : … »' },
       { label: '2 · Cadrage (Opus)', sublabel: 'Spec tranchée + plan, avec un modèle par étape' },
       { label: '3 · Branche auto/<nom>', sublabel: 'Commits libres uniquement sur les branches auto/*' },
-      { label: '4 · Tâche programmée (Sonnet)', sublabel: 'Toutes les 2 heures ; reprend après chaque coupure de quota' },
+      { label: '4 · Tâche programmée (Sonnet)', sublabel: "Gère la file d'attente ; reprend après chaque coupure de quota" },
       { label: '5 · Étapes + commits', sublabel: 'Un commit par étape ; délègue à Haiku ou Opus selon le plan' },
       { label: '6 · Rapport', sublabel: 'RAPPORT.md, écrit par la session' },
-      { label: '7 · Vérification', sublabel: 'Avec moi, dans un vrai navigateur ; aucun secret dans les changements' },
-      { label: '8 · Push (moi)', sublabel: 'Interdit à Claude par les permissions' },
-      { label: '9 · Pull request (Claude)', sublabel: 'Après vérification de la prévisualisation Vercel' },
-      { label: '10 · Fusion (moi)', sublabel: 'Clic « Merge », puis git pull' },
+      { label: '7 · « Clôture les missions »', sublabel: 'Moi, en un mot' },
+      { label: '8 · Vérification, push, pull requests', sublabel: 'Claude : navigateur, aucune donnée sensible' },
+      { label: '9 · Fusion (moi)', sublabel: 'Clic « Merge », puis git pull' },
     ],
     remainingTitle: 'Ce qui me reste',
     remaining: [
       'Le brief.',
       'Les autorisations du premier passage.',
       'Le modèle de chaque tâche programmée.',
-      'Le push et la fusion.',
+      'La fusion (et le push de `main`, sur ma demande explicite).',
       'Les comptes et services externes.',
       'La validation juridique.',
     ],
 
     metaTitle: 'Mise en abyme',
-    metaP: "Cette page est la deuxième mission du système : cadrée par Opus à partir du contenu que j'ai fourni, puis rédigée, mise en page et vérifiée par la tâche programmée, sans moi. Le dossier missions/utilisation-ia/ du dépôt en garde la trace (spec, plan, décisions, délégations, rapport).",
+    metaP: "Cette page a été écrite par la deuxième mission du système, à partir du contenu que j'ai fourni. Elle est désormais entretenue par le système lui-même : cette mise à jour en est la septième mission, cadrée puis exécutée sans moi, du brief jusqu'à la pull request. Le dossier missions/ du dépôt en garde la trace, mission par mission (spec, plan, décisions, délégations, rapport).",
 
     treeProject: TREE_PROJECT_FR,
     treeGlobal: TREE_GLOBAL_FR,
@@ -784,6 +879,53 @@ export default function UtilisationIA({ project }) {
         </ul>
         <div style={{ fontWeight: 600, marginBottom: 8 }}>{c.globalTreeLabel}</div>
         <Pre isMobile={isMobile}>{c.treeGlobal}</Pre>
+      </Section>
+
+      <Section title={c.thirdMissionTitle}>
+        <p style={{ marginBottom: 16 }}>{c.thirdMissionP1}</p>
+        <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.autonomyBlockersLabel}</div>
+        <ul style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {c.autonomyBlockers.map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
+        <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.autonomyFixesLabel}</div>
+        <ul style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {c.autonomyFixes.map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
+        <p style={{ margin: 0 }}>{c.autonomyResultP}</p>
+      </Section>
+
+      <Section title={c.magazineTitle}>
+        <p style={{ marginBottom: 12 }}>{c.magazineIntro}</p>
+        <p style={{ marginBottom: 16 }}>{c.magazineMissionP}</p>
+        <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.magazineRoutineLabel}</div>
+        <ol style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {c.magazineRoutineSteps.map((item, i) => <li key={i}>{item}</li>)}
+        </ol>
+        <p style={{ margin: 0 }}>{c.magazineTestP}</p>
+      </Section>
+
+      <Section title={c.queueTitle}>
+        <p style={{ marginBottom: 12 }}>{c.queueP1}</p>
+        <p style={{ marginBottom: 12 }}>{c.queueP2}</p>
+        <p style={{ margin: 0 }}>{c.queueP3}</p>
+      </Section>
+
+      <Section title={c.phoneTitle}>
+        <p style={{ marginBottom: 12 }}>{c.phoneP1}</p>
+        <p style={{ marginBottom: 20 }}>{c.phoneP2}</p>
+        <FlowDiagram steps={c.phoneFlow} direction={isMobile ? 'vertical' : 'grid'} columns={3} />
+        <p style={{ marginTop: 20, marginBottom: 0 }}>{c.phoneClosureP}</p>
+      </Section>
+
+      <Section title={c.mainPushTitle}>
+        <p style={{ marginBottom: 12 }}>{c.mainPushP1}</p>
+        <p style={{ marginBottom: 12 }}>{c.mainPushP2}</p>
+        <p style={{ margin: 0 }}>{c.mainPushP3}</p>
+      </Section>
+
+      <Section title={c.statsTitle}>
+        <Table columns={c.statsTableCols} rows={c.statsTableRows} />
+        <p style={{ margin: 0 }}>{c.statsNoteP}</p>
       </Section>
 
       <Section title={c.finalLoopTitle}>
