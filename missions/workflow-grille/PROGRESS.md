@@ -1,8 +1,14 @@
 # Mission workflow-grille — PROGRESS
 
-**Statut :** étapes 2 et 3 faites
-**Prochaine action :** étape 4 (vérification des critères, verificateur Haiku)
+**Statut :** mission terminée, RAPPORT.md écrit
+**Prochaine action :** aucune — en attente de clôture par Michael
 **Blocages :** aucun
+
+## Étape 4 — vérification
+- Critères 1, 5, 6, 7 : PASS (visuel + structurel).
+- Critère 2 (outerHTML mobile /lab/workflow identique à avant) : PASS, comparaison stricte faite.
+- Critère 3 (non-régression /lab/utilisation-ia) : PASS. Un écart trouvé initialement sur le schéma « Cycle Git » mobile (`auto/<nom>` vs `auto/<name>`) est un faux positif : c'est une différence de langue (FR/EN), le fichier `UtilisationIA.jsx` n'a pas été touché par cette mission (voir DECISIONS.md).
+- Critère 4 (pas d'erreur console) : PASS.
 
 ## Référence état initial (étape 1)
 - `npm run build` : OK
