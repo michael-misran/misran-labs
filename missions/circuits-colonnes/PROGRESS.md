@@ -1,7 +1,7 @@
 # Mission circuits-colonnes — PROGRESS
 
-**Statut :** étape 4 terminée (UtilisationIA.jsx bascule grid/vertical)
-**Prochaine action :** étape 5 (mesures après + vérification des critères — verificateur Haiku)
+**Statut :** étape 5 terminée — les 6 critères d'acceptation passent, aucune correction nécessaire
+**Prochaine action :** étape 6 (RAPPORT.md) — dernière étape
 **Blocages :** aucun
 
 ## Référence état initial (étape 1)
@@ -20,3 +20,14 @@
 
 ## Étape 4 — bascule des 3 schémas dans UtilisationIA.jsx
 `resumeLoop`, `gitFlow`, `finalFlow` : `direction={isMobile ? 'vertical' : 'grid'} columns={3}`. `isMobile` déjà en scope (ligne 677 du fichier). Lint clean.
+
+## Étape 5 — vérification (mesures.json clé "apres")
+Tous les critères 1 à 6 de SPEC.md passent :
+1. Hauteurs desktop divisées par 2.75x à 3.55x (resumeLoop 916→258px, gitFlow 1240→413px, finalFlow 1564→569px). Flèches serpentin visuellement correctes.
+2. Mobile /lab/utilisation-ia : outerHTML identique à avant pour les 3 schémas.
+3. /lab/workflow desktop et mobile : outerHTML identique à avant pour les 2 schémas.
+4. Aucune erreur console.
+5. Aucune couleur brute dans FlowDiagram.jsx.
+6. Build OK, lint 6 erreurs (toutes préexistantes, aucune nouvelle).
+
+Aucune correction nécessaire.

@@ -63,5 +63,35 @@
       ]
     },
     "erreurs_console": "aucune"
+  },
+  "apres": {
+    "utilisation-ia": {
+      "desktop": [
+        {
+          "nom": "resumeLoop",
+          "hauteur": 258,
+          "reduction": "3.55x (916px → 258px)"
+        },
+        {
+          "nom": "gitFlow",
+          "hauteur": 413,
+          "reduction": "3.00x (1240px → 413px)"
+        },
+        {
+          "nom": "finalFlow",
+          "hauteur": 569,
+          "reduction": "2.75x (1564px → 569px)"
+        }
+      ],
+      "mobile": "identique"
+    },
+    "workflow": {
+      "desktop": "identique",
+      "mobile": "identique"
+    },
+    "erreurs_console": "aucune",
+    "couleurs_hardcoded": "aucune",
+    "npm_run_build": "PASS",
+    "npm_run_lint": "6 erreurs (toutes préexistantes, aucune nouvelle dans FlowDiagram.jsx ou UtilisationIA.jsx)"
   }
 }
