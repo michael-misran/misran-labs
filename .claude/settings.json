@@ -7,6 +7,7 @@
       "Bash(git checkout main)", "Bash(git checkout -b auto/*)",
       "Bash(git pull)", "Bash(git fetch*)",
       "Bash(git branch --show-current)", "Bash(git show*)", "Bash(git rev-parse*)",
+      "Bash(git branch --list*)", "Bash(git for-each-ref*)",
       "Bash(grep *)", "Bash(ls *)", "Bash(cat *)", "Bash(head *)", "Bash(tail *)",
       "Bash(find *)", "Bash(wc *)", "Bash(sed -n *)",
       "Bash(node missions/*)",

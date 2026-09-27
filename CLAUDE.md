@@ -40,6 +40,13 @@ Quand Michael dit qu'une mission est terminée :
 
 Michael n'est pas à l'aise avec Git/GitHub : expliquer chaque étape simplement, commande à lancer dans son propre bloc.
 
+### File d'attente
+Plusieurs missions peuvent être cadrées d'avance : chacune vit sur sa branche `auto/<nom>`, partie de `main`, et donne sa propre pull request. Les fichiers d'une mission n'existent que sur sa branche : **ne jamais chercher les missions dans le dossier ouvert**, mais dans les branches.
+1. Lister les branches de mission, de la plus ancienne à la plus récente : `git for-each-ref --sort=creatordate --format=%(refname:short) refs/heads/auto/` (ignorer `auto/magazine-*`, gérées par la routine du Magazine).
+2. Pour chacune, `git show <branche>:missions/<nom>/RAPPORT.md` : si le fichier existe, la mission est terminée.
+3. Traiter **la plus ancienne mission sans RAPPORT.md**. Une fois terminée, revenir sur `main` (`git checkout main`) et passer à la suivante s'il reste du quota.
+4. Au moment du cadrage, créer toujours la branche d'une nouvelle mission depuis `main`, jamais depuis une autre branche de mission.
+
 ### Reprise
 Toute session de mission commence par lire `SPEC.md`, `PLAN.md`, `PROGRESS.md`, puis reprend à la première étape non cochée. Ne jamais refaire une étape cochée.
 Le travail doit pouvoir s'interrompre à tout moment (limite de quota) : fichiers de suivi à jour et commit après **chaque** étape.
