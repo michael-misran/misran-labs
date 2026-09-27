@@ -378,7 +378,7 @@ export default function WorkflowSolo({ project }) {
       </div>
 
       <Section title={c.runFlowTitle}>
-        <FlowDiagram steps={c.runFlow} direction="vertical" />
+        <FlowDiagram steps={c.runFlow} direction={isMobile ? 'vertical' : 'grid'} columns={3} />
       </Section>
 
       <Section title={c.explorationTitle}>
@@ -389,7 +389,7 @@ export default function WorkflowSolo({ project }) {
       </Section>
 
       <Section title={c.unifyFlowTitle}>
-        <FlowDiagram steps={c.unifyFlow} direction="vertical" />
+        <FlowDiagram steps={c.unifyFlow} direction={isMobile ? 'vertical' : 'grid'} columns={3} />
       </Section>
 
       <Section title={c.arbitrationTitle}>
