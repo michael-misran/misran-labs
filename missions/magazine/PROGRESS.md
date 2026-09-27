@@ -1,7 +1,7 @@
 # Mission magazine — PROGRESS
 
-**Statut :** étapes 2 à 4 terminées, mission implémentée et vérifiée manuellement
-**Prochaine action :** étape 5 — vérification formelle des critères 1 à 8 (dont le test du fichier invalide) → verificateur (Haiku)
+**Statut :** étapes 1 à 6 terminées, mission achevée
+**Prochaine action :** aucune — voir RAPPORT.md
 **Blocages :** aucun
 
 ## Étape 2 — direction visuelle (expert, Opus)
