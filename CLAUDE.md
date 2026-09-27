@@ -55,6 +55,7 @@ Le travail doit pouvoir s'interrompre à tout moment (limite de quota) : fichier
 - Travail uniquement sur la branche `auto/<nom-mission>`. Vérifier la branche avant toute modification.
 - Commits libres sur `auto/*`, sans demander. Un commit par étape du plan. Message en anglais, terminé par `Co-Authored-By: <modèle utilisé> <noreply@anthropic.com>`.
 - **Interdit** : commit sur `main`, push, merge, rebase de `main`, déploiement, `--force`. Ces actions restent à Michael.
+- **Push de `main` (compromis validé par Michael le 2026-09-27)** : autorisé **uniquement** dans une session interactive où Michael est présent, sur sa demande explicite pour ce push-là (pousser `main` met le site en production via Vercel). **Jamais** dans une routine ou une session de mission autonome, quelle que soit la situation. Jamais de `--force`.
 
 ### Autonomie
 - Ne jamais s'arrêter pour poser une question. En cas d'ambiguïté : option la plus prudente et réversible, notée dans `DECISIONS.md`, puis continuer.
