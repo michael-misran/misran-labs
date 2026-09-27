@@ -19,5 +19,12 @@
   },
   "type": "produit",
   "taille": "grosse",
-  "statut": "proposee"
+  "statut": "arretee",
+  "decision": {
+    "date": "2026-09-27",
+    "note": {
+      "fr": "Arrêtée : trop de contraintes légales dans l'immobilier, un projet trop lourd pour le moment.",
+      "en": "Stopped: too many legal constraints in real estate, too heavy a project for now."
+    }
+  }
 }
