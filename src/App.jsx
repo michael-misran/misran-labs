@@ -3,6 +3,8 @@ import Shell from './shell/Shell'
 import ArchiveHome from './modules/ArchiveHome'
 import ProjectPage from './lab/ProjectPage'
 import ProjectDemoPage from './lab/ProjectDemoPage'
+import MagazineHome from './magazine/MagazineHome'
+import MagazineIssue from './magazine/MagazineIssue'
 import { LanguageProvider } from './shell/LanguageContext'
 
 export default function App() {
@@ -13,6 +15,8 @@ export default function App() {
           <Route index element={<ArchiveHome />} />
           <Route path="lab/:slug" element={<ProjectPage />} />
           <Route path="lab/:slug/demo/:version?" element={<ProjectDemoPage />} />
+          <Route path="magazine" element={<MagazineHome />} />
+          <Route path="magazine/:date" element={<MagazineIssue />} />
         </Route>
       </Routes>
     </LanguageProvider>
