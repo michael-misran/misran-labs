@@ -1,7 +1,7 @@
 # Mission utilisation-ia-maj — PROGRESS
 
-**Statut :** audit terminé
-**Prochaine action :** étape 3 (plan des modifications, Sonnet)
+**Statut :** plan des modifications écrit
+**Prochaine action :** étape 4 (rédaction FR)
 **Blocages :** aucun
 
 ## Référence état initial (étape 1)
@@ -9,6 +9,7 @@
 - `npm run lint` : 6 erreurs préexistantes (VisuallyHidden.jsx, kit/Surface.jsx, CaseFile.jsx, GameDemo.jsx, LanguageContext.jsx, Shell.jsx).
 
 ## Étape 2 — Audit
-- `AUDIT.md` écrit : 8 points du §A traités (5 corrections prévues sur la page, 2 conservés comme historiques, 1 correction supplémentaire trouvée — `gitFlow` en plus de `finalFlow`).
-- §B à §I : 6 nouvelles sections à ajouter avant « Le circuit final ».
-- 3 schémas à mettre à jour (Timeline, ModelOrgChart, finalFlow/gitFlow) + 1 nouveau schéma (pilotage depuis le téléphone).
+- `AUDIT.md` écrit : 8 points traités (5 corrections, 2 conservés historiques, 1 correction supplémentaire — `gitFlow`).
+
+## Étape 3 — Plan des modifications
+- Détail complet dans `DECISIONS.md` : corrections précises (finalFlow, gitFlow, remaining, modelChart/table, metaP), 6 nouvelles sections avec leur contenu, 6 nouveaux jalons de chronologie, agrandissement de `ModelOrgChart`, nouveau schéma `phoneFlow`.
