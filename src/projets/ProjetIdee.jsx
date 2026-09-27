@@ -112,7 +112,7 @@ export default function ProjetIdee() {
       <MagazineMasthead
         backTo="/projets"
         backLabel={t.backLabel}
-        fileNo={`PROJET ${idee.id}`}
+        fileNo={`${lang === 'en' ? 'PROJECT' : 'PROJET'} ${idee.id}`}
         center={t.mastheadCenter}
         right={t.right}
         rightSub={formatDateShort(idee.date)}
