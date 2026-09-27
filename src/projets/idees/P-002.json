@@ -19,5 +19,13 @@
   },
   "type": "amelioration",
   "taille": "petite",
-  "statut": "proposee"
+  "statut": "faite",
+  "decision": {
+    "date": "2026-09-27",
+    "note": {
+      "fr": "Déjà réalisée le 27/09 par la mission workflow-grille : la routine des idées l'a proposée en doublon, faute d'avoir vérifié les missions terminées. Gardée ici comme trace.",
+      "en": "Already done on 27/09 by the workflow-grille mission: the ideas routine proposed it again because it did not check finished missions. Kept here as a record."
+    }
+  },
+  "mission": "workflow-grille"
 }
