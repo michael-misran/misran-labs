@@ -5,6 +5,9 @@ import { useLanguage } from '../shell/LanguageContext'
 import { STATUS, METHOD_STEP_COLORS } from '../lab/phases'
 import { RULES_CONTENT } from '../lab/labRulesContent'
 import { Stamp, Barcode } from '../design-system/ArchiveMarks'
+import { getIssues } from '../magazine/numeros'
+import { issueNo, formatDateShort } from '../magazine/magazineText'
+import { CategoryMark } from '../magazine/MagazineParts'
 
 // Page d'accueil du kit rétro. Ce n'est pas HomeModule recoloré : c'est une
 // composition différente — planche d'archive plutôt que grille de cards —
@@ -33,6 +36,9 @@ const COPY = {
     protocolTitle: 'PROTOCOLE — MÉTHODE DU LAB',
     protocolIntro: RULES_CONTENT.fr.intro,
     statusLegend: 'STATUTS UTILISÉS',
+    magLabel: 'MAGAZINE — DERNIER NUMÉRO',
+    magRead: 'Lire le numéro',
+    magAll: 'Tous les numéros',
     indexTitle: 'DOSSIERS',
     indexSub: 'Classés par ordre d’ouverture, pas par importance.',
     keywords: 'MOTS-CLÉS',
@@ -62,6 +68,9 @@ const COPY = {
     protocolTitle: 'PROTOCOL — LAB METHOD',
     protocolIntro: RULES_CONTENT.en.intro,
     statusLegend: 'STATUSES USED',
+    magLabel: 'MAGAZINE — LATEST ISSUE',
+    magRead: 'Read the issue',
+    magAll: 'All issues',
     indexTitle: 'FILES',
     indexSub: 'Ordered by when they were opened, not by importance.',
     keywords: 'KEYWORDS',
@@ -184,6 +193,71 @@ function ProtocolPlate({ c, lang }) {
   )
 }
 
+// Met en avant le dernier numéro du Magazine — seule partie de la home qui
+// change chaque semaine, sans intervention de code (D3 : pas de numéro
+// valide → pas de bloc).
+function LatestIssue({ c, lang, isMobile }) {
+  const issue = getIssues()[0]
+  if (!issue) return null
+
+  return (
+    <div style={{ border: 'var(--border-regular) solid var(--border)', borderTop: 'var(--border-thick) solid var(--primary)', marginBottom: 32 }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', padding: isMobile ? '10px 16px' : '10px 20px', background: 'var(--active-tint)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.1em', color: 'var(--primary)', fontWeight: 700 }}>{c.magLabel}</span>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)' }}>
+          Nº {issueNo(issue.numero)} · {formatDateShort(issue.date)}
+        </span>
+      </div>
+
+      <div style={{ display: isMobile ? 'block' : 'grid', gridTemplateColumns: isMobile ? undefined : 'minmax(0, 1.1fr) minmax(0, 1fr)' }}>
+        <div style={{ padding: isMobile ? 16 : 20, borderRight: isMobile ? 'none' : 'var(--border-thin) solid var(--border)', borderBottom: isMobile ? 'var(--border-thin) solid var(--border)' : 'none' }}>
+          <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(22px, 2.6vw, 30px)', lineHeight: 1.1, color: 'var(--text)', margin: '0 0 10px', overflowWrap: 'anywhere' }}>
+            {issue.titre[lang]}
+          </h2>
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              color: 'var(--text2)',
+              lineHeight: 1.6,
+              maxWidth: '60ch',
+              margin: 0,
+              display: '-webkit-box',
+              WebkitBoxOrient: 'vertical',
+              WebkitLineClamp: isMobile ? 5 : 4,
+              overflow: 'hidden',
+            }}
+          >
+            {issue.edito[lang]}
+          </p>
+        </div>
+
+        <ol style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+          {issue.articles.map((article, i) => (
+            <li key={i} style={{ padding: isMobile ? '10px 16px' : '10px 20px', borderTop: i === 0 ? 'none' : 'var(--border-thin) solid var(--border)' }}>
+              <div style={{ marginBottom: 6 }}>
+                <CategoryMark categorie={article.categorie} lang={lang} />
+              </div>
+              <div style={{ fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, color: 'var(--text)', lineHeight: 1.4, overflowWrap: 'anywhere' }}>
+                {article.titre[lang]}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, padding: isMobile ? '12px 16px' : '12px 20px', borderTop: 'var(--border-thin) solid var(--border)' }}>
+        <Link to={`/magazine/${issue.date}`} style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}>
+          {c.magRead} →
+        </Link>
+        <Link to="/magazine" style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)', textDecoration: 'none' }}>
+          {c.magAll} →
+        </Link>
+      </div>
+    </div>
+  )
+}
+
 function FileEntry({ project, index, c, lang }) {
   const { title, summary, tags } = pt(project, lang)
 
@@ -301,6 +375,8 @@ export default function ArchiveHome() {
 
           <ProtocolPlate c={c} lang={lang} />
         </div>
+
+        <LatestIssue c={c} lang={lang} isMobile={isMobile} />
 
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 16, marginBottom: 14, flexWrap: 'wrap' }}>
           <div>
