@@ -11,3 +11,5 @@ Outils de vérification :
 - Valeurs calculées : utilise `javascript_tool` avec `getComputedStyle(...).getPropertyValue('--nom')` et écris le résultat JSON dans le fichier demandé.
 
 Réponse finale : un verdict `OK` ou `ÉCHEC`, puis au plus 10 lignes de détails factuels.
+
+Ne fais jamais de commit Git : la session principale commite et te crédite. Si tu as lancé un serveur (preview, vite), arrête-le avant de rendre ta réponse.

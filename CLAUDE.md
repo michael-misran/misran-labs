@@ -57,6 +57,8 @@ Le travail doit pouvoir s'interrompre à tout moment (limite de quota) : fichier
 - Hors périmètre de la SPEC : ne pas le faire, le noter comme recommandation dans `RAPPORT.md`.
 - **Commandes shell simples** : une commande par appel, sans `&&`, `;`, boucle `for`, `$(…)` ni heredoc. Une commande composée n'est pas reconnue par les autorisations et déclenche une demande à laquelle personne ne répond. Commit : `git commit -m "titre" -m "corps"` plutôt qu'un heredoc. Lire des fichiers avec l'outil Read plutôt que `cat`.
 - Vérification dans le navigateur : preview « dev » (`preview_start`). S'il est indisponible, `npx vite preview` après `npm run build`.
+- **Fin de session** : arrêter tout serveur lancé pendant la session (`preview_stop`, ou arrêt du processus `vite preview`) avant de terminer.
+- **Commits** : seule la session principale commite. Les sous-agents ne commitent jamais. Le commit d'une étape porte une ligne `Co-Authored-By` par modèle ayant travaillé dessus (ex. `Claude Haiku 4.5` pour une étape déléguée au verificateur).
 
 ### Répartition des modèles
 Session principale : Sonnet (exécution du plan). Sous-agents autorisés sans demander, dans `.claude/agents/` :
