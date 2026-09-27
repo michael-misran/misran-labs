@@ -31,12 +31,12 @@ Quand Michael donne un brief (« mission : … ») :
 5. Dire à Michael que la tâche programmée `misran-labs-missions` (toutes les 2h, sur Sonnet) prendra le relais, ou qu'il peut la lancer tout de suite avec « Run now » dans Scheduled.
 
 ### Clôturer une mission (session interactive avec Michael)
-Quand Michael dit qu'une mission est terminée :
-1. Lire `RAPPORT.md`, `DECISIONS.md`, `DELEGATIONS.md` et résumer à Michael : résultat, modèles réellement utilisés, points à vérifier.
-2. Vérifier soi-même dans le navigateur ce que la session n'a pas pu vérifier.
-3. Vérifier qu'aucun secret ni donnée personnelle n'est dans les changements (le dépôt est **public**).
-4. Push de la branche : bloqué par `settings.json`, Michael lance `git push -u origin auto/<nom>` lui-même. Lui donner le lien de prévisualisation Vercel (`gh api repos/michael-misran/misran-labs/commits/auto/<nom>/statuses`).
-5. Après sa validation : ouvrir la pull request avec `gh pr create` ; Michael clique sur « Merge » (fusion interdite à Claude). Puis Michael fait `git checkout main` et `git pull`.
+**Règle par défaut (validée par Michael le 2026-09-27)** : quand Michael dit « clôture les missions » (ou qu'une mission est terminée), Claude fait toute la clôture d'un coup, sur Mac comme depuis le téléphone ; Michael n'a plus qu'à fusionner.
+1. Trouver les missions terminées : branches `auto/*` (hors `auto/magazine-*`) dont `missions/<nom>/RAPPORT.md` existe.
+2. Pour chacune : lire `RAPPORT.md`, `DECISIONS.md`, `DELEGATIONS.md` ; vérifier soi-même dans le navigateur (passer sur la branche, preview « dev », puis arrêter le serveur et revenir sur `main`) ; vérifier qu'aucun secret ni donnée personnelle n'est dans `git diff main...auto/<nom>` (le dépôt est **public**).
+3. Si tout est bon : pousser la branche (`git push -u origin auto/<nom>`, jamais `main`) et ouvrir la pull request (`gh pr create`, résumé du RAPPORT + modèles utilisés). Si un point bloque : ne pas pousser cette mission, l'expliquer à Michael.
+4. Résumer à Michael, court : par mission, le résultat, les modèles réellement utilisés, le lien de la PR. Le lien de prévisualisation Vercel est dans le commentaire Vercel de la PR (ou `gh pr checks <n>`).
+5. Michael fusionne (fusion interdite à Claude). Quand il le dit : `git checkout main`, `git pull`, `git fetch --prune`, puis supprimer les branches locales fusionnées (`git branch -d auto/<nom>`).
 
 Michael n'est pas à l'aise avec Git/GitHub : expliquer chaque étape simplement, commande à lancer dans son propre bloc.
 
