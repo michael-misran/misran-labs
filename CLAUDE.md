@@ -76,3 +76,7 @@ Ne pas déléguer ce qui est plus court à faire soi-même. Chaque délégation 
 ## Conventions
 - Commentaires en français.
 - Priorité : fidélité visuelle > qualité du code.
+
+## Magazine
+Veille IA hebdomadaire (/magazine), un numéro = un fichier JSON dans src/magazine/numeros/. Format : src/magazine/FORMAT.md. Procédure : src/magazine/REDACTION.md.
+**Exception Git validée par Michael le 2026-09-27** : la routine du Magazine pousse sa branche auto/magazine-<date> et ouvre la pull request. Les missions ne poussent jamais. Fusionner reste toujours à Michael.

@@ -4,6 +4,8 @@
       "Bash(npm run build)", "Bash(npm run lint)",
       "Bash(git status*)", "Bash(git diff*)", "Bash(git log*)",
       "Bash(git add*)", "Bash(git commit*)", "Bash(git checkout auto/*)",
+      "Bash(git checkout main)", "Bash(git checkout -b auto/*)",
+      "Bash(git pull)", "Bash(git fetch*)",
       "Bash(git branch --show-current)", "Bash(git show*)", "Bash(git rev-parse*)",
       "Bash(grep *)", "Bash(ls *)", "Bash(cat *)", "Bash(head *)", "Bash(tail *)",
       "Bash(find *)", "Bash(wc *)", "Bash(sed -n *)",
@@ -11,10 +13,17 @@
       "Agent",
       "Bash(echo *)", "Bash(npx vite preview*)", "Bash(npx eslint *)",
       "Edit(src/**)", "Write(src/**)", "Edit(missions/**)", "Write(missions/**)",
-      "mcp__Claude_Browser"
+      "mcp__Claude_Browser",
+      "WebSearch", "WebFetch",
+      "Bash(git push -u origin auto/magazine-*)",
+      "Bash(gh pr create --base main --head auto/magazine-*)"
     ],
     "deny": [
-      "Bash(git push*)", "Bash(git merge*)", "Bash(git rebase*)",
+      "Bash(git push origin main*)", "Bash(git push -u origin main*)",
+      "Bash(git push --force*)", "Bash(git push -f*)", "Bash(git push origin --delete*)",
+      "Bash(git push origin HEAD*)", "Bash(git push --all*)", "Bash(git push --mirror*)",
+      "Bash(git merge*)", "Bash(git rebase*)",
+      "Bash(gh pr merge*)", "Bash(gh api*)", "Bash(gh repo*)",
       "Bash(npm install*)", "Bash(vercel*)"
     ]
   }
