@@ -5,6 +5,8 @@ import ProjectPage from './lab/ProjectPage'
 import ProjectDemoPage from './lab/ProjectDemoPage'
 import MagazineHome from './magazine/MagazineHome'
 import MagazineIssue from './magazine/MagazineIssue'
+import ProjetsHome from './projets/ProjetsHome'
+import ProjetIdee from './projets/ProjetIdee'
 import { LanguageProvider } from './shell/LanguageContext'
 
 export default function App() {
@@ -17,6 +19,8 @@ export default function App() {
           <Route path="lab/:slug/demo/:version?" element={<ProjectDemoPage />} />
           <Route path="magazine" element={<MagazineHome />} />
           <Route path="magazine/:date" element={<MagazineIssue />} />
+          <Route path="projets" element={<ProjetsHome />} />
+          <Route path="projets/:id" element={<ProjetIdee />} />
         </Route>
       </Routes>
     </LanguageProvider>

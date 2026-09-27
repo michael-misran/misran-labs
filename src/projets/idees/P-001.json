@@ -1,0 +1,23 @@
+{
+  "id": "P-001",
+  "date": "2026-09-27",
+  "titre": {
+    "fr": "Application de prise de mandat pour agent immobilier",
+    "en": "Mandate-taking app for real-estate agents"
+  },
+  "resume": {
+    "fr": "Une application pour qu'un agent immobilier prenne un mandat de vente directement chez le client, du premier rendez-vous jusqu'à la signature.",
+    "en": "An app for a real-estate agent to take a sale mandate directly at the client's place, from the first visit through to signature."
+  },
+  "probleme": {
+    "fr": "Michael a cité cette idée le 26.09.2026 comme exemple de projet à construire en autonomie : une application de prise de mandat pour agent immobilier. Le problème réel côté agent, le marché visé et le modèle économique restent à évaluer — aucun chiffre n'est avancé ici.",
+    "en": "Michael mentioned this idea on 2026-09-26 as an example of a project to build autonomously: a mandate-taking app for real-estate agents. The actual problem on the agent's side, the target market and the business model are still to be assessed — no figures are put forward here."
+  },
+  "idee": {
+    "fr": "À définir avec Michael : périmètre exact de l'application (quelles étapes du mandat elle couvre, pour quel type d'agent), avant toute décision de développement.",
+    "en": "To be defined with Michael: the app's exact scope (which mandate steps it covers, for which kind of agent), before any development decision."
+  },
+  "type": "produit",
+  "taille": "grosse",
+  "statut": "proposee"
+}
