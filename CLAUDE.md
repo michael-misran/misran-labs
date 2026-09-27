@@ -90,3 +90,8 @@ Ne pas déléguer ce qui est plus court à faire soi-même. Chaque délégation 
 ## Magazine
 Veille IA hebdomadaire (/magazine), un numéro = un fichier JSON dans src/magazine/numeros/. Format : src/magazine/FORMAT.md. Procédure : src/magazine/REDACTION.md.
 **Exception Git validée par Michael le 2026-09-27** : la routine du Magazine pousse sa branche auto/magazine-<date> et ouvre la pull request. Les missions ne poussent jamais. Fusionner reste toujours à Michael.
+
+## Projets
+Idées numérotées P-NNN (`/projets`), une fiche publique JSON par idée dans `src/projets/idees/` (format : `src/projets/FORMAT.md`) et une note privée par idée dans `src/private/projets/` (hors Git de misran-labs, sauvegardée dans le dépôt privé). Procédure de la routine du dimanche 19 h : `src/projets/PROPOSITIONS.md`.
+**Exception Git validée par Michael le 2026-09-27** : la routine des idées pousse sa branche `auto/projets-<date>`, ouvre la pull request et sauvegarde les notes privées dans leur dépôt privé (`git -C src/private push`). Jamais `main`. Fusionner reste à Michael.
+**Décisions de Michael** (« garde 2, arrête 4 parce que… ») : prises dans la session tour de contrôle, qui met à jour `statut` et `decision` des fiches ; « on développe P-NNN » → passer la fiche en `en-cours` avec le nom de la mission, et cadrer la mission.
