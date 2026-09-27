@@ -56,9 +56,9 @@ function SidebarHeader({ lang, collapsed, isMobile, onCloseMobile, onCollapse, o
   )
 }
 
-function NavItem({ to, number, label, collapsed }) {
+function NavItem({ to, number, label, collapsed, end = true }) {
   return (
-    <NavLink to={to} end style={{ textDecoration: 'none' }}>
+    <NavLink to={to} end={end} style={{ textDecoration: 'none' }}>
       {({ isActive }) =>
         collapsed ? (
           <button
@@ -180,6 +180,9 @@ export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
       {LAB_SLUGS.map(slug => PROJECTS_BY_SLUG[slug]).filter(Boolean).map(p => (
         <NavItem key={p.slug} to={`/lab/${p.slug}`} number={dossierNo(p.slug)} label={pt(p, lang).title} collapsed={collapsed} />
       ))}
+
+      <NavSectionLabel collapsed={collapsed}>{t(lang, 'navSectionMagazine')}</NavSectionLabel>
+      <NavItem to="/magazine" number="✎" label={t(lang, 'magazineNav')} collapsed={collapsed} end={false} />
 
       <NavSectionLabel collapsed={collapsed}>{t(lang, 'navSectionPortfolio')}</NavSectionLabel>
       {PORTFOLIO_SLUGS.map(slug => PROJECTS_BY_SLUG[slug]).filter(Boolean).map(p => (

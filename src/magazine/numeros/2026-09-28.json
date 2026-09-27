@@ -1,0 +1,29 @@
+{
+  "numero": 0,
+  "date": "2026-09-28",
+  "titre": { "fr": "Présentation", "en": "Introduction" },
+  "edito": {
+    "fr": "Ce magazine est né en même temps que sa propre rédaction : chaque lundi, une routine Claude sélectionne l'actualité IA qui compte pour les designers et les développeurs, puis prépare un numéro que Michael relit avant publication. Ce numéro 0 revient sur le système qui rend ça possible.",
+    "en": "This magazine was built alongside the routine that writes it: every Monday, a Claude routine selects the AI news that matters to designers and developers, then drafts an issue that Michael reviews before it goes out. This issue 0 looks back at the system that makes that possible."
+  },
+  "articles": [
+    {
+      "titre": {
+        "fr": "Comment ce site se construit tout seul (ou presque)",
+        "en": "How this site builds itself (almost)"
+      },
+      "resume": {
+        "fr": "Michael a mis en place un système de missions autonomes sur ce site : un brief cadré en session interactive (SPEC, plan d'étapes, un modèle Claude par étape) est ensuite exécuté seul par une tâche programmée, qui explore le code, écrit le code, se vérifie elle-même dans le navigateur, et propose une pull request. Chaque décision prise sans lui est journalisée dans un fichier dédié, et rien n'est jamais poussé ou fusionné sans sa validation explicite. La fiche « Utilisation de l'IA » du Lab documente l'ensemble : chronologie, circuit d'une mission, et répartition des modèles (Haiku pour l'exploration et la vérification, Sonnet pour l'exécution, Opus pour le cadrage et les décisions difficiles).",
+        "en": "Michael set up a system of autonomous missions on this site: a brief scoped in an interactive session (a spec, a step-by-step plan, one Claude model per step) is then run on its own by a scheduled task, which explores the code, writes the code, checks itself in the browser, and opens a pull request. Every decision made without him is logged in a dedicated file, and nothing is ever pushed or merged without his explicit approval. The Lab's \"How I use AI\" write-up documents all of it: a timeline, the flow of a mission, and how models are split across steps (Haiku for exploration and checks, Sonnet for execution, Opus for scoping and hard calls)."
+      },
+      "pourquoi": {
+        "fr": "Pour un designer ou un développeur qui envisage de déléguer du travail réel à des agents IA, c'est un exemple concret de garde-fous qui tiennent : traçabilité de chaque décision, séparation claire entre ce que l'agent peut faire seul et ce qui reste soumis à validation humaine, et documentation vivante du système par lui-même — ce magazine en est d'ailleurs la suite directe.",
+        "en": "For a designer or developer weighing whether to hand real work to AI agents, this is a concrete example of guardrails that hold up: every decision is traceable, there is a clear line between what the agent can do alone and what stays subject to human approval, and the system documents itself as it runs — this magazine is in fact its direct continuation."
+      },
+      "categorie": "workflow",
+      "sources": [
+        { "titre": "Utilisation de l'IA — Misran Labs", "url": "https://misran-labs.vercel.app/lab/utilisation-ia" }
+      ]
+    }
+  ]
+}
