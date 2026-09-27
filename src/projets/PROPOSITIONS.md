@@ -16,6 +16,7 @@ Document lu par la routine « misran-labs — idées du dimanche » à chaque ex
 3. Le profil de Michael : développeur fullstack (12 ans), designer UX/UI (8 ans), design systems, workflow IA Figma ↔ Claude Code, missions autonomes (voir `CLAUDE.md` et la page `src/lab/projects/UtilisationIA.jsx`). Ses projets existants : la liste `PROJECTS` de `src/lab/projects.js`.
 4. Les 2 derniers numéros du Magazine (`src/magazine/numeros/`) : une nouveauté IA est souvent une opportunité.
 5. Les `RAPPORT.md` des missions récentes (`missions/*/RAPPORT.md`) : les recommandations « hors périmètre » sont des idées d'amélioration toutes trouvées.
+6. **Avant de proposer une amélioration, vérifier qu'elle n'est pas déjà faite** : lire la liste des dossiers `missions/` et le `SPEC.md` de chaque mission plus récente que la recommandation, ainsi que les branches `auto/*` en cours (`git for-each-ref refs/heads/auto/`). Une recommandation d'un ancien rapport a souvent été réalisée depuis (cas du 2026-09-27 : l'idée P-002 avait été faite le jour même par la mission `workflow-grille`).
 
 ## 2. Recherche (sous-agent `veilleur`, Haiku)
 Lui demander des **signaux concrets de la semaine** en lien avec le profil de Michael : besoins exprimés (forums, Hacker News, Reddit, Product Hunt, annonces d'outils), outils qui manquent, nouveautés IA qui ouvrent un usage. Chaque signal avec son URL et sa date.
