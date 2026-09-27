@@ -1,8 +1,8 @@
 # Mission projets — PROGRESS
 
-**Statut :** étape 4 faite
-**Prochaine action :** étape 5 (vérification des critères 1 à 10) — **attention** : cette session (tâche programmée) n'a pas d'accès navigateur ; les contrôles visuels (rendu FR/EN, filtres, 375 px, absence d'erreur console) n'ont pas pu être faits ici et restent à faire en session interactive avant clôture.
-**Blocages :** aucun (voir note ci-dessus pour l'étape 5)
+**Statut :** mission terminée (RAPPORT.md écrit) — **en attente de clôture en session interactive**
+**Prochaine action :** aucune pour cette routine ; la session de clôture (avec navigateur) doit faire les contrôles visuels listés dans RAPPORT.md avant tout push
+**Blocages :** aucun pour les étapes du plan ; accès navigateur indisponible dans les sessions programmées (structurel, voir CLAUDE.md)
 
 ## Étape 3 (données)
 `src/projets/projetsText.js` (statuts/types/tailles + textes fr/en), `src/projets/idees.js` (validation stricte D1–D2 : clés inconnues rejetées, textes bilingues, decision/mission obligatoires selon statut), `src/projets/idees/P-001.json` (idée réelle citée par Michael, statut `proposee`, aucun chiffre inventé), `src/projets/FORMAT.md` (D8), `src/private/projets/P-001.md` (gabarit D3, hors Git, sections « à évaluer »).
