@@ -4,6 +4,11 @@
       "Bash(npm run build)", "Bash(npm run lint)",
       "Bash(git status*)", "Bash(git diff*)", "Bash(git log*)",
       "Bash(git add*)", "Bash(git commit*)", "Bash(git checkout auto/*)",
+      "Bash(git branch --show-current)", "Bash(git show*)", "Bash(git rev-parse*)",
+      "Bash(grep *)", "Bash(ls *)", "Bash(cat *)", "Bash(head *)", "Bash(tail *)",
+      "Bash(find *)", "Bash(wc *)", "Bash(sed -n *)",
+      "Bash(node missions/*)",
+      "Agent",
       "Edit(src/**)", "Edit(missions/**)", "Write(missions/**)",
       "mcp__Claude_Browser"
     ],
