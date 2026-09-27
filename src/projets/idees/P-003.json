@@ -1,0 +1,23 @@
+{
+  "id": "P-003",
+  "date": "2026-09-27",
+  "titre": {
+    "fr": "Un kit de missions autonomes réutilisable pour d'autres projets",
+    "en": "A reusable autonomous-missions kit for other projects"
+  },
+  "resume": {
+    "fr": "Extraire la partie générique du système de missions autonomes de misran-labs — règles, agents, conventions de suivi — en un modèle de dépôt réutilisable sur n'importe quel projet, publié et documenté.",
+    "en": "Extract the generic part of misran-labs' autonomous-missions system — rules, agents, tracking conventions — into a repository template reusable on any project, published and documented."
+  },
+  "probleme": {
+    "fr": "Michael a mis en place un système éprouvé de délégation de tâches de développement à des agents Claude, avec traçabilité de chaque décision et validation humaine obligatoire avant toute fusion. Deux annonces récentes vont dans ce sens : Ando (levée de fonds annoncée le 24 septembre 2026 pour une messagerie d'équipe où les agents IA participent comme des coéquipiers) et Dataiku Agent Management (produit d'inventaire et de gouvernance des agents IA en entreprise, disponible en octobre 2026) montrent un intérêt de marché croissant pour la coordination et la gouvernance des agents IA — mais restent des outils d'entreprise, pas des modèles simples pour un développeur solo.",
+    "en": "Michael has built a proven system for delegating development tasks to Claude agents, with every decision traced and human approval required before any merge. Two recent announcements point the same way: Ando (a funding round announced on September 24, 2026, for team messaging where AI agents take part as teammates) and Dataiku Agent Management (an enterprise AI-agent inventory and governance product, generally available in October 2026) show growing market interest in coordinating and governing AI agents — but they remain enterprise tools, not simple templates for a solo developer."
+  },
+  "idee": {
+    "fr": "Extraire les fichiers génériques du système actuel (règles, agents .claude/agents/, procédure de cadrage et de clôture) dans un dépôt modèle public, avec une documentation d'installation sur un projet quelconque, comme base d'un contenu (article, guide) ou d'un accompagnement pour d'autres développeurs solo.",
+    "en": "Extract the current system's generic files (rules, .claude/agents/ agents, the scoping and closing procedure) into a public template repository, with install documentation for any project, as the basis for content (an article, a guide) or support offered to other solo developers."
+  },
+  "type": "outil",
+  "taille": "moyenne",
+  "statut": "proposee"
+}

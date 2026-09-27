@@ -1,0 +1,23 @@
+{
+  "id": "P-004",
+  "date": "2026-09-27",
+  "titre": {
+    "fr": "Audit de design system assisté par IA, en service ou petit outil",
+    "en": "AI-assisted design system audit, as a service or a small tool"
+  },
+  "resume": {
+    "fr": "Proposer un audit rapide d'un design system existant (cohérence des tokens, dette visuelle) sous forme de service ou de petit outil, en s'appuyant sur l'expérience de Michael sur ses propres tokens et sur l'intérêt actuel autour des design systems et des outils IA pour designers et développeurs.",
+    "en": "Offer a quick audit of an existing design system (token consistency, visual debt) as a service or a small tool, drawing on Michael's own experience with his tokens and on the current interest around design systems and AI tools for designers and developers."
+  },
+  "probleme": {
+    "fr": "Beaucoup de petites équipes ont un design system partiel ou incohérent (couleurs codées en dur, tokens dupliqués, absence de documentation) sans avoir le temps ou l'expertise pour le nettoyer. Designeer, une plateforme de curation lancée sur Product Hunt en septembre 2026 (classée 6e du jour, 147 votes) qui réunit design systems, bibliothèques de composants et outils IA pour designers et développeurs, confirme un intérêt actif pour ce type d'outillage — sans donner de chiffres de marché précis.",
+    "en": "Many small teams have a partial or inconsistent design system (hardcoded colors, duplicated tokens, no documentation) without the time or expertise to clean it up. Designeer, a curation platform launched on Product Hunt in September 2026 (ranked 6th for the day, 147 votes) that gathers design systems, component libraries, and AI tools for designers and developers, confirms active interest in this kind of tooling — without giving precise market figures."
+  },
+  "idee": {
+    "fr": "Un audit structuré (grille de vérification inspirée d'une mission de nettoyage des tokens déjà menée sur ce site) livré en service ponctuel, ou un petit outil qui scanne un fichier CSS/tokens public et génère un rapport des incohérences trouvées, utilisable comme aimant à prospects sur le portfolio.",
+    "en": "A structured audit (a checklist inspired by a token-cleanup mission already run on this site) delivered as a one-off service, or a small tool that scans a public CSS/tokens file and generates a report of the inconsistencies found, usable as a lead magnet on the portfolio."
+  },
+  "type": "service",
+  "taille": "moyenne",
+  "statut": "proposee"
+}

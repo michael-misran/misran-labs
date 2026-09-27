@@ -1,0 +1,23 @@
+{
+  "id": "P-005",
+  "date": "2026-09-27",
+  "titre": {
+    "fr": "Suivi et relance automatique de leads pour agents immobiliers solo",
+    "en": "Lead tracking and automatic follow-up for solo real-estate agents"
+  },
+  "resume": {
+    "fr": "Un outil léger pour qu'un agent immobilier indépendant centralise ses prospects et automatise leurs relances, sans les fonctionnalités lourdes des CRM immobiliers pensés pour des agences.",
+    "en": "A lightweight tool for an independent real-estate agent to centralize prospects and automate follow-ups, without the heavy features of agency-oriented real-estate CRMs."
+  },
+  "probleme": {
+    "fr": "Un article spécialisé micro-SaaS (blog.mean.ceo, consulté le 27 septembre 2026) cite l'immobilier comme un secteur sous les radars pour des outils solo — gestion locative, communication propriétaire-locataire, CRM spécialisés pour petits agents — sans donner de chiffres de marché précis. C'est un problème distinct de la fiche P-001 (application de prise de mandat au domicile du client) : celui-ci porte sur le suivi des prospects avant la prise de mandat, pas sur la signature elle-même.",
+    "en": "A micro-SaaS-focused blog post (blog.mean.ceo, accessed September 27, 2026) names real estate as an under-the-radar sector for solo tools — rental management, landlord-tenant communication, CRMs tailored to small agents — without giving precise market figures. This is a distinct problem from idea P-001 (an app for taking a mandate at the client's home): this one is about tracking prospects before the mandate stage, not the signature itself."
+  },
+  "idee": {
+    "fr": "Un outil simple où l'agent enregistre ses prospects avec leur statut, et programme des relances automatiques (email) et des rappels, pensé pour un agent solo plutôt que pour une agence.",
+    "en": "A simple tool where the agent logs prospects with their status, and schedules automatic follow-ups (email) and reminders, designed for a solo agent rather than an agency."
+  },
+  "type": "produit",
+  "taille": "moyenne",
+  "statut": "proposee"
+}
