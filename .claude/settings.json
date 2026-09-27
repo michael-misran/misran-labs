@@ -9,7 +9,8 @@
       "Bash(find *)", "Bash(wc *)", "Bash(sed -n *)",
       "Bash(node missions/*)",
       "Agent",
-      "Edit(src/**)", "Edit(missions/**)", "Write(missions/**)",
+      "Bash(echo *)", "Bash(npx vite preview*)", "Bash(npx eslint *)",
+      "Edit(src/**)", "Write(src/**)", "Edit(missions/**)", "Write(missions/**)",
       "mcp__Claude_Browser"
     ],
     "deny": [

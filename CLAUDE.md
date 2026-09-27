@@ -55,6 +55,8 @@ Le travail doit pouvoir s'interrompre à tout moment (limite de quota) : fichier
 - Pas de `npm install`, pas de nouvelle dépendance.
 - Pas de secrets, pas d'appels à des services externes.
 - Hors périmètre de la SPEC : ne pas le faire, le noter comme recommandation dans `RAPPORT.md`.
+- **Commandes shell simples** : une commande par appel, sans `&&`, `;`, boucle `for`, `$(…)` ni heredoc. Une commande composée n'est pas reconnue par les autorisations et déclenche une demande à laquelle personne ne répond. Commit : `git commit -m "titre" -m "corps"` plutôt qu'un heredoc. Lire des fichiers avec l'outil Read plutôt que `cat`.
+- Vérification dans le navigateur : preview « dev » (`preview_start`). S'il est indisponible, `npx vite preview` après `npm run build`.
 
 ### Répartition des modèles
 Session principale : Sonnet (exécution du plan). Sous-agents autorisés sans demander, dans `.claude/agents/` :
