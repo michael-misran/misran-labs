@@ -45,7 +45,16 @@ Lui transmettre la fenêtre de dates et la liste de sources ci-dessous. Il renvo
 - Chaque article : `resume` en 3-5 phrases, `pourquoi` en 1-3 phrases orientées usage.
 - **FR d'abord, puis EN** : traduction naturelle, pas mot à mot. Noms de produits inchangés.
 
-## 5. Contrôles
+## 5. Relecture factuelle (sous-agent `relecteur`, Sonnet) — obligatoire
+Pourquoi : le numéro 1 (test du 2026-09-27) contenait trois erreurs typiques d'un résumé IA — des chiffres vrais mais mal reliés (baisse du coût total présentée comme baisse du prix unitaire, crédits d'essai attribués à deux produits au lieu d'un, « évaluations internes » au lieu de benchmarks publics).
+
+1. Une fois le fichier JSON écrit, lancer le sous-agent `relecteur` avec son chemin. Il rouvre chaque source et renvoie un verdict par affirmation : `CONFIRMÉ`, `INEXACT` ou `INTROUVABLE`.
+2. Corriger chaque `INEXACT` avec la formulation donnée par la source, en FR **et** en EN.
+3. Supprimer chaque affirmation `INTROUVABLE`. Si un article perd son information principale, le retirer du numéro (et si moins de 2 articles restent : pas de numéro, cf. §6).
+4. S'il y a eu plus de 3 corrections, relancer le `relecteur` une seconde fois sur le fichier corrigé.
+5. Garder le bilan (N affirmations vérifiées, X corrigées, Y retirées) pour la description de la pull request.
+
+## 5 bis. Contrôles
 1. `npm run build` passe.
 2. Dans le navigateur (preview « dev » : `preview_start`, sinon `npx vite preview` après le build) : `/magazine` liste le nouveau numéro, `/magazine/<date>` s'affiche en FR et en EN, **aucun message `[magazine]` ni erreur dans la console**. Arrêter le serveur ensuite.
 3. Relire le JSON une dernière fois : aucune affirmation sans source, aucune citation longue.
@@ -55,7 +64,7 @@ Lui transmettre la fenêtre de dates et la liste de sources ci-dessous. Il renvo
 2. Créer la branche : `git checkout -b auto/magazine-<date>`.
 3. Ajouter **uniquement** le fichier `src/magazine/numeros/<date>.json`. Commit : `git commit -m "Magazine issue <numero> (<date>)" -m "<résumé en une ligne>" -m "Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>" -m "Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>"`.
 4. Pousser la branche : `git push -u origin auto/magazine-<date>` (seul push autorisé ; jamais `main`, jamais `--force`).
-5. Ouvrir la pull request : `gh pr create --base main --head auto/magazine-<date> --title "Magazine Nº <numero> — <titre fr>" --body "<liste des articles avec leurs sources>"`, avec en dernière ligne `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
+5. Ouvrir la pull request : `gh pr create --base main --head auto/magazine-<date> --title "Magazine Nº <numero> — <titre fr>" --body "<liste des articles avec leurs sources, puis le bilan de la relecture factuelle (§5)>"`, avec en dernière ligne `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
 6. **Ne jamais fusionner.** Michael relit la prévisualisation Vercel et fusionne.
 7. Revenir sur `main` : `git checkout main`.
 
