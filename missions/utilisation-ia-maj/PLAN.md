@@ -9,5 +9,5 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 3. Plan des modifications : emplacement et titre des nouvelles sections, jalons ajoutés à la chronologie, données du schéma « pilotage depuis le téléphone », passages à réécrire. Écrit dans DECISIONS.md → session principale (Sonnet) ; faire appel à `expert` (Opus) seulement si la structure de la page pose un vrai problème
 - [x] 4. Rédaction FR : corrections (§A) et nouvelles sections (D2–D5) → session principale (Sonnet)
 - [x] 5. Traduction EN → session principale (Sonnet)
-- [ ] 6. Vérification des critères 1 à 9 → verificateur (Haiku) ; s'il n'a pas accès au navigateur, la session principale fait les contrôles visuels et le note
+- [x] 6. Vérification des critères 1 à 9 → verificateur (Haiku) ; s'il n'a pas accès au navigateur, la session principale fait les contrôles visuels et le note
 - [ ] 7. Corrections éventuelles, puis RAPPORT.md (résumé de l'audit en tête) → session principale (Sonnet)
