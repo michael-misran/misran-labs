@@ -1,0 +1,23 @@
+{
+  "id": "P-002",
+  "date": "2026-09-27",
+  "titre": {
+    "fr": "Diagrammes compacts sur la page Workflow",
+    "en": "Compact diagrams on the Workflow page"
+  },
+  "resume": {
+    "fr": "Appliquer aux deux schémas de la page Workflow la mise en page compacte en grille déjà utilisée sur la page Utilisation de l'IA, une amélioration repérée mais volontairement laissée de côté par une mission précédente.",
+    "en": "Apply to the Workflow page's two diagrams the compact grid layout already used on the How I Use AI page — an improvement spotted but deliberately left aside by an earlier mission."
+  },
+  "probleme": {
+    "fr": "Les deux schémas de WorkflowSolo.jsx (runFlow, unifyFlow) sont toujours en disposition verticale et occupent une grande hauteur d'écran (environ 916 et 1000 pixels), comme l'étaient les schémas de la page Utilisation de l'IA avant leur passage en grille. La mission circuits-colonnes (26 septembre 2026) a traité ce cas de figure sur une autre page et a explicitement noté celui-ci comme une amélioration possible, hors de son périmètre.",
+    "en": "The two diagrams in WorkflowSolo.jsx (runFlow, unifyFlow) are still laid out vertically and take up a lot of screen height (about 916 and 1000 pixels), the way the How I Use AI page's diagrams did before they were switched to a grid. The circuits-colonnes mission (September 26, 2026) handled that case on a different page and explicitly flagged this one as a possible improvement, outside its own scope."
+  },
+  "idee": {
+    "fr": "Réutiliser le mode grille du composant de schémas, déjà généralisé pour n'importe quel nombre de colonnes, sur les deux schémas de la page Workflow, avec le même comportement adaptatif (grille sur grand écran, vertical sur mobile).",
+    "en": "Reuse the diagram component's grid mode — already generalized for any number of columns — on the Workflow page's two diagrams, with the same responsive behavior (grid on desktop, vertical on mobile)."
+  },
+  "type": "amelioration",
+  "taille": "petite",
+  "statut": "proposee"
+}
