@@ -1,8 +1,11 @@
 # Mission projets — PROGRESS
 
-**Statut :** prête à démarrer
-**Prochaine action :** étape 2 (direction visuelle, expert Opus)
+**Statut :** étape 2 faite
+**Prochaine action :** étape 3 (données : idees.js, FORMAT.md, P-001.json, note privée)
 **Blocages :** aucun
+
+## Étape 2 (direction visuelle)
+Direction complète rédigée par l'expert (Opus) dans DECISIONS.md (§ Direction visuelle — étape 2, A à G). Tokens utilisés vérifiés présents dans `src/styles/tokens.css` (`--cyan`, `--violet`, `--primary`, `--error`, `--text2`, `--border-thick`, `--hover-tint`, `--radius-xs`). À suivre telle quelle aux étapes 3-4.
 
 ## Référence état initial (étape 1)
 - `npm run build` : OK
