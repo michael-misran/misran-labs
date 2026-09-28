@@ -6,3 +6,4 @@ Décisions prises sans Michael. Les décisions d'architecture sont dans SPEC.md.
 |---|---|---|---|
 | 2026-09-28 | 0 | La mission construit l'outil seul, pas le service | Le service demande de la prospection par Michael, impossible en mission autonome |
 | 2026-09-28 | 0 | Appel à l'action vers LinkedIn, sans prix | Pas de route `/contact` ; lien LinkedIn déjà public ; économie réservée à la note privée |
+| 2026-09-28 | 0 | Recadrage : JSON (DTCG + Tokens Studio) obligatoire, GitHub et grille complète en missions 2 et 3 | Demande de Michael ; choix validés : dépôts publics, dans le Lab, sans IA |
