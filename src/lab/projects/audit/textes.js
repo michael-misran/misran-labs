@@ -66,7 +66,67 @@ const FR = {
   },
 }
 
-// Anglais : à traduire (étape 5 de la mission). En attendant, mêmes textes que le français.
-const EN = { ...FR }
+const EN = {
+  privacy:
+    "Files pasted or uploaded never leave your browser. GitHub mode reads public files directly from GitHub without authentication and only sends the repository address. No other requests are made.",
+
+  gh: {
+    title: 'FROM GITHUB',
+    help: 'Public repositories only. Accepted formats: https://github.com/owner/repo, owner/repo, or an address with /tree/branch/folder (branches with "/" in the name are not supported).',
+    addressLabel: 'PUBLIC REPOSITORY ADDRESS',
+    placeholder: 'https://github.com/owner/repo',
+    explore: 'Explore',
+    exploring: 'Exploring…',
+    trySite: 'Try with this site',
+    repo: 'REPOSITORY',
+    branch: 'BRANCH',
+    folder: 'FOLDER',
+    size: (ko) => `${ko} KB`,
+    tokensTitle: 'TOKEN FILES FOUND',
+    tokensFound: (n, total) =>
+      total > n ? `${pluriel(n, 'file')} displayed out of ${total}: the first 20, alphabetically.` : pluriel(n, 'file') + ' to analyze.',
+    noTokens:
+      'No token files detected (.json files with "token" in the path, or .css / .scss files named token, variables, theme or vars). You can still measure code coverage.',
+    sample: (n, total) => `Code sample: ${pluriel(n, 'file')} out of ${total} eligible.`,
+    noCode: 'No code files found: coverage cannot be measured.',
+    analyze: 'Analyze this repository',
+    progress: (faits, total) => `${faits} / ${total} files`,
+    // Text for a warning attached to the file (the page already displays its name before it).
+    unreadable: (detail) => `file not read (${detail.replace(/\.$/, '')}).`,
+    nothingToRead: 'Nothing to analyze: check at least one token file, or choose a repository with code.',
+    noTokensRepo:
+      "No token files were read in this repository: there are no tokens to audit. Code coverage is measured below.",
+  },
+
+  cov: {
+    title: 'CODE COVERAGE',
+    source: (depot, branche, n, total) =>
+      `${depot} · ${branche} · ${pluriel(n, 'code file')} analyzed out of ${total} eligible`,
+    rate: 'COVERAGE',
+    rateNote: 'style values passed through a token',
+    usages: 'TOKEN USAGES',
+    usagesNote: 'var(--name)',
+    hard: 'HARD-CODED VALUES',
+    hardNote: 'literal colors and px',
+    noValues: "No style values detected in the sample: coverage cannot be calculated.",
+    methodTitle: "HOW IT'S MEASURED",
+    method:
+      "A token usage is a var(--name). A hard-coded value is a literal color (#hex, rgb(), hsl()) or a px length other than 0 and 1px, outside of a var(…) and outside comments. In JavaScript, TypeScript, Vue and Svelte files, only character strings and <style> blocks are read; in CSS files, only declaration values. This is an estimate on a sample of up to 60 files, not an exact measurement: it does not see tokens used in another form (utility classes, JavaScript themes, rem or em units).",
+    byFileTitle: 'FILES WITH THE MOST HARD-CODED VALUES',
+    repeatedTitle: 'MOST REPEATED HARD-CODED VALUES',
+    alreadyTitle: 'VALUES THAT ALREADY HAVE A TOKEN',
+    alreadyHint: "These hard-coded values are identical to an existing token's value: they could use it.",
+    empty: 'None.',
+    times: (n) => `× ${n}`,
+    inFiles: (n) => pluriel(n, 'file'),
+    others: (n) => `and ${n} other${n > 1 ? 's' : ''}`,
+    hardShort: (n) => `${n} hard-coded`,
+    tokensShort: (n) => pluriel(n, 'token'),
+    reportTitle: 'Code coverage',
+    reportRate: 'Coverage',
+    reportUsages: 'Token usages',
+    reportHard: 'Hard-coded values',
+  },
+}
 
 export const TEXTES = { fr: FR, en: EN }

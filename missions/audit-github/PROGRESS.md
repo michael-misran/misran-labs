@@ -1,7 +1,7 @@
 # Mission audit-github — PROGRESS
 
-**Statut :** en cours — étapes 0 à 4 terminées (moteur + interface FR)
-**Prochaine action :** étape 5 — traduction EN de `src/lab/projects/audit/textes.js` par un sous-agent Haiku (au premier plan, `run_in_background: false`)
+**Statut :** en cours — étapes 0 à 5 terminées (moteur + interface FR/EN, pas encore testée dans le navigateur)
+**Prochaine action :** étape 6 — build, lint, scripts, grep secrets/chiffres (session principale), puis navigateur via `verificateur` (Haiku, premier plan)
 **Blocages :** aucun
 
 ## Fait
@@ -10,9 +10,7 @@
 - Étape 3 : `src/lab/audit/couverture.js`, option `usagesExternes` dans `analyse`, partie 2 de `verifier-github.mjs` (les deux scripts passent). Essai local sur le code du site : 98 fichiers, taux 73 %, R6 de 55 à 4 constats.
 - Étape 4 : interface. `src/lab/projects/audit/` : `ui.jsx` (Bouton, Tuile), `styles.js`, `textes.js` (FR + EN provisoire = copie du FR), `SourceGithub.jsx`, `Couverture.jsx` ; `AuditTokens.jsx` intègre le bloc GitHub (en tête de la zone d'entrée), la section Couverture, le rapport copié complété. `npm run build` OK ; `npx eslint src/lab` : seules 2 erreurs déjà présentes (CaseFile, GameDemo). Pas encore testé dans le navigateur (étape 6).
 
-## Pour l'étape 5
-- Seul fichier à traduire : `src/lab/projects/audit/textes.js`. Remplacer `const EN = { ...FR }` par un objet EN complet, **mêmes clés**, mêmes fonctions (`(n) => …`, `pluriel`), mêmes formes (ne pas changer les clés ni les signatures). Ne rien modifier d'autre.
-- Vérifier après : `npx eslint src/lab/projects/audit`, `npm run build`, et que EN n'a plus aucune phrase française.
+- Étape 5 : EN traduit par Haiku dans `textes.js`, relu (correction « Ko » → « KB »), eslint propre.
 
 ## Pour l'étape 6 (navigateur)
 - `npm run build` puis `npx vite preview` (port 4173) ; page `/lab/audit-tokens` (vérifier l'URL exacte dans `src/lab/projects.js` ou la sidebar).
