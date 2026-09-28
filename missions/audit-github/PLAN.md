@@ -4,7 +4,7 @@ Cocher `[x]` chaque étape terminée, puis mettre à jour PROGRESS.md et commite
 Chaque étape indique l'agent et le modèle à utiliser.
 
 - [x] 0. Cadrage : SPEC, PLAN, fichiers de suivi → session principale (Opus)
-- [ ] 1. État initial : build, lint, `node missions/audit-tokens/verifier-analyse.mjs` notés dans PROGRESS.md → session principale (Sonnet)
+- [x] 1. État initial : build, lint, `node missions/audit-tokens/verifier-analyse.mjs` notés dans PROGRESS.md → session principale (Sonnet)
 - [ ] 2. `github.js` (D2, D3, D4, D5) + fixtures + première partie de `verifier-github.mjs` (adresses, repérage, erreurs, fetch simulé). Le script passe → session principale (Sonnet)
 - [ ] 3. `couverture.js` (D6) + option `usagesExternes` dans `analyse` + suite de `verifier-github.mjs` ; les deux scripts passent → session principale (Sonnet)
 - [ ] 4. Interface : `SourceGithub.jsx`, `Couverture.jsx`, intégration dans `AuditTokens.jsx` (D7, D8), textes FR, structure EN prête ; rapport copié complété → session principale (Sonnet)
