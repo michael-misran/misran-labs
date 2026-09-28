@@ -10,3 +10,5 @@
 | 2026-09-28 | 4 | session principale | Sonnet | D5 appliqué directement (20 fichiers), au lieu d'un sous-agent Haiku (lancement peu fiable) | Fait |
 | 2026-09-28 | 5 | session principale | Sonnet | Lint à 0 erreur (aucun sous-agent) | Fait |
 | 2026-09-28 | 6 | session principale | Sonnet | Gouvernance D8 faite directement (4 fichiers), au lieu d'un sous-agent Haiku | Fait |
+| 2026-09-28 | 7 | session principale | Sonnet | Vérification navigateur directe (snapshot, A/B des styles sur 6 pages, Tokens FR/EN, console, menu mobile, langue) au lieu du verificateur (Haiku) | Fait |
+| 2026-09-28 | 8 | session principale | Sonnet | AVANT-APRES.md, RAPPORT.md | Fait |
