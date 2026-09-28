@@ -172,14 +172,15 @@ function Pre({ isMobile, children }) {
 }
 
 const TREE_PROJECT_FR = `misran-labs/
-├── CLAUDE.md                      règles du projet (missions, Git, modèles, lancement, clôture)
+├── CLAUDE.md                      règles du projet, court (résumé + interdits)
 ├── .claude/
 │   ├── settings.json              autorisations + interdits (push, merge, rebase, npm install, vercel)
 │   └── agents/
 │       ├── explorateur.md         Haiku — recherche en lecture seule
-│       ├── verificateur.md        Haiku — build, lint, navigateur
+│       ├── verificateur.md        Haiku — navigateur
 │       └── expert.md              Opus — dernier recours
 └── missions/
+    ├── README.md                  procédures : lancer, reprendre, clôturer, modèles
     └── tokens-fix/
         ├── SPEC.md                objectif, 9 décisions d'architecture (D1–D9), 6 critères
         ├── PLAN.md                8 étapes à cocher
@@ -189,14 +190,15 @@ const TREE_PROJECT_FR = `misran-labs/
         └── RAPPORT.md             écrit à la fin`
 
 const TREE_PROJECT_EN = `misran-labs/
-├── CLAUDE.md                      project rules (missions, Git, models, launch, wrap-up)
+├── CLAUDE.md                      project rules, short (summary + prohibitions)
 ├── .claude/
 │   ├── settings.json              allow list + deny list (push, merge, rebase, npm install, vercel)
 │   └── agents/
 │       ├── explorateur.md         Haiku — read-only search
-│       ├── verificateur.md        Haiku — build, lint, browser
+│       ├── verificateur.md        Haiku — browser
 │       └── expert.md              Opus — last resort
 └── missions/
+    ├── README.md                  procedures: launch, resume, wrap up, models
     └── tokens-fix/
         ├── SPEC.md                goal, 9 architecture decisions (D1–D9), 6 criteria
         ├── PLAN.md                8 steps to check off
@@ -256,7 +258,10 @@ const CONTENT = {
       { date: '12', label: "La file d'attente de missions" },
       { date: '13', label: 'Piloter depuis le téléphone' },
       { date: '14', label: 'Le compromis sur le push de main' },
-      { date: '15', label: 'Cette mise à jour (mission 7)' },
+      { date: '15', label: 'Mise à jour de la page (mission 7)' },
+      { date: '16', label: 'Un deuxième avis : Gemini' },
+      { date: '17', label: 'Économiser les tokens' },
+      { date: '18', label: 'Cette mise à jour (mission 8)' },
     ],
 
     startTitle: "Point de départ : l'IA locale",
@@ -321,8 +326,8 @@ const CONTENT = {
       { label: '1 · Travail', sublabel: 'Plan coché, PROGRESS.md et un commit après chaque étape : tout est sur le disque' },
       { label: '2 · Quota épuisé', sublabel: "Limite glissante de 5 heures de l'abonnement Pro" },
       { label: '3 · Arrêt', sublabel: "La session s'arrête et ne peut pas se relancer seule" },
-      { label: '4 · Relance 2 h plus tard', sublabel: "La tâche programmée repart de zéro ; si rien à faire, elle s'arrête en quelques secondes" },
-      { label: '5 · Lecture de PROGRESS.md', sublabel: 'Et des autres fichiers de la mission : la mémoire entre deux reprises' },
+      { label: '4 · Relance 2 h plus tard', sublabel: "La tâche programmée repart de zéro ; si rien à faire, elle se met en pause jusqu'à la prochaine mission" },
+      { label: '5 · Lecture de PROGRESS.md', sublabel: 'Avec SPEC.md et PLAN.md seulement : la mémoire entre deux reprises' },
       { label: '6 · Reprise ↺', sublabel: "Là où le plan coché s'est arrêté, puis retour à l'étape 1" },
     ],
     noCostP: "Sans surcoût sur l'abonnement Pro, tant que l'usage supplémentaire payant n'est pas activé : le travail est juste plus lent (plusieurs fenêtres de quota), et partage le quota du travail quotidien → idéal la nuit.",
@@ -347,7 +352,7 @@ const CONTENT = {
       top: { label: 'OPUS · ARCHITECTE', sublabel: 'Cadrage, spec, plan : une fois, avec moi' },
       mid: { label: 'SONNET · CHEF DE PROJET', sublabel: 'Toutes les exécutions programmées ; choisit les sous-agents' },
       haiku1: { label: 'HAIKU', sublabel: 'explorateur : recherche' },
-      haiku2: { label: 'HAIKU', sublabel: 'verificateur : build, lint, navigateur' },
+      haiku2: { label: 'HAIKU', sublabel: 'verificateur : contrôles dans le navigateur' },
       expert: { label: 'OPUS', sublabel: 'expert : étape délicate ou 2 échecs' },
       veilleur: { label: 'HAIKU', sublabel: 'veilleur : veille web pour le Magazine' },
       relecteur: { label: 'SONNET', sublabel: 'relecteur : vérification factuelle du Magazine' },
@@ -356,7 +361,8 @@ const CONTENT = {
     modelsTableRows: [
       ['Architecte : cadrage, spec, plan', 'Opus', 'Une fois, au lancement, en session avec moi'],
       ['Chef de projet / développeur', 'Sonnet', 'Toutes les exécutions programmées'],
-      ['Exécutants : explorateur, verificateur', 'Haiku', 'Tâches simples ou volumineuses'],
+      ['Exécutants : explorateur, verificateur', 'Haiku', 'Recherche dans le code ; contrôles dans le navigateur'],
+      ['sous-agent Haiku', 'Haiku', 'Étapes mécaniques bien décrites, marquées dans le plan'],
       ['expert', 'Opus', 'Étape délicate marquée dans le plan, ou après 2 échecs'],
       ['veilleur', 'Haiku', 'Veille hebdomadaire pour le Magazine'],
       ['relecteur', 'Sonnet', 'Vérification factuelle avant chaque numéro du Magazine'],
@@ -499,6 +505,7 @@ const CONTENT = {
       ['5. workflow-grille', '~30 min (5 et 6 ensemble)', 'Haiku, Sonnet'],
       ['6. home-magazine', '(même exécution)', 'Opus, Sonnet, Haiku'],
       ['7. utilisation-ia-maj', '—', 'voir DELEGATIONS.md de la mission'],
+      ['8. utilisation-ia-economie', '—', 'voir DELEGATIONS.md de la mission'],
     ],
     statsNoteP:
       "Plus une routine hebdomadaire : le Magazine (numéro 1 daté du 28/09, fusionné le 27/09 après corrections). Tendance : de moins en moins d'interventions de moi, et Opus réservé aux étapes qui en ont besoin — cadrage, direction visuelle.",
@@ -506,9 +513,9 @@ const CONTENT = {
     finalLoopTitle: 'Le circuit final',
     finalFlow: [
       { label: '1 · Brief', sublabel: 'Moi : « mission : … »' },
-      { label: '2 · Cadrage (Opus)', sublabel: 'Spec tranchée + plan, avec un modèle par étape' },
+      { label: '2 · Cadrage (Opus)', sublabel: 'Spec tranchée + plan, avec un modèle par étape ; réactive la tâche programmée' },
       { label: '3 · Branche auto/<nom>', sublabel: 'Commits libres uniquement sur les branches auto/*' },
-      { label: '4 · Tâche programmée (Sonnet)', sublabel: "Gère la file d'attente ; reprend après chaque coupure de quota" },
+      { label: '4 · Tâche programmée (Sonnet)', sublabel: "Gère la file d'attente ; reprend après chaque coupure de quota ; se met en pause quand la file est vide" },
       { label: '5 · Étapes + commits', sublabel: 'Un commit par étape ; délègue à Haiku ou Opus selon le plan' },
       { label: '6 · Rapport', sublabel: 'RAPPORT.md, écrit par la session' },
       { label: '7 · « Clôture les missions »', sublabel: 'Moi, en un mot' },
@@ -526,7 +533,7 @@ const CONTENT = {
     ],
 
     metaTitle: 'Mise en abyme',
-    metaP: "Cette page a été écrite par la deuxième mission du système, à partir du contenu que j'ai fourni. Elle est désormais entretenue par le système lui-même : cette mise à jour en est la septième mission, cadrée puis exécutée sans moi, du brief jusqu'à la pull request. Le dossier missions/ du dépôt en garde la trace, mission par mission (spec, plan, décisions, délégations, rapport).",
+    metaP: "Cette page a été écrite par la deuxième mission du système, à partir du contenu que j'ai fourni. Elle est désormais entretenue par le système lui-même : cette mise à jour en est la huitième mission, cadrée puis exécutée sans moi, du brief jusqu'à la pull request. Le dossier missions/ du dépôt en garde la trace, mission par mission (spec, plan, décisions, délégations, rapport).",
 
     treeProject: TREE_PROJECT_FR,
     treeGlobal: TREE_GLOBAL_FR,
@@ -561,7 +568,10 @@ const CONTENT = {
       { date: '12', label: 'The mission queue' },
       { date: '13', label: 'Piloting from the phone' },
       { date: '14', label: 'The main-push compromise' },
-      { date: '15', label: 'This update (mission 7)' },
+      { date: '15', label: 'Page update (mission 7)' },
+      { date: '16', label: 'A second opinion: Gemini' },
+      { date: '17', label: 'Cutting token usage' },
+      { date: '18', label: 'This update (mission 8)' },
     ],
 
     startTitle: 'Starting point: local AI',
@@ -626,8 +636,8 @@ const CONTENT = {
       { label: '1 · Work', sublabel: 'Checked-off plan, PROGRESS.md and a commit after every step: it all lives on disk' },
       { label: '2 · Quota used up', sublabel: "The Pro plan's rolling 5-hour limit" },
       { label: '3 · Stop', sublabel: "The session stops and can't restart on its own" },
-      { label: '4 · Relaunch 2 h later', sublabel: 'The scheduled task starts fresh; with nothing to do, it exits within seconds' },
-      { label: '5 · Reading PROGRESS.md', sublabel: 'And the other mission files: the memory between two runs' },
+      { label: '4 · Relaunch 2 h later', sublabel: 'The scheduled task starts fresh; with nothing to do, it pauses itself until the next mission' },
+      { label: '5 · Reading PROGRESS.md', sublabel: 'Along with SPEC.md and PLAN.md only: the memory between two runs' },
       { label: '6 · Resume ↺', sublabel: 'Where the checked-off plan left off, then back to step 1' },
     ],
     noCostP: "No extra cost on the Pro subscription, as long as paid extra usage isn't switched on: the work just runs slower (spread over several quota windows), sharing quota with everyday work → ideal overnight.",
@@ -652,7 +662,7 @@ const CONTENT = {
       top: { label: 'OPUS · ARCHITECT', sublabel: 'Framing, spec, plan: once, with me' },
       mid: { label: 'SONNET · PROJECT LEAD', sublabel: 'Every scheduled run; picks the sub-agents' },
       haiku1: { label: 'HAIKU', sublabel: 'explorateur: code search' },
-      haiku2: { label: 'HAIKU', sublabel: 'verificateur: build, lint, browser' },
+      haiku2: { label: 'HAIKU', sublabel: 'verificateur: browser checks' },
       expert: { label: 'OPUS', sublabel: 'expert: tricky step or 2 failures' },
       veilleur: { label: 'HAIKU', sublabel: 'veilleur: web research for the Magazine' },
       relecteur: { label: 'SONNET', sublabel: 'relecteur: fact-checks the Magazine' },
@@ -661,7 +671,8 @@ const CONTENT = {
     modelsTableRows: [
       ['Architect: framing, spec, plan', 'Opus', 'Once, at launch, in a session with me'],
       ['Project lead / developer', 'Sonnet', 'Every scheduled run'],
-      ['Workers: explorateur, verificateur', 'Haiku', 'Simple or bulky tasks'],
+      ['Workers: explorateur, verificateur', 'Haiku', 'Code search; browser checks'],
+      ['Haiku sub-agent', 'Haiku', 'Mechanical, well-described steps, flagged in the plan'],
       ['expert', 'Opus', 'A tricky step flagged in the plan, or after 2 failures'],
       ['veilleur', 'Haiku', 'Weekly research for the Magazine'],
       ['relecteur', 'Sonnet', 'Fact-check before every Magazine issue'],
@@ -804,6 +815,7 @@ const CONTENT = {
       ['5. workflow-grille', '~30 min (5 and 6 together)', 'Haiku, Sonnet'],
       ['6. home-magazine', '(same run)', 'Opus, Sonnet, Haiku'],
       ['7. utilisation-ia-maj', '—', "see the mission's DELEGATIONS.md"],
+      ['8. utilisation-ia-economie', '—', "see the mission's DELEGATIONS.md"],
     ],
     statsNoteP:
       'Plus a weekly routine: the Magazine (issue 1 dated 09/28, merged 09/27 after fixes). Trend: fewer and fewer interventions from me, with Opus reserved for the steps that actually need it — framing, visual direction.',
@@ -811,9 +823,9 @@ const CONTENT = {
     finalLoopTitle: 'The final loop',
     finalFlow: [
       { label: '1 · Brief', sublabel: 'Me: "mission: …"' },
-      { label: '2 · Framing (Opus)', sublabel: 'A settled spec + a plan, with one model per step' },
+      { label: '2 · Framing (Opus)', sublabel: 'A settled spec + a plan, with one model per step; turns the scheduled task back on' },
       { label: '3 · auto/<name> branch', sublabel: 'Commits allowed only on auto/* branches' },
-      { label: '4 · Scheduled task (Sonnet)', sublabel: 'Works through the queue; picks up again after each quota cut-off' },
+      { label: '4 · Scheduled task (Sonnet)', sublabel: 'Works through the queue; picks up again after each quota cut-off; pauses itself when the queue is empty' },
       { label: '5 · Steps + commits', sublabel: 'One commit per step; hands off to Haiku or Opus as planned' },
       { label: '6 · Report', sublabel: 'RAPPORT.md, written by the session' },
       { label: '7 · "Close the missions"', sublabel: 'Me, in one line' },
@@ -831,7 +843,7 @@ const CONTENT = {
     ],
 
     metaTitle: 'Turtles all the way down',
-    metaP: "This page was written by the system's second mission, from the content I supplied. It's now maintained by the system itself: this update is its seventh mission, framed then run without me, from brief to pull request. The missions/ folder in the repo keeps the trail, mission by mission (spec, plan, decisions, delegations, report).",
+    metaP: "This page was written by the system's second mission, from the content I supplied. It's now maintained by the system itself: this update is its eighth mission, framed then run without me, from brief to pull request. The missions/ folder in the repo keeps the trail, mission by mission (spec, plan, decisions, delegations, report).",
 
     treeProject: TREE_PROJECT_EN,
     treeGlobal: TREE_GLOBAL_EN,
