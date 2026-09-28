@@ -19,5 +19,13 @@
   },
   "type": "service",
   "taille": "moyenne",
-  "statut": "proposee"
+  "statut": "en-cours",
+  "decision": {
+    "date": "2026-09-28",
+    "note": {
+      "fr": "Michael a décidé de développer l'idée. Première mission : l'outil d'audit de tokens, en libre accès dans le Lab.",
+      "en": "Michael decided to develop the idea. First mission: the token audit tool, freely available in the Lab."
+    }
+  },
+  "mission": "audit-tokens"
 }
