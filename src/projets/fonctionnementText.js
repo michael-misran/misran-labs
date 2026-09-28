@@ -65,6 +65,60 @@ const TREE_LEVEL3_FR = `GitHub (en ligne)
 Claude → Scheduled
 └── misran-labs-missions  ← la tâche programmée : se réveille toutes les 2 h et avance la mission en cours`
 
+const TREE_LEVELS_EN = `~/                             ← home folder
+├── .claude/                   ← level 1 (hidden folder, shared across all projects)
+└── Documents/
+    └── Projets/
+        └── alpha/             ← level 2 (one project)`
+
+const TREE_LEVEL1_EN = `~/.claude/                          ← Claude's toolbox
+├── skills/
+│   └── mission/                    ← the /mission skill (it's the "kit" for P-003)
+│       ├── SKILL.md                ← the instructions Claude reads when you type /mission
+│       ├── reference/
+│       │   ├── nouveau-projet.md   ← start a project from an idea
+│       │   └── cloture.md          ← close a mission (check, push to GitHub, merge)
+│       └── templates/              ← templates copied into each project
+│           ├── CLAUDE-missions.md  ← mission rules (auto/* branches, never main…)
+│           ├── settings.json       ← permissions (what Claude can do alone)
+│           ├── task-prompt.md      ← prompt given to the scheduled task
+│           └── SPEC / PLAN / PROGRESS / DECISIONS / DELEGATIONS.md
+│
+└── agents/                         ← sub-agents, available everywhere
+    ├── explorateur.md              ← searches in code (lightweight, cheap)
+    ├── verificateur.md             ← checks the site in the browser
+    └── expert.md                   ← solves hard problems (powerful, expensive)`
+
+const TREE_LEVEL2_EN = `Documents/Projets/
+├── CLAUDE.md                       ← general rules (French, no commit without approval…)
+│
+└── misran-labs/
+    ├── CLAUDE.md                   ← project rules + "Autonomous Missions" section (installed by /mission)
+    ├── .claude/
+    │   ├── settings.json           ← project permissions (copied from templates/)
+    │   ├── launch.json             ← how to start the site for preview
+    │   └── agents/                 ← agents specific to this project
+    │       ├── veilleur.md         ← (for Magazine only)
+    │       ├── relecteur.md        ← (for Magazine only)
+    │       └── expert / explorateur / verificateur.md  ← local copies, priority over computer ones
+    │
+    └── missions/                   ← one mission = one folder
+        ├── README.md               ← mission procedures
+        └── magazine/               ← example mission
+            ├── SPEC.md             ← what to do, and how to know it's done
+            ├── PLAN.md             ← the steps, each with its model
+            ├── PROGRESS.md         ← where the mission stands (updated during work)
+            ├── DECISIONS.md        ← choices made without Michael, with reasons
+            ├── DELEGATIONS.md      ← what was entrusted to sub-agents
+            └── RAPPORT.md          ← the summary read at the end`
+
+const TREE_LEVEL3_EN = `GitHub (online)
+├── main                  ← the official version, deployed by Vercel. Michael alone decides.
+└── auto/magazine         ← a mission's working branch. Claude works freely on it.
+
+Claude → Scheduled
+└── misran-labs-missions  ← the scheduled task: wakes every 2 hours and advances the current mission`
+
 export const FONCT_TEXT = {
   fr: {
     fileNo: 'RUBRIQUE — PROJETS',
@@ -208,6 +262,124 @@ export const FONCT_TEXT = {
     heroNumber: '?',
     title: 'How it works',
     subtitle: 'AUTONOMOUS MISSIONS, FROM IDEA TO REPOSITORY',
-    sections: [],
+    sections: [
+      {
+        id: 'pourquoi',
+        title: 'Why this page',
+        blocks: [
+          { type: 'p', text: 'While reading idea P-003 (a reusable autonomous-missions kit), Michael wanted to understand how the pieces of the system fit together: what is common to all of Michael\'s projects, what lives in each project, and what happens when Michael says "we\'re developing P-NNN".' },
+        ],
+      },
+      {
+        id: 'niveaux',
+        title: 'Three levels',
+        blocks: [
+          { type: 'p', text: 'From most general to most specific:' },
+          {
+            type: 'levels',
+            items: [
+              { title: 'The computer', text: 'Claude\'s toolbox, shared across all projects (`~/.claude/`).' },
+              { title: 'A project', text: 'A folder in `Documents/Projets/` with its own rules and missions.' },
+              { title: 'Outside files', text: 'GitHub (the branches) and the scheduled task (in the Claude app, "Scheduled" section).' },
+            ],
+          },
+          { type: 'p', text: '`~` is not the disk root: it\'s the user\'s home folder. `Documents/` is inside it too.' },
+          { type: 'tree', text: TREE_LEVELS_EN },
+        ],
+      },
+      {
+        id: 'niveau-1',
+        title: 'Level 1: the computer',
+        blocks: [
+          { type: 'p', text: 'Claude\'s toolbox, shared across all projects.' },
+          { type: 'tree', text: TREE_LEVEL1_EN },
+          { type: 'p', text: 'The `/mission` skill can install the system in a new or existing project: `CLAUDE.md`, permissions, scheduled task `<project>-missions`, then scope the first mission. Sub-agents are global: nothing to copy.' },
+        ],
+      },
+      {
+        id: 'niveau-2',
+        title: 'Level 2: a project',
+        blocks: [
+          { type: 'p', text: 'The example below is this project, misran-labs.' },
+          { type: 'tree', text: TREE_LEVEL2_EN },
+        ],
+      },
+      {
+        id: 'niveau-3',
+        title: 'Level 3: outside files',
+        blocks: [
+          { type: 'p', text: 'These two pieces aren\'t in a folder on the computer: one is online, the other in the Claude app.' },
+          { type: 'tree', text: TREE_LEVEL3_EN },
+        ],
+      },
+      {
+        id: 'circuit',
+        title: 'How it all fits',
+        blocks: [
+          { type: 'p', text: 'Five steps, from command to merge:' },
+          {
+            type: 'flow',
+            steps: [
+              { label: '1 · /mission', sublabel: 'Michael types /mission in a project. Claude reads ~/.claude/skills/mission/.' },
+              { label: '2 · Setup', sublabel: 'First time in this project: Claude copies templates/ to create CLAUDE.md, settings.json, and the scheduled task.' },
+              { label: '3 · Scoping', sublabel: 'Claude creates missions/<name>/ with SPEC and PLAN, on an auto/<name> branch.' },
+              { label: '4 · Overnight', sublabel: 'The scheduled task follows PLAN, calls agents, and keeps PROGRESS and DECISIONS up to date.' },
+              { label: '5 · The report', sublabel: 'At the end: Michael reads the RAPPORT, then merges into main if it suits Michael.' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'nouveau-projet',
+        title: 'Create a new project',
+        blocks: [
+          { type: 'p', text: 'You don\'t give a path: you open the session in the folder.' },
+          {
+            type: 'list',
+            items: [
+              'Create the folder, for example `Documents/Projets/alpha`.',
+              'In the Claude app, open a new session in that folder.',
+              'Type `/mission` and describe the idea. Claude creates everything else.',
+            ],
+          },
+          { type: 'p', text: 'If `/mission` is run from `Projets/`, Claude stops and asks you to open the session in the right folder: a project\'s `CLAUDE.md` and memory only load from its own folder.' },
+          { type: 'p', text: 'What Michael has to do personally: accept the GitHub repository creation (public or private), accept the first commit, and in "Scheduled" switch the task to Sonnet and enable Auto mode.' },
+        ],
+      },
+      {
+        id: 'on-developpe',
+        title: 'When developing P-NNN',
+        blocks: [
+          { type: 'p', text: 'When Michael says "we\'re developing P-NNN", there are two cases:' },
+          {
+            type: 'cases',
+            items: [
+              {
+                title: 'The idea adds to the site',
+                text: 'A page, for example: the mission runs directly in misran-labs, no new folder.',
+              },
+              {
+                title: 'The idea makes a separate repo',
+                text: 'Example: P-003, a kit published separately.',
+                list: [
+                  'In a misran-labs session, Michael says "we\'re developing P-003". Claude sets the card to `en-cours` with the mission name.',
+                  'Claude creates the folder on its own in `Documents/Projets/` (e.g., `kit-missions`) — Michael\'s approval from 2026-09-28.',
+                  'Claude asks Michael\'s approval to commit the card; it only appears on the site once pushed to `main`.',
+                  'Michael opens a new session in the new folder and types `/mission`: one session can\'t open another in a different folder.',
+                  'Scoping together (content, public or private), then the scheduled task develops overnight.',
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'p-003',
+        title: 'What about P-003?',
+        blocks: [
+          { type: 'p', text: 'For Michael, the kit already exists: it\'s the `/mission` skill at level 1. P-003 only matters to other developers: it\'s mostly about publishing this skill by removing what\'s personal (first name, Michael\'s Git rules, paths).' },
+        ],
+      },
+    ],
   },
 }
