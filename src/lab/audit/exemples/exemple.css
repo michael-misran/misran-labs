@@ -1,0 +1,53 @@
+/* Exemple d'audit — ce fichier contient volontairement des incohérences. */
+
+:root {
+  /* Couleurs de marque */
+  --couleur-marque: #e26a50;
+  --couleur-marque-hover: #e36b51;
+  --couleur-action: #e26a50;
+  --texte: #111111;
+  --fond: #ffffff;
+
+  /* Référence cassée : --couleur-fantome n'existe nulle part */
+  --bouton-fond: var(--couleur-fantome);
+
+  /* Référence cassée mais protégée par une valeur de secours */
+  --bordure: var(--bordure-absente, #cccccc);
+
+  /* Référence circulaire */
+  --cycle-a: var(--cycle-b);
+  --cycle-b: var(--cycle-c);
+  --cycle-c: var(--cycle-a);
+
+  /* Chaîne d'alias trop longue */
+  --alias-1: var(--alias-2);
+  --alias-2: var(--alias-3);
+  --alias-3: var(--alias-4);
+  --alias-4: var(--couleur-marque);
+
+  /* Espacements */
+  --espace-md: 16px;
+  --espace-orphelin: 24px;
+}
+
+/* Surcharge normale : même nom, autre contexte */
+[data-theme="sombre"] {
+  --texte: #eeeeee;
+  --fond: #111111;
+}
+
+.bouton {
+  background: var(--bouton-fond);
+  color: var(--texte);
+  border: 1px solid var(--bordure);
+  padding: var(--espace-md);
+  box-shadow: 0 0 0 1px var(--couleur-action);
+}
+
+.carte {
+  /* Valeurs en dur hors tokens */
+  background: #ff00aa;
+  padding: 13px 0;
+  margin: 0 8px;
+  color: var(--alias-1);
+}

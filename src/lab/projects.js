@@ -4,6 +4,7 @@ import LabTokens from './projects/LabTokens'
 import TheLostCauldronGame from './projects/TheLostCauldronGame'
 import WorkflowSolo from './projects/WorkflowSolo'
 import UtilisationIA from './projects/UtilisationIA'
+import AuditTokens from './projects/AuditTokens'
 import GameDemo from './GameDemo'
 import GameDemoV2 from './GameDemoV2'
 import ToolProcessTemplate from './ToolProcessTemplate'
@@ -166,6 +167,24 @@ export const PROJECTS = [
     },
     phases: {},
     component: UtilisationIA,
+  },
+  {
+    slug: 'audit-tokens',
+    icon: '◎',
+    title: { fr: 'Audit de design system', en: 'Design system audit' },
+    summary: {
+      fr: 'Colle ou dépose tes tokens (CSS, JSON W3C, Tokens Studio) : rapport chiffré des incohérences, dans ton navigateur.',
+      en: 'Paste or drop your tokens (CSS, W3C JSON, Tokens Studio): a numbers-based report of inconsistencies, right in your browser.',
+    },
+    status: 'READY',
+    type: 'tool',
+    featured: false,
+    tags: {
+      fr: ['Design tokens', 'Audit', 'DTCG'],
+      en: ['Design tokens', 'Audit', 'DTCG'],
+    },
+    phases: {},
+    component: AuditTokens,
   },
 ]
 

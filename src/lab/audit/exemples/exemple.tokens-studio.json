@@ -1,0 +1,28 @@
+{
+  "global": {
+    "brand": { "value": "#0a66c2", "type": "color" },
+    "brand-soft": { "value": "#0a66c2", "type": "color" },
+    "gray": {
+      "100": { "value": "#f5f5f5", "type": "color" },
+      "200": { "value": "#f6f6f6", "type": "color" }
+    },
+    "radius": {
+      "type": "borderRadius",
+      "sm": { "value": "4" },
+      "lg": { "value": "12" }
+    },
+    "space": {
+      "md": { "value": "16" }
+    }
+  },
+  "light": {
+    "surface": { "value": "{gray.100}", "type": "color" },
+    "text": { "value": "{brand}", "type": "color" }
+  },
+  "dark": {
+    "surface": { "value": "{gray.900}", "type": "color" },
+    "text": { "value": "{brand}", "type": "color" }
+  },
+  "$themes": [],
+  "$metadata": { "tokenSetOrder": ["global", "light", "dark"] }
+}

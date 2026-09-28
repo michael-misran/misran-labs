@@ -1,0 +1,28 @@
+{
+  "$description": "Exemple d'audit au format W3C DTCG — incohérences volontaires.",
+  "color": {
+    "$type": "color",
+    "brand": {
+      "primary": { "$value": "#0a66c2" },
+      "primary-hover": { "$value": "#0a67c3" },
+      "accent": { "$value": "#0a66c2" }
+    },
+    "action": { "$value": "{color.brand.primary}" },
+    "danger": { "$value": "{color.brand.danger}" }
+  },
+  "spacing": {
+    "small": { "$value": "8px", "$type": "dimension" },
+    "medium": { "$value": "16px" }
+  },
+  "shadow": {
+    "card": {
+      "$type": "shadow",
+      "$value": {
+        "offsetX": "0px",
+        "offsetY": "2px",
+        "blur": "4px",
+        "color": "{color.action}"
+      }
+    }
+  }
+}
