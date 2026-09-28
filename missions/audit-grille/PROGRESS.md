@@ -1,23 +1,8 @@
 # Mission audit-grille — PROGRESS
 
-**Statut :** étape 6 terminée
-**Prochaine action :** étape 7 — vérification : build, lint, trois scripts, grep secrets/chiffres par la session principale ; navigateur par le verificateur (Haiku, au premier plan)
-**Blocages :** aucun
+**Statut :** terminée (RAPPORT.md écrit), sauf vérification navigateur
+**Prochaine action :** clôture par la session tour de contrôle (vérifier la page dans le navigateur, puis push + pull request)
+**Blocages :** vérification navigateur impossible dans cette session (auto-mode sans verdict pour `navigate` et pour le sous-agent) ; voir RAPPORT.md
 
 ## Fait
-- Étape 1 : état initial. Build OK ; lint : 6 erreurs préexistantes hors mission (`VisuallyHidden.jsx`, `design-system/kit/Surface.jsx`, `lab/CaseFile.jsx`, `lab/GameDemo.jsx`, `shell/LanguageContext.jsx`, `shell/Shell.jsx`) — critère 9 : ne pas en ajouter ; deux scripts existants OK.
-- Étape 2 : `contrastes.js` ; `explorerDepot` renvoie `chemins` ; `verifier-grille.mjs` partie 1.
-- Étape 3 : `grille.js` (`evaluerGrille`, `appliquerAjustements`), `priorites.js` (`prioriser`), 34 vérifications ; textes FR + EN du moteur écrits ensemble.
-- Étape 4 : interface `Grille.jsx`, `Matrice.jsx`, `rapportGrille.js` ; `AuditTokens.jsx` (états `contexteAudit`, `ajustements`, mémos `audit` et `grille`, ordre D10, Markdown complété, appel à l'action réécrit FR + EN) ; `SourceGithub.jsx` transmet `chemins`.
-- Étape 5 : `RapportImprimable.jsx` (`print-only`, masqué à l'écran par la règle de `Shell.jsx`) ; tout l'écran de la page dans `no-print` ; bouton « Exporter en PDF » → `window.print()` ; bloc de textes `impression` (FR fait). Build OK, lint : 6 erreurs préexistantes seulement.
-- Étape 6 : textes EN de `grille` et `impression` traduits (par la session principale : le sous-agent Haiku n'a pas pu être lancé, cf. DECISIONS.md / DELEGATIONS.md).
-- Un serveur `vite preview` (port 4173) tourne en arrière-plan : **à arrêter en fin de session**.
-
-## À prévoir
-- Étape 7 (verificateur) : la vérification navigateur n'a pas encore été faite (l'outil `navigate` a été refusé deux fois par le contrôle d'auto-mode à l'étape 4). Rebuild avant : le serveur `vite preview` sert `dist/`.
-- `AuditTokens.jsx` ≈ 800 lignes (seuil de la SPEC : 900).
-
-## Rappels
-- Dans une routine : `npm run build` puis `npx vite preview` (port 4173), pas la preview « dev ». Arrêter le serveur en fin de session.
-- Sous-agents au premier plan ; jamais de fenêtre système : ne pas cliquer « Exporter en PDF » sans avoir remplacé `window.print` (SPEC D13).
-- Réseau autorisé pendant la vérification : uniquement le dépôt public michael-misran/misran-labs (SPEC D14).
+Étapes 1 à 6 complètes (moteur, interface, rapport imprimable, textes FR + EN), étape 7 partielle (build, lint, 3 scripts Node, recherche de secrets), étape 8 : RAPPORT.md. Le serveur `vite preview` lancé pendant la session est arrêté.

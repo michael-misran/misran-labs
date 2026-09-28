@@ -10,5 +10,5 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 4. Interface : `Grille.jsx` avec ajustement (D4), `Matrice.jsx`, ordre de la page (D10), appel à l'action (D9), Markdown complété ; textes FR, structure EN prête → session principale (Sonnet)
 - [x] 5. `RapportImprimable.jsx` + règles `@media print` + bouton « Exporter en PDF » (D8, D13) → session principale (Sonnet)
 - [x] 6. Traduction EN de tous les nouveaux textes (D11) → sous-agent (Haiku)
-- [ ] 7. Vérification : build, lint, scripts, grep secrets/chiffres par la session principale ; navigateur (critères 2 à 8, FR et EN, `window.print` espionné, réseau limité à D14) → verificateur (Haiku), au premier plan
-- [ ] 8. Corrections éventuelles issues de l'étape 7, puis RAPPORT.md (grille obtenue sur misran-labs, suites possibles) → session principale (Sonnet)
+- [x] 7. (partiel : build, lint, scripts, grep faits ; navigateur non faisable, voir RAPPORT) Vérification : build, lint, scripts, grep secrets/chiffres par la session principale ; navigateur (critères 2 à 8, FR et EN, `window.print` espionné, réseau limité à D14) → verificateur (Haiku), au premier plan
+- [x] 8. Corrections éventuelles issues de l'étape 7, puis RAPPORT.md (grille obtenue sur misran-labs, suites possibles) → session principale (Sonnet)
