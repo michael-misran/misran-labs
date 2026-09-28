@@ -19,12 +19,12 @@
   },
   "type": "service",
   "taille": "moyenne",
-  "statut": "en-cours",
+  "statut": "faite",
   "decision": {
     "date": "2026-09-28",
     "note": {
-      "fr": "Michael a décidé de développer l'idée. Première mission : l'outil d'audit de tokens, en libre accès dans le Lab.",
-      "en": "Michael decided to develop the idea. First mission: the token audit tool, freely available in the Lab."
+      "fr": "Livrée en trois missions : audit des tokens (CSS, JSON W3C, Tokens Studio), lecture d'un dépôt GitHub public avec mesure de la couverture, puis grille notée sur 7 axes, matrice impact × effort et rapport PDF. L'outil est en libre accès dans le Lab ; le service d'audit reste à lancer.",
+      "en": "Delivered in three missions: token audit (CSS, W3C JSON, Tokens Studio), public GitHub repository reading with coverage measurement, then a scored 7-axis grid, impact × effort matrix and PDF report. The tool is freely available in the Lab; the audit service is still to be launched."
     }
   },
   "mission": "audit-tokens"
