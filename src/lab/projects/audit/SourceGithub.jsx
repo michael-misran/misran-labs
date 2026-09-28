@@ -84,6 +84,7 @@ export default function SourceGithub({ c, lang, onAnalyser }) {
     onAnalyser({
       fichiersTokens: gardes.map((f) => ({ nom: prefixe + f.nom, contenu: f.contenu })),
       fichiersCode: lecture.fichiers.filter((f) => !ensembleTokens.has(f.nom)),
+      chemins: depot.chemins, // tous les fichiers du dépôt : axes composants, documentation, gouvernance
       avertissements,
       source: {
         depot: `${depot.proprietaire}/${depot.depot}`,

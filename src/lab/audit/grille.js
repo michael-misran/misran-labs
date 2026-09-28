@@ -337,7 +337,7 @@ export function evaluerGrille({ resultat, couverture = null, chemins = null, con
     axeDocumentation(chemins),
     axeGouvernance(chemins),
     AXE_PARITE,
-  ]
+  ].map((axe) => ({ ...axe, titre: AXES.find((a) => a.id === axe.id).titre }))
   return { axes, ...synthese(axes.map((a) => a.note)) }
 }
 
