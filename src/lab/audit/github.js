@@ -12,7 +12,7 @@ const TAILLE_MAX_TOKENS = 300 * 1024
 const TAILLE_MAX_CODE = 200 * 1024
 const PARALLELE = 6
 
-const DOSSIERS_EXCLUS = ['node_modules', 'dist', 'build', '.next', 'vendor', 'coverage', '.git']
+const DOSSIERS_EXCLUS = ['node_modules', 'dist', 'build', '.next', 'vendor', 'coverage', '.git', 'exemples', 'examples', 'fixtures', 'mocks', '__mocks__']
 const DOSSIERS_PRIORITAIRES = ['src', 'app', 'components', 'packages']
 const EXTENSIONS_CODE = ['.css', '.scss', '.less', '.js', '.jsx', '.ts', '.tsx', '.vue', '.svelte']
 
