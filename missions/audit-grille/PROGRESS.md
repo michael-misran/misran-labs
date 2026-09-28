@@ -1,7 +1,7 @@
 # Mission audit-grille — PROGRESS
 
-**Statut :** étape 5 terminée
-**Prochaine action :** étape 6 — traduction EN par un sous-agent Haiku (au premier plan) des blocs `grille` et `impression` de l'objet EN dans `src/lab/projects/audit/textes.js` (marqués « À TRADUIRE »)
+**Statut :** étape 6 terminée
+**Prochaine action :** étape 7 — vérification : build, lint, trois scripts, grep secrets/chiffres par la session principale ; navigateur par le verificateur (Haiku, au premier plan)
 **Blocages :** aucun
 
 ## Fait
@@ -10,6 +10,7 @@
 - Étape 3 : `grille.js` (`evaluerGrille`, `appliquerAjustements`), `priorites.js` (`prioriser`), 34 vérifications ; textes FR + EN du moteur écrits ensemble.
 - Étape 4 : interface `Grille.jsx`, `Matrice.jsx`, `rapportGrille.js` ; `AuditTokens.jsx` (états `contexteAudit`, `ajustements`, mémos `audit` et `grille`, ordre D10, Markdown complété, appel à l'action réécrit FR + EN) ; `SourceGithub.jsx` transmet `chemins`.
 - Étape 5 : `RapportImprimable.jsx` (`print-only`, masqué à l'écran par la règle de `Shell.jsx`) ; tout l'écran de la page dans `no-print` ; bouton « Exporter en PDF » → `window.print()` ; bloc de textes `impression` (FR fait). Build OK, lint : 6 erreurs préexistantes seulement.
+- Étape 6 : textes EN de `grille` et `impression` traduits (par la session principale : le sous-agent Haiku n'a pas pu être lancé, cf. DECISIONS.md / DELEGATIONS.md).
 - Un serveur `vite preview` (port 4173) tourne en arrière-plan : **à arrêter en fin de session**.
 
 ## À prévoir
