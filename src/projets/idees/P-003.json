@@ -19,5 +19,12 @@
   },
   "type": "outil",
   "taille": "moyenne",
-  "statut": "proposee"
+  "statut": "gardee",
+  "decision": {
+    "date": "2026-09-28",
+    "note": {
+      "fr": "Gardée en attente : Michael veut d'abord éprouver son système de missions sur ses propres projets avant de le proposer à d'autres.",
+      "en": "Kept on hold: Michael first wants to put his missions system to the test on his own projects before offering it to others."
+    }
+  }
 }
