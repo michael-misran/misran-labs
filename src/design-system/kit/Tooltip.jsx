@@ -24,7 +24,7 @@ export default function Tooltip({ content, children, placement = 'top' }) {
           position: 'absolute',
           left: '50%',
           transform: 'translateX(-50%)',
-          [above ? 'bottom' : 'top']: 'calc(100% + 8px)',
+          [above ? 'bottom' : 'top']: 'calc(100% + var(--space-xs))',
           background: 'var(--text)',
           color: 'var(--bg2)',
           borderRadius: 'var(--radius-xs)',

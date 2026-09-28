@@ -20,7 +20,7 @@ export default function ListItem({ name, description, right, onClick }) {
         display: 'flex',
         alignItems: 'center',
         gap: 12,
-        padding: '10px 12px',
+        padding: '10px var(--space-sm)',
         borderRadius: 'var(--radius-sm)',
         background: interactive && hovered ? 'var(--surface-inset)' : 'transparent',
         boxShadow: interactive && hovered ? 'var(--elev-inset)' : 'none',

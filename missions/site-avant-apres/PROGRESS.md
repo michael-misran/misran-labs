@@ -1,7 +1,7 @@
 # Mission site-avant-apres — PROGRESS
 
-**Statut :** étapes 1 à 3 terminées (2026-09-28). Mesure intermédiaire : moyenne 1,0 (Accessibilité 0 → 1).
-**Prochaine action :** étape 4 (D5 selon INVENTAIRE.md, partie B, 60 fichiers de l'échantillon ; faite par la session principale si le sous-agent ne se lance pas)
+**Statut :** étapes 1 à 4 terminées (2026-09-28). Mesure intermédiaire : moyenne 1,0 (Accessibilité 0 → 1) ; couverture 88,4 %.
+**Prochaine action :** étape 5 (lint à 0 erreur, D7 : 6 erreurs listées dans SPEC)
 **Blocages :** le classifieur des sous-agents/commandes échoue par moments (« aucun verdict ») ; une seule nouvelle tentative, puis faire soi-même.
 
 ## État initial (référence)

@@ -40,7 +40,7 @@ export function TabBar({ tabs, active, onChange }) {
               fontFamily: "var(--font-body)",
               fontSize: 13,
               fontWeight: isActive ? 600 : 400,
-              padding: '10px 16px',
+              padding: '10px var(--space-md)',
               cursor: 'pointer',
               whiteSpace: 'nowrap',
               transition: 'color 0.15s ease, border-color 0.15s ease',
@@ -100,7 +100,7 @@ function ProjectMeta({ role, period, tools }) {
                 color: 'var(--text2)',
                 border: 'var(--border-thin) solid var(--border)',
                 borderRadius: 'var(--radius-xs)',
-                padding: '3px 8px',
+                padding: '3px var(--space-xs)',
               }}
             >
               {tool}
@@ -146,7 +146,7 @@ export default function CaseStudyLayout({ title, role, period, tools, phases, ch
           fontSize: 'clamp(28px, 4vw, 52px)',
           fontWeight: 700,
           letterSpacing: '-0.02em',
-          margin: '0 0 16px',
+          margin: '0 0 var(--space-md)',
           lineHeight: 1.05,
         }}
       >

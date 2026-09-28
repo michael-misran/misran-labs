@@ -16,7 +16,7 @@ export default function AlertBanner({ title, children, icon = 'info' }) {
         color: 'var(--on-primary-surface)',
         boxShadow: 'var(--elev-3)',
         borderRadius: 'var(--radius-md)',
-        padding: '14px 16px',
+        padding: '14px var(--space-md)',
         fontFamily: 'var(--font-body)',
         fontSize: 13,
         lineHeight: 1.5,

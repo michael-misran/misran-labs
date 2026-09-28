@@ -42,7 +42,7 @@ export function CaseMetaRow({ columns }) {
           style={{
             flex: col.grow === false ? '0 0 auto' : '1 1 220px',
             minWidth: col.grow === false ? 180 : undefined,
-            padding: '12px 24px',
+            padding: 'var(--space-sm) var(--space-lg)',
             borderRight: i < columns.length - 1 ? 'var(--border-thin) solid var(--border)' : 'none',
           }}
         >
@@ -59,7 +59,7 @@ export function CaseMetaRow({ columns }) {
                     fontSize: 10,
                     color: 'var(--text2)',
                     border: 'var(--border-thin) solid var(--border)',
-                    padding: '3px 8px',
+                    padding: '3px var(--space-xs)',
                   }}
                 >
                   {chip}
@@ -78,7 +78,7 @@ export function CaseMetaRow({ columns }) {
 export function CaseHero({ project, c, children }) {
   return (
     <div style={{ border: 'var(--border-regular) solid var(--border)', marginBottom: 32 }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, padding: '18px 24px', borderBottom: children ? 'var(--border-thin) solid var(--border)' : 'none' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, padding: '18px var(--space-lg)', borderBottom: children ? 'var(--border-thin) solid var(--border)' : 'none' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
           <span
             style={{

@@ -7,3 +7,4 @@
 | 2026-09-28 | 2 | explorateur | Haiku | Inventaire D3 + D5 (2 lancements) | Échec : « classifieur sans verdict » ×2, aucun travail effectué |
 | 2026-09-28 | 2 | session principale | Sonnet | Inventaire D3 + D5 fait directement (grep + `lister-en-dur.mjs`) → INVENTAIRE.md | Fait |
 | 2026-09-28 | 3 | session principale | Sonnet | Contraste : tokens, 11 composants, LabTokens, focus des champs (aucun sous-agent) | Fait |
+| 2026-09-28 | 4 | session principale | Sonnet | D5 appliqué directement (20 fichiers), au lieu d'un sous-agent Haiku (lancement peu fiable) | Fait |

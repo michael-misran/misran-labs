@@ -22,7 +22,7 @@ export function Toast({ tone = 'info', children }) {
         background: 'var(--surface-raised)',
         boxShadow: 'var(--elev-3)',
         borderRadius: 'var(--radius-md)',
-        padding: '12px 16px',
+        padding: 'var(--space-sm) var(--space-md)',
         fontFamily: 'var(--font-body)',
         fontSize: 13,
         color: 'var(--text)',

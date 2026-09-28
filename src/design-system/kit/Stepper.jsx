@@ -15,7 +15,7 @@ export default function Stepper({ steps, current = 1, hint }) {
             boxShadow: 'var(--elev-4)',
             fontSize: 11,
             lineHeight: 1.4,
-            padding: '8px 12px',
+            padding: 'var(--space-xs) var(--space-sm)',
             marginBottom: 14,
           }}
         >

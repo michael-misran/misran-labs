@@ -35,7 +35,7 @@ export default function GameDemoV2() {
           justifyContent: 'space-between',
           gap: 16,
           flexWrap: 'wrap',
-          padding: '12px 20px',
+          padding: 'var(--space-sm) 20px',
           borderBottom: 'var(--border-thin) solid var(--border)',
           background: 'var(--bg2)',
         }}
