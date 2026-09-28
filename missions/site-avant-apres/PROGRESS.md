@@ -1,7 +1,7 @@
 # Mission site-avant-apres — PROGRESS
 
-**Statut :** étapes 1 à 5 terminées (2026-09-28). Mesure intermédiaire : moyenne 1,0 (Accessibilité 0 → 1) ; couverture 88,4 % ; lint 0 erreur.
-**Prochaine action :** étape 6 (gouvernance D8 : CHANGELOG.md, .github/CODEOWNERS, .github/workflows/verifier.yml, LICENSE)
+**Statut :** étapes 1 à 6 terminées (2026-09-28). Dernière mesure (avant gouvernance) : moyenne 1,0 ; couverture 88,4 % ; lint 0 erreur.
+**Prochaine action :** étape 7 (build, lint, 3 scripts, greps, `mesure-apres.json` ; navigateur : snapshot après, échantillon D6, page Tokens FR/EN, console, menu, langue, 375 px). Un `vite preview` tourne peut-être encore sur le port 4173 : à relancer/arrêter.
 **Blocages :** le classifieur des sous-agents/commandes échoue par moments (« aucun verdict ») ; une seule nouvelle tentative, puis faire soi-même.
 
 ## État initial (référence)

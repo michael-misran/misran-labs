@@ -9,3 +9,4 @@
 | 2026-09-28 | 3 | session principale | Sonnet | Contraste : tokens, 11 composants, LabTokens, focus des champs (aucun sous-agent) | Fait |
 | 2026-09-28 | 4 | session principale | Sonnet | D5 appliqué directement (20 fichiers), au lieu d'un sous-agent Haiku (lancement peu fiable) | Fait |
 | 2026-09-28 | 5 | session principale | Sonnet | Lint à 0 erreur (aucun sous-agent) | Fait |
+| 2026-09-28 | 6 | session principale | Sonnet | Gouvernance D8 faite directement (4 fichiers), au lieu d'un sous-agent Haiku | Fait |
