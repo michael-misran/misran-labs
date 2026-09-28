@@ -13,7 +13,7 @@ export default function Breadcrumbs({ items, label = 'Fil d’Ariane' }) {
         background: 'var(--surface-raised)',
         boxShadow: 'var(--elev-2)',
         borderRadius: 'var(--radius-md)',
-        padding: '10px 16px',
+        padding: '10px var(--space-md)',
         fontFamily: 'var(--font-body)',
         fontSize: 13,
       }}

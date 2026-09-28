@@ -182,7 +182,7 @@ function SessionCard({ session, onOpenLog }) {
         border: `${open ? '1px' : '1px'} solid ${open || hovered ? 'var(--primary)' : 'var(--border)'}`,
         borderLeft: open ? 'var(--border-thick) solid var(--primary)' : 'var(--border-thin) solid var(--border)',
         borderRadius: 'var(--radius-sm)',
-        padding: '20px 24px',
+        padding: '20px var(--space-lg)',
         cursor: 'pointer',
         transition: 'border-color 0.2s ease',
         userSelect: 'none',
@@ -221,7 +221,7 @@ function SessionCard({ session, onOpenLog }) {
           {/* Row 4: tags */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {session.tags.map(tag => (
-              <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'var(--active-tint)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: '2px 8px' }}>
+              <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'var(--active-tint)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: '2px var(--space-xs)' }}>
                 {tag}
               </span>
             ))}
@@ -262,7 +262,7 @@ function SessionCard({ session, onOpenLog }) {
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--warning)', letterSpacing: '0.1em' }}>
               // DECISION ⚡
             </span>
-            <div style={{ background: 'color-mix(in srgb, var(--warning) 6%, transparent)', borderLeft: 'var(--border-thick) solid var(--warning)', padding: '12px 16px', borderRadius: '0 4px 4px 0' }}>
+            <div style={{ background: 'color-mix(in srgb, var(--warning) 6%, transparent)', borderLeft: 'var(--border-thick) solid var(--warning)', padding: 'var(--space-sm) var(--space-md)', borderRadius: '0 var(--radius-xs) var(--radius-xs) 0' }}>
               <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--warning)', margin: 0, lineHeight: 1.7 }}>
                 {session.decision}
               </p>
@@ -342,10 +342,10 @@ export default function SessionReplay() {
             </Link>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: '2px 8px', letterSpacing: '0.08em' }}>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: '2px var(--space-xs)', letterSpacing: '0.08em' }}>
                 EXP-003
               </span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--warning)', border: 'var(--border-thin) solid var(--warning)', borderRadius: 'var(--radius-xs)', padding: '2px 8px', letterSpacing: '0.1em' }}>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--warning)', border: 'var(--border-thin) solid var(--warning)', borderRadius: 'var(--radius-xs)', padding: '2px var(--space-xs)', letterSpacing: '0.1em' }}>
                 IN PROGRESS
               </span>
             </div>
@@ -358,7 +358,7 @@ export default function SessionReplay() {
             </p>
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               {['React', 'Framer Motion', 'Markdown'].map(tag => (
-                <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'var(--active-tint)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: '2px 8px' }}>
+                <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'var(--active-tint)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: '2px var(--space-xs)' }}>
                   {tag}
                 </span>
               ))}
@@ -368,7 +368,7 @@ export default function SessionReplay() {
           {/* ── Stats ── */}
           <div style={{ display: 'flex', borderTop: 'var(--border-thin) solid var(--border)', borderBottom: 'var(--border-thin) solid var(--border)', background: 'var(--bg2)', marginBottom: 56, borderRadius: 'var(--radius-sm)' }}>
             {STATS.map(({ num, label }, i) => (
-              <div key={label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: '28px 16px', borderLeft: i > 0 ? 'var(--border-thin) solid var(--border)' : 'none' }}>
+              <div key={label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: '28px var(--space-md)', borderLeft: i > 0 ? 'var(--border-thin) solid var(--border)' : 'none' }}>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: 28, fontWeight: 700, color: 'var(--primary)', lineHeight: 1 }}>
                   {num}
                 </span>
@@ -401,7 +401,7 @@ export default function SessionReplay() {
             <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', marginBottom: 24, lineHeight: 1.6 }}>
               Voir le résultat → Product Brief Machine
             </p>
-            <Link to="/experience/exp-002" className="cta-btn" style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: 14, color: 'var(--primary)', background: 'color-mix(in srgb, var(--primary) 12%, transparent)', padding: '12px 28px', borderRadius: 'var(--radius-sm)', border: 'var(--border-thin) solid var(--primary)', display: 'inline-block', transition: 'background 0.2s ease' }}>
+            <Link to="/experience/exp-002" className="cta-btn" style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: 14, color: 'var(--primary)', background: 'color-mix(in srgb, var(--primary) 12%, transparent)', padding: 'var(--space-sm) 28px', borderRadius: 'var(--radius-sm)', border: 'var(--border-thin) solid var(--primary)', display: 'inline-block', transition: 'background 0.2s ease' }}>
               Product Brief Machine →
             </Link>
           </div>
@@ -456,7 +456,7 @@ export default function SessionReplay() {
                   fontSize: 10, color: 'var(--text2)',
                   background: 'var(--active-tint)',
                   border: 'var(--border-thin) solid var(--border)',
-                  borderRadius: 'var(--radius-xs)', padding: '2px 8px',
+                  borderRadius: 'var(--radius-xs)', padding: '2px var(--space-xs)',
                 }}>
                   Cliquer en dehors pour fermer
                 </span>
@@ -475,7 +475,7 @@ export default function SessionReplay() {
                   fontFamily: "var(--font-mono)", fontSize: 11,
                   color: 'var(--text2)', background: 'none',
                   border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)',
-                  padding: '5px 12px', cursor: 'pointer',
+                  padding: '5px var(--space-sm)', cursor: 'pointer',
                   transition: 'color 0.15s, border-color 0.15s',
                 }}
               >

@@ -1,6 +1,7 @@
 import useIsMobile from '../shell/useIsMobile'
 import { useLanguage } from '../shell/LanguageContext'
-import { CaseMasthead, CaseMetaRow, CaseFooter, CASE_CHROME } from '../lab/CaseFile'
+import { CaseMasthead, CaseMetaRow, CaseFooter } from '../lab/CaseFile'
+import { CASE_CHROME } from '../lab/caseChrome'
 import SectionTitle from '../design-system/SectionTitle'
 import { MagazineHero, IssueRow } from './MagazineParts'
 import { MAG_TEXT, CATEGORIES } from './magazineText'

@@ -1,0 +1,774 @@
+{
+  "etiquette": "avant",
+  "commit": "55d3e84",
+  "fichiersTokens": [
+    "missions/tokens-fix/snapshot-apres.json",
+    "missions/tokens-fix/snapshot-avant.json",
+    "src/styles/tokens.css"
+  ],
+  "fichiersCodeAnalyses": 60,
+  "eligibles": 117,
+  "moyenne": 0.8,
+  "axesEvalues": 6,
+  "axes": [
+    {
+      "id": "architecture",
+      "note": 2,
+      "criteres": [
+        {
+          "id": "aucune-erreur",
+          "rempli": true,
+          "detail": "Aucune référence cassée ni circulaire."
+        },
+        {
+          "id": "peu-avertissements",
+          "rempli": false,
+          "detail": "14 % des tokens portent un avertissement (seuil : 5 % au plus)."
+        },
+        {
+          "id": "niveaux-alias",
+          "rempli": true,
+          "detail": "58 % des tokens sont des alias (seuil : 20 % au moins) — signe de niveaux primitive → semantic."
+        },
+        {
+          "id": "types-json",
+          "rempli": null,
+          "detail": "Aucun token JSON : critère sans objet."
+        }
+      ]
+    },
+    {
+      "id": "couverture",
+      "note": 2,
+      "criteres": [
+        {
+          "id": "taux-50",
+          "rempli": true,
+          "detail": "Taux de couverture de 82 % (seuil : 50 % au moins)."
+        },
+        {
+          "id": "taux-80",
+          "rempli": true,
+          "detail": "Taux de couverture de 82 % (seuil : 80 % au moins)."
+        },
+        {
+          "id": "deja-tokenisees",
+          "rempli": false,
+          "detail": "78 valeurs en dur ont déjà un token (seuil : moins de 10)."
+        }
+      ]
+    },
+    {
+      "id": "accessibilite",
+      "note": 0,
+      "criteres": [
+        {
+          "id": "contrastes-tous",
+          "rempli": false,
+          "detail": "7 paires sur 15 atteignent 4,5:1 (toutes attendues)."
+        },
+        {
+          "id": "contrastes-90",
+          "rempli": false,
+          "detail": "47 % des paires atteignent 4,5:1 (seuil : 90 % au moins)."
+        },
+        {
+          "id": "focus-visible",
+          "rempli": false,
+          "detail": "2 fichiers retirent l’outline sans :focus-visible : src/design-system/kit/TextField.jsx, src/design-system/kit/Textarea.jsx."
+        }
+      ]
+    },
+    {
+      "id": "composants",
+      "note": 0,
+      "criteres": [
+        {
+          "id": "au-moins-5",
+          "rempli": false,
+          "detail": "4 composants repérés (seuil : 5 au moins)."
+        },
+        {
+          "id": "stories",
+          "rempli": false,
+          "detail": "0 composants sur 4 a une story (seuil : la moitié au moins)."
+        },
+        {
+          "id": "tests",
+          "rempli": false,
+          "detail": "0 composants sur 4 a un test (seuil : la moitié au moins)."
+        }
+      ]
+    },
+    {
+      "id": "documentation",
+      "note": 1,
+      "criteres": [
+        {
+          "id": "readme",
+          "rempli": true,
+          "detail": "README.md à la racine."
+        },
+        {
+          "id": "docs",
+          "rempli": false,
+          "detail": "Ni dossier docs/ ni fichier .mdx."
+        },
+        {
+          "id": "storybook",
+          "rempli": false,
+          "detail": "Pas de configuration Storybook."
+        },
+        {
+          "id": "contributing",
+          "rempli": false,
+          "detail": "Pas de CONTRIBUTING.md."
+        }
+      ]
+    },
+    {
+      "id": "gouvernance",
+      "note": 0,
+      "criteres": [
+        {
+          "id": "changelog",
+          "rempli": false,
+          "detail": "Ni CHANGELOG ni dossier .changeset/."
+        },
+        {
+          "id": "codeowners",
+          "rempli": false,
+          "detail": "Pas de CODEOWNERS (racine, .github/ ou docs/)."
+        },
+        {
+          "id": "workflows",
+          "rempli": false,
+          "detail": "Aucun workflow dans .github/workflows/."
+        },
+        {
+          "id": "licence",
+          "rempli": false,
+          "detail": "Pas de fichier de licence à la racine."
+        }
+      ]
+    },
+    {
+      "id": "parite",
+      "note": null,
+      "criteres": []
+    }
+  ],
+  "couverture": {
+    "taux": 0.8239795918367347,
+    "usagesTokens": 646,
+    "valeursEnDur": 138,
+    "nombreDejaTokenisees": 9,
+    "dejaTokenisees": [
+      {
+        "valeur": "12px",
+        "token": "--primitive-size-12",
+        "occurrences": 15
+      },
+      {
+        "valeur": "8px",
+        "token": "--primitive-size-8",
+        "occurrences": 14
+      },
+      {
+        "valeur": "10px",
+        "token": "--primitive-size-10",
+        "occurrences": 13
+      },
+      {
+        "valeur": "16px",
+        "token": "--primitive-size-16",
+        "occurrences": 10
+      },
+      {
+        "valeur": "2px",
+        "token": "--primitive-size-2",
+        "occurrences": 9
+      },
+      {
+        "valeur": "24px",
+        "token": "--primitive-size-24",
+        "occurrences": 6
+      },
+      {
+        "valeur": "20px",
+        "token": "--primitive-size-20",
+        "occurrences": 5
+      },
+      {
+        "valeur": "4px",
+        "token": "--primitive-size-4",
+        "occurrences": 5
+      },
+      {
+        "valeur": "32px",
+        "token": "--primitive-size-32",
+        "occurrences": 1
+      }
+    ],
+    "valeursRepetees": [
+      {
+        "valeur": "12px",
+        "occurrences": 15,
+        "fichiers": [
+          "src/design-system/SecondarySidebar.jsx",
+          "src/design-system/kit/ListItem.jsx",
+          "src/design-system/kit/Select.jsx",
+          "src/design-system/kit/Stepper.jsx",
+          "src/design-system/kit/TextField.jsx",
+          "src/design-system/kit/Textarea.jsx",
+          "src/design-system/kit/Toast.jsx",
+          "src/experiences/SessionReplay.jsx",
+          "src/lab/CaseFile.jsx",
+          "src/lab/GameDemo.jsx",
+          "src/lab/GameDemoV2.jsx"
+        ]
+      },
+      {
+        "valeur": "8px",
+        "occurrences": 14,
+        "fichiers": [
+          "src/design-system/SecondarySidebar.jsx",
+          "src/design-system/Tag.jsx",
+          "src/design-system/kit/Modal.jsx",
+          "src/design-system/kit/Stepper.jsx",
+          "src/design-system/kit/TableHeader.jsx",
+          "src/design-system/kit/Tabs.jsx",
+          "src/design-system/kit/Tooltip.jsx",
+          "src/experiences/SessionReplay.jsx",
+          "src/lab/CaseFile.jsx",
+          "src/lab/CaseStudyLayout.jsx"
+        ]
+      },
+      {
+        "valeur": "10px",
+        "occurrences": 13,
+        "fichiers": [
+          "src/design-system/SecondarySidebar.jsx",
+          "src/design-system/kit/Badge.jsx",
+          "src/design-system/kit/Breadcrumbs.jsx",
+          "src/design-system/kit/ListItem.jsx",
+          "src/design-system/kit/Select.jsx",
+          "src/design-system/kit/TextField.jsx",
+          "src/design-system/kit/Textarea.jsx",
+          "src/design-system/kit/Tooltip.jsx",
+          "src/design-system/kit/buttonStyles.js",
+          "src/lab/CaseStudyLayout.jsx",
+          "src/lab/PhaseCoverage.jsx",
+          "src/lab/ThemeSwatch.jsx"
+        ]
+      },
+      {
+        "valeur": "16px",
+        "occurrences": 10,
+        "fichiers": [
+          "src/design-system/SecondarySidebar.jsx",
+          "src/design-system/kit/AlertBanner.jsx",
+          "src/design-system/kit/Breadcrumbs.jsx",
+          "src/design-system/kit/Tabs.jsx",
+          "src/design-system/kit/Toast.jsx",
+          "src/experiences/SessionReplay.jsx",
+          "src/lab/CaseStudyLayout.jsx"
+        ]
+      },
+      {
+        "valeur": "2px",
+        "occurrences": 9,
+        "fichiers": [
+          "src/design-system/SecondarySidebar.jsx",
+          "src/design-system/Tag.jsx",
+          "src/design-system/kit/Button.jsx",
+          "src/experiences/SessionReplay.jsx"
+        ]
+      },
+      {
+        "valeur": "6px",
+        "occurrences": 7,
+        "fichiers": [
+          "src/design-system/kit/Pagination.jsx",
+          "src/design-system/kit/Tooltip.jsx",
+          "src/experiences/SessionReplay.jsx",
+          "src/lab/CaseFile.jsx",
+          "src/lab/ThemeSwatch.jsx"
+        ]
+      },
+      {
+        "valeur": "24px",
+        "occurrences": 6,
+        "fichiers": [
+          "src/design-system/SecondarySidebar.jsx",
+          "src/experiences/SessionReplay.jsx",
+          "src/lab/CaseFile.jsx"
+        ]
+      },
+      {
+        "valeur": "40px",
+        "occurrences": 6,
+        "fichiers": [
+          "src/experiences/SessionReplay.jsx"
+        ]
+      },
+      {
+        "valeur": "14px",
+        "occurrences": 5,
+        "fichiers": [
+          "src/design-system/kit/AlertBanner.jsx",
+          "src/design-system/kit/TableHeader.jsx",
+          "src/design-system/kit/buttonStyles.js",
+          "src/experiences/SessionReplay.jsx",
+          "src/lab/ThemeSwatch.jsx"
+        ]
+      },
+      {
+        "valeur": "20px",
+        "occurrences": 5,
+        "fichiers": [
+          "src/design-system/kit/Slider.jsx",
+          "src/design-system/kit/buttonStyles.js",
+          "src/experiences/SessionReplay.jsx",
+          "src/lab/GameDemo.jsx",
+          "src/lab/GameDemoV2.jsx"
+        ]
+      }
+    ],
+    "parFichier": [
+      {
+        "fichier": "src/experiences/SessionReplay.jsx",
+        "valeursEnDur": 45,
+        "usagesTokens": 158
+      },
+      {
+        "fichier": "src/lab/CaseFile.jsx",
+        "valeursEnDur": 16,
+        "usagesTokens": 55
+      },
+      {
+        "fichier": "src/design-system/SecondarySidebar.jsx",
+        "valeursEnDur": 13,
+        "usagesTokens": 11
+      },
+      {
+        "fichier": "src/lab/CaseStudyLayout.jsx",
+        "valeursEnDur": 7,
+        "usagesTokens": 24
+      },
+      {
+        "fichier": "src/lab/ThemeSwatch.jsx",
+        "valeursEnDur": 5,
+        "usagesTokens": 34
+      },
+      {
+        "fichier": "src/design-system/kit/Select.jsx",
+        "valeursEnDur": 4,
+        "usagesTokens": 12
+      },
+      {
+        "fichier": "src/design-system/kit/buttonStyles.js",
+        "valeursEnDur": 4,
+        "usagesTokens": 17
+      },
+      {
+        "fichier": "src/design-system/kit/Modal.jsx",
+        "valeursEnDur": 3,
+        "usagesTokens": 19
+      },
+      {
+        "fichier": "src/design-system/kit/Slider.jsx",
+        "valeursEnDur": 3,
+        "usagesTokens": 14
+      },
+      {
+        "fichier": "src/design-system/kit/Tooltip.jsx",
+        "valeursEnDur": 3,
+        "usagesTokens": 5
+      }
+    ]
+  },
+  "contrastes": {
+    "paires": [
+      {
+        "texte": "--on-primary",
+        "fond": "--primary",
+        "contexte": ":root",
+        "ratio": 3.36,
+        "ok": false
+      },
+      {
+        "texte": "--on-primary",
+        "fond": "--primary",
+        "contexte": "[data-invert]",
+        "ratio": 3.36,
+        "ok": false
+      },
+      {
+        "texte": "--on-selected",
+        "fond": "--selected-surface",
+        "contexte": ":root",
+        "ratio": 3.36,
+        "ok": false
+      },
+      {
+        "texte": "--on-selected",
+        "fond": "--selected-surface",
+        "contexte": "[data-invert]",
+        "ratio": 3.36,
+        "ok": false
+      },
+      {
+        "texte": "--text",
+        "fond": "--bg",
+        "contexte": ":root",
+        "ratio": 14.15,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--bg",
+        "contexte": "[data-invert]",
+        "ratio": 3.36,
+        "ok": false
+      },
+      {
+        "texte": "--text",
+        "fond": "--hover-surface",
+        "contexte": ":root",
+        "ratio": 13.31,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-base",
+        "contexte": ":root",
+        "ratio": 14.15,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-base",
+        "contexte": "[data-invert]",
+        "ratio": 3.36,
+        "ok": false
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-inset",
+        "contexte": ":root",
+        "ratio": 12.13,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-inset",
+        "contexte": "[data-invert]",
+        "ratio": 4.05,
+        "ok": false
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-pressed",
+        "contexte": ":root",
+        "ratio": 10.27,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-pressed",
+        "contexte": "[data-invert]",
+        "ratio": 4.8,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-raised",
+        "contexte": ":root",
+        "ratio": 15.04,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-raised",
+        "contexte": "[data-invert]",
+        "ratio": 2.94,
+        "ok": false
+      }
+    ],
+    "detectees": 15,
+    "echecs": 8
+  },
+  "priorites": {
+    "sujets": [
+      {
+        "id": "deja-tokenisees",
+        "titre": {
+          "fr": "Valeurs en dur qui ont déjà un token",
+          "en": "Hard-coded values that already have a token"
+        },
+        "unite": {
+          "fr": "valeurs",
+          "en": "values"
+        },
+        "compte": 9,
+        "impact": "fort",
+        "effort": "faible",
+        "quadrant": "gains-rapides"
+      },
+      {
+        "id": "contrastes",
+        "titre": {
+          "fr": "Contrastes insuffisants",
+          "en": "Insufficient contrast"
+        },
+        "unite": {
+          "fr": "paires",
+          "en": "pairs"
+        },
+        "compte": 8,
+        "impact": "fort",
+        "effort": "moyen",
+        "quadrant": "gains-rapides"
+      },
+      {
+        "id": "doublons",
+        "titre": {
+          "fr": "Doublons et couleurs quasi identiques",
+          "en": "Duplicates and near-identical colors"
+        },
+        "unite": {
+          "fr": "constats",
+          "en": "findings"
+        },
+        "compte": 3,
+        "impact": "moyen",
+        "effort": "faible",
+        "quadrant": "appoint"
+      },
+      {
+        "id": "composants",
+        "titre": {
+          "fr": "Composants sans stories ou sans tests",
+          "en": "Components without stories or tests"
+        },
+        "unite": {
+          "fr": "manques",
+          "en": "gaps"
+        },
+        "compte": 8,
+        "impact": "moyen",
+        "effort": "fort",
+        "quadrant": "plus-tard"
+      },
+      {
+        "id": "documentation",
+        "titre": {
+          "fr": "Documentation manquante",
+          "en": "Missing documentation"
+        },
+        "unite": {
+          "fr": "éléments",
+          "en": "items"
+        },
+        "compte": 3,
+        "impact": "moyen",
+        "effort": "moyen",
+        "quadrant": "plus-tard"
+      },
+      {
+        "id": "gouvernance",
+        "titre": {
+          "fr": "Gouvernance manquante",
+          "en": "Missing governance"
+        },
+        "unite": {
+          "fr": "éléments",
+          "en": "items"
+        },
+        "compte": 4,
+        "impact": "moyen",
+        "effort": "faible",
+        "quadrant": "appoint"
+      },
+      {
+        "id": "hygiene",
+        "titre": {
+          "fr": "Valeurs en dur dans les tokens, types manquants, chaînes d’alias longues",
+          "en": "Hard-coded values in tokens, missing types, long alias chains"
+        },
+        "unite": {
+          "fr": "constats",
+          "en": "findings"
+        },
+        "compte": 1,
+        "impact": "faible",
+        "effort": "faible",
+        "quadrant": "appoint"
+      },
+      {
+        "id": "inutilises",
+        "titre": {
+          "fr": "Tokens inutilisés",
+          "en": "Unused tokens"
+        },
+        "unite": {
+          "fr": "tokens",
+          "en": "tokens"
+        },
+        "compte": 8,
+        "impact": "faible",
+        "effort": "moyen",
+        "quadrant": "plus-tard"
+      }
+    ],
+    "quadrants": {
+      "gains-rapides": [
+        {
+          "id": "deja-tokenisees",
+          "titre": {
+            "fr": "Valeurs en dur qui ont déjà un token",
+            "en": "Hard-coded values that already have a token"
+          },
+          "unite": {
+            "fr": "valeurs",
+            "en": "values"
+          },
+          "compte": 9,
+          "impact": "fort",
+          "effort": "faible",
+          "quadrant": "gains-rapides"
+        },
+        {
+          "id": "contrastes",
+          "titre": {
+            "fr": "Contrastes insuffisants",
+            "en": "Insufficient contrast"
+          },
+          "unite": {
+            "fr": "paires",
+            "en": "pairs"
+          },
+          "compte": 8,
+          "impact": "fort",
+          "effort": "moyen",
+          "quadrant": "gains-rapides"
+        }
+      ],
+      "chantiers": [],
+      "appoint": [
+        {
+          "id": "doublons",
+          "titre": {
+            "fr": "Doublons et couleurs quasi identiques",
+            "en": "Duplicates and near-identical colors"
+          },
+          "unite": {
+            "fr": "constats",
+            "en": "findings"
+          },
+          "compte": 3,
+          "impact": "moyen",
+          "effort": "faible",
+          "quadrant": "appoint"
+        },
+        {
+          "id": "gouvernance",
+          "titre": {
+            "fr": "Gouvernance manquante",
+            "en": "Missing governance"
+          },
+          "unite": {
+            "fr": "éléments",
+            "en": "items"
+          },
+          "compte": 4,
+          "impact": "moyen",
+          "effort": "faible",
+          "quadrant": "appoint"
+        },
+        {
+          "id": "hygiene",
+          "titre": {
+            "fr": "Valeurs en dur dans les tokens, types manquants, chaînes d’alias longues",
+            "en": "Hard-coded values in tokens, missing types, long alias chains"
+          },
+          "unite": {
+            "fr": "constats",
+            "en": "findings"
+          },
+          "compte": 1,
+          "impact": "faible",
+          "effort": "faible",
+          "quadrant": "appoint"
+        }
+      ],
+      "plus-tard": [
+        {
+          "id": "composants",
+          "titre": {
+            "fr": "Composants sans stories ou sans tests",
+            "en": "Components without stories or tests"
+          },
+          "unite": {
+            "fr": "manques",
+            "en": "gaps"
+          },
+          "compte": 8,
+          "impact": "moyen",
+          "effort": "fort",
+          "quadrant": "plus-tard"
+        },
+        {
+          "id": "documentation",
+          "titre": {
+            "fr": "Documentation manquante",
+            "en": "Missing documentation"
+          },
+          "unite": {
+            "fr": "éléments",
+            "en": "items"
+          },
+          "compte": 3,
+          "impact": "moyen",
+          "effort": "moyen",
+          "quadrant": "plus-tard"
+        },
+        {
+          "id": "inutilises",
+          "titre": {
+            "fr": "Tokens inutilisés",
+            "en": "Unused tokens"
+          },
+          "unite": {
+            "fr": "tokens",
+            "en": "tokens"
+          },
+          "compte": 8,
+          "impact": "faible",
+          "effort": "moyen",
+          "quadrant": "plus-tard"
+        }
+      ]
+    }
+  },
+  "resume": {
+    "fichiers": 3,
+    "tokens": 153,
+    "tokensParFormat": {
+      "css": 153
+    },
+    "tokensParType": {
+      "color": 36,
+      "inconnu": 104,
+      "dimension": 13
+    },
+    "constatsParGravite": {
+      "erreur": 0,
+      "avertissement": 3,
+      "info": 9
+    },
+    "tokensSains": 131,
+    "partSaine": 0.8562091503267973
+  }
+}

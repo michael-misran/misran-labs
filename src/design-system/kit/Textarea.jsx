@@ -39,8 +39,7 @@ export default function Textarea({ label, placeholder, helper, error, value, onC
           fontFamily: 'var(--font-body)',
           fontSize: 13,
           lineHeight: 1.6,
-          padding: '10px 12px',
-          outline: 'none',
+          padding: '10px var(--space-sm)',
           resize: 'vertical',
           transition: 'border-color 0.18s ease',
         }}

@@ -34,7 +34,7 @@ export default function Select({ label, value, onChange, options, disabled = fal
             boxShadow: 'var(--elev-inset)',
             fontFamily: 'var(--font-body)',
             fontSize: 13,
-            padding: '10px 36px 10px 12px',
+            padding: '10px 36px 10px var(--space-sm)',
             cursor: disabled ? 'not-allowed' : 'pointer',
           }}
         >

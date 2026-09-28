@@ -3,7 +3,7 @@
 // À ne pas confondre avec Tag.jsx, qui est l'étiquette du Lab hors kit.
 
 const TONES = {
-  solid: { background: 'var(--primary)', color: 'var(--on-primary)', border: 'transparent' },
+  solid: { background: 'var(--primary-surface)', color: 'var(--on-primary-surface)', border: 'transparent' },
   soft: { background: 'color-mix(in srgb, var(--primary) 16%, var(--surface-raised))', color: 'var(--primary)', border: 'transparent' },
   neutral: { background: 'var(--surface-raised)', color: 'var(--text2)', border: 'var(--border)' },
 }

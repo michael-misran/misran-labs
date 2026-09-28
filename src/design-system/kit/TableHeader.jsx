@@ -39,7 +39,7 @@ export default function TableHeader({ columns, sortBy, direction = 'asc', onSort
                 fontFamily: 'var(--font-body)',
                 fontSize: 12,
                 fontWeight: sorted ? 600 : 400,
-                padding: '8px 14px',
+                padding: 'var(--space-xs) 14px',
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
                 transition: 'box-shadow 0.18s ease, background 0.18s ease',

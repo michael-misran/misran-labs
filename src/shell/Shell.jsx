@@ -22,9 +22,13 @@ export default function Shell() {
     document.title = meta.label ? `${meta.label} — Michael Misran` : 'Michael Misran'
   }, [meta.label])
 
-  useEffect(() => {
+  // Le menu mobile se referme à chaque changement de page : on compare la page
+  // précédente pendant le rendu (recommandé par React) plutôt que dans un effet.
+  const [pagePrecedente, setPagePrecedente] = useState(location.pathname)
+  if (pagePrecedente !== location.pathname) {
+    setPagePrecedente(location.pathname)
     setMobileNavOpen(false)
-  }, [location.pathname])
+  }
 
   return (
     <>

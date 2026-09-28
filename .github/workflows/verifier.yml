@@ -1,0 +1,27 @@
+# Vérification automatique : lint, build et scripts de contrôle de l'outil d'audit.
+# Lecture seule, aucun secret, aucun déploiement (Vercel s'en charge).
+name: Vérifier
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+      - run: node missions/audit-tokens/verifier-analyse.mjs
+      - run: node missions/audit-github/verifier-github.mjs
+      - run: node missions/audit-grille/verifier-grille.mjs

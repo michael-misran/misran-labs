@@ -51,7 +51,7 @@ export default function Button({
             width: 12,
             height: 12,
             borderRadius: '50%',
-            border: '2px solid currentColor',
+            border: 'var(--border-thick) solid currentColor',
             borderTopColor: 'transparent',
             animation: 'kit-spin 0.7s linear infinite',
           }}

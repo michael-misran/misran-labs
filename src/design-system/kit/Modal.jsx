@@ -71,7 +71,7 @@ export default function Modal({ open, title, question, icon = 'alert', confirmLa
             fontFamily: 'var(--font-body)',
             fontSize: 12,
             fontWeight: 600,
-            padding: '8px 18px',
+            padding: 'var(--space-xs) 18px',
             cursor: 'pointer',
           }}
         >

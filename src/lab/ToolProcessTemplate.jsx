@@ -1,5 +1,6 @@
 import { Section } from './CaseStudyLayout'
-import { CaseMasthead, CaseHero, CaseMetaRow, CaseFooter, CASE_CHROME } from './CaseFile'
+import { CaseMasthead, CaseHero, CaseMetaRow, CaseFooter } from './CaseFile'
+import { CASE_CHROME } from './caseChrome'
 import PhaseCoverage from './PhaseCoverage'
 import { LinkButton } from '../design-system/kit'
 import { pt, dossierNo } from './projects'

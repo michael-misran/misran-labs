@@ -111,7 +111,11 @@
   --bg3: var(--primitive-cream-200);
   --cyan: var(--primitive-ochre-500);
   --primary: var(--primitive-coral-500);
-  --on-primary: var(--primitive-cream-50);
+  /* Corail vif = accent (texte, bordure, décor). Dès qu'il y a du texte SUR le
+     corail, on prend la paire primary-surface / on-primary-surface : corail 700
+     + crème 50 = 4,80:1 (contre 3,36:1 avec le corail vif). */
+  --primary-surface: var(--primitive-coral-700);
+  --on-primary-surface: var(--primitive-cream-50);
   --text: var(--primitive-ink-900);
   --text2: var(--primitive-ink-600);
   --muted: var(--primitive-ink-400);
@@ -132,10 +136,10 @@
   --surface-pressed: var(--primitive-cream-300);
   --hover-surface: var(--primitive-cream-150);
 
-  /* Un état sélectionné est une PAIRE de couleurs, comme primary /
-     on-primary : sans le second token, une sélection en couleur vive
+  /* Un état sélectionné est une PAIRE de couleurs, comme primary-surface /
+     on-primary-surface : sans le second token, une sélection en couleur vive
      garde le texte de la surface d'origine — du blanc sur corail. */
-  --selected-surface: var(--primitive-coral-500);
+  --selected-surface: var(--primitive-coral-700);
   --on-selected: var(--primitive-cream-50);
 
   /* Pas de flou, pas de décalage lourd : une planche imprimée empile ses
@@ -213,7 +217,8 @@
   --prose: var(--primitive-cream-50);
   --border: var(--primitive-cream-50);
   --primary: var(--primitive-cream-50);
-  --on-primary: var(--primitive-coral-500);
+  --primary-surface: var(--primitive-cream-50);
+  --on-primary-surface: var(--primitive-coral-700);
   --active-tint: var(--primitive-cream-50-a18);
   --hover-tint: var(--primitive-cream-50-a10);
 
@@ -223,7 +228,7 @@
   --surface-pressed: var(--primitive-coral-700);
   --hover-surface: var(--primitive-cream-50-a12);
   --selected-surface: var(--primitive-cream-50);
-  --on-selected: var(--primitive-coral-500);
+  --on-selected: var(--primitive-coral-700);
 
   --elev-2: 0 1px 0 var(--primitive-cream-50-a35);
   --elev-3: 0 2px 0 var(--primitive-cream-50-a35);

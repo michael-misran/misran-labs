@@ -23,11 +23,12 @@ export default function Surface({
   radius = 'var(--radius-lg)',
   padding = 0,
   invert = false,
-  as: Tag = 'div',
+  as = 'div',
   style,
   children,
   ...rest
 }) {
+  const Tag = as
   const inset = variant === 'inset' || variant === 'pressed'
 
   return (

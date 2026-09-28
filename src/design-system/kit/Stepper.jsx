@@ -15,7 +15,7 @@ export default function Stepper({ steps, current = 1, hint }) {
             boxShadow: 'var(--elev-4)',
             fontSize: 11,
             lineHeight: 1.4,
-            padding: '8px 12px',
+            padding: 'var(--space-xs) var(--space-sm)',
             marginBottom: 14,
           }}
         >
@@ -42,8 +42,8 @@ export default function Stepper({ steps, current = 1, hint }) {
                     alignItems: 'center',
                     justifyContent: 'center',
                     borderRadius: '50%',
-                    background: filled ? 'var(--primary)' : 'var(--surface-inset)',
-                    color: filled ? 'var(--on-primary)' : 'var(--muted)',
+                    background: filled ? 'var(--primary-surface)' : 'var(--surface-inset)',
+                    color: filled ? 'var(--on-primary-surface)' : 'var(--muted)',
                     boxShadow: isCurrent ? 'var(--elev-3)' : filled ? 'var(--elev-2)' : 'var(--elev-inset)',
                     fontSize: 12,
                     fontWeight: 600,

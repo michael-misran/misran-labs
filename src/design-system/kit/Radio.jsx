@@ -54,13 +54,13 @@ export default function Radio({ legend, name, options, value, onChange, disabled
                   alignItems: 'center',
                   justifyContent: 'center',
                   borderRadius: '50%',
-                  background: selected ? 'var(--primary)' : 'var(--surface-inset)',
+                  background: selected ? 'var(--primary-surface)' : 'var(--surface-inset)',
                   boxShadow: selected ? 'var(--elev-2)' : 'var(--elev-inset)',
                   transition: 'background 0.18s ease, box-shadow 0.18s ease',
                 }}
               >
                 {selected && (
-                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--on-primary)' }} />
+                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--on-primary-surface)' }} />
                 )}
               </span>
               {opt.label}
