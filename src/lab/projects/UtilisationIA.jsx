@@ -172,14 +172,15 @@ function Pre({ isMobile, children }) {
 }
 
 const TREE_PROJECT_FR = `misran-labs/
-├── CLAUDE.md                      règles du projet (missions, Git, modèles, lancement, clôture)
+├── CLAUDE.md                      règles du projet, court (résumé + interdits)
 ├── .claude/
 │   ├── settings.json              autorisations + interdits (push, merge, rebase, npm install, vercel)
 │   └── agents/
 │       ├── explorateur.md         Haiku — recherche en lecture seule
-│       ├── verificateur.md        Haiku — build, lint, navigateur
+│       ├── verificateur.md        Haiku — navigateur
 │       └── expert.md              Opus — dernier recours
 └── missions/
+    ├── README.md                  procédures : lancer, reprendre, clôturer, modèles
     └── tokens-fix/
         ├── SPEC.md                objectif, 9 décisions d'architecture (D1–D9), 6 critères
         ├── PLAN.md                8 étapes à cocher
@@ -189,14 +190,15 @@ const TREE_PROJECT_FR = `misran-labs/
         └── RAPPORT.md             écrit à la fin`
 
 const TREE_PROJECT_EN = `misran-labs/
-├── CLAUDE.md                      project rules (missions, Git, models, launch, wrap-up)
+├── CLAUDE.md                      project rules, short (summary + prohibitions)
 ├── .claude/
 │   ├── settings.json              allow list + deny list (push, merge, rebase, npm install, vercel)
 │   └── agents/
 │       ├── explorateur.md         Haiku — read-only search
-│       ├── verificateur.md        Haiku — build, lint, browser
+│       ├── verificateur.md        Haiku — browser
 │       └── expert.md              Opus — last resort
 └── missions/
+    ├── README.md                  procedures: launch, resume, wrap up, models
     └── tokens-fix/
         ├── SPEC.md                goal, 9 architecture decisions (D1–D9), 6 criteria
         ├── PLAN.md                8 steps to check off
@@ -256,7 +258,10 @@ const CONTENT = {
       { date: '12', label: "La file d'attente de missions" },
       { date: '13', label: 'Piloter depuis le téléphone' },
       { date: '14', label: 'Le compromis sur le push de main' },
-      { date: '15', label: 'Cette mise à jour (mission 7)' },
+      { date: '15', label: 'Mise à jour de la page (mission 7)' },
+      { date: '16', label: 'Un deuxième avis : Gemini' },
+      { date: '17', label: 'Économiser les tokens' },
+      { date: '18', label: 'Cette mise à jour (mission 8)' },
     ],
 
     startTitle: "Point de départ : l'IA locale",
@@ -321,8 +326,8 @@ const CONTENT = {
       { label: '1 · Travail', sublabel: 'Plan coché, PROGRESS.md et un commit après chaque étape : tout est sur le disque' },
       { label: '2 · Quota épuisé', sublabel: "Limite glissante de 5 heures de l'abonnement Pro" },
       { label: '3 · Arrêt', sublabel: "La session s'arrête et ne peut pas se relancer seule" },
-      { label: '4 · Relance 2 h plus tard', sublabel: "La tâche programmée repart de zéro ; si rien à faire, elle s'arrête en quelques secondes" },
-      { label: '5 · Lecture de PROGRESS.md', sublabel: 'Et des autres fichiers de la mission : la mémoire entre deux reprises' },
+      { label: '4 · Relance 2 h plus tard', sublabel: "La tâche programmée repart de zéro ; si rien à faire, elle se met en pause jusqu'à la prochaine mission" },
+      { label: '5 · Lecture de PROGRESS.md', sublabel: 'Avec SPEC.md et PLAN.md seulement : la mémoire entre deux reprises' },
       { label: '6 · Reprise ↺', sublabel: "Là où le plan coché s'est arrêté, puis retour à l'étape 1" },
     ],
     noCostP: "Sans surcoût sur l'abonnement Pro, tant que l'usage supplémentaire payant n'est pas activé : le travail est juste plus lent (plusieurs fenêtres de quota), et partage le quota du travail quotidien → idéal la nuit.",
@@ -347,7 +352,7 @@ const CONTENT = {
       top: { label: 'OPUS · ARCHITECTE', sublabel: 'Cadrage, spec, plan : une fois, avec moi' },
       mid: { label: 'SONNET · CHEF DE PROJET', sublabel: 'Toutes les exécutions programmées ; choisit les sous-agents' },
       haiku1: { label: 'HAIKU', sublabel: 'explorateur : recherche' },
-      haiku2: { label: 'HAIKU', sublabel: 'verificateur : build, lint, navigateur' },
+      haiku2: { label: 'HAIKU', sublabel: 'verificateur : contrôles dans le navigateur' },
       expert: { label: 'OPUS', sublabel: 'expert : étape délicate ou 2 échecs' },
       veilleur: { label: 'HAIKU', sublabel: 'veilleur : veille web pour le Magazine' },
       relecteur: { label: 'SONNET', sublabel: 'relecteur : vérification factuelle du Magazine' },
@@ -356,7 +361,8 @@ const CONTENT = {
     modelsTableRows: [
       ['Architecte : cadrage, spec, plan', 'Opus', 'Une fois, au lancement, en session avec moi'],
       ['Chef de projet / développeur', 'Sonnet', 'Toutes les exécutions programmées'],
-      ['Exécutants : explorateur, verificateur', 'Haiku', 'Tâches simples ou volumineuses'],
+      ['Exécutants : explorateur, verificateur', 'Haiku', 'Recherche dans le code ; contrôles dans le navigateur'],
+      ['sous-agent Haiku', 'Haiku', 'Étapes mécaniques bien décrites, marquées dans le plan'],
       ['expert', 'Opus', 'Étape délicate marquée dans le plan, ou après 2 échecs'],
       ['veilleur', 'Haiku', 'Veille hebdomadaire pour le Magazine'],
       ['relecteur', 'Sonnet', 'Vérification factuelle avant chaque numéro du Magazine'],
@@ -489,6 +495,76 @@ const CONTENT = {
     mainPushP3:
       "Détail notable : avant ce compromis, alors que je venais de dire « vas-y », Claude a refusé de contourner le verrou en écrivant la commande autrement — un garde-fou n'a de valeur que s'il n'est pas contourné.",
 
+    geminiTitle: 'Un deuxième avis : Gemini',
+    geminiIntroP:
+      "Je réfléchissais à l'idée P-003 : un kit de missions autonomes, réutilisable pour d'autres projets. J'ai demandé à Claude s'il pouvait interroger Gemini, puisqu'il sait naviguer.",
+    geminiHowP:
+      "Oui, avec « Claude in Chrome » : l'extension qui pilote mon vrai Chrome, où je suis déjà connecté à Gemini. Il ne se connecte jamais à ma place — il ne tape aucun mot de passe. Avant le test, il m'a annoncé quatre limites :",
+    geminiLimits: [
+      "Uniquement quand je suis là : les tâches programmées n'ont pas de navigateur.",
+      "Fragile : il passe par la page, pas par une API ; si la page change, ça casse.",
+      "Confidentialité : tout ce qui est envoyé part chez Google. Il n'envoie pas mes notes privées sans mon accord.",
+      "Les conditions d'utilisation de Google n'aiment pas l'automatisation : ponctuel, oui ; à grande échelle, non.",
+    ],
+    geminiTryP:
+      "Premier essai : échec, l'extension n'était pas connectée. Claude m'a donné les étapes (installer l'extension, s'y connecter avec le même compte), sans chercher de contournement. Deuxième essai, une fois connecté : réussi.",
+    geminiQuestionP:
+      "La question était générale, sans aucune donnée privée : comment les développeurs solo organisent-ils aujourd'hui leurs agents de code autonomes — suivi, garde-fous, délégation entre modèles ? Gemini a répondu par cinq pratiques. Je les résume avec mes mots et je les compare à mon système.",
+    geminiTableCols: ['Pratique citée par Gemini', 'Dans mon système'],
+    geminiTableRows: [
+      ["Des copies de travail Git séparées, pour faire tourner plusieurs agents sans qu'ils se gênent", 'Oui : des branches auto/* séparées de main'],
+      ['Répartir les modèles : un gros modèle conçoit, des modèles rapides ou locaux exécutent le répétitif', 'Oui : Opus cadre, Sonnet exécute, Haiku fait les tâches simples'],
+      ["Un fichier de règles qui sert de contrat à l'agent", 'Oui : CLAUDE.md et les permissions du projet'],
+      ['Des agents dans le terminal qui commitent chaque étape et savent annuler un changement raté', 'Oui : un commit par étape'],
+      ['Une validation humaine avant chaque écriture', "À la fin, par pull request : c'est le principe de l'autonomie « fondateur »"],
+    ],
+    geminiConclusionLabel: "Ce que j'en retiens :",
+    geminiConclusion: [
+      "Mon système coche déjà quatre pratiques sur cinq. La validation humaine, chez moi, se fait à la fin plutôt qu'à chaque écriture.",
+      "Gemini a aussi avancé un chiffre sur la part des dépôts qui utilisent un fichier de règles. Il n'était pas sourcé : je ne l'ai pas vérifié, donc je ne le reprends pas.",
+      "Sa réponse semblait adaptée à mon historique Gemini : un avis utile, pas une source neutre.",
+      "Pour P-003, c'est un signal encourageant : le système existe déjà, il s'agirait de l'extraire.",
+      "Piloter Gemini dans le navigateur coûte des tokens Claude (attendre, lire la page), pour une réponse d'environ une minute, Gemini ayant fait sa propre recherche web. C'est un deuxième avis, pas une économie.",
+    ],
+
+    tokensTitle: 'Économiser les tokens',
+    tokensIntroP:
+      "Ma demande : diminuer au maximum le coût en tokens du système, en restant aussi efficace. Claude a relevé quatre postes, par ordre d'impact.",
+    tokensTableCols: ['Poste', 'Avant', 'Après'],
+    tokensTableRows: [
+      [
+        'Tâche programmée',
+        'Elle tournait toutes les 2 heures, soit 12 fois par jour, même sans mission à faire : chaque lancement chargeait tout le contexte pour répondre « Aucune mission active ».',
+        'Elle se met en pause toute seule quand la file de missions est vide ; la session de cadrage la réactive quand une mission est prête.',
+      ],
+      [
+        'CLAUDE.md',
+        "Environ 10 Ko, chargé à chaque session (missions, Magazine, idées, conversations), dont la moitié ne sert que pendant une mission. Les routines le relisaient une deuxième fois, alors qu'il est déjà chargé automatiquement.",
+        "3 Ko : les procédures vont dans missions/README.md, lu seulement quand on travaille sur une mission. Les interdits de sécurité restent dans CLAUDE.md. Les routines ne le relisent plus.",
+      ],
+      [
+        "Reprise d'une mission",
+        'Relecture de tous les fichiers de la mission, y compris les journaux DECISIONS et DELEGATIONS, qui grossissent à chaque étape.',
+        'SPEC, PLAN et PROGRESS seulement ; on ajoute des lignes aux journaux sans les relire.',
+      ],
+      [
+        'Build et lint',
+        'Confiés à un sous-agent : il démarre à froid et relit le contexte, pour une seule commande.',
+        "Lancés directement par la session principale. Le verificateur (Haiku) ne sert plus qu'au navigateur. Nouveau choix au cadrage : « sous-agent (Haiku) » pour les étapes mécaniques bien décrites.",
+      ],
+    ],
+    tokensBugP:
+      "Au passage, un bug corrigé : la tâche des missions aurait pris les branches de la routine des idées (auto/projets-*) pour des missions. Elle les ignore maintenant. Les mêmes règles ont été reportées dans le skill global /mission, pour les futurs projets.",
+    tokensRejectedLabel: "Ce qui n'a pas été retenu :",
+    tokensRejected: [
+      "Gemini dans le navigateur : plus cher qu'il ne fait gagner (voir la section précédente).",
+      "L'IA locale (Lily) : déjà écartée, gain marginal.",
+    ],
+    tokensRemainingP:
+      "Il me reste une recommandation à appliquer : couper, pour ce projet, les connecteurs inutiles (messagerie, agenda, stockage, tableaux blancs, design), dont la liste occupe du contexte à chaque session.",
+    tokensPublishP:
+      "Pour la première fois, une amélioration du système lui-même passe par une pull request, hors mission, que je fusionne. Cette page est mise à jour par la mission 8, utilisation-ia-economie : la première cadrée selon ces nouvelles règles (étapes mécaniques prévues pour Haiku, build et lint sans sous-agent).",
+
     statsTitle: 'Bilan chiffré',
     statsTableCols: ['Mission', 'Durée', 'Modèles'],
     statsTableRows: [
@@ -499,6 +575,7 @@ const CONTENT = {
       ['5. workflow-grille', '~30 min (5 et 6 ensemble)', 'Haiku, Sonnet'],
       ['6. home-magazine', '(même exécution)', 'Opus, Sonnet, Haiku'],
       ['7. utilisation-ia-maj', '—', 'voir DELEGATIONS.md de la mission'],
+      ['8. utilisation-ia-economie', '—', 'voir DELEGATIONS.md de la mission'],
     ],
     statsNoteP:
       "Plus une routine hebdomadaire : le Magazine (numéro 1 daté du 28/09, fusionné le 27/09 après corrections). Tendance : de moins en moins d'interventions de moi, et Opus réservé aux étapes qui en ont besoin — cadrage, direction visuelle.",
@@ -506,9 +583,9 @@ const CONTENT = {
     finalLoopTitle: 'Le circuit final',
     finalFlow: [
       { label: '1 · Brief', sublabel: 'Moi : « mission : … »' },
-      { label: '2 · Cadrage (Opus)', sublabel: 'Spec tranchée + plan, avec un modèle par étape' },
+      { label: '2 · Cadrage (Opus)', sublabel: 'Spec tranchée + plan, avec un modèle par étape ; réactive la tâche programmée' },
       { label: '3 · Branche auto/<nom>', sublabel: 'Commits libres uniquement sur les branches auto/*' },
-      { label: '4 · Tâche programmée (Sonnet)', sublabel: "Gère la file d'attente ; reprend après chaque coupure de quota" },
+      { label: '4 · Tâche programmée (Sonnet)', sublabel: "Gère la file d'attente ; reprend après chaque coupure de quota ; se met en pause quand la file est vide" },
       { label: '5 · Étapes + commits', sublabel: 'Un commit par étape ; délègue à Haiku ou Opus selon le plan' },
       { label: '6 · Rapport', sublabel: 'RAPPORT.md, écrit par la session' },
       { label: '7 · « Clôture les missions »', sublabel: 'Moi, en un mot' },
@@ -526,7 +603,7 @@ const CONTENT = {
     ],
 
     metaTitle: 'Mise en abyme',
-    metaP: "Cette page a été écrite par la deuxième mission du système, à partir du contenu que j'ai fourni. Elle est désormais entretenue par le système lui-même : cette mise à jour en est la septième mission, cadrée puis exécutée sans moi, du brief jusqu'à la pull request. Le dossier missions/ du dépôt en garde la trace, mission par mission (spec, plan, décisions, délégations, rapport).",
+    metaP: "Cette page a été écrite par la deuxième mission du système, à partir du contenu que j'ai fourni. Elle est désormais entretenue par le système lui-même : cette mise à jour en est la huitième mission, cadrée puis exécutée sans moi, du brief jusqu'à la pull request. Le dossier missions/ du dépôt en garde la trace, mission par mission (spec, plan, décisions, délégations, rapport).",
 
     treeProject: TREE_PROJECT_FR,
     treeGlobal: TREE_GLOBAL_FR,
@@ -561,7 +638,10 @@ const CONTENT = {
       { date: '12', label: 'The mission queue' },
       { date: '13', label: 'Piloting from the phone' },
       { date: '14', label: 'The main-push compromise' },
-      { date: '15', label: 'This update (mission 7)' },
+      { date: '15', label: 'Page update (mission 7)' },
+      { date: '16', label: 'A second opinion: Gemini' },
+      { date: '17', label: 'Cutting token usage' },
+      { date: '18', label: 'This update (mission 8)' },
     ],
 
     startTitle: 'Starting point: local AI',
@@ -626,8 +706,8 @@ const CONTENT = {
       { label: '1 · Work', sublabel: 'Checked-off plan, PROGRESS.md and a commit after every step: it all lives on disk' },
       { label: '2 · Quota used up', sublabel: "The Pro plan's rolling 5-hour limit" },
       { label: '3 · Stop', sublabel: "The session stops and can't restart on its own" },
-      { label: '4 · Relaunch 2 h later', sublabel: 'The scheduled task starts fresh; with nothing to do, it exits within seconds' },
-      { label: '5 · Reading PROGRESS.md', sublabel: 'And the other mission files: the memory between two runs' },
+      { label: '4 · Relaunch 2 h later', sublabel: 'The scheduled task starts fresh; with nothing to do, it pauses itself until the next mission' },
+      { label: '5 · Reading PROGRESS.md', sublabel: 'Along with SPEC.md and PLAN.md only: the memory between two runs' },
       { label: '6 · Resume ↺', sublabel: 'Where the checked-off plan left off, then back to step 1' },
     ],
     noCostP: "No extra cost on the Pro subscription, as long as paid extra usage isn't switched on: the work just runs slower (spread over several quota windows), sharing quota with everyday work → ideal overnight.",
@@ -652,7 +732,7 @@ const CONTENT = {
       top: { label: 'OPUS · ARCHITECT', sublabel: 'Framing, spec, plan: once, with me' },
       mid: { label: 'SONNET · PROJECT LEAD', sublabel: 'Every scheduled run; picks the sub-agents' },
       haiku1: { label: 'HAIKU', sublabel: 'explorateur: code search' },
-      haiku2: { label: 'HAIKU', sublabel: 'verificateur: build, lint, browser' },
+      haiku2: { label: 'HAIKU', sublabel: 'verificateur: browser checks' },
       expert: { label: 'OPUS', sublabel: 'expert: tricky step or 2 failures' },
       veilleur: { label: 'HAIKU', sublabel: 'veilleur: web research for the Magazine' },
       relecteur: { label: 'SONNET', sublabel: 'relecteur: fact-checks the Magazine' },
@@ -661,7 +741,8 @@ const CONTENT = {
     modelsTableRows: [
       ['Architect: framing, spec, plan', 'Opus', 'Once, at launch, in a session with me'],
       ['Project lead / developer', 'Sonnet', 'Every scheduled run'],
-      ['Workers: explorateur, verificateur', 'Haiku', 'Simple or bulky tasks'],
+      ['Workers: explorateur, verificateur', 'Haiku', 'Code search; browser checks'],
+      ['Haiku sub-agent', 'Haiku', 'Mechanical, well-described steps, flagged in the plan'],
       ['expert', 'Opus', 'A tricky step flagged in the plan, or after 2 failures'],
       ['veilleur', 'Haiku', 'Weekly research for the Magazine'],
       ['relecteur', 'Sonnet', 'Fact-check before every Magazine issue'],
@@ -794,6 +875,76 @@ const CONTENT = {
     mainPushP3:
       'A notable detail: before this compromise, right after I said "go ahead," Claude refused to work around the lock by phrasing the command differently — a guardrail is only worth anything if it can\'t be talked around.',
 
+    geminiTitle: 'A second opinion: Gemini',
+    geminiIntroP:
+      "I was thinking about idea P-003: a kit of autonomous missions, reusable for other projects. I asked Claude whether it could question Gemini, since it can browse.",
+    geminiHowP:
+      'Yes, with "Claude in Chrome": the extension that drives my real Chrome, where I\'m already signed in to Gemini. It never signs in for me — it types no password. Before the test, it told me about four limits:',
+    geminiLimits: [
+      "Only when I'm around: scheduled tasks have no browser.",
+      "Fragile: it goes through the page, not an API; if the page changes, it breaks.",
+      "Privacy: everything it sends goes to Google. It won't send my private notes without my say-so.",
+      "Google's terms of use don't like automation: occasional use, fine; at scale, no.",
+    ],
+    geminiTryP:
+      "First try: failed, the extension wasn't connected. Claude gave me the steps (install the extension, sign in with the same account), without looking for a workaround. Second try, once connected: it worked.",
+    geminiQuestionP:
+      "The question was general, with no private data: how do solo developers organize their autonomous coding agents today — tracking, guardrails, handing work between models? Gemini answered with five practices. I summarize them in my own words and compare them with my system.",
+    geminiTableCols: ['Practice cited by Gemini', 'In my system'],
+    geminiTableRows: [
+      ['Separate Git working copies, so several agents can run without getting in each other\'s way', 'Yes: auto/* branches kept apart from main'],
+      ['Split the models: a big model designs, fast or local models run the repetitive work', 'Yes: Opus frames, Sonnet executes, Haiku does the simple tasks'],
+      ['A rules file that acts as a contract for the agent', "Yes: CLAUDE.md and the project's permissions"],
+      ['Agents in the terminal that commit every step and can undo a failed change', 'Yes: one commit per step'],
+      ['Human sign-off before every write', 'At the end, through a pull request: that is the point of "founder" autonomy'],
+    ],
+    geminiConclusionLabel: 'What I take from it:',
+    geminiConclusion: [
+      'My system already ticks four practices out of five. Human sign-off, in my setup, happens at the end rather than at every write.',
+      "Gemini also put forward a figure for the share of repos that use a rules file. It had no source: I haven't verified it, so I'm not repeating it.",
+      'Its answer seemed tailored to my Gemini history: a useful opinion, not a neutral source.',
+      'For P-003, it is an encouraging signal: the system already exists, the job would be to extract it.',
+      "Driving Gemini in the browser costs Claude tokens (waiting, reading the page), for an answer that took about a minute, since Gemini ran its own web search. It's a second opinion, not a saving.",
+    ],
+
+    tokensTitle: 'Cutting token usage',
+    tokensIntroP:
+      'My request: cut the system\'s token cost as far as possible, while staying just as effective. Claude picked out four items, in order of impact.',
+    tokensTableCols: ['Item', 'Before', 'After'],
+    tokensTableRows: [
+      [
+        'Scheduled task',
+        'It ran every 2 hours, 12 times a day, even with no mission to do: every launch loaded the whole context just to answer "No active mission".',
+        'It pauses itself when the mission queue is empty; the framing session turns it back on when a mission is ready.',
+      ],
+      [
+        'CLAUDE.md',
+        'About 10 KB, loaded in every session (missions, Magazine, ideas, conversations), half of it only useful during a mission. Routines re-read it a second time, although it is already loaded automatically.',
+        '3 KB: the procedures moved to missions/README.md, read only when working on a mission. The safety prohibitions stay in CLAUDE.md. Routines no longer re-read it.',
+      ],
+      [
+        'Resuming a mission',
+        'Re-reading every mission file, including the DECISIONS and DELEGATIONS logs, which grow with each step.',
+        'SPEC, PLAN and PROGRESS only; lines are appended to the logs without re-reading them.',
+      ],
+      [
+        'Build and lint',
+        'Handed to a sub-agent: it starts cold and re-reads the context, for a single command.',
+        'Run directly by the main session. The verificateur (Haiku) is now only used for the browser. New choice at framing time: "Haiku sub-agent" for mechanical, well-described steps.',
+      ],
+    ],
+    tokensBugP:
+      'While at it, one bug fixed: the missions task would have mistaken the ideas routine\'s branches (auto/projets-*) for missions. It now ignores them. The same rules were carried over to the global /mission skill, for future projects.',
+    tokensRejectedLabel: 'What I did not keep:',
+    tokensRejected: [
+      'Gemini in the browser: it costs more than it saves (see the previous section).',
+      'Local AI (Lily): already ruled out, marginal gain.',
+    ],
+    tokensRemainingP:
+      'One recommendation is still mine to apply: switch off, for this project, the connectors it does not need (mail, calendar, storage, whiteboards, design), whose list takes up context in every session.',
+    tokensPublishP:
+      'For the first time, an improvement to the system itself goes through a pull request, outside any mission, which I merge. This page is updated by mission 8, utilisation-ia-economie: the first one framed under these new rules (mechanical steps earmarked for Haiku, build and lint without a sub-agent).',
+
     statsTitle: 'The numbers so far',
     statsTableCols: ['Mission', 'Duration', 'Models'],
     statsTableRows: [
@@ -804,6 +955,7 @@ const CONTENT = {
       ['5. workflow-grille', '~30 min (5 and 6 together)', 'Haiku, Sonnet'],
       ['6. home-magazine', '(same run)', 'Opus, Sonnet, Haiku'],
       ['7. utilisation-ia-maj', '—', "see the mission's DELEGATIONS.md"],
+      ['8. utilisation-ia-economie', '—', "see the mission's DELEGATIONS.md"],
     ],
     statsNoteP:
       'Plus a weekly routine: the Magazine (issue 1 dated 09/28, merged 09/27 after fixes). Trend: fewer and fewer interventions from me, with Opus reserved for the steps that actually need it — framing, visual direction.',
@@ -811,9 +963,9 @@ const CONTENT = {
     finalLoopTitle: 'The final loop',
     finalFlow: [
       { label: '1 · Brief', sublabel: 'Me: "mission: …"' },
-      { label: '2 · Framing (Opus)', sublabel: 'A settled spec + a plan, with one model per step' },
+      { label: '2 · Framing (Opus)', sublabel: 'A settled spec + a plan, with one model per step; turns the scheduled task back on' },
       { label: '3 · auto/<name> branch', sublabel: 'Commits allowed only on auto/* branches' },
-      { label: '4 · Scheduled task (Sonnet)', sublabel: 'Works through the queue; picks up again after each quota cut-off' },
+      { label: '4 · Scheduled task (Sonnet)', sublabel: 'Works through the queue; picks up again after each quota cut-off; pauses itself when the queue is empty' },
       { label: '5 · Steps + commits', sublabel: 'One commit per step; hands off to Haiku or Opus as planned' },
       { label: '6 · Report', sublabel: 'RAPPORT.md, written by the session' },
       { label: '7 · "Close the missions"', sublabel: 'Me, in one line' },
@@ -831,7 +983,7 @@ const CONTENT = {
     ],
 
     metaTitle: 'Turtles all the way down',
-    metaP: "This page was written by the system's second mission, from the content I supplied. It's now maintained by the system itself: this update is its seventh mission, framed then run without me, from brief to pull request. The missions/ folder in the repo keeps the trail, mission by mission (spec, plan, decisions, delegations, report).",
+    metaP: "This page was written by the system's second mission, from the content I supplied. It's now maintained by the system itself: this update is its eighth mission, framed then run without me, from brief to pull request. The missions/ folder in the repo keeps the trail, mission by mission (spec, plan, decisions, delegations, report).",
 
     treeProject: TREE_PROJECT_EN,
     treeGlobal: TREE_GLOBAL_EN,
@@ -1010,6 +1162,33 @@ export default function UtilisationIA({ project }) {
         <p style={{ marginBottom: 12 }}>{c.mainPushP1}</p>
         <p style={{ marginBottom: 12 }}>{c.mainPushP2}</p>
         <p style={{ margin: 0 }}>{c.mainPushP3}</p>
+      </Section>
+
+      <Section title={c.geminiTitle}>
+        <p style={{ marginBottom: 12 }}>{c.geminiIntroP}</p>
+        <p style={{ marginBottom: 12 }}>{c.geminiHowP}</p>
+        <ol style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {c.geminiLimits.map((item, i) => <li key={i}>{item}</li>)}
+        </ol>
+        <p style={{ marginBottom: 12 }}>{c.geminiTryP}</p>
+        <p style={{ marginBottom: 20 }}>{c.geminiQuestionP}</p>
+        <Table columns={c.geminiTableCols} rows={c.geminiTableRows} />
+        <div style={{ fontWeight: 600, margin: '16px 0 6px' }}>{c.geminiConclusionLabel}</div>
+        <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {c.geminiConclusion.map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
+      </Section>
+
+      <Section title={c.tokensTitle}>
+        <p style={{ marginBottom: 20 }}>{c.tokensIntroP}</p>
+        <Table columns={c.tokensTableCols} rows={c.tokensTableRows} />
+        <p style={{ margin: '16px 0 16px' }}>{c.tokensBugP}</p>
+        <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.tokensRejectedLabel}</div>
+        <ul style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {c.tokensRejected.map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
+        <p style={{ marginBottom: 12 }}>{c.tokensRemainingP}</p>
+        <p style={{ margin: 0 }}>{c.tokensPublishP}</p>
       </Section>
 
       <Section title={c.statsTitle}>
