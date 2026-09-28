@@ -16,4 +16,6 @@ Décisions prises sans Michael. Les décisions d'architecture sont dans SPEC.md.
 | 2026-09-28 | 4 | Grille et matrice aussi affichées pour un dépôt sans fichier de tokens (axes 2, 4, 5, 6) | Le dépôt est quand même audité ; l'axe 1 apparaît « non évalué » avec sa raison |
 | 2026-09-28 | 4 | Bouton « Copier le rapport » déplacé sous la couverture (D10) ; textes EN de la grille laissés en français jusqu'à l'étape 6 | Ordre imposé par la SPEC ; la traduction est déléguée à Haiku |
 | 2026-09-28 | 4 | Vérification navigateur reportée à l'étape 7 | `navigate` refusé deux fois par le contrôle d'auto-mode (aucun verdict) ; règle : une seule nouvelle tentative |
+| 2026-09-28 | 5 | La « date du jour » du rapport imprimable est la date de l'analyse (fixée au clic sur Analyser) | Une date lue pendant le rendu est une valeur impure (règles React) ; l'écart n'existe que si l'analyse date de la veille |
+| 2026-09-28 | 5 | Le rapport imprimable utilise les tokens `--bg` (crème) et `--text` (encre) et des filets, sans couleur pleine | Le thème du site est déjà clair : pas besoin de littéraux blanc/noir (D8 : styles = tokens existants) |
 | 2026-09-28 | 2 | Un token dont le nom contient un mot « texte » et un mot « fond » est classé texte ; `on-X` sans token X retombe sur les fonds génériques | Cas ambigu non tranché par D5 : option la plus prudente |

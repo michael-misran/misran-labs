@@ -17,6 +17,7 @@ import SourceGithub from './audit/SourceGithub'
 import Couverture from './audit/Couverture'
 import Grille from './audit/Grille'
 import Matrice from './audit/Matrice'
+import RapportImprimable from './audit/RapportImprimable'
 import { LIMITE_CARACTERES } from '../audit/lireFichiers'
 import exempleCss from '../audit/exemples/exemple.css?raw'
 import exempleDtcg from '../audit/exemples/exemple.dtcg.json?raw'
@@ -455,6 +456,7 @@ export default function AuditTokens({ project }) {
         fichiersCode: contexte?.fichiersCode ?? null,
         source: contexte?.source ?? null,
         noms: entrees.map((e) => e.nom),
+        date: new Date().toLocaleDateString('sv-SE'), // AAAA-MM-JJ, pour le rapport imprimable
       })
     } catch {
       setResultat(analyse([]))
@@ -554,8 +556,11 @@ export default function AuditTokens({ project }) {
   const resume = resultat?.resume
   const lieuVide = !resultat || resultat.tokens.length === 0
 
+  const rapportDisponible = Boolean(grille && (!lieuVide || couverture))
+
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: 'var(--font-body)', color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <>
+    <div className="no-print" style={{ padding: isMobile ? 20 : 40, fontFamily: 'var(--font-body)', color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <CaseMasthead c={page} lang={lang} />
       <CaseHero project={project} c={page} />
 
@@ -697,7 +702,7 @@ export default function AuditTokens({ project }) {
             </div>
           )}
 
-          {grille && (!lieuVide || couverture) && (
+          {rapportDisponible && (
             <>
               <Grille grille={grille} contrastes={audit.contrastes} c={c} lang={lang} onAjuster={ajuster} />
               <Matrice priorites={audit.priorites} c={c} lang={lang} />
@@ -755,9 +760,10 @@ export default function AuditTokens({ project }) {
 
           {couverture && <Couverture couverture={couverture} c={c} />}
 
-          {(!lieuVide || couverture) && (
+          {rapportDisponible && (
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 8 }}>
               <Bouton onClick={copierRapport}>{copie ? c.copied : c.copyReport}</Bouton>
+              <Bouton principal onClick={() => window.print()}>{c.grille.exportPdf}</Bouton>
             </div>
           )}
         </div>
@@ -791,5 +797,11 @@ export default function AuditTokens({ project }) {
 
       <CaseFooter c={page} />
     </div>
+
+    {/* Rapport d'audit : invisible à l'écran, seul visible à l'impression (Exporter en PDF). */}
+    {rapportDisponible && (
+      <RapportImprimable c={c} lang={lang} grille={grille} priorites={audit.priorites} resultat={resultat} couverture={couverture} contexte={contexteAudit} />
+    )}
+    </>
   )
 }

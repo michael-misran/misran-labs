@@ -105,6 +105,24 @@ const FR = {
     colComment: 'Commentaire',
     exportPdf: 'Exporter en PDF',
   },
+
+  // Rapport imprimable (« Exporter en PDF » ouvre l'impression du navigateur).
+  impression: {
+    title: 'Audit de design system',
+    sourceLabel: 'Source',
+    sourceRepo: (depot, branche) => `dépôt GitHub ${depot}, branche ${branche}`,
+    sourceFiles: (liste) => `fichiers fournis : ${liste}`,
+    sourceNone: 'aucune source',
+    dateLabel: 'Date',
+    findingsTitle: (n) => `${n} premiers constats, par gravité`,
+    methodTitle: 'Méthode',
+    method: [
+      'Les tokens sont lus tels quels (CSS, JSON DTCG ou Tokens Studio) et confrontés à huit règles fixes ; aucune IA n’intervient.',
+      'Sept axes sont notés de 0 à 3 selon des critères vérifiables ; l’auditeur peut ajuster chaque note et la commenter.',
+      'Les sujets sont classés par impact et effort selon une table fixe ; la parité Figma ↔ code reste à évaluer à la main.',
+    ],
+    footer: 'Réalisé avec l’outil d’audit de misran-labs',
+  },
 }
 
 const EN = {
@@ -209,6 +227,25 @@ const EN = {
     colScore: 'Note',
     colComment: 'Commentaire',
     exportPdf: 'Exporter en PDF',
+  },
+
+  // Printable report ("Export to PDF" opens the browser's print dialog).
+  // À TRADUIRE (étape 6) : les valeurs ci-dessous sont encore en français.
+  impression: {
+    title: 'Audit de design system',
+    sourceLabel: 'Source',
+    sourceRepo: (depot, branche) => `dépôt GitHub ${depot}, branche ${branche}`,
+    sourceFiles: (liste) => `fichiers fournis : ${liste}`,
+    sourceNone: 'aucune source',
+    dateLabel: 'Date',
+    findingsTitle: (n) => `${n} premiers constats, par gravité`,
+    methodTitle: 'Méthode',
+    method: [
+      'Les tokens sont lus tels quels (CSS, JSON DTCG ou Tokens Studio) et confrontés à huit règles fixes ; aucune IA n’intervient.',
+      'Sept axes sont notés de 0 à 3 selon des critères vérifiables ; l’auditeur peut ajuster chaque note et la commenter.',
+      'Les sujets sont classés par impact et effort selon une table fixe ; la parité Figma ↔ code reste à évaluer à la main.',
+    ],
+    footer: 'Réalisé avec l’outil d’audit de misran-labs',
   },
 }
 
