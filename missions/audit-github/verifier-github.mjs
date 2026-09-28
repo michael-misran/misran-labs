@@ -14,6 +14,8 @@ import {
   filtrerCandidatsLus,
   formaterHeure,
 } from '../../src/lab/audit/github.js'
+import { mesurerCouverture, extraireUsagesTokens } from '../../src/lab/audit/couverture.js'
+import { analyse } from '../../src/lab/audit/analyse.js'
 
 const ici = dirname(fileURLToPath(import.meta.url))
 const fixture = (nom) => readFileSync(resolve(ici, 'fixtures', nom), 'utf8')
@@ -327,7 +329,159 @@ await verifier('chemin avec espace et accent encodé, erreur réseau isolée, li
   assert.deepEqual(vide, { fichiers: [], echecs: [] })
 })
 
-/* --- PARTIE 2 : couverture et usages externes (étape 3) -------------------------- */
+/* --- couverture (D6) ------------------------------------------------------------- */
+console.log('Couverture du code (D6)')
+
+const CSS_CONNU = `/* commentaire : #123456 et 40px ne comptent pas */
+#dead { margin: 0 }
+.a {
+  color: var(--texte, #fff);
+  background: #FF5500;
+  padding: 13px 0;
+  margin: 0 1px;
+  border: 1px solid rgba(0, 0, 0, .5);
+  box-shadow: 0 0 0 1px var(--ombre);
+  width: calc(var(--espace) + 8px);
+  color: rgb(var(--r) 0 0);
+  background-image: url(#abc);
+  content: "#fff 20px";
+}
+@media (min-width: 768px) { .b { font-size: 12px } }
+`
+const JSX_CONNU = `/* bloc #111 */
+// ligne #222 et 30px
+const styles = {
+  a: 'color: var(--texte, #fff); padding: 13px', // #333 en commentaire de fin
+  b: "#0af",
+  c: \`margin: 1px 0 8px; background: var(--fond)\`,
+  d: 'var(--a-b-c)',
+}
+export const Lien = () => <a href="#top">ancre #abc et 20px hors chaîne</a>
+`
+const VUE_CONNU = `<template><div style="color: var(--x)">#abc <!-- #fff 9px --></div></template>
+<style lang="scss">
+// commentaire #eee
+.a { color: #333; margin: 4px 0; }
+</style>
+`
+
+await verifier('CSS : compte exact, #id et var(--x, #fff) non comptés', () => {
+  const c = mesurerCouverture([{ nom: 'src/a.css', contenu: CSS_CONNU }])
+  // en dur : #FF5500, 13px, rgba(0, 0, 0, .5), 8px, 12px — usages : texte, ombre, espace, r
+  assert.equal(c.valeursEnDur, 5)
+  assert.equal(c.usagesTokens, 4)
+  assert.equal(c.taux, 4 / 9)
+  assert.equal(c.fichiersAnalyses, 1)
+  assert.deepEqual(c.parFichier, [{ fichier: 'src/a.css', valeursEnDur: 5, usagesTokens: 4 }])
+})
+await verifier('JSX : seules les chaînes comptent, commentaires et texte courant ignorés', () => {
+  const c = mesurerCouverture([{ nom: 'src/B.jsx', contenu: JSX_CONNU }])
+  // en dur : 13px, #0af, 8px — usages : texte, fond, --a-b-c
+  assert.equal(c.valeursEnDur, 3)
+  assert.equal(c.usagesTokens, 3)
+  assert.equal(c.taux, 0.5)
+})
+await verifier('Vue : attributs, bloc <style lang="scss">, commentaires HTML et // ignorés', () => {
+  const c = mesurerCouverture([{ nom: 'src/C.vue', contenu: VUE_CONNU }])
+  assert.equal(c.valeursEnDur, 2) // #333, 4px
+  assert.equal(c.usagesTokens, 1) // var(--x)
+})
+await verifier('totaux sur plusieurs fichiers ; extension inconnue ignorée', () => {
+  const c = mesurerCouverture([
+    { nom: 'src/a.css', contenu: CSS_CONNU },
+    { nom: 'src/B.jsx', contenu: JSX_CONNU },
+    { nom: 'README.md', contenu: 'color: #fff; margin: 40px' },
+  ])
+  assert.equal(c.valeursEnDur, 8)
+  assert.equal(c.usagesTokens, 7)
+  assert.equal(c.fichiersAnalyses, 3)
+  assert.equal(c.parFichier.length, 2)
+  assert.equal(c.parFichier[0].fichier, 'src/a.css', 'trié par valeurs en dur décroissantes')
+})
+await verifier('valeurs répétées : normalisées, comptées, avec leurs fichiers ; une seule occurrence exclue', () => {
+  const c = mesurerCouverture([
+    { nom: 'a.css', contenu: '.x{color:#FF5500;border-color:#ff5500;margin:16px;top:9px}' },
+    { nom: 'b.css', contenu: '.y{color:#f50;margin:16px}' },
+  ])
+  // #FF5500, #ff5500 et #f50 (= #ff5500 une fois développé) : 3 fois ; 16px : 2 fois ; 9px : 1 fois
+  assert.deepEqual(c.valeursRepetees, [
+    { valeur: '#ff5500', occurrences: 3, fichiers: ['a.css', 'b.css'] },
+    { valeur: '16px', occurrences: 2, fichiers: ['a.css', 'b.css'] },
+  ])
+})
+await verifier('valeurs déjà tokenisées : la valeur d’un token existant réapparaît en dur', () => {
+  const lecture = analyse([{ nom: 'tokens.css', contenu: fixture('tokens.css') }])
+  const c = mesurerCouverture(
+    [{ nom: 'a.css', contenu: '.x{color:#FF5500;border-color:#ff5500;margin:16px;top:9px}' }],
+    lecture.tokens
+  )
+  assert.deepEqual(c.dejaTokenisees, [
+    { valeur: '#ff5500', token: '--couleur-marque', occurrences: 2 },
+    { valeur: '16px', token: '--espace-md', occurrences: 1 },
+  ])
+  assert.equal(c.nombreDejaTokenisees, 2)
+  assert.deepEqual(mesurerCouverture([{ nom: 'a.css', contenu: '.x{margin:9px}' }], lecture.tokens).dejaTokenisees, [])
+})
+await verifier('plafond de 10 par liste, tri stable', () => {
+  const fichiers = Array.from({ length: 12 }, (_, i) => ({
+    nom: `f${String(i).padStart(2, '0')}.css`,
+    contenu: `.x{margin:${i + 2}px;padding:${i + 2}px}`,
+  }))
+  const c = mesurerCouverture(fichiers)
+  assert.equal(c.parFichier.length, 10)
+  assert.equal(c.valeursEnDur, 24)
+  assert.ok(c.parFichier.every((f) => f.valeursEnDur === 2))
+  assert.equal(c.valeursRepetees.length, 10)
+  assert.equal(c.valeursRepetees[0].occurrences, 2)
+})
+await verifier('entrées vides ou incohérentes : taux null, aucune exception', () => {
+  const vide = mesurerCouverture([])
+  assert.equal(vide.taux, null)
+  assert.equal(vide.fichiersAnalyses, 0)
+  for (const mauvais of [undefined, null, 'x', [null, 3, { nom: 'a.css' }, { nom: 'b.css', contenu: 5 }]]) {
+    assert.equal(mesurerCouverture(mauvais, mauvais).taux, null)
+  }
+  assert.equal(mesurerCouverture([{ nom: 'a.css', contenu: '.x{margin:0}' }]).taux, null)
+  assert.doesNotThrow(() => mesurerCouverture([{ nom: 'a.css', contenu: 'a{b:var(--x, rgb(' }]))
+  assert.doesNotThrow(() => mesurerCouverture([{ nom: 'a.jsx', contenu: "const s = 'jamais fermée\n`non plus" }]))
+})
+
+/* --- usages externes pour R6 (D6) ------------------------------------------------ */
+console.log('Usages externes et R6')
+
+const inutilises = (resultat) => resultat.constats.filter((c) => c.regle === 'R6').map((c) => c.tokens[0]).sort()
+const CSS_TOKENS = ':root { --a-b: 1px; --inutile: 2px; --c: #fff }'
+const DTCG_TOKENS = JSON.stringify({ a: { b: { c: { $value: '#fff', $type: 'color' } } }, d: { $value: '#000', $type: 'color' } })
+
+await verifier('extraireUsagesTokens : --a-b-c et a.b.c', () => {
+  const noms = extraireUsagesTokens([{ nom: 'x.css', contenu: '.z{color:var(--a-b-c);margin:var( --m , 4px)}' }])
+  assert.ok(noms instanceof Set)
+  assert.deepEqual([...noms].sort(), ['--a-b-c', '--m', 'a.b.c', 'm'].sort())
+})
+await verifier('un usage dans le code fait disparaître le constat R6 (CSS)', () => {
+  const fichiers = [{ nom: 'tokens.css', contenu: CSS_TOKENS }]
+  assert.deepEqual(inutilises(analyse(fichiers)), ['--a-b', '--c', '--inutile'])
+  const usages = extraireUsagesTokens([{ nom: 'x.css', contenu: '.z{padding:var(--a-b)}' }])
+  assert.deepEqual(inutilises(analyse(fichiers, { usagesExternes: usages })), ['--c', '--inutile'])
+})
+await verifier('un usage dans le code fait disparaître le constat R6 (DTCG, nom pointé)', () => {
+  const fichiers = [{ nom: 'tokens.json', contenu: DTCG_TOKENS }]
+  assert.deepEqual(inutilises(analyse(fichiers)), ['a.b.c', 'd'])
+  const usages = extraireUsagesTokens([{ nom: 'x.css', contenu: '.z{color:var(--a-b-c)}' }])
+  assert.deepEqual(inutilises(analyse(fichiers, { usagesExternes: usages })), ['d'])
+  assert.deepEqual(inutilises(analyse(fichiers, { usagesExternes: ['--d'] })), ['a.b.c'], 'un tableau est accepté')
+})
+await verifier('analyse sans option (ou option vide) : résultat strictement inchangé', () => {
+  const fichiers = [
+    { nom: 'tokens.css', contenu: CSS_TOKENS },
+    { nom: 'tokens.json', contenu: DTCG_TOKENS },
+    { nom: 'exemple.css', contenu: readFileSync(resolve(ici, '../../src/lab/audit/exemples/exemple.css'), 'utf8') },
+  ]
+  const reference = analyse(fichiers)
+  assert.deepEqual(analyse(fichiers, {}), reference)
+  assert.deepEqual(analyse(fichiers, { usagesExternes: new Set() }), reference)
+  assert.deepEqual(analyse(fichiers, { usagesExternes: null }), reference)
+})
 
 if (echecs > 0) {
   console.log(`\n${echecs} vérification(s) en échec`)
