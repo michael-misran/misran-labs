@@ -83,20 +83,31 @@ export function evaluerContrastes(tokens) {
   const fonds = []
   for (const t of liste) {
     const segs = segmentsNom(t.nom)
+    // Les primitives n'ont pas de rôle texte ou fond : on ne les apparie pas.
+    if (segs.includes('primitive') || segs.includes('primitives')) continue
     const estTexte = MOTS_TEXTE.some((m) => segs.includes(m)) || (segs[0] === 'on' && segs.length > 1)
     const estFond = !estTexte && MOTS_FOND.some((m) => segs.includes(m))
     if ((estTexte || estFond) && couleurDe(t)) (estTexte ? textes : fonds).push({ t, segs })
   }
 
+  // Fonds dédiés à un `on-X` : le token X lui-même, sinon les fonds dont le nom
+  // contient tous les segments de X (ex. `on-selected` → `selected-surface`).
+  const cibleOn = (segs) => segs.slice(1)
+  const contientTout = (segs, cible) => cible.every((s) => segs.includes(s))
+  const dediesA = (cible) => {
+    const exacts = liste.filter((t) => segmentsNom(t.nom).join('-') === cible.join('-') && couleurDe(t))
+    return exacts.length > 0 ? exacts : fonds.filter((f) => contientTout(f.segs, cible)).map((f) => f.t)
+  }
+  // Un fond réservé à un `on-X` n'est pas testé avec les textes génériques.
+  const reserves = new Set()
+  for (const { segs } of textes) if (segs[0] === 'on') for (const f of dediesA(cibleOn(segs))) reserves.add(f)
+
   const trouvees = new Map()
   for (const { t: texte, segs } of textes) {
-    let candidats = fonds.map((f) => f.t)
-    // `on-X` : apparié en priorité avec le token X, quand il existe.
-    if (segs[0] === 'on') {
-      const cible = segs.slice(1).join('-')
-      const dedies = liste.filter((t) => segmentsNom(t.nom).join('-') === cible && couleurDe(t))
-      if (dedies.length > 0) candidats = dedies
-    }
+    // `on-X` : apparié avec ses fonds dédiés ; sans aucun, repli sur les fonds génériques.
+    const generiques = fonds.map((f) => f.t).filter((f) => !reserves.has(f))
+    const dedies = segs[0] === 'on' ? dediesA(cibleOn(segs)) : []
+    const candidats = dedies.length > 0 ? dedies : generiques
     for (const fond of candidats) {
       if (fond === texte || !contexteCompatible(texte.contexte, fond.contexte)) continue
       const contexte = texte.contexte ?? fond.contexte ?? null

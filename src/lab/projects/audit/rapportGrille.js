@@ -5,6 +5,12 @@ import { QUADRANTS } from '../../audit/priorites'
 const MAX_ECHECS_CONTRASTE = 20
 
 // Nombre à décimale : virgule en français, point en anglais.
+// Unité d'un sujet accordée au compte : « 1 constat », « 3 constats ».
+export function uniteSujet(sujet, lang) {
+  const u = sujet.unite[lang]
+  return sujet.compte === 1 ? u.replace(/^(\S+)s\b/, '$1') : u
+}
+
 export function formaterNombre(n, lang) {
   const t = String(n)
   return lang === 'en' ? t : t.replace('.', ',')
@@ -59,7 +65,7 @@ export function lignesGrille(grille, priorites, c, lang) {
       if (sujets.length === 0) continue
       lignes.push(`### ${q.titre[lang]}`, '')
       for (const s of sujets) {
-        lignes.push(`- ${s.titre[lang]} — ${s.compte} ${s.unite[lang]} (${g.impact} ${g.levels[s.impact]}, ${g.effort} ${g.levels[s.effort]})`)
+        lignes.push(`- ${s.titre[lang]} — ${s.compte} ${uniteSujet(s, lang)} (${g.impact} ${g.levels[s.impact]}, ${g.effort} ${g.levels[s.effort]})`)
       }
       lignes.push('')
     }

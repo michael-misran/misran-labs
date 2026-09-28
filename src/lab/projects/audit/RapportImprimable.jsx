@@ -1,5 +1,5 @@
 import { QUADRANTS } from '../../audit/priorites'
-import { formaterNombre, texteMoyenne, texteNoteAxe } from './rapportGrille'
+import { formaterNombre, texteMoyenne, texteNoteAxe, uniteSujet } from './rapportGrille'
 
 const NB_CONSTATS = 10
 const NB_FICHIERS_CITES = 8
@@ -82,7 +82,7 @@ export default function RapportImprimable({ c, lang, grille, priorites, resultat
             <ul style={{ margin: '0 0 4px', paddingLeft: 18 }}>
               {priorites.quadrants[q.id].map((s) => (
                 <li key={s.id} style={paragraphe}>
-                  {s.titre[lang]} — {s.compte} {s.unite[lang]} ({g.impact} {g.levels[s.impact]}, {g.effort} {g.levels[s.effort]})
+                  {s.titre[lang]} — {s.compte} {uniteSujet(s, lang)} ({g.impact} {g.levels[s.impact]}, {g.effort} {g.levels[s.effort]})
                 </li>
               ))}
             </ul>

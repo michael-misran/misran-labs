@@ -50,3 +50,15 @@ Voir `DECISIONS.md` : entrées supplémentaires `fichiersCode` / `contrastes` pa
 - `AuditTokens.jsx` fait environ 800 lignes (seuil 900) : le découper à la prochaine mission qui le touche.
 - Hors périmètre, à décider avec Michael : API Figma pour la parité automatique ; sauvegarde ou lien de partage d'un audit ; recommandations rédigées par IA ; génération d'un vrai PDF ; contrastes des composites et APCA.
 - Les 6 erreurs de lint préexistantes (`Tag` inutilisé, `react-refresh`, `setState` dans un effet dans `Shell.jsx`) méritent une petite mission de nettoyage.
+
+## Clôture (session tour de contrôle, Opus, 2026-09-28)
+Vérification navigateur faite (preview « dev ») :
+- Sans dépôt (« Auditer les tokens de ce site ») : axes 1 et 3 notés, 2, 4, 5, 6, 7 « non évalués » avec leur raison ; ordre grille → matrice → constats → boutons → appel à l'action.
+- Dépôt `michael-misran/misran-labs` : axes 1 à 6 notés (2, 2, 0, 0, 1, 0), axe 7 non évalué, moyenne 0,8 / 3 sur 6 axes ; matrice remplie.
+- Axe 7 ajusté à 2 avec commentaire : mention « ajustée », note calculée visible, moyenne 1 / 3 sur 7 axes ; Markdown copié (presse-papiers espionné) : grille, ajustement, commentaire, matrice présents.
+- « Exporter en PDF » avec `window.print` espionné : 1 appel ; bloc `.rapport-imprimable` masqué à l'écran, contient grille, matrice et source ; 3 blocs `@media print`.
+- EN complet (aucun texte français restant), 375 px sans défilement horizontal, console sans erreur.
+
+Corrections à la clôture :
+- **Contrastes** (`contrastes.js`) : les primitives ne sont plus appariées ; un `on-X` est apparié avec X, sinon avec les fonds dont le nom contient X (`on-selected` → `selected-surface`), et seulement en l'absence de tout fond dédié avec les fonds génériques ; un fond réservé à un `on-X` n'est plus testé avec les textes génériques. Sur le site : 15 paires, 8 sous 4,5:1 (au lieu de 63 paires, 32 échecs, surtout de faux positifs). Les échecs restants sont réels : texte crème sur corail à 3,36:1 (AA gros texte seulement), et `--text` sur les surfaces de `[data-invert]`.
+- **Accord** « 1 constat » / « 1 finding » dans la matrice, le rapport imprimable et le Markdown (`uniteSujet`).

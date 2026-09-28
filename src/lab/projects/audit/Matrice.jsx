@@ -1,5 +1,6 @@
 import { FORMAT_LABEL_MONO } from './styles'
 import { QUADRANTS } from '../../audit/priorites'
+import { uniteSujet } from './rapportGrille'
 
 // Matrice impact × effort : 4 quadrants (une colonne sur téléphone), les sujets déjà agrégés par prioriser().
 export default function Matrice({ priorites, c, lang }) {
@@ -30,7 +31,7 @@ export default function Matrice({ priorites, c, lang }) {
                       <li key={s.id} style={{ padding: '8px 14px', borderBottom: 'var(--border-thin) solid var(--grid-line)' }}>
                         <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text)', lineHeight: 1.4, overflowWrap: 'anywhere' }}>{s.titre[lang]}</div>
                         <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--muted)', marginTop: 2 }}>
-                          {s.compte} {s.unite[lang]} · {t.impact} {t.levels[s.impact]} · {t.effort} {t.levels[s.effort]}
+                          {s.compte} {uniteSujet(s, lang)} · {t.impact} {t.levels[s.impact]} · {t.effort} {t.levels[s.effort]}
                         </div>
                       </li>
                     ))}
