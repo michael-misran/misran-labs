@@ -6,3 +6,5 @@
 | 2026-09-28 | 2 | session principale | Sonnet 5 | Route, squelette, lien d'accès (aucun sous-agent prévu) | Fait |
 | 2026-09-28 | 3 | session principale | Sonnet 5 | Rédaction FR, composant de rendu (aucun sous-agent prévu) | Fait |
 | 2026-09-28 | 4 | general-purpose | Haiku | Traduction EN complète de fonctionnementText.js (sections + 4 arborescences) | Fait ; relu et corrigé par la session principale (statut `en-cours`, `RAPPORT`, pronoms) |
+| 2026-09-28 | 5 | verificateur | Haiku | Contrôle navigateur (liens, FR/EN, console, 375 px, P-003) sur `vite preview` | Tous contrôles OK |
+| 2026-09-28 | 6 | session principale | Sonnet 5 | RAPPORT.md, arrêt du serveur | Fait |
