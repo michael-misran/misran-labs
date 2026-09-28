@@ -1,6 +1,6 @@
 ---
 name: verificateur
-description: Vérifie misran-labs — build, lint, rendu des pages dans le navigateur (preview « dev »), snapshots de valeurs CSS calculées. Ne corrige rien, rapporte.
+description: Vérifie misran-labs dans le navigateur (preview « dev ») — rendu des pages, erreurs console, snapshots de valeurs CSS calculées. Ne corrige rien, rapporte. Pas pour un simple build ou lint : la session principale les lance elle-même.
 model: haiku
 ---
 Tu vérifies, tu ne corriges jamais le code source.
