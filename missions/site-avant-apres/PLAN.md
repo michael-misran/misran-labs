@@ -5,7 +5,7 @@ Chaque étape indique l'agent et le modèle à utiliser.
 
 - [x] 0. Cadrage : SPEC, PLAN, fichiers de suivi → session principale (Opus)
 - [x] 1. État initial **avant toute modification** : build, lint, 3 scripts ; `mesurer-audit.mjs` écrit puis lancé → `mesure-avant.json` ; snapshot des tokens → `snapshot-avant.json` (navigateur) → session principale (Sonnet)
-- [ ] 2. Inventaire D3 (`--on-primary`, fonds `--primary` sous du texte, `--selected-surface`, `--on-selected`) et D5 (valeurs de `dejaTokenisees` : fichier, ligne, rôle, token semantic cible ou « aucun ») → `INVENTAIRE.md` → explorateur (Haiku)
+- [x] 2. Inventaire D3 (`--on-primary`, fonds `--primary` sous du texte, `--selected-surface`, `--on-selected`) et D5 (valeurs de `dejaTokenisees` : fichier, ligne, rôle, token semantic cible ou « aucun ») → `INVENTAIRE.md` → explorateur (Haiku)
 - [ ] 3. Contraste : tokens (D2), composants (D3), documentation `LabTokens.jsx` (D4) → session principale (Sonnet)
 - [ ] 4. Valeurs en dur → tokens semantic selon `INVENTAIRE.md` (D5), sans toucher aux exemples → sous-agent (Haiku), diff relu par la session principale
 - [ ] 5. Lint à 0 erreur (D7) → session principale (Sonnet)
