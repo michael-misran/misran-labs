@@ -57,7 +57,8 @@ Le travail doit pouvoir s'interrompre à tout moment (limite de quota) : fichier
 - Pas de secrets, pas d'appels à des services externes.
 - Hors périmètre de la SPEC : ne pas le faire, le noter comme recommandation dans `RAPPORT.md`.
 - **Commandes shell simples** : une commande par appel, sans `&&`, `;`, boucle `for`, `$(…)` ni heredoc. Une commande composée n'est pas reconnue par les autorisations et déclenche une demande à laquelle personne ne répond. Commit : `git commit -m "titre" -m "corps"` plutôt qu'un heredoc. Lire des fichiers avec l'outil Read plutôt que `cat`.
-- Vérification dans le navigateur : preview « dev » (`preview_start`). S'il est indisponible, `npx vite preview` après `npm run build`.
+- Vérification dans le navigateur : en session interactive, preview « dev » (`preview_start`). **Dans une routine, directement `npx vite preview`** après `npm run build`, sans tenter la preview « dev » : elle est refusée en session non surveillée.
+- **Sous-agent qui ne se lance pas** (ex. « le contrôle de sécurité n'a donné aucun verdict ») : une seule nouvelle tentative, puis faire l'étape soi-même et le noter dans `DECISIONS.md` et `DELEGATIONS.md`. Chaque essai coûte du temps et des tokens.
 - **Fin de session** : arrêter tout serveur lancé pendant la session (`preview_stop`, ou arrêt du processus `vite preview`) avant de terminer.
 - **Commits** : seule la session principale commite. Les sous-agents ne commitent jamais. Le commit d'une étape porte une ligne `Co-Authored-By` par modèle ayant travaillé dessus (ex. `Claude Haiku 4.5` pour une étape déléguée au verificateur).
 
