@@ -4,7 +4,13 @@ import { dossierNo } from '../projects'
 import { useLanguage } from '../../shell/LanguageContext'
 import useIsMobile from '../../shell/useIsMobile'
 import { analyse } from '../audit/analyse'
+import { extraireUsagesTokens, mesurerCouverture } from '../audit/couverture'
 import { GRAVITES } from '../audit/outils'
+import { Bouton, Tuile } from './audit/ui'
+import { FORMAT_LABEL_MONO } from './audit/styles'
+import { TEXTES } from './audit/textes'
+import SourceGithub from './audit/SourceGithub'
+import Couverture from './audit/Couverture'
 import { LIMITE_CARACTERES } from '../audit/lireFichiers'
 import exempleCss from '../audit/exemples/exemple.css?raw'
 import exempleDtcg from '../audit/exemples/exemple.dtcg.json?raw'
@@ -41,7 +47,6 @@ const FR = {
   intro:
     "Cet outil lit les fichiers de tokens d'un design system et signale ce qui ne tient pas : références cassées ou circulaires, valeurs codées en dur, doublons, couleurs quasi identiques, tokens inutilisés. L'analyse suit des règles fixes, sans IA : deux passages sur le même fichier donnent le même rapport.",
   formats: 'Formats acceptés : CSS (propriétés personnalisées --nom), JSON W3C DTCG, JSON Tokens Studio. Le format est détecté automatiquement.',
-  privacy: 'Rien ne quitte ton navigateur : les fichiers ne sont ni envoyés, ni enregistrés.',
   inputTitle: 'ENTRÉE',
   pasteLabel: 'COLLER UN FICHIER',
   pastePlaceholder: ':root {\n  --couleur-marque: #e26a50;\n  --bouton-fond: var(--couleur-marque);\n}',
@@ -112,7 +117,6 @@ const EN = {
   intro:
     'This tool reads a design system token file and reports what does not work: broken or circular references, hard-coded values, duplicates, near-identical colors, unused tokens. Analysis follows fixed rules, no AI: two passes on the same file yield the same report.',
   formats: 'Accepted formats: CSS (custom properties --name), W3C JSON DTCG, JSON Tokens Studio. Format is auto-detected.',
-  privacy: 'Nothing leaves your browser: files are neither sent nor stored.',
   inputTitle: 'INPUT',
   pasteLabel: 'PASTE A FILE',
   pastePlaceholder: ':root {\n  --brand-color: #e26a50;\n  --button-background: var(--brand-color);\n}',
@@ -171,41 +175,13 @@ const EN = {
   ctaLink: 'Contact me on LinkedIn',
 }
 
-const CONTENT = { fr: FR, en: EN }
-
-const FORMAT_LABEL_MONO = { fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)' }
+// Textes de la page + textes ajoutés par le mode GitHub (src/lab/projects/audit/textes.js).
+const CONTENT = { fr: { ...FR, ...TEXTES.fr }, en: { ...EN, ...TEXTES.en } }
 
 const ACCENT_GRAVITE = {
   erreur: 'var(--error)',
   avertissement: 'var(--warning)',
   info: 'var(--text2)',
-}
-
-function Bouton({ children, onClick, principal = false, disabled = false, style, ...rest }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      style={{
-        ...style,
-        fontFamily: 'var(--font-mono)',
-        fontSize: 11,
-        letterSpacing: '0.04em',
-        textTransform: 'uppercase',
-        color: principal ? 'var(--on-primary)' : 'var(--text)',
-        background: principal ? 'var(--primary)' : 'var(--bg3)',
-        border: `var(--border-thin) solid ${principal ? 'var(--primary)' : 'var(--border)'}`,
-        padding: '8px 14px',
-        cursor: disabled ? 'not-allowed' : 'pointer',
-        opacity: disabled ? 0.5 : 1,
-        fontWeight: principal ? 700 : 400,
-      }}
-      {...rest}
-    >
-      {children}
-    </button>
-  )
 }
 
 function PastilleGravite({ gravite, label }) {
@@ -268,16 +244,6 @@ function FiltreGravite({ gravite, label, nombre, actif, onClick }) {
   )
 }
 
-function Tuile({ label, valeur, note }) {
-  return (
-    <div style={{ flex: '1 1 130px', border: 'var(--border-thin) solid var(--border)', background: 'var(--bg2)', padding: '10px 12px' }}>
-      <div style={FORMAT_LABEL_MONO}>{label}</div>
-      <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 24, color: 'var(--text)', lineHeight: 1.2 }}>{valeur}</div>
-      {note && <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--muted)' }}>{note}</div>}
-    </div>
-  )
-}
-
 function libelleFormat(format, c) {
   return format ? c.formatNames[format] : c.unknownFormat
 }
@@ -291,7 +257,7 @@ function emplacementTexte(constat, c) {
 }
 
 // Rapport Markdown, dans la langue de la page.
-function construireRapport(resultat, c, lang) {
+function construireRapport(resultat, c, lang, couverture = null) {
   const { resume } = resultat
   const lignes = [`# ${c.reportTitle}`, '', `## ${c.reportSummary}`, '']
   lignes.push(`- ${c.summary.files} : ${resume.fichiers}`)
@@ -300,6 +266,22 @@ function construireRapport(resultat, c, lang) {
   lignes.push(
     `- ${GRAVITES.map((g) => `${c.severities[g]} : ${resume.constatsParGravite[g]}`).join(' · ')}`
   )
+  if (couverture) {
+    const t = c.cov
+    lignes.push('', `## ${t.reportTitle}`, '')
+    if (couverture.source) lignes.push(`- ${t.source(couverture.source.depot, couverture.source.branche, couverture.fichiersAnalyses, couverture.source.eligibles)}`)
+    lignes.push(`- ${t.reportRate} : ${couverture.taux === null ? '—' : `${Math.round(couverture.taux * 100)} %`}`)
+    lignes.push(`- ${t.reportUsages} : ${couverture.usagesTokens}`)
+    lignes.push(`- ${t.reportHard} : ${couverture.valeursEnDur}`)
+    const liste = (titre, elements) => {
+      if (elements.length === 0) return
+      lignes.push('', `### ${titre}`, '')
+      lignes.push(...elements.map((e) => `- ${e}`))
+    }
+    liste(t.byFileTitle, couverture.parFichier.map((f) => `\`${f.fichier}\` — ${t.hardShort(f.valeursEnDur)}, ${t.tokensShort(f.usagesTokens)}`))
+    liste(t.repeatedTitle, couverture.valeursRepetees.map((v) => `\`${v.valeur}\` — ${t.times(v.occurrences)}, ${t.inFiles(v.fichiers.length)}`))
+    liste(t.alreadyTitle, couverture.dejaTokenisees.map((v) => `\`${v.valeur}\` → \`${v.token}\` — ${t.times(v.occurrences)}`))
+  }
   if (resultat.avertissements.length > 0) {
     lignes.push('', `## ${c.reportWarnings}`, '')
     for (const a of resultat.avertissements) {
@@ -403,6 +385,8 @@ export default function AuditTokens({ project }) {
   const [fichiers, setFichiers] = useState([]) // [{ id, nom, contenu, info: { format, tokens } }]
   const [texte, setTexte] = useState('')
   const [resultat, setResultat] = useState(null)
+  const [couverture, setCouverture] = useState(null) // résultat de mesurerCouverture + source, mode GitHub seulement
+  const [contexteCode, setContexteCode] = useState(null) // { fichiersCode, source, avertissements } d'un dépôt analysé
   const [gravitesActives, setGravitesActives] = useState(() => new Set(GRAVITES))
   const [copie, setCopie] = useState(false)
   const [survol, setSurvol] = useState(false)
@@ -438,25 +422,57 @@ export default function AuditTokens({ project }) {
         lus.push(entreeFichier(fichier.name, ''))
       }
     }
-    if (lus.length > 0) setFichiers((prev) => [...prev, ...lus])
+    if (lus.length > 0) {
+      setFichiers((prev) => [...prev, ...lus])
+      setContexteCode(null) // des fichiers ajoutés à la main : le code du dépôt ne s'applique plus
+    }
+  }
+
+  // Analyse des tokens ; avec un code de dépôt (mode GitHub) : les usages du code
+  // alimentent R6, puis la couverture est mesurée sur les tokens lus.
+  function calculer(entrees, contexte) {
+    try {
+      if (contexte) {
+        const usages = extraireUsagesTokens(contexte.fichiersCode)
+        const lu = analyse(entrees, { usagesExternes: usages })
+        setResultat({ ...lu, avertissements: [...lu.avertissements, ...contexte.avertissements] })
+        setCouverture({ ...mesurerCouverture(contexte.fichiersCode, lu.tokens), source: contexte.source })
+      } else {
+        setResultat(analyse(entrees))
+        setCouverture(null)
+      }
+    } catch {
+      setResultat(analyse([]))
+      setCouverture(null)
+    }
+    setCopie(false)
   }
 
   function lancerAnalyse(liste, texteCourant) {
     const entrees = liste.map(({ nom, contenu }) => ({ nom, contenu }))
-    if (texteCourant.trim() !== '') entrees.push({ nom: c.pastedName, contenu: texteCourant })
-    try {
-      setResultat(analyse(entrees))
-    } catch {
-      setResultat(analyse([]))
-    }
-    setCopie(false)
+    const texteColle = texteCourant.trim() !== ''
+    if (texteColle) entrees.push({ nom: c.pastedName, contenu: texteCourant })
+    // Du texte collé n'a rien à voir avec le code du dépôt : pas de couverture ni d'usages dans ce cas.
+    if (texteColle) setContexteCode(null)
+    calculer(entrees, texteColle ? null : contexteCode)
   }
 
   function chargerModele(modele) {
     const entree = entreeFichier(modele.nom, modele.contenu)
     setFichiers([entree])
     setTexte('')
-    lancerAnalyse([entree], '')
+    setContexteCode(null)
+    calculer([entree], null)
+  }
+
+  // Résultat de « Analyser ce dépôt » : les fichiers de tokens remplissent la liste, le code reste en mémoire.
+  function analyserDepot({ fichiersTokens, fichiersCode, avertissements, source }) {
+    const entrees = fichiersTokens.map(({ nom, contenu }) => entreeFichier(nom, contenu))
+    const contexte = { fichiersCode, source, avertissements }
+    setFichiers(entrees)
+    setTexte('')
+    setContexteCode(contexte)
+    calculer(fichiersTokens, contexte)
   }
 
   function retirer(id) {
@@ -475,7 +491,7 @@ export default function AuditTokens({ project }) {
   async function copierRapport() {
     if (!resultat) return
     try {
-      await navigator.clipboard.writeText(construireRapport(resultat, c, lang))
+      await navigator.clipboard.writeText(construireRapport(resultat, c, lang, couverture))
       setCopie(true)
     } catch {
       // Repli silencieux : pas de presse-papiers disponible.
@@ -524,6 +540,8 @@ export default function AuditTokens({ project }) {
           marginBottom: 16,
         }}
       >
+        <SourceGithub c={c} lang={lang} onAnalyser={analyserDepot} />
+
         <div style={{ ...FORMAT_LABEL_MONO, marginBottom: 8 }}>{c.inputTitle} — {c.pasteLabel}</div>
         <textarea
           value={texte}
@@ -638,7 +656,14 @@ export default function AuditTokens({ project }) {
           )}
 
           {lieuVide ? (
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text2)', margin: '0 0 24px' }}>{c.noTokens}</p>
+            <>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text2)', margin: '0 0 12px' }}>{couverture ? c.gh.noTokensRepo : c.noTokens}</p>
+              {couverture && (
+                <div style={{ marginBottom: 12 }}>
+                  <Bouton onClick={copierRapport}>{copie ? c.copied : c.copyReport}</Bouton>
+                </div>
+              )}
+            </>
           ) : (
             <>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 12 }}>
@@ -688,6 +713,8 @@ export default function AuditTokens({ project }) {
               )}
             </>
           )}
+
+          {couverture && <Couverture couverture={couverture} c={c} />}
         </div>
       )}
 

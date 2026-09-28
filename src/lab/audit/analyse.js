@@ -6,7 +6,7 @@ import { REGLES } from './regles.js'
 import { GRAVITES, avertissement } from './outils.js'
 
 // Index des noms, ensemble des noms référencés et graphe des alias.
-function preparerContexte(tokens, declarations) {
+function preparerContexte(tokens, declarations, usagesExternes = null) {
   const index = new Map()
   for (const t of tokens) {
     if (!index.has(t.nom)) index.set(t.nom, [])
@@ -26,6 +26,15 @@ function preparerContexte(tokens, declarations) {
     graphe.set(nom, [...refs])
   }
   for (const d of declarations) for (const ref of d.references) utilises.add(ref)
+
+  // Usages relevés ailleurs (code d'un dépôt) : un token CSS est utilisé si son nom y figure,
+  // un token JSON (`a.b.c`) si `--a-b-c` y figure (ou son nom pointé, déjà dans l'ensemble).
+  if (usagesExternes) {
+    const externes = new Set(usagesExternes)
+    for (const nom of index.keys()) {
+      if (externes.has(nom) || externes.has(`--${nom.replace(/\./g, '-')}`)) utilises.add(nom)
+    }
+  }
 
   return { tokens, declarations, index, utilises, graphe }
 }
@@ -56,11 +65,13 @@ function calculerResume(fichiers, tokens, constats) {
   }
 }
 
-export function analyse(fichiers) {
+// options.usagesExternes : noms de tokens utilisés par du code hors des fichiers
+// analysés (ensemble ou tableau) ; R6 ne les signale plus. Sans option : comportement inchangé.
+export function analyse(fichiers, options = {}) {
   let lecture = { tokens: [], declarations: [], avertissements: [], fichiers: [] }
   try {
     lecture = lireFichiers(fichiers)
-    const contexte = preparerContexte(lecture.tokens, lecture.declarations)
+    const contexte = preparerContexte(lecture.tokens, lecture.declarations, options?.usagesExternes)
 
     const constats = []
     const avertissements = [...lecture.avertissements]
