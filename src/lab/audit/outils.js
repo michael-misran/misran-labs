@@ -54,6 +54,28 @@ export function cleCouleur({ r, g, b }) {
   return `${r},${g},${b}`
 }
 
+// Références {chemin.du.token} trouvées dans toutes les chaînes d'une valeur
+// (chaîne simple ou composite : objet, tableau). Sans doublon.
+export function extraireReferencesAccolades(valeur, refs = [], profondeur = 0) {
+  if (profondeur > 50) return refs
+  if (typeof valeur === 'string') {
+    for (const m of valeur.matchAll(/\{([^{}]+)\}/g)) {
+      const nom = m[1].trim()
+      if (nom && !refs.includes(nom)) refs.push(nom)
+    }
+  } else if (valeur && typeof valeur === 'object') {
+    for (const v of Object.values(valeur)) extraireReferencesAccolades(v, refs, profondeur + 1)
+  }
+  return refs
+}
+
+// Valeur d'un token JSON : les composites (objets, tableaux) sont gardés
+// tels quels, le reste devient une chaîne.
+export function valeurJson(valeur) {
+  if (valeur && typeof valeur === 'object') return valeur
+  return valeur === undefined || valeur === null ? '' : String(valeur)
+}
+
 // Avertissement bilingue, forme commune à tous les lecteurs.
 export function avertissement(fichier, fr, en) {
   return { fichier, detail: { fr, en } }

@@ -2,11 +2,12 @@
 // le résultat dans le modèle commun de tokens. Un fichier illisible produit
 // un avertissement, jamais une exception.
 import { lireCss } from './lecteurs/css.js'
+import { lireDtcg } from './lecteurs/dtcg.js'
+import { lireTokensStudio } from './lecteurs/tokensStudio.js'
 import { avertissement } from './outils.js'
 
 export const LIMITE_CARACTERES = 300000
 
-// Formats connus. Les lecteurs JSON sont branchés à l'étape suivante.
 export const FORMATS = ['css', 'dtcg', 'tokens-studio']
 
 // Détection d'un fichier : renvoie { format, json } où `json` est le contenu
@@ -43,11 +44,9 @@ function contientObjetAvecValue(noeud, profondeur = 0) {
   return Object.values(noeud).some((v) => contientObjetAvecValue(v, profondeur + 1))
 }
 
-const LECTEURS_JSON = {}
-
-// Permet aux lecteurs JSON de s'enregistrer sans import circulaire.
-export function enregistrerLecteurJson(format, lecteur) {
-  LECTEURS_JSON[format] = lecteur
+const LECTEURS_JSON = {
+  dtcg: lireDtcg,
+  'tokens-studio': lireTokensStudio,
 }
 
 export function lireFichiers(fichiers) {
@@ -119,19 +118,12 @@ export function lireFichiers(fichiers) {
             )
           )
         }
-      } else if (LECTEURS_JSON[detection.format]) {
-        resultat = LECTEURS_JSON[detection.format](detection.json, nom)
       } else {
-        resultat = {
-          tokens: [],
-          declarations: [],
-          avertissements: [
-            avertissement(
-              nom,
-              'Ce format JSON n\'est pas encore pris en charge.',
-              'This JSON format is not supported yet.'
-            ),
-          ],
+        resultat = LECTEURS_JSON[detection.format](detection.json, nom)
+        if (resultat.tokens.length === 0) {
+          resultat.avertissements.push(
+            avertissement(nom, 'Aucun token reconnu dans ce JSON.', 'No token recognised in this JSON.')
+          )
         }
       }
 

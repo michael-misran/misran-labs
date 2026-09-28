@@ -282,4 +282,27 @@ const r7 = {
   },
 }
 
-export const REGLES = [r1, r2, r3, r4, r5, r6, r7]
+/* --- R8 Type manquant (JSON) -------------------------------------------- */
+const r8 = {
+  id: 'R8',
+  gravite: 'info',
+  verifier({ tokens }) {
+    const constats = []
+    for (const t of tokens) {
+      if (t.format === 'css' || t.type) continue
+      constats.push(
+        constat({
+          gravite: 'info',
+          tokens: [t.nom],
+          fichier: t.fichier,
+          emplacement: t.emplacement,
+          fr: `« ${t.nom} » n'a pas de type (ni propre, ni hérité de son groupe). Les outils ne peuvent pas savoir s'il s'agit d'une couleur, d'une dimension, etc.`,
+          en: `"${t.nom}" has no type (neither its own nor inherited from its group). Tools cannot tell whether it is a color, a dimension, etc.`,
+        })
+      )
+    }
+    return constats
+  },
+}
+
+export const REGLES = [r1, r2, r3, r4, r5, r6, r7, r8]

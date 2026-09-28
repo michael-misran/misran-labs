@@ -87,6 +87,88 @@ verifier('résumé et bilinguisme', () => {
   assert.equal(exempleCss.constats[0].gravite, 'erreur', 'tri : erreurs d’abord')
 })
 
+console.log('JSON W3C DTCG')
+const exempleDtcg = analyse([{ nom: 'exemple.dtcg.json', contenu: lire('src/lab/audit/exemples/exemple.dtcg.json') }])
+
+verifier('format DTCG détecté, noms en chemin pointé, type hérité du groupe', () => {
+  assert.equal(exempleDtcg.fichiers[0].format, 'dtcg')
+  assert.ok(exempleDtcg.tokens.every((t) => t.format === 'dtcg'))
+  const noms = exempleDtcg.tokens.map((t) => t.nom)
+  assert.ok(noms.includes('color.brand.primary') && noms.includes('spacing.small'))
+  assert.ok(!noms.some((n) => n.startsWith('$')), 'les clés $ ne sont pas des groupes')
+  assert.equal(exempleDtcg.tokens.find((t) => t.nom === 'color.brand.primary').type, 'color')
+  assert.equal(exempleDtcg.tokens.find((t) => t.nom === 'spacing.small').type, 'dimension')
+  assert.equal(exempleDtcg.tokens.find((t) => t.nom === 'spacing.medium').type, null)
+})
+verifier('DTCG : référence résolue, référence cassée (R1), composite lu', () => {
+  const action = exempleDtcg.tokens.find((t) => t.nom === 'color.action')
+  assert.deepEqual(action.references, ['color.brand.primary'])
+  const r1 = constatsDe(exempleDtcg, 'R1')
+  assert.equal(r1.length, 1)
+  assert.equal(r1[0].tokens[0], 'color.danger')
+  assert.equal(r1[0].gravite, 'erreur')
+  const ombre = exempleDtcg.tokens.find((t) => t.nom === 'shadow.card')
+  assert.equal(typeof ombre.valeur, 'object')
+  assert.deepEqual(ombre.references, ['color.action'], 'référence trouvée dans le composite')
+})
+verifier('DTCG : R4, R5, R8 ; composite exclu de R4 et R5', () => {
+  assert.deepEqual([...constatsDe(exempleDtcg, 'R4')[0].tokens].sort(), ['color.brand.accent', 'color.brand.primary'])
+  assert.ok(constatsDe(exempleDtcg, 'R5')[0].tokens.includes('color.brand.primary-hover'))
+  assert.deepEqual(constatsDe(exempleDtcg, 'R8').map((c) => c.tokens[0]), ['spacing.medium'])
+  assert.ok(!exempleDtcg.constats.some((c) => c.regle !== 'R6' && c.tokens.includes('shadow.card')))
+})
+
+console.log('JSON Tokens Studio')
+const exempleTs = analyse([
+  { nom: 'exemple.tokens-studio.json', contenu: lire('src/lab/audit/exemples/exemple.tokens-studio.json') },
+])
+
+verifier('format Tokens Studio détecté, ensembles = contexte, $themes et $metadata ignorés', () => {
+  assert.equal(exempleTs.fichiers[0].format, 'tokens-studio')
+  const contextes = new Set(exempleTs.tokens.map((t) => t.contexte))
+  assert.deepEqual([...contextes].sort(), ['dark', 'global', 'light'])
+  assert.ok(!exempleTs.tokens.some((t) => t.nom.includes('themes') || t.nom.includes('tokenSetOrder')))
+  assert.ok(exempleTs.tokens.find((t) => t.nom === 'gray.100' && t.contexte === 'global'))
+  assert.equal(exempleTs.tokens.find((t) => t.nom === 'radius.sm').type, 'borderRadius', 'type hérité du groupe')
+})
+verifier('Tokens Studio : référence résolue entre ensembles, référence cassée (R1)', () => {
+  // light.surface → {gray.100}, défini dans « global » : pas d'erreur.
+  const r1 = constatsDe(exempleTs, 'R1')
+  assert.equal(r1.length, 1)
+  assert.equal(r1[0].tokens[0], 'surface')
+  assert.ok(r1[0].detail.fr.includes('gray.900'))
+  assert.equal(r1[0].emplacement, 'dark.surface')
+})
+verifier('Tokens Studio : surcharge d’ensemble normale, R4, R5, R8', () => {
+  const r4 = constatsDe(exempleTs, 'R4')
+  assert.equal(r4.length, 1)
+  assert.deepEqual([...r4[0].tokens].sort(), ['brand', 'brand-soft'])
+  assert.ok(!exempleTs.constats.some((c) => c.tokens.filter((n) => n === 'surface').length > 1), 'surface light/dark n’est pas un doublon')
+  assert.ok(constatsDe(exempleTs, 'R5').length >= 1)
+  assert.deepEqual(constatsDe(exempleTs, 'R8').map((c) => c.tokens[0]), ['space.md'])
+})
+
+console.log('Les trois exemples ensemble')
+verifier('chaque règle R1 à R8 est déclenchée au moins une fois', () => {
+  const tous = analyse([
+    { nom: 'exemple.css', contenu: lire('src/lab/audit/exemples/exemple.css') },
+    { nom: 'exemple.dtcg.json', contenu: lire('src/lab/audit/exemples/exemple.dtcg.json') },
+    { nom: 'exemple.tokens-studio.json', contenu: lire('src/lab/audit/exemples/exemple.tokens-studio.json') },
+  ])
+  const vues = new Set([...regles(exempleCss), ...regles(exempleDtcg), ...regles(exempleTs), ...regles(tous)])
+  for (const id of ['R1', 'R2', 'R3', 'R4', 'R5', 'R6', 'R7', 'R8']) assert.ok(vues.has(id), `${id} jamais déclenchée`)
+  assert.deepEqual(tous.resume.tokensParFormat && Object.keys(tous.resume.tokensParFormat).sort(), ['css', 'dtcg', 'tokens-studio'])
+  assert.equal(tous.resume.fichiers, 3)
+})
+verifier('détection selon le contenu, sans extension utile', () => {
+  const css = analyse([{ nom: 'colle.txt', contenu: ':root { --a: #fff; }' }])
+  assert.equal(css.fichiers[0].format, 'css')
+  const dtcg = analyse([{ nom: 'colle.txt', contenu: '{"a": {"$value": "#fff", "$type": "color"}}' }])
+  assert.equal(dtcg.fichiers[0].format, 'dtcg')
+  const ts = analyse([{ nom: 'colle.txt', contenu: '{"s": {"a": {"value": "#fff", "type": "color"}}}' }])
+  assert.equal(ts.fichiers[0].format, 'tokens-studio')
+})
+
 console.log('Cas limites (aucune exception)')
 const limites = {
   'texte vide': [{ nom: 'vide.css', contenu: '' }],
