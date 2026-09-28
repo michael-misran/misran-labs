@@ -1,14 +1,12 @@
 # Mission audit-grille — PROGRESS
 
-**Statut :** étape 1 terminée
-**Prochaine action :** étape 2 (`contrastes.js`, `chemins` dans `explorerDepot`, début de `verifier-grille.mjs`)
+**Statut :** étape 2 terminée
+**Prochaine action :** étape 3 (`grille.js` D2/D3/D6, `priorites.js` D7, suite de `verifier-grille.mjs`)
 **Blocages :** aucun
 
-## État initial (2026-09-28, référence)
-- `npm run build` : passe (152 modules, bundle 726 Ko, avertissement de taille habituel).
-- `npm run lint` : 6 erreurs préexistantes, hors mission — `VisuallyHidden.jsx` (Tag inutilisé), `design-system/kit/Surface.jsx` (Tag inutilisé), `lab/CaseFile.jsx` (react-refresh), `lab/GameDemo.jsx` (`t` inutilisé), `shell/LanguageContext.jsx` (react-refresh), `shell/Shell.jsx` (setState dans un effet). Critère 9 : ne pas en ajouter.
-- `node missions/audit-github/verifier-github.mjs` : passe.
-- `node missions/audit-tokens/verifier-analyse.mjs` : passe.
+## Fait
+- Étape 1 : état initial. Build OK ; lint : 6 erreurs préexistantes hors mission (`VisuallyHidden.jsx`, `design-system/kit/Surface.jsx`, `lab/CaseFile.jsx`, `lab/GameDemo.jsx`, `shell/LanguageContext.jsx`, `shell/Shell.jsx`) — critère 9 : ne pas en ajouter ; deux scripts existants OK.
+- Étape 2 : `src/lab/audit/contrastes.js` (`evaluerContrastes`, `rapportContraste`) ; `explorerDepot` renvoie `chemins` (tous les blobs, sans filtre, aucune requête en plus) ; `verifier-grille.mjs` partie 1 (14 vérifications). Les trois scripts passent, eslint propre sur `src/lab/audit` et `missions/audit-grille`.
 
 ## Rappels
 - Dans une routine : `npm run build` puis `npx vite preview` (port 4173), pas la preview « dev ». Arrêter le serveur en fin de session.

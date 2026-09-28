@@ -5,7 +5,7 @@ Chaque étape indique l'agent et le modèle à utiliser.
 
 - [x] 0. Cadrage : SPEC, PLAN, fichiers de suivi → session principale (Opus)
 - [x] 1. État initial : build, lint, les deux scripts existants notés dans PROGRESS.md → session principale (Sonnet)
-- [ ] 2. `contrastes.js` (D5) + `chemins` dans `explorerDepot` (D1) + première partie de `verifier-grille.mjs`. Les trois scripts passent → session principale (Sonnet)
+- [x] 2. `contrastes.js` (D5) + `chemins` dans `explorerDepot` (D1) + première partie de `verifier-grille.mjs`. Les trois scripts passent → session principale (Sonnet)
 - [ ] 3. `grille.js` (D2, D3, D6) + `priorites.js` (D7) + suite de `verifier-grille.mjs`. Les trois scripts passent → session principale (Sonnet)
 - [ ] 4. Interface : `Grille.jsx` avec ajustement (D4), `Matrice.jsx`, ordre de la page (D10), appel à l'action (D9), Markdown complété ; textes FR, structure EN prête → session principale (Sonnet)
 - [ ] 5. `RapportImprimable.jsx` + règles `@media print` + bouton « Exporter en PDF » (D8, D13) → session principale (Sonnet)

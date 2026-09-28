@@ -207,7 +207,7 @@ async function lireJson(fetchFn, url, contexte) {
 const encoderChemin = (chemin) => chemin.split('/').map(encodeURIComponent).join('/')
 
 // Appels 1 et 2 de D3, puis repérage. Renvoie { ok: true, proprietaire, depot,
-// branche, taille, avertissements, candidats, candidatsTotal, echantillon,
+// branche, taille, avertissements, chemins, candidats, candidatsTotal, echantillon,
 // eligibles, dossier } ou { ok: false, erreur: { fr, en } }.
 export async function explorerDepot(adresse, fetchFn) {
   if (!adresse) {
@@ -275,6 +275,8 @@ export async function explorerDepot(adresse, fetchFn) {
     dossier: dossier ?? null,
     taille: infos.donnees?.size ?? null,
     avertissements,
+    // Tous les fichiers reçus, sans filtre : sert aux axes composants, documentation et gouvernance.
+    chemins: arbre.donnees.tree.filter((e) => e?.type === 'blob' && typeof e.path === 'string').map((e) => e.path),
     ...reperer(arbre.donnees.tree, dossier),
   }
 }
