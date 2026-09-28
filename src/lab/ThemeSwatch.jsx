@@ -75,8 +75,8 @@ function Panel({ label, invert }) {
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             <span
               style={{
-                background: 'var(--primary)',
-                color: 'var(--on-primary)',
+                background: 'var(--primary-surface)',
+                color: 'var(--on-primary-surface)',
                 boxShadow: 'var(--elev-2)',
                 borderRadius: 'var(--radius-pill)',
                 fontFamily: "var(--font-body)",

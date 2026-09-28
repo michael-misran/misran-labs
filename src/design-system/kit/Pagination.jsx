@@ -38,8 +38,8 @@ export default function Pagination({ page = 1, pages = 1, onChange, labels }) {
             style={{
               minWidth: 30,
               height: 30,
-              background: current ? 'var(--primary)' : 'transparent',
-              color: current ? 'var(--on-primary)' : 'var(--text2)',
+              background: current ? 'var(--primary-surface)' : 'transparent',
+              color: current ? 'var(--on-primary-surface)' : 'var(--text2)',
               boxShadow: current ? 'var(--elev-3)' : 'var(--elev-1)',
               border: 'none',
               borderRadius: 'var(--radius-sm)',

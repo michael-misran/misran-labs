@@ -4,8 +4,8 @@
 // le kit existe pour éviter.
 
 export const TONES = {
-  primary: { bg: 'var(--primary)', fg: 'var(--on-primary)' },
-  danger: { bg: 'var(--error)', fg: 'var(--on-primary)' },
+  primary: { bg: 'var(--primary-surface)', fg: 'var(--on-primary-surface)' },
+  danger: { bg: 'var(--error)', fg: 'var(--on-primary-surface)' },
 }
 
 export const SIZES = {

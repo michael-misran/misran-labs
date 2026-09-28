@@ -40,7 +40,6 @@ export default function Textarea({ label, placeholder, helper, error, value, onC
           fontSize: 13,
           lineHeight: 1.6,
           padding: '10px 12px',
-          outline: 'none',
           resize: 'vertical',
           transition: 'border-color 0.18s ease',
         }}

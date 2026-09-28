@@ -54,7 +54,6 @@ export default function TextField({
           fontFamily: 'var(--font-body)',
           fontSize: 13,
           padding: '10px 12px',
-          outline: 'none',
           transition: 'border-color 0.18s ease, box-shadow 0.18s ease',
         }}
       />

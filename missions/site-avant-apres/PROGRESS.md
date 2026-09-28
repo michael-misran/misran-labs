@@ -1,7 +1,7 @@
 # Mission site-avant-apres — PROGRESS
 
-**Statut :** étapes 1 et 2 terminées (2026-09-28). Étape 3 (contraste) écrite dans le code, à vérifier (build/lint) puis commiter.
-**Prochaine action :** commit étape 3, puis étape 4 (D5 selon INVENTAIRE.md, partie B ; faite par la session principale si le sous-agent ne se lance pas)
+**Statut :** étapes 1 à 3 terminées (2026-09-28). Mesure intermédiaire : moyenne 1,0 (Accessibilité 0 → 1).
+**Prochaine action :** étape 4 (D5 selon INVENTAIRE.md, partie B, 60 fichiers de l'échantillon ; faite par la session principale si le sous-agent ne se lance pas)
 **Blocages :** le classifieur des sous-agents/commandes échoue par moments (« aucun verdict ») ; une seule nouvelle tentative, puis faire soi-même.
 
 ## État initial (référence)

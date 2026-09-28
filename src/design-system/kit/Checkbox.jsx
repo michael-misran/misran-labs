@@ -39,8 +39,8 @@ export default function Checkbox({ label, checked = false, onChange, disabled = 
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: 'var(--radius-xs)',
-          background: checked ? 'var(--primary)' : 'var(--surface-inset)',
-          color: 'var(--on-primary)',
+          background: checked ? 'var(--primary-surface)' : 'var(--surface-inset)',
+          color: 'var(--on-primary-surface)',
           boxShadow: checked ? 'var(--elev-2)' : 'var(--elev-inset)',
           transition: 'background 0.18s ease, box-shadow 0.18s ease',
         }}
