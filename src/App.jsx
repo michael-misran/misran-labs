@@ -7,6 +7,7 @@ import MagazineHome from './magazine/MagazineHome'
 import MagazineIssue from './magazine/MagazineIssue'
 import ProjetsHome from './projets/ProjetsHome'
 import ProjetIdee from './projets/ProjetIdee'
+import ProjetsFonctionnement from './projets/ProjetsFonctionnement'
 import { LanguageProvider } from './shell/LanguageContext'
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="magazine" element={<MagazineHome />} />
           <Route path="magazine/:date" element={<MagazineIssue />} />
           <Route path="projets" element={<ProjetsHome />} />
+          <Route path="projets/fonctionnement" element={<ProjetsFonctionnement />} />
           <Route path="projets/:id" element={<ProjetIdee />} />
         </Route>
       </Routes>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import useIsMobile from '../shell/useIsMobile'
 import { useLanguage } from '../shell/LanguageContext'
 import { CaseMasthead, CaseMetaRow, CaseFooter, CASE_CHROME } from '../lab/CaseFile'
@@ -51,9 +52,12 @@ export default function ProjetsHome() {
         />
       </ProjetsHero>
 
-      <p style={{ maxWidth: 720, fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: 'var(--prose)', margin: '0 0 32px' }}>
+      <p style={{ maxWidth: 720, fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: 'var(--prose)', margin: '0 0 12px' }}>
         {t.concept}
       </p>
+      <Link to="/projets/fonctionnement" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', textDecoration: 'none', display: 'inline-block', marginBottom: 32 }}>
+        {t.howLink}
+      </Link>
 
       <div style={{ marginBottom: 8 }}>
         <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: 8 }}>

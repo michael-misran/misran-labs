@@ -68,6 +68,7 @@ export const PROJ_TEXT = {
       registerTitle: 'Registre',
       empty: 'Aucune idée proposée pour l’instant.',
       emptyFiltered: 'Aucune idée pour ce filtre.',
+      howLink: 'Comment ça marche →',
       docId: 'ID RUBRIQUE — ML-PROJETS',
     },
     idee: {
@@ -119,6 +120,7 @@ export const PROJ_TEXT = {
       registerTitle: 'Register',
       empty: 'No idea proposed yet.',
       emptyFiltered: 'No idea matches this filter.',
+      howLink: 'How it works →',
       docId: 'SECTION ID — ML-PROJECTS',
     },
     idee: {
