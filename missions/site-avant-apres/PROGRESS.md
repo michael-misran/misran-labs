@@ -1,7 +1,7 @@
 # Mission site-avant-apres — PROGRESS
 
-**Statut :** étapes 1 à 4 terminées (2026-09-28). Mesure intermédiaire : moyenne 1,0 (Accessibilité 0 → 1) ; couverture 88,4 %.
-**Prochaine action :** étape 5 (lint à 0 erreur, D7 : 6 erreurs listées dans SPEC)
+**Statut :** étapes 1 à 5 terminées (2026-09-28). Mesure intermédiaire : moyenne 1,0 (Accessibilité 0 → 1) ; couverture 88,4 % ; lint 0 erreur.
+**Prochaine action :** étape 6 (gouvernance D8 : CHANGELOG.md, .github/CODEOWNERS, .github/workflows/verifier.yml, LICENSE)
 **Blocages :** le classifieur des sous-agents/commandes échoue par moments (« aucun verdict ») ; une seule nouvelle tentative, puis faire soi-même.
 
 ## État initial (référence)

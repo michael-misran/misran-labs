@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../shell/LanguageContext'
-import { t } from '../i18n/ui'
 
 const CONTENT = {
   fr: {

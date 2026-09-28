@@ -8,7 +8,7 @@ import MagazineIssue from './magazine/MagazineIssue'
 import ProjetsHome from './projets/ProjetsHome'
 import ProjetIdee from './projets/ProjetIdee'
 import ProjetsFonctionnement from './projets/ProjetsFonctionnement'
-import { LanguageProvider } from './shell/LanguageContext'
+import { LanguageProvider } from './shell/LanguageProvider'
 
 export default function App() {
   return (

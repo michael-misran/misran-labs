@@ -1,4 +1,5 @@
-export default function VisuallyHidden({ as: Tag = 'span', children }) {
+export default function VisuallyHidden({ as = 'span', children }) {
+  const Tag = as
   return (
     <Tag
       style={{
