@@ -527,6 +527,44 @@ const CONTENT = {
       "Piloter Gemini dans le navigateur coûte des tokens Claude (attendre, lire la page), pour une réponse d'environ une minute, Gemini ayant fait sa propre recherche web. C'est un deuxième avis, pas une économie.",
     ],
 
+    tokensTitle: 'Économiser les tokens',
+    tokensIntroP:
+      "Ma demande : diminuer au maximum le coût en tokens du système, en restant aussi efficace. Claude a relevé quatre postes, par ordre d'impact.",
+    tokensTableCols: ['Poste', 'Avant', 'Après'],
+    tokensTableRows: [
+      [
+        'Tâche programmée',
+        'Elle tournait toutes les 2 heures, soit 12 fois par jour, même sans mission à faire : chaque lancement chargeait tout le contexte pour répondre « Aucune mission active ».',
+        'Elle se met en pause toute seule quand la file de missions est vide ; la session de cadrage la réactive quand une mission est prête.',
+      ],
+      [
+        'CLAUDE.md',
+        "Environ 10 Ko, chargé à chaque session (missions, Magazine, idées, conversations), dont la moitié ne sert que pendant une mission. Les routines le relisaient une deuxième fois, alors qu'il est déjà chargé automatiquement.",
+        "3 Ko : les procédures vont dans missions/README.md, lu seulement quand on travaille sur une mission. Les interdits de sécurité restent dans CLAUDE.md. Les routines ne le relisent plus.",
+      ],
+      [
+        "Reprise d'une mission",
+        'Relecture de tous les fichiers de la mission, y compris les journaux DECISIONS et DELEGATIONS, qui grossissent à chaque étape.',
+        'SPEC, PLAN et PROGRESS seulement ; on ajoute des lignes aux journaux sans les relire.',
+      ],
+      [
+        'Build et lint',
+        'Confiés à un sous-agent : il démarre à froid et relit le contexte, pour une seule commande.',
+        "Lancés directement par la session principale. Le verificateur (Haiku) ne sert plus qu'au navigateur. Nouveau choix au cadrage : « sous-agent (Haiku) » pour les étapes mécaniques bien décrites.",
+      ],
+    ],
+    tokensBugP:
+      "Au passage, un bug corrigé : la tâche des missions aurait pris les branches de la routine des idées (auto/projets-*) pour des missions. Elle les ignore maintenant. Les mêmes règles ont été reportées dans le skill global /mission, pour les futurs projets.",
+    tokensRejectedLabel: "Ce qui n'a pas été retenu :",
+    tokensRejected: [
+      "Gemini dans le navigateur : plus cher qu'il ne fait gagner (voir la section précédente).",
+      "L'IA locale (Lily) : déjà écartée, gain marginal.",
+    ],
+    tokensRemainingP:
+      "Il me reste une recommandation à appliquer : couper, pour ce projet, les connecteurs inutiles (messagerie, agenda, stockage, tableaux blancs, design), dont la liste occupe du contexte à chaque session.",
+    tokensPublishP:
+      "Pour la première fois, une amélioration du système lui-même passe par une pull request, hors mission, que je fusionne. Cette page est mise à jour par la mission 8, utilisation-ia-economie : la première cadrée selon ces nouvelles règles (étapes mécaniques prévues pour Haiku, build et lint sans sous-agent).",
+
     statsTitle: 'Bilan chiffré',
     statsTableCols: ['Mission', 'Durée', 'Modèles'],
     statsTableRows: [
@@ -869,6 +907,44 @@ const CONTENT = {
       "Driving Gemini in the browser costs Claude tokens (waiting, reading the page), for an answer that took about a minute, since Gemini ran its own web search. It's a second opinion, not a saving.",
     ],
 
+    tokensTitle: 'Cutting token usage',
+    tokensIntroP:
+      'My request: cut the system\'s token cost as far as possible, while staying just as effective. Claude picked out four items, in order of impact.',
+    tokensTableCols: ['Item', 'Before', 'After'],
+    tokensTableRows: [
+      [
+        'Scheduled task',
+        'It ran every 2 hours, 12 times a day, even with no mission to do: every launch loaded the whole context just to answer "No active mission".',
+        'It pauses itself when the mission queue is empty; the framing session turns it back on when a mission is ready.',
+      ],
+      [
+        'CLAUDE.md',
+        'About 10 KB, loaded in every session (missions, Magazine, ideas, conversations), half of it only useful during a mission. Routines re-read it a second time, although it is already loaded automatically.',
+        '3 KB: the procedures moved to missions/README.md, read only when working on a mission. The safety prohibitions stay in CLAUDE.md. Routines no longer re-read it.',
+      ],
+      [
+        'Resuming a mission',
+        'Re-reading every mission file, including the DECISIONS and DELEGATIONS logs, which grow with each step.',
+        'SPEC, PLAN and PROGRESS only; lines are appended to the logs without re-reading them.',
+      ],
+      [
+        'Build and lint',
+        'Handed to a sub-agent: it starts cold and re-reads the context, for a single command.',
+        'Run directly by the main session. The verificateur (Haiku) is now only used for the browser. New choice at framing time: "Haiku sub-agent" for mechanical, well-described steps.',
+      ],
+    ],
+    tokensBugP:
+      'While at it, one bug fixed: the missions task would have mistaken the ideas routine\'s branches (auto/projets-*) for missions. It now ignores them. The same rules were carried over to the global /mission skill, for future projects.',
+    tokensRejectedLabel: 'What I did not keep:',
+    tokensRejected: [
+      'Gemini in the browser: it costs more than it saves (see the previous section).',
+      'Local AI (Lily): already ruled out, marginal gain.',
+    ],
+    tokensRemainingP:
+      'One recommendation is still mine to apply: switch off, for this project, the connectors it does not need (mail, calendar, storage, whiteboards, design), whose list takes up context in every session.',
+    tokensPublishP:
+      'For the first time, an improvement to the system itself goes through a pull request, outside any mission, which I merge. This page is updated by mission 8, utilisation-ia-economie: the first one framed under these new rules (mechanical steps earmarked for Haiku, build and lint without a sub-agent).',
+
     statsTitle: 'The numbers so far',
     statsTableCols: ['Mission', 'Duration', 'Models'],
     statsTableRows: [
@@ -1101,6 +1177,18 @@ export default function UtilisationIA({ project }) {
         <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {c.geminiConclusion.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
+      </Section>
+
+      <Section title={c.tokensTitle}>
+        <p style={{ marginBottom: 20 }}>{c.tokensIntroP}</p>
+        <Table columns={c.tokensTableCols} rows={c.tokensTableRows} />
+        <p style={{ margin: '16px 0 16px' }}>{c.tokensBugP}</p>
+        <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.tokensRejectedLabel}</div>
+        <ul style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {c.tokensRejected.map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
+        <p style={{ marginBottom: 12 }}>{c.tokensRemainingP}</p>
+        <p style={{ margin: 0 }}>{c.tokensPublishP}</p>
       </Section>
 
       <Section title={c.statsTitle}>
