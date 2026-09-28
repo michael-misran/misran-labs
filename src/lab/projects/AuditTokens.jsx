@@ -5,12 +5,19 @@ import { useLanguage } from '../../shell/LanguageContext'
 import useIsMobile from '../../shell/useIsMobile'
 import { analyse } from '../audit/analyse'
 import { extraireUsagesTokens, mesurerCouverture } from '../audit/couverture'
+import { evaluerContrastes } from '../audit/contrastes'
+import { evaluerGrille, appliquerAjustements } from '../audit/grille'
+import { prioriser } from '../audit/priorites'
 import { GRAVITES } from '../audit/outils'
 import { Bouton, Tuile } from './audit/ui'
 import { FORMAT_LABEL_MONO } from './audit/styles'
 import { TEXTES } from './audit/textes'
+import { lignesGrille } from './audit/rapportGrille'
 import SourceGithub from './audit/SourceGithub'
 import Couverture from './audit/Couverture'
+import Grille from './audit/Grille'
+import Matrice from './audit/Matrice'
+import RapportImprimable from './audit/RapportImprimable'
 import { LIMITE_CARACTERES } from '../audit/lireFichiers'
 import exempleCss from '../audit/exemples/exemple.css?raw'
 import exempleDtcg from '../audit/exemples/exemple.dtcg.json?raw'
@@ -101,7 +108,7 @@ const FR = {
     R8: { titre: 'Type manquant', explication: "Un token JSON n'a pas de type, ni propre ni hérité de son groupe : les outils ne savent pas ce qu'il représente." },
   },
   ctaTitle: 'Besoin d’un audit complet de votre design system ?',
-  ctaText: "Cet outil relève les incohérences des tokens. Un audit complet regarde aussi la couverture dans le code, l’accessibilité, les composants, la documentation et la gouvernance.",
+  ctaText: "Cet outil fait le relevé et la note. Un audit complet y ajoute l’entretien avec l’équipe, la parité Figma ↔ code, l’usage réel du produit et une feuille de route priorisée.",
   ctaLink: 'Me contacter sur LinkedIn',
 }
 
@@ -171,7 +178,7 @@ const EN = {
     R8: { titre: 'Missing type', explication: 'A JSON token lacks a type, neither its own nor inherited from its group: tools cannot tell what it represents.' },
   },
   ctaTitle: 'Need a full audit of your design system?',
-  ctaText: 'This tool flags token inconsistencies. A full audit also examines code coverage, accessibility, components, documentation, and governance.',
+  ctaText: 'This tool does the survey and the scoring. A full audit adds the interview with the team, Figma ↔ code parity, how the product is really used, and a prioritized roadmap.',
   ctaLink: 'Contact me on LinkedIn',
 }
 
@@ -257,7 +264,7 @@ function emplacementTexte(constat, c) {
 }
 
 // Rapport Markdown, dans la langue de la page.
-function construireRapport(resultat, c, lang, couverture = null) {
+function construireRapport(resultat, c, lang, couverture = null, grille = null, priorites = null) {
   const { resume } = resultat
   const lignes = [`# ${c.reportTitle}`, '', `## ${c.reportSummary}`, '']
   lignes.push(`- ${c.summary.files} : ${resume.fichiers}`)
@@ -266,6 +273,7 @@ function construireRapport(resultat, c, lang, couverture = null) {
   lignes.push(
     `- ${GRAVITES.map((g) => `${c.severities[g]} : ${resume.constatsParGravite[g]}`).join(' · ')}`
   )
+  if (grille && priorites) lignes.push(...lignesGrille(grille, priorites, c, lang))
   if (couverture) {
     const t = c.cov
     lignes.push('', `## ${t.reportTitle}`, '')
@@ -386,7 +394,9 @@ export default function AuditTokens({ project }) {
   const [texte, setTexte] = useState('')
   const [resultat, setResultat] = useState(null)
   const [couverture, setCouverture] = useState(null) // résultat de mesurerCouverture + source, mode GitHub seulement
-  const [contexteCode, setContexteCode] = useState(null) // { fichiersCode, source, avertissements } d'un dépôt analysé
+  const [contexteCode, setContexteCode] = useState(null) // { fichiersCode, chemins, source, avertissements } d'un dépôt analysé
+  const [contexteAudit, setContexteAudit] = useState(null) // ce qui a servi à la dernière analyse : { chemins, fichiersCode, source, noms }
+  const [ajustements, setAjustements] = useState({}) // ajustements de l'auditeur par axe, remis à zéro à chaque analyse
   const [gravitesActives, setGravitesActives] = useState(() => new Set(GRAVITES))
   const [copie, setCopie] = useState(false)
   const [survol, setSurvol] = useState(false)
@@ -441,10 +451,19 @@ export default function AuditTokens({ project }) {
         setResultat(analyse(entrees))
         setCouverture(null)
       }
+      setContexteAudit({
+        chemins: contexte?.chemins ?? null,
+        fichiersCode: contexte?.fichiersCode ?? null,
+        source: contexte?.source ?? null,
+        noms: entrees.map((e) => e.nom),
+        date: new Date().toLocaleDateString('sv-SE'), // AAAA-MM-JJ, pour le rapport imprimable
+      })
     } catch {
       setResultat(analyse([]))
       setCouverture(null)
+      setContexteAudit(null)
     }
+    setAjustements({})
     setCopie(false)
   }
 
@@ -466,9 +485,9 @@ export default function AuditTokens({ project }) {
   }
 
   // Résultat de « Analyser ce dépôt » : les fichiers de tokens remplissent la liste, le code reste en mémoire.
-  function analyserDepot({ fichiersTokens, fichiersCode, avertissements, source }) {
+  function analyserDepot({ fichiersTokens, fichiersCode, chemins, avertissements, source }) {
     const entrees = fichiersTokens.map(({ nom, contenu }) => entreeFichier(nom, contenu))
-    const contexte = { fichiersCode, source, avertissements }
+    const contexte = { fichiersCode, chemins, source, avertissements }
     setFichiers(entrees)
     setTexte('')
     setContexteCode(contexte)
@@ -488,10 +507,35 @@ export default function AuditTokens({ project }) {
     })
   }
 
+  function ajuster(idAxe, ajustement) {
+    setAjustements((prev) => {
+      const suivant = { ...prev }
+      if (ajustement === null) delete suivant[idAxe]
+      else suivant[idAxe] = ajustement
+      return suivant
+    })
+    setCopie(false)
+  }
+
+  // Grille et matrice : calculées sur l'analyse, puis la grille reçoit les ajustements de l'auditeur.
+  const audit = useMemo(() => {
+    if (!resultat) return null
+    const contrastes = evaluerContrastes(resultat.tokens)
+    const brute = evaluerGrille({
+      resultat,
+      couverture,
+      chemins: contexteAudit?.chemins ?? null,
+      contrastes,
+      fichiersCode: contexteAudit?.fichiersCode ?? null,
+    })
+    return { contrastes, brute, priorites: prioriser({ resultat, couverture, grille: brute, contrastes }) }
+  }, [resultat, couverture, contexteAudit])
+  const grille = useMemo(() => (audit ? appliquerAjustements(audit.brute, ajustements) : null), [audit, ajustements])
+
   async function copierRapport() {
     if (!resultat) return
     try {
-      await navigator.clipboard.writeText(construireRapport(resultat, c, lang, couverture))
+      await navigator.clipboard.writeText(construireRapport(resultat, c, lang, couverture, grille, audit?.priorites ?? null))
       setCopie(true)
     } catch {
       // Repli silencieux : pas de presse-papiers disponible.
@@ -512,8 +556,11 @@ export default function AuditTokens({ project }) {
   const resume = resultat?.resume
   const lieuVide = !resultat || resultat.tokens.length === 0
 
+  const rapportDisponible = Boolean(grille && (!lieuVide || couverture))
+
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: 'var(--font-body)', color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <>
+    <div className="no-print" style={{ padding: isMobile ? 20 : 40, fontFamily: 'var(--font-body)', color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <CaseMasthead c={page} lang={lang} />
       <CaseHero project={project} c={page} />
 
@@ -655,15 +702,15 @@ export default function AuditTokens({ project }) {
             </div>
           )}
 
-          {lieuVide ? (
+          {rapportDisponible && (
             <>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text2)', margin: '0 0 12px' }}>{couverture ? c.gh.noTokensRepo : c.noTokens}</p>
-              {couverture && (
-                <div style={{ marginBottom: 12 }}>
-                  <Bouton onClick={copierRapport}>{copie ? c.copied : c.copyReport}</Bouton>
-                </div>
-              )}
+              <Grille grille={grille} contrastes={audit.contrastes} c={c} lang={lang} onAjuster={ajuster} />
+              <Matrice priorites={audit.priorites} c={c} lang={lang} />
             </>
+          )}
+
+          {lieuVide ? (
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text2)', margin: '0 0 12px' }}>{couverture ? c.gh.noTokensRepo : c.noTokens}</p>
           ) : (
             <>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 12 }}>
@@ -697,9 +744,6 @@ export default function AuditTokens({ project }) {
                           onClick={() => basculerGravite(g)}
                         />
                       ))}
-                      <Bouton onClick={copierRapport} style={{ marginLeft: 'auto' }}>
-                        {copie ? c.copied : c.copyReport}
-                      </Bouton>
                     </div>
                   </div>
 
@@ -715,6 +759,13 @@ export default function AuditTokens({ project }) {
           )}
 
           {couverture && <Couverture couverture={couverture} c={c} />}
+
+          {rapportDisponible && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 8 }}>
+              <Bouton onClick={copierRapport}>{copie ? c.copied : c.copyReport}</Bouton>
+              <Bouton principal onClick={() => window.print()}>{c.grille.exportPdf}</Bouton>
+            </div>
+          )}
         </div>
       )}
 
@@ -746,5 +797,11 @@ export default function AuditTokens({ project }) {
 
       <CaseFooter c={page} />
     </div>
+
+    {/* Rapport d'audit : invisible à l'écran, seul visible à l'impression (Exporter en PDF). */}
+    {rapportDisponible && (
+      <RapportImprimable c={c} lang={lang} grille={grille} priorites={audit.priorites} resultat={resultat} couverture={couverture} contexte={contexteAudit} />
+    )}
+    </>
   )
 }
