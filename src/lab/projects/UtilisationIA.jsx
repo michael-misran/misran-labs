@@ -495,6 +495,38 @@ const CONTENT = {
     mainPushP3:
       "Détail notable : avant ce compromis, alors que je venais de dire « vas-y », Claude a refusé de contourner le verrou en écrivant la commande autrement — un garde-fou n'a de valeur que s'il n'est pas contourné.",
 
+    geminiTitle: 'Un deuxième avis : Gemini',
+    geminiIntroP:
+      "Je réfléchissais à l'idée P-003 : un kit de missions autonomes, réutilisable pour d'autres projets. J'ai demandé à Claude s'il pouvait interroger Gemini, puisqu'il sait naviguer.",
+    geminiHowP:
+      "Oui, avec « Claude in Chrome » : l'extension qui pilote mon vrai Chrome, où je suis déjà connecté à Gemini. Il ne se connecte jamais à ma place — il ne tape aucun mot de passe. Avant le test, il m'a annoncé quatre limites :",
+    geminiLimits: [
+      "Uniquement quand je suis là : les tâches programmées n'ont pas de navigateur.",
+      "Fragile : il passe par la page, pas par une API ; si la page change, ça casse.",
+      "Confidentialité : tout ce qui est envoyé part chez Google. Il n'envoie pas mes notes privées sans mon accord.",
+      "Les conditions d'utilisation de Google n'aiment pas l'automatisation : ponctuel, oui ; à grande échelle, non.",
+    ],
+    geminiTryP:
+      "Premier essai : échec, l'extension n'était pas connectée. Claude m'a donné les étapes (installer l'extension, s'y connecter avec le même compte), sans chercher de contournement. Deuxième essai, une fois connecté : réussi.",
+    geminiQuestionP:
+      "La question était générale, sans aucune donnée privée : comment les développeurs solo organisent-ils aujourd'hui leurs agents de code autonomes — suivi, garde-fous, délégation entre modèles ? Gemini a répondu par cinq pratiques. Je les résume avec mes mots et je les compare à mon système.",
+    geminiTableCols: ['Pratique citée par Gemini', 'Dans mon système'],
+    geminiTableRows: [
+      ["Des copies de travail Git séparées, pour faire tourner plusieurs agents sans qu'ils se gênent", 'Oui : des branches auto/* séparées de main'],
+      ['Répartir les modèles : un gros modèle conçoit, des modèles rapides ou locaux exécutent le répétitif', 'Oui : Opus cadre, Sonnet exécute, Haiku fait les tâches simples'],
+      ["Un fichier de règles qui sert de contrat à l'agent", 'Oui : CLAUDE.md et les permissions du projet'],
+      ['Des agents dans le terminal qui commitent chaque étape et savent annuler un changement raté', 'Oui : un commit par étape'],
+      ['Une validation humaine avant chaque écriture', "À la fin, par pull request : c'est le principe de l'autonomie « fondateur »"],
+    ],
+    geminiConclusionLabel: "Ce que j'en retiens :",
+    geminiConclusion: [
+      "Mon système coche déjà quatre pratiques sur cinq. La validation humaine, chez moi, se fait à la fin plutôt qu'à chaque écriture.",
+      "Gemini a aussi avancé un chiffre sur la part des dépôts qui utilisent un fichier de règles. Il n'était pas sourcé : je ne l'ai pas vérifié, donc je ne le reprends pas.",
+      "Sa réponse semblait adaptée à mon historique Gemini : un avis utile, pas une source neutre.",
+      "Pour P-003, c'est un signal encourageant : le système existe déjà, il s'agirait de l'extraire.",
+      "Piloter Gemini dans le navigateur coûte des tokens Claude (attendre, lire la page), pour une réponse d'environ une minute, Gemini ayant fait sa propre recherche web. C'est un deuxième avis, pas une économie.",
+    ],
+
     statsTitle: 'Bilan chiffré',
     statsTableCols: ['Mission', 'Durée', 'Modèles'],
     statsTableRows: [
@@ -805,6 +837,38 @@ const CONTENT = {
     mainPushP3:
       'A notable detail: before this compromise, right after I said "go ahead," Claude refused to work around the lock by phrasing the command differently — a guardrail is only worth anything if it can\'t be talked around.',
 
+    geminiTitle: 'A second opinion: Gemini',
+    geminiIntroP:
+      "I was thinking about idea P-003: a kit of autonomous missions, reusable for other projects. I asked Claude whether it could question Gemini, since it can browse.",
+    geminiHowP:
+      'Yes, with "Claude in Chrome": the extension that drives my real Chrome, where I\'m already signed in to Gemini. It never signs in for me — it types no password. Before the test, it told me about four limits:',
+    geminiLimits: [
+      "Only when I'm around: scheduled tasks have no browser.",
+      "Fragile: it goes through the page, not an API; if the page changes, it breaks.",
+      "Privacy: everything it sends goes to Google. It won't send my private notes without my say-so.",
+      "Google's terms of use don't like automation: occasional use, fine; at scale, no.",
+    ],
+    geminiTryP:
+      "First try: failed, the extension wasn't connected. Claude gave me the steps (install the extension, sign in with the same account), without looking for a workaround. Second try, once connected: it worked.",
+    geminiQuestionP:
+      "The question was general, with no private data: how do solo developers organize their autonomous coding agents today — tracking, guardrails, handing work between models? Gemini answered with five practices. I summarize them in my own words and compare them with my system.",
+    geminiTableCols: ['Practice cited by Gemini', 'In my system'],
+    geminiTableRows: [
+      ['Separate Git working copies, so several agents can run without getting in each other\'s way', 'Yes: auto/* branches kept apart from main'],
+      ['Split the models: a big model designs, fast or local models run the repetitive work', 'Yes: Opus frames, Sonnet executes, Haiku does the simple tasks'],
+      ['A rules file that acts as a contract for the agent', "Yes: CLAUDE.md and the project's permissions"],
+      ['Agents in the terminal that commit every step and can undo a failed change', 'Yes: one commit per step'],
+      ['Human sign-off before every write', 'At the end, through a pull request: that is the point of "founder" autonomy'],
+    ],
+    geminiConclusionLabel: 'What I take from it:',
+    geminiConclusion: [
+      'My system already ticks four practices out of five. Human sign-off, in my setup, happens at the end rather than at every write.',
+      "Gemini also put forward a figure for the share of repos that use a rules file. It had no source: I haven't verified it, so I'm not repeating it.",
+      'Its answer seemed tailored to my Gemini history: a useful opinion, not a neutral source.',
+      'For P-003, it is an encouraging signal: the system already exists, the job would be to extract it.',
+      "Driving Gemini in the browser costs Claude tokens (waiting, reading the page), for an answer that took about a minute, since Gemini ran its own web search. It's a second opinion, not a saving.",
+    ],
+
     statsTitle: 'The numbers so far',
     statsTableCols: ['Mission', 'Duration', 'Models'],
     statsTableRows: [
@@ -1022,6 +1086,21 @@ export default function UtilisationIA({ project }) {
         <p style={{ marginBottom: 12 }}>{c.mainPushP1}</p>
         <p style={{ marginBottom: 12 }}>{c.mainPushP2}</p>
         <p style={{ margin: 0 }}>{c.mainPushP3}</p>
+      </Section>
+
+      <Section title={c.geminiTitle}>
+        <p style={{ marginBottom: 12 }}>{c.geminiIntroP}</p>
+        <p style={{ marginBottom: 12 }}>{c.geminiHowP}</p>
+        <ol style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {c.geminiLimits.map((item, i) => <li key={i}>{item}</li>)}
+        </ol>
+        <p style={{ marginBottom: 12 }}>{c.geminiTryP}</p>
+        <p style={{ marginBottom: 20 }}>{c.geminiQuestionP}</p>
+        <Table columns={c.geminiTableCols} rows={c.geminiTableRows} />
+        <div style={{ fontWeight: 600, margin: '16px 0 6px' }}>{c.geminiConclusionLabel}</div>
+        <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {c.geminiConclusion.map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
       </Section>
 
       <Section title={c.statsTitle}>
