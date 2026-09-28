@@ -9,5 +9,5 @@ Chaque étape indique l'agent et le modèle à utiliser. Procédures : `missions
 - [x] 3. Section « Un deuxième avis : Gemini » FR + EN, avec son tableau (SPEC D1, D2, D4) : clés dans CONTENT, puis `<Section>` dans le rendu après `mainPushTitle` → session principale (Sonnet)
 - [x] 4. Section « Économiser les tokens » FR + EN, avec son tableau (SPEC D1, D2) : juste après la section Gemini → session principale (Sonnet)
 - [x] 5. Contrôles sans navigateur : build, lint, greps des critères 3, 4 et 7 → session principale (Sonnet)
-- [ ] 6. Contrôles navigateur : critère 5 (FR, EN, 375 px, console, `/`) → verificateur (Haiku)
+- [x] 6. Contrôles navigateur : critère 5 (FR, EN, 375 px, console, `/`) → verificateur (Haiku)
 - [ ] 7. RAPPORT.md → session principale (Sonnet)
