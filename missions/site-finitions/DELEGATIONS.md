@@ -1,5 +1,3 @@
 # Mission site-finitions — DELEGATIONS
 
-| Date/heure | Étape | Agent | Modèle | Tâche | Résultat |
-|---|---|---|---|---|---|
-| 2026-09-29 | 0 | session principale | Opus 5.5 | Cadrage | Fait |
+- 2026-09-30 — Étape 1 — agent `verificateur`, modèle Haiku 4.5 — captures « avant » des 8 pages du critère 4 en FR et EN (texte de page, erreurs console), via build de production servi par `npx vite preview` (pas de preview « dev » en routine) — résultat : succès, 16 captures sans erreur console, voir CAPTURES-AVANT.md.
