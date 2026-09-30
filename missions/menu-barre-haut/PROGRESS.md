@@ -1,7 +1,7 @@
 # Mission menu-barre-haut — PROGRESS
 
-**Statut :** étape 3 terminée
-**Prochaine action :** étape 4 (corrections éventuelles, RAPPORT.md)
+**Statut :** terminée
+**Prochaine action :** aucune — RAPPORT.md écrit, en attente de clôture par Michael (session tour de contrôle)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, main 5f5a316)
@@ -30,3 +30,8 @@
 ## Étape 3 (faite, 2026-10-01)
 - Vérification navigateur par le verificateur (Haiku) sur `npx vite preview` : critères 1 (☰ visible sur les 6 pages en mobile, rien ne flotte), 2 (toggle ☰/✕, aria-expanded, fermeture par le ✕ du tiroir et par le voile), 3 (`padding-top` de `<main>` = 0px), 4 (barre du haut desktop identique à la référence : 32px, padding 0/20px, `display: flex`, aucun bouton), 6 (libellés `aria-label` en anglais après changement de langue) tous OK. Console sans erreur sur les 6 pages + desktop. Captures prises (critère 7).
 - Le sous-agent a signalé que le tiroir ne se refermerait pas au clic sur un lien interne. La session principale a reproduit le scénario elle-même (clic sur le lien `/magazine` dans le tiroir, mobile 375px) : le tiroir se referme bien et le bouton revient à ☰. Fausse alerte — voir DELEGATIONS.md.
+
+## Étape 4 (faite, 2026-10-01)
+- Critère 5 reconfirmé (grep vide), `npm run build` et `npm run lint` rejoués une dernière fois : tous deux passent.
+- `git diff main...auto/menu-barre-haut` : seuls `Shell.jsx`, `Topbar.jsx`, `tokens.css` et les fichiers de suivi de la mission changent. Rien sur `main`, rien poussé.
+- `RAPPORT.md` écrit.
