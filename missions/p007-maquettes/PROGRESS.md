@@ -1,7 +1,7 @@
 # Mission p007-maquettes — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 5 (`creation.html`, `pro.html`)
+**Prochaine action :** étape 6 (`index.html`, sous-agent Haiku)
 **Blocages :** aucun
 
 ## État initial (2026-09-30, relevé au cadrage)
@@ -20,4 +20,9 @@
 - `liste.html` : titre « Soon », cartes triées par date, l'événement le plus proche mis en avant, bouton « + » flottant vers `creation.html`.
 - `detail.html` : lit `?id=` dans l'URL (par défaut le plus proche), jours/heures/minutes/secondes en direct (secondes chaque seconde), barre de progression, boutons « Modifier »/« Partager » factices.
 - Ajout à `p007.js` : `statusBarHTML()` / `renderStatusBars()` (barre de statut en SVG inline, partagée par tous les écrans).
+- `npm run lint` : 0 erreur.
+
+## Étape 5 (faite, 2026-10-01)
+- `creation.html` : champs nom/date/heure, grille de 12 emoji, 4 couleurs de carte Pop, interrupteur « Répéter chaque année » (factice), aperçu du widget petit mis à jour en direct (`input`/`click`) sans recharger la page.
+- `pro.html` : « Soon Pro », 1,99 € en achat unique (argument mis en avant), 4 avantages, bouton d'achat et lien de restauration factices (alertes).
 - `npm run lint` : 0 erreur.
