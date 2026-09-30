@@ -1,7 +1,7 @@
 # Mission apercus-partage — PROGRESS
 
-**Statut :** étape 5 terminée
-**Prochaine action :** étape 6 (documentation D7, sous-agent Haiku)
+**Statut :** étape 6 terminée
+**Prochaine action :** étape 7 (vérification finale, verificateur Haiku)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur main de357bb)
@@ -93,3 +93,8 @@ Aucune page privée (MAIA, Conforma, backlog) générée : ces chemins n'existen
 - Sources HTML dans `missions/apercus-partage/` : `og-magazine-source.html`, `og-projets-source.html`, `og-lab-source.html` — dérivées d'`missions/site-finitions/og-image-source.html` (même fond `#f3ebdc`, cadre encre, tampon corail « MISRAN · LABS · M », Fraunces 900 pour le titre, JetBrains Mono pour l'eyebrow « MISRAN LABS » et le sous-titre).
 - Rendu PNG via Chrome headless (`--headless=new --window-size=1200,630 --virtual-time-budget=4000`), comme dans `site-finitions`.
 - `public/og-magazine.png`, `public/og-projets.png`, `public/og-lab.png` : 1200×630 confirmé par `sips -g pixelWidth -g pixelHeight`. Contrôle visuel : lisibles, cohérentes entre elles et avec `og-image.png`.
+
+## Étape 6 (2026-09-30, sous-agent general-purpose/Haiku)
+- Une ligne ajoutée en fin de `src/magazine/FORMAT.md` : « L'aperçu de partage (titre, description) est généré automatiquement au build à partir de `titre.fr` et `edito.fr` — aucune action supplémentaire n'est nécessaire. »
+- Une ligne ajoutée en fin de `src/projets/FORMAT.md` : « L'aperçu de partage (titre, description) est généré automatiquement au build à partir de `titre.fr` et `resume.fr` — aucune action supplémentaire n'est nécessaire. »
+- Diff relu par la session principale avant commit : rien d'autre modifié.
