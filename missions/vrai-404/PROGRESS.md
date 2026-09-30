@@ -1,8 +1,12 @@
 # Mission vrai-404 — PROGRESS
 
-**Statut :** étape 4 terminée
-**Prochaine action :** étape 5 (vérification navigateur, verificateur)
+**Statut :** étape 5 terminée
+**Prochaine action :** étape 6 (lint, RAPPORT.md)
 **Blocages :** aucun
+
+## Étape 5 — vérification navigateur (verificateur, Haiku)
+- `/`, `/magazine`, `/magazine/2026-09-28`, `/lab/lost-cauldron-game/demo/v2` (canvas du jeu affiché), `/suivre` : chargent normalement, aucune erreur console.
+- `/404.html` ouvert directement (vite preview ne connaît pas la config Vercel, donc testé en tant que fichier) : affiche la page 404 du site (composant React complet, mascotte Fiole visible), aucune erreur console.
 
 ## Étape 4 — script verifier-routes.mjs (D4)
 - `missions/vrai-404/verifier-routes.mjs` écrit : résout chaque adresse comme le ferait Vercel avec `vercel.json` (`trailingSlash: false`, pas de réécriture) — fichier exact dans `dist/`, sinon `<chemin>/index.html`, sinon `404.html`.
