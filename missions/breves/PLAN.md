@@ -12,4 +12,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 6. Aperçus et sitemap dans `scripts/share-previews.js` (D7) → session principale (Sonnet)
 - [x] 7. `src/breves/EXTRACTION.md` (D9) → session principale (Sonnet)
 - [x] 8. Vérification finale : build, lint, greps (critères 6, 7, 9, 10) par la session principale ; navigateur, critères 1 à 5 → verificateur (Haiku)
-- [ ] 9. RAPPORT.md (avec les étapes de clôture listées en Hors périmètre) → session principale (Sonnet)
+- [x] 9. RAPPORT.md (avec les étapes de clôture listées en Hors périmètre) → session principale (Sonnet)

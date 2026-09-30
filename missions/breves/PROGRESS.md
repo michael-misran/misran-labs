@@ -1,7 +1,7 @@
 # Mission breves — PROGRESS
 
-**Statut :** en cours
-**Prochaine action :** étape 9 (RAPPORT.md)
+**Statut :** terminée
+**Prochaine action :** clôture (session interactive avec Michael — voir Hors périmètre du RAPPORT.md)
 **Blocages :** aucun
 
 ## Étape 8 (2026-09-30)
