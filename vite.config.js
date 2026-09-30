@@ -4,6 +4,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { checkPassword, signSession, verifySession, sessionCookieHeader, clearCookieHeader, parseCookies, COOKIE } from './api/_lib/auth.js'
+import { sharePreviewsPlugin } from './scripts/share-previews.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DATA_DIR = path.join(__dirname, 'src/private/data')
@@ -252,6 +253,6 @@ function authApiPlugin(env) {
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, __dirname, '')
   return {
-    plugins: [react(), maiaApiPlugin(), conformaApiPlugin(), authApiPlugin(env)],
+    plugins: [react(), maiaApiPlugin(), conformaApiPlugin(), authApiPlugin(env), sharePreviewsPlugin()],
   }
 })
