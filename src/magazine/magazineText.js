@@ -49,6 +49,18 @@ export function formatDateLong(iso, lang) {
   })
 }
 
+// "2026-09-28" → "28 septembre 2026" / "September 28, 2026" : comme
+// formatDateLong, sans le jour de la semaine (libellés d'onglet, flux RSS).
+export function formatDateLongNoWeekday(iso, lang) {
+  const [y, m, d] = iso.split('-').map(Number)
+  const date = new Date(y, m - 1, d)
+  return date.toLocaleDateString(lang === 'en' ? 'en-US' : 'fr-FR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
+}
+
 export const MAG_TEXT = {
   fr: {
     home: {
