@@ -10,4 +10,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 4. Image de partage 1200×630 (D3) : source dans le dossier de mission, rendu PNG via Chrome headless, vérification visuelle → session principale (Sonnet)
 - [x] 5. Découpage du JS (D4) : `React.lazy` + `Suspense` dans `src/App.jsx` et chargement paresseux des composants de `src/lab/projects.js` ; build et mesure des chunks → session principale (Sonnet)
 - [x] 6. Vérification finale : build, lint, greps du critère 1 et tailles du critère 3 par la session principale ; captures « après » des 8 pages FR/EN, navigation par la barre latérale, console → verificateur (Haiku)
-- [ ] 7. RAPPORT.md (mesures avant/après, décisions, recommandations hors périmètre) → session principale (Sonnet)
+- [x] 7. RAPPORT.md (mesures avant/après, décisions, recommandations hors périmètre) → session principale (Sonnet)

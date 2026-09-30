@@ -1,7 +1,7 @@
 # Mission site-finitions — PROGRESS
 
-**Statut :** étape 6 terminée
-**Prochaine action :** étape 7 (RAPPORT.md)
+**Statut :** mission terminée (7/7)
+**Prochaine action :** aucune — en attente de clôture par Michael (push + pull request, en session interactive)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-29, sur main 6e87188)
