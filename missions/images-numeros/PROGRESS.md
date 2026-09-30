@@ -1,7 +1,7 @@
 # Mission images-numeros — PROGRESS
 
-**Statut :** étape 4 terminée
-**Prochaine action :** étape 5 (plugin D3 dans share-previews.js)
+**Statut :** étape 5 terminée
+**Prochaine action :** étape 6 (documentation D5, sous-agent Haiku)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur main 6f36410)
@@ -33,3 +33,9 @@
 
 ## Étape 4 — rattrapage --all (2026-09-30, session routine)
 - `node scripts/og-numero.js --all` : génère `public/og/magazine/2026-09-27.png` (manquant), ignore `2026-09-28.png` (déjà présent, produit à l'étape 2). `sips` : 1200×630 pour les deux. Contrôle visuel (outil Read) des deux images : titres lisibles, dans le cadre. Critère 4 OK.
+
+## Étape 5 — plugin D3 (2026-09-30, session routine)
+- `collectMagazineNumeros` (`scripts/share-previews.js`) : si `public/og/magazine/<date>.png` existe, `image: 'og/magazine/<date>.png'`, sinon `og-magazine.png` + avertissement console.
+- `npm run build` : `dist/magazine/2026-09-28/index.html` → `og:image` et `twitter:image` = `https://misran-labs.vercel.app/og/magazine/2026-09-28.png` (grep confirmé).
+- Test de repli : `mv public/og/magazine/2026-09-28.png /tmp/...` (sans commit) → build passe, log `[share-previews] pas d'image pour le numéro 2026-09-28, image de rubrique utilisée`, `og:image` retombe sur `https://misran-labs.vercel.app/og-magazine.png`. Image remise en place ensuite, `git status --porcelain public/og/` vide (rien à commiter, état identique à avant le test). Critère 5 OK.
+- `npm run lint` : 0 erreur.

@@ -127,11 +127,19 @@ function collectMagazineNumeros(rootDir) {
       console.warn(`[share-previews] ignoré (date "${data.date}" ≠ nom de fichier) : ${file}`)
       continue
     }
+    const numeroImagePath = path.join(rootDir, 'public/og/magazine', `${dateFromName}.png`)
+    let image = MAGAZINE_FIXED.image
+    if (fs.existsSync(numeroImagePath)) {
+      image = `og/magazine/${dateFromName}.png`
+    } else {
+      console.warn(`[share-previews] pas d'image pour le numéro ${dateFromName}, image de rubrique utilisée`)
+    }
+
     pages.push({
       path: `/magazine/${dateFromName}`,
       title: `Nº ${data.numero} — ${data.titre.fr} · Lab Magazine`,
       description: normalizeAndTruncate(data.edito.fr),
-      image: MAGAZINE_FIXED.image,
+      image,
       type: 'article',
     })
   }
