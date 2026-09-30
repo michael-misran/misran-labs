@@ -9,4 +9,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 3. `public/robots.txt` (D2) ; build ; critère 3 → sous-agent (Haiku)
 - [x] 4. Titre d'onglet (D3) dans `src/shell/Shell.jsx` (+ `src/i18n/ui.js` si pertinent) → session principale (Sonnet)
 - [x] 5. Vérification finale : build, lint, `curl` du critère 4 sur `npx vite preview` par la session principale ; titres d'onglet du critère 5 (FR/EN, bascule de langue, navigation barre latérale, console) → verificateur (Haiku)
-- [ ] 6. RAPPORT.md (extraits du sitemap, titres avant/après, marche à suivre Google Search Console pour Michael, recommandations) → session principale (Sonnet)
+- [x] 6. RAPPORT.md (extraits du sitemap, titres avant/après, marche à suivre Google Search Console pour Michael, recommandations) → session principale (Sonnet)
