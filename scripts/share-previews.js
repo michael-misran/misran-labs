@@ -248,6 +248,35 @@ async function collectLabProjects(rootDir) {
   }))
 }
 
+// Pages de démo (/lab/<slug>/demo, /lab/<slug>/demo/v2) : routes réelles de
+// App.jsx (ProjectDemoPage) sans fichier généré jusqu'ici. Pas dans le
+// sitemap (pages secondaires) : à appeler séparément de collectLabProjects.
+async function collectLabDemoPages(rootDir) {
+  const mod = await import(path.join(rootDir, 'src/lab/projects.js'))
+  const pages = []
+  for (const p of mod.visibleProjects()) {
+    const base = {
+      title: `${p.title.fr} — démo · Misran Labs`,
+      description: normalizeAndTruncate(p.summary.fr),
+      image: 'og-lab.png',
+      type: 'website',
+    }
+    if (p.demoComponent) pages.push({ ...base, path: `/lab/${p.slug}/demo` })
+    if (p.demoComponentV2) pages.push({ ...base, path: `/lab/${p.slug}/demo/v2` })
+  }
+  return pages
+}
+
+// dist/404.html : copie de dist/index.html avec un titre dédié, indexation
+// refusée, et sans URL canonique (une page 404 n'a pas d'adresse propre).
+function build404Html(baseHtml) {
+  let html = baseHtml
+  html = replaceTitleTag(html, 'Page introuvable · Misran Labs')
+  html = html.replace(/<link rel="canonical"[^>]*\/>\s*/, '')
+  html = html.replace('<head>', '<head>\n    <meta name="robots" content="noindex">')
+  return html
+}
+
 // Plugin Vite : génère, seulement au build, une copie de dist/index.html
 // par page publique listée dans la SPEC de la mission apercus-partage,
 // avec ses propres balises d'aperçu de partage (titre, description, image, url).
@@ -291,12 +320,23 @@ export function sharePreviewsPlugin() {
       console.log(`[share-previews] ${pages.length} page(s) d'aperçu générées :`)
       for (const page of pages) console.log(`  - ${page.path}`)
 
+      const demoPages = await collectLabDemoPages(rootDir)
+      for (const page of demoPages) {
+        const html = applyPreview(baseHtml, page)
+        writePage(distDir, page.path, html)
+      }
+      console.log(`[share-previews] ${demoPages.length} page(s) de démo générées (hors sitemap) :`)
+      for (const page of demoPages) console.log(`  - ${page.path}`)
+
       const sitemapUrls = [
         { loc: homeUrl },
         ...pages.map((page) => ({ loc: `${SITE_URL}${page.path}`, lastmod: page.lastmod })),
       ]
       fs.writeFileSync(path.join(distDir, 'sitemap.xml'), buildSitemapXml(sitemapUrls))
       console.log(`[share-previews] sitemap.xml : ${sitemapUrls.length} URL`)
+
+      fs.writeFileSync(path.join(distDir, '404.html'), build404Html(baseHtml))
+      console.log('[share-previews] dist/404.html écrit')
 
       writeRssFeeds({ distDir, magazinePages, brevesPages, projetsPages })
     },
