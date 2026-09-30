@@ -1,7 +1,7 @@
 # Mission images-numeros — PROGRESS
 
-**Statut :** étape 6 terminée
-**Prochaine action :** étape 7 (vérification finale)
+**Statut :** étape 7 terminée
+**Prochaine action :** étape 8 (RAPPORT.md)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur main 6f36410)
@@ -45,3 +45,8 @@
 - `REDACTION.md` §6.3 : ajout de `public/og/magazine/<date>.png` (s'il a été généré) à la liste des fichiers ajoutés au commit, texte exact de D5.
 - `FORMAT.md` : dernière ligne complétée pour mentionner l'image facultative et le repli automatique.
 - `git diff` vérifié : seuls ces deux fichiers touchés, rien d'autre dans REDACTION.md (§7 intact), `.claude/settings.json` non touché.
+
+## Étape 7 — vérification finale (2026-09-30)
+- `npm run build` et `npm run lint` finaux : 0 erreur.
+- `git diff --stat main` montrait aussi `CLAUDE.md` et `missions/projets/PROGRESS.md` : dû à `main` qui a avancé depuis la création de la branche (commits `2e59aa2`, `724160f`), pas à cette mission. `git diff --stat main...auto/images-numeros` (contre le point de départ réel de la branche) confirme : seuls les fichiers D1-D6 changent (`scripts/og-numero.js`, `scripts/og-numero-template.html`, `scripts/share-previews.js`, `public/og/magazine/*.png`, `src/magazine/FORMAT.md`, `src/magazine/REDACTION.md`, `missions/images-numeros/*`). `git diff --stat main...auto/images-numeros -- src/` : seuls les deux `.md` touchés dans `src/`. Critère 7 OK.
+- Greps `og:image` : `/magazine/2026-09-27` → `.../og/magazine/2026-09-27.png` ; `/magazine/2026-09-28` → `.../og/magazine/2026-09-28.png`. Confirme le critère 5 une dernière fois.
