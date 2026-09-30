@@ -36,7 +36,7 @@
 
 @keyframes fiole-bob {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-2px); }
+  50% { transform: translateY(calc(-1 * var(--fiole-bob, 2px))); }
 }
 
 @keyframes fiole-breathe {

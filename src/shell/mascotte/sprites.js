@@ -87,6 +87,10 @@ export const SPRITES = {
     secret: {
       fr: 'Tu l\'as bien cherché ☠',
       en: 'You asked for it ☠'
+    },
+    phrases: {
+      fr: ['Ne pas boire.', 'Toxique… mais sympa', 'Danger : curiosité', 'Qui a secoué la fiole ?', 'Poison maison'],
+      en: ['Do not drink.', 'Toxic… but friendly', 'Danger: curiosity', 'Who shook the flask?', 'Homemade poison']
     }
   }
 };
