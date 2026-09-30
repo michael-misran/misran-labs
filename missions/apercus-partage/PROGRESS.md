@@ -1,7 +1,7 @@
 # Mission apercus-partage — PROGRESS
 
-**Statut :** étape 4 terminée
-**Prochaine action :** étape 5 (images de rubrique)
+**Statut :** étape 5 terminée
+**Prochaine action :** étape 6 (documentation D7, sous-agent Haiku)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur main de357bb)
@@ -88,3 +88,8 @@ Aucune page privée (MAIA, Conforma, backlog) générée : ces chemins n'existen
 - **Découverte importante** : un fichier `src/magazine/numeros/*.json` syntaxiquement invalide (JSON cassé) fait échouer `npm run build` **avant même** que le plugin s'exécute — cause : `src/magazine/numeros.js` charge déjà tous ces fichiers avec `import.meta.glob('./numeros/*.json', { eager: true })`, et Vite doit pouvoir parser chaque fichier JSON comme module au moment du bundle, indépendamment de notre plugin. C'est un comportement préexistant du site (non introduit par cette mission) ; testé puis noté dans DECISIONS.md. Le critère 3 de la SPEC est donc vérifié avec un JSON syntaxiquement **valide** mais sémantiquement incomplet (champ manquant), scénario que notre plugin couvre réellement.
 - Test « champ manquant » : fichier temporaire `src/magazine/numeros/2026-09-29.json` avec `edito.en` mais sans `edito.fr` → `npm run build` passe, log `[share-previews] ignoré (champ "edito.fr" manquant) : .../2026-09-29.json`, fichier supprimé avant commit.
 - Test échappement : fichier temporaire avec `titre.fr` = `Test "robuste" & <échappé>` et `edito.fr` contenant `"` et `&` → sortie `dist/magazine/2026-09-29/index.html` : `<title>Nº 2 — Test &quot;robuste&quot; &amp; &lt;échappé&gt; · Lab Magazine</title>`, `og:description` avec `&quot;`/`&amp;` corrects. Fichier supprimé avant commit, `git status` vérifié propre (aucun fichier de test resté, `dist/` est gitignored).
+
+## Étape 5 (2026-09-30)
+- Sources HTML dans `missions/apercus-partage/` : `og-magazine-source.html`, `og-projets-source.html`, `og-lab-source.html` — dérivées d'`missions/site-finitions/og-image-source.html` (même fond `#f3ebdc`, cadre encre, tampon corail « MISRAN · LABS · M », Fraunces 900 pour le titre, JetBrains Mono pour l'eyebrow « MISRAN LABS » et le sous-titre).
+- Rendu PNG via Chrome headless (`--headless=new --window-size=1200,630 --virtual-time-budget=4000`), comme dans `site-finitions`.
+- `public/og-magazine.png`, `public/og-projets.png`, `public/og-lab.png` : 1200×630 confirmé par `sips -g pixelWidth -g pixelHeight`. Contrôle visuel : lisibles, cohérentes entre elles et avec `og-image.png`.

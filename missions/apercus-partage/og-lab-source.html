@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=JetBrains+Mono:wght@400;600;700&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1200px;
+    height: 630px;
+    background: #f3ebdc;
+    overflow: hidden;
+  }
+  .frame {
+    position: absolute;
+    inset: 28px;
+    border: 1.5px solid #241c16;
+  }
+  .content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 90px;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #dd5a3e;
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 96px;
+    line-height: 1.02;
+    color: #241c16;
+    letter-spacing: -0.01em;
+  }
+  .subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #5b5044;
+    margin-top: 26px;
+    max-width: 620px;
+  }
+  .tampon { position: absolute; top: 70px; right: 90px; width: 128px; height: 128px; }
+</style>
+</head>
+<body>
+  <div class="frame"></div>
+  <svg class="tampon" viewBox="0 0 100 100" aria-hidden="true">
+    <defs><path id="cercle" d="M50 50 m-34.5 0 a34.5 34.5 0 1 1 69 0 a34.5 34.5 0 1 1 -69 0"/></defs>
+    <circle cx="50" cy="50" r="47" fill="none" stroke="#dd5a3e" stroke-width="2"/>
+    <circle cx="50" cy="50" r="29" fill="none" stroke="#dd5a3e" stroke-width="1"/>
+    <text font-family="JetBrains Mono" font-size="10.4" font-weight="700" fill="#dd5a3e"><textPath href="#cercle" textLength="216" lengthAdjust="spacing">MISRAN · LABS · </textPath></text>
+    <text x="50" y="57" text-anchor="middle" font-family="Fraunces" font-weight="900" font-size="22" fill="#dd5a3e">M</text>
+  </svg>
+  <div class="content">
+    <div class="eyebrow">Misran Labs</div>
+    <h1>Lab</h1>
+    <div class="subtitle">Expériences IA, design system et prototypes — explorations rapides, résultats honnêtes.</div>
+  </div>
+</body>
+</html>
