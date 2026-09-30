@@ -1,7 +1,7 @@
 # Mission menu-mobile — PROGRESS
 
-**Statut :** étape 5 terminée, tous les critères OK
-**Prochaine action :** étape 6 (RAPPORT.md)
+**Statut :** mission terminée, RAPPORT.md écrit
+**Prochaine action :** aucune (clôture à faire en session interactive)
 **Blocages :** aucun
 
 ## État initial (2026-09-30, commit 0993db0 de main)

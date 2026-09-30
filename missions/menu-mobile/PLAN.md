@@ -9,4 +9,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 3. Correction D1 : variable `--mobile-nav-offset` dans `tokens.css`, `top` du bouton et espace réservé dans `Shell.jsx` (mobile seulement) → session principale (Sonnet)
 - [x] 4. Icônes : 📖 dans `Sidebar.jsx` (D2), 📖 / 🗞 dans les en-têtes `MagazineHome.jsx` / `BrevesHome.jsx` (D3) → session principale (Sonnet)
 - [x] 5. Vérification finale : build, lint, grep (critères 5-7) par la session principale ; navigateur, critères 1 à 5 avec captures → verificateur (Haiku)
-- [ ] 6. RAPPORT.md → session principale (Sonnet)
+- [x] 6. RAPPORT.md → session principale (Sonnet)
