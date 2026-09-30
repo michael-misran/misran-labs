@@ -1,7 +1,7 @@
 # Mission jeux-geste — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 3 (intégration : routes, JeuxHome, JeuPage, registry, menu, i18n)
+**Prochaine action :** étape 4 (aperçus de partage + sitemap génériques, verifier-routes.mjs)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur `main` 8a410ca)
@@ -20,3 +20,13 @@
 - `jeuxText.js` : textes fr/en communs à la rubrique.
 - `missions/jeux-geste/verifier-socle.mjs` : contrôle Node (polyfill minimal de `localStorage`) du numéro de jour, du déterminisme de la graine (même slug+date ⇒ même suite ; date ou slug différents ⇒ suite différente) et du calcul de série. Tous les contrôles passent.
 - `npm run build` et `npm run lint` : passent (le socle n'est encore référencé par aucune route).
+
+## Étape 3 (faite, 2026-10-01)
+- Routes `jeux` et `jeux/:slug` ajoutées dans `App.jsx` (lazy, comme les autres).
+- `JeuxHome.jsx` : grille de cartes (3 colonnes desktop, 1 à mobile via `useIsMobile`), pastille « Joué aujourd'hui ✓ »/« Nouveau défi » selon `serie.js`, `A_VENIR = 2` cartes fantômes « Bientôt ».
+- `JeuPage.jsx` : bandeau démo si `jeu.demo`, lecture de `?date=` en dev uniquement (`import.meta.env.DEV`), 404 si slug inconnu.
+- `registry.js` : `/jeux` (icône 🎲) et `/jeux/<slug>` (« Jeux — <titre> » ou 404) pour l'onglet et la barre d'état.
+- `Sidebar.jsx` : section « Jeux »/« Games » avec l'entrée 🎲, placée juste après la section Projets.
+- `i18n/ui.js` : clés `navSectionJeux`, `jeuxNav` en fr/en.
+- Correction en cours de route : `registre.js` construit désormais `lazy(charger)` une seule fois au chargement du module (et non dans `JeuPage` à chaque rendu) — la nouvelle règle eslint `react-hooks/static-components` interdisait de créer un composant pendant le rendu, même mémoïsé à la main.
+- `npm run build` et `npm run lint` : passent.
