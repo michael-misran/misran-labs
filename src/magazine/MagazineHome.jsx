@@ -6,6 +6,7 @@ import SectionTitle from '../design-system/SectionTitle'
 import { MagazineHero, IssueRow } from './MagazineParts'
 import { MAG_TEXT, CATEGORIES } from './magazineText'
 import { getIssues } from './numeros'
+import SuivreBandeau from '../suivre/SuivreBandeau'
 
 export default function MagazineHome() {
   const isMobile = useIsMobile()
@@ -48,6 +49,8 @@ export default function MagazineHome() {
           ))}
         </ol>
       )}
+
+      <SuivreBandeau rubrique="magazine" />
 
       <CaseFooter c={{ docId: t.docId, clearance: chrome.clearance, tagline: chrome.tagline }} />
     </div>

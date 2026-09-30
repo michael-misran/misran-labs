@@ -8,6 +8,7 @@ import { MagazineMasthead, MagazineHero, ArticleCard } from './MagazineParts'
 import { MAG_TEXT, categoryLabel, issueNo, formatDateShort, formatDateLong } from './magazineText'
 import { getIssue } from './numeros'
 import Fiole from '../shell/mascotte/Fiole'
+import SuivreBandeau from '../suivre/SuivreBandeau'
 
 function NotFound({ date, lang }) {
   const isMobile = useIsMobile()
@@ -102,6 +103,8 @@ export default function MagazineIssue() {
       <Link to="/magazine" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none', display: 'inline-block', marginBottom: 40 }}>
         {t.backToList}
       </Link>
+
+      <SuivreBandeau rubrique="magazine" />
 
       <CaseFooter c={{ docId: `${t.docId}-${issueNo(issue.numero)}`, clearance: chrome.clearance, tagline: chrome.tagline }} />
     </div>

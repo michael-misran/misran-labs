@@ -65,3 +65,25 @@ export const SUIVRE_TEXT = {
     docId: 'DOC-FOLLOW',
   },
 }
+
+// Bandeau « Suivre » en bas des pages de rubrique (mission lien-suivre, D2).
+export const BANDEAU_TEXT = {
+  fr: {
+    phrase: {
+      magazine: 'Le prochain numéro sort lundi.',
+      breves: 'Les Brèves reviennent demain matin.',
+      projets: 'De nouvelles idées chaque dimanche.',
+    },
+    suivre: 'Suivre le Lab →',
+    rss: 'RSS',
+  },
+  en: {
+    phrase: {
+      magazine: 'The next issue comes out on Monday.',
+      breves: 'The Briefs are back tomorrow morning.',
+      projets: 'New ideas every Sunday.',
+    },
+    suivre: 'Follow the Lab →',
+    rss: 'RSS',
+  },
+}

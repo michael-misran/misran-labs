@@ -9,6 +9,7 @@ import { ProjetsHero, StatusMark, PrivateNotes } from './ProjetsParts'
 import { PROJ_TEXT, typeLabel, tailleLabel, formatDateShort } from './projetsText'
 import { getIdea } from './idees'
 import Fiole from '../shell/mascotte/Fiole'
+import SuivreBandeau from '../suivre/SuivreBandeau'
 
 function NotFound({ id, lang }) {
   const isMobile = useIsMobile()
@@ -161,6 +162,8 @@ export default function ProjetIdee() {
       <Link to="/projets" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none', display: 'inline-block', marginBottom: 40 }}>
         {t.backToList}
       </Link>
+
+      <SuivreBandeau rubrique="projets" />
 
       <CaseFooter c={{ docId: `${t.docId}-${idee.id}`, clearance: chrome.clearance, tagline: chrome.tagline }} />
     </div>
