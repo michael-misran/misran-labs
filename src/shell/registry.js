@@ -2,14 +2,14 @@ import { getProject, pt } from '../lab/projects'
 import { t } from '../i18n/ui'
 import { getIssue } from '../magazine/numeros'
 import { getIdea } from '../projets/idees'
+import { getDay } from '../breves/jours'
+import { formatDateLongNoWeekday } from '../magazine/magazineText'
 
 // Chemins que App.jsx sait effectivement router, en dehors de '/', '/lab/…',
-// '/magazine…' et '/projets…' (déjà traités plus bas) : sert uniquement à
-// distinguer une vraie 404 du /breves ci-dessous, qui n'a pas encore son
-// propre libellé de rubrique (hors périmètre de cette mission, D9).
+// '/magazine…', '/projets…' et '/breves…' (déjà traités plus bas) : sert
+// uniquement à distinguer une vraie 404 des autres routes connues.
 const KNOWN_ROUTES = [
-  /^\/breves\/?$/,
-  /^\/breves\/[^/]+$/,
+  /^\/suivre\/?$/,
 ]
 
 function notFoundMeta(lang) {
@@ -42,6 +42,17 @@ export function resolveRouteMeta(pathname, lang) {
     const label = idea ? `${t(lang, 'projetsNav')} — ${idea.id} · ${idea.titre[lang] ?? idea.titre.fr}` : t(lang, 'projetsNav')
     return { icon: '◇', label }
   }
+
+  // Rubrique Brèves : titre de l'onglet et de la barre d'état, au lieu
+  // du chemin brut (D7, mission rss-suivre).
+  if (pathname === '/breves') return { icon: '🗞', label: t(lang, 'brevesNav') }
+  if (pathname.startsWith('/breves/')) {
+    const day = getDay(pathname.split('/')[2])
+    const label = day ? `${t(lang, 'brevesNav')} — ${formatDateLongNoWeekday(day.date, lang)}` : t(lang, 'brevesNav')
+    return { icon: '🗞', label }
+  }
+
+  if (pathname === '/suivre') return { icon: '◉', label: t(lang, 'suivreNav') }
 
   if (KNOWN_ROUTES.some((re) => re.test(pathname))) return { icon: '◌', label: pathname }
 
