@@ -1,7 +1,7 @@
 # Mission images-numeros — PROGRESS
 
-**Statut :** étape 5 terminée
-**Prochaine action :** étape 6 (documentation D5, sous-agent Haiku)
+**Statut :** étape 6 terminée
+**Prochaine action :** étape 7 (vérification finale)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur main 6f36410)
@@ -39,3 +39,9 @@
 - `npm run build` : `dist/magazine/2026-09-28/index.html` → `og:image` et `twitter:image` = `https://misran-labs.vercel.app/og/magazine/2026-09-28.png` (grep confirmé).
 - Test de repli : `mv public/og/magazine/2026-09-28.png /tmp/...` (sans commit) → build passe, log `[share-previews] pas d'image pour le numéro 2026-09-28, image de rubrique utilisée`, `og:image` retombe sur `https://misran-labs.vercel.app/og-magazine.png`. Image remise en place ensuite, `git status --porcelain public/og/` vide (rien à commiter, état identique à avant le test). Critère 5 OK.
 - `npm run lint` : 0 erreur.
+
+## Étape 6 — documentation D5 (2026-09-30, sous-agent Haiku)
+- `REDACTION.md` §5 bis : nouvelle étape 1 (génération de l'image + contrôle visuel + repli en cas d'échec), les items suivants renumérotés 2-4.
+- `REDACTION.md` §6.3 : ajout de `public/og/magazine/<date>.png` (s'il a été généré) à la liste des fichiers ajoutés au commit, texte exact de D5.
+- `FORMAT.md` : dernière ligne complétée pour mentionner l'image facultative et le repli automatique.
+- `git diff` vérifié : seuls ces deux fichiers touchés, rien d'autre dans REDACTION.md (§7 intact), `.claude/settings.json` non touché.

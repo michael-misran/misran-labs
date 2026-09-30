@@ -73,4 +73,4 @@ Un numéro qui viole une de ces règles n'apparaît pas sur le site (ni dans la 
 }
 ```
 
-L'aperçu de partage (titre, description) est généré automatiquement au build à partir de `titre.fr` et `edito.fr` — aucune action supplémentaire n'est nécessaire.
+L'aperçu de partage (titre, description) est généré automatiquement au build à partir de `titre.fr` et `edito.fr` — aucune action supplémentaire n'est nécessaire. L'image de partage du numéro (`public/og/magazine/<date>.png`) est facultative : produite par `node scripts/og-numero.js <date>`, elle remplace l'image de rubrique commune si elle existe, sinon l'image de rubrique sert de repli automatiquement.
