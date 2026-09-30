@@ -1,7 +1,7 @@
 # Mission apercus-partage — PROGRESS
 
-**Statut :** étape 6 terminée
-**Prochaine action :** étape 7 (vérification finale, verificateur Haiku)
+**Statut :** étape 7 terminée
+**Prochaine action :** étape 8 (RAPPORT.md)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur main de357bb)
@@ -98,3 +98,14 @@ Aucune page privée (MAIA, Conforma, backlog) générée : ces chemins n'existen
 - Une ligne ajoutée en fin de `src/magazine/FORMAT.md` : « L'aperçu de partage (titre, description) est généré automatiquement au build à partir de `titre.fr` et `edito.fr` — aucune action supplémentaire n'est nécessaire. »
 - Une ligne ajoutée en fin de `src/projets/FORMAT.md` : « L'aperçu de partage (titre, description) est généré automatiquement au build à partir de `titre.fr` et `resume.fr` — aucune action supplémentaire n'est nécessaire. »
 - Diff relu par la session principale avant commit : rien d'autre modifié.
+
+## Étape 7 (2026-09-30)
+- `npm run build` : passe, 19 pages générées (inchangé). `npm run lint` : **1 erreur trouvée** (`'process' is not defined` dans `scripts/share-previews.js`) — corrigée en ajoutant `scripts/**/*.js` aux globals Node de `eslint.config.js` (même traitement que `vite.config.js`/`api/**/*.js`, voir DECISIONS.md). Après correction : 0 erreur.
+- `npx vite preview` (port 4173) lancé en arrière-plan par la session principale.
+- **Découverte** : `vite preview` (via `sirv`) ne résout la copie statique `dist/<chemin>/index.html` que si l'URL a un **slash final** (`/magazine/2026-09-28/`) ; sans slash final, il retombe systématiquement sur `dist/index.html` (accueil), y compris pour des pages non générées comme `/lab/lost-cauldron-game/demo`. C'est une particularité du serveur de test local (`sirv`/`vite preview`), **pas** du comportement de Vercel : Vercel sert nativement `<chemin>/index.html` pour `<chemin>` sans exiger de slash final (vérifié au cadrage, SPEC § Contexte). Testé les deux formes ci-dessous ; noté dans DECISIONS.md.
+- `curl` (critère 4, avec slash final pour contourner la particularité de `vite preview`) :
+  - `http://localhost:4173/magazine/2026-09-28/` → `<title>Nº 1 — Prix en baisse, agents en expansion · Lab Magazine</title>` ✓
+  - `http://localhost:4173/lab/lab-tokens/` → `<title>Tokens du Lab — Lab · Misran Labs</title>` ✓
+  - `http://localhost:4173/lab/lost-cauldron-game/demo` (page non générée, sans ni avec slash) → `<title>Misran Labs — le laboratoire de Michael Misran</title>` (aperçu d'accueil) ✓
+- Vérification navigateur déléguée à `verificateur` (Haiku) sur les 7 pages du critère 4 : chargement direct + navigation par la barre latérale + bascule FR/EN sur 2 pages. **Aucune régression visuelle, aucune erreur console** (seuls 3 avertissements WebGL Godot normaux au démarrage du jeu, page 7). Rapport complet dans DELEGATIONS.md.
+- Serveur `vite preview` arrêté en fin d'étape.
