@@ -10,6 +10,6 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 4. `brevesText.js`, pages `BrevesHome.jsx` et `BrevesJour.jsx`, routes dans `App.jsx` (D5) → session principale (Sonnet)
 - [x] 5. Entrée de navigation `Sidebar.jsx` + libellés `ui.js` (D6) → sous-agent (Haiku)
 - [x] 6. Aperçus et sitemap dans `scripts/share-previews.js` (D7) → session principale (Sonnet)
-- [ ] 7. `src/breves/EXTRACTION.md` (D9) → session principale (Sonnet)
+- [x] 7. `src/breves/EXTRACTION.md` (D9) → session principale (Sonnet)
 - [ ] 8. Vérification finale : build, lint, greps (critères 6, 7, 9, 10) par la session principale ; navigateur, critères 1 à 5 → verificateur (Haiku)
 - [ ] 9. RAPPORT.md (avec les étapes de clôture listées en Hors périmètre) → session principale (Sonnet)

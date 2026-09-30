@@ -1,8 +1,11 @@
 # Mission breves — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 7 (src/breves/EXTRACTION.md)
+**Prochaine action :** étape 8 (vérification finale : build, lint, greps par la session principale ; navigateur par le verificateur)
 **Blocages :** aucun
+
+## Étape 7 (2026-09-30)
+`src/breves/EXTRACTION.md` écrit (D9), public et autonome : vérifier qu'il n'y a rien à faire (fichier ou branche déjà là), extraire selon D1-D3, publier dans un worktree Git séparé (jamais le dossier de travail habituel), une commande par appel, jamais `main`/fusion/`--force`.
 
 ## Étape 6 (2026-09-30)
 `BREVES_FIXED` + `collectBrevesJours(rootDir)` ajoutés dans `scripts/share-previews.js`, sur le modèle de `collectMagazineNumeros` : page fixe `/breves` (titre D7, image `og-magazine.png` réutilisée, pas de nouvelle image), une entrée par jour `/breves/<date>` (titre = titre de la première brève, description tronquée à partir de son résumé). Vérifié au build : `dist/sitemap.xml` contient `/breves` et `/breves/2026-09-30` (critère 6), `dist/breves/index.html` a le bon `<title>`. `npm run lint` passe.
