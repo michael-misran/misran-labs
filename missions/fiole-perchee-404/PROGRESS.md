@@ -1,7 +1,7 @@
 # Mission fiole-perchee-404 — PROGRESS
 
-**Statut :** étape 3 terminée
-**Prochaine action :** étape 4 (Page 404 : `Page404.jsx`, i18n, route `*`, `resolveRouteMeta`, meta noindex)
+**Statut :** étape 4 terminée
+**Prochaine action :** étape 5 (Fiole toxique ×4 au-dessus du titre des NotFound de Magazine/Brèves/Projets → sous-agent Haiku)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, main b8e7ac3)
@@ -29,4 +29,13 @@
 - `Statusbar.jsx` : la Fiole n'est plus un item flex ; enveloppe `.fiole-perch` en `position: absolute; right: 24px; bottom: calc(var(--chrome-height) - 3px); z-index: 20; pointer-events: none`, avec une ombre `.fiole-shadow`. Le texte de déploiement retrouve toute la largeur (D2).
 - `fiole.css` : `.fiole-btn { pointer-events: auto }` (D4) et surtout `vertical-align: bottom` — sans quoi l'alignement de base par défaut d'un inline-flex réservait ~3 px de descente de police sous le bouton, faussant le chevauchement de 3 px au pixel près (trouvé en vérifiant dans le navigateur, voir DECISIONS.md).
 - Vérifié dans le navigateur (`npm run build` + `npx vite preview`, session de routine, pas de preview « dev ») sur `/` et `/lab/design-system`, desktop 1280×900 et mobile 375×812 : Fiole 48×48 px, bord droit à 24 px (exact), chevauchement 3 px (exact) sur la barre, textes de la barre disjoints du rectangle de la Fiole, clic à 4 px à gauche de la Fiole atteint `.shell-main`, bas de défilement de `/lab/design-system` sans chevauchement, pas de défilement horizontal en mobile, menu mobile ouvert → `elementFromPoint` au centre de la Fiole renvoie le fond du menu, bulle du 1ᵉʳ clic visible au-dessus de la Fiole dans la fenêtre.
+- `npm run build` et `npm run lint` : passent.
+
+## Étape 4 (2026-09-30)
+- `src/shell/Page404.jsx` : nouveau composant (D6), centré dans la zone de contenu, max-width 560px, tokens uniquement. Fiole toxique `scale={8}` `variant="toxique"` `sleeps={false}` sur une ligne « paillasse » (`border-bottom`) avec `.fiole-shadow` réutilisée. Eyebrow mono, titre, texte, chemin (`useLocation().pathname`), trois `LinkButton` du kit (`/`, `/magazine` en ghost, `/breves` en ghost) (D7 comportement géré par Fiole.jsx à l'étape 2). `useEffect` pose `<meta name="robots" content="noindex">` à l'affichage et le retire au démontage (D9).
+- `src/i18n/ui.js` : clés `notFound404Tab/Eyebrow/Title/Body/BackLab/Magazine/Breves`, FR/EN.
+- `src/App.jsx` : route `path="*"` → `Page404` (lazy), enfant du Shell, en dernière position.
+- `src/lab/ProjectPage.jsx`, `src/lab/ProjectDemoPage.jsx` : le petit texte + lien (`projectNotFound`/`demoNotFound`) est remplacé par `<Page404 />`. Ces clés i18n (et `backToLabLink`, `backToProjectLink`) ne sont donc plus utilisées nulle part — laissées en place (ne pas nettoyer i18n, comme demandé en SPEC).
+- `src/shell/registry.js` : `resolveRouteMeta()` renvoie `{ icon: '☠', label: t(lang,'notFound404Tab') }` pour `/lab/<inconnu>` et pour toute URL non gérée par le reste de la fonction. **Décision** : `/breves` et `/breves/:date` n'ont pas de cas dédié dans ce fichier (déjà le cas avant la mission, hors périmètre) et retombaient dans le même `return` générique que les vraies 404 ; ajouté un tableau `KNOWN_ROUTES` (regex) pour les distinguer et ne pas leur donner à tort le libellé « Page introuvable » — voir DECISIONS.md.
+- Vérifié dans le navigateur (`npx vite preview`) : `/nimporte-quoi` et `/lab/inconnu` → Page404 avec Fiole toxique 128px, textes EN (langue par défaut du navigateur de test), chemin affiché, 3 boutons, onglet et barre d'état « Page not found », `<meta name="robots" content="noindex">` présent ; clic sur la Fiole toxique → tangage, 6 particules poison, bulle avec une des phrases toxiques (« Who shook the flask? ») ; Fiole de la barre (bas droite) reste la Fiole normale, inchangée. `/magazine/1999-01-01` : en-tête et textes de rubrique inchangés, onglet et barre d'état restent « Magazine » (pas de régression sur les URL connues sans ressource).
 - `npm run build` et `npm run lint` : passent.
