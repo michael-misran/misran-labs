@@ -1,7 +1,7 @@
 # Mission referencement — PROGRESS
 
-**Statut :** étape 2 terminée
-**Prochaine action :** étape 3 (public/robots.txt)
+**Statut :** étape 3 terminée
+**Prochaine action :** étape 4 (titre d'onglet, D3)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur main 6f36410)
@@ -24,3 +24,6 @@
   - `<lastmod>2026-09-27</lastmod>` sur `/projets/P-001` (égal au champ `date` de `P-001.json`), idem P-002 à P-005.
   - Aucun `<lastmod>` sur `/magazine`, `/projets`, `/projets/fonctionnement`, ni sur les 9 pages `/lab/*`.
 - `npm run lint` : 0 erreur.
+
+## Étape 3 — robots.txt (2026-09-30, sous-agent Haiku)
+- `public/robots.txt` créé avec le contenu exact de D2. `npm run build` : `dist/robots.txt` présent, contenu identique (copie automatique de `public/` par Vite).
