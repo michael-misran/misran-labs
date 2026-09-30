@@ -73,7 +73,7 @@ export default function Shell() {
         }}
       >
         <div className="no-print" style={{ display: 'contents' }}>
-          <Topbar isMobile={isMobile} />
+          <Topbar isMobile={isMobile} navOpen={mobileNavOpen} onToggleNav={() => setMobileNavOpen((o) => !o)} />
         </div>
 
         <div className="shell-body" style={{ display: 'flex', overflow: 'hidden', position: 'relative' }}>
@@ -84,30 +84,6 @@ export default function Shell() {
               onCloseMobile={() => setMobileNavOpen(false)}
             />
           </div>
-
-          {isMobile && !mobileNavOpen && (
-            <button
-              className="no-print"
-              onClick={() => setMobileNavOpen(true)}
-              aria-label={t(lang, 'openNav')}
-              style={{
-                position: 'absolute',
-                top: 'var(--mobile-nav-offset)',
-                left: 12,
-                zIndex: 45,
-                background: 'var(--bg2)',
-                border: 'var(--border-thin) solid var(--border)',
-                borderRadius: 'var(--radius-sm)',
-                color: 'var(--primary)',
-                fontSize: 16,
-                cursor: 'pointer',
-                padding: '6px 10px',
-                lineHeight: 1,
-              }}
-            >
-              ☰
-            </button>
-          )}
 
           {isMobile && mobileNavOpen && (
             <div
@@ -135,9 +111,6 @@ export default function Shell() {
               overflowY: 'auto',
               overflowX: 'hidden',
               position: 'relative',
-              // Sur mobile, réserve la place du bouton ☰ flottant (même
-              // variable que son `top`) pour qu'aucun contenu ne passe dessous.
-              paddingTop: isMobile ? 'calc(var(--mobile-nav-offset) + 30px + var(--space-sm))' : undefined,
               // Réserve la place de la Fiole perchée sur la barre d'état,
               // desktop et mobile (D3) : pas de modification page par page.
               paddingBottom: 'var(--mascotte-overhang)',
