@@ -1,7 +1,7 @@
 # Mission jeux-geste — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 7 (vérification navigateur, verificateur Haiku)
+**Prochaine action :** étape 8 (corrections éventuelles, vérification finale, critères 11-13)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur `main` 8a410ca)
@@ -47,3 +47,10 @@
 - `npm run build` : passe, sitemap 32 URL (`/jeux/geste-parfait` ajouté), `dist/jeux/geste-parfait/index.html` contient le bon titre/accroche dans les balises og.
 - `npm run lint` : 0 erreur. `grep -rnE "#[0-9a-fA-F]{3,6}\b" src/jeux` : aucune occurrence (critère 11).
 - `verifier-socle.mjs` et `verifier-routes.mjs` rejoués : tout passe (53 adresses vérifiées).
+
+## Étape 7 (faite, 2026-10-01)
+- Vérification par le sous-agent verificateur (Haiku) : critères 1 (grille /jeux fr/en + mobile), 3 (chrono jouable, score affiché), 4 (persistance + entraînement), 7 (localStorage bloqué : jeu reste jouable), 9 (404 sur /jeux/inconnu, titres corrects), 10 (captures) tous OK.
+- Le sous-agent a rapporté 2 « bugs » : rotation des défis toujours sur Chrono quelle que soit `?date=`, et série ne comptant pas un jour antérieur injecté dans localStorage. La session principale a réinvestigué et trouvé la vraie cause (voir DECISIONS.md et DELEGATIONS.md) : `import.meta.env.DEV` est toujours `false` dans un build produit par `vite build` (même avec `--mode development`), donc le remplacement `?date=` ne s'active jamais dans aucune session de routine — seul `npm run dev` (interdit en routine) le rend vrai. Ce n'est pas un défaut du code : recalcul manuel en JS de `numeroDuJour`/rotation (résultats corrects), et test en direct avec la vraie date du jour (localStorage seedé sur la vraie veille) montrant bien « 🔥 2 jours » après un essai. Le texte de partage a aussi été vérifié en interceptant `navigator.clipboard.writeText` (le presse-papiers réel est bloqué par permission dans ce navigateur automatisé) : texte conforme à D7, y compris la barre d'emojis proportionnelle au score. Le bouton « Copié ✓ » fonctionne (vérifié en déclenchant le clic par script, le clic simulé par coordonnées de l'outil navigateur ne l'avait pas déclenché correctement).
+- Critère 2 (voir les 4 défis sur 4 jours via `?date=`) : **non vérifiable dans cette session** pour la raison ci-dessus. À vérifier par Michael en session interactive (`npm run dev`). Noté comme limitation dans RAPPORT.md, pas comme échec.
+- Critère 10 (toucher sur mobile sans défilement) : confirmé `touch-action: none` sur la zone interactive du chrono en mobile (375px), et par lecture de code sur les 4 défis (même style inline partout). Le défi Cercle n'était pas celui du jour réel pendant la vérification, donc pas testé au doigt en direct — cohérence de code jugée suffisante.
+- Serveurs de prévisualisation arrêtés après vérification.
