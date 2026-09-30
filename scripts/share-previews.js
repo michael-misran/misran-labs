@@ -24,6 +24,11 @@ const BREVES_FIXED = {
   description: 'Chaque jour, quelques brèves d\'actu IA et tech tirées du Journal du matin, avec le mot et le chiffre du jour.',
   image: 'og-magazine.png',
 }
+const SUIVRE_FIXED = {
+  title: 'Suivre le Lab · Misran Labs',
+  description: 'Pas de compte à créer : un lecteur RSS ou un réseau, et les nouveautés viennent à vous.',
+  image: 'og-image.png',
+}
 
 // Échappe une valeur pour un attribut HTML.
 function escapeHtml(value) {
@@ -271,6 +276,7 @@ export function sharePreviewsPlugin() {
         { path: '/breves', title: BREVES_FIXED.title, description: BREVES_FIXED.description, image: BREVES_FIXED.image, type: 'website' },
         { path: '/projets', title: PROJETS_FIXED.title, description: PROJETS_FIXED.description, image: PROJETS_FIXED.image, type: 'website' },
         { path: '/projets/fonctionnement', title: PROJETS_FONCTIONNEMENT_FIXED.title, description: PROJETS_FONCTIONNEMENT_FIXED.description, image: PROJETS_FONCTIONNEMENT_FIXED.image, type: 'website' },
+        { path: '/suivre', title: SUIVRE_FIXED.title, description: SUIVRE_FIXED.description, image: SUIVRE_FIXED.image, type: 'website' },
         ...magazinePages,
         ...brevesPages,
         ...projetsPages,

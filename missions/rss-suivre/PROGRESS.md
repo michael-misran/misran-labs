@@ -1,7 +1,7 @@
 # Mission rss-suivre — PROGRESS
 
-**Statut :** étape 4 terminée
-**Prochaine action :** étape 5 (aperçu de partage et sitemap de /suivre, D3+D6) → sous-agent Haiku
+**Statut :** étape 5 terminée
+**Prochaine action :** étape 6 (vérification navigateur : critères 3, 6, 7, 8, 9) → verificateur (Haiku)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, main b6663e8)
@@ -30,3 +30,8 @@
 - `src/suivre/SuivrePage.jsx` : masthead (`MagazineMasthead`), titre + intro, section « Flux RSS » (`FeedRow` : nom, rythme, URL en `<code>` avec `overflowWrap: anywhere`, bouton Copier → `navigator.clipboard.writeText`, libellé « Copié ✓ » 2 s puis retour, repli silencieux en `catch`, lien Ouvrir), section « Réseaux » (`NetworkRow`, `target="_blank" rel="noreferrer"`), `CaseFooter`. Aucun formulaire, aucun service externe.
 - `src/App.jsx` : route `suivre` lazy vers `SuivrePage`. `src/shell/Sidebar.jsx` : section « Suivre » ajoutée en dernière position (après Portfolio), `NavItem` icône ◉.
 - Vérifications : `npm run build` et `npm run lint` passent (la page `/suivre` n'apparaît pas encore dans les pages d'aperçu ni le sitemap : c'est l'étape 5, D3/D6). Rendu réel dans le navigateur (Copier/Copié, 375 px, menu dans les 3 modes) prévu à l'étape 6.
+
+## Étape 5 (2026-09-30, sur auto/rss-suivre — sous-agent general-purpose, Haiku)
+- `scripts/share-previews.js` : `SUIVRE_FIXED` (titre « Suivre le Lab · Misran Labs », description = l'intro FR de D4) ajoutée après `BREVES_FIXED` ; entrée `/suivre` ajoutée dans le tableau `pages` de `closeBundle()`, juste après `/projets/fonctionnement`. Le sitemap se construit déjà à partir de ce tableau : `/suivre` y apparaît sans code supplémentaire.
+- Diff relu par la session principale avant validation : conforme à la demande, rien d'autre modifié.
+- Vérifications (session principale après relecture) : `npm run build` passe, sitemap 22 → 23 URL, `dist/suivre/index.html` a le bon `<title>`, `dist/sitemap.xml` contient `/suivre`, les 4 flux `.xml` n'y sont pas (D3), `npm run lint` sans erreur.
