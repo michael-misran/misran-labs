@@ -1,8 +1,13 @@
 # Mission breves — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 8 (vérification finale : build, lint, greps par la session principale ; navigateur par le verificateur)
+**Prochaine action :** étape 9 (RAPPORT.md)
 **Blocages :** aucun
+
+## Étape 8 (2026-09-30)
+Vérification finale, tous les critères d'acceptation au vert :
+- Session principale : `npm run build` OK (sitemap 22 URL, `/breves` et `/breves/2026-09-30` présents — critère 6), `npm run lint` OK sans nouvelle erreur (critère 9), grep des mots interdits vide (critère 7), `git status` propre et `git diff main...auto/breves -- src/private/` vide, rien sur `main`, rien poussé (critère 10).
+- `verificateur` (Haiku), navigateur (`npx vite preview`, pas la preview « dev » en routine) : critères 1 à 5 tous PASS — jour du 2026-09-30 affiché fr/en avec sources en nouvel onglet, `/breves/2000-01-01` affiche le message vide sans erreur console, un jour invalide de test (titre sans `en`) est bien ignoré avec `console.error` puis retiré, entrée « Brèves » active dans la sidebar desktop et mobile, pas de défilement horizontal à 375 px. `git status` reconfirmé propre après le test.
 
 ## Étape 7 (2026-09-30)
 `src/breves/EXTRACTION.md` écrit (D9), public et autonome : vérifier qu'il n'y a rien à faire (fichier ou branche déjà là), extraire selon D1-D3, publier dans un worktree Git séparé (jamais le dossier de travail habituel), une commande par appel, jamais `main`/fusion/`--force`.
