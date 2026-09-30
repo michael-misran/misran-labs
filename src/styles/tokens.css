@@ -200,6 +200,12 @@
   --case-tabs-tint-3: color-mix(in srgb, var(--pink) 16%, var(--bg3));
   --case-tabs-tint-4: color-mix(in srgb, var(--warning) 18%, var(--bg3));
   --case-tabs-tint-5: color-mix(in srgb, var(--cyan) 16%, var(--bg3));
+
+  /* Shell.jsx : décalage du bouton ☰ mobile depuis le haut de la zone de
+     contenu. Réutilisé à la fois pour son `top` et pour l'espace réservé
+     en haut du contenu (padding-top de <main>) : les deux restent liés si
+     cette valeur change. */
+  --mobile-nav-offset: calc(var(--chrome-height) + var(--space-sm));
 }
 
 /* Portée inversée : la diapositive corail plein cadre d'une planche

@@ -25,7 +25,7 @@ export default function BrevesHome() {
         lang={lang}
       />
 
-      <MagazineHero number="✎" title={t.title} subtitle={t.subtitle}>
+      <MagazineHero number="🗞" title={t.title} subtitle={t.subtitle}>
         <CaseMetaRow
           columns={[
             { label: t.publishedLabel, value: t.publishedValue },

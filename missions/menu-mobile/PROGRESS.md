@@ -1,7 +1,7 @@
 # Mission menu-mobile — PROGRESS
 
-**Statut :** étape 2 terminée
-**Prochaine action :** étape 3 (correction D1 : `--mobile-nav-offset`)
+**Statut :** étapes 3 et 4 terminées (build + lint OK)
+**Prochaine action :** étape 5 (vérification finale : navigateur + critères)
 **Blocages :** aucun
 
 ## État initial (2026-09-30, commit 0993db0 de main)
@@ -17,3 +17,18 @@ En 1280×900 (desktop), référence avant correction pour le critère d'acceptat
 - `/magazine` : top du premier élément de contenu = 32px
 - `/breves` : top du premier élément de contenu = 32px
 (à revérifier identique après la correction D1, qui ne doit s'appliquer qu'en mobile)
+
+## Correction D1 (étape 3)
+- `src/styles/tokens.css` : nouvelle variable component `--mobile-nav-offset: calc(var(--chrome-height) + var(--space-sm))` — reprend exactement l'ancien calcul du `top` du bouton (32+12=44px), inchangé visuellement.
+- `src/shell/Shell.jsx` : le bouton ☰ utilise `top: 'var(--mobile-nav-offset)'` (même valeur qu'avant, juste tokenisée). Sur `<main className="shell-main">`, ajout de `paddingTop: isMobile ? 'calc(var(--mobile-nav-offset) + 30px + var(--space-sm))' : undefined` (30px = hauteur mesurée du bouton, var(--space-sm)=12px de marge) — réserve donc 44+30+12=86px de haut en mobile seulement, aucun changement en desktop.
+- Page plein écran `/lab/:slug/demo` (`GameDemo.jsx`) : `position: fixed; inset: 0`, ignore le padding ajouté — pas d'exclusion de route nécessaire (voir DECISIONS.md).
+
+## Icônes (étape 4)
+- `Sidebar.jsx` : ✎ → 📖 (D2).
+- `MagazineHome.jsx` : `MagazineHero number="✎"` → `"📖"` (D3).
+- `BrevesHome.jsx` : `MagazineHero number="✎"` → `"🗞"` (D3, corrige une incohérence : l'en-tête utilisait l'icône du Magazine).
+- `grep -rn "✎" src/` a trouvé 2 occurrences de plus dans `registry.js` (icône d'onglet/barre d'état pour `/magazine`) : remplacées aussi (voir DECISIONS.md). Plus aucun `✎` dans `src/`.
+
+## Build/lint après étapes 3-4
+- `npm run build` : OK
+- `npm run lint` : OK, aucune erreur

@@ -92,7 +92,7 @@ export default function Shell() {
               aria-label={t(lang, 'openNav')}
               style={{
                 position: 'absolute',
-                top: 'calc(var(--chrome-height) + 12px)',
+                top: 'var(--mobile-nav-offset)',
                 left: 12,
                 zIndex: 45,
                 background: 'var(--bg2)',
@@ -127,7 +127,19 @@ export default function Shell() {
             </div>
           )}
 
-          <main className="shell-main" style={{ flex: 1, minWidth: 0, overflowY: 'auto', overflowX: 'hidden', position: 'relative' }}>
+          <main
+            className="shell-main"
+            style={{
+              flex: 1,
+              minWidth: 0,
+              overflowY: 'auto',
+              overflowX: 'hidden',
+              position: 'relative',
+              // Sur mobile, réserve la place du bouton ☰ flottant (même
+              // variable que son `top`) pour qu'aucun contenu ne passe dessous.
+              paddingTop: isMobile ? 'calc(var(--mobile-nav-offset) + 30px + var(--space-sm))' : undefined,
+            }}
+          >
             <SecondarySidebarContext.Provider value={setSecondaryNav}>
               <Suspense fallback={null}>
                 <Outlet />
