@@ -68,3 +68,5 @@ En développement (`npm run dev`), le contenu de ce fichier s'affiche sous la pa
 - **Changer un statut** : modifier `statut` dans le fichier JSON existant. Passer à `gardee`, `arretee`, `en-cours` ou `faite` exige d'ajouter `decision` (date + note fr/en). Passer à `en-cours` ou `faite` exige aussi `mission`.
 - **Noter une décision de Michael** : renseigner `decision.note` avec ses mots (raison du choix), jamais une justification inventée.
 - **Ne jamais** ajouter une clé économique (prix, revenus, modèle) dans le fichier public — ces informations vont uniquement dans la note privée.
+
+L'aperçu de partage (titre, description) est généré automatiquement au build à partir de `titre.fr` et `resume.fr` — aucune action supplémentaire n'est nécessaire.

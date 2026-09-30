@@ -72,3 +72,5 @@ Un numéro qui viole une de ces règles n'apparaît pas sur le site (ni dans la 
   ]
 }
 ```
+
+L'aperçu de partage (titre, description) est généré automatiquement au build à partir de `titre.fr` et `edito.fr` — aucune action supplémentaire n'est nécessaire.
