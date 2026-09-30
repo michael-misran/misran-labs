@@ -1,8 +1,12 @@
 # Mission finitions-lab — PROGRESS
 
-**Statut :** étape 10 terminée
-**Prochaine action :** étape 11 (build, lint, RAPPORT.md)
+**Statut :** mission terminée (RAPPORT.md écrit)
+**Prochaine action :** aucune — mission close, en attente de clôture (session interactive)
 **Blocages :** aucun
+
+## Étape 11 — build, lint, RAPPORT.md
+- `npm run build` et `npm run lint` : passent (dernière vérification avant clôture).
+- `RAPPORT.md` écrit : 12 critères d'acceptation tous OK, 7 décisions, 5 délégations (4 réussies, 1 échec partiel documenté), recommandations pour les missions suivantes.
 
 ## Étape 10 — vérification navigateur finale (verificateur, Haiku)
 - Critère 2 : les deux versions du jeu (`/lab/lost-cauldron-game/demo` et `/demo/v2`) chargent jusqu'au canvas, aucune erreur console, wasm en 200 — confirmé après les espacements D6 appliqués aussi dans `GameDemo.jsx`/`GameDemoV2.jsx`.
