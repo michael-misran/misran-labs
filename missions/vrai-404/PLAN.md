@@ -7,6 +7,6 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 1. État initial : build, lint notés dans PROGRESS.md → session principale (Sonnet)
 - [x] 2. Pages de démo (D1) et `404.html` (D2) dans `scripts/share-previews.js` ; build ; critères 1-2 → session principale (Sonnet)
 - [x] 3. `vercel.json` (D3) → session principale (Sonnet)
-- [ ] 4. Script `verifier-routes.mjs` (D4), lancé, sortie dans PROGRESS (critère 4) → session principale (Sonnet)
+- [x] 4. Script `verifier-routes.mjs` (D4), lancé, sortie dans PROGRESS (critère 4) → session principale (Sonnet)
 - [ ] 5. Vérification dans `npx vite preview` (critère 5) → verificateur (Haiku)
 - [ ] 6. Lint, RAPPORT.md avec la liste de contrôle `curl` (D6) → session principale (Sonnet)

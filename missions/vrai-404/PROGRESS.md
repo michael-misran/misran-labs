@@ -1,8 +1,13 @@
 # Mission vrai-404 — PROGRESS
 
-**Statut :** étape 3 terminée
-**Prochaine action :** étape 4 (script verifier-routes.mjs, D4)
+**Statut :** étape 4 terminée
+**Prochaine action :** étape 5 (vérification navigateur, verificateur)
 **Blocages :** aucun
+
+## Étape 4 — script verifier-routes.mjs (D4)
+- `missions/vrai-404/verifier-routes.mjs` écrit : résout chaque adresse comme le ferait Vercel avec `vercel.json` (`trailingSlash: false`, pas de réécriture) — fichier exact dans `dist/`, sinon `<chemin>/index.html`, sinon `404.html`.
+- Lancé après `npm run build` : **43 adresses vérifiées, 0 échec, code de sortie 0**. Toutes les adresses attendues en 200 (accueil, 22 pages du sitemap, les 3 démos de D1, flux RSS, sitemap, robots.txt, une image, un fichier de jeu, un fichier `/assets/`) donnent bien 200 ; toutes les adresses attendues en 404 (`/nimporte-quoi`, dates/ids inexistants, `/lab/inexistant`, `/lab/audit-tokens/demo` — pas de démo sur cette page —, un asset inexistant) donnent bien 404 via `404.html`. Sortie complète du tableau conservée dans l'historique de commit (script rejouable : `node missions/vrai-404/verifier-routes.mjs`).
+- `npm run lint` : aucune erreur.
 
 ## Étape 3 — vercel.json (D3)
 - Réécriture `/(.*)` → `/index.html` retirée. Contenu final : `{ "trailingSlash": false }`, exactement D3.
