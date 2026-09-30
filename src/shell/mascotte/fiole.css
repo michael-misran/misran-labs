@@ -1,0 +1,114 @@
+/* Mascotte Fiole : animations pixel art de la barre d'état.
+   `prefers-reduced-motion` est déjà neutralisé globalement par tokens.css
+   (toutes les durées d'animation passent à 0.01ms) ; les particules ne
+   sont, elles, simplement jamais créées côté JS (voir Fiole.jsx). */
+
+.fiole-btn {
+  position: relative;
+  display: inline-flex;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fiole-inner {
+  display: block;
+  animation: fiole-bob 1.4s steps(1) infinite;
+}
+
+.fiole-sleep .fiole-inner {
+  animation: fiole-breathe 2.4s steps(1) infinite;
+}
+
+.fiole-wobble .fiole-inner {
+  animation: fiole-wobble 0.6s steps(6) 1;
+  transform-origin: 50% 100%;
+}
+
+.fiole-spin .fiole-inner {
+  animation: fiole-spin 0.8s steps(8) 1;
+  transform-origin: 50% 50%;
+}
+
+@keyframes fiole-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes fiole-breathe {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.96); }
+}
+
+@keyframes fiole-wobble {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(8deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+/* Pirouette sur place : pas de translation verticale (D6), pour rester
+   dans la barre d'état pendant la transformation en Fiole toxique. */
+@keyframes fiole-spin {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+.fiole-zzz {
+  position: absolute;
+  right: -10px;
+  top: -6px;
+  font: 600 11px var(--font-mono);
+  color: var(--muted);
+  animation: fiole-zz 2s steps(4) infinite;
+}
+
+@keyframes fiole-zz {
+  0% { transform: translate(0, 0); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translate(10px, -18px); opacity: 0; }
+}
+
+/* Bulle de texte et particules : rendues en portail dans document.body,
+   position calculée en JS (voir Fiole.jsx). */
+.fiole-bubble {
+  background: var(--primitive-cream-50);
+  color: var(--primitive-ink-900);
+  border: 2px solid var(--primitive-ink-900);
+  font: 600 12px var(--font-mono);
+  padding: 6px 9px;
+  white-space: nowrap;
+  box-shadow: 3px 3px 0 var(--primitive-ink-900);
+  pointer-events: none;
+  animation: fiole-pop 0.18s steps(3);
+  z-index: 35;
+}
+
+.fiole-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 14px;
+  border: 5px solid transparent;
+  border-top-color: var(--primitive-ink-900);
+}
+
+@keyframes fiole-pop {
+  from { transform: scale(0.6); }
+  to { transform: scale(1); }
+}
+
+.fiole-particle {
+  pointer-events: none;
+  image-rendering: pixelated;
+  animation: fiole-rise 1s steps(8) forwards;
+  z-index: 35;
+}
+
+@keyframes fiole-rise {
+  to { transform: translate(var(--dx), -70px); opacity: 0; }
+}
