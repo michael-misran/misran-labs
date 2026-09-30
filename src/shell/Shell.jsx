@@ -138,6 +138,9 @@ export default function Shell() {
               // Sur mobile, réserve la place du bouton ☰ flottant (même
               // variable que son `top`) pour qu'aucun contenu ne passe dessous.
               paddingTop: isMobile ? 'calc(var(--mobile-nav-offset) + 30px + var(--space-sm))' : undefined,
+              // Réserve la place de la Fiole perchée sur la barre d'état,
+              // desktop et mobile (D3) : pas de modification page par page.
+              paddingBottom: 'var(--mascotte-overhang)',
             }}
           >
             <SecondarySidebarContext.Provider value={setSecondaryNav}>

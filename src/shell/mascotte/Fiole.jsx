@@ -4,8 +4,6 @@ import { useLanguage } from '../LanguageContext'
 import { SPRITES, FX, PAL } from './sprites'
 import './fiole.css'
 
-// Grille 16×16 affichée en ×2 (D3).
-const PX = 2
 const BLINK_MIN = 2200
 const BLINK_RANGE = 2600
 const BLINK_DURATION = 140
@@ -19,6 +17,7 @@ const TOXIC_GLOW_DURATION = 1000
 const TOXIC_TOTAL_DURATION = 4000
 
 const ARIA_LABEL = { fr: 'Fiole, la mascotte du Lab', en: 'Flask, the Lab mascot' }
+const ARIA_LABEL_TOXIQUE = { fr: 'Fiole toxique', en: 'Toxic flask' }
 
 function frameRows(sprite, frame) {
   if (frame === 'base' || !sprite[frame]) return sprite.base
@@ -50,7 +49,12 @@ function renderPixels(rows, scale) {
   )
 }
 
-export default function Fiole() {
+// `scale` : facteur d'agrandissement de la grille 16×16 (3 = 48×48 px dans la
+// barre d'état, 4 pour l'en-tête des rubriques introuvables, 8 pour la 404).
+// `variant` : sprite de repos ('fiole' pour la mascotte normale, 'toxique'
+// pour la Fiole dédiée de la page 404 — comportement propre, voir D7).
+// `sleeps` : autorise ou non l'endormissement après 30 s d'inactivité.
+export default function Fiole({ scale = 3, variant = 'fiole', sleeps = true }) {
   const { lang } = useLanguage()
   const buttonRef = useRef(null)
   const clicksRef = useRef(0)
@@ -122,6 +126,7 @@ export default function Fiole() {
   const wake = () => {
     clearTimeout(dodoTimer.current)
     if (frameRef.current === 'sleep') setFrame('base')
+    if (!sleeps) return
     dodoTimer.current = setTimeout(() => {
       if (!toxicRef.current) setFrame('sleep')
     }, DODO_DELAY)
@@ -136,14 +141,14 @@ export default function Fiole() {
   const spawnParticles = (kind, count) => {
     if (reducedMotionRef.current || !buttonRef.current) return
     const r = buttonRef.current.getBoundingClientRect()
-    const scale = Math.max(2, PX / 2)
+    const particleScale = Math.max(2, scale / 2)
     const created = []
     for (let i = 0; i < count; i++) {
       const id = `${Date.now()}-${i}-${Math.random()}`
       created.push({
         id,
         kind,
-        scale,
+        scale: particleScale,
         dx: (Math.random() - 0.5) * 60,
         left: r.left + r.width * (0.3 + Math.random() * 0.4),
         top: r.top + Math.random() * r.height * 0.3,
@@ -183,6 +188,25 @@ export default function Fiole() {
     showBubble(phrases[Math.floor(Math.random() * phrases.length)], BUBBLE_DURATION)
   }
 
+  // Réaction de la Fiole toxique de la 404 (D7) : même tangage que la
+  // réaction normale, particules et phrase toxiques ; pas de bascule de
+  // sprite (elle est toxique en permanence), pas de secret du 10ᵉ clic.
+  const reactToxicPage = () => {
+    setAnimClass('wobble')
+    clearTimeout(wobbleTimer.current)
+    wobbleTimer.current = setTimeout(() => setAnimClass(null), WOBBLE_DURATION)
+
+    setFrame('happy')
+    clearTimeout(happyTimer.current)
+    happyTimer.current = setTimeout(() => {
+      if (frameRef.current === 'happy') setFrame('base')
+    }, HAPPY_DURATION)
+
+    spawnParticles('poison', 6)
+    const phrases = SPRITES.toxique.phrases[lang] || SPRITES.toxique.phrases.fr
+    showBubble(phrases[Math.floor(Math.random() * phrases.length)], BUBBLE_DURATION)
+  }
+
   const reactToxic = () => {
     toxicTimers.current.forEach(clearTimeout)
     toxicTimers.current.length = 0
@@ -205,6 +229,10 @@ export default function Fiole() {
 
   const handleClick = () => {
     wake()
+    if (variant === 'toxique') {
+      reactToxicPage()
+      return
+    }
     clicksRef.current += 1
     // Un clic pendant la transformation compte, mais ne la relance pas :
     // elle va à son terme (D6).
@@ -221,11 +249,12 @@ export default function Fiole() {
     if (frameRef.current === 'look') setFrame('base')
   }
 
-  const sprite = SPRITES[toxic ? 'toxique' : 'fiole']
+  const sprite = SPRITES[toxic ? 'toxique' : variant]
   const rows = frameRows(sprite, frame)
   const btnClass = ['fiole-btn', animClass ? `fiole-${animClass}` : null, frame === 'sleep' ? 'fiole-sleep' : null]
     .filter(Boolean)
     .join(' ')
+  const labels = variant === 'toxique' ? ARIA_LABEL_TOXIQUE : ARIA_LABEL
 
   return (
     <>
@@ -233,12 +262,13 @@ export default function Fiole() {
         ref={buttonRef}
         type="button"
         className={btnClass}
-        aria-label={ARIA_LABEL[lang] || ARIA_LABEL.fr}
+        aria-label={labels[lang] || labels.fr}
         onClick={handleClick}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        style={{ '--fiole-bob': `${scale}px` }}
       >
-        <span className="fiole-inner">{renderPixels(rows, PX)}</span>
+        <span className="fiole-inner">{renderPixels(rows, scale)}</span>
         {frame === 'sleep' && <span className="fiole-zzz" aria-hidden="true">z</span>}
       </button>
 

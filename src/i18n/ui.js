@@ -35,6 +35,13 @@ export const UI = {
     seeDemo: 'Voir la démo →',
     soloExplorationBody: "Exploration rapide en solo, sans process formalisé au-delà des étapes marquées ci-dessus — voir la carte de couverture pour le détail de ce qui a été fait, partiel, ou volontairement non applicable sur ce projet.",
     homeDocumentTitle: 'Misran Labs — le laboratoire de Michael Misran',
+    notFound404Tab: 'Page introuvable',
+    notFound404Eyebrow: 'ERREUR 404 · ÉCHANTILLON INTROUVABLE',
+    notFound404Title: 'Cette page a été dissoute.',
+    notFound404Body: 'Elle a sans doute réagi avec autre chose. Rien de grave : le reste du Lab est intact.',
+    notFound404BackLab: '← Retour au Lab',
+    notFound404Magazine: 'Lire le Magazine',
+    notFound404Breves: 'Les Brèves du jour',
   },
   en: {
     labHome: 'Lab Home',
@@ -72,6 +79,13 @@ export const UI = {
     seeDemo: 'See the demo →',
     soloExplorationBody: "Quick solo exploration, without a formalized process beyond the steps marked above — see the coverage map for what was actually done, partial, or deliberately not applicable on this project.",
     homeDocumentTitle: "Misran Labs — Michael Misran's lab",
+    notFound404Tab: 'Page not found',
+    notFound404Eyebrow: 'ERROR 404 · SAMPLE NOT FOUND',
+    notFound404Title: 'This page has been dissolved.',
+    notFound404Body: 'It probably reacted with something else. No harm done: the rest of the Lab is intact.',
+    notFound404BackLab: '← Back to the Lab',
+    notFound404Magazine: 'Read the Magazine',
+    notFound404Breves: "Today's Briefs",
   },
 }
 

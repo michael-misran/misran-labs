@@ -13,6 +13,7 @@ const BrevesJour = lazy(() => import('./breves/BrevesJour'))
 const ProjetsHome = lazy(() => import('./projets/ProjetsHome'))
 const ProjetIdee = lazy(() => import('./projets/ProjetIdee'))
 const ProjetsFonctionnement = lazy(() => import('./projets/ProjetsFonctionnement'))
+const Page404 = lazy(() => import('./shell/Page404'))
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="projets" element={<ProjetsHome />} />
           <Route path="projets/fonctionnement" element={<ProjetsFonctionnement />} />
           <Route path="projets/:id" element={<ProjetIdee />} />
+          <Route path="*" element={<Page404 />} />
         </Route>
       </Routes>
     </LanguageProvider>

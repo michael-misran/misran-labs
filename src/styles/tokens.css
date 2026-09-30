@@ -206,6 +206,14 @@
      en haut du contenu (padding-top de <main>) : les deux restent liés si
      cette valeur change. */
   --mobile-nav-offset: calc(var(--chrome-height) + var(--space-sm));
+
+  /* Statusbar.jsx : la Fiole perchée (48px, ×3) dépasse de 45px au-dessus
+     de la barre d'état (48px de hauteur moins 3px de chevauchement posé
+     sur le bord de la barre). Réservé en padding-bottom de <main>
+     (Shell.jsx) pour qu'aucun contenu ne passe sous la Fiole en bas de
+     défilement ; si l'échelle de la Fiole change, garder ce calcul en
+     phase avec Statusbar.jsx. */
+  --mascotte-overhang: calc(45px + var(--space-sm));
 }
 
 /* Portée inversée : la diapositive corail plein cadre d'une planche

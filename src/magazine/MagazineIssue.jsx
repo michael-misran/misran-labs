@@ -7,6 +7,7 @@ import SectionTitle from '../design-system/SectionTitle'
 import { MagazineMasthead, MagazineHero, ArticleCard } from './MagazineParts'
 import { MAG_TEXT, categoryLabel, issueNo, formatDateShort, formatDateLong } from './magazineText'
 import { getIssue } from './numeros'
+import Fiole from '../shell/mascotte/Fiole'
 
 function NotFound({ date, lang }) {
   const isMobile = useIsMobile()
@@ -26,6 +27,9 @@ function NotFound({ date, lang }) {
       <div style={{ border: 'var(--border-regular) solid var(--border)', padding: isMobile ? 20 : 32 }}>
         <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.1em', overflowWrap: 'anywhere' }}>
           {t.notFoundLabel} : {date}
+        </div>
+        <div style={{ marginBottom: 8 }}>
+          <Fiole scale={4} variant="toxique" sleeps={false} />
         </div>
         <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', margin: '10px 0 8px' }}>
           {t.notFoundTitle}
