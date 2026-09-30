@@ -1,0 +1,23 @@
+{
+  "id": "P-012",
+  "date": "2026-09-30",
+  "titre": {
+    "fr": "Suivi d'habitudes minimaliste",
+    "en": "Minimalist habit tracker"
+  },
+  "resume": {
+    "fr": "Une application de suivi d'habitudes très épurée, entièrement locale (synchronisation iCloud gérée par Apple, sans compte à gérer).",
+    "en": "A very clean habit tracker, fully local (iCloud sync handled by Apple, no accounts to manage)."
+  },
+  "probleme": {
+    "fr": "Beaucoup de gens veulent suivre quelques habitudes, mais les applications existantes sont surchargées, demandent un compte ou poussent un abonnement.",
+    "en": "Many people want to track a few habits, but existing apps are bloated, require an account or push a subscription."
+  },
+  "idee": {
+    "fr": "Une application qui ne fait qu'une chose : cocher ses habitudes du jour et voir sa régularité, avec un design fort et des widgets.",
+    "en": "An app that does one thing: tick off today's habits and see your streaks, with strong design and widgets."
+  },
+  "type": "produit",
+  "taille": "moyenne",
+  "statut": "proposee"
+}

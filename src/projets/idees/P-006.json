@@ -1,0 +1,23 @@
+{
+  "id": "P-006",
+  "date": "2026-09-30",
+  "titre": {
+    "fr": "Compteur de points pour jeux de société",
+    "en": "Board game score keeper"
+  },
+  "resume": {
+    "fr": "Une application mobile hors ligne pour compter les points au Tarot, à la Belote, au Mölkky, au Skyjo ou au Yams, avec les règles de calcul intégrées.",
+    "en": "An offline mobile app to keep score in Tarot, Belote, Mölkky, Skyjo or Yahtzee, with the scoring rules built in."
+  },
+  "probleme": {
+    "fr": "Autour d'une table, on compte encore sur papier ou dans une calculatrice. Pour le Tarot en particulier, le calcul (contrats, bouts, primes) est source d'erreurs et de disputes. Les applications existantes sont souvent datées ou chargées de publicité.",
+    "en": "People around a table still keep score on paper or with a calculator. Tarot scoring in particular (contracts, oudlers, bonuses) causes mistakes and arguments. Existing apps are often dated or full of ads."
+  },
+  "idee": {
+    "fr": "Une application soignée, entièrement locale : on choisit le jeu, on saisit les joueurs, l'application calcule chaque manche et garde l'historique de la partie. Aucun compte, aucun serveur.",
+    "en": "A polished, fully local app: pick the game, enter the players, the app scores each round and keeps the game history. No account, no server."
+  },
+  "type": "produit",
+  "taille": "petite",
+  "statut": "proposee"
+}
