@@ -1,7 +1,7 @@
 # Mission projets — PROGRESS
 
-**Statut :** mission terminée (RAPPORT.md écrit) — **en attente de clôture en session interactive**
-**Prochaine action :** aucune pour cette routine ; la session de clôture (avec navigateur) doit faire les contrôles visuels listés dans RAPPORT.md avant tout push
+**Statut :** mission terminée et clôturée — fusionnée dans `main` (pull request n° 9)
+**Prochaine action :** aucune. Contrôle navigateur du 2026-09-30 : `/projets` et `/projets/P-999` s'affichent correctement, aucune erreur console
 **Blocages :** aucun pour les étapes du plan ; accès navigateur indisponible dans les sessions programmées (structurel, voir CLAUDE.md)
 
 ## Étape 3 (données)
