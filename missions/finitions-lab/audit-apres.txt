@@ -1,0 +1,923 @@
+=== CSS ===
+RÉSULTAT
+GRILLE D'ÉVALUATION
+
+Sept axes notés de 0 à 3 par des règles fixes, sans IA. Chaque note est justifiée critère par critère ; tu peux l'ajuster à la main : c'est ton jugement qui compte.
+
+1 / 3 — 1 axe évalué sur 7
+Architecture des tokens
+1 / 3
+AJUSTER
+
+1 critère sur 3 rempli.
+
+✗
+2 références cassées ou circulaires (R1, R2).
+✗
+17 % des tokens portent un avertissement (seuil : 5 % au plus).
+✓
+50 % des tokens sont des alias (seuil : 20 % au moins) — signe de niveaux primitive → semantic.
+–
+Aucun token JSON : critère sans objet.
+Couverture du code
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Accessibilité
+non évalué
+AJUSTER
+
+Aucune paire texte/fond détectée dans les noms de tokens.
+
+–
+Aucune paire texte/fond détectée dans les noms de tokens.
+–
+Aucune paire texte/fond détectée dans les noms de tokens.
+–
+Nécessite un dépôt GitHub (code à examiner).
+Composants
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Documentation
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Gouvernance
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Parité Figma ↔ code
+non évalué
+AJUSTER
+
+À évaluer par l'auditeur (pas de lecture de Figma pour l'instant).
+
+MATRICE IMPACT × EFFORT
+
+Les constats regroupés en sujets, classés selon leur impact et l'effort pour les traiter (table fixe, sans IA).
+
+Gains rapides
+Références cassées ou circulaires
+3 constats · impact fort · effort faible
+Chantiers structurants
+
+Aucun sujet.
+
+Améliorations d'appoint
+Doublons et couleurs quasi identiques
+2 constats · impact moyen · effort faible
+Valeurs en dur dans les tokens, types manquants, chaînes d'alias longues
+4 constats · impact faible · effort faible
+À planifier plus tard
+Tokens inutilisés
+3 tokens · impact faible · effort moyen
+FICHIERS
+1
+TOKENS
+18
+CSS 18
+TOKENS SAINS
+61 %
+sans erreur ni avertissement
+ERREUR
+2
+AVERTISSEMENT
+5
+INFO
+5
+PAR TYPE : color 7 · sans type 9 · dimension 2
+FILTRER PAR GRAVITÉ
+ERREUR · 2
+AVERTISSEMENT · 5
+INFO · 5
+R1
+Référence cassée
+ERREUR
+AVERTISSEMENT
+2 constats
+
+Un token en référence un autre qui n'est défini nulle part : sa valeur ne peut pas être résolue. En CSS, une valeur de secours ramène la gravité à un avertissement.
+
+--bouton-fond
+
+« --bouton-fond » référence « --couleur-fantome », qui n'est défini dans aucun des fichiers fournis.
+
+exemple.css · ligne 12
+--bordure
+
+« --bordure » référence « --bordure-absente », défini nulle part, mais une valeur de secours évite la panne.
+
+exemple.css · ligne 15
+R2
+Référence circulaire
+ERREUR
+1 constat
+
+Des tokens se réfèrent les uns aux autres en boucle : aucun ne peut recevoir de valeur finale.
+
+--cycle-a
+--cycle-b
+--cycle-c
+
+Référence circulaire : --cycle-a → --cycle-b → --cycle-c → --cycle-a. Aucune de ces valeurs ne peut être résolue.
+
+exemple.css · ligne 18
+R3
+Valeur codée en dur
+AVERTISSEMENT
+3 constats
+
+Une déclaration CSS porte une couleur ou une longueur en px littérale au lieu de passer par un token. Le style échappe au design system.
+
+« background: #ff00aa » (.carte) porte une valeur en dur : #ff00aa. À remplacer par un token.
+
+exemple.css · ligne 49
+
+« padding: 13px 0 » (.carte) porte une valeur en dur : 13px. À remplacer par un token.
+
+exemple.css · ligne 50
+
+« margin: 0 8px » (.carte) porte une valeur en dur : 8px. À remplacer par un token.
+
+exemple.css · ligne 51
+R4
+Doublon de valeur
+AVERTISSEMENT
+1 constat
+
+Plusieurs tokens de même contexte portent exactement la même valeur brute. Souvent, l'un devrait être l'alias de l'autre.
+
+--couleur-marque
+--couleur-action
+
+2 tokens portent la même valeur « #e26a50 » : --couleur-marque, --couleur-action. L'un pourrait être l'alias de l'autre.
+
+exemple.css · ligne 5
+R5
+Couleurs quasi identiques
+INFO
+1 constat
+
+Deux couleurs opaques diffèrent de trois niveaux ou moins par composante : une différence invisible, souvent un oubli d'harmonisation.
+
+--couleur-marque
+--couleur-action
+--couleur-marque-hover
+
+Couleurs quasi identiques : --couleur-marque, --couleur-action (#e26a50) et --couleur-marque-hover (#e36b51). Une différence imperceptible est souvent un oubli d'harmonisation.
+
+exemple.css · ligne 5
+R6
+Token inutilisé
+INFO
+3 constats
+
+Un token n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+--couleur-marque-hover
+
+« --couleur-marque-hover » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.css · ligne 6
+--fond
+
+« --fond » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.css · ligne 9
+--espace-orphelin
+
+« --espace-orphelin » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.css · ligne 30
+R7
+Chaîne d'alias trop longue
+INFO
+1 constat
+
+Plus de trois références successives avant la valeur finale : retrouver la valeur réelle devient pénible.
+
+--alias-1
+--alias-2
+--alias-3
+--alias-4
+--couleur-marque
+
+Chaîne d'alias de 4 références : --alias-1 → --alias-2 → --alias-3 → --alias-4 → --couleur-marque. Au-delà de 3, la valeur finale devient difficile à retrouver.
+
+exemple.css · ligne 23
+COPIER LE RAPPORT
+EXPORTER EN PDF
+Besoin d'un audit complet de votre design system ?
+
+Cet outil fait le relevé, la note sur 7 axes et la matrice des priorités, à partir des fichiers. Un audit complet y ajoute ce qu'aucun fichier ne montre : l'entretien avec l'équipe, la parité Figma ↔ code, l'usage réel du produit, puis l'accompagnement pendant les corrections.
+
+ME CONTACTER SUR LINKEDIN ↗
+ID DOSSIER — ML-ARCHIVE-009 — NIVEAU DE LECTURE — PUBLIC
+LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.
+
+=== DTCG ===
+RÉSULTAT
+GRILLE D'ÉVALUATION
+
+Sept axes notés de 0 à 3 par des règles fixes, sans IA. Chaque note est justifiée critère par critère ; tu peux l'ajuster à la main : c'est ton jugement qui compte.
+
+1 / 3 — 1 axe évalué sur 7
+Architecture des tokens
+1 / 3
+AJUSTER
+
+1 critère sur 4 rempli.
+
+✗
+1 référence cassée ou circulaire (R1, R2).
+✗
+25 % des tokens portent un avertissement (seuil : 5 % au plus).
+✓
+38 % des tokens sont des alias (seuil : 20 % au moins) — signe de niveaux primitive → semantic.
+✗
+88 % des tokens JSON ont un type (seuil : 90 % au moins).
+Couverture du code
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Accessibilité
+non évalué
+AJUSTER
+
+Aucune paire texte/fond détectée dans les noms de tokens.
+
+–
+Aucune paire texte/fond détectée dans les noms de tokens.
+–
+Aucune paire texte/fond détectée dans les noms de tokens.
+–
+Nécessite un dépôt GitHub (code à examiner).
+Composants
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Documentation
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Gouvernance
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Parité Figma ↔ code
+non évalué
+AJUSTER
+
+À évaluer par l'auditeur (pas de lecture de Figma pour l'instant).
+
+MATRICE IMPACT × EFFORT
+
+Les constats regroupés en sujets, classés selon leur impact et l'effort pour les traiter (table fixe, sans IA).
+
+Gains rapides
+Références cassées ou circulaires
+1 constat · impact fort · effort faible
+Chantiers structurants
+
+Aucun sujet.
+
+Améliorations d'appoint
+Doublons et couleurs quasi identiques
+2 constats · impact moyen · effort faible
+Valeurs en dur dans les tokens, types manquants, chaînes d'alias longues
+1 constat · impact faible · effort faible
+À planifier plus tard
+Tokens inutilisés
+6 tokens · impact faible · effort moyen
+FICHIERS
+1
+TOKENS
+8
+JSON DTCG 8
+TOKENS SAINS
+63 %
+sans erreur ni avertissement
+ERREUR
+1
+AVERTISSEMENT
+1
+INFO
+8
+PAR TYPE : color 5 · dimension 1 · sans type 1 · shadow 1
+FILTRER PAR GRAVITÉ
+ERREUR · 1
+AVERTISSEMENT · 1
+INFO · 8
+R1
+Référence cassée
+ERREUR
+1 constat
+
+Un token en référence un autre qui n'est défini nulle part : sa valeur ne peut pas être résolue. En CSS, une valeur de secours ramène la gravité à un avertissement.
+
+color.danger
+
+« color.danger » référence « color.brand.danger », qui n'est défini dans aucun des fichiers fournis.
+
+exemple.dtcg.json · color.danger
+R4
+Doublon de valeur
+AVERTISSEMENT
+1 constat
+
+Plusieurs tokens de même contexte portent exactement la même valeur brute. Souvent, l'un devrait être l'alias de l'autre.
+
+color.brand.primary
+color.brand.accent
+
+2 tokens portent la même valeur « #0a66c2 » : color.brand.primary, color.brand.accent. L'un pourrait être l'alias de l'autre.
+
+exemple.dtcg.json · color.brand.primary
+R5
+Couleurs quasi identiques
+INFO
+1 constat
+
+Deux couleurs opaques diffèrent de trois niveaux ou moins par composante : une différence invisible, souvent un oubli d'harmonisation.
+
+color.brand.primary
+color.brand.accent
+color.brand.primary-hover
+
+Couleurs quasi identiques : color.brand.primary, color.brand.accent (#0a66c2) et color.brand.primary-hover (#0a67c3). Une différence imperceptible est souvent un oubli d'harmonisation.
+
+exemple.dtcg.json · color.brand.primary
+R6
+Token inutilisé
+INFO
+6 constats
+
+Un token n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+color.brand.primary-hover
+
+« color.brand.primary-hover » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.dtcg.json · color.brand.primary-hover
+color.brand.accent
+
+« color.brand.accent » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.dtcg.json · color.brand.accent
+color.danger
+
+« color.danger » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.dtcg.json · color.danger
+spacing.small
+
+« spacing.small » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.dtcg.json · spacing.small
+spacing.medium
+
+« spacing.medium » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.dtcg.json · spacing.medium
+shadow.card
+
+« shadow.card » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.dtcg.json · shadow.card
+R8
+Type manquant
+INFO
+1 constat
+
+Un token JSON n'a pas de type, ni propre ni hérité de son groupe : les outils ne savent pas ce qu'il représente.
+
+spacing.medium
+
+« spacing.medium » n'a pas de type (ni propre, ni hérité de son groupe). Les outils ne peuvent pas savoir s'il s'agit d'une couleur, d'une dimension, etc.
+
+exemple.dtcg.json · spacing.medium
+COPIER LE RAPPORT
+EXPORTER EN PDF
+Besoin d'un audit complet de votre design system ?
+
+Cet outil fait le relevé, la note sur 7 axes et la matrice des priorités, à partir des fichiers. Un audit complet y ajoute ce qu'aucun fichier ne montre : l'entretien avec l'équipe, la parité Figma ↔ code, l'usage réel du produit, puis l'accompagnement pendant les corrections.
+
+ME CONTACTER SUR LINKEDIN ↗
+ID DOSSIER — ML-ARCHIVE-009 — NIVEAU DE LECTURE — PUBLIC
+LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.
+
+=== Tokens Studio ===
+RÉSULTAT
+GRILLE D'ÉVALUATION
+
+Sept axes notés de 0 à 3 par des règles fixes, sans IA. Chaque note est justifiée critère par critère ; tu peux l'ajuster à la main : c'est ton jugement qui compte.
+
+2,5 / 3 — 2 axes évalués sur 7
+Architecture des tokens
+2 / 3
+AJUSTER
+
+2 critères sur 4 remplis.
+
+✗
+1 référence cassée ou circulaire (R1, R2).
+✗
+18 % des tokens portent un avertissement (seuil : 5 % au plus).
+✓
+36 % des tokens sont des alias (seuil : 20 % au moins) — signe de niveaux primitive → semantic.
+✓
+91 % des tokens JSON ont un type (seuil : 90 % au moins).
+Couverture du code
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Accessibilité
+3 / 3
+AJUSTER
+
+2 critères sur 2 remplis.
+
+✓
+1 paire sur 1 atteignent 4,5:1 (toutes attendues).
+✓
+100 % des paires atteignent 4,5:1 (seuil : 90 % au moins).
+–
+Nécessite un dépôt GitHub (code à examiner).
+Composants
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Documentation
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Gouvernance
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Parité Figma ↔ code
+non évalué
+AJUSTER
+
+À évaluer par l'auditeur (pas de lecture de Figma pour l'instant).
+
+MATRICE IMPACT × EFFORT
+
+Les constats regroupés en sujets, classés selon leur impact et l'effort pour les traiter (table fixe, sans IA).
+
+Gains rapides
+Références cassées ou circulaires
+1 constat · impact fort · effort faible
+Chantiers structurants
+
+Aucun sujet.
+
+Améliorations d'appoint
+Doublons et couleurs quasi identiques
+2 constats · impact moyen · effort faible
+Valeurs en dur dans les tokens, types manquants, chaînes d'alias longues
+1 constat · impact faible · effort faible
+À planifier plus tard
+Tokens inutilisés
+7 tokens · impact faible · effort moyen
+FICHIERS
+1
+TOKENS
+11
+JSON Tokens Studio 11
+TOKENS SAINS
+64 %
+sans erreur ni avertissement
+ERREUR
+1
+AVERTISSEMENT
+1
+INFO
+9
+PAR TYPE : color 8 · borderRadius 2 · sans type 1
+FILTRER PAR GRAVITÉ
+ERREUR · 1
+AVERTISSEMENT · 1
+INFO · 9
+R1
+Référence cassée
+ERREUR
+1 constat
+
+Un token en référence un autre qui n'est défini nulle part : sa valeur ne peut pas être résolue. En CSS, une valeur de secours ramène la gravité à un avertissement.
+
+surface
+
+« surface » référence « gray.900 », qui n'est défini dans aucun des fichiers fournis.
+
+exemple.tokens-studio.json · dark.surface
+R4
+Doublon de valeur
+AVERTISSEMENT
+1 constat
+
+Plusieurs tokens de même contexte portent exactement la même valeur brute. Souvent, l'un devrait être l'alias de l'autre.
+
+brand
+brand-soft
+
+2 tokens portent la même valeur « #0a66c2 » : brand, brand-soft. L'un pourrait être l'alias de l'autre.
+
+exemple.tokens-studio.json · global.brand
+R5
+Couleurs quasi identiques
+INFO
+1 constat
+
+Deux couleurs opaques diffèrent de trois niveaux ou moins par composante : une différence invisible, souvent un oubli d'harmonisation.
+
+gray.100
+gray.200
+
+Couleurs quasi identiques : gray.100 (#f5f5f5) et gray.200 (#f6f6f6). Une différence imperceptible est souvent un oubli d'harmonisation.
+
+exemple.tokens-studio.json · global.gray.100
+R6
+Token inutilisé
+INFO
+7 constats
+
+Un token n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+brand-soft
+
+« brand-soft » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.tokens-studio.json · global.brand-soft
+gray.200
+
+« gray.200 » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.tokens-studio.json · global.gray.200
+radius.sm
+
+« radius.sm » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.tokens-studio.json · global.radius.sm
+radius.lg
+
+« radius.lg » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.tokens-studio.json · global.radius.lg
+space.md
+
+« space.md » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.tokens-studio.json · global.space.md
+surface
+
+« surface » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.tokens-studio.json · light.surface
+text
+
+« text » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+exemple.tokens-studio.json · light.text
+R8
+Type manquant
+INFO
+1 constat
+
+Un token JSON n'a pas de type, ni propre ni hérité de son groupe : les outils ne savent pas ce qu'il représente.
+
+space.md
+
+« space.md » n'a pas de type (ni propre, ni hérité de son groupe). Les outils ne peuvent pas savoir s'il s'agit d'une couleur, d'une dimension, etc.
+
+exemple.tokens-studio.json · global.space.md
+COPIER LE RAPPORT
+EXPORTER EN PDF
+Besoin d'un audit complet de votre design system ?
+
+Cet outil fait le relevé, la note sur 7 axes et la matrice des priorités, à partir des fichiers. Un audit complet y ajoute ce qu'aucun fichier ne montre : l'entretien avec l'équipe, la parité Figma ↔ code, l'usage réel du produit, puis l'accompagnement pendant les corrections.
+
+ME CONTACTER SUR LINKEDIN ↗
+ID DOSSIER — ML-ARCHIVE-009 — NIVEAU DE LECTURE — PUBLIC
+LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.
+
+=== Auditer les tokens de ce site ===
+RÉSULTAT
+GRILLE D'ÉVALUATION
+
+Sept axes notés de 0 à 3 par des règles fixes, sans IA. Chaque note est justifiée critère par critère ; tu peux l'ajuster à la main : c'est ton jugement qui compte.
+
+1 / 3 — 2 axes évalués sur 7
+Architecture des tokens
+2 / 3
+AJUSTER
+
+2 critères sur 3 remplis.
+
+✓
+Aucune référence cassée ni circulaire.
+✗
+14 % des tokens portent un avertissement (seuil : 5 % au plus).
+✓
+59 % des tokens sont des alias (seuil : 20 % au moins) — signe de niveaux primitive → semantic.
+–
+Aucun token JSON : critère sans objet.
+Couverture du code
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Accessibilité
+0 / 3
+AJUSTER
+
+0 critère sur 2 rempli.
+
+✗
+11 paires sur 15 atteignent 4,5:1 (toutes attendues).
+✗
+73 % des paires atteignent 4,5:1 (seuil : 90 % au moins).
+–
+Nécessite un dépôt GitHub (code à examiner).
+PAIRES SOUS 4,5:1 (4)
+--text sur --surface-raised — 2,94:1 · [data-invert]
+--text sur --bg — 3,36:1 · [data-invert]
+--text sur --surface-base — 3,36:1 · [data-invert]
+--text sur --surface-inset — 4,05:1 · [data-invert]
+Composants
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Documentation
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Gouvernance
+non évalué
+AJUSTER
+
+Nécessite un dépôt GitHub.
+
+Parité Figma ↔ code
+non évalué
+AJUSTER
+
+À évaluer par l'auditeur (pas de lecture de Figma pour l'instant).
+
+MATRICE IMPACT × EFFORT
+
+Les constats regroupés en sujets, classés selon leur impact et l'effort pour les traiter (table fixe, sans IA).
+
+Gains rapides
+Contrastes insuffisants
+4 paires · impact fort · effort moyen
+Chantiers structurants
+
+Aucun sujet.
+
+Améliorations d'appoint
+Doublons et couleurs quasi identiques
+3 constats · impact moyen · effort faible
+Valeurs en dur dans les tokens, types manquants, chaînes d'alias longues
+1 constat · impact faible · effort faible
+À planifier plus tard
+Tokens inutilisés
+56 tokens · impact faible · effort moyen
+FICHIERS
+1
+TOKENS
+157
+CSS 157
+TOKENS SAINS
+86 %
+sans erreur ni avertissement
+ERREUR
+0
+AVERTISSEMENT
+3
+INFO
+57
+PAR TYPE : color 36 · sans type 108 · dimension 13
+FILTRER PAR GRAVITÉ
+ERREUR · 0
+AVERTISSEMENT · 3
+INFO · 57
+R3
+Valeur codée en dur
+AVERTISSEMENT
+1 constat
+
+Une déclaration CSS porte une couleur ou une longueur en px littérale au lieu de passer par un token. Le style échappe au design system.
+
+« outline-offset: 2px » (:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible) porte une valeur en dur : 2px. À remplacer par un token.
+
+src/styles/tokens.css · ligne 259
+R4
+Doublon de valeur
+AVERTISSEMENT
+2 constats
+
+Plusieurs tokens de même contexte portent exactement la même valeur brute. Souvent, l'un devrait être l'alias de l'autre.
+
+--primitive-shadow-none
+--primitive-case-none
+
+2 tokens portent la même valeur « none » : --primitive-shadow-none, --primitive-case-none. L'un pourrait être l'alias de l'autre.
+
+src/styles/tokens.css · ligne 79
+--elev-1
+--elev-2
+--elev-3
+--elev-4
+--elev-5
+--elev-inset
++1
+
+7 tokens portent la même valeur « none » : --elev-1, --elev-2, --elev-3, --elev-4, --elev-5, --elev-inset, --elev-pressed. L'un pourrait être l'alias de l'autre.
+
+src/styles/tokens.css · ligne 274
+R5
+Couleurs quasi identiques
+INFO
+1 constat
+
+Deux couleurs opaques diffèrent de trois niveaux ou moins par composante : une différence invisible, souvent un oubli d'harmonisation.
+
+--primitive-ink-800
+--primitive-ink-850
+
+Couleurs quasi identiques : --primitive-ink-800 (#2c231b) et --primitive-ink-850 (#2a2018). Une différence imperceptible est souvent un oubli d'harmonisation.
+
+src/styles/tokens.css · ligne 43
+R6
+Token inutilisé
+INFO
+56 constats
+
+Un token n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+--bg
+
+« --bg » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 109
+--bg2
+
+« --bg2 » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 110
+--primary-surface
+
+« --primary-surface » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 117
+--on-primary-surface
+
+« --on-primary-surface » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 118
+--text
+
+« --text » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 119
+--text2
+
+« --text2 » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 120
+--muted
+
+« --muted » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 121
+--prose
+
+« --prose » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 122
+--error
+
+« --error » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 124
+--grid-line
+
+« --grid-line » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 129
+--active-tint
+
+« --active-tint » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 130
+--hover-tint
+
+« --hover-tint » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 131
+--surface-base
+
+« --surface-base » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 133
+--surface-raised
+
+« --surface-raised » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 134
+--surface-inset
+
+« --surface-inset » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 135
+--surface-pressed
+
+« --surface-pressed » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 136
+--hover-surface
+
+« --hover-surface » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 137
+--selected-surface
+
+« --selected-surface » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 142
+--on-selected
+
+« --on-selected » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 143
+--elev-1
+
+« --elev-1 » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 149
+--elev-2
+
+« --elev-2 » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 150
+--elev-3
+
+« --elev-3 » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 151
+--elev-4
+
+« --elev-4 » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 152
+--elev-5
+
+« --elev-5 » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 153
+--elev-inset
+
+« --elev-inset » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.
+
+src/styles/tokens.css · ligne 154
+AFFICHER LES 31 AUTRES
+COPIER LE RAPPORT
+EXPORTER EN PDF
+Besoin d'un audit complet de votre design system ?
+
+Cet outil fait le relevé, la note sur 7 axes et la matrice des priorités, à partir des fichiers. Un audit complet y ajoute ce qu'aucun fichier ne montre : l'entretien avec l'équipe, la parité Figma ↔ code, l'usage réel du produit, puis l'accompagnement pendant les corrections.
+
+ME CONTACTER SUR LINKEDIN ↗
+ID DOSSIER — ML-ARCHIVE-009 — NIVEAU DE LECTURE — PUBLIC
+LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.

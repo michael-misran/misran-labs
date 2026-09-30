@@ -1,8 +1,23 @@
 # Mission finitions-lab — PROGRESS
 
-**Statut :** étape 4 terminée
-**Prochaine action :** étape 5 (découpage de AuditTokens.jsx, D3, puis texte D4)
+**Statut :** étape 6 terminée
+**Prochaine action :** étape 7 (tokens D5, copie des scripts de mesure, mesure « avant » + snapshots « avant »)
 **Blocages :** aucun
+
+## Étape 5 — découpage de AuditTokens.jsx (D3) + texte D4
+- Créé `src/lab/projects/audit/contenu.js` (FR, EN, CONTENT), `src/lab/projects/audit/Constats.jsx` (ACCENT_GRAVITE, PastilleGravite, FiltreGravite, GroupeRegle), `src/lab/projects/audit/rapportTexte.js` (libelleFormat, emplacementTexte, construireRapport). Code déplacé tel quel.
+- Texte D4 appliqué directement dans `contenu.js` en déplaçant `ctaText` (FR/EN).
+- Deux ajustements non listés dans D3, nécessaires pour atteindre l'objectif « sous 450 lignes » (noté dans DECISIONS.md) :
+  - `AFFICHAGE_INITIAL` (utilisé seulement par `GroupeRegle`) déplacé avec lui dans `Constats.jsx`.
+  - `REGLES_IDS` (utilisé par `construireRapport` et par la page) déplacé dans `rapportTexte.js` et exporté ; `AuditTokens.jsx` l'importe désormais depuis là.
+  - Après le découpage D3 strict, le fichier faisait encore 462 lignes (> 450). La section « Appel à l'action » (JSX autonome, ne dépend que de `c`) a été extraite dans un nouveau `src/lab/projects/audit/Cta.jsx`, sur le modèle des autres sous-composants déjà présents dans ce dossier (Couverture, Grille, Matrice). `AuditTokens.jsx` fait maintenant 437 lignes.
+- `npm run build` et `npm run lint` : passent.
+
+## Étape 6 — vérification après découpage (verificateur, Haiku + contrôle session principale)
+- `missions/finitions-lab/audit-apres.txt` écrit avec le même format que `audit-avant.txt`.
+- `diff audit-avant.txt audit-apres.txt` (vérifié par la session principale) : seules différences, les 4 occurrences du texte `ctaText` (changé intentionnellement par D4) ; tout le reste (grille, tuiles, filtres, constats par règle, couverture) rigoureusement identique. Critère 4 (rendu identique) et critère 8 confirmés pour cette page.
+- Texte D4 vérifié visuellement en EN également (« Need a full audit of your design system? » / « This tool does the survey, the 7-axis score and the priority matrix... ») — critère 5 atteint dans les deux langues.
+- Aucune erreur console pendant les tests (FR et EN).
 
 ## Étape 4 — relevé de référence audit (verificateur, Haiku)
 - `missions/finitions-lab/audit-avant.txt` écrit (27 018 caractères), une section par bouton : CSS (~8000 car.), DTCG (~5200 car.), Tokens Studio (~5700 car.), Auditer les tokens de ce site (~8100 car.).
