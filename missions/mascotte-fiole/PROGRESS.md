@@ -1,7 +1,7 @@
 # Mission mascotte-fiole — PROGRESS
 
-**Statut :** étape 6 terminée, mission fonctionnellement complète
-**Prochaine action :** étape 7 (RAPPORT.md)
+**Statut :** mission terminée (RAPPORT.md écrit, étape 7)
+**Prochaine action :** clôture (session interactive avec Michael, voir missions/README.md)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, main b9ebe79)

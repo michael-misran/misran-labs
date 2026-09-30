@@ -10,4 +10,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 4. Intégration dans `Statusbar.jsx` (desktop + mobile, sortie de l'`overflow: hidden`, ellipsis des textes) (D3, D4) ; build + lint → session principale (Sonnet)
 - [x] 5. Vérification dans le navigateur : critères 1 à 8 et 10 de la SPEC, captures → verificateur (Haiku)
 - [x] 6. Corrections éventuelles issues de l'étape 5, puis vérification finale : build, lint, grep du critère 9 → session principale (Sonnet)
-- [ ] 7. RAPPORT.md (avec captures et recommandations hors périmètre) → session principale (Sonnet)
+- [x] 7. RAPPORT.md (avec captures et recommandations hors périmètre) → session principale (Sonnet)
