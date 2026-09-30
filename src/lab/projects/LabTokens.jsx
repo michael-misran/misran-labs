@@ -202,9 +202,13 @@ const TOKEN_GROUPS = [
   {
     category: { fr: 'Structure — espacement & icônes', en: 'Structure — spacing & icons' },
     rows: [
+      { name: '--space-3xs', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-2', value: '2px' },
+      { name: '--space-2xs', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-4', value: '4px' },
       { name: '--space-xs', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-8', value: '8px' },
+      { name: '--space-xs-plus', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-10', value: '10px' },
       { name: '--space-sm', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-12', value: '12px' },
       { name: '--space-md', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-16', value: '16px' },
+      { name: '--space-md-plus', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-20', value: '20px' },
       { name: '--space-lg', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-24', value: '24px' },
       { name: '--space-xl', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-32', value: '32px' },
       { name: '--icon-sm', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-16', value: '16px' },

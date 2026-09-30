@@ -1,0 +1,727 @@
+{
+  "etiquette": "avant",
+  "commit": "0030be5",
+  "fichiersTokens": [
+    "missions/tokens-fix/snapshot-apres.json",
+    "missions/tokens-fix/snapshot-avant.json",
+    "src/styles/tokens.css"
+  ],
+  "fichiersCodeAnalyses": 60,
+  "eligibles": 136,
+  "moyenne": 1.5,
+  "axesEvalues": 6,
+  "axes": [
+    {
+      "id": "architecture",
+      "note": 2,
+      "criteres": [
+        {
+          "id": "aucune-erreur",
+          "rempli": true,
+          "detail": "Aucune référence cassée ni circulaire."
+        },
+        {
+          "id": "peu-avertissements",
+          "rempli": false,
+          "detail": "14 % des tokens portent un avertissement (seuil : 5 % au plus)."
+        },
+        {
+          "id": "niveaux-alias",
+          "rempli": true,
+          "detail": "60 % des tokens sont des alias (seuil : 20 % au moins) — signe de niveaux primitive → semantic."
+        },
+        {
+          "id": "types-json",
+          "rempli": null,
+          "detail": "Aucun token JSON : critère sans objet."
+        }
+      ]
+    },
+    {
+      "id": "couverture",
+      "note": 2,
+      "criteres": [
+        {
+          "id": "taux-50",
+          "rempli": true,
+          "detail": "Taux de couverture de 87 % (seuil : 50 % au moins)."
+        },
+        {
+          "id": "taux-80",
+          "rempli": true,
+          "detail": "Taux de couverture de 87 % (seuil : 80 % au moins)."
+        },
+        {
+          "id": "deja-tokenisees",
+          "rempli": false,
+          "detail": "47 valeurs en dur ont déjà un token (seuil : moins de 10)."
+        }
+      ]
+    },
+    {
+      "id": "accessibilite",
+      "note": 1,
+      "criteres": [
+        {
+          "id": "contrastes-tous",
+          "rempli": false,
+          "detail": "11 paires sur 15 atteignent 4,5:1 (toutes attendues)."
+        },
+        {
+          "id": "contrastes-90",
+          "rempli": false,
+          "detail": "73 % des paires atteignent 4,5:1 (seuil : 90 % au moins)."
+        },
+        {
+          "id": "focus-visible",
+          "rempli": true,
+          "detail": "Aucun outline retiré sans :focus-visible dans l’échantillon de code."
+        }
+      ]
+    },
+    {
+      "id": "composants",
+      "note": 0,
+      "criteres": [
+        {
+          "id": "au-moins-5",
+          "rempli": false,
+          "detail": "4 composants repérés (seuil : 5 au moins)."
+        },
+        {
+          "id": "stories",
+          "rempli": false,
+          "detail": "0 composants sur 4 a une story (seuil : la moitié au moins)."
+        },
+        {
+          "id": "tests",
+          "rempli": false,
+          "detail": "0 composants sur 4 a un test (seuil : la moitié au moins)."
+        }
+      ]
+    },
+    {
+      "id": "documentation",
+      "note": 1,
+      "criteres": [
+        {
+          "id": "readme",
+          "rempli": true,
+          "detail": "README.md à la racine."
+        },
+        {
+          "id": "docs",
+          "rempli": false,
+          "detail": "Ni dossier docs/ ni fichier .mdx."
+        },
+        {
+          "id": "storybook",
+          "rempli": false,
+          "detail": "Pas de configuration Storybook."
+        },
+        {
+          "id": "contributing",
+          "rempli": false,
+          "detail": "Pas de CONTRIBUTING.md."
+        }
+      ]
+    },
+    {
+      "id": "gouvernance",
+      "note": 3,
+      "criteres": [
+        {
+          "id": "changelog",
+          "rempli": true,
+          "detail": "CHANGELOG ou dossier .changeset/ présent."
+        },
+        {
+          "id": "codeowners",
+          "rempli": true,
+          "detail": "CODEOWNERS présent."
+        },
+        {
+          "id": "workflows",
+          "rempli": true,
+          "detail": "Au moins un workflow dans .github/workflows/."
+        },
+        {
+          "id": "licence",
+          "rempli": true,
+          "detail": "Fichier de licence à la racine."
+        }
+      ]
+    },
+    {
+      "id": "parite",
+      "note": null,
+      "criteres": []
+    }
+  ],
+  "couverture": {
+    "taux": 0.8698630136986302,
+    "usagesTokens": 762,
+    "valeursEnDur": 114,
+    "nombreDejaTokenisees": 9,
+    "dejaTokenisees": [
+      {
+        "valeur": "10px",
+        "token": "--primitive-size-10",
+        "occurrences": 14
+      },
+      {
+        "valeur": "20px",
+        "token": "--primitive-size-20",
+        "occurrences": 8
+      },
+      {
+        "valeur": "2px",
+        "token": "--primitive-size-2",
+        "occurrences": 7
+      },
+      {
+        "valeur": "16px",
+        "token": "--primitive-size-16",
+        "occurrences": 4
+      },
+      {
+        "valeur": "24px",
+        "token": "--primitive-size-24",
+        "occurrences": 4
+      },
+      {
+        "valeur": "12px",
+        "token": "--primitive-size-12",
+        "occurrences": 3
+      },
+      {
+        "valeur": "4px",
+        "token": "--primitive-size-4",
+        "occurrences": 3
+      },
+      {
+        "valeur": "8px",
+        "token": "--primitive-size-8",
+        "occurrences": 3
+      },
+      {
+        "valeur": "32px",
+        "token": "--primitive-size-32",
+        "occurrences": 1
+      }
+    ],
+    "valeursRepetees": [
+      {
+        "valeur": "10px",
+        "occurrences": 14,
+        "fichiers": [
+          "src/breves/BrevesJour.jsx",
+          "src/design-system/SecondarySidebar.jsx",
+          "src/design-system/kit/Badge.jsx",
+          "src/design-system/kit/Breadcrumbs.jsx",
+          "src/design-system/kit/ListItem.jsx",
+          "src/design-system/kit/Select.jsx",
+          "src/design-system/kit/TextField.jsx",
+          "src/design-system/kit/Textarea.jsx",
+          "src/design-system/kit/Tooltip.jsx",
+          "src/design-system/kit/buttonStyles.js",
+          "src/lab/CaseStudyLayout.jsx",
+          "src/lab/PhaseCoverage.jsx",
+          "src/lab/ThemeSwatch.jsx"
+        ]
+      },
+      {
+        "valeur": "14px",
+        "occurrences": 8,
+        "fichiers": [
+          "src/breves/BrevesParts.jsx",
+          "src/design-system/kit/AlertBanner.jsx",
+          "src/design-system/kit/TableHeader.jsx",
+          "src/design-system/kit/buttonStyles.js",
+          "src/experiences/SessionReplay.jsx",
+          "src/lab/ThemeSwatch.jsx"
+        ]
+      },
+      {
+        "valeur": "20px",
+        "occurrences": 8,
+        "fichiers": [
+          "src/breves/BrevesJour.jsx",
+          "src/breves/BrevesParts.jsx",
+          "src/design-system/kit/Slider.jsx",
+          "src/design-system/kit/buttonStyles.js",
+          "src/experiences/SessionReplay.jsx",
+          "src/lab/GameDemo.jsx",
+          "src/lab/GameDemoV2.jsx"
+        ]
+      },
+      {
+        "valeur": "2px",
+        "occurrences": 7,
+        "fichiers": [
+          "src/breves/BrevesParts.jsx",
+          "src/design-system/Tag.jsx",
+          "src/experiences/SessionReplay.jsx"
+        ]
+      },
+      {
+        "valeur": "40px",
+        "occurrences": 7,
+        "fichiers": [
+          "src/breves/BrevesHome.jsx",
+          "src/experiences/SessionReplay.jsx"
+        ]
+      },
+      {
+        "valeur": "6px",
+        "occurrences": 7,
+        "fichiers": [
+          "src/design-system/kit/Pagination.jsx",
+          "src/design-system/kit/Tooltip.jsx",
+          "src/experiences/SessionReplay.jsx",
+          "src/lab/CaseFile.jsx",
+          "src/lab/ThemeSwatch.jsx"
+        ]
+      },
+      {
+        "valeur": "28px",
+        "occurrences": 5,
+        "fichiers": [
+          "src/experiences/SessionReplay.jsx",
+          "src/lab/CaseStudyLayout.jsx"
+        ]
+      },
+      {
+        "valeur": "3px",
+        "occurrences": 5,
+        "fichiers": [
+          "src/design-system/kit/Slider.jsx",
+          "src/lab/CaseFile.jsx",
+          "src/lab/CaseStudyLayout.jsx"
+        ]
+      },
+      {
+        "valeur": "7px",
+        "occurrences": 5,
+        "fichiers": [
+          "src/design-system/SecondarySidebar.jsx",
+          "src/design-system/kit/buttonStyles.js",
+          "src/experiences/SessionReplay.jsx",
+          "src/lab/CaseFile.jsx"
+        ]
+      },
+      {
+        "valeur": "16px",
+        "occurrences": 4,
+        "fichiers": [
+          "src/breves/BrevesParts.jsx"
+        ]
+      }
+    ],
+    "parFichier": [
+      {
+        "fichier": "src/experiences/SessionReplay.jsx",
+        "valeursEnDur": 32,
+        "usagesTokens": 171
+      },
+      {
+        "fichier": "src/breves/BrevesParts.jsx",
+        "valeursEnDur": 14,
+        "usagesTokens": 45
+      },
+      {
+        "fichier": "src/lab/CaseFile.jsx",
+        "valeursEnDur": 12,
+        "usagesTokens": 59
+      },
+      {
+        "fichier": "src/breves/BrevesJour.jsx",
+        "valeursEnDur": 8,
+        "usagesTokens": 21
+      },
+      {
+        "fichier": "src/design-system/SecondarySidebar.jsx",
+        "valeursEnDur": 5,
+        "usagesTokens": 19
+      },
+      {
+        "fichier": "src/lab/ThemeSwatch.jsx",
+        "valeursEnDur": 5,
+        "usagesTokens": 34
+      },
+      {
+        "fichier": "src/design-system/kit/buttonStyles.js",
+        "valeursEnDur": 4,
+        "usagesTokens": 17
+      },
+      {
+        "fichier": "src/lab/CaseStudyLayout.jsx",
+        "valeursEnDur": 4,
+        "usagesTokens": 27
+      },
+      {
+        "fichier": "src/design-system/kit/Select.jsx",
+        "valeursEnDur": 3,
+        "usagesTokens": 13
+      },
+      {
+        "fichier": "src/design-system/kit/Slider.jsx",
+        "valeursEnDur": 3,
+        "usagesTokens": 14
+      }
+    ]
+  },
+  "contrastes": {
+    "paires": [
+      {
+        "texte": "--on-primary-surface",
+        "fond": "--primary-surface",
+        "contexte": ":root",
+        "ratio": 4.8,
+        "ok": true
+      },
+      {
+        "texte": "--on-primary-surface",
+        "fond": "--primary-surface",
+        "contexte": "[data-invert]",
+        "ratio": 4.8,
+        "ok": true
+      },
+      {
+        "texte": "--on-selected",
+        "fond": "--selected-surface",
+        "contexte": ":root",
+        "ratio": 4.8,
+        "ok": true
+      },
+      {
+        "texte": "--on-selected",
+        "fond": "--selected-surface",
+        "contexte": "[data-invert]",
+        "ratio": 4.8,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--bg",
+        "contexte": ":root",
+        "ratio": 14.15,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--bg",
+        "contexte": "[data-invert]",
+        "ratio": 3.36,
+        "ok": false
+      },
+      {
+        "texte": "--text",
+        "fond": "--hover-surface",
+        "contexte": ":root",
+        "ratio": 13.31,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-base",
+        "contexte": ":root",
+        "ratio": 14.15,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-base",
+        "contexte": "[data-invert]",
+        "ratio": 3.36,
+        "ok": false
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-inset",
+        "contexte": ":root",
+        "ratio": 12.13,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-inset",
+        "contexte": "[data-invert]",
+        "ratio": 4.05,
+        "ok": false
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-pressed",
+        "contexte": ":root",
+        "ratio": 10.27,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-pressed",
+        "contexte": "[data-invert]",
+        "ratio": 4.8,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-raised",
+        "contexte": ":root",
+        "ratio": 15.04,
+        "ok": true
+      },
+      {
+        "texte": "--text",
+        "fond": "--surface-raised",
+        "contexte": "[data-invert]",
+        "ratio": 2.94,
+        "ok": false
+      }
+    ],
+    "detectees": 15,
+    "echecs": 4
+  },
+  "priorites": {
+    "sujets": [
+      {
+        "id": "deja-tokenisees",
+        "titre": {
+          "fr": "Valeurs en dur qui ont déjà un token",
+          "en": "Hard-coded values that already have a token"
+        },
+        "unite": {
+          "fr": "valeurs",
+          "en": "values"
+        },
+        "compte": 9,
+        "impact": "fort",
+        "effort": "faible",
+        "quadrant": "gains-rapides"
+      },
+      {
+        "id": "contrastes",
+        "titre": {
+          "fr": "Contrastes insuffisants",
+          "en": "Insufficient contrast"
+        },
+        "unite": {
+          "fr": "paires",
+          "en": "pairs"
+        },
+        "compte": 4,
+        "impact": "fort",
+        "effort": "moyen",
+        "quadrant": "gains-rapides"
+      },
+      {
+        "id": "doublons",
+        "titre": {
+          "fr": "Doublons et couleurs quasi identiques",
+          "en": "Duplicates and near-identical colors"
+        },
+        "unite": {
+          "fr": "constats",
+          "en": "findings"
+        },
+        "compte": 3,
+        "impact": "moyen",
+        "effort": "faible",
+        "quadrant": "appoint"
+      },
+      {
+        "id": "composants",
+        "titre": {
+          "fr": "Composants sans stories ou sans tests",
+          "en": "Components without stories or tests"
+        },
+        "unite": {
+          "fr": "manques",
+          "en": "gaps"
+        },
+        "compte": 8,
+        "impact": "moyen",
+        "effort": "fort",
+        "quadrant": "plus-tard"
+      },
+      {
+        "id": "documentation",
+        "titre": {
+          "fr": "Documentation manquante",
+          "en": "Missing documentation"
+        },
+        "unite": {
+          "fr": "éléments",
+          "en": "items"
+        },
+        "compte": 3,
+        "impact": "moyen",
+        "effort": "moyen",
+        "quadrant": "plus-tard"
+      },
+      {
+        "id": "hygiene",
+        "titre": {
+          "fr": "Valeurs en dur dans les tokens, types manquants, chaînes d’alias longues",
+          "en": "Hard-coded values in tokens, missing types, long alias chains"
+        },
+        "unite": {
+          "fr": "constats",
+          "en": "findings"
+        },
+        "compte": 1,
+        "impact": "faible",
+        "effort": "faible",
+        "quadrant": "appoint"
+      },
+      {
+        "id": "inutilises",
+        "titre": {
+          "fr": "Tokens inutilisés",
+          "en": "Unused tokens"
+        },
+        "unite": {
+          "fr": "tokens",
+          "en": "tokens"
+        },
+        "compte": 11,
+        "impact": "faible",
+        "effort": "moyen",
+        "quadrant": "plus-tard"
+      }
+    ],
+    "quadrants": {
+      "gains-rapides": [
+        {
+          "id": "deja-tokenisees",
+          "titre": {
+            "fr": "Valeurs en dur qui ont déjà un token",
+            "en": "Hard-coded values that already have a token"
+          },
+          "unite": {
+            "fr": "valeurs",
+            "en": "values"
+          },
+          "compte": 9,
+          "impact": "fort",
+          "effort": "faible",
+          "quadrant": "gains-rapides"
+        },
+        {
+          "id": "contrastes",
+          "titre": {
+            "fr": "Contrastes insuffisants",
+            "en": "Insufficient contrast"
+          },
+          "unite": {
+            "fr": "paires",
+            "en": "pairs"
+          },
+          "compte": 4,
+          "impact": "fort",
+          "effort": "moyen",
+          "quadrant": "gains-rapides"
+        }
+      ],
+      "chantiers": [],
+      "appoint": [
+        {
+          "id": "doublons",
+          "titre": {
+            "fr": "Doublons et couleurs quasi identiques",
+            "en": "Duplicates and near-identical colors"
+          },
+          "unite": {
+            "fr": "constats",
+            "en": "findings"
+          },
+          "compte": 3,
+          "impact": "moyen",
+          "effort": "faible",
+          "quadrant": "appoint"
+        },
+        {
+          "id": "hygiene",
+          "titre": {
+            "fr": "Valeurs en dur dans les tokens, types manquants, chaînes d’alias longues",
+            "en": "Hard-coded values in tokens, missing types, long alias chains"
+          },
+          "unite": {
+            "fr": "constats",
+            "en": "findings"
+          },
+          "compte": 1,
+          "impact": "faible",
+          "effort": "faible",
+          "quadrant": "appoint"
+        }
+      ],
+      "plus-tard": [
+        {
+          "id": "composants",
+          "titre": {
+            "fr": "Composants sans stories ou sans tests",
+            "en": "Components without stories or tests"
+          },
+          "unite": {
+            "fr": "manques",
+            "en": "gaps"
+          },
+          "compte": 8,
+          "impact": "moyen",
+          "effort": "fort",
+          "quadrant": "plus-tard"
+        },
+        {
+          "id": "documentation",
+          "titre": {
+            "fr": "Documentation manquante",
+            "en": "Missing documentation"
+          },
+          "unite": {
+            "fr": "éléments",
+            "en": "items"
+          },
+          "compte": 3,
+          "impact": "moyen",
+          "effort": "moyen",
+          "quadrant": "plus-tard"
+        },
+        {
+          "id": "inutilises",
+          "titre": {
+            "fr": "Tokens inutilisés",
+            "en": "Unused tokens"
+          },
+          "unite": {
+            "fr": "tokens",
+            "en": "tokens"
+          },
+          "compte": 11,
+          "impact": "faible",
+          "effort": "moyen",
+          "quadrant": "plus-tard"
+        }
+      ]
+    }
+  },
+  "resume": {
+    "fichiers": 3,
+    "tokens": 161,
+    "tokensParFormat": {
+      "css": 161
+    },
+    "tokensParType": {
+      "color": 36,
+      "inconnu": 112,
+      "dimension": 13
+    },
+    "constatsParGravite": {
+      "erreur": 0,
+      "avertissement": 3,
+      "info": 12
+    },
+    "tokensSains": 139,
+    "partSaine": 0.8633540372670807
+  }
+}

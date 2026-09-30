@@ -1,8 +1,17 @@
 # Mission finitions-lab — PROGRESS
 
-**Statut :** étape 6 terminée
-**Prochaine action :** étape 7 (tokens D5, copie des scripts de mesure, mesure « avant » + snapshots « avant »)
+**Statut :** étape 7 terminée
+**Prochaine action :** étape 8 (remplacement des espacements en dur, D6)
 **Blocages :** aucun
+
+## Étape 7 — tokens D5, scripts de mesure, relevés « avant »
+- `src/styles/tokens.css` : 4 nouveaux tokens ajoutés dans la trame semantic, dans l'ordre D5 : `--space-3xs` (2px), `--space-2xs` (4px), `--space-xs-plus` (10px), `--space-md-plus` (20px).
+- `src/lab/projects/LabTokens.jsx` : mêmes 4 tokens ajoutés à la documentation vivante (page 007), même format que les lignes `--space-*` existantes.
+- `missions/finitions-lab/mesurer-audit.mjs` : copié de `missions/site-avant-apres/mesurer-audit.mjs` (contenu identique, sortie déjà auto-adaptée au dossier via `dirname(import.meta.url)`).
+- `missions/finitions-lab/recevoir-snapshot.mjs` : copié puis **adapté** de `missions/site-avant-apres/recevoir-snapshot.mjs`. L'original ferme le serveur après un seul POST (une seule page à la fois) ; ici il fallait accumuler 5 pages × 2 largeurs, donc le récepteur accumule maintenant plusieurs `{clef, donnees}` et n'écrit qu'à un signal `{clef:'__fin__'}`. Noté dans DECISIONS.md.
+- Le script côté navigateur (celui qui calcule les styles et les envoie) n'existait dans aucun fichier du dépôt lors de la mission `site-avant-apres` (exécuté à la volée) : réécrit ici sur la base de la description du critère 5 de son RAPPORT.md (padding, margin, largeurs de bordure, rayons, gaps, taille de police ; largeur/hauteur exclues). Noté dans DECISIONS.md.
+- `node missions/finitions-lab/mesurer-audit.mjs avant` → `mesure-avant.json` (moyenne 1.5/3, couverture 87,0 %, détail des `nombreDejaTokenisees` inclus pour comparaison à l'étape 9).
+- `missions/finitions-lab/snapshot-avant.json` : 10 relevés (`/`, `/lab/audit-tokens`, `/magazine`, `/projets`, `/suivre`, chacun à 1280 px et 375 px), 510/338/355/407/353 éléments par page. Langue forcée en FR avant la capture (`localStorage.lang`).
 
 ## Étape 5 — découpage de AuditTokens.jsx (D3) + texte D4
 - Créé `src/lab/projects/audit/contenu.js` (FR, EN, CONTENT), `src/lab/projects/audit/Constats.jsx` (ACCENT_GRAVITE, PastilleGravite, FiltreGravite, GroupeRegle), `src/lab/projects/audit/rapportTexte.js` (libelleFormat, emplacementTexte, construireRapport). Code déplacé tel quel.
