@@ -11,5 +11,5 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 5. Jeu : `geste-parfait/meta.js`, `Jeu.jsx` (essai officiel, entraînement, `?date=` en dev), défis 2 (chrono) et 3 (verre) (D5, D8). Build + lint → session principale (Sonnet)
 - [x] 6. Défis 1 (cercle, avec refus des tracés trop courts) et 4 (tour empilée) (D8, D11). Build + lint → session principale (Sonnet)
 - [x] 7. Vérification dans le navigateur (`npx vite preview`) : critères 1 à 8 et 10 ; captures `/jeux` (desktop + 375 px) et un défi terminé. Rappel : lire le presse-papiers ou le texte de partage dans le même appel que le clic → verificateur (Haiku)
-- [ ] 8. Corrections éventuelles, vérification finale : build, lint, critères 11 à 13 (`git diff main...` : ni secret, ni donnée personnelle) → session principale (Sonnet)
-- [ ] 9. RAPPORT.md (captures, recommandations hors périmètre, rappel D12 : missions suivantes à lancer après fusion) → session principale (Sonnet)
+- [x] 8. Corrections éventuelles, vérification finale : build, lint, critères 11 à 13 (`git diff main...` : ni secret, ni donnée personnelle) → session principale (Sonnet)
+- [x] 9. RAPPORT.md (captures, recommandations hors périmètre, rappel D12 : missions suivantes à lancer après fusion) → session principale (Sonnet)

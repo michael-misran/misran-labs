@@ -1,7 +1,7 @@
 # Mission jeux-geste — PROGRESS
 
-**Statut :** en cours
-**Prochaine action :** étape 8 (corrections éventuelles, vérification finale, critères 11-13)
+**Statut :** terminée
+**Prochaine action :** aucune — RAPPORT.md écrit, en attente de clôture par Michael (session tour de contrôle)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur `main` 8a410ca)
@@ -54,3 +54,11 @@
 - Critère 2 (voir les 4 défis sur 4 jours via `?date=`) : **non vérifiable dans cette session** pour la raison ci-dessus. À vérifier par Michael en session interactive (`npm run dev`). Noté comme limitation dans RAPPORT.md, pas comme échec.
 - Critère 10 (toucher sur mobile sans défilement) : confirmé `touch-action: none` sur la zone interactive du chrono en mobile (375px), et par lecture de code sur les 4 défis (même style inline partout). Le défi Cercle n'était pas celui du jour réel pendant la vérification, donc pas testé au doigt en direct — cohérence de code jugée suffisante.
 - Serveurs de prévisualisation arrêtés après vérification.
+
+## Étape 8 (faite, 2026-10-01)
+- Critère 11 : `git diff main...auto/jeux-geste -- package.json package-lock.json` vide (aucune dépendance ajoutée) ; `grep -rnE "#[0-9a-fA-F]{3,6}\b" src/jeux` toujours vide.
+- Critère 12 : `npm run build` et `npm run lint` rejoués une dernière fois, tous deux passent.
+- Critère 13 : `git status` propre sur `auto/jeux-geste` ; `git diff main...auto/jeux-geste` relu en entier (36 fichiers, dont les brouillons `jeux-estimation`/`jeux-majorite` du cadrage D12, non touchés par cette mission) : aucun secret, aucune donnée personnelle (grep de mots-clés « clé/secret/mot de passe/token » : seuls des faux positifs sur « token » = jeton de design). Rien sur `main`, rien poussé.
+
+## Étape 9 (faite, 2026-10-01)
+- `RAPPORT.md` écrit avec les 13 critères d'acceptation, la limitation de vérification du critère 2 (voir DECISIONS.md), les décisions, les délégations et les recommandations (dont le rappel D12 : lancer `auto/jeux-estimation` et `auto/jeux-majorite` après fusion).
