@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr" data-theme="papier">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Soon — Galerie des widgets</title>
+    <link rel="stylesheet" href="p007.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="page-toolbar">
+        <a class="back-link" href="index.html">← Sommaire</a>
+        <h1>Widgets</h1>
+        <div class="theme-tabs">
+          <button type="button" data-theme-tab="papier">Papier</button>
+          <button type="button" data-theme-tab="nuit">Nuit</button>
+          <button type="button" data-theme-tab="pop">Pop</button>
+        </div>
+      </div>
+
+      <div class="phone-row" style="display:flex; gap:28px; flex-wrap:wrap; justify-content:center;">
+        <div class="phone">
+          <div class="dynamic-island"></div>
+          <div class="phone-screen">
+            <div class="status-bar" data-status-bar></div>
+            <div class="screen-content">
+              <div class="widget-section-title">Écran d'accueil</div>
+              <div class="home-icons" id="home-icons"></div>
+              <div class="widget-gallery" id="home-widgets"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone">
+          <div class="dynamic-island"></div>
+          <div class="phone-screen">
+            <div class="screen-content" style="padding-top:20px;">
+              <div class="widget-section-title">Écran verrouillé</div>
+              <div class="lock-screen">
+                <div class="lock-time">9:41</div>
+                <div class="lock-widgets-row" id="lock-widgets"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="p007.js" defer></script>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        const events = window.P007.buildSampleEvents();
+
+        document.getElementById('home-icons').innerHTML = Array.from({ length: 12 })
+          .map(() => '<div class="home-icon"></div>')
+          .join('');
+
+        function renderHomeWidgets() {
+          document.getElementById('home-widgets').innerHTML =
+            window.P007.widgetPetitHTML(events[0]) +
+            window.P007.widgetMoyenHTML(events) +
+            window.P007.widgetGrandHTML(events);
+        }
+
+        function renderLockWidgets() {
+          document.getElementById('lock-widgets').innerHTML =
+            window.P007.widgetLockRectHTML(events[0]) + window.P007.widgetLockCircleHTML(events[1]);
+        }
+
+        renderHomeWidgets();
+        renderLockWidgets();
+        setInterval(() => {
+          renderHomeWidgets();
+          renderLockWidgets();
+        }, 60000);
+      });
+    </script>
+  </body>
+</html>

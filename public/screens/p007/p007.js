@@ -240,12 +240,31 @@
     return `<div class="widget--lock-circle"><span>${ev.emoji}</span><span>${c.days} j</span></div>`;
   }
 
+  // ---------- Barre de statut (heure, réseau, batterie), identique sur tous les écrans ----------
+
+  function statusBarHTML() {
+    return `
+      <span>9:41</span>
+      <span class="status-icons">
+        <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="7" width="3" height="5" rx="0.5" fill="currentColor"/><rect x="5" y="5" width="3" height="7" rx="0.5" fill="currentColor"/><rect x="10" y="3" width="3" height="9" rx="0.5" fill="currentColor"/><rect x="15" y="0" width="3" height="12" rx="0.5" fill="currentColor"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M8 10.5a1 1 0 100-2 1 1 0 000 2zM4.5 7.2a5 5 0 017 0M2 4.6a8.5 8.5 0 0112 0" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" aria-hidden="true"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="currentColor" fill="none"/><rect x="2" y="2" width="18" height="8" rx="1.5" fill="currentColor"/><rect x="22.5" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg>
+      </span>`;
+  }
+
+  function renderStatusBars() {
+    document.querySelectorAll('[data-status-bar]').forEach((el) => {
+      el.innerHTML = statusBarHTML();
+    });
+  }
+
   window.P007 = {
     THEME_KEY,
     getTheme,
     setTheme,
     applyTheme,
     initTheme,
+    renderStatusBars,
     startOfDay,
     addDays,
     daysBetween,
@@ -263,5 +282,8 @@
     widgetLockCircleHTML,
   };
 
-  document.addEventListener('DOMContentLoaded', initTheme);
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    renderStatusBars();
+  });
 })();

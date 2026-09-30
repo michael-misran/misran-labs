@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr" data-theme="papier">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Soon — Détail de l'événement</title>
+    <link rel="stylesheet" href="p007.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="page-toolbar">
+        <a class="back-link" href="liste.html">← Liste</a>
+        <h1>Détail</h1>
+        <span></span>
+      </div>
+
+      <div class="phone">
+        <div class="dynamic-island"></div>
+        <div class="phone-screen">
+          <div class="status-bar" data-status-bar></div>
+          <div class="screen-content" id="detail-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="p007.js" defer></script>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        const events = window.P007.buildSampleEvents();
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        const ev = events.find((e) => e.id === id) || events[0];
+        const root = document.getElementById('detail-content');
+
+        function render() {
+          const c = window.P007.getCountdown(ev.date);
+          const ratio = window.P007.progressRatio(ev.created, ev.date);
+          const showHms = c.days > 0;
+          root.innerHTML = `
+            <div class="detail-header">
+              <div class="emoji">${ev.emoji}</div>
+              <h2>${window.P007.escapeHtml(ev.name)}</h2>
+              <div class="date">${window.P007.formatFullDate(ev.date)}</div>
+            </div>
+            <div class="detail-countdown">
+              <span>${c.days}</span>
+              <span class="unit">jour${c.days === 1 ? '' : 's'}</span>
+            </div>
+            ${
+              showHms
+                ? `<div class="detail-hms">
+                    <div class="block"><div class="v">${String(c.hours).padStart(2, '0')}</div><div class="l">Heures</div></div>
+                    <div class="block"><div class="v">${String(c.minutes).padStart(2, '0')}</div><div class="l">Minutes</div></div>
+                    <div class="block"><div class="v" id="secs">${String(c.seconds).padStart(2, '0')}</div><div class="l">Secondes</div></div>
+                   </div>`
+                : `<p style="text-align:center; font-weight:700;">${window.P007.dayLabel(c.days)}</p>`
+            }
+            <div class="detail-progress">
+              <div class="widget-progress"><span style="width:${Math.round(ratio * 100)}%"></span></div>
+            </div>
+            <div class="detail-actions">
+              <button class="btn" type="button" onclick="window.location.href='creation.html?id=' + encodeURIComponent('${ev.id}')">Modifier</button>
+              <button class="btn primary" type="button" onclick="alert('Partage indisponible dans cette maquette.')">Partager</button>
+            </div>`;
+        }
+
+        render();
+        // Les secondes avancent en direct (D8) ; le reste se met à jour chaque minute.
+        let tick = 0;
+        setInterval(() => {
+          tick += 1;
+          if (tick % 60 === 0) {
+            render();
+          } else {
+            const secs = document.getElementById('secs');
+            if (secs) {
+              const c = window.P007.getCountdown(ev.date);
+              secs.textContent = String(c.seconds).padStart(2, '0');
+            }
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
