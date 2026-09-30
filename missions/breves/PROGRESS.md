@@ -1,8 +1,11 @@
 # Mission breves — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 5 (navigation Sidebar.jsx + ui.js)
+**Prochaine action :** étape 6 (aperçus et sitemap dans scripts/share-previews.js)
 **Blocages :** aucun
+
+## Étape 5 (2026-09-30)
+Entrée « Brèves » ajoutée dans `Sidebar.jsx`, juste sous « Magazine » dans la même section (pas de nouvelle `NavSectionLabel`, `end={false}`) ; libellés `brevesNav` (fr « Brèves », en « Briefs ») dans `ui.js`. Fait par le sous-agent `general-purpose` (Haiku) selon le plan ; diff relu avant commit, conforme. `npm run lint` passe.
 
 ## Étape 4 (2026-09-30)
 `brevesText.js` (textes fr/en + table RUBRIQUES ia/tech, réutilise `formatDateShort`/`formatDateLong` du Magazine), `BrevesParts.jsx` (RubriqueMark, SourceLinks, BreveCard, WordFigureBox, DayRow — mêmes principes que MagazineParts, adaptés), `BrevesHome.jsx` et `BrevesJour.jsx` (réutilisent `MagazineHero`/`MagazineMasthead` du Magazine, `CaseMasthead`/`CaseMetaRow`/`CaseFooter` de CaseFile, `SectionTitle`/`Tag` du design-system). Routes `/breves` et `/breves/:date` ajoutées en `lazy` dans `App.jsx`. `npm run build` et `npm run lint` passent.

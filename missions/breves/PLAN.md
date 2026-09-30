@@ -8,7 +8,7 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 2. `src/breves/FORMAT.md` + `src/breves/jours.js` (chargement et validation, D2-D4, sur le modèle de `src/magazine/numeros.js`) → session principale (Sonnet)
 - [x] 3. Premier jour réel `src/breves/jours/2026-09-30.json` (D8, résumés fr + traduction en) → session principale (Sonnet)
 - [x] 4. `brevesText.js`, pages `BrevesHome.jsx` et `BrevesJour.jsx`, routes dans `App.jsx` (D5) → session principale (Sonnet)
-- [ ] 5. Entrée de navigation `Sidebar.jsx` + libellés `ui.js` (D6) → sous-agent (Haiku)
+- [x] 5. Entrée de navigation `Sidebar.jsx` + libellés `ui.js` (D6) → sous-agent (Haiku)
 - [ ] 6. Aperçus et sitemap dans `scripts/share-previews.js` (D7) → session principale (Sonnet)
 - [ ] 7. `src/breves/EXTRACTION.md` (D9) → session principale (Sonnet)
 - [ ] 8. Vérification finale : build, lint, greps (critères 6, 7, 9, 10) par la session principale ; navigateur, critères 1 à 5 → verificateur (Haiku)
