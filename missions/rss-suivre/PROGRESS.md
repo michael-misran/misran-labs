@@ -1,7 +1,7 @@
 # Mission rss-suivre — PROGRESS
 
-**Statut :** étape 7 terminée
-**Prochaine action :** étape 8 (RAPPORT.md)
+**Statut :** mission terminée (RAPPORT.md écrit)
+**Prochaine action :** aucune — clôture (push + PR) réservée à une session interactive avec Michael
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, main b6663e8)

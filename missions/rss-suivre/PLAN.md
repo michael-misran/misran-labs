@@ -11,4 +11,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 5. Aperçu de partage et sitemap de `/suivre` (D3, D6) ; build (critère 5) → sous-agent (Haiku)
 - [x] 6. Vérification dans le navigateur (`npx vite preview`) : critères 3, 6, 7, 8, 9 ; captures (`/suivre` desktop et 375 px, menu) → verificateur (Haiku). Rappel : tester « Copié ✓ » en cliquant et en lisant dans un seul appel
 - [x] 7. Corrections éventuelles, vérification finale : build, lint, critère 11 (relire les URL et `@` ajoutés dans `git diff main...`) → session principale (Sonnet)
-- [ ] 8. RAPPORT.md (captures, recommandations hors périmètre) → session principale (Sonnet)
+- [x] 8. RAPPORT.md (captures, recommandations hors périmètre) → session principale (Sonnet)
