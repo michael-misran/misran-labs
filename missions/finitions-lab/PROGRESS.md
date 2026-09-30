@@ -1,8 +1,13 @@
 # Mission finitions-lab — PROGRESS
 
-**Statut :** étape 2 terminée
-**Prochaine action :** étape 3 (lien « Suivre » sur l'accueil, D2)
+**Statut :** étape 3 terminée
+**Prochaine action :** étape 4 (relevé de référence audit, verificateur)
 **Blocages :** aucun
+
+## Étape 3 — lien « Suivre » sur l'accueil (D2)
+- `src/modules/ArchiveHome.jsx` : clé `magFollow` ajoutée dans `COPY.fr` (« Suivre le Lab ») et `COPY.en` (« Follow the Lab »).
+- Troisième `Link` ajouté dans la rangée de `LatestIssue`, `to="/suivre"`, `marginLeft: 'auto'`, même style que `magAll` (mono 10 px, `letterSpacing: '0.08em'`, `--text2`, sans soulignement) ; le `◉` dans un `<span>` en `--primary`.
+- Vérifié avec `vite preview` : lien visible sur `/`, clic → navigation vers `/suivre` sans rechargement (SPA, pas d'erreur console), à 375 px `scrollWidth === clientWidth` (aucun débordement horizontal).
 
 ## Étape 2 — moteur Godot partagé (D1)
 - `public/games/godot-engine/` créé, contient `index.js`, `index.wasm`, `index.audio.worklet.js`, `index.audio.position.worklet.js` (déplacés depuis v0.1 par `git mv`), supprimés de v0.2 par `git rm`.

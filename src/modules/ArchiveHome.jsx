@@ -39,6 +39,7 @@ const COPY = {
     magLabel: 'MAGAZINE — DERNIER NUMÉRO',
     magRead: 'Lire le numéro',
     magAll: 'Tous les numéros',
+    magFollow: 'Suivre le Lab',
     indexTitle: 'DOSSIERS',
     indexSub: 'Classés par ordre d’ouverture, pas par importance.',
     keywords: 'MOTS-CLÉS',
@@ -71,6 +72,7 @@ const COPY = {
     magLabel: 'MAGAZINE — LATEST ISSUE',
     magRead: 'Read the issue',
     magAll: 'All issues',
+    magFollow: 'Follow the Lab',
     indexTitle: 'FILES',
     indexSub: 'Ordered by when they were opened, not by importance.',
     keywords: 'KEYWORDS',
@@ -252,6 +254,9 @@ function LatestIssue({ c, lang, isMobile }) {
         </Link>
         <Link to="/magazine" style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)', textDecoration: 'none' }}>
           {c.magAll} →
+        </Link>
+        <Link to="/suivre" style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)', textDecoration: 'none', marginLeft: 'auto' }}>
+          <span style={{ color: 'var(--primary)' }}>◉</span> {c.magFollow} →
         </Link>
       </div>
     </div>
