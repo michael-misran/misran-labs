@@ -1,7 +1,7 @@
 # Mission p007-maquettes — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 6 (`index.html`, sous-agent Haiku)
+**Prochaine action :** étape 7 (vérification navigateur, verificateur Haiku)
 **Blocages :** aucun
 
 ## État initial (2026-09-30, relevé au cadrage)
@@ -25,4 +25,8 @@
 ## Étape 5 (faite, 2026-10-01)
 - `creation.html` : champs nom/date/heure, grille de 12 emoji, 4 couleurs de carte Pop, interrupteur « Répéter chaque année » (factice), aperçu du widget petit mis à jour en direct (`input`/`click`) sans recharger la page.
 - `pro.html` : « Soon Pro », 1,99 € en achat unique (argument mis en avant), 4 avantages, bouton d'achat et lien de restauration factices (alertes).
+- `npm run lint` : 0 erreur.
+
+## Étape 6 (faite, 2026-10-01)
+- `index.html` créé par un sous-agent Haiku (voir DELEGATIONS.md) : 5 cartes vers chaque écran, sélecteur de thème (`data-theme-select`), mention « Nom provisoire ». Relu, accepté sans modification.
 - `npm run lint` : 0 erreur.
