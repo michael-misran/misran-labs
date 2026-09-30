@@ -1,7 +1,7 @@
 # Mission jeux-geste — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 4 (aperçus de partage + sitemap génériques, verifier-routes.mjs)
+**Prochaine action :** étape 5 (jeu : geste-parfait/meta.js, Jeu.jsx, défis chrono et verre)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur `main` 8a410ca)
@@ -30,3 +30,8 @@
 - `i18n/ui.js` : clés `navSectionJeux`, `jeuxNav` en fr/en.
 - Correction en cours de route : `registre.js` construit désormais `lazy(charger)` une seule fois au chargement du module (et non dans `JeuPage` à chaque rendu) — la nouvelle règle eslint `react-hooks/static-components` interdisait de créer un composant pendant le rendu, même mémoïsé à la main.
 - `npm run build` et `npm run lint` : passent.
+
+## Étape 4 (faite, 2026-10-01)
+- `scripts/share-previews.js` : `collectJeux(rootDir)` lit génériquement `src/jeux/*/meta.js` par `import()` dynamique (comme `collectLabProjects` pour `projects.js`), valide slug/titre/accroche, ignore avec avertissement si invalide. `/jeux` ajouté en page fixe (`JEUX_FIXED`, image `og-image.png` réutilisée). `npm run build` : sitemap passe de 30 à 31 URL (`/jeux` ; `/jeux/geste-parfait` apparaîtra à l'étape 5), `dist/jeux/index.html` contient le bon titre/description dans les balises og.
+- `missions/vrai-404/verifier-routes.mjs` : `/jeux/inconnu` ajouté à `attendues404`. `/jeux` et `/jeux/geste-parfait` pas ajoutés en dur (déjà couverts via `lireSitemap()`) — voir DECISIONS.md. Script rejoué : 52 adresses vérifiées, 0 échec.
+- `npm run lint` : 0 erreur.

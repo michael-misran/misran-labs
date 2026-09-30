@@ -29,6 +29,11 @@ const SUIVRE_FIXED = {
   description: 'Pas de compte à créer : un lecteur RSS ou un réseau, et les nouveautés viennent à vous.',
   image: 'og-image.png',
 }
+const JEUX_FIXED = {
+  title: 'Jeux — petits défis quotidiens · Misran Labs',
+  description: 'Un mini-jeu par jour, noté sur 100 et partageable en un clic, façon neal.fun.',
+  image: 'og-image.png',
+}
 
 // Échappe une valeur pour un attribut HTML.
 function escapeHtml(value) {
@@ -237,6 +242,42 @@ export function collectProjetsIdees(rootDir) {
   return pages
 }
 
+// Lecture générique de src/jeux/*/meta.js (D3) : pas de liste codée en dur,
+// un jeu de plus = un dossier de plus, lu automatiquement au build.
+async function collectJeux(rootDir) {
+  const dir = path.join(rootDir, 'src/jeux')
+  if (!fs.existsSync(dir)) return []
+  const pages = []
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+    if (!entry.isDirectory()) continue
+    const metaPath = path.join(dir, entry.name, 'meta.js')
+    if (!fs.existsSync(metaPath)) continue
+
+    let meta
+    try {
+      const mod = await import(metaPath)
+      meta = mod.default ?? mod
+    } catch (err) {
+      console.warn(`[share-previews] jeu ignoré (import impossible) : ${entry.name} — ${err.message}`)
+      continue
+    }
+
+    if (!meta || meta.slug !== entry.name || !meta.titre?.fr || !meta.accroche?.fr) {
+      console.warn(`[share-previews] jeu ignoré (meta.js invalide) : ${entry.name}`)
+      continue
+    }
+
+    pages.push({
+      path: `/jeux/${meta.slug}`,
+      title: `${meta.titre.fr} · Jeux — Misran Labs`,
+      description: normalizeAndTruncate(meta.accroche.fr),
+      image: JEUX_FIXED.image,
+      type: 'website',
+    })
+  }
+  return pages
+}
+
 async function collectLabProjects(rootDir) {
   const mod = await import(path.join(rootDir, 'src/lab/projects.js'))
   return mod.visibleProjects().map((p) => ({
@@ -299,6 +340,7 @@ export function sharePreviewsPlugin() {
       const magazinePages = collectMagazineNumeros(rootDir)
       const brevesPages = collectBrevesJours(rootDir)
       const projetsPages = collectProjetsIdees(rootDir)
+      const jeuxPages = await collectJeux(rootDir)
 
       const pages = [
         { path: '/magazine', title: MAGAZINE_FIXED.title, description: MAGAZINE_FIXED.description, image: MAGAZINE_FIXED.image, type: 'website' },
@@ -306,9 +348,11 @@ export function sharePreviewsPlugin() {
         { path: '/projets', title: PROJETS_FIXED.title, description: PROJETS_FIXED.description, image: PROJETS_FIXED.image, type: 'website' },
         { path: '/projets/fonctionnement', title: PROJETS_FONCTIONNEMENT_FIXED.title, description: PROJETS_FONCTIONNEMENT_FIXED.description, image: PROJETS_FONCTIONNEMENT_FIXED.image, type: 'website' },
         { path: '/suivre', title: SUIVRE_FIXED.title, description: SUIVRE_FIXED.description, image: SUIVRE_FIXED.image, type: 'website' },
+        { path: '/jeux', title: JEUX_FIXED.title, description: JEUX_FIXED.description, image: JEUX_FIXED.image, type: 'website' },
         ...magazinePages,
         ...brevesPages,
         ...projetsPages,
+        ...jeuxPages,
         ...(await collectLabProjects(rootDir)),
       ]
 
