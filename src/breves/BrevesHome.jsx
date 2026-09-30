@@ -20,7 +20,7 @@ export default function BrevesHome() {
   const previousDays = days.slice(1)
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <CaseMasthead
         c={{ fileNo: t.fileNo, mastheadCenter: t.mastheadCenter, mastheadRight: t.mastheadRight, mastheadRightSub: t.mastheadRightSub }}
         lang={lang}
@@ -45,11 +45,11 @@ export default function BrevesHome() {
       ) : (
         <>
           <SectionTitle>{t.todayTitle}</SectionTitle>
-          <div style={{ marginBottom: 16 }}>
+          <div style={{ marginBottom: 'var(--space-md)' }}>
             <Tag>{formatDateLong(today.date, lang).toUpperCase()}</Tag>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 24 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)', marginBottom: 'var(--space-lg)' }}>
             {today.breves.map((breve, i) => (
               <BreveCard key={i} breve={breve} lang={lang} />
             ))}

@@ -11,7 +11,7 @@ export default function AlertBanner({ title, children, icon = 'info' }) {
       style={{
         display: 'flex',
         alignItems: 'flex-start',
-        gap: 12,
+        gap: 'var(--space-sm)',
         background: 'var(--primary-surface)',
         color: 'var(--on-primary-surface)',
         boxShadow: 'var(--elev-3)',

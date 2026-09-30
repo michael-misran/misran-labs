@@ -214,13 +214,13 @@ export default function AuditTokens({ project }) {
 
   return (
     <>
-    <div className="no-print" style={{ padding: isMobile ? 20 : 40, fontFamily: 'var(--font-body)', color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div className="no-print" style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: 'var(--font-body)', color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <CaseMasthead c={page} lang={lang} />
       <CaseHero project={project} c={page} />
 
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--prose)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 8px' }}>{c.intro}</p>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 8px' }}>{c.formats}</p>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, color: 'var(--text)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 24px' }}>{c.privacy}</p>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--prose)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 var(--space-xs)' }}>{c.intro}</p>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 var(--space-xs)' }}>{c.formats}</p>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, color: 'var(--text)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 var(--space-lg)' }}>{c.privacy}</p>
 
       {/* --- Entrée ------------------------------------------------------ */}
       <div
@@ -237,13 +237,13 @@ export default function AuditTokens({ project }) {
         style={{
           border: `var(--border-thin) ${survol ? 'dashed' : 'solid'} ${survol ? 'var(--primary)' : 'var(--border)'}`,
           background: survol ? 'var(--active-tint)' : 'var(--bg2)',
-          padding: 16,
-          marginBottom: 16,
+          padding: 'var(--space-md)',
+          marginBottom: 'var(--space-md)',
         }}
       >
         <SourceGithub c={c} lang={lang} onAnalyser={analyserDepot} />
 
-        <div style={{ ...FORMAT_LABEL_MONO, marginBottom: 8 }}>{c.inputTitle} — {c.pasteLabel}</div>
+        <div style={{ ...FORMAT_LABEL_MONO, marginBottom: 'var(--space-xs)' }}>{c.inputTitle} — {c.pasteLabel}</div>
         <textarea
           value={texte}
           onChange={(e) => setTexte(e.target.value)}
@@ -261,14 +261,14 @@ export default function AuditTokens({ project }) {
             color: 'var(--text)',
             background: 'var(--bg)',
             border: 'var(--border-thin) solid var(--border)',
-            padding: 10,
+            padding: 'var(--space-xs-plus)',
             resize: 'vertical',
             overflowX: 'auto',
             whiteSpace: 'pre',
           }}
         />
 
-        <div style={{ ...FORMAT_LABEL_MONO, margin: '14px 0 8px' }}>{c.pickLabel}</div>
+        <div style={{ ...FORMAT_LABEL_MONO, margin: '14px 0 var(--space-xs)' }}>{c.pickLabel}</div>
         <label style={{ display: 'inline-block', position: 'relative' }}>
           <input
             type="file"
@@ -290,14 +290,14 @@ export default function AuditTokens({ project }) {
               color: 'var(--text)',
               background: 'var(--bg3)',
               border: 'var(--border-thin) solid var(--border)',
-              padding: '8px 14px',
+              padding: 'var(--space-xs) 14px',
               cursor: 'pointer',
             }}
           >
             {c.pickButton}
           </span>
         </label>
-        <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--muted)', marginLeft: 12 }}>{c.dropHint}</span>
+        <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--muted)', marginLeft: 'var(--space-sm)' }}>{c.dropHint}</span>
 
         {fichiers.length > 0 && (
           <div style={{ marginTop: 14 }}>
@@ -306,7 +306,7 @@ export default function AuditTokens({ project }) {
               {fichiers.map((f) => (
                 <li
                   key={f.id}
-                  style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4px 12px', padding: '6px 10px', borderBottom: 'var(--border-thin) solid var(--grid-line)', background: 'var(--bg)' }}
+                  style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--space-2xs) var(--space-sm)', padding: '6px var(--space-xs-plus)', borderBottom: 'var(--border-thin) solid var(--grid-line)', background: 'var(--bg)' }}
                 >
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text)', flex: '1 1 160px', overflowWrap: 'anywhere' }}>{f.nom}</span>
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: f.info.format ? 'var(--text2)' : 'var(--error)' }}>
@@ -316,7 +316,7 @@ export default function AuditTokens({ project }) {
                     type="button"
                     onClick={() => retirer(f.id)}
                     aria-label={`${c.remove} ${f.nom}`}
-                    style={{ fontFamily: 'var(--font-mono)', fontSize: 10, textTransform: 'uppercase', color: 'var(--text2)', background: 'transparent', border: 'var(--border-thin) solid var(--border)', padding: '2px 8px', cursor: 'pointer' }}
+                    style={{ fontFamily: 'var(--font-mono)', fontSize: 10, textTransform: 'uppercase', color: 'var(--text2)', background: 'transparent', border: 'var(--border-thin) solid var(--border)', padding: 'var(--space-3xs) var(--space-xs)', cursor: 'pointer' }}
                   >
                     {c.remove} ✕
                   </button>
@@ -327,9 +327,9 @@ export default function AuditTokens({ project }) {
         )}
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10, marginBottom: 32 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--space-xs-plus)', marginBottom: 'var(--space-xl)' }}>
         <Bouton principal onClick={() => lancerAnalyse(fichiers, texte)}>{c.analyze}</Bouton>
-        <span style={{ ...FORMAT_LABEL_MONO, marginLeft: 8 }}>{c.examplesLabel}</span>
+        <span style={{ ...FORMAT_LABEL_MONO, marginLeft: 'var(--space-xs)' }}>{c.examplesLabel}</span>
         {Object.keys(EXEMPLES).map((cle) => (
           <Bouton key={cle} onClick={() => chargerModele(EXEMPLES[cle])}>{c.examples[cle]}</Bouton>
         ))}
@@ -339,10 +339,10 @@ export default function AuditTokens({ project }) {
       {/* --- Résultat ---------------------------------------------------- */}
       {resultat && (
         <div aria-live="polite">
-          <div style={{ ...FORMAT_LABEL_MONO, marginBottom: 10 }}>{c.resultsTitle}</div>
+          <div style={{ ...FORMAT_LABEL_MONO, marginBottom: 'var(--space-xs-plus)' }}>{c.resultsTitle}</div>
 
           {resultat.avertissements.length > 0 && (
-            <div style={{ border: 'var(--border-thin) solid var(--border)', background: 'var(--bg2)', padding: '10px 14px', marginBottom: 16 }}>
+            <div style={{ border: 'var(--border-thin) solid var(--border)', background: 'var(--bg2)', padding: 'var(--space-xs-plus) 14px', marginBottom: 'var(--space-md)' }}>
               <div style={{ ...FORMAT_LABEL_MONO, marginBottom: 6 }}>{c.warningsTitle}</div>
               <ul style={{ margin: 0, paddingLeft: 18 }}>
                 {resultat.avertissements.map((a, i) => (
@@ -364,10 +364,10 @@ export default function AuditTokens({ project }) {
           )}
 
           {lieuVide ? (
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text2)', margin: '0 0 12px' }}>{couverture ? c.gh.noTokensRepo : c.noTokens}</p>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text2)', margin: '0 0 var(--space-sm)' }}>{couverture ? c.gh.noTokensRepo : c.noTokens}</p>
           ) : (
             <>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 12 }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-xs-plus)', marginBottom: 'var(--space-sm)' }}>
                 <Tuile label={c.summary.files} valeur={resume.fichiers} />
                 <Tuile label={c.summary.tokens} valeur={resume.tokens} note={Object.entries(resume.tokensParFormat).map(([f, n]) => `${c.formatNames[f]} ${n}`).join(' · ')} />
                 <Tuile label={c.summary.healthy} valeur={`${Math.round(resume.partSaine * 100)} %`} note={c.summary.healthyNote} />
@@ -375,19 +375,19 @@ export default function AuditTokens({ project }) {
                   <Tuile key={g} label={c.severities[g].toUpperCase()} valeur={resume.constatsParGravite[g]} />
                 ))}
               </div>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--muted)', marginBottom: 20, overflowWrap: 'anywhere' }}>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--muted)', marginBottom: 'var(--space-md-plus)', overflowWrap: 'anywhere' }}>
                 {c.summary.byType} : {Object.entries(resume.tokensParType).map(([t, n]) => `${t === 'inconnu' ? c.summary.unknownType : t} ${n}`).join(' · ')}
               </div>
 
               {resultat.constats.length === 0 ? (
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, fontWeight: 600, color: 'var(--text)', border: 'var(--border-thin) solid var(--border)', borderLeft: 'var(--border-thick) solid var(--primary)', background: 'var(--bg2)', padding: '14px 16px', margin: '0 0 24px' }}>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, fontWeight: 600, color: 'var(--text)', border: 'var(--border-thin) solid var(--border)', borderLeft: 'var(--border-thick) solid var(--primary)', background: 'var(--bg2)', padding: '14px var(--space-md)', margin: '0 0 var(--space-lg)' }}>
                   {c.allClear}
                 </p>
               ) : (
                 <>
-                  <div style={{ marginBottom: 12 }}>
-                    <div style={{ ...FORMAT_LABEL_MONO, marginBottom: 8 }}>{c.filterLabel}</div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  <div style={{ marginBottom: 'var(--space-sm)' }}>
+                    <div style={{ ...FORMAT_LABEL_MONO, marginBottom: 'var(--space-xs)' }}>{c.filterLabel}</div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-xs)' }}>
                       {GRAVITES.map((g) => (
                         <FiltreGravite
                           key={g}
@@ -415,7 +415,7 @@ export default function AuditTokens({ project }) {
           {couverture && <Couverture couverture={couverture} c={c} />}
 
           {rapportDisponible && (
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 8 }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-xs-plus)', marginTop: 'var(--space-xs)' }}>
               <Bouton onClick={copierRapport}>{copie ? c.copied : c.copyReport}</Bouton>
               <Bouton principal onClick={() => window.print()}>{c.grille.exportPdf}</Bouton>
             </div>

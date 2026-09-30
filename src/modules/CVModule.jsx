@@ -4,7 +4,7 @@ import { CaseMasthead, CaseHero, CaseFooter } from '../lab/CaseFile'
 
 function SectionHeader({ children }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 8 }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', marginBottom: 'var(--space-xs)' }}>
       <span
         style={{
           fontFamily: "var(--font-mono)",
@@ -36,7 +36,7 @@ function Bullets({ items }) {
 
 function RoleHeader({ title, date, size = 13 }) {
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12, marginBottom: 4, flexWrap: 'wrap' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 'var(--space-sm)', marginBottom: 'var(--space-2xs)', flexWrap: 'wrap' }}>
       <span style={{ fontFamily: "var(--font-heading)", fontSize: size, fontWeight: 600, color: 'var(--text)' }}>
         {title}
       </span>
@@ -174,7 +174,7 @@ export default function CVModule({ project }) {
   return (
     <div
       style={{
-        padding: isMobile ? 20 : 32,
+        padding: isMobile ? 'var(--space-md-plus)' : 'var(--space-xl)',
         fontFamily: "var(--font-body)",
         color: 'var(--text)',
         maxWidth: 820,
@@ -183,7 +183,7 @@ export default function CVModule({ project }) {
     >
       <CaseMasthead c={c} lang={lang} />
       <CaseHero project={project} c={{ ...c, title: 'Michael Misran', role: c.subtitle }}>
-        <div style={{ padding: '12px 24px' }}>
+        <div style={{ padding: 'var(--space-sm) var(--space-lg)' }}>
           <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: 6 }}>{c.contactLabel}</div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 18px', fontSize: 12, color: 'var(--text2)' }}>
             <span>{c.location}</span>
@@ -208,7 +208,7 @@ export default function CVModule({ project }) {
       {/* Expertise */}
       <div style={{ marginBottom: 18 }}>
         <SectionHeader>{c.labels.expertise}</SectionHeader>
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '8px 24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 'var(--space-xs) var(--space-lg)' }}>
           {c.expertise.map(item => (
             <div key={item.label} style={{ fontSize: 12.5, color: 'var(--text2)', lineHeight: 1.45 }}>
               <strong style={{ color: 'var(--text)' }}>{item.label} : </strong>
@@ -230,12 +230,12 @@ export default function CVModule({ project }) {
         <div style={{ marginBottom: 14 }}>
           <RoleHeader title={c.iadTitle} />
 
-          <div style={{ paddingLeft: 16, borderLeft: 'var(--border-regular) solid var(--border)', marginBottom: 8 }}>
+          <div style={{ paddingLeft: 'var(--space-md)', borderLeft: 'var(--border-regular) solid var(--border)', marginBottom: 'var(--space-xs)' }}>
             <RoleHeader title={c.iadDesignTitle} date={c.iadDesignDate} size={13} />
             <Bullets items={c.iadDesignBullets} />
           </div>
 
-          <div style={{ paddingLeft: 16, borderLeft: 'var(--border-regular) solid var(--border)' }}>
+          <div style={{ paddingLeft: 'var(--space-md)', borderLeft: 'var(--border-regular) solid var(--border)' }}>
             <RoleHeader title={c.iadDevTitle} date={c.iadDevDate} size={13} />
             <Bullets items={c.iadDevBullets} />
           </div>

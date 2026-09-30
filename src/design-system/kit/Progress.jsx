@@ -11,7 +11,7 @@ export function ProgressBar({ value = 0, label, showValue = true }) {
   return (
     <div style={{ fontFamily: 'var(--font-body)' }}>
       {(label || showValue) && (
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--text2)', marginBottom: 8 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--text2)', marginBottom: 'var(--space-xs)' }}>
           <span>{label}</span>
           {showValue && <span style={{ fontWeight: 600 }}>{pct}%</span>}
         </div>
@@ -71,7 +71,7 @@ export function Skeleton({ rows = 3, label = 'Contenu en cours de chargement' })
   const widths = ['100%', '92%', '64%', '80%', '48%']
 
   return (
-    <div aria-busy="true" aria-label={label} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+    <div aria-busy="true" aria-label={label} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xs-plus)' }}>
       {Array.from({ length: rows }, (_, i) => (
         <span
           key={i}

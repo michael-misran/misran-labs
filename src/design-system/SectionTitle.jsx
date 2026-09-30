@@ -2,7 +2,7 @@
 // Change the look here — color, size, the trailing rule — and it propagates everywhere.
 export default function SectionTitle({ children }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', marginBottom: 'var(--space-md)' }}>
       <span
         style={{
           fontFamily: "var(--font-mono)",

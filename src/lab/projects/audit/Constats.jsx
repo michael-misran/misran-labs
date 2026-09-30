@@ -23,7 +23,7 @@ export function PastilleGravite({ gravite, label }) {
         textTransform: 'uppercase',
         color: 'var(--text)',
         border: `var(--border-thin) solid ${ACCENT_GRAVITE[gravite]}`,
-        padding: '2px 6px',
+        padding: 'var(--space-3xs) 6px',
         whiteSpace: 'nowrap',
       }}
     >
@@ -50,7 +50,7 @@ export function FiltreGravite({ gravite, label, nombre, actif, onClick }) {
         color: actif ? 'var(--text)' : 'var(--muted)',
         background: actif ? 'var(--bg2)' : 'var(--bg3)',
         border: `var(--border-thin) solid ${actif ? ACCENT_GRAVITE[gravite] : 'var(--border)'}`,
-        padding: '7px 12px',
+        padding: '7px var(--space-sm)',
         cursor: 'pointer',
         fontWeight: actif ? 700 : 400,
       }}
@@ -77,9 +77,9 @@ export function GroupeRegle({ groupe, c, lang }) {
   const regle = c.rules[groupe.id]
 
   return (
-    <section style={{ border: 'var(--border-thin) solid var(--border)', marginBottom: 16, background: 'var(--bg2)' }}>
-      <header style={{ padding: '10px 14px', borderBottom: 'var(--border-thin) solid var(--border)', background: 'var(--bg3)' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
+    <section style={{ border: 'var(--border-thin) solid var(--border)', marginBottom: 'var(--space-md)', background: 'var(--bg2)' }}>
+      <header style={{ padding: 'var(--space-xs-plus) 14px', borderBottom: 'var(--border-thin) solid var(--border)', background: 'var(--bg3)' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--space-xs-plus)' }}>
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, fontWeight: 700, color: 'var(--primary)' }}>{groupe.id}</span>
           <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 16, margin: 0, color: 'var(--text)' }}>{regle.titre}</h3>
           {groupe.gravites.map((g) => (
@@ -99,7 +99,7 @@ export function GroupeRegle({ groupe, c, lang }) {
             <li
               key={i}
               style={{
-                padding: '10px 14px',
+                padding: 'var(--space-xs-plus) 14px',
                 borderBottom: 'var(--border-thin) solid var(--grid-line)',
                 borderLeft: `var(--border-thick) solid ${ACCENT_GRAVITE[k.gravite]}`,
               }}
@@ -131,14 +131,14 @@ export function GroupeRegle({ groupe, c, lang }) {
                 {k.detail[lang] ?? k.detail.fr}
               </p>
               {lieu && (
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--muted)', marginTop: 4, overflowWrap: 'anywhere' }}>{lieu}</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--muted)', marginTop: 'var(--space-2xs)', overflowWrap: 'anywhere' }}>{lieu}</div>
               )}
             </li>
           )
         })}
       </ul>
       {reste > 0 && (
-        <div style={{ padding: '10px 14px' }}>
+        <div style={{ padding: 'var(--space-xs-plus) 14px' }}>
           <Bouton onClick={() => setTout(true)}>{c.showMore(reste)}</Bouton>
         </div>
       )}

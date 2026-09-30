@@ -25,7 +25,7 @@ export default function Badge({ children, tone = 'soft' }) {
         fontSize: 11,
         fontWeight: 600,
         lineHeight: 1,
-        padding: '5px 10px',
+        padding: '5px var(--space-xs-plus)',
       }}
     >
       {children}

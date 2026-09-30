@@ -12,9 +12,9 @@ function MethodCoverage({ steps, lang, coverageLabel }) {
   const statusMap = STATUS[lang] ?? STATUS.fr
 
   return (
-    <div style={{ marginBottom: 32 }}>
+    <div style={{ marginBottom: 'var(--space-xl)' }}>
       <SectionTitle>{coverageLabel}</SectionTitle>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-xs)' }}>
         {steps.map((step, i) => {
           const s = statusMap[step.status] ?? statusMap.skipped
           const color = step.status === 'skipped' ? statusMap.skipped.color : METHOD_STEP_COLORS[i]
@@ -26,7 +26,7 @@ function MethodCoverage({ steps, lang, coverageLabel }) {
                 display: 'flex',
                 alignItems: 'center',
                 gap: 6,
-                padding: '5px 10px',
+                padding: '5px var(--space-xs-plus)',
                 borderRadius: 'var(--radius-xs)',
                 border: `var(--border-thin) solid ${color}`,
                 background: `color-mix(in srgb, ${color} 12%, transparent)`,
@@ -62,7 +62,7 @@ function MethodCoverage({ steps, lang, coverageLabel }) {
 function MethodStep({ n, title, children }) {
   return (
     <li>
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 6 }}>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-xs-plus)', marginBottom: 6 }}>
         <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', flexShrink: 0 }}>
           {n}
         </span>
@@ -77,9 +77,9 @@ function MethodStep({ n, title, children }) {
 
 function StatusList({ title, items, color }) {
   return (
-    <div style={{ marginBottom: 20 }}>
+    <div style={{ marginBottom: 'var(--space-md-plus)' }}>
       {title && (
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color, letterSpacing: '0.08em', marginBottom: 8 }}>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color, letterSpacing: '0.08em', marginBottom: 'var(--space-xs)' }}>
           {title}
         </div>
       )}
@@ -97,11 +97,11 @@ function RoadmapCard({ version, statusLabel, statusColor, items }) {
         background: 'var(--bg2)',
         border: 'var(--border-thin) solid var(--border)',
         borderRadius: 'var(--radius-xl)',
-        padding: 20,
-        marginBottom: 16,
+        padding: 'var(--space-md-plus)',
+        marginBottom: 'var(--space-md)',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs-plus)', marginBottom: 'var(--space-sm)' }}>
         <span style={{ fontFamily: "var(--font-heading)", fontSize: 16, fontWeight: 600, color: 'var(--text)' }}>
           {version}
         </span>
@@ -112,7 +112,7 @@ function RoadmapCard({ version, statusLabel, statusColor, items }) {
             color: statusColor,
             border: `var(--border-thin) solid ${statusColor}`,
             borderRadius: 'var(--radius-xs)',
-            padding: '2px 8px',
+            padding: 'var(--space-3xs) var(--space-xs)',
             whiteSpace: 'nowrap',
           }}
         >
@@ -135,25 +135,25 @@ function BugCard({ title, symptomLabel, symptom, causeLabel, cause, fixLabel, fi
         border: 'var(--border-thin) solid var(--border)',
         borderLeft: `var(--border-thick) solid ${color}`,
         borderRadius: 'var(--radius-md)',
-        padding: 20,
-        marginBottom: 16,
+        padding: 'var(--space-md-plus)',
+        marginBottom: 'var(--space-md)',
       }}
     >
-      <div style={{ fontFamily: "var(--font-heading)", fontSize: 15, fontWeight: 600, color: 'var(--text)', marginBottom: 12 }}>
+      <div style={{ fontFamily: "var(--font-heading)", fontSize: 15, fontWeight: 600, color: 'var(--text)', marginBottom: 'var(--space-sm)' }}>
         {title}
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xs-plus)' }}>
         <div>
           <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.08em' }}>{symptomLabel}</span>
-          <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{symptom}</p>
+          <p style={{ margin: 'var(--space-2xs) 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{symptom}</p>
         </div>
         <div>
           <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.08em' }}>{causeLabel}</span>
-          <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{cause}</p>
+          <p style={{ margin: 'var(--space-2xs) 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{cause}</p>
         </div>
         <div>
           <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color, letterSpacing: '0.08em' }}>{fixLabel}</span>
-          <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{fix}</p>
+          <p style={{ margin: 'var(--space-2xs) 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{fix}</p>
         </div>
       </div>
     </div>
@@ -170,20 +170,20 @@ function SessionCard({ date, title, summary, what, decision, whatLabel, decision
         border: `var(--border-thin) solid ${open ? 'var(--primary)' : 'var(--border)'}`,
         borderLeft: `var(--border-thick) solid ${open ? 'var(--primary)' : 'var(--border)'}`,
         borderRadius: 'var(--radius-md)',
-        padding: 20,
-        marginBottom: 12,
+        padding: 'var(--space-md-plus)',
+        marginBottom: 'var(--space-sm)',
         cursor: 'pointer',
         transition: 'border-color 0.15s ease',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)' }}>
         <div style={{ flex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs-plus)', marginBottom: 6, flexWrap: 'wrap' }}>
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.06em' }}>
               {date}
             </span>
           </div>
-          <div style={{ fontFamily: "var(--font-heading)", fontSize: 15, fontWeight: 600, color: 'var(--text)', marginBottom: 4 }}>
+          <div style={{ fontFamily: "var(--font-heading)", fontSize: 15, fontWeight: 600, color: 'var(--text)', marginBottom: 'var(--space-2xs)' }}>
             {title}
           </div>
           <p style={{ margin: 0, fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{summary}</p>
@@ -194,14 +194,14 @@ function SessionCard({ date, title, summary, what, decision, whatLabel, decision
       </div>
 
       <div style={{ maxHeight: open ? 500 : 0, overflow: 'hidden', transition: 'max-height 0.3s ease' }}>
-        <div style={{ borderTop: 'var(--border-thin) solid var(--border)', marginTop: 16, paddingTop: 16, display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <div style={{ borderTop: 'var(--border-thin) solid var(--border)', marginTop: 'var(--space-md)', paddingTop: 'var(--space-md)', display: 'flex', flexDirection: 'column', gap: 14 }}>
           <div>
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.08em' }}>{whatLabel}</span>
-            <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{what}</p>
+            <p style={{ margin: 'var(--space-2xs) 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{what}</p>
           </div>
           <div>
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.08em' }}>{decisionLabel}</span>
-            <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{decision}</p>
+            <p style={{ margin: 'var(--space-2xs) 0 0', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>{decision}</p>
           </div>
           {demoTo && (
             <LinkButton
@@ -896,7 +896,7 @@ export default function TheLostCauldronGame({ project }) {
   const [activeTab, setActiveTab] = useState('overview')
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <CaseMasthead c={c} lang={lang} />
       <CaseHero project={project} c={c}>
         <CaseMetaRow columns={[
@@ -909,8 +909,8 @@ export default function TheLostCauldronGame({ project }) {
       {activeTab === 'overview' && (
         <>
           <Section title={c.contextTitle}>
-            <p style={{ marginBottom: 16 }}>{c.context}</p>
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <p style={{ marginBottom: 'var(--space-md)' }}>{c.context}</p>
+            <div style={{ display: 'flex', gap: 'var(--space-sm)', flexWrap: 'wrap' }}>
               <LinkButton to="/lab/lost-cauldron-game/demo/v2" trailing="→">
                 {c.demoV2Label}
               </LinkButton>
@@ -921,12 +921,12 @@ export default function TheLostCauldronGame({ project }) {
           </Section>
 
           <Section title={c.methodTitle}>
-            <p style={{ marginBottom: 20 }}>{c.methodIntro}</p>
-            <ol style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.methodIntro}</p>
+            <ol style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-md-plus)' }}>
               {c.steps.map((step, i) => (
                 <MethodStep key={i} n={String(i + 1).padStart(2, '0')} title={step.title}>
                   {step.branches ? (
-                    <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
                       {step.branches.map((b, j) => (
                         <li key={j}>
                           <strong style={{ color: 'var(--text)' }}>{b.label}</strong>
@@ -949,7 +949,7 @@ export default function TheLostCauldronGame({ project }) {
       {activeTab === 'architecture' && (
         <>
           <Section title={c.archTitle}>
-            <p style={{ marginBottom: 8 }}>{c.archIntro}</p>
+            <p style={{ marginBottom: 'var(--space-xs)' }}>{c.archIntro}</p>
           </Section>
 
           <Section title={c.archEngineTitle}>
@@ -977,7 +977,7 @@ export default function TheLostCauldronGame({ project }) {
       {activeTab === 'specs' && (
         <>
           <Section title={c.specsTitle}>
-            <p style={{ marginBottom: 8 }}>{c.specsIntro}</p>
+            <p style={{ marginBottom: 'var(--space-xs)' }}>{c.specsIntro}</p>
           </Section>
 
           <Section title={c.specsLoopTitle}>
@@ -1013,7 +1013,7 @@ export default function TheLostCauldronGame({ project }) {
       {activeTab === 'bugs' && (
         <>
           <Section title={c.bugsTitle}>
-            <p style={{ marginBottom: 20 }}>{c.bugsIntro}</p>
+            <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.bugsIntro}</p>
           </Section>
           {c.bugs.map((bug, i) => (
             <BugCard key={i} {...bug} />
@@ -1024,7 +1024,7 @@ export default function TheLostCauldronGame({ project }) {
       {activeTab === 'journal' && (
         <>
           <Section title={c.journalTitle}>
-            <p style={{ marginBottom: 20 }}>{c.journalIntro}</p>
+            <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.journalIntro}</p>
           </Section>
           {c.journal.map((entry, i) => (
             <SessionCard
@@ -1039,7 +1039,7 @@ export default function TheLostCauldronGame({ project }) {
 
       {activeTab === 'roadmap' && (
         <Section title={c.roadmapTitle}>
-          <p style={{ marginBottom: 20 }}>{c.roadmapIntro}</p>
+          <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.roadmapIntro}</p>
           {c.roadmap.map((r) => (
             <RoadmapCard key={r.version} version={r.version} statusLabel={r.statusLabel} statusColor={r.statusColor} items={r.items} />
           ))}

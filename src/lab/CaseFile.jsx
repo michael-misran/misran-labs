@@ -12,12 +12,12 @@ import { t } from '../i18n/ui'
 
 export function CaseMasthead({ c, lang }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, paddingBottom: 14, borderBottom: 'var(--border-regular) solid var(--border)', marginBottom: 24, flexWrap: 'wrap' }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)', paddingBottom: 14, borderBottom: 'var(--border-regular) solid var(--border)', marginBottom: 'var(--space-lg)', flexWrap: 'wrap' }}>
       <div>
         <Link to="/" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none' }}>
           {t(lang, 'backToLab')}
         </Link>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginTop: 4 }}>{c.fileNo}</div>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginTop: 'var(--space-2xs)' }}>{c.fileNo}</div>
       </div>
       <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.14em', color: 'var(--text2)', textAlign: 'center', flex: '1 1 200px' }}>
         {c.mastheadCenter}
@@ -46,7 +46,7 @@ export function CaseMetaRow({ columns }) {
             borderRight: i < columns.length - 1 ? 'var(--border-thin) solid var(--border)' : 'none',
           }}
         >
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: col.chips ? 6 : 4 }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: col.chips ? 6 : 'var(--space-2xs)' }}>
             {col.label}
           </div>
           {col.chips ? (
@@ -77,8 +77,8 @@ export function CaseMetaRow({ columns }) {
 
 export function CaseHero({ project, c, children }) {
   return (
-    <div style={{ border: 'var(--border-regular) solid var(--border)', marginBottom: 32 }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, padding: '18px var(--space-lg)', borderBottom: children ? 'var(--border-thin) solid var(--border)' : 'none' }}>
+    <div style={{ border: 'var(--border-regular) solid var(--border)', marginBottom: 'var(--space-xl)' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)', padding: '18px var(--space-lg)', borderBottom: children ? 'var(--border-thin) solid var(--border)' : 'none' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
           <span
             style={{
@@ -127,7 +127,7 @@ const TAB_TINTS = [
 
 export function CaseTabs({ tabs, active, onChange }) {
   return (
-    <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 2, marginBottom: 8, overflowX: 'auto' }}>
+    <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'var(--space-3xs)', marginBottom: 'var(--space-xs)', overflowX: 'auto' }}>
       {tabs.map((tab, i) => {
         const isActive = active === tab.id
         return (
@@ -137,7 +137,7 @@ export function CaseTabs({ tabs, active, onChange }) {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 4,
+              gap: 'var(--space-2xs)',
               flexShrink: 0,
               background: isActive ? 'var(--bg2)' : TAB_TINTS[i % TAB_TINTS.length],
               border: 'var(--border-thin) solid var(--border)',
@@ -168,7 +168,7 @@ export function CaseTabs({ tabs, active, onChange }) {
 
 export function CaseFooter({ c }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginTop: 40, paddingTop: 16, borderTop: 'var(--border-regular) solid var(--border)' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-sm)', marginTop: 40, paddingTop: 'var(--space-md)', borderTop: 'var(--border-regular) solid var(--border)' }}>
       <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.06em', color: 'var(--muted)' }}>
         {c.docId} — {c.clearance}
       </div>

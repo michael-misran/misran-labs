@@ -33,14 +33,14 @@ export default function GameDemoV2() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: 16,
+          gap: 'var(--space-md)',
           flexWrap: 'wrap',
-          padding: 'var(--space-sm) 20px',
+          padding: 'var(--space-sm) var(--space-md-plus)',
           borderBottom: 'var(--border-thin) solid var(--border)',
           background: 'var(--bg2)',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', flexWrap: 'wrap' }}>
           <Link
             to="/lab/lost-cauldron-game"
             style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text2)', textDecoration: 'none' }}

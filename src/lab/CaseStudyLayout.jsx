@@ -23,7 +23,7 @@ export function Section({ title, children }) {
 // d'ordre — un sommaire de planche, pas une barre d'onglets générique.
 export function TabBar({ tabs, active, onChange }) {
   return (
-    <div style={{ display: 'flex', gap: 4, borderBottom: 'var(--border-thin) solid var(--border)', marginBottom: 32, overflowX: 'auto' }}>
+    <div style={{ display: 'flex', gap: 'var(--space-2xs)', borderBottom: 'var(--border-thin) solid var(--border)', marginBottom: 'var(--space-xl)', overflowX: 'auto' }}>
       {tabs.map((tab, i) => {
         const isActive = active === tab.id
         return (
@@ -33,14 +33,14 @@ export function TabBar({ tabs, active, onChange }) {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 8,
+              gap: 'var(--space-xs)',
               background: 'none',
               border: 'none',
               color: isActive ? 'var(--text)' : 'var(--text2)',
               fontFamily: "var(--font-body)",
               fontSize: 13,
               fontWeight: isActive ? 600 : 400,
-              padding: '10px var(--space-md)',
+              padding: 'var(--space-xs-plus) var(--space-md)',
               cursor: 'pointer',
               whiteSpace: 'nowrap',
               transition: 'color 0.15s ease, border-color 0.15s ease',
@@ -119,7 +119,7 @@ export default function CaseStudyLayout({ title, role, period, tools, phases, ch
   return (
     <div
       style={{
-        padding: isMobile ? 20 : 40,
+        padding: isMobile ? 'var(--space-md-plus)' : 40,
         fontFamily: "var(--font-body)",
         color: 'var(--text)',
         maxWidth: 880,
@@ -134,7 +134,7 @@ export default function CaseStudyLayout({ title, role, period, tools, phases, ch
           color: 'var(--text2)',
           textDecoration: 'none',
           display: 'inline-block',
-          marginBottom: 24,
+          marginBottom: 'var(--space-lg)',
         }}
       >
         {t(lang, 'backToLab')}

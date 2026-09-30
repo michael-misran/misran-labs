@@ -10,12 +10,12 @@ import { MAG_TEXT, categoryLabel, categoryColor, issueNo, formatDateShort } from
 // convient pas à la page d'un numéro (retour vers /magazine).
 export function MagazineMasthead({ backTo, backLabel, fileNo, center, right, rightSub }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, paddingBottom: 14, borderBottom: 'var(--border-regular) solid var(--border)', marginBottom: 24, flexWrap: 'wrap' }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)', paddingBottom: 14, borderBottom: 'var(--border-regular) solid var(--border)', marginBottom: 'var(--space-lg)', flexWrap: 'wrap' }}>
       <div>
         <Link to={backTo} style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none' }}>
           {backLabel}
         </Link>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginTop: 4 }}>{fileNo}</div>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginTop: 'var(--space-2xs)' }}>{fileNo}</div>
       </div>
       <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.14em', color: 'var(--text2)', textAlign: 'center', flex: '1 1 200px' }}>
         {center}
@@ -33,8 +33,8 @@ export function MagazineMasthead({ backTo, backLabel, fileNo, center, right, rig
 export function MagazineHero({ number, title, subtitle, children }) {
   const isMobile = useIsMobile()
   return (
-    <div style={{ border: 'var(--border-regular) solid var(--border)', marginBottom: 32 }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, padding: isMobile ? '16px 16px' : '18px 24px', borderBottom: children ? 'var(--border-thin) solid var(--border)' : 'none' }}>
+    <div style={{ border: 'var(--border-regular) solid var(--border)', marginBottom: 'var(--space-xl)' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)', padding: isMobile ? 'var(--space-md) var(--space-md)' : '18px var(--space-lg)', borderBottom: children ? 'var(--border-thin) solid var(--border)' : 'none' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, flex: 1, minWidth: 0 }}>
           <span
             style={{
@@ -69,7 +69,7 @@ export function MagazineHero({ number, title, subtitle, children }) {
 // texte qui porte l'information à lui seul (lisible sans la couleur).
 export function CategoryMark({ categorie, lang }) {
   return (
-    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)', textTransform: 'uppercase', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: '2px 8px', background: 'var(--bg)' }}>
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)', textTransform: 'uppercase', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: 'var(--space-3xs) var(--space-xs)', background: 'var(--bg)' }}>
       <span aria-hidden="true" style={{ width: 8, height: 8, flexShrink: 0, background: categoryColor(categorie), border: 'var(--border-thin) solid var(--border)' }} />
       {categoryLabel(categorie, lang)}
     </span>
@@ -97,12 +97,12 @@ export function IssueRow({ issue, lang, latest }) {
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr auto' : '88px 1fr auto',
         alignItems: 'center',
-        columnGap: 20,
+        columnGap: 'var(--space-md-plus)',
         rowGap: 6,
         textDecoration: 'none',
         color: 'inherit',
         borderTop: 'var(--border-thin) solid var(--border)',
-        padding: isMobile ? '14px 8px' : '16px 12px',
+        padding: isMobile ? '14px var(--space-xs)' : 'var(--space-md) var(--space-sm)',
         background: hover ? 'var(--hover-tint)' : 'none',
         transition: 'background 0.15s ease',
       }}
@@ -110,13 +110,13 @@ export function IssueRow({ issue, lang, latest }) {
       {isMobile ? (
         <>
           <div>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)', marginBottom: 4 }}>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)', marginBottom: 'var(--space-2xs)' }}>
               Nº {issueNo(issue.numero)} · {formatDateShort(issue.date)}
             </div>
             <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 18, lineHeight: 1.2, color: 'var(--text)', overflowWrap: 'anywhere' }}>
               {issue.titre[lang]}
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 8, marginTop: 6 }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--space-xs)', marginTop: 6 }}>
               {latest && <Tag>{t.latestTag}</Tag>}
               <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                 {articleCountLabel(issue.articles.length, lang)}
@@ -134,11 +134,11 @@ export function IssueRow({ issue, lang, latest }) {
             <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 20, lineHeight: 1.2, color: 'var(--text)', overflowWrap: 'anywhere' }}>
               {issue.titre[lang]}
             </div>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', letterSpacing: '0.08em', marginTop: 4 }}>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', letterSpacing: '0.08em', marginTop: 'var(--space-2xs)' }}>
               {formatDateShort(issue.date)}
             </div>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs-plus)' }}>
             {latest && <Tag>{t.latestTag}</Tag>}
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
               {articleCountLabel(issue.articles.length, lang)}
@@ -162,7 +162,7 @@ function hostnameOf(url) {
 export function SourceList({ sources, lang }) {
   const t = MAG_TEXT[lang].issue
   return (
-    <div style={{ borderTop: 'var(--border-thin) solid var(--border)', paddingTop: 12 }}>
+    <div style={{ borderTop: 'var(--border-thin) solid var(--border)', paddingTop: 'var(--space-sm)' }}>
       <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.06em', marginBottom: 6 }}>
         {t.sourcesLabel}
       </div>
@@ -175,7 +175,7 @@ export function SourceList({ sources, lang }) {
                 {source.titre} <span aria-hidden="true" style={{ color: 'var(--primary)' }}>↗</span>
               </a>
               {hostname && (
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', marginLeft: 8 }}>{hostname}</span>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', marginLeft: 'var(--space-xs)' }}>{hostname}</span>
               )}
             </li>
           )
@@ -191,8 +191,8 @@ export function ArticleCard({ article, index, total, lang }) {
   const t = MAG_TEXT[lang].issue
 
   return (
-    <article style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', padding: isMobile ? 20 : 28, display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+    <article style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', padding: isMobile ? 'var(--space-md-plus)' : 28, display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 'var(--space-xs)', flexWrap: 'wrap' }}>
         <CategoryMark categorie={article.categorie} lang={lang} />
         <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.1em' }}>
           {t.articlesLabel} {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
@@ -207,8 +207,8 @@ export function ArticleCard({ article, index, total, lang }) {
         {article.resume[lang]}
       </p>
 
-      <div style={{ background: 'var(--active-tint)', borderRadius: 'var(--radius-md)', padding: isMobile ? '12px 14px' : '14px 16px' }}>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.06em', marginBottom: 4 }}>
+      <div style={{ background: 'var(--active-tint)', borderRadius: 'var(--radius-md)', padding: isMobile ? 'var(--space-sm) 14px' : '14px var(--space-md)' }}>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.06em', marginBottom: 'var(--space-2xs)' }}>
           {t.whyItMatters}
         </div>
         <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.6, color: 'var(--text)' }}>

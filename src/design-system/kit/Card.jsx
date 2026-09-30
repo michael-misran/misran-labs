@@ -53,7 +53,7 @@ export default function Card({ icon = 'box', title, description, action, onActio
       )}
 
       {description && (
-        <div style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, marginBottom: action ? 16 : 0 }}>
+        <div style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, marginBottom: action ? 'var(--space-md)' : 0 }}>
           {description}
         </div>
       )}

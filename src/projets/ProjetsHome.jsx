@@ -38,7 +38,7 @@ export default function ProjetsHome() {
   const allActive = actifs.size === STATUT_KEYS.length
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <CaseMasthead
         c={{ fileNo: t.fileNo, mastheadCenter: t.mastheadCenter, mastheadRight: t.mastheadRight, mastheadRightSub: t.mastheadRightSub }}
         lang={lang}
@@ -54,18 +54,18 @@ export default function ProjetsHome() {
         />
       </ProjetsHero>
 
-      <p style={{ maxWidth: 720, fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: 'var(--prose)', margin: '0 0 12px' }}>
+      <p style={{ maxWidth: 720, fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: 'var(--prose)', margin: '0 0 var(--space-sm)' }}>
         {t.concept}
       </p>
-      <Link to="/projets/fonctionnement" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', textDecoration: 'none', display: 'inline-block', marginBottom: 32 }}>
+      <Link to="/projets/fonctionnement" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', textDecoration: 'none', display: 'inline-block', marginBottom: 'var(--space-xl)' }}>
         {t.howLink}
       </Link>
 
-      <div style={{ marginBottom: 8 }}>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: 8 }}>
+      <div style={{ marginBottom: 'var(--space-xs)' }}>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: 'var(--space-xs)' }}>
           {t.filterLabel}
         </div>
-        <div role="group" aria-label={t.filterLabel} style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+        <div role="group" aria-label={t.filterLabel} style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-xs)' }}>
           {STATUT_KEYS.map((statut) => (
             <StatusFilter
               key={statut}
@@ -80,7 +80,7 @@ export default function ProjetsHome() {
             <button
               type="button"
               onClick={() => setActifs(new Set(STATUT_KEYS))}
-              style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', background: 'none', border: 'none', cursor: 'pointer', padding: '7px 4px' }}
+              style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', background: 'none', border: 'none', cursor: 'pointer', padding: '7px var(--space-2xs)' }}
             >
               {t.showAll}
             </button>
@@ -88,7 +88,7 @@ export default function ProjetsHome() {
         </div>
       </div>
 
-      <div aria-live="polite" style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', margin: '16px 0 8px' }}>
+      <div aria-live="polite" style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', margin: 'var(--space-md) 0 var(--space-xs)' }}>
         {t.resultLabel(visible.length, ideas.length)}
       </div>
 

@@ -56,9 +56,9 @@ export default function Modal({ open, title, question, icon = 'alert', confirmLa
         <Icon name={icon} size="30px" />
       </span>
 
-      <div style={{ fontSize: 13, color: 'var(--text2)', marginBottom: 20 }}>{question}</div>
+      <div style={{ fontSize: 13, color: 'var(--text2)', marginBottom: 'var(--space-md-plus)' }}>{question}</div>
 
-      <div style={{ display: 'flex', gap: 10, justifyContent: 'center' }}>
+      <div style={{ display: 'flex', gap: 'var(--space-xs-plus)', justifyContent: 'center' }}>
         <button
           ref={cancelRef}
           onClick={onCancel}

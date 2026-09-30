@@ -32,7 +32,7 @@ export default function Stepper({ steps, current = 1, hint }) {
 
           return (
             <li key={step} style={{ display: 'flex', alignItems: 'flex-start', flex: i === steps.length - 1 ? '0 0 auto' : 1 }}>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, minWidth: 72 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--space-xs)', minWidth: 72 }}>
                 <span
                   aria-hidden="true"
                   style={{

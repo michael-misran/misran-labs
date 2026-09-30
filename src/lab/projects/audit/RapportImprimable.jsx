@@ -23,11 +23,11 @@ export default function RapportImprimable({ c, lang, grille, priorites, resultat
   const constats = resultat.constats.slice(0, NB_CONSTATS)
 
   const titre = { fontFamily: 'var(--font-heading)', fontSize: 16, margin: '18px 0 6px', color: 'var(--text)' }
-  const cellule = { border: 'var(--border-thin) solid var(--border)', padding: '5px 8px', verticalAlign: 'top', textAlign: 'left', fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--text)' }
-  const paragraphe = { fontFamily: 'var(--font-body)', fontSize: 12, lineHeight: 1.5, color: 'var(--text)', margin: '0 0 4px' }
+  const cellule = { border: 'var(--border-thin) solid var(--border)', padding: '5px var(--space-xs)', verticalAlign: 'top', textAlign: 'left', fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--text)' }
+  const paragraphe = { fontFamily: 'var(--font-body)', fontSize: 12, lineHeight: 1.5, color: 'var(--text)', margin: '0 0 var(--space-2xs)' }
 
   return (
-    <article className="print-only rapport-imprimable" aria-label={t.title} style={{ background: 'var(--bg)', color: 'var(--text)', padding: 24 }}>
+    <article className="print-only rapport-imprimable" aria-label={t.title} style={{ background: 'var(--bg)', color: 'var(--text)', padding: 'var(--space-lg)' }}>
       <style>{`
         @media print {
           .rapport-imprimable table { border-collapse: collapse; width: 100%; }
@@ -45,7 +45,7 @@ export default function RapportImprimable({ c, lang, grille, priorites, resultat
           <strong>{t.dateLabel}</strong> — {date}
         </p>
       )}
-      <p style={{ ...paragraphe, fontSize: 14, marginTop: 8 }}>
+      <p style={{ ...paragraphe, fontSize: 14, marginTop: 'var(--space-xs)' }}>
         <strong>{texteMoyenne(grille, c, lang)}</strong>
       </p>
 
@@ -79,7 +79,7 @@ export default function RapportImprimable({ c, lang, grille, priorites, resultat
         QUADRANTS.filter((q) => priorites.quadrants[q.id].length > 0).map((q) => (
           <div key={q.id} style={{ marginBottom: 6 }}>
             <div style={{ ...paragraphe, fontWeight: 700 }}>{q.titre[lang]}</div>
-            <ul style={{ margin: '0 0 4px', paddingLeft: 18 }}>
+            <ul style={{ margin: '0 0 var(--space-2xs)', paddingLeft: 18 }}>
               {priorites.quadrants[q.id].map((s) => (
                 <li key={s.id} style={paragraphe}>
                   {s.titre[lang]} — {s.compte} {uniteSujet(s, lang)} ({g.impact} {g.levels[s.impact]}, {g.effort} {g.levels[s.effort]})
@@ -129,7 +129,7 @@ export default function RapportImprimable({ c, lang, grille, priorites, resultat
         ))}
       </ol>
 
-      <p style={{ ...paragraphe, marginTop: 18, paddingTop: 8, borderTop: 'var(--border-thin) solid var(--border)', fontSize: 10 }}>{t.footer}</p>
+      <p style={{ ...paragraphe, marginTop: 18, paddingTop: 'var(--space-xs)', borderTop: 'var(--border-thin) solid var(--border)', fontSize: 10 }}>{t.footer}</p>
     </article>
   )
 }

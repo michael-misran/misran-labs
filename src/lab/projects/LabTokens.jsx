@@ -314,7 +314,7 @@ function TierBadge({ tier, label }) {
         textTransform: 'uppercase',
         color: TIER_ACCENT[tier],
         border: `var(--border-thin) solid ${TIER_ACCENT[tier]}`,
-        padding: '2px 6px',
+        padding: 'var(--space-3xs) 6px',
         whiteSpace: 'nowrap',
       }}
     >
@@ -330,14 +330,14 @@ function ViolationBadge({ label, title }) {
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        gap: 4,
+        gap: 'var(--space-2xs)',
         fontFamily: "var(--font-mono)",
         fontSize: 9,
         letterSpacing: '0.04em',
         textTransform: 'uppercase',
         color: 'var(--on-primary-surface)',
         background: 'var(--error)',
-        padding: '2px 6px',
+        padding: 'var(--space-3xs) 6px',
         whiteSpace: 'nowrap',
         cursor: 'help',
       }}
@@ -363,7 +363,7 @@ function FilterPill({ tier, label, active, onClick }) {
         color: active ? 'var(--text)' : 'var(--muted)',
         background: active ? 'var(--bg2)' : 'var(--bg3)',
         border: `var(--border-thin) solid ${active ? TIER_ACCENT[tier] : 'var(--border)'}`,
-        padding: '7px 12px',
+        padding: '7px var(--space-sm)',
         cursor: 'pointer',
         fontWeight: active ? 700 : 400,
       }}
@@ -410,19 +410,19 @@ export default function LabTokens({ project }) {
   )
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <CaseMasthead c={c} lang={lang} />
       <CaseHero project={project} c={c} />
 
-      <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--prose)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 20px' }}>
+      <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--prose)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 var(--space-md-plus)' }}>
         {c.intro}
       </p>
 
-      <div style={{ marginBottom: 8 }}>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: 8 }}>
+      <div style={{ marginBottom: 'var(--space-xs)' }}>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: 'var(--space-xs)' }}>
           {c.filterLabel}
         </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-xs)' }}>
           {TIERS.map((tier) => (
             <FilterPill
               key={tier}
@@ -435,7 +435,7 @@ export default function LabTokens({ project }) {
         </div>
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', margin: '16px 0 8px' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-sm)', alignItems: 'center', margin: 'var(--space-md) 0 var(--space-xs)' }}>
         <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)' }}>
           {c.countLabel(totalCount)}
         </span>
@@ -446,7 +446,7 @@ export default function LabTokens({ project }) {
         )}
       </div>
 
-      <div style={{ overflowX: 'auto', border: 'var(--border-thin) solid var(--border)', marginBottom: 32 }}>
+      <div style={{ overflowX: 'auto', border: 'var(--border-thin) solid var(--border)', marginBottom: 'var(--space-xl)' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 720 }}>
           <thead>
             <tr>
@@ -461,7 +461,7 @@ export default function LabTokens({ project }) {
                     textTransform: 'uppercase',
                     color: 'var(--muted)',
                     background: 'var(--bg3)',
-                    padding: '8px 12px',
+                    padding: 'var(--space-xs) var(--space-sm)',
                     borderBottom: 'var(--border-regular) solid var(--border)',
                     whiteSpace: 'nowrap',
                   }}
@@ -474,7 +474,7 @@ export default function LabTokens({ project }) {
           <tbody>
             {totalCount === 0 && (
               <tr>
-                <td colSpan={7} style={{ padding: 20, textAlign: 'center', fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--muted)' }}>
+                <td colSpan={7} style={{ padding: 'var(--space-md-plus)', textAlign: 'center', fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--muted)' }}>
                   {c.empty}
                 </td>
               </tr>
@@ -504,7 +504,7 @@ function FragmentGroup({ group, lang, c }) {
             textTransform: 'uppercase',
             color: 'var(--primary)',
             background: 'var(--bg2)',
-            padding: '8px 12px',
+            padding: 'var(--space-xs) var(--space-sm)',
             borderBottom: 'var(--border-thin) solid var(--border)',
             borderTop: 'var(--border-thin) solid var(--border)',
           }}
@@ -516,27 +516,27 @@ function FragmentGroup({ group, lang, c }) {
         const violation = getViolation(row)
         return (
         <tr key={row.name} style={violation ? { background: 'color-mix(in srgb, var(--error) 8%, transparent)' } : undefined}>
-          <td style={{ padding: '8px 12px', borderBottom: 'var(--border-thin) solid var(--border)', borderLeft: violation ? 'var(--border-thick) solid var(--error)' : 'var(--border-thick) solid transparent' }}>
+          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', borderLeft: violation ? 'var(--border-thick) solid var(--error)' : 'var(--border-thick) solid transparent' }}>
             {row.type === 'color'
               ? <Swatch name={row.name} />
               : <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)' }}>—</span>}
           </td>
-          <td style={{ padding: '8px 12px', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text)', whiteSpace: 'nowrap' }}>
+          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text)', whiteSpace: 'nowrap' }}>
             {row.name}
           </td>
-          <td style={{ padding: '8px 12px', borderBottom: 'var(--border-thin) solid var(--border)' }}>
+          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
             <TierBadge tier={row.tier} label={c.tierLabels[row.tier]} />
           </td>
-          <td style={{ padding: '8px 12px', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', whiteSpace: 'nowrap' }}>
+          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', whiteSpace: 'nowrap' }}>
             {row.type}
           </td>
-          <td style={{ padding: '8px 12px', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: row.pointsTo ? 'var(--text2)' : 'var(--muted)', whiteSpace: 'nowrap' }}>
+          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: row.pointsTo ? 'var(--text2)' : 'var(--muted)', whiteSpace: 'nowrap' }}>
             {row.pointsTo ?? '—'}
           </td>
-          <td style={{ padding: '8px 12px', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', whiteSpace: 'nowrap' }}>
+          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', whiteSpace: 'nowrap' }}>
             {row.value}
           </td>
-          <td style={{ padding: '8px 12px', borderBottom: 'var(--border-thin) solid var(--border)', whiteSpace: 'nowrap' }}>
+          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', whiteSpace: 'nowrap' }}>
             {violation && <ViolationBadge label={c.violationLabels[violation]} title={c.violationTooltips[violation]} />}
           </td>
         </tr>

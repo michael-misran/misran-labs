@@ -1,8 +1,16 @@
 # Mission finitions-lab — PROGRESS
 
-**Statut :** étape 7 terminée
-**Prochaine action :** étape 8 (remplacement des espacements en dur, D6)
+**Statut :** étape 8 terminée
+**Prochaine action :** étape 9 (mesure « après » + snapshots « après », comparaison)
 **Blocages :** aucun
+
+## Étape 8 — remplacement des espacements en dur (D6)
+- **Écart au plan** (noté aussi dans DECISIONS.md) : l'agent `explorateur` (Haiku) a été lancé pour dresser l'inventaire des occurrences, mais son relevé s'est révélé incomplet et partiellement incorrect (occurrences manquées sur des lignes qu'il avait pourtant citées ; valeurs « partielles » comme `'6px 10px'` exclues en bloc alors que D6 demande un remplacement partiel). Plutôt que de lancer un sous-agent Haiku pour appliquer ~600 remplacements à partir d'un inventaire déjà fautif, la session principale a écrit un script déterministe (`tokeniser-espacements.mjs`, dans le scratchpad, non commité) qui applique directement la règle D6 : parcourt tous les `.jsx`/`.css` suivis par Git sous `src/` (hors exclusions), repère les propriétés `gap/rowGap/columnGap/padding*/margin*`, et remplace chaque valeur exactement égale à 2/4/8/10/12/16/20/24/32 px — y compris partiellement dans une chaîne multi-valeurs (`'6px 10px'` → `'6px var(--space-xs-plus)'`) et dans chaque branche d'un ternaire prise séparément (`isMobile ? 20 : 40` → `isMobile ? 'var(--space-md-plus)' : 40`) — en excluant les `calc(...)`, les valeurs négatives et les template literals à interpolation.
+- Vérifié avant application (dry-run) : 0 fichier exclu touché, 0 valeur dans un `calc()` touchée, 0 valeur négative touchée ; une vingtaine de cas (ternaires, chaînes mixtes) vérifiés à la main un par un, tous corrects.
+- Découverte en cours de route : `src/modules/FigmaDSReader/` (fichier `.module.css` et `TreeNode.jsx`) est **ignoré par Git** (`.gitignore`), donc hors du périmètre réel de D6 (rien de ce qui s'y trouve n'est commité) ; laissé inchangé.
+- **64 fichiers modifiés, 610 remplacements, 550 lignes changées** (insertions = suppressions : substitutions pures, aucune ligne ajoutée/retirée) : `src/breves/{BrevesHome,BrevesJour,BrevesParts}.jsx`, `src/design-system/{SecondarySidebar,SectionTitle,Tag}.jsx`, `src/design-system/kit/{AlertBanner,Badge,Breadcrumbs,Card,Checkbox,EmptyState,ListItem,Modal,Pagination,Progress,Radio,Select,Slider,Stepper,Switch,TableHeader,Tabs,TextField,Textarea,Toast,Tooltip}.jsx`, `src/experiences/SessionReplay.jsx`, `src/lab/{CaseFile,CaseStudyLayout,GameDemo,GameDemoV2,PhaseCoverage,ThemeSwatch,ToolProcessTemplate}.jsx`, `src/lab/projects/{AuditTokens,DesignSystem,DesignSystemMultimarques,LabTokens,TheLostCauldronGame,UtilisationIA,WorkflowSolo}.jsx`, `src/lab/projects/audit/{Constats,Couverture,Cta,Grille,Matrice,RapportImprimable,SourceGithub,ui}.jsx`, `src/magazine/{MagazineHome,MagazineIssue,MagazineParts}.jsx`, `src/modules/{ArchiveHome,CVModule}.jsx`, `src/projets/{ProjetIdee,ProjetsFonctionnement,ProjetsHome,ProjetsParts}.jsx`, `src/shell/{Page404,Sidebar,Statusbar}.jsx`, `src/suivre/{SuivreBandeau,SuivrePage}.jsx`.
+- `npm run build` et `npm run lint` : passent.
+- Vérification (session principale) : `grep -rnE "(gap|padding|margin)[A-Za-z]*: ?(2|4|10|20)[,} ]" src --include="*.jsx"` → aucun résultat (critère 9). Élargi à toutes les valeurs de la trame (2/4/8/10/12/16/20/24/32) : seuls 2 résultats restent, tous deux hors périmètre (`src/shell/Topbar.jsx` exclu par D6, `src/modules/FigmaDSReader/TreeNode.jsx` ignoré par Git).
 
 ## Étape 7 — tokens D5, scripts de mesure, relevés « avant »
 - `src/styles/tokens.css` : 4 nouveaux tokens ajoutés dans la trame semantic, dans l'ordre D5 : `--space-3xs` (2px), `--space-2xs` (4px), `--space-xs-plus` (10px), `--space-md-plus` (20px).

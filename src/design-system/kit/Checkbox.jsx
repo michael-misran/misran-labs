@@ -14,7 +14,7 @@ export default function Checkbox({ label, checked = false, onChange, disabled = 
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        gap: 10,
+        gap: 'var(--space-xs-plus)',
         fontFamily: 'var(--font-body)',
         fontSize: 13,
         color: disabled ? 'var(--muted)' : 'var(--text)',

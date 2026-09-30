@@ -18,7 +18,7 @@ export function Toast({ tone = 'info', children }) {
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 12,
+        gap: 'var(--space-sm)',
         background: 'var(--surface-raised)',
         boxShadow: 'var(--elev-3)',
         borderRadius: 'var(--radius-md)',
@@ -36,7 +36,7 @@ export function Toast({ tone = 'info', children }) {
 
 export function ToastStack({ children }) {
   return (
-    <div aria-live="polite" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+    <div aria-live="polite" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xs-plus)' }}>
       {children}
     </div>
   )
