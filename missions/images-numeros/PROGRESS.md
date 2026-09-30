@@ -1,7 +1,7 @@
 # Mission images-numeros — PROGRESS
 
-**Statut :** étape 3 terminée
-**Prochaine action :** étape 4 (rattrapage --all)
+**Statut :** étape 4 terminée
+**Prochaine action :** étape 5 (plugin D3 dans share-previews.js)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur main 6f36410)
@@ -30,3 +30,6 @@
   - `node scripts/og-numero.js 2030-05-15` (date valide, sans JSON) → `[og-numero] numéro introuvable : .../src/magazine/numeros/2030-05-15.json`, `echo $?` = 1.
   Critère 3 OK.
 - `npm run lint` : 0 erreur.
+
+## Étape 4 — rattrapage --all (2026-09-30, session routine)
+- `node scripts/og-numero.js --all` : génère `public/og/magazine/2026-09-27.png` (manquant), ignore `2026-09-28.png` (déjà présent, produit à l'étape 2). `sips` : 1200×630 pour les deux. Contrôle visuel (outil Read) des deux images : titres lisibles, dans le cadre. Critère 4 OK.
