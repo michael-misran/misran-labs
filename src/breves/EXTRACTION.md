@@ -31,37 +31,37 @@ Pour chaque brève retenue :
 
 ## 3. Publier dans un worktree séparé
 
-Ne jamais toucher le dossier de travail habituel (une mission peut être en cours dessus) : tout se fait dans un worktree Git séparé, une commande shell par appel.
+Ne jamais toucher le dossier de travail habituel (une mission peut être en cours dessus) : tout se fait dans un worktree Git séparé, une commande shell par appel. `<wt>` désigne le chemin **absolu** du worktree, dans le scratchpad de la session (ex. `<scratchpad>/breves-<date>`). Toutes les commandes suivantes visent ce worktree via `git -C <wt>` ou un chemin absolu : le dossier courant du terminal reste le projet principal.
 
 ```bash
 git fetch origin
 ```
 ```bash
-git worktree add /chemin/vers/scratchpad/breves-<date> -b auto/breves-<date> origin/main
+git worktree add <wt> -b auto/breves-<date> origin/main
 ```
 
-Écrire `src/breves/jours/<date>.json` dans ce worktree (pas de `npm run build` nécessaire : la validation se fait avec `node` + `JSON.parse`, voir ci-dessous).
+Écrire le fichier `<wt>/src/breves/jours/<date>.json` (chemin absolu) (pas de `npm run build` nécessaire : la validation se fait avec `node` + `JSON.parse`, voir ci-dessous).
 
 ```bash
-node -e "JSON.parse(require('fs').readFileSync('src/breves/jours/<date>.json','utf-8'))"
+node -e "JSON.parse(require('fs').readFileSync('<wt>/src/breves/jours/<date>.json','utf-8'))"
 ```
 
 ```bash
-git add src/breves/jours/<date>.json
+git -C <wt> add src/breves/jours/<date>.json
 ```
 ```bash
-git commit -m "breves: <date>"
+git -C <wt> commit -m "breves: <date>" -m "Co-Authored-By: <modèle utilisé> <noreply@anthropic.com>"
 ```
 ```bash
-git push -u origin auto/breves-<date>
+git -C <wt> push -u origin auto/breves-<date>
 ```
 ```bash
-gh pr create --title "Brèves du <date>" --body "..."
+gh pr create --head auto/breves-<date> --base main --title "Brèves du <date>" --body "..."
 ```
 Le corps de la pull request liste les titres des brèves du jour.
 
 ```bash
-git worktree remove /chemin/vers/scratchpad/breves-<date>
+git worktree remove <wt>
 ```
 
 ## 4. Interdits
