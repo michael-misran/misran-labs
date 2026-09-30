@@ -20,7 +20,10 @@ export default function Statusbar({ moduleLabel, isMobile }) {
       style={{
         height: 'var(--chrome-height)',
         background: 'var(--bg3)',
-        borderTop: 'var(--border-thin) solid var(--border)',
+        // Un `border-top` grignote 1 px de la hauteur de contenu (box-sizing:
+        // border-box) : la Fiole en 32×32 px déborderait des 31 px restants.
+        // Une ombre interne dessine le même trait sans consommer d'espace.
+        boxShadow: 'inset 0 var(--border-thin) 0 0 var(--border)',
         display: 'flex',
         alignItems: 'center',
         padding: '0 20px',
