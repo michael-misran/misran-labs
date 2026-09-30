@@ -1,0 +1,23 @@
+{
+  "id": "P-008",
+  "date": "2026-09-30",
+  "titre": {
+    "fr": "Calculatrices de chantier",
+    "en": "Home improvement calculators"
+  },
+  "resume": {
+    "fr": "Une application qui calcule les quantités de matériaux pour un chantier : pots de peinture, carrelage, parquet, papier peint, béton.",
+    "en": "An app that works out material quantities for a home project: paint cans, tiles, flooring, wallpaper, concrete."
+  },
+  "probleme": {
+    "fr": "Avant d'aller au magasin de bricolage, les particuliers ne savent pas combien acheter : ils achètent trop, ou pas assez et doivent y retourner. Les formules sont simples mais personne ne les connaît.",
+    "en": "Before going to the DIY store, people don't know how much to buy: they buy too much, or too little and have to go back. The formulas are simple but nobody knows them."
+  },
+  "idee": {
+    "fr": "Une application locale avec une calculatrice par type de chantier (surface, pertes, rendement), un résultat clair en nombre d'unités à acheter et une liste de courses.",
+    "en": "A local app with one calculator per type of project (area, waste, coverage), a clear result in units to buy, and a shopping list."
+  },
+  "type": "produit",
+  "taille": "petite",
+  "statut": "proposee"
+}

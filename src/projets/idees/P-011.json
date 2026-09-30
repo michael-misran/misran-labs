@@ -1,0 +1,23 @@
+{
+  "id": "P-011",
+  "date": "2026-09-30",
+  "titre": {
+    "fr": "Tirage au sort pour les soirées",
+    "en": "Party picker"
+  },
+  "resume": {
+    "fr": "Une petite application pour décider en groupe : chacun pose un doigt sur l'écran et l'application choisit qui commence, ou forme des équipes au hasard.",
+    "en": "A small app for group decisions: everyone puts a finger on the screen and the app picks who goes first, or makes random teams."
+  },
+  "probleme": {
+    "fr": "En soirée ou avant un jeu, on perd du temps à décider qui commence ou à faire des équipes équitables.",
+    "en": "At parties or before a game, people waste time deciding who goes first or making fair teams."
+  },
+  "idee": {
+    "fr": "Une application locale et amusante : doigts sur l'écran, roue, équipes aléatoires, avec des animations soignées.",
+    "en": "A fun local app: fingers on the screen, a wheel, random teams, with polished animations."
+  },
+  "type": "produit",
+  "taille": "petite",
+  "statut": "proposee"
+}

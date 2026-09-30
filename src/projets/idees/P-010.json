@@ -1,0 +1,23 @@
+{
+  "id": "P-010",
+  "date": "2026-09-30",
+  "titre": {
+    "fr": "Outils de designer hors ligne",
+    "en": "Offline designer tools"
+  },
+  "resume": {
+    "fr": "Une application mobile pour designers : vérification du contraste WCAG, pipette de couleur à partir de la caméra ou d'une photo, création de palettes.",
+    "en": "A mobile app for designers: WCAG contrast checking, colour picker from the camera or a photo, palette building."
+  },
+  "probleme": {
+    "fr": "Les designers repèrent des couleurs dans le monde réel ou doivent vérifier un contraste loin de leur ordinateur, sans outil pratique sur téléphone.",
+    "en": "Designers spot colours in the real world or need to check contrast away from their computer, with no handy tool on their phone."
+  },
+  "idee": {
+    "fr": "Une application locale : pointer la caméra, récupérer la couleur, tester son contraste, l'ajouter à une palette et l'exporter (hexadécimal, tokens).",
+    "en": "A local app: point the camera, grab the colour, test its contrast, add it to a palette and export it (hex, tokens)."
+  },
+  "type": "outil",
+  "taille": "petite",
+  "statut": "proposee"
+}

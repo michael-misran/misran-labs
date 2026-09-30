@@ -1,0 +1,23 @@
+{
+  "id": "P-009",
+  "date": "2026-09-30",
+  "titre": {
+    "fr": "Minuteur spécialisé et soigné",
+    "en": "A focused, well-designed timer"
+  },
+  "resume": {
+    "fr": "Un minuteur mobile dédié à un usage précis (entraînement fractionné, boxe, cuisson, Pomodoro) qui se distingue par son design et ses sons.",
+    "en": "A mobile timer built for one specific use (interval training, boxing, cooking, Pomodoro) that stands out through its design and sounds."
+  },
+  "probleme": {
+    "fr": "Les minuteurs génériques sont peu pratiques pour des usages précis (rounds, intervalles, cuissons multiples), et les applications spécialisées sont souvent laides ou chargées de publicité.",
+    "en": "Generic timers are awkward for specific uses (rounds, intervals, multiple cooking times), and specialised apps are often ugly or full of ads."
+  },
+  "idee": {
+    "fr": "Un minuteur local pensé pour une seule niche, lisible de loin, avec des préréglages et des signaux sonores clairs. La niche exacte reste à choisir.",
+    "en": "A local timer designed for a single niche, readable from a distance, with presets and clear audio cues. The exact niche is still to be chosen."
+  },
+  "type": "produit",
+  "taille": "petite",
+  "statut": "proposee"
+}
