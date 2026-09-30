@@ -1,7 +1,8 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { writeRssFeeds } from './rss.js'
 
-const SITE_URL = 'https://misran-labs.vercel.app'
+export const SITE_URL = 'https://misran-labs.vercel.app'
 
 const MAGAZINE_FIXED = {
   title: 'Lab Magazine — veille IA hebdomadaire · Misran Labs',
@@ -34,8 +35,8 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;')
 }
 
-// Échappe une valeur pour un nœud texte XML (sitemap).
-function escapeXml(value) {
+// Échappe une valeur pour un nœud texte XML (sitemap, flux RSS).
+export function escapeXml(value) {
   return String(value)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -141,7 +142,7 @@ function readValidJson(filePath, requiredFields) {
   return data
 }
 
-function collectMagazineNumeros(rootDir) {
+export function collectMagazineNumeros(rootDir) {
   const dir = path.join(rootDir, 'src/magazine/numeros')
   if (!fs.existsSync(dir)) return []
   const pages = []
@@ -169,6 +170,7 @@ function collectMagazineNumeros(rootDir) {
       image,
       type: 'article',
       lastmod: data.date,
+      raw: data,
     })
   }
   return pages
@@ -177,7 +179,7 @@ function collectMagazineNumeros(rootDir) {
 // D7 (mission breves) : pas de nouvelle image — l'image de rubrique du
 // Magazine sert aussi pour /breves et chaque jour, contrairement au
 // Magazine et aux idées Projets qui ont leur propre image par numéro/idée.
-function collectBrevesJours(rootDir) {
+export function collectBrevesJours(rootDir) {
   const dir = path.join(rootDir, 'src/breves/jours')
   if (!fs.existsSync(dir)) return []
   const pages = []
@@ -198,12 +200,13 @@ function collectBrevesJours(rootDir) {
       image: BREVES_FIXED.image,
       type: 'article',
       lastmod: data.date,
+      raw: data,
     })
   }
   return pages
 }
 
-function collectProjetsIdees(rootDir) {
+export function collectProjetsIdees(rootDir) {
   const dir = path.join(rootDir, 'src/projets/idees')
   if (!fs.existsSync(dir)) return []
   const pages = []
@@ -223,6 +226,7 @@ function collectProjetsIdees(rootDir) {
       image: PROJETS_FIXED.image,
       type: 'article',
       lastmod: data.date,
+      raw: data,
     })
   }
   return pages
@@ -258,14 +262,18 @@ export function sharePreviewsPlugin() {
       const homeUrl = `${SITE_URL}/`
       fs.writeFileSync(indexPath, setCanonical(baseHtml, homeUrl))
 
+      const magazinePages = collectMagazineNumeros(rootDir)
+      const brevesPages = collectBrevesJours(rootDir)
+      const projetsPages = collectProjetsIdees(rootDir)
+
       const pages = [
         { path: '/magazine', title: MAGAZINE_FIXED.title, description: MAGAZINE_FIXED.description, image: MAGAZINE_FIXED.image, type: 'website' },
         { path: '/breves', title: BREVES_FIXED.title, description: BREVES_FIXED.description, image: BREVES_FIXED.image, type: 'website' },
         { path: '/projets', title: PROJETS_FIXED.title, description: PROJETS_FIXED.description, image: PROJETS_FIXED.image, type: 'website' },
         { path: '/projets/fonctionnement', title: PROJETS_FONCTIONNEMENT_FIXED.title, description: PROJETS_FONCTIONNEMENT_FIXED.description, image: PROJETS_FONCTIONNEMENT_FIXED.image, type: 'website' },
-        ...collectMagazineNumeros(rootDir),
-        ...collectBrevesJours(rootDir),
-        ...collectProjetsIdees(rootDir),
+        ...magazinePages,
+        ...brevesPages,
+        ...projetsPages,
         ...(await collectLabProjects(rootDir)),
       ]
 
@@ -283,6 +291,8 @@ export function sharePreviewsPlugin() {
       ]
       fs.writeFileSync(path.join(distDir, 'sitemap.xml'), buildSitemapXml(sitemapUrls))
       console.log(`[share-previews] sitemap.xml : ${sitemapUrls.length} URL`)
+
+      writeRssFeeds({ distDir, magazinePages, brevesPages, projetsPages })
     },
   }
 }
