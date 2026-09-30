@@ -1,7 +1,7 @@
 # Mission site-finitions — PROGRESS
 
-**Statut :** étape 3 terminée
-**Prochaine action :** étape 4 (image de partage og-image.png 1200×630)
+**Statut :** étape 4 terminée
+**Prochaine action :** étape 5 (découpage du JS, React.lazy + Suspense)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-29, sur main 6e87188)
@@ -23,3 +23,6 @@
 - `public/apple-touch-icon.png` 180×180 créé (fond crème `#f3ebdc`, même motif), source dans `missions/site-finitions/apple-touch-icon-source.svg`, rendu via Chrome headless. Dimensions vérifiées avec `sips`. Capture visuelle vérifiée (lisible).
 - `public/vite.svg` supprimé (non référencé, confirmé à l'étape 2).
 - Décision sur la police du « M » (Georgia au lieu d'un tracé) : voir DECISIONS.md.
+
+## Étape 4 (2026-09-30)
+- `public/og-image.png` 1200×630 créé (fond crème, cadre fin encre, « Misran Labs » en Fraunces 900, sous-titre en JetBrains Mono, tampon corail identique à celui du Lab Magazine). Source dans `missions/site-finitions/og-image-source.html`, rendu via Chrome headless (fonts Google chargées avant capture, `--virtual-time-budget=4000`). Dimensions vérifiées avec `sips`, rendu vérifié visuellement (lisible, fidèle à l'identité).
