@@ -1,7 +1,7 @@
 # Mission mascotte-fiole — PROGRESS
 
-**Statut :** étape 3 terminée
-**Prochaine action :** étape 4 (intégration dans Statusbar.jsx)
+**Statut :** étape 4 terminée
+**Prochaine action :** étape 5 (vérification navigateur → verificateur Haiku)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, main b9ebe79)
@@ -25,3 +25,10 @@
 - Nettoyage : toutes les minuteries annulées au démontage (D9) ; `toxicTimers`/`particleTimers` mutés en place (jamais réassignés) pour que la référence capturée dans l'effet de nettoyage reste valide.
 - Lint : 0 erreur, 0 avertissement sur les deux fichiers.
 - Intégration dans `Statusbar.jsx` pas encore faite (étape 4) : le composant n'est pour l'instant pas monté nulle part.
+
+## Étape 4 (2026-09-30)
+- `Statusbar.jsx` : `<Fiole />` ajoutée en fin de footer (desktop comme mobile). Desktop : les 3 textes regroupés dans un conteneur `flex:1` en `space-between`, la Fiole en dehors avec un `gap: 12` garanti. Mobile : le fil d'Ariane en `flex:1` centré, la Fiole à droite.
+- Chaque texte a `overflow: hidden`, `textOverflow: ellipsis`, `minWidth: 0` (nécessaire pour qu'un enfant flex accepte de rétrécir sous sa taille de contenu).
+- `overflow: visible` sur le `<footer>` (D4). Décision notée dans DECISIONS.md : la portée de ce changement s'arrête au footer, sans toucher `shell-grid`/`html`/`body` dans Shell.jsx (hors fichier de l'étape) — risque mineur de rognage de quelques px pendant la pirouette, à surveiller à l'étape 5.
+- `npm run build` : passe (sitemap 22 URL, bundle +6 Ko environ pour la Fiole).
+- `npm run lint` : aucune erreur, aucun avertissement.
