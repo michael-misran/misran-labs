@@ -8,6 +8,7 @@ import { BreveCard, WordFigureBox } from './BrevesParts'
 import { BREVES_TEXT, formatDateShort, formatDateLong } from './brevesText'
 import { getDay, getAdjacentDays } from './jours'
 import Fiole from '../shell/mascotte/Fiole'
+import SuivreBandeau from '../suivre/SuivreBandeau'
 
 function NotFound({ date, lang }) {
   const isMobile = useIsMobile()
@@ -98,6 +99,8 @@ export default function BrevesJour() {
       <Link to="/breves" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none', display: 'inline-block', marginBottom: 40 }}>
         {t.backToList}
       </Link>
+
+      <SuivreBandeau rubrique="breves" />
 
       <CaseFooter c={{ docId: `${t.docId}-${day.date}`, clearance: chrome.clearance, tagline: chrome.tagline }} />
     </div>

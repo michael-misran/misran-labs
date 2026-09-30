@@ -8,6 +8,7 @@ import SectionTitle from '../design-system/SectionTitle'
 import FlowDiagram from '../components/diagrams/FlowDiagram'
 import { ProjetsHero } from './ProjetsParts'
 import { FONCT_TEXT } from './fonctionnementText'
+import SuivreBandeau from '../suivre/SuivreBandeau'
 
 // Même bloc que `Pre` de src/lab/projects/UtilisationIA.jsx (copié, pas
 // importé : on ne dépend pas d'un fichier du Lab). Le défilement horizontal
@@ -175,6 +176,8 @@ export default function ProjetsFonctionnement() {
       <Link to="/projets" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none', display: 'inline-block', marginBottom: 40 }}>
         {t.backToList}
       </Link>
+
+      <SuivreBandeau rubrique="projets" />
 
       <CaseFooter c={{ docId: t.docId, clearance: chrome.clearance, tagline: chrome.tagline }} />
     </div>

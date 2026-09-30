@@ -8,6 +8,7 @@ import SectionTitle from '../design-system/SectionTitle'
 import { ProjetsHero, StatusFilter, IdeaRow } from './ProjetsParts'
 import { PROJ_TEXT, STATUTS } from './projetsText'
 import { getIdeas } from './idees'
+import SuivreBandeau from '../suivre/SuivreBandeau'
 
 const STATUT_KEYS = Object.keys(STATUTS)
 
@@ -115,6 +116,8 @@ export default function ProjetsHome() {
           ))}
         </ol>
       )}
+
+      <SuivreBandeau rubrique="projets" />
 
       <CaseFooter c={{ docId: t.docId, clearance: chrome.clearance, tagline: chrome.tagline }} />
     </div>

@@ -8,6 +8,7 @@ import Tag from '../design-system/Tag'
 import { BreveCard, WordFigureBox, DayRow } from './BrevesParts'
 import { BREVES_TEXT, RUBRIQUES, formatDateLong } from './brevesText'
 import { getDays } from './jours'
+import SuivreBandeau from '../suivre/SuivreBandeau'
 
 export default function BrevesHome() {
   const isMobile = useIsMobile()
@@ -70,6 +71,8 @@ export default function BrevesHome() {
           )}
         </>
       )}
+
+      <SuivreBandeau rubrique="breves" />
 
       <CaseFooter c={{ docId: t.docId, clearance: chrome.clearance, tagline: chrome.tagline }} />
     </div>
