@@ -8,6 +8,7 @@ import SectionTitle from '../design-system/SectionTitle'
 import { ProjetsHero, StatusMark, PrivateNotes } from './ProjetsParts'
 import { PROJ_TEXT, typeLabel, tailleLabel, formatDateShort } from './projetsText'
 import { getIdea } from './idees'
+import Fiole from '../shell/mascotte/Fiole'
 
 function NotFound({ id, lang }) {
   const isMobile = useIsMobile()
@@ -27,6 +28,9 @@ function NotFound({ id, lang }) {
       <div style={{ border: 'var(--border-regular) solid var(--border)', padding: isMobile ? 20 : 32 }}>
         <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.1em', overflowWrap: 'anywhere' }}>
           {t.notFoundLabel} : {id}
+        </div>
+        <div style={{ marginBottom: 8 }}>
+          <Fiole scale={4} variant="toxique" sleeps={false} />
         </div>
         <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', margin: '10px 0 8px' }}>
           {t.notFoundTitle}

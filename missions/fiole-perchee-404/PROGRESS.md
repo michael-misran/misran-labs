@@ -1,7 +1,7 @@
 # Mission fiole-perchee-404 — PROGRESS
 
-**Statut :** étape 4 terminée
-**Prochaine action :** étape 5 (Fiole toxique ×4 au-dessus du titre des NotFound de Magazine/Brèves/Projets → sous-agent Haiku)
+**Statut :** étape 5 terminée
+**Prochaine action :** étape 6 (Vérification navigateur complète des critères 1-11 et 13 → verificateur Haiku)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, main b8e7ac3)
@@ -38,4 +38,8 @@
 - `src/lab/ProjectPage.jsx`, `src/lab/ProjectDemoPage.jsx` : le petit texte + lien (`projectNotFound`/`demoNotFound`) est remplacé par `<Page404 />`. Ces clés i18n (et `backToLabLink`, `backToProjectLink`) ne sont donc plus utilisées nulle part — laissées en place (ne pas nettoyer i18n, comme demandé en SPEC).
 - `src/shell/registry.js` : `resolveRouteMeta()` renvoie `{ icon: '☠', label: t(lang,'notFound404Tab') }` pour `/lab/<inconnu>` et pour toute URL non gérée par le reste de la fonction. **Décision** : `/breves` et `/breves/:date` n'ont pas de cas dédié dans ce fichier (déjà le cas avant la mission, hors périmètre) et retombaient dans le même `return` générique que les vraies 404 ; ajouté un tableau `KNOWN_ROUTES` (regex) pour les distinguer et ne pas leur donner à tort le libellé « Page introuvable » — voir DECISIONS.md.
 - Vérifié dans le navigateur (`npx vite preview`) : `/nimporte-quoi` et `/lab/inconnu` → Page404 avec Fiole toxique 128px, textes EN (langue par défaut du navigateur de test), chemin affiché, 3 boutons, onglet et barre d'état « Page not found », `<meta name="robots" content="noindex">` présent ; clic sur la Fiole toxique → tangage, 6 particules poison, bulle avec une des phrases toxiques (« Who shook the flask? ») ; Fiole de la barre (bas droite) reste la Fiole normale, inchangée. `/magazine/1999-01-01` : en-tête et textes de rubrique inchangés, onglet et barre d'état restent « Magazine » (pas de régression sur les URL connues sans ressource).
+- `npm run build` et `npm run lint` : passent.
+
+## Étape 5 (2026-09-30)
+- Délégué à `general-purpose` (Haiku 4.5) : ajout de `<Fiole scale={4} variant="toxique" sleeps={false} />` (import `../shell/mascotte/Fiole`) juste au-dessus du `<h1>` dans les trois `NotFound` locaux (`src/magazine/MagazineIssue.jsx`, `src/breves/BrevesJour.jsx`, `src/projets/ProjetIdee.jsx`). Diff identique dans les 3 fichiers, revu par la session principale avant `npm run build`/`npm run lint`, puis vérifié dans le navigateur sur `/magazine/1999-01-01`, `/breves/1999-01-01`, `/projets/P-999` : Fiole toxique 64px visible, alignée à gauche au-dessus du titre de chaque rubrique, en-tête et textes de rubrique inchangés.
 - `npm run build` et `npm run lint` : passent.
