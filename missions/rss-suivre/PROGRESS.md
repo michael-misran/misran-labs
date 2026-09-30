@@ -1,7 +1,7 @@
 # Mission rss-suivre — PROGRESS
 
-**Statut :** étape 6 terminée
-**Prochaine action :** étape 7 (corrections éventuelles, vérification finale, critère 11)
+**Statut :** étape 7 terminée
+**Prochaine action :** étape 8 (RAPPORT.md)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, main b6663e8)
@@ -45,3 +45,9 @@
   - e. Aucune erreur ni avertissement en console sur les pages testées.
 - Serveur `vite preview` arrêté par le sous-agent ; confirmé côté session principale (`ps aux` vide, working tree propre).
 - Aucune correction nécessaire à ce stade.
+
+## Étape 7 (2026-09-30, sur auto/rss-suivre)
+- `npm run build` et `npm run lint` : re-vérifiés, toujours sans erreur.
+- Critère 11 : `git diff main...auto/rss-suivre` (hors `missions/`) passé au crible pour les URL et adresses — seules présentes : `SITE_URL` (déjà utilisé ailleurs sur le site), les 4 URL de flux `.xml` (notre propre domaine), l'espace de nom XML `atom`, et les deux liens publics de D4 (LinkedIn, GitHub). Aucune adresse e-mail, aucune autre donnée personnelle. Même vérification sur `missions/` : rien d'autre.
+- Critère 12 : branche `auto/rss-suivre` active, arbre de travail propre, `main` inchangé (toujours `b6663e8`), rien poussé.
+- Aucune correction nécessaire.
