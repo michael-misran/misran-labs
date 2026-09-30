@@ -4,6 +4,7 @@ import { getIssue } from '../magazine/numeros'
 import { getIdea } from '../projets/idees'
 import { getDay } from '../breves/jours'
 import { formatDateLongNoWeekday } from '../magazine/magazineText'
+import { getJeu } from '../jeux/registre'
 
 // Chemins que App.jsx sait effectivement router, en dehors de '/', '/lab/…',
 // '/magazine…', '/projets…' et '/breves…' (déjà traités plus bas) : sert
@@ -53,6 +54,14 @@ export function resolveRouteMeta(pathname, lang) {
   }
 
   if (pathname === '/suivre') return { icon: '◉', label: t(lang, 'suivreNav') }
+
+  // Rubrique Jeux : titre de l'onglet et de la barre d'état ; un slug
+  // inconnu renvoie la 404, comme /lab/ (D3).
+  if (pathname === '/jeux') return { icon: '🎲', label: t(lang, 'jeuxNav') }
+  if (pathname.startsWith('/jeux/')) {
+    const jeu = getJeu(pathname.split('/')[2])
+    return jeu ? { icon: '🎲', label: `${t(lang, 'jeuxNav')} — ${jeu.titre[lang]}` } : notFoundMeta(lang)
+  }
 
   if (KNOWN_ROUTES.some((re) => re.test(pathname))) return { icon: '◌', label: pathname }
 

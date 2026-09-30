@@ -1,6 +1,8 @@
 // Registre des jeux (D1, D2) : un jeu = un dossier avec meta.js (données
 // pures, lisibles par scripts/share-previews.js côté Node) et Jeu.jsx
 // (composant, chargé à la demande). Modèle : src/breves/jours.js.
+import { lazy } from 'react'
+
 const metaModules = import.meta.glob('./*/meta.js', { eager: true })
 const composantLoaders = import.meta.glob('./*/Jeu.jsx')
 
@@ -44,7 +46,9 @@ function loadJeux() {
       ...meta,
       entrainement: meta.entrainement !== false,
       demo: meta.demo === true,
-      charger,
+      // lazy() appelé une fois ici, au chargement du module : jamais
+      // pendant un rendu (react-hooks/static-components).
+      Composant: lazy(charger),
     })
   }
 
