@@ -25,16 +25,16 @@ export default function SuivreBandeau({ rubrique }) {
         padding: 'var(--space-md)',
         display: 'flex',
         flexWrap: 'wrap',
-        gap: 12,
+        gap: 'var(--space-sm)',
         alignItems: 'center',
         justifyContent: 'space-between',
       }}
     >
       <p style={{ margin: 0, fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text2)' }}>
-        <span aria-hidden="true" style={{ color: 'var(--primary)', marginRight: 8 }}>◉</span>
+        <span aria-hidden="true" style={{ color: 'var(--primary)', marginRight: 'var(--space-xs)' }}>◉</span>
         {t.phrase[rubrique]}
       </p>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs)', flexWrap: 'wrap' }}>
         <Link to="/suivre" style={{ ...linkStyle, color: 'var(--primary)' }}>{t.suivre}</Link>
         {feed && (
           <>

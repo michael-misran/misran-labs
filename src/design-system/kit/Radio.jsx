@@ -10,12 +10,12 @@ export default function Radio({ legend, name, options, value, onChange, disabled
   return (
     <fieldset style={{ border: 'none', margin: 0, padding: 0 }}>
       {legend && (
-        <legend style={{ fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 600, color: 'var(--text2)', marginBottom: 8, padding: 0 }}>
+        <legend style={{ fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 600, color: 'var(--text2)', marginBottom: 'var(--space-xs)', padding: 0 }}>
           {legend}
         </legend>
       )}
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xs-plus)' }}>
         {options.map((opt) => {
           const id = `${groupId}-${opt.value}`
           const selected = value === opt.value
@@ -27,7 +27,7 @@ export default function Radio({ legend, name, options, value, onChange, disabled
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: 10,
+                gap: 'var(--space-xs-plus)',
                 fontFamily: 'var(--font-body)',
                 fontSize: 13,
                 color: disabled ? 'var(--muted)' : 'var(--text)',

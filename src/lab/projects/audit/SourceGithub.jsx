@@ -106,12 +106,12 @@ export default function SourceGithub({ c, lang, onAnalyser }) {
     color: 'var(--text)',
     background: 'var(--bg)',
     border: 'var(--border-thin) solid var(--border)',
-    padding: '8px 10px',
+    padding: 'var(--space-xs) var(--space-xs-plus)',
   }
 
   return (
-    <section aria-labelledby="audit-github-titre" style={{ marginBottom: 18, paddingBottom: 16, borderBottom: 'var(--border-thin) solid var(--grid-line)' }}>
-      <div id="audit-github-titre" style={{ ...FORMAT_LABEL_MONO, marginBottom: 8 }}>
+    <section aria-labelledby="audit-github-titre" style={{ marginBottom: 18, paddingBottom: 'var(--space-md)', borderBottom: 'var(--border-thin) solid var(--grid-line)' }}>
+      <div id="audit-github-titre" style={{ ...FORMAT_LABEL_MONO, marginBottom: 'var(--space-xs)' }}>
         {t.title}
       </div>
       <form
@@ -119,7 +119,7 @@ export default function SourceGithub({ c, lang, onAnalyser }) {
           e.preventDefault()
           explorer()
         }}
-        style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}
+        style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-xs)', alignItems: 'center' }}
       >
         <input
           type="text"
@@ -145,15 +145,15 @@ export default function SourceGithub({ c, lang, onAnalyser }) {
         {erreur && (
           <p
             role="alert"
-            style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text)', border: 'var(--border-thin) solid var(--error)', borderLeft: 'var(--border-thick) solid var(--error)', background: 'var(--bg)', padding: '8px 12px', margin: '10px 0 0', overflowWrap: 'anywhere' }}
+            style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text)', border: 'var(--border-thin) solid var(--error)', borderLeft: 'var(--border-thick) solid var(--error)', background: 'var(--bg)', padding: 'var(--space-xs) var(--space-sm)', margin: 'var(--space-xs-plus) 0 0', overflowWrap: 'anywhere' }}
           >
             {erreur[lang] ?? erreur.fr}
           </p>
         )}
 
         {depot && (
-          <div style={{ marginTop: 12, border: 'var(--border-thin) solid var(--border)', background: 'var(--bg)', padding: '10px 12px' }}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 16px', fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text)' }}>
+          <div style={{ marginTop: 'var(--space-sm)', border: 'var(--border-thin) solid var(--border)', background: 'var(--bg)', padding: 'var(--space-xs-plus) var(--space-sm)' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2xs) var(--space-md)', fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text)' }}>
               <span style={{ overflowWrap: 'anywhere' }}>
                 <span style={FORMAT_LABEL_MONO}>{t.repo} </span>
                 {depot.proprietaire}/{depot.depot}
@@ -171,7 +171,7 @@ export default function SourceGithub({ c, lang, onAnalyser }) {
               {depot.taille !== null && <span style={{ color: 'var(--muted)' }}>{t.size(depot.taille)}</span>}
             </div>
 
-            <div style={{ ...FORMAT_LABEL_MONO, margin: '12px 0 6px' }}>{t.tokensTitle}</div>
+            <div style={{ ...FORMAT_LABEL_MONO, margin: 'var(--space-sm) 0 6px' }}>{t.tokensTitle}</div>
             {depot.candidats.length === 0 ? (
               <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text2)', lineHeight: 1.5, margin: 0 }}>{t.noTokens}</p>
             ) : (
@@ -180,7 +180,7 @@ export default function SourceGithub({ c, lang, onAnalyser }) {
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, border: 'var(--border-thin) solid var(--border)' }}>
                   {depot.candidats.map((f) => (
                     <li key={f.chemin} style={{ borderBottom: 'var(--border-thin) solid var(--grid-line)' }}>
-                      <label style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '6px 10px', cursor: occupe ? 'not-allowed' : 'pointer', fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text)', overflowWrap: 'anywhere' }}>
+                      <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs)', padding: '6px var(--space-xs-plus)', cursor: occupe ? 'not-allowed' : 'pointer', fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text)', overflowWrap: 'anywhere' }}>
                         <input type="checkbox" checked={coches.has(f.chemin)} disabled={occupe} onChange={() => basculer(f.chemin)} style={{ flexShrink: 0 }} />
                         {f.chemin}
                       </label>
@@ -190,7 +190,7 @@ export default function SourceGithub({ c, lang, onAnalyser }) {
               </>
             )}
 
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text2)', lineHeight: 1.5, margin: '12px 0 0' }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text2)', lineHeight: 1.5, margin: 'var(--space-sm) 0 0' }}>
               {depot.echantillon.length > 0 ? t.sample(depot.echantillon.length, depot.eligibles) : t.noCode}
             </p>
 
@@ -200,7 +200,7 @@ export default function SourceGithub({ c, lang, onAnalyser }) {
               </p>
             ))}
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 12, marginTop: 12 }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--space-sm)', marginTop: 'var(--space-sm)' }}>
               <Bouton principal disabled={occupe} onClick={analyser}>
                 {t.analyze}
               </Bouton>
@@ -210,7 +210,7 @@ export default function SourceGithub({ c, lang, onAnalyser }) {
                 </span>
               )}
             </div>
-            {message && <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text2)', margin: '8px 0 0' }}>{message}</p>}
+            {message && <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text2)', margin: 'var(--space-xs) 0 0' }}>{message}</p>}
           </div>
         )}
       </div>

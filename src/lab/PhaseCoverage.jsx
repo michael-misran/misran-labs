@@ -9,10 +9,10 @@ export default function PhaseCoverage({ phases = {} }) {
   const statusMap = STATUS[lang] ?? STATUS.fr
 
   return (
-    <div style={{ marginBottom: 32 }}>
+    <div style={{ marginBottom: 'var(--space-xl)' }}>
       <SectionTitle>{t(lang, 'processCoverage')}</SectionTitle>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-xs)' }}>
         {phaseList.map(phase => {
           const status = phases[phase.id] ?? 'skipped'
           const s = statusMap[status]
@@ -25,7 +25,7 @@ export default function PhaseCoverage({ phases = {} }) {
                 display: 'flex',
                 alignItems: 'center',
                 gap: 6,
-                padding: '5px 10px',
+                padding: '5px var(--space-xs-plus)',
                 borderRadius: 'var(--radius-xs)',
                 border: `var(--border-thin) solid ${s.color}`,
                 background: status === 'done' ? 'var(--active-tint)' : 'transparent',
@@ -55,7 +55,7 @@ export default function PhaseCoverage({ phases = {} }) {
         })}
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginTop: 12 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginTop: 'var(--space-sm)' }}>
         {Object.entries(statusMap).map(([key, s]) => (
           <div key={key} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <span

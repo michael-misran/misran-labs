@@ -9,11 +9,11 @@ export default function Breadcrumbs({ items, label = 'Fil d’Ariane' }) {
         display: 'inline-flex',
         alignItems: 'center',
         flexWrap: 'wrap',
-        gap: 8,
+        gap: 'var(--space-xs)',
         background: 'var(--surface-raised)',
         boxShadow: 'var(--elev-2)',
         borderRadius: 'var(--radius-md)',
-        padding: '10px var(--space-md)',
+        padding: 'var(--space-xs-plus) var(--space-md)',
         fontFamily: 'var(--font-body)',
         fontSize: 13,
       }}
@@ -21,7 +21,7 @@ export default function Breadcrumbs({ items, label = 'Fil d’Ariane' }) {
       {items.map((item, i) => {
         const last = i === items.length - 1
         return (
-          <span key={item.label} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+          <span key={item.label} style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
             {last ? (
               <span aria-current="page" style={{ color: 'var(--primary)', fontWeight: 600 }}>{item.label}</span>
             ) : (

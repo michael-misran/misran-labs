@@ -15,7 +15,7 @@ function NotFound({ date, lang }) {
   const t = MAG_TEXT[lang].issue
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <MagazineMasthead
         backTo="/magazine"
         backLabel={t.backLabel}
@@ -25,17 +25,17 @@ function NotFound({ date, lang }) {
         rightSub={t.notFoundRight}
       />
 
-      <div style={{ border: 'var(--border-regular) solid var(--border)', padding: isMobile ? 20 : 32 }}>
+      <div style={{ border: 'var(--border-regular) solid var(--border)', padding: isMobile ? 'var(--space-md-plus)' : 'var(--space-xl)' }}>
         <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.1em', overflowWrap: 'anywhere' }}>
           {t.notFoundLabel} : {date}
         </div>
-        <div style={{ marginBottom: 8 }}>
+        <div style={{ marginBottom: 'var(--space-xs)' }}>
           <Fiole scale={4} variant="toxique" sleeps={false} />
         </div>
-        <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', margin: '10px 0 8px' }}>
+        <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', margin: 'var(--space-xs-plus) 0 var(--space-xs)' }}>
           {t.notFoundTitle}
         </h1>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', margin: '0 0 20px' }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', margin: '0 0 var(--space-md-plus)' }}>
           {t.notFoundBody}
         </p>
         <Link to="/magazine" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', textDecoration: 'none' }}>
@@ -59,7 +59,7 @@ export default function MagazineIssue() {
   const categories = [...new Set(issue.articles.map(a => a.categorie))]
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <MagazineMasthead
         backTo="/magazine"
         backLabel={t.backLabel}
@@ -84,17 +84,17 @@ export default function MagazineIssue() {
       </MagazineHero>
 
       <SectionTitle>{t.editoTitle}</SectionTitle>
-      <div style={{ maxWidth: 720, marginBottom: 40, borderLeft: 'var(--border-thick) solid var(--primary)', paddingLeft: isMobile ? 14 : 20 }}>
+      <div style={{ maxWidth: 720, marginBottom: 40, borderLeft: 'var(--border-thick) solid var(--primary)', paddingLeft: isMobile ? 14 : 'var(--space-md-plus)' }}>
         <p style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: isMobile ? 17 : 19, lineHeight: 1.5, color: 'var(--text)', margin: 0 }}>
           {issue.edito[lang]}
         </p>
-        <div style={{ marginTop: 10, fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.1em' }}>
+        <div style={{ marginTop: 'var(--space-xs-plus)', fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.1em' }}>
           {t.editoSignature}
         </div>
       </div>
 
       <SectionTitle>{t.articlesTitle}</SectionTitle>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginBottom: 40 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md-plus)', marginBottom: 40 }}>
         {issue.articles.map((article, i) => (
           <ArticleCard key={i} article={article} index={i} total={issue.articles.length} lang={lang} />
         ))}

@@ -17,13 +17,13 @@ function FeedRow({ feed, lang, t, copiedKey, onCopy }) {
     <li
       style={{
         borderTop: 'var(--border-thin) solid var(--border)',
-        padding: isMobile ? '14px 8px' : '16px 12px',
+        padding: isMobile ? '14px var(--space-xs)' : 'var(--space-md) var(--space-sm)',
         display: 'flex',
         flexDirection: 'column',
-        gap: 8,
+        gap: 'var(--space-xs)',
       }}
     >
-      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: 8 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: 'var(--space-xs)' }}>
         <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 16, color: 'var(--text)' }}>
           {feed.name[lang] ?? feed.name.fr}
         </span>
@@ -40,14 +40,14 @@ function FeedRow({ feed, lang, t, copiedKey, onCopy }) {
           background: 'var(--bg2)',
           border: 'var(--border-thin) solid var(--border)',
           borderRadius: 'var(--radius-xs)',
-          padding: '6px 10px',
+          padding: '6px var(--space-xs-plus)',
           overflowWrap: 'anywhere',
         }}
       >
         {feed.url}
       </code>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-sm)' }}>
         <button
           type="button"
           onClick={() => onCopy(feed)}
@@ -59,7 +59,7 @@ function FeedRow({ feed, lang, t, copiedKey, onCopy }) {
             background: 'var(--bg3)',
             border: 'var(--border-thin) solid var(--border)',
             borderRadius: 'var(--radius-xs)',
-            padding: '7px 12px',
+            padding: '7px var(--space-sm)',
             cursor: 'pointer',
           }}
         >
@@ -75,7 +75,7 @@ function FeedRow({ feed, lang, t, copiedKey, onCopy }) {
             textDecoration: 'none',
             display: 'inline-flex',
             alignItems: 'center',
-            padding: '7px 4px',
+            padding: '7px var(--space-2xs)',
           }}
         >
           {t.openLabel} →
@@ -88,12 +88,12 @@ function FeedRow({ feed, lang, t, copiedKey, onCopy }) {
 function NetworkRow({ network, lang }) {
   const isMobile = useIsMobile()
   return (
-    <li style={{ borderTop: 'var(--border-thin) solid var(--border)', padding: isMobile ? '14px 8px' : '16px 12px' }}>
+    <li style={{ borderTop: 'var(--border-thin) solid var(--border)', padding: isMobile ? '14px var(--space-xs)' : 'var(--space-md) var(--space-sm)' }}>
       <a
         href={network.url}
         target="_blank"
         rel="noreferrer"
-        style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: 8, textDecoration: 'none', color: 'inherit' }}
+        style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: 'var(--space-xs)', textDecoration: 'none', color: 'inherit' }}
       >
         <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 16, color: 'var(--text)' }}>{network.name}</span>
         <span style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--prose)' }}>{network.description[lang] ?? network.description.fr}</span>
@@ -121,7 +121,7 @@ export default function SuivrePage() {
   }
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <MagazineMasthead
         backTo="/"
         backLabel={t.backLabel}
@@ -131,16 +131,16 @@ export default function SuivrePage() {
         rightSub={t.mastheadRightSub}
       />
 
-      <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', lineHeight: 1.1, margin: '0 0 12px', color: 'var(--text)' }}>
+      <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', lineHeight: 1.1, margin: '0 0 var(--space-sm)', color: 'var(--text)' }}>
         {t.title}
       </h1>
-      <p style={{ maxWidth: 720, fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: 'var(--prose)', margin: '0 0 32px' }}>
+      <p style={{ maxWidth: 720, fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: 'var(--prose)', margin: '0 0 var(--space-xl)' }}>
         {t.intro}
       </p>
 
-      <section style={{ marginBottom: 32 }}>
+      <section style={{ marginBottom: 'var(--space-xl)' }}>
         <SectionTitle>{t.feedsTitle}</SectionTitle>
-        <ul style={{ listStyle: 'none', margin: '0 0 12px', padding: 0, borderBottom: 'var(--border-thin) solid var(--border)' }}>
+        <ul style={{ listStyle: 'none', margin: '0 0 var(--space-sm)', padding: 0, borderBottom: 'var(--border-thin) solid var(--border)' }}>
           {FEEDS.map((feed) => (
             <FeedRow key={feed.key} feed={feed} lang={lang} t={t} copiedKey={copiedKey} onCopy={handleCopy} />
           ))}
@@ -148,7 +148,7 @@ export default function SuivrePage() {
         <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)', margin: 0 }}>{t.feedsHelp}</p>
       </section>
 
-      <section style={{ marginBottom: 32 }}>
+      <section style={{ marginBottom: 'var(--space-xl)' }}>
         <SectionTitle>{t.networksTitle}</SectionTitle>
         <ul style={{ listStyle: 'none', margin: 0, padding: 0, borderBottom: 'var(--border-thin) solid var(--border)' }}>
           {NETWORKS.map((network) => (

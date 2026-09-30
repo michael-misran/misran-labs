@@ -99,7 +99,7 @@ function LocalVsCloud({ c }) {
 
 function Table({ columns, rows }) {
   return (
-    <div style={{ overflowX: 'auto', marginBottom: 8 }}>
+    <div style={{ overflowX: 'auto', marginBottom: 'var(--space-xs)' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 420 }}>
         <thead>
           <tr>
@@ -112,7 +112,7 @@ function Table({ columns, rows }) {
                   fontSize: 10,
                   color: 'var(--muted)',
                   letterSpacing: '0.08em',
-                  padding: '0 12px 10px 0',
+                  padding: '0 var(--space-sm) var(--space-xs-plus) 0',
                   borderBottom: 'var(--border-thin) solid var(--border)',
                   whiteSpace: 'nowrap',
                 }}
@@ -133,7 +133,7 @@ function Table({ columns, rows }) {
                     fontSize: 13,
                     color: j === 0 ? 'var(--text)' : 'var(--text2)',
                     fontWeight: j === 0 ? 600 : 400,
-                    padding: '12px 12px 12px 0',
+                    padding: 'var(--space-sm) var(--space-sm) var(--space-sm) 0',
                     borderBottom: 'var(--border-thin) solid var(--border)',
                     lineHeight: 1.5,
                   }}
@@ -992,10 +992,10 @@ const CONTENT = {
 
 function MetricsList({ items }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
       {items.map((m, i) => (
         <div key={i}>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.06em', marginBottom: 4 }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.06em', marginBottom: 'var(--space-2xs)' }}>
             {m.label.toUpperCase()}
           </div>
           <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>
@@ -1013,7 +1013,7 @@ export default function UtilisationIA({ project }) {
   const isMobile = useIsMobile()
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <CaseMasthead c={c} lang={lang} />
       <CaseHero project={project} c={c} />
 
@@ -1028,52 +1028,52 @@ export default function UtilisationIA({ project }) {
       </Section>
 
       <Section title={c.startTitle}>
-        <p style={{ marginBottom: 12 }}>{c.startP1}</p>
-        <p style={{ marginBottom: 12 }}>{c.startP2}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.startP1}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.startP2}</p>
         <p style={{ margin: 0 }}>{c.startP3}</p>
       </Section>
 
       <Section title={c.leversTitle}>
-        <ol style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <ol style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
           {c.levers.map((item, i) => <li key={i}>{item}</li>)}
         </ol>
       </Section>
 
       <Section title={c.subagentsTitle}>
-        <p style={{ marginBottom: 12 }}>{c.subagentsDef}</p>
-        <p style={{ marginBottom: 16 }}>{c.subagentsAnalogy}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.subagentsDef}</p>
+        <p style={{ marginBottom: 'var(--space-md)' }}>{c.subagentsAnalogy}</p>
         <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.subagentsProsLabel}</div>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <ul style={{ margin: '0 0 var(--space-md)', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {c.subagentsPros.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
         <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.subagentsConsLabel}</div>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <ul style={{ margin: '0 0 var(--space-md)', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {c.subagentsCons.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
         <Table columns={c.subagentsTableCols} rows={c.subagentsTableRows} />
       </Section>
 
       <Section title={c.goalTitle}>
-        <div style={{ borderLeft: 'var(--border-thick) solid var(--primary)', paddingLeft: 16, marginBottom: 20, fontStyle: 'italic', color: 'var(--prose)' }}>
+        <div style={{ borderLeft: 'var(--border-thick) solid var(--primary)', paddingLeft: 'var(--space-md)', marginBottom: 'var(--space-md-plus)', fontStyle: 'italic', color: 'var(--prose)' }}>
           {c.goalQuote}
         </div>
         <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.blockersLabel}</div>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <ul style={{ margin: '0 0 var(--space-md)', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {c.blockers.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
         <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.responsesLabel}</div>
-        <ul style={{ margin: '0 0 24px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <ul style={{ margin: '0 0 var(--space-lg)', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {c.responses.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
         <FlowDiagram steps={c.resumeLoop} direction={isMobile ? 'vertical' : 'grid'} columns={3} />
-        <p style={{ marginTop: 20, marginBottom: 0 }}>{c.noCostP}</p>
+        <p style={{ marginTop: 'var(--space-md-plus)', marginBottom: 0 }}>{c.noCostP}</p>
       </Section>
 
       <Section title={c.cloudTitle}>
-        <p style={{ marginBottom: 20 }}>{c.cloudLead}</p>
+        <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.cloudLead}</p>
         <LocalVsCloud c={c.cloudChart} />
-        <div style={{ fontWeight: 600, margin: '20px 0 6px' }}>{c.cloudImplicationsLabel}</div>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <div style={{ fontWeight: 600, margin: 'var(--space-md-plus) 0 6px' }}>{c.cloudImplicationsLabel}</div>
+        <ul style={{ margin: '0 0 var(--space-md)', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {c.cloudImplications.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
         <p style={{ margin: 0 }}>{c.cloudChoiceP}</p>
@@ -1081,7 +1081,7 @@ export default function UtilisationIA({ project }) {
 
       <Section title={c.modelsTitle}>
         <ModelOrgChart c={c.modelChart} />
-        <div style={{ marginTop: 20 }}>
+        <div style={{ marginTop: 'var(--space-md-plus)' }}>
           <Table columns={c.modelsTableCols} rows={c.modelsTableRows} />
         </div>
         <p style={{ margin: 0 }}>{c.whoChoosesP}</p>
@@ -1092,13 +1092,13 @@ export default function UtilisationIA({ project }) {
       </Section>
 
       <Section title={c.setupTitle}>
-        <p style={{ marginBottom: 16 }}>{c.setupP}</p>
-        <div style={{ fontWeight: 600, marginBottom: 8 }}>{c.setupTreeLabel}</div>
-        <div style={{ marginBottom: 20 }}>
+        <p style={{ marginBottom: 'var(--space-md)' }}>{c.setupP}</p>
+        <div style={{ fontWeight: 600, marginBottom: 'var(--space-xs)' }}>{c.setupTreeLabel}</div>
+        <div style={{ marginBottom: 'var(--space-md-plus)' }}>
           <Pre isMobile={isMobile}>{c.treeProject}</Pre>
         </div>
         <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.setupIncidentsLabel}</div>
-        <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
           {c.setupIncidents.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
       </Section>
@@ -1108,86 +1108,86 @@ export default function UtilisationIA({ project }) {
       </Section>
 
       <Section title={c.wrapupTitle}>
-        <ol style={{ margin: '0 0 20px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <ol style={{ margin: '0 0 var(--space-md-plus)', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
           {c.wrapupItems.map((item, i) => <li key={i}>{item}</li>)}
         </ol>
         <FlowDiagram steps={c.gitFlow} direction={isMobile ? 'vertical' : 'grid'} columns={3} />
       </Section>
 
       <Section title={c.improvementsTitle}>
-        <ul style={{ margin: '0 0 20px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <ul style={{ margin: '0 0 var(--space-md-plus)', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
           {c.improvements.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
-        <div style={{ fontWeight: 600, marginBottom: 8 }}>{c.globalTreeLabel}</div>
+        <div style={{ fontWeight: 600, marginBottom: 'var(--space-xs)' }}>{c.globalTreeLabel}</div>
         <Pre isMobile={isMobile}>{c.treeGlobal}</Pre>
       </Section>
 
       <Section title={c.thirdMissionTitle}>
-        <p style={{ marginBottom: 16 }}>{c.thirdMissionP1}</p>
+        <p style={{ marginBottom: 'var(--space-md)' }}>{c.thirdMissionP1}</p>
         <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.autonomyBlockersLabel}</div>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <ul style={{ margin: '0 0 var(--space-md)', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {c.autonomyBlockers.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
         <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.autonomyFixesLabel}</div>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <ul style={{ margin: '0 0 var(--space-md)', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {c.autonomyFixes.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
         <p style={{ margin: 0 }}>{c.autonomyResultP}</p>
       </Section>
 
       <Section title={c.magazineTitle}>
-        <p style={{ marginBottom: 12 }}>{c.magazineIntro}</p>
-        <p style={{ marginBottom: 16 }}>{c.magazineMissionP}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.magazineIntro}</p>
+        <p style={{ marginBottom: 'var(--space-md)' }}>{c.magazineMissionP}</p>
         <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.magazineRoutineLabel}</div>
-        <ol style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <ol style={{ margin: '0 0 var(--space-md)', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {c.magazineRoutineSteps.map((item, i) => <li key={i}>{item}</li>)}
         </ol>
         <p style={{ margin: 0 }}>{c.magazineTestP}</p>
       </Section>
 
       <Section title={c.queueTitle}>
-        <p style={{ marginBottom: 12 }}>{c.queueP1}</p>
-        <p style={{ marginBottom: 12 }}>{c.queueP2}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.queueP1}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.queueP2}</p>
         <p style={{ margin: 0 }}>{c.queueP3}</p>
       </Section>
 
       <Section title={c.phoneTitle}>
-        <p style={{ marginBottom: 12 }}>{c.phoneP1}</p>
-        <p style={{ marginBottom: 20 }}>{c.phoneP2}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.phoneP1}</p>
+        <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.phoneP2}</p>
         <FlowDiagram steps={c.phoneFlow} direction={isMobile ? 'vertical' : 'grid'} columns={3} />
-        <p style={{ marginTop: 20, marginBottom: 0 }}>{c.phoneClosureP}</p>
+        <p style={{ marginTop: 'var(--space-md-plus)', marginBottom: 0 }}>{c.phoneClosureP}</p>
       </Section>
 
       <Section title={c.mainPushTitle}>
-        <p style={{ marginBottom: 12 }}>{c.mainPushP1}</p>
-        <p style={{ marginBottom: 12 }}>{c.mainPushP2}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.mainPushP1}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.mainPushP2}</p>
         <p style={{ margin: 0 }}>{c.mainPushP3}</p>
       </Section>
 
       <Section title={c.geminiTitle}>
-        <p style={{ marginBottom: 12 }}>{c.geminiIntroP}</p>
-        <p style={{ marginBottom: 12 }}>{c.geminiHowP}</p>
-        <ol style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.geminiIntroP}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.geminiHowP}</p>
+        <ol style={{ margin: '0 0 var(--space-md)', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {c.geminiLimits.map((item, i) => <li key={i}>{item}</li>)}
         </ol>
-        <p style={{ marginBottom: 12 }}>{c.geminiTryP}</p>
-        <p style={{ marginBottom: 20 }}>{c.geminiQuestionP}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.geminiTryP}</p>
+        <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.geminiQuestionP}</p>
         <Table columns={c.geminiTableCols} rows={c.geminiTableRows} />
-        <div style={{ fontWeight: 600, margin: '16px 0 6px' }}>{c.geminiConclusionLabel}</div>
+        <div style={{ fontWeight: 600, margin: 'var(--space-md) 0 6px' }}>{c.geminiConclusionLabel}</div>
         <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {c.geminiConclusion.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
       </Section>
 
       <Section title={c.tokensTitle}>
-        <p style={{ marginBottom: 20 }}>{c.tokensIntroP}</p>
+        <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.tokensIntroP}</p>
         <Table columns={c.tokensTableCols} rows={c.tokensTableRows} />
-        <p style={{ margin: '16px 0 16px' }}>{c.tokensBugP}</p>
+        <p style={{ margin: 'var(--space-md) 0 var(--space-md)' }}>{c.tokensBugP}</p>
         <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.tokensRejectedLabel}</div>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <ul style={{ margin: '0 0 var(--space-md)', paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
           {c.tokensRejected.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
-        <p style={{ marginBottom: 12 }}>{c.tokensRemainingP}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.tokensRemainingP}</p>
         <p style={{ margin: 0 }}>{c.tokensPublishP}</p>
       </Section>
 
@@ -1198,7 +1198,7 @@ export default function UtilisationIA({ project }) {
 
       <Section title={c.finalLoopTitle}>
         <FlowDiagram steps={c.finalFlow} direction={isMobile ? 'vertical' : 'grid'} columns={3} />
-        <div style={{ marginTop: 24 }}>
+        <div style={{ marginTop: 'var(--space-lg)' }}>
           <SectionTitle>{c.remainingTitle}</SectionTitle>
           <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
             {c.remaining.map((item, i) => <li key={i}>{item}</li>)}

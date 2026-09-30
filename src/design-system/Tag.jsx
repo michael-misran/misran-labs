@@ -11,7 +11,7 @@ export default function Tag({ children, color = 'var(--primary)' }) {
         background: 'var(--active-tint)',
         border: `var(--border-thin) solid ${color}`,
         borderRadius: 'var(--radius-xs)',
-        padding: '2px var(--space-xs)',
+        padding: 'var(--space-3xs) var(--space-xs)',
       }}
     >
       {children}

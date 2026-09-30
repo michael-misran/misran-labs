@@ -7,7 +7,7 @@ import useIsMobile from '../../shell/useIsMobile'
 
 function Table({ columns, rows }) {
   return (
-    <div style={{ overflowX: 'auto', marginBottom: 8 }}>
+    <div style={{ overflowX: 'auto', marginBottom: 'var(--space-xs)' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 420 }}>
         <thead>
           <tr>
@@ -20,7 +20,7 @@ function Table({ columns, rows }) {
                   fontSize: 10,
                   color: 'var(--muted)',
                   letterSpacing: '0.08em',
-                  padding: '0 12px 10px 0',
+                  padding: '0 var(--space-sm) var(--space-xs-plus) 0',
                   borderBottom: 'var(--border-thin) solid var(--border)',
                   whiteSpace: 'nowrap',
                 }}
@@ -41,7 +41,7 @@ function Table({ columns, rows }) {
                     fontSize: 13,
                     color: j === 0 ? 'var(--text)' : 'var(--text2)',
                     fontWeight: j === 0 ? 600 : 400,
-                    padding: '12px 12px 12px 0',
+                    padding: 'var(--space-sm) var(--space-sm) var(--space-sm) 0',
                     borderBottom: 'var(--border-thin) solid var(--border)',
                     lineHeight: 1.5,
                   }}
@@ -64,7 +64,7 @@ function StakeholderCard({ name, brings, bringsLabel, ritual, ritualLabel, outpu
         background: 'var(--bg2)',
         border: 'var(--border-thin) solid var(--border)',
         borderRadius: 'var(--radius-xl)',
-        padding: 24,
+        padding: 'var(--space-lg)',
         display: 'flex',
         flexDirection: 'column',
         gap: 14,
@@ -79,7 +79,7 @@ function StakeholderCard({ name, brings, bringsLabel, ritual, ritualLabel, outpu
         [outputLabel, output],
       ].map(([label, value], i) => (
         <div key={i}>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.06em', marginBottom: 4 }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.06em', marginBottom: 'var(--space-2xs)' }}>
             {label}
           </div>
           <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.5 }}>
@@ -90,11 +90,11 @@ function StakeholderCard({ name, brings, bringsLabel, ritual, ritualLabel, outpu
       <div
         style={{
           borderTop: 'var(--border-thin) solid var(--border)',
-          paddingTop: 12,
-          marginTop: 2,
+          paddingTop: 'var(--space-sm)',
+          marginTop: 'var(--space-3xs)',
         }}
       >
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--warning)', letterSpacing: '0.06em', marginBottom: 4 }}>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--warning)', letterSpacing: '0.06em', marginBottom: 'var(--space-2xs)' }}>
           {pitfallLabel}
         </div>
         <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.5 }}>
@@ -336,15 +336,15 @@ export default function WorkflowSolo({ project }) {
   const isMobile = useIsMobile()
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <CaseMasthead c={c} lang={lang} />
       <CaseHero project={project} c={c} />
 
       <div style={{ maxWidth: 720, marginBottom: 40 }}>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--prose)', lineHeight: 1.7, margin: '0 0 20px' }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--prose)', lineHeight: 1.7, margin: '0 0 var(--space-md-plus)' }}>
           {c.intro}
         </p>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--prose)', fontWeight: 600, marginBottom: 8 }}>
+        <div style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--prose)', fontWeight: 600, marginBottom: 'var(--space-xs)' }}>
           {c.introRulesLabel}
         </div>
         <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6, fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--prose)', lineHeight: 1.7 }}>
@@ -359,7 +359,7 @@ export default function WorkflowSolo({ project }) {
 
       <div style={{ marginBottom: 40 }}>
         <SectionTitle>{c.stakeholdersTitle}</SectionTitle>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--space-md)' }}>
           {c.stakeholders.map((s, i) => (
             <StakeholderCard
               key={i}
@@ -382,8 +382,8 @@ export default function WorkflowSolo({ project }) {
       </Section>
 
       <Section title={c.explorationTitle}>
-        <p style={{ marginBottom: 12 }}>{c.explorationIntro}</p>
-        <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.explorationIntro}</p>
+        <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
           {c.explorationGains.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
       </Section>
@@ -393,8 +393,8 @@ export default function WorkflowSolo({ project }) {
       </Section>
 
       <Section title={c.arbitrationTitle}>
-        <p style={{ marginBottom: 12 }}>{c.arbitrationIntro}</p>
-        <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.arbitrationIntro}</p>
+        <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
           {c.arbitrationItems.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
       </Section>
@@ -404,10 +404,10 @@ export default function WorkflowSolo({ project }) {
       </Section>
 
       <Section title={c.metricsTitle}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
           {c.metrics.map((m, i) => (
             <div key={i}>
-              <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.06em', marginBottom: 4 }}>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--primary)', letterSpacing: '0.06em', marginBottom: 'var(--space-2xs)' }}>
                 {m.label.toUpperCase()}
               </div>
               <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>

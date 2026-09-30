@@ -52,7 +52,7 @@ const PROSE = { fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, c
 
 function Paragraph({ text }) {
   return (
-    <p style={{ ...PROSE, margin: '0 0 16px' }}>
+    <p style={{ ...PROSE, margin: '0 0 var(--space-md)' }}>
       <Rich text={text} />
     </p>
   )
@@ -60,9 +60,9 @@ function Paragraph({ text }) {
 
 function NumberedList({ items }) {
   return (
-    <ol style={{ ...PROSE, margin: '0 0 16px', paddingLeft: 22 }}>
+    <ol style={{ ...PROSE, margin: '0 0 var(--space-md)', paddingLeft: 22 }}>
       {items.map((item, i) => (
-        <li key={i} style={{ marginBottom: 8 }}>
+        <li key={i} style={{ marginBottom: 'var(--space-xs)' }}>
           <Rich text={item} />
         </li>
       ))}
@@ -72,14 +72,14 @@ function NumberedList({ items }) {
 
 function Levels({ items, isMobile }) {
   return (
-    <ol style={{ listStyle: 'none', margin: '0 0 16px', padding: 0, display: 'grid', gap: 12, maxWidth: 720 }}>
+    <ol style={{ listStyle: 'none', margin: '0 0 var(--space-md)', padding: 0, display: 'grid', gap: 'var(--space-sm)', maxWidth: 720 }}>
       {items.map((item, i) => (
-        <li key={i} style={{ display: 'flex', gap: isMobile ? 12 : 16, border: 'var(--border-thin) solid var(--border)', background: 'var(--bg2)', padding: isMobile ? 12 : 16 }}>
+        <li key={i} style={{ display: 'flex', gap: isMobile ? 'var(--space-sm)' : 'var(--space-md)', border: 'var(--border-thin) solid var(--border)', background: 'var(--bg2)', padding: isMobile ? 'var(--space-sm)' : 'var(--space-md)' }}>
           <span aria-hidden="true" style={{ flexShrink: 0, fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 22, lineHeight: 1, color: 'var(--primary)' }}>
             {i + 1}
           </span>
           <div style={{ minWidth: 0 }}>
-            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 17, lineHeight: 1.2, color: 'var(--text)', marginBottom: 4 }}>{item.title}</div>
+            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 17, lineHeight: 1.2, color: 'var(--text)', marginBottom: 'var(--space-2xs)' }}>{item.title}</div>
             <div style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.6, color: 'var(--prose)' }}>
               <Rich text={item.text} />
             </div>
@@ -92,20 +92,20 @@ function Levels({ items, isMobile }) {
 
 function Cases({ items, isMobile }) {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, minmax(0, 1fr))', gap: 16, margin: '0 0 16px' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, minmax(0, 1fr))', gap: 'var(--space-md)', margin: '0 0 var(--space-md)' }}>
       {items.map((item, i) => (
-        <div key={i} style={{ border: 'var(--border-thin) solid var(--border)', background: 'var(--bg2)', padding: isMobile ? 14 : 20, minWidth: 0 }}>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.1em', color: 'var(--primary)', marginBottom: 8 }}>
+        <div key={i} style={{ border: 'var(--border-thin) solid var(--border)', background: 'var(--bg2)', padding: isMobile ? 14 : 'var(--space-md-plus)', minWidth: 0 }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.1em', color: 'var(--primary)', marginBottom: 'var(--space-xs)' }}>
             {String.fromCharCode(65 + i)}
           </div>
-          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 18, lineHeight: 1.25, color: 'var(--text)', marginBottom: 8, overflowWrap: 'anywhere' }}>{item.title}</div>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.6, color: 'var(--prose)', margin: item.list ? '0 0 12px' : 0 }}>
+          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 18, lineHeight: 1.25, color: 'var(--text)', marginBottom: 'var(--space-xs)', overflowWrap: 'anywhere' }}>{item.title}</div>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.6, color: 'var(--prose)', margin: item.list ? '0 0 var(--space-sm)' : 0 }}>
             <Rich text={item.text} />
           </p>
           {item.list && (
-            <ol style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.6, color: 'var(--prose)', margin: 0, paddingLeft: 20 }}>
+            <ol style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.6, color: 'var(--prose)', margin: 0, paddingLeft: 'var(--space-md-plus)' }}>
               {item.list.map((step, j) => (
-                <li key={j} style={{ marginBottom: 8 }}>
+                <li key={j} style={{ marginBottom: 'var(--space-xs)' }}>
                   <Rich text={step} />
                 </li>
               ))}
@@ -125,14 +125,14 @@ function Block({ block, isMobile }) {
       return <Levels items={block.items} isMobile={isMobile} />
     case 'tree':
       return (
-        <div style={{ margin: '0 0 16px' }}>
+        <div style={{ margin: '0 0 var(--space-md)' }}>
           <Pre isMobile={isMobile}>{block.text}</Pre>
         </div>
       )
     case 'flow':
       // Vertical sur mobile (240 px de large, texte lisible), en grille sinon.
       return (
-        <div style={{ margin: '0 0 16px' }}>
+        <div style={{ margin: '0 0 var(--space-md)' }}>
           <FlowDiagram steps={block.steps} direction={isMobile ? 'vertical' : 'grid'} columns={3} />
         </div>
       )
@@ -152,7 +152,7 @@ export default function ProjetsFonctionnement() {
   const chrome = CASE_CHROME[lang]
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <MagazineMasthead
         backTo="/projets"
         backLabel={t.backLabel}
@@ -165,7 +165,7 @@ export default function ProjetsFonctionnement() {
       <ProjetsHero number={t.heroNumber} title={t.title} subtitle={t.subtitle} />
 
       {t.sections.map((section) => (
-        <section key={section.id} style={{ marginBottom: 32 }}>
+        <section key={section.id} style={{ marginBottom: 'var(--space-xl)' }}>
           <SectionTitle>{section.title}</SectionTitle>
           {section.blocks.map((block, i) => (
             <Block key={i} block={block} isMobile={isMobile} />

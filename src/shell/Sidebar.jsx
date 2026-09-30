@@ -29,7 +29,7 @@ function SidebarHeader({ lang, collapsed, isMobile, onCloseMobile, onCollapse, o
     return (
       <div
         style={{
-          padding: '10px 12px',
+          padding: 'var(--space-xs-plus) var(--space-sm)',
           borderBottom: 'var(--border-thin) solid var(--border)',
           display: 'flex',
           justifyContent: 'flex-end',
@@ -43,7 +43,7 @@ function SidebarHeader({ lang, collapsed, isMobile, onCloseMobile, onCollapse, o
   return (
     <div
       style={{
-        padding: collapsed ? '12px 0' : '10px 12px',
+        padding: collapsed ? 'var(--space-sm) 0' : 'var(--space-xs-plus) var(--space-sm)',
         borderBottom: 'var(--border-thin) solid var(--border)',
         display: 'flex',
         justifyContent: collapsed ? 'center' : 'flex-end',
@@ -71,7 +71,7 @@ function NavItem({ to, number, label, collapsed, end = true }) {
               fontSize: 11,
               letterSpacing: '0.03em',
               cursor: 'pointer',
-              padding: '12px 0',
+              padding: 'var(--space-sm) 0',
               width: '100%',
               textAlign: 'center',
               transition: 'color 0.15s ease',
@@ -89,8 +89,8 @@ function NavItem({ to, number, label, collapsed, end = true }) {
               width: '100%',
               display: 'flex',
               alignItems: 'center',
-              gap: 12,
-              padding: '10px 16px',
+              gap: 'var(--space-sm)',
+              padding: 'var(--space-xs-plus) var(--space-md)',
               cursor: 'pointer',
               transition: 'background 0.15s ease',
             }}
@@ -132,12 +132,12 @@ function NavItem({ to, number, label, collapsed, end = true }) {
 
 function NavSectionLabel({ children, collapsed }) {
   if (collapsed) {
-    return <div style={{ borderTop: 'var(--border-thin) solid var(--border)', margin: '8px 12px' }} />
+    return <div style={{ borderTop: 'var(--border-thin) solid var(--border)', margin: 'var(--space-xs) var(--space-sm)' }} />
   }
   return (
     <div
       style={{
-        padding: '16px 16px 6px',
+        padding: 'var(--space-md) var(--space-md) 6px',
         fontFamily: "var(--font-mono)",
         fontSize: 9,
         letterSpacing: '0.1em',
@@ -216,7 +216,7 @@ export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
       {isMobile ? (
         <>
           <SidebarHeader lang={lang} collapsed={false} isMobile onCloseMobile={onCloseMobile} />
-          <div style={{ paddingTop: 8 }} />
+          <div style={{ paddingTop: 'var(--space-xs)' }} />
           {navList(false)}
         </>
       ) : collapsed ? (
@@ -227,7 +227,7 @@ export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
       ) : (
         <>
           <SidebarHeader lang={lang} collapsed={false} onCollapse={() => setCollapsed(true)} />
-          <div style={{ paddingTop: 8 }} />
+          <div style={{ paddingTop: 'var(--space-xs)' }} />
           {navList(false)}
         </>
       )}

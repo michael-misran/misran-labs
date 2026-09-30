@@ -9,11 +9,11 @@ export default function Tabs({ tabs, active, onChange, label }) {
       aria-label={label}
       style={{
         display: 'inline-flex',
-        gap: 4,
+        gap: 'var(--space-2xs)',
         background: 'var(--surface-inset)',
         boxShadow: 'var(--elev-inset)',
         borderRadius: 'var(--radius-md)',
-        padding: 4,
+        padding: 'var(--space-2xs)',
       }}
     >
       {tabs.map((tab) => {

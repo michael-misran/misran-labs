@@ -32,7 +32,7 @@ export default function Tooltip({ content, children, placement = 'top' }) {
           fontFamily: 'var(--font-body)',
           fontSize: 11,
           whiteSpace: 'nowrap',
-          padding: '6px 10px',
+          padding: '6px var(--space-xs-plus)',
           pointerEvents: 'none',
           zIndex: 20,
         }}

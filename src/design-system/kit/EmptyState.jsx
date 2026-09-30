@@ -22,7 +22,7 @@ export default function EmptyState({ title, description, action, icon = 'window'
     >
       <span style={{ position: 'relative', color: 'var(--muted)', display: 'flex' }}>
         <Icon name={icon} size="46px" />
-        <span style={{ position: 'absolute', right: -4, bottom: -4, color: 'var(--text2)', background: 'var(--bg)', borderRadius: '50%', padding: 2, display: 'flex' }}>
+        <span style={{ position: 'absolute', right: -4, bottom: -4, color: 'var(--text2)', background: 'var(--bg)', borderRadius: '50%', padding: 'var(--space-3xs)', display: 'flex' }}>
           <Icon name="search" size="var(--icon-md)" />
         </span>
       </span>

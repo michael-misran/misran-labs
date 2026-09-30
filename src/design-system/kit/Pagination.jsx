@@ -18,7 +18,7 @@ export default function Pagination({ page = 1, pages = 1, onChange, labels }) {
         fontSize: 11,
         letterSpacing: '0.06em',
         cursor: enabled ? 'pointer' : 'not-allowed',
-        padding: '6px 4px',
+        padding: '6px var(--space-2xs)',
       }}
     >
       {dir === 'prev' ? l.prev : l.next}
@@ -26,7 +26,7 @@ export default function Pagination({ page = 1, pages = 1, onChange, labels }) {
   )
 
   return (
-    <nav aria-label={l.nav} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+    <nav aria-label={l.nav} style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
       {arrow('prev', page > 1)}
       {list.map((n) => {
         const current = n === page

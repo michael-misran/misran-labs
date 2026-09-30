@@ -10,8 +10,8 @@ import { PROJ_TEXT, STATUTS, statutLabel, typeLabel, tailleLabel, formatDateShor
 export function ProjetsHero({ number, title, subtitle, children }) {
   const isMobile = useIsMobile()
   return (
-    <div style={{ border: 'var(--border-regular) solid var(--border)', marginBottom: 32 }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, padding: isMobile ? '16px 16px' : '18px 24px', borderBottom: children ? 'var(--border-thin) solid var(--border)' : 'none' }}>
+    <div style={{ border: 'var(--border-regular) solid var(--border)', marginBottom: 'var(--space-xl)' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)', padding: isMobile ? 'var(--space-md) var(--space-md)' : '18px var(--space-lg)', borderBottom: children ? 'var(--border-thin) solid var(--border)' : 'none' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, flex: 1, minWidth: 0 }}>
           <span
             style={{
@@ -64,7 +64,7 @@ export function StatusMark({ statut, lang, size = 'sm' }) {
         color: 'var(--text)',
         border: `var(--border-thin) ${border} ${color}`,
         borderRadius: 'var(--radius-xs)',
-        padding: '2px 8px',
+        padding: 'var(--space-3xs) var(--space-xs)',
         background: 'var(--bg)',
         whiteSpace: 'nowrap',
       }}
@@ -97,7 +97,7 @@ export function StatusFilter({ statut, count, active, lang, onClick }) {
         background: active ? 'var(--bg2)' : 'var(--bg3)',
         border: `var(--border-thin) ${active ? border : 'solid'} ${active ? color : 'var(--border)'}`,
         borderRadius: 'var(--radius-xs)',
-        padding: '7px 12px',
+        padding: '7px var(--space-sm)',
         minHeight: 36,
         cursor: 'pointer',
         fontWeight: active ? 700 : 400,
@@ -129,37 +129,37 @@ export function IdeaRow({ idee, lang }) {
       style={{
         display: isMobile ? 'block' : 'grid',
         gridTemplateColumns: isMobile ? undefined : '96px 1fr auto',
-        columnGap: 20,
+        columnGap: 'var(--space-md-plus)',
         alignItems: 'start',
         textDecoration: 'none',
         color: 'inherit',
         borderTop: 'var(--border-thin) solid var(--border)',
-        padding: isMobile ? '14px 8px' : '18px 12px',
+        padding: isMobile ? '14px var(--space-xs)' : '18px var(--space-sm)',
         background: hover ? 'var(--hover-tint)' : 'none',
         transition: 'background 0.15s ease',
       }}
     >
       {isMobile ? (
         <>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 'var(--space-xs-plus)' }}>
             <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 20, lineHeight: 1, color: arretee ? 'var(--muted)' : 'var(--primary)', fontVariantNumeric: 'tabular-nums' }}>
               {idee.id}
             </span>
             <StatusMark statut={idee.statut} lang={lang} />
           </div>
-          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 18, lineHeight: 1.2, color: arretee ? 'var(--text2)' : 'var(--text)', marginTop: 8, overflowWrap: 'anywhere' }}>
+          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 18, lineHeight: 1.2, color: arretee ? 'var(--text2)' : 'var(--text)', marginTop: 'var(--space-xs)', overflowWrap: 'anywhere' }}>
             {idee.titre[lang]}
           </div>
           <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.6, color: 'var(--prose)', margin: '6px 0 0' }}>
             {idee.resume[lang]}
           </p>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: 8 }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: 'var(--space-xs)' }}>
             {metaLine(idee, lang)}
           </div>
         </>
       ) : (
         <>
-          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 22, lineHeight: 1, color: arretee ? 'var(--muted)' : 'var(--primary)', whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums', paddingTop: 2 }}>
+          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 22, lineHeight: 1, color: arretee ? 'var(--muted)' : 'var(--primary)', whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums', paddingTop: 'var(--space-3xs)' }}>
             {idee.id}
           </div>
           <div style={{ minWidth: 0 }}>
@@ -169,11 +169,11 @@ export function IdeaRow({ idee, lang }) {
             <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.6, color: 'var(--prose)', margin: '6px 0 0' }}>
               {idee.resume[lang]}
             </p>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: 8 }}>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: 'var(--space-xs)' }}>
               {metaLine(idee, lang)}
             </div>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs-plus)' }}>
             <StatusMark statut={idee.statut} lang={lang} />
             <span aria-hidden="true" style={{ fontFamily: "var(--font-mono)", fontSize: 14, color: 'var(--primary)' }}>→</span>
           </div>
@@ -218,7 +218,7 @@ export function PrivateNotes({ id, lang }) {
       style={{
         border: 'var(--border-thick) dashed var(--error)',
         background: 'var(--bg3)',
-        padding: isMobile ? 14 : 20,
+        padding: isMobile ? 14 : 'var(--space-md-plus)',
         maxWidth: 720,
       }}
     >
@@ -227,10 +227,10 @@ export function PrivateNotes({ id, lang }) {
           display: 'flex',
           justifyContent: 'space-between',
           flexWrap: 'wrap',
-          gap: 8,
+          gap: 'var(--space-xs)',
           borderBottom: 'var(--border-thin) dashed var(--error)',
-          paddingBottom: 10,
-          marginBottom: 12,
+          paddingBottom: 'var(--space-xs-plus)',
+          marginBottom: 'var(--space-sm)',
         }}
       >
         <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', color: 'var(--error)' }}>

@@ -16,7 +16,7 @@ function RoleCard({ name, spec, usage, children }) {
         background: 'var(--bg2)',
         border: 'var(--border-thin) solid var(--border)',
         borderRadius: 'var(--radius-xl)',
-        padding: 24,
+        padding: 'var(--space-lg)',
         display: 'flex',
         flexDirection: 'column',
         gap: 18,
@@ -24,8 +24,8 @@ function RoleCard({ name, spec, usage, children }) {
     >
       <div style={{ minHeight: 44, display: 'flex', alignItems: 'center' }}>{children}</div>
       <div>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 4 }}>{name}</div>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', marginBottom: 2 }}>{spec}</div>
+        <div style={{ fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 'var(--space-2xs)' }}>{name}</div>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', marginBottom: 'var(--space-3xs)' }}>{spec}</div>
         <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)' }}>{usage}</div>
       </div>
     </div>
@@ -34,13 +34,13 @@ function RoleCard({ name, spec, usage, children }) {
 
 function FontCard({ family, cssFamily, role, usage, weights }) {
   return (
-    <div style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 24 }}>
+    <div style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 'var(--space-lg)' }}>
       <div style={{ fontFamily: cssFamily, fontSize: 48, fontWeight: 600, color: 'var(--text)', lineHeight: 1, marginBottom: 18 }}>
         Aa
       </div>
-      <div style={{ fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 4 }}>{family}</div>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', marginBottom: 10 }}>{role}</div>
-      <div style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text2)', lineHeight: 1.5, marginBottom: 8 }}>{usage}</div>
+      <div style={{ fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 'var(--space-2xs)' }}>{family}</div>
+      <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', marginBottom: 'var(--space-xs-plus)' }}>{role}</div>
+      <div style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text2)', lineHeight: 1.5, marginBottom: 'var(--space-xs)' }}>{usage}</div>
       <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)' }}>{weights}</div>
     </div>
   )
@@ -50,8 +50,8 @@ function PaletteSwatch({ name, varName }) {
   return (
     <div style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', overflow: 'hidden' }}>
       <div style={{ height: 56, background: `var(${varName})` }} />
-      <div style={{ padding: '10px 14px' }}>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 600, color: 'var(--text)', marginBottom: 2 }}>{name}</div>
+      <div style={{ padding: 'var(--space-xs-plus) 14px' }}>
+        <div style={{ fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 600, color: 'var(--text)', marginBottom: 'var(--space-3xs)' }}>{name}</div>
         <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--text2)' }}>{varName}</div>
       </div>
     </div>
@@ -60,10 +60,10 @@ function PaletteSwatch({ name, varName }) {
 
 function ColorRole({ varName, name, desc }) {
   return (
-    <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-      <span style={{ width: 14, height: 14, borderRadius: '50%', background: `var(${varName})`, flexShrink: 0, marginTop: 2, border: 'var(--border-thin) solid var(--border)' }} />
+    <div style={{ display: 'flex', gap: 'var(--space-sm)', alignItems: 'flex-start' }}>
+      <span style={{ width: 14, height: 14, borderRadius: '50%', background: `var(${varName})`, flexShrink: 0, marginTop: 'var(--space-3xs)', border: 'var(--border-thin) solid var(--border)' }} />
       <div>
-        <div style={{ fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 2 }}>{name}</div>
+        <div style={{ fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, color: 'var(--text)', marginBottom: 'var(--space-3xs)' }}>{name}</div>
         <div style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text2)', lineHeight: 1.5 }}>{desc}</div>
       </div>
     </div>
@@ -72,8 +72,8 @@ function ColorRole({ varName, name, desc }) {
 
 function UpdateCard({ date, title, desc }) {
   return (
-    <div style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 20 }}>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)', marginBottom: 8 }}>{date}</div>
+    <div style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 'var(--space-md-plus)' }}>
+      <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)', marginBottom: 'var(--space-xs)' }}>{date}</div>
       <div style={{ fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 6 }}>{title}</div>
       <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.5 }}>{desc}</div>
     </div>
@@ -82,8 +82,8 @@ function UpdateCard({ date, title, desc }) {
 
 function RoadmapCard({ version, statusLabel, statusColor, items }) {
   return (
-    <div style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 20, marginBottom: 16 }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+    <div style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 'var(--space-md-plus)', marginBottom: 'var(--space-md)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs-plus)', marginBottom: 'var(--space-sm)' }}>
         <span style={{ fontFamily: "var(--font-heading)", fontSize: 16, fontWeight: 600, color: 'var(--text)' }}>
           {version}
         </span>
@@ -94,7 +94,7 @@ function RoadmapCard({ version, statusLabel, statusColor, items }) {
             color: statusColor,
             border: `var(--border-thin) solid ${statusColor}`,
             borderRadius: 'var(--radius-xs)',
-            padding: '2px 8px',
+            padding: 'var(--space-3xs) var(--space-xs)',
             whiteSpace: 'nowrap',
           }}
         >
@@ -416,12 +416,12 @@ function TokenTable({ tokens }) {
         <tbody>
           {tokens.map((tok) => (
             <tr key={tok.varName} style={{ borderBottom: 'var(--border-thin) solid var(--border)' }}>
-              <td style={{ padding: '14px 16px', whiteSpace: 'nowrap', verticalAlign: 'middle' }}>
+              <td style={{ padding: '14px var(--space-md)', whiteSpace: 'nowrap', verticalAlign: 'middle' }}>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--primary)' }}>
                   {tok.varName}
                 </span>
               </td>
-              <td style={{ padding: '14px 16px', verticalAlign: 'middle' }}>
+              <td style={{ padding: '14px var(--space-md)', verticalAlign: 'middle' }}>
                 {tok.type === 'font' ? (
                   <span style={{ fontFamily: tok.cssFamily, fontSize: 18, color: 'var(--text)' }}>Aa</span>
                 ) : (
@@ -437,7 +437,7 @@ function TokenTable({ tokens }) {
                   />
                 )}
               </td>
-              <td style={{ padding: '14px 16px', fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.5 }}>
+              <td style={{ padding: '14px var(--space-md)', fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.5 }}>
                 {tok.usage}
               </td>
             </tr>
@@ -486,7 +486,7 @@ export default function DesignSystem({ project }) {
   const isMobile = useIsMobile()
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <CaseMasthead c={c} lang={lang} />
       <CaseHero project={project} c={c} />
       <CaseTabs tabs={c.tabs} active={activeTab} onChange={setActiveTab} />
@@ -495,12 +495,12 @@ export default function DesignSystem({ project }) {
         <>
           <Section title={c.overviewTitle}>
             {c.overviewBody.map((para, i) => (
-              <p key={i} style={{ marginBottom: i < c.overviewBody.length - 1 ? 12 : 0 }}>{para}</p>
+              <p key={i} style={{ marginBottom: i < c.overviewBody.length - 1 ? 'var(--space-sm)' : 0 }}>{para}</p>
             ))}
           </Section>
 
           <Section title={c.updatesTitle}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 'var(--space-md)' }}>
               {c.updates.map((u) => (
                 <UpdateCard key={u.title} date={u.date} title={u.title} desc={u.desc} />
               ))}
@@ -508,7 +508,7 @@ export default function DesignSystem({ project }) {
           </Section>
 
           <Section title={c.nextTitle}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 'var(--space-md)' }}>
               {c.next.map((n) => (
                 <NavCard key={n.tab} title={n.title} desc={n.desc} onClick={() => setActiveTab(n.tab)} />
               ))}
@@ -519,16 +519,16 @@ export default function DesignSystem({ project }) {
 
       {activeTab === 'fonts' && (
         <Section title={c.fontsTitle}>
-          <p style={{ marginBottom: 20 }}>{c.fontsIntro}</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16, marginBottom: 32 }}>
+          <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.fontsIntro}</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 'var(--space-md)', marginBottom: 'var(--space-xl)' }}>
             {c.fonts.map((font) => (
               <FontCard key={font.family} {...font} />
             ))}
           </div>
 
           <SectionTitle>{c.rolesTitle}</SectionTitle>
-          <p style={{ marginBottom: 20 }}>{c.rolesIntro}</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
+          <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.rolesIntro}</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--space-md)' }}>
             {c.roles.map((role) => (
               <RoleCard key={role.name} name={role.name} spec={role.spec} usage={role.usage}>
                 <RoleSpecimen render={role.render} text={role.text} />
@@ -546,40 +546,40 @@ export default function DesignSystem({ project }) {
 
       {activeTab === 'colors' && (
         <Section title={c.colorsTitle}>
-          <p style={{ marginBottom: 32 }}>{c.colorsIntro}</p>
+          <p style={{ marginBottom: 'var(--space-xl)' }}>{c.colorsIntro}</p>
 
           <SectionTitle>{c.paletteTitle}</SectionTitle>
-          <p style={{ marginBottom: 20 }}>{c.paletteIntro}</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 12, marginBottom: 32 }}>
+          <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.paletteIntro}</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 'var(--space-sm)', marginBottom: 'var(--space-xl)' }}>
             {c.palette.map((sw) => (
               <PaletteSwatch key={sw.varName} name={sw.name} varName={sw.varName} />
             ))}
           </div>
 
           <SectionTitle>{c.colorRolesTitle}</SectionTitle>
-          <p style={{ marginBottom: 20 }}>{c.colorRolesIntro}</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16, marginBottom: 32 }}>
+          <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.colorRolesIntro}</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--space-md)', marginBottom: 'var(--space-xl)' }}>
             {c.colorRoles.map((role) => (
               <ColorRole key={role.varName + role.name} varName={role.varName} name={role.name} desc={role.desc} />
             ))}
           </div>
 
           <SectionTitle>{c.schemesTitle}</SectionTitle>
-          <p style={{ marginBottom: 20 }}>{c.schemesIntro}</p>
+          <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.schemesIntro}</p>
           <ThemeSwatch />
         </Section>
       )}
 
       {activeTab === 'tokens' && (
         <Section title={c.tokensTitle}>
-          <p style={{ marginBottom: 20 }}>{c.tokensIntro}</p>
+          <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.tokensIntro}</p>
           <TokenTable tokens={c.tokens} />
         </Section>
       )}
 
       {activeTab === 'roadmap' && (
         <Section title={c.roadmapTitle}>
-          <p style={{ marginBottom: 20 }}>{c.roadmapIntro}</p>
+          <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.roadmapIntro}</p>
           {c.roadmap.map((r) => (
             <RoadmapCard key={r.version} version={r.version} statusLabel={r.statusLabel} statusColor={r.statusColor} items={r.items} />
           ))}

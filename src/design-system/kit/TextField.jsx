@@ -53,7 +53,7 @@ export default function TextField({
           boxShadow: 'var(--elev-inset)',
           fontFamily: 'var(--font-body)',
           fontSize: 13,
-          padding: '10px var(--space-sm)',
+          padding: 'var(--space-xs-plus) var(--space-sm)',
           transition: 'border-color 0.18s ease, box-shadow 0.18s ease',
         }}
       />

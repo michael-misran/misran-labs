@@ -30,7 +30,7 @@ function SimpleTable({ columns, rows, monoColumn = null }) {
                   letterSpacing: '0.08em',
                   color: 'var(--muted)',
                   borderBottom: 'var(--border-thin) solid var(--border)',
-                  padding: '8px 12px 8px 0',
+                  padding: 'var(--space-xs) var(--space-sm) var(--space-xs) 0',
                   whiteSpace: 'nowrap',
                 }}
               >
@@ -47,7 +47,7 @@ function SimpleTable({ columns, rows, monoColumn = null }) {
                   key={j}
                   style={{
                     borderBottom: 'var(--border-thin) solid var(--border)',
-                    padding: '10px 12px 10px 0',
+                    padding: 'var(--space-xs-plus) var(--space-sm) var(--space-xs-plus) 0',
                     color: j === 0 ? 'var(--text)' : 'var(--text2)',
                     fontWeight: j === 0 ? 600 : 400,
                     fontFamily: j === monoColumn ? 'var(--font-mono)' : 'var(--font-body)',
@@ -70,9 +70,9 @@ function SimpleTable({ columns, rows, monoColumn = null }) {
 function TokenAnatomy({ segments }) {
   return (
     <div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, fontFamily: 'var(--font-mono)', fontSize: 12, marginBottom: 10 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2xs)', fontFamily: 'var(--font-mono)', fontSize: 12, marginBottom: 'var(--space-xs-plus)' }}>
         {segments.map((seg, i) => (
-          <span key={i} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+          <span key={i} style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2xs)' }}>
             <span
               style={{
                 background: 'var(--bg2)',
@@ -88,7 +88,7 @@ function TokenAnatomy({ segments }) {
           </span>
         ))}
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-sm)' }}>
         {segments.map((seg, i) => (
           <span key={i} style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--muted)', letterSpacing: '0.06em' }}>
             {seg.role}
@@ -122,8 +122,8 @@ function PlanNote({ children }) {
 function DevTodo({ title, items }) {
   if (!DEV) return null
   return (
-    <div style={{ border: '1px dashed var(--warning)', borderRadius: 'var(--radius-md)', padding: 16, marginBottom: 32 }}>
-      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.1em', color: 'var(--warning)', marginBottom: 10 }}>
+    <div style={{ border: '1px dashed var(--warning)', borderRadius: 'var(--radius-md)', padding: 'var(--space-md)', marginBottom: 'var(--space-xl)' }}>
+      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.1em', color: 'var(--warning)', marginBottom: 'var(--space-xs-plus)' }}>
         {'// ' + title + ' — VISIBLE EN DEV UNIQUEMENT'}
       </div>
       <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6, fontSize: 13, color: 'var(--text2)', lineHeight: 1.6 }}>
@@ -140,17 +140,17 @@ function VisualSlot({ label, file }) {
       style={{
         border: '1px dashed var(--border)',
         borderRadius: 'var(--radius-md)',
-        padding: '28px 20px',
+        padding: '28px var(--space-md-plus)',
         textAlign: 'center',
         marginBottom: 40,
         color: 'var(--muted)',
       }}
     >
-      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.08em', marginBottom: 8 }}>
+      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.08em', marginBottom: 'var(--space-xs)' }}>
         [ VISUEL À AJOUTER ]
       </div>
       <div style={{ fontSize: 13, color: 'var(--text2)', maxWidth: 480, margin: '0 auto' }}>{label}</div>
-      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, marginTop: 8 }}>{file}</div>
+      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, marginTop: 'var(--space-xs)' }}>{file}</div>
     </div>
   )
 }
@@ -560,7 +560,7 @@ export default function DesignSystemMultimarques({ project }) {
   const [activeTab, setActiveTab] = useState('overview')
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <CaseMasthead c={c} lang={lang} />
       <CaseHero project={project} c={c}>
         <CaseMetaRow columns={[
@@ -577,19 +577,19 @@ export default function DesignSystemMultimarques({ project }) {
           <PlanNote>{c.planNote}</PlanNote>
 
           <Section title={c.contextTitle}>
-            <p style={{ marginTop: 0, marginBottom: 16 }}>{c.context}</p>
-            <p style={{ marginTop: 0, marginBottom: 16 }}>{c.contextScope}</p>
+            <p style={{ marginTop: 0, marginBottom: 'var(--space-md)' }}>{c.context}</p>
+            <p style={{ marginTop: 0, marginBottom: 'var(--space-md)' }}>{c.contextScope}</p>
             <p style={{ margin: 0, fontSize: 13, color: 'var(--muted)' }}>{c.contextConfidentiality}</p>
           </Section>
 
           <Section title={c.problemTitle}>
-            <p style={{ marginTop: 0, marginBottom: 16 }}>{c.problemIntro}</p>
+            <p style={{ marginTop: 0, marginBottom: 'var(--space-md)' }}>{c.problemIntro}</p>
             <BulletList items={c.problem} />
-            <p style={{ marginTop: 20, marginBottom: 0 }}>{c.problemCause}</p>
+            <p style={{ marginTop: 'var(--space-md-plus)', marginBottom: 0 }}>{c.problemCause}</p>
           </Section>
 
           <Section title={c.builtTitle}>
-            <p style={{ marginTop: 0, marginBottom: 16 }}>{c.builtIntro}</p>
+            <p style={{ marginTop: 0, marginBottom: 'var(--space-md)' }}>{c.builtIntro}</p>
             <BulletList items={c.builtItems} />
           </Section>
 
@@ -614,14 +614,14 @@ export default function DesignSystemMultimarques({ project }) {
           </Section>
 
           <Section title={c.tokensAnatomyTitle}>
-            <p style={{ marginTop: 0, marginBottom: 24 }}>{c.tokensAnatomyIntro}</p>
+            <p style={{ marginTop: 0, marginBottom: 'var(--space-lg)' }}>{c.tokensAnatomyIntro}</p>
             <TokenAnatomy segments={c.tokensAnatomySegments} />
-            <p style={{ marginTop: 24, marginBottom: 0, fontSize: 13, color: 'var(--muted)' }}>{c.tokensAnatomyNote}</p>
+            <p style={{ marginTop: 'var(--space-lg)', marginBottom: 0, fontSize: 13, color: 'var(--muted)' }}>{c.tokensAnatomyNote}</p>
           </Section>
 
           <Section title={c.tokensChainTitle}>
-            <p style={{ marginTop: 0, marginBottom: 24 }}>{c.tokensChainIntro}</p>
-            <div style={{ marginBottom: 24, overflowX: 'auto' }}>
+            <p style={{ marginTop: 0, marginBottom: 'var(--space-lg)' }}>{c.tokensChainIntro}</p>
+            <div style={{ marginBottom: 'var(--space-lg)', overflowX: 'auto' }}>
               <FlowDiagram steps={c.tokensChainFlow} direction="vertical" />
             </div>
             <p style={{ margin: 0 }}>{c.tokensChainNote}</p>
@@ -642,7 +642,7 @@ export default function DesignSystemMultimarques({ project }) {
       {activeTab === 'pipeline' && (
         <>
           <Section title={c.pipelineTitle}>
-            <p style={{ marginTop: 0, marginBottom: 24 }}>{c.pipelineIntro}</p>
+            <p style={{ marginTop: 0, marginBottom: 'var(--space-lg)' }}>{c.pipelineIntro}</p>
             <div style={{ overflowX: 'auto' }}>
               <FlowDiagram steps={c.pipelineFlow} direction="vertical" />
             </div>
@@ -687,7 +687,7 @@ export default function DesignSystemMultimarques({ project }) {
           </Section>
 
           <Section title={c.resultsNoNumbersTitle}>
-            <p style={{ marginTop: 0, marginBottom: 16 }}>{c.resultsNoNumbers}</p>
+            <p style={{ marginTop: 0, marginBottom: 'var(--space-md)' }}>{c.resultsNoNumbers}</p>
             <p style={{ margin: 0 }}>{c.resultsNoNumbersLesson}</p>
           </Section>
         </>

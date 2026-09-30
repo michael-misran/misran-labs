@@ -15,7 +15,7 @@ function NotFound({ date, lang }) {
   const t = BREVES_TEXT[lang].day
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <MagazineMasthead
         backTo="/breves"
         backLabel={t.backLabel}
@@ -25,17 +25,17 @@ function NotFound({ date, lang }) {
         rightSub={t.notFoundRight}
       />
 
-      <div style={{ border: 'var(--border-regular) solid var(--border)', padding: isMobile ? 20 : 32 }}>
+      <div style={{ border: 'var(--border-regular) solid var(--border)', padding: isMobile ? 'var(--space-md-plus)' : 'var(--space-xl)' }}>
         <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.1em', overflowWrap: 'anywhere' }}>
           {t.notFoundLabel} : {date}
         </div>
-        <div style={{ marginBottom: 8 }}>
+        <div style={{ marginBottom: 'var(--space-xs)' }}>
           <Fiole scale={4} variant="toxique" sleeps={false} />
         </div>
-        <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', margin: '10px 0 8px' }}>
+        <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', margin: 'var(--space-xs-plus) 0 var(--space-xs)' }}>
           {t.notFoundTitle}
         </h1>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', margin: '0 0 20px' }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', margin: '0 0 var(--space-md-plus)' }}>
           {t.notFoundBody}
         </p>
         <Link to="/breves" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', textDecoration: 'none' }}>
@@ -59,7 +59,7 @@ export default function BrevesJour() {
   const { previous, next } = getAdjacentDays(date)
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <MagazineMasthead
         backTo="/breves"
         backLabel={t.backLabel}
@@ -69,11 +69,11 @@ export default function BrevesJour() {
         rightSub={formatDateShort(day.date)}
       />
 
-      <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(22px, 3.2vw, 30px)', lineHeight: 1.1, margin: '0 0 24px', color: 'var(--text)' }}>
+      <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(22px, 3.2vw, 30px)', lineHeight: 1.1, margin: '0 0 var(--space-lg)', color: 'var(--text)' }}>
         {formatDateLong(day.date, lang)}
       </h1>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 24 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)', marginBottom: 'var(--space-lg)' }}>
         {day.breves.map((breve, i) => (
           <BreveCard key={i} breve={breve} lang={lang} />
         ))}
@@ -83,7 +83,7 @@ export default function BrevesJour() {
         <WordFigureBox mot={day.mot} chiffre={day.chiffre} lang={lang} />
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginBottom: 40 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-sm)', marginBottom: 40 }}>
         {previous ? (
           <Link to={`/breves/${previous.date}`} style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none' }}>
             {t.previousDay}

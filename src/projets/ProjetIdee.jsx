@@ -16,7 +16,7 @@ function NotFound({ id, lang }) {
   const t = PROJ_TEXT[lang].idee
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <MagazineMasthead
         backTo="/projets"
         backLabel={t.backLabel}
@@ -26,17 +26,17 @@ function NotFound({ id, lang }) {
         rightSub={t.notFoundRight}
       />
 
-      <div style={{ border: 'var(--border-regular) solid var(--border)', padding: isMobile ? 20 : 32 }}>
+      <div style={{ border: 'var(--border-regular) solid var(--border)', padding: isMobile ? 'var(--space-md-plus)' : 'var(--space-xl)' }}>
         <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.1em', overflowWrap: 'anywhere' }}>
           {t.notFoundLabel} : {id}
         </div>
-        <div style={{ marginBottom: 8 }}>
+        <div style={{ marginBottom: 'var(--space-xs)' }}>
           <Fiole scale={4} variant="toxique" sleeps={false} />
         </div>
-        <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', margin: '10px 0 8px' }}>
+        <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 34px)', margin: 'var(--space-xs-plus) 0 var(--space-xs)' }}>
           {t.notFoundTitle}
         </h1>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', margin: '0 0 20px' }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', margin: '0 0 var(--space-md-plus)' }}>
           {t.notFoundBody}
         </p>
         <Link to="/projets" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', textDecoration: 'none' }}>
@@ -52,8 +52,8 @@ function MissionLink({ idee, lang }) {
   if (!idee.mission) return null
 
   return (
-    <div style={{ borderTop: 'var(--border-thin) solid var(--border)', paddingTop: 12, marginTop: 14 }}>
-      <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)', marginRight: 8 }}>{t.missionLabel}</span>
+    <div style={{ borderTop: 'var(--border-thin) solid var(--border)', paddingTop: 'var(--space-sm)', marginTop: 14 }}>
+      <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)', marginRight: 'var(--space-xs)' }}>{t.missionLabel}</span>
       {idee.statut === 'faite' ? (
         <a
           href={`https://github.com/michael-misran/misran-labs/tree/main/missions/${idee.mission}`}
@@ -74,27 +74,27 @@ function DecisionBox({ idee, lang }) {
   const t = PROJ_TEXT[lang].idee
 
   return (
-    <div style={{ border: 'var(--border-thin) solid var(--border)', background: 'var(--bg2)', padding: '20px', maxWidth: 720 }}>
+    <div style={{ border: 'var(--border-thin) solid var(--border)', background: 'var(--bg2)', padding: 'var(--space-md-plus)', maxWidth: 720 }}>
       {idee.decision ? (
         <>
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--space-xs-plus)' }}>
             <StatusMark statut={idee.statut} lang={lang} />
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)' }}>
               {t.decisionOn(formatDateShort(idee.decision.date))}
             </span>
           </div>
           {idee.statut === 'arretee' && (
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--error)', letterSpacing: '0.06em', marginTop: 10 }}>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--error)', letterSpacing: '0.06em', marginTop: 'var(--space-xs-plus)' }}>
               {t.stoppedReason}
             </div>
           )}
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text)', margin: '10px 0 0' }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text)', margin: 'var(--space-xs-plus) 0 0' }}>
             {idee.decision.note[lang]}
           </p>
           <MissionLink idee={idee} lang={lang} />
         </>
       ) : (
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--space-xs-plus)' }}>
           <StatusMark statut={idee.statut} lang={lang} />
           <span style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--text2)' }}>{t.awaitingDecision}</span>
         </div>
@@ -114,7 +114,7 @@ export default function ProjetIdee() {
   if (!idee) return <NotFound id={id} lang={lang} />
 
   return (
-    <div style={{ padding: isMobile ? 20 : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
       <MagazineMasthead
         backTo="/projets"
         backLabel={t.backLabel}
@@ -134,19 +134,19 @@ export default function ProjetIdee() {
         />
       </ProjetsHero>
 
-      <div style={{ maxWidth: 720, marginBottom: 40, borderLeft: 'var(--border-thick) solid var(--primary)', paddingLeft: isMobile ? 14 : 20 }}>
+      <div style={{ maxWidth: 720, marginBottom: 40, borderLeft: 'var(--border-thick) solid var(--primary)', paddingLeft: isMobile ? 14 : 'var(--space-md-plus)' }}>
         <p style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: isMobile ? 17 : 19, lineHeight: 1.5, color: 'var(--text)', margin: 0 }}>
           {idee.resume[lang]}
         </p>
       </div>
 
       <SectionTitle>{t.problemTitle}</SectionTitle>
-      <p style={{ fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: 'var(--prose)', maxWidth: 720, margin: '0 0 32px' }}>
+      <p style={{ fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: 'var(--prose)', maxWidth: 720, margin: '0 0 var(--space-xl)' }}>
         {idee.probleme[lang]}
       </p>
 
       <SectionTitle>{t.ideaTitle}</SectionTitle>
-      <p style={{ fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: 'var(--prose)', maxWidth: 720, margin: '0 0 32px' }}>
+      <p style={{ fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: 'var(--prose)', maxWidth: 720, margin: '0 0 var(--space-xl)' }}>
         {idee.idee[lang]}
       </p>
 

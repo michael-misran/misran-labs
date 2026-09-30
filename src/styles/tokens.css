@@ -177,9 +177,13 @@
 
   /* Structure : trame d'espacement, tailles d'icône, hauteur du chrome.
      Des rôles nommés (xs/sm/md…) posés sur l'échelle de dimensions. */
+  --space-3xs: var(--primitive-size-2);
+  --space-2xs: var(--primitive-size-4);
   --space-xs: var(--primitive-size-8);
+  --space-xs-plus: var(--primitive-size-10);
   --space-sm: var(--primitive-size-12);
   --space-md: var(--primitive-size-16);
+  --space-md-plus: var(--primitive-size-20);
   --space-lg: var(--primitive-size-24);
   --space-xl: var(--primitive-size-32);
 

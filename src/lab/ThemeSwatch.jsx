@@ -21,7 +21,7 @@ function Panel({ label, invert }) {
           color: 'var(--muted)',
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
-          marginBottom: 8,
+          marginBottom: 'var(--space-xs)',
         }}
       >
         {label}
@@ -51,7 +51,7 @@ function Panel({ label, invert }) {
               fontSize: 11,
               letterSpacing: 'var(--label-tracking)',
               textTransform: 'var(--label-transform)',
-              marginBottom: 8,
+              marginBottom: 'var(--space-xs)',
             }}
           >
             {'// CONTEXTE'}
@@ -69,10 +69,10 @@ function Panel({ label, invert }) {
           >
             Création du lab
           </div>
-          <div style={{ color: 'var(--text2)', fontFamily: "var(--font-body)", fontSize: 12, lineHeight: 1.5, marginBottom: 12 }}>
+          <div style={{ color: 'var(--text2)', fontFamily: "var(--font-body)", fontSize: 12, lineHeight: 1.5, marginBottom: 'var(--space-sm)' }}>
             Un paragraphe de lecture pour juger le confort visuel du kit.
           </div>
-          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: 'var(--space-xs)', alignItems: 'center' }}>
             <span
               style={{
                 background: 'var(--primary-surface)',
@@ -97,7 +97,7 @@ function Panel({ label, invert }) {
                 fontFamily: "var(--font-mono)",
                 fontSize: 10,
                 color: 'var(--text2)',
-                padding: '6px 10px',
+                padding: '6px var(--space-xs-plus)',
               }}
             >
               creux
@@ -114,10 +114,10 @@ export default function ThemeSwatch() {
 
   return (
     <div>
-      <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, marginBottom: 16 }}>
+      <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, marginBottom: 'var(--space-md)' }}>
         <strong style={{ color: 'var(--text)' }}>{lang === 'fr' ? 'Rétro' : 'Retro'}</strong> — {DESCRIPTION[lang] ?? DESCRIPTION.fr}
       </div>
-      <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: 'var(--space-md-plus)', flexWrap: 'wrap' }}>
         <Panel label="Portée normale" />
         <Panel label="Portée inversée" invert />
       </div>

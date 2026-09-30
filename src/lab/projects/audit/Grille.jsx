@@ -31,13 +31,13 @@ function EditeurAjustement({ axe, c, lang, onValider, onAnnuler }) {
   const nom = `note-${axe.id}`
 
   return (
-    <div style={{ borderTop: 'var(--border-thin) solid var(--grid-line)', background: 'var(--bg)', padding: '12px 14px' }}>
-      <div style={{ ...FORMAT_LABEL_MONO, marginBottom: 8 }}>
+    <div style={{ borderTop: 'var(--border-thin) solid var(--grid-line)', background: 'var(--bg)', padding: 'var(--space-sm) 14px' }}>
+      <div style={{ ...FORMAT_LABEL_MONO, marginBottom: 'var(--space-xs)' }}>
         {t.adjustTitle} — {axe.titre[lang]}
       </div>
-      <fieldset style={{ border: 'none', margin: '0 0 10px', padding: 0 }}>
+      <fieldset style={{ border: 'none', margin: '0 0 var(--space-xs-plus)', padding: 0 }}>
         <legend style={{ ...FORMAT_LABEL_MONO, padding: 0, marginBottom: 6 }}>{t.noteLabel}</legend>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-xs)' }}>
           {[...NOTES.map(String), 'na'].map((valeur) => (
             <label
               key={valeur}
@@ -50,7 +50,7 @@ function EditeurAjustement({ axe, c, lang, onValider, onAnnuler }) {
                 color: 'var(--text)',
                 border: `var(--border-thin) solid ${note === valeur ? 'var(--primary)' : 'var(--border)'}`,
                 background: note === valeur ? 'var(--bg2)' : 'var(--bg3)',
-                padding: '6px 10px',
+                padding: '6px var(--space-xs-plus)',
                 cursor: 'pointer',
               }}
             >
@@ -77,12 +77,12 @@ function EditeurAjustement({ axe, c, lang, onValider, onAnnuler }) {
             color: 'var(--text)',
             background: 'var(--bg2)',
             border: 'var(--border-thin) solid var(--border)',
-            padding: 8,
+            padding: 'var(--space-xs)',
             resize: 'vertical',
           }}
         />
       </label>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 10 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-xs)', marginTop: 'var(--space-xs-plus)' }}>
         <Bouton principal onClick={() => onValider({ note: note === 'na' ? null : Number(note), commentaire })}>
           {t.apply}
         </Bouton>
@@ -105,7 +105,7 @@ function CarteAxe({ axe, c, lang, contrastes, onAjuster }) {
       aria-labelledby={idTitre}
       style={{ border: 'var(--border-thin) solid var(--border)', background: 'var(--bg2)', opacity: grise ? 0.85 : 1 }}
     >
-      <header style={{ padding: '10px 14px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '6px 12px' }}>
+      <header style={{ padding: 'var(--space-xs-plus) 14px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '6px var(--space-sm)' }}>
         <h3 id={idTitre} style={{ fontFamily: 'var(--font-heading)', fontSize: 16, margin: 0, color: 'var(--text)', flex: '1 1 180px' }}>
           {axe.titre[lang]}
         </h3>
@@ -122,7 +122,7 @@ function CarteAxe({ axe, c, lang, contrastes, onAjuster }) {
           {texteNote(axe.noteFinale, c)}
         </span>
         {axe.ajustee && (
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text)', border: 'var(--border-thin) solid var(--primary)', padding: '2px 6px', whiteSpace: 'nowrap' }}>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text)', border: 'var(--border-thin) solid var(--primary)', padding: 'var(--space-3xs) 6px', whiteSpace: 'nowrap' }}>
             {t.adjustedTag}
           </span>
         )}
@@ -131,15 +131,15 @@ function CarteAxe({ axe, c, lang, contrastes, onAjuster }) {
             {t.computedNote(texteNote(axe.note, c))}
           </span>
         )}
-        <Bouton onClick={() => setEdition((e) => !e)} aria-expanded={edition} style={{ padding: '4px 10px' }}>
+        <Bouton onClick={() => setEdition((e) => !e)} aria-expanded={edition} style={{ padding: 'var(--space-2xs) var(--space-xs-plus)' }}>
           {t.adjust}
         </Bouton>
       </header>
 
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--text2)', lineHeight: 1.5, margin: 0, padding: '0 14px 10px' }}>{axe.resume[lang]}</p>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--text2)', lineHeight: 1.5, margin: 0, padding: '0 14px var(--space-xs-plus)' }}>{axe.resume[lang]}</p>
 
       {axe.commentaire && (
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--prose)', lineHeight: 1.5, margin: '0 14px 10px', padding: '6px 10px', borderLeft: 'var(--border-thick) solid var(--primary)', background: 'var(--bg)', overflowWrap: 'anywhere', whiteSpace: 'pre-wrap' }}>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--prose)', lineHeight: 1.5, margin: '0 14px var(--space-xs-plus)', padding: '6px var(--space-xs-plus)', borderLeft: 'var(--border-thick) solid var(--primary)', background: 'var(--bg)', overflowWrap: 'anywhere', whiteSpace: 'pre-wrap' }}>
           {axe.commentaire}
         </p>
       )}
@@ -151,7 +151,7 @@ function CarteAxe({ axe, c, lang, contrastes, onAjuster }) {
             return (
               <li
                 key={cr.id}
-                style={{ display: 'flex', gap: 10, alignItems: 'baseline', padding: '7px 14px', borderBottom: 'var(--border-thin) solid var(--grid-line)' }}
+                style={{ display: 'flex', gap: 'var(--space-xs-plus)', alignItems: 'baseline', padding: '7px 14px', borderBottom: 'var(--border-thin) solid var(--grid-line)' }}
               >
                 <span
                   role="img"
@@ -168,17 +168,17 @@ function CarteAxe({ axe, c, lang, contrastes, onAjuster }) {
       )}
 
       {echecs && echecs.affiches.length > 0 && (
-        <div style={{ padding: '10px 14px', borderTop: 'var(--border-thin) solid var(--grid-line)' }}>
+        <div style={{ padding: 'var(--space-xs-plus) 14px', borderTop: 'var(--border-thin) solid var(--grid-line)' }}>
           <div style={{ ...FORMAT_LABEL_MONO, marginBottom: 6 }}>{t.contrastFailures(contrastes.echecs)}</div>
           <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
             {echecs.affiches.map((p, i) => (
-              <li key={i} style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text2)', padding: '2px 0', overflowWrap: 'anywhere' }}>
+              <li key={i} style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text2)', padding: 'var(--space-3xs) 0', overflowWrap: 'anywhere' }}>
                 {t.contrastLine(p.texte, p.fond, formaterNombre(p.ratio, lang))}
                 {p.contexte ? ` · ${p.contexte}` : ''}
               </li>
             ))}
           </ul>
-          {echecs.reste > 0 && <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--muted)', marginTop: 4 }}>{t.others(echecs.reste)}</div>}
+          {echecs.reste > 0 && <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--muted)', marginTop: 'var(--space-2xs)' }}>{t.others(echecs.reste)}</div>}
         </div>
       )}
 
@@ -206,13 +206,13 @@ export default function Grille({ grille, contrastes, c, lang, onAjuster }) {
       <div id="audit-grille-titre" style={{ ...FORMAT_LABEL_MONO, marginBottom: 6 }}>
         {t.title}
       </div>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 10px' }}>{t.intro}</p>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 var(--space-xs-plus)' }}>{t.intro}</p>
       <div
-        style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 22, color: 'var(--text)', border: 'var(--border-thin) solid var(--border)', borderLeft: 'var(--border-thick) solid var(--primary)', background: 'var(--bg2)', padding: '10px 14px', marginBottom: 12 }}
+        style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 22, color: 'var(--text)', border: 'var(--border-thin) solid var(--border)', borderLeft: 'var(--border-thick) solid var(--primary)', background: 'var(--bg2)', padding: 'var(--space-xs-plus) 14px', marginBottom: 'var(--space-sm)' }}
       >
         {texteMoyenne(grille, c, lang)}
       </div>
-      <div style={{ display: 'grid', gap: 10 }}>
+      <div style={{ display: 'grid', gap: 'var(--space-xs-plus)' }}>
         {grille.axes.map((axe) => (
           <CarteAxe key={axe.id} axe={axe} c={c} lang={lang} contrastes={contrastes} onAjuster={onAjuster} />
         ))}

@@ -30,7 +30,7 @@ export default function Switch({
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        gap: 10,
+        gap: 'var(--space-xs-plus)',
         fontFamily: 'var(--font-body)',
         fontSize: size === 'sm' ? 11 : 12,
         fontWeight: 600,

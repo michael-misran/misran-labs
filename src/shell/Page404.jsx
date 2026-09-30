@@ -30,7 +30,7 @@ export default function Page404() {
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        padding: '40px 20px',
+        padding: '40px var(--space-md-plus)',
         maxWidth: 560,
         margin: '0 auto',
       }}
@@ -42,7 +42,7 @@ export default function Page404() {
           justifyContent: 'center',
           width: 200,
           borderBottom: 'var(--border-regular) solid var(--border)',
-          paddingBottom: 16,
+          paddingBottom: 'var(--space-md)',
           marginBottom: 28,
         }}
       >
@@ -56,7 +56,7 @@ export default function Page404() {
           fontSize: 11,
           color: 'var(--muted)',
           letterSpacing: '0.1em',
-          marginBottom: 16,
+          marginBottom: 'var(--space-md)',
         }}
       >
         {t(lang, 'notFound404Eyebrow')}
@@ -67,7 +67,7 @@ export default function Page404() {
           fontFamily: "var(--font-heading)",
           fontWeight: 700,
           fontSize: 'clamp(24px, 3.4vw, 34px)',
-          margin: '0 0 12px',
+          margin: '0 0 var(--space-sm)',
         }}
       >
         {t(lang, 'notFound404Title')}
@@ -78,7 +78,7 @@ export default function Page404() {
           fontFamily: "var(--font-body)",
           fontSize: 15,
           color: 'var(--text2)',
-          margin: '0 0 20px',
+          margin: '0 0 var(--space-md-plus)',
           maxWidth: 480,
         }}
       >
@@ -97,7 +97,7 @@ export default function Page404() {
         {pathname}
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-sm)', justifyContent: 'center' }}>
         <LinkButton to="/">{t(lang, 'notFound404BackLab')}</LinkButton>
         <LinkButton to="/magazine" variant="ghost">{t(lang, 'notFound404Magazine')}</LinkButton>
         <LinkButton to="/breves" variant="ghost">{t(lang, 'notFound404Breves')}</LinkButton>

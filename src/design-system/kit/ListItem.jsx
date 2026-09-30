@@ -19,8 +19,8 @@ export default function ListItem({ name, description, right, onClick }) {
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 12,
-        padding: '10px var(--space-sm)',
+        gap: 'var(--space-sm)',
+        padding: 'var(--space-xs-plus) var(--space-sm)',
         borderRadius: 'var(--radius-sm)',
         background: interactive && hovered ? 'var(--surface-inset)' : 'transparent',
         boxShadow: interactive && hovered ? 'var(--elev-inset)' : 'none',

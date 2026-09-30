@@ -26,7 +26,7 @@ export default function Statusbar({ moduleLabel, isMobile }) {
         boxShadow: 'inset 0 var(--border-thin) 0 0 var(--border)',
         display: 'flex',
         alignItems: 'center',
-        padding: '0 20px',
+        padding: '0 var(--space-md-plus)',
         fontFamily: "var(--font-mono)",
         fontSize: 10,
         color: 'var(--muted)',
@@ -43,7 +43,7 @@ export default function Statusbar({ moduleLabel, isMobile }) {
       {isMobile ? (
         <span style={{ ...ellipsis, flex: 1, textAlign: 'center' }}>{MARKER} {moduleLabel}</span>
       ) : (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flex: 1, minWidth: 0, gap: 12 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flex: 1, minWidth: 0, gap: 'var(--space-sm)' }}>
           <span style={ellipsis}>{t(lang, 'statusbarBrand')}</span>
           <span style={ellipsis}>{MARKER} {moduleLabel}</span>
           <span style={ellipsis}>{t(lang, 'statusbarDeploy')}</span>

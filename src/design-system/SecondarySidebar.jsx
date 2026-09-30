@@ -22,7 +22,7 @@ function NavButton({ label, isActive, onClick, indent, index }) {
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 8,
+        gap: 'var(--space-xs)',
         background: hovered && !isActive ? 'var(--hover-surface)' : 'none',
         border: 'none',
         borderLeft: isActive ? 'var(--border-thick) solid var(--primary)' : 'var(--border-thick) solid transparent',
@@ -34,7 +34,7 @@ function NavButton({ label, isActive, onClick, indent, index }) {
         fontSize: indent ? 12 : 13,
         fontWeight: isActive ? 600 : 400,
         textAlign: 'left',
-        padding: indent ? '7px var(--space-sm) 7px var(--space-lg)' : '9px var(--space-sm) 9px 10px',
+        padding: indent ? '7px var(--space-sm) 7px var(--space-lg)' : '9px var(--space-sm) 9px var(--space-xs-plus)',
         cursor: 'pointer',
         transition: 'background 0.18s ease, color 0.18s ease, border-color 0.18s ease',
       }}
@@ -63,14 +63,14 @@ export default function SecondarySidebar({ items, active, onChange, width = 190 
         padding: 'var(--space-md) 0',
         display: 'flex',
         flexDirection: 'column',
-        gap: 2,
+        gap: 'var(--space-3xs)',
       }}
     >
       {items.map((item, i) => (
         <div key={item.id}>
           <NavButton label={item.label} isActive={active === item.id} onClick={() => onChange(item.id)} index={i} />
           {item.children && item.children.length > 0 && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginTop: 2 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3xs)', marginTop: 'var(--space-3xs)' }}>
               {item.children.map((child) => (
                 <NavButton
                   key={child.id}

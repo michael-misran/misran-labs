@@ -157,7 +157,7 @@ function Nav() {
             color: pathname === to ? 'var(--text)' : 'var(--text2)',
             textDecoration: 'none', transition: 'color 0.15s ease',
             borderBottom: pathname === to ? 'var(--border-thin) solid var(--primary)' : 'var(--border-thin) solid transparent',
-            paddingBottom: 2,
+            paddingBottom: 'var(--space-3xs)',
           }}>{label}</Link>
         ))}
       </div>
@@ -182,18 +182,18 @@ function SessionCard({ session, onOpenLog }) {
         border: `${open ? '1px' : '1px'} solid ${open || hovered ? 'var(--primary)' : 'var(--border)'}`,
         borderLeft: open ? 'var(--border-thick) solid var(--primary)' : 'var(--border-thin) solid var(--border)',
         borderRadius: 'var(--radius-sm)',
-        padding: '20px var(--space-lg)',
+        padding: 'var(--space-md-plus) var(--space-lg)',
         cursor: 'pointer',
         transition: 'border-color 0.2s ease',
         userSelect: 'none',
       }}
     >
       {/* ── Closed header ── */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 }}>
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)' }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
 
           {/* Row 1: id + date + badge + duration */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)', flexWrap: 'wrap' }}>
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', letterSpacing: '0.08em' }}>
               SESSION-{session.id}
             </span>
@@ -221,7 +221,7 @@ function SessionCard({ session, onOpenLog }) {
           {/* Row 4: tags */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {session.tags.map(tag => (
-              <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'var(--active-tint)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: '2px var(--space-xs)' }}>
+              <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'var(--active-tint)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: 'var(--space-3xs) var(--space-xs)' }}>
                 {tag}
               </span>
             ))}
@@ -233,7 +233,7 @@ function SessionCard({ session, onOpenLog }) {
           fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text2)',
           transition: 'transform 0.2s ease', display: 'inline-block',
           transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
-          flexShrink: 0, marginTop: 4,
+          flexShrink: 0, marginTop: 'var(--space-2xs)',
         }}>
           ▼
         </span>
@@ -245,10 +245,10 @@ function SessionCard({ session, onOpenLog }) {
         overflow: 'hidden',
         transition: 'max-height 0.35s ease',
       }}>
-        <div style={{ borderTop: 'var(--border-thin) solid var(--border)', marginTop: 16, paddingTop: 20, display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div style={{ borderTop: 'var(--border-thin) solid var(--border)', marginTop: 'var(--space-md)', paddingTop: 'var(--space-md-plus)', display: 'flex', flexDirection: 'column', gap: 'var(--space-md-plus)' }}>
 
           {/* WHAT */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', letterSpacing: '0.1em' }}>
               // WHAT
             </span>
@@ -258,7 +258,7 @@ function SessionCard({ session, onOpenLog }) {
           </div>
 
           {/* DECISION */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--warning)', letterSpacing: '0.1em' }}>
               // DECISION ⚡
             </span>
@@ -270,7 +270,7 @@ function SessionCard({ session, onOpenLog }) {
           </div>
 
           {/* PROMPT */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--cyan)', letterSpacing: '0.1em' }}>
               // PROMPT
             </span>
@@ -292,10 +292,10 @@ function SessionCard({ session, onOpenLog }) {
             onMouseEnter={e => e.currentTarget.style.opacity = '1'}
             onMouseLeave={e => e.currentTarget.style.opacity = '0.7'}
             style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
+              display: 'inline-flex', alignItems: 'center', gap: 'var(--space-xs)',
               fontFamily: "var(--font-mono)", fontSize: 11,
               color: 'var(--cyan)', letterSpacing: '0.08em', cursor: 'pointer',
-              borderTop: 'var(--border-thin) solid var(--border)', paddingTop: 16, marginTop: 4,
+              borderTop: 'var(--border-thin) solid var(--border)', paddingTop: 'var(--space-md)', marginTop: 'var(--space-2xs)',
               opacity: 0.7, transition: 'opacity 0.15s ease',
               userSelect: 'none',
             }}
@@ -334,31 +334,31 @@ export default function SessionReplay() {
 
           {/* ── Header ── */}
           <div style={{ marginBottom: 40 }}>
-            <Link to="/lab" style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text2)', letterSpacing: '0.06em', display: 'inline-block', marginBottom: 24, textDecoration: 'none', transition: 'color 0.15s ease' }}
+            <Link to="/lab" style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text2)', letterSpacing: '0.06em', display: 'inline-block', marginBottom: 'var(--space-lg)', textDecoration: 'none', transition: 'color 0.15s ease' }}
               onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
               onMouseLeave={e => (e.currentTarget.style.color = 'var(--text2)')}
             >
               ← Lab
             </Link>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: '2px var(--space-xs)', letterSpacing: '0.08em' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs-plus)', marginBottom: 14 }}>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: 'var(--space-3xs) var(--space-xs)', letterSpacing: '0.08em' }}>
                 EXP-003
               </span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--warning)', border: 'var(--border-thin) solid var(--warning)', borderRadius: 'var(--radius-xs)', padding: '2px var(--space-xs)', letterSpacing: '0.1em' }}>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--warning)', border: 'var(--border-thin) solid var(--warning)', borderRadius: 'var(--radius-xs)', padding: 'var(--space-3xs) var(--space-xs)', letterSpacing: '0.1em' }}>
                 IN PROGRESS
               </span>
             </div>
 
-            <h1 style={{ fontFamily: "var(--font-heading)", fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.02em', marginBottom: 10 }}>
+            <h1 style={{ fontFamily: "var(--font-heading)", fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.02em', marginBottom: 'var(--space-xs-plus)' }}>
               Session Replay
             </h1>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', marginBottom: 16 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', marginBottom: 'var(--space-md)' }}>
               Documentation narrative du build en live — prompts, décisions, itérations
             </p>
-            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 'var(--space-xs)', flexWrap: 'wrap' }}>
               {['React', 'Framer Motion', 'Markdown'].map(tag => (
-                <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'var(--active-tint)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: '2px var(--space-xs)' }}>
+                <span key={tag} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', background: 'var(--active-tint)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xs)', padding: 'var(--space-3xs) var(--space-xs)' }}>
                   {tag}
                 </span>
               ))}
@@ -380,12 +380,12 @@ export default function SessionReplay() {
           </div>
 
           {/* ── Timeline ── */}
-          <div style={{ position: 'relative', paddingLeft: 32 }}>
+          <div style={{ position: 'relative', paddingLeft: 'var(--space-xl)' }}>
 
             {/* Vertical line */}
             <div style={{ position: 'absolute', left: 7, top: 8, bottom: 8, width: 2, background: 'color-mix(in srgb, var(--primary) 30%, transparent)', borderRadius: 'var(--radius-xs)' }} />
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md-plus)' }}>
               {SESSIONS.map(session => (
                 <div key={session.id} style={{ position: 'relative' }}>
                   {/* Dot */}
@@ -398,7 +398,7 @@ export default function SessionReplay() {
 
           {/* ── CTA ── */}
           <div style={{ textAlign: 'center', marginTop: 64, padding: '48px 40px', background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-sm)' }}>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', marginBottom: 24, lineHeight: 1.6 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', marginBottom: 'var(--space-lg)', lineHeight: 1.6 }}>
               Voir le résultat → Product Brief Machine
             </p>
             <Link to="/experience/exp-002" className="cta-btn" style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: 14, color: 'var(--primary)', background: 'color-mix(in srgb, var(--primary) 12%, transparent)', padding: 'var(--space-sm) 28px', borderRadius: 'var(--radius-sm)', border: 'var(--border-thin) solid var(--primary)', display: 'inline-block', transition: 'background 0.2s ease' }}>
@@ -444,7 +444,7 @@ export default function SessionReplay() {
               borderBottom: 'var(--border-thin) solid var(--border)',
               background: 'var(--bg3)',
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)' }}>
                 <span style={{
                   fontFamily: "var(--font-mono)",
                   fontSize: 11, color: 'var(--primary)', letterSpacing: '0.12em',
@@ -456,7 +456,7 @@ export default function SessionReplay() {
                   fontSize: 10, color: 'var(--text2)',
                   background: 'var(--active-tint)',
                   border: 'var(--border-thin) solid var(--border)',
-                  borderRadius: 'var(--radius-xs)', padding: '2px var(--space-xs)',
+                  borderRadius: 'var(--radius-xs)', padding: 'var(--space-3xs) var(--space-xs)',
                 }}>
                   Cliquer en dehors pour fermer
                 </span>

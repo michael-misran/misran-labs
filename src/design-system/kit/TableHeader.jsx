@@ -5,17 +5,17 @@ import Icon from './Icon'
 
 export default function TableHeader({ columns, sortBy, direction = 'asc', onSort, actions = true }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontFamily: 'var(--font-body)' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)', fontFamily: 'var(--font-body)' }}>
       <div
         role="row"
         style={{
           display: 'flex',
           flex: 1,
-          gap: 4,
+          gap: 'var(--space-2xs)',
           background: 'var(--surface-raised)',
           boxShadow: 'var(--elev-2)',
           borderRadius: 'var(--radius-md)',
-          padding: 4,
+          padding: 'var(--space-2xs)',
           overflowX: 'auto',
         }}
       >
@@ -53,7 +53,7 @@ export default function TableHeader({ columns, sortBy, direction = 'asc', onSort
       </div>
 
       {actions && (
-        <div style={{ display: 'flex', gap: 10, color: 'var(--text2)' }}>
+        <div style={{ display: 'flex', gap: 'var(--space-xs-plus)', color: 'var(--text2)' }}>
           <Icon name="filter" size="var(--icon-md)" title="Filtrer" />
           <Icon name="sort" size="var(--icon-md)" title="Trier" />
         </div>

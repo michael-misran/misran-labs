@@ -101,7 +101,7 @@ export default function Slider({
         </div>
 
         {ticks && (
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 8, fontSize: 11, color: 'var(--muted)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 'var(--space-xs)', fontSize: 11, color: 'var(--muted)' }}>
             {ticks.map((tick) => <span key={tick}>{tick}</span>)}
           </div>
         )}

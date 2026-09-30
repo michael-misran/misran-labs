@@ -39,6 +39,7 @@ const COPY = {
     magLabel: 'MAGAZINE — DERNIER NUMÉRO',
     magRead: 'Lire le numéro',
     magAll: 'Tous les numéros',
+    magFollow: 'Suivre le Lab',
     indexTitle: 'DOSSIERS',
     indexSub: 'Classés par ordre d’ouverture, pas par importance.',
     keywords: 'MOTS-CLÉS',
@@ -71,6 +72,7 @@ const COPY = {
     magLabel: 'MAGAZINE — LATEST ISSUE',
     magRead: 'Read the issue',
     magAll: 'All issues',
+    magFollow: 'Follow the Lab',
     indexTitle: 'FILES',
     indexSub: 'Ordered by when they were opened, not by importance.',
     keywords: 'KEYWORDS',
@@ -84,7 +86,7 @@ const COPY = {
 
 function Masthead({ c }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, paddingBottom: 14, borderBottom: 'var(--border-regular) solid var(--border)', marginBottom: 28, flexWrap: 'wrap' }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)', paddingBottom: 14, borderBottom: 'var(--border-regular) solid var(--border)', marginBottom: 28, flexWrap: 'wrap' }}>
       <div>
         <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', color: 'var(--text)' }}>{c.mastheadLeft}</div>
         <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)' }}>{c.mastheadLeftSub}</div>
@@ -109,12 +111,12 @@ function OverviewBox({ c, count }) {
   ]
   return (
     <div style={{ border: 'var(--border-thin) solid var(--border)' }}>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.1em', color: 'var(--muted)', padding: '8px 12px', borderBottom: 'var(--border-thin) solid var(--border)' }}>
+      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.1em', color: 'var(--muted)', padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
         {c.overviewTitle}
       </div>
-      <div style={{ padding: '4px 12px' }}>
+      <div style={{ padding: 'var(--space-2xs) var(--space-sm)' }}>
         {rows.map(([label, value]) => (
-          <div key={label} style={{ display: 'flex', justifyContent: 'space-between', gap: 12, padding: '7px 0', borderBottom: 'var(--border-thin) solid var(--border)' }}>
+          <div key={label} style={{ display: 'flex', justifyContent: 'space-between', gap: 'var(--space-sm)', padding: '7px 0', borderBottom: 'var(--border-thin) solid var(--border)' }}>
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.06em', color: 'var(--muted)' }}>{label}</span>
             <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text)', fontWeight: 600 }}>{value}</span>
           </div>
@@ -126,11 +128,11 @@ function OverviewBox({ c, count }) {
 
 function AccentSwatch({ c }) {
   return (
-    <div style={{ border: 'var(--border-thin) solid var(--border)', marginTop: 16 }}>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.1em', color: 'var(--muted)', padding: '8px 12px', borderBottom: 'var(--border-thin) solid var(--border)' }}>
+    <div style={{ border: 'var(--border-thin) solid var(--border)', marginTop: 'var(--space-md)' }}>
+      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.1em', color: 'var(--muted)', padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
         {c.accentLabel}
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: 12 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs-plus)', padding: 'var(--space-sm)' }}>
         <div style={{ width: 28, height: 28, background: 'var(--primary)', border: 'var(--border-thin) solid var(--border)', flexShrink: 0 }} />
         <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text)' }}>{c.accentValue}</span>
       </div>
@@ -144,10 +146,10 @@ function ProtocolPlate({ c, lang }) {
 
   return (
     <div style={{ border: 'var(--border-regular) solid var(--border)', position: 'relative', flex: 1, minWidth: 0 }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, padding: '14px 20px', borderBottom: 'var(--border-thin) solid var(--border)' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)', padding: '14px var(--space-md-plus)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
         <div>
           <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: 'var(--text)' }}>{c.protocolTitle}</div>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, maxWidth: '58ch', margin: '10px 0 0' }}>{c.protocolIntro}</p>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, maxWidth: '58ch', margin: 'var(--space-xs-plus) 0 0' }}>{c.protocolIntro}</p>
         </div>
         <Stamp label="MISRAN · LABS · ARCHIVE ·" />
       </div>
@@ -165,12 +167,12 @@ function ProtocolPlate({ c, lang }) {
               key={i}
               style={{
                 gridColumn: isLast ? '1 / -1' : undefined,
-                padding: '14px 20px',
+                padding: '14px var(--space-md-plus)',
                 borderRight: isLast ? 'none' : 'var(--border-thin) solid var(--border)',
                 borderTop: 'var(--border-thin) solid var(--border)',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 4 }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-xs)', marginBottom: 'var(--space-2xs)' }}>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: METHOD_STEP_COLORS[i] }}>0{i + 1}</span>
                 <span style={{ fontFamily: "var(--font-heading)", fontSize: 13, fontWeight: 600, color: 'var(--text)' }}>{step.title}</span>
               </div>
@@ -180,7 +182,7 @@ function ProtocolPlate({ c, lang }) {
         })}
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, padding: '12px 20px', borderTop: 'var(--border-thin) solid var(--border)' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-md)', padding: 'var(--space-sm) var(--space-md-plus)', borderTop: 'var(--border-thin) solid var(--border)' }}>
         <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.08em', color: 'var(--muted)' }}>{c.statusLegend}</span>
         {Object.entries(statusMap).map(([key, s]) => (
           <div key={key} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -201,8 +203,8 @@ function LatestIssue({ c, lang, isMobile }) {
   if (!issue) return null
 
   return (
-    <div style={{ border: 'var(--border-regular) solid var(--border)', borderTop: 'var(--border-thick) solid var(--primary)', marginBottom: 32 }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', padding: isMobile ? '10px 16px' : '10px 20px', background: 'var(--active-tint)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
+    <div style={{ border: 'var(--border-regular) solid var(--border)', borderTop: 'var(--border-thick) solid var(--primary)', marginBottom: 'var(--space-xl)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-sm)', flexWrap: 'wrap', padding: isMobile ? 'var(--space-xs-plus) var(--space-md)' : 'var(--space-xs-plus) var(--space-md-plus)', background: 'var(--active-tint)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
         <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.1em', color: 'var(--primary)', fontWeight: 700 }}>{c.magLabel}</span>
         <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)' }}>
           Nº {issueNo(issue.numero)} · {formatDateShort(issue.date)}
@@ -210,8 +212,8 @@ function LatestIssue({ c, lang, isMobile }) {
       </div>
 
       <div style={{ display: isMobile ? 'block' : 'grid', gridTemplateColumns: isMobile ? undefined : 'minmax(0, 1.1fr) minmax(0, 1fr)' }}>
-        <div style={{ padding: isMobile ? 16 : 20, borderRight: isMobile ? 'none' : 'var(--border-thin) solid var(--border)', borderBottom: isMobile ? 'var(--border-thin) solid var(--border)' : 'none' }}>
-          <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(22px, 2.6vw, 30px)', lineHeight: 1.1, color: 'var(--text)', margin: '0 0 10px', overflowWrap: 'anywhere' }}>
+        <div style={{ padding: isMobile ? 'var(--space-md)' : 'var(--space-md-plus)', borderRight: isMobile ? 'none' : 'var(--border-thin) solid var(--border)', borderBottom: isMobile ? 'var(--border-thin) solid var(--border)' : 'none' }}>
+          <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(22px, 2.6vw, 30px)', lineHeight: 1.1, color: 'var(--text)', margin: '0 0 var(--space-xs-plus)', overflowWrap: 'anywhere' }}>
             {issue.titre[lang]}
           </h2>
           <p
@@ -234,7 +236,7 @@ function LatestIssue({ c, lang, isMobile }) {
 
         <ol style={{ listStyle: 'none', margin: 0, padding: 0 }}>
           {issue.articles.map((article, i) => (
-            <li key={i} style={{ padding: isMobile ? '10px 16px' : '10px 20px', borderTop: i === 0 ? 'none' : 'var(--border-thin) solid var(--border)' }}>
+            <li key={i} style={{ padding: isMobile ? 'var(--space-xs-plus) var(--space-md)' : 'var(--space-xs-plus) var(--space-md-plus)', borderTop: i === 0 ? 'none' : 'var(--border-thin) solid var(--border)' }}>
               <div style={{ marginBottom: 6 }}>
                 <CategoryMark categorie={article.categorie} lang={lang} />
               </div>
@@ -246,12 +248,15 @@ function LatestIssue({ c, lang, isMobile }) {
         </ol>
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, padding: isMobile ? '12px 16px' : '12px 20px', borderTop: 'var(--border-thin) solid var(--border)' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-md-plus)', padding: isMobile ? 'var(--space-sm) var(--space-md)' : 'var(--space-sm) var(--space-md-plus)', borderTop: 'var(--border-thin) solid var(--border)' }}>
         <Link to={`/magazine/${issue.date}`} style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}>
           {c.magRead} →
         </Link>
         <Link to="/magazine" style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)', textDecoration: 'none' }}>
           {c.magAll} →
+        </Link>
+        <Link to="/suivre" style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)', textDecoration: 'none', marginLeft: 'auto' }}>
+          <span style={{ color: 'var(--primary)' }}>◉</span> {c.magFollow} →
         </Link>
       </div>
     </div>
@@ -270,7 +275,7 @@ function FileEntry({ project, index, c, lang }) {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          gap: 10,
+          gap: 'var(--space-xs-plus)',
           transition: 'background 0.15s ease',
         }}
         onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--hover-tint)' }}
@@ -292,12 +297,12 @@ function FileEntry({ project, index, c, lang }) {
 
         {tags.length > 0 && (
           <div>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.08em', color: 'var(--muted)', marginBottom: 4 }}>{c.keywords}</div>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.08em', color: 'var(--muted)', marginBottom: 'var(--space-2xs)' }}>{c.keywords}</div>
             <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)' }}>{tags.join(' · ')}</div>
           </div>
         )}
 
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--primary)', marginTop: 4 }}>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--primary)', marginTop: 'var(--space-2xs)' }}>
           {c.openFile} →
         </div>
       </div>
@@ -307,7 +312,7 @@ function FileEntry({ project, index, c, lang }) {
 
 function DocFooter({ c }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginTop: 32, paddingTop: 16, borderTop: 'var(--border-regular) solid var(--border)' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-sm)', marginTop: 'var(--space-xl)', paddingTop: 'var(--space-md)', borderTop: 'var(--border-regular) solid var(--border)' }}>
       <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.06em', color: 'var(--muted)' }}>
         {c.docId} — {c.clearance}
       </div>
@@ -355,17 +360,17 @@ export default function ArchiveHome() {
         </div>
       )}
 
-      <div style={{ padding: isMobile ? 20 : 40, flex: 1, minWidth: 0 }}>
+      <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, flex: 1, minWidth: 0 }}>
         <h1 style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)' }}>
           Michael Misran — Product Designer & Lab
         </h1>
 
         <Masthead c={c} />
 
-        <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 24, marginBottom: 32 }}>
+        <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 'var(--space-lg)', marginBottom: 'var(--space-xl)' }}>
           <div style={{ flex: isMobile ? '1 1 auto' : '0 0 220px' }}>
             <div style={{ fontFamily: "var(--font-heading)", fontWeight: 900, fontSize: 64, lineHeight: 0.85, color: 'var(--text)', marginBottom: 6 }}>M.</div>
-            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 28, color: 'var(--primary)', lineHeight: 1, marginBottom: 8 }}>PORTFOLIO</div>
+            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 28, color: 'var(--primary)', lineHeight: 1, marginBottom: 'var(--space-xs)' }}>PORTFOLIO</div>
             <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: '0.08em', color: 'var(--text2)', marginBottom: 14 }}>{c.heroTag}</div>
             <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, maxWidth: '34ch', margin: '0 0 14px' }}>{c.heroDesc}</p>
 
@@ -378,7 +383,7 @@ export default function ArchiveHome() {
 
         <LatestIssue c={c} lang={lang} isMobile={isMobile} />
 
-        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 16, marginBottom: 14, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 'var(--space-md)', marginBottom: 14, flexWrap: 'wrap' }}>
           <div>
             <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: 'var(--text)' }}>{c.indexTitle}</div>
             <div style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--muted)' }}>{c.indexSub}</div>
