@@ -1,7 +1,7 @@
 # Mission referencement — PROGRESS
 
-**Statut :** étape 3 terminée
-**Prochaine action :** étape 4 (titre d'onglet, D3)
+**Statut :** étape 4 terminée
+**Prochaine action :** étape 5 (vérification finale, verificateur Haiku)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur main 6f36410)
@@ -27,3 +27,9 @@
 
 ## Étape 3 — robots.txt (2026-09-30, sous-agent Haiku)
 - `public/robots.txt` créé avec le contenu exact de D2. `npm run build` : `dist/robots.txt` présent, contenu identique (copie automatique de `public/` par Vite).
+
+## Étape 4 — titre d'onglet, D3 (2026-09-30, session routine)
+- `src/i18n/ui.js` suit déjà le principe fr/en par clé : ajout de la clé `homeDocumentTitle` (fr : « Misran Labs — le laboratoire de Michael Misran » identique au `<title>` d'`index.html` ; en : « Misran Labs — Michael Misran's lab »).
+- `src/shell/Shell.jsx` : l'effet `document.title` distingue maintenant l'accueil (`location.pathname === '/'`, utilise `t(lang, 'homeDocumentTitle')`) des autres pages (`${meta.label} · Misran Labs}` avec label, sinon `Misran Labs`). Dépendances de l'effet : `location.pathname`, `meta.label`, `lang`.
+- Avant/après : `/` FR passait de « Lab Home — Michael Misran » à « Misran Labs — le laboratoire de Michael Misran » ; `/magazine/2026-09-28` FR de « Magazine — Prix en baisse, agents en expansion — Michael Misran » à « Magazine — Prix en baisse, agents en expansion · Misran Labs ».
+- `npm run build` : passe, sitemap.xml toujours 20 URL. `npm run lint` : 0 erreur.

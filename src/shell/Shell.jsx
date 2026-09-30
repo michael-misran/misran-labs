@@ -19,8 +19,12 @@ export default function Shell() {
   const [secondaryNav, setSecondaryNav] = useState(null)
 
   useEffect(() => {
-    document.title = meta.label ? `${meta.label} — Michael Misran` : 'Michael Misran'
-  }, [meta.label])
+    if (location.pathname === '/') {
+      document.title = t(lang, 'homeDocumentTitle')
+    } else {
+      document.title = meta.label ? `${meta.label} · Misran Labs` : 'Misran Labs'
+    }
+  }, [location.pathname, meta.label, lang])
 
   // Le menu mobile se referme à chaque changement de page : on compare la page
   // précédente pendant le rendu (recommandé par React) plutôt que dans un effet.

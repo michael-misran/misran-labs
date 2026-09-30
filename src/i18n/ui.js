@@ -33,6 +33,7 @@ export const UI = {
     result: 'Résultat',
     seeDemo: 'Voir la démo →',
     soloExplorationBody: "Exploration rapide en solo, sans process formalisé au-delà des étapes marquées ci-dessus — voir la carte de couverture pour le détail de ce qui a été fait, partiel, ou volontairement non applicable sur ce projet.",
+    homeDocumentTitle: 'Misran Labs — le laboratoire de Michael Misran',
   },
   en: {
     labHome: 'Lab Home',
@@ -68,6 +69,7 @@ export const UI = {
     result: 'Result',
     seeDemo: 'See the demo →',
     soloExplorationBody: "Quick solo exploration, without a formalized process beyond the steps marked above — see the coverage map for what was actually done, partial, or deliberately not applicable on this project.",
+    homeDocumentTitle: "Misran Labs — Michael Misran's lab",
   },
 }
 
