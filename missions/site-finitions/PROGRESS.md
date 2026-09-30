@@ -1,7 +1,7 @@
 # Mission site-finitions — PROGRESS
 
-**Statut :** étape 5 terminée
-**Prochaine action :** étape 6 (vérification finale : build, lint, greps, captures « après »)
+**Statut :** étape 6 terminée
+**Prochaine action :** étape 7 (RAPPORT.md)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-29, sur main 6e87188)
@@ -34,3 +34,7 @@
 - Vérifié qu'aucun de ces composants n'est importé statiquement ailleurs que dans `projects.js` / `App.jsx` (`grep`).
 - Build : chunk d'accueil (`index-*.js`) **319,78 kB (gzip 101,99 kB)**, contre 760,13 kB (gzip 233,87 kB) avant — critère 3 respecté (< 350 kB). Plus aucun avertissement « chunks larger than 500 kB ». Chaque page/composant de projet a son propre chunk (0,2 kB à 110 kB selon la page, tous chargés à la demande).
 - `npm run lint` : 0 erreur.
+
+## Étape 6 (2026-09-30)
+- Build et lint reconfirmés (chunk d'accueil 319,78 kB / gzip 101,99 kB, 0 erreur lint), `grep -rn "vite.svg" index.html src public` sans résultat.
+- Captures « après » des 8 pages FR/EN + test de navigation par la sidebar délégués au verificateur : voir [CAPTURES-APRES.md](CAPTURES-APRES.md). Conforme à la référence « avant », aucun écran blanc, aucune erreur console bloquante.
