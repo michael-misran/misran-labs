@@ -1,8 +1,12 @@
 # Mission finitions-lab — PROGRESS
 
-**Statut :** étape 3 terminée
-**Prochaine action :** étape 4 (relevé de référence audit, verificateur)
+**Statut :** étape 4 terminée
+**Prochaine action :** étape 5 (découpage de AuditTokens.jsx, D3, puis texte D4)
 **Blocages :** aucun
+
+## Étape 4 — relevé de référence audit (verificateur, Haiku)
+- `missions/finitions-lab/audit-avant.txt` écrit (27 018 caractères), une section par bouton : CSS (~8000 car.), DTCG (~5200 car.), Tokens Studio (~5700 car.), Auditer les tokens de ce site (~8100 car.).
+- Aucune erreur console pendant les 4 clics.
 
 ## Étape 3 — lien « Suivre » sur l'accueil (D2)
 - `src/modules/ArchiveHome.jsx` : clé `magFollow` ajoutée dans `COPY.fr` (« Suivre le Lab ») et `COPY.en` (« Follow the Lab »).
