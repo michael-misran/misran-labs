@@ -1,8 +1,12 @@
 # Mission vrai-404 — PROGRESS
 
-**Statut :** étape 2 terminée
-**Prochaine action :** étape 3 (vercel.json, D3)
+**Statut :** étape 3 terminée
+**Prochaine action :** étape 4 (script verifier-routes.mjs, D4)
 **Blocages :** aucun
+
+## Étape 3 — vercel.json (D3)
+- Réécriture `/(.*)` → `/index.html` retirée. Contenu final : `{ "trailingSlash": false }`, exactement D3.
+- `npm run build` et `npm run lint` : passent.
 
 ## Étape 2 — pages de démo (D1) et 404.html (D2)
 - `scripts/share-previews.js` : `collectLabDemoPages()` ajoutée, parcourt `visibleProjects()` et ajoute `/lab/<slug>/demo` (si `demoComponent`) et `/lab/<slug>/demo/v2` (si `demoComponentV2`), écrites hors du tableau `pages` donc **hors sitemap**. 3 pages générées : `/lab/lost-cauldron-game/demo`, `/lab/lost-cauldron-game/demo/v2`, `/lab/exp-003/demo`.
