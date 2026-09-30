@@ -1,8 +1,12 @@
 # Mission vrai-404 — PROGRESS
 
-**Statut :** étape 5 terminée
-**Prochaine action :** étape 6 (lint, RAPPORT.md)
+**Statut :** mission terminée (RAPPORT.md écrit)
+**Prochaine action :** aucune — mission close, en attente de clôture (session interactive)
 **Blocages :** aucun
+
+## Étape 6 — lint, RAPPORT.md
+- `npm run build` et `npm run lint` : passent (dernière vérification avant clôture).
+- `RAPPORT.md` écrit : 8 critères d'acceptation tous OK, liste de contrôle `curl` complète (D6), aucune décision hors SPEC nécessaire, 1 délégation réussie.
 
 ## Étape 5 — vérification navigateur (verificateur, Haiku)
 - `/`, `/magazine`, `/magazine/2026-09-28`, `/lab/lost-cauldron-game/demo/v2` (canvas du jeu affiché), `/suivre` : chargent normalement, aucune erreur console.

@@ -9,4 +9,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 3. `vercel.json` (D3) → session principale (Sonnet)
 - [x] 4. Script `verifier-routes.mjs` (D4), lancé, sortie dans PROGRESS (critère 4) → session principale (Sonnet)
 - [x] 5. Vérification dans `npx vite preview` (critère 5) → verificateur (Haiku)
-- [ ] 6. Lint, RAPPORT.md avec la liste de contrôle `curl` (D6) → session principale (Sonnet)
+- [x] 6. Lint, RAPPORT.md avec la liste de contrôle `curl` (D6) → session principale (Sonnet)
