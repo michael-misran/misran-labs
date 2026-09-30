@@ -29,6 +29,16 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;')
 }
 
+// Échappe une valeur pour un nœud texte XML (sitemap).
+function escapeXml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
+}
+
 // Ramène espaces multiples / retours à la ligne à un seul espace, puis
 // tronque au dernier espace avant 155 caractères (pas de troncature si
 // le texte tient déjà en 160 caractères).
@@ -93,6 +103,18 @@ function writePage(distDir, pagePath, html) {
   fs.writeFileSync(path.join(dir, 'index.html'), html)
 }
 
+// Construit dist/sitemap.xml (format sitemaps.org 0.9) à partir des URL
+// données : l'accueil, puis chaque page d'aperçu avec son lastmod optionnel.
+function buildSitemapXml(urls) {
+  const items = urls
+    .map(({ loc, lastmod }) => {
+      const lastmodTag = lastmod ? `\n    <lastmod>${escapeXml(lastmod)}</lastmod>` : ''
+      return `  <url>\n    <loc>${escapeXml(loc)}</loc>${lastmodTag}\n  </url>`
+    })
+    .join('\n')
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${items}\n</urlset>\n`
+}
+
 // Lit un JSON de numéro de Magazine ou d'idée Projets ; ignore (avec
 // avertissement) si le fichier est illisible ou sans les champs attendus.
 // Ne fait jamais échouer le build : le site ignore déjà ces fichiers de son côté.
@@ -133,6 +155,7 @@ function collectMagazineNumeros(rootDir) {
       description: normalizeAndTruncate(data.edito.fr),
       image: MAGAZINE_FIXED.image,
       type: 'article',
+      lastmod: data.date,
     })
   }
   return pages
@@ -157,6 +180,7 @@ function collectProjetsIdees(rootDir) {
       description: normalizeAndTruncate(data.resume.fr),
       image: PROJETS_FIXED.image,
       type: 'article',
+      lastmod: data.date,
     })
   }
   return pages
@@ -208,6 +232,13 @@ export function sharePreviewsPlugin() {
 
       console.log(`[share-previews] ${pages.length} page(s) d'aperçu générées :`)
       for (const page of pages) console.log(`  - ${page.path}`)
+
+      const sitemapUrls = [
+        { loc: homeUrl },
+        ...pages.map((page) => ({ loc: `${SITE_URL}${page.path}`, lastmod: page.lastmod })),
+      ]
+      fs.writeFileSync(path.join(distDir, 'sitemap.xml'), buildSitemapXml(sitemapUrls))
+      console.log(`[share-previews] sitemap.xml : ${sitemapUrls.length} URL`)
     },
   }
 }
