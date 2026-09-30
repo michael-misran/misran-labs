@@ -26,7 +26,7 @@ Quand Michael donne un brief (« mission : … ») :
 **Règle par défaut (validée par Michael le 2026-09-27)** : quand Michael dit « clôture les missions » (ou qu'une mission est terminée), Claude fait toute la clôture d'un coup, sur Mac comme depuis le téléphone ; Michael n'a plus qu'à fusionner.
 
 **Jamais dans une session de routine** (tâche programmée « missions autonomes » ou « magazine »), même si Michael y écrit « clôture » : ces sessions n'ont pas accès au navigateur, donc pas de vérification complète. Y répondre seulement : « Pour clôturer, passe par la session tour de contrôle (celle où Remote Control est activé) » — sans pousser ni ouvrir de pull request. (Exception : la routine du Magazine publie son propre numéro, voir « Magazine » dans `CLAUDE.md`.)
-1. Trouver les missions terminées : branches `auto/*` (hors `auto/magazine-20*` et `auto/projets-20*`, branches datées des routines) dont `missions/<nom>/RAPPORT.md` existe.
+1. Trouver les missions terminées : branches `auto/*` (hors `auto/magazine-20*`, `auto/projets-20*` et `auto/breves-20*`, branches datées des routines) dont `missions/<nom>/RAPPORT.md` existe.
 2. Pour chacune : lire `RAPPORT.md`, `DECISIONS.md`, `DELEGATIONS.md` ; vérifier soi-même dans le navigateur (passer sur la branche, preview « dev », puis arrêter le serveur et revenir sur `main`) ; vérifier qu'aucun secret ni donnée personnelle n'est dans `git diff main...auto/<nom>` (le dépôt est **public**).
 3. Si tout est bon : pousser la branche (`git push -u origin auto/<nom>`, jamais `main`) et ouvrir la pull request (`gh pr create`, résumé du RAPPORT + modèles utilisés). Si un point bloque : ne pas pousser cette mission, l'expliquer à Michael.
 4. Résumer à Michael, court : par mission, le résultat, les modèles réellement utilisés, le lien de la PR. Le lien de prévisualisation Vercel est dans le commentaire Vercel de la PR (ou `gh pr checks <n>`).
@@ -36,7 +36,7 @@ Michael n'est pas à l'aise avec Git/GitHub : expliquer chaque étape simplement
 
 ## File d'attente
 Plusieurs missions peuvent être cadrées d'avance : chacune vit sur sa branche `auto/<nom>`, partie de `main`, et donne sa propre pull request. Les fichiers d'une mission n'existent que sur sa branche : **ne jamais chercher les missions dans le dossier ouvert**, mais dans les branches.
-1. Lister les branches de mission, de la plus ancienne à la plus récente : `git for-each-ref --sort=creatordate --format=%(refname:short) refs/heads/auto/` (ignorer `auto/magazine-20*` et `auto/projets-20*` : branches datées, gérées par leurs routines).
+1. Lister les branches de mission, de la plus ancienne à la plus récente : `git for-each-ref --sort=creatordate --format=%(refname:short) refs/heads/auto/` (ignorer `auto/magazine-20*`, `auto/projets-20*` et `auto/breves-20*` : branches datées, gérées par leurs routines).
 2. Pour chacune, `git show <branche>:missions/<nom>/RAPPORT.md` : si le fichier existe, la mission est terminée.
 3. Traiter **la plus ancienne mission sans RAPPORT.md**. Une fois terminée, revenir sur `main` (`git checkout main`) et passer à la suivante s'il reste du quota.
 4. Au moment du cadrage, créer toujours la branche d'une nouvelle mission depuis `main`, jamais depuis une autre branche de mission.

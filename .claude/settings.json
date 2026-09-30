@@ -21,7 +21,14 @@
       "Bash(git push -u origin auto/projets-*)",
       "Bash(gh pr create --base main --head auto/projets-*)",
       "Bash(git -C src/private status*)", "Bash(git -C src/private add*)",
-      "Bash(git -C src/private commit*)", "Bash(git -C src/private push)"
+      "Bash(git -C src/private commit*)", "Bash(git -C src/private push)",
+      "Bash(git worktree add .worktrees/breves -b auto/breves-*)",
+      "Bash(git worktree remove .worktrees/breves*)",
+      "Bash(git -C .worktrees/breves add*)", "Bash(git -C .worktrees/breves commit*)",
+      "Bash(python3 -m json.tool .worktrees/breves/*)",
+      "Write(.worktrees/breves/src/breves/jours/**)",
+      "Bash(git push -u origin auto/breves-*)",
+      "Bash(gh pr create --base main --head auto/breves-*)"
     ],
     "deny": [
       "Bash(git push --force*)", "Bash(git push -f*)", "Bash(git push origin --delete*)",

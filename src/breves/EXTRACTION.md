@@ -31,37 +31,36 @@ Pour chaque brève retenue :
 
 ## 3. Publier dans un worktree séparé
 
-Ne jamais toucher le dossier de travail habituel (une mission peut être en cours dessus) : tout se fait dans un worktree Git séparé, une commande shell par appel. `<wt>` désigne le chemin **absolu** du worktree, dans le scratchpad de la session (ex. `<scratchpad>/breves-<date>`). Toutes les commandes suivantes visent ce worktree via `git -C <wt>` ou un chemin absolu : le dossier courant du terminal reste le projet principal.
+Ne jamais toucher le dossier de travail habituel (une mission peut être en cours dessus) : tout se fait dans un worktree Git séparé, au chemin fixe `.worktrees/breves` (ignoré par Git). Le terminal reste dans le projet principal ; une commande shell par appel, écrites **exactement** comme ci-dessous (elles sont pré-autorisées dans `.claude/settings.json`, toute variante déclenche une demande à laquelle personne ne répond).
+
+Vérification préalable (§1) : `git fetch origin`, puis `git show origin/main:src/breves/jours/<date>.json` (doit échouer) et `git for-each-ref refs/heads/auto/breves-<date> refs/remotes/origin/auto/breves-<date>` (doit être vide). Si `.worktrees/breves` existe encore (exécution précédente interrompue) : `git worktree remove .worktrees/breves --force`.
 
 ```bash
-git fetch origin
-```
-```bash
-git worktree add <wt> -b auto/breves-<date> origin/main
+git worktree add .worktrees/breves -b auto/breves-<date> origin/main
 ```
 
-Écrire le fichier `<wt>/src/breves/jours/<date>.json` (chemin absolu) (pas de `npm run build` nécessaire : la validation se fait avec `node` + `JSON.parse`, voir ci-dessous).
+Écrire le fichier `.worktrees/breves/src/breves/jours/<date>.json` (outil Write, chemin absolu dans le projet), puis le valider :
 
 ```bash
-node -e "JSON.parse(require('fs').readFileSync('<wt>/src/breves/jours/<date>.json','utf-8'))"
-```
-
-```bash
-git -C <wt> add src/breves/jours/<date>.json
+python3 -m json.tool .worktrees/breves/src/breves/jours/<date>.json
 ```
 ```bash
-git -C <wt> commit -m "breves: <date>" -m "Co-Authored-By: <modèle utilisé> <noreply@anthropic.com>"
+git -C .worktrees/breves add src/breves/jours/<date>.json
 ```
 ```bash
-git -C <wt> push -u origin auto/breves-<date>
+git -C .worktrees/breves commit -m "breves: <date>" -m "Co-Authored-By: <modèle utilisé> <noreply@anthropic.com>"
+```
+Le worktree partage les branches du dépôt principal : le push et la pull request se lancent donc depuis le projet principal.
+```bash
+git push -u origin auto/breves-<date>
 ```
 ```bash
-gh pr create --head auto/breves-<date> --base main --title "Brèves du <date>" --body "..."
+gh pr create --base main --head auto/breves-<date> --title "Brèves du <date>" --body "…"
 ```
 Le corps de la pull request liste les titres des brèves du jour.
 
 ```bash
-git worktree remove <wt>
+git worktree remove .worktrees/breves
 ```
 
 ## 4. Interdits

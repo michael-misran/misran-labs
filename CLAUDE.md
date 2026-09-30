@@ -12,7 +12,7 @@ Documentation vivante des tokens : `src/lab/projects/LabTokens.jsx` (dossier 007
 ## Missions autonomes
 Travail délégué, exécuté sans Michael par la tâche programmée `misran-labs-missions`, sur des branches `auto/<nom>` ; une mission = un dossier `missions/<nom>/` (SPEC, PLAN, PROGRESS, DECISIONS, DELEGATIONS, RAPPORT).
 **Procédures complètes** (lancer, exécuter, file d'attente, clôturer, modèles) : `missions/README.md` — à lire seulement quand on touche à une mission (« mission : … », « clôture les missions », tâche programmée).
-**Lister les missions** : une mission non fusionnée n'existe **que sur sa branche**, jamais dans le `missions/` de `main`. Liste : `git for-each-ref --sort=creatordate --format='%(refname:short)' refs/heads/auto/` (hors `auto/magazine-20*` et `auto/projets-20*`) ; terminée si `git show <branche>:missions/<nom>/RAPPORT.md` existe, sinon en attente.
+**Lister les missions** : une mission non fusionnée n'existe **que sur sa branche**, jamais dans le `missions/` de `main`. Liste : `git for-each-ref --sort=creatordate --format='%(refname:short)' refs/heads/auto/` (hors `auto/magazine-20*`, `auto/projets-20*` et `auto/breves-20*`) ; terminée si `git show <branche>:missions/<nom>/RAPPORT.md` existe, sinon en attente.
 
 Interdits absolus, valables dans toute session :
 - Commits libres sur `auto/*` seulement (exception validée le 2026-09-26). Jamais de commit sur `main`, de merge, de rebase de `main`, de déploiement ni de `--force` par une mission ou une routine.
@@ -28,6 +28,10 @@ Interdits absolus, valables dans toute session :
 ## Magazine
 Veille IA hebdomadaire (/magazine), un numéro = un fichier JSON dans src/magazine/numeros/. Format : src/magazine/FORMAT.md. Procédure : src/magazine/REDACTION.md.
 **Exception Git validée par Michael le 2026-09-27** : la routine du Magazine pousse sa branche auto/magazine-<date> et ouvre la pull request. Les missions ne poussent jamais. Fusionner reste toujours à Michael.
+
+## Brèves
+Version web quotidienne du Journal du matin (/breves), un jour = un fichier JSON dans `src/breves/jours/`. Format : `src/breves/FORMAT.md`. Procédure : `src/breves/EXTRACTION.md`, suivie par la routine `lab-magazine-quotidien` après le PDF. Seuls la une IA, les articles tech, le mot et le chiffre sont publics.
+**Exception Git validée par Michael le 2026-09-30** : la routine du journal pousse sa branche `auto/breves-<date>` (préparée dans le worktree `.worktrees/breves`, jamais dans le dossier de travail) et ouvre la pull request. Jamais `main`. Fusionner reste à Michael.
 
 ## Projets
 Idées numérotées P-NNN (`/projets`), une fiche publique JSON par idée dans `src/projets/idees/` (format : `src/projets/FORMAT.md`) et une note privée par idée dans `src/private/projets/` (hors Git de misran-labs, sauvegardée dans le dépôt privé). Procédure de la routine du dimanche 19 h : `src/projets/PROPOSITIONS.md`.
