@@ -1,7 +1,7 @@
 # Mission p007-maquettes — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 7 (vérification navigateur, verificateur Haiku)
+**Prochaine action :** étape 8 (corrections éventuelles, vérification finale)
 **Blocages :** aucun
 
 ## État initial (2026-09-30, relevé au cadrage)
@@ -30,3 +30,10 @@
 ## Étape 6 (faite, 2026-10-01)
 - `index.html` créé par un sous-agent Haiku (voir DELEGATIONS.md) : 5 cartes vers chaque écran, sélecteur de thème (`data-theme-select`), mention « Nom provisoire ». Relu, accepté sans modification.
 - `npm run lint` : 0 erreur.
+
+## Étape 7 (faite, 2026-10-01)
+- `npm run build` : passe, `dist/screens/p007/` contient les 8 fichiers.
+- Serveur `npx vite preview --port 4173` lancé par la session principale ; sous-agent verificateur (Haiku) a contrôlé les critères 1 à 8 dessus : tous OK (pas d'erreur console, aucune requête externe, 5 widgets visibles et changeant de fond selon le thème, thème persistant entre pages, comptes à rebours corrects (12 j / 3 j), secondes qui avancent sur `detail.html`, aperçu réactif sur `creation.html`, aucun défilement horizontal à 375px).
+- Recontrôle par la session principale : `font-family` du chiffre de jours diffère bien entre Papier (serif), Nuit (sans-serif) et Pop (rounded) — le rapport du sous-agent ne l'avait vérifié que pour la couleur de fond.
+- Contraste (critère 8, calculé manuellement, formule WCAG) : Papier ink `#1c1a17` / fond `#f4efe6` ≈ 15,2:1 ; Pop ink `#16161a` / fond `#f2f2f7` ≈ 16,2:1 ; Pop texte sombre `#16161a` sur jaune `#ffd23f` ≈ 12,5:1. Les trois paires dépassent largement 4,5:1. Le blanc sur orange saturé (`--pop-1`) n'atteint que ≈3,1:1 : n'est utilisé que pour de grands chiffres/emoji (seuil AA "texte large" 3:1), jamais pour du texte courant.
+- Serveur arrêté après vérification.
