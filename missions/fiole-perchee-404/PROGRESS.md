@@ -1,7 +1,7 @@
 # Mission fiole-perchee-404 — PROGRESS
 
-**Statut :** étape 6 terminée
-**Prochaine action :** étape 7 (corrections éventuelles — aucune nécessaire — puis vérification finale : build, lint, grep critère 12)
+**Statut :** étape 7 terminée
+**Prochaine action :** étape 8 (RAPPORT.md)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, main b8e7ac3)
@@ -49,3 +49,7 @@
 - Tous les points rapportés **conformes** : dimensions et position de la Fiole de la barre (48×48px, 24px du bord, pas de chevauchement avec le texte ni la scrollbar), pas de chevauchement en bas de défilement sur `/magazine` et `/lab/design-system`, clic à 4px de la Fiole atteint le contenu, mobile 375×812 sans défilement horizontal et menu au-dessus de la Fiole, bulle au clic sur la Fiole normale, page 404 conforme en FR (`/nimporte-quoi`, `/lab/inconnu`) avec Fiole toxique 128px et meta `noindex`, réaction de la Fiole toxique (bulle + 6 particules poison), pages NotFound de rubrique avec Fiole toxique 64px au-dessus du titre, textes 404 en anglais après changement de langue, aucune erreur console.
 - Point non re-testé par l'agent (seulement « confirmé dans le code ») : disparition du `noindex` après navigation vers `/`. Re-testé moi-même (`npx vite preview`, un seul `javascript_tool` : présence avant clic sur « Retour au Lab », absence après) → **conforme**.
 - `npm run build` et `npm run lint` : passent (déjà vérifiés à l'étape 5, aucun changement de code à cette étape).
+
+## Étape 7 (2026-09-30)
+- Aucune correction nécessaire : tous les points de l'étape 6 étaient conformes.
+- Vérification finale : `npm run build` passe, `npm run lint` sans erreur, `grep -rn "#[0-9a-fA-F]\{6\}" src/shell/mascotte/ src/shell/Page404.jsx` ne renvoie rien (critère 12 conforme).
