@@ -1,7 +1,7 @@
 # Mission fiole-perchee-404 — PROGRESS
 
-**Statut :** étape 5 terminée
-**Prochaine action :** étape 6 (Vérification navigateur complète des critères 1-11 et 13 → verificateur Haiku)
+**Statut :** étape 6 terminée
+**Prochaine action :** étape 7 (corrections éventuelles — aucune nécessaire — puis vérification finale : build, lint, grep critère 12)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, main b8e7ac3)
@@ -43,3 +43,9 @@
 ## Étape 5 (2026-09-30)
 - Délégué à `general-purpose` (Haiku 4.5) : ajout de `<Fiole scale={4} variant="toxique" sleeps={false} />` (import `../shell/mascotte/Fiole`) juste au-dessus du `<h1>` dans les trois `NotFound` locaux (`src/magazine/MagazineIssue.jsx`, `src/breves/BrevesJour.jsx`, `src/projets/ProjetIdee.jsx`). Diff identique dans les 3 fichiers, revu par la session principale avant `npm run build`/`npm run lint`, puis vérifié dans le navigateur sur `/magazine/1999-01-01`, `/breves/1999-01-01`, `/projets/P-999` : Fiole toxique 64px visible, alignée à gauche au-dessus du titre de chaque rubrique, en-tête et textes de rubrique inchangés.
 - `npm run build` et `npm run lint` : passent.
+
+## Étape 6 (2026-09-30)
+- Délégué à `verificateur` (Haiku 4.5) : vérification des critères d'acceptation 1 à 11 et 13, captures dans `missions/fiole-perchee-404/captures/` (`statusbar-fiole-perchee.jpg`, `mobile-375x812.jpg`, `404-desktop.jpg`, `404-bulle.jpg`, `404-rubrique.jpg`).
+- Tous les points rapportés **conformes** : dimensions et position de la Fiole de la barre (48×48px, 24px du bord, pas de chevauchement avec le texte ni la scrollbar), pas de chevauchement en bas de défilement sur `/magazine` et `/lab/design-system`, clic à 4px de la Fiole atteint le contenu, mobile 375×812 sans défilement horizontal et menu au-dessus de la Fiole, bulle au clic sur la Fiole normale, page 404 conforme en FR (`/nimporte-quoi`, `/lab/inconnu`) avec Fiole toxique 128px et meta `noindex`, réaction de la Fiole toxique (bulle + 6 particules poison), pages NotFound de rubrique avec Fiole toxique 64px au-dessus du titre, textes 404 en anglais après changement de langue, aucune erreur console.
+- Point non re-testé par l'agent (seulement « confirmé dans le code ») : disparition du `noindex` après navigation vers `/`. Re-testé moi-même (`npx vite preview`, un seul `javascript_tool` : présence avant clic sur « Retour au Lab », absence après) → **conforme**.
+- `npm run build` et `npm run lint` : passent (déjà vérifiés à l'étape 5, aucun changement de code à cette étape).
