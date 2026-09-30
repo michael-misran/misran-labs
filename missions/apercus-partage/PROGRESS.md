@@ -1,7 +1,7 @@
 # Mission apercus-partage — PROGRESS
 
-**Statut :** étape 7 terminée
-**Prochaine action :** étape 8 (RAPPORT.md)
+**Statut :** mission terminée (RAPPORT.md écrit)
+**Prochaine action :** clôture par Michael en session interactive (voir missions/README.md)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur main de357bb)

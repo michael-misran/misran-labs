@@ -11,4 +11,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 5. Trois images de rubrique (D6) : sources HTML dans le dossier de mission, rendu PNG via Chrome headless, dimensions vérifiées avec `sips`, contrôle visuel → session principale (Sonnet)
 - [x] 6. Documentation D7 : une ligne dans `src/magazine/FORMAT.md` et `src/projets/FORMAT.md` → sous-agent (Haiku)
 - [x] 7. Vérification finale : build, lint, `curl` du critère 4 sur `npx vite preview` par la session principale ; rendu des 7 pages du critère 4 en FR/EN, arrivée directe + navigation par la barre latérale, console → verificateur (Haiku)
-- [ ] 8. RAPPORT.md (pages générées, exemples d'aperçus, marche à suivre pour Michael sur l'aperçu Vercel avec LinkedIn Post Inspector, recommandations hors périmètre) → session principale (Sonnet)
+- [x] 8. RAPPORT.md (pages générées, exemples d'aperçus, marche à suivre pour Michael sur l'aperçu Vercel avec LinkedIn Post Inspector, recommandations hors périmètre) → session principale (Sonnet)
