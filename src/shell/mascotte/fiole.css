@@ -6,6 +6,10 @@
 .fiole-btn {
   position: relative;
   display: inline-flex;
+  /* Sans ça, l'alignement de base par défaut d'un inline-flex réserve la
+     hauteur de descente de la police du parent sous le bouton (~3 px ici) :
+     le calcul au pixel près du chevauchement sur la barre (D2) en dépend. */
+  vertical-align: bottom;
   background: transparent;
   border: none;
   padding: 0;
@@ -13,6 +17,22 @@
   cursor: pointer;
   line-height: 0;
   -webkit-tap-highlight-color: transparent;
+  /* L'enveloppe perchée (Statusbar.jsx) est en pointer-events: none pour
+     ne jamais bloquer le contenu sous elle (D4) : seul le bouton réagit. */
+  pointer-events: auto;
+}
+
+/* Ombre discrète au sol, posée sur le bord de la barre (D2). */
+.fiole-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+  transform: translateX(-50%);
+  width: 55%;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--primitive-ink-900-a12);
+  pointer-events: none;
 }
 
 .fiole-inner {

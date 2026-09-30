@@ -35,7 +35,9 @@ export default function Statusbar({ moduleLabel, isMobile }) {
         // le texte, lui, reste tronqué par ellipsis (voir `ellipsis` ci-dessus).
         overflow: 'visible',
         whiteSpace: 'nowrap',
-        gap: 12,
+        // Perchée hors du flux (position: absolute plus bas), la Fiole n'est
+        // plus un item flex : le texte reprend toute la largeur (D2).
+        position: 'relative',
       }}
     >
       {isMobile ? (
@@ -47,7 +49,25 @@ export default function Statusbar({ moduleLabel, isMobile }) {
           <span style={ellipsis}>{t(lang, 'statusbarDeploy')}</span>
         </div>
       )}
-      <Fiole />
+
+      {/* Fiole perchée sur le bord haut de la barre (D2) : le bas de son
+          dessin chevauche la barre de 3 px, le reste dépasse au-dessus.
+          `pointer-events: none` sur l'enveloppe, `auto` sur le bouton
+          (voir fiole.css) pour ne jamais bloquer le contenu (D4). Passe
+          sous le menu mobile (zIndex 40/50 dans Shell.jsx et Sidebar.jsx). */}
+      <span
+        className="fiole-perch"
+        style={{
+          position: 'absolute',
+          right: 24,
+          bottom: 'calc(var(--chrome-height) - 3px)',
+          zIndex: 20,
+          pointerEvents: 'none',
+        }}
+      >
+        <span className="fiole-shadow" aria-hidden="true" />
+        <Fiole />
+      </span>
     </footer>
   )
 }
