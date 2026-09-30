@@ -1,8 +1,15 @@
 # Mission finitions-lab — PROGRESS
 
-**Statut :** étape 9 terminée
-**Prochaine action :** étape 10 (vérification navigateur finale, verificateur)
+**Statut :** étape 10 terminée
+**Prochaine action :** étape 11 (build, lint, RAPPORT.md)
 **Blocages :** aucun
+
+## Étape 10 — vérification navigateur finale (verificateur, Haiku)
+- Critère 2 : les deux versions du jeu (`/lab/lost-cauldron-game/demo` et `/demo/v2`) chargent jusqu'au canvas, aucune erreur console, wasm en 200 — confirmé après les espacements D6 appliqués aussi dans `GameDemo.jsx`/`GameDemoV2.jsx`.
+- Critère 3 : lien « ◉ Suivre le Lab → » visible, navigation SPA vers `/suivre`, texte anglais « ◉ Follow the Lab → » après bascule de langue, aucun défilement horizontal à 375 px.
+- Critère 6 : les 4 nouveaux tokens (`--space-3xs` 2px, `--space-2xs` 4px, `--space-xs-plus` 10px, `--space-md-plus` 20px) affichés sur `/lab/lab-tokens`.
+- Critère 10 : aucune erreur console sur `/`, `/lab/audit-tokens`, `/magazine`, `/projets`, `/suivre`, `/lab/lab-tokens`.
+- Captures d'écran de l'accueil (desktop et 375 px) prises par l'agent.
 
 ## Étape 9 — mesure « après » + snapshots « après », comparaison (critères 7-9)
 - **Incident de méthode corrigé en cours d'étape** (noté dans DECISIONS.md) : à la première tentative, le redimensionnement de la fenêtre à 375 px juste avant de lancer le script de capture ne laissait pas le temps au site de terminer son rendu mobile (le nombre d'éléments capturés à 375 px était identique à celui de 1280 px sur les 5 pages, signe que le DOM « bureau » avait été capturé malgré le viewport réduit). Corrigé en redimensionnant la fenêtre **avant** de charger la page (rechargement à froid), puis une seconde d'attente avant la capture. Un mélange de flux (le récepteur « après » du premier essai était resté ouvert pendant que je refaisais les mesures « avant ») a aussi inversé un temps les deux fichiers ; remis dans l'ordre par une simple copie, sans perte de données.

@@ -13,5 +13,5 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 7. Tokens D5 dans `tokens.css` et `LabTokens.jsx` ; copie des scripts de mesure et de snapshot (D7) ; mesure `avant` + snapshots `avant` → session principale (Sonnet)
 - [x] 8. Remplacement des espacements en dur (D6), fichier par fichier, liste des fichiers touchés dans PROGRESS → sous-agent (Haiku), relecture du diff par la session principale
 - [x] 9. Mesure `apres` + snapshots `apres`, comparaison (critères 7-9) ; corrections → session principale (Sonnet)
-- [ ] 10. Vérification navigateur finale : critères 2, 3, 6, 10, captures accueil desktop + 375 px → verificateur (Haiku)
+- [x] 10. Vérification navigateur finale : critères 2, 3, 6, 10, captures accueil desktop + 375 px → verificateur (Haiku)
 - [ ] 11. Build, lint, RAPPORT.md (avec les missions suivantes : vrai-404, menu-barre-haut) → session principale (Sonnet)
