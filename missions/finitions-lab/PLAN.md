@@ -4,7 +4,7 @@ Cocher `[x]` chaque étape terminée, puis mettre à jour PROGRESS.md et commite
 Chaque étape indique l'agent et le modèle à utiliser.
 
 - [x] 0. Cadrage : SPEC, PLAN, fichiers de suivi → session principale (Opus 5.5)
-- [ ] 1. État initial : build, lint notés dans PROGRESS.md → session principale (Sonnet)
+- [x] 1. État initial : build, lint notés dans PROGRESS.md → session principale (Sonnet)
 - [ ] 2. Moteur Godot partagé (D1), vérification des deux versions du jeu dans le navigateur (critères 1-2), repli si échec → session principale (Sonnet)
 - [ ] 3. Lien « Suivre » sur l'accueil (D2) → session principale (Sonnet)
 - [ ] 4. Relevé de référence audit : `innerText` des résultats des 3 exemples + « Tokens du site » sur `/lab/audit-tokens`, écrit dans `missions/finitions-lab/audit-avant.txt` → verificateur (Haiku)
