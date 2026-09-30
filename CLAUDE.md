@@ -12,6 +12,7 @@ Documentation vivante des tokens : `src/lab/projects/LabTokens.jsx` (dossier 007
 ## Missions autonomes
 Travail délégué, exécuté sans Michael par la tâche programmée `misran-labs-missions`, sur des branches `auto/<nom>` ; une mission = un dossier `missions/<nom>/` (SPEC, PLAN, PROGRESS, DECISIONS, DELEGATIONS, RAPPORT).
 **Procédures complètes** (lancer, exécuter, file d'attente, clôturer, modèles) : `missions/README.md` — à lire seulement quand on touche à une mission (« mission : … », « clôture les missions », tâche programmée).
+**Lister les missions** : une mission non fusionnée n'existe **que sur sa branche**, jamais dans le `missions/` de `main`. Liste : `git for-each-ref --sort=creatordate --format='%(refname:short)' refs/heads/auto/` (hors `auto/magazine-20*` et `auto/projets-20*`) ; terminée si `git show <branche>:missions/<nom>/RAPPORT.md` existe, sinon en attente.
 
 Interdits absolus, valables dans toute session :
 - Commits libres sur `auto/*` seulement (exception validée le 2026-09-26). Jamais de commit sur `main`, de merge, de rebase de `main`, de déploiement ni de `--force` par une mission ou une routine.
