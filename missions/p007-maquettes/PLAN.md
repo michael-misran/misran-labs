@@ -5,7 +5,7 @@ Chaque étape indique l'agent et le modèle à utiliser.
 
 - [x] 0. Cadrage : SPEC, PLAN, fichiers de suivi, fiche P-007 passée en `en-cours` → session principale (Opus 5.5)
 - [x] 1. État initial : build, lint notés dans PROGRESS.md → session principale (Opus 5.5, au cadrage)
-- [ ] 2. `p007.css` et `p007.js` : 3 thèmes (D6), cadre de téléphone (D4), polices (D5), calcul du compte à rebours et données relatives (D8), thème mémorisé → session principale (Sonnet)
+- [x] 2. `p007.css` et `p007.js` : 3 thèmes (D6), cadre de téléphone (D4), polices (D5), calcul du compte à rebours et données relatives (D8), thème mémorisé → session principale (Sonnet)
 - [ ] 3. `widgets.html` : faux écran d'accueil, 5 widgets (D7), onglets de thème → session principale (Sonnet)
 - [ ] 4. `liste.html` et `detail.html` (D9) → session principale (Sonnet)
 - [ ] 5. `creation.html` avec aperçu en direct et `pro.html` (D9) → session principale (Sonnet)
