@@ -1,7 +1,7 @@
 # Mission referencement — PROGRESS
 
-**Statut :** étape 4 terminée
-**Prochaine action :** étape 5 (vérification finale, verificateur Haiku)
+**Statut :** étape 5 terminée
+**Prochaine action :** étape 6 (RAPPORT.md)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur main 6f36410)
@@ -33,3 +33,9 @@
 - `src/shell/Shell.jsx` : l'effet `document.title` distingue maintenant l'accueil (`location.pathname === '/'`, utilise `t(lang, 'homeDocumentTitle')`) des autres pages (`${meta.label} · Misran Labs}` avec label, sinon `Misran Labs`). Dépendances de l'effet : `location.pathname`, `meta.label`, `lang`.
 - Avant/après : `/` FR passait de « Lab Home — Michael Misran » à « Misran Labs — le laboratoire de Michael Misran » ; `/magazine/2026-09-28` FR de « Magazine — Prix en baisse, agents en expansion — Michael Misran » à « Magazine — Prix en baisse, agents en expansion · Misran Labs ».
 - `npm run build` : passe, sitemap.xml toujours 20 URL. `npm run lint` : 0 erreur.
+
+## Étape 5 — vérification finale (2026-09-30)
+- Build + lint finaux : 0 erreur.
+- `npx vite preview --port 4173` (routine, pas de preview « dev ») : `curl http://localhost:4173/sitemap.xml` → XML correct (pas le HTML de l'app) ; `curl http://localhost:4173/robots.txt` → contenu exact de D2. Critère 4 OK.
+- Titres d'onglet (sous-agent verificateur, Haiku) : `/` FR « Misran Labs — le laboratoire de Michael Misran », EN « Misran Labs — Michael Misran's lab » ; `/magazine/2026-09-28` FR « Magazine — Prix en baisse, agents en expansion · Misran Labs » ; `/lab/lab-tokens` FR « Tokens du Lab · Misran Labs », EN « Lab Tokens · Misran Labs ». Titre changé correctement lors de la navigation barre latérale sans rechargement. Aucune erreur console. Critère 5 OK.
+- Serveur `vite preview` arrêté après vérification.
