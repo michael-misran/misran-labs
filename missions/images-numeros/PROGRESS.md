@@ -1,7 +1,7 @@
 # Mission images-numeros — PROGRESS
 
-**Statut :** étape 7 terminée
-**Prochaine action :** étape 8 (RAPPORT.md)
+**Statut :** mission terminée (RAPPORT.md écrit)
+**Prochaine action :** aucune — mission prête pour clôture (session interactive avec Michael)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur main 6f36410)

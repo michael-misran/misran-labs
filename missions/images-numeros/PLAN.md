@@ -11,4 +11,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 5. Plugin D3 dans `scripts/share-previews.js` ; build ; critère 5 (dont test de repli temporaire) → session principale (Sonnet)
 - [x] 6. Documentation D5 (`REDACTION.md`, `FORMAT.md`) → sous-agent (Haiku)
 - [x] 7. Vérification finale : build, lint, `git diff --stat main`, greps du critère 5 → session principale (Sonnet)
-- [ ] 8. RAPPORT.md (images produites, ligne de permission D6 à ajouter par Michael, test LinkedIn à faire par Michael, recommandations) → session principale (Sonnet)
+- [x] 8. RAPPORT.md (images produites, ligne de permission D6 à ajouter par Michael, test LinkedIn à faire par Michael, recommandations) → session principale (Sonnet)
