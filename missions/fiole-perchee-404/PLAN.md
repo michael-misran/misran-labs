@@ -11,4 +11,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 5. Fiole toxique ×4 au-dessus du titre des `NotFound` de Magazine, Brèves et Projets (D8, dernier point) → sous-agent (Haiku)
 - [x] 6. Vérification dans le navigateur : critères 1 à 11 et 13 de la SPEC, captures → verificateur (Haiku). Rappel : pour tester une bulle (1,8 s), cliquer et lire le DOM dans **un seul** appel (`browser_batch` ou un seul `javascript_tool`), sinon faux négatif (constaté mission mascotte-fiole)
 - [x] 7. Corrections éventuelles issues de l'étape 6, puis vérification finale : build, lint, grep du critère 12 → session principale (Sonnet)
-- [ ] 8. RAPPORT.md (captures, recommandations hors périmètre) → session principale (Sonnet)
+- [x] 8. RAPPORT.md (captures, recommandations hors périmètre) → session principale (Sonnet)

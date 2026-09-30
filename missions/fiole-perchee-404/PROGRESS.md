@@ -1,7 +1,7 @@
 # Mission fiole-perchee-404 — PROGRESS
 
-**Statut :** étape 7 terminée
-**Prochaine action :** étape 8 (RAPPORT.md)
+**Statut :** mission terminée (RAPPORT.md écrit, étape 8)
+**Prochaine action :** aucune — en attente de clôture (session interactive avec Michael)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, main b8e7ac3)
