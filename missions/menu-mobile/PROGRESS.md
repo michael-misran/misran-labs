@@ -1,7 +1,7 @@
 # Mission menu-mobile — PROGRESS
 
-**Statut :** étapes 3 et 4 terminées (build + lint OK)
-**Prochaine action :** étape 5 (vérification finale : navigateur + critères)
+**Statut :** étape 5 terminée, tous les critères OK
+**Prochaine action :** étape 6 (RAPPORT.md)
 **Blocages :** aucun
 
 ## État initial (2026-09-30, commit 0993db0 de main)
@@ -32,3 +32,12 @@ En 1280×900 (desktop), référence avant correction pour le critère d'acceptat
 ## Build/lint après étapes 3-4
 - `npm run build` : OK
 - `npm run lint` : OK, aucune erreur
+
+## Vérification finale (étape 5)
+- Session principale : build OK, lint OK, `grep -n '"✎"' src/shell/Sidebar.jsx src/magazine/MagazineHome.jsx src/breves/BrevesHome.jsx` ne renvoie rien (critère 5).
+- verificateur (Haiku), navigateur via `npx vite preview` (routine, pas de preview "dev") :
+  - A. 375×812, 7 pages : aucun chevauchement bouton ☰/contenu (elementsFromPoint), scrollWidth=375 partout. OK.
+  - B. 1280×900, `/magazine` et `/breves` : top du 1er élément de `<main>` = 32px, identique à l'état avant correction. OK.
+  - C. Bouton ☰ ouvre le menu, clic sur l'overlay et bouton fermer le referment. OK.
+  - D. Icônes 📖 (Magazine) / 🗞 (Brèves) confirmées dans le menu (desktop et mobile) et dans les en-têtes des deux pages, sans débordement. OK.
+- Tous les critères d'acceptation 1 à 7 de SPEC.md sont satisfaits.
