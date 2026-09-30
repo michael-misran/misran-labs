@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <rect width="180" height="180" fill="#f3ebdc"/>
+  <circle cx="90" cy="90" r="74" fill="none" stroke="#dd5a3e" stroke-width="10"/>
+  <circle cx="90" cy="90" r="55" fill="none" stroke="#dd5a3e" stroke-width="3"/>
+  <text x="90" y="120" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="86" fill="#dd5a3e">M</text>
+</svg>

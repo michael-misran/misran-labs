@@ -1,14 +1,16 @@
+import { lazy } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Shell from './shell/Shell'
 import ArchiveHome from './modules/ArchiveHome'
-import ProjectPage from './lab/ProjectPage'
-import ProjectDemoPage from './lab/ProjectDemoPage'
-import MagazineHome from './magazine/MagazineHome'
-import MagazineIssue from './magazine/MagazineIssue'
-import ProjetsHome from './projets/ProjetsHome'
-import ProjetIdee from './projets/ProjetIdee'
-import ProjetsFonctionnement from './projets/ProjetsFonctionnement'
 import { LanguageProvider } from './shell/LanguageProvider'
+
+const ProjectPage = lazy(() => import('./lab/ProjectPage'))
+const ProjectDemoPage = lazy(() => import('./lab/ProjectDemoPage'))
+const MagazineHome = lazy(() => import('./magazine/MagazineHome'))
+const MagazineIssue = lazy(() => import('./magazine/MagazineIssue'))
+const ProjetsHome = lazy(() => import('./projets/ProjetsHome'))
+const ProjetIdee = lazy(() => import('./projets/ProjetIdee'))
+const ProjetsFonctionnement = lazy(() => import('./projets/ProjetsFonctionnement'))
 
 export default function App() {
   return (
