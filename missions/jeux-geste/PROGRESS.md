@@ -1,7 +1,7 @@
 # Mission jeux-geste — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 5 (jeu : geste-parfait/meta.js, Jeu.jsx, défis chrono et verre)
+**Prochaine action :** étape 7 (vérification navigateur, verificateur Haiku)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, sur `main` 8a410ca)
@@ -35,3 +35,15 @@
 - `scripts/share-previews.js` : `collectJeux(rootDir)` lit génériquement `src/jeux/*/meta.js` par `import()` dynamique (comme `collectLabProjects` pour `projects.js`), valide slug/titre/accroche, ignore avec avertissement si invalide. `/jeux` ajouté en page fixe (`JEUX_FIXED`, image `og-image.png` réutilisée). `npm run build` : sitemap passe de 30 à 31 URL (`/jeux` ; `/jeux/geste-parfait` apparaîtra à l'étape 5), `dist/jeux/index.html` contient le bon titre/description dans les balises og.
 - `missions/vrai-404/verifier-routes.mjs` : `/jeux/inconnu` ajouté à `attendues404`. `/jeux` et `/jeux/geste-parfait` pas ajoutés en dur (déjà couverts via `lireSitemap()`) — voir DECISIONS.md. Script rejoué : 52 adresses vérifiées, 0 échec.
 - `npm run lint` : 0 erreur.
+
+## Étapes 5-6 (faites ensemble, 2026-10-01 — voir DECISIONS.md)
+- `geste-parfait/meta.js` : slug, ordre 1, icône ◎, couleur `mandarine`, titre/accroche fr/en, `demo: false`.
+- `geste-parfait/Jeu.jsx` : défi du jour = `defis[numeroDuJour % 4]`, graine du jour (`generateurDuJour`) passée aux défis qui en ont besoin, essai officiel enregistré via `enregistrerResultat`, « Rejouer pour s'entraîner » qui note le score à l'écran sans l'enregistrer, texte de partage construit avec `construireTextePartage`.
+- `geste-parfait/defis/chrono.jsx` : chrono qui s'efface après 3 s, arrêt par clic/toucher/Espace, score = max(0, 100 − |écart| × 20).
+- `geste-parfait/defis/verre.jsx` : verser en maintenant (souris/toucher/Espace), inertie ~150 ms après relâchement, hauteur cible fixée par la graine du jour (40-85 %), score = max(0, 100 − |écart| × 5).
+- `geste-parfait/defis/cercle.jsx` : tracé au pointeur uniquement (D11), refusé (sans consommer l'essai) si balayage < 300° ou rayon moyen < 40px, score selon l'écart-type des distances au centre, tracé coloré du rouge au vert selon l'écart local.
+- `geste-parfait/defis/tour.jsx` : bloc qui va-et-vient à vitesse fixe, pose par clic/toucher/Espace, la partie qui dépasse tombe, score = largeur finale / largeur initiale × 100.
+- Trois corrections mécaniques imposées par des règles eslint plus strictes que prévu à la SPEC (voir DECISIONS.md) : `lazy()` construit une seule fois dans `registre.js` (`react-hooks/static-components`), tous les « refs toujours à jour » écrits dans un `useEffect` (`react-hooks/refs`), état de `Jeu.jsx` initialisé par lecture paresseuse plutôt que par un effet de synchronisation (`react-hooks/set-state-in-effect`), `JeuPage.jsx` pose `key={date}` pour remonter le jeu quand `?date=` change en dev.
+- `npm run build` : passe, sitemap 32 URL (`/jeux/geste-parfait` ajouté), `dist/jeux/geste-parfait/index.html` contient le bon titre/accroche dans les balises og.
+- `npm run lint` : 0 erreur. `grep -rnE "#[0-9a-fA-F]{3,6}\b" src/jeux` : aucune occurrence (critère 11).
+- `verifier-socle.mjs` et `verifier-routes.mjs` rejoués : tout passe (53 adresses vérifiées).

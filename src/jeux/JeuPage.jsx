@@ -45,7 +45,7 @@ export default function JeuPage() {
       )}
 
       <Suspense fallback={null}>
-        <jeu.Composant jeu={jeu} date={date} />
+        <jeu.Composant key={date} jeu={jeu} date={date} />
       </Suspense>
     </div>
   )
