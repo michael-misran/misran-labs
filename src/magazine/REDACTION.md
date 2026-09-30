@@ -55,14 +55,15 @@ Pourquoi : le numéro 1 (test du 2026-09-27) contenait trois erreurs typiques d'
 5. Garder le bilan (N affirmations vérifiées, X corrigées, Y retirées) pour la description de la pull request.
 
 ## 5 bis. Contrôles
-1. `npm run build` passe.
-2. Dans le navigateur (preview « dev » : `preview_start`, sinon `npx vite preview` après le build) : `/magazine` liste le nouveau numéro, `/magazine/<date>` s'affiche en FR et en EN, **aucun message `[magazine]` ni erreur dans la console**. Arrêter le serveur ensuite.
-3. Relire le JSON une dernière fois : aucune affirmation sans source, aucune citation longue.
+1. Générer l'image de partage : `node scripts/og-numero.js <date>` ; l'ouvrir (outil Read) et vérifier que le titre est lisible et ne sort pas du cadre. Si la commande échoue, continuer sans image (le site utilise l'image de rubrique) et le signaler dans la pull request.
+2. `npm run build` passe.
+3. Dans le navigateur (preview « dev » : `preview_start`, sinon `npx vite preview` après le build) : `/magazine` liste le nouveau numéro, `/magazine/<date>` s'affiche en FR et en EN, **aucun message `[magazine]` ni erreur dans la console**. Arrêter le serveur ensuite.
+4. Relire le JSON une dernière fois : aucune affirmation sans source, aucune citation longue.
 
 ## 6. Publication
 1. Partir de `main` à jour : `git checkout main`, puis `git pull`.
 2. Créer la branche : `git checkout -b auto/magazine-<date>`.
-3. Ajouter **uniquement** le fichier `src/magazine/numeros/<date>.json`. Commit : `git commit -m "Magazine issue <numero> (<date>)" -m "<résumé en une ligne>" -m "Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>" -m "Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>"`.
+3. Ajouter **uniquement** `src/magazine/numeros/<date>.json` et, s'il a été généré, `public/og/magazine/<date>.png`. Commit : `git commit -m "Magazine issue <numero> (<date>)" -m "<résumé en une ligne>" -m "Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>" -m "Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>"`.
 4. Pousser la branche : `git push -u origin auto/magazine-<date>` (seul push autorisé ; jamais `main`, jamais `--force`).
 5. Ouvrir la pull request : `gh pr create --base main --head auto/magazine-<date> --title "Magazine Nº <numero> — <titre fr>" --body "<liste des articles avec leurs sources, puis le bilan de la relecture factuelle (§5)>"`, avec en dernière ligne `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
 6. **Ne jamais fusionner.** Michael relit la prévisualisation Vercel et fusionne.
