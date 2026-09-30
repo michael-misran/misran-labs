@@ -1,7 +1,7 @@
 # Mission p007-maquettes — PROGRESS
 
-**Statut :** en cours
-**Prochaine action :** étape 8 (corrections éventuelles, vérification finale)
+**Statut :** terminée
+**Prochaine action :** aucune — RAPPORT.md écrit, en attente de clôture par Michael (session tour de contrôle)
 **Blocages :** aucun
 
 ## État initial (2026-09-30, relevé au cadrage)
@@ -37,3 +37,11 @@
 - Recontrôle par la session principale : `font-family` du chiffre de jours diffère bien entre Papier (serif), Nuit (sans-serif) et Pop (rounded) — le rapport du sous-agent ne l'avait vérifié que pour la couleur de fond.
 - Contraste (critère 8, calculé manuellement, formule WCAG) : Papier ink `#1c1a17` / fond `#f4efe6` ≈ 15,2:1 ; Pop ink `#16161a` / fond `#f2f2f7` ≈ 16,2:1 ; Pop texte sombre `#16161a` sur jaune `#ffd23f` ≈ 12,5:1. Les trois paires dépassent largement 4,5:1. Le blanc sur orange saturé (`--pop-1`) n'atteint que ≈3,1:1 : n'est utilisé que pour de grands chiffres/emoji (seuil AA "texte large" 3:1), jamais pour du texte courant.
 - Serveur arrêté après vérification.
+
+## Étape 8 (faite, 2026-10-01)
+- Critère 2 : grep de `http://`/`https://` dans `public/screens/p007/` → seul `www.w3.org/2000/svg` (SVG inline), aucune ressource externe.
+- Critère 9 : `npm run build` passe, `dist/screens/p007/` contient les 8 fichiers ; `npm run lint` : 0 erreur (identique à l'état initial).
+- Critère 10 : `git status` propre sur `auto/p007-maquettes`, `git diff main...auto/p007-maquettes` ne montre que les fichiers de la mission et la fiche P-007 ; rien sur `main`, rien poussé.
+
+## Étape 9 (faite, 2026-10-01)
+- `RAPPORT.md` écrit avec les 10 critères d'acceptation, les décisions, les délégations et les recommandations.
