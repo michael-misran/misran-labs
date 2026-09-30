@@ -1,7 +1,7 @@
 # Mission rss-suivre — PROGRESS
 
-**Statut :** étape 5 terminée
-**Prochaine action :** étape 6 (vérification navigateur : critères 3, 6, 7, 8, 9) → verificateur (Haiku)
+**Statut :** étape 6 terminée
+**Prochaine action :** étape 7 (corrections éventuelles, vérification finale, critère 11)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-30, main b6663e8)
@@ -35,3 +35,13 @@
 - `scripts/share-previews.js` : `SUIVRE_FIXED` (titre « Suivre le Lab · Misran Labs », description = l'intro FR de D4) ajoutée après `BREVES_FIXED` ; entrée `/suivre` ajoutée dans le tableau `pages` de `closeBundle()`, juste après `/projets/fonctionnement`. Le sitemap se construit déjà à partir de ce tableau : `/suivre` y apparaît sans code supplémentaire.
 - Diff relu par la session principale avant validation : conforme à la demande, rien d'autre modifié.
 - Vérifications (session principale après relecture) : `npm run build` passe, sitemap 22 → 23 URL, `dist/suivre/index.html` a le bon `<title>`, `dist/sitemap.xml` contient `/suivre`, les 4 flux `.xml` n'y sont pas (D3), `npm run lint` sans erreur.
+
+## Étape 6 (2026-09-30, sur auto/rss-suivre — sous-agent verificateur, Haiku)
+- Vérification dans le navigateur via `npx vite preview --port 4321` (pas la preview « dev », refusée en routine). Tous les points OK :
+  - a. `/rss.xml` et `/magazine/rss.xml` servent du XML brut, pas le HTML du site.
+  - b. `/suivre` : titre, intro, 4 flux avec rythme et URL, bouton Copier → « Copié ✓ » (clic + lecture dans le même passage), LinkedIn/GitHub en `target="_blank"`, pas de défilement horizontal à 375 px, rendu desktop conforme.
+  - c. Menu : section « Suivre » en dernière position (après Portfolio), entrée active sur `/suivre`, rendu correct déplié/replié/mobile.
+  - d. Onglets : `/breves` → « Brèves · Misran Labs » ; `/breves/2026-09-30` → « Brèves — 30 septembre 2026 · Misran Labs » ; `/suivre` → « Suivre · Misran Labs » ; chemin inexistant → page 404 du site.
+  - e. Aucune erreur ni avertissement en console sur les pages testées.
+- Serveur `vite preview` arrêté par le sous-agent ; confirmé côté session principale (`ps aux` vide, working tree propre).
+- Aucune correction nécessaire à ce stade.
