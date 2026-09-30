@@ -1,0 +1,54 @@
+{
+  "date": "2026-09-30",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": { "fr": "ChatGPT ouvre sa barre latérale aux développeurs", "en": "ChatGPT opens its sidebar to developers" },
+      "resume": {
+        "fr": "Au DevDay du 29 septembre, OpenAI a ouvert la barre latérale de ChatGPT aux applications tierces : Figma et Adobe pourront y afficher un panneau interactif ou éditer des fichiers, via le protocole MCP. L'annonce s'accompagne d'une API Agents en bêta et du modèle GPT-6.1 Sol, avec des agents persistants réservés aux offres Pro, Business et Enterprise.",
+        "en": "At its September 29 DevDay, OpenAI opened ChatGPT's sidebar to third-party apps: Figma and Adobe will be able to show an interactive panel or edit files there, via the MCP protocol. The announcement also included a beta Agents API and the GPT-6.1 Sol model, with persistent agents limited to the Pro, Business, and Enterprise plans."
+      },
+      "sources": [
+        { "titre": "OpenAI Community", "url": "https://community.openai.com/t/devday-2026-announcements-and-developer-resources/1402006" },
+        { "titre": "OpenAI Developers", "url": "https://developers.openai.com/plugins/build/extensions" },
+        { "titre": "OpenAI Developers", "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Starship atteint l'orbite", "en": "Starship reaches orbit" },
+      "resume": {
+        "fr": "Lundi 28 septembre, la fusée Starship de SpaceX a atteint l'orbite pour la première fois, au troisième essai de sa version V3, en larguant 26 satellites Starlink de troisième génération. L'étage supérieur est redescendu après 3 heures au lieu de 9, l'un de ses six moteurs ayant lâché.",
+        "en": "On Monday, September 28, SpaceX's Starship rocket reached orbit for the first time, on the third flight of its V3 version, deploying 26 third-generation Starlink satellites. Its upper stage came back down after 3 hours instead of 9, after one of its six engines failed."
+      },
+      "sources": [
+        { "titre": "TechCrunch", "url": "https://techcrunch.com/2026/09/28/spacexs-starship-rocket-reaches-orbit-for-the-first-time/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Un Walkman dans un iPhone pliable", "en": "A Walkman inside a folding iPhone" },
+      "resume": {
+        "fr": "L'iPhone Duo, le pliable d'Apple (7,6 pouces ouvert, 5,4 fermé), a déjà son appli fétiche : Duo-Man, conçue par Vidit Bhargava. On l'ouvre pour choisir sa « cassette », puis on le referme pour l'écouter, avec les clics et le souffle d'un vrai Walkman.",
+        "en": "Apple's folding iPhone Duo (7.6 inches open, 5.4 closed) already has its killer app: Duo-Man, built by Vidit Bhargava. You open it to pick a \"cassette,\" then close it to listen, complete with the clicks and hiss of a real Walkman."
+      },
+      "sources": [
+        { "titre": "TechCrunch", "url": "https://techcrunch.com/2026/09/28/the-iphone-duo-may-already-have-its-first-killer-app-a-virtual-walkman/" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "CMP",
+    "definition": {
+      "fr": "<i>Consent Management Platform</i> (ou <i>Provider</i>), outil de gestion du consentement : le logiciel qui se cache derrière le bandeau de consentement d'un site. Il affiche les choix, enregistre la réponse et transmet aux outils de mesure et de publicité ce qu'ils ont le droit de faire.",
+      "en": "<i>Consent Management Platform</i> (or <i>Provider</i>), the consent management tool: the software hiding behind a site's consent banner. It displays the choices, records the response, and tells measurement and advertising tools what they're allowed to do."
+    }
+  },
+  "chiffre": {
+    "valeur": "844",
+    "texte": {
+      "fr": "problèmes corrigés dans Safari 27.0. Selon WebKit, 86 % de cette version est consacrée à des corrections plutôt qu'à des nouveautés.",
+      "en": "issues fixed in Safari 27.0. According to WebKit, 86% of this release is dedicated to fixes rather than new features."
+    }
+  }
+}

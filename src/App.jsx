@@ -8,6 +8,8 @@ const ProjectPage = lazy(() => import('./lab/ProjectPage'))
 const ProjectDemoPage = lazy(() => import('./lab/ProjectDemoPage'))
 const MagazineHome = lazy(() => import('./magazine/MagazineHome'))
 const MagazineIssue = lazy(() => import('./magazine/MagazineIssue'))
+const BrevesHome = lazy(() => import('./breves/BrevesHome'))
+const BrevesJour = lazy(() => import('./breves/BrevesJour'))
 const ProjetsHome = lazy(() => import('./projets/ProjetsHome'))
 const ProjetIdee = lazy(() => import('./projets/ProjetIdee'))
 const ProjetsFonctionnement = lazy(() => import('./projets/ProjetsFonctionnement'))
@@ -22,6 +24,8 @@ export default function App() {
           <Route path="lab/:slug/demo/:version?" element={<ProjectDemoPage />} />
           <Route path="magazine" element={<MagazineHome />} />
           <Route path="magazine/:date" element={<MagazineIssue />} />
+          <Route path="breves" element={<BrevesHome />} />
+          <Route path="breves/:date" element={<BrevesJour />} />
           <Route path="projets" element={<ProjetsHome />} />
           <Route path="projets/fonctionnement" element={<ProjetsFonctionnement />} />
           <Route path="projets/:id" element={<ProjetIdee />} />

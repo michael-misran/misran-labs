@@ -183,6 +183,7 @@ export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
 
       <NavSectionLabel collapsed={collapsed}>{t(lang, 'navSectionMagazine')}</NavSectionLabel>
       <NavItem to="/magazine" number="✎" label={t(lang, 'magazineNav')} collapsed={collapsed} end={false} />
+      <NavItem to="/breves" number="🗞" label={t(lang, 'brevesNav')} collapsed={collapsed} end={false} />
 
       <NavSectionLabel collapsed={collapsed}>{t(lang, 'navSectionProjets')}</NavSectionLabel>
       <NavItem to="/projets" number="◇" label={t(lang, 'projetsNav')} collapsed={collapsed} end={false} />
