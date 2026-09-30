@@ -1,8 +1,11 @@
 # Mission breves — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 6 (aperçus et sitemap dans scripts/share-previews.js)
+**Prochaine action :** étape 7 (src/breves/EXTRACTION.md)
 **Blocages :** aucun
+
+## Étape 6 (2026-09-30)
+`BREVES_FIXED` + `collectBrevesJours(rootDir)` ajoutés dans `scripts/share-previews.js`, sur le modèle de `collectMagazineNumeros` : page fixe `/breves` (titre D7, image `og-magazine.png` réutilisée, pas de nouvelle image), une entrée par jour `/breves/<date>` (titre = titre de la première brève, description tronquée à partir de son résumé). Vérifié au build : `dist/sitemap.xml` contient `/breves` et `/breves/2026-09-30` (critère 6), `dist/breves/index.html` a le bon `<title>`. `npm run lint` passe.
 
 ## Étape 5 (2026-09-30)
 Entrée « Brèves » ajoutée dans `Sidebar.jsx`, juste sous « Magazine » dans la même section (pas de nouvelle `NavSectionLabel`, `end={false}`) ; libellés `brevesNav` (fr « Brèves », en « Briefs ») dans `ui.js`. Fait par le sous-agent `general-purpose` (Haiku) selon le plan ; diff relu avant commit, conforme. `npm run lint` passe.

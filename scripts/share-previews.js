@@ -18,6 +18,11 @@ const PROJETS_FONCTIONNEMENT_FIXED = {
   description: 'La routine du dimanche, les fiches publiques, les décisions.',
   image: 'og-projets.png',
 }
+const BREVES_FIXED = {
+  title: 'Brèves — l\'actu IA et tech du jour · Misran Labs',
+  description: 'Chaque jour, quelques brèves d\'actu IA et tech tirées du Journal du matin, avec le mot et le chiffre du jour.',
+  image: 'og-magazine.png',
+}
 
 // Échappe une valeur pour un attribut HTML.
 function escapeHtml(value) {
@@ -169,6 +174,35 @@ function collectMagazineNumeros(rootDir) {
   return pages
 }
 
+// D7 (mission breves) : pas de nouvelle image — l'image de rubrique du
+// Magazine sert aussi pour /breves et chaque jour, contrairement au
+// Magazine et aux idées Projets qui ont leur propre image par numéro/idée.
+function collectBrevesJours(rootDir) {
+  const dir = path.join(rootDir, 'src/breves/jours')
+  if (!fs.existsSync(dir)) return []
+  const pages = []
+  for (const file of fs.readdirSync(dir).sort()) {
+    if (!file.endsWith('.json')) continue
+    const dateFromName = file.replace(/\.json$/, '')
+    const data = readValidJson(path.join(dir, file), ['date', 'breves.0.titre.fr', 'breves.0.resume.fr'])
+    if (!data) continue
+    if (data.date !== dateFromName) {
+      console.warn(`[share-previews] ignoré (date "${data.date}" ≠ nom de fichier) : ${file}`)
+      continue
+    }
+
+    pages.push({
+      path: `/breves/${dateFromName}`,
+      title: `${data.breves[0].titre.fr} · Brèves — Misran Labs`,
+      description: normalizeAndTruncate(data.breves[0].resume.fr),
+      image: BREVES_FIXED.image,
+      type: 'article',
+      lastmod: data.date,
+    })
+  }
+  return pages
+}
+
 function collectProjetsIdees(rootDir) {
   const dir = path.join(rootDir, 'src/projets/idees')
   if (!fs.existsSync(dir)) return []
@@ -226,9 +260,11 @@ export function sharePreviewsPlugin() {
 
       const pages = [
         { path: '/magazine', title: MAGAZINE_FIXED.title, description: MAGAZINE_FIXED.description, image: MAGAZINE_FIXED.image, type: 'website' },
+        { path: '/breves', title: BREVES_FIXED.title, description: BREVES_FIXED.description, image: BREVES_FIXED.image, type: 'website' },
         { path: '/projets', title: PROJETS_FIXED.title, description: PROJETS_FIXED.description, image: PROJETS_FIXED.image, type: 'website' },
         { path: '/projets/fonctionnement', title: PROJETS_FONCTIONNEMENT_FIXED.title, description: PROJETS_FONCTIONNEMENT_FIXED.description, image: PROJETS_FONCTIONNEMENT_FIXED.image, type: 'website' },
         ...collectMagazineNumeros(rootDir),
+        ...collectBrevesJours(rootDir),
         ...collectProjetsIdees(rootDir),
         ...(await collectLabProjects(rootDir)),
       ]
