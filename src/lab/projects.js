@@ -1,15 +1,17 @@
-import DesignSystemMultimarques from './projects/DesignSystemMultimarques'
-import DesignSystem from './projects/DesignSystem'
-import LabTokens from './projects/LabTokens'
-import TheLostCauldronGame from './projects/TheLostCauldronGame'
-import WorkflowSolo from './projects/WorkflowSolo'
-import UtilisationIA from './projects/UtilisationIA'
-import AuditTokens from './projects/AuditTokens'
-import GameDemo from './GameDemo'
-import GameDemoV2 from './GameDemoV2'
-import ToolProcessTemplate from './ToolProcessTemplate'
-import SessionReplay from '../experiences/SessionReplay'
-import CVModule from '../modules/CVModule'
+import { lazy } from 'react'
+
+const DesignSystemMultimarques = lazy(() => import('./projects/DesignSystemMultimarques'))
+const DesignSystem = lazy(() => import('./projects/DesignSystem'))
+const LabTokens = lazy(() => import('./projects/LabTokens'))
+const TheLostCauldronGame = lazy(() => import('./projects/TheLostCauldronGame'))
+const WorkflowSolo = lazy(() => import('./projects/WorkflowSolo'))
+const UtilisationIA = lazy(() => import('./projects/UtilisationIA'))
+const AuditTokens = lazy(() => import('./projects/AuditTokens'))
+const GameDemo = lazy(() => import('./GameDemo'))
+const GameDemoV2 = lazy(() => import('./GameDemoV2'))
+const ToolProcessTemplate = lazy(() => import('./ToolProcessTemplate'))
+const SessionReplay = lazy(() => import('../experiences/SessionReplay'))
+const CVModule = lazy(() => import('../modules/CVModule'))
 
 // Statut honnête par étape : 'done' | 'partial' | 'skipped'.
 // Les projets Lab sont des explorations rapides — la plupart des étapes

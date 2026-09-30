@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Sidebar from './Sidebar'
 import Statusbar from './Statusbar'
@@ -125,7 +125,9 @@ export default function Shell() {
 
           <main className="shell-main" style={{ flex: 1, minWidth: 0, overflowY: 'auto', overflowX: 'hidden', position: 'relative' }}>
             <SecondarySidebarContext.Provider value={setSecondaryNav}>
-              <Outlet />
+              <Suspense fallback={null}>
+                <Outlet />
+              </Suspense>
             </SecondarySidebarContext.Provider>
           </main>
         </div>

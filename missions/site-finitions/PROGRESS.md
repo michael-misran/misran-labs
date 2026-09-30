@@ -1,7 +1,7 @@
 # Mission site-finitions — PROGRESS
 
-**Statut :** étape 4 terminée
-**Prochaine action :** étape 5 (découpage du JS, React.lazy + Suspense)
+**Statut :** étape 5 terminée
+**Prochaine action :** étape 6 (vérification finale : build, lint, greps, captures « après »)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-09-29, sur main 6e87188)
@@ -26,3 +26,11 @@
 
 ## Étape 4 (2026-09-30)
 - `public/og-image.png` 1200×630 créé (fond crème, cadre fin encre, « Misran Labs » en Fraunces 900, sous-titre en JetBrains Mono, tampon corail identique à celui du Lab Magazine). Source dans `missions/site-finitions/og-image-source.html`, rendu via Chrome headless (fonts Google chargées avant capture, `--virtual-time-budget=4000`). Dimensions vérifiées avec `sips`, rendu vérifié visuellement (lisible, fidèle à l'identité).
+
+## Étape 5 (2026-09-30)
+- `src/App.jsx` : `Shell`, `ArchiveHome` et `LanguageProvider` restent chargés d'office ; `ProjectPage`, `ProjectDemoPage`, `MagazineHome`, `MagazineIssue`, `ProjetsHome`, `ProjetIdee`, `ProjetsFonctionnement` passés en `React.lazy`.
+- `src/shell/Shell.jsx` : `<Outlet />` entouré d'un `<Suspense fallback={null}>` (zone `main` déjà de hauteur fixe par la grille du Shell — pas de saut de mise en page).
+- `src/lab/projects.js` : les 12 composants de projets (`DesignSystemMultimarques`, `DesignSystem`, `LabTokens`, `TheLostCauldronGame`, `WorkflowSolo`, `UtilisationIA`, `AuditTokens`, `GameDemo`, `GameDemoV2`, `ToolProcessTemplate`, `SessionReplay`, `CVModule`) passés en `React.lazy` — l'API `<Component />` / `project.demoComponent && (...)` ne change pas côté appelants.
+- Vérifié qu'aucun de ces composants n'est importé statiquement ailleurs que dans `projects.js` / `App.jsx` (`grep`).
+- Build : chunk d'accueil (`index-*.js`) **319,78 kB (gzip 101,99 kB)**, contre 760,13 kB (gzip 233,87 kB) avant — critère 3 respecté (< 350 kB). Plus aucun avertissement « chunks larger than 500 kB ». Chaque page/composant de projet a son propre chunk (0,2 kB à 110 kB selon la page, tous chargés à la demande).
+- `npm run lint` : 0 erreur.
