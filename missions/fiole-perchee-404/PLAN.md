@@ -4,7 +4,7 @@ Cocher `[x]` chaque étape terminée, puis mettre à jour PROGRESS.md et commite
 Chaque étape indique l'agent et le modèle à utiliser.
 
 - [x] 0. Cadrage : SPEC, PLAN, fichiers de suivi → session principale (Opus 5.5)
-- [ ] 1. État initial : build, lint notés dans PROGRESS.md → session principale (Sonnet)
+- [x] 1. État initial : build, lint notés dans PROGRESS.md → session principale (Sonnet)
 - [ ] 2. Fiole paramétrable : props `scale`, `variant`, `sleeps` dans `Fiole.jsx` (défauts = comportement actuel de la barre, échelle 3), `bob` proportionnel à l'échelle, `toxique.phrases` FR/EN dans `sprites.js` (D1, D5, D7) → session principale (Sonnet)
 - [ ] 3. Fiole perchée : position sur le bord haut de la barre dans `Statusbar.jsx`, ombre, `--mascotte-overhang` dans `tokens.css` + `padding-bottom` de `.shell-main` dans `Shell.jsx`, pointer-events et z-index (D2 à D4) ; build + lint → session principale (Sonnet)
 - [ ] 4. Page 404 : `Page404.jsx`, textes FR/EN dans `i18n/ui.js`, route `*` dans `App.jsx`, `ProjectPage`/`ProjectDemoPage`, `resolveRouteMeta` (☠ + « Page introuvable »), meta `noindex` (D6, D8, D9) ; build + lint → session principale (Sonnet)
