@@ -8,7 +8,7 @@ import { lireResultat } from './socle/serie'
 
 // Nombre de cartes fantômes « Bientôt » quand la grille n'a pas encore 3
 // jeux (D10). Chaque mission suivante la décrémente d'une unité.
-const A_VENIR = 2
+const A_VENIR = 1
 
 function CarteJeu({ jeu, lang, joue }) {
   return (
