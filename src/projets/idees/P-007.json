@@ -19,5 +19,13 @@
   },
   "type": "produit",
   "taille": "petite",
-  "statut": "proposee"
+  "statut": "en-cours",
+  "decision": {
+    "date": "2026-09-30",
+    "note": {
+      "fr": "Gardée par Michael : on commence par des maquettes web pour valider le design avant l'application iOS.",
+      "en": "Kept by Michael: starting with web mockups to validate the design before the iOS app."
+    }
+  },
+  "mission": "p007-maquettes"
 }

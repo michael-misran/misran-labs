@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr" data-theme="papier">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Soon — Liste des événements</title>
+    <link rel="stylesheet" href="p007.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="page-toolbar">
+        <a class="back-link" href="index.html">← Sommaire</a>
+        <h1>Liste</h1>
+        <span></span>
+      </div>
+
+      <div class="phone">
+        <div class="dynamic-island"></div>
+        <div class="phone-screen">
+          <div class="status-bar" data-status-bar></div>
+          <div class="screen-content">
+            <div class="screen-title">Soon</div>
+            <div id="event-list"></div>
+          </div>
+          <button class="fab" type="button" title="Ajouter un événement" onclick="window.location.href='creation.html'">+</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="p007.js" defer></script>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        const events = window.P007.buildSampleEvents();
+        const list = document.getElementById('event-list');
+
+        function render() {
+          list.innerHTML = events
+            .map((ev, i) => {
+              const c = window.P007.getCountdown(ev.date);
+              return `
+                <a class="event-card ${i === 0 ? 'is-next' : ''}" href="detail.html?id=${encodeURIComponent(ev.id)}">
+                  <span class="emoji">${ev.emoji}</span>
+                  <span class="info">
+                    <span class="name">${window.P007.escapeHtml(ev.name)}</span><br />
+                    <span class="date">${window.P007.formatFullDate(ev.date)}</span>
+                  </span>
+                  <span class="days">${window.P007.dayLabel(c.days) === "Aujourd'hui !" ? "Aujourd'hui" : c.days + ' j'}</span>
+                </a>`;
+            })
+            .join('');
+        }
+
+        render();
+        setInterval(render, 60000);
+      });
+    </script>
+  </body>
+</html>

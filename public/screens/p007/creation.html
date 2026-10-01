@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="fr" data-theme="papier">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Soon — Nouvel événement</title>
+    <link rel="stylesheet" href="p007.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="page-toolbar">
+        <a class="back-link" href="liste.html">← Liste</a>
+        <h1>Création</h1>
+        <span></span>
+      </div>
+
+      <div class="phone">
+        <div class="dynamic-island"></div>
+        <div class="phone-screen">
+          <div class="status-bar" data-status-bar></div>
+          <div class="screen-content">
+            <div class="screen-title" style="font-size:22px;">Nouvel événement</div>
+
+            <div class="form-field">
+              <label for="f-name">Nom</label>
+              <input id="f-name" type="text" value="Vacances à Lisbonne" maxlength="40" />
+            </div>
+
+            <div class="form-field">
+              <label for="f-date">Date</label>
+              <input id="f-date" type="date" />
+            </div>
+
+            <div class="form-field">
+              <label for="f-time">Heure (optionnelle)</label>
+              <input id="f-time" type="time" value="09:00" />
+            </div>
+
+            <div class="form-field">
+              <label>Emoji</label>
+              <div class="emoji-grid" id="emoji-grid"></div>
+            </div>
+
+            <div class="form-field">
+              <label>Couleur de la carte</label>
+              <div class="swatch-row" id="swatch-row"></div>
+            </div>
+
+            <div class="switch-row">
+              <span>Répéter chaque année</span>
+              <button class="switch" id="repeat-switch" type="button" aria-pressed="false"></button>
+            </div>
+
+            <div class="preview-label">Aperçu du widget</div>
+            <div id="widget-preview"></div>
+
+            <div class="detail-actions" style="margin-top:20px;">
+              <button class="btn" type="button" onclick="window.location.href='liste.html'">Annuler</button>
+              <button class="btn primary" type="button" onclick="window.location.href='liste.html'">Enregistrer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="p007.js" defer></script>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        const EMOJIS = ['🌴', '🎂', '🎸', '📦', '🎄', '✈️', '💍', '🎓', '🏖️', '🎁', '🚀', '📅'];
+        const POP_CLASSES = ['pop-1', 'pop-2', 'pop-3', 'pop-4'];
+
+        const nameInput = document.getElementById('f-name');
+        const dateInput = document.getElementById('f-date');
+        const timeInput = document.getElementById('f-time');
+        const emojiGrid = document.getElementById('emoji-grid');
+        const swatchRow = document.getElementById('swatch-row');
+        const repeatSwitch = document.getElementById('repeat-switch');
+        const preview = document.getElementById('widget-preview');
+
+        const defaultDate = window.P007.addDays(new Date(), 12);
+        dateInput.value = defaultDate.toISOString().slice(0, 10);
+
+        let selectedEmoji = EMOJIS[0];
+        let selectedPop = POP_CLASSES[0];
+
+        emojiGrid.innerHTML = EMOJIS.map((e) => `<button type="button" data-emoji="${e}" aria-pressed="${e === selectedEmoji}">${e}</button>`).join('');
+        swatchRow.innerHTML = POP_CLASSES.map(
+          (cls) => `<button type="button" class="${cls}" data-pop="${cls}" aria-pressed="${cls === selectedPop}"></button>`
+        ).join('');
+
+        function renderPreview() {
+          const dateVal = dateInput.value ? new Date(dateInput.value + 'T00:00:00') : new Date();
+          const ev = {
+            emoji: selectedEmoji,
+            name: nameInput.value.trim() || 'Nouvel événement',
+            date: dateVal,
+            pop: selectedPop,
+          };
+          preview.innerHTML = window.P007.widgetPetitHTML(ev);
+        }
+
+        emojiGrid.addEventListener('click', (evt) => {
+          const btn = evt.target.closest('button[data-emoji]');
+          if (!btn) return;
+          selectedEmoji = btn.getAttribute('data-emoji');
+          emojiGrid.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+          renderPreview();
+        });
+
+        swatchRow.addEventListener('click', (evt) => {
+          const btn = evt.target.closest('button[data-pop]');
+          if (!btn) return;
+          selectedPop = btn.getAttribute('data-pop');
+          swatchRow.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+          renderPreview();
+        });
+
+        repeatSwitch.addEventListener('click', () => {
+          repeatSwitch.setAttribute('aria-pressed', repeatSwitch.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+        });
+
+        nameInput.addEventListener('input', renderPreview);
+        dateInput.addEventListener('input', renderPreview);
+        timeInput.addEventListener('input', renderPreview);
+
+        renderPreview();
+      });
+    </script>
+  </body>
+</html>
