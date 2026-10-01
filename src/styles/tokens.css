@@ -205,12 +205,6 @@
   --case-tabs-tint-4: color-mix(in srgb, var(--warning) 18%, var(--bg3));
   --case-tabs-tint-5: color-mix(in srgb, var(--cyan) 16%, var(--bg3));
 
-  /* Shell.jsx : décalage du bouton ☰ mobile depuis le haut de la zone de
-     contenu. Réutilisé à la fois pour son `top` et pour l'espace réservé
-     en haut du contenu (padding-top de <main>) : les deux restent liés si
-     cette valeur change. */
-  --mobile-nav-offset: calc(var(--chrome-height) + var(--space-sm));
-
   /* Statusbar.jsx : la Fiole perchée (48px, ×3) dépasse de 45px au-dessus
      de la barre d'état (48px de hauteur moins 3px de chevauchement posé
      sur le bord de la barre). Réservé en padding-bottom de <main>
