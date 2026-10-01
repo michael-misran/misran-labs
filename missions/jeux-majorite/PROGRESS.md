@@ -1,7 +1,7 @@
 # Mission jeux-majorite — PROGRESS
 
-**Statut :** étape 3 terminée (30 questions rédigées fr/en)
-**Prochaine action :** étape 4 (meta.js, Jeu.jsx — tableau, cases, croix, fin, résultat, partage)
+**Statut :** étape 4 terminée (meta.js, Jeu.jsx complet)
+**Prochaine action :** étape 5 (vérification navigateur — verificateur, critères 1,2,5 à 8)
 **Blocages :** aucun
 
 ## État initial (référence)
@@ -19,3 +19,9 @@
 - `node missions/jeux-majorite/verifier-questions.mjs` : tout OK (30 questions, structure, synonymes uniques par question, correspondance D4).
 - `npm run build` et `npm run lint` : OK.
 - Synonymes par réponse en dessous de la fourchette indicative de D2 (volume), voir DECISIONS.md et recommandations du RAPPORT.
+
+## Étape 4
+- Créés : `src/jeux/comme-tout-le-monde/meta.js` (couleur `cyan`), `Jeu.jsx`.
+- Jeu complet : tableau de cases (numérotées, triées par %), saisie avec correspondance D4, croix (max 3), révélation complète en fin de partie, phrase « démo honnête » (D6), `ResultatPartage` du socle, texte de partage D5 (cases 🟩/⬛ + croix ❌, jamais de libellé).
+- `JeuxHome.jsx` : `A_VENIR` 2 → 1 sur cette branche (voir DECISIONS.md pour le conflit attendu à la fusion).
+- `npm run build` et `npm run lint` : OK. `/jeux/comme-tout-le-monde` apparaît dans le sitemap généré (33 URL).
