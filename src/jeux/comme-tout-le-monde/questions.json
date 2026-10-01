@@ -1,0 +1,17 @@
+[
+  {
+    "id": "vacances-oubli",
+    "question": {
+      "fr": "Qu'est-ce qu'on oublie toujours en partant en vacances ?",
+      "en": "What do people always forget when going on holiday?"
+    },
+    "reponses": [
+      { "pct": 34, "fr": ["chargeur", "chargeur de téléphone"], "en": ["charger", "phone charger"] },
+      { "pct": 21, "fr": ["brosse à dents"], "en": ["toothbrush"] },
+      { "pct": 15, "fr": ["crème solaire", "crème"], "en": ["sunscreen", "suncream"] },
+      { "pct": 10, "fr": ["passeport", "papiers"], "en": ["passport", "id"] },
+      { "pct": 8, "fr": ["maillot de bain", "maillot"], "en": ["swimsuit", "swimming trunks"] },
+      { "pct": 5, "fr": ["lunettes de soleil", "lunettes"], "en": ["sunglasses"] }
+    ]
+  }
+]
