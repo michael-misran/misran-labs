@@ -1,7 +1,7 @@
 # Mission jeux-majorite — PROGRESS
 
-**Statut :** étape 4 terminée (meta.js, Jeu.jsx complet)
-**Prochaine action :** étape 5 (vérification navigateur — verificateur, critères 1,2,5 à 8)
+**Statut :** étapes 1 à 6 terminées, toutes vérifications passées
+**Prochaine action :** étape 7 (RAPPORT.md)
 **Blocages :** aucun
 
 ## État initial (référence)
@@ -25,3 +25,15 @@
 - Jeu complet : tableau de cases (numérotées, triées par %), saisie avec correspondance D4, croix (max 3), révélation complète en fin de partie, phrase « démo honnête » (D6), `ResultatPartage` du socle, texte de partage D5 (cases 🟩/⬛ + croix ❌, jamais de libellé).
 - `JeuxHome.jsx` : `A_VENIR` 2 → 1 sur cette branche (voir DECISIONS.md pour le conflit attendu à la fusion).
 - `npm run build` et `npm run lint` : OK. `/jeux/comme-tout-le-monde` apparaît dans le sitemap généré (33 URL).
+
+## Étape 5 (verificateur, Haiku 4.5)
+- Vérification navigateur complète (`npx vite preview`, fr/en, desktop + mobile 375 px) : critères 1, 2, 5, 7, 8 tous OK en direct (question du jour « plage-apporter », case trouvée, 3 croix, révélation complète, anglais fonctionnel, pas de défilement horizontal).
+- Critère 6 : lecture réelle du presse-papiers refusée par le navigateur de vérification (`NotAllowedError`) ; texte de partage vérifié par relecture de code à la place, voir DECISIONS.md.
+
+## Étape 6 (session principale)
+- `git diff --stat main...HEAD` : seuls `src/jeux/comme-tout-le-monde/**`, `missions/jeux-majorite/**` et la ligne `A_VENIR` de `JeuxHome.jsx` sont modifiés (critère 9).
+- Aucune couleur en dur, aucun changement de `package.json`/`package-lock.json` (critère 10).
+- `npm run build`, `npm run lint` et `node missions/jeux-majorite/verifier-questions.mjs` : OK.
+- Tout est commité sur `auto/jeux-majorite`, rien sur `main`, rien poussé (critère 11).
+
+Reste : RAPPORT.md (étape 7).
