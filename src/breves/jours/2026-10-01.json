@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-01",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": { "fr": "HydraFusion : GitHub fait collaborer plusieurs modèles", "en": "HydraFusion: GitHub makes several models work together" },
+      "resume": {
+        "fr": "Lancé le 30 septembre en préversion de recherche, HydraFusion choisit entre trois modes : un modèle seul, une cascade avec contrôle, ou une critique indépendante. Il arrive dans VS Code et l'application Copilot, déjà présent dans Copilot CLI. Aucun chiffre de gain n'est publié.",
+        "en": "Launched on September 30 as a research preview, HydraFusion picks between three modes: a single model, a cascade with a quality check, or an independent critique. It comes to VS Code and the Copilot app, and was already in Copilot CLI. No performance figures are published."
+      },
+      "sources": [
+        { "titre": "GitHub Changelog", "url": "https://github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Googlebook : le successeur du Chromebook arrive", "en": "Googlebook: the Chromebook's successor arrives" },
+      "resume": {
+        "fr": "Annoncé le 12 mai, le Googlebook est un standard de portable de Google sous Googlebook OS, dérivé d'Android avec Gemini. Il sort le 4 octobre aux États-Unis et le 5 en France. Acer, Asus, Dell, HP et Lenovo fabriquent les premiers modèles.",
+        "en": "Announced on May 12, the Googlebook is a Google laptop standard running Googlebook OS, Android-based with Gemini. It launches October 4 in the US and October 5 in France. Acer, Asus, Dell, HP and Lenovo build the first models."
+      },
+      "sources": [
+        { "titre": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Googlebook" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "npm : moins de jetons à longue durée", "en": "npm: fewer long-lived tokens" },
+      "resume": {
+        "fr": "Depuis le 30 septembre, la publication de confiance npm depuis GitHub peut gérer les dist-tags avec des identifiants OIDC de courte durée, sans jeton permanent. L'option « Allow npm dist-tag » est désactivée par défaut.",
+        "en": "Since September 30, npm trusted publishing from GitHub can manage dist-tags with short-lived OIDC credentials, with no permanent token. The \"Allow npm dist-tag\" option is off by default."
+      },
+      "sources": [
+        { "titre": "GitHub Changelog", "url": "https://github.blog/changelog/2026-09-30-opt-in-dist-tag-permissions-for-npm-trusted-publishing" }
+      ]
+    }
+  ]
+}
