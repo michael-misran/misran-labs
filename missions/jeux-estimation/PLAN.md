@@ -10,4 +10,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 4. `Courbe.jsx` : distribution simulée déterministe, histogramme, phrase de position (D5, D7). Build + lint → session principale (Sonnet)
 - [x] 5. Vérification dans le navigateur (`npx vite preview`) : critères 1, 2, 3, 5, 6, 7, 8 ; captures desktop + 375 px (image, puis résultat) → verificateur (Haiku)
 - [x] 6. Corrections éventuelles, vérification finale : build, lint, critères 9 à 11 → session principale (Sonnet)
-- [ ] 7. RAPPORT.md → session principale (Sonnet)
+- [x] 7. RAPPORT.md → session principale (Sonnet)
