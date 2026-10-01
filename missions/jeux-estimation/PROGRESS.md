@@ -1,7 +1,7 @@
 # Mission jeux-estimation — PROGRESS
 
-**Statut :** étape 2 terminée (meta.js, Jeu.jsx complet avec le type bocal, score D4, partage D6)
-**Prochaine action :** étape 3 (les 4 types SVG restants + verifier-types.mjs)
+**Statut :** étape 3 terminée (5 types SVG + contrôle Node)
+**Prochaine action :** étape 4 (Courbe.jsx : distribution simulée, histogramme, phrase de position)
 **Blocages :** aucun
 
 ## État initial (référence)
@@ -16,3 +16,10 @@
 - `/jeux/a-vue-d-oeil` apparaît bien dans le sitemap généré par `npm run build` (lecture générique de meta.js, critère 8 — pas touché `share-previews.js`).
 - `npm run build` et `npm run lint` : OK.
 - Détail des choix dans DECISIONS.md.
+
+## Étape 3
+- Chaque type scindé en `<type>.generer.js` (logique pure) + `<type>.jsx` (rendu SVG), voir DECISIONS.md.
+- Créés : `ciel.generer.js`/`.jsx`, `foule.generer.js`/`.jsx`, `pois.generer.js`/`.jsx`, `allumettes.generer.js`/`.jsx` ; `bocal` refactoré en `.generer.js`+`.jsx`.
+- `types/index.js` : rotation sur les 5 types.
+- `missions/jeux-estimation/verifier-types.mjs` : 50 graines × 5 types, vérifie la plage et l'égalité valeur/éléments générés (ou % recalculé pour pois). `node missions/jeux-estimation/verifier-types.mjs` → OK, aucun échec.
+- `npm run build` et `npm run lint` : OK.

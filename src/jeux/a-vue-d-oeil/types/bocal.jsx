@@ -1,39 +1,13 @@
-// Type « bocal » (D2.1) : compter les bonbons placés dans la silhouette du
-// bocal. La valeur retournée est exactement bonbons.length — un bonbon qui
-// n'a pas trouvé de place après les tentatives autorisées n'est pas compté.
+// Rendu SVG du type « bocal » (D2.1). Logique de génération dans
+// bocal.generer.js (testable depuis Node, sans JSX).
+import { JAR, genererBocal } from './bocal.generer'
+
 const VB = 300
-const JAR = { x: 70, y: 78, w: 160, h: 180, rx: 26 }
-const RAYON_MIN = 5
-const RAYON_MAX = 9
-const TENTATIVES_MAX = 30
-const PALETTE = ['#e4572e', '#f3a712', '#a8c66c', '#4a7a96', '#8d5a97', '#f06292', '#f9e94e', '#5bc8af']
 
-function distance(a, b) {
-  return Math.hypot(a.x - b.x, a.y - b.y)
-}
-
-function placerBonbons(rng, cible) {
-  const bonbons = []
-  for (let i = 0; i < cible; i++) {
-    for (let t = 0; t < TENTATIVES_MAX; t++) {
-      const r = RAYON_MIN + rng() * (RAYON_MAX - RAYON_MIN)
-      const x = JAR.x + r + rng() * (JAR.w - 2 * r)
-      const y = JAR.y + r + rng() * (JAR.h - 2 * r)
-      // Chevauchement partiel toléré (~45 %) : « plausible », pas empilé (D2).
-      const chevauche = bonbons.some((b) => distance(b, { x, y }) < (b.r + r) * 0.55)
-      if (!chevauche) {
-        bonbons.push({ x, y, r, couleur: PALETTE[Math.floor(rng() * PALETTE.length)], ovale: rng() > 0.5, angle: Math.round(rng() * 360) })
-        break
-      }
-    }
-  }
-  return bonbons
-}
-
-// En minuscule volontairement (pas « SvgBonbons ») : react-refresh exige que
-// tout fichier qui exporte un composant n'exporte QUE des composants, or ce
-// fichier exporte un objet meta (D2). Une fonction non capitalisée qui rend
-// du JSX échappe à la règle sans changer le rendu.
+// En minuscule volontairement (pas « DessinerBonbons ») : react-refresh
+// exige que tout fichier qui exporte un composant n'exporte QUE des
+// composants, or ce fichier exporte un objet meta (D2). Une fonction non
+// capitalisée qui rend du JSX échappe à la règle sans changer le rendu.
 function dessinerBonbons(bonbons) {
   return (
     <svg viewBox={`0 0 ${VB} ${VB}`} style={{ width: '100%', height: 'auto', display: 'block' }}>
@@ -56,8 +30,7 @@ export default {
   question: { fr: 'Combien de bonbons dans le bocal ?', en: 'How many candies are in the jar?' },
   unite: { fr: 'bonbons', en: 'candies' },
   generer(rng) {
-    const cible = Math.round(40 + rng() * (400 - 40))
-    const bonbons = placerBonbons(rng, cible)
-    return { valeur: bonbons.length, Svg: () => dessinerBonbons(bonbons) }
+    const { valeur, bonbons } = genererBocal(rng)
+    return { valeur, Svg: () => dessinerBonbons(bonbons) }
   },
 }

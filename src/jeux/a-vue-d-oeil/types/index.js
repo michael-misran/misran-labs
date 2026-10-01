@@ -1,5 +1,8 @@
-// Rotation des types (D2) : TYPES[numeroDuJour % TYPES.length]. Un seul type
-// à l'étape 2 (bocal) ; les 4 autres sont ajoutés à l'étape 3.
+// Rotation des types (D2) : TYPES[numeroDuJour % TYPES.length].
 import bocal from './bocal'
+import ciel from './ciel'
+import foule from './foule'
+import pois from './pois'
+import allumettes from './allumettes'
 
-export const TYPES = [bocal]
+export const TYPES = [bocal, ciel, foule, pois, allumettes]
