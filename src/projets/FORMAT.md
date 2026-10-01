@@ -47,7 +47,14 @@ Une idée qui viole une de ces règles n'apparaît pas sur le site (ni dans la l
 ## Cible et marché
 (sources si des chiffres sont avancés)
 
-## Modèle économique
+## Type de pari
+« Problème » (outil ou service qui règle un irritant : revenus plus prévisibles) ou « divertissement » (jeu, livre, app grand public : succès rares et imprévisibles, à tenter à faible coût).
+
+## Modèle de revenu
+Achat unique, abonnement, store (commission de la plateforme à indiquer), publicité, prestation… et l'outil de paiement envisagé.
+
+## Canal de distribution
+Où se trouvent déjà les acheteurs (store, marketplace, GitHub, communauté, contenu sur le Lab…) et comment ils découvriront le produit.
 
 ## Prix envisagés
 
@@ -58,6 +65,9 @@ Une idée qui viole une de ces règles n'apparaît pas sur le site (ni dans la l
 ## Risques
 
 ## Première étape de validation peu coûteuse
+
+## Critère d'arrêt
+Un seuil mesurable et un délai après le lancement (par exemple « moins de N ventes ou N utilisateurs actifs 60 jours après la mise en ligne → on arrête »), et la façon de le mesurer.
 ```
 
 En développement (`npm run dev`), le contenu de ce fichier s'affiche sous la page `/projets/P-NNN` dans un bloc « Notes privées (local) ». Il n'entre jamais dans le build de production (`npm run build`) : le chargement est conditionné à `import.meta.env.DEV`.
@@ -65,7 +75,7 @@ En développement (`npm run dev`), le contenu de ce fichier s'affiche sous la pa
 ## Marche à suivre pour la routine hebdomadaire
 
 - **Ajouter une idée** : créer `src/projets/idees/P-NNN.json` (numéro suivant, jamais réutilisé) avec `statut: "proposee"`, sans `decision` ni `mission`. Créer aussi `src/private/projets/P-NNN.md` avec le gabarit ci-dessus (sections laissées « à évaluer » plutôt que d'inventer des chiffres) — ce fichier n'est jamais commité.
-- **Changer un statut** : modifier `statut` dans le fichier JSON existant. Passer à `gardee`, `arretee`, `en-cours` ou `faite` exige d'ajouter `decision` (date + note fr/en). Passer à `en-cours` ou `faite` exige aussi `mission`.
+- **Changer un statut** : modifier `statut` dans le fichier JSON existant. Au passage à `gardee` ou `en-cours`, compléter dans la note privée les sections manquantes (notes anciennes sans « Type de pari », « Modèle de revenu », « Canal de distribution » ou « Critère d'arrêt »). Passer à `gardee`, `arretee`, `en-cours` ou `faite` exige d'ajouter `decision` (date + note fr/en). Passer à `en-cours` ou `faite` exige aussi `mission`.
 - **Noter une décision de Michael** : renseigner `decision.note` avec ses mots (raison du choix), jamais une justification inventée.
 - **Ne jamais** ajouter une clé économique (prix, revenus, modèle) dans le fichier public — ces informations vont uniquement dans la note privée.
 

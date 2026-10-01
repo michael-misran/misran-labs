@@ -26,12 +26,14 @@ Proposer **3 à 5 idées**, en général :
 - **1 à 2 améliorations** de projets existants (site, workflow IA, projets du Lab) ;
 - **2 à 3 idées qui peuvent rapporter de l'argent** : produit, service, outil ou contenu.
 
-Pour chaque idée, noter mentalement (grille, sur 5) : adéquation avec les compétences de Michael, effort (réalisable en missions autonomes ?), temps avant le premier euro, intérêt du signal trouvé, risque. Ne garder que les idées **réalisables par Michael et le système de missions**. Privilégier celles qui ont une **première étape de validation peu coûteuse** (page de présentation, prototype, 3 entretiens…).
+Logique de **portefeuille** : plusieurs produits à revenus moyens plutôt qu'un seul gros pari. Parmi les idées qui peuvent rapporter de l'argent, privilégier les paris « problème » (base de revenus) et n'ajouter un pari « divertissement » (jeu, livre, app grand public) que s'il est très peu coûteux à tenter. Chaque idée doit avoir **dès la note privée** un modèle de revenu, un canal de distribution et un critère d'arrêt mesurable (gabarit de `FORMAT.md`) ; une idée sans canal de distribution plausible n'est pas proposée.
+
+Pour chaque idée, noter mentalement (grille, sur 5) : adéquation avec les compétences de Michael, effort (réalisable en missions autonomes ?), temps avant le premier euro, intérêt du signal trouvé, **distribution** (les acheteurs sont-ils déjà réunis quelque part d'accessible ?), risque. Ne garder que les idées **réalisables par Michael et le système de missions**. Privilégier celles qui ont une **première étape de validation peu coûteuse** (page de présentation, prototype, 3 entretiens…).
 
 ## 4. Rédaction
 1. Numéro : le plus grand `P-NNN` existant + 1 (y compris les idées arrêtées), un numéro par idée.
 2. Fiche publique `src/projets/idees/P-NNN.json` selon `FORMAT.md`, `statut: "proposee"`, FR puis EN (traduction naturelle).
-3. Note privée `src/private/projets/P-NNN.md` avec le gabarit de `FORMAT.md` ; ajouter en tête la **grille** (5 critères notés sur 5, une ligne de justification chacun) et la liste des **sources** utilisées.
+3. Note privée `src/private/projets/P-NNN.md` avec le gabarit de `FORMAT.md` ; ajouter en tête la **grille** (6 critères notés sur 5, une ligne de justification chacun) et la liste des **sources** utilisées.
 4. Si une note privée contient des chiffres sourcés : lancer le sous-agent `relecteur` sur cette note (en lui indiquant que c'est une note privée Markdown) et corriger ce qu'il signale.
 
 ## 5. Contrôles
