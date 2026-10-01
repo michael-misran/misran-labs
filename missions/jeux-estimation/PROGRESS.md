@@ -1,7 +1,7 @@
 # Mission jeux-estimation — PROGRESS
 
-**Statut :** étape 3 terminée (5 types SVG + contrôle Node)
-**Prochaine action :** étape 4 (Courbe.jsx : distribution simulée, histogramme, phrase de position)
+**Statut :** étape 4 terminée (Courbe.jsx intégrée au résultat)
+**Prochaine action :** étape 5 (vérification navigateur — `verificateur`, critères 1,2,3,5,6,7,8)
 **Blocages :** aucun
 
 ## État initial (référence)
@@ -23,3 +23,9 @@
 - `types/index.js` : rotation sur les 5 types.
 - `missions/jeux-estimation/verifier-types.mjs` : 50 graines × 5 types, vérifie la plage et l'égalité valeur/éléments générés (ou % recalculé pour pois). `node missions/jeux-estimation/verifier-types.mjs` → OK, aucun échec.
 - `npm run build` et `npm run lint` : OK.
+
+## Étape 4
+- Créés : `distribution.js` (500 réponses log-normales, graine `${slug}-courbe` distincte de l'image), `Courbe.jsx` (histogramme 20 barres, repères vraie valeur/réponse/médiane, phrase de position).
+- `Jeu.jsx` : `Courbe` intégrée sous `ResultatPartage` dans l'écran de résultat.
+- `npm run build` et `npm run lint` : OK.
+- Reste à faire avant la vérification navigateur : rien de connu, tout commité sur `auto/jeux-estimation`.

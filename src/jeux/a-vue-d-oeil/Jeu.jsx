@@ -6,6 +6,8 @@ import ResultatPartage from '../socle/ResultatPartage'
 import { jt } from '../jeuxText'
 import { TYPES } from './types'
 import { calculerScore, ecartAffichagePourcent, emojiEcart, flecheEcart } from './score'
+import { genererReponsesSimulees } from './distribution'
+import Courbe from './Courbe'
 
 const DUREE_MS = 5000
 // SITE_URL dupliqué depuis scripts/share-previews.js, comme dans
@@ -43,6 +45,13 @@ export default function Jeu({ jeu, date }) {
     const rng = generateurDuJour(jeu.slug, date)
     return type.generer(rng)
   }, [jeu.slug, date, type])
+
+  // Graine distincte de celle de l'image (slug suffixé) : la distribution
+  // simulée ne doit pas réutiliser la même suite de nombres (D5).
+  const reponsesSimulees = useMemo(
+    () => genererReponsesSimulees(generateurDuJour(`${jeu.slug}-courbe`, date), valeur),
+    [jeu.slug, date, valeur],
+  )
 
   const resultatSauvegarde = useMemo(() => lireResultat(jeu.slug, date), [jeu.slug, date])
   const jours = useMemo(() => serie(jeu.slug, date), [jeu.slug, date])
@@ -185,7 +194,13 @@ export default function Jeu({ jeu, date }) {
 
           <ResultatPartage score={resultat.score} jours={jours} texte={texteAPartager} />
 
-          {/* Courbe des joueurs (D5) : ajoutée à l'étape 4. */}
+          <Courbe
+            reponses={reponsesSimulees}
+            vraie={resultat.valeur}
+            reponseJoueur={resultat.reponse}
+            unite={type.unite[lang]}
+            lang={lang}
+          />
         </div>
       )}
     </div>
