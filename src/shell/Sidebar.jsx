@@ -188,6 +188,9 @@ export default function Sidebar({ isMobile, mobileOpen, onCloseMobile }) {
       <NavSectionLabel collapsed={collapsed}>{t(lang, 'navSectionProjets')}</NavSectionLabel>
       <NavItem to="/projets" number="◇" label={t(lang, 'projetsNav')} collapsed={collapsed} end={false} />
 
+      <NavSectionLabel collapsed={collapsed}>{t(lang, 'navSectionJeux')}</NavSectionLabel>
+      <NavItem to="/jeux" number="🎲" label={t(lang, 'jeuxNav')} collapsed={collapsed} end={false} />
+
       <NavSectionLabel collapsed={collapsed}>{t(lang, 'navSectionPortfolio')}</NavSectionLabel>
       {PORTFOLIO_SLUGS.map(slug => PROJECTS_BY_SLUG[slug]).filter(Boolean).map(p => (
         <NavItem key={p.slug} to={`/lab/${p.slug}`} number={dossierNo(p.slug)} label={pt(p, lang).title} collapsed={collapsed} />

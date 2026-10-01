@@ -1,0 +1,6 @@
+# Mission jeux-geste — DELEGATIONS
+
+| Date/heure | Étape | Agent | Modèle | Tâche | Résultat |
+|---|---|---|---|---|---|
+| 2026-10-01 | 7 | verificateur | Haiku 4.5 | Vérification navigateur des critères 1-10 sur `npx vite preview` (build), 6 pages, mobile 375px, chrono/entraînement/série/localStorage bloqué/404/captures | Critères 1, 3, 4 (partiel), 7, 9, 10 OK. A rapporté 2 « bugs » (rotation des défis toujours sur Chrono, série ne comptant pas le jour antérieur) — la session principale a réinvestigué elle-même (sans lancer le serveur de dev, interdit en routine) et identifié la cause réelle : `import.meta.env.DEV` vaut toujours `false` dans tout build produit par `vite build`, même avec `--mode development` (essayé pour vérifier), donc `?date=` n'a jamais activé son remplacement dans le test du sous-agent. Un recalcul manuel en JS, `verifier-socle.mjs` et un test en direct avec la vraie date du jour ont confirmé que la rotation des défis et le calcul de série sont corrects dans le code. Voir DECISIONS.md — à revérifier par Michael avec `npm run dev` en session interactive. |
+| 2026-09-30 | 0 | session principale | Opus 5.5 | Cadrage (+ brouillons jeux-estimation, jeux-majorite) | Fait |

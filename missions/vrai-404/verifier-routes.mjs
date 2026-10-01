@@ -46,6 +46,8 @@ function unFichierAssets() {
 
 const attendues200 = [
   '/',
+  // /jeux et /jeux/geste-parfait arrivent via lireSitemap() (générés
+  // génériquement par share-previews.js, D3 de la mission jeux-geste).
   ...lireSitemap(),
   '/lab/lost-cauldron-game/demo',
   '/lab/lost-cauldron-game/demo/v2',
@@ -69,6 +71,7 @@ const attendues404 = [
   '/lab/inexistant',
   '/lab/audit-tokens/demo',
   '/assets/inexistant.js',
+  '/jeux/inconnu',
 ]
 
 let echecs = 0
