@@ -10,4 +10,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 4. `meta.js`, `Jeu.jsx` (tableau, cases, croix, fin, résultat, partage), `A_VENIR` − 1 (D1, D3, D5, D6, D7). Build + lint → session principale (Sonnet)
 - [x] 5. Vérification dans le navigateur (`npx vite preview`) : critères 1, 2, 5 à 8 ; captures desktop + 375 px (partie en cours, fin de partie) → verificateur (Haiku)
 - [x] 6. Corrections éventuelles, vérification finale : build, lint, critères 9 à 11 → session principale (Sonnet)
-- [ ] 7. RAPPORT.md → session principale (Sonnet)
+- [x] 7. RAPPORT.md → session principale (Sonnet)

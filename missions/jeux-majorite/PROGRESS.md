@@ -1,7 +1,7 @@
 # Mission jeux-majorite — PROGRESS
 
-**Statut :** étapes 1 à 6 terminées, toutes vérifications passées
-**Prochaine action :** étape 7 (RAPPORT.md)
+**Statut :** terminée, RAPPORT.md écrit
+**Prochaine action :** clôture (session interactive avec Michael)
 **Blocages :** aucun
 
 ## État initial (référence)
