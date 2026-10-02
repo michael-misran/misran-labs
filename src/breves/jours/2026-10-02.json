@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-02",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Copilot apprend à piloter vos applications de bureau",
+        "en": "Copilot learns to drive your desktop apps"
+      },
+      "resume": {
+        "fr": "GitHub ouvre en préversion publique une fonction qui laisse Copilot cliquer, saisir du texte et défiler dans les applications. Utile pour les logiciels sans API ni ligne de commande. Disponible dans Copilot CLI et l'application macOS et Windows, avec accord demandé avant chaque pilotage.",
+        "en": "GitHub opens a public preview that lets Copilot click, type and scroll inside desktop apps. It targets software with no API or command line. It works in Copilot CLI and the macOS and Windows app, and asks for approval before controlling an app."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-01-github-copilot-can-now-interact-with-desktop-apps" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "GitHub impose des formulaires aux rapports de sécurité",
+        "en": "GitHub adds structured forms for security reports"
+      },
+      "resume": {
+        "fr": "Les rapports de vulnérabilité privés des dépôts publics comportent désormais quatre champs obligatoires, dont une preuve de concept d'au moins 150 caractères. Un dépôt peut adapter le formulaire. But annoncé : réduire les signalements de faible qualité.",
+        "en": "Private vulnerability reports on public repositories now have four required fields, including a proof of concept of at least 150 characters. A repository can customize the form. The stated goal is fewer low-quality reports."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-01-structured-forms-for-private-vulnerability-reports" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Dependabot sur vos propres machines",
+        "en": "Dependabot on your own runners"
+      },
+      "resume": {
+        "fr": "Depuis le 29 septembre, un administrateur peut choisir, dépôt par dépôt, l'exécuteur des mises à jour Dependabot, avec libellés et groupes personnalisés. Utile pour un registre de paquets privé.",
+        "en": "Since September 29, a repository administrator can pick the runner for Dependabot updates, with custom labels and groups. Useful for a private package registry."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-09-29-repository-custom-runner-settings-for-dependabot" }
+      ]
+    }
+  ]
+}
