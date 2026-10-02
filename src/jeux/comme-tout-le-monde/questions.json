@@ -1,0 +1,459 @@
+[
+  {
+    "id": "vacances-oubli",
+    "question": {
+      "fr": "Qu'est-ce qu'on oublie toujours en partant en vacances ?",
+      "en": "What do people always forget when going on holiday?"
+    },
+    "reponses": [
+      { "pct": 34, "fr": ["chargeur", "chargeur de téléphone"], "en": ["charger", "phone charger"] },
+      { "pct": 21, "fr": ["brosse à dents"], "en": ["toothbrush"] },
+      { "pct": 15, "fr": ["crème solaire", "crème"], "en": ["sunscreen", "suncream"] },
+      { "pct": 10, "fr": ["passeport", "papiers"], "en": ["passport", "id"] },
+      { "pct": 8, "fr": ["maillot de bain", "maillot"], "en": ["swimsuit", "swimming trunks"] },
+      { "pct": 5, "fr": ["lunettes de soleil", "lunettes"], "en": ["sunglasses"] }
+    ]
+  },
+  {
+    "id": "plage-apporter",
+    "question": {
+      "fr": "Qu'est-ce qu'on emporte le plus souvent à la plage ?",
+      "en": "What do people most often bring to the beach?"
+    },
+    "reponses": [
+      { "pct": 24, "fr": ["serviette", "serviette de plage"], "en": ["towel", "beach towel"] },
+      { "pct": 19, "fr": ["crème solaire", "crème"], "en": ["sunscreen", "suncream"] },
+      { "pct": 15, "fr": ["parasol"], "en": ["umbrella", "beach umbrella"] },
+      { "pct": 12, "fr": ["maillot de bain", "maillot"], "en": ["swimsuit", "swimming trunks"] },
+      { "pct": 9, "fr": ["lunettes de soleil", "lunettes"], "en": ["sunglasses"] },
+      { "pct": 7, "fr": ["glacière"], "en": ["cooler", "cool box"] },
+      { "pct": 5, "fr": ["ballon", "ballon de plage"], "en": ["ball", "beach ball"] }
+    ]
+  },
+  {
+    "id": "animal-compagnie-prefere",
+    "question": {
+      "fr": "Quel animal de compagnie les gens préfèrent-ils avoir chez eux ?",
+      "en": "What pet do people prefer to have at home?"
+    },
+    "reponses": [
+      { "pct": 32, "fr": ["chien", "chiens"], "en": ["dog", "dogs"] },
+      { "pct": 24, "fr": ["chat", "chats"], "en": ["cat", "cats"] },
+      { "pct": 14, "fr": ["poisson", "poisson rouge"], "en": ["fish", "goldfish"] },
+      { "pct": 10, "fr": ["oiseau", "perruche"], "en": ["bird", "budgie"] },
+      { "pct": 8, "fr": ["hamster"], "en": ["hamster"] },
+      { "pct": 6, "fr": ["lapin"], "en": ["rabbit", "bunny"] },
+      { "pct": 4, "fr": ["tortue"], "en": ["turtle", "tortoise"] }
+    ]
+  },
+  {
+    "id": "matin-habitude",
+    "question": {
+      "fr": "Qu'est-ce qu'on fait en premier en se réveillant le matin ?",
+      "en": "What do people do first thing when they wake up?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["regarder son téléphone", "regarder le téléphone"], "en": ["check the phone", "checking the phone"] },
+      { "pct": 21, "fr": ["boire un café", "café"], "en": ["drink coffee", "coffee"] },
+      { "pct": 16, "fr": ["prendre une douche", "douche"], "en": ["take a shower", "shower"] },
+      { "pct": 12, "fr": ["s'étirer", "étirements"], "en": ["stretch", "stretching"] },
+      { "pct": 9, "fr": ["faire son lit", "lit"], "en": ["make the bed", "bed"] },
+      { "pct": 6, "fr": ["ouvrir les rideaux", "rideaux"], "en": ["open the curtains", "curtains"] }
+    ]
+  },
+  {
+    "id": "frigo-toujours",
+    "question": {
+      "fr": "Qu'est-ce qu'il y a toujours dans un frigo ?",
+      "en": "What is always in a fridge?"
+    },
+    "reponses": [
+      { "pct": 24, "fr": ["lait"], "en": ["milk"] },
+      { "pct": 19, "fr": ["beurre"], "en": ["butter"] },
+      { "pct": 15, "fr": ["œufs", "oeufs"], "en": ["eggs"] },
+      { "pct": 12, "fr": ["fromage"], "en": ["cheese"] },
+      { "pct": 9, "fr": ["moutarde"], "en": ["mustard"] },
+      { "pct": 7, "fr": ["yaourt", "yaourts"], "en": ["yogurt", "yoghurt"] },
+      { "pct": 5, "fr": ["ketchup"], "en": ["ketchup"] }
+    ]
+  },
+  {
+    "id": "enfance-jeu-cour",
+    "question": {
+      "fr": "À quoi jouait-on le plus dans la cour de récré, enfant ?",
+      "en": "What did kids play most in the schoolyard?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["cache-cache"], "en": ["hide and seek"] },
+      { "pct": 21, "fr": ["billes"], "en": ["marbles"] },
+      { "pct": 16, "fr": ["marelle"], "en": ["hopscotch"] },
+      { "pct": 12, "fr": ["chat", "jeu du chat", "loup"], "en": ["tag"] },
+      { "pct": 9, "fr": ["corde à sauter", "corde"], "en": ["jump rope", "skipping rope"] },
+      { "pct": 6, "fr": ["ballon prisonnier"], "en": ["dodgeball"] }
+    ]
+  },
+  {
+    "id": "pizza-garniture",
+    "question": {
+      "fr": "Quelle garniture de pizza est la plus demandée ?",
+      "en": "What pizza topping is the most requested?"
+    },
+    "reponses": [
+      { "pct": 24, "fr": ["fromage", "extra fromage"], "en": ["cheese", "extra cheese"] },
+      { "pct": 19, "fr": ["jambon"], "en": ["ham"] },
+      { "pct": 15, "fr": ["champignons"], "en": ["mushrooms"] },
+      { "pct": 12, "fr": ["pepperoni"], "en": ["pepperoni"] },
+      { "pct": 9, "fr": ["olives"], "en": ["olives"] },
+      { "pct": 7, "fr": ["poivrons"], "en": ["peppers", "bell peppers"] },
+      { "pct": 5, "fr": ["ananas"], "en": ["pineapple"] }
+    ]
+  },
+  {
+    "id": "bureau-objet",
+    "question": {
+      "fr": "Qu'est-ce qu'on trouve toujours sur un bureau de travail ?",
+      "en": "What's always on a work desk?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["stylo", "stylos"], "en": ["pen", "pens"] },
+      { "pct": 21, "fr": ["ordinateur"], "en": ["computer"] },
+      { "pct": 16, "fr": ["tasse à café", "tasse", "mug"], "en": ["mug", "coffee mug"] },
+      { "pct": 12, "fr": ["post-it", "post-its"], "en": ["post-it", "sticky note"] },
+      { "pct": 9, "fr": ["agenda"], "en": ["planner", "agenda"] },
+      { "pct": 6, "fr": ["chargeur"], "en": ["charger"] }
+    ]
+  },
+  {
+    "id": "animal-zoo-prefere",
+    "question": {
+      "fr": "Quel animal les enfants préfèrent-ils voir au zoo ?",
+      "en": "What animal do kids most want to see at the zoo?"
+    },
+    "reponses": [
+      { "pct": 24, "fr": ["lion", "lions"], "en": ["lion", "lions"] },
+      { "pct": 19, "fr": ["girafe"], "en": ["giraffe"] },
+      { "pct": 15, "fr": ["singe", "singes"], "en": ["monkey", "monkeys"] },
+      { "pct": 12, "fr": ["éléphant"], "en": ["elephant"] },
+      { "pct": 9, "fr": ["tigre"], "en": ["tiger"] },
+      { "pct": 7, "fr": ["pingouin", "manchot"], "en": ["penguin"] },
+      { "pct": 5, "fr": ["ours"], "en": ["bear"] }
+    ]
+  },
+  {
+    "id": "nuit-impossible-dormir",
+    "question": {
+      "fr": "Qu'est-ce qui empêche le plus de dormir la nuit ?",
+      "en": "What keeps people up at night the most?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["le bruit", "bruit"], "en": ["noise"] },
+      { "pct": 21, "fr": ["la chaleur", "chaleur"], "en": ["heat"] },
+      { "pct": 16, "fr": ["le stress", "stress"], "en": ["stress"] },
+      { "pct": 12, "fr": ["le téléphone", "téléphone", "écran"], "en": ["phone", "screen"] },
+      { "pct": 9, "fr": ["la lumière", "lumière"], "en": ["light"] },
+      { "pct": 6, "fr": ["les ronflements", "ronflements"], "en": ["snoring"] }
+    ]
+  },
+  {
+    "id": "petit-dejeuner",
+    "question": {
+      "fr": "Que mange-t-on le plus souvent au petit-déjeuner ?",
+      "en": "What do people eat most often for breakfast?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["tartines", "tartine", "pain grillé"], "en": ["toast"] },
+      { "pct": 21, "fr": ["céréales"], "en": ["cereal"] },
+      { "pct": 16, "fr": ["œufs", "oeufs"], "en": ["eggs"] },
+      { "pct": 12, "fr": ["croissant", "croissants"], "en": ["croissant"] },
+      { "pct": 9, "fr": ["yaourt", "yaourts"], "en": ["yogurt", "yoghurt"] },
+      { "pct": 6, "fr": ["fruits", "fruit"], "en": ["fruit", "fruits"] }
+    ]
+  },
+  {
+    "id": "cadeau-anniversaire-enfant",
+    "question": {
+      "fr": "Quel jouet les enfants demandent-ils le plus pour leur anniversaire ?",
+      "en": "What toy do kids ask for most for their birthday?"
+    },
+    "reponses": [
+      { "pct": 24, "fr": ["vélo"], "en": ["bike", "bicycle"] },
+      { "pct": 19, "fr": ["poupée", "poupées"], "en": ["doll", "dolls"] },
+      { "pct": 15, "fr": ["jeux vidéo", "jeu vidéo"], "en": ["video games", "video game"] },
+      { "pct": 12, "fr": ["ballon de foot", "ballon de football"], "en": ["soccer ball", "football"] },
+      { "pct": 9, "fr": ["peluche", "peluches"], "en": ["stuffed animal", "plush toy"] },
+      { "pct": 7, "fr": ["trottinette"], "en": ["scooter"] },
+      { "pct": 5, "fr": ["jeu de construction", "briques", "blocs"], "en": ["building blocks", "bricks"] }
+    ]
+  },
+  {
+    "id": "meteo-plainte",
+    "question": {
+      "fr": "De quoi se plaint-on le plus à propos de la météo ?",
+      "en": "What do people complain about most regarding the weather?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["la pluie", "pluie"], "en": ["rain"] },
+      { "pct": 21, "fr": ["le froid", "froid"], "en": ["cold"] },
+      { "pct": 16, "fr": ["la chaleur", "chaleur"], "en": ["heat"] },
+      { "pct": 12, "fr": ["le vent", "vent"], "en": ["wind"] },
+      { "pct": 9, "fr": ["l'humidité", "humidité"], "en": ["humidity"] },
+      { "pct": 6, "fr": ["le brouillard", "brouillard"], "en": ["fog"] }
+    ]
+  },
+  {
+    "id": "maison-piece-preferee",
+    "question": {
+      "fr": "Quelle est la pièce préférée des gens dans leur maison ?",
+      "en": "What's people's favorite room in the house?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["cuisine"], "en": ["kitchen"] },
+      { "pct": 21, "fr": ["salon"], "en": ["living room"] },
+      { "pct": 16, "fr": ["chambre"], "en": ["bedroom"] },
+      { "pct": 12, "fr": ["salle de bain", "salle de bains"], "en": ["bathroom"] },
+      { "pct": 9, "fr": ["jardin"], "en": ["garden", "yard"] },
+      { "pct": 6, "fr": ["bureau"], "en": ["office", "study"] }
+    ]
+  },
+  {
+    "id": "vacances-destination-reve",
+    "question": {
+      "fr": "Quel type de destination de vacances fait le plus rêver ?",
+      "en": "What kind of vacation destination do people dream of most?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["île tropicale", "une île tropicale", "les îles"], "en": ["tropical island", "island"] },
+      { "pct": 21, "fr": ["la montagne", "montagne"], "en": ["mountains"] },
+      { "pct": 16, "fr": ["une grande ville", "ville"], "en": ["big city", "city"] },
+      { "pct": 12, "fr": ["la campagne", "campagne"], "en": ["countryside"] },
+      { "pct": 9, "fr": ["un safari", "safari"], "en": ["safari"] },
+      { "pct": 6, "fr": ["une croisière", "croisière"], "en": ["cruise"] }
+    ]
+  },
+  {
+    "id": "legume-deteste",
+    "question": {
+      "fr": "Quel légume les enfants détestent-ils le plus ?",
+      "en": "What vegetable do kids dislike the most?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["épinards"], "en": ["spinach"] },
+      { "pct": 21, "fr": ["choux de Bruxelles", "chou de Bruxelles"], "en": ["brussels sprouts"] },
+      { "pct": 16, "fr": ["brocoli", "brocolis"], "en": ["broccoli"] },
+      { "pct": 12, "fr": ["petits pois", "pois"], "en": ["peas"] },
+      { "pct": 9, "fr": ["courgette", "courgettes"], "en": ["zucchini", "courgette"] },
+      { "pct": 6, "fr": ["aubergine", "aubergines"], "en": ["eggplant", "aubergine"] }
+    ]
+  },
+  {
+    "id": "film-genre-prefere",
+    "question": {
+      "fr": "Quel genre de film les gens préfèrent-ils regarder un soir de pluie ?",
+      "en": "What movie genre do people prefer to watch on a rainy evening?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["comédie"], "en": ["comedy"] },
+      { "pct": 21, "fr": ["film d'horreur", "horreur"], "en": ["horror", "horror movie"] },
+      { "pct": 16, "fr": ["action", "film d'action"], "en": ["action", "action movie"] },
+      { "pct": 12, "fr": ["romance", "film romantique"], "en": ["romance", "romantic movie"] },
+      { "pct": 9, "fr": ["dessin animé", "film d'animation", "animation"], "en": ["animation", "animated movie"] },
+      { "pct": 6, "fr": ["documentaire"], "en": ["documentary"] }
+    ]
+  },
+  {
+    "id": "transport-quotidien",
+    "question": {
+      "fr": "Comment les gens se déplacent-ils le plus pour aller travailler ?",
+      "en": "How do people get to work most often?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["en voiture", "voiture"], "en": ["car", "by car"] },
+      { "pct": 21, "fr": ["à pied", "marche"], "en": ["walking", "on foot"] },
+      { "pct": 16, "fr": ["en vélo", "vélo"], "en": ["bike", "cycling"] },
+      { "pct": 12, "fr": ["en bus", "bus"], "en": ["bus"] },
+      { "pct": 9, "fr": ["en métro", "métro"], "en": ["subway", "metro"] },
+      { "pct": 6, "fr": ["en train", "train"], "en": ["train"] }
+    ]
+  },
+  {
+    "id": "animal-peur",
+    "question": {
+      "fr": "Quel animal fait le plus peur aux gens, même tout petit ?",
+      "en": "What animal scares people the most, even a tiny one?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["araignée", "araignées"], "en": ["spider", "spiders"] },
+      { "pct": 21, "fr": ["serpent", "serpents"], "en": ["snake", "snakes"] },
+      { "pct": 16, "fr": ["guêpe", "guêpes"], "en": ["wasp", "wasps"] },
+      { "pct": 12, "fr": ["souris"], "en": ["mouse", "mice"] },
+      { "pct": 9, "fr": ["chauve-souris"], "en": ["bat", "bats"] },
+      { "pct": 6, "fr": ["cafard", "cafards"], "en": ["cockroach"] }
+    ]
+  },
+  {
+    "id": "placard-jamais-utilise",
+    "question": {
+      "fr": "Qu'est-ce qu'on garde dans un placard sans jamais s'en servir ?",
+      "en": "What do people keep in a closet but never use?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["vieux vêtements", "vêtements"], "en": ["old clothes", "clothes"] },
+      { "pct": 21, "fr": ["valises", "valise"], "en": ["suitcases", "suitcase"] },
+      { "pct": 16, "fr": ["vieux jouets", "jouets"], "en": ["old toys", "toys"] },
+      { "pct": 12, "fr": ["câbles", "câble"], "en": ["cables", "cords"] },
+      { "pct": 9, "fr": ["vaisselle"], "en": ["dishes", "tableware"] },
+      { "pct": 6, "fr": ["outils"], "en": ["tools"] }
+    ]
+  },
+  {
+    "id": "weekend-activite",
+    "question": {
+      "fr": "Que fait-on le plus souvent un dimanche après-midi ?",
+      "en": "What do people do most often on a Sunday afternoon?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["faire une sieste", "sieste"], "en": ["take a nap", "nap"] },
+      { "pct": 21, "fr": ["regarder un film", "film"], "en": ["watch a movie", "movie"] },
+      { "pct": 16, "fr": ["se promener", "promenade"], "en": ["go for a walk", "walk"] },
+      { "pct": 12, "fr": ["ranger la maison", "ranger"], "en": ["tidy the house", "tidy up"] },
+      { "pct": 9, "fr": ["cuisiner"], "en": ["cook", "cooking"] },
+      { "pct": 6, "fr": ["lire", "lecture"], "en": ["read", "reading"] }
+    ]
+  },
+  {
+    "id": "glace-parfum",
+    "question": {
+      "fr": "Quel parfum de glace est le plus demandé ?",
+      "en": "What ice cream flavor is the most requested?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["vanille"], "en": ["vanilla"] },
+      { "pct": 21, "fr": ["chocolat"], "en": ["chocolate"] },
+      { "pct": 16, "fr": ["fraise", "fraises"], "en": ["strawberry"] },
+      { "pct": 12, "fr": ["caramel"], "en": ["caramel"] },
+      { "pct": 9, "fr": ["pistache"], "en": ["pistachio"] },
+      { "pct": 6, "fr": ["citron"], "en": ["lemon"] }
+    ]
+  },
+  {
+    "id": "instrument-musique-reve",
+    "question": {
+      "fr": "Quel instrument de musique les gens aimeraient-ils savoir jouer ?",
+      "en": "What musical instrument would people like to know how to play?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["piano"], "en": ["piano"] },
+      { "pct": 21, "fr": ["guitare"], "en": ["guitar"] },
+      { "pct": 16, "fr": ["batterie"], "en": ["drums"] },
+      { "pct": 12, "fr": ["violon"], "en": ["violin"] },
+      { "pct": 9, "fr": ["saxophone", "sax"], "en": ["saxophone", "sax"] },
+      { "pct": 6, "fr": ["flûte"], "en": ["flute"] }
+    ]
+  },
+  {
+    "id": "animal-ferme",
+    "question": {
+      "fr": "Quel animal de la ferme les enfants aiment-ils le plus dessiner ?",
+      "en": "What farm animal do kids most like to draw?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["vache", "vaches"], "en": ["cow", "cows"] },
+      { "pct": 21, "fr": ["cochon", "cochons"], "en": ["pig", "pigs"] },
+      { "pct": 16, "fr": ["poule", "poules"], "en": ["chicken", "hen"] },
+      { "pct": 12, "fr": ["mouton", "moutons"], "en": ["sheep"] },
+      { "pct": 9, "fr": ["cheval", "chevaux"], "en": ["horse", "horses"] },
+      { "pct": 6, "fr": ["canard", "canards"], "en": ["duck", "ducks"] }
+    ]
+  },
+  {
+    "id": "objet-perdu-souvent",
+    "question": {
+      "fr": "Quel objet du quotidien perd-on le plus souvent ?",
+      "en": "What everyday object do people lose most often?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["les clés", "clés", "clé"], "en": ["keys"] },
+      { "pct": 21, "fr": ["la télécommande", "télécommande"], "en": ["remote control", "remote"] },
+      { "pct": 16, "fr": ["le téléphone", "téléphone"], "en": ["phone"] },
+      { "pct": 12, "fr": ["les lunettes", "lunettes"], "en": ["glasses"] },
+      { "pct": 9, "fr": ["un parapluie", "parapluie"], "en": ["umbrella"] },
+      { "pct": 6, "fr": ["une chaussette", "chaussette", "chaussettes"], "en": ["sock", "socks"] }
+    ]
+  },
+  {
+    "id": "metier-enfance-reve",
+    "question": {
+      "fr": "Quel métier les enfants veulent-ils faire plus tard ?",
+      "en": "What job do kids want to do when they grow up?"
+    },
+    "reponses": [
+      { "pct": 24, "fr": ["pompier", "pompiers"], "en": ["firefighter"] },
+      { "pct": 19, "fr": ["vétérinaire"], "en": ["vet", "veterinarian"] },
+      { "pct": 15, "fr": ["astronaute"], "en": ["astronaut"] },
+      { "pct": 12, "fr": ["policier", "policiers"], "en": ["police officer", "policeman"] },
+      { "pct": 9, "fr": ["footballeur"], "en": ["soccer player", "footballer"] },
+      { "pct": 7, "fr": ["enseignant", "professeur", "maître"], "en": ["teacher"] },
+      { "pct": 5, "fr": ["chanteur", "chanteuse"], "en": ["singer"] }
+    ]
+  },
+  {
+    "id": "jardin-fleur",
+    "question": {
+      "fr": "Quelle fleur voit-on le plus souvent dans les jardins ?",
+      "en": "What flower do people see most often in gardens?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["rose", "roses"], "en": ["rose", "roses"] },
+      { "pct": 21, "fr": ["tulipe", "tulipes"], "en": ["tulip", "tulips"] },
+      { "pct": 16, "fr": ["marguerite", "marguerites"], "en": ["daisy", "daisies"] },
+      { "pct": 12, "fr": ["tournesol", "tournesols"], "en": ["sunflower", "sunflowers"] },
+      { "pct": 9, "fr": ["lavande"], "en": ["lavender"] },
+      { "pct": 6, "fr": ["géranium", "géraniums"], "en": ["geranium"] }
+    ]
+  },
+  {
+    "id": "randonnee-collation",
+    "question": {
+      "fr": "Qu'est-ce qu'on emporte le plus souvent pour grignoter en randonnée ?",
+      "en": "What snack do people bring most often when hiking?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["barre de céréales", "une barre de céréales"], "en": ["cereal bar", "granola bar"] },
+      { "pct": 21, "fr": ["fruits secs", "des fruits secs"], "en": ["dried fruit", "nuts"] },
+      { "pct": 16, "fr": ["pomme", "une pomme"], "en": ["apple"] },
+      { "pct": 12, "fr": ["chocolat", "du chocolat"], "en": ["chocolate"] },
+      { "pct": 9, "fr": ["biscuits", "des biscuits"], "en": ["biscuits", "cookies"] },
+      { "pct": 6, "fr": ["sandwich", "un sandwich"], "en": ["sandwich"] }
+    ]
+  },
+  {
+    "id": "cuisine-odeur",
+    "question": {
+      "fr": "Quelle odeur de cuisine met le plus en appétit ?",
+      "en": "What cooking smell makes people hungriest?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["pain frais", "pain"], "en": ["fresh bread", "bread"] },
+      { "pct": 21, "fr": ["café"], "en": ["coffee"] },
+      { "pct": 16, "fr": ["ail et oignon", "oignons"], "en": ["garlic and onion", "onions"] },
+      { "pct": 12, "fr": ["gâteau au chocolat", "gâteau"], "en": ["chocolate cake", "cake"] },
+      { "pct": 9, "fr": ["bacon grillé", "bacon"], "en": ["grilled bacon", "bacon"] },
+      { "pct": 6, "fr": ["barbecue", "barbecues"], "en": ["barbecue", "bbq"] }
+    ]
+  },
+  {
+    "id": "corvee-menage-detestee",
+    "question": {
+      "fr": "Quelle tâche ménagère déteste-t-on le plus ?",
+      "en": "What household chore do people hate the most?"
+    },
+    "reponses": [
+      { "pct": 28, "fr": ["repasser", "repassage"], "en": ["ironing"] },
+      { "pct": 21, "fr": ["passer l'aspirateur", "aspirateur"], "en": ["vacuuming"] },
+      { "pct": 16, "fr": ["faire la vaisselle", "vaisselle"], "en": ["washing dishes", "dishes"] },
+      { "pct": 12, "fr": ["nettoyer les vitres", "vitres"], "en": ["cleaning windows", "windows"] },
+      { "pct": 9, "fr": ["plier le linge", "linge"], "en": ["folding laundry", "laundry"] },
+      { "pct": 6, "fr": ["sortir les poubelles", "poubelles"], "en": ["taking out the trash", "trash"] }
+    ]
+  }
+]
