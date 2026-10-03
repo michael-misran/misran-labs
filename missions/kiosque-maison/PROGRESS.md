@@ -1,7 +1,7 @@
 # Mission kiosque-maison — PROGRESS
 
-**Statut :** étapes 1-9 faites, mission prête pour RAPPORT.md
-**Prochaine action :** étape 10 (RAPPORT.md)
+**Statut :** mission terminée (10/10 étapes), RAPPORT.md écrit
+**Prochaine action :** clôture (session interactive avec Michael — push + pull request vers `refonte-kiosque`)
 **Blocages :** aucun
 
 ## Étape 9 (vérification finale)

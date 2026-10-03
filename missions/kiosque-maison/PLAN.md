@@ -13,4 +13,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 7. `Defilant.jsx` : données réelles, couleurs par titre, boucle, pause au survol, `prefers-reduced-motion` (D5) → session principale (Sonnet)
 - [x] 8. `Colophon.jsx` + Fiole en `position: fixed` (D5, D6), puis suppression des fichiers devenus inutiles (D7) et textes fr/en dans `src/i18n/ui.js` → session principale (Sonnet)
 - [x] 9. Vérification finale : build, lint, greps des critères 1 et 3 par la session principale ; critères 2 et 4 à 9 dans le navigateur (desktop + 375 px) → verificateur (Haiku)
-- [ ] 10. RAPPORT.md (rappeler D1 : la PR vise `refonte-kiosque`, et lister les missions suivantes) → session principale (Sonnet)
+- [x] 10. RAPPORT.md (rappeler D1 : la PR vise `refonte-kiosque`, et lister les missions suivantes) → session principale (Sonnet)
