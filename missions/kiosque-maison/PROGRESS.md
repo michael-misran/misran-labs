@@ -1,8 +1,18 @@
 # Mission kiosque-maison — PROGRESS
 
-**Statut :** étapes 1-8 faites, en cours
-**Prochaine action :** étape 9 (vérification finale, verificateur Haiku)
+**Statut :** étapes 1-9 faites, mission prête pour RAPPORT.md
+**Prochaine action :** étape 10 (RAPPORT.md)
 **Blocages :** aucun
+
+## Étape 9 (vérification finale)
+Critères 1 et 3 vérifiés par grep/git diff (session principale) : lien Google
+Fonts unique conforme, aucun fichier de police/`screens/` dans le diff vers
+`refonte-kiosque`, les 4 composants existent et sont rendus, `Topbar`/`Sidebar`/
+`Statusbar` ne sont plus importés nulle part. Critères 2 et 4-9 vérifiés par le
+verificateur (Haiku) dans `npx vite preview` : 6/7 PASS directement ; le 7ᵉ
+(FR/EN + document.title) était rapporté FAIL par erreur d'interprétation du
+critère (voir DECISIONS.md) — requalifié PASS après vérification par diff Git.
+Build et lint OK (déjà confirmés à chaque étape précédente).
 
 ## Étape 8 (Colophon + Fiole + nettoyage)
 `Colophon.jsx` créé : badge ML, texte de la maison, lien GitHub
