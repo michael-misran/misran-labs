@@ -72,6 +72,8 @@ export const UI = {
     navBientot: 'Bientôt',
     defilantJeuxIntro: 'Insert coin',
     defilantLabTexte: n => `${n} dossiers visibles`,
+    colophonTexte: "Misran Labs, maison d'édition indépendante d'un seul auteur. La Gazette, le Magazine, le Zine, les Jeux et le Lab sont écrits, dessinés et bricolés par Michael Misran, avec l'aide de Claude. Tout ce qui est publié ici l'est pour le plaisir. Imprimé à la maison, servi en ligne.",
+    colophonGithub: 'Code source sur GitHub',
   },
   en: {
     labHome: 'Lab Home',
@@ -146,6 +148,8 @@ export const UI = {
     navBientot: 'Soon',
     defilantJeuxIntro: 'Insert coin',
     defilantLabTexte: n => `${n} visible case files`,
+    colophonTexte: "Misran Labs, a one-person independent publishing house. The Gazette, the Magazine, the Zine, the Games and the Lab are written, drawn and tinkered by Michael Misran, with Claude's help. Everything published here is for the fun of it. Printed at home, served online.",
+    colophonGithub: 'Source code on GitHub',
   },
 }
 

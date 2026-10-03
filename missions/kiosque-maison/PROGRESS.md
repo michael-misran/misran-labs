@@ -1,8 +1,22 @@
 # Mission kiosque-maison — PROGRESS
 
-**Statut :** étapes 1-7 faites, en cours
-**Prochaine action :** étape 8 (Colophon.jsx + Fiole fixe, D5/D6/D7)
+**Statut :** étapes 1-8 faites, en cours
+**Prochaine action :** étape 9 (vérification finale, verificateur Haiku)
 **Blocages :** aucun
+
+## Étape 8 (Colophon + Fiole + nettoyage)
+`Colophon.jsx` créé : badge ML, texte de la maison, lien GitHub
+(github.com/michael-misran/misran-labs), version reprise de
+`statusbarBrand`. Fiole déplacée en `position: fixed; right:24; bottom:24`
+directement dans `Shell.jsx` (D6) : plus de `fiole-perch` sur une barre
+d'état qui n'existe plus. `--mascotte-overhang` supprimé de `tokens.css`
+(devenu inutile, D6 autorisait la suppression). `Topbar.jsx`, `Sidebar.jsx`,
+`Statusbar.jsx` supprimés (D7, vérifié : plus aucun import ailleurs que des
+mentions textuelles sans rapport dans SessionReplay.jsx/DesignSystem.jsx,
+du contenu de pages, pas du code). Vérifié dans `npx vite preview` sur
+`/breves/2026-10-03` : Colophon et Fiole rendus correctement en bas de page,
+desktop et 375 px (Fiole entière, pas de débordement horizontal), 0 erreur
+console. Build et lint OK.
 
 ## Étape 7 (Defilant)
 `Defilant.jsx` créé : 4 segments à données réelles — titre de la dernière brève

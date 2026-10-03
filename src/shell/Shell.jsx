@@ -3,6 +3,8 @@ import { Outlet, useLocation } from 'react-router-dom'
 import Masthead from './Masthead'
 import NavTitres from './NavTitres'
 import Defilant from './Defilant'
+import Colophon from './Colophon'
+import Fiole from './mascotte/Fiole'
 import SecondarySidebar from '../design-system/SecondarySidebar'
 import { SecondarySidebarContext } from './SecondarySidebarContext'
 import { resolveRouteMeta } from './registry'
@@ -74,7 +76,17 @@ export default function Shell() {
             </SecondarySidebarContext.Provider>
           </main>
         </div>
+
+        <Colophon />
       </div>
+
+      <span
+        className="no-print"
+        style={{ position: 'fixed', right: 24, bottom: 24, zIndex: 20, pointerEvents: 'none' }}
+      >
+        <span className="fiole-shadow" aria-hidden="true" />
+        <Fiole />
+      </span>
     </>
   )
 }
