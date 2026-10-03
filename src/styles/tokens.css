@@ -1,5 +1,15 @@
 /* ------------------------------------------------------------------ *
- * TOKENS — IDENTITÉ RÉTRO
+ * TOKENS — IDENTITÉ MAISON D'ÉDITION (refonte kiosque)
+ *
+ * Misran Labs devient une maison d'édition : chaque rubrique est un
+ * titre (Gazette, Magazine, Zine, Jeux, Lab) avec sa couleur et sa
+ * typo. Les primitives papier/encre/gris/filet/titre-* portent cette
+ * identité ; les sémantiques --bg/--text/--border/--primary/--font-*
+ * ont été réaffectées sans être renommées. Les anciennes primitives
+ * crème/encre-archive/corail restent présentes (encore consommées
+ * directement par la mascotte Fiole et par la page « Tokens du Lab »,
+ * à jour à la mission lab-dossiers) mais ne sont plus la source des
+ * sémantiques ci-dessous.
  *
  * Trois niveaux, une règle : un token ne porte jamais une valeur brute
  * s'il existe un niveau au-dessus de lui. C'est la même architecture que
@@ -58,6 +68,26 @@
   --primitive-rust-500: #b23324;
   --primitive-amber-500: #c1861f;
 
+  /* Palette de la maison d'édition : papier (clair → foncé), encre,
+     gris, filet, puis une couleur par titre de la maison. */
+  --primitive-papier-50: #fffdf8;
+  --primitive-papier-100: #f6f1e6;
+  --primitive-papier-150: #ede8dd;
+  --primitive-papier-200: #e4dfd5;
+  --primitive-papier-300: #d7d2c8;
+
+  --primitive-encre: #16120e;
+  --primitive-gris: #4b443c;
+  --primitive-gris-clair: #a19b91;
+  --primitive-filet: #a79f93;
+
+  --primitive-titre-gazette: #b3301d;
+  --primitive-titre-gazette-dark: #932718;
+  --primitive-titre-magazine: #2b3a9b;
+  --primitive-titre-zine: #ff4f8b;
+  --primitive-titre-jeux: #ff8a1f;
+  --primitive-titre-lab: #1f7a4d;
+
   /* Couleurs avec transparence : suffixe -aNN = opacité en centièmes.
      Valeurs rgba recopiées telles quelles depuis les anciens semantics. */
   --primitive-ink-900-a05: rgba(36,28,22,0.05);
@@ -74,6 +104,12 @@
   --primitive-black-a18: rgba(0,0,0,0.18);
   --primitive-black-a20: rgba(0,0,0,0.20);
   --primitive-black-a25: rgba(0,0,0,0.25);
+  --primitive-encre-a05: rgba(22,18,14,0.05);
+  --primitive-encre-a12: rgba(22,18,14,0.12);
+  --primitive-encre-a18: rgba(22,18,14,0.18);
+  --primitive-encre-a22: rgba(22,18,14,0.22);
+  --primitive-encre-a25: rgba(22,18,14,0.25);
+  --primitive-titre-gazette-a12: rgba(179,48,29,0.12);
 
   /* Ombre nulle : une élévation absente reste une valeur de l'échelle. */
   --primitive-shadow-none: none;
@@ -97,6 +133,25 @@
   --primitive-font-work-sans: 'Work Sans', system-ui, sans-serif;
   --primitive-font-jetbrains-mono: 'JetBrains Mono', monospace;
 
+  /* Polices de la maison (chargées dans index.html, voir D2 de la
+     mission kiosque-maison). Ultra/Alfa Slab One/Rye : lettres de bois.
+     Playfair Display sert uniquement le titre « Le Magazine » dans
+     NavTitres (pas de rôle sémantique dédié, un seul usage). */
+  --primitive-font-ultra: 'Ultra', Georgia, serif;
+  --primitive-font-alfa-slab-one: 'Alfa Slab One', Georgia, serif;
+  --primitive-font-rye: 'Rye', Georgia, serif;
+  --primitive-font-oswald: 'Oswald', system-ui, sans-serif;
+  --primitive-font-im-fell-english: 'IM Fell English', Georgia, serif;
+  --primitive-font-crimson-pro: 'Crimson Pro', Georgia, serif;
+  --primitive-font-playfair-display: 'Playfair Display', Georgia, serif;
+  --primitive-font-anton: 'Anton', Impact, sans-serif;
+  --primitive-font-press-start-2p: 'Press Start 2P', monospace;
+  --primitive-font-vt323: 'VT323', monospace;
+  --primitive-font-special-elite: 'Special Elite', 'Courier New', monospace;
+  --primitive-font-unifraktur-maguntia: 'UnifrakturMaguntia', cursive;
+  --primitive-font-comic-neue: 'Comic Neue', 'Comic Sans MS', cursive;
+  --primitive-font-ibm-plex-mono: 'IBM Plex Mono', monospace;
+
   /* Texte : approche, casse, épaisseur de trait d'icône. Des mots-clés
      CSS aussi : la règle ne fait pas d'exception. */
   --primitive-tracking-tight: -0.01em;
@@ -106,41 +161,62 @@
   --primitive-stroke-1-5: 1.5;
 
   /* --- 2. SEMANTIC — rôles, alias des primitives -------------------- */
-  --bg: var(--primitive-cream-100);
-  --bg2: var(--primitive-cream-50);
-  --bg3: var(--primitive-cream-200);
+  --bg: var(--primitive-papier-100);
+  --bg2: var(--primitive-papier-50);
+  --bg3: var(--primitive-papier-200);
   --cyan: var(--primitive-ochre-500);
-  --primary: var(--primitive-coral-500);
-  /* Corail vif = accent (texte, bordure, décor). Dès qu'il y a du texte SUR le
-     corail, on prend la paire primary-surface / on-primary-surface : corail 700
-     + crème 50 = 4,80:1 (contre 3,36:1 avec le corail vif). */
-  --primary-surface: var(--primitive-coral-700);
-  --on-primary-surface: var(--primitive-cream-50);
-  --text: var(--primitive-ink-900);
-  --text2: var(--primitive-ink-600);
-  --muted: var(--primitive-ink-400);
-  --prose: var(--primitive-ink-800);
-  --border: var(--primitive-ink-850);
+  --primary: var(--primitive-titre-gazette);
+  /* Rouge de la Gazette = accent (texte, bordure, décor). Dès qu'il y a du
+     texte SUR le rouge, on prend la paire primary-surface / on-primary-surface :
+     une teinte plus sombre du rouge + blanc cassé, pour garder le contraste. */
+  --primary-surface: var(--primitive-titre-gazette-dark);
+  --on-primary-surface: var(--primitive-papier-50);
+  --text: var(--primitive-encre);
+  --text2: var(--primitive-gris);
+  --muted: var(--primitive-gris-clair);
+  --prose: var(--primitive-encre);
+  --border: var(--primitive-encre);
   --error: var(--primitive-rust-500);
   --warning: var(--primitive-amber-500);
   --violet: var(--primitive-plum-500);
   --pink: var(--primitive-rose-500);
   --mandarine: var(--primitive-tangerine-500);
-  --grid-line: var(--primitive-ink-900-a12);
-  --active-tint: var(--primitive-coral-500-a12);
-  --hover-tint: var(--primitive-ink-900-a05);
+  --grid-line: var(--primitive-encre-a12);
+  --active-tint: var(--primitive-titre-gazette-a12);
+  --hover-tint: var(--primitive-encre-a05);
 
-  --surface-base: var(--primitive-cream-100);
-  --surface-raised: var(--primitive-cream-50);
-  --surface-inset: var(--primitive-cream-200);
-  --surface-pressed: var(--primitive-cream-300);
-  --hover-surface: var(--primitive-cream-150);
+  --surface-base: var(--primitive-papier-100);
+  --surface-raised: var(--primitive-papier-50);
+  --surface-inset: var(--primitive-papier-200);
+  --surface-pressed: var(--primitive-papier-300);
+  --hover-surface: var(--primitive-papier-150);
 
   /* Un état sélectionné est une PAIRE de couleurs, comme primary-surface /
      on-primary-surface : sans le second token, une sélection en couleur vive
-     garde le texte de la surface d'origine — du blanc sur corail. */
-  --selected-surface: var(--primitive-coral-700);
-  --on-selected: var(--primitive-cream-50);
+     garde le texte de la surface d'origine — du blanc sur rouge. */
+  --selected-surface: var(--primitive-titre-gazette-dark);
+  --on-selected: var(--primitive-papier-50);
+
+  /* Couleurs des 5 titres de la maison, et leurs typos propres (D5 :
+     Masthead, NavTitres, Defilant). font-bois/-2/-3 = lettres de bois
+     (Ultra, Alfa Slab One, Rye) ; les autres sont nommées par le titre
+     qui les porte. */
+  --titre-gazette: var(--primitive-titre-gazette);
+  --titre-magazine: var(--primitive-titre-magazine);
+  --titre-zine: var(--primitive-titre-zine);
+  --titre-jeux: var(--primitive-titre-jeux);
+  --titre-lab: var(--primitive-titre-lab);
+
+  --font-bois: var(--primitive-font-ultra);
+  --font-bois-2: var(--primitive-font-alfa-slab-one);
+  --font-bois-3: var(--primitive-font-rye);
+  --font-etiquette: var(--primitive-font-oswald);
+  --font-chapo: var(--primitive-font-im-fell-english);
+  --font-gothique: var(--primitive-font-unifraktur-maguntia);
+  --font-bd: var(--primitive-font-comic-neue);
+  --font-pixel: var(--primitive-font-press-start-2p);
+  --font-ecran: var(--primitive-font-vt323);
+  --font-machine: var(--primitive-font-special-elite);
 
   /* Pas de flou, pas de décalage lourd : une planche imprimée empile ses
      pages avec un filet fin ou, au plus, un aplat net et court.
@@ -149,10 +225,10 @@
   --elev-1: var(--primitive-shadow-none);
   --elev-2: 0 1px 0 var(--border);
   --elev-3: 0 2px 0 var(--border);
-  --elev-4: 3px 3px 0 var(--primitive-ink-900-a18);
-  --elev-5: 5px 5px 0 var(--primitive-ink-900-a22);
-  --elev-inset: inset 0 1px 0 var(--primitive-ink-900-a18);
-  --elev-pressed: inset 0 2px 0 var(--primitive-ink-900-a25);
+  --elev-4: 3px 3px 0 var(--primitive-encre-a18);
+  --elev-5: 5px 5px 0 var(--primitive-encre-a22);
+  --elev-inset: inset 0 1px 0 var(--primitive-encre-a18);
+  --elev-pressed: inset 0 2px 0 var(--primitive-encre-a25);
 
   --radius-xs: var(--primitive-size-4);
   --radius-sm: var(--primitive-size-8);
@@ -166,9 +242,9 @@
   --border-thick: var(--primitive-size-2);
   --icon-stroke: var(--primitive-stroke-1-5);
 
-  --font-heading: var(--primitive-font-fraunces);
-  --font-body: var(--primitive-font-work-sans);
-  --font-mono: var(--primitive-font-jetbrains-mono);
+  --font-heading: var(--primitive-font-alfa-slab-one);
+  --font-body: var(--primitive-font-crimson-pro);
+  --font-mono: var(--primitive-font-ibm-plex-mono);
 
   --label-transform: var(--primitive-case-upper);
   --label-tracking: var(--primitive-tracking-wide);
@@ -204,14 +280,6 @@
   --case-tabs-tint-3: color-mix(in srgb, var(--pink) 16%, var(--bg3));
   --case-tabs-tint-4: color-mix(in srgb, var(--warning) 18%, var(--bg3));
   --case-tabs-tint-5: color-mix(in srgb, var(--cyan) 16%, var(--bg3));
-
-  /* Statusbar.jsx : la Fiole perchée (48px, ×3) dépasse de 45px au-dessus
-     de la barre d'état (48px de hauteur moins 3px de chevauchement posé
-     sur le bord de la barre). Réservé en padding-bottom de <main>
-     (Shell.jsx) pour qu'aucun contenu ne passe sous la Fiole en bas de
-     défilement ; si l'échelle de la Fiole change, garder ce calcul en
-     phase avec Statusbar.jsx. */
-  --mascotte-overhang: calc(45px + var(--space-sm));
 }
 
 /* Portée inversée : la diapositive corail plein cadre d'une planche

@@ -19,6 +19,7 @@ function notFoundMeta(lang) {
 
 export function resolveRouteMeta(pathname, lang) {
   if (pathname === '/') return { icon: '⬡', label: t(lang, 'labHome') }
+  if (pathname === '/lab') return { icon: '⬡', label: t(lang, 'labHome') }
 
   if (pathname.startsWith('/lab/')) {
     const slug = pathname.split('/')[2]

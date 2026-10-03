@@ -24,6 +24,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Shell />}>
           <Route index element={<ArchiveHome />} />
+          <Route path="lab" element={<ArchiveHome />} />
           <Route path="lab/:slug" element={<ProjectPage />} />
           <Route path="lab/:slug/demo/:version?" element={<ProjectDemoPage />} />
           <Route path="magazine" element={<MagazineHome />} />
