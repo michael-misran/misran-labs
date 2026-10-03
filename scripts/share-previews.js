@@ -20,8 +20,8 @@ const PROJETS_FONCTIONNEMENT_FIXED = {
   image: 'og-projets.png',
 }
 const BREVES_FIXED = {
-  title: 'Brèves — l\'actu IA et tech du jour · Misran Labs',
-  description: 'Chaque jour, quelques brèves d\'actu IA et tech tirées du Journal du matin, avec le mot et le chiffre du jour.',
+  title: 'La Gazette du Lab — les brèves IA et tech du jour · Misran Labs',
+  description: 'Chaque jour, quelques brèves d\'actu IA et tech tirées de La Gazette du Lab, le journal papier du matin, avec le mot et le chiffre du jour.',
   image: 'og-magazine.png',
 }
 const SUIVRE_FIXED = {
@@ -205,7 +205,7 @@ export function collectBrevesJours(rootDir) {
 
     pages.push({
       path: `/breves/${dateFromName}`,
-      title: `${data.breves[0].titre.fr} · Brèves — Misran Labs`,
+      title: `${data.breves[0].titre.fr} · La Gazette du Lab — Misran Labs`,
       description: normalizeAndTruncate(data.breves[0].resume.fr),
       image: BREVES_FIXED.image,
       type: 'article',

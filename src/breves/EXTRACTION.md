@@ -1,8 +1,8 @@
 # Procédure d'extraction — Brèves
 
-Ce document se suffit à lui-même : il décrit comment tirer une version publique « Brèves » du Journal du matin, sans avoir besoin de lire ailleurs. Le format du fichier produit est documenté dans `src/breves/FORMAT.md`.
+Ce document se suffit à lui-même : il décrit comment tirer une version publique « Brèves » de La Gazette du Lab (le journal papier du matin), sans avoir besoin de lire ailleurs. Le format du fichier produit est documenté dans `src/breves/FORMAT.md`.
 
-Lue par la routine du Journal du matin, après la fabrication du PDF du jour.
+Lue par la routine de La Gazette du Lab (le journal papier du matin), après la fabrication du PDF du jour.
 
 ## 1. Vérifier qu'il y a quelque chose à faire
 
