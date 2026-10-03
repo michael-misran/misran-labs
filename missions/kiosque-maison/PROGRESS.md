@@ -1,7 +1,7 @@
 # Mission kiosque-maison — PROGRESS
 
-**Statut :** étape 1 faite, en cours
-**Prochaine action :** étape 2 (polices, sous-agent Haiku)
+**Statut :** étapes 1-2 faites, en cours
+**Prochaine action :** étape 3 (tokens, D3)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-10-03, branche `refonte-kiosque` = `main` aee617c)
