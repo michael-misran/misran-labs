@@ -1,8 +1,19 @@
 # Mission kiosque-maison — PROGRESS
 
-**Statut :** étapes 1-3 faites, en cours
-**Prochaine action :** étape 4 (Shell : défilement du document, retrait Topbar/Sidebar/Statusbar, route /lab, D4/D8)
+**Statut :** étapes 1-4 faites, en cours
+**Prochaine action :** étape 5 (Masthead.jsx, D5)
 **Blocages :** aucun
+
+## Étape 4 (Shell)
+`Shell.jsx` réécrit : document qui défile (plus de grille 100vh/overflow hidden),
+Topbar/Sidebar/Statusbar retirés du rendu (fichiers pas encore supprimés, prévu
+étape 8 avec D7), SecondarySidebar/Outlet/document.title conservés. Règles
+d'impression simplifiées (plus besoin de rétablir height/overflow puisque le
+flux est déjà normal). Route `/lab` ajoutée dans `App.jsx` (affiche ArchiveHome)
++ entrée dans `registry.js` pour que `resolveRouteMeta('/lab')` ne tombe pas sur
+la 404. État intermédiaire attendu : pas de header/nav visible tant que Masthead/
+NavTitres (étapes 5-6) ne sont pas branchés. Vérifié dans `npx vite preview` sur
+`/` et `/lab` : rendu correct, 0 erreur console. Build et lint OK.
 
 ## Étape 3 (tokens)
 Primitives papier/encre/gris/filet/titre-* + polices D2 ajoutées, sémantiques réaffectées
