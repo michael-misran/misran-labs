@@ -1,6 +1,6 @@
 # Format d'un jour de Brèves
 
-Ce document se suffit à lui-même : il n'est pas nécessaire de lire le code pour écrire et publier un jour valide. Procédure d'extraction (depuis le Journal du matin) : `src/breves/EXTRACTION.md`.
+Ce document se suffit à lui-même : il n'est pas nécessaire de lire le code pour écrire et publier un jour valide. Procédure d'extraction (depuis La Gazette du Lab, le journal papier du matin) : `src/breves/EXTRACTION.md`.
 
 ## Publier un jour
 
@@ -38,7 +38,7 @@ Ne jamais modifier un fichier déjà publié une fois en ligne (archive), sauf c
 - **`sources`** de chaque brève : **au moins une**, chacune avec un `titre` non vide (le nom du site) et une `url` commençant par `https://`.
 - **`mot`** et **`chiffre`** sont facultatifs. `mot.terme` et `chiffre.valeur` sont de simples textes non vides.
 - **Pas de champ `numero`** : les jours ne forment pas de séquence numérotée, seulement une liste chronologique.
-- **Jamais d'actualité inventée.** Un `resume` est rédigé, jamais copié-collé depuis la source ; chaque fait avancé doit être vérifiable via au moins une des `sources`, et doit déjà figurer dans le Journal du matin dont il est tiré.
+- **Jamais d'actualité inventée.** Un `resume` est rédigé, jamais copié-collé depuis la source ; chaque fait avancé doit être vérifiable via au moins une des `sources`, et doit déjà figurer dans La Gazette du Lab dont il est tiré.
 - **Ce qui ne devient jamais public** : irritants, idées de business, études de cas, modèles économiques, chiffre qui dérange, énigme, bonus, carnet — ces rubriques du Journal restent privées.
 
 Un jour qui viole une de ces règles n'apparaît pas sur le site (ni dans la liste `/breves`, ni à son URL `/breves/AAAA-MM-JJ`) et produit un message dans la console du navigateur précisant le fichier et la règle en cause — jamais de plantage de page.

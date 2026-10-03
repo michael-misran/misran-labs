@@ -64,7 +64,7 @@ function brevesItems(brevesPages) {
     if (day.mot) description += ` · Le mot : ${day.mot.terme}`
     if (day.chiffre) description += ` · Le chiffre : ${day.chiffre.valeur} ${day.chiffre.texte.fr}`
     return {
-      title: `Brèves du ${formatDateLongNoWeekday(day.date, 'fr')}`,
+      title: `La Gazette du ${formatDateLongNoWeekday(day.date, 'fr')}`,
       link: `${SITE_URL}${page.path}`,
       description,
       dateIso: day.date,
@@ -100,7 +100,7 @@ export function writeRssFeeds({ distDir, magazinePages, brevesPages, projetsPage
     },
     {
       slug: 'breves/rss.xml',
-      title: 'Brèves',
+      title: 'La Gazette du Lab',
       link: `${SITE_URL}/breves`,
       description: "Chaque jour, quelques brèves d'actu IA et tech, avec le mot et le chiffre du jour.",
       selfHref: `${SITE_URL}/breves/rss.xml`,
@@ -118,11 +118,11 @@ export function writeRssFeeds({ distDir, magazinePages, brevesPages, projetsPage
       slug: 'rss.xml',
       title: 'Misran Labs — tout',
       link: `${SITE_URL}/`,
-      description: 'Tout le Lab de Michael Misran : Magazine, Brèves et Projets réunis.',
+      description: 'Tout le Lab de Michael Misran : Magazine, Gazette et Projets réunis.',
       selfHref: `${SITE_URL}/rss.xml`,
       items: [
         ...magazine.map((item) => ({ ...item, title: `Magazine · ${item.title}` })),
-        ...breves.map((item) => ({ ...item, title: `Brèves · ${item.title}` })),
+        ...breves.map((item) => ({ ...item, title: `Gazette · ${item.title}` })),
         ...projets.map((item) => ({ ...item, title: `Projets · ${item.title}` })),
       ],
     },

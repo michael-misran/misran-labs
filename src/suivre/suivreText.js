@@ -8,7 +8,7 @@ const SITE_URL = 'https://misran-labs.vercel.app'
 
 const FEEDS_BASE = [
   { key: 'magazine', path: '/magazine/rss.xml', name: { fr: 'Lab Magazine', en: 'Lab Magazine' }, rythme: { fr: 'Chaque lundi', en: 'Every Monday' } },
-  { key: 'breves', path: '/breves/rss.xml', name: { fr: 'Brèves', en: 'Briefs' }, rythme: { fr: 'Chaque matin', en: 'Every morning' } },
+  { key: 'breves', path: '/breves/rss.xml', name: { fr: 'La Gazette du Lab', en: 'The Lab Gazette' }, rythme: { fr: 'Chaque matin', en: 'Every morning' } },
   { key: 'projets', path: '/projets/rss.xml', name: { fr: 'Projets', en: 'Projects' }, rythme: { fr: 'Chaque dimanche', en: 'Every Sunday' } },
   { key: 'tout', path: '/rss.xml', name: { fr: 'Tout', en: 'Everything' }, rythme: { fr: 'Tout à la fois', en: 'All at once' } },
 ]
@@ -71,7 +71,7 @@ export const BANDEAU_TEXT = {
   fr: {
     phrase: {
       magazine: 'Le prochain numéro sort lundi.',
-      breves: 'Les Brèves reviennent demain matin.',
+      breves: 'La Gazette revient demain matin.',
       projets: 'De nouvelles idées chaque dimanche.',
     },
     suivre: 'Suivre le Lab →',

@@ -47,7 +47,7 @@ export const SPRITES = {
       11: '.kcccccccccccck.'
     },
     phrases: {
-      fr: ['Blop !', 'Expérience en cours…', 'Attention, ça mousse', 'Tu as lu les Brèves ?', 'Formule secrète : café'],
+      fr: ['Blop !', 'Expérience en cours…', 'Attention, ça mousse', 'Tu as lu la Gazette ?', 'Formule secrète : café'],
       en: ['Blop!', 'Experiment in progress…', 'Careful, it fizzes', 'Read today\'s Briefs?', 'Secret formula: coffee']
     }
   },
