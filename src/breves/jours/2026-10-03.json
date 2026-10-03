@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-03",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Anthropic lance une académie pour former 10 000 ingénieurs de déploiement",
+        "en": "Anthropic launches an academy to train 10,000 deployment engineers"
+      },
+      "resume": {
+        "fr": "Dotée de 100 millions de dollars, la Claude Frontier Academy vise 10 000 ingénieurs formés d'ici fin 2027. Le cursus mêle quelques jours de scénarios simulés et une résidence de 12 semaines sur de vrais projets. Ce sont les entreprises qui nomment leurs ingénieurs.",
+        "en": "Backed by $100 million, the Claude Frontier Academy aims to train 10,000 engineers by the end of 2027. The course combines a few days of simulated scenarios with a 12-week residency on real projects. Companies nominate their own engineers."
+      },
+      "sources": [
+        { "titre": "Anthropic", "url": "https://anthropic.com/news/claude-frontier-academy" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Gemini 4 Argon : un modèle de pointe réservé, pour l'instant, à des défenseurs de confiance",
+        "en": "Gemini 4 Argon: a frontier model limited, for now, to trusted defenders"
+      },
+      "resume": {
+        "fr": "Dans son bilan de septembre, Google présente Gemini 4 Argon, un modèle au raisonnement avancé et à la limite de sortie d'un million de jetons, déployé via le programme Fairwind. Gemini 3.8 Flash et deux modèles de voix expressive complètent l'annonce.",
+        "en": "In its September roundup, Google introduces Gemini 4 Argon, a model with advanced reasoning and a one-million-token output limit, rolled out through the Fairwind program. Gemini 3.8 Flash and two expressive voice models complete the announcement."
+      },
+      "sources": [
+        { "titre": "Google", "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "GitHub coupe un ancien réglage TLS le 7 octobre",
+        "en": "GitHub drops an old TLS setting on October 7"
+      },
+      "resume": {
+        "fr": "À partir du 7 octobre, GitHub Enterprise Cloud avec résidence des données n'accepte plus les connexions TLS limitées à l'échange de clés X25519. Les outils et scripts qui s'y connectent doivent donc être vérifiés avant cette date.",
+        "en": "From October 7, GitHub Enterprise Cloud with data residency no longer accepts TLS connections limited to the X25519 key exchange. Tools and scripts that connect to it should be checked before that date."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/month/09-2026/" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Taux de conversion",
+    "definition": {
+      "fr": "Part des visiteurs d'un site qui accomplissent l'action visée, comme un essai gratuit, un achat ou une inscription.",
+      "en": "Share of a site's visitors who complete the intended action, such as a free trial, a purchase or a sign-up."
+    }
+  }
+}
