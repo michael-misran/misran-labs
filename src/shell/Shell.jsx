@@ -1,5 +1,6 @@
 import { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
+import Masthead from './Masthead'
 import SecondarySidebar from '../design-system/SecondarySidebar'
 import { SecondarySidebarContext } from './SecondarySidebarContext'
 import { resolveRouteMeta } from './registry'
@@ -52,6 +53,8 @@ export default function Shell() {
           color: 'var(--text)',
         }}
       >
+        <Masthead />
+
         <div className="shell-body" style={{ display: 'flex', position: 'relative' }}>
           {!isMobile && secondaryNav && (
             <div className="no-print" style={{ display: 'contents' }}>

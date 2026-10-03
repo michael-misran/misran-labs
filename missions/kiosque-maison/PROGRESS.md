@@ -1,8 +1,17 @@
 # Mission kiosque-maison — PROGRESS
 
-**Statut :** étapes 1-4 faites, en cours
-**Prochaine action :** étape 5 (Masthead.jsx, D5)
+**Statut :** étapes 1-5 faites, en cours
+**Prochaine action :** étape 6 (NavTitres.jsx, D5/D9)
 **Blocages :** aucun
+
+## Étape 5 (Masthead)
+`Masthead.jsx` créé : filet haut (marque, date du jour via `formatDateLong`,
+liens Les idées/S'abonner/CV, bouton FR/EN) + tête de la maison (badge ML,
+« MISRAN LABS » en Ultra, accroche en IM Fell English italique, cartouche
+« Kiosque ouvert » masqué sur mobile). Textes fr/en dans `src/i18n/ui.js`
+(clé `masthead*`). Branché dans `Shell.jsx`. Vérifié dans `npx vite preview` :
+rendu conforme à la référence `screens/accueil-kiosque.src.html`, 0 erreur
+console, pas de débordement horizontal à 375 px. Build et lint OK.
 
 ## Étape 4 (Shell)
 `Shell.jsx` réécrit : document qui défile (plus de grille 100vh/overflow hidden),
