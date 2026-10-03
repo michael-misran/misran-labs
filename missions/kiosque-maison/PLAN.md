@@ -4,7 +4,7 @@ Cocher `[x]` chaque étape terminée, puis mettre à jour PROGRESS.md et commite
 Chaque étape indique l'agent et le modèle à utiliser.
 
 - [x] 0. Cadrage : SPEC, PLAN, fichiers de suivi → session principale (Opus 5.5)
-- [ ] 1. État initial : build, lint notés dans PROGRESS.md (déjà relevés au cadrage, à reconfirmer) → session principale (Sonnet)
+- [x] 1. État initial : build, lint notés dans PROGRESS.md (déjà relevés au cadrage, à reconfirmer) → session principale (Sonnet)
 - [ ] 2. Polices : remplacer le lien Google Fonts de `index.html` par celui de D2 (une seule balise `<link>`, `display=swap`) → sous-agent (Haiku)
 - [ ] 3. Tokens : primitives de la maison, réaffectation des sémantiques, tokens de titres et de typo, commentaire d'en-tête (D3) → session principale (Sonnet)
 - [ ] 4. Shell : passer au défilement du document (D4), retirer Topbar/Sidebar/Statusbar du rendu, garder SecondarySidebar, Outlet et `document.title`, adapter les règles d'impression, ajouter la route `/lab` (D8) → session principale (Sonnet)
