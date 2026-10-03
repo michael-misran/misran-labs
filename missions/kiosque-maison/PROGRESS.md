@@ -1,8 +1,20 @@
 # Mission kiosque-maison — PROGRESS
 
-**Statut :** étapes 1-5 faites, en cours
-**Prochaine action :** étape 6 (NavTitres.jsx, D5/D9)
+**Statut :** étapes 1-6 faites, en cours
+**Prochaine action :** étape 7 (Defilant.jsx, D5)
 **Blocages :** aucun
+
+## Étape 6 (NavTitres)
+`NavTitres.jsx` créé : 5 titres (Gazette/Magazine/Zine/Jeux/Lab), chacun dans sa
+typo (gothique/Playfair/BD/pixel/machine à écrire), état actif par préfixe de
+route (`/breves*`, `/magazine*`, `/jeux*`, `/lab*` + `/projets*` → Lab),
+`aria-current="page"` posé. Le Zine est un `<span aria-disabled>`, pas un lien,
+avec la mention « Bientôt ». Barre `position: sticky; top: 0`, collée sous le
+Masthead qui défile avec la page. Sur mobile, grille à 5 colonnes avec
+`overflow-x: auto`, pas de hamburger. Branché dans `Shell.jsx`. Vérifié dans
+`npx vite preview` : actif correct sur `/breves/2026-10-03`, `/projets`, `/jeux`,
+barre collante confirmée après scroll (`top: 0`), pas de débordement horizontal
+de la page à 375 px. Build et lint OK.
 
 ## Étape 5 (Masthead)
 `Masthead.jsx` créé : filet haut (marque, date du jour via `formatDateLong`,
