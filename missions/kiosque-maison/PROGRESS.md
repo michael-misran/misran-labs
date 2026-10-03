@@ -1,8 +1,23 @@
 # Mission kiosque-maison — PROGRESS
 
-**Statut :** étapes 1-6 faites, en cours
-**Prochaine action :** étape 7 (Defilant.jsx, D5)
+**Statut :** étapes 1-7 faites, en cours
+**Prochaine action :** étape 8 (Colophon.jsx + Fiole fixe, D5/D6/D7)
 **Blocages :** aucun
+
+## Étape 7 (Defilant)
+`Defilant.jsx` créé : 4 segments à données réelles — titre de la dernière brève
+IA (`getDays()[0]`), titre du dernier numéro du Magazine (`getIssues()[0]`),
+noms des jeux (`listeJeux()`), nombre de projets visibles du Lab
+(`visibleProjects().length`, pas de segment Zine : pas de donnée réelle à
+afficher, D5 n'en demande pas). Contenu dupliqué une fois pour la boucle
+`translateX(-50%)`. Pause au survol (`animation-play-state: paused`),
+`prefers-reduced-motion: reduce` met `animation-name` à `none` (vérifié via
+`document.styleSheets`, confirmé en calculant le style sans l'émulation —
+`animationName: "defilant-scroll"`). `aria-hidden` sur tout le bandeau :
+contenu décoratif/redondant, boucle infinie peu utile au lecteur d'écran.
+Branché dans `Shell.jsx`, sous NavTitres, pas sticky (D4). Build et lint OK,
+vérifié dans `npx vite preview` (0 erreur console, données correctement
+affichées).
 
 ## Étape 6 (NavTitres)
 `NavTitres.jsx` créé : 5 titres (Gazette/Magazine/Zine/Jeux/Lab), chacun dans sa

@@ -70,6 +70,8 @@ export const UI = {
     navRythmeJeux: 'Toujours ouverts',
     navRythmeLab: 'Dossiers',
     navBientot: 'Bientôt',
+    defilantJeuxIntro: 'Insert coin',
+    defilantLabTexte: n => `${n} dossiers visibles`,
   },
   en: {
     labHome: 'Lab Home',
@@ -142,6 +144,8 @@ export const UI = {
     navRythmeJeux: 'Always open',
     navRythmeLab: 'Case files',
     navBientot: 'Soon',
+    defilantJeuxIntro: 'Insert coin',
+    defilantLabTexte: n => `${n} visible case files`,
   },
 }
 

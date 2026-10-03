@@ -2,6 +2,7 @@ import { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Masthead from './Masthead'
 import NavTitres from './NavTitres'
+import Defilant from './Defilant'
 import SecondarySidebar from '../design-system/SecondarySidebar'
 import { SecondarySidebarContext } from './SecondarySidebarContext'
 import { resolveRouteMeta } from './registry'
@@ -56,6 +57,7 @@ export default function Shell() {
       >
         <Masthead />
         <NavTitres />
+        <Defilant />
 
         <div className="shell-body" style={{ display: 'flex', position: 'relative' }}>
           {!isMobile && secondaryNav && (
