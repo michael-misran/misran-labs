@@ -1,7 +1,7 @@
 # Mission magazine-web — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 4 (page `/magazine/:date`)
+**Prochaine action :** étape 5 (vérification finale)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -18,3 +18,8 @@
 
 ## Étape 3 (exécution, 2026-10-04)
 - `MagazineHome.jsx` réécrit : `TeteRevue`, vedette (`CouvertureNumero` variante `vedette` + extrait d'édito avec lettrine + lien « lire »), grille des numéros précédents (`CouvertureNumero` variante `grille`, `repeat(auto-fit, minmax(220px, 1fr))` pour le 3/2/1 colonnes responsive sans breakpoints JS), lien RSS en `<a href>` classique (pas de `Link` : `/magazine/rss.xml` est un fichier statique, pas une route SPA). Plus d'import de `MagazineParts`/`CaseFile`. `npm run build` et `npm run lint` : OK.
+
+## Étape 4 (exécution, 2026-10-04)
+- `MagazineIssue.jsx` réécrit : `UneNumero` en tête, édito sur 2 colonnes avec lettrine bleue (`.mag-dropcap`), sommaire numéroté avec ancres `#article-N`, articles via `ArticleRevue`, navigation précédent/suivant calculée depuis `getIssues()` (par index, car triée) + lien « tous les numéros », page « Ce numéro n'existe pas » réécrite dans le même style bleu (mascotte Fiole conservée). Plus d'import de `MagazineParts`/`CaseFile`/`caseChrome`.
+- Critère d'acceptation 1 revérifié (`git grep`) : un commentaire de `RevueParts.jsx` contenait les mots interdits (juste en prose, aucun import) — reformulé pour que le grep ne renvoie plus rien.
+- `npm run build` et `npm run lint` : OK.

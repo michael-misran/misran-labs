@@ -1,6 +1,6 @@
-// Composants du Magazine « revue bleue » (refonte kiosque). Remplace
-// MagazineParts.jsx/CaseFile pour /magazine et /magazine/:date uniquement
-// — les autres sections continuent d'utiliser l'ancien style d'archive.
+// Composants du Magazine « revue bleue » (refonte kiosque), pour
+// /magazine et /magazine/:date uniquement — les autres sections qui
+// affichaient l'ancien style d'archive gardent leurs propres composants.
 import { Link } from 'react-router-dom'
 import useIsMobile from '../shell/useIsMobile'
 import { categoryColor, categoryLabel, formatDateLong, formatDateShort } from './magazineText'
