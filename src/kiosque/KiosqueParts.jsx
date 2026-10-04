@@ -113,7 +113,7 @@ export function GazetteALaUne({ day, lang, t }) {
             style={{
               fontFamily: 'var(--font-bois)',
               fontWeight: 400,
-              fontSize: 'clamp(32px, 3.6vw, 46px)',
+              fontSize: 'clamp(24px, 3.6vw, 46px)',
               lineHeight: 1,
               textTransform: 'uppercase',
               margin: '12px 0',
@@ -148,6 +148,17 @@ export function GazetteALaUne({ day, lang, t }) {
           >
             {g.toutesLabel}
           </Link>
+          {day.mot && (
+            <div style={{ border: '3px double var(--border)', padding: '12px 14px', marginTop: 22 }}>
+              <div style={{ ...etiquette, fontWeight: 700, fontSize: 13, textAlign: 'center', borderTop: '3px solid var(--border)', borderBottom: '1px solid var(--border)', padding: '3px 0', marginBottom: 8 }}>
+                {g.motDuJourLabel}
+              </div>
+              <h4 style={{ fontFamily: 'var(--font-bois-3)', fontWeight: 400, fontSize: 24, lineHeight: 1.05, marginBottom: 4, color: 'var(--text)' }}>{day.mot.terme}</h4>
+              <p style={{ fontSize: 15.5, lineHeight: 1.4, color: 'var(--prose)', margin: 0 }}
+                dangerouslySetInnerHTML={{ __html: day.mot.definition[lang] ?? day.mot.definition.fr }}
+              />
+            </div>
+          )}
         </div>
 
         <aside
@@ -177,17 +188,6 @@ export function GazetteALaUne({ day, lang, t }) {
                   />
                 </div>
               ))}
-            </div>
-          )}
-          {day.mot && (
-            <div style={{ border: '3px double var(--border)', padding: '12px 14px' }}>
-              <div style={{ ...etiquette, fontWeight: 700, fontSize: 13, textAlign: 'center', borderTop: '3px solid var(--border)', borderBottom: '1px solid var(--border)', padding: '3px 0', marginBottom: 8 }}>
-                {g.motDuJourLabel}
-              </div>
-              <h4 style={{ fontFamily: 'var(--font-bois-3)', fontWeight: 400, fontSize: 24, lineHeight: 1.05, marginBottom: 4, color: 'var(--text)' }}>{day.mot.terme}</h4>
-              <p style={{ fontSize: 15.5, lineHeight: 1.4, color: 'var(--prose)', margin: 0 }}
-                dangerouslySetInnerHTML={{ __html: day.mot.definition[lang] ?? day.mot.definition.fr }}
-              />
             </div>
           )}
         </aside>
@@ -268,19 +268,19 @@ function CouvertureZine({ t }) {
             backgroundSize: '9px 9px',
           }}
         />
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute', left: '14px', bottom: '16px', width: 96, height: 96,
-            clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
-            background: 'var(--titre-zine)',
-            display: 'grid',
-            placeItems: 'center',
-            textAlign: 'center',
-            transform: 'rotate(-8deg)',
-          }}
-        >
-          <span style={{ fontFamily: 'var(--font-bd)', fontWeight: 700, fontStyle: 'italic', fontSize: 13, lineHeight: 1.1, textTransform: 'uppercase', color: 'var(--text)' }}>{p.bientot}</span>
+        <div aria-hidden="true" style={{ position: 'absolute', left: 12, bottom: 14, transform: 'rotate(-10deg)', filter: 'drop-shadow(2px 2px 0 var(--border)) drop-shadow(-1.5px -1.5px 0 var(--border))' }}>
+          <div
+            style={{
+              width: 'clamp(84px, 42%, 124px)', aspectRatio: '1',
+              clipPath: 'polygon(100.0% 50.0%, 88.4% 56.8%, 97.0% 67.1%, 83.8% 69.5%, 88.3% 82.1%, 75.1% 79.9%, 75.0% 93.3%, 63.3% 86.6%, 58.7% 99.2%, 50.0% 89.0%, 41.3% 99.2%, 36.7% 86.6%, 25.0% 93.3%, 24.9% 79.9%, 11.7% 82.1%, 16.2% 69.5%, 3.0% 67.1%, 11.6% 56.8%, 0.0% 50.0%, 11.6% 43.2%, 3.0% 32.9%, 16.2% 30.5%, 11.7% 17.9%, 24.9% 20.1%, 25.0% 6.7%, 36.7% 13.4%, 41.3% 0.8%, 50.0% 11.0%, 58.7% 0.8%, 63.3% 13.4%, 75.0% 6.7%, 75.1% 20.1%, 88.3% 17.9%, 83.8% 30.5%, 97.0% 32.9%, 88.4% 43.2%)',
+              background: 'var(--bg2)',
+              display: 'grid',
+              placeItems: 'center',
+              textAlign: 'center',
+            }}
+          >
+            <span style={{ fontFamily: 'var(--font-bd)', fontWeight: 700, fontStyle: 'italic', fontSize: 'clamp(13px, 1.4vw, 18px)', lineHeight: 1, textTransform: 'uppercase', color: 'var(--text)' }}>{p.bientot}</span>
+          </div>
         </div>
       </div>
     </CarteCouverture>
