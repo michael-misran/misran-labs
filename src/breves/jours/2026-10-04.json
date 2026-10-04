@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-04",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Copilot relit le code à la demande, par API",
+        "en": "Copilot reviews code on demand, through an API"
+      },
+      "resume": {
+        "fr": "GitHub permet de demander une relecture à Copilot via ses API REST et GraphQL, avec un niveau d'effort réglable par requête (Lite ou Balanced). Balanced devient le réglage par défaut. La fonction est ouverte aux abonnements Pro, Pro+, Max, Business et Enterprise.",
+        "en": "GitHub now lets you request a Copilot review through its REST and GraphQL APIs, with an effort level you can set per request (Lite or Balanced). Balanced becomes the default. It is open to Pro, Pro+, Max, Business and Enterprise plans."
+      },
+      "sources": [
+        { "titre": "GitHub Changelog", "url": "https://github.blog/changelog/2026-10-02-copilot-code-review-api-support-and-new-default-effort-level" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Windows 11 26H2 : surtout un nouveau calendrier de support",
+        "en": "Windows 11 26H2: mostly a new support calendar"
+      },
+      "resume": {
+        "fr": "Microsoft déploie depuis le 29 septembre Windows 11 26H2, un paquet d'activation qui partage la base de code des versions 24H2 et 25H2. Il active des fonctions déjà présentes, comme la barre des tâches déplaçable, et offre 24 mois de support à Home et Pro, 36 à Enterprise et Education.",
+        "en": "Since September 29, Microsoft has been rolling out Windows 11 26H2, an enablement package sharing the codebase of 24H2 and 25H2. It switches on features already present, such as the movable taskbar, and brings 24 months of support for Home and Pro, 36 for Enterprise and Education."
+      },
+      "sources": [
+        { "titre": "Thurrott", "url": "https://www.thurrott.com/?p=342194" },
+        { "titre": "Windows Latest", "url": "https://www.windowslatest.com/2026/09/29/windows-11-26h2-is-now-rolling-to-everyone-how-to-get-it-right-now-and-is-it-even-worth-installing/" },
+        { "titre": "Microsoft Learn", "url": "https://learn.microsoft.com/en-us/lifecycle/products/windows-11-home-and-pro" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Les jetons GitHub App passent de 40 à 520 caractères",
+        "en": "GitHub App tokens grow from 40 to 520 characters"
+      },
+      "resume": {
+        "fr": "GitHub a terminé le 2 octobre le déploiement des jetons d'installation sans état : même préfixe ghs_, mais environ 520 caractères au lieu de 40. Les systèmes qui vérifient une longueur fixe ou tronquent les en-têtes sont à contrôler.",
+        "en": "On October 2, GitHub finished rolling out stateless installation tokens: same ghs_ prefix, but about 520 characters instead of 40. Systems that check a fixed length or truncate headers need a review."
+      },
+      "sources": [
+        { "titre": "GitHub Changelog", "url": "https://github.blog/changelog/2026-10-02-stateless-github-app-installation-tokens-rolled-out" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Paquet d'activation",
+    "definition": {
+      "fr": "En anglais enablement package : minuscule mise à jour qui active des fonctions déjà livrées, mais en sommeil, dans une version de Windows.",
+      "en": "A tiny update that switches on features already shipped but dormant in a version of Windows."
+    }
+  }
+}
