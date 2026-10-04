@@ -35,6 +35,14 @@
  * bloc corail plein cadre d'une planche de présentation.
  * ------------------------------------------------------------------ */
 
+/* Titre gothique de la Gazette : Germanica de Paul Lloyd (dafont, « 100 % Free »),
+ * servie depuis public/fonts/. UnifrakturMaguntia (Google Fonts) reste en secours. */
+@font-face {
+  font-family: 'Plain Germanica';
+  src: url('/fonts/plain-germanica.ttf') format('truetype');
+  font-display: swap;
+}
+
 :root {
   /* --- 1. PRIMITIVE — valeurs brutes -------------------------------- *
    * Une échelle de crème (clair → foncé), une échelle d'encre, une
@@ -148,6 +156,7 @@
   --primitive-font-press-start-2p: 'Press Start 2P', monospace;
   --primitive-font-vt323: 'VT323', monospace;
   --primitive-font-special-elite: 'Special Elite', 'Courier New', monospace;
+  --primitive-font-germanica: 'Plain Germanica', 'UnifrakturMaguntia', cursive;
   --primitive-font-unifraktur-maguntia: 'UnifrakturMaguntia', cursive;
   --primitive-font-comic-neue: 'Comic Neue', 'Comic Sans MS', cursive;
   --primitive-font-ibm-plex-mono: 'IBM Plex Mono', monospace;
@@ -212,7 +221,9 @@
   --font-bois-3: var(--primitive-font-rye);
   --font-etiquette: var(--primitive-font-oswald);
   --font-chapo: var(--primitive-font-im-fell-english);
-  --font-gothique: var(--primitive-font-unifraktur-maguntia);
+  --font-gothique: var(--primitive-font-germanica);
+  /* L'espace entre les mots de Germanica est très large (≈ 0,56 em) : on le resserre. */
+  --font-gothique-espace: -0.3em;
   --font-bd: var(--primitive-font-comic-neue);
   --font-pixel: var(--primitive-font-press-start-2p);
   --font-ecran: var(--primitive-font-vt323);
