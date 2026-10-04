@@ -51,6 +51,8 @@ export default function Page404() {
   const { lang } = useLanguage()
   const { pathname } = useLocation()
   const t = PAGE404_TEXT[lang] ?? PAGE404_TEXT.fr
+  // Espace avant les deux-points en français seulement
+  const sep = lang === 'fr' ? ' : ' : ': '
 
   useEffect(() => {
     const meta = document.createElement('meta')
@@ -105,10 +107,10 @@ export default function Page404() {
         </div>
 
         <p style={{ fontFamily: 'var(--font-chapo)', fontStyle: 'italic', fontSize: 16, color: 'var(--text)', margin: '0 0 var(--space-xs)' }}>
-          {t.lastSeenLabel} : {t.lastSeen}
+          {t.lastSeenLabel}{sep}{t.lastSeen}
         </p>
         <p style={{ fontFamily: 'var(--font-chapo)', fontStyle: 'italic', fontSize: 16, color: 'var(--text)', margin: '0 0 var(--space-lg)' }}>
-          {t.rewardLabel} : {t.reward}
+          {t.rewardLabel}{sep}{t.reward}
         </p>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-sm)', justifyContent: 'center' }}>

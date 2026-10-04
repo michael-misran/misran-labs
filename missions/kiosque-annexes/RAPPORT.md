@@ -49,3 +49,8 @@ Voir `DELEGATIONS.md` — 1 sous-agent Haiku pour le remplacement mécanique des
 - **Nettoyer `.worktrees/verif-magazine`** : worktree orphelin qui pollue `npm run lint` pour toute session future tant qu'il traîne. Hors périmètre de cette mission (pas dans les fichiers autorisés), à traiter par Michael ou une prochaine session (`git worktree remove .worktrees/verif-magazine` après vérification qu'il n'y a rien à y récupérer).
 - **`src/i18n/ui.js`** : les clés `notFound404Eyebrow`, `notFound404Title`, `notFound404Body`, `notFound404BackLab`, `notFound404Magazine`, `notFound404Breves` ne sont plus utilisées (seule `notFound404Tab` l'est encore, pour l'onglet). Ménage possible dans une mission de finitions qui touche `src/i18n/ui.js`.
 - **Lien Google Fonts de `index.html`** : à la fusion de cette PR dans `refonte-kiosque`, vérifier que le merge reprend bien la version actuelle de `refonte-kiosque` (avec `Chango`) plutôt que celle, plus ancienne, de cette branche — ne devrait pas créer de conflit puisque cette mission n'a touché que la ligne `theme-color`.
+
+## Retouches à la clôture (session interactive, 2026-10-04)
+- Vérifié dans un essai local combiné avec `refonte-kiosque` à jour : aucun conflit, et le lien Google Fonts garde bien `Chango` (critère 6 confirmé après fusion). `/suivre`, la 404 et `/projets` (coupon `SuivreBandeau`) vus sur ordinateur et à 375 px, sans débordement. Image OG du numéro 1 conforme.
+- 404 : « Last seen : » et « Reward : » gardaient l’espace français avant les deux-points en anglais. L’espace n’est plus mis qu’en français.
+- Les ~566 erreurs de lint venaient de la copie de vérification `.worktrees/verif-magazine` laissée par la session de clôture. Elle est supprimée après les clôtures.
