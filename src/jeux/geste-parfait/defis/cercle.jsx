@@ -58,6 +58,8 @@ function couleurSegment(ecartRelatif) {
 
 // Le tracé demande un pointeur (souris, doigt, stylet) : indiqué dans la
 // consigne du défi (D11), pas de repli clavier pour ce défi précis.
+// Consigne affichée une seule fois, par Jeu.jsx au-dessus (D7, mission
+// kiosque-finitions) : pas de second paragraphe ici.
 export default function Cercle({ onTermine }) {
   const { lang } = useLanguage()
   const svgRef = useRef(null)
@@ -111,11 +113,6 @@ export default function Cercle({ onTermine }) {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text2)', margin: '0 0 var(--space-sm)' }}>
-        {lang === 'fr'
-          ? 'Trace un cercle d’un seul geste, à la souris, au doigt ou au stylet.'
-          : 'Draw a circle in a single stroke, with your mouse, finger, or stylus.'}
-      </p>
       <svg
         ref={svgRef}
         viewBox={`0 0 ${TAILLE} ${TAILLE}`}

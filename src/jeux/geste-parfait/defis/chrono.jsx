@@ -81,16 +81,16 @@ export default function Chrono({ onTermine }) {
         <div style={{ fontFamily: 'var(--font-mono)', fontSize: 48, color: 'var(--text)' }}>
           {etat === 'masque' ? '••.••' : (tempsAffiche / 1000).toFixed(2)}
         </div>
+        {/* La consigne (« arrête à 10,00 s ») n'est affichée qu'une fois, par
+            Jeu.jsx au-dessus (D7, mission kiosque-finitions) : une fois le
+            chrono démarré, ce paragraphe ne sert plus qu'à expliquer le geste
+            de départ, pas à la répéter. */}
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text2)', margin: 'var(--space-sm) 0 0' }}>
           {etat === 'attente'
             ? lang === 'fr'
               ? 'Clique, touche ou appuie sur Espace pour démarrer.'
               : 'Click, tap, or press Space to start.'
-            : etat === 'fini'
-              ? ''
-              : lang === 'fr'
-                ? 'Arrête à 10,00 s exactement.'
-                : 'Stop at exactly 10.00 s.'}
+            : ''}
         </p>
       </div>
     </div>

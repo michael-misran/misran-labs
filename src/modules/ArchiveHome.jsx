@@ -6,8 +6,7 @@ import { STATUS, METHOD_STEP_COLORS } from '../lab/phases'
 import { RULES_CONTENT } from '../lab/labRulesContent'
 import { Stamp, Barcode } from '../design-system/ArchiveMarks'
 import { getIssues } from '../magazine/numeros'
-import { issueNo, formatDateShort } from '../magazine/magazineText'
-import { CategoryMark } from '../magazine/MagazineParts'
+import { CouvertureNumero } from '../magazine/RevueParts'
 import { KRAFT } from '../lab/caseChrome'
 import { TamponDeclassifie, EtiquetteTapee } from '../lab/DossierParts'
 
@@ -34,7 +33,7 @@ const COPY = {
     overviewStatusValue: 'ACTIF',
     overviewSince: 'DEPUIS',
     accentLabel: 'ACCENT',
-    accentValue: 'CORAIL BRÛLÉ',
+    accentValue: 'VERT DOSSIER',
     protocolTitle: 'NOTE DE SERVICE — MÉTHODE DU LAB',
     protocolIntro: RULES_CONTENT.fr.intro,
     statusLegend: 'STATUTS UTILISÉS',
@@ -70,7 +69,7 @@ const COPY = {
     overviewStatusValue: 'ACTIVE',
     overviewSince: 'SINCE',
     accentLabel: 'ACCENT',
-    accentValue: 'BURNT CORAL',
+    accentValue: 'FILE GREEN',
     protocolTitle: 'MEMO — LAB METHOD',
     protocolIntro: RULES_CONTENT.en.intro,
     statusLegend: 'STATUSES USED',
@@ -145,7 +144,7 @@ function FicheAgent({ c, count }) {
             <span style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.03em', color: 'var(--muted)' }}>{label}</span>
             {label === c.accentLabel ? (
               <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <span style={{ width: 14, height: 14, background: 'var(--primary)', border: 'var(--border-thin) solid var(--border)', flexShrink: 0 }} />
+                <span style={{ width: 14, height: 14, background: 'var(--titre-lab)', border: 'var(--border-thin) solid var(--border)', flexShrink: 0 }} />
                 <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text)' }}>{value}</span>
               </span>
             ) : (
@@ -217,67 +216,30 @@ function NoteDeService({ c, lang }) {
 
 // Met en avant le dernier numéro du Magazine — seule partie de la home qui
 // change chaque semaine, sans intervention de code (pas de numéro
-// valide → pas de bloc). Hors périmètre de la refonte du Lab : habillage
-// minimal (filet kraft) pour rester dans l'univers sans y toucher.
-function LatestIssue({ c, lang, isMobile }) {
+// valide → pas de bloc). Réutilise CouvertureNumero (RevueParts.jsx) pour
+// rester dans le style « revue bleue » du Magazine plutôt que de recopier
+// l'ancien habillage archive du Lab (D5, mission kiosque-finitions).
+function LatestIssue({ c, lang }) {
   const issue = getIssues()[0]
   if (!issue) return null
 
   return (
-    <div style={{ border: 'var(--border-regular) solid var(--border)', borderTop: '4px solid var(--titre-lab)', marginBottom: 'var(--space-xl)' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-sm)', flexWrap: 'wrap', padding: isMobile ? 'var(--space-xs-plus) var(--space-md)' : 'var(--space-xs-plus) var(--space-md-plus)', background: 'var(--active-tint)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
+    <div style={{ marginBottom: 'var(--space-xl)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-sm)', flexWrap: 'wrap', marginBottom: 'var(--space-sm)' }}>
         <span style={{ fontFamily: "var(--font-machine)", fontSize: 12, letterSpacing: '0.03em', color: 'var(--titre-lab)' }}>{c.magLabel}</span>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)' }}>
-          Nº {issueNo(issue.numero)} · {formatDateShort(issue.date)}
-        </span>
       </div>
 
-      <div style={{ display: isMobile ? 'block' : 'grid', gridTemplateColumns: isMobile ? undefined : 'minmax(0, 1.1fr) minmax(0, 1fr)' }}>
-        <div style={{ padding: isMobile ? 'var(--space-md)' : 'var(--space-md-plus)', borderRight: isMobile ? 'none' : 'var(--border-thin) solid var(--border)', borderBottom: isMobile ? 'var(--border-thin) solid var(--border)' : 'none' }}>
-          <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 'clamp(22px, 2.6vw, 30px)', lineHeight: 1.1, color: 'var(--text)', margin: '0 0 var(--space-xs-plus)', overflowWrap: 'anywhere' }}>
-            {issue.titre[lang]}
-          </h2>
-          <p
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 13,
-              color: 'var(--text2)',
-              lineHeight: 1.6,
-              maxWidth: '60ch',
-              margin: 0,
-              display: '-webkit-box',
-              WebkitBoxOrient: 'vertical',
-              WebkitLineClamp: isMobile ? 5 : 4,
-              overflow: 'hidden',
-            }}
-          >
-            {issue.edito[lang]}
-          </p>
-        </div>
+      <CouvertureNumero issue={issue} lang={lang} variante="vedette" />
 
-        <ol style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-          {issue.articles.map((article, i) => (
-            <li key={i} style={{ padding: isMobile ? 'var(--space-xs-plus) var(--space-md)' : 'var(--space-xs-plus) var(--space-md-plus)', borderTop: i === 0 ? 'none' : 'var(--border-thin) solid var(--border)' }}>
-              <div style={{ marginBottom: 6 }}>
-                <CategoryMark categorie={article.categorie} lang={lang} />
-              </div>
-              <div style={{ fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, color: 'var(--text)', lineHeight: 1.4, overflowWrap: 'anywhere' }}>
-                {article.titre[lang]}
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
-
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-md-plus)', padding: isMobile ? 'var(--space-sm) var(--space-md)' : 'var(--space-sm) var(--space-md-plus)', borderTop: 'var(--border-thin) solid var(--border)' }}>
-        <Link to={`/magazine/${issue.date}`} style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-md-plus)', padding: 'var(--space-sm) 0 0' }}>
+        <Link to={`/magazine/${issue.date}`} style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', fontSize: 12, letterSpacing: '0.08em', fontWeight: 700, color: 'var(--titre-magazine)', textDecoration: 'none', borderBottom: '2px solid var(--titre-magazine)', paddingBottom: 1 }}>
           {c.magRead} →
         </Link>
-        <Link to="/magazine" style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)', textDecoration: 'none' }}>
+        <Link to="/magazine" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', fontSize: 12, letterSpacing: '0.08em', fontWeight: 700, color: 'var(--text2)', textDecoration: 'none' }}>
           {c.magAll} →
         </Link>
-        <Link to="/suivre" style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)', textDecoration: 'none', marginLeft: 'auto' }}>
-          <span style={{ color: 'var(--primary)' }}>◉</span> {c.magFollow} →
+        <Link to="/suivre" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', fontSize: 12, letterSpacing: '0.08em', fontWeight: 700, color: 'var(--text2)', textDecoration: 'none', marginLeft: 'auto' }}>
+          <span style={{ color: 'var(--titre-magazine)' }}>◉</span> {c.magFollow} →
         </Link>
       </div>
     </div>
@@ -382,7 +344,7 @@ export default function ArchiveHome() {
         <NoteDeService c={c} lang={lang} />
       </div>
 
-      <LatestIssue c={c} lang={lang} isMobile={isMobile} />
+      <LatestIssue c={c} lang={lang} />
 
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 'var(--space-md)', marginBottom: 14, flexWrap: 'wrap' }}>
         <div>

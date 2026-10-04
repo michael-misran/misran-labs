@@ -35,6 +35,7 @@ export const KIOSQUE_TEXT = {
         bientot: 'Bientôt !',
         legendeNom: 'Le Zine',
         legendeRythme: 'bientôt · mensuel',
+        legendeRythmeAvecNumero: 'mensuel',
       },
       jeux: {
         titre: 'LES JEUX',
@@ -90,6 +91,7 @@ export const KIOSQUE_TEXT = {
         bientot: 'Coming soon!',
         legendeNom: 'The Zine',
         legendeRythme: 'coming soon · monthly',
+        legendeRythmeAvecNumero: 'monthly',
       },
       jeux: {
         titre: 'THE GAMES',

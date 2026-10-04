@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { useLanguage } from '../../../shell/LanguageContext'
 
 const HAUTEUR_MIN = 40
 const HAUTEUR_MAX = 85
@@ -8,8 +7,9 @@ const VITESSE_PAR_MS = 0.045 // % de hauteur par ms pendant qu'on maintient
 
 // `graine` (0-1, déterministe pour le jour) fixe la hauteur cible entre 40 %
 // et 85 % du verre (D8.3). Score = max(0, 100 − |écart en % de hauteur| × 5).
+// Consigne affichée une seule fois, par Jeu.jsx au-dessus (D7, mission
+// kiosque-finitions) : pas de second paragraphe ici.
 export default function Verre({ onTermine, graine }) {
-  const { lang } = useLanguage()
   const cible = HAUTEUR_MIN + graine * (HAUTEUR_MAX - HAUTEUR_MIN)
   const [niveau, setNiveau] = useState(0)
   const [fini, setFini] = useState(false)
@@ -133,9 +133,6 @@ export default function Verre({ onTermine, graine }) {
           />
         )}
       </div>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text2)', margin: 'var(--space-sm) 0 0' }}>
-        {lang === 'fr' ? 'Maintiens appuyé pour verser, relâche au bon moment.' : 'Hold to pour, release at the right moment.'}
-      </p>
     </div>
   )
 }

@@ -16,13 +16,18 @@ const etiquette = {
 // <style> pour ça.
 export function SectionTitreKiosque({ title, subtitle }) {
   const narrow960 = useIsMobile(960)
+  // Un deuxième seuil, plus étroit, pour les titres longs ("Sur les
+  // présentoirs") : à 28px ils débordent encore en dessous de ~420px de
+  // large, même sous-titre déjà masqué par narrow960 (D9, mission
+  // kiosque-finitions — pas de débordement horizontal à 375 px).
+  const narrow480 = useIsMobile(480)
   return (
     <div style={{ display: 'flex', alignItems: 'baseline', gap: 18, margin: '46px 0 18px' }}>
       <h2
         style={{
           fontFamily: 'var(--font-bois-2)',
           fontWeight: 400,
-          fontSize: narrow960 ? 28 : 40,
+          fontSize: narrow480 ? 26 : narrow960 ? 28 : 40,
           textTransform: 'uppercase',
           lineHeight: 1,
           color: 'var(--text)',
@@ -251,15 +256,20 @@ function CouvertureMagazine({ lang, t, issue }) {
   )
 }
 
-function CouvertureZine({ t }) {
+// Sans numéro, la couverture garde son étoile « Bientôt ! » ; dès que
+// getNumeros() renvoie un numéro, elle affiche son "#NN" et son titre à la
+// place, et la légende perd son "bientôt" (D6, mission kiosque-finitions).
+function CouvertureZine({ t, lang }) {
   const p = t.presentoirs.zine
   const dernier = getNumeros()[0]
+  const numeroAffiche = dernier ? `#${String(dernier.numero).padStart(2, '0')}` : p.tetiereNumero
+  const legendeRythme = dernier ? p.legendeRythmeAvecNumero : p.legendeRythme
   return (
-    <CarteCouverture to={dernier ? `/zine/${dernier.numero}` : null} legendeNom={p.legendeNom} legendeRythme={p.legendeRythme}>
+    <CarteCouverture to={dernier ? `/zine/${dernier.numero}` : null} legendeNom={p.legendeNom} legendeRythme={legendeRythme}>
       <div style={{ background: 'var(--titre-zine)', height: '100%', position: 'relative' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '22%', borderBottom: '3px solid var(--border)', padding: '10px 12px', zIndex: 3, background: 'var(--titre-zine)' }}>
           <b style={{ fontFamily: 'var(--primitive-font-anton)', fontSize: 40, lineHeight: 0.85, textTransform: 'uppercase', display: 'block', color: 'var(--text)' }}>{p.tetiereNom[0]}<br />{p.tetiereNom[1]}</b>
-          <span style={{ position: 'absolute', right: 12, top: 10, fontFamily: 'var(--font-bd)', fontWeight: 700, fontStyle: 'italic', fontSize: 16, textTransform: 'uppercase', color: 'var(--text)' }}>{p.tetiereNumero}</span>
+          <span style={{ position: 'absolute', right: 12, top: 10, fontFamily: 'var(--font-bd)', fontWeight: 700, fontStyle: 'italic', fontSize: 16, textTransform: 'uppercase', color: 'var(--text)' }}>{numeroAffiche}</span>
         </div>
         {/* Trame de points en CSS pur, sans aucune image (D7). */}
         <div
@@ -271,20 +281,28 @@ function CouvertureZine({ t }) {
             backgroundSize: '9px 9px',
           }}
         />
-        <div aria-hidden="true" style={{ position: 'absolute', left: 12, bottom: 14, transform: 'rotate(-10deg)', filter: 'drop-shadow(2px 2px 0 var(--border)) drop-shadow(-1.5px -1.5px 0 var(--border))' }}>
-          <div
-            style={{
-              width: 'clamp(84px, 42%, 124px)', aspectRatio: '1',
-              clipPath: 'polygon(100.0% 50.0%, 88.4% 56.8%, 97.0% 67.1%, 83.8% 69.5%, 88.3% 82.1%, 75.1% 79.9%, 75.0% 93.3%, 63.3% 86.6%, 58.7% 99.2%, 50.0% 89.0%, 41.3% 99.2%, 36.7% 86.6%, 25.0% 93.3%, 24.9% 79.9%, 11.7% 82.1%, 16.2% 69.5%, 3.0% 67.1%, 11.6% 56.8%, 0.0% 50.0%, 11.6% 43.2%, 3.0% 32.9%, 16.2% 30.5%, 11.7% 17.9%, 24.9% 20.1%, 25.0% 6.7%, 36.7% 13.4%, 41.3% 0.8%, 50.0% 11.0%, 58.7% 0.8%, 63.3% 13.4%, 75.0% 6.7%, 75.1% 20.1%, 88.3% 17.9%, 83.8% 30.5%, 97.0% 32.9%, 88.4% 43.2%)',
-              background: 'var(--bg2)',
-              display: 'grid',
-              placeItems: 'center',
-              textAlign: 'center',
-            }}
-          >
-            <span style={{ fontFamily: 'var(--font-bd)', fontWeight: 700, fontStyle: 'italic', fontSize: 'clamp(11px, 1.05vw, 15px)', lineHeight: 1, textTransform: 'uppercase', color: 'var(--text)' }}>{p.bientot}</span>
+        {dernier ? (
+          <div style={{ position: 'absolute', left: 12, right: 12, bottom: 14, background: 'var(--bg2)', border: '3px solid var(--border)', boxShadow: '3px 3px 0 var(--border)', padding: '10px 12px', transform: 'rotate(-2deg)' }}>
+            <span style={{ fontFamily: 'var(--font-bd)', fontWeight: 700, fontStyle: 'italic', fontSize: 'clamp(13px, 1.5vw, 17px)', lineHeight: 1.15, textTransform: 'uppercase', color: 'var(--text)', display: 'block', overflowWrap: 'anywhere' }}>
+              {dernier.titre[lang] ?? dernier.titre.fr}
+            </span>
           </div>
-        </div>
+        ) : (
+          <div aria-hidden="true" style={{ position: 'absolute', left: 12, bottom: 14, transform: 'rotate(-10deg)', filter: 'drop-shadow(2px 2px 0 var(--border)) drop-shadow(-1.5px -1.5px 0 var(--border))' }}>
+            <div
+              style={{
+                width: 'clamp(84px, 42%, 124px)', aspectRatio: '1',
+                clipPath: 'polygon(100.0% 50.0%, 88.4% 56.8%, 97.0% 67.1%, 83.8% 69.5%, 88.3% 82.1%, 75.1% 79.9%, 75.0% 93.3%, 63.3% 86.6%, 58.7% 99.2%, 50.0% 89.0%, 41.3% 99.2%, 36.7% 86.6%, 25.0% 93.3%, 24.9% 79.9%, 11.7% 82.1%, 16.2% 69.5%, 3.0% 67.1%, 11.6% 56.8%, 0.0% 50.0%, 11.6% 43.2%, 3.0% 32.9%, 16.2% 30.5%, 11.7% 17.9%, 24.9% 20.1%, 25.0% 6.7%, 36.7% 13.4%, 41.3% 0.8%, 50.0% 11.0%, 58.7% 0.8%, 63.3% 13.4%, 75.0% 6.7%, 75.1% 20.1%, 88.3% 17.9%, 83.8% 30.5%, 97.0% 32.9%, 88.4% 43.2%)',
+                background: 'var(--bg2)',
+                display: 'grid',
+                placeItems: 'center',
+                textAlign: 'center',
+              }}
+            >
+              <span style={{ fontFamily: 'var(--font-bd)', fontWeight: 700, fontStyle: 'italic', fontSize: 'clamp(11px, 1.05vw, 15px)', lineHeight: 1, textTransform: 'uppercase', color: 'var(--text)' }}>{p.bientot}</span>
+            </div>
+          </div>
+        )}
       </div>
     </CarteCouverture>
   )
@@ -375,7 +393,7 @@ export function Presentoirs({ lang, t, issue, jeux, nbProjets }) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1fr)`, gap: narrow960 ? '26px 16px' : 30 }}>
       {issue && <CouvertureMagazine lang={lang} t={t} issue={issue} />}
-      <CouvertureZine t={t} />
+      <CouvertureZine t={t} lang={lang} />
       <CouvertureJeux lang={lang} t={t} jeux={jeux} />
       <CouvertureLab t={t} nbProjets={nbProjets} />
     </div>
