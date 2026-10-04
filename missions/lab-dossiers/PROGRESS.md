@@ -1,7 +1,7 @@
 # Mission lab-dossiers — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 5 (`LabTokens.jsx`)
+**Prochaine action :** étape 6 (vérification finale)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -26,4 +26,9 @@
 ## Étape 4 (exécution, 2026-10-04)
 - `ArchiveHome.jsx` réécrit : `ChemiseEnTete` (onglet « ML-LAB », `EtiquetteTapee` avec AGENT/CLASSEMENT/PIÈCES, `TamponDeclassifie`), `NoteDeService` (ancien `ProtocolPlate`, même contenu, habillage tapé à la machine), `FicheAgent` (fusion d'`OverviewBox`+`AccentSwatch`), `ChemiseIndex` (ancien `FileEntry`, onglet avec numéro de dossier en léger décalage alterné, ligne de méta type+statut ajoutée). `LatestIssue` (teaser Magazine) conservé, habillage minimal (filet `--titre-lab`), hors périmètre direct de D2 mais pas retiré (décision).
 - Bande latérale verticale décorative (`sideStrip`) retirée : ne correspondait à aucun élément demandé par D2, et la nouvelle composition (chemise pleine largeur) ne s'y prêtait plus (`DECISIONS.md`).
+- `npm run build` et `npm run lint` : OK.
+
+## Étape 5 (exécution, 2026-10-04)
+- `LabTokens.jsx` entièrement réécrit : plus aucune valeur recopiée à la main (`value` retiré de `TOKEN_GROUPS`) — chaque valeur est lue une fois via `getComputedStyle(document.documentElement)` dans l'initialiseur paresseux d'un `useState` (pas un `useEffect` : la règle `react-hooks/set-state-in-effect` l'interdit, et comme la page est rendue côté client dès le premier rendu, un effet n'était pas nécessaire). Groupes mis à jour pour refléter l'état réel de `tokens.css` après la refonte kiosque : papier (remplace crème), encre/gris/filet (remplace l'échelle d'encre archive), les 5 couleurs de titres (primitives et rôles), une police par titre (gothique, Playfair, bd, pixel, machine), rôles sémantiques (bg/primary/text pointent maintenant vers papier/titre-gazette/encre, plus corail/crème). Section « architecture primitive → semantic → component » et détection des violations conservées à l'identique. Nouveau paragraphe expliquant le concept « maison d'édition / un univers par titre » (D4).
+- Critère d'acceptation 5 vérifié : `git grep -n "#dd5a3e" -- src/lab/projects/LabTokens.jsx` → vide. Les 5 couleurs de titres ont leur propre section avec aperçu (`Swatch`).
 - `npm run build` et `npm run lint` : OK.
