@@ -209,9 +209,8 @@ export function FicheBristol({ idee, lang }) {
           position: 'relative',
           height: '100%',
           minHeight: 190,
-          background: hover
-            ? 'repeating-linear-gradient(var(--hover-tint) 0px, var(--hover-tint) 27px, color-mix(in srgb, var(--cyan) 30%, transparent) 27px, color-mix(in srgb, var(--cyan) 30%, transparent) 28px, var(--hover-tint) 28px, var(--hover-tint) 54px)'
-            : 'repeating-linear-gradient(var(--bg2) 0px, var(--bg2) 27px, color-mix(in srgb, var(--cyan) 30%, transparent) 27px, color-mix(in srgb, var(--cyan) 30%, transparent) 28px, var(--bg2) 28px, var(--bg2) 54px)',
+          // Fond uni : les lignes bleues ne sont tracées que sous le résumé, au pas du texte
+          background: hover ? 'var(--hover-tint)' : 'var(--bg2)',
           border: 'var(--border-thin) solid var(--border)',
           padding: '20px 16px 44px 34px',
           transition: 'background 0.15s ease',
@@ -238,17 +237,20 @@ export function FicheBristol({ idee, lang }) {
         <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 17, lineHeight: 1.25, color: 'var(--text)', marginBottom: 6, overflowWrap: 'anywhere' }}>
           {idee.titre[lang]}
         </div>
-        <div style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.02em', color: 'var(--text2)', marginBottom: 8 }}>
+        <div style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.02em', color: 'var(--text2)', paddingBottom: 8, marginBottom: 6, borderBottom: '2px solid color-mix(in srgb, var(--error) 55%, transparent)' }}>
           {metaLine(idee, lang)}
         </div>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.5, color: 'var(--prose)', margin: 0 }}>
-          {idee.resume[lang]}
-        </p>
-        {idee.decision?.note && (
-          <p style={{ fontFamily: "var(--font-chapo)", fontStyle: 'italic', fontSize: 14, lineHeight: 1.4, color: 'var(--text2)', margin: '8px 0 0' }}>
-            “{idee.decision.note[lang]}”
+        {/* Corps de la fiche : une ligne bleue tous les 22 px, même pas que le texte, qui se pose dessus */}
+        <div style={{ backgroundImage: 'repeating-linear-gradient(transparent 0 21px, color-mix(in srgb, var(--cyan) 30%, transparent) 21px 22px)' }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: '22px', color: 'var(--prose)', margin: 0 }}>
+            {idee.resume[lang]}
           </p>
-        )}
+          {idee.decision?.note && (
+            <p style={{ fontFamily: "var(--font-chapo)", fontStyle: 'italic', fontSize: 14, lineHeight: '22px', color: 'var(--text2)', margin: 0 }}>
+              “{idee.decision.note[lang]}”
+            </p>
+          )}
+        </div>
 
         <StampStatut statut={idee.statut} lang={lang} />
       </div>

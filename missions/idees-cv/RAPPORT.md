@@ -49,3 +49,8 @@ Détail dans `DECISIONS.md`. En résumé :
 ## Recommandations
 - Avant fusion, vérifier soi-même l'aperçu d'impression de `/lab/cv` (Ctrl/Cmd+P) : le `verificateur` n'a pas confirmé en détail ce point précis de sa vérification, même si rien dans les changements (styles en ligne, pas de couleur comme seul vecteur d'information) ne devrait poser problème — les élévations sont déjà aplaties à l'impression par `tokens.css`.
 - La mission **kiosque-finitions** pourra revoir si le bandeau « FICHE AGENT » et le cadre photo méritent d'être repris une fois `CaseFile.jsx` fusionné (habillage kraft de `lab-dossiers`), pour une cohérence visuelle parfaite entre les deux.
+
+## Retouches à la clôture (session interactive, 2026-10-04)
+- Vérifié avec `lab-dossiers` déjà fusionnée (essai local combiné, non poussé) : `/projets`, une idée, `/projets/fonctionnement` et `/lab/cv`, sur ordinateur et à 375 px, sans débordement.
+- Fiche bristol : les lignes bleues (tous les 27 px) tombaient en travers du numéro et des titres. L’en-tête est maintenant uni, fermé par un filet rouge, et seul le résumé est ligné, au pas du texte (22 px).
+- Pas vérifié : l’aperçu d’impression de `/lab/cv`.
