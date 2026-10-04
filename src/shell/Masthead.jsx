@@ -1,9 +1,12 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import LogoFiole from './LogoFiole'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 import { formatDateLong } from '../magazine/magazineText'
 import useIsMobile from './useIsMobile'
+// Animations de la mascotte Fiole (sautillement, tangage), reprises par le tube
+import './mascotte/fiole.css'
 
 // En-tête pulp de la maison, façon couverture DoggyBags : bandeau rouge,
 // carton kraft, grand titre crème cerné de noir avec ombre rouge sang,
@@ -51,12 +54,36 @@ const DECALAGES = [
 // ligne de base à y=90, haut du « i » de Bowlby One SC à y=23, même chasse
 // (.363em). Contour noir 11 unités ≈ le text-stroke des lettres ; ombre rouge
 // décalée de 5 unités = leur text-shadow de .05em.
+// Comme la mascotte Fiole : il sautille en continu et tangue quand on le
+// survole ou le touche.
+const DUREE_TANGAGE = 600
+
 function TubeRadioactif() {
+  const [tangue, setTangue] = useState(false)
+  const minuteur = useRef(null)
+  useEffect(() => () => clearTimeout(minuteur.current), [])
+
+  const tanguer = () => {
+    setTangue(true)
+    clearTimeout(minuteur.current)
+    minuteur.current = setTimeout(() => setTangue(false), DUREE_TANGAGE)
+  }
+
   return (
     <svg
       viewBox="0 0 36 90"
       aria-hidden="true"
-      style={{ width: '.363em', height: '.9em', verticalAlign: 'baseline', overflow: 'visible' }}
+      onMouseEnter={tanguer}
+      onClick={tanguer}
+      style={{
+        width: '.363em',
+        height: '.9em',
+        verticalAlign: 'baseline',
+        overflow: 'visible',
+        '--fiole-bob': '.05em',
+        transformOrigin: '50% 100%',
+        animation: tangue ? `fiole-wobble ${DUREE_TANGAGE}ms steps(6) 1` : 'fiole-bob 1.4s steps(1) infinite',
+      }}
     >
       <rect transform="translate(5 5)" x="5" y="20" width="26" height="64" rx="4" fill="var(--masthead-ombre)" stroke="var(--masthead-ombre)" strokeWidth="11" />
       {/* Ampoule pleine de liquide luminescent, avec son reflet */}
