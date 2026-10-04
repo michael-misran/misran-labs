@@ -1,80 +1,84 @@
+import { Link } from 'react-router-dom'
 import useIsMobile from '../shell/useIsMobile'
 import { useLanguage } from '../shell/LanguageContext'
-import { CaseMasthead, CaseMetaRow, CaseFooter } from '../lab/CaseFile'
-import { CASE_CHROME } from '../lab/caseChrome'
-import SectionTitle from '../design-system/SectionTitle'
-import { MagazineHero } from '../magazine/MagazineParts'
-import Tag from '../design-system/Tag'
-import { BreveCard, WordFigureBox, DayRow } from './BrevesParts'
-import { BREVES_TEXT, RUBRIQUES, formatDateLong } from './brevesText'
+import { GazetteTete, GazetteEdition } from './GazetteParts'
+import { BREVES_TEXT, formatDateLong } from './brevesText'
 import { getDays } from './jours'
-import SuivreBandeau from '../suivre/SuivreBandeau'
 
 export default function BrevesHome() {
   const isMobile = useIsMobile()
   const { lang } = useLanguage()
   const t = BREVES_TEXT[lang].home
-  const chrome = CASE_CHROME[lang]
   const days = getDays()
   const today = days[0]
   const previousDays = days.slice(1)
 
   return (
-    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
-      <CaseMasthead
-        c={{ fileNo: t.fileNo, mastheadCenter: t.mastheadCenter, mastheadRight: t.mastheadRight, mastheadRightSub: t.mastheadRightSub }}
-        lang={lang}
-      />
-
-      <MagazineHero number="🗞" title={t.title} subtitle={t.subtitle}>
-        <CaseMetaRow
-          columns={[
-            { label: t.publishedLabel, value: t.publishedValue },
-            { label: t.editorialLabel, value: t.editorialValue },
-            { label: t.sectionsLabel, chips: Object.values(RUBRIQUES).map(r => r[lang]) },
-          ]}
-        />
-      </MagazineHero>
-
-      <p style={{ maxWidth: 720, fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: 'var(--prose)', margin: '0 0 40px' }}>
-        {t.concept}
-      </p>
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, maxWidth: 960, margin: '0 auto' }}>
+      <GazetteTete date={today?.date} count={today?.breves.length} lang={lang} />
 
       {!today ? (
-        <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--muted)' }}>{t.empty}</p>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--muted)', textAlign: 'center' }}>{t.empty}</p>
       ) : (
         <>
-          <SectionTitle>{t.todayTitle}</SectionTitle>
-          <div style={{ marginBottom: 'var(--space-md)' }}>
-            <Tag>{formatDateLong(today.date, lang).toUpperCase()}</Tag>
-          </div>
+          <GazetteEdition day={today} lang={lang} />
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)', marginBottom: 'var(--space-lg)' }}>
-            {today.breves.map((breve, i) => (
-              <BreveCard key={i} breve={breve} lang={lang} />
-            ))}
-          </div>
-
-          <div style={{ marginBottom: 40 }}>
-            <WordFigureBox mot={today.mot} chiffre={today.chiffre} lang={lang} />
+          <div style={{ border: '3px double var(--border)', padding: isMobile ? '18px 16px' : '20px 28px', margin: '36px 0', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-sm)' }}>
+            <div>
+              <div style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, fontSize: 14, color: 'var(--text)' }}>{t.subscribeTitle}</div>
+              <p style={{ fontFamily: 'var(--font-chapo)', fontStyle: 'italic', fontSize: 13, color: 'var(--text2)', margin: '4px 0 0' }}>{t.subscribeBody}</p>
+            </div>
+            <div style={{ display: 'flex', gap: 'var(--space-md)' }}>
+              <a href="/breves/rss.xml" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700, fontSize: 13, color: 'var(--titre-gazette)', textDecoration: 'none', borderBottom: '2px solid var(--titre-gazette)', paddingBottom: 2 }}>
+                {t.rssLabel}
+              </a>
+              <Link to="/suivre" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700, fontSize: 13, color: 'var(--text)', textDecoration: 'none', borderBottom: '2px solid var(--border)', paddingBottom: 2 }}>
+                {t.suivreLabel}
+              </Link>
+            </div>
           </div>
 
           {previousDays.length > 0 && (
             <>
-              <SectionTitle>{t.previousDaysTitle}</SectionTitle>
-              <div style={{ borderBottom: 'var(--border-thin) solid var(--border)', marginBottom: 40 }}>
-                {previousDays.map((day) => (
-                  <DayRow key={day.date} day={day} lang={lang} />
-                ))}
+              <h2
+                style={{
+                  fontFamily: 'var(--font-etiquette)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  fontWeight: 700,
+                  fontSize: 15,
+                  color: 'var(--text)',
+                  borderBottom: '3px double var(--border)',
+                  paddingBottom: 8,
+                  margin: '0 0 var(--space-md-plus)',
+                }}
+              >
+                {t.previousDaysTitle}
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                {previousDays.map((day) => {
+                  const titles = day.breves.map((b) => b.titre[lang] ?? b.titre.fr).join(' · ')
+                  return (
+                    <Link
+                      key={day.date}
+                      to={`/breves/${day.date}`}
+                      style={{ display: 'flex', alignItems: 'baseline', gap: 8, textDecoration: 'none', color: 'inherit', padding: '10px 0', borderBottom: '1px solid var(--border)' }}
+                    >
+                      <span style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', fontSize: 13, fontWeight: 700, color: 'var(--text)', whiteSpace: 'nowrap' }}>
+                        {formatDateLong(day.date, lang)}
+                      </span>
+                      <span aria-hidden="true" style={{ flex: 1, borderBottom: '2px dotted var(--muted)', transform: 'translateY(-4px)' }} />
+                      <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text2)', textAlign: 'right', overflowWrap: 'anywhere' }}>
+                        {titles}
+                      </span>
+                    </Link>
+                  )
+                })}
               </div>
             </>
           )}
         </>
       )}
-
-      <SuivreBandeau rubrique="breves" />
-
-      <CaseFooter c={{ docId: t.docId, clearance: chrome.clearance, tagline: chrome.tagline }} />
     </div>
   )
 }
