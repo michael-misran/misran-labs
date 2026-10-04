@@ -82,7 +82,7 @@ function ProjectMeta({ role, period, tools }) {
   return (
     <div style={{ marginBottom: 36, display: 'flex', flexDirection: 'column', gap: 6 }}>
       {period && (
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)', letterSpacing: '0.06em' }}>
+        <div style={{ fontFamily: "var(--font-machine)", fontSize: 12, color: 'var(--muted)', letterSpacing: '0.03em' }}>
           {period}
         </div>
       )}
@@ -95,8 +95,8 @@ function ProjectMeta({ role, period, tools }) {
             <span
               key={tool}
               style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 10,
+                fontFamily: "var(--font-machine)",
+                fontSize: 12,
                 color: 'var(--text2)',
                 border: 'var(--border-thin) solid var(--border)',
                 borderRadius: 'var(--radius-xs)',
@@ -127,10 +127,10 @@ export default function CaseStudyLayout({ title, role, period, tools, phases, ch
       }}
     >
       <Link
-        to="/"
+        to="/lab"
         style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: 11,
+          fontFamily: "var(--font-machine)",
+          fontSize: 12,
           color: 'var(--text2)',
           textDecoration: 'none',
           display: 'inline-block',
@@ -148,6 +148,8 @@ export default function CaseStudyLayout({ title, role, period, tools, phases, ch
           letterSpacing: '-0.02em',
           margin: '0 0 var(--space-md)',
           lineHeight: 1.05,
+          borderLeft: '4px solid var(--titre-lab)',
+          paddingLeft: 'var(--space-sm)',
         }}
       >
         {title}
