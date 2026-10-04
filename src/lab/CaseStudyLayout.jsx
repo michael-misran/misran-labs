@@ -15,54 +15,6 @@ export function Section({ title, children }) {
   )
 }
 
-// Barre d'onglets d'un case study. Une seule implémentation pour toutes les
-// pages qui en ont une — avant, chaque case study gardait sa copie locale.
-//
-// La marque d'onglet actif est une croix de repérage d'imprimerie (✛)
-// plutôt qu'un soulignement, et les onglets inactifs portent leur numéro
-// d'ordre — un sommaire de planche, pas une barre d'onglets générique.
-export function TabBar({ tabs, active, onChange }) {
-  return (
-    <div style={{ display: 'flex', gap: 'var(--space-2xs)', borderBottom: 'var(--border-thin) solid var(--border)', marginBottom: 'var(--space-xl)', overflowX: 'auto' }}>
-      {tabs.map((tab, i) => {
-        const isActive = active === tab.id
-        return (
-          <button
-            key={tab.id}
-            onClick={() => onChange(tab.id)}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--space-xs)',
-              background: 'none',
-              border: 'none',
-              color: isActive ? 'var(--text)' : 'var(--text2)',
-              fontFamily: "var(--font-body)",
-              fontSize: 13,
-              fontWeight: isActive ? 600 : 400,
-              padding: 'var(--space-xs-plus) var(--space-md)',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              transition: 'color 0.15s ease, border-color 0.15s ease',
-            }}
-          >
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                color: isActive ? 'var(--primary)' : 'var(--muted)',
-              }}
-            >
-              {isActive ? '✛' : String(i + 1).padStart(2, '0')}
-            </span>
-            {tab.label}
-          </button>
-        )
-      })}
-    </div>
-  )
-}
-
 // Liste à puces au format de lecture des case studies.
 export function BulletList({ items }) {
   return (

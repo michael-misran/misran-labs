@@ -20,9 +20,8 @@ const STATUT_TILT = {
   arretee: 10,
 }
 
-// Même bloc que MagazineHero (src/magazine/MagazineParts.jsx), seul le
-// tampon change de libellé — la structure du hero (numéro, titre,
-// sous-titre, tampon, enfants) est commune aux trois rubriques du site.
+// Même structure de hero que CaseHero (numéro, titre, sous-titre, tampon,
+// enfants), seul le tampon change de libellé selon la rubrique.
 // Numéro et sous-titre tapés à la machine (D6) ; le titre reste en
 // --font-heading, plus lisible pour un texte qui peut être long.
 export function ProjetsHero({ number, title, subtitle, children }) {
