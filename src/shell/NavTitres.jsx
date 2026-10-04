@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
@@ -21,6 +22,13 @@ const rythme = {
 const BARRE = 22
 const DEBORD_HAUT = 52
 const DEBORD_BAS = 26
+const FILET = 4
+
+// Fond des zones de débordement, posé seulement quand la barre est collée
+// en haut de l'écran : sinon le contenu de la page passe derrière les titres
+function fondDebord(haut, hauteur, fond) {
+  return { position: 'absolute', left: 0, right: 0, top: haut, height: hauteur, background: fond }
+}
 
 function estActif(pathname, match) {
   return match.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))
@@ -85,8 +93,24 @@ export default function NavTitres() {
     },
   ]
 
+  const navRef = useRef(null)
+  const [collee, setCollee] = useState(false)
+  useEffect(() => {
+    const surveiller = () => {
+      if (navRef.current) setCollee(navRef.current.getBoundingClientRect().top <= DEBORD_HAUT)
+    }
+    surveiller()
+    window.addEventListener('scroll', surveiller, { passive: true })
+    window.addEventListener('resize', surveiller)
+    return () => {
+      window.removeEventListener('scroll', surveiller)
+      window.removeEventListener('resize', surveiller)
+    }
+  }, [])
+
   return (
     <nav
+      ref={navRef}
       className="no-print"
       aria-label="Titres de la maison"
       style={{
@@ -96,8 +120,8 @@ export default function NavTitres() {
         zIndex: 30,
         height: BARRE,
         background: 'var(--masthead-sommaire)',
-        borderTop: '4px solid var(--masthead-encre)',
-        borderBottom: '4px solid var(--masthead-encre)',
+        borderTop: `${FILET}px solid var(--masthead-encre)`,
+        borderBottom: `${FILET}px solid var(--masthead-encre)`,
         // Place laissée sous la barre pour le bas des titres, qui déborde
         marginBottom: DEBORD_BAS,
         boxSizing: 'content-box',
@@ -106,10 +130,18 @@ export default function NavTitres() {
         display: 'flow-root',
       }}
     >
+      {collee && (
+        <>
+          {/* Carton kraft au-dessus, comme le header ; fond de page en dessous */}
+          <span aria-hidden="true" style={fondDebord(-(DEBORD_HAUT + FILET), DEBORD_HAUT, 'var(--masthead-fond)')} />
+          <span aria-hidden="true" style={fondDebord(BARRE + FILET, DEBORD_BAS, 'var(--bg)')} />
+        </>
+      )}
       {/* Zone de défilement agrandie (marges négatives + padding) : sur mobile
           le menu défile de côté sans rogner ce qui déborde de la barre */}
       <div
         style={{
+          position: 'relative',
           maxWidth: 1240,
           margin: `-${DEBORD_HAUT}px auto -${DEBORD_BAS}px`,
           padding: `${DEBORD_HAUT}px 0 ${DEBORD_BAS}px`,
