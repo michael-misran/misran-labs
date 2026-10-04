@@ -18,6 +18,10 @@ const etiquette = {
 export default function Masthead() {
   const { lang, toggle: toggleLang } = useLanguage()
   const isMobile = useIsMobile()
+  // En dessous de 600 px (D8), l'en-tête se resserre encore : badge plus
+  // petit, nom sur une seule ligne, accroche masquée — pour que le header
+  // de la maison tienne en moins de 200 px à 375 px de large.
+  const isNarrow = useIsMobile(600)
   const today = formatDateLong(todayIso(), lang)
 
   return (
@@ -31,7 +35,7 @@ export default function Masthead() {
           style={{
             maxWidth: 1240,
             margin: '0 auto',
-            padding: '8px 20px 7px',
+            padding: isNarrow ? '6px 16px 5px' : '8px 20px 7px',
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'space-between',
@@ -74,7 +78,7 @@ export default function Masthead() {
           style={{
             maxWidth: 1240,
             margin: '0 auto',
-            padding: '22px 20px 18px',
+            padding: isNarrow ? '14px 16px 12px' : '22px 20px 18px',
             display: 'grid',
             gridTemplateColumns: isMobile ? 'auto 1fr' : 'auto 1fr auto',
             gap: isMobile ? 16 : 28,
@@ -83,8 +87,8 @@ export default function Masthead() {
         >
           <div
             style={{
-              width: isMobile ? 62 : 92,
-              height: isMobile ? 70 : 104,
+              width: isNarrow ? 46 : isMobile ? 62 : 92,
+              height: isNarrow ? 50 : isMobile ? 70 : 104,
               background: 'var(--text)',
               color: 'var(--bg)',
               borderRadius: '50% 50% 46% 46%',
@@ -95,10 +99,10 @@ export default function Masthead() {
             }}
           >
             <div>
-              <b style={{ fontFamily: 'var(--font-bois-2)', fontWeight: 400, fontSize: isMobile ? 22 : 34, display: 'block' }}>
+              <b style={{ fontFamily: 'var(--font-bois-2)', fontWeight: 400, fontSize: isNarrow ? 16 : isMobile ? 22 : 34, display: 'block' }}>
                 {t(lang, 'mastheadLabel')}
               </b>
-              <span style={{ ...etiquette, fontWeight: 700, fontSize: 10 }}>{t(lang, 'mastheadLabelSub')}</span>
+              {!isNarrow && <span style={{ ...etiquette, fontWeight: 700, fontSize: 10 }}>{t(lang, 'mastheadLabelSub')}</span>}
             </div>
           </div>
 
@@ -107,26 +111,29 @@ export default function Masthead() {
               style={{
                 fontFamily: 'var(--font-bois)',
                 fontWeight: 400,
-                fontSize: 'clamp(52px, 8vw, 104px)',
+                fontSize: isNarrow ? 'clamp(24px, 9vw, 34px)' : 'clamp(52px, 8vw, 104px)',
                 lineHeight: 0.9,
                 textTransform: 'uppercase',
                 letterSpacing: '-0.01em',
                 color: 'var(--text)',
+                whiteSpace: isNarrow ? 'nowrap' : 'normal',
               }}
             >
               Misran Labs
             </h1>
-            <p
-              style={{
-                fontFamily: 'var(--font-chapo)',
-                fontStyle: 'italic',
-                fontSize: isMobile ? 17 : 21,
-                marginTop: 8,
-                color: 'var(--text)',
-              }}
-            >
-              {t(lang, 'mastheadTagline')}
-            </p>
+            {!isNarrow && (
+              <p
+                style={{
+                  fontFamily: 'var(--font-chapo)',
+                  fontStyle: 'italic',
+                  fontSize: isMobile ? 17 : 21,
+                  marginTop: 8,
+                  color: 'var(--text)',
+                }}
+              >
+                {t(lang, 'mastheadTagline')}
+              </p>
+            )}
           </div>
 
           {!isMobile && (
