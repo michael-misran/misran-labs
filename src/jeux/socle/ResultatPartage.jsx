@@ -17,6 +17,8 @@ export default function ResultatPartage({ score, jours, texte }) {
     }
   }
 
+  const bravo = score >= 50
+
   return (
     <div
       style={{
@@ -27,6 +29,13 @@ export default function ResultatPartage({ score, jours, texte }) {
         border: 'var(--border-thin) solid var(--border)',
       }}
     >
+      <div
+        className="arcade-blink"
+        style={{ fontFamily: 'var(--font-pixel)', fontSize: 13, color: bravo ? 'var(--titre-jeux)' : 'var(--muted)', marginBottom: 'var(--space-xs-plus)' }}
+      >
+        {bravo ? jt(lang, 'bravo') : 'GAME OVER'}
+      </div>
+
       <div style={{ fontFamily: 'var(--font-heading)', fontSize: 48, fontWeight: 700, color: 'var(--text)' }}>
         {texteScoreAvecUnite(score, lang)}
       </div>

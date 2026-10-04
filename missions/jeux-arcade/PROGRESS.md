@@ -1,7 +1,7 @@
 # Mission jeux-arcade — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 4 (page `/jeux/:slug`)
+**Prochaine action :** étape 5 (vérification finale)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -18,4 +18,10 @@
 
 ## Étape 3 (exécution, 2026-10-04)
 - `JeuxHome.jsx` réécrit : `EcranCathodique` en tête, `MenuSelectGame`, puis la grille de `BoiteJeu`. Les cartes fantômes « Bientôt » (`A_VENIR`, toujours à 0) ont été retirées : elles ne rendaient plus rien, code mort.
+- `npm run build` et `npm run lint` : OK.
+
+## Étape 4 (exécution, 2026-10-04)
+- `JeuPage.jsx` : `BarreJeu` au-dessus, bandeau démo conservé, le composant du jeu rendu tel quel dans `CadreBorne` (fond clair à l'intérieur). Chemin 404 (slug inconnu → `Page404`) inchangé.
+- `ResultatPartage.jsx` (habillage seulement, D1) : ajout d'une étiquette pixel « GAME OVER » / `bravo` au-dessus du score, clignotante (`.arcade-blink`, coupée sous `prefers-reduced-motion: reduce` via le `<style>` de `JeuPage.jsx`). Seuil retenu : `score >= 50` → `bravo`, sinon GAME OVER (`DECISIONS.md`). Aucune donnée ni comportement de partage modifié.
+- Critère d'acceptation 1 revérifié : `git diff --stat refonte-kiosque...HEAD -- src/jeux/geste-parfait src/jeux/a-vue-d-oeil src/jeux/comme-tout-le-monde src/jeux/registre.js src/jeux/socle/jour.js src/jeux/socle/serie.js src/jeux/socle/partage.js` → vide.
 - `npm run build` et `npm run lint` : OK.
