@@ -47,3 +47,7 @@ Voir `DECISIONS.md` pour le détail. En résumé :
 ## Recommandations
 - La mission **kiosque-finitions** (à cadrer après fusion de toutes les missions de la refonte) devra supprimer les exports désormais inutilisés de `MagazineParts.jsx` liés aux pages `/magazine` (si `MagazineMasthead`, `MagazineHero`, `IssueRow`, `ArticleCard` ne sont plus utilisés que par ce Magazine avant la refonte — à revérifier une fois toutes les missions fusionnées, car `ArchiveHome`/`Suivre`/`Projets`/`Brèves` les utilisent peut-être encore).
 - Avant la mise en ligne, vérifier le rendu visuel réel de la mission (cette session n'a pas de capture d'écran à joindre — le `verificateur` a confirmé l'absence d'erreur et de débordement, mais une relecture visuelle humaine reste utile, en particulier l'équilibre de la vedette à 2 colonnes et la lisibilité de la lettrine).
+
+## Retouches à la clôture (session interactive, 2026-10-04)
+- `/magazine` : le lien « Flux RSS » nu et l’ancien `SuivreBandeau` remplacés par un encadré « S’abonner au Magazine » (même composition que celui de la Gazette, en bleu revue).
+- Grille des numéros précédents en `auto-fill` : un numéro seul garde la largeur d’une colonne.

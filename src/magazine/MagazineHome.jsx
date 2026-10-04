@@ -4,7 +4,6 @@ import { useLanguage } from '../shell/LanguageContext'
 import { TeteRevue, CouvertureNumero } from './RevueParts'
 import { MAG_TEXT } from './magazineText'
 import { getIssues } from './numeros'
-import SuivreBandeau from '../suivre/SuivreBandeau'
 
 export default function MagazineHome() {
   const isMobile = useIsMobile()
@@ -81,7 +80,8 @@ export default function MagazineHome() {
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                  // auto-fill : un numéro seul garde la largeur d'une colonne au lieu de s'étirer
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
                   gap: 'var(--space-md-plus)',
                   marginBottom: 'var(--space-xl)',
                 }}
@@ -97,14 +97,22 @@ export default function MagazineHome() {
         </>
       )}
 
-      <a
-        href="/magazine/rss.xml"
-        style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none', display: 'inline-block', marginBottom: 40 }}
-      >
-        {t.rssLabel}
-      </a>
-
-      <SuivreBandeau rubrique="magazine" />
+      {/* Encadré d'abonnement, même composition que celui de la Gazette, en bleu revue */}
+      <div style={{ border: '3px double var(--titre-magazine)', padding: isMobile ? '18px 16px' : '20px 28px', margin: '0 0 40px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-sm)' }}>
+        <div>
+          <div style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, fontSize: 14, color: 'var(--titre-magazine)' }}>{t.subscribeTitle}</div>
+          <p style={{ fontFamily: 'var(--font-chapo)', fontStyle: 'italic', fontSize: 13, color: 'var(--text2)', margin: '4px 0 0' }}>{t.subscribeBody}</p>
+        </div>
+        <div style={{ display: 'flex', gap: 'var(--space-md)' }}>
+          {/* Fichier statique généré au build : lien classique, pas une route SPA */}
+          <a href="/magazine/rss.xml" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700, fontSize: 13, color: 'var(--titre-magazine)', textDecoration: 'none', borderBottom: '2px solid var(--titre-magazine)', paddingBottom: 2 }}>
+            {t.rssLabel}
+          </a>
+          <Link to="/suivre" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700, fontSize: 13, color: 'var(--text)', textDecoration: 'none', borderBottom: '2px solid var(--border)', paddingBottom: 2 }}>
+            {t.suivreLabel}
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }

@@ -84,6 +84,9 @@ export const MAG_TEXT = {
       docId: 'ID RUBRIQUE — ML-MAGAZINE',
       lireLabel: 'Lire le numéro →',
       rssLabel: 'Flux RSS',
+      subscribeTitle: 'S’abonner au Magazine',
+      subscribeBody: 'Un numéro chaque lundi, par flux RSS ou sur la page Suivre.',
+      suivreLabel: 'Suivre le Lab →',
     },
     issue: {
       mastheadCenter: 'ARCHIVE DU LAB //// REVUE DE VEILLE',
@@ -132,6 +135,9 @@ export const MAG_TEXT = {
       docId: 'SECTION ID — ML-MAGAZINE',
       lireLabel: 'Read the issue →',
       rssLabel: 'RSS feed',
+      subscribeTitle: 'Subscribe to the Magazine',
+      subscribeBody: 'A new issue every Monday, by RSS feed or on the Follow page.',
+      suivreLabel: 'Follow the Lab →',
     },
     issue: {
       mastheadCenter: 'LAB ARCHIVE //// WATCH REVIEW',
