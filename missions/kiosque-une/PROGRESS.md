@@ -1,7 +1,7 @@
 # Mission kiosque-une — PROGRESS
 
-**Statut :** étapes 1 à 6 faites, vérifiées dans le navigateur (`npx vite preview`, 375 px et 1366 px, FR et EN)
-**Prochaine action :** étape 7 (vérification finale complète → verificateur)
+**Statut :** étapes 1 à 7 faites
+**Prochaine action :** étape 8 (RAPPORT.md)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-10-04, branche `refonte-kiosque` = 99d9d7f)
@@ -28,3 +28,9 @@ Vérification dans le navigateur (`npm run build` + `npx vite preview` + Browser
 
 ## Étape 6 (2026-10-04)
 `Masthead.jsx` : nouveau palier `useIsMobile(600)` (D8). En dessous de 600 px : badge 46×50, label 16px, accroche masquée, h1 en `clamp(24px, 9vw, 34px)` + `nowrap`, paddings resserrés (en-tête et filet du haut). Mesuré à 375 px : en-tête de la maison 128 px (budget 200 px), titre sur une seule ligne. `npm run build` et `npm run lint` : OK.
+
+## Étape 7 (2026-10-04)
+Le sous-agent `verificateur` ne s'est pas lancé aux deux tentatives (voir DECISIONS.md) ; vérification finale faite par la session principale.
+- `npm run build` : OK. `npm run lint` : OK, 0 erreur.
+- `git grep -nE "picsum|unsplash|\.otf|\.ttf|woff2?" -- src index.html` : aucun résultat (critère 8).
+- Critères 1 à 7 et 9 : couverts par les vérifications navigateur déjà faites et consignées aux étapes 2-5 et 6 ci-dessus (document.title, liens des 4 couvertures, bulletin, traduction EN, 375 px/1366 px, absence d'erreurs console sur les 5 pages). Seul le critère 7 (`prefers-reduced-motion`) n'a pas pu être testé en live (outils de la session sans émulation de cette media feature) — vérifié par parité de code avec `Defilant.jsx`.

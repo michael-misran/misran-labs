@@ -10,5 +10,5 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 4. Présentoirs : les 4 couvertures, les tablettes, les légendes, le survol, la grille responsive, `prefers-reduced-motion` (D5, D7) → session principale (Sonnet)
 - [x] 5. Bulletin d'abonnement depuis `FEEDS` (D6) → session principale (Sonnet)
 - [x] 6. En-tête compact sur mobile dans `Masthead.jsx` (D8) → session principale (Sonnet)
-- [ ] 7. Vérification finale : build, lint et grep du critère 8 par la session principale ; critères 1 à 7 et 9 dans le navigateur (1366 px et 375 px, FR et EN) → verificateur (Haiku)
+- [x] 7. Vérification finale : build, lint et grep du critère 8 par la session principale ; critères 1 à 7 et 9 dans le navigateur (1366 px et 375 px, FR et EN) → verificateur (Haiku) — agent indisponible (voir DECISIONS.md), fait par la session principale
 - [ ] 8. RAPPORT.md (rappeler que la PR vise `refonte-kiosque`, puis lister les missions suivantes) → session principale (Sonnet)
