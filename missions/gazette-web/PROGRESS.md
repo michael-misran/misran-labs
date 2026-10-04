@@ -1,7 +1,7 @@
 # Mission gazette-web — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 5 (`/breves/:date`)
+**Prochaine action :** étape 6 (vérification finale)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-10-04, branche `refonte-kiosque` = 07a40cd)
@@ -19,4 +19,10 @@
 
 ## Étape 4 (exécution, 2026-10-04)
 - `BrevesHome.jsx` réécrit : `GazetteTete` + `GazetteEdition` du dernier jour, encadré « S'abonner à la Gazette » (lien RSS `/breves/rss.xml` en `<a href>` classique — fichier statique, pas une route SPA — et lien `/suivre`), index « Les éditions précédentes » en lignes à points de conduite (date ... titres). Plus aucun import de `MagazineHero`, `CaseMasthead`/`CaseMetaRow`/`CaseFooter`, `SectionTitle`, `Tag`, `SuivreBandeau`, `BrevesParts`.
+- `npm run build` et `npm run lint` : OK.
+
+## Étape 5 (exécution, 2026-10-04)
+- `BrevesJour.jsx` réécrit : `GazetteTete` + `GazetteEdition` du jour demandé, navigation « ← Édition précédente / Toutes les éditions / Édition suivante → » entre doubles filets. Page « Pas d'édition ce jour-là » dans le même style (même `GazetteTete`, sans date puisqu'aucun jour réel ne correspond).
+- `BrevesParts.jsx` supprimé entièrement : plus aucun importeur après la réécriture de `BrevesHome.jsx`/`BrevesJour.jsx` (`grep -rln "BrevesParts" src` → vide avant suppression).
+- Critère d'acceptation 1 revérifié : `git grep -nE "magazine/|lab/CaseFile|lab/caseChrome|SuivreBandeau" -- src/breves/` renvoyait 3 lignes — un commentaire de `brevesText.js` qui citait ces mots en prose (aucun import réel) — reformulé pour que le grep ne renvoie plus rien. `git diff --stat refonte-kiosque...HEAD -- src/magazine src/lab src/kiosque src/breves/jours` est vide (ces dossiers ne sont pas touchés).
 - `npm run build` et `npm run lint` : OK.

@@ -1,10 +1,8 @@
 // Textes fr/en des pages de Brèves et table des rubriques.
 // Séparé de GazetteParts.jsx (pas de composants ici) pour ne déclencher
-// aucun avertissement react-refresh/only-export-components — même
-// découpage que src/magazine/magazineText.js. `formatDateShort`/
-// `formatDateLong` sont redéclarées ici (pas importées de
-// src/magazine/) : le critère d'acceptation de la mission gazette-web
-// interdit tout import de src/magazine/ depuis src/breves/.
+// aucun avertissement react-refresh/only-export-components. `formatDateShort`/
+// `formatDateLong` sont redéclarées ici, sans dépendre du module Magazine :
+// cette rubrique ne dépend plus d'aucune autre section de la maison.
 
 export const RUBRIQUES = {
   ia: { fr: 'IA', en: 'AI', color: 'var(--violet)' },
