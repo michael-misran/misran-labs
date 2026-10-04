@@ -224,7 +224,7 @@
   --on-selected: var(--primitive-papier-50);
 
   /* Couleurs des 5 titres de la maison, et leurs typos propres (D5 :
-     Masthead, NavTitres, Defilant). font-bois/-2/-3 = lettres de bois
+     Masthead, NavTitres). font-bois/-2/-3 = lettres de bois
      (Ultra, Alfa Slab One, Rye) ; les autres sont nommées par le titre
      qui les porte. */
   --titre-gazette: var(--primitive-titre-gazette);
@@ -324,6 +324,8 @@
   --masthead-lettre: var(--primitive-creme-pulp);
   --masthead-ombre: var(--primitive-rouge-pulp-fonce);
   --masthead-encre: var(--primitive-encre);
+  /* Barre du menu des titres (NavTitres.jsx) */
+  --masthead-sommaire: var(--primitive-rouge-pulp-fonce);
   --masthead-radioactif: var(--primitive-radioactif);
 }
 

@@ -9,40 +9,18 @@ const rythme = {
   fontSize: 11,
   letterSpacing: '0.16em',
   textTransform: 'uppercase',
-  color: 'var(--text2)',
+  color: 'var(--masthead-encre)',
   display: 'block',
   marginBottom: 2,
+  whiteSpace: 'nowrap',
 }
 
-// Médaillon posé entre deux titres
-function Medaillon({ children }) {
-  return (
-    <span
-      aria-hidden="true"
-      style={{
-        position: 'absolute',
-        right: 0,
-        top: '50%',
-        transform: 'translate(50%, -50%)',
-        zIndex: 1,
-        width: 26,
-        height: 26,
-        borderRadius: '50%',
-        background: 'var(--masthead-lettre)',
-        border: '2px solid var(--masthead-encre)',
-        display: 'grid',
-        placeItems: 'center',
-        fontSize: 12,
-        lineHeight: 1,
-        color: 'var(--masthead-encre)',
-      }}
-    >
-      {children}
-    </span>
-  )
-}
-
-const SYMBOLES = ['★', '✦', '☠', '✺']
+// Barre fine façon sommaire de couverture pulp : les titres, plus hauts
+// qu'elle, la chevauchent. Le rythme (« Quotidien »…) déborde au-dessus,
+// sur le carton du header, comme les noms d'auteurs sur la couverture.
+const BARRE = 22
+const DEBORD_HAUT = 52
+const DEBORD_BAS = 26
 
 function estActif(pathname, match) {
   return match.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))
@@ -67,7 +45,7 @@ export default function NavTitres() {
           {t(lang, 'navTitreGazetteReste')}
         </>
       ),
-      style: { fontFamily: 'var(--font-gothique)', wordSpacing: 'var(--font-gothique-espace)', fontSize: 'clamp(28px, 3vw, 38px)' },
+      style: { fontFamily: 'var(--font-gothique)', wordSpacing: 'var(--font-gothique-espace)', fontSize: 'clamp(32px, 3.6vw, 46px)' },
     },
     {
       id: 'magazine',
@@ -76,7 +54,7 @@ export default function NavTitres() {
       couleur: 'var(--titre-magazine)',
       rythme: t(lang, 'navRythmeMagazine'),
       nom: t(lang, 'navTitreMagazine'),
-      style: { fontFamily: 'var(--primitive-font-playfair-display)', fontStyle: 'italic', fontWeight: 900, fontSize: 'clamp(22px, 2.5vw, 32px)' },
+      style: { fontFamily: 'var(--primitive-font-playfair-display)', fontStyle: 'italic', fontWeight: 900, fontSize: 'clamp(24px, 2.6vw, 34px)' },
     },
     {
       id: 'zine',
@@ -85,7 +63,7 @@ export default function NavTitres() {
       couleur: 'var(--titre-zine)',
       rythme: zineExiste ? t(lang, 'navRythmeZine') : t(lang, 'navBientot'),
       nom: t(lang, 'navTitreZine'),
-      style: { fontFamily: 'var(--font-bd)', fontStyle: 'italic', fontWeight: 700, textTransform: 'uppercase', fontSize: 'clamp(22px, 2.4vw, 30px)' },
+      style: { fontFamily: 'var(--font-bd)', fontStyle: 'italic', fontWeight: 700, textTransform: 'uppercase', fontSize: 'clamp(26px, 2.9vw, 36px)' },
     },
     {
       id: 'jeux',
@@ -94,7 +72,7 @@ export default function NavTitres() {
       couleur: 'var(--titre-jeux)',
       rythme: t(lang, 'navRythmeJeux'),
       nom: t(lang, 'navTitreJeux'),
-      style: { fontFamily: 'var(--font-pixel)', fontSize: 'clamp(14px, 1.55vw, 19px)', lineHeight: 1.6 },
+      style: { fontFamily: 'var(--font-pixel)', fontSize: 'clamp(16px, 1.9vw, 23px)', lineHeight: 1.6 },
     },
     {
       id: 'lab',
@@ -103,7 +81,7 @@ export default function NavTitres() {
       couleur: 'var(--titre-lab)',
       rythme: t(lang, 'navRythmeLab'),
       nom: t(lang, 'navTitreLab'),
-      style: { fontFamily: 'var(--font-machine)', letterSpacing: '0.02em', fontSize: 'clamp(24px, 2.6vw, 32px)' },
+      style: { fontFamily: 'var(--font-machine)', letterSpacing: '0.02em', fontSize: 'clamp(28px, 3.1vw, 38px)' },
     },
   ]
 
@@ -113,33 +91,65 @@ export default function NavTitres() {
       aria-label="Titres de la maison"
       style={{
         position: 'sticky',
-        top: 0,
+        // Collée sous ce qui déborde au-dessus, pour que les titres restent entiers
+        top: DEBORD_HAUT,
         zIndex: 30,
-        background: 'var(--bg2)',
-        borderBottom: '3px double var(--border)',
+        height: BARRE,
+        background: 'var(--masthead-sommaire)',
+        borderTop: '4px solid var(--masthead-encre)',
+        borderBottom: '4px solid var(--masthead-encre)',
+        // Place laissée sous la barre pour le bas des titres, qui déborde
+        marginBottom: DEBORD_BAS,
+        boxSizing: 'content-box',
+        // Empêche la marge négative de la zone de défilement de « fusionner »
+        // avec celle de la barre (sans bordure haute, elle remonterait toute la barre)
+        display: 'flow-root',
       }}
     >
+      {/* Zone de défilement agrandie (marges négatives + padding) : sur mobile
+          le menu défile de côté sans rogner ce qui déborde de la barre */}
       <div
         style={{
           maxWidth: 1240,
-          margin: '0 auto',
+          margin: `-${DEBORD_HAUT}px auto -${DEBORD_BAS}px`,
+          padding: `${DEBORD_HAUT}px 0 ${DEBORD_BAS}px`,
           display: 'grid',
           gridTemplateColumns: 'repeat(5, minmax(175px, 1fr))',
           overflowX: 'auto',
+          overflowY: 'hidden',
         }}
       >
         {titres.map((titre, i) => {
           const contenu = (
             <>
-              <span style={rythme}>{titre.rythme}</span>
-              {/* Rangée du titre, avec le médaillon qui le sépare du suivant */}
-              <span style={{ position: 'relative', display: 'block', padding: '4px 0' }}>
+              {/* Titre centré sur la barre, rythme posé au-dessus */}
+              <span
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                }}
+              >
+                <span
+                  style={{
+                    ...rythme,
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    bottom: '100%',
+                    color: titre.actif ? titre.couleur : rythme.color,
+                  }}
+                >
+                  {titre.rythme}
+                </span>
                 <span
                   style={{
                     display: 'inline-block',
                     lineHeight: 1.05,
                     color: titre.couleur,
-                    WebkitTextStroke: '3px var(--masthead-encre)',
+                    WebkitTextStroke: '3px var(--masthead-lettre)',
                     paintOrder: 'stroke fill',
                     transform: `rotate(${i % 2 ? 1.5 : -1.5}deg)`,
                     ...titre.style,
@@ -147,16 +157,15 @@ export default function NavTitres() {
                 >
                   {titre.nom}
                 </span>
-                {i < titres.length - 1 && <Medaillon>{SYMBOLES[i]}</Medaillon>}
               </span>
             </>
           )
 
           const commonStyle = {
+            position: 'relative',
             display: 'block',
-            padding: '8px 0 8px',
+            height: BARRE,
             textAlign: 'center',
-            borderBottom: titre.actif ? `3px solid ${titre.couleur}` : '3px solid transparent',
             textDecoration: 'none',
           }
 
