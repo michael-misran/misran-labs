@@ -50,6 +50,10 @@ export default function Colophon() {
           <p style={{ fontSize: 15, lineHeight: 1.5, color: 'var(--text2)' }}>
             {t(lang, 'colophonTexte')}
           </p>
+          {/* Crédit des polices (Comic Book est sous OFL, hommage à son auteur) */}
+          <p style={{ marginTop: 6, fontFamily: 'var(--font-chapo)', fontStyle: 'italic', fontSize: 13, lineHeight: 1.4, color: 'var(--muted)' }}>
+            {t(lang, 'colophonPolices')}
+          </p>
           <p style={{ marginTop: 8, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
             <a
               href="https://github.com/michael-misran/misran-labs"
