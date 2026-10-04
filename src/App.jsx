@@ -4,6 +4,7 @@ import Shell from './shell/Shell'
 import ArchiveHome from './modules/ArchiveHome'
 import { LanguageProvider } from './shell/LanguageProvider'
 
+const KiosqueHome = lazy(() => import('./kiosque/KiosqueHome'))
 const ProjectPage = lazy(() => import('./lab/ProjectPage'))
 const ProjectDemoPage = lazy(() => import('./lab/ProjectDemoPage'))
 const MagazineHome = lazy(() => import('./magazine/MagazineHome'))
@@ -23,7 +24,7 @@ export default function App() {
     <LanguageProvider>
       <Routes>
         <Route path="/" element={<Shell />}>
-          <Route index element={<ArchiveHome />} />
+          <Route index element={<KiosqueHome />} />
           <Route path="lab" element={<ArchiveHome />} />
           <Route path="lab/:slug" element={<ProjectPage />} />
           <Route path="lab/:slug/demo/:version?" element={<ProjectDemoPage />} />
