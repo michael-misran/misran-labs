@@ -51,6 +51,106 @@ export const SPRITES = {
       en: ['Blop!', 'Experiment in progress…', 'Careful, it fizzes', 'Read today\'s Briefs?', 'Secret formula: coffee']
     }
   },
+  // L'Alambic, mascotte de la maison d'édition : cucurbite cuivrée au visage
+  // de la Fiole, chapiteau, col de cygne, serpentin, goutte et petite fiole
+  // qui recueille le distillat, flammes dessous.
+  alambic: {
+    base: [
+      '.....k..........',
+      '....kdk.........',
+      '...kdddkkkk.....',
+      '..kdhdddk...k...',
+      '..kkkkkkk....k..',
+      '....kwk.....kkkk',
+      '..kkkckkk...kwkk',
+      '.kccccccck..kkwk',
+      'kccEcccEcck.kwkk',
+      'kccEcccEcck.kkkk',
+      'kcrckckcrck..k..',
+      'kcccckcccck..c..',
+      '.kccccccck..k.k.',
+      '..kkkkkkk..kccck',
+      '...o.o.o...kccck',
+      '..ooooooo...kkk.'
+    ],
+    blink: {
+      8: 'kccccccccck.kwkk'
+    },
+    look: {
+      8: 'kcccEcccEck.kwkk',
+      9: 'kcccEcccEck.kkkk'
+    },
+    // Endormi : yeux fermés, bouche plate, feu en veilleuse
+    sleep: {
+      8: 'kccccccccck.kwkk',
+      10: 'kcrcckccrck..k..',
+      11: 'kccccccccck..c..',
+      14: '...........kccck',
+      15: '...ooooo....kkk.'
+    },
+    happy: {
+      8: 'kcEcEcEcEck.kwkk',
+      9: 'kccccccccck.kkkk'
+    },
+    // Animation continue, pas à pas : [x, y, pixel] posés sur l'image du
+    // moment. Les flammes vacillent, la goutte tombe dans la petite fiole.
+    cycle: [
+      [],
+      [[13, 11, '.'], [13, 12, 'c'], [3, 14, '.'], [5, 14, '.'], [7, 14, '.'], [4, 14, 'o'], [6, 14, 'o'], [2, 15, '.'], [8, 15, '.']],
+      [[13, 11, '.']],
+      [[13, 11, '.'], [3, 14, '.'], [5, 14, '.'], [7, 14, '.'], [4, 14, 'o'], [6, 14, 'o'], [2, 15, '.'], [8, 15, '.']]
+    ],
+    phrases: {
+      fr: ['Blop !', 'Distillation en cours…', 'Goutte à goutte', 'Tu as lu la Gazette ?', 'Cuvée maison'],
+      en: ['Blop!', 'Distilling…', 'Drop by drop', 'Read today\'s Briefs?', 'House vintage']
+    }
+  },
+  // Secret du 10ᵉ clic de l'Alambic : il explose, puis reste un moment
+  // noirci de suie (chapiteau envolé, fumée, yeux sonnés, panse fêlée).
+  explosion: {
+    base: [
+      '........k.......',
+      '.k.....dd.......',
+      '.......cc.....k.',
+      '...cd..cc..dc...',
+      '...docdoodcod...',
+      '....coowwooc....',
+      '....dowhhwod....',
+      '.dccowhhhhwoccd.',
+      '.dccowhhhhwoccd.',
+      'k...dowhhwod....',
+      '....coowwooc....',
+      '...docdoodcod...',
+      '...cd..cc..dc..k',
+      '.......cc.......',
+      '...k...dd.......',
+      '............k...'
+    ]
+  },
+  suie: {
+    base: [
+      '....w...w.......',
+      '.....w.w........',
+      '....w...w.......',
+      '...........k....',
+      '...k.k.......k..',
+      '....kwk.....kkkk',
+      '..kkkdkkk...kwkk',
+      '.kddkdddk...kkwk',
+      'kdEdEdEdEdk.kwkk',
+      'kddEdddEddk.kkkk',
+      'kdEdEdEdEdk..k..',
+      'kdrdkdkdrdk.....',
+      '.kdddkdddk..k.k.',
+      '..kkkkkkk..kccck',
+      '...........kccck',
+      '............kkk.'
+    ],
+    phrases: {
+      fr: 'Oups… recette instable',
+      en: 'Oops… unstable recipe'
+    }
+  },
   toxique: {
     base: [
       '................',
@@ -98,5 +198,7 @@ export const SPRITES = {
 // Particules FX (mini-sprites)
 export const FX = {
   bubble: ['.w.', 'w.w', '.w.'],
-  poison: ['.c.', 'c.c', '.c.']
+  poison: ['.c.', 'c.c', '.c.'],
+  eclat: ['.d.', 'dck', '.k.'],
+  etincelle: ['.o.', 'oho', '.o.']
 };

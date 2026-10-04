@@ -15,15 +15,33 @@ const TOXIC_BUBBLE_DURATION = 2500
 const TOXIC_SPIN_DURATION = 800
 const TOXIC_GLOW_DURATION = 1000
 const TOXIC_TOTAL_DURATION = 4000
+const CYCLE_DURATION = 380
+// Explosion de l'Alambic au 10ᵉ clic : tremblement, boum, suie, retour
+const SHAKE_DURATION = 900
+const BOOM_DURATION = 450
+const SUIE_DURATION = 3200
+const PHRASE_SURCHAUFFE = { fr: 'Ça chauffe…', en: 'Heating up…' }
+const PHRASE_BOUM = { fr: 'BOUM !', en: 'BOOM!' }
 
-const ARIA_LABEL = { fr: 'Fiole, la mascotte du Lab', en: 'Flask, the Lab mascot' }
-const ARIA_LABEL_TOXIQUE = { fr: 'Fiole toxique', en: 'Toxic flask' }
+const ARIA_LABELS = {
+  fiole: { fr: 'Fiole, la mascotte du Lab', en: 'Flask, the Lab mascot' },
+  alambic: { fr: "L'Alambic, la mascotte de la maison", en: 'The Alembic, the house mascot' },
+  toxique: { fr: 'Fiole toxique', en: 'Toxic flask' },
+}
 
 function frameRows(sprite, frame) {
   if (frame === 'base' || !sprite[frame]) return sprite.base
   const rows = sprite.base.slice()
   Object.entries(sprite[frame]).forEach(([i, row]) => { rows[Number(i)] = row })
   return rows
+}
+
+// Pose un pas de l'animation continue (`cycle` du sprite) sur l'image
+function applyCycle(rows, pixels) {
+  if (!pixels || !pixels.length) return rows
+  const out = rows.map((row) => [...row])
+  pixels.forEach(([x, y, c]) => { out[y][x] = c })
+  return out.map((row) => row.join(''))
 }
 
 function renderPixels(rows, scale) {
@@ -52,7 +70,8 @@ function renderPixels(rows, scale) {
 // `scale` : facteur d'agrandissement de la grille 16×16 (3 = 48×48 px dans la
 // barre d'état, 4 pour l'en-tête des rubriques introuvables, 8 pour la 404).
 // `variant` : sprite de repos ('fiole' pour la mascotte normale, 'toxique'
-// pour la Fiole dédiée de la page 404 — comportement propre, voir D7).
+// pour la Fiole dédiée de la page 404 — comportement propre, voir D7 ;
+// 'alambic' pour la mascotte de la maison d'édition, animée en continu).
 // `sleeps` : autorise ou non l'endormissement après 30 s d'inactivité.
 export default function Fiole({ scale = 3, variant = 'fiole', sleeps = true }) {
   const { lang } = useLanguage()
@@ -72,6 +91,9 @@ export default function Fiole({ scale = 3, variant = 'fiole', sleeps = true }) {
   const [bubble, setBubble] = useState(null)
   const [bubbleRect, setBubbleRect] = useState(null)
   const [particles, setParticles] = useState([])
+  const [pas, setPas] = useState(0)
+  // Image exceptionnelle qui remplace le sprite : 'explosion' ou 'suie'
+  const [special, setSpecial] = useState(null)
 
   const blinkTimer = useRef(null)
   const blinkBackTimer = useRef(null)
@@ -109,6 +131,14 @@ export default function Fiole({ scale = 3, variant = 'fiole', sleeps = true }) {
     }
   }, [])
 
+  // Animation continue du sprite (flammes, goutte de l'alambic), pas à pas.
+  useEffect(() => {
+    if (!SPRITES[variant].cycle || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const longueur = SPRITES[variant].cycle.length
+    const minuterie = setInterval(() => setPas((p) => (p + 1) % longueur), CYCLE_DURATION)
+    return () => clearInterval(minuterie)
+  }, [variant])
+
   // Nettoyage de toutes les minuteries au démontage (D9).
   useEffect(() => {
     const toxicTimersList = toxicTimers.current
@@ -138,7 +168,7 @@ export default function Fiole({ scale = 3, variant = 'fiole', sleeps = true }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const spawnParticles = (kind, count) => {
+  const spawnParticles = (kind, count, ecart = 60) => {
     if (reducedMotionRef.current || !buttonRef.current) return
     const r = buttonRef.current.getBoundingClientRect()
     const particleScale = Math.max(2, scale / 2)
@@ -149,7 +179,7 @@ export default function Fiole({ scale = 3, variant = 'fiole', sleeps = true }) {
         id,
         kind,
         scale: particleScale,
-        dx: (Math.random() - 0.5) * 60,
+        dx: (Math.random() - 0.5) * ecart,
         left: r.left + r.width * (0.3 + Math.random() * 0.4),
         top: r.top + Math.random() * r.height * 0.3,
         delay: i * 70,
@@ -184,7 +214,7 @@ export default function Fiole({ scale = 3, variant = 'fiole', sleeps = true }) {
     }, HAPPY_DURATION)
 
     spawnParticles('bubble', 4)
-    const phrases = SPRITES.fiole.phrases[lang] || SPRITES.fiole.phrases.fr
+    const phrases = SPRITES[variant].phrases[lang] || SPRITES[variant].phrases.fr
     showBubble(phrases[Math.floor(Math.random() * phrases.length)], BUBBLE_DURATION)
   }
 
@@ -227,6 +257,41 @@ export default function Fiole({ scale = 3, variant = 'fiole', sleeps = true }) {
     }, TOXIC_TOTAL_DURATION))
   }
 
+  // Secret du 10ᵉ clic de l'Alambic : la distillation tourne mal. Il tremble,
+  // explose en éclats de cuivre et étincelles, reste noirci un moment, puis
+  // se remet en état. Les clics pendant ce temps ne relancent rien.
+  const reactExplosion = () => {
+    toxicTimers.current.forEach(clearTimeout)
+    toxicTimers.current.length = 0
+    toxicRef.current = true
+
+    setAnimClass('shake')
+    setFrame('happy')
+    showBubble(PHRASE_SURCHAUFFE[lang] || PHRASE_SURCHAUFFE.fr, SHAKE_DURATION)
+
+    toxicTimers.current.push(setTimeout(() => {
+      setAnimClass(null)
+      setSpecial('explosion')
+      spawnParticles('eclat', 10, 160)
+      spawnParticles('etincelle', 10, 140)
+      showBubble(PHRASE_BOUM[lang] || PHRASE_BOUM.fr, BOOM_DURATION + 400)
+    }, SHAKE_DURATION))
+    toxicTimers.current.push(setTimeout(() => {
+      setSpecial('suie')
+      setFrame('base')
+      const phrases = SPRITES.suie.phrases
+      showBubble(phrases[lang] || phrases.fr, SUIE_DURATION - 400)
+    }, SHAKE_DURATION + BOOM_DURATION))
+    toxicTimers.current.push(setTimeout(() => {
+      setSpecial(null)
+      toxicRef.current = false
+      setAnimClass('wobble')
+      wobbleTimer.current = setTimeout(() => setAnimClass(null), WOBBLE_DURATION)
+      spawnParticles('bubble', 4)
+      wake()
+    }, SHAKE_DURATION + BOOM_DURATION + SUIE_DURATION))
+  }
+
   const handleClick = () => {
     wake()
     if (variant === 'toxique') {
@@ -237,7 +302,10 @@ export default function Fiole({ scale = 3, variant = 'fiole', sleeps = true }) {
     // Un clic pendant la transformation compte, mais ne la relance pas :
     // elle va à son terme (D6).
     if (toxicRef.current) return
-    if (clicksRef.current % 10 === 0) reactToxic()
+    if (clicksRef.current % 10 === 0) {
+      if (variant === 'alambic') reactExplosion()
+      else reactToxic()
+    }
     else reactNormally()
   }
 
@@ -249,12 +317,13 @@ export default function Fiole({ scale = 3, variant = 'fiole', sleeps = true }) {
     if (frameRef.current === 'look') setFrame('base')
   }
 
-  const sprite = SPRITES[toxic ? 'toxique' : variant]
-  const rows = frameRows(sprite, frame)
+  const sprite = SPRITES[special || (toxic ? 'toxique' : variant)]
+  // Pas d'animation continue endormi : le feu est en veilleuse
+  const rows = applyCycle(frameRows(sprite, frame), frame === 'sleep' || special ? null : sprite.cycle?.[pas])
   const btnClass = ['fiole-btn', animClass ? `fiole-${animClass}` : null, frame === 'sleep' ? 'fiole-sleep' : null]
     .filter(Boolean)
     .join(' ')
-  const labels = variant === 'toxique' ? ARIA_LABEL_TOXIQUE : ARIA_LABEL
+  const labels = ARIA_LABELS[variant]
 
   return (
     <>

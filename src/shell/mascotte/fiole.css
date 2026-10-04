@@ -54,6 +54,25 @@
   transform-origin: 50% 50%;
 }
 
+/* Surchauffe de l'Alambic avant l'explosion : tremblement qui s'emballe */
+.fiole-shake .fiole-inner {
+  animation: fiole-shake 0.9s steps(18) 1;
+  transform-origin: 50% 100%;
+}
+
+@keyframes fiole-shake {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1px, 0); }
+  20% { transform: translate(1px, 0); }
+  30% { transform: translate(-1px, -1px); }
+  40% { transform: translate(2px, 0); }
+  50% { transform: translate(-2px, -1px); }
+  60% { transform: translate(2px, 1px); }
+  70% { transform: translate(-3px, -1px); }
+  80% { transform: translate(3px, 0) rotate(3deg); }
+  90% { transform: translate(-3px, -2px) rotate(-4deg); }
+}
+
 @keyframes fiole-bob {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(calc(-1 * var(--fiole-bob, 2px))); }
