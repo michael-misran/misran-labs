@@ -1,10 +1,10 @@
 // Textes fr/en des pages de Brèves et table des rubriques.
-// Séparé de BrevesParts.jsx (pas de composants ici) pour ne déclencher
+// Séparé de GazetteParts.jsx (pas de composants ici) pour ne déclencher
 // aucun avertissement react-refresh/only-export-components — même
-// découpage que src/magazine/magazineText.js.
-import { formatDateShort, formatDateLong } from '../magazine/magazineText'
-
-export { formatDateShort, formatDateLong }
+// découpage que src/magazine/magazineText.js. `formatDateShort`/
+// `formatDateLong` sont redéclarées ici (pas importées de
+// src/magazine/) : le critère d'acceptation de la mission gazette-web
+// interdit tout import de src/magazine/ depuis src/breves/.
 
 export const RUBRIQUES = {
   ia: { fr: 'IA', en: 'AI', color: 'var(--violet)' },
@@ -24,8 +24,41 @@ export function rubriqueColor(rubrique) {
   return RUBRIQUES[rubrique]?.color ?? 'var(--muted)'
 }
 
+// "2026-09-28" → "28.09.2026". Concaténation manuelle : même rendu FR et EN.
+export function formatDateShort(iso) {
+  const [y, m, d] = iso.split('-')
+  return `${d}.${m}.${y}`
+}
+
+// "2026-09-28" → "lundi 28 septembre 2026" / "Monday, September 28, 2026".
+// Découpage manuel de la chaîne avant new Date() : "2026-09-28" seul est
+// interprété en UTC par le moteur JS et peut retomber sur la veille selon
+// le fuseau local.
+export function formatDateLong(iso, lang) {
+  const [y, m, d] = iso.split('-').map(Number)
+  const date = new Date(y, m - 1, d)
+  return date.toLocaleDateString(lang === 'en' ? 'en-US' : 'fr-FR', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
+}
+
 export const BREVES_TEXT = {
   fr: {
+    tete: {
+      oreilleGauche: 'Édition du matin',
+      oreilleDroite: 'Prix : un café',
+      titre: ['La ', 'G', 'azette du ', 'L', 'ab'],
+      devise: 'Le quotidien du Lab, à lire avec le café — IA · Tech',
+      paraitChaque: 'Paraît chaque matin',
+      brevesCount: (n) => `${n} brève${n === 1 ? '' : 's'}`,
+    },
+    edition: {
+      kickerPrefix: 'À la une',
+      sourceLabel: 'Source',
+    },
     home: {
       fileNo: 'RUBRIQUE — GAZETTE',
       mastheadCenter: 'ARCHIVE DU LAB //// ACTU DU JOUR',
@@ -43,9 +76,13 @@ export const BREVES_TEXT = {
       wordLabel: 'LE MOT',
       figureLabel: 'LE CHIFFRE',
       sourceLink: 'Lire la source ↗',
-      previousDaysTitle: 'Jours précédents',
-      empty: 'Aucune brève publiée pour l\'instant.',
+      previousDaysTitle: 'Les éditions précédentes',
+      empty: 'Aucune édition pour l\'instant.',
       docId: 'ID RUBRIQUE — ML-BREVES',
+      subscribeTitle: 'S\'abonner à la Gazette',
+      subscribeBody: 'Dans votre lecteur de flux, ou via la page Suivre.',
+      rssLabel: 'Flux RSS',
+      suivreLabel: 'Suivre',
     },
     day: {
       mastheadCenter: 'ARCHIVE DU LAB //// ACTU DU JOUR',
@@ -54,18 +91,30 @@ export const BREVES_TEXT = {
       wordLabel: 'LE MOT',
       figureLabel: 'LE CHIFFRE',
       sourceLink: 'Lire la source ↗',
-      previousDay: '← Jour précédent',
-      nextDay: 'Jour suivant →',
-      backToList: '← Toutes les éditions',
+      previousDay: '← Édition précédente',
+      nextDay: 'Édition suivante →',
+      backToList: 'Toutes les éditions',
       docId: 'ID JOUR — ML-BREVES',
       notFoundFileNo: 'GAZETTE — ???',
       notFoundRight: '—',
-      notFoundLabel: 'RÉFÉRENCE DEMANDÉE',
-      notFoundTitle: 'Aucune brève ce jour-là',
-      notFoundBody: 'Aucune brève n\'a été publiée à cette date.',
+      notFoundLabel: 'DATE DEMANDÉE',
+      notFoundTitle: 'Pas d\'édition ce jour-là',
+      notFoundBody: 'Aucune édition n\'a été publiée à cette date.',
     },
   },
   en: {
+    tete: {
+      oreilleGauche: 'Morning edition',
+      oreilleDroite: 'Price: one coffee',
+      titre: ['The ', 'L', 'ab ', 'G', 'azette'],
+      devise: 'The Lab\'s daily, best read with coffee — AI · Tech',
+      paraitChaque: 'Published every morning',
+      brevesCount: (n) => `${n} brief${n === 1 ? '' : 's'}`,
+    },
+    edition: {
+      kickerPrefix: 'Front page',
+      sourceLabel: 'Source',
+    },
     home: {
       fileNo: 'SECTION — GAZETTE',
       mastheadCenter: 'LAB ARCHIVE //// DAILY BRIEFS',
@@ -83,9 +132,13 @@ export const BREVES_TEXT = {
       wordLabel: 'THE WORD',
       figureLabel: 'THE FIGURE',
       sourceLink: 'Read the source ↗',
-      previousDaysTitle: 'Previous days',
-      empty: 'No briefs published yet.',
+      previousDaysTitle: 'Previous editions',
+      empty: 'No edition yet.',
       docId: 'SECTION ID — ML-BREVES',
+      subscribeTitle: 'Subscribe to the Gazette',
+      subscribeBody: 'In your feed reader, or via the Follow page.',
+      rssLabel: 'RSS feed',
+      suivreLabel: 'Follow',
     },
     day: {
       mastheadCenter: 'LAB ARCHIVE //// DAILY BRIEFS',
@@ -94,15 +147,15 @@ export const BREVES_TEXT = {
       wordLabel: 'THE WORD',
       figureLabel: 'THE FIGURE',
       sourceLink: 'Read the source ↗',
-      previousDay: '← Previous day',
-      nextDay: 'Next day →',
-      backToList: '← All editions',
+      previousDay: '← Previous edition',
+      nextDay: 'Next edition →',
+      backToList: 'All editions',
       docId: 'DAY ID — ML-BREVES',
       notFoundFileNo: 'GAZETTE — ???',
       notFoundRight: '—',
-      notFoundLabel: 'REQUESTED REFERENCE',
-      notFoundTitle: 'No briefs that day',
-      notFoundBody: 'No briefs were published on this date.',
+      notFoundLabel: 'REQUESTED DATE',
+      notFoundTitle: 'No edition that day',
+      notFoundBody: 'No edition was published on this date.',
     },
   },
 }
