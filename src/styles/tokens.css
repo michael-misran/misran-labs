@@ -109,6 +109,16 @@
   --primitive-titre-jeux: #ff8a1f;
   --primitive-titre-lab: #1f7a4d;
 
+  /* Palette pulp de l'en-tête (relevée sur une couverture DoggyBags) :
+     carton kraft, rouge sang, crème des lettres, jaune radioactif. */
+  --primitive-kraft: #b0a165;
+  --primitive-kraft-ombre: rgba(60,50,20,0.45);
+  --primitive-kraft-trame: rgba(40,32,10,0.22);
+  --primitive-rouge-pulp: #b5231b;
+  --primitive-rouge-pulp-fonce: #6e120d;
+  --primitive-creme-pulp: #f0e2bd;
+  --primitive-radioactif: #d9e84a;
+
   /* Couleurs avec transparence : suffixe -aNN = opacité en centièmes.
      Valeurs rgba recopiées telles quelles depuis les anciens semantics. */
   --primitive-ink-900-a12: rgba(36,28,22,0.12);
@@ -160,6 +170,8 @@
   --primitive-font-vt323: 'VT323', monospace;
   --primitive-font-special-elite: 'Special Elite', 'Courier New', monospace;
   --primitive-font-chango: 'Chango', 'Ultra', serif;
+  --primitive-font-bowlby-one-sc: 'Bowlby One SC', 'Chango', Impact, sans-serif;
+  --primitive-font-bangers: 'Bangers', 'Anton', Impact, sans-serif;
   --primitive-font-germanica: 'Plain Germanica', 'UnifrakturMaguntia', cursive;
   --primitive-font-unifraktur-maguntia: 'UnifrakturMaguntia', cursive;
   --primitive-font-comic-book: 'Comic Book', 'Comic Neue', 'Comic Sans MS', cursive;
@@ -229,6 +241,11 @@
   --font-gothique: var(--primitive-font-germanica);
   /* Logo et grand titre de la maison (« MISRAN LABS ») */
   --font-logo: var(--primitive-font-chango);
+  /* Grand titre pulp de l'en-tête, et son lettrage d'affiche (cartouche) */
+  --font-pulp: var(--primitive-font-bowlby-one-sc);
+  --font-affiche: var(--primitive-font-bangers);
+  /* Noms du bandeau rouge de l'en-tête */
+  --font-bandeau: var(--primitive-font-anton);
   /* L'espace entre les mots de Germanica est très large (≈ 0,56 em) : on le resserre. */
   --font-gothique-espace: -0.3em;
   --font-bd: var(--primitive-font-comic-book);
@@ -298,6 +315,17 @@
   --case-tabs-tint-3: color-mix(in srgb, var(--pink) 16%, var(--bg3));
   --case-tabs-tint-4: color-mix(in srgb, var(--warning) 18%, var(--bg3));
   --case-tabs-tint-5: color-mix(in srgb, var(--cyan) 16%, var(--bg3));
+
+  /* En-tête pulp (Masthead.jsx) : une couverture imprimée, mêmes couleurs
+     en thème clair comme en sombre. */
+  --masthead-bandeau: var(--primitive-rouge-pulp);
+  --masthead-fond: var(--primitive-kraft);
+  --masthead-fond-ombre: var(--primitive-kraft-ombre);
+  --masthead-trame: var(--primitive-kraft-trame);
+  --masthead-lettre: var(--primitive-creme-pulp);
+  --masthead-ombre: var(--primitive-rouge-pulp-fonce);
+  --masthead-encre: var(--primitive-encre);
+  --masthead-radioactif: var(--primitive-radioactif);
 }
 
 /* Portée inversée : la diapositive corail plein cadre d'une planche
