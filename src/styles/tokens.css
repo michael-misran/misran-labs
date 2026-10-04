@@ -173,6 +173,7 @@
   --primitive-font-press-start-2p: 'Press Start 2P', monospace;
   --primitive-font-vt323: 'VT323', monospace;
   --primitive-font-special-elite: 'Special Elite', 'Courier New', monospace;
+  --primitive-font-chango: 'Chango', 'Ultra', serif;
   --primitive-font-germanica: 'Plain Germanica', 'UnifrakturMaguntia', cursive;
   --primitive-font-unifraktur-maguntia: 'UnifrakturMaguntia', cursive;
   --primitive-font-comic-book: 'Comic Book', 'Comic Neue', 'Comic Sans MS', cursive;
@@ -240,6 +241,8 @@
   --font-etiquette: var(--primitive-font-oswald);
   --font-chapo: var(--primitive-font-im-fell-english);
   --font-gothique: var(--primitive-font-germanica);
+  /* Logo et grand titre de la maison (« MISRAN LABS ») */
+  --font-logo: var(--primitive-font-chango);
   /* L'espace entre les mots de Germanica est très large (≈ 0,56 em) : on le resserre. */
   --font-gothique-espace: -0.3em;
   --font-bd: var(--primitive-font-comic-book);

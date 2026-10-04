@@ -1,3 +1,4 @@
+import LogoFiole from './LogoFiole'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 
@@ -23,28 +24,9 @@ export default function Colophon() {
           alignItems: 'center',
         }}
       >
-        <div
-          style={{
-            width: 64,
-            height: 72,
-            background: 'var(--text)',
-            color: 'var(--bg)',
-            borderRadius: '50% 50% 46% 46%',
-            display: 'grid',
-            placeItems: 'center',
-            textAlign: 'center',
-            lineHeight: 1,
-          }}
-        >
-          <div>
-            <b style={{ fontFamily: 'var(--font-bois-2)', fontWeight: 400, fontSize: 24, display: 'block' }}>
-              {t(lang, 'mastheadLabel')}
-            </b>
-            <span style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 700, fontSize: 8 }}>
-              {t(lang, 'mastheadLabelSub')}
-            </span>
-          </div>
-        </div>
+        <span style={{ color: 'var(--text)' }}>
+          <LogoFiole largeur={104} avecTexte />
+        </span>
 
         <div>
           <p style={{ fontSize: 15, lineHeight: 1.5, color: 'var(--text2)' }}>
