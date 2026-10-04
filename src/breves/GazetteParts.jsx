@@ -103,7 +103,7 @@ function SourcesGazette({ sources, lang }) {
         const hostname = hostnameOf(source.url)
         return (
           <div key={i} style={{ fontFamily: 'var(--font-chapo)', fontStyle: 'italic', fontSize: 12.5, color: 'var(--text2)' }}>
-            {t.sourceLabel} :{' '}
+            {lang === 'fr' ? `${t.sourceLabel} : ` : `${t.sourceLabel}: `}
             <a href={source.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--titre-gazette)', textDecoration: 'underline', textUnderlineOffset: 2 }}>
               {source.titre} ↗
             </a>
