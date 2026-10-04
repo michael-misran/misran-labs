@@ -1,10 +1,8 @@
+import { Link } from 'react-router-dom'
 import useIsMobile from '../shell/useIsMobile'
 import { useLanguage } from '../shell/LanguageContext'
-import { CaseMasthead, CaseMetaRow, CaseFooter } from '../lab/CaseFile'
-import { CASE_CHROME } from '../lab/caseChrome'
-import SectionTitle from '../design-system/SectionTitle'
-import { MagazineHero, IssueRow } from './MagazineParts'
-import { MAG_TEXT, CATEGORIES } from './magazineText'
+import { TeteRevue, CouvertureNumero } from './RevueParts'
+import { MAG_TEXT } from './magazineText'
 import { getIssues } from './numeros'
 import SuivreBandeau from '../suivre/SuivreBandeau'
 
@@ -12,47 +10,101 @@ export default function MagazineHome() {
   const isMobile = useIsMobile()
   const { lang } = useLanguage()
   const t = MAG_TEXT[lang].home
-  const chrome = CASE_CHROME[lang]
   const issues = getIssues()
+  const [vedette, ...precedents] = issues
 
   return (
-    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
-      <CaseMasthead
-        c={{ fileNo: t.fileNo, mastheadCenter: t.mastheadCenter, mastheadRight: t.mastheadRight, mastheadRightSub: t.mastheadRightSub }}
-        lang={lang}
-      />
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, maxWidth: 960, margin: '0 auto' }}>
+      <style>{`
+        .mag-dropcap::first-letter {
+          float: left;
+          font-family: var(--primitive-font-playfair-display);
+          font-style: italic;
+          font-weight: 900;
+          font-size: 54px;
+          line-height: 0.8;
+          color: var(--titre-magazine);
+          margin: 2px 8px 0 0;
+        }
+      `}</style>
 
-      <MagazineHero number="📖" title={t.title} subtitle={t.subtitle}>
-        <CaseMetaRow
-          columns={[
-            { label: t.publishedLabel, value: t.publishedValue },
-            { label: t.editorialLabel, value: t.editorialValue },
-            { label: t.sectionsLabel, chips: Object.values(CATEGORIES).map(c => c[lang]) },
-          ]}
-        />
-      </MagazineHero>
-
-      <p style={{ maxWidth: 720, fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.7, color: 'var(--prose)', margin: '0 0 40px' }}>
-        {t.concept}
-      </p>
-
-      <SectionTitle>{t.issuesTitle}</SectionTitle>
+      <TeteRevue title={t.title} subtitle={t.subtitle} />
 
       {issues.length === 0 ? (
         <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--muted)' }}>{t.empty}</p>
       ) : (
-        <ol style={{ listStyle: 'none', margin: 0, padding: 0, borderBottom: 'var(--border-thin) solid var(--border)' }}>
-          {issues.map((issue, i) => (
-            <li key={issue.date}>
-              <IssueRow issue={issue} lang={lang} latest={i === 0} />
-            </li>
-          ))}
-        </ol>
+        <>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: isMobile ? '1fr' : '360px 1fr',
+              gap: isMobile ? 'var(--space-md-plus)' : 'var(--space-xl)',
+              alignItems: 'start',
+              marginBottom: 'var(--space-xl)',
+            }}
+          >
+            <CouvertureNumero issue={vedette} lang={lang} variante="vedette" />
+
+            <div>
+              <div style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 700, fontSize: 12, color: 'var(--titre-magazine)', marginBottom: 8 }}>
+                {t.latestTag}
+              </div>
+              <p className="mag-dropcap" style={{ fontFamily: "var(--font-body)", fontSize: 15.5, lineHeight: 1.65, color: 'var(--prose)', margin: '0 0 14px' }}>
+                {vedette.edito[lang] ?? vedette.edito.fr}
+              </p>
+              <Link
+                to={`/magazine/${vedette.date}`}
+                style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, fontSize: 14, color: 'var(--titre-magazine)', textDecoration: 'none', borderBottom: '2px solid var(--titre-magazine)', paddingBottom: 2 }}
+              >
+                {t.lireLabel}
+              </Link>
+            </div>
+          </div>
+
+          {precedents.length > 0 && (
+            <>
+              <h2
+                style={{
+                  fontFamily: 'var(--font-etiquette)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  fontWeight: 700,
+                  fontSize: 15,
+                  color: 'var(--text)',
+                  borderBottom: '3px double var(--border)',
+                  paddingBottom: 8,
+                  margin: '0 0 var(--space-md-plus)',
+                }}
+              >
+                {t.issuesTitle}
+              </h2>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                  gap: 'var(--space-md-plus)',
+                  marginBottom: 'var(--space-xl)',
+                }}
+              >
+                {precedents.map((issue) => (
+                  <Link key={issue.date} to={`/magazine/${issue.date}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <CouvertureNumero issue={issue} lang={lang} variante="grille" />
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
+        </>
       )}
 
-      <SuivreBandeau rubrique="magazine" />
+      <a
+        href="/magazine/rss.xml"
+        style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none', display: 'inline-block', marginBottom: 40 }}
+      >
+        {t.rssLabel}
+      </a>
 
-      <CaseFooter c={{ docId: t.docId, clearance: chrome.clearance, tagline: chrome.tagline }} />
+      <SuivreBandeau rubrique="magazine" />
     </div>
   )
 }
