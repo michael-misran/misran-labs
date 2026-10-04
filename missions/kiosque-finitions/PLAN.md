@@ -7,7 +7,7 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 1. État initial : build et lint notés dans PROGRESS.md (déjà relevés au cadrage, à reconfirmer) → session principale (Sonnet)
 - [x] 2. Code mort (D2) : suppression des exports listés, puis greps du critère 2 → session principale (Sonnet)
 - [x] 3. `DesignSystem.jsx` : tableau typographique et spécimens aux polices réelles (D3, première moitié) → session principale (Sonnet)
-- [ ] 4. Polices et primitives (D3 seconde moitié, D4) : lien Google Fonts, primitives sans consommateur, en-tête de `tokens.css`, liste de `LabTokens.jsx`. Relever avant/après les valeurs calculées des variables de la mascotte (critère 8) → session principale (Sonnet)
+- [x] 4. Polices et primitives (D3 seconde moitié, D4) : lien Google Fonts, primitives sans consommateur, en-tête de `tokens.css`, liste de `LabTokens.jsx`. Relever avant/après les valeurs calculées des variables de la mascotte (critère 8) → session principale (Sonnet)
 - [ ] 5. `/lab` (D5) : `LatestIssue` en revue bleue, fiche agent « VERT DOSSIER » → session principale (Sonnet)
 - [ ] 6. Couverture Zine du kiosque (D6), testée avec le numéro d'essai non commité → session principale (Sonnet)
 - [ ] 7. Consigne en double du geste parfait (D7) → session principale (Sonnet)

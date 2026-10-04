@@ -1,7 +1,7 @@
 # Mission kiosque-finitions — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 4
+**Prochaine action :** étape 5
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 96debce)
@@ -24,3 +24,13 @@
 - Ajouté une section « Polices de la maison » (nouvel onglet FontCard) avec les 8 polices demandées par D3 : bois (Ultra), étiquette (Oswald), chapô (IM Fell English), gothique (UnifrakturMaguntia), BD (Comic Neue), pixel (Press Start 2P), écran (VT323), machine (Special Elite) — poids lus dans le même lien Google Fonts. `FontCard` applique `wordSpacing: 'var(--font-gothique-espace, normal)'` pour l'entrée gothique (règle commune des missions de la refonte).
 - Vérifié moi-même dans le navigateur (`npx vite preview`) : onglet Typographies, les 2 grilles de cartes s'affichent correctement, espacement du gothique resserré.
 - `npm run build` et lint ciblé : OK.
+
+## Étape 4 — polices et primitives (2026-10-04)
+- `index.html` : retiré `Fraunces`, `Work+Sans`, `JetBrains+Mono` du lien Google Fonts — seules ces 3 familles, rien d'autre (vérifié par diff complet des familles avant/après : aucune autre différence, `Chango` déjà présent dans `refonte-kiosque` reste).
+- `tokens.css` : recherché chaque primitive définie (94 au total) dans `src/`, `index.html`, `public/`, `scripts/`, y compris les autres primitives/semantics de `tokens.css` lui-même. 15 sans aucun consommateur, supprimées : `--primitive-font-fraunces`, `--primitive-font-work-sans`, `--primitive-font-jetbrains-mono` (D3), `--primitive-cream-150/200/300`, `--primitive-ink-400/600/800/850`, `--primitive-ink-900-a05/a18/a22/a25`, `--primitive-coral-500-a12`. Gardées : tout ce que consomment la mascotte (`sprites.js`, `fiole.css` : cream-50/100, ink-900, ink-900-a12, la gamme corail) et `[data-invert]`.
+- En-tête de `tokens.css` corrigé : il affirmait que la page « Tokens du Lab » consommait encore les anciennes primitives crème/encre/corail — faux, vérifié par grep, cette page ne les cite pas du tout. Reformulé pour dire que seules la mascotte et `[data-invert]` les consomment désormais.
+- `LabTokens.jsx` : aucune de ses lignes ne citait un token supprimé (vérifié avant de toucher `tokens.css`) — rien à retirer de sa liste.
+- Critère 8 (mascotte) : valeurs calculées des 8 variables consommées par `sprites.js`/`fiole.css` relevées dans `tokens.css` avant modification, puis revérifiées en direct dans le navigateur (`getComputedStyle`) après : identiques caractère pour caractère (`--primitive-ink-900: #241c16`, `--primitive-coral-700: #b8452e`, `--primitive-coral-500: #dd5a3e`, `--primitive-coral-400: #e26a50`, `--primitive-coral-tint-200: #f0c3b4`, `--primitive-cream-100: #f3ebdc`, `--primitive-cream-50: #f8f2e7`, `--primitive-ink-900-a12: rgba(36,28,22,.12)`).
+- Critère 4 vérifié dans le navigateur : `/lab/lab-tokens`, 134 lignes de token, 0 ligne avec une colonne Valeur vide ou « — ».
+- Critère 3 vérifié : `grep -n "fraunces\|work-sans\|jetbrains" src/styles/tokens.css` → rien ; lien Google Fonts ne contient plus les 3 familles, toutes les autres familles de `refonte-kiosque` présentes (diff complet, aucun ajout ni perte en dehors des 3 retirées).
+- `npm run build` et lint : OK.
