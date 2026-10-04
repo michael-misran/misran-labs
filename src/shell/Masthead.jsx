@@ -213,7 +213,7 @@ export default function Masthead() {
             margin: '0 auto',
             padding: isNarrow ? '14px 16px 16px' : '22px 20px 26px',
             display: 'grid',
-            gridTemplateColumns: isMobile ? 'auto 1fr' : 'auto 1fr auto',
+            gridTemplateColumns: isMobile ? 'auto minmax(0, 1fr)' : 'auto minmax(0, 1fr) auto',
             gap: isNarrow ? 14 : 28,
             alignItems: 'center',
           }}
@@ -243,7 +243,9 @@ export default function Masthead() {
               style={{
                 fontFamily: 'var(--font-pulp)',
                 fontWeight: 400,
-                fontSize: isNarrow ? '8.4vw' : 'clamp(44px, 8.4vw, 112px)',
+                // Le titre fait ~8,1 em de large : sa taille suit la place laissée
+                // par la pastille et le cartouche, avec une marge d'air avant ce dernier.
+                fontSize: isNarrow ? '8.4vw' : isMobile ? 'clamp(40px, 9vw, 64px)' : 'clamp(40px, calc(12.3vw - 53px), 98px)',
                 lineHeight: 0.9,
                 textTransform: 'uppercase',
                 color: 'var(--masthead-lettre)',
@@ -254,7 +256,7 @@ export default function Masthead() {
               }}
             >
               {[...'Misran Labs'].map((c, i) => {
-                if (c === ' ') return <span key={i} style={{ width: '.34em' }} />
+                if (c === ' ') return <span key={i} style={{ width: '.34em', flexShrink: 0 }} />
                 const [rot, y, taille] = DECALAGES[i]
                 return (
                   <span
@@ -262,6 +264,7 @@ export default function Masthead() {
                     aria-hidden="true"
                     style={{
                       display: 'inline-block',
+                      flexShrink: 0,
                       transform: `translateY(${y}em) rotate(${rot}deg)`,
                       fontSize: `${taille}em`,
                       WebkitTextStroke: '.11em var(--masthead-encre)',
@@ -300,6 +303,7 @@ export default function Masthead() {
                 border: '3px solid var(--masthead-encre)',
                 boxShadow: '5px 5px 0 var(--masthead-encre)',
                 padding: '10px 14px',
+                justifySelf: 'end',
                 transform: 'rotate(4deg)',
                 textAlign: 'center',
                 color: 'var(--masthead-encre)',
