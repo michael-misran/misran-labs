@@ -1,7 +1,7 @@
 # Mission magazine-web — PROGRESS
 
-**Statut :** en cours
-**Prochaine action :** étape 5 (vérification finale)
+**Statut :** terminée
+**Prochaine action :** clôture (push + PR vers `refonte-kiosque`, en session interactive avec Michael)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -23,3 +23,9 @@
 - `MagazineIssue.jsx` réécrit : `UneNumero` en tête, édito sur 2 colonnes avec lettrine bleue (`.mag-dropcap`), sommaire numéroté avec ancres `#article-N`, articles via `ArticleRevue`, navigation précédent/suivant calculée depuis `getIssues()` (par index, car triée) + lien « tous les numéros », page « Ce numéro n'existe pas » réécrite dans le même style bleu (mascotte Fiole conservée). Plus d'import de `MagazineParts`/`CaseFile`/`caseChrome`.
 - Critère d'acceptation 1 revérifié (`git grep`) : un commentaire de `RevueParts.jsx` contenait les mots interdits (juste en prose, aucun import) — reformulé pour que le grep ne renvoie plus rien.
 - `npm run build` et `npm run lint` : OK.
+
+## Étape 5 (exécution, 2026-10-04)
+- Sous-agent `verificateur` (Haiku) lancé en avant-plan : `npx vite preview` (pas `preview_start`, session de routine), tous les critères 2 à 7 vérifiés en FR/EN et à 375 px. Tout OK au premier essai. Détail dans `DELEGATIONS.md`.
+
+## Étape 6 (exécution, 2026-10-04)
+- `RAPPORT.md` écrit. Mission terminée, prête pour la clôture (push + PR vers `refonte-kiosque`) en session interactive.
