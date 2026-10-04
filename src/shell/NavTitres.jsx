@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
+import { getNumeros } from '../zine/numeros'
 
 const rythme = {
   fontFamily: 'var(--font-etiquette)',
@@ -20,6 +21,7 @@ function estActif(pathname, match) {
 export default function NavTitres() {
   const { lang } = useLanguage()
   const { pathname } = useLocation()
+  const zineExiste = getNumeros().length > 0
 
   const titres = [
     {
@@ -48,10 +50,10 @@ export default function NavTitres() {
     },
     {
       id: 'zine',
-      to: null,
-      actif: false,
+      to: zineExiste ? '/zine' : null,
+      actif: zineExiste && estActif(pathname, ['/zine']),
       couleur: 'var(--titre-zine)',
-      rythme: t(lang, 'navBientot'),
+      rythme: zineExiste ? t(lang, 'navRythmeZine') : t(lang, 'navBientot'),
       nom: t(lang, 'navTitreZine'),
       style: { fontFamily: 'var(--font-bd)', fontStyle: 'italic', fontWeight: 700, textTransform: 'uppercase', fontSize: 22 },
     },

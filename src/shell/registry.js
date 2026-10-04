@@ -5,6 +5,7 @@ import { getIdea } from '../projets/idees'
 import { getDay } from '../breves/jours'
 import { formatDateLongNoWeekday } from '../magazine/magazineText'
 import { getJeu } from '../jeux/registre'
+import { getNumero } from '../zine/numeros'
 
 // Chemins que App.jsx sait effectivement router, en dehors de '/', '/lab/…',
 // '/magazine…', '/projets…' et '/breves…' (déjà traités plus bas) : sert
@@ -62,6 +63,14 @@ export function resolveRouteMeta(pathname, lang) {
   if (pathname.startsWith('/jeux/')) {
     const jeu = getJeu(pathname.split('/')[2])
     return jeu ? { icon: '🎲', label: `${t(lang, 'jeuxNav')} — ${jeu.titre[lang]}` } : notFoundMeta(lang)
+  }
+
+  // Rubrique Zine : titre de l'onglet, comme les autres rubriques.
+  if (pathname === '/zine') return { icon: '✦', label: t(lang, 'navTitreZine') }
+  if (pathname.startsWith('/zine/')) {
+    const numero = getNumero(Number(pathname.split('/')[2]))
+    const label = numero ? `${t(lang, 'navTitreZine')} — ${numero.titre[lang] ?? numero.titre.fr}` : t(lang, 'navTitreZine')
+    return { icon: '✦', label }
   }
 
   if (KNOWN_ROUTES.some((re) => re.test(pathname))) return { icon: '◌', label: pathname }

@@ -1,7 +1,7 @@
 # Mission zine — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 5 (branchement : `App.jsx`, `registry.js`, `NavTitres.jsx`, `KiosqueParts.jsx`)
+**Prochaine action :** étape 6 (numéro d'essai temporaire, D6)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -27,3 +27,12 @@
 ## Étape 4 (exécution, 2026-10-04)
 - `src/zine/ZineNumero.jsx` créé : en-tête (`MastheadZine` à l'encre du numéro), titre + Nº/date, édito, puis chaque bloc de `pages` rendu via `BlocZine`, lien de retour. Page « Ce numéro n'existe pas » (mascotte Fiole, même style que les autres 404 de section).
 - `npm run build` et `npm run lint` : OK (toujours pas routé).
+
+## Étape 5 (exécution, 2026-10-04)
+- `App.jsx` : 2 routes (`zine`, `zine/:numero`), `lazy()`.
+- `registry.js` : `/zine` et `/zine/:numero` renvoient le libellé d'onglet « Le Zine »/« The Zine » (`t(lang, 'navTitreZine')`, déjà existant dans `i18n/ui.js` — aucune clé ajoutée), avec le titre du numéro s'il existe (même schéma que Magazine/Jeux).
+- `NavTitres.jsx` : `zineExiste = getNumeros().length > 0` ; si vrai, `to: '/zine'` et `rythme: t(lang, 'navRythmeZine')` (clé déjà présente dans `i18n/ui.js`, jamais utilisée jusqu'ici) ; sinon comportement identique à avant (`to: null`, `navBientot`).
+- `KiosqueParts.jsx` : `CouvertureZine` lit `getNumeros()[0]` et passe `to={dernier ? '/zine/'+dernier.numero : null}` à `CarteCouverture`. Rien d'autre ne change dans ce composant : sans numéro, le rendu visuel est strictement identique à avant (D5).
+- Aucune ligne ajoutée à `src/i18n/ui.js` (interdit) : les clés `navTitreZine`/`navRythmeZine`/`navBientot` existaient déjà, prêtes pour ce branchement.
+- Critère d'acceptation 1 vérifié : `git diff --stat refonte-kiosque...HEAD -- . ':!missions/zine'` ne montre que des fichiers de `src/zine/`, `public/zine/` et les 4 fichiers d'exception listés par D1.
+- `npm run build` et `npm run lint` : OK.
