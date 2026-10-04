@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import LogoFiole from './LogoFiole'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 import { formatDateLong } from '../magazine/magazineText'
@@ -85,36 +86,22 @@ export default function Masthead() {
             alignItems: 'center',
           }}
         >
-          <div
-            style={{
-              width: isNarrow ? 46 : isMobile ? 62 : 92,
-              height: isNarrow ? 50 : isMobile ? 70 : 104,
-              background: 'var(--text)',
-              color: 'var(--bg)',
-              borderRadius: '50% 50% 46% 46%',
-              display: 'grid',
-              placeItems: 'center',
-              textAlign: 'center',
-              lineHeight: 1,
-            }}
-          >
-            <div>
-              <b style={{ fontFamily: 'var(--font-bois-2)', fontWeight: 400, fontSize: isNarrow ? 16 : isMobile ? 22 : 34, display: 'block' }}>
-                {t(lang, 'mastheadLabel')}
-              </b>
-              {!isNarrow && <span style={{ ...etiquette, fontWeight: 700, fontSize: 10 }}>{t(lang, 'mastheadLabelSub')}</span>}
-            </div>
-          </div>
+          {/* Logo de la maison : la Fiole seule (le nom est juste à côté) */}
+          <span style={{ color: 'var(--text)' }}>
+            <LogoFiole largeur={isNarrow ? 38 : isMobile ? 54 : 80} />
+          </span>
 
           <div>
             <h1
               style={{
-                fontFamily: 'var(--font-bois)',
+                fontFamily: 'var(--font-logo)',
                 fontWeight: 400,
-                fontSize: isNarrow ? 'clamp(24px, 9vw, 34px)' : 'clamp(52px, 8vw, 104px)',
-                lineHeight: 0.9,
+                fontSize: isNarrow ? 'clamp(20px, 7.4vw, 30px)' : 'clamp(40px, 6.4vw, 86px)',
+                lineHeight: 1,
                 textTransform: 'uppercase',
-                letterSpacing: '-0.01em',
+                letterSpacing: '0',
+                transform: 'skewX(-8deg)',
+                transformOrigin: 'left bottom',
                 color: 'var(--text)',
                 whiteSpace: isNarrow ? 'nowrap' : 'normal',
               }}
