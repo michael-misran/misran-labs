@@ -1,7 +1,7 @@
 # Mission jeux-arcade — PROGRESS
 
-**Statut :** en cours
-**Prochaine action :** étape 5 (vérification finale)
+**Statut :** terminée
+**Prochaine action :** clôture (push + PR vers `refonte-kiosque`, en session interactive avec Michael)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -25,3 +25,9 @@
 - `ResultatPartage.jsx` (habillage seulement, D1) : ajout d'une étiquette pixel « GAME OVER » / `bravo` au-dessus du score, clignotante (`.arcade-blink`, coupée sous `prefers-reduced-motion: reduce` via le `<style>` de `JeuPage.jsx`). Seuil retenu : `score >= 50` → `bravo`, sinon GAME OVER (`DECISIONS.md`). Aucune donnée ni comportement de partage modifié.
 - Critère d'acceptation 1 revérifié : `git diff --stat refonte-kiosque...HEAD -- src/jeux/geste-parfait src/jeux/a-vue-d-oeil src/jeux/comme-tout-le-monde src/jeux/registre.js src/jeux/socle/jour.js src/jeux/socle/serie.js src/jeux/socle/partage.js` → vide.
 - `npm run build` et `npm run lint` : OK.
+
+## Étape 5 (exécution, 2026-10-04)
+- Sous-agent `verificateur` (Haiku) lancé en avant-plan : `npx vite preview`, tous les critères 2-7 vérifiés en FR/EN, navigation clavier (flèche bas + Entrée → 2e jeu), 375px, reduced-motion. Tout OK. N'a pas pu finir une partie jusqu'à l'écran de résultat (jeux trop longs à jouer en quelques actions dans le temps imparti) — l'habillage de `ResultatPartage` (GAME OVER/BRAVO) n'a donc été vérifié qu'en relecture de code, pas en conditions réelles. Noté en recommandation du RAPPORT.
+
+## Étape 6 (exécution, 2026-10-04)
+- `RAPPORT.md` écrit. Mission terminée, prête pour la clôture (push + PR vers `refonte-kiosque`) en session interactive.
