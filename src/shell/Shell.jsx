@@ -83,7 +83,7 @@ export default function Shell() {
         style={{ position: 'fixed', right: 24, bottom: 24, zIndex: 20, pointerEvents: 'none' }}
       >
         <span className="fiole-shadow" aria-hidden="true" />
-        <Fiole />
+        <Fiole variant="alambic" />
       </span>
     </>
   )

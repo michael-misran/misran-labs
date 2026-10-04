@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import LogoFiole from './LogoFiole'
+import LogoAlambic from './LogoAlambic'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 import { formatDateLong } from '../magazine/magazineText'
@@ -134,7 +134,7 @@ export default function Masthead() {
     textDecoration: 'none',
   }
   const tailleMedaillon = isNarrow ? 20 : 28
-  const taillePastille = isNarrow ? 58 : isMobile ? 74 : 96
+  const largeurLogo = isNarrow ? 56 : isMobile ? 72 : 96
 
   return (
     <div className="no-print">
@@ -217,23 +217,9 @@ export default function Masthead() {
             alignItems: 'center',
           }}
         >
-          {/* Pastille ronde : la Fiole de la maison */}
-          <span
-            style={{
-              width: taillePastille,
-              height: taillePastille,
-              borderRadius: '50%',
-              background: 'var(--masthead-encre)',
-              color: 'var(--masthead-lettre)',
-              border: '3px solid var(--masthead-lettre)',
-              outline: '3px solid var(--masthead-encre)',
-              outlineOffset: 3,
-              display: 'grid',
-              placeItems: 'center',
-              margin: 3,
-            }}
-          >
-            <LogoFiole largeur={taillePastille * 0.4} fond="var(--masthead-encre)" />
+          {/* Logo de la maison d'édition L'Alambic (essai) */}
+          <span style={{ color: 'var(--masthead-encre)' }}>
+            <LogoAlambic largeur={largeurLogo} fond="var(--masthead-fond)" />
           </span>
 
           <div style={{ minWidth: 0 }}>

@@ -1,4 +1,4 @@
-import LogoFiole from './LogoFiole'
+import LogoAlambic from './LogoAlambic'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 
@@ -25,7 +25,7 @@ export default function Colophon() {
         }}
       >
         <span style={{ color: 'var(--text)' }}>
-          <LogoFiole largeur={104} avecTexte />
+          <LogoAlambic largeur={112} />
         </span>
 
         <div>
