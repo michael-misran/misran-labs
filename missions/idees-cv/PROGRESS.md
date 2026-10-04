@@ -1,7 +1,7 @@
 # Mission idees-cv — PROGRESS
 
-**Statut :** en cours
-**Prochaine action :** étape 5 (vérification finale)
+**Statut :** terminée
+**Prochaine action :** clôture (push + PR vers `refonte-kiosque`, en session interactive avec Michael)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -26,3 +26,10 @@
 ## Étape 4 (exécution, 2026-10-04)
 - `CVModule.jsx` : bandeau « FICHE AGENT · M. MISRAN » (`--titre-lab`) ajouté au-dessus de `CaseHero` ; `CadrePhoto` (cadre vide à trame diagonale, « PHOTO NON COMMUNIQUÉE » — pas de vraie photo, hors périmètre) placé à côté du bloc contact ; deux champs tapés ajoutés (`RÔLE`, `SPÉCIALITÉS`, cette dernière réutilisant les libellés déjà présents dans `c.expertise`) ; `SectionHeader`/`RoleHeader`/`Bullets` passés en Special Elite (D6) ; kicker « RAPPORTS DE MISSION, PAR ORDRE CHRONOLOGIQUE » ajouté avant la liste des expériences. Contenu (textes, dates, contact) inchangé.
 - `npm run build` et `npm run lint` : OK.
+
+## Étape 5 (exécution, 2026-10-04)
+- Critère 1 revérifié : `git diff --stat refonte-kiosque...HEAD` (hors `missions/idees-cv/`) ne touche que les fichiers de D1.
+- Sous-agent `verificateur` (Haiku) lancé en avant-plan : `npx vite preview`, FR/EN. `/projets` (fiches, tampons, filtres testés), 2 idées dont une arrêtée, `/projets/fonctionnement`, `/lab/cv` (bandeau, cadre photo, contenu), 375px sur 3 pages. Tout OK. Point non confirmé explicitement : l'émulation d'impression du CV (demandée au sous-agent, pas rapportée en détail) — noté en recommandation du RAPPORT.
+
+## Étape 6 (exécution, 2026-10-04)
+- `RAPPORT.md` écrit. Mission terminée, prête pour la clôture (push + PR vers `refonte-kiosque`) en session interactive.
