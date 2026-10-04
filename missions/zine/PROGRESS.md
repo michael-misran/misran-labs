@@ -1,7 +1,7 @@
 # Mission zine — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 3 (`ZineParts.jsx`, `ZineHome.jsx`, `zineText.js`)
+**Prochaine action :** étape 4 (`ZineNumero.jsx`)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -17,3 +17,9 @@
 - `src/zine/FORMAT.md` créé : schéma complet, les 7 types de bloc (`photo`, `dessin`, `texte`, `carnet`, `jeu`, `bulle`, `etoile`), règles, exemple complet. Modèle : `src/breves/FORMAT.md`.
 - `src/zine/numeros/.gitkeep` et `public/zine/.gitkeep` créés.
 - `npm run lint` sur `numeros.js` : OK.
+
+## Étape 3 (exécution, 2026-10-04)
+- `src/zine/zineText.js` créé : textes fr/en, `zt(lang, key)`, `formatMoisAnnee`, `numeroAffiche`.
+- `src/zine/ZineParts.jsx` créé : `MastheadZine` (tête « MISRAN ZINE » en Anton, encre paramétrable), `TrameDots` et `Etoile` (étoile à 20 pointes en `clip-path`, même polygone que `KiosqueParts.CouvertureZine`, redéclaré sans l'importer, D1), `Bulle` (BD, bordure + pointe en triangles CSS), `PageCarnet`/`PagePhoto`/`PageDessin`/`PageTexte`/`PageJeu` (un composant par type de bloc D2), `BlocZine` (dispatcheur par `type`), `CouvertureNumero` (réutilisable vedette/grille).
+- `src/zine/ZineHome.jsx` créé : page d'attente (`Attente`, sans numéro — tête + étoile « LE #1 ARRIVE ! » + bulle, trame de points, aucune image) et page normale (vedette + grille des numéros précédents) selon que `getNumeros()` est vide ou non.
+- `npm run build` et `npm run lint` : OK (le fichier n'est pas encore routé, étape 5).
