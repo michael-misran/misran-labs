@@ -1,7 +1,7 @@
 # Mission kiosque-annexes — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 6
+**Prochaine action :** étape 7
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -35,3 +35,8 @@
 - `scripts/share-previews.js` : titres harmonisés au-delà de D2 strict (voir DECISIONS.md) — numéro de Magazine, `MAGAZINE_FIXED`, `PROJETS_FIXED`, `PROJETS_FONCTIONNEMENT_FIXED`. `SUIVRE_FIXED.description` porte la formule « Misran Labs, maison d'édition indépendante » (D5).
 - `index.html` : `theme-color` → `#16120e` uniquement, rien d'autre touché. Lien Google Fonts vérifié identique à son propre état d'avant cette mission (`git diff` sur la seule ligne theme-color) ; `git diff refonte-kiosque -- index.html` montre aussi un écart sur ce lien (refonte-kiosque a gagné une police `Chango` entre-temps, via une autre mission fusionnée) — normal pour des missions parallèles, je n'ai pas touché cette ligne donc un merge la reprendra sans conflit.
 - `npm run build` et lint ciblé : OK.
+
+## Étape 6 — vérification finale (2026-10-04)
+- Critère 1 (périmètre du diff) vérifié par la session principale : `git diff --stat refonte-kiosque...auto/kiosque-annexes` ne touche que les fichiers de D1 et `missions/kiosque-annexes/`.
+- `npm run build` : OK. `npx eslint . --ignore-pattern '.worktrees/**'` : 0 erreur (le worktree orphelin `.worktrees/verif-magazine`, hors périmètre, reste exclu — voir étape 1).
+- Reste des critères (2 à 8, navigateur) délégué au `verificateur (Haiku)` : rendu testé à 1366 px et 375 px, FR et EN, sur `npx vite preview` (pas la preview dev, refusée en routine). Résultat : tout OK — 4 flux cliquables sur /suivre avec leurs réseaux, aucune erreur console, aucun débordement 375 px ; 404 affiche AVIS DE RECHERCHE/WANTED avec l'adresse et les 5 liens ; aucun résidu de langue dans un sens ou l'autre. Voir DELEGATIONS.md.
