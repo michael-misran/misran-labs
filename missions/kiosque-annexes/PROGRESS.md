@@ -1,7 +1,7 @@
 # Mission kiosque-annexes — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 3
+**Prochaine action :** étape 4
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -16,3 +16,9 @@
 ## Étape 2 — noms harmonisés (2026-10-04)
 - Délégué à un sous-agent Haiku (`DELEGATIONS.md`) : `FEEDS_BASE` dans `src/suivre/suivreText.js` et les 3 `title` dans `scripts/rss.js` (D2). Diff relu : exactement les 6 remplacements demandés, rien d'autre.
 - `npm run build` relancé : `dist/magazine/rss.xml` → « Le Magazine », `dist/projets/rss.xml` → « Les idées du Lab », `dist/rss.xml` → « Tout le kiosque ». URL des flux inchangées.
+
+## Étape 3 — bulletin d'abonnement (2026-10-04)
+- `/suivre` refaite en coupon à découper (D3) : cadre en pointillés, étiquette « ✂ Découper ici », une ligne par flux avec case ☐/☒ au survol, nom du titre dans sa propre typo (Gazette gothique + initiale « G » rouge comme dans `NavTitres`, Magazine Playfair italique bleu, Les idées du Lab en machine à écrire verte, Tout le kiosque en lettres de bois), rythme, URL copiable, bouton Copier/Ouvrir. Réseaux existants dessous sous « Autres façons de nous lire ».
+- Ancien `MagazineMasthead`/`CaseFooter` retirés : redondants avec le Masthead/Colophon globaux du Shell (acquis de la refonte, rendus une fois pour toutes les pages) — jamais utilisés par Page404 non plus.
+- `SuivreBandeau` passé au même style coupon (cadre pointillé, ✂, étiquette Oswald) sans changer son API (`rubrique`) : toujours utilisé par magazine/breves/projets (hors périmètre, non touchés).
+- Vérifié moi-même dans le navigateur (`npx vite preview`, routine) : rendu FR et EN conformes, aucune erreur console, aucun débordement à 375 px, les 4 flux et les réseaux s'affichent avec leur lien.
