@@ -68,3 +68,6 @@ Chaque critère doit être vérifiable par une session seule (commande, page, va
 - Toute modification du format JSON des jours, des flux RSS ou des aperçus de partage.
 - Ajouter un numéro d'édition public (les Brèves n'en ont pas).
 - Traduire `mot.terme` (changement de schéma).
+
+## Ajout du 2026-10-04 (après le cadrage)
+Le titre gothique passera de UnifrakturMaguntia à **Germanica** (police de Paul Lloyd, « 100 % Free » sur dafont), via la PR #44 vers `refonte-kiosque`. Partout où cette mission écrit en `--font-gothique`, ajouter `wordSpacing: 'var(--font-gothique-espace, normal)'`. L'espace entre les mots de Germanica est très large, et ce token le resserre. Avec UnifrakturMaguntia, le repli `normal` garde l'espacement actuel.
