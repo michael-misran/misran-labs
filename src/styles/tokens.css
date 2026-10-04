@@ -114,7 +114,6 @@
      carton kraft, rouge sang, crème des lettres, jaune radioactif. */
   --primitive-kraft: #b0a165;
   --primitive-kraft-ombre: rgba(60,50,20,0.45);
-  --primitive-kraft-trame: rgba(40,32,10,0.22);
   --primitive-rouge-pulp: #b5231b;
   --primitive-rouge-pulp-fonce: #6e120d;
   --primitive-creme-pulp: #f0e2bd;
@@ -322,7 +321,6 @@
   --masthead-bandeau: var(--primitive-rouge-pulp);
   --masthead-fond: var(--primitive-kraft);
   --masthead-fond-ombre: var(--primitive-kraft-ombre);
-  --masthead-trame: var(--primitive-kraft-trame);
   --masthead-lettre: var(--primitive-creme-pulp);
   --masthead-ombre: var(--primitive-rouge-pulp-fonce);
   --masthead-encre: var(--primitive-encre);

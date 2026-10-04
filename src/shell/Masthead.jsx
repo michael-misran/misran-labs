@@ -6,7 +6,7 @@ import { formatDateLong } from '../magazine/magazineText'
 import useIsMobile from './useIsMobile'
 
 // En-tête pulp de la maison, façon couverture DoggyBags : bandeau rouge,
-// carton kraft tramé, grand titre crème cerné de noir avec ombre rouge sang,
+// carton kraft, grand titre crème cerné de noir avec ombre rouge sang,
 // et le « i » de Misran remplacé par un tube radioactif scellé.
 // Maquette de référence : screens/header-doggybags.html.
 
@@ -192,7 +192,7 @@ export default function Masthead() {
         </div>
       </div>
 
-      {/* Carton kraft tramé, assombri sur les bords */}
+      {/* Carton kraft, assombri sur les bords */}
       <header
         style={{
           position: 'relative',
@@ -200,7 +200,6 @@ export default function Masthead() {
           borderBottom: '5px solid var(--masthead-encre)',
           background: [
             'radial-gradient(ellipse at 50% 40%, transparent 45%, var(--masthead-fond-ombre) 100%)',
-            'radial-gradient(circle, var(--masthead-trame) 1.2px, transparent 1.6px) 0 0 / 7px 7px',
             'var(--masthead-fond)',
           ].join(', '),
         }}
