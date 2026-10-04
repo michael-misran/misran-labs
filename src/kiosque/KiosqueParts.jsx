@@ -280,7 +280,7 @@ function CouvertureZine({ t }) {
               textAlign: 'center',
             }}
           >
-            <span style={{ fontFamily: 'var(--font-bd)', fontWeight: 700, fontStyle: 'italic', fontSize: 'clamp(13px, 1.4vw, 18px)', lineHeight: 1, textTransform: 'uppercase', color: 'var(--text)' }}>{p.bientot}</span>
+            <span style={{ fontFamily: 'var(--font-bd)', fontWeight: 700, fontStyle: 'italic', fontSize: 'clamp(11px, 1.05vw, 15px)', lineHeight: 1, textTransform: 'uppercase', color: 'var(--text)' }}>{p.bientot}</span>
           </div>
         </div>
       </div>

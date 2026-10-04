@@ -43,6 +43,23 @@
   font-display: swap;
 }
 
+/* Lettrage BD (bulles, étoiles, Zine) : Comic Book de Neale Davidson / Pixel Sagas,
+ * sous licence SIL OFL 1.1 (public/fonts/comic-book/OFL.txt). Comic Neue en secours. */
+@font-face {
+  font-family: 'Comic Book';
+  src: url('/fonts/comic-book/comic-book-bold-italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Comic Book';
+  src: url('/fonts/comic-book/comic-book-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* --- 1. PRIMITIVE — valeurs brutes -------------------------------- *
    * Une échelle de crème (clair → foncé), une échelle d'encre, une
@@ -158,6 +175,7 @@
   --primitive-font-special-elite: 'Special Elite', 'Courier New', monospace;
   --primitive-font-germanica: 'Plain Germanica', 'UnifrakturMaguntia', cursive;
   --primitive-font-unifraktur-maguntia: 'UnifrakturMaguntia', cursive;
+  --primitive-font-comic-book: 'Comic Book', 'Comic Neue', 'Comic Sans MS', cursive;
   --primitive-font-comic-neue: 'Comic Neue', 'Comic Sans MS', cursive;
   --primitive-font-ibm-plex-mono: 'IBM Plex Mono', monospace;
 
@@ -224,7 +242,7 @@
   --font-gothique: var(--primitive-font-germanica);
   /* L'espace entre les mots de Germanica est très large (≈ 0,56 em) : on le resserre. */
   --font-gothique-espace: -0.3em;
-  --font-bd: var(--primitive-font-comic-neue);
+  --font-bd: var(--primitive-font-comic-book);
   --font-pixel: var(--primitive-font-press-start-2p);
   --font-ecran: var(--primitive-font-vt323);
   --font-machine: var(--primitive-font-special-elite);
