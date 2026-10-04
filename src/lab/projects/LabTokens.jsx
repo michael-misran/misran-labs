@@ -54,7 +54,6 @@ const TOKEN_GROUPS = [
     rows: [
       { name: '--primitive-kraft', tier: 'primitive', type: 'color', pointsTo: null },
       { name: '--primitive-kraft-ombre', tier: 'primitive', type: 'color', pointsTo: null },
-      { name: '--primitive-kraft-trame', tier: 'primitive', type: 'color', pointsTo: null },
       { name: '--primitive-rouge-pulp', tier: 'primitive', type: 'color', pointsTo: null },
       { name: '--primitive-rouge-pulp-fonce', tier: 'primitive', type: 'color', pointsTo: null },
       { name: '--primitive-creme-pulp', tier: 'primitive', type: 'color', pointsTo: null },
@@ -181,7 +180,6 @@ const TOKEN_GROUPS = [
       { name: '--masthead-bandeau', tier: 'component', type: 'color', pointsTo: '--primitive-rouge-pulp' },
       { name: '--masthead-fond', tier: 'component', type: 'color', pointsTo: '--primitive-kraft' },
       { name: '--masthead-fond-ombre', tier: 'component', type: 'color', pointsTo: '--primitive-kraft-ombre' },
-      { name: '--masthead-trame', tier: 'component', type: 'color', pointsTo: '--primitive-kraft-trame' },
       { name: '--masthead-lettre', tier: 'component', type: 'color', pointsTo: '--primitive-creme-pulp' },
       { name: '--masthead-ombre', tier: 'component', type: 'color', pointsTo: '--primitive-rouge-pulp-fonce' },
       { name: '--masthead-encre', tier: 'component', type: 'color', pointsTo: '--primitive-encre' },
