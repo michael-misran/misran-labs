@@ -1,7 +1,7 @@
 # Mission kiosque-finitions — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 10
+**Prochaine action :** étape 11
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 96debce)
@@ -98,3 +98,11 @@ Tableau complet (routes où rien n'est indiqué = conforme sur les 4 cases FR/EN
 | URL inexistante (404) | Conforme |
 
 `npm run build` et `npx eslint . --ignore-pattern '.worktrees/**'` après correctif : OK.
+
+## Étape 10 — vérification finale (2026-10-04)
+- Critère 1 : `git diff --stat refonte-kiosque...auto/kiosque-finitions` ne touche aucun fichier de la liste interdite D1 (`src/suivre/*`, `src/shell/Page404.jsx`, `scripts/share-previews.js`, `scripts/og-numero.js`, `scripts/og-numero-template.html`, `scripts/rss.js`, ligne `theme-color` de `index.html`).
+- Critère 2 : `grep -rn "IssueRow\|SourceList\|ArticleCard\|MagazineHero\|TabBar" src` → rien.
+- Critère 3 : `grep -n "fraunces\|work-sans\|jetbrains" src/styles/tokens.css` → rien ; `DesignSystem.jsx` ne cite plus ni Fraunces ni Work Sans ; le lien Google Fonts ne contient plus ces 3 familles.
+- Critère 6 : `git ls-files src/zine/numeros` → seulement `.gitkeep`.
+- Critère 10 : `npm run build` OK, `npx eslint . --ignore-pattern '.worktrees/**'` 0 erreur.
+- Critère 11 : `git status` propre, 9 commits sur `auto/kiosque-finitions` (étapes 1 à 9), rien sur `main` ni `refonte-kiosque`, rien poussé (`git log` local uniquement).

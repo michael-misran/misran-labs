@@ -13,5 +13,5 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 7. Consigne en double du geste parfait (D7) → session principale (Sonnet)
 - [x] 8. `CLAUDE.md` et `CHANGELOG.md` (D8) → sous-agent (Haiku), avec la liste des PR fusionnées fournie par la session principale
 - [x] 9. Revue complète des routes (D9) : tableau dans PROGRESS.md → verificateur (Haiku). S'il ne se lance pas après une nouvelle tentative, la session principale le fait elle-même. Corrections éventuelles → session principale (Sonnet)
-- [ ] 10. Vérification finale : build, lint, greps des critères 1 à 3 et 6 → session principale (Sonnet)
+- [x] 10. Vérification finale : build, lint, greps des critères 1 à 3 et 6 → session principale (Sonnet)
 - [ ] 11. RAPPORT.md (PR vers `refonte-kiosque` ; ensuite : fusion de `kiosque-annexes`, `/zine` dans `share-previews.js`, synchronisation avec `main`, PR finale) → session principale (Sonnet)
