@@ -47,44 +47,65 @@ const DECALAGES = [
   [0, 0, 1], [-3, 0.02, 1.12], [2, -0.01, 1], [-1, 0.03, 1], [3, -0.02, 1],
 ]
 
-// Le « i » de Misran : ampoule scellée radioactive. Repère : 100 unités = 1em,
-// ligne de base à y=90, haut du « i » de Bowlby One SC à y=23, même chasse
-// (.363em). Contour noir 11 unités ≈ le text-stroke des lettres ; ombre rouge
-// décalée de 5 unités = leur text-shadow de .05em.
+// Le « i » de Misran : ampoule scellée radioactive, en pixel art. Repère :
+// 100 unités = 1em, ligne de base à y=90, même chasse que le « i » de Bowlby
+// One SC (.363em) : 9 pixels de 4 unités de large. L'ombre rouge, décalée
+// d'un pixel, répond au text-shadow de .05em des lettres.
+// K encre, G liquide radioactif, W reflet / métal, . vide.
+const TUBE_PIXELS = [
+  '.G..G..G.',
+  '..G.G.G..',
+  '.........',
+  'KKKKKKKKK',
+  'KKWWWWWKK',
+  'KKKKKKKKK',
+  '.KGGGGGK.',
+  '.KGWGGGK.',
+  '.KGWGGGK.',
+  '.KGGGGGK.',
+  '.KGKKKGK.',
+  '.KGGKGGK.',
+  '.KKKGKKK.',
+  '.KGGGGGK.',
+  '.KGGGGGK.',
+  '.KGGGGGK.',
+  '.KGGGGGK.',
+  '.KGGGGGK.',
+  'KKKKKKKKK',
+  'KKWWWWWKK',
+  'KKKKKKKKK',
+]
+const TUBE_COULEURS = { K: 'var(--masthead-encre)', G: 'var(--masthead-radioactif)', W: 'var(--masthead-lettre)' }
+const PIXEL = 4
+const HAUT_TUBE = 90 - TUBE_PIXELS.length * PIXEL
+// Les éclats (deux premières rangées) ne portent pas d'ombre
+const DEBUT_AMPOULE = 3
+
+// Un tracé par couleur (et un pour l'ombre) plutôt qu'un carré par pixel :
+// les pixels voisins fusionnent, sans liseré entre eux.
+function tracer(pixels) {
+  return pixels.map((p) => `M${p.x} ${p.y}h${PIXEL}v${PIXEL}h-${PIXEL}z`).join('')
+}
+
 function TubeRadioactif() {
+  const pixels = []
+  TUBE_PIXELS.forEach((rangee, y) => {
+    ;[...rangee].forEach((c, x) => {
+      if (c !== '.') pixels.push({ x: x * PIXEL, y: HAUT_TUBE + y * PIXEL, c, ombre: y >= DEBUT_AMPOULE })
+    })
+  })
+  const ombre = pixels.filter((p) => p.ombre).map((p) => ({ x: p.x + PIXEL, y: p.y + PIXEL }))
   return (
     <svg
       viewBox="0 0 36 90"
       aria-hidden="true"
+      shapeRendering="crispEdges"
       style={{ width: '.363em', height: '.9em', verticalAlign: 'baseline', overflow: 'visible' }}
     >
-      <rect transform="translate(5 5)" x="5" y="20" width="26" height="64" rx="4" fill="var(--masthead-ombre)" stroke="var(--masthead-ombre)" strokeWidth="11" />
-      {/* Ampoule pleine de liquide luminescent, avec son reflet */}
-      <rect x="5" y="20" width="26" height="64" rx="4" fill="var(--masthead-radioactif)" stroke="var(--masthead-encre)" strokeWidth="11" />
-      <path d="M12 34 V44" stroke="var(--masthead-lettre)" strokeWidth="3" strokeLinecap="round" />
-      {/* Trèfle radioactif */}
-      <g fill="var(--masthead-encre)">
-        <path d="M18 52 L14.5 45.94 A7 7 0 0 1 21.5 45.94 Z" />
-        <path d="M18 52 L25 52 A7 7 0 0 1 21.5 58.06 Z" />
-        <path d="M18 52 L14.5 58.06 A7 7 0 0 1 11 52 Z" />
-      </g>
-      <circle cx="18" cy="52" r="2.6" fill="var(--masthead-radioactif)" />
-      <circle cx="18" cy="52" r="1.6" fill="var(--masthead-encre)" />
-      {/* Capsules métalliques qui scellent l'ampoule */}
-      <g fill="var(--masthead-encre)" stroke="var(--masthead-encre)" strokeWidth="3">
-        <rect x="2" y="12" width="32" height="12" rx="2" />
-        <rect x="2" y="78" width="32" height="12" rx="2" />
-      </g>
-      <g stroke="var(--masthead-lettre)" strokeWidth="1.6">
-        <path d="M5 17 H31" />
-        <path d="M5 83 H31" />
-      </g>
-      {/* Éclats de lueur : ils font le point du « i » */}
-      <g stroke="var(--masthead-radioactif)" strokeWidth="2.6" strokeLinecap="round">
-        <path d="M18 1 V7" />
-        <path d="M8 4 L11 9" />
-        <path d="M28 4 L25 9" />
-      </g>
+      <path d={tracer(ombre)} fill="var(--masthead-ombre)" />
+      {Object.entries(TUBE_COULEURS).map(([c, couleur]) => (
+        <path key={c} d={tracer(pixels.filter((p) => p.c === c))} fill={couleur} />
+      ))}
     </svg>
   )
 }
