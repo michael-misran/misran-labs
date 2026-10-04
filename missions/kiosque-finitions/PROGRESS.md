@@ -1,7 +1,7 @@
 # Mission kiosque-finitions — PROGRESS
 
-**Statut :** en cours
-**Prochaine action :** étape 11
+**Statut :** terminée
+**Prochaine action :** aucune — RAPPORT.md écrit, mission close
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 96debce)
