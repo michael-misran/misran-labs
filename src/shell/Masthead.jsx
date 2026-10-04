@@ -197,7 +197,6 @@ export default function Masthead() {
         style={{
           position: 'relative',
           overflow: 'hidden',
-          borderBottom: '5px solid var(--masthead-encre)',
           background: [
             'radial-gradient(ellipse at 50% 40%, transparent 45%, var(--masthead-fond-ombre) 100%)',
             'var(--masthead-fond)',
@@ -210,7 +209,8 @@ export default function Masthead() {
             position: 'relative',
             maxWidth: 1240,
             margin: '0 auto',
-            padding: isNarrow ? '14px 16px 16px' : '22px 20px 26px',
+            // Bas généreux : les rythmes et le haut des titres du menu (NavTitres) débordent ici
+            padding: isNarrow ? '14px 16px 44px' : '22px 20px 52px',
             display: 'grid',
             gridTemplateColumns: isMobile ? 'auto minmax(0, 1fr)' : 'auto minmax(0, 1fr) auto',
             gap: isNarrow ? 14 : 28,

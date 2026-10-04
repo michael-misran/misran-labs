@@ -183,6 +183,7 @@ const TOKEN_GROUPS = [
       { name: '--masthead-lettre', tier: 'component', type: 'color', pointsTo: '--primitive-creme-pulp' },
       { name: '--masthead-ombre', tier: 'component', type: 'color', pointsTo: '--primitive-rouge-pulp-fonce' },
       { name: '--masthead-encre', tier: 'component', type: 'color', pointsTo: '--primitive-encre' },
+      { name: '--masthead-sommaire', tier: 'component', type: 'color', pointsTo: '--primitive-rouge-pulp-fonce' },
       { name: '--masthead-radioactif', tier: 'component', type: 'color', pointsTo: '--primitive-radioactif' },
     ],
   },
