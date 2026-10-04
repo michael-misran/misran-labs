@@ -50,3 +50,9 @@ Détail dans `DECISIONS.md`. En résumé :
 - Avant fusion, jouer manuellement une partie complète sur chacun des 3 jeux jusqu'à l'écran de résultat, pour voir l'habillage GAME OVER/BRAVO en situation réelle (non vérifié par le `verificateur`, voir critère 3).
 - La mission **kiosque-finitions** pourra revoir le seuil `score >= 50` de `ResultatPartage` si Michael préfère une autre règle (par exemple liée à la série de jours, ou toujours « BRAVO ! » puisque le jeu est terminé).
 - Le bouton « PRESS START » dans `BoiteJeu` est un `<span>` décoratif (toute la jaquette est déjà un lien) : si une interaction clavier dédiée au bouton lui-même est souhaitée plus tard, il faudrait sortir le bouton du lien englobant.
+
+## Retouches à la clôture (session interactive, 2026-10-04)
+- Borne : l’envahisseur (point de 4 px agrandi) ne réservait pas sa place et « INSERT COIN » passait dessus. Il a maintenant un cadre à sa taille réelle, et l’écran est en colonne.
+- Menu clavier : Entrée n’ouvre plus le jeu sélectionné quand un lien, un bouton ou un champ a le focus.
+- Partie complète jouée sur « À vue d’œil » jusqu’à l’écran de résultat : étiquette WELL PLAYED !, score et bouton de partage affichés (critère 3 vérifié en conditions réelles).
+- Vu en passant, hors périmètre : sur « Le geste parfait », la consigne du cercle s’affiche deux fois (`geste-parfait/Jeu.jsx` et `defis/cercle.jsx`), défaut antérieur à la mission.

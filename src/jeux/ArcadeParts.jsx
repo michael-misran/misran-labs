@@ -12,14 +12,17 @@ const ecran = { fontFamily: 'var(--font-ecran)', fontWeight: 400 }
 // L'envahisseur en pixels (carré de 4px répété en box-shadow), repris du
 // motif de CouvertureJeux côté kiosque.
 function Envahisseur() {
+  // Cadre à la taille réelle du dessin (44 × 32 px agrandi 2,4 fois) : le point
+  // de 4 px seul ne réservait pas sa place et chevauchait « INSERT COIN »
   return (
+    <div aria-hidden="true" style={{ position: 'relative', width: 106, height: 77, flexShrink: 0 }}>
     <div
-      aria-hidden="true"
       style={{
         width: 4,
         height: 4,
         color: 'var(--titre-jeux)',
         transform: 'scale(2.4)',
+        transformOrigin: '0 0',
         boxShadow: `8px 0, 32px 0, 12px 4px, 28px 4px, 8px 8px, 12px 8px, 16px 8px, 20px 8px, 24px 8px, 28px 8px, 32px 8px,
           4px 12px, 8px 12px, 16px 12px, 20px 12px, 24px 12px, 32px 12px, 36px 12px,
           0 16px, 4px 16px, 8px 16px, 12px 16px, 16px 16px, 20px 16px, 24px 16px, 28px 16px, 32px 16px, 36px 16px, 40px 16px,
@@ -27,6 +30,7 @@ function Envahisseur() {
           0 24px, 8px 24px, 32px 24px, 40px 24px, 12px 28px, 16px 28px, 24px 28px, 28px 28px`,
       }}
     />
+    </div>
   )
 }
 
@@ -55,8 +59,13 @@ export function EcranCathodique({ lang }) {
           position: 'relative',
           overflow: 'hidden',
           boxShadow: 'inset 0 0 28px rgba(0,0,0,.9)',
-          display: 'grid',
-          placeItems: 'center',
+          // Colonne : l'envahisseur puis « INSERT COIN » dessous, sans chevauchement
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 14,
+          padding: '36px 14px 16px',
         }}
       >
         <div
@@ -68,7 +77,7 @@ export function EcranCathodique({ lang }) {
           <span>HI 999990</span>
         </div>
         <Envahisseur />
-        <div className="arcade-blink" style={{ position: 'absolute', bottom: 14, ...pixel, fontSize: 13, color: '#ffd84a' }}>
+        <div className="arcade-blink" style={{ position: 'relative', ...pixel, fontSize: 13, color: '#ffd84a' }}>
           INSERT COIN
         </div>
       </div>
@@ -92,7 +101,8 @@ export function MenuSelectGame({ jeux, lang }) {
       } else if (e.key === 'ArrowUp') {
         e.preventDefault()
         setSelection((s) => (s - 1 + jeux.length) % jeux.length)
-      } else if (e.key === 'Enter') {
+      } else if (e.key === 'Enter' && !e.target.closest?.('a, button, input, textarea, select')) {
+        // Entrée sur un lien ou un bouton déjà focalisé garde son comportement normal
         navigate(`/jeux/${jeux[selection].slug}`)
       }
     }
