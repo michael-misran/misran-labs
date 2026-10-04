@@ -35,7 +35,7 @@ export default function NavTitres() {
           {t(lang, 'navTitreGazetteReste')}
         </>
       ),
-      style: { fontFamily: 'var(--font-gothique)', fontSize: 27 },
+      style: { fontFamily: 'var(--font-gothique)', wordSpacing: 'var(--font-gothique-espace)', fontSize: 27 },
     },
     {
       id: 'magazine',

@@ -73,6 +73,7 @@ export function GazetteALaUne({ day, lang, t }) {
         <h3
           style={{
             fontFamily: 'var(--font-gothique)',
+            wordSpacing: 'var(--font-gothique-espace)',
             fontWeight: 400,
             fontSize: narrow960 ? 40 : 62,
             lineHeight: 1,
