@@ -1,7 +1,7 @@
 # Mission kiosque-finitions — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 3
+**Prochaine action :** étape 4
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 96debce)
@@ -18,3 +18,9 @@
 - Supprimé `TabBar` de `src/lab/CaseStudyLayout.jsx` (aucun importeur, aucune dépendance propre).
 - Commentaire obsolète dans `src/projets/ProjetsParts.jsx` (citait `MagazineHero` par son nom) reformulé pour pointer vers `CaseHero` à la place (structure réellement commune).
 - Critère 2 : `grep -rn "IssueRow\|SourceList\|ArticleCard\|MagazineHero\|TabBar" src` → rien. `npm run build` et lint : OK.
+
+## Étape 3 — DesignSystem.jsx (2026-10-04)
+- Tableau `fonts` (3 rôles génériques) et `roles` (spécimens) mis à jour avec les vraies polices : Alfa Slab One (`--font-heading`), Crimson Pro (`--font-body`), IBM Plex Mono (`--font-mono`), poids relevés dans le lien Google Fonts de `index.html` (seule source fiable). Les 2 mentions restantes dans l'onglet Tokens corrigées aussi (grep `Fraunces\|Work Sans\|JetBrains` sur le fichier → rien).
+- Ajouté une section « Polices de la maison » (nouvel onglet FontCard) avec les 8 polices demandées par D3 : bois (Ultra), étiquette (Oswald), chapô (IM Fell English), gothique (UnifrakturMaguntia), BD (Comic Neue), pixel (Press Start 2P), écran (VT323), machine (Special Elite) — poids lus dans le même lien Google Fonts. `FontCard` applique `wordSpacing: 'var(--font-gothique-espace, normal)'` pour l'entrée gothique (règle commune des missions de la refonte).
+- Vérifié moi-même dans le navigateur (`npx vite preview`) : onglet Typographies, les 2 grilles de cartes s'affichent correctement, espacement du gothique resserré.
+- `npm run build` et lint ciblé : OK.
