@@ -59,3 +59,10 @@ Détail dans `DECISIONS.md`. En résumé :
 ## Recommandations
 - `scripts/share-previews.js` (sitemap, flux RSS, images de partage) ne connaît pas encore `/zine` : la rubrique n'apparaît pas dans `sitemap.xml` tant que ce script n'est pas mis à jour. Ce script n'est pas dans les « fichiers autorisés » de cette mission (D1) ; une mission future (quand le numéro 1 existera, ou `kiosque-finitions`) devra l'étendre, comme le mentionne déjà le hors-périmètre de la SPEC pour le flux RSS.
 - Les blocs `photo`, `dessin` et le champ `src` de `jeu` ont été écrits avec soin (styles en ligne simples, pas de logique risquée) mais n'ont pas pu être vérifiés avec une vraie image, faute de pouvoir ajouter une ressource en dehors de `src/private/` (D1 l'interdit). À vérifier dès que Michael fournira une première photo ou un premier dessin.
+
+## Retouches à la clôture (session interactive, 2026-10-04)
+- Vérifié avec toutes les missions précédentes déjà fusionnées (essai local combiné, pas de conflit, y compris avec la PR Comic Book sur `KiosqueParts.jsx`). Vérifié aussi avec un numéro d’essai (l’exemple de `FORMAT.md` et une image de `public/`), supprimé ensuite : vedette, page numéro, photo tramée, bulle, carnet, lien du menu et de la couverture du kiosque.
+- Étoile : le texte touchait les pointes. Elle est plus grande, avec une marge intérieure proportionnelle à sa taille.
+- « Nº 01 » s’affichait « N□ 01 » : Comic Book n’a pas le signe º. Remplacé par « #01 », comme « Le #1 arrive ! ».
+- Page carnet : la ligne passait en travers du texte. Lignes tous les 30 px, au pas du texte.
+- À prévoir pour la sortie du #1 : la couverture Zine du kiosque affiche toujours « COMING SOON! » même quand un numéro existe.

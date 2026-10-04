@@ -55,7 +55,7 @@ export default function ZineNumero() {
           {numero.titre[lang] ?? numero.titre.fr}
         </h2>
         <span style={{ fontFamily: 'var(--font-bd)', fontWeight: 700, fontStyle: 'italic', fontSize: 13, color: 'var(--text2)' }}>
-          Nº {numeroAffiche(numero.numero)} · {formatMoisAnnee(numero.date, lang)}
+          #{numeroAffiche(numero.numero)} · {formatMoisAnnee(numero.date, lang)}
         </span>
       </div>
 

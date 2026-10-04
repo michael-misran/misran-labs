@@ -67,7 +67,11 @@ export function Etoile({ texte }) {
   return (
     <div
       style={{
-        width: 'clamp(100px, 24vw, 170px)',
+        // Marge intérieure proportionnelle à l'étoile (pas au conteneur) : le
+        // texte reste dans son cœur, hors des pointes
+        '--etoile': 'clamp(150px, 30vw, 220px)',
+        width: 'var(--etoile)',
+        boxSizing: 'border-box',
         aspectRatio: '1',
         clipPath: ETOILE_CLIP,
         background: 'var(--titre-zine)',
@@ -76,10 +80,10 @@ export function Etoile({ texte }) {
         textAlign: 'center',
         margin: '0 auto',
         filter: 'drop-shadow(3px 3px 0 var(--border))',
-        padding: 12,
+        padding: 'calc(var(--etoile) * 0.22)',
       }}
     >
-      <span style={{ ...bd, fontSize: 'clamp(13px, 2vw, 18px)', lineHeight: 1.1, color: 'var(--text)' }}>{texte}</span>
+      <span style={{ ...bd, fontSize: 'clamp(13px, 1.8vw, 17px)', lineHeight: 1.1, color: 'var(--text)' }}>{texte}</span>
     </div>
   )
 }
@@ -102,14 +106,15 @@ export function PageCarnet({ corps, lang }) {
   return (
     <div
       style={{
-        background: 'repeating-linear-gradient(var(--bg2) 0px, var(--bg2) 27px, var(--border) 27px, var(--border) 28px, var(--bg2) 28px, var(--bg2) 54px)',
+        // Une ligne tous les 30 px, même pas que le texte : l'écriture se pose dessus
+        background: 'var(--bg2) repeating-linear-gradient(transparent 0 29px, var(--border) 29px 30px) 0 20px / 100% calc(100% - 40px) no-repeat',
         border: '3px solid var(--border)',
         padding: '20px 24px',
         maxWidth: 560,
         margin: '0 auto',
       }}
     >
-      <p style={{ fontFamily: 'var(--font-chapo)', fontStyle: 'italic', fontSize: 19, lineHeight: 1.5, color: 'var(--text)', margin: 0 }}>
+      <p style={{ fontFamily: 'var(--font-chapo)', fontStyle: 'italic', fontSize: 19, lineHeight: '30px', color: 'var(--text)', margin: 0 }}>
         {corps[lang] ?? corps.fr}
       </p>
     </div>
@@ -206,7 +211,7 @@ export function CouvertureNumero({ numero, lang, variante = 'vedette' }) {
   return (
     <div style={{ border: '3px solid var(--border)', boxShadow: vedette ? '8px 8px 0 var(--primitive-encre-a18)' : '5px 5px 0 var(--primitive-encre-a18)', background: 'var(--bg2)', height: '100%', display: 'flex', flexDirection: 'column' }}>
       <div style={{ background: numero.encre, color: 'var(--bg)', padding: vedette ? '14px 18px 12px' : '8px 12px 7px', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-        <span style={{ ...bd, fontSize: vedette ? 13 : 10 }}>Nº {numeroAffiche(numero.numero)}</span>
+        <span style={{ ...bd, fontSize: vedette ? 13 : 10 }}>#{numeroAffiche(numero.numero)}</span>
         <span style={{ ...bd, fontSize: vedette ? 11 : 9 }}>{formatMoisAnnee(numero.date, lang)}</span>
       </div>
       <div style={{ padding: vedette ? '18px 20px' : '10px 12px' }}>
