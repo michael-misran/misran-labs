@@ -14,6 +14,10 @@ export const JEUX_TEXT = {
     modeEntrainement: 'Entraînement — ce résultat n’est pas enregistré',
     serieJours: (n) => `🔥 ${n} jour${n === 1 ? '' : 's'}`,
     demoBandeau: 'Démo : les réponses des autres joueurs sont simulées pour l’instant.',
+    arcadeTitre: 'LES JEUX',
+    joueur1: '1 JOUEUR',
+    zeroPub: '0 PUB',
+    bravo: 'BRAVO !',
   },
   en: {
     jeuxTitre: 'Games',
@@ -28,6 +32,10 @@ export const JEUX_TEXT = {
     modeEntrainement: 'Practice — this result is not saved',
     serieJours: (n) => `🔥 ${n} day${n === 1 ? '' : 's'}`,
     demoBandeau: 'Demo: other players’ answers are simulated for now.',
+    arcadeTitre: 'THE GAMES',
+    joueur1: '1 PLAYER',
+    zeroPub: '0 ADS',
+    bravo: 'WELL PLAYED !',
   },
 }
 
