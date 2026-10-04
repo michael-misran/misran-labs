@@ -1,0 +1,11 @@
+# Mission kiosque-annexes — DECISIONS
+
+Décisions prises sans Michael. Les décisions d'architecture sont dans SPEC.md.
+
+| Date | Étape | Décision | Raison |
+|---|---|---|---|
+| 2026-10-04 | 3 | `/suivre` : retrait de `MagazineMasthead` et `CaseFooter`, plus de section « Flux RSS »/« Réseaux » génériques (`SectionTitle`) | Doublons avec le Masthead/Colophon globaux du Shell (acquis de la refonte, déjà rendus sur chaque page) ; `SectionTitle` garde le style développeur (« // TITRE ») qui ne correspond plus à l'identité maison. Page404 (déjà en place) ne les utilise pas non plus. |
+| 2026-10-04 | 4 | `Page404.jsx` : textes fr/en définis localement (`PAGE404_TEXT`) plutôt que via `t(lang, ...)` de `src/i18n/ui.js` | `src/i18n/ui.js` est hors « Fichiers autorisés » de la SPEC (règle commune des missions parallèles) ; les clés `notFound404*` restent dans ce fichier mais ne sont plus lues par cette page, sauf `notFound404Tab` (onglet, via `registry.js`, non touché). |
+| 2026-10-04 | 5 | Pas de section Gazette ajoutée à `og-numero.js`/`og-numero-template.html` | D5 : « rouge pour la Gazette si des images de Gazette existent » — aucune image par jour n'existe pour la Gazette (`collectBrevesJours` réutilise l'image de rubrique du Magazine, D7 de la mission breves). Hors périmètre d'ajouter cette génération. |
+| 2026-10-04 | 5 | « Misran Labs, maison d'édition indépendante » placé dans `SUIVRE_FIXED.description` (aperçu de `/suivre`), pas dans `index.html` | D5 vise « les titres et descriptions par défaut de **share-previews.js** » — `index.html` n'est autorisé (D1) que pour `theme-color`, son propre titre/description restent donc l'ancien texte « Vitrine de Michael Misran... ». `/suivre` est la page la plus proche d'un « à propos » générique parmi les constantes FIXED de `share-previews.js`. |
+| 2026-10-04 | 5 | Renommé en plus des flux RSS : titre de chaque numéro du Magazine (`· Lab Magazine` → `· Le Magazine`), `MAGAZINE_FIXED.title`, `PROJETS_FIXED.title` et `PROJETS_FONCTIONNEMENT_FIXED.title` (« Projets » → « Les idées du Lab ») | L'objectif de la SPEC dit explicitement « tout ce qui sort du site (aperçus, images OG, flux) » doit avoir des noms cohérents, pas seulement `FEEDS`/`rss.js` listés en D2. Ces titres sont dans `scripts/share-previews.js`, un fichier autorisé. |

@@ -7,10 +7,10 @@
 const SITE_URL = 'https://misran-labs.vercel.app'
 
 const FEEDS_BASE = [
-  { key: 'magazine', path: '/magazine/rss.xml', name: { fr: 'Lab Magazine', en: 'Lab Magazine' }, rythme: { fr: 'Chaque lundi', en: 'Every Monday' } },
+  { key: 'magazine', path: '/magazine/rss.xml', name: { fr: 'Le Magazine', en: 'The Magazine' }, rythme: { fr: 'Chaque lundi', en: 'Every Monday' } },
   { key: 'breves', path: '/breves/rss.xml', name: { fr: 'La Gazette du Lab', en: 'The Lab Gazette' }, rythme: { fr: 'Chaque matin', en: 'Every morning' } },
-  { key: 'projets', path: '/projets/rss.xml', name: { fr: 'Projets', en: 'Projects' }, rythme: { fr: 'Chaque dimanche', en: 'Every Sunday' } },
-  { key: 'tout', path: '/rss.xml', name: { fr: 'Tout', en: 'Everything' }, rythme: { fr: 'Tout à la fois', en: 'All at once' } },
+  { key: 'projets', path: '/projets/rss.xml', name: { fr: 'Les idées du Lab', en: "The Lab's ideas" }, rythme: { fr: 'Chaque dimanche', en: 'Every Sunday' } },
+  { key: 'tout', path: '/rss.xml', name: { fr: 'Tout le kiosque', en: 'The whole kiosk' }, rythme: { fr: 'Tout à la fois', en: 'All at once' } },
 ]
 
 // Un flux = { key, url, name: {fr,en}, rythme: {fr,en} }.
@@ -31,38 +31,29 @@ export const NETWORKS = [
   },
 ]
 
+// Bulletin d'abonnement en forme de coupon à découper (mission kiosque-annexes, D3).
 export const SUIVRE_TEXT = {
   fr: {
-    backLabel: '← Lab',
-    fileNo: 'SUIVRE',
-    mastheadCenter: 'ARCHIVE DU LAB //// FLUX & RÉSEAUX',
-    mastheadRight: 'MISRAN LABS',
-    mastheadRightSub: 'SUIVI',
-    title: 'Suivre le Lab',
-    intro: "Pas de compte à créer : un lecteur RSS ou un réseau, et les nouveautés viennent à vous.",
-    feedsTitle: 'Flux RSS',
+    kicker: 'Bulletin à découper',
+    title: 'Bulletin d’abonnement',
+    intro: 'Aucun compte à créer : cochez un flux ou suivez un réseau, et les nouveautés viennent à vous.',
+    decouper: 'Découper ici',
     feedsHelp: 'Collez l’adresse dans votre lecteur (Feedly, NetNewsWire, Inoreader…).',
     copyLabel: 'Copier',
     copiedLabel: 'Copié ✓',
     openLabel: 'Ouvrir',
-    networksTitle: 'Réseaux',
-    docId: 'DOC-SUIVRE',
+    networksTitle: 'Autres façons de nous lire',
   },
   en: {
-    backLabel: '← Lab',
-    fileNo: 'FOLLOW',
-    mastheadCenter: 'LAB ARCHIVE //// FEEDS & NETWORKS',
-    mastheadRight: 'MISRAN LABS',
-    mastheadRightSub: 'FOLLOW',
-    title: 'Follow the Lab',
-    intro: 'No account needed: an RSS reader or a network, and updates come to you.',
-    feedsTitle: 'RSS feeds',
+    kicker: 'Cut-out coupon',
+    title: 'Subscription coupon',
+    intro: 'No account needed: check a feed or follow a network, and updates come to you.',
+    decouper: 'Cut here',
     feedsHelp: 'Paste the address into your reader (Feedly, NetNewsWire, Inoreader…).',
     copyLabel: 'Copy',
     copiedLabel: 'Copied ✓',
     openLabel: 'Open',
-    networksTitle: 'Networks',
-    docId: 'DOC-FOLLOW',
+    networksTitle: 'Other ways to read us',
   },
 }
 

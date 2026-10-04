@@ -5,17 +5,17 @@ import { writeRssFeeds } from './rss.js'
 export const SITE_URL = 'https://misran-labs.vercel.app'
 
 const MAGAZINE_FIXED = {
-  title: 'Lab Magazine — veille IA hebdomadaire · Misran Labs',
+  title: 'Le Magazine — veille IA hebdomadaire · Misran Labs',
   description: 'Une veille IA chaque lundi, pour designers et développeurs.',
   image: 'og-magazine.png',
 }
 const PROJETS_FIXED = {
-  title: 'Projets — idées en développement · Misran Labs',
+  title: 'Les idées du Lab — idées en développement · Misran Labs',
   description: 'Des idées de produits numérotées, étudiées puis gardées ou arrêtées.',
   image: 'og-projets.png',
 }
 const PROJETS_FONCTIONNEMENT_FIXED = {
-  title: 'Comment fonctionnent les Projets · Misran Labs',
+  title: 'Comment fonctionnent les idées du Lab · Misran Labs',
   description: 'La routine du dimanche, les fiches publiques, les décisions.',
   image: 'og-projets.png',
 }
@@ -26,7 +26,7 @@ const BREVES_FIXED = {
 }
 const SUIVRE_FIXED = {
   title: 'Suivre le Lab · Misran Labs',
-  description: 'Pas de compte à créer : un lecteur RSS ou un réseau, et les nouveautés viennent à vous.',
+  description: 'Misran Labs, maison d’édition indépendante : pas de compte à créer, un lecteur RSS ou un réseau suffit pour que les nouveautés viennent à vous.',
   image: 'og-image.png',
 }
 const JEUX_FIXED = {
@@ -175,7 +175,7 @@ export function collectMagazineNumeros(rootDir) {
 
     pages.push({
       path: `/magazine/${dateFromName}`,
-      title: `Nº ${data.numero} — ${data.titre.fr} · Lab Magazine`,
+      title: `Nº ${data.numero} — ${data.titre.fr} · Le Magazine`,
       description: normalizeAndTruncate(data.edito.fr),
       image,
       type: 'article',
