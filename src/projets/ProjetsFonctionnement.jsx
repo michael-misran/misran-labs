@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 import useIsMobile from '../shell/useIsMobile'
 import { useLanguage } from '../shell/LanguageContext'
-import { MagazineMasthead } from '../magazine/MagazineParts'
 import { CaseFooter } from '../lab/CaseFile'
 import { CASE_CHROME } from '../lab/caseChrome'
 import SectionTitle from '../design-system/SectionTitle'
 import FlowDiagram from '../components/diagrams/FlowDiagram'
-import { ProjetsHero } from './ProjetsParts'
+import { ProjetsHero, NoteMasthead } from './ProjetsParts'
+import { PROJ_TEXT } from './projetsText'
 import { FONCT_TEXT } from './fonctionnementText'
 import SuivreBandeau from '../suivre/SuivreBandeau'
 
@@ -153,7 +153,7 @@ export default function ProjetsFonctionnement() {
 
   return (
     <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
-      <MagazineMasthead
+      <NoteMasthead
         backTo="/projets"
         backLabel={t.backLabel}
         fileNo={t.fileNo}
@@ -162,6 +162,9 @@ export default function ProjetsFonctionnement() {
         rightSub={t.mastheadRightSub}
       />
 
+      <div style={{ fontFamily: "var(--font-machine)", fontSize: 12, letterSpacing: '0.04em', color: 'var(--titre-lab)', marginBottom: 'var(--space-2xs)' }}>
+        {PROJ_TEXT[lang].noteDeService}
+      </div>
       <ProjetsHero number={t.heroNumber} title={t.title} subtitle={t.subtitle} />
 
       {t.sections.map((section) => (
@@ -173,7 +176,7 @@ export default function ProjetsFonctionnement() {
         </section>
       ))}
 
-      <Link to="/projets" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none', display: 'inline-block', marginBottom: 40 }}>
+      <Link to="/projets" style={{ fontFamily: "var(--font-machine)", fontSize: 12, color: 'var(--text2)', textDecoration: 'none', display: 'inline-block', marginBottom: 40 }}>
         {t.backToList}
       </Link>
 

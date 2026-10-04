@@ -4,9 +4,27 @@ import { Stamp } from '../design-system/ArchiveMarks'
 import useIsMobile from '../shell/useIsMobile'
 import { PROJ_TEXT, STATUTS, statutLabel, typeLabel, tailleLabel, formatDateShort } from './projetsText'
 
+// Teinte kraft des onglets de classeur (D2) : même valeur que celle posée
+// indépendamment dans src/lab/DossierParts.jsx (mission lab-dossiers, en
+// parallèle) — ces deux fichiers ne s'importent pas l'un l'autre (D1),
+// donc la constante est redéclarée ici plutôt que partagée.
+const ONGLET_KRAFT = '#c9ae7c'
+
+// Inclinaison du tampon de statut (D2) : une valeur par statut, pas un
+// hasard à chaque rendu — sinon le tampon "saute" à chaque re-rendu.
+const STATUT_TILT = {
+  proposee: -4,
+  gardee: -9,
+  'en-cours': 6,
+  faite: -7,
+  arretee: 10,
+}
+
 // Même bloc que MagazineHero (src/magazine/MagazineParts.jsx), seul le
 // tampon change de libellé — la structure du hero (numéro, titre,
 // sous-titre, tampon, enfants) est commune aux trois rubriques du site.
+// Numéro et sous-titre tapés à la machine (D6) ; le titre reste en
+// --font-heading, plus lisible pour un texte qui peut être long.
 export function ProjetsHero({ number, title, subtitle, children }) {
   const isMobile = useIsMobile()
   return (
@@ -16,11 +34,10 @@ export function ProjetsHero({ number, title, subtitle, children }) {
           <span
             style={{
               flexShrink: 0,
-              fontFamily: "var(--font-heading)",
-              fontWeight: 700,
-              fontSize: 26,
-              lineHeight: 1,
-              color: 'var(--primary)',
+              fontFamily: "var(--font-machine)",
+              fontSize: 22,
+              lineHeight: 1.2,
+              color: 'var(--titre-lab)',
             }}
           >
             {number}
@@ -30,7 +47,7 @@ export function ProjetsHero({ number, title, subtitle, children }) {
               {title}
             </h1>
             {subtitle && (
-              <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: '0.04em', color: 'var(--text2)' }}>{subtitle}</div>
+              <div style={{ fontFamily: "var(--font-machine)", fontSize: 12, letterSpacing: '0.02em', color: 'var(--text2)' }}>{subtitle}</div>
             )}
           </div>
         </div>
@@ -39,6 +56,61 @@ export function ProjetsHero({ number, title, subtitle, children }) {
 
       {children}
     </div>
+  )
+}
+
+// Bandeau de tête d'une note (D3, D4) : même rôle que MagazineMasthead
+// (src/magazine/MagazineParts.jsx), redéclaré ici en Special Elite — D1
+// permet de remplacer un élément d'habillage emprunté à une autre rubrique
+// par un équivalent local plutôt que de modifier le fichier emprunté.
+export function NoteMasthead({ backTo, backLabel, fileNo, center, right, rightSub }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)', paddingBottom: 14, borderBottom: 'var(--border-regular) solid var(--border)', marginBottom: 'var(--space-lg)', flexWrap: 'wrap' }}>
+      <div>
+        <Link to={backTo} style={{ fontFamily: "var(--font-machine)", fontSize: 12, color: 'var(--text2)', textDecoration: 'none' }}>
+          {backLabel}
+        </Link>
+        <div style={{ fontFamily: "var(--font-machine)", fontSize: 12, letterSpacing: '0.02em', color: 'var(--titre-lab)', marginTop: 'var(--space-2xs)' }}>{fileNo}</div>
+      </div>
+      <div style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.06em', color: 'var(--text2)', textAlign: 'center', flex: '1 1 200px' }}>
+        {center}
+      </div>
+      <div style={{ textAlign: 'right' }}>
+        <div style={{ fontFamily: "var(--font-machine)", fontSize: 13, color: 'var(--text)' }}>{right}</div>
+        <div style={{ fontFamily: "var(--font-machine)", fontSize: 10, color: 'var(--muted)' }}>{rightSub}</div>
+      </div>
+    </div>
+  )
+}
+
+// Le tampon de statut d'une fiche bristol (D2) : taille et inclinaison
+// d'un vrai tampon encreur, couleur et libellé du statut.
+export function StampStatut({ statut, lang }) {
+  const s = STATUTS[statut]
+  const color = s?.color ?? 'var(--muted)'
+  const border = s?.border ?? 'solid'
+  const tilt = STATUT_TILT[statut] ?? 0
+
+  return (
+    <span
+      style={{
+        position: 'absolute',
+        right: 14,
+        bottom: 14,
+        fontFamily: "var(--font-machine)",
+        fontSize: 11,
+        letterSpacing: '0.04em',
+        textTransform: 'uppercase',
+        color,
+        border: `2px ${border} ${color}`,
+        padding: '4px 8px 3px',
+        transform: `rotate(${tilt}deg)`,
+        opacity: 0.85,
+        background: 'color-mix(in srgb, var(--bg2) 85%, transparent)',
+      }}
+    >
+      {statutLabel(statut, lang)}
+    </span>
   )
 }
 
@@ -57,9 +129,9 @@ export function StatusMark({ statut, lang, size = 'sm' }) {
         display: 'inline-flex',
         alignItems: 'center',
         gap: 6,
-        fontFamily: "var(--font-mono)",
-        fontSize,
-        letterSpacing: '0.08em',
+        fontFamily: "var(--font-machine)",
+        fontSize: fontSize + 1,
+        letterSpacing: '0.04em',
         textTransform: 'uppercase',
         color: 'var(--text)',
         border: `var(--border-thin) ${border} ${color}`,
@@ -75,10 +147,12 @@ export function StatusMark({ statut, lang, size = 'sm' }) {
   )
 }
 
+// Filtre de statut en onglet de classeur (D2) : kraft au repos, papier et
+// avancé quand actif — même logique que les onglets de dossier du Lab,
+// redéclarée ici localement (D1 interdit d'importer src/lab/*).
 export function StatusFilter({ statut, count, active, lang, onClick }) {
   const s = STATUTS[statut]
   const color = s?.color ?? 'var(--muted)'
-  const border = s?.border ?? 'solid'
 
   return (
     <button
@@ -89,23 +163,26 @@ export function StatusFilter({ statut, count, active, lang, onClick }) {
         display: 'flex',
         alignItems: 'center',
         gap: 6,
-        fontFamily: "var(--font-mono)",
-        fontSize: 11,
-        letterSpacing: '0.04em',
+        fontFamily: "var(--font-machine)",
+        fontSize: 12,
+        letterSpacing: '0.02em',
         textTransform: 'uppercase',
-        color: active ? 'var(--text)' : 'var(--muted)',
-        background: active ? 'var(--bg2)' : 'var(--bg3)',
-        border: `var(--border-thin) ${active ? border : 'solid'} ${active ? color : 'var(--border)'}`,
-        borderRadius: 'var(--radius-xs)',
+        color: active ? 'var(--text)' : '#3a2f1e',
+        background: active ? 'var(--bg2)' : ONGLET_KRAFT,
+        border: 'var(--border-thin) solid var(--border)',
+        borderBottom: active ? 'var(--border-regular) solid var(--titre-lab)' : 'var(--border-thin) solid var(--border)',
+        borderRadius: '4px 10px 0 0',
         padding: '7px var(--space-sm)',
-        minHeight: 36,
+        marginTop: active ? 0 : 4,
+        minHeight: 32,
         cursor: 'pointer',
         fontWeight: active ? 700 : 400,
+        transition: 'background 0.15s ease, margin-top 0.15s ease',
       }}
     >
-      <span aria-hidden="true" style={{ color: active ? color : 'var(--muted)', fontSize: 11, lineHeight: 1 }}>{s?.glyphe ?? '?'}</span>
+      <span aria-hidden="true" style={{ color: active ? color : '#5a4a30', fontSize: 11, lineHeight: 1 }}>{s?.glyphe ?? '?'}</span>
       {statutLabel(statut, lang)}
-      <span style={{ fontWeight: 400, color: 'var(--muted)' }}>· {count}</span>
+      <span style={{ fontWeight: 400, color: active ? 'var(--muted)' : '#5a4a30' }}>· {count}</span>
     </button>
   )
 }
@@ -114,71 +191,69 @@ function metaLine(idee, lang) {
   return `${typeLabel(idee.type, lang)} · ${tailleLabel(idee.taille, lang)} · ${formatDateShort(idee.date)}`
 }
 
-// Une ligne du registre des idées sur /projets — même logique de rangée
-// que IssueRow du Magazine (registre d'archive = lignes, pas de fiches).
-export function IdeaRow({ idee, lang }) {
-  const isMobile = useIsMobile()
+// Une fiche bristol du tiroir des idées (D2) : papier blanc à lignes
+// fines bleues, trou de perforation, « P-NNN » tapé en gros, titre, méta,
+// décision annotée à la main si elle existe, tampon de statut.
+export function FicheBristol({ idee, lang }) {
   const [hover, setHover] = useState(false)
-  const arretee = idee.statut === 'arretee'
 
   return (
     <Link
       to={`/projets/${idee.id}`}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      style={{
-        display: isMobile ? 'block' : 'grid',
-        gridTemplateColumns: isMobile ? undefined : '96px 1fr auto',
-        columnGap: 'var(--space-md-plus)',
-        alignItems: 'start',
-        textDecoration: 'none',
-        color: 'inherit',
-        borderTop: 'var(--border-thin) solid var(--border)',
-        padding: isMobile ? '14px var(--space-xs)' : '18px var(--space-sm)',
-        background: hover ? 'var(--hover-tint)' : 'none',
-        transition: 'background 0.15s ease',
-      }}
+      style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}
     >
-      {isMobile ? (
-        <>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 'var(--space-xs-plus)' }}>
-            <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 20, lineHeight: 1, color: arretee ? 'var(--muted)' : 'var(--primary)', fontVariantNumeric: 'tabular-nums' }}>
-              {idee.id}
-            </span>
-            <StatusMark statut={idee.statut} lang={lang} />
-          </div>
-          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 18, lineHeight: 1.2, color: arretee ? 'var(--text2)' : 'var(--text)', marginTop: 'var(--space-xs)', overflowWrap: 'anywhere' }}>
-            {idee.titre[lang]}
-          </div>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.6, color: 'var(--prose)', margin: '6px 0 0' }}>
+      <div
+        style={{
+          position: 'relative',
+          height: '100%',
+          minHeight: 190,
+          // Fond uni : les lignes bleues ne sont tracées que sous le résumé, au pas du texte
+          background: hover ? 'var(--hover-tint)' : 'var(--bg2)',
+          border: 'var(--border-thin) solid var(--border)',
+          padding: '20px 16px 44px 34px',
+          transition: 'background 0.15s ease',
+        }}
+      >
+        <span
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            left: 13,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: 11,
+            height: 11,
+            borderRadius: '50%',
+            background: 'var(--bg)',
+            border: 'var(--border-thin) solid var(--border)',
+          }}
+        />
+
+        <div style={{ fontFamily: "var(--font-machine)", fontSize: 22, lineHeight: 1, color: 'var(--titre-lab)', marginBottom: 6 }}>
+          {idee.id}
+        </div>
+        <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 17, lineHeight: 1.25, color: 'var(--text)', marginBottom: 6, overflowWrap: 'anywhere' }}>
+          {idee.titre[lang]}
+        </div>
+        <div style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.02em', color: 'var(--text2)', paddingBottom: 8, marginBottom: 6, borderBottom: '2px solid color-mix(in srgb, var(--error) 55%, transparent)' }}>
+          {metaLine(idee, lang)}
+        </div>
+        {/* Corps de la fiche : une ligne bleue tous les 22 px, même pas que le texte, qui se pose dessus */}
+        <div style={{ backgroundImage: 'repeating-linear-gradient(transparent 0 21px, color-mix(in srgb, var(--cyan) 30%, transparent) 21px 22px)' }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: '22px', color: 'var(--prose)', margin: 0 }}>
             {idee.resume[lang]}
           </p>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: 'var(--space-xs)' }}>
-            {metaLine(idee, lang)}
-          </div>
-        </>
-      ) : (
-        <>
-          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 22, lineHeight: 1, color: arretee ? 'var(--muted)' : 'var(--primary)', whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums', paddingTop: 'var(--space-3xs)' }}>
-            {idee.id}
-          </div>
-          <div style={{ minWidth: 0 }}>
-            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 20, lineHeight: 1.2, color: arretee ? 'var(--text2)' : 'var(--text)', overflowWrap: 'anywhere' }}>
-              {idee.titre[lang]}
-            </div>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.6, color: 'var(--prose)', margin: '6px 0 0' }}>
-              {idee.resume[lang]}
+          {idee.decision?.note && (
+            <p style={{ fontFamily: "var(--font-chapo)", fontStyle: 'italic', fontSize: 14, lineHeight: '22px', color: 'var(--text2)', margin: 0 }}>
+              “{idee.decision.note[lang]}”
             </p>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: 'var(--space-xs)' }}>
-              {metaLine(idee, lang)}
-            </div>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs-plus)' }}>
-            <StatusMark statut={idee.statut} lang={lang} />
-            <span aria-hidden="true" style={{ fontFamily: "var(--font-mono)", fontSize: 14, color: 'var(--primary)' }}>→</span>
-          </div>
-        </>
-      )}
+          )}
+        </div>
+
+        <StampStatut statut={idee.statut} lang={lang} />
+      </div>
     </Link>
   )
 }
