@@ -29,6 +29,11 @@ const SUIVRE_FIXED = {
   description: 'Misran Labs, maison d’édition indépendante : pas de compte à créer, un lecteur RSS ou un réseau suffit pour que les nouveautés viennent à vous.',
   image: 'og-image.png',
 }
+const ZINE_FIXED = {
+  title: 'Misran Zine — fait main, pas en série · Misran Labs',
+  description: 'Le fanzine de Misran Labs, maison d’édition indépendante : photos, dessins, jeux et pages de carnet.',
+  image: 'og-image.png',
+}
 const JEUX_FIXED = {
   title: 'Jeux — petits défis quotidiens · Misran Labs',
   description: 'Un mini-jeu par jour, noté sur 100 et partageable en un clic, façon neal.fun.',
@@ -150,6 +155,31 @@ function readValidJson(filePath, requiredFields) {
     }
   }
   return data
+}
+
+// Numéros du Zine (src/zine/numeros/NN.json) : une page d'aperçu par
+// numéro, image de rubrique tant qu'il n'existe pas d'image par numéro.
+export function collectZineNumeros(rootDir) {
+  const dir = path.join(rootDir, 'src/zine/numeros')
+  if (!fs.existsSync(dir)) return []
+  const pages = []
+  for (const file of fs.readdirSync(dir).sort()) {
+    if (!file.endsWith('.json')) continue
+    const data = readValidJson(path.join(dir, file), ['numero', 'titre.fr', 'edito.fr'])
+    if (!data) continue
+    if (file !== `${String(data.numero).padStart(2, '0')}.json`) {
+      console.warn(`[share-previews] ignoré (numéro "${data.numero}" ≠ nom de fichier) : ${file}`)
+      continue
+    }
+    pages.push({
+      path: `/zine/${data.numero}`,
+      title: `#${String(data.numero).padStart(2, '0')} — ${data.titre.fr} · Misran Zine`,
+      description: normalizeAndTruncate(data.edito.fr),
+      image: ZINE_FIXED.image,
+      type: 'article',
+    })
+  }
+  return pages
 }
 
 export function collectMagazineNumeros(rootDir) {
@@ -348,8 +378,10 @@ export function sharePreviewsPlugin() {
         { path: '/projets', title: PROJETS_FIXED.title, description: PROJETS_FIXED.description, image: PROJETS_FIXED.image, type: 'website' },
         { path: '/projets/fonctionnement', title: PROJETS_FONCTIONNEMENT_FIXED.title, description: PROJETS_FONCTIONNEMENT_FIXED.description, image: PROJETS_FONCTIONNEMENT_FIXED.image, type: 'website' },
         { path: '/suivre', title: SUIVRE_FIXED.title, description: SUIVRE_FIXED.description, image: SUIVRE_FIXED.image, type: 'website' },
+        { path: '/zine', title: ZINE_FIXED.title, description: ZINE_FIXED.description, image: ZINE_FIXED.image, type: 'website' },
         { path: '/jeux', title: JEUX_FIXED.title, description: JEUX_FIXED.description, image: JEUX_FIXED.image, type: 'website' },
         ...magazinePages,
+        ...collectZineNumeros(rootDir),
         ...brevesPages,
         ...projetsPages,
         ...jeuxPages,

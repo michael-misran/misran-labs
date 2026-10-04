@@ -58,8 +58,8 @@ export function ProjetsHero({ number, title, subtitle, children }) {
   )
 }
 
-// Bandeau de tête d'une note (D3, D4) : même rôle que MagazineMasthead
-// (src/magazine/MagazineParts.jsx), redéclaré ici en Special Elite — D1
+// Bandeau de tête d'une note (D3, D4) : même rôle que l'ancien bandeau du
+// Magazine (supprimé depuis), redéclaré ici en Special Elite — D1
 // permet de remplacer un élément d'habillage emprunté à une autre rubrique
 // par un équivalent local plutôt que de modifier le fichier emprunté.
 export function NoteMasthead({ backTo, backLabel, fileNo, center, right, rightSub }) {

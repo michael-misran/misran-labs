@@ -1,5 +1,5 @@
 // Textes fr/en des pages du magazine et table des catégories d'article.
-// Séparé de MagazineParts.jsx (pas de composants ici) pour ne déclencher
+// Séparé des composants (pas de JSX ici) pour ne déclencher
 // aucun avertissement react-refresh/only-export-components.
 
 export const CATEGORIES = {
