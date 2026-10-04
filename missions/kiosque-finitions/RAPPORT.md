@@ -56,3 +56,10 @@ Voir `DELEGATIONS.md`. 2 sous-agents : `general-purpose` (Haiku) pour `CLAUDE.md
 - **Geste parfait, Verre/Tour/Chrono** : vérifier visuellement une fois en session interactive (preview « dev » avec `?date=`) que la consigne ne s'affiche bien qu'une fois sur ces 3 défis — la lecture de code est cohérente avec le fix appliqué au Cercle (vérifié en direct), mais une session de routine ne peut pas forcer leur affichage.
 - **Fiabilité du `verificateur`** : à l'étape 9, son rapport annonçait un débordement sur 100 % des routes alors que seule une l'était réellement. Une prochaine mission qui délègue une revue de routes devrait prévoir une contre-vérification rapide (2-3 routes au hasard) avant d'agir sur un rapport de ce genre, surtout quand le correctif impliquerait de toucher beaucoup de fichiers.
 - **Lien Google Fonts de `index.html`** : à la fusion vers `refonte-kiosque`, pas de conflit attendu (seules les 3 familles D3 retirées, rien d'autre touché).
+
+## Retouches à la clôture (session interactive, 2026-10-04)
+- Vérifié dans l’état final complet (essai local : `refonte-kiosque` + `kiosque-annexes` + cette mission) : aucun conflit.
+- Geste parfait : Chrono, Verre et Tour vérifiés en direct avec `?date=` (preview dev) : consigne affichée une seule fois.
+- Fiche agent de `/lab` : l’étiquette « ACCENT » avait été remplacée par « VERT DOSSIER / FILE GREEN » et la valeur par « VERT SAPIN / PINE GREEN ». Remis comme la SPEC : « ACCENT : VERT DOSSIER / FILE GREEN ».
+- Liens sous l’aperçu du Magazine (« Lire le numéro », « Tous les numéros », « Suivre le Lab ») : passés de l’ancien style mono corail aux étiquettes Oswald bleu revue.
+- Accueil à 375 px, `/lab`, onglet Polices de `/lab/design-system` : vus, conformes.

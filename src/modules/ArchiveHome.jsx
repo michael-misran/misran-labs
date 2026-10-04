@@ -32,8 +32,8 @@ const COPY = {
     overviewStatus: 'STATUT',
     overviewStatusValue: 'ACTIF',
     overviewSince: 'DEPUIS',
-    accentLabel: 'VERT DOSSIER',
-    accentValue: 'VERT SAPIN',
+    accentLabel: 'ACCENT',
+    accentValue: 'VERT DOSSIER',
     protocolTitle: 'NOTE DE SERVICE — MÉTHODE DU LAB',
     protocolIntro: RULES_CONTENT.fr.intro,
     statusLegend: 'STATUTS UTILISÉS',
@@ -68,8 +68,8 @@ const COPY = {
     overviewStatus: 'STATUS',
     overviewStatusValue: 'ACTIVE',
     overviewSince: 'SINCE',
-    accentLabel: 'FILE GREEN',
-    accentValue: 'PINE GREEN',
+    accentLabel: 'ACCENT',
+    accentValue: 'FILE GREEN',
     protocolTitle: 'MEMO — LAB METHOD',
     protocolIntro: RULES_CONTENT.en.intro,
     statusLegend: 'STATUSES USED',
@@ -232,14 +232,14 @@ function LatestIssue({ c, lang }) {
       <CouvertureNumero issue={issue} lang={lang} variante="vedette" />
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-md-plus)', padding: 'var(--space-sm) 0 0' }}>
-        <Link to={`/magazine/${issue.date}`} style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}>
+        <Link to={`/magazine/${issue.date}`} style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', fontSize: 12, letterSpacing: '0.08em', fontWeight: 700, color: 'var(--titre-magazine)', textDecoration: 'none', borderBottom: '2px solid var(--titre-magazine)', paddingBottom: 1 }}>
           {c.magRead} →
         </Link>
-        <Link to="/magazine" style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)', textDecoration: 'none' }}>
+        <Link to="/magazine" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', fontSize: 12, letterSpacing: '0.08em', fontWeight: 700, color: 'var(--text2)', textDecoration: 'none' }}>
           {c.magAll} →
         </Link>
-        <Link to="/suivre" style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)', textDecoration: 'none', marginLeft: 'auto' }}>
-          <span style={{ color: 'var(--primary)' }}>◉</span> {c.magFollow} →
+        <Link to="/suivre" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', fontSize: 12, letterSpacing: '0.08em', fontWeight: 700, color: 'var(--text2)', textDecoration: 'none', marginLeft: 'auto' }}>
+          <span style={{ color: 'var(--titre-magazine)' }}>◉</span> {c.magFollow} →
         </Link>
       </div>
     </div>
