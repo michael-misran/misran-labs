@@ -1,0 +1,23 @@
+{
+  "id": "P-013",
+  "date": "2026-10-04",
+  "titre": {
+    "fr": "Carnet des abonnements et prélèvements récurrents",
+    "en": "Subscriptions & recurring payments tracker"
+  },
+  "resume": {
+    "fr": "Une application mobile locale pour lister tous ses abonnements et prélèvements récurrents, avec un rappel avant chaque renouvellement.",
+    "en": "A local mobile app to list every subscription and recurring payment, with a reminder before each renewal."
+  },
+  "probleme": {
+    "fr": "Entre le streaming, les logiciels, la salle de sport ou les assurances, il est facile de perdre la trace de ce qui est prélevé chaque mois et de continuer à payer pour un service oublié.",
+    "en": "Between streaming, software, the gym or insurance, it's easy to lose track of what gets charged every month and keep paying for a forgotten service."
+  },
+  "idee": {
+    "fr": "Une application locale (pas de compte, pas de serveur) où l'on saisit chaque abonnement — nom, montant, fréquence, date de prélèvement — qui calcule le total mensuel et annuel et prévient quelques jours avant chaque renouvellement.",
+    "en": "A local app (no account, no server) to log each subscription — name, amount, frequency, billing date — that totals monthly and yearly spend and warns a few days before each renewal."
+  },
+  "type": "produit",
+  "taille": "petite",
+  "statut": "proposee"
+}

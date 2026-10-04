@@ -1,0 +1,23 @@
+{
+  "id": "P-014",
+  "date": "2026-10-04",
+  "titre": {
+    "fr": "Carnet numérique des garanties et factures",
+    "en": "Digital warranty & receipt book"
+  },
+  "resume": {
+    "fr": "Une application mobile locale pour photographier ses factures et suivre la date de fin de garantie de chaque achat, avec un rappel avant l'expiration.",
+    "en": "A local mobile app to photograph receipts and track each purchase's warranty end date, with a reminder before it expires."
+  },
+  "probleme": {
+    "fr": "Les factures papier se perdent, les garanties expirent sans qu'on y pense, et au moment d'un défaut on ne retrouve ni la preuve d'achat ni la date limite.",
+    "en": "Paper receipts get lost, warranties expire unnoticed, and when something breaks there's neither proof of purchase nor the deadline at hand."
+  },
+  "idee": {
+    "fr": "Une application locale : on photographie la facture ou on saisit l'achat (objet, date, durée de garantie, magasin), l'application classe par catégorie et envoie un rappel avant la fin de garantie.",
+    "en": "A local app: photograph the receipt or log the purchase (item, date, warranty length, store), the app sorts it by category and reminds before the warranty ends."
+  },
+  "type": "produit",
+  "taille": "petite",
+  "statut": "proposee"
+}

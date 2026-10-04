@@ -1,0 +1,23 @@
+{
+  "id": "P-015",
+  "date": "2026-10-04",
+  "titre": {
+    "fr": "Le Magazine du lundi construit à partir des Brèves de la semaine",
+    "en": "Monday Magazine built from the week's Brèves"
+  },
+  "resume": {
+    "fr": "Faire partir la rédaction hebdomadaire du Magazine des sept jours de Brèves déjà publiés et vérifiés, plutôt que de refaire toute la veille d'actualité IA depuis zéro chaque lundi.",
+    "en": "Base the weekly Magazine on the seven days of Brèves already published and checked, instead of redoing the whole AI news watch from scratch every Monday."
+  },
+  "probleme": {
+    "fr": "Depuis le lancement des Brèves quotidiennes, le Journal du matin fait déjà une veille IA et une vérification des chiffres chaque jour. La routine du Magazine du lundi refait aujourd'hui tout ce travail de recherche et de relecture en une seule session hebdomadaire, ce qui double l'effort sur les mêmes sujets.",
+    "en": "Since the daily Brèves launched, the morning journal already does an AI news watch and fact-check every day. The Monday Magazine routine currently redoes all of that research and proofreading in a single weekly session, duplicating effort on the same topics."
+  },
+  "idee": {
+    "fr": "La routine du Magazine du lundi lirait d'abord les sept derniers numéros de Brèves déjà écrits et relus, en sélectionnerait les sujets les plus importants pour un public de designers et développeurs, et les approfondirait plutôt que de relancer une recherche complète depuis zéro.",
+    "en": "The Monday Magazine routine would first read the last seven already-written and checked Brèves issues, pick the topics that matter most to a designer/developer audience, and go deeper on them instead of starting a full search from scratch."
+  },
+  "type": "amelioration",
+  "taille": "petite",
+  "statut": "proposee"
+}

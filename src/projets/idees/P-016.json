@@ -1,0 +1,23 @@
+{
+  "id": "P-016",
+  "date": "2026-10-04",
+  "titre": {
+    "fr": "Lancer un service payant d'audit de design system",
+    "en": "Launch a paid design-system audit service"
+  },
+  "resume": {
+    "fr": "Proposer un audit approfondi et personnalisé de design system en service payant, en s'appuyant sur l'outil d'audit déjà construit et disponible gratuitement dans le Lab.",
+    "en": "Offer a deep, personalised design-system audit as a paid service, building on the audit tool already built and freely available in the Lab."
+  },
+  "probleme": {
+    "fr": "L'outil d'audit de design system de Michael — analyse multi-formats, lecture d'un dépôt GitHub public, grille notée sur 7 axes, rapport PDF — est terminé et en libre accès depuis fin septembre 2026, mais aucune offre de service payant n'a encore été proposée autour.",
+    "en": "Michael's design-system audit tool — multi-format analysis, public GitHub repo reading, a scored 7-axis grid, PDF report — was finished and made freely available in late September 2026, but no paid offer has been built around it yet."
+  },
+  "idee": {
+    "fr": "Utiliser l'outil gratuit comme aimant à prospects (page du Lab, posts sur les réseaux) et proposer, pour les équipes qui veulent aller plus loin, un audit payant personnalisé : lecture du dépôt privé sur demande, recommandations priorisées, accompagnement de la mise en œuvre — sans construire de nouvelle fonctionnalité avant d'avoir une première demande réelle.",
+    "en": "Use the free tool as a lead magnet (Lab page, social posts) and offer, for teams who want to go further, a personalised paid audit: reading a private repo on request, prioritised recommendations, implementation support — without building any new feature before a real first request comes in."
+  },
+  "type": "service",
+  "taille": "moyenne",
+  "statut": "proposee"
+}
