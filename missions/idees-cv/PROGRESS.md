@@ -1,7 +1,7 @@
 # Mission idees-cv — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 4 (`/lab/cv`)
+**Prochaine action :** étape 5 (vérification finale)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -21,4 +21,8 @@
 - `ProjetsHome.jsx` : grille de `FicheBristol` à la place de la liste `IdeaRow`.
 - `ProjetIdee.jsx` : `NoteMasthead` à la place de `MagazineMasthead` ; en-tête de la note « NOTE P-NNN · CLASSEMENT : public » (D3, via la nouvelle clé `clearancePublic`) ; étiquettes diverses passées en Special Elite (D6) ; les identifiants/URL de mission restent en `--font-mono` (ce sont des slugs, pas des étiquettes).
 - `ProjetsFonctionnement.jsx` : `NoteMasthead`, étiquette « NOTE DE SERVICE »/« MEMO » ajoutée au-dessus du hero (D4). Le contenu vient toujours de `fonctionnementText.js` (interdit, non modifié) : seul l'habillage change.
+- `npm run build` et `npm run lint` : OK.
+
+## Étape 4 (exécution, 2026-10-04)
+- `CVModule.jsx` : bandeau « FICHE AGENT · M. MISRAN » (`--titre-lab`) ajouté au-dessus de `CaseHero` ; `CadrePhoto` (cadre vide à trame diagonale, « PHOTO NON COMMUNIQUÉE » — pas de vraie photo, hors périmètre) placé à côté du bloc contact ; deux champs tapés ajoutés (`RÔLE`, `SPÉCIALITÉS`, cette dernière réutilisant les libellés déjà présents dans `c.expertise`) ; `SectionHeader`/`RoleHeader`/`Bullets` passés en Special Elite (D6) ; kicker « RAPPORTS DE MISSION, PAR ORDRE CHRONOLOGIQUE » ajouté avant la liste des expériences. Contenu (textes, dates, contact) inchangé.
 - `npm run build` et `npm run lint` : OK.
