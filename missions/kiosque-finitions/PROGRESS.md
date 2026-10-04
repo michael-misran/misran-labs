@@ -1,7 +1,7 @@
 # Mission kiosque-finitions — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 5
+**Prochaine action :** étape 6
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 96debce)
@@ -33,4 +33,10 @@
 - Critère 8 (mascotte) : valeurs calculées des 8 variables consommées par `sprites.js`/`fiole.css` relevées dans `tokens.css` avant modification, puis revérifiées en direct dans le navigateur (`getComputedStyle`) après : identiques caractère pour caractère (`--primitive-ink-900: #241c16`, `--primitive-coral-700: #b8452e`, `--primitive-coral-500: #dd5a3e`, `--primitive-coral-400: #e26a50`, `--primitive-coral-tint-200: #f0c3b4`, `--primitive-cream-100: #f3ebdc`, `--primitive-cream-50: #f8f2e7`, `--primitive-ink-900-a12: rgba(36,28,22,.12)`).
 - Critère 4 vérifié dans le navigateur : `/lab/lab-tokens`, 134 lignes de token, 0 ligne avec une colonne Valeur vide ou « — ».
 - Critère 3 vérifié : `grep -n "fraunces\|work-sans\|jetbrains" src/styles/tokens.css` → rien ; lien Google Fonts ne contient plus les 3 familles, toutes les autres familles de `refonte-kiosque` présentes (diff complet, aucun ajout ni perte en dehors des 3 retirées).
+- `npm run build` et lint : OK.
+
+## Étape 5 — /lab (2026-10-04)
+- `LatestIssue` (`src/modules/ArchiveHome.jsx`) : remplacé l'habillage archive fait main par `CouvertureNumero` de `src/magazine/RevueParts.jsx` (variante « vedette »), importé sans modifier `RevueParts.jsx` — même source `getIssues()[0]`, même forme de données que `MagazineHome.jsx`. Bandeau `--titre-magazine`, titre Playfair Display italique, « N° 1 » sans zéros. Les 3 liens (lire/tous les numéros/suivre) gardés sous la couverture. Imports devenus inutiles retirés (`issueNo`, `formatDateShort`, `CategoryMark`), prop `isMobile` du composant retirée (plus consommée).
+- Fiche agent : `accentLabel` « ACCENT » → « VERT DOSSIER »/« FILE GREEN », `accentValue` « CORAIL BRÛLÉ »/« BURNT CORAL » → « VERT SAPIN »/« PINE GREEN », pastille `var(--primary)` → `var(--titre-lab)`.
+- Vérifié moi-même dans le navigateur : bandeau bleu `rgb(43, 58, 155)`, « N° 1 » affiché, fiche agent « VERT DOSSIER »/« FILE GREEN » dans les deux langues, aucune erreur console.
 - `npm run build` et lint : OK.
