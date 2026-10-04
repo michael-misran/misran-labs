@@ -1,11 +1,10 @@
 import { useParams, Link } from 'react-router-dom'
 import useIsMobile from '../shell/useIsMobile'
 import { useLanguage } from '../shell/LanguageContext'
-import { MagazineMasthead } from '../magazine/MagazineParts'
 import { CaseMetaRow, CaseFooter } from '../lab/CaseFile'
 import { CASE_CHROME } from '../lab/caseChrome'
 import SectionTitle from '../design-system/SectionTitle'
-import { ProjetsHero, StatusMark, PrivateNotes } from './ProjetsParts'
+import { ProjetsHero, StatusMark, PrivateNotes, NoteMasthead } from './ProjetsParts'
 import { PROJ_TEXT, typeLabel, tailleLabel, formatDateShort } from './projetsText'
 import { getIdea } from './idees'
 import Fiole from '../shell/mascotte/Fiole'
@@ -17,7 +16,7 @@ function NotFound({ id, lang }) {
 
   return (
     <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
-      <MagazineMasthead
+      <NoteMasthead
         backTo="/projets"
         backLabel={t.backLabel}
         fileNo={t.notFoundFileNo}
@@ -27,7 +26,7 @@ function NotFound({ id, lang }) {
       />
 
       <div style={{ border: 'var(--border-regular) solid var(--border)', padding: isMobile ? 'var(--space-md-plus)' : 'var(--space-xl)' }}>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)', letterSpacing: '0.1em', overflowWrap: 'anywhere' }}>
+        <div style={{ fontFamily: "var(--font-machine)", fontSize: 11, color: 'var(--muted)', letterSpacing: '0.02em', overflowWrap: 'anywhere' }}>
           {t.notFoundLabel} : {id}
         </div>
         <div style={{ marginBottom: 'var(--space-xs)' }}>
@@ -39,7 +38,7 @@ function NotFound({ id, lang }) {
         <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: 'var(--text2)', margin: '0 0 var(--space-md-plus)' }}>
           {t.notFoundBody}
         </p>
-        <Link to="/projets" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--primary)', textDecoration: 'none' }}>
+        <Link to="/projets" style={{ fontFamily: "var(--font-machine)", fontSize: 12, color: 'var(--primary)', textDecoration: 'none' }}>
           {t.backToList}
         </Link>
       </div>
@@ -53,7 +52,7 @@ function MissionLink({ idee, lang }) {
 
   return (
     <div style={{ borderTop: 'var(--border-thin) solid var(--border)', paddingTop: 'var(--space-sm)', marginTop: 14 }}>
-      <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)', marginRight: 'var(--space-xs)' }}>{t.missionLabel}</span>
+      <span style={{ fontFamily: "var(--font-machine)", fontSize: 12, color: 'var(--muted)', marginRight: 'var(--space-xs)' }}>{t.missionLabel}</span>
       {idee.statut === 'faite' ? (
         <a
           href={`https://github.com/michael-misran/misran-labs/tree/main/missions/${idee.mission}`}
@@ -79,12 +78,12 @@ function DecisionBox({ idee, lang }) {
         <>
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--space-xs-plus)' }}>
             <StatusMark statut={idee.statut} lang={lang} />
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--muted)' }}>
+            <span style={{ fontFamily: "var(--font-machine)", fontSize: 11, color: 'var(--muted)' }}>
               {t.decisionOn(formatDateShort(idee.decision.date))}
             </span>
           </div>
           {idee.statut === 'arretee' && (
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: 'var(--error)', letterSpacing: '0.06em', marginTop: 'var(--space-xs-plus)' }}>
+            <div style={{ fontFamily: "var(--font-machine)", fontSize: 11, color: 'var(--error)', letterSpacing: '0.02em', marginTop: 'var(--space-xs-plus)' }}>
               {t.stoppedReason}
             </div>
           )}
@@ -115,10 +114,10 @@ export default function ProjetIdee() {
 
   return (
     <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, fontFamily: "var(--font-body)", color: 'var(--text)', maxWidth: 880, margin: '0 auto' }}>
-      <MagazineMasthead
+      <NoteMasthead
         backTo="/projets"
         backLabel={t.backLabel}
-        fileNo={`${lang === 'en' ? 'PROJECT' : 'PROJET'} ${idee.id}`}
+        fileNo={`NOTE ${idee.id} · ${PROJ_TEXT[lang].clearancePublic}`}
         center={t.mastheadCenter}
         right={t.right}
         rightSub={formatDateShort(idee.date)}
@@ -159,7 +158,7 @@ export default function ProjetIdee() {
         <PrivateNotes key={idee.id} id={idee.id} lang={lang} />
       </div>
 
-      <Link to="/projets" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none', display: 'inline-block', marginBottom: 40 }}>
+      <Link to="/projets" style={{ fontFamily: "var(--font-machine)", fontSize: 12, color: 'var(--text2)', textDecoration: 'none', display: 'inline-block', marginBottom: 40 }}>
         {t.backToList}
       </Link>
 

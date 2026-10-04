@@ -5,7 +5,7 @@ import { useLanguage } from '../shell/LanguageContext'
 import { CaseMasthead, CaseMetaRow, CaseFooter } from '../lab/CaseFile'
 import { CASE_CHROME } from '../lab/caseChrome'
 import SectionTitle from '../design-system/SectionTitle'
-import { ProjetsHero, StatusFilter, IdeaRow } from './ProjetsParts'
+import { ProjetsHero, StatusFilter, FicheBristol } from './ProjetsParts'
 import { PROJ_TEXT, STATUTS } from './projetsText'
 import { getIdeas } from './idees'
 import SuivreBandeau from '../suivre/SuivreBandeau'
@@ -108,13 +108,11 @@ export default function ProjetsHome() {
           </button>
         </p>
       ) : (
-        <ol style={{ listStyle: 'none', margin: 0, padding: 0, borderBottom: 'var(--border-thin) solid var(--border)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 'var(--space-md)' }}>
           {visible.map((idee) => (
-            <li key={idee.id}>
-              <IdeaRow idee={idee} lang={lang} />
-            </li>
+            <FicheBristol key={idee.id} idee={idee} lang={lang} />
           ))}
-        </ol>
+        </div>
       )}
 
       <SuivreBandeau rubrique="projets" />

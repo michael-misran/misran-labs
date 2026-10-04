@@ -49,13 +49,15 @@ export function tailleLabel(taille, lang) {
 
 export const PROJ_TEXT = {
   fr: {
+    noteDeService: 'NOTE DE SERVICE',
+    clearancePublic: 'CLASSEMENT : public',
     home: {
       fileNo: 'RUBRIQUE — PROJETS',
       mastheadCenter: 'ARCHIVE DU LAB //// REGISTRE DES IDÉES',
       mastheadRight: 'MISRAN LABS',
       mastheadRightSub: 'HEBDOMADAIRE',
       title: 'Projets',
-      subtitle: 'IDÉES PROPOSÉES PAR CLAUDE — TRIÉES PAR MICHAEL',
+      subtitle: 'NOTES DE RECHERCHE — LES IDÉES DU LAB',
       countLabel: 'IDÉES',
       cadenceLabel: 'CADENCE',
       cadenceValue: 'Chaque semaine',
@@ -101,13 +103,15 @@ export const PROJ_TEXT = {
     },
   },
   en: {
+    noteDeService: 'MEMO',
+    clearancePublic: 'CLEARANCE: public',
     home: {
       fileNo: 'SECTION — PROJECTS',
       mastheadCenter: 'LAB ARCHIVE //// IDEA REGISTER',
       mastheadRight: 'MISRAN LABS',
       mastheadRightSub: 'WEEKLY',
       title: 'Projects',
-      subtitle: 'IDEAS PROPOSED BY CLAUDE — SORTED BY MICHAEL',
+      subtitle: 'RESEARCH NOTES — THE LAB’S IDEAS',
       countLabel: 'IDEAS',
       cadenceLabel: 'CADENCE',
       cadenceValue: 'Every week',
