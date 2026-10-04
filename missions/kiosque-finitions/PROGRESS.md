@@ -1,7 +1,7 @@
 # Mission kiosque-finitions — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 6
+**Prochaine action :** étape 7
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 96debce)
@@ -39,4 +39,9 @@
 - `LatestIssue` (`src/modules/ArchiveHome.jsx`) : remplacé l'habillage archive fait main par `CouvertureNumero` de `src/magazine/RevueParts.jsx` (variante « vedette »), importé sans modifier `RevueParts.jsx` — même source `getIssues()[0]`, même forme de données que `MagazineHome.jsx`. Bandeau `--titre-magazine`, titre Playfair Display italique, « N° 1 » sans zéros. Les 3 liens (lire/tous les numéros/suivre) gardés sous la couverture. Imports devenus inutiles retirés (`issueNo`, `formatDateShort`, `CategoryMark`), prop `isMobile` du composant retirée (plus consommée).
 - Fiche agent : `accentLabel` « ACCENT » → « VERT DOSSIER »/« FILE GREEN », `accentValue` « CORAIL BRÛLÉ »/« BURNT CORAL » → « VERT SAPIN »/« PINE GREEN », pastille `var(--primary)` → `var(--titre-lab)`.
 - Vérifié moi-même dans le navigateur : bandeau bleu `rgb(43, 58, 155)`, « N° 1 » affiché, fiche agent « VERT DOSSIER »/« FILE GREEN » dans les deux langues, aucune erreur console.
+- `npm run build` et lint : OK.
+
+## Étape 6 — couverture Zine (2026-10-04)
+- `CouvertureZine` (`src/kiosque/KiosqueParts.jsx`) : `getNumeros()[0]` était déjà importé et lu pour le lien, mais jamais pour l'affichage. Ajout d'un rendu conditionnel : avec un numéro, « #NN » (padé, remplace le `#1` statique) et son titre (badge rotatif, style BD) remplacent l'étoile « Bientôt ! » ; la légende passe de `legendeRythme` (« bientôt · mensuel ») à une nouvelle clé `legendeRythmeAvecNumero` (« mensuel »/« monthly ») ajoutée dans `src/kiosque/kiosqueText.js`. Sans numéro, rendu strictement inchangé.
+- Testé avec `src/zine/numeros/01.json` (exemple complet de `FORMAT.md`, photo → `/og-image.png`) : vérifié moi-même dans le navigateur, FR et EN — « #01 » et « Premiers pas »/« First steps » affichés, légende « mensuel »/« monthly », aucune erreur console. Fichier supprimé avant ce commit (`git ls-files src/zine/numeros` → seulement `.gitkeep`), puis revérifié que la couverture revient à « Bientôt ! »/« Coming soon! » sans numéro.
 - `npm run build` et lint : OK.
