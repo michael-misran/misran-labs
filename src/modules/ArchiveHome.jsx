@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { visibleProjects, pt } from '../lab/projects'
+import { visibleProjects, pt, dossierNo } from '../lab/projects'
 import useIsMobile from '../shell/useIsMobile'
 import { useLanguage } from '../shell/LanguageContext'
 import { STATUS, METHOD_STEP_COLORS } from '../lab/phases'
@@ -8,23 +8,25 @@ import { Stamp, Barcode } from '../design-system/ArchiveMarks'
 import { getIssues } from '../magazine/numeros'
 import { issueNo, formatDateShort } from '../magazine/magazineText'
 import { CategoryMark } from '../magazine/MagazineParts'
+import { KRAFT } from '../lab/caseChrome'
+import { TamponDeclassifie, EtiquetteTapee } from '../lab/DossierParts'
 
-// Page d'accueil du kit rétro. Ce n'est pas HomeModule recoloré : c'est une
-// composition différente — planche d'archive plutôt que grille de cards —
-// parce qu'un kit qui ne change que des tokens ne rompt jamais vraiment.
-// Le contenu (règles du Lab, liste des projets) est le même qu'ailleurs ;
-// seule la mise en scène change.
+// Page d'accueil du Lab (D2) : une armoire à dossiers confidentiels plutôt
+// qu'un portfolio lissé — chemise kraft, note de service tapée à la
+// machine, index de chemises, fiche agent. Le contenu (règles du Lab,
+// liste des projets) reste le même qu'ailleurs ; seule la mise en scène
+// change.
 
 const COPY = {
   fr: {
-    mastheadLeft: 'M.LABS',
-    mastheadLeftSub: 'ARCHIVE DE PORTFOLIO',
+    onglet: 'ML-LAB',
+    agent: 'AGENT : M. MISRAN',
+    classement: 'CLASSEMENT : ouvert au public',
+    piecesLabel: 'PIÈCES : ',
     mastheadCenter: 'INDEX DU LAB //// SÉRIE PROJETS',
-    mastheadRight: 'MISRAN LABS',
-    mastheadRightSub: 'ARCHIVE VISUEL',
     heroTag: 'PRODUCT DESIGNER & LAB',
     heroDesc: "Un journal de bord honnête, pas un catalogue lissé. Chaque dossier documente une hypothèse, ce qui a été construit, et ce qui a réellement été vérifié.",
-    overviewTitle: 'APERÇU',
+    fichierAgentTitle: 'FICHE AGENT',
     overviewRole: 'RÔLE',
     overviewRoleValue: 'Product Designer',
     overviewFiles: 'DOSSIERS',
@@ -33,7 +35,7 @@ const COPY = {
     overviewSince: 'DEPUIS',
     accentLabel: 'ACCENT',
     accentValue: 'CORAIL BRÛLÉ',
-    protocolTitle: 'PROTOCOLE — MÉTHODE DU LAB',
+    protocolTitle: 'NOTE DE SERVICE — MÉTHODE DU LAB',
     protocolIntro: RULES_CONTENT.fr.intro,
     statusLegend: 'STATUTS UTILISÉS',
     magLabel: 'MAGAZINE — DERNIER NUMÉRO',
@@ -47,17 +49,20 @@ const COPY = {
     docId: 'ID DOCUMENT — ML-ARCHIVE-000',
     clearance: 'NIVEAU DE LECTURE — PUBLIC',
     tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
-    sideStrip: 'MISRAN LABS — ARCHIVE DE PORTFOLIO — INDEX ',
+    tamponBarre: 'CONFIDENTIEL',
+    tamponBas: 'DÉCLASSIFIÉ',
+    typeLabels: { 'case-study': 'ÉTUDE DE CAS', method: 'MÉTHODE', tool: 'OUTIL' },
+    statusLabels: { READY: 'PRÊT', PLACEHOLDER: 'À VENIR' },
   },
   en: {
-    mastheadLeft: 'M.LABS',
-    mastheadLeftSub: 'PORTFOLIO ARCHIVE',
+    onglet: 'ML-LAB',
+    agent: 'AGENT: M. MISRAN',
+    classement: 'CLEARANCE: open to the public',
+    piecesLabel: 'FILES: ',
     mastheadCenter: 'LAB INDEX //// PROJECT SERIES',
-    mastheadRight: 'MISRAN LABS',
-    mastheadRightSub: 'VISUAL ARCHIVE',
     heroTag: 'PRODUCT DESIGNER & LAB',
     heroDesc: "An honest logbook, not a polished catalogue. Every file documents a hypothesis, what got built, and what was actually verified.",
-    overviewTitle: 'OVERVIEW',
+    fichierAgentTitle: 'AGENT FILE',
     overviewRole: 'ROLE',
     overviewRoleValue: 'Product Designer',
     overviewFiles: 'FILES',
@@ -66,7 +71,7 @@ const COPY = {
     overviewSince: 'SINCE',
     accentLabel: 'ACCENT',
     accentValue: 'BURNT CORAL',
-    protocolTitle: 'PROTOCOL — LAB METHOD',
+    protocolTitle: 'MEMO — LAB METHOD',
     protocolIntro: RULES_CONTENT.en.intro,
     statusLegend: 'STATUSES USED',
     magLabel: 'MAGAZINE — LATEST ISSUE',
@@ -80,45 +85,72 @@ const COPY = {
     docId: 'DOCUMENT ID — ML-ARCHIVE-000',
     clearance: 'CLEARANCE LEVEL — PUBLIC',
     tagline: 'DESIGN IS INTENT. DETAILS ARE EVERYTHING.',
-    sideStrip: 'MISRAN LABS — PORTFOLIO ARCHIVE — INDEX ',
+    tamponBarre: 'CLASSIFIED',
+    tamponBas: 'DECLASSIFIED',
+    typeLabels: { 'case-study': 'CASE STUDY', method: 'METHOD', tool: 'TOOL' },
+    statusLabels: { READY: 'READY', PLACEHOLDER: 'UPCOMING' },
   },
 }
 
-function Masthead({ c }) {
+// La chemise kraft pleine largeur (D2) : onglet « ML-LAB », étiquette
+// tapée à la machine, tampon déclassifié.
+function ChemiseEnTete({ c, count }) {
+  const isMobile = useIsMobile()
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)', paddingBottom: 14, borderBottom: 'var(--border-regular) solid var(--border)', marginBottom: 28, flexWrap: 'wrap' }}>
-      <div>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', color: 'var(--text)' }}>{c.mastheadLeft}</div>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)' }}>{c.mastheadLeftSub}</div>
+    <div style={{ background: KRAFT.chemise, border: 'var(--border-regular) solid var(--border)', padding: isMobile ? 'var(--space-md)' : '18px 22px', marginBottom: 'var(--space-xl)', position: 'relative' }}>
+      <div
+        style={{
+          position: 'absolute',
+          top: -16,
+          left: isMobile ? 16 : 28,
+          background: KRAFT.onglet,
+          border: 'var(--border-regular) solid var(--border)',
+          borderBottom: 0,
+          padding: '5px 16px 14px',
+          fontFamily: "var(--font-machine)",
+          fontSize: 13,
+          letterSpacing: '0.08em',
+          color: '#3a2f1e',
+        }}
+      >
+        {c.onglet}
       </div>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.14em', color: 'var(--text2)', textAlign: 'center', flex: '1 1 200px' }}>
-        {c.mastheadCenter}
-      </div>
-      <div style={{ textAlign: 'right' }}>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', color: 'var(--text)' }}>{c.mastheadRight}</div>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)' }}>{c.mastheadRightSub}</div>
+
+      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 'var(--space-md)', flexWrap: 'wrap', marginTop: isMobile ? 6 : 14 }}>
+        <EtiquetteTapee>
+          {c.agent}<br />{c.classement}<br />{c.piecesLabel}{count}
+        </EtiquetteTapee>
+        <TamponDeclassifie barre={c.tamponBarre} bas={c.tamponBas} />
       </div>
     </div>
   )
 }
 
-function OverviewBox({ c, count }) {
+function FicheAgent({ c, count }) {
   const rows = [
     [c.overviewRole, c.overviewRoleValue],
     [c.overviewFiles, String(count).padStart(2, '0')],
     [c.overviewStatus, c.overviewStatusValue],
     [c.overviewSince, '2024'],
+    [c.accentLabel, c.accentValue],
   ]
   return (
-    <div style={{ border: 'var(--border-thin) solid var(--border)' }}>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.1em', color: 'var(--muted)', padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
-        {c.overviewTitle}
+    <div style={{ background: KRAFT.papier, border: 'var(--border-regular) solid var(--border)' }}>
+      <div style={{ fontFamily: "var(--font-machine)", fontSize: 13, letterSpacing: '0.04em', color: 'var(--text)', padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
+        {c.fichierAgentTitle}
       </div>
       <div style={{ padding: 'var(--space-2xs) var(--space-sm)' }}>
         {rows.map(([label, value]) => (
-          <div key={label} style={{ display: 'flex', justifyContent: 'space-between', gap: 'var(--space-sm)', padding: '7px 0', borderBottom: 'var(--border-thin) solid var(--border)' }}>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.06em', color: 'var(--muted)' }}>{label}</span>
-            <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text)', fontWeight: 600 }}>{value}</span>
+          <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 'var(--space-sm)', padding: '7px 0', borderBottom: 'var(--border-thin) solid var(--border)' }}>
+            <span style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.03em', color: 'var(--muted)' }}>{label}</span>
+            {label === c.accentLabel ? (
+              <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span style={{ width: 14, height: 14, background: 'var(--primary)', border: 'var(--border-thin) solid var(--border)', flexShrink: 0 }} />
+                <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text)' }}>{value}</span>
+              </span>
+            ) : (
+              <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text)', fontWeight: 600 }}>{value}</span>
+            )}
           </div>
         ))}
       </div>
@@ -126,21 +158,9 @@ function OverviewBox({ c, count }) {
   )
 }
 
-function AccentSwatch({ c }) {
-  return (
-    <div style={{ border: 'var(--border-thin) solid var(--border)', marginTop: 'var(--space-md)' }}>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.1em', color: 'var(--muted)', padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
-        {c.accentLabel}
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs-plus)', padding: 'var(--space-sm)' }}>
-        <div style={{ width: 28, height: 28, background: 'var(--primary)', border: 'var(--border-thin) solid var(--border)', flexShrink: 0 }} />
-        <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text)' }}>{c.accentValue}</span>
-      </div>
-    </div>
-  )
-}
-
-function ProtocolPlate({ c, lang }) {
+// La note de service (D2) : l'ancien protocole en 5 étapes, tapé à la
+// machine plutôt qu'en mono/heading. Le contenu ne change pas.
+function NoteDeService({ c, lang }) {
   const steps = RULES_CONTENT[lang]?.steps ?? RULES_CONTENT.fr.steps
   const statusMap = STATUS[lang] ?? STATUS.fr
 
@@ -148,7 +168,7 @@ function ProtocolPlate({ c, lang }) {
     <div style={{ border: 'var(--border-regular) solid var(--border)', position: 'relative', flex: 1, minWidth: 0 }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)', padding: '14px var(--space-md-plus)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
         <div>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: 'var(--text)' }}>{c.protocolTitle}</div>
+          <div style={{ fontFamily: "var(--font-machine)", fontSize: 13, letterSpacing: '0.04em', color: 'var(--text)' }}>{c.protocolTitle}</div>
           <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, maxWidth: '58ch', margin: 'var(--space-xs-plus) 0 0' }}>{c.protocolIntro}</p>
         </div>
         <Stamp label="MISRAN · LABS · ARCHIVE ·" />
@@ -173,8 +193,8 @@ function ProtocolPlate({ c, lang }) {
               }}
             >
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-xs)', marginBottom: 'var(--space-2xs)' }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: METHOD_STEP_COLORS[i] }}>0{i + 1}</span>
-                <span style={{ fontFamily: "var(--font-heading)", fontSize: 13, fontWeight: 600, color: 'var(--text)' }}>{step.title}</span>
+                <span style={{ fontFamily: "var(--font-machine)", fontSize: 12, color: METHOD_STEP_COLORS[i] }}>0{i + 1}</span>
+                <span style={{ fontFamily: "var(--font-machine)", fontSize: 14, color: 'var(--text)' }}>{step.title}</span>
               </div>
               <p style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--text2)', lineHeight: 1.5, margin: 0, maxWidth: isLast ? '60ch' : undefined }}>{step.desc}</p>
             </div>
@@ -183,7 +203,7 @@ function ProtocolPlate({ c, lang }) {
       </div>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-md)', padding: 'var(--space-sm) var(--space-md-plus)', borderTop: 'var(--border-thin) solid var(--border)' }}>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.08em', color: 'var(--muted)' }}>{c.statusLegend}</span>
+        <span style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.03em', color: 'var(--muted)' }}>{c.statusLegend}</span>
         {Object.entries(statusMap).map(([key, s]) => (
           <div key={key} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <span style={{ width: 6, height: 6, background: s.color, flexShrink: 0, opacity: key === 'skipped' ? 0.5 : 1 }} />
@@ -196,16 +216,17 @@ function ProtocolPlate({ c, lang }) {
 }
 
 // Met en avant le dernier numéro du Magazine — seule partie de la home qui
-// change chaque semaine, sans intervention de code (D3 : pas de numéro
-// valide → pas de bloc).
+// change chaque semaine, sans intervention de code (pas de numéro
+// valide → pas de bloc). Hors périmètre de la refonte du Lab : habillage
+// minimal (filet kraft) pour rester dans l'univers sans y toucher.
 function LatestIssue({ c, lang, isMobile }) {
   const issue = getIssues()[0]
   if (!issue) return null
 
   return (
-    <div style={{ border: 'var(--border-regular) solid var(--border)', borderTop: 'var(--border-thick) solid var(--primary)', marginBottom: 'var(--space-xl)' }}>
+    <div style={{ border: 'var(--border-regular) solid var(--border)', borderTop: '4px solid var(--titre-lab)', marginBottom: 'var(--space-xl)' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-sm)', flexWrap: 'wrap', padding: isMobile ? 'var(--space-xs-plus) var(--space-md)' : 'var(--space-xs-plus) var(--space-md-plus)', background: 'var(--active-tint)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.1em', color: 'var(--primary)', fontWeight: 700 }}>{c.magLabel}</span>
+        <span style={{ fontFamily: "var(--font-machine)", fontSize: 12, letterSpacing: '0.03em', color: 'var(--titre-lab)' }}>{c.magLabel}</span>
         <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--text2)' }}>
           Nº {issueNo(issue.numero)} · {formatDateShort(issue.date)}
         </span>
@@ -263,47 +284,53 @@ function LatestIssue({ c, lang, isMobile }) {
   )
 }
 
-function FileEntry({ project, index, c, lang }) {
+// Une chemise de l'index (D2) : onglet avec le numéro de dossier, léger
+// décalage alterné comme dans un tiroir de classeur, titre tapé, ligne de
+// méta (type, statut), lien vers /lab/<slug>.
+function ChemiseIndex({ project, index, c, lang }) {
   const { title, summary, tags } = pt(project, lang)
+  const no = dossierNo(project.slug) ?? '—'
+  const decalage = index % 2 === 0 ? 0 : 8
 
   return (
     <Link to={`/lab/${project.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
       <div
         style={{
-          border: 'var(--border-thin) solid var(--border)',
-          padding: 18,
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          gap: 'var(--space-xs-plus)',
+          marginTop: decalage,
           transition: 'background 0.15s ease',
         }}
         onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--hover-tint)' }}
         onMouseLeave={(e) => { e.currentTarget.style.background = 'none' }}
       >
-        <div>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--muted)' }}>
-            {lang === 'fr' ? 'DOSSIER' : 'FILE'} {String(index + 1).padStart(3, '0')}
-          </span>
+        <div style={{ alignSelf: 'flex-start', background: KRAFT.onglet, border: 'var(--border-thin) solid var(--border)', borderBottom: 0, padding: '3px 10px', fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.04em', color: '#3a2f1e' }}>
+          Nº {no}
         </div>
+        <div style={{ border: 'var(--border-thin) solid var(--border)', padding: 18, flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--space-xs-plus)' }}>
+          <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 18, fontWeight: 700, color: 'var(--text)', margin: 0, lineHeight: 1.2 }}>
+            {title}
+          </h3>
 
-        <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 18, fontWeight: 700, color: 'var(--text)', margin: 0, lineHeight: 1.2 }}>
-          {title}
-        </h3>
-
-        <p style={{ fontFamily: "var(--font-body)", fontSize: 12.5, color: 'var(--text2)', lineHeight: 1.6, margin: 0, flex: 1 }}>
-          {summary}
-        </p>
-
-        {tags.length > 0 && (
-          <div>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.08em', color: 'var(--muted)', marginBottom: 'var(--space-2xs)' }}>{c.keywords}</div>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)' }}>{tags.join(' · ')}</div>
+          <div style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.03em', color: 'var(--titre-lab)' }}>
+            {c.typeLabels[project.type] ?? project.type} · {c.statusLabels[project.status] ?? project.status}
           </div>
-        )}
 
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.08em', color: 'var(--primary)', marginTop: 'var(--space-2xs)' }}>
-          {c.openFile} →
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 12.5, color: 'var(--text2)', lineHeight: 1.6, margin: 0, flex: 1 }}>
+            {summary}
+          </p>
+
+          {tags.length > 0 && (
+            <div>
+              <div style={{ fontFamily: "var(--font-machine)", fontSize: 10, letterSpacing: '0.03em', color: 'var(--muted)', marginBottom: 'var(--space-2xs)' }}>{c.keywords}</div>
+              <div style={{ fontFamily: "var(--font-machine)", fontSize: 12, color: 'var(--text2)' }}>{tags.join(' · ')}</div>
+            </div>
+          )}
+
+          <div style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.03em', color: 'var(--primary)', marginTop: 'var(--space-2xs)' }}>
+            {c.openFile} →
+          </div>
         </div>
       </div>
     </Link>
@@ -313,10 +340,10 @@ function FileEntry({ project, index, c, lang }) {
 function DocFooter({ c }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-sm)', marginTop: 'var(--space-xl)', paddingTop: 'var(--space-md)', borderTop: 'var(--border-regular) solid var(--border)' }}>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.06em', color: 'var(--muted)' }}>
+      <div style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.03em', color: 'var(--muted)' }}>
         {c.docId} — {c.clearance}
       </div>
-      <div style={{ fontFamily: "var(--font-heading)", fontSize: 11, fontWeight: 700, letterSpacing: '0.02em', color: 'var(--text)', textAlign: 'center', flex: '1 1 240px' }}>
+      <div style={{ fontFamily: "var(--font-machine)", fontSize: 13, color: 'var(--text)', textAlign: 'center', flex: '1 1 240px' }}>
         {c.tagline}
       </div>
       <Barcode />
@@ -331,75 +358,46 @@ export default function ArchiveHome() {
   const c = COPY[lang] ?? COPY.fr
 
   return (
-    <div style={{ display: 'flex', color: 'var(--text)' }}>
-      {!isMobile && (
-        <div
-          aria-hidden="true"
-          style={{
-            width: 28,
-            flexShrink: 0,
-            borderRight: 'var(--border-thin) solid var(--border)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <div
-            style={{
-              writingMode: 'vertical-rl',
-              transform: 'rotate(180deg)',
-              fontFamily: "var(--font-mono)",
-              fontSize: 9,
-              letterSpacing: '0.2em',
-              color: 'var(--muted)',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {c.sideStrip.repeat(3)}
-          </div>
-        </div>
-      )}
+    <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, color: 'var(--text)' }}>
+      <h1 style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)' }}>
+        Michael Misran — Product Designer & Lab
+      </h1>
 
-      <div style={{ padding: isMobile ? 'var(--space-md-plus)' : 40, flex: 1, minWidth: 0 }}>
-        <h1 style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)' }}>
-          Michael Misran — Product Designer & Lab
-        </h1>
-
-        <Masthead c={c} />
-
-        <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 'var(--space-lg)', marginBottom: 'var(--space-xl)' }}>
-          <div style={{ flex: isMobile ? '1 1 auto' : '0 0 220px' }}>
-            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 900, fontSize: 64, lineHeight: 0.85, color: 'var(--text)', marginBottom: 6 }}>M.</div>
-            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 28, color: 'var(--primary)', lineHeight: 1, marginBottom: 'var(--space-xs)' }}>PORTFOLIO</div>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: '0.08em', color: 'var(--text2)', marginBottom: 14 }}>{c.heroTag}</div>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, maxWidth: '34ch', margin: '0 0 14px' }}>{c.heroDesc}</p>
-
-            <OverviewBox c={c} count={projects.length} />
-            <AccentSwatch c={c} />
-          </div>
-
-          <ProtocolPlate c={c} lang={lang} />
-        </div>
-
-        <LatestIssue c={c} lang={lang} isMobile={isMobile} />
-
-        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 'var(--space-md)', marginBottom: 14, flexWrap: 'wrap' }}>
-          <div>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: 'var(--text)' }}>{c.indexTitle}</div>
-            <div style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--muted)' }}>{c.indexSub}</div>
-          </div>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 0, border: 'var(--border-thin) solid var(--border)', borderRight: 'none', borderBottom: 'none' }}>
-          {projects.map((project, i) => (
-            <div key={project.slug} style={{ borderRight: 'var(--border-thin) solid var(--border)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
-              <FileEntry project={project} index={i} c={c} lang={lang} />
-            </div>
-          ))}
-        </div>
-
-        <DocFooter c={c} />
+      <div style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.1em', color: 'var(--text2)', textAlign: 'center', marginBottom: 'var(--space-sm)' }}>
+        {c.mastheadCenter}
       </div>
+
+      <ChemiseEnTete c={c} count={projects.length} />
+
+      <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 'var(--space-lg)', marginBottom: 'var(--space-xl)' }}>
+        <div style={{ flex: isMobile ? '1 1 auto' : '0 0 240px' }}>
+          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 900, fontSize: 64, lineHeight: 0.85, color: 'var(--text)', marginBottom: 6 }}>M.</div>
+          <div style={{ fontFamily: "var(--font-machine)", fontSize: 24, color: 'var(--titre-lab)', lineHeight: 1, marginBottom: 'var(--space-xs)' }}>PORTFOLIO</div>
+          <div style={{ fontFamily: "var(--font-machine)", fontSize: 12, letterSpacing: '0.03em', color: 'var(--text2)', marginBottom: 14 }}>{c.heroTag}</div>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: 'var(--text2)', lineHeight: 1.6, maxWidth: '34ch', margin: '0 0 14px' }}>{c.heroDesc}</p>
+
+          <FicheAgent c={c} count={projects.length} />
+        </div>
+
+        <NoteDeService c={c} lang={lang} />
+      </div>
+
+      <LatestIssue c={c} lang={lang} isMobile={isMobile} />
+
+      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 'var(--space-md)', marginBottom: 14, flexWrap: 'wrap' }}>
+        <div>
+          <div style={{ fontFamily: "var(--font-machine)", fontSize: 13, letterSpacing: '0.04em', color: 'var(--text)' }}>{c.indexTitle}</div>
+          <div style={{ fontFamily: "var(--font-body)", fontSize: 12, color: 'var(--muted)' }}>{c.indexSub}</div>
+        </div>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 'var(--space-md) var(--space-sm)' }}>
+        {projects.map((project, i) => (
+          <ChemiseIndex key={project.slug} project={project} index={i} c={c} lang={lang} />
+        ))}
+      </div>
+
+      <DocFooter c={c} />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 # Mission lab-dossiers — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 4 (`ArchiveHome.jsx`)
+**Prochaine action :** étape 5 (`LabTokens.jsx`)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -21,4 +21,9 @@
 - `CaseFile.jsx` réécrit (mêmes exports, mêmes props) : `CaseMasthead` devient une bande kraft avec lien de retour, « DOSSIER N° xxx » tapé et `TamponDeclassifie` ; `CaseMetaRow` devient des champs « LABEL : valeur » en Special Elite ; `CaseHero` garde le titre en `--font-heading` (lisibilité, D5) mais prend un filet `--titre-lab` et un numéro de dossier tapé ; `CaseTabs` délègue à `OngletClasseur` (onglets kraft, actif = papier) ; `CaseFooter` passe en Special Elite. Les tokens `--case-tabs-tint-N` ne sont plus référencés ici (restent intacts dans `tokens.css`, D3).
 - Bug repéré en même temps : `CaseMasthead` et `CaseStudyLayout` liaient leur lien « ← Lab » vers `/` — c'était juste avant la refonte kiosque (où `/` était encore l'archive), mais `/` est maintenant le kiosque. Corrigé vers `/lab` dans les deux fichiers (`DECISIONS.md`).
 - `CaseStudyLayout.jsx` : lien de retour corrigé, filet `--titre-lab` sur le titre, période/outils passés en Special Elite (rôle resté en `--font-body`, potentiellement plus long, D5). `ToolProcessTemplate.jsx` ne compose que des exports de `CaseFile.jsx` : rien à changer dedans, hérite automatiquement du nouvel habillage.
+- `npm run build` et `npm run lint` : OK.
+
+## Étape 4 (exécution, 2026-10-04)
+- `ArchiveHome.jsx` réécrit : `ChemiseEnTete` (onglet « ML-LAB », `EtiquetteTapee` avec AGENT/CLASSEMENT/PIÈCES, `TamponDeclassifie`), `NoteDeService` (ancien `ProtocolPlate`, même contenu, habillage tapé à la machine), `FicheAgent` (fusion d'`OverviewBox`+`AccentSwatch`), `ChemiseIndex` (ancien `FileEntry`, onglet avec numéro de dossier en léger décalage alterné, ligne de méta type+statut ajoutée). `LatestIssue` (teaser Magazine) conservé, habillage minimal (filet `--titre-lab`), hors périmètre direct de D2 mais pas retiré (décision).
+- Bande latérale verticale décorative (`sideStrip`) retirée : ne correspondait à aucun élément demandé par D2, et la nouvelle composition (chemise pleine largeur) ne s'y prêtait plus (`DECISIONS.md`).
 - `npm run build` et `npm run lint` : OK.
