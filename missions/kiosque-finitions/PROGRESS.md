@@ -1,7 +1,7 @@
 # Mission kiosque-finitions — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 8
+**Prochaine action :** étape 9
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 96debce)
@@ -55,3 +55,8 @@
 - Règles et score non touchés dans les 4 fichiers (seuls les paragraphes de consigne et les imports qu'ils rendaient inutiles ont changé).
 - Vérifié dans le navigateur : le défi du jour (Cercle parfait) n'affiche plus sa consigne qu'une fois. Les 3 autres défis n'ont pas pu être testés en direct dans cette session de routine — `?date=` pour forcer un autre défi n'est actif qu'en `vite dev` (`import.meta.env.DEV`, voir `JeuPage.jsx`), refusé en routine (seul `npx vite preview` est autorisé). Vérification faite par lecture de code : même structure que `cercle.jsx` (un seul paragraphe statique, sans état propre pour `verre.jsx`/`tour.jsx` ; état `encours` vidé pour `chrono.jsx`, aucune autre branche ne réaffiche le texte supprimé).
 - `npm run build` et lint : OK.
+
+## Étape 8 — documentation (2026-10-04)
+- Liste des 11 PR fusionnées dans `refonte-kiosque` (hors `main`) relevée avec `git log --merges refonte-kiosque` puis comparée à `git log main` pour trouver le point de divergence exact (`aee617c`, PR #40) : #41 kiosque-maison, #42 kiosque-une, #44 germanica-site, #45 comicbook-site, #46 logo-fiole, #47 magazine-web, #48 jeux-arcade, #49 lab-dossiers, #50 idees-cv, #51 zine, #52 gazette-web (#43 absent du log, fermée sans fusion).
+- Délégué à un sous-agent Haiku, texte exact fourni par la session principale : `CLAUDE.md` (paragraphe tokens étendu : 5 couleurs de titre, polices de la maison, Germanica/Comic Book locales dans `public/fonts/`) et `CHANGELOG.md` (nouvelle section « Refonte kiosque » sous « Non publié », avant « Mission « site-avant-apres » », une puce par PR fusionnée + une pour cette mission). Diff relu : conforme, rien d'autre touché.
+- `npm run build` : OK (fichiers Markdown, pas d'impact sur le lint JS).

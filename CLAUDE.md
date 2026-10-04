@@ -1,7 +1,7 @@
 # misran-labs — règles projet
 
 Site portfolio / Lab de Michael Misran. Vite + React 19 + react-router, déployé sur Vercel.
-Design tokens : `src/styles/tokens.css` (primitive → semantic → component).
+Design tokens : `src/styles/tokens.css` (primitive → semantic → component). Depuis la refonte kiosque (2026-10), l'identité est celle d'une maison d'édition : 5 titres, chacun sa couleur (`--titre-gazette` rouge, `--titre-magazine` bleu, `--titre-zine` rose, `--titre-jeux` orange, `--titre-lab` vert) et sa police (`--font-bois`/-2/-3 lettres de bois, `--font-etiquette` Oswald, `--font-chapo` IM Fell English, `--font-gothique` Germanica, `--font-bd` Comic Book, `--font-pixel` Press Start 2P, `--font-ecran` VT323, `--font-machine` Special Elite). Germanica et Comic Book sont des polices locales servies depuis `public/fonts/` (secours Google Fonts : UnifrakturMaguntia, Comic Neue).
 Documentation vivante des tokens : `src/lab/projects/LabTokens.jsx` (dossier 007).
 
 ## Commandes
