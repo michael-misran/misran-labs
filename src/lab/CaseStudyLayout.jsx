@@ -15,54 +15,6 @@ export function Section({ title, children }) {
   )
 }
 
-// Barre d'onglets d'un case study. Une seule implémentation pour toutes les
-// pages qui en ont une — avant, chaque case study gardait sa copie locale.
-//
-// La marque d'onglet actif est une croix de repérage d'imprimerie (✛)
-// plutôt qu'un soulignement, et les onglets inactifs portent leur numéro
-// d'ordre — un sommaire de planche, pas une barre d'onglets générique.
-export function TabBar({ tabs, active, onChange }) {
-  return (
-    <div style={{ display: 'flex', gap: 'var(--space-2xs)', borderBottom: 'var(--border-thin) solid var(--border)', marginBottom: 'var(--space-xl)', overflowX: 'auto' }}>
-      {tabs.map((tab, i) => {
-        const isActive = active === tab.id
-        return (
-          <button
-            key={tab.id}
-            onClick={() => onChange(tab.id)}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--space-xs)',
-              background: 'none',
-              border: 'none',
-              color: isActive ? 'var(--text)' : 'var(--text2)',
-              fontFamily: "var(--font-body)",
-              fontSize: 13,
-              fontWeight: isActive ? 600 : 400,
-              padding: 'var(--space-xs-plus) var(--space-md)',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              transition: 'color 0.15s ease, border-color 0.15s ease',
-            }}
-          >
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                color: isActive ? 'var(--primary)' : 'var(--muted)',
-              }}
-            >
-              {isActive ? '✛' : String(i + 1).padStart(2, '0')}
-            </span>
-            {tab.label}
-          </button>
-        )
-      })}
-    </div>
-  )
-}
-
 // Liste à puces au format de lecture des case studies.
 export function BulletList({ items }) {
   return (
@@ -82,7 +34,7 @@ function ProjectMeta({ role, period, tools }) {
   return (
     <div style={{ marginBottom: 36, display: 'flex', flexDirection: 'column', gap: 6 }}>
       {period && (
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)', letterSpacing: '0.06em' }}>
+        <div style={{ fontFamily: "var(--font-machine)", fontSize: 12, color: 'var(--muted)', letterSpacing: '0.03em' }}>
           {period}
         </div>
       )}
@@ -95,8 +47,8 @@ function ProjectMeta({ role, period, tools }) {
             <span
               key={tool}
               style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 10,
+                fontFamily: "var(--font-machine)",
+                fontSize: 12,
                 color: 'var(--text2)',
                 border: 'var(--border-thin) solid var(--border)',
                 borderRadius: 'var(--radius-xs)',
@@ -127,10 +79,10 @@ export default function CaseStudyLayout({ title, role, period, tools, phases, ch
       }}
     >
       <Link
-        to="/"
+        to="/lab"
         style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: 11,
+          fontFamily: "var(--font-machine)",
+          fontSize: 12,
           color: 'var(--text2)',
           textDecoration: 'none',
           display: 'inline-block',
@@ -148,6 +100,8 @@ export default function CaseStudyLayout({ title, role, period, tools, phases, ch
           letterSpacing: '-0.02em',
           margin: '0 0 var(--space-md)',
           lineHeight: 1.05,
+          borderLeft: '4px solid var(--titre-lab)',
+          paddingLeft: 'var(--space-sm)',
         }}
       >
         {title}

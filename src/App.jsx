@@ -4,6 +4,7 @@ import Shell from './shell/Shell'
 import ArchiveHome from './modules/ArchiveHome'
 import { LanguageProvider } from './shell/LanguageProvider'
 
+const KiosqueHome = lazy(() => import('./kiosque/KiosqueHome'))
 const ProjectPage = lazy(() => import('./lab/ProjectPage'))
 const ProjectDemoPage = lazy(() => import('./lab/ProjectDemoPage'))
 const MagazineHome = lazy(() => import('./magazine/MagazineHome'))
@@ -16,6 +17,8 @@ const ProjetsFonctionnement = lazy(() => import('./projets/ProjetsFonctionnement
 const SuivrePage = lazy(() => import('./suivre/SuivrePage'))
 const JeuxHome = lazy(() => import('./jeux/JeuxHome'))
 const JeuPage = lazy(() => import('./jeux/JeuPage'))
+const ZineHome = lazy(() => import('./zine/ZineHome'))
+const ZineNumero = lazy(() => import('./zine/ZineNumero'))
 const Page404 = lazy(() => import('./shell/Page404'))
 
 export default function App() {
@@ -23,7 +26,8 @@ export default function App() {
     <LanguageProvider>
       <Routes>
         <Route path="/" element={<Shell />}>
-          <Route index element={<ArchiveHome />} />
+          <Route index element={<KiosqueHome />} />
+          <Route path="lab" element={<ArchiveHome />} />
           <Route path="lab/:slug" element={<ProjectPage />} />
           <Route path="lab/:slug/demo/:version?" element={<ProjectDemoPage />} />
           <Route path="magazine" element={<MagazineHome />} />
@@ -36,6 +40,8 @@ export default function App() {
           <Route path="suivre" element={<SuivrePage />} />
           <Route path="jeux" element={<JeuxHome />} />
           <Route path="jeux/:slug" element={<JeuPage />} />
+          <Route path="zine" element={<ZineHome />} />
+          <Route path="zine/:numero" element={<ZineNumero />} />
           <Route path="*" element={<Page404 />} />
         </Route>
       </Routes>

@@ -33,9 +33,13 @@ function RoleCard({ name, spec, usage, children }) {
 }
 
 function FontCard({ family, cssFamily, role, usage, weights }) {
+  // --font-gothique (Gazette) a un espacement de mots très large : le token
+  // de repli --font-gothique-espace le resserre (ajouté partout où cette
+  // police est utilisée, règle commune des missions de la refonte kiosque).
+  const isGothique = cssFamily === 'var(--font-gothique)'
   return (
     <div style={{ background: 'var(--bg2)', border: 'var(--border-thin) solid var(--border)', borderRadius: 'var(--radius-xl)', padding: 'var(--space-lg)' }}>
-      <div style={{ fontFamily: cssFamily, fontSize: 48, fontWeight: 600, color: 'var(--text)', lineHeight: 1, marginBottom: 18 }}>
+      <div style={{ fontFamily: cssFamily, fontSize: 48, fontWeight: 600, color: 'var(--text)', lineHeight: 1, marginBottom: 18, wordSpacing: isGothique ? 'var(--font-gothique-espace, normal)' : undefined }}>
         Aa
       </div>
       <div style={{ fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 'var(--space-2xs)' }}>{family}</div>
@@ -180,18 +184,30 @@ const CONTENT = {
     fontsTitle: 'Typographies',
     fontsIntro: "Trois polices, trois rôles distincts. Aucune ne doit empiéter sur le rôle d'une autre — c'est ce qui évite qu'un titre et un label se ressemblent, ou qu'un même rôle finisse rendu différemment à deux endroits.",
     fonts: [
-      { family: 'Fraunces', cssFamily: "var(--font-heading)", role: 'DISPLAY — TITRES', usage: 'Titres de page et de card. Une police avec du caractère, réservée aux moments où on veut marquer une hiérarchie forte.', weights: '600 / 900' },
-      { family: 'Work Sans', cssFamily: "var(--font-body)", role: 'CORPS DE TEXTE — LECTURE', usage: 'Paragraphes, texte courant. Optimisée pour la lisibilité à petite taille, sur écran.', weights: '400 / 600' },
-      { family: 'JetBrains Mono', cssFamily: "var(--font-mono)", role: 'TECHNIQUE — LABELS, TAGS, CODE', usage: 'Titres de section ("// TITRE"), labels de champ, tags, badges. Tout ce qui a une saveur technique ou système.', weights: '400 / 600 / 700' },
+      { family: 'Alfa Slab One', cssFamily: "var(--font-heading)", role: 'DISPLAY — TITRES', usage: 'Titres de page et de card. Une police avec du caractère, réservée aux moments où on veut marquer une hiérarchie forte.', weights: '400' },
+      { family: 'Crimson Pro', cssFamily: "var(--font-body)", role: 'CORPS DE TEXTE — LECTURE', usage: 'Paragraphes, texte courant. Optimisée pour la lisibilité à petite taille, sur écran.', weights: '400 / 600 / 700' },
+      { family: 'IBM Plex Mono', cssFamily: "var(--font-mono)", role: 'TECHNIQUE — LABELS, TAGS, CODE', usage: 'Titres de section ("// TITRE"), labels de champ, tags, badges. Tout ce qui a une saveur technique ou système.', weights: '400 / 600' },
+    ],
+    houseFontsTitle: 'Polices de la maison',
+    houseFontsIntro: "Chaque titre de la maison d'édition porte sa propre police, posée sur ces trois rôles génériques plutôt qu'à leur place — un repère visuel immédiat pour savoir dans quelle rubrique on se trouve.",
+    houseFonts: [
+      { family: 'Ultra', cssFamily: "var(--font-bois)", role: 'BOIS — GRANDS TITRES', usage: 'Masthead et grands titres d’affiche (bulletin, kiosque). Même esprit que --font-bois-2 (Alfa Slab One) et --font-bois-3 (Rye), les deux autres lettres de bois de la maison.', weights: '400' },
+      { family: 'Oswald', cssFamily: "var(--font-etiquette)", role: 'ÉTIQUETTE — LABELS CAPITALES', usage: 'Labels, rythmes et boutons en capitales espacées — le filet qui structure toutes les sections.', weights: '500 / 700' },
+      { family: 'IM Fell English', cssFamily: "var(--font-chapo)", role: 'CHAPÔ — ITALIQUE DE PRESSE', usage: 'Chapôs, légendes et citations, en italique façon vieille presse.', weights: '400 (régulier et italique)' },
+      { family: 'UnifrakturMaguntia', cssFamily: "var(--font-gothique)", role: 'GOTHIQUE — LA GAZETTE', usage: 'Masthead et titre de La Gazette du Lab.', weights: '400' },
+      { family: 'Comic Neue', cssFamily: "var(--font-bd)", role: 'BD — LE ZINE', usage: 'Titre du Zine, en gras italique.', weights: '700 italique' },
+      { family: 'Press Start 2P', cssFamily: "var(--font-pixel)", role: 'PIXEL — LES JEUX', usage: 'Titre des Jeux et écrans d’arcade.', weights: '400' },
+      { family: 'VT323', cssFamily: "var(--font-ecran)", role: 'ÉCRAN — ARCADE', usage: 'Textes façon terminal rétro dans les écrans d’arcade des Jeux.', weights: '400' },
+      { family: 'Special Elite', cssFamily: "var(--font-machine)", role: 'MACHINE — LE LAB', usage: 'Titre du Lab, métadonnées tapées à la machine à écrire (CaseStudyLayout).', weights: '400' },
     ],
     rolesTitle: 'Rôles typographiques',
     rolesIntro: "Chaque rôle utilisé plus d'une fois dans le Lab est extrait en composant. Le nom du rôle, le spécimen rendu avec son vrai style, et où il vit dans le code.",
     roles: [
-      { name: 'Titre de page', spec: 'Fraunces · 34px · 700', usage: 'src/lab/CaseFile.jsx (CaseHero h1)', render: 'pageTitle', text: 'Titre de page' },
-      { name: 'Titre de section', spec: 'JetBrains Mono · 12px · principal', usage: 'src/design-system/SectionTitle.jsx', render: 'sectionTitle', text: 'Titre de section' },
-      { name: 'Corps de texte', spec: 'Work Sans · 14px · 1.7', usage: 'src/lab/CaseStudyLayout.jsx (Section)', render: 'body', text: "Un paragraphe de lecture, comme celui-ci." },
-      { name: 'Label de champ', spec: 'JetBrains Mono · 9px · muted', usage: 'src/design-system/FieldLabel.jsx', render: 'fieldLabel', text: 'RÔLE' },
-      { name: 'Tag', spec: 'JetBrains Mono · 10px · couleur paramétrable', usage: 'src/design-system/Tag.jsx', render: 'tag', text: 'React' },
+      { name: 'Titre de page', spec: 'Alfa Slab One · 34px · 400', usage: 'src/lab/CaseFile.jsx (CaseHero h1)', render: 'pageTitle', text: 'Titre de page' },
+      { name: 'Titre de section', spec: 'IBM Plex Mono · 12px · principal', usage: 'src/design-system/SectionTitle.jsx', render: 'sectionTitle', text: 'Titre de section' },
+      { name: 'Corps de texte', spec: 'Crimson Pro · 14px · 1.7', usage: 'src/lab/CaseStudyLayout.jsx (Section)', render: 'body', text: "Un paragraphe de lecture, comme celui-ci." },
+      { name: 'Label de champ', spec: 'IBM Plex Mono · 9px · muted', usage: 'src/design-system/FieldLabel.jsx', render: 'fieldLabel', text: 'RÔLE' },
+      { name: 'Tag', spec: 'IBM Plex Mono · 10px · couleur paramétrable', usage: 'src/design-system/Tag.jsx', render: 'tag', text: 'React' },
       { name: 'Bouton icône', spec: '25×25 · transparent · var(--hover-surface) au survol · radius 6px', usage: 'src/design-system/IconButton.jsx', render: 'iconButton', text: '' },
     ],
     spacingTitle: 'Espacement entre sections',
@@ -253,9 +269,9 @@ const CONTENT = {
       { varName: '--grid-line', type: 'color', usage: 'Grille décorative de fond — définie mais pas encore consommée ailleurs dans le code.' },
       { varName: '--active-tint', type: 'color', usage: 'Fond des items de menu sélectionnés (Sidebar, menu secondaire, Tag).' },
       { varName: '--hover-tint', type: 'color', usage: 'Fond au survol des items de menu (Sidebar, menu secondaire).' },
-      { varName: '--font-heading', type: 'font', cssFamily: "var(--font-heading)", usage: 'Police des titres (Fraunces) — h1 de page, planche héro, cards.' },
-      { varName: '--font-body', type: 'font', cssFamily: "var(--font-body)", usage: 'Police du corps de texte (Work Sans) — paragraphes, labels, contenu courant.' },
-      { varName: '--font-mono', type: 'font', cssFamily: "var(--font-mono)", usage: 'Police technique (JetBrains Mono) — titres de section, tags, labels de champ, code.' },
+      { varName: '--font-heading', type: 'font', cssFamily: "var(--font-heading)", usage: 'Police des titres (Alfa Slab One) — h1 de page, planche héro, cards.' },
+      { varName: '--font-body', type: 'font', cssFamily: "var(--font-body)", usage: 'Police du corps de texte (Crimson Pro) — paragraphes, labels, contenu courant.' },
+      { varName: '--font-mono', type: 'font', cssFamily: "var(--font-mono)", usage: 'Police technique (IBM Plex Mono) — titres de section, tags, labels de champ, code.' },
     ],
     roadmapTitle: 'Roadmap',
     roadmapIntro: "Pas d'engagement de date — chaque étape ne démarre qu'une fois la précédente jugée nécessaire.",
@@ -314,18 +330,30 @@ const CONTENT = {
     fontsTitle: 'Fonts',
     fontsIntro: "Three typefaces, three distinct roles. None should encroach on another's job — that's what keeps a heading and a label from looking alike, or the same role rendering differently in two places.",
     fonts: [
-      { family: 'Fraunces', cssFamily: "var(--font-heading)", role: 'DISPLAY — HEADINGS', usage: 'Page and card titles. A typeface with character, reserved for moments that need a strong hierarchy.', weights: '600 / 900' },
-      { family: 'Work Sans', cssFamily: "var(--font-body)", role: 'BODY — READING', usage: 'Paragraphs, running text. Optimized for legibility at small sizes, on screen.', weights: '400 / 600' },
-      { family: 'JetBrains Mono', cssFamily: "var(--font-mono)", role: 'TECHNICAL — LABELS, TAGS, CODE', usage: 'Section titles ("// TITLE"), field labels, tags, badges. Anything with a technical or system flavor.', weights: '400 / 600 / 700' },
+      { family: 'Alfa Slab One', cssFamily: "var(--font-heading)", role: 'DISPLAY — HEADINGS', usage: 'Page and card titles. A typeface with character, reserved for moments that need a strong hierarchy.', weights: '400' },
+      { family: 'Crimson Pro', cssFamily: "var(--font-body)", role: 'BODY — READING', usage: 'Paragraphs, running text. Optimized for legibility at small sizes, on screen.', weights: '400 / 600 / 700' },
+      { family: 'IBM Plex Mono', cssFamily: "var(--font-mono)", role: 'TECHNICAL — LABELS, TAGS, CODE', usage: 'Section titles ("// TITLE"), field labels, tags, badges. Anything with a technical or system flavor.', weights: '400 / 600' },
+    ],
+    houseFontsTitle: 'House typefaces',
+    houseFontsIntro: "Every title of the publishing house carries its own typeface, layered on top of these three generic roles rather than replacing them — an instant visual cue for which section you're in.",
+    houseFonts: [
+      { family: 'Ultra', cssFamily: "var(--font-bois)", role: 'WOOD TYPE — LARGE TITLES', usage: 'Masthead and large poster titles (coupon, kiosk). Same spirit as --font-bois-2 (Alfa Slab One) and --font-bois-3 (Rye), the house’s two other wood-type faces.', weights: '400' },
+      { family: 'Oswald', cssFamily: "var(--font-etiquette)", role: 'LABEL — TRACKED CAPS', usage: 'Labels, cadences and buttons in tracked capitals — the thread that structures every section.', weights: '500 / 700' },
+      { family: 'IM Fell English', cssFamily: "var(--font-chapo)", role: 'STANDFIRST — PRESS ITALIC', usage: 'Standfirsts, captions and quotes, in an old-press italic.', weights: '400 (regular and italic)' },
+      { family: 'UnifrakturMaguntia', cssFamily: "var(--font-gothique)", role: 'BLACKLETTER — THE GAZETTE', usage: 'Masthead and title of The Lab Gazette.', weights: '400' },
+      { family: 'Comic Neue', cssFamily: "var(--font-bd)", role: 'COMIC — THE ZINE', usage: 'The Zine’s title, in bold italic.', weights: '700 italic' },
+      { family: 'Press Start 2P', cssFamily: "var(--font-pixel)", role: 'PIXEL — GAMES', usage: 'Games title and arcade screens.', weights: '400' },
+      { family: 'VT323', cssFamily: "var(--font-ecran)", role: 'SCREEN — ARCADE', usage: 'Retro terminal-style text in the Games’ arcade screens.', weights: '400' },
+      { family: 'Special Elite', cssFamily: "var(--font-machine)", role: 'TYPEWRITER — THE LAB', usage: 'Lab title, typewritten metadata (CaseStudyLayout).', weights: '400' },
     ],
     rolesTitle: 'Typographic roles',
     rolesIntro: "Every role used more than once in the Lab is extracted into a component. The role name, the specimen rendered with its actual style, and where it lives in the code.",
     roles: [
-      { name: 'Page title', spec: 'Fraunces · 34px · 700', usage: 'src/lab/CaseFile.jsx (CaseHero h1)', render: 'pageTitle', text: 'Page title' },
-      { name: 'Section title', spec: 'JetBrains Mono · 12px · primary', usage: 'src/design-system/SectionTitle.jsx', render: 'sectionTitle', text: 'Section title' },
-      { name: 'Body text', spec: 'Work Sans · 14px · 1.7', usage: 'src/lab/CaseStudyLayout.jsx (Section)', render: 'body', text: 'A paragraph of reading text, like this one.' },
-      { name: 'Field label', spec: 'JetBrains Mono · 9px · muted', usage: 'src/design-system/FieldLabel.jsx', render: 'fieldLabel', text: 'ROLE' },
-      { name: 'Tag', spec: 'JetBrains Mono · 10px · configurable color', usage: 'src/design-system/Tag.jsx', render: 'tag', text: 'React' },
+      { name: 'Page title', spec: 'Alfa Slab One · 34px · 400', usage: 'src/lab/CaseFile.jsx (CaseHero h1)', render: 'pageTitle', text: 'Page title' },
+      { name: 'Section title', spec: 'IBM Plex Mono · 12px · primary', usage: 'src/design-system/SectionTitle.jsx', render: 'sectionTitle', text: 'Section title' },
+      { name: 'Body text', spec: 'Crimson Pro · 14px · 1.7', usage: 'src/lab/CaseStudyLayout.jsx (Section)', render: 'body', text: 'A paragraph of reading text, like this one.' },
+      { name: 'Field label', spec: 'IBM Plex Mono · 9px · muted', usage: 'src/design-system/FieldLabel.jsx', render: 'fieldLabel', text: 'ROLE' },
+      { name: 'Tag', spec: 'IBM Plex Mono · 10px · configurable color', usage: 'src/design-system/Tag.jsx', render: 'tag', text: 'React' },
       { name: 'Icon button', spec: '25×25 · transparent · var(--hover-surface) on hover · 6px radius', usage: 'src/design-system/IconButton.jsx', render: 'iconButton', text: '' },
     ],
     spacingTitle: 'Spacing between sections',
@@ -387,9 +415,9 @@ const CONTENT = {
       { varName: '--grid-line', type: 'color', usage: 'Decorative background grid — defined but not yet consumed elsewhere in the code.' },
       { varName: '--active-tint', type: 'color', usage: 'Background of selected menu items (Sidebar, secondary sidebar, Tag).' },
       { varName: '--hover-tint', type: 'color', usage: 'Background on menu item hover (Sidebar, secondary sidebar).' },
-      { varName: '--font-heading', type: 'font', cssFamily: "var(--font-heading)", usage: 'Heading typeface (Fraunces) — page h1, hero plate, cards.' },
-      { varName: '--font-body', type: 'font', cssFamily: "var(--font-body)", usage: 'Body typeface (Work Sans) — paragraphs, labels, running content.' },
-      { varName: '--font-mono', type: 'font', cssFamily: "var(--font-mono)", usage: 'Technical typeface (JetBrains Mono) — section titles, tags, field labels, code.' },
+      { varName: '--font-heading', type: 'font', cssFamily: "var(--font-heading)", usage: 'Heading typeface (Alfa Slab One) — page h1, hero plate, cards.' },
+      { varName: '--font-body', type: 'font', cssFamily: "var(--font-body)", usage: 'Body typeface (Crimson Pro) — paragraphs, labels, running content.' },
+      { varName: '--font-mono', type: 'font', cssFamily: "var(--font-mono)", usage: 'Technical typeface (IBM Plex Mono) — section titles, tags, field labels, code.' },
     ],
     roadmapTitle: 'Roadmap',
     roadmapIntro: 'No date commitments — each stage only starts once it\'s judged necessary.',
@@ -522,6 +550,14 @@ export default function DesignSystem({ project }) {
           <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.fontsIntro}</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 'var(--space-md)', marginBottom: 'var(--space-xl)' }}>
             {c.fonts.map((font) => (
+              <FontCard key={font.family} {...font} />
+            ))}
+          </div>
+
+          <SectionTitle>{c.houseFontsTitle}</SectionTitle>
+          <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.houseFontsIntro}</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 'var(--space-md)', marginBottom: 'var(--space-xl)' }}>
+            {c.houseFonts.map((font) => (
               <FontCard key={font.family} {...font} />
             ))}
           </div>

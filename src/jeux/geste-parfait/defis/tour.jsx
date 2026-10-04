@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { useLanguage } from '../../../shell/LanguageContext'
 
 const LARGEUR_ZONE = 280
 const LARGEUR_INITIALE = 140
@@ -10,8 +9,9 @@ const NB_BLOCS = 12
 // Un bloc va et vient horizontalement, un clic/toucher/espace le pose, la
 // partie qui dépasse tombe (Stack). Score = largeur finale / largeur
 // initiale × 100.
+// Consigne affichée une seule fois, par Jeu.jsx au-dessus (D7, mission
+// kiosque-finitions) : pas de second paragraphe ici.
 export default function Tour({ onTermine }) {
-  const { lang } = useLanguage()
   const [empiles, setEmpiles] = useState([{ x: (LARGEUR_ZONE - LARGEUR_INITIALE) / 2, largeur: LARGEUR_INITIALE }])
   const [mobile, setMobile] = useState({ x: 0, largeur: LARGEUR_INITIALE, direction: 1 })
   const [termine, setTermine] = useState(false)
@@ -137,9 +137,6 @@ export default function Tour({ onTermine }) {
           />
         )}
       </div>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text2)', margin: 'var(--space-sm) 0 0' }}>
-        {lang === 'fr' ? 'Clique, touche ou appuie sur Espace pour poser le bloc.' : 'Click, tap, or press Space to drop the block.'}
-      </p>
     </div>
   )
 }

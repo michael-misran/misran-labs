@@ -92,7 +92,7 @@ export function writeRssFeeds({ distDir, magazinePages, brevesPages, projetsPage
   const feeds = [
     {
       slug: 'magazine/rss.xml',
-      title: 'Lab Magazine',
+      title: 'Le Magazine',
       link: `${SITE_URL}/magazine`,
       description: 'Une veille IA chaque lundi, pour designers et développeurs.',
       selfHref: `${SITE_URL}/magazine/rss.xml`,
@@ -108,7 +108,7 @@ export function writeRssFeeds({ distDir, magazinePages, brevesPages, projetsPage
     },
     {
       slug: 'projets/rss.xml',
-      title: 'Projets',
+      title: 'Les idées du Lab',
       link: `${SITE_URL}/projets`,
       description: 'Des idées de produits numérotées, étudiées puis gardées ou arrêtées.',
       selfHref: `${SITE_URL}/projets/rss.xml`,
@@ -116,7 +116,7 @@ export function writeRssFeeds({ distDir, magazinePages, brevesPages, projetsPage
     },
     {
       slug: 'rss.xml',
-      title: 'Misran Labs — tout',
+      title: 'Tout le kiosque',
       link: `${SITE_URL}/`,
       description: 'Tout le Lab de Michael Misran : Magazine, Gazette et Projets réunis.',
       selfHref: `${SITE_URL}/rss.xml`,

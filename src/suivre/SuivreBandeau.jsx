@@ -2,17 +2,20 @@ import { Link } from 'react-router-dom'
 import { useLanguage } from '../shell/LanguageContext'
 import { FEEDS, BANDEAU_TEXT } from './suivreText'
 
-// Bandeau discret posé juste au-dessus du CaseFooter des pages de rubrique :
+// Bandeau discret posé juste au-dessus du footer des pages de rubrique :
 // invite à suivre la rubrique (page /suivre) ou à s'abonner à son flux RSS.
+// Même style de coupon que le bulletin d'abonnement (D3 de la mission
+// kiosque-annexes) : cadre en pointillés et étiquette ✂ dans le même esprit,
+// en plus discret.
 export default function SuivreBandeau({ rubrique }) {
   const { lang } = useLanguage()
   const t = BANDEAU_TEXT[lang] ?? BANDEAU_TEXT.fr
   const feed = FEEDS.find((f) => f.key === rubrique)
 
   const linkStyle = {
-    fontFamily: 'var(--font-mono)',
+    fontFamily: 'var(--font-etiquette)',
     fontSize: 11,
-    letterSpacing: '0.06em',
+    letterSpacing: '0.1em',
     textTransform: 'uppercase',
     textDecoration: 'none',
   }
@@ -22,6 +25,7 @@ export default function SuivreBandeau({ rubrique }) {
       style={{
         marginTop: 40,
         border: 'var(--border-thin) dashed var(--border)',
+        borderRadius: 'var(--radius-xs)',
         padding: 'var(--space-md)',
         display: 'flex',
         flexWrap: 'wrap',
@@ -30,8 +34,8 @@ export default function SuivreBandeau({ rubrique }) {
         justifyContent: 'space-between',
       }}
     >
-      <p style={{ margin: 0, fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--text2)' }}>
-        <span aria-hidden="true" style={{ color: 'var(--primary)', marginRight: 'var(--space-xs)' }}>◉</span>
+      <p style={{ margin: 0, fontFamily: 'var(--font-chapo)', fontStyle: 'italic', fontSize: 15, color: 'var(--text)' }}>
+        <span aria-hidden="true" style={{ marginRight: 'var(--space-xs)' }}>✂</span>
         {t.phrase[rubrique]}
       </p>
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs)', flexWrap: 'wrap' }}>

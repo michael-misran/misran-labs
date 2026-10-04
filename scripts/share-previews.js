@@ -5,17 +5,17 @@ import { writeRssFeeds } from './rss.js'
 export const SITE_URL = 'https://misran-labs.vercel.app'
 
 const MAGAZINE_FIXED = {
-  title: 'Lab Magazine — veille IA hebdomadaire · Misran Labs',
+  title: 'Le Magazine — veille IA hebdomadaire · Misran Labs',
   description: 'Une veille IA chaque lundi, pour designers et développeurs.',
   image: 'og-magazine.png',
 }
 const PROJETS_FIXED = {
-  title: 'Projets — idées en développement · Misran Labs',
+  title: 'Les idées du Lab — idées en développement · Misran Labs',
   description: 'Des idées de produits numérotées, étudiées puis gardées ou arrêtées.',
   image: 'og-projets.png',
 }
 const PROJETS_FONCTIONNEMENT_FIXED = {
-  title: 'Comment fonctionnent les Projets · Misran Labs',
+  title: 'Comment fonctionnent les idées du Lab · Misran Labs',
   description: 'La routine du dimanche, les fiches publiques, les décisions.',
   image: 'og-projets.png',
 }
@@ -26,7 +26,12 @@ const BREVES_FIXED = {
 }
 const SUIVRE_FIXED = {
   title: 'Suivre le Lab · Misran Labs',
-  description: 'Pas de compte à créer : un lecteur RSS ou un réseau, et les nouveautés viennent à vous.',
+  description: 'Misran Labs, maison d’édition indépendante : pas de compte à créer, un lecteur RSS ou un réseau suffit pour que les nouveautés viennent à vous.',
+  image: 'og-image.png',
+}
+const ZINE_FIXED = {
+  title: 'Misran Zine — fait main, pas en série · Misran Labs',
+  description: 'Le fanzine de Misran Labs, maison d’édition indépendante : photos, dessins, jeux et pages de carnet.',
   image: 'og-image.png',
 }
 const JEUX_FIXED = {
@@ -152,6 +157,31 @@ function readValidJson(filePath, requiredFields) {
   return data
 }
 
+// Numéros du Zine (src/zine/numeros/NN.json) : une page d'aperçu par
+// numéro, image de rubrique tant qu'il n'existe pas d'image par numéro.
+export function collectZineNumeros(rootDir) {
+  const dir = path.join(rootDir, 'src/zine/numeros')
+  if (!fs.existsSync(dir)) return []
+  const pages = []
+  for (const file of fs.readdirSync(dir).sort()) {
+    if (!file.endsWith('.json')) continue
+    const data = readValidJson(path.join(dir, file), ['numero', 'titre.fr', 'edito.fr'])
+    if (!data) continue
+    if (file !== `${String(data.numero).padStart(2, '0')}.json`) {
+      console.warn(`[share-previews] ignoré (numéro "${data.numero}" ≠ nom de fichier) : ${file}`)
+      continue
+    }
+    pages.push({
+      path: `/zine/${data.numero}`,
+      title: `#${String(data.numero).padStart(2, '0')} — ${data.titre.fr} · Misran Zine`,
+      description: normalizeAndTruncate(data.edito.fr),
+      image: ZINE_FIXED.image,
+      type: 'article',
+    })
+  }
+  return pages
+}
+
 export function collectMagazineNumeros(rootDir) {
   const dir = path.join(rootDir, 'src/magazine/numeros')
   if (!fs.existsSync(dir)) return []
@@ -175,7 +205,7 @@ export function collectMagazineNumeros(rootDir) {
 
     pages.push({
       path: `/magazine/${dateFromName}`,
-      title: `Nº ${data.numero} — ${data.titre.fr} · Lab Magazine`,
+      title: `Nº ${data.numero} — ${data.titre.fr} · Le Magazine`,
       description: normalizeAndTruncate(data.edito.fr),
       image,
       type: 'article',
@@ -348,8 +378,10 @@ export function sharePreviewsPlugin() {
         { path: '/projets', title: PROJETS_FIXED.title, description: PROJETS_FIXED.description, image: PROJETS_FIXED.image, type: 'website' },
         { path: '/projets/fonctionnement', title: PROJETS_FONCTIONNEMENT_FIXED.title, description: PROJETS_FONCTIONNEMENT_FIXED.description, image: PROJETS_FONCTIONNEMENT_FIXED.image, type: 'website' },
         { path: '/suivre', title: SUIVRE_FIXED.title, description: SUIVRE_FIXED.description, image: SUIVRE_FIXED.image, type: 'website' },
+        { path: '/zine', title: ZINE_FIXED.title, description: ZINE_FIXED.description, image: ZINE_FIXED.image, type: 'website' },
         { path: '/jeux', title: JEUX_FIXED.title, description: JEUX_FIXED.description, image: JEUX_FIXED.image, type: 'website' },
         ...magazinePages,
+        ...collectZineNumeros(rootDir),
         ...brevesPages,
         ...projetsPages,
         ...jeuxPages,

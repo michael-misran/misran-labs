@@ -5,6 +5,7 @@ import Page404 from '../shell/Page404'
 import { getJeu } from './registre'
 import { jt } from './jeuxText'
 import { dateLocaleAujourdhui } from './socle/jour'
+import { BarreJeu, CadreBorne } from './ArcadeParts'
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/
 
@@ -23,10 +24,15 @@ export default function JeuPage() {
 
   return (
     <div style={{ padding: 'var(--space-md-plus)', maxWidth: 640, margin: '0 auto' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)', marginBottom: 'var(--space-md)' }}>
-        <span style={{ fontSize: 28, lineHeight: 1 }}>{jeu.icone}</span>
-        <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 22, margin: 0, color: 'var(--text)' }}>{jeu.titre[lang]}</h1>
-      </div>
+      <style>{`
+        @keyframes arcade-clignote { 50% { opacity: 0; } }
+        .arcade-blink { animation: arcade-clignote 1s steps(1) infinite; }
+        @media (prefers-reduced-motion: reduce) {
+          .arcade-blink { animation: none; }
+        }
+      `}</style>
+
+      <BarreJeu jeu={jeu} lang={lang} />
 
       {jeu.demo && (
         <div
@@ -44,9 +50,11 @@ export default function JeuPage() {
         </div>
       )}
 
-      <Suspense fallback={null}>
-        <jeu.Composant key={date} jeu={jeu} date={date} />
-      </Suspense>
+      <CadreBorne>
+        <Suspense fallback={null}>
+          <jeu.Composant key={date} jeu={jeu} date={date} />
+        </Suspense>
+      </CadreBorne>
     </div>
   )
 }

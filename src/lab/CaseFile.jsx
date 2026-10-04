@@ -1,30 +1,53 @@
 import { Link } from 'react-router-dom'
+import useIsMobile from '../shell/useIsMobile'
 import { dossierNo } from './projects'
 import { Stamp, Barcode } from '../design-system/ArchiveMarks'
 import { t } from '../i18n/ui'
+import { KRAFT, CASE_CHROME } from './caseChrome'
+import { TamponDeclassifie, OngletClasseur } from './DossierParts'
 
-// Gabarit commun des fiches d'archive — la même planche que la home et
-// que le premier dossier migré (Design System multi-marques), extraite
-// pour que chaque nouvelle fiche ne réécrive pas son masthead, son
-// tampon et son cartouche de bas de page. Une page assemble
-// CaseMasthead + CaseHero (+ CaseMetaRow) + éventuellement CaseTabs +
-// son contenu + CaseFooter.
+// Gabarit commun des fiches d'archive, devenu l'habillage « dossier
+// confidentiel » de la refonte kiosque (D3) : une chemise kraft en tête, des
+// champs tapés à la machine, des onglets de classeur, un pied de document.
+// Les exports et leurs props ne changent pas : toute page qui les
+// utilisait avant continue de fonctionner sans modification — seul le
+// rendu change.
 
 export function CaseMasthead({ c, lang }) {
+  const chrome = CASE_CHROME[lang] ?? CASE_CHROME.fr
+
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)', paddingBottom: 14, borderBottom: 'var(--border-regular) solid var(--border)', marginBottom: 'var(--space-lg)', flexWrap: 'wrap' }}>
+    <div
+      style={{
+        background: KRAFT.chemise,
+        border: 'var(--border-regular) solid var(--border)',
+        padding: '14px 18px',
+        marginBottom: 'var(--space-lg)',
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        gap: 'var(--space-md)',
+        flexWrap: 'wrap',
+        color: 'var(--text)',
+      }}
+    >
       <div>
-        <Link to="/" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', textDecoration: 'none' }}>
+        <Link to="/lab" style={{ fontFamily: "var(--font-machine)", fontSize: 12, color: 'var(--text)', textDecoration: 'none' }}>
           {t(lang, 'backToLab')}
         </Link>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginTop: 'var(--space-2xs)' }}>{c.fileNo}</div>
+        <div style={{ fontFamily: "var(--font-machine)", fontSize: 15, letterSpacing: '0.03em', color: 'var(--text)', marginTop: 'var(--space-2xs)' }}>
+          {c.fileNo}
+        </div>
       </div>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: '0.14em', color: 'var(--text2)', textAlign: 'center', flex: '1 1 200px' }}>
+      <div style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.1em', color: 'var(--text2)', textAlign: 'center', flex: '1 1 200px' }}>
         {c.mastheadCenter}
       </div>
-      <div style={{ textAlign: 'right' }}>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', color: 'var(--text)' }}>{c.mastheadRight}</div>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)' }}>{c.mastheadRightSub}</div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{ textAlign: 'right' }}>
+          <div style={{ fontFamily: "var(--font-machine)", fontSize: 13, color: 'var(--text)' }}>{c.mastheadRight}</div>
+          <div style={{ fontFamily: "var(--font-machine)", fontSize: 10, color: 'var(--text2)' }}>{c.mastheadRightSub}</div>
+        </div>
+        <TamponDeclassifie barre={chrome.tamponBarre} bas={chrome.tamponBas} size="petit" />
       </div>
     </div>
   )
@@ -32,7 +55,8 @@ export function CaseMasthead({ c, lang }) {
 
 // Rangée de méta-données bordée sous le titre — période, outils, rôle...
 // `columns`: [{ label, value }] pour une valeur simple, ou
-// [{ label, chips: [...] }] pour une liste de puces mono.
+// [{ label, chips: [...] }] pour une liste de puces mono. Devient un
+// tableau de champs tapés (D3) : « LABEL : valeur », police machine.
 export function CaseMetaRow({ columns }) {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -46,8 +70,8 @@ export function CaseMetaRow({ columns }) {
             borderRight: i < columns.length - 1 ? 'var(--border-thin) solid var(--border)' : 'none',
           }}
         >
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: col.chips ? 6 : 'var(--space-2xs)' }}>
-            {col.label}
+          <div style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.06em', color: 'var(--muted)', marginBottom: col.chips ? 6 : 'var(--space-2xs)' }}>
+            {col.label} :
           </div>
           {col.chips ? (
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
@@ -55,8 +79,8 @@ export function CaseMetaRow({ columns }) {
                 <span
                   key={chip}
                   style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 10,
+                    fontFamily: "var(--font-machine)",
+                    fontSize: 12,
                     color: 'var(--text2)',
                     border: 'var(--border-thin) solid var(--border)',
                     padding: '3px var(--space-xs)',
@@ -76,18 +100,18 @@ export function CaseMetaRow({ columns }) {
 }
 
 export function CaseHero({ project, c, children }) {
+  const isMobile = useIsMobile()
   return (
-    <div style={{ border: 'var(--border-regular) solid var(--border)', marginBottom: 'var(--space-xl)' }}>
+    <div style={{ border: 'var(--border-regular) solid var(--border)', borderTop: '4px solid var(--titre-lab)', marginBottom: 'var(--space-xl)' }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)', padding: '18px var(--space-lg)', borderBottom: children ? 'var(--border-thin) solid var(--border)' : 'none' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
           <span
             style={{
               flexShrink: 0,
-              fontFamily: "var(--font-heading)",
-              fontWeight: 700,
-              fontSize: 26,
-              lineHeight: 1,
-              color: 'var(--primary)',
+              fontFamily: "var(--font-machine)",
+              fontSize: 22,
+              lineHeight: 1.1,
+              color: 'var(--titre-lab)',
             }}
           >
             {dossierNo(project?.slug) ?? '—'}
@@ -97,11 +121,12 @@ export function CaseHero({ project, c, children }) {
               {c.title}
             </h1>
             {c.role && (
-              <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: '0.04em', color: 'var(--text2)' }}>{c.role}</div>
+              <div style={{ fontFamily: "var(--font-machine)", fontSize: 12, letterSpacing: '0.02em', color: 'var(--text2)' }}>{c.role}</div>
             )}
           </div>
         </div>
-        <Stamp label={c.stampLabel ?? 'MISRAN · LABS · ARCHIVE ·'} size={72} />
+        {/* Tampon masqué sur mobile : il coinçait le titre dans une colonne étroite */}
+        {!isMobile && <Stamp label={c.stampLabel ?? 'MISRAN · LABS · ARCHIVE ·'} size={72} />}
       </div>
 
       {children}
@@ -109,59 +134,17 @@ export function CaseHero({ project, c, children }) {
   )
 }
 
-// Onglets du dossier — côte à côte, chacun avec sa propre teinte comme un
-// intercalaire de tiroir d'archives. Celui qu'on ouvre se détache du lot
-// (teinte neutre, à plat, marqué ✛) sans empiéter sur ses voisins.
-//
-// Les teintes sont des tokens de niveau composant (--case-tabs-tint-N,
-// voir tokens.css) : ce sont les seules du site à en avoir besoin, donc
-// la décision vit à côté des autres composants sans rôle sémantique, pas
-// recalculée ici à chaque rendu.
-const TAB_TINTS = [
-  'var(--case-tabs-tint-1)',
-  'var(--case-tabs-tint-2)',
-  'var(--case-tabs-tint-3)',
-  'var(--case-tabs-tint-4)',
-  'var(--case-tabs-tint-5)',
-]
-
+// Onglets du dossier — devenus des onglets de classeur kraft (D3) : celui
+// qu'on ouvre est sur papier blanc, les autres restent en kraft, légèrement
+// en retrait comme des intercalaires fermés.
 export function CaseTabs({ tabs, active, onChange }) {
   return (
     <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'var(--space-3xs)', marginBottom: 'var(--space-xs)', overflowX: 'auto' }}>
-      {tabs.map((tab, i) => {
-        const isActive = active === tab.id
-        return (
-          <button
-            key={tab.id}
-            onClick={() => onChange(tab.id)}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--space-2xs)',
-              flexShrink: 0,
-              background: isActive ? 'var(--bg2)' : TAB_TINTS[i % TAB_TINTS.length],
-              border: 'var(--border-thin) solid var(--border)',
-              borderBottom: isActive ? 'var(--border-regular) solid var(--primary)' : 'var(--border-thin) solid var(--border)',
-              borderRadius: '3px 3px 0 0',
-              padding: '6px 7px',
-              cursor: 'pointer',
-              fontFamily: "var(--font-mono)",
-              fontSize: 9,
-              letterSpacing: '0.02em',
-              textTransform: 'uppercase',
-              fontWeight: isActive ? 700 : 400,
-              color: isActive ? 'var(--text)' : 'var(--text2)',
-              whiteSpace: 'nowrap',
-              transition: 'background 0.15s ease, color 0.15s ease',
-            }}
-          >
-            <span style={{ color: isActive ? 'var(--primary)' : 'var(--muted)' }}>
-              {isActive ? '✛' : String(i + 1).padStart(2, '0')}
-            </span>
-            {tab.label}
-          </button>
-        )
-      })}
+      {tabs.map((tab, i) => (
+        <OngletClasseur key={tab.id} index={i} active={active === tab.id} onClick={() => onChange(tab.id)}>
+          {tab.label}
+        </OngletClasseur>
+      ))}
     </div>
   )
 }
@@ -169,10 +152,10 @@ export function CaseTabs({ tabs, active, onChange }) {
 export function CaseFooter({ c }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-sm)', marginTop: 40, paddingTop: 'var(--space-md)', borderTop: 'var(--border-regular) solid var(--border)' }}>
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: '0.06em', color: 'var(--muted)' }}>
+      <div style={{ fontFamily: "var(--font-machine)", fontSize: 11, letterSpacing: '0.03em', color: 'var(--muted)' }}>
         {c.docId} — {c.clearance}
       </div>
-      <div style={{ fontFamily: "var(--font-heading)", fontSize: 11, fontWeight: 700, letterSpacing: '0.02em', color: 'var(--text)', textAlign: 'center', flex: '1 1 240px' }}>
+      <div style={{ fontFamily: "var(--font-machine)", fontSize: 13, letterSpacing: '0.01em', color: 'var(--text)', textAlign: 'center', flex: '1 1 240px' }}>
         {c.tagline}
       </div>
       <Barcode />

@@ -83,7 +83,7 @@ function generateOne(dateStr) {
     fail(`Chrome introuvable : ${CHROME_PATH}`)
   }
 
-  const eyebrow = `LAB MAGAZINE · Nº ${numero} · ${formatDateFr(parsedDate)}`
+  const eyebrow = `LE MAGAZINE · Nº ${numero} · ${formatDateFr(parsedDate)}`
   const template = fs.readFileSync(TEMPLATE_PATH, 'utf-8')
   const html = template
     .replaceAll('{{TAILLE_TITRE}}', String(titleFontSize(titreFr)))

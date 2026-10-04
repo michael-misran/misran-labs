@@ -5,216 +5,212 @@ import useIsMobile from '../../shell/useIsMobile'
 
 /* --- Confidentialité --------------------------------------------------- *
  * Cette page documente les tokens réels du Lab (src/styles/tokens.css).
- * Les noms, les valeurs et les références ci-dessous doivent rester
+ * Les noms et les relations (tier, pointsTo) ci-dessous doivent rester
  * synchronisés avec ce fichier — c'est la seule autre source de vérité
- * qui existe pour ces valeurs. Si tokens.css change, cette liste change
- * avec, dans le même geste.
+ * qui existe pour ces relations. La valeur affichée, elle, n'est jamais
+ * recopiée : elle est lue dans les variables CSS calculées au chargement
+ * (getComputedStyle), donc toujours juste même si tokens.css change.
  * ------------------------------------------------------------------- */
 
 const TIERS = ['primitive', 'semantic', 'component']
 
 // Groupes de tokens. `pointsTo` est le token (ou la formule) que la
 // définition référence réellement dans tokens.css — null pour une valeur
-// brute qui ne pointe nulle part.
+// brute qui ne pointe nulle part. Pas de `value` ici : lue en direct dans
+// le navigateur (D4), jamais recopiée à la main dans ce fichier.
 const TOKEN_GROUPS = [
   {
-    category: { fr: 'Couleurs — primitives (crème)', en: 'Colors — primitives (cream)' },
+    category: { fr: 'Couleurs — primitives (papier)', en: 'Colors — primitives (paper)' },
     rows: [
-      { name: '--primitive-cream-50', tier: 'primitive', type: 'color', pointsTo: null, value: '#f8f2e7' },
-      { name: '--primitive-cream-100', tier: 'primitive', type: 'color', pointsTo: null, value: '#f3ebdc' },
-      { name: '--primitive-cream-150', tier: 'primitive', type: 'color', pointsTo: null, value: '#efe4d0' },
-      { name: '--primitive-cream-200', tier: 'primitive', type: 'color', pointsTo: null, value: '#e6dac4' },
-      { name: '--primitive-cream-300', tier: 'primitive', type: 'color', pointsTo: null, value: '#d8c9ab' },
+      { name: '--primitive-papier-50', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-papier-100', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-papier-150', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-papier-200', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-papier-300', tier: 'primitive', type: 'color', pointsTo: null },
     ],
   },
   {
-    category: { fr: 'Couleurs — primitives (encre)', en: 'Colors — primitives (ink)' },
+    category: { fr: 'Couleurs — primitives (encre, gris, filet)', en: 'Colors — primitives (ink, gray, rule)' },
     rows: [
-      { name: '--primitive-ink-400', tier: 'primitive', type: 'color', pointsTo: null, value: '#8f8573' },
-      { name: '--primitive-ink-600', tier: 'primitive', type: 'color', pointsTo: null, value: '#5b5044' },
-      { name: '--primitive-ink-800', tier: 'primitive', type: 'color', pointsTo: null, value: '#2c231b' },
-      { name: '--primitive-ink-850', tier: 'primitive', type: 'color', pointsTo: null, value: '#2a2018' },
-      { name: '--primitive-ink-900', tier: 'primitive', type: 'color', pointsTo: null, value: '#241c16' },
+      { name: '--primitive-encre', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-gris', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-gris-clair', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-filet', tier: 'primitive', type: 'color', pointsTo: null },
     ],
   },
   {
-    category: { fr: 'Couleurs — primitives (corail)', en: 'Colors — primitives (coral)' },
+    category: { fr: 'Couleurs — primitives (les 5 titres de la maison)', en: 'Colors — primitives (the house’s 5 mastheads)' },
     rows: [
-      { name: '--primitive-coral-400', tier: 'primitive', type: 'color', pointsTo: null, value: '#e26a50' },
-      { name: '--primitive-coral-500', tier: 'primitive', type: 'color', pointsTo: null, value: '#dd5a3e' },
-      { name: '--primitive-coral-600', tier: 'primitive', type: 'color', pointsTo: null, value: '#c94f36' },
-      { name: '--primitive-coral-700', tier: 'primitive', type: 'color', pointsTo: null, value: '#b8452e' },
-      { name: '--primitive-coral-tint-100', tier: 'primitive', type: 'color', pointsTo: null, value: '#f5ddd2' },
-      { name: '--primitive-coral-tint-200', tier: 'primitive', type: 'color', pointsTo: null, value: '#f0c3b4' },
+      { name: '--primitive-titre-gazette', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-titre-gazette-dark', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-titre-magazine', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-titre-zine', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-titre-jeux', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-titre-lab', tier: 'primitive', type: 'color', pointsTo: null },
     ],
   },
   {
     category: { fr: 'Couleurs — primitives (catégorielles)', en: 'Colors — primitives (categorical)' },
     rows: [
-      { name: '--primitive-ochre-500', tier: 'primitive', type: 'color', pointsTo: null, value: '#a9762c' },
-      { name: '--primitive-plum-500', tier: 'primitive', type: 'color', pointsTo: null, value: '#8c3b3a' },
-      { name: '--primitive-rose-500', tier: 'primitive', type: 'color', pointsTo: null, value: '#c97a6d' },
-      { name: '--primitive-tangerine-500', tier: 'primitive', type: 'color', pointsTo: null, value: '#e0862f' },
-      { name: '--primitive-rust-500', tier: 'primitive', type: 'color', pointsTo: null, value: '#b23324' },
-      { name: '--primitive-amber-500', tier: 'primitive', type: 'color', pointsTo: null, value: '#c1861f' },
-    ],
-  },
-  {
-    category: { fr: 'Couleurs — primitives (avec transparence)', en: 'Colors — primitives (with transparency)' },
-    rows: [
-      { name: '--primitive-ink-900-a05', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(36,28,22,0.05)' },
-      { name: '--primitive-ink-900-a12', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(36,28,22,0.12)' },
-      { name: '--primitive-ink-900-a18', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(36,28,22,0.18)' },
-      { name: '--primitive-ink-900-a22', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(36,28,22,0.22)' },
-      { name: '--primitive-ink-900-a25', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(36,28,22,0.25)' },
-      { name: '--primitive-coral-500-a12', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(221,90,62,0.12)' },
-      { name: '--primitive-cream-50-a10', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(248,242,231,0.10)' },
-      { name: '--primitive-cream-50-a12', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(248,242,231,0.12)' },
-      { name: '--primitive-cream-50-a18', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(248,242,231,0.18)' },
-      { name: '--primitive-cream-50-a35', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(248,242,231,0.35)' },
-      { name: '--primitive-black-a15', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(0,0,0,0.15)' },
-      { name: '--primitive-black-a18', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(0,0,0,0.18)' },
-      { name: '--primitive-black-a20', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(0,0,0,0.20)' },
-      { name: '--primitive-black-a25', tier: 'primitive', type: 'color', pointsTo: null, value: 'rgba(0,0,0,0.25)' },
+      { name: '--primitive-ochre-500', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-plum-500', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-rose-500', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-tangerine-500', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-rust-500', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-amber-500', tier: 'primitive', type: 'color', pointsTo: null },
     ],
   },
   {
     category: { fr: 'Dimensions — primitives', en: 'Dimensions — primitives' },
     rows: [
-      { name: '--primitive-size-1', tier: 'primitive', type: 'dimension', pointsTo: null, value: '1px' },
-      { name: '--primitive-size-2', tier: 'primitive', type: 'dimension', pointsTo: null, value: '2px' },
-      { name: '--primitive-size-4', tier: 'primitive', type: 'dimension', pointsTo: null, value: '4px' },
-      { name: '--primitive-size-8', tier: 'primitive', type: 'dimension', pointsTo: null, value: '8px' },
-      { name: '--primitive-size-10', tier: 'primitive', type: 'dimension', pointsTo: null, value: '10px' },
-      { name: '--primitive-size-12', tier: 'primitive', type: 'dimension', pointsTo: null, value: '12px' },
-      { name: '--primitive-size-16', tier: 'primitive', type: 'dimension', pointsTo: null, value: '16px' },
-      { name: '--primitive-size-20', tier: 'primitive', type: 'dimension', pointsTo: null, value: '20px' },
-      { name: '--primitive-size-24', tier: 'primitive', type: 'dimension', pointsTo: null, value: '24px' },
-      { name: '--primitive-size-32', tier: 'primitive', type: 'dimension', pointsTo: null, value: '32px' },
-      { name: '--primitive-size-full', tier: 'primitive', type: 'dimension', pointsTo: null, value: '999px' },
+      { name: '--primitive-size-1', tier: 'primitive', type: 'dimension', pointsTo: null },
+      { name: '--primitive-size-2', tier: 'primitive', type: 'dimension', pointsTo: null },
+      { name: '--primitive-size-4', tier: 'primitive', type: 'dimension', pointsTo: null },
+      { name: '--primitive-size-8', tier: 'primitive', type: 'dimension', pointsTo: null },
+      { name: '--primitive-size-10', tier: 'primitive', type: 'dimension', pointsTo: null },
+      { name: '--primitive-size-12', tier: 'primitive', type: 'dimension', pointsTo: null },
+      { name: '--primitive-size-16', tier: 'primitive', type: 'dimension', pointsTo: null },
+      { name: '--primitive-size-20', tier: 'primitive', type: 'dimension', pointsTo: null },
+      { name: '--primitive-size-24', tier: 'primitive', type: 'dimension', pointsTo: null },
+      { name: '--primitive-size-32', tier: 'primitive', type: 'dimension', pointsTo: null },
+      { name: '--primitive-size-full', tier: 'primitive', type: 'dimension', pointsTo: null },
     ],
   },
   {
-    category: { fr: 'Polices — primitives', en: 'Fonts — primitives' },
+    category: { fr: 'Polices — une par titre de la maison', en: 'Fonts — one per house masthead' },
     rows: [
-      { name: '--primitive-font-fraunces', tier: 'primitive', type: 'font', pointsTo: null, value: "'Fraunces', Georgia, serif" },
-      { name: '--primitive-font-work-sans', tier: 'primitive', type: 'font', pointsTo: null, value: "'Work Sans', system-ui, sans-serif" },
-      { name: '--primitive-font-jetbrains-mono', tier: 'primitive', type: 'font', pointsTo: null, value: "'JetBrains Mono', monospace" },
+      { name: '--font-gothique', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-unifraktur-maguntia' },
+      { name: '--primitive-font-playfair-display', tier: 'primitive', type: 'font', pointsTo: null },
+      { name: '--font-bd', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-comic-neue' },
+      { name: '--font-pixel', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-press-start-2p' },
+      { name: '--font-machine', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-special-elite' },
     ],
   },
   {
-    category: { fr: 'Texte — primitives', en: 'Text — primitives' },
+    category: { fr: 'Polices — primitives (autres)', en: 'Fonts — primitives (other)' },
     rows: [
-      { name: '--primitive-tracking-tight', tier: 'primitive', type: 'text', pointsTo: null, value: '-0.01em' },
-      { name: '--primitive-tracking-wide', tier: 'primitive', type: 'text', pointsTo: null, value: '0.1em' },
-      { name: '--primitive-case-upper', tier: 'primitive', type: 'text', pointsTo: null, value: 'uppercase' },
-      { name: '--primitive-case-none', tier: 'primitive', type: 'text', pointsTo: null, value: 'none' },
-      { name: '--primitive-stroke-1-5', tier: 'primitive', type: 'border', pointsTo: null, value: '1.5' },
+      { name: '--primitive-font-ultra', tier: 'primitive', type: 'font', pointsTo: null },
+      { name: '--primitive-font-alfa-slab-one', tier: 'primitive', type: 'font', pointsTo: null },
+      { name: '--primitive-font-rye', tier: 'primitive', type: 'font', pointsTo: null },
+      { name: '--primitive-font-oswald', tier: 'primitive', type: 'font', pointsTo: null },
+      { name: '--primitive-font-vt323', tier: 'primitive', type: 'font', pointsTo: null },
+      { name: '--primitive-font-crimson-pro', tier: 'primitive', type: 'font', pointsTo: null },
+      { name: '--primitive-font-ibm-plex-mono', tier: 'primitive', type: 'font', pointsTo: null },
     ],
   },
   {
     category: { fr: 'Couleurs — rôles sémantiques', en: 'Colors — semantic roles' },
     rows: [
-      { name: '--bg', tier: 'semantic', type: 'color', pointsTo: '--primitive-cream-100', value: '#f3ebdc' },
-      { name: '--bg2', tier: 'semantic', type: 'color', pointsTo: '--primitive-cream-50', value: '#f8f2e7' },
-      { name: '--bg3', tier: 'semantic', type: 'color', pointsTo: '--primitive-cream-200', value: '#e6dac4' },
-      { name: '--primary', tier: 'semantic', type: 'color', pointsTo: '--primitive-coral-500', value: '#dd5a3e' },
-      { name: '--primary-surface', tier: 'semantic', type: 'color', pointsTo: '--primitive-coral-700', value: '#b8452e' },
-      { name: '--on-primary-surface', tier: 'semantic', type: 'color', pointsTo: '--primitive-cream-50', value: '#f8f2e7' },
-      { name: '--cyan', tier: 'semantic', type: 'color', pointsTo: '--primitive-ochre-500', value: '#a9762c' },
-      { name: '--violet', tier: 'semantic', type: 'color', pointsTo: '--primitive-plum-500', value: '#8c3b3a' },
-      { name: '--pink', tier: 'semantic', type: 'color', pointsTo: '--primitive-rose-500', value: '#c97a6d' },
-      { name: '--mandarine', tier: 'semantic', type: 'color', pointsTo: '--primitive-tangerine-500', value: '#e0862f' },
-      { name: '--warning', tier: 'semantic', type: 'color', pointsTo: '--primitive-amber-500', value: '#c1861f' },
-      { name: '--error', tier: 'semantic', type: 'color', pointsTo: '--primitive-rust-500', value: '#b23324' },
-      { name: '--text', tier: 'semantic', type: 'color', pointsTo: '--primitive-ink-900', value: '#241c16' },
-      { name: '--text2', tier: 'semantic', type: 'color', pointsTo: '--primitive-ink-600', value: '#5b5044' },
-      { name: '--muted', tier: 'semantic', type: 'color', pointsTo: '--primitive-ink-400', value: '#8f8573' },
-      { name: '--prose', tier: 'semantic', type: 'color', pointsTo: '--primitive-ink-800', value: '#2c231b' },
-      { name: '--border', tier: 'semantic', type: 'color', pointsTo: '--primitive-ink-850', value: '#2a2018' },
-      { name: '--grid-line', tier: 'semantic', type: 'color', pointsTo: '--primitive-ink-900-a12', value: 'rgba(36,28,22,0.12)' },
-      { name: '--active-tint', tier: 'semantic', type: 'color', pointsTo: '--primitive-coral-500-a12', value: 'rgba(221,90,62,0.12)' },
-      { name: '--hover-tint', tier: 'semantic', type: 'color', pointsTo: '--primitive-ink-900-a05', value: 'rgba(36,28,22,0.05)' },
+      { name: '--bg', tier: 'semantic', type: 'color', pointsTo: '--primitive-papier-100' },
+      { name: '--bg2', tier: 'semantic', type: 'color', pointsTo: '--primitive-papier-50' },
+      { name: '--bg3', tier: 'semantic', type: 'color', pointsTo: '--primitive-papier-200' },
+      { name: '--primary', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-gazette' },
+      { name: '--primary-surface', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-gazette-dark' },
+      { name: '--on-primary-surface', tier: 'semantic', type: 'color', pointsTo: '--primitive-papier-50' },
+      { name: '--cyan', tier: 'semantic', type: 'color', pointsTo: '--primitive-ochre-500' },
+      { name: '--violet', tier: 'semantic', type: 'color', pointsTo: '--primitive-plum-500' },
+      { name: '--pink', tier: 'semantic', type: 'color', pointsTo: '--primitive-rose-500' },
+      { name: '--mandarine', tier: 'semantic', type: 'color', pointsTo: '--primitive-tangerine-500' },
+      { name: '--warning', tier: 'semantic', type: 'color', pointsTo: '--primitive-amber-500' },
+      { name: '--error', tier: 'semantic', type: 'color', pointsTo: '--primitive-rust-500' },
+      { name: '--text', tier: 'semantic', type: 'color', pointsTo: '--primitive-encre' },
+      { name: '--text2', tier: 'semantic', type: 'color', pointsTo: '--primitive-gris' },
+      { name: '--muted', tier: 'semantic', type: 'color', pointsTo: '--primitive-gris-clair' },
+      { name: '--prose', tier: 'semantic', type: 'color', pointsTo: '--primitive-encre' },
+      { name: '--border', tier: 'semantic', type: 'color', pointsTo: '--primitive-encre' },
+      { name: '--grid-line', tier: 'semantic', type: 'color', pointsTo: '--primitive-encre-a12' },
+      { name: '--active-tint', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-gazette-a12' },
+      { name: '--hover-tint', tier: 'semantic', type: 'color', pointsTo: '--primitive-encre-a05' },
+    ],
+  },
+  {
+    category: { fr: 'Couleurs — les 5 titres de la maison (rôles)', en: 'Colors — the house’s 5 mastheads (roles)' },
+    rows: [
+      { name: '--titre-gazette', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-gazette' },
+      { name: '--titre-magazine', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-magazine' },
+      { name: '--titre-zine', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-zine' },
+      { name: '--titre-jeux', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-jeux' },
+      { name: '--titre-lab', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-lab' },
     ],
   },
   {
     category: { fr: 'Couleurs — surfaces', en: 'Colors — surfaces' },
     rows: [
-      { name: '--surface-base', tier: 'semantic', type: 'color', pointsTo: '--primitive-cream-100', value: '#f3ebdc' },
-      { name: '--surface-raised', tier: 'semantic', type: 'color', pointsTo: '--primitive-cream-50', value: '#f8f2e7' },
-      { name: '--surface-inset', tier: 'semantic', type: 'color', pointsTo: '--primitive-cream-200', value: '#e6dac4' },
-      { name: '--surface-pressed', tier: 'semantic', type: 'color', pointsTo: '--primitive-cream-300', value: '#d8c9ab' },
-      { name: '--hover-surface', tier: 'semantic', type: 'color', pointsTo: '--primitive-cream-150', value: '#efe4d0' },
-      { name: '--selected-surface', tier: 'semantic', type: 'color', pointsTo: '--primitive-coral-700', value: '#b8452e' },
-      { name: '--on-selected', tier: 'semantic', type: 'color', pointsTo: '--primitive-cream-50', value: '#f8f2e7' },
+      { name: '--surface-base', tier: 'semantic', type: 'color', pointsTo: '--primitive-papier-100' },
+      { name: '--surface-raised', tier: 'semantic', type: 'color', pointsTo: '--primitive-papier-50' },
+      { name: '--surface-inset', tier: 'semantic', type: 'color', pointsTo: '--primitive-papier-200' },
+      { name: '--surface-pressed', tier: 'semantic', type: 'color', pointsTo: '--primitive-papier-300' },
+      { name: '--hover-surface', tier: 'semantic', type: 'color', pointsTo: '--primitive-papier-150' },
+      { name: '--selected-surface', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-gazette-dark' },
+      { name: '--on-selected', tier: 'semantic', type: 'color', pointsTo: '--primitive-papier-50' },
     ],
   },
   {
     category: { fr: 'Couleurs — composant (onglets de dossier)', en: 'Colors — component (dossier tabs)' },
     rows: [
-      { name: '--case-tabs-tint-1', tier: 'component', type: 'color', pointsTo: '--mandarine, --bg3', value: 'color-mix 20%' },
-      { name: '--case-tabs-tint-2', tier: 'component', type: 'color', pointsTo: '--violet, --bg3', value: 'color-mix 16%' },
-      { name: '--case-tabs-tint-3', tier: 'component', type: 'color', pointsTo: '--pink, --bg3', value: 'color-mix 16%' },
-      { name: '--case-tabs-tint-4', tier: 'component', type: 'color', pointsTo: '--warning, --bg3', value: 'color-mix 18%' },
-      { name: '--case-tabs-tint-5', tier: 'component', type: 'color', pointsTo: '--cyan, --bg3', value: 'color-mix 16%' },
+      { name: '--case-tabs-tint-1', tier: 'component', type: 'color', pointsTo: '--mandarine, --bg3' },
+      { name: '--case-tabs-tint-2', tier: 'component', type: 'color', pointsTo: '--violet, --bg3' },
+      { name: '--case-tabs-tint-3', tier: 'component', type: 'color', pointsTo: '--pink, --bg3' },
+      { name: '--case-tabs-tint-4', tier: 'component', type: 'color', pointsTo: '--warning, --bg3' },
+      { name: '--case-tabs-tint-5', tier: 'component', type: 'color', pointsTo: '--cyan, --bg3' },
     ],
   },
   {
     category: { fr: 'Élévation', en: 'Elevation' },
     rows: [
-      { name: '--primitive-shadow-none', tier: 'primitive', type: 'elevation', pointsTo: null, value: 'none' },
-      { name: '--elev-1', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-shadow-none', value: 'none' },
-      { name: '--elev-2', tier: 'semantic', type: 'elevation', pointsTo: '--border', value: '0 1px 0' },
-      { name: '--elev-3', tier: 'semantic', type: 'elevation', pointsTo: '--border', value: '0 2px 0' },
-      { name: '--elev-4', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-ink-900-a18', value: '3px 3px 0 rgba(36,28,22,0.18)' },
-      { name: '--elev-5', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-ink-900-a22', value: '5px 5px 0 rgba(36,28,22,0.22)' },
-      { name: '--elev-inset', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-ink-900-a18', value: 'inset 0 1px 0 rgba(36,28,22,0.18)' },
-      { name: '--elev-pressed', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-ink-900-a25', value: 'inset 0 2px 0 rgba(36,28,22,0.25)' },
+      { name: '--primitive-shadow-none', tier: 'primitive', type: 'elevation', pointsTo: null },
+      { name: '--elev-1', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-shadow-none' },
+      { name: '--elev-2', tier: 'semantic', type: 'elevation', pointsTo: '--border' },
+      { name: '--elev-3', tier: 'semantic', type: 'elevation', pointsTo: '--border' },
+      { name: '--elev-4', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-encre-a18' },
+      { name: '--elev-5', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-encre-a22' },
+      { name: '--elev-inset', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-encre-a18' },
+      { name: '--elev-pressed', tier: 'semantic', type: 'elevation', pointsTo: '--primitive-encre-a25' },
     ],
   },
   {
     category: { fr: 'Rayons & bordures', en: 'Radius & borders' },
     rows: [
-      { name: '--radius-xs', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-4', value: '4px' },
-      { name: '--radius-sm', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-8', value: '8px' },
-      { name: '--radius-md', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-10', value: '10px' },
-      { name: '--radius-lg', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-16', value: '16px' },
-      { name: '--radius-xl', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-24', value: '24px' },
-      { name: '--radius-pill', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-full', value: '999px' },
-      { name: '--border-thin', tier: 'semantic', type: 'border', pointsTo: '--primitive-size-1', value: '1px' },
-      { name: '--border-regular', tier: 'semantic', type: 'border', pointsTo: '--primitive-size-1', value: '1px' },
-      { name: '--border-thick', tier: 'semantic', type: 'border', pointsTo: '--primitive-size-2', value: '2px' },
-      { name: '--icon-stroke', tier: 'semantic', type: 'border', pointsTo: '--primitive-stroke-1-5', value: '1.5' },
+      { name: '--radius-xs', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-4' },
+      { name: '--radius-sm', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-8' },
+      { name: '--radius-md', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-10' },
+      { name: '--radius-lg', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-16' },
+      { name: '--radius-xl', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-24' },
+      { name: '--radius-pill', tier: 'semantic', type: 'radius', pointsTo: '--primitive-size-full' },
+      { name: '--border-thin', tier: 'semantic', type: 'border', pointsTo: '--primitive-size-1' },
+      { name: '--border-regular', tier: 'semantic', type: 'border', pointsTo: '--primitive-size-1' },
+      { name: '--border-thick', tier: 'semantic', type: 'border', pointsTo: '--primitive-size-2' },
+      { name: '--icon-stroke', tier: 'semantic', type: 'border', pointsTo: '--primitive-stroke-1-5' },
     ],
   },
   {
     category: { fr: 'Typographie', en: 'Typography' },
     rows: [
-      { name: '--font-heading', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-fraunces', value: "'Fraunces', Georgia, serif" },
-      { name: '--font-body', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-work-sans', value: "'Work Sans', system-ui, sans-serif" },
-      { name: '--font-mono', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-jetbrains-mono', value: "'JetBrains Mono', monospace" },
-      { name: '--label-transform', tier: 'semantic', type: 'text', pointsTo: '--primitive-case-upper', value: 'uppercase' },
-      { name: '--label-tracking', tier: 'semantic', type: 'text', pointsTo: '--primitive-tracking-wide', value: '0.1em' },
-      { name: '--heading-transform', tier: 'semantic', type: 'text', pointsTo: '--primitive-case-none', value: 'none' },
-      { name: '--heading-tracking', tier: 'semantic', type: 'text', pointsTo: '--primitive-tracking-tight', value: '-0.01em' },
+      { name: '--font-heading', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-alfa-slab-one' },
+      { name: '--font-body', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-crimson-pro' },
+      { name: '--font-mono', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-ibm-plex-mono' },
+      { name: '--label-transform', tier: 'semantic', type: 'text', pointsTo: '--primitive-case-upper' },
+      { name: '--label-tracking', tier: 'semantic', type: 'text', pointsTo: '--primitive-tracking-wide' },
+      { name: '--heading-transform', tier: 'semantic', type: 'text', pointsTo: '--primitive-case-none' },
+      { name: '--heading-tracking', tier: 'semantic', type: 'text', pointsTo: '--primitive-tracking-tight' },
     ],
   },
   {
     category: { fr: 'Structure — espacement & icônes', en: 'Structure — spacing & icons' },
     rows: [
-      { name: '--space-3xs', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-2', value: '2px' },
-      { name: '--space-2xs', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-4', value: '4px' },
-      { name: '--space-xs', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-8', value: '8px' },
-      { name: '--space-xs-plus', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-10', value: '10px' },
-      { name: '--space-sm', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-12', value: '12px' },
-      { name: '--space-md', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-16', value: '16px' },
-      { name: '--space-md-plus', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-20', value: '20px' },
-      { name: '--space-lg', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-24', value: '24px' },
-      { name: '--space-xl', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-32', value: '32px' },
-      { name: '--icon-sm', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-16', value: '16px' },
-      { name: '--icon-md', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-20', value: '20px' },
-      { name: '--icon-lg', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-24', value: '24px' },
-      { name: '--chrome-height', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-32', value: '32px' },
+      { name: '--space-3xs', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-2' },
+      { name: '--space-2xs', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-4' },
+      { name: '--space-xs', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-8' },
+      { name: '--space-xs-plus', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-10' },
+      { name: '--space-sm', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-12' },
+      { name: '--space-md', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-16' },
+      { name: '--space-md-plus', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-20' },
+      { name: '--space-lg', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-24' },
+      { name: '--space-xl', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-32' },
+      { name: '--icon-sm', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-16' },
+      { name: '--icon-md', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-20' },
+      { name: '--icon-lg', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-24' },
+      { name: '--chrome-height', tier: 'semantic', type: 'spacing', pointsTo: '--primitive-size-32' },
     ],
   },
 ]
@@ -232,6 +228,7 @@ const CONTENT = {
     clearance: 'NIVEAU DE LECTURE — PUBLIC',
     tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
     intro: "Trois niveaux, une règle : un token ne porte jamais une valeur brute s'il existe un niveau au-dessus de lui. Filtre par niveau pour isoler les primitives, les rôles sémantiques, ou les tokens propres à un seul composant.",
+    concept: "Misran Labs est une maison d'édition : chaque rubrique (Gazette, Magazine, Zine, Jeux, Lab) est un titre avec sa propre couleur et sa propre police — un univers par titre, sur le même papier et la même encre. Les valeurs ci-dessous sont lues en direct dans le navigateur : si tokens.css change, cette page change avec, sans qu'on ait à la retoucher.",
     filterLabel: 'FILTRER PAR NIVEAU',
     tierLabels: { primitive: 'Primitive', semantic: 'Semantic', component: 'Component' },
     columns: { name: 'Token', tier: 'Niveau', type: 'Type', pointsTo: 'Pointe vers', value: 'Valeur', preview: 'Aperçu', status: 'Statut' },
@@ -253,6 +250,7 @@ const CONTENT = {
     clearance: 'CLEARANCE LEVEL — PUBLIC',
     tagline: 'DESIGN IS INTENT. DETAILS ARE EVERYTHING.',
     intro: "Three tiers, one rule: a token never carries a raw value if a tier exists above it. Filter by tier to isolate primitives, semantic roles, or tokens scoped to a single component.",
+    concept: "Misran Labs is a publishing house: each section (Gazette, Magazine, Zine, Jeux, Lab) is a masthead with its own color and its own font — one world per masthead, on the same paper and ink. The values below are read live in the browser: if tokens.css changes, this page changes with it, with nothing to touch here.",
     filterLabel: 'FILTER BY TIER',
     tierLabels: { primitive: 'Primitive', semantic: 'Semantic', component: 'Component' },
     columns: { name: 'Token', tier: 'Tier', type: 'Type', pointsTo: 'Points to', value: 'Value', preview: 'Preview', status: 'Status' },
@@ -383,11 +381,28 @@ function FilterPill({ tier, label, active, onClick }) {
   )
 }
 
+// Lit chaque token une fois dans les variables CSS calculées (D4) : jamais
+// de valeur recopiée à la main, donc jamais de désynchro avec tokens.css.
+// Calculé dans l'initialiseur paresseux de useState — pas un effet : la
+// page est rendue côté client dès le premier rendu, le DOM est déjà là.
+function computeValues() {
+  if (typeof window === 'undefined') return {}
+  const computed = getComputedStyle(document.documentElement)
+  const next = {}
+  for (const group of TOKEN_GROUPS) {
+    for (const row of group.rows) {
+      next[row.name] = computed.getPropertyValue(row.name).trim()
+    }
+  }
+  return next
+}
+
 export default function LabTokens({ project }) {
   const { lang } = useLanguage()
   const isMobile = useIsMobile()
   const c = CONTENT[lang] ?? CONTENT.fr
   const [activeTiers, setActiveTiers] = useState(() => new Set(TIERS))
+  const [values] = useState(computeValues)
 
   function toggleTier(tier) {
     setActiveTiers((prev) => {
@@ -414,8 +429,11 @@ export default function LabTokens({ project }) {
       <CaseMasthead c={c} lang={lang} />
       <CaseHero project={project} c={c} />
 
-      <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--prose)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 var(--space-md-plus)' }}>
+      <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--prose)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 var(--space-sm)' }}>
         {c.intro}
+      </p>
+      <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--prose)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 var(--space-md-plus)' }}>
+        {c.concept}
       </p>
 
       <div style={{ marginBottom: 'var(--space-xs)' }}>
@@ -446,6 +464,7 @@ export default function LabTokens({ project }) {
         )}
       </div>
 
+      {/* Noms de tokens et « pointe vers » vont à la ligne : la colonne Valeur reste visible sans défilement sur ordinateur */}
       <div style={{ overflowX: 'auto', border: 'var(--border-thin) solid var(--border)', marginBottom: 'var(--space-xl)' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 720 }}>
           <thead>
@@ -480,7 +499,7 @@ export default function LabTokens({ project }) {
               </tr>
             )}
             {visibleGroups.map((group) => (
-              <FragmentGroup key={group.category.fr} group={group} lang={lang} c={c} />
+              <FragmentGroup key={group.category.fr} group={group} lang={lang} c={c} values={values} />
             ))}
           </tbody>
         </table>
@@ -491,7 +510,7 @@ export default function LabTokens({ project }) {
   )
 }
 
-function FragmentGroup({ group, lang, c }) {
+function FragmentGroup({ group, lang, c, values }) {
   return (
     <>
       <tr>
@@ -521,7 +540,7 @@ function FragmentGroup({ group, lang, c }) {
               ? <Swatch name={row.name} />
               : <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)' }}>—</span>}
           </td>
-          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text)', whiteSpace: 'nowrap' }}>
+          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text)', overflowWrap: 'anywhere' }}>
             {row.name}
           </td>
           <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
@@ -530,11 +549,11 @@ function FragmentGroup({ group, lang, c }) {
           <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', whiteSpace: 'nowrap' }}>
             {row.type}
           </td>
-          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: row.pointsTo ? 'var(--text2)' : 'var(--muted)', whiteSpace: 'nowrap' }}>
+          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: row.pointsTo ? 'var(--text2)' : 'var(--muted)', overflowWrap: 'anywhere' }}>
             {row.pointsTo ?? '—'}
           </td>
-          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', whiteSpace: 'nowrap' }}>
-            {row.value}
+          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', whiteSpace: 'nowrap', maxWidth: 170, overflow: 'hidden', textOverflow: 'ellipsis' }} title={values[row.name] || undefined}>
+            {values[row.name] || '—'}
           </td>
           <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', whiteSpace: 'nowrap' }}>
             {violation && <ViolationBadge label={c.violationLabels[violation]} title={c.violationTooltips[violation]} />}

@@ -4,6 +4,21 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), cla
 
 ## Non publié
 
+### Refonte kiosque
+Misran Labs devient une maison d'édition : un titre par rubrique (Gazette, Magazine, Zine, Jeux, Lab), chacun avec sa couleur et sa police.
+- **Kiosk redesign 1/8** (`auto/kiosque-maison`) : l'écrin de la maison (Masthead, NavTitres, Defilant, Colophon, tokens de l'identité éditeur).
+- **Kiosk redesign 2/8** (`auto/kiosque-une`) : la page d'accueil du kiosque.
+- **Germanica pour la Gazette** (`germanica-site`) : police locale pour le titre gothique.
+- **Comic Book pour la BD** (`comicbook-site`) : lettrage du Zine, licence OFL.
+- **Logo Fiole et Chango** (`logo-fiole`) : logo de la maison, police du grand titre.
+- **magazine-web** : le Magazine en revue bleue.
+- **jeux-arcade** : les Jeux en salle d'arcade.
+- **lab-dossiers** : le Lab en armoire à dossiers confidentiels.
+- **idees-cv** : les Idées en notes de recherche, le CV en fiche agent.
+- **zine** : la rubrique Misran Zine (page d'attente et lecture des numéros).
+- **gazette-web** : les Brèves en Gazette du Lab, mise en page de journal.
+- **kiosque-finitions** : nettoyage (code mort, polices et primitives inutilisées), `/lab` en revue bleue, couverture Zine dynamique, consigne du geste parfait affichée une seule fois, documentation à jour.
+
 ### Mission « site-avant-apres »
 - Corail plus foncé sous le texte : nouvelle paire `--primary-surface` / `--on-primary-surface` (corail 700, 4,80:1) ; `--on-primary` supprimé ; `--selected-surface` et `--on-selected` suivent. Le corail vif reste l'accent partout ailleurs.
 - Valeurs en dur remplacées par des tokens semantic de même rôle (`--space-*`, `--border-thick`, `--radius-xs`) dans 20 fichiers.

@@ -1,12 +1,14 @@
 import { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import Sidebar from './Sidebar'
-import Statusbar from './Statusbar'
+import Masthead from './Masthead'
+import NavTitres from './NavTitres'
+import Defilant from './Defilant'
+import Colophon from './Colophon'
+import Fiole from './mascotte/Fiole'
 import SecondarySidebar from '../design-system/SecondarySidebar'
 import { SecondarySidebarContext } from './SecondarySidebarContext'
 import { resolveRouteMeta } from './registry'
 import useIsMobile from './useIsMobile'
-import Topbar from './Topbar'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 
@@ -15,7 +17,6 @@ export default function Shell() {
   const { lang } = useLanguage()
   const meta = resolveRouteMeta(location.pathname, lang)
   const isMobile = useIsMobile()
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [secondaryNav, setSecondaryNav] = useState(null)
 
   useEffect(() => {
@@ -26,19 +27,11 @@ export default function Shell() {
     }
   }, [location.pathname, meta.label, lang])
 
-  // Le menu mobile se referme à chaque changement de page : on compare la page
-  // précédente pendant le rendu (recommandé par React) plutôt que dans un effet.
-  const [pagePrecedente, setPagePrecedente] = useState(location.pathname)
-  if (pagePrecedente !== location.pathname) {
-    setPagePrecedente(location.pathname)
-    setMobileNavOpen(false)
-  }
-
   return (
     <>
       <style>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body, #root { height: 100%; overflow: hidden; background: var(--bg); }
+        body { background: var(--bg); }
         a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
           outline: var(--border-regular) solid var(--primary);
           outline-offset: 2px;
@@ -53,69 +46,29 @@ export default function Shell() {
         @media print {
           .no-print { display: none !important; }
           .print-only { display: block !important; }
-          html, body, #root { height: auto !important; overflow: visible !important; background: var(--bg) !important; }
-          .shell-grid { display: block !important; height: auto !important; overflow: visible !important; }
-          .shell-body { display: block !important; overflow: visible !important; }
-          .shell-main { overflow: visible !important; height: auto !important; }
         }
       `}</style>
 
       <div
-        className="shell-grid"
         style={{
-          display: 'grid',
-          gridTemplateRows: 'var(--chrome-height) 1fr var(--chrome-height)',
-          height: '100vh',
-          overflow: 'hidden',
+          minHeight: '100vh',
           background: 'var(--bg)',
           fontFamily: "var(--font-body)",
           color: 'var(--text)',
         }}
       >
-        <div className="no-print" style={{ display: 'contents' }}>
-          <Topbar isMobile={isMobile} navOpen={mobileNavOpen} onToggleNav={() => setMobileNavOpen((o) => !o)} />
-        </div>
+        <Masthead />
+        <NavTitres />
+        <Defilant />
 
-        <div className="shell-body" style={{ display: 'flex', overflow: 'hidden', position: 'relative' }}>
-          <div className="no-print" style={{ display: 'contents' }}>
-            <Sidebar
-              isMobile={isMobile}
-              mobileOpen={mobileNavOpen}
-              onCloseMobile={() => setMobileNavOpen(false)}
-            />
-          </div>
-
-          {isMobile && mobileNavOpen && (
-            <div
-              onClick={() => setMobileNavOpen(false)}
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'color-mix(in srgb, var(--bg3) 55%, transparent)',
-                zIndex: 40,
-              }}
-            />
-          )}
-
+        <div className="shell-body" style={{ display: 'flex', position: 'relative' }}>
           {!isMobile && secondaryNav && (
             <div className="no-print" style={{ display: 'contents' }}>
               <SecondarySidebar items={secondaryNav.items} active={secondaryNav.active} onChange={secondaryNav.onChange} />
             </div>
           )}
 
-          <main
-            className="shell-main"
-            style={{
-              flex: 1,
-              minWidth: 0,
-              overflowY: 'auto',
-              overflowX: 'hidden',
-              position: 'relative',
-              // Réserve la place de la Fiole perchée sur la barre d'état,
-              // desktop et mobile (D3) : pas de modification page par page.
-              paddingBottom: 'var(--mascotte-overhang)',
-            }}
-          >
+          <main className="shell-main" style={{ flex: 1, minWidth: 0, position: 'relative' }}>
             <SecondarySidebarContext.Provider value={setSecondaryNav}>
               <Suspense fallback={null}>
                 <Outlet />
@@ -124,10 +77,16 @@ export default function Shell() {
           </main>
         </div>
 
-        <div className="no-print" style={{ display: 'contents' }}>
-          <Statusbar moduleLabel={meta.label} isMobile={isMobile} />
-        </div>
+        <Colophon />
       </div>
+
+      <span
+        className="no-print"
+        style={{ position: 'fixed', right: 24, bottom: 24, zIndex: 20, pointerEvents: 'none' }}
+      >
+        <span className="fiole-shadow" aria-hidden="true" />
+        <Fiole />
+      </span>
     </>
   )
 }
