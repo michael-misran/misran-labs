@@ -1,17 +1,56 @@
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import { LinkButton } from '../design-system/kit'
-import Fiole from './mascotte/Fiole'
+import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from './LanguageContext'
-import { t } from '../i18n/ui'
 
-// Page 404 générique (D6) : toute URL qui ne correspond à aucune route
-// (`path="*"` dans App.jsx) ou à un projet du Lab inconnu (ProjectPage.jsx,
-// ProjectDemoPage.jsx). Pas de <head> figé côté build (Vercel réécrit tout
-// vers index.html) : le `noindex` est posé et retiré à la volée ici (D9).
+// Affiche western « avis de recherche » (mission kiosque-annexes, D4). Textes
+// propres à cette page (pas de clés i18n/ui.js : cette mission ne doit pas
+// toucher ce fichier). Pas de <head> figé côté build (Vercel réécrit tout
+// vers index.html) : le `noindex` est posé et retiré à la volée ici.
+const PAGE404_TEXT = {
+  fr: {
+    kicker: 'Avis de recherche',
+    title: 'Page disparue',
+    addressLabel: 'Adresse demandée',
+    lastSeenLabel: 'Dernière fois vue',
+    lastSeen: 'Nulle part',
+    rewardLabel: 'Récompense',
+    reward: 'Un café',
+    links: [
+      { to: '/', label: 'Le kiosque', color: 'var(--text)' },
+      { to: '/breves', label: 'La Gazette du Lab', color: 'var(--titre-gazette)' },
+      { to: '/magazine', label: 'Le Magazine', color: 'var(--titre-magazine)' },
+      { to: '/jeux', label: 'Les Jeux', color: 'var(--titre-jeux)' },
+      { to: '/lab', label: 'Le Lab', color: 'var(--titre-lab)' },
+    ],
+  },
+  en: {
+    kicker: 'Wanted',
+    title: 'Page missing',
+    addressLabel: 'Address requested',
+    lastSeenLabel: 'Last seen',
+    lastSeen: 'Nowhere',
+    rewardLabel: 'Reward',
+    reward: 'One coffee',
+    links: [
+      { to: '/', label: 'The kiosk', color: 'var(--text)' },
+      { to: '/breves', label: 'The Lab Gazette', color: 'var(--titre-gazette)' },
+      { to: '/magazine', label: 'The Magazine', color: 'var(--titre-magazine)' },
+      { to: '/jeux', label: 'Games', color: 'var(--titre-jeux)' },
+      { to: '/lab', label: 'The Lab', color: 'var(--titre-lab)' },
+    ],
+  },
+}
+
+const etiquette = {
+  fontFamily: 'var(--font-etiquette)',
+  textTransform: 'uppercase',
+  letterSpacing: '0.14em',
+}
+
 export default function Page404() {
   const { lang } = useLanguage()
   const { pathname } = useLocation()
+  const t = PAGE404_TEXT[lang] ?? PAGE404_TEXT.fr
 
   useEffect(() => {
     const meta = document.createElement('meta')
@@ -22,85 +61,75 @@ export default function Page404() {
   }, [])
 
   return (
-    <div
-      style={{
-        minHeight: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        textAlign: 'center',
-        padding: '40px var(--space-md-plus)',
-        maxWidth: 560,
-        margin: '0 auto',
-      }}
-    >
+    <div style={{ padding: '48px var(--space-md-plus)', maxWidth: 560, margin: '0 auto' }}>
       <div
         style={{
-          position: 'relative',
-          display: 'inline-flex',
-          justifyContent: 'center',
-          width: 200,
-          borderBottom: 'var(--border-regular) solid var(--border)',
-          paddingBottom: 'var(--space-md)',
-          marginBottom: 28,
+          border: '3px double var(--border)',
+          padding: '32px 24px',
+          background: 'var(--bg2)',
+          textAlign: 'center',
         }}
       >
-        <span className="fiole-shadow" aria-hidden="true" />
-        <Fiole scale={8} variant="toxique" sleeps={false} />
-      </div>
+        <div style={{ ...etiquette, fontSize: 12, color: 'var(--text2)', marginBottom: 'var(--space-sm)' }}>
+          {t.kicker}
+        </div>
 
-      <div
-        style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: 11,
-          color: 'var(--muted)',
-          letterSpacing: '0.1em',
-          marginBottom: 'var(--space-md)',
-        }}
-      >
-        {t(lang, 'notFound404Eyebrow')}
-      </div>
+        <h1
+          style={{
+            fontFamily: 'var(--font-bois-3)',
+            fontWeight: 400,
+            fontSize: 'clamp(40px, 10vw, 64px)',
+            lineHeight: 0.95,
+            textTransform: 'uppercase',
+            margin: '0 0 var(--space-md)',
+            color: 'var(--text)',
+          }}
+        >
+          {t.title}
+        </h1>
 
-      <h1
-        style={{
-          fontFamily: "var(--font-heading)",
-          fontWeight: 700,
-          fontSize: 'clamp(24px, 3.4vw, 34px)',
-          margin: '0 0 var(--space-sm)',
-        }}
-      >
-        {t(lang, 'notFound404Title')}
-      </h1>
+        <div
+          style={{
+            border: 'var(--border-thin) solid var(--border)',
+            background: 'var(--bg)',
+            padding: 'var(--space-sm) var(--space-md)',
+            margin: '0 0 var(--space-md)',
+          }}
+        >
+          <div style={{ ...etiquette, fontSize: 10, color: 'var(--text2)', marginBottom: 4 }}>
+            {t.addressLabel}
+          </div>
+          <div style={{ fontFamily: 'var(--font-machine)', fontSize: 15, color: 'var(--text)', overflowWrap: 'anywhere' }}>
+            {pathname}
+          </div>
+        </div>
 
-      <p
-        style={{
-          fontFamily: "var(--font-body)",
-          fontSize: 15,
-          color: 'var(--text2)',
-          margin: '0 0 var(--space-md-plus)',
-          maxWidth: 480,
-        }}
-      >
-        {t(lang, 'notFound404Body')}
-      </p>
+        <p style={{ fontFamily: 'var(--font-chapo)', fontStyle: 'italic', fontSize: 16, color: 'var(--text)', margin: '0 0 var(--space-xs)' }}>
+          {t.lastSeenLabel} : {t.lastSeen}
+        </p>
+        <p style={{ fontFamily: 'var(--font-chapo)', fontStyle: 'italic', fontSize: 16, color: 'var(--text)', margin: '0 0 var(--space-lg)' }}>
+          {t.rewardLabel} : {t.reward}
+        </p>
 
-      <div
-        style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: 11,
-          color: 'var(--muted)',
-          overflowWrap: 'anywhere',
-          marginBottom: 28,
-        }}
-      >
-        {pathname}
-      </div>
-
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-sm)', justifyContent: 'center' }}>
-        <LinkButton to="/">{t(lang, 'notFound404BackLab')}</LinkButton>
-        <LinkButton to="/magazine" variant="ghost">{t(lang, 'notFound404Magazine')}</LinkButton>
-        <LinkButton to="/breves" variant="ghost">{t(lang, 'notFound404Breves')}</LinkButton>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-sm)', justifyContent: 'center' }}>
+          {t.links.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              style={{
+                ...etiquette,
+                fontSize: 11,
+                color: link.color,
+                border: `var(--border-thin) solid ${link.color}`,
+                borderRadius: 'var(--radius-xs)',
+                padding: '8px 14px',
+                textDecoration: 'none',
+              }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   )
