@@ -1,7 +1,7 @@
 # Mission zine — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 4 (`ZineNumero.jsx`)
+**Prochaine action :** étape 5 (branchement : `App.jsx`, `registry.js`, `NavTitres.jsx`, `KiosqueParts.jsx`)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -23,3 +23,7 @@
 - `src/zine/ZineParts.jsx` créé : `MastheadZine` (tête « MISRAN ZINE » en Anton, encre paramétrable), `TrameDots` et `Etoile` (étoile à 20 pointes en `clip-path`, même polygone que `KiosqueParts.CouvertureZine`, redéclaré sans l'importer, D1), `Bulle` (BD, bordure + pointe en triangles CSS), `PageCarnet`/`PagePhoto`/`PageDessin`/`PageTexte`/`PageJeu` (un composant par type de bloc D2), `BlocZine` (dispatcheur par `type`), `CouvertureNumero` (réutilisable vedette/grille).
 - `src/zine/ZineHome.jsx` créé : page d'attente (`Attente`, sans numéro — tête + étoile « LE #1 ARRIVE ! » + bulle, trame de points, aucune image) et page normale (vedette + grille des numéros précédents) selon que `getNumeros()` est vide ou non.
 - `npm run build` et `npm run lint` : OK (le fichier n'est pas encore routé, étape 5).
+
+## Étape 4 (exécution, 2026-10-04)
+- `src/zine/ZineNumero.jsx` créé : en-tête (`MastheadZine` à l'encre du numéro), titre + Nº/date, édito, puis chaque bloc de `pages` rendu via `BlocZine`, lien de retour. Page « Ce numéro n'existe pas » (mascotte Fiole, même style que les autres 404 de section).
+- `npm run build` et `npm run lint` : OK (toujours pas routé).
