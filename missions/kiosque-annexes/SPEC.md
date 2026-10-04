@@ -47,3 +47,6 @@ Les dernières pages et tout ce qui sort du site (aperçus, images OG, flux) par
 - **Aucune ressource externe ni privée** : pas d'image distante, pas de fichier de police (polices libres déjà chargées par `index.html` uniquement), rien de `src/private/`.
 - **Styles en ligne** et tokens, comme le reste du site ; textes fr/en dans le fichier de textes de la section ; `resolveRouteMeta`, `document.title`, URL et données JSON inchangés sauf mention contraire.
 - **Vérification navigateur** : `verificateur (Haiku)`. S'il ne se lance pas après une nouvelle tentative, la session principale fait la vérification elle-même et le note.
+
+## Ajout du 2026-10-04 (après le cadrage)
+Le titre gothique passera de UnifrakturMaguntia à **Germanica** (police de Paul Lloyd, « 100 % Free » sur dafont), via la PR #44 vers `refonte-kiosque`. Partout où cette mission écrit en `--font-gothique`, ajouter `wordSpacing: 'var(--font-gothique-espace, normal)'`. L'espace entre les mots de Germanica est très large, et ce token le resserre. Avec UnifrakturMaguntia, le repli `normal` garde l'espacement actuel.
