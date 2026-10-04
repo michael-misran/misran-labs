@@ -5,6 +5,11 @@ import { t } from '../i18n/ui'
 import { formatDateLong } from '../magazine/magazineText'
 import useIsMobile from './useIsMobile'
 
+// En-tête pulp de la maison, façon couverture DoggyBags : bandeau rouge,
+// carton kraft tramé, grand titre crème cerné de noir avec ombre rouge sang,
+// et le « i » de Misran remplacé par un tube radioactif scellé.
+// Maquette de référence : screens/header-doggybags.html.
+
 function todayIso() {
   const now = new Date()
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
@@ -16,106 +21,270 @@ const etiquette = {
   letterSpacing: '0.14em',
 }
 
+// Grain de papier (bruit SVG), posé par-dessus le bandeau et le carton
+const GRAIN = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3  0 0 0 0 .25  0 0 0 0 .15  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"
+
+function Grain() {
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        position: 'absolute',
+        inset: 0,
+        pointerEvents: 'none',
+        mixBlendMode: 'multiply',
+        opacity: 0.55,
+        backgroundImage: GRAIN,
+      }}
+    />
+  )
+}
+
+// Désordre du lettrage « fait main » : [rotation en degrés, décalage vertical
+// en em, taille relative], une entrée par caractère de « Misran Labs ».
+const DECALAGES = [
+  [-4, -0.03, 1.18], [2, 0.02, 1], [-1, -0.02, 1], [3, 0.01, 1], [-2, 0.03, 1], [1, -0.02, 1],
+  [0, 0, 1], [-3, 0.02, 1.12], [2, -0.01, 1], [-1, 0.03, 1], [3, -0.02, 1],
+]
+
+// Le « i » de Misran : ampoule scellée radioactive. Repère : 100 unités = 1em,
+// ligne de base à y=90, haut du « i » de Bowlby One SC à y=23, même chasse
+// (.363em). Contour noir 11 unités ≈ le text-stroke des lettres ; ombre rouge
+// décalée de 5 unités = leur text-shadow de .05em.
+function TubeRadioactif() {
+  return (
+    <svg
+      viewBox="0 0 36 90"
+      aria-hidden="true"
+      style={{ width: '.363em', height: '.9em', verticalAlign: 'baseline', overflow: 'visible' }}
+    >
+      <rect transform="translate(5 5)" x="5" y="20" width="26" height="64" rx="4" fill="var(--masthead-ombre)" stroke="var(--masthead-ombre)" strokeWidth="11" />
+      {/* Ampoule pleine de liquide luminescent, avec son reflet */}
+      <rect x="5" y="20" width="26" height="64" rx="4" fill="var(--masthead-radioactif)" stroke="var(--masthead-encre)" strokeWidth="11" />
+      <path d="M12 34 V44" stroke="var(--masthead-lettre)" strokeWidth="3" strokeLinecap="round" />
+      {/* Trèfle radioactif */}
+      <g fill="var(--masthead-encre)">
+        <path d="M18 52 L14.5 45.94 A7 7 0 0 1 21.5 45.94 Z" />
+        <path d="M18 52 L25 52 A7 7 0 0 1 21.5 58.06 Z" />
+        <path d="M18 52 L14.5 58.06 A7 7 0 0 1 11 52 Z" />
+      </g>
+      <circle cx="18" cy="52" r="2.6" fill="var(--masthead-radioactif)" />
+      <circle cx="18" cy="52" r="1.6" fill="var(--masthead-encre)" />
+      {/* Capsules métalliques qui scellent l'ampoule */}
+      <g fill="var(--masthead-encre)" stroke="var(--masthead-encre)" strokeWidth="3">
+        <rect x="2" y="12" width="32" height="12" rx="2" />
+        <rect x="2" y="78" width="32" height="12" rx="2" />
+      </g>
+      <g stroke="var(--masthead-lettre)" strokeWidth="1.6">
+        <path d="M5 17 H31" />
+        <path d="M5 83 H31" />
+      </g>
+      {/* Éclats de lueur : ils font le point du « i » */}
+      <g stroke="var(--masthead-radioactif)" strokeWidth="2.6" strokeLinecap="round">
+        <path d="M18 1 V7" />
+        <path d="M8 4 L11 9" />
+        <path d="M28 4 L25 9" />
+      </g>
+    </svg>
+  )
+}
+
+// Rond entre deux noms du bandeau, comme les portraits d'auteurs de la couverture
+function Medaillon({ children, taille }) {
+  return (
+    <span
+      aria-hidden="true"
+      style={{
+        width: taille,
+        height: taille,
+        borderRadius: '50%',
+        background: 'var(--masthead-lettre)',
+        border: `${taille > 24 ? 3 : 2}px solid var(--masthead-encre)`,
+        display: 'grid',
+        placeItems: 'center',
+        fontSize: taille * 0.46,
+        lineHeight: 1,
+        color: 'var(--masthead-encre)',
+        flexShrink: 0,
+      }}
+    >
+      {children}
+    </span>
+  )
+}
+
 export default function Masthead() {
   const { lang, toggle: toggleLang } = useLanguage()
   const isMobile = useIsMobile()
-  // En dessous de 600 px (D8), l'en-tête se resserre encore : badge plus
-  // petit, nom sur une seule ligne, accroche masquée — pour que le header
-  // de la maison tienne en moins de 200 px à 375 px de large.
+  // En dessous de 600 px (D8), l'en-tête se resserre encore : pastille plus
+  // petite, accroche et cartouche masqués — pour que le header de la maison
+  // tienne en moins de 200 px à 375 px de large.
   const isNarrow = useIsMobile(600)
   const today = formatDateLong(todayIso(), lang)
 
+  const lien = {
+    fontFamily: 'var(--font-bandeau)',
+    fontSize: isNarrow ? 18 : isMobile ? 22 : 28,
+    lineHeight: 1,
+    textTransform: 'uppercase',
+    letterSpacing: '0.02em',
+    color: 'var(--masthead-lettre)',
+    WebkitTextStroke: `${isNarrow ? 4 : 5}px var(--masthead-encre)`,
+    paintOrder: 'stroke fill',
+    textDecoration: 'none',
+  }
+  const tailleMedaillon = isNarrow ? 20 : 28
+  const taillePastille = isNarrow ? 58 : isMobile ? 74 : 96
+
   return (
-    <div className="no-print" style={{ background: 'var(--bg)' }}>
+    <div className="no-print">
+      {/* Bandeau rouge du haut */}
       <div
         style={{
-          borderBottom: 'var(--border-thin) solid var(--border)',
+          position: 'relative',
+          background: 'var(--masthead-bandeau)',
+          borderBottom: '4px solid var(--masthead-encre)',
         }}
       >
+        <Grain />
         <div
           style={{
+            position: 'relative',
             maxWidth: 1240,
             margin: '0 auto',
-            padding: isNarrow ? '6px 16px 5px' : '8px 20px 7px',
+            padding: isNarrow ? '6px 16px' : '6px 20px',
             display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
             alignItems: 'center',
-            gap: '4px 16px',
-            ...etiquette,
-            fontWeight: 600,
-            fontSize: 12,
-            color: 'var(--text)',
+            justifyContent: 'space-between',
+            gap: 12,
           }}
         >
-          <span>{t(lang, 'mastheadBrand')}</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
-            {!isMobile && <span style={{ color: 'var(--text2)' }}>{today}</span>}
-            <Link to="/projets" style={{ color: 'inherit' }}>{t(lang, 'mastheadIdees')}</Link>
-            <Link to="/suivre" style={{ color: 'inherit' }}>{t(lang, 'mastheadAbonner')}</Link>
-            <Link to="/lab/cv" style={{ color: 'inherit' }}>{t(lang, 'mastheadCV')}</Link>
-            <button
-              onClick={toggleLang}
-              aria-label={lang === 'fr' ? 'Switch to English' : 'Passer en français'}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: 'inherit',
-                cursor: 'pointer',
-                padding: 0,
-                ...etiquette,
-                fontWeight: 600,
-                fontSize: 12,
-              }}
-            >
-              {lang === 'fr' ? 'EN' : 'FR'}
-            </button>
-          </div>
+          {!isNarrow && (
+            <span style={{ ...etiquette, fontWeight: 500, fontSize: 12, color: 'var(--masthead-lettre)' }}>
+              {t(lang, 'mastheadBrand')}
+            </span>
+          )}
+          <nav style={{ display: 'flex', alignItems: 'center', gap: isNarrow ? 8 : 10 }}>
+            <Link to="/projets" style={lien}>{t(lang, 'mastheadIdees')}</Link>
+            <Medaillon taille={tailleMedaillon}>★</Medaillon>
+            <Link to="/suivre" style={lien}>{t(lang, 'mastheadAbonner')}</Link>
+            <Medaillon taille={tailleMedaillon}>✦</Medaillon>
+            <Link to="/lab/cv" style={lien}>{t(lang, 'mastheadCV')}</Link>
+          </nav>
+          <button
+            onClick={toggleLang}
+            aria-label={lang === 'fr' ? 'Switch to English' : 'Passer en français'}
+            style={{
+              ...etiquette,
+              letterSpacing: '0.1em',
+              fontWeight: 700,
+              fontSize: 12,
+              lineHeight: 1,
+              background: 'var(--masthead-encre)',
+              color: 'var(--masthead-lettre)',
+              border: 'none',
+              padding: '5px 8px',
+              cursor: 'pointer',
+            }}
+          >
+            {lang === 'fr' ? 'EN' : 'FR'}
+          </button>
         </div>
       </div>
 
-      <header>
+      {/* Carton kraft tramé, assombri sur les bords */}
+      <header
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          borderBottom: '5px solid var(--masthead-encre)',
+          background: [
+            'radial-gradient(ellipse at 50% 40%, transparent 45%, var(--masthead-fond-ombre) 100%)',
+            'radial-gradient(circle, var(--masthead-trame) 1.2px, transparent 1.6px) 0 0 / 7px 7px',
+            'var(--masthead-fond)',
+          ].join(', '),
+        }}
+      >
+        <Grain />
         <div
           style={{
+            position: 'relative',
             maxWidth: 1240,
             margin: '0 auto',
-            padding: isNarrow ? '14px 16px 12px' : '22px 20px 18px',
+            padding: isNarrow ? '14px 16px 16px' : '22px 20px 26px',
             display: 'grid',
             gridTemplateColumns: isMobile ? 'auto 1fr' : 'auto 1fr auto',
-            gap: isMobile ? 16 : 28,
+            gap: isNarrow ? 14 : 28,
             alignItems: 'center',
           }}
         >
-          {/* Logo de la maison : la Fiole seule (le nom est juste à côté) */}
-          <span style={{ color: 'var(--text)' }}>
-            <LogoFiole largeur={isNarrow ? 38 : isMobile ? 54 : 80} />
+          {/* Pastille ronde : la Fiole de la maison */}
+          <span
+            style={{
+              width: taillePastille,
+              height: taillePastille,
+              borderRadius: '50%',
+              background: 'var(--masthead-encre)',
+              color: 'var(--masthead-lettre)',
+              border: '3px solid var(--masthead-lettre)',
+              outline: '3px solid var(--masthead-encre)',
+              outlineOffset: 3,
+              display: 'grid',
+              placeItems: 'center',
+              margin: 3,
+            }}
+          >
+            <LogoFiole largeur={taillePastille * 0.4} fond="var(--masthead-encre)" />
           </span>
 
-          <div>
+          <div style={{ minWidth: 0 }}>
             <h1
+              aria-label="Misran Labs"
               style={{
-                fontFamily: 'var(--font-logo)',
+                fontFamily: 'var(--font-pulp)',
                 fontWeight: 400,
-                fontSize: isNarrow ? 'clamp(20px, 7.4vw, 30px)' : 'clamp(40px, 6.4vw, 86px)',
-                lineHeight: 1,
+                fontSize: isNarrow ? '8.4vw' : 'clamp(44px, 8.4vw, 112px)',
+                lineHeight: 0.9,
                 textTransform: 'uppercase',
-                letterSpacing: '0',
-                transform: 'skewX(-8deg)',
-                transformOrigin: 'left bottom',
-                color: 'var(--text)',
-                whiteSpace: isNarrow ? 'nowrap' : 'normal',
+                color: 'var(--masthead-lettre)',
+                whiteSpace: 'nowrap',
+                display: 'flex',
+                alignItems: 'flex-end',
+                filter: `drop-shadow(${isNarrow ? '3px 4px' : '6px 7px'} 0 var(--masthead-encre))`,
               }}
             >
-              Misran Labs
+              {[...'Misran Labs'].map((c, i) => {
+                if (c === ' ') return <span key={i} style={{ width: '.34em' }} />
+                const [rot, y, taille] = DECALAGES[i]
+                return (
+                  <span
+                    key={i}
+                    aria-hidden="true"
+                    style={{
+                      display: 'inline-block',
+                      transform: `translateY(${y}em) rotate(${rot}deg)`,
+                      fontSize: `${taille}em`,
+                      WebkitTextStroke: '.11em var(--masthead-encre)',
+                      paintOrder: 'stroke fill',
+                      textShadow: '.05em .05em 0 var(--masthead-ombre)',
+                    }}
+                  >
+                    {/* Le « i » (position 1) devient le tube, avec la même inclinaison */}
+                    {i === 1 ? <TubeRadioactif /> : c}
+                  </span>
+                )
+              })}
             </h1>
             {!isNarrow && (
               <p
                 style={{
-                  fontFamily: 'var(--font-chapo)',
-                  fontStyle: 'italic',
-                  fontSize: isMobile ? 17 : 21,
-                  marginTop: 8,
-                  color: 'var(--text)',
+                  fontFamily: 'var(--font-bd)',
+                  fontWeight: 700,
+                  fontSize: isMobile ? 15 : 17,
+                  lineHeight: 1.35,
+                  marginTop: 14,
+                  maxWidth: 640,
+                  color: 'var(--masthead-encre)',
                 }}
               >
                 {t(lang, 'mastheadTagline')}
@@ -123,21 +292,48 @@ export default function Masthead() {
             )}
           </div>
 
+          {/* Cartouche penché, comme « Suspense, frissons & horreur !! » */}
           {!isMobile && (
             <div
               style={{
-                border: '3px double var(--border)',
+                background: 'var(--masthead-lettre)',
+                border: '3px solid var(--masthead-encre)',
+                boxShadow: '5px 5px 0 var(--masthead-encre)',
                 padding: '10px 14px',
+                transform: 'rotate(4deg)',
                 textAlign: 'center',
-                transform: 'rotate(3deg)',
-                background: 'var(--bg2)',
+                color: 'var(--masthead-encre)',
               }}
             >
               <span style={{ ...etiquette, fontWeight: 700, fontSize: 11 }}>{t(lang, 'mastheadOuvertLabel')}</span>
-              <b style={{ fontFamily: 'var(--font-bois-3)', fontWeight: 400, fontSize: 26, display: 'block', lineHeight: 1, margin: '4px 0' }}>
-                {t(lang, 'mastheadOuvertHeure')}
+              <b
+                style={{
+                  display: 'block',
+                  fontFamily: 'var(--font-affiche)',
+                  fontWeight: 400,
+                  fontSize: 30,
+                  lineHeight: 1,
+                  letterSpacing: '0.03em',
+                  color: 'var(--masthead-bandeau)',
+                  margin: '4px 0',
+                }}
+              >
+                {t(lang, 'mastheadOuvertHeure')} !!
               </b>
               <span style={{ ...etiquette, fontWeight: 700, fontSize: 11 }}>{t(lang, 'mastheadOuvertTous')}</span>
+              <span
+                style={{
+                  ...etiquette,
+                  fontWeight: 700,
+                  fontSize: 11,
+                  display: 'block',
+                  marginTop: 6,
+                  paddingTop: 6,
+                  borderTop: '2px solid var(--masthead-encre)',
+                }}
+              >
+                {today}
+              </span>
             </div>
           )}
         </div>
