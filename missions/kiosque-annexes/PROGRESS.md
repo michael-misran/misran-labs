@@ -1,7 +1,7 @@
 # Mission kiosque-annexes — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 5
+**Prochaine action :** étape 6
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -28,3 +28,10 @@
 - Textes fr/en définis localement dans `Page404.jsx` (`PAGE404_TEXT`) : `src/i18n/ui.js` est hors périmètre de cette mission, donc pas touché. Les clés `notFound404*` y restent mais ne sont plus utilisées par cette page (`notFound404Tab` reste utilisé par `registry.js` pour l'onglet) — ménage possible dans une mission de finitions, noté en recommandation du RAPPORT.
 - `dist/404.html` (généré par `build404Html` dans `share-previews.js`, non touché à cette étape) garde son titre « Page introuvable · Misran Labs », cohérent avec « Page disparue » affichée ; sa description par défaut sera mise à jour à l'étape 5 (D5).
 - Vérifié moi-même dans le navigateur : FR et EN, aucune erreur console, aucun débordement à 375 px, les 5 liens présents et fonctionnels.
+
+## Étape 5 — aperçus et images OG (2026-10-04)
+- `og-numero-template.html` : papier `#f6f1e6`, encre `#16120e`, bandeau bleu `#2b3a9b` (titre-magazine) sur le bord gauche, titre en Playfair Display italique, étiquettes et tampon circulaire en Oswald (remplace Fraunces/JetBrains Mono/corail). Police chargée par le même unique `<link>` Google Fonts qu'avant, juste les familles changées (lu avant modif, comme demandé).
+- `og-numero.js` : eyebrow `LAB MAGAZINE` → `LE MAGAZINE` (D2). Régénéré les 2 images existantes (`public/og/magazine/2026-09-27.png`, `2026-09-28.png`) avec Chrome headless local — build OK, images vérifiées avec l'outil Read : palette maison + bandeau bleu visibles, voir DELEGATIONS.md pour rien (fait en session principale, pas de sous-agent ici).
+- `scripts/share-previews.js` : titres harmonisés au-delà de D2 strict (voir DECISIONS.md) — numéro de Magazine, `MAGAZINE_FIXED`, `PROJETS_FIXED`, `PROJETS_FONCTIONNEMENT_FIXED`. `SUIVRE_FIXED.description` porte la formule « Misran Labs, maison d'édition indépendante » (D5).
+- `index.html` : `theme-color` → `#16120e` uniquement, rien d'autre touché. Lien Google Fonts vérifié identique à son propre état d'avant cette mission (`git diff` sur la seule ligne theme-color) ; `git diff refonte-kiosque -- index.html` montre aussi un écart sur ce lien (refonte-kiosque a gagné une police `Chango` entre-temps, via une autre mission fusionnée) — normal pour des missions parallèles, je n'ai pas touché cette ligne donc un merge la reprendra sans conflit.
+- `npm run build` et lint ciblé : OK.
