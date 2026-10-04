@@ -1,7 +1,7 @@
 # Mission kiosque-une — PROGRESS
 
-**Statut :** étapes 1 à 7 faites
-**Prochaine action :** étape 8 (RAPPORT.md)
+**Statut :** mission terminée (étapes 0 à 8 faites), RAPPORT.md écrit
+**Prochaine action :** clôture (session interactive avec Michael, voir missions/README.md)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-10-04, branche `refonte-kiosque` = 99d9d7f)
