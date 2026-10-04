@@ -4,7 +4,7 @@ Cocher `[x]` chaque étape terminée, puis mettre à jour PROGRESS.md et commite
 Chaque étape indique l'agent et le modèle à utiliser.
 
 - [x] 0. Cadrage : SPEC, PLAN, fichiers de suivi → session principale (Opus)
-- [ ] 1. État initial : build et lint notés dans PROGRESS.md (déjà relevés au cadrage, à reconfirmer) → session principale (Sonnet)
+- [x] 1. État initial : build et lint notés dans PROGRESS.md (déjà relevés au cadrage, à reconfirmer) → session principale (Sonnet)
 - [ ] 2. Code mort (D2) : suppression des exports listés, puis greps du critère 2 → session principale (Sonnet)
 - [ ] 3. `DesignSystem.jsx` : tableau typographique et spécimens aux polices réelles (D3, première moitié) → session principale (Sonnet)
 - [ ] 4. Polices et primitives (D3 seconde moitié, D4) : lien Google Fonts, primitives sans consommateur, en-tête de `tokens.css`, liste de `LabTokens.jsx`. Relever avant/après les valeurs calculées des variables de la mascotte (critère 8) → session principale (Sonnet)
