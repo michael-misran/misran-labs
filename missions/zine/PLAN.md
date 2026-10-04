@@ -4,8 +4,8 @@ Cocher `[x]` chaque étape terminée, puis mettre à jour PROGRESS.md et commite
 Chaque étape indique l'agent et le modèle à utiliser.
 
 - [x] 0. Cadrage : SPEC, PLAN, fichiers de suivi → session principale (Opus 5.5)
-- [ ] 1. État initial : build et lint notés dans PROGRESS.md → session principale (Sonnet)
-- [ ] 2. `src/zine/` : `numeros.js` (chargement et validation), `FORMAT.md` et `numeros/.gitkeep`, plus `public/zine/.gitkeep` (D2) → session principale (Sonnet)
+- [x] 1. État initial : build et lint notés dans PROGRESS.md → session principale (Sonnet)
+- [x] 2. `src/zine/` : `numeros.js` (chargement et validation), `FORMAT.md` et `numeros/.gitkeep`, plus `public/zine/.gitkeep` (D2) → session principale (Sonnet)
 - [ ] 3. `ZineParts.jsx`, `ZineHome.jsx` (avec la page d'attente) et `zineText.js` fr/en (D3) → session principale (Sonnet)
 - [ ] 4. `ZineNumero.jsx` : rendu de chaque type de bloc, encre locale et page « Ce numéro n'existe pas » (D4) → session principale (Sonnet)
 - [ ] 5. Branchement : routes dans `App.jsx`, `registry.js`, ouverture automatique dans `NavTitres.jsx` et `KiosqueParts.jsx` (D1, D5) → session principale (Sonnet)
