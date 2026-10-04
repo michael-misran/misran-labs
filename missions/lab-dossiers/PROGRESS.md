@@ -1,7 +1,7 @@
 # Mission lab-dossiers — PROGRESS
 
-**Statut :** en cours
-**Prochaine action :** étape 6 (vérification finale)
+**Statut :** terminée
+**Prochaine action :** clôture (push + PR vers `refonte-kiosque`, en session interactive avec Michael)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -32,3 +32,10 @@
 - `LabTokens.jsx` entièrement réécrit : plus aucune valeur recopiée à la main (`value` retiré de `TOKEN_GROUPS`) — chaque valeur est lue une fois via `getComputedStyle(document.documentElement)` dans l'initialiseur paresseux d'un `useState` (pas un `useEffect` : la règle `react-hooks/set-state-in-effect` l'interdit, et comme la page est rendue côté client dès le premier rendu, un effet n'était pas nécessaire). Groupes mis à jour pour refléter l'état réel de `tokens.css` après la refonte kiosque : papier (remplace crème), encre/gris/filet (remplace l'échelle d'encre archive), les 5 couleurs de titres (primitives et rôles), une police par titre (gothique, Playfair, bd, pixel, machine), rôles sémantiques (bg/primary/text pointent maintenant vers papier/titre-gazette/encre, plus corail/crème). Section « architecture primitive → semantic → component » et détection des violations conservées à l'identique. Nouveau paragraphe expliquant le concept « maison d'édition / un univers par titre » (D4).
 - Critère d'acceptation 5 vérifié : `git grep -n "#dd5a3e" -- src/lab/projects/LabTokens.jsx` → vide. Les 5 couleurs de titres ont leur propre section avec aperçu (`Swatch`).
 - `npm run build` et `npm run lint` : OK.
+
+## Étape 6 (exécution, 2026-10-04)
+- Critère 1 revérifié : `git diff --stat refonte-kiosque...HEAD` (hors `missions/lab-dossiers/`) ne touche que les fichiers de D1 (`CaseFile.jsx`, `CaseStudyLayout.jsx`, `DossierParts.jsx`, `caseChrome.js`, `LabTokens.jsx`, `ArchiveHome.jsx`). `ToolProcessTemplate.jsx` autorisé mais non modifié (rien à y changer, hérite de `CaseFile.jsx`).
+- Sous-agent `verificateur` (Haiku) lancé en avant-plan : `npx vite preview`, FR/EN. `/lab` (étiquette PIÈCES : 9, tampon, liens, onglets), 3 fiches projet dont une à onglets (clic vérifié), `/projets`, `/projets/fonctionnement`, `/projets/P-001`, `/lab/cv`, `/suivre` (contenu inchangé, habillage restylé), `/lab/lab-tokens` (colonne Valeur remplie, les 5 couleurs de titres avec aperçu), `/lab/design-system` (onglets), 375px sur 3 pages. Tout OK au premier essai.
+
+## Étape 7 (exécution, 2026-10-04)
+- `RAPPORT.md` écrit. Mission terminée, prête pour la clôture (push + PR vers `refonte-kiosque`) en session interactive.

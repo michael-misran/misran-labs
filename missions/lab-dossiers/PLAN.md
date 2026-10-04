@@ -9,5 +9,5 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 3. `CaseFile.jsx`, `CaseStudyLayout.jsx` et `ToolProcessTemplate.jsx` : habillage dossier avec les mêmes exports et les mêmes props (D3). Vérifier rapidement chaque page qui les importe → session principale (Sonnet)
 - [x] 4. `ArchiveHome.jsx` : l'armoire, la note de service, l'index des chemises et la fiche agent (D2) → session principale (Sonnet)
 - [x] 5. `LabTokens.jsx` : la nouvelle palette de la maison et le concept « un univers par titre » (D4) → session principale (Sonnet)
-- [ ] 6. Vérification finale : build, lint et greps du critère 1 par la session principale ; les autres critères dans le navigateur (1366 px et 375 px, FR et EN) → verificateur (Haiku). S'il ne se lance pas après une nouvelle tentative, la session principale le fait elle-même.
-- [ ] 7. RAPPORT.md (rappeler que la PR vise `refonte-kiosque`) → session principale (Sonnet)
+- [x] 6. Vérification finale : build, lint et greps du critère 1 par la session principale ; les autres critères dans le navigateur (1366 px et 375 px, FR et EN) → verificateur (Haiku). S'il ne se lance pas après une nouvelle tentative, la session principale le fait elle-même.
+- [x] 7. RAPPORT.md (rappeler que la PR vise `refonte-kiosque`) → session principale (Sonnet)
