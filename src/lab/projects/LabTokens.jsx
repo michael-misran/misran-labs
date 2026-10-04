@@ -50,6 +50,18 @@ const TOKEN_GROUPS = [
     ],
   },
   {
+    category: { fr: 'Couleurs — primitives (en-tête pulp)', en: 'Colors — primitives (pulp header)' },
+    rows: [
+      { name: '--primitive-kraft', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-kraft-ombre', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-kraft-trame', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-rouge-pulp', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-rouge-pulp-fonce', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-creme-pulp', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-radioactif', tier: 'primitive', type: 'color', pointsTo: null },
+    ],
+  },
+  {
     category: { fr: 'Couleurs — primitives (catégorielles)', en: 'Colors — primitives (categorical)' },
     rows: [
       { name: '--primitive-ochre-500', tier: 'primitive', type: 'color', pointsTo: null },
@@ -84,6 +96,14 @@ const TOKEN_GROUPS = [
       { name: '--font-bd', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-comic-neue' },
       { name: '--font-pixel', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-press-start-2p' },
       { name: '--font-machine', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-special-elite' },
+    ],
+  },
+  {
+    category: { fr: 'Polices — en-tête pulp', en: 'Fonts — pulp header' },
+    rows: [
+      { name: '--font-pulp', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-bowlby-one-sc' },
+      { name: '--font-affiche', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-bangers' },
+      { name: '--font-bandeau', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-anton' },
     ],
   },
   {
@@ -153,6 +173,19 @@ const TOKEN_GROUPS = [
       { name: '--case-tabs-tint-3', tier: 'component', type: 'color', pointsTo: '--pink, --bg3' },
       { name: '--case-tabs-tint-4', tier: 'component', type: 'color', pointsTo: '--warning, --bg3' },
       { name: '--case-tabs-tint-5', tier: 'component', type: 'color', pointsTo: '--cyan, --bg3' },
+    ],
+  },
+  {
+    category: { fr: 'Couleurs — composant (en-tête pulp)', en: 'Colors — component (pulp header)' },
+    rows: [
+      { name: '--masthead-bandeau', tier: 'component', type: 'color', pointsTo: '--primitive-rouge-pulp' },
+      { name: '--masthead-fond', tier: 'component', type: 'color', pointsTo: '--primitive-kraft' },
+      { name: '--masthead-fond-ombre', tier: 'component', type: 'color', pointsTo: '--primitive-kraft-ombre' },
+      { name: '--masthead-trame', tier: 'component', type: 'color', pointsTo: '--primitive-kraft-trame' },
+      { name: '--masthead-lettre', tier: 'component', type: 'color', pointsTo: '--primitive-creme-pulp' },
+      { name: '--masthead-ombre', tier: 'component', type: 'color', pointsTo: '--primitive-rouge-pulp-fonce' },
+      { name: '--masthead-encre', tier: 'component', type: 'color', pointsTo: '--primitive-encre' },
+      { name: '--masthead-radioactif', tier: 'component', type: 'color', pointsTo: '--primitive-radioactif' },
     ],
   },
   {

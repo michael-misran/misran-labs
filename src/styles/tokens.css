@@ -27,10 +27,11 @@
  *      des dizaines de fichiers pour un gain nul n'est pas la priorité.
  *   3. COMPONENT — porté à un seul composant. Créé uniquement quand ce
  *      composant s'écarte réellement de l'intention d'un sémantique.
- *      Aujourd'hui, un seul cas le justifie : les teintes de la pile
+ *      Aujourd'hui, deux cas le justifient : les teintes de la pile
  *      d'onglets des fiches (CaseFile.jsx) — cinq variantes dérivées des
  *      couleurs catégorielles, qui vivaient avant en JS et qu'aucune
- *      autre page ne réutilise.
+ *      autre page ne réutilise — et l'en-tête pulp (Masthead.jsx), une
+ *      couverture imprimée aux couleurs fixes, en clair comme en sombre.
  *
  * Le Lab a porté trois identités interchangeables (neumorphisme,
  * brutalisme, rétro) ; ce switch a été retiré, voir l'historique Git.
