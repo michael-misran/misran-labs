@@ -1,7 +1,7 @@
 # Mission zine — PROGRESS
 
-**Statut :** en cours
-**Prochaine action :** étape 7 (vérification finale)
+**Statut :** terminée
+**Prochaine action :** clôture (push + PR vers `refonte-kiosque`, en session interactive avec Michael)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 07a40cd)
@@ -50,3 +50,10 @@
 - Chemins non exercés par ce test (pas d'image disponible sans violer « aucune ressource externe », D1) : les blocs `photo`, `dessin` et `jeu` avec `src` — leur code a été relu avec soin (styles en ligne, pas de logique conditionnelle risquée) mais pas vu s'afficher avec une vraie image. Noté en recommandation du RAPPORT.
 - Numéro d'essai supprimé (`rm src/zine/numeros/01.json`) avant tout commit — il n'a jamais été ajouté à Git (`git status` : working tree clean juste après suppression). Seul `.gitkeep` reste dans `src/zine/numeros/`.
 - Rebuild + relint après suppression : OK.
+
+## Étape 7 (exécution, 2026-10-04)
+- Critère 1 revérifié après suppression du numéro d'essai : `git diff --stat refonte-kiosque...HEAD -- . ':!missions/zine'` ne montre que les fichiers de D1 et les 4 exceptions ; `git ls-files src/zine/numeros/` ne liste que `.gitkeep`.
+- Sous-agent `verificateur` (Haiku) lancé en avant-plan : `npx vite preview`, FR/EN, état final (sans numéro) — page d'attente, `/zine/1` introuvable, couverture du kiosque et `NavTitres` toujours non cliquables (« bientôt »), 375px, pages voisines (`/`, `/lab`). Tout OK au premier essai.
+
+## Étape 8 (exécution, 2026-10-04)
+- `RAPPORT.md` écrit. Mission terminée, prête pour la clôture (push + PR vers `refonte-kiosque`) en session interactive.
