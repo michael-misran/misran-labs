@@ -1,7 +1,7 @@
 # Mission kiosque-finitions — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 7
+**Prochaine action :** étape 8
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 96debce)
@@ -44,4 +44,14 @@
 ## Étape 6 — couverture Zine (2026-10-04)
 - `CouvertureZine` (`src/kiosque/KiosqueParts.jsx`) : `getNumeros()[0]` était déjà importé et lu pour le lien, mais jamais pour l'affichage. Ajout d'un rendu conditionnel : avec un numéro, « #NN » (padé, remplace le `#1` statique) et son titre (badge rotatif, style BD) remplacent l'étoile « Bientôt ! » ; la légende passe de `legendeRythme` (« bientôt · mensuel ») à une nouvelle clé `legendeRythmeAvecNumero` (« mensuel »/« monthly ») ajoutée dans `src/kiosque/kiosqueText.js`. Sans numéro, rendu strictement inchangé.
 - Testé avec `src/zine/numeros/01.json` (exemple complet de `FORMAT.md`, photo → `/og-image.png`) : vérifié moi-même dans le navigateur, FR et EN — « #01 » et « Premiers pas »/« First steps » affichés, légende « mensuel »/« monthly », aucune erreur console. Fichier supprimé avant ce commit (`git ls-files src/zine/numeros` → seulement `.gitkeep`), puis revérifié que la couverture revient à « Bientôt ! »/« Coming soon! » sans numéro.
+- `npm run build` et lint : OK.
+
+## Étape 7 — consigne en double du geste parfait (2026-10-04)
+- Lu `Jeu.jsx` (affiche `defi.consigne[lang]` au-dessus du défi actif, pour les 4) et les 4 `defis/*.jsx` :
+  - `cercle.jsx` : doublon exact de la consigne centrale → paragraphe retiré.
+  - `verre.jsx` : quasi-doublon (« relâche au bon moment » vs « au bon niveau » dans la consigne centrale) → paragraphe retiré, `lang`/`useLanguage` devenus inutiles retirés aussi.
+  - `tour.jsx` : quasi-doublon (« poser le bloc » vs « poser chaque bloc ») → paragraphe retiré, `lang`/`useLanguage` retirés.
+  - `chrono.jsx` : deux messages différents selon l'état — celui en attente (« clique pour démarrer ») est une info distincte, gardé ; celui en cours (« arrête à 10,00 s ») redisait la consigne centrale, vidé (même motif que l'état « fini », déjà vide).
+- Règles et score non touchés dans les 4 fichiers (seuls les paragraphes de consigne et les imports qu'ils rendaient inutiles ont changé).
+- Vérifié dans le navigateur : le défi du jour (Cercle parfait) n'affiche plus sa consigne qu'une fois. Les 3 autres défis n'ont pas pu être testés en direct dans cette session de routine — `?date=` pour forcer un autre défi n'est actif qu'en `vite dev` (`import.meta.env.DEV`, voir `JeuPage.jsx`), refusé en routine (seul `npx vite preview` est autorisé). Vérification faite par lecture de code : même structure que `cercle.jsx` (un seul paragraphe statique, sans état propre pour `verre.jsx`/`tour.jsx` ; état `encours` vidé pour `chrono.jsx`, aucune autre branche ne réaffiche le texte supprimé).
 - `npm run build` et lint : OK.
