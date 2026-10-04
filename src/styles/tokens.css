@@ -111,13 +111,12 @@
   --primitive-titre-lab: #1f7a4d;
 
   /* Palette pulp de l'en-tête (relevée sur une couverture DoggyBags) :
-     carton kraft, rouge sang, crème des lettres, jaune radioactif. */
+     carton kraft, rouge sang, crème des lettres. */
   --primitive-kraft: #b0a165;
   --primitive-kraft-ombre: rgba(60,50,20,0.45);
   --primitive-rouge-pulp: #b5231b;
   --primitive-rouge-pulp-fonce: #6e120d;
   --primitive-creme-pulp: #f0e2bd;
-  --primitive-radioactif: #d9e84a;
 
   /* Couleurs avec transparence : suffixe -aNN = opacité en centièmes.
      Valeurs rgba recopiées telles quelles depuis les anciens semantics. */
@@ -326,7 +325,6 @@
   --masthead-encre: var(--primitive-encre);
   /* Barre du menu des titres (NavTitres.jsx) */
   --masthead-sommaire: var(--primitive-rouge-pulp-fonce);
-  --masthead-radioactif: var(--primitive-radioactif);
 }
 
 /* Portée inversée : la diapositive corail plein cadre d'une planche
