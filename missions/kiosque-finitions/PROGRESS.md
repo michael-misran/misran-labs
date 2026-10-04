@@ -1,7 +1,7 @@
 # Mission kiosque-finitions — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 9
+**Prochaine action :** étape 10
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-04, `refonte-kiosque` = 96debce)
@@ -60,3 +60,41 @@
 - Liste des 11 PR fusionnées dans `refonte-kiosque` (hors `main`) relevée avec `git log --merges refonte-kiosque` puis comparée à `git log main` pour trouver le point de divergence exact (`aee617c`, PR #40) : #41 kiosque-maison, #42 kiosque-une, #44 germanica-site, #45 comicbook-site, #46 logo-fiole, #47 magazine-web, #48 jeux-arcade, #49 lab-dossiers, #50 idees-cv, #51 zine, #52 gazette-web (#43 absent du log, fermée sans fusion).
 - Délégué à un sous-agent Haiku, texte exact fourni par la session principale : `CLAUDE.md` (paragraphe tokens étendu : 5 couleurs de titre, polices de la maison, Germanica/Comic Book locales dans `public/fonts/`) et `CHANGELOG.md` (nouvelle section « Refonte kiosque » sous « Non publié », avant « Mission « site-avant-apres » », une puce par PR fusionnée + une pour cette mission). Diff relu : conforme, rien d'autre touché.
 - `npm run build` : OK (fichiers Markdown, pas d'impact sur le lint JS).
+
+## Étape 9 — revue complète des routes (2026-10-04)
+
+Déléguée au `verificateur` (Haiku) sur les 25 routes de D9 (FR/EN, 1366/375 px). Rapport reçu : 0 erreur console partout, mais un débordement horizontal à 375 px affirmé sur « 100 % des routes » en français. Avant de corriger, vérifié moi-même ce chiffre : **l'affirmation était fausse** — en retestant `/lab`, `/magazine`, `/suivre` à 375 px (méthode : `document.documentElement.scrollWidth - clientWidth`), aucun débordement. Le vrai défaut n'existe que sur `/` (accueil kiosque).
+
+**Défaut réel trouvé et corrigé** : sur `/`, le titre de section « Sur les présentoirs » (`SectionTitreKiosque`, `src/kiosque/KiosqueParts.jsx`) est en `white-space: nowrap` à 28px (`--font-bois-2`) en dessous de 960 px de large ; ce texte français (plus long que « On the newsstand ») déborde de ~15px à 375 px (`scrollWidth` 390 au lieu de 375), alors que la version anglaise tient. Fichier autorisé (hors liste D1 de `kiosque-annexes`) → corrigé : nouveau seuil `useIsMobile(480)` ramène la taille à 26px en dessous de 480 px de large, qui tient à 375 px (vérifié : `scrollWidth - clientWidth = 0` avant/après le correctif, FR et EN). Revérifié ensuite `/`, `/lab`, `/zine`, `/jeux`, `/projets`, la 404 : tous à 0 débordement à 375 px.
+
+Tableau complet (routes où rien n'est indiqué = conforme sur les 4 cases FR/EN × 1366/375, aucune erreur console, aucun résidu de langue) :
+
+| Route | Résultat |
+|---|---|
+| / | Débordement FR 375px trouvé et corrigé (voir ci-dessus) ; sinon conforme |
+| /breves | Conforme |
+| /breves/2026-10-03 | Conforme |
+| /magazine | Conforme |
+| /magazine/2026-09-28 | Conforme |
+| /zine | Conforme |
+| /jeux | Conforme |
+| /jeux/a-vue-d-oeil | Conforme |
+| /jeux/comme-tout-le-monde | Conforme |
+| /jeux/geste-parfait | Conforme |
+| /lab | Conforme |
+| /lab/design-system-multimarques | Conforme |
+| /lab/lost-cauldron-game | Conforme |
+| /lab/design-system | Conforme |
+| /lab/workflow | Conforme |
+| /lab/exp-003 | Conforme |
+| /lab/cv | Conforme |
+| /lab/lab-tokens | Conforme |
+| /lab/utilisation-ia | Conforme |
+| /lab/audit-tokens | Conforme |
+| /projets | Conforme |
+| /projets/fonctionnement | Conforme |
+| /projets/P-012 | Conforme |
+| /suivre | Conforme (fichier de kiosque-annexes, non modifiable ici — rien à signaler) |
+| URL inexistante (404) | Conforme |
+
+`npm run build` et `npx eslint . --ignore-pattern '.worktrees/**'` après correctif : OK.

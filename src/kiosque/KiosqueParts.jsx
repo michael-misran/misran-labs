@@ -16,13 +16,18 @@ const etiquette = {
 // <style> pour ça.
 export function SectionTitreKiosque({ title, subtitle }) {
   const narrow960 = useIsMobile(960)
+  // Un deuxième seuil, plus étroit, pour les titres longs ("Sur les
+  // présentoirs") : à 28px ils débordent encore en dessous de ~420px de
+  // large, même sous-titre déjà masqué par narrow960 (D9, mission
+  // kiosque-finitions — pas de débordement horizontal à 375 px).
+  const narrow480 = useIsMobile(480)
   return (
     <div style={{ display: 'flex', alignItems: 'baseline', gap: 18, margin: '46px 0 18px' }}>
       <h2
         style={{
           fontFamily: 'var(--font-bois-2)',
           fontWeight: 400,
-          fontSize: narrow960 ? 28 : 40,
+          fontSize: narrow480 ? 26 : narrow960 ? 28 : 40,
           textTransform: 'uppercase',
           lineHeight: 1,
           color: 'var(--text)',
