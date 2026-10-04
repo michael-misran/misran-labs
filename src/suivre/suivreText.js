@@ -7,10 +7,10 @@
 const SITE_URL = 'https://misran-labs.vercel.app'
 
 const FEEDS_BASE = [
-  { key: 'magazine', path: '/magazine/rss.xml', name: { fr: 'Lab Magazine', en: 'Lab Magazine' }, rythme: { fr: 'Chaque lundi', en: 'Every Monday' } },
+  { key: 'magazine', path: '/magazine/rss.xml', name: { fr: 'Le Magazine', en: 'The Magazine' }, rythme: { fr: 'Chaque lundi', en: 'Every Monday' } },
   { key: 'breves', path: '/breves/rss.xml', name: { fr: 'La Gazette du Lab', en: 'The Lab Gazette' }, rythme: { fr: 'Chaque matin', en: 'Every morning' } },
-  { key: 'projets', path: '/projets/rss.xml', name: { fr: 'Projets', en: 'Projects' }, rythme: { fr: 'Chaque dimanche', en: 'Every Sunday' } },
-  { key: 'tout', path: '/rss.xml', name: { fr: 'Tout', en: 'Everything' }, rythme: { fr: 'Tout à la fois', en: 'All at once' } },
+  { key: 'projets', path: '/projets/rss.xml', name: { fr: 'Les idées du Lab', en: "The Lab's ideas" }, rythme: { fr: 'Chaque dimanche', en: 'Every Sunday' } },
+  { key: 'tout', path: '/rss.xml', name: { fr: 'Tout le kiosque', en: 'The whole kiosk' }, rythme: { fr: 'Tout à la fois', en: 'All at once' } },
 ]
 
 // Un flux = { key, url, name: {fr,en}, rythme: {fr,en} }.
