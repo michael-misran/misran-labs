@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import useIsMobile from '../shell/useIsMobile'
 import { rubriqueLabel } from '../breves/brevesText'
 import { formatDateLong } from './kiosqueText'
+import { getNumeros } from '../zine/numeros'
 
 const etiquette = {
   fontFamily: 'var(--font-etiquette)',
@@ -252,8 +253,9 @@ function CouvertureMagazine({ lang, t, issue }) {
 
 function CouvertureZine({ t }) {
   const p = t.presentoirs.zine
+  const dernier = getNumeros()[0]
   return (
-    <CarteCouverture to={null} legendeNom={p.legendeNom} legendeRythme={p.legendeRythme}>
+    <CarteCouverture to={dernier ? `/zine/${dernier.numero}` : null} legendeNom={p.legendeNom} legendeRythme={p.legendeRythme}>
       <div style={{ background: 'var(--titre-zine)', height: '100%', position: 'relative' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '22%', borderBottom: '3px solid var(--border)', padding: '10px 12px', zIndex: 3, background: 'var(--titre-zine)' }}>
           <b style={{ fontFamily: 'var(--primitive-font-anton)', fontSize: 40, lineHeight: 0.85, textTransform: 'uppercase', display: 'block', color: 'var(--text)' }}>{p.tetiereNom[0]}<br />{p.tetiereNom[1]}</b>
