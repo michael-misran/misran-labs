@@ -9,12 +9,13 @@ export default function SectionTitle({ children }) {
           fontSize: 12,
           color: 'var(--primary)',
           letterSpacing: '0.1em',
-          whiteSpace: 'nowrap',
+          // Va à la ligne sur mobile : un titre long faisait déborder la page
+          minWidth: 0,
         }}
       >
         {`// ${String(children).toUpperCase()}`}
       </span>
-      <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
+      <div style={{ flex: 1, minWidth: 24, height: 1, background: 'var(--border)' }} />
     </div>
   )
 }

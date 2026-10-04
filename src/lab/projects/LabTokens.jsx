@@ -464,6 +464,7 @@ export default function LabTokens({ project }) {
         )}
       </div>
 
+      {/* Noms de tokens et « pointe vers » vont à la ligne : la colonne Valeur reste visible sans défilement sur ordinateur */}
       <div style={{ overflowX: 'auto', border: 'var(--border-thin) solid var(--border)', marginBottom: 'var(--space-xl)' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 720 }}>
           <thead>
@@ -539,7 +540,7 @@ function FragmentGroup({ group, lang, c, values }) {
               ? <Swatch name={row.name} />
               : <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--muted)' }}>—</span>}
           </td>
-          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text)', whiteSpace: 'nowrap' }}>
+          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 12, color: 'var(--text)', overflowWrap: 'anywhere' }}>
             {row.name}
           </td>
           <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)' }}>
@@ -548,10 +549,10 @@ function FragmentGroup({ group, lang, c, values }) {
           <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', whiteSpace: 'nowrap' }}>
             {row.type}
           </td>
-          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: row.pointsTo ? 'var(--text2)' : 'var(--muted)', whiteSpace: 'nowrap' }}>
+          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: row.pointsTo ? 'var(--text2)' : 'var(--muted)', overflowWrap: 'anywhere' }}>
             {row.pointsTo ?? '—'}
           </td>
-          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', whiteSpace: 'nowrap', maxWidth: 220, overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', fontFamily: "var(--font-mono)", fontSize: 11, color: 'var(--text2)', whiteSpace: 'nowrap', maxWidth: 170, overflow: 'hidden', textOverflow: 'ellipsis' }} title={values[row.name] || undefined}>
             {values[row.name] || '—'}
           </td>
           <td style={{ padding: 'var(--space-xs) var(--space-sm)', borderBottom: 'var(--border-thin) solid var(--border)', whiteSpace: 'nowrap' }}>

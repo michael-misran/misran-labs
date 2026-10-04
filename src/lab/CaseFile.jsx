@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import useIsMobile from '../shell/useIsMobile'
 import { dossierNo } from './projects'
 import { Stamp, Barcode } from '../design-system/ArchiveMarks'
 import { t } from '../i18n/ui'
@@ -99,6 +100,7 @@ export function CaseMetaRow({ columns }) {
 }
 
 export function CaseHero({ project, c, children }) {
+  const isMobile = useIsMobile()
   return (
     <div style={{ border: 'var(--border-regular) solid var(--border)', borderTop: '4px solid var(--titre-lab)', marginBottom: 'var(--space-xl)' }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-md)', padding: '18px var(--space-lg)', borderBottom: children ? 'var(--border-thin) solid var(--border)' : 'none' }}>
@@ -123,7 +125,8 @@ export function CaseHero({ project, c, children }) {
             )}
           </div>
         </div>
-        <Stamp label={c.stampLabel ?? 'MISRAN · LABS · ARCHIVE ·'} size={72} />
+        {/* Tampon masqué sur mobile : il coinçait le titre dans une colonne étroite */}
+        {!isMobile && <Stamp label={c.stampLabel ?? 'MISRAN · LABS · ARCHIVE ·'} size={72} />}
       </div>
 
       {children}

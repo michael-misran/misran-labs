@@ -53,3 +53,9 @@ Détail dans `DECISIONS.md`. En résumé :
 - La mission **kiosque-finitions** pourra supprimer les anciennes primitives crème/encre-archive/corail de `tokens.css` une fois que la mascotte Fiole (seule autre consommatrice directe) sera aussi migrée, ou les garder si Fiole en a encore besoin.
 - `CaseStudyLayout.TabBar` (dans `CaseStudyLayout.jsx`) n'a aucun importeur dans le reste du site : code mort probablement antérieur à cette mission, à nettoyer dans `kiosque-finitions`.
 - Avant fusion, vérifier visuellement l'équilibre de la nouvelle chemise kraft de `/lab` sur un vrai écran (couleurs, lisibilité du Special Elite) — le `verificateur` confirme l'absence d'erreur et de débordement, mais pas le rendu esthétique fin.
+
+## Retouches à la clôture (session interactive, 2026-10-04)
+- `/lab/lab-tokens` : la colonne « Valeur » sortait du cadre sur ordinateur (tableau de 1047 px dans 798). Les noms de tokens et « pointe vers » vont maintenant à la ligne, la valeur complète apparaît au survol.
+- Fiches `/lab/<slug>` sur mobile : le tampon rond est masqué, il coinçait le titre dans une colonne étroite.
+- `src/design-system/SectionTitle.jsx` (hors fichiers autorisés, défaut antérieur) : les titres de section ne restent plus sur une seule ligne. Sur mobile, « La contrainte qui a façonné le reste » faisait déborder la page de 23 px.
+- À voir avec Michael : sur `/lab`, l’aperçu du Magazine garde l’ancien style rose avec « N° 001 », alors que le Magazine est passé en bleu avec « N° 1 » ; la fiche agent affiche « ACCENT : BURNT CORAL », l’ancienne couleur.
