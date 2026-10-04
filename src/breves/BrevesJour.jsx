@@ -54,9 +54,11 @@ export default function BrevesJour() {
 
       <nav
         style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
+          // Trois colonnes égales : « Toutes les éditions » reste centré même
+          // quand l'édition précédente ou suivante n'existe pas
+          display: 'grid',
+          gridTemplateColumns: '1fr auto 1fr',
+          alignItems: 'baseline',
           gap: 16,
           borderTop: '3px double var(--border)',
           paddingTop: 'var(--space-md)',
@@ -74,7 +76,7 @@ export default function BrevesJour() {
         <Link to="/breves" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.04em', fontSize: 12, fontWeight: 700, color: 'var(--titre-gazette)', textDecoration: 'none' }}>
           {t.backToList}
         </Link>
-        <span>
+        <span style={{ textAlign: 'right' }}>
           {next ? (
             <Link to={`/breves/${next.date}`} style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.04em', fontSize: 12, fontWeight: 700, color: 'var(--text)', textDecoration: 'none' }}>
               {t.nextDay}

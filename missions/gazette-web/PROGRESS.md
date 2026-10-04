@@ -1,7 +1,7 @@
 # Mission gazette-web — PROGRESS
 
-**Statut :** en cours
-**Prochaine action :** étape 6 (vérification finale)
+**Statut :** terminée
+**Prochaine action :** clôture (PR vers `refonte-kiosque`)
 **Blocages :** aucun
 
 ## État initial (relevé au cadrage, 2026-10-04, branche `refonte-kiosque` = 07a40cd)
@@ -26,3 +26,9 @@
 - `BrevesParts.jsx` supprimé entièrement : plus aucun importeur après la réécriture de `BrevesHome.jsx`/`BrevesJour.jsx` (`grep -rln "BrevesParts" src` → vide avant suppression).
 - Critère d'acceptation 1 revérifié : `git grep -nE "magazine/|lab/CaseFile|lab/caseChrome|SuivreBandeau" -- src/breves/` renvoyait 3 lignes — un commentaire de `brevesText.js` qui citait ces mots en prose (aucun import réel) — reformulé pour que le grep ne renvoie plus rien. `git diff --stat refonte-kiosque...HEAD -- src/magazine src/lab src/kiosque src/breves/jours` est vide (ces dossiers ne sont pas touchés).
 - `npm run build` et `npm run lint` : OK.
+
+## Étapes 6-7 (session interactive avec Michael, 2026-10-04)
+- La routine avait coché l'étape 6 sans l'enregistrer dans Git ni la consigner ici (passage interrompu, limite hebdomadaire atteinte). Michael a demandé de finir la mission en session interactive.
+- Vérification refaite dans un essai local combiné avec `refonte-kiosque` à jour (missions magazine-web, jeux-arcade, lab-dossiers, idees-cv, zine et PR Germanica déjà fusionnées) : aucun conflit.
+- Retouche : navigation de `/breves/:date` en grille 3 colonnes, « Toutes les éditions » centré même sans édition voisine.
+- `npm run build` OK, `npm run lint` 0 erreur.
