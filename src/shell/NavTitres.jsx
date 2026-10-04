@@ -14,17 +14,7 @@ const rythme = {
   marginBottom: 2,
 }
 
-// Bandeau fin façon sommaire de couverture pulp : filet noir, papier crème,
-// filet noir — les titres, plus hauts que lui, le débordent dessus et dessous
-const BANDEAU = 14
-const FILET = 2
-const bandeau = `linear-gradient(transparent calc(50% - ${BANDEAU / 2}px),
-  var(--masthead-encre) calc(50% - ${BANDEAU / 2}px), var(--masthead-encre) calc(50% - ${BANDEAU / 2 - FILET}px),
-  var(--masthead-lettre) calc(50% - ${BANDEAU / 2 - FILET}px), var(--masthead-lettre) calc(50% + ${BANDEAU / 2 - FILET}px),
-  var(--masthead-encre) calc(50% + ${BANDEAU / 2 - FILET}px), var(--masthead-encre) calc(50% + ${BANDEAU / 2}px),
-  transparent calc(50% + ${BANDEAU / 2}px))`
-
-// Médaillon posé à cheval sur le bandeau, entre deux titres
+// Médaillon posé entre deux titres
 function Medaillon({ children }) {
   return (
     <span
@@ -142,8 +132,8 @@ export default function NavTitres() {
           const contenu = (
             <>
               <span style={rythme}>{titre.rythme}</span>
-              {/* Rangée du titre : porte le bandeau en fond, le titre déborde */}
-              <span style={{ position: 'relative', display: 'block', padding: '4px 0', background: bandeau }}>
+              {/* Rangée du titre, avec le médaillon qui le sépare du suivant */}
+              <span style={{ position: 'relative', display: 'block', padding: '4px 0' }}>
                 <span
                   style={{
                     display: 'inline-block',
