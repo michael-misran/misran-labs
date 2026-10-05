@@ -15,7 +15,7 @@
       "Bash(echo *)", "Bash(npx vite preview*)", "Bash(npx eslint *)",
       "Edit(src/**)", "Write(src/**)", "Edit(missions/**)", "Write(missions/**)",
       "mcp__Claude_Browser",
-      "WebSearch", "WebFetch",
+      "WebSearch", "WebFetch", "Bash(lightpanda fetch *)",
       "Bash(git push -u origin auto/magazine-*)",
       "Bash(gh pr create --base main --head auto/magazine-*)",
       "Bash(git push -u origin auto/projets-*)",
