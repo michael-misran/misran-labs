@@ -240,7 +240,7 @@ const CONTENT = {
     tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
 
     intro:
-      "J'utilisais une IA locale pour économiser mon quota Claude. Je l'ai abandonnée, j'ai compris les vrais leviers du quota, et j'ai mis en place un système où Claude cadre une mission puis la mène seul, du brief jusqu'à la pull request. Cette page raconte cette séquence — et elle a été écrite par ce système lui-même.",
+      "J'utilisais une IA locale pour économiser mon quota Claude. Je l'ai abandonnée, j'ai compris les vrais leviers du quota, et j'ai mis en place un système où Claude cadre une mission puis la mène seul, du brief jusqu'à la pull request. Cette page raconte cette séquence — et elle a été écrite par ce système lui-même. Depuis, le système fait aussi tourner des routines quotidiennes et hebdomadaires, et a mené la refonte complète du site.",
 
     sequenceTitle: 'La séquence',
     milestones: [
@@ -261,7 +261,13 @@ const CONTENT = {
       { date: '15', label: 'Mise à jour de la page (mission 7)' },
       { date: '16', label: 'Un deuxième avis : Gemini' },
       { date: '17', label: 'Économiser les tokens' },
-      { date: '18', label: 'Cette mise à jour (mission 8)' },
+      { date: '18', label: 'Mise à jour de la page (mission 8)' },
+      { date: '19', label: "Les idées du dimanche" },
+      { date: '20', label: 'La Gazette du Lab et le carnet' },
+      { date: '21', label: 'Une semaine de missions' },
+      { date: '22', label: 'La refonte kiosque' },
+      { date: '23', label: 'Lightpanda, un navigateur en secours' },
+      { date: '24', label: 'Cette mise à jour (mission 42)' },
     ],
 
     startTitle: "Point de départ : l'IA locale",
@@ -562,8 +568,50 @@ const CONTENT = {
     ],
     tokensRemainingP:
       "Il me reste une recommandation à appliquer : couper, pour ce projet, les connecteurs inutiles (messagerie, agenda, stockage, tableaux blancs, design), dont la liste occupe du contexte à chaque session.",
+    tokensLightpandaP:
+      "Un outil de plus (05/10) : Lightpanda, un navigateur sans affichage pour les agents, testé sur les 4 sources du dernier numéro du Magazine. Résultat : il ne fait pas économiser de tokens ici — l'outil de lecture habituel (WebFetch) renvoie un résumé, alors que Lightpanda renvoie la page entière — mais il lit ce que WebFetch ne peut pas lire : un site refusait WebFetch (erreur 403), Lightpanda a récupéré l'article complet. Décision : WebFetch d'abord, Lightpanda en secours pour le veilleur et le relecteur du Magazine, avec une taille de page plafonnée. Gratuit et open source, il tourne sur le Mac, télémétrie coupée.",
     tokensPublishP:
       "Pour la première fois, une amélioration du système lui-même passe par une pull request, hors mission, que je fusionne. Cette page est mise à jour par la mission 8, utilisation-ia-economie : la première cadrée selon ces nouvelles règles (étapes mécaniques prévues pour Haiku, build et lint sans sous-agent).",
+
+    routinesTitle: 'Trois routines de plus',
+    routinesIntroP:
+      "Avant, deux tâches programmées : les missions (toutes les 2 h) et le Magazine (le lundi à 7 h 30). Depuis, trois de plus.",
+    routinesItems: [
+      {
+        label: 'Les idées du dimanche',
+        text: "Depuis le 27/09, chaque dimanche à 19 h, une routine propose des idées de projets numérotées P-NNN pour la rubrique /projets : une fiche publique sur le site et une note économique privée, rangée hors du dépôt public. Elle pousse sa branche auto/projets-<date> et ouvre la pull request ; je trie en une phrase (« garde 2, arrête 4 parce que… ») dans la session tour de contrôle, qui met les fiches à jour avec mes mots. « On développe P-NNN » fait passer la fiche « en cours » et cadre une mission. Depuis le 01/10, chaque idée a un modèle de revenu, un canal de distribution et un critère d'arrêt.",
+      },
+      {
+        label: 'La Gazette du Lab',
+        text: "Depuis le 29/09 (page /breves depuis le 30/09), chaque matin à 5 h 30, une routine rédige un journal à imprimer pour moi, dans le style d'un vieux journal — je préfère le papier. Elle en extrait la partie publique (la une IA, les articles tech, le mot et le chiffre du jour) pour la page /breves, sur une branche auto/breves-<date>, et ouvre la pull request. Elle travaille dans une copie de travail séparée du dépôt (un worktree Git), pour ne jamais toucher à mon dossier de travail. Depuis le 01/10, elle m'envoie une notification avec le lien de la pull request.",
+      },
+      {
+        label: 'Le carnet',
+        text: "Depuis le 29/09, quand j'écris « note : … » dans n'importe quelle session, Claude range la note telle quelle dans un carnet privé, répond « Noté. » et reprend le fil. La routine du dimanche trie le carnet : idée de projet, sujet pour le journal, mission, ou à garder.",
+      },
+    ],
+    routinesTableCols: ['Routine', 'Quand', "Ce qu'elle produit", 'Ce que je fais'],
+    routinesTableRows: [
+      ['Missions', 'Toutes les 2 h, en pause si la file est vide', 'Avance les missions cadrées, ouvre leurs pull requests', 'Je fusionne'],
+      ['Magazine', 'Lundi 7 h 30', 'Un numéro de veille IA, par pull request', 'Je fusionne'],
+      ['Idées', 'Dimanche 19 h', 'Des fiches de projet P-NNN, par pull request', 'Je trie, je fusionne'],
+      ['Gazette du Lab', 'Chaque jour 5 h 30', 'Un journal à imprimer et la page /breves, par pull request', "J'imprime, je fusionne"],
+    ],
+
+    kiosqueTitle: 'La refonte kiosque',
+    kiosqueCadenceP:
+      "La cadence : du 27/09 au 01/10, une trentaine de missions, souvent petites (une mascotte en pixel art, une vraie page 404, des flux RSS et la page /suivre, trois jeux quotidiens dans /jeux, des audits du design system). La file d'attente les enchaîne ; je clôture par lots depuis la tour de contrôle.",
+    kiosqueDirectionP:
+      "La direction artistique (03/10) : Claude produit des maquettes HTML et des planches de polices ; je réagis (« j'adore », « trop propre ») et je choisis. Résultat : un concept de maison d'édition, cinq titres (la Gazette, le Magazine, le Zine, les Jeux, le Lab), chacun sa couleur et sa police, uniquement des polices gratuites.",
+    kiosqueBranchP:
+      "La refonte elle-même (03 et 04/10) : dix missions (kiosque-maison, kiosque-une, gazette-web, magazine-web, jeux-arcade, lab-dossiers, idees-cv, zine, kiosque-annexes, kiosque-finitions). Choix : tout mettre en ligne d'un seul coup. Une branche d'intégration refonte-kiosque ; chaque mission en part et sa pull request la vise ; une pull request finale l'envoie sur main. En ligne le 04/10. Cette page elle-même a changé d'habit : le Lab est devenu un dossier confidentiel tapé à la machine.",
+    kiosqueLearnedLabel: "Ce que la refonte m'a appris :",
+    kiosqueLearned: [
+      "Vérifier une mission telle qu'elle sera une fois fusionnée, sans rien fusionner : Git sait calculer le résultat à part, et Claude l'ouvre dans une copie de travail temporaire.",
+      "Cette copie temporaire doit être supprimée à la fin : oubliée, elle a fait remonter des centaines de fausses erreurs de lint et bloqué la routine (dossier de travail plus « propre »).",
+      "À chaque clôture, il a fallu des retouches visuelles (lignes qui tombent à côté du texte, un signe absent d'une police, éléments qui se chevauchent). Le rapport du vérificateur ne suffit pas : Claude regarde lui-même avant de proposer la fusion.",
+      "Certaines commandes restent interdites à Claude (fusionner, supprimer une branche distante) : il me les donne, une par bloc, et je les lance.",
+    ],
 
     statsTitle: 'Bilan chiffré',
     statsTableCols: ['Mission', 'Durée', 'Modèles'],
@@ -576,9 +624,13 @@ const CONTENT = {
       ['6. home-magazine', '(même exécution)', 'Opus, Sonnet, Haiku'],
       ['7. utilisation-ia-maj', '—', 'voir DELEGATIONS.md de la mission'],
       ['8. utilisation-ia-economie', '—', 'voir DELEGATIONS.md de la mission'],
+      ['9 à 15. idées et audits du design system', '—', 'Sonnet en routine, Haiku délégué, Opus au cadrage'],
+      ['16 à 31. petites missions (30/09–01/10)', '—', 'Sonnet en routine, Haiku délégué, Opus au cadrage'],
+      ['32 à 41. refonte kiosque (03–04/10)', '—', 'Sonnet en routine, Haiku délégué, Opus au cadrage'],
+      ['42. cette mise à jour', '—', 'voir DELEGATIONS.md de la mission'],
     ],
     statsNoteP:
-      "Plus une routine hebdomadaire : le Magazine (numéro 1 daté du 28/09, fusionné le 27/09 après corrections). Tendance : de moins en moins d'interventions de moi, et Opus réservé aux étapes qui en ont besoin — cadrage, direction visuelle.",
+      "Plus quatre routines : le Magazine (lundi 7 h 30), les idées du dimanche (19 h), la Gazette du Lab (chaque jour 5 h 30), et les missions elles-mêmes (toutes les 2 h, en pause si la file est vide). Tendance : de moins en moins d'interventions de moi, et Opus réservé aux étapes qui en ont besoin — cadrage, direction visuelle.",
 
     finalLoopTitle: 'Le circuit final',
     finalFlow: [
@@ -597,13 +649,14 @@ const CONTENT = {
       'Le brief.',
       'Les autorisations du premier passage.',
       'Le modèle de chaque tâche programmée.',
+      'Le tri des idées et du carnet, le dimanche.',
       'La fusion (et le push de `main`, sur ma demande explicite).',
       'Les comptes et services externes.',
       'La validation juridique.',
     ],
 
     metaTitle: 'Mise en abyme',
-    metaP: "Cette page a été écrite par la deuxième mission du système, à partir du contenu que j'ai fourni. Elle est désormais entretenue par le système lui-même : cette mise à jour en est la huitième mission, cadrée puis exécutée sans moi, du brief jusqu'à la pull request. Le dossier missions/ du dépôt en garde la trace, mission par mission (spec, plan, décisions, délégations, rapport).",
+    metaP: "Cette page a été écrite par la deuxième mission du système, à partir du contenu que j'ai fourni. Elle est désormais entretenue par le système lui-même : cette mise à jour en est la 42ᵉ mission, cadrée puis exécutée sans moi, du brief jusqu'à la pull request. Le dossier missions/ du dépôt en garde la trace, mission par mission (spec, plan, décisions, délégations, rapport).",
 
     treeProject: TREE_PROJECT_FR,
     treeGlobal: TREE_GLOBAL_FR,
@@ -620,7 +673,7 @@ const CONTENT = {
     tagline: 'DESIGN IS INTENT. DETAILS ARE EVERYTHING.',
 
     intro:
-      'I used to run a local AI to save my Claude quota. I dropped it, learned what actually moves the needle on quota, and set up a system where Claude frames a mission and then runs it alone, from brief to pull request. This page tells that story — and it was written by that very system.',
+      "I used to run a local AI to save my Claude quota. I dropped it, learned what actually moves the needle on quota, and set up a system where Claude frames a mission and then runs it alone, from brief to pull request. This page tells that story — and it was written by that very system. Since then, the system has also been running daily and weekly routines, and carried out the site's full redesign.",
 
     sequenceTitle: 'The sequence',
     milestones: [
@@ -641,7 +694,13 @@ const CONTENT = {
       { date: '15', label: 'Page update (mission 7)' },
       { date: '16', label: 'A second opinion: Gemini' },
       { date: '17', label: 'Cutting token usage' },
-      { date: '18', label: 'This update (mission 8)' },
+      { date: '18', label: 'Page update (mission 8)' },
+      { date: '19', label: "Sunday's project ideas" },
+      { date: '20', label: 'The Lab Gazette and the notebook' },
+      { date: '21', label: 'A week of missions' },
+      { date: '22', label: 'The kiosk redesign' },
+      { date: '23', label: 'Lightpanda, a fallback browser' },
+      { date: '24', label: 'This update (mission 42)' },
     ],
 
     startTitle: 'Starting point: local AI',
@@ -942,8 +1001,50 @@ const CONTENT = {
     ],
     tokensRemainingP:
       'One recommendation is still mine to apply: switch off, for this project, the connectors it does not need (mail, calendar, storage, whiteboards, design), whose list takes up context in every session.',
+    tokensLightpandaP:
+      "One more tool (10/05): Lightpanda, a headless browser for agents, tested on the last Magazine issue's 4 sources. Result: it doesn't save tokens here — the usual reading tool (WebFetch) returns a summary, while Lightpanda returns the whole page — but it reads what WebFetch can't: one site refused WebFetch (a 403 error), and Lightpanda pulled the full article. Decision: WebFetch first, Lightpanda as a fallback for the Magazine's veilleur and relecteur, with a capped page size. Free and open source, it runs on the Mac, with telemetry switched off.",
     tokensPublishP:
       'For the first time, an improvement to the system itself goes through a pull request, outside any mission, which I merge. This page is updated by mission 8, utilisation-ia-economie: the first one framed under these new rules (mechanical steps earmarked for Haiku, build and lint without a sub-agent).',
+
+    routinesTitle: 'Three more routines',
+    routinesIntroP:
+      'Before, there were two scheduled tasks: the missions (every 2 hours) and the Magazine (Monday at 7:30 AM). Since then, three more.',
+    routinesItems: [
+      {
+        label: "Sunday's project ideas",
+        text: 'Since 09/27, every Sunday at 7 PM, a routine proposes project ideas numbered P-NNN for the /projets section: a public card on the site and a private economic note, kept outside the public repo. It pushes its auto/projets-<date> branch and opens the pull request; I sort them in one line ("keep 2, drop 4 because…") from the control-tower session, which updates the cards in my own words. "Let\'s build P-NNN" moves the card to "in progress" and frames a mission. Since 10/01, every idea carries a revenue model, a distribution channel and a stopping rule.',
+      },
+      {
+        label: 'The Lab Gazette',
+        text: 'Since 09/29 (the /breves page since 09/30), every morning at 5:30 AM, a routine writes up a paper I print out, styled like an old newspaper — I prefer print. It pulls out the public part (the AI front page, the tech articles, the word and number of the day) for the /breves page, on an auto/breves-<date> branch, and opens the pull request. It works in a separate working copy of the repo (a Git worktree), so it never touches my own working folder. Since 10/01, it sends me a notification with the pull request\'s link.',
+      },
+      {
+        label: 'The notebook',
+        text: 'Since 09/29, whenever I write "note: …" in any session, Claude files the note as-is into a private notebook, replies "Noted." and goes back to what we were doing. The Sunday routine sorts the notebook: a project idea, a topic for the Gazette, a mission, or something to keep.',
+      },
+    ],
+    routinesTableCols: ['Routine', 'When', 'What it produces', 'What I do'],
+    routinesTableRows: [
+      ['Missions', 'Every 2 hours, pausing when the queue is empty', 'Advances framed missions, opens their pull requests', 'I merge'],
+      ['Magazine', 'Monday 7:30 AM', 'One AI-watch issue, by pull request', 'I merge'],
+      ['Ideas', 'Sunday 7 PM', 'P-NNN project cards, by pull request', 'I sort, I merge'],
+      ['Lab Gazette', 'Daily 5:30 AM', 'A paper to print and the /breves page, by pull request', 'I print, I merge'],
+    ],
+
+    kiosqueTitle: 'The kiosk redesign',
+    kiosqueCadenceP:
+      'The pace: from 09/27 to 10/01, about thirty missions, often small ones (a pixel-art mascot, a real 404 page, RSS feeds and the /suivre page, three daily games in /jeux, design-system audits). The queue chains them one after another; I close them out in batches from the control tower.',
+    kiosqueDirectionP:
+      'The visual direction (10/03): Claude produces HTML mockups and font sheets; I react ("I love it", "too clean") and I pick. Result: a publishing-house concept, five titles (the Gazette, the Magazine, the Zine, the Games, the Lab), each with its own color and font, all free fonts only.',
+    kiosqueBranchP:
+      'The redesign itself (10/03 and 10/04): ten missions (kiosque-maison, kiosque-une, gazette-web, magazine-web, jeux-arcade, lab-dossiers, idees-cv, zine, kiosque-annexes, kiosque-finitions). Choice: ship it all at once. One integration branch, refonte-kiosque; each mission branches off it and its pull request targets it; one final pull request sends it to main. Live on 10/04. This very page changed its own outfit: the Lab became a confidential folder typed on a typewriter.',
+    kiosqueLearnedLabel: 'What the redesign taught me:',
+    kiosqueLearned: [
+      "Checking a mission as it will look once merged, without merging anything: Git can compute the result on its own, and Claude opens it in a temporary working copy.",
+      'That temporary copy has to be deleted afterward: forgotten, it surfaced hundreds of false lint errors and jammed the routine (whichever working folder was "cleaner").',
+      "Every wrap-up needed visual touch-ups (lines landing next to the text instead of on it, a missing font glyph, overlapping elements). The checker's report isn't enough: Claude looks for itself before proposing the merge.",
+      'Some commands stay off-limits to Claude (merging, deleting a remote branch): it hands them to me, one per block, and I run them.',
+    ],
 
     statsTitle: 'The numbers so far',
     statsTableCols: ['Mission', 'Duration', 'Models'],
@@ -956,9 +1057,13 @@ const CONTENT = {
       ['6. home-magazine', '(same run)', 'Opus, Sonnet, Haiku'],
       ['7. utilisation-ia-maj', '—', "see the mission's DELEGATIONS.md"],
       ['8. utilisation-ia-economie', '—', "see the mission's DELEGATIONS.md"],
+      ['9 to 15. ideas and design-system audits', '—', 'Sonnet on routine, Haiku delegated, Opus at framing'],
+      ['16 to 31. small missions (09/30–10/01)', '—', 'Sonnet on routine, Haiku delegated, Opus at framing'],
+      ['32 to 41. kiosk redesign (10/03–10/04)', '—', 'Sonnet on routine, Haiku delegated, Opus at framing'],
+      ['42. this update', '—', "see the mission's DELEGATIONS.md"],
     ],
     statsNoteP:
-      'Plus a weekly routine: the Magazine (issue 1 dated 09/28, merged 09/27 after fixes). Trend: fewer and fewer interventions from me, with Opus reserved for the steps that actually need it — framing, visual direction.',
+      'Plus four routines: the Magazine (Monday 7:30 AM), Sunday\'s project ideas (7 PM), the Lab Gazette (daily at 5:30 AM), and the missions themselves (every 2 hours, pausing when the queue is empty). Trend: fewer and fewer interventions from me, with Opus reserved for the steps that actually need it — framing, visual direction.',
 
     finalLoopTitle: 'The final loop',
     finalFlow: [
@@ -977,13 +1082,14 @@ const CONTENT = {
       'The brief.',
       'The first-pass permissions.',
       "Each scheduled task's model.",
+      'Sorting the ideas and the notebook, on Sundays.',
       'The merge (and pushing main, on my explicit request).',
       'External accounts and services.',
       'Legal sign-off.',
     ],
 
     metaTitle: 'Turtles all the way down',
-    metaP: "This page was written by the system's second mission, from the content I supplied. It's now maintained by the system itself: this update is its eighth mission, framed then run without me, from brief to pull request. The missions/ folder in the repo keeps the trail, mission by mission (spec, plan, decisions, delegations, report).",
+    metaP: "This page was written by the system's second mission, from the content I supplied. It's now maintained by the system itself: this update is its 42nd mission, framed then run without me, from brief to pull request. The missions/ folder in the repo keeps the trail, mission by mission (spec, plan, decisions, delegations, report).",
 
     treeProject: TREE_PROJECT_EN,
     treeGlobal: TREE_GLOBAL_EN,
@@ -1188,7 +1294,26 @@ export default function UtilisationIA({ project }) {
           {c.tokensRejected.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
         <p style={{ marginBottom: 'var(--space-sm)' }}>{c.tokensRemainingP}</p>
-        <p style={{ margin: 0 }}>{c.tokensPublishP}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.tokensPublishP}</p>
+        <p style={{ margin: 0 }}>{c.tokensLightpandaP}</p>
+      </Section>
+
+      <Section title={c.routinesTitle}>
+        <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.routinesIntroP}</p>
+        <div style={{ marginBottom: 'var(--space-md-plus)' }}>
+          <MetricsList items={c.routinesItems} />
+        </div>
+        <Table columns={c.routinesTableCols} rows={c.routinesTableRows} />
+      </Section>
+
+      <Section title={c.kiosqueTitle}>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.kiosqueCadenceP}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.kiosqueDirectionP}</p>
+        <p style={{ marginBottom: 'var(--space-md)' }}>{c.kiosqueBranchP}</p>
+        <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.kiosqueLearnedLabel}</div>
+        <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {c.kiosqueLearned.map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
       </Section>
 
       <Section title={c.statsTitle}>
