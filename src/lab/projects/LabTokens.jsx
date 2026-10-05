@@ -43,7 +43,6 @@ const TOKEN_GROUPS = [
     rows: [
       { name: '--primitive-titre-gazette', tier: 'primitive', type: 'color', pointsTo: null },
       { name: '--primitive-titre-gazette-dark', tier: 'primitive', type: 'color', pointsTo: null },
-      { name: '--primitive-titre-magazine', tier: 'primitive', type: 'color', pointsTo: null },
       { name: '--primitive-titre-zine', tier: 'primitive', type: 'color', pointsTo: null },
       { name: '--primitive-titre-jeux', tier: 'primitive', type: 'color', pointsTo: null },
       { name: '--primitive-titre-lab', tier: 'primitive', type: 'color', pointsTo: null },
@@ -114,7 +113,6 @@ const TOKEN_GROUPS = [
     category: { fr: 'Polices — une par titre de la maison', en: 'Fonts — one per house masthead' },
     rows: [
       { name: '--font-gothique', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-germanica' },
-      { name: '--primitive-font-playfair-display', tier: 'primitive', type: 'font', pointsTo: null },
       { name: '--font-bd', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-comic-book' },
       { name: '--font-pixel', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-press-start-2p' },
       { name: '--font-machine', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-special-elite' },
@@ -184,7 +182,6 @@ const TOKEN_GROUPS = [
     category: { fr: 'Couleurs — les 5 titres de la maison (rôles)', en: 'Colors — the house’s 5 mastheads (roles)' },
     rows: [
       { name: '--titre-gazette', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-gazette' },
-      { name: '--titre-magazine', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-magazine' },
       { name: '--titre-zine', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-zine' },
       { name: '--titre-jeux', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-jeux' },
       { name: '--titre-lab', tier: 'semantic', type: 'color', pointsTo: '--primitive-titre-lab' },
@@ -298,7 +295,7 @@ const CONTENT = {
     clearance: 'NIVEAU DE LECTURE — PUBLIC',
     tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
     intro: "Trois niveaux, une règle : un token ne porte jamais une valeur brute s'il existe un niveau au-dessus de lui. Filtre par niveau pour isoler les primitives, les rôles sémantiques, ou les tokens propres à un seul composant.",
-    concept: "Misran Labs est une maison d'édition : chaque rubrique (Gazette, Magazine, Zine, Jeux, Lab) est un titre avec sa propre couleur et sa propre police — un univers par titre, sur le même papier et la même encre. Les valeurs ci-dessous sont lues en direct dans le navigateur : si tokens.css change, cette page change avec, sans qu'on ait à la retoucher.",
+    concept: "Misran Labs est une maison d'édition : chaque rubrique (Gazette, Zine, Jeux, Lab) est un titre avec sa propre couleur et sa propre police — un univers par titre, sur le même papier et la même encre. Les valeurs ci-dessous sont lues en direct dans le navigateur : si tokens.css change, cette page change avec, sans qu'on ait à la retoucher.",
     filterLabel: 'FILTRER PAR NIVEAU',
     tierLabels: { primitive: 'Primitive', semantic: 'Semantic', component: 'Component' },
     columns: { name: 'Token', tier: 'Niveau', type: 'Type', pointsTo: 'Pointe vers', value: 'Valeur', preview: 'Aperçu', status: 'Statut' },
@@ -320,7 +317,7 @@ const CONTENT = {
     clearance: 'CLEARANCE LEVEL — PUBLIC',
     tagline: 'DESIGN IS INTENT. DETAILS ARE EVERYTHING.',
     intro: "Three tiers, one rule: a token never carries a raw value if a tier exists above it. Filter by tier to isolate primitives, semantic roles, or tokens scoped to a single component.",
-    concept: "Misran Labs is a publishing house: each section (Gazette, Magazine, Zine, Jeux, Lab) is a masthead with its own color and its own font — one world per masthead, on the same paper and ink. The values below are read live in the browser: if tokens.css changes, this page changes with it, with nothing to touch here.",
+    concept: "Misran Labs is a publishing house: each section (Gazette, Zine, Jeux, Lab) is a masthead with its own color and its own font — one world per masthead, on the same paper and ink. The values below are read live in the browser: if tokens.css changes, this page changes with it, with nothing to touch here.",
     filterLabel: 'FILTER BY TIER',
     tierLabels: { primitive: 'Primitive', semantic: 'Semantic', component: 'Component' },
     columns: { name: 'Token', tier: 'Tier', type: 'Type', pointsTo: 'Points to', value: 'Value', preview: 'Preview', status: 'Status' },

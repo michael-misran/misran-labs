@@ -1,14 +1,13 @@
 import { getProject, pt } from '../lab/projects'
 import { t } from '../i18n/ui'
-import { getIssue } from '../magazine/numeros'
 import { getIdea } from '../projets/idees'
 import { getDay } from '../breves/jours'
-import { formatDateLongNoWeekday } from '../magazine/magazineText'
+import { formatDateLongNoWeekday } from './dates'
 import { getJeu } from '../jeux/registre'
 import { getNumero } from '../zine/numeros'
 
 // Chemins que App.jsx sait effectivement router, en dehors de '/', '/lab/…',
-// '/magazine…', '/projets…' et '/breves…' (déjà traités plus bas) : sert
+// '/projets…' et '/breves…' (déjà traités plus bas) : sert
 // uniquement à distinguer une vraie 404 des autres routes connues.
 const KNOWN_ROUTES = [
   /^\/suivre\/?$/,
@@ -26,15 +25,6 @@ export function resolveRouteMeta(pathname, lang) {
     const slug = pathname.split('/')[2]
     const project = getProject(slug)
     return project ? { icon: project.icon, label: pt(project, lang).title } : notFoundMeta(lang)
-  }
-
-  // Rubrique Magazine : titre de l'onglet et de la barre d'état, au lieu
-  // du chemin brut.
-  if (pathname === '/magazine') return { icon: '📖', label: t(lang, 'magazineNav') }
-  if (pathname.startsWith('/magazine/')) {
-    const issue = getIssue(pathname.split('/')[2])
-    const title = issue ? (issue.titre[lang] ?? issue.titre.fr) : null
-    return { icon: '📖', label: title ? `${t(lang, 'magazineNav')} — ${title}` : t(lang, 'magazineNav') }
   }
 
   // Rubrique Projets : titre de l'onglet et de la barre d'état, au lieu

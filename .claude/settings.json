@@ -16,8 +16,6 @@
       "Edit(src/**)", "Write(src/**)", "Edit(missions/**)", "Write(missions/**)",
       "mcp__Claude_Browser",
       "WebSearch", "WebFetch", "Bash(lightpanda fetch *)",
-      "Bash(git push -u origin auto/magazine-*)",
-      "Bash(gh pr create --base main --head auto/magazine-*)",
       "Bash(git push -u origin auto/projets-*)",
       "Bash(gh pr create --base main --head auto/projets-*)",
       "Bash(git -C src/private status*)", "Bash(git -C src/private add*)",

@@ -2,7 +2,7 @@
 // Séparé de ProjetsParts.jsx (pas de composants ici) pour ne déclencher
 // aucun avertissement react-refresh/only-export-components.
 
-export { formatDateShort } from '../magazine/magazineText'
+export { formatDateShort } from '../shell/dates'
 
 // Statut : glyphe + couleur (jamais utilisée seule, voir StatusMark dans
 // ProjetsParts.jsx) + style de bordure. Ordre = ordre du cycle de vie,

@@ -56,15 +56,6 @@ export default function NavTitres() {
       style: { fontFamily: 'var(--font-gothique)', wordSpacing: 'var(--font-gothique-espace)', fontSize: 'clamp(32px, 3.6vw, 46px)' },
     },
     {
-      id: 'magazine',
-      to: '/magazine',
-      actif: estActif(pathname, ['/magazine']),
-      couleur: 'var(--titre-magazine)',
-      rythme: t(lang, 'navRythmeMagazine'),
-      nom: t(lang, 'navTitreMagazine'),
-      style: { fontFamily: 'var(--primitive-font-playfair-display)', fontStyle: 'italic', fontWeight: 900, fontSize: 'clamp(24px, 2.6vw, 34px)' },
-    },
-    {
       id: 'zine',
       to: zineExiste ? '/zine' : null,
       actif: zineExiste && estActif(pathname, ['/zine']),
@@ -146,7 +137,7 @@ export default function NavTitres() {
           margin: `-${DEBORD_HAUT}px auto -${DEBORD_BAS}px`,
           padding: `${DEBORD_HAUT}px 0 ${DEBORD_BAS}px`,
           display: 'grid',
-          gridTemplateColumns: 'repeat(5, minmax(175px, 1fr))',
+          gridTemplateColumns: `repeat(${titres.length}, minmax(175px, 1fr))`,
           overflowX: 'auto',
           overflowY: 'hidden',
         }}

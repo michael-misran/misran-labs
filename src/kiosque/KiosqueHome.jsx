@@ -1,6 +1,5 @@
 import { useLanguage } from '../shell/LanguageContext'
 import { getDays } from '../breves/jours'
-import { getIssues } from '../magazine/numeros'
 import { listeJeux } from '../jeux/registre'
 import { visibleProjects } from '../lab/projects'
 import { FEEDS } from '../suivre/suivreText'
@@ -14,7 +13,6 @@ export default function KiosqueHome() {
   const { lang } = useLanguage()
   const t = KIOSQUE_TEXT[lang]
   const day = getDays()[0]
-  const issue = getIssues()[0]
   const jeux = listeJeux()
   const nbProjets = visibleProjects().length
 
@@ -58,7 +56,7 @@ export default function KiosqueHome() {
       )}
 
       <SectionTitreKiosque title={t.sections.presentoirs.title} subtitle={t.sections.presentoirs.subtitle} />
-      <Presentoirs lang={lang} t={t} issue={issue} jeux={jeux} nbProjets={nbProjets} />
+      <Presentoirs lang={lang} t={t} jeux={jeux} nbProjets={nbProjets} />
 
       <Bulletin lang={lang} t={t} feeds={FEEDS} />
     </div>

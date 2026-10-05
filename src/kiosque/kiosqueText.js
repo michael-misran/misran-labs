@@ -1,7 +1,7 @@
 // Textes fr/en de la page d'accueil (le kiosque). Pas de composants ici
 // (react-refresh/only-export-components), même découpage que
 // src/breves/brevesText.js.
-import { formatDateLong } from '../magazine/magazineText'
+import { formatDateLong } from '../shell/dates'
 
 export { formatDateLong }
 
@@ -23,12 +23,6 @@ export const KIOSQUE_TEXT = {
       motDuJourLabel: 'Le mot du jour',
     },
     presentoirs: {
-      magazine: {
-        bandeauNom: ['Le', 'Magazine'],
-        bandeauSub: 'Hebdo',
-        legendeNom: 'Le Magazine',
-        legendeRythme: 'chaque lundi',
-      },
       zine: {
         tetiereNom: ['Misran', 'Zine'],
         tetiereNumero: '#1',
@@ -79,12 +73,6 @@ export const KIOSQUE_TEXT = {
       motDuJourLabel: 'Word of the day',
     },
     presentoirs: {
-      magazine: {
-        bandeauNom: ['The', 'Magazine'],
-        bandeauSub: 'Weekly',
-        legendeNom: 'The Magazine',
-        legendeRythme: 'every monday',
-      },
       zine: {
         tetiereNom: ['Misran', 'Zine'],
         tetiereNumero: '#1',

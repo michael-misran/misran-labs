@@ -12,11 +12,9 @@ const etiquette = {
 }
 
 // Typo propre à chaque titre (D3), alignée sur celle de NavTitres : Gazette
-// en gothique avec initiale rouge, Magazine en Playfair italique bleu, les
-// idées du Lab en machine à écrire verte, "tout le kiosque" en lettres de
+// en gothique avec initiale rouge, les idées du Lab en machine à écrire verte, "tout le kiosque" en lettres de
 // bois sans couleur de titre dédiée.
 const FEED_STYLE = {
-  magazine: { fontFamily: 'var(--primitive-font-playfair-display)', fontStyle: 'italic', fontWeight: 900, color: 'var(--titre-magazine)', fontSize: 18 },
   breves: { fontFamily: 'var(--font-gothique)', color: 'var(--text)', fontSize: 20, wordSpacing: 'var(--font-gothique-espace, normal)' },
   projets: { fontFamily: 'var(--font-machine)', letterSpacing: '0.02em', color: 'var(--titre-lab)', fontSize: 16 },
   tout: { fontFamily: 'var(--font-bois)', textTransform: 'uppercase', letterSpacing: '0.01em', color: 'var(--text)', fontSize: 16 },

@@ -44,8 +44,8 @@ const TREE_LEVEL2_FR = `Documents/Projets/
     │   ├── settings.json           ← permissions du projet (copiées depuis templates/)
     │   ├── launch.json             ← comment lancer le site pour le prévisualiser
     │   └── agents/                 ← agents propres à ce projet
-    │       ├── veilleur.md         ← (pour le Magazine uniquement)
-    │       ├── relecteur.md        ← (pour le Magazine uniquement)
+    │       ├── veilleur.md         ← (veille pour la Gazette et les idées)
+    │       ├── relecteur.md        ← (vérification des chiffres)
     │       └── expert / explorateur / verificateur.md  ← copies locales, prioritaires sur celles de l'ordinateur
     │
     └── missions/                   ← une mission = un dossier
@@ -98,8 +98,8 @@ const TREE_LEVEL2_EN = `Documents/Projets/
     │   ├── settings.json           ← project permissions (copied from templates/)
     │   ├── launch.json             ← how to start the site for preview
     │   └── agents/                 ← agents specific to this project
-    │       ├── veilleur.md         ← (for Magazine only)
-    │       ├── relecteur.md        ← (for Magazine only)
+    │       ├── veilleur.md         ← (research for the Gazette and ideas)
+    │       ├── relecteur.md        ← (fact-checking)
     │       └── expert / explorateur / verificateur.md  ← local copies, priority over computer ones
     │
     └── missions/                   ← one mission = one folder

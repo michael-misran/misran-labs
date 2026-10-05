@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { SITE_URL, escapeXml } from './share-previews.js'
-import { formatDateLongNoWeekday } from '../src/magazine/magazineText.js'
+import { formatDateLongNoWeekday } from '../src/shell/dates.js'
 
 const MAX_ITEMS = 30
 
@@ -47,15 +47,6 @@ ${itemsXml}
 `
 }
 
-function magazineItems(magazinePages) {
-  return magazinePages.map((page) => ({
-    title: `N° ${page.raw.numero} — ${page.raw.titre.fr}`,
-    link: `${SITE_URL}${page.path}`,
-    description: page.raw.edito.fr,
-    dateIso: page.raw.date,
-  }))
-}
-
 function brevesItems(brevesPages) {
   return brevesPages.map((page) => {
     const day = page.raw
@@ -81,23 +72,14 @@ function projetsItems(projetsPages) {
   }))
 }
 
-// Construit et écrit les 4 flux RSS 2.0 (D1 SPEC) à partir des pages déjà
-// collectées par sharePreviewsPlugin (magazinePages/brevesPages/projetsPages,
+// Construit et écrit les 3 flux RSS 2.0 (D1 SPEC) à partir des pages déjà
+// collectées par sharePreviewsPlugin (brevesPages/projetsPages,
 // chacune avec son JSON brut dans `raw`) — aucune relecture des fichiers ici.
-export function writeRssFeeds({ distDir, magazinePages, brevesPages, projetsPages }) {
-  const magazine = magazineItems(magazinePages)
+export function writeRssFeeds({ distDir, brevesPages, projetsPages }) {
   const breves = brevesItems(brevesPages)
   const projets = projetsItems(projetsPages)
 
   const feeds = [
-    {
-      slug: 'magazine/rss.xml',
-      title: 'Le Magazine',
-      link: `${SITE_URL}/magazine`,
-      description: 'Une veille IA chaque lundi, pour designers et développeurs.',
-      selfHref: `${SITE_URL}/magazine/rss.xml`,
-      items: magazine,
-    },
     {
       slug: 'breves/rss.xml',
       title: 'La Gazette du Lab',
@@ -118,10 +100,9 @@ export function writeRssFeeds({ distDir, magazinePages, brevesPages, projetsPage
       slug: 'rss.xml',
       title: 'Tout le kiosque',
       link: `${SITE_URL}/`,
-      description: 'Tout le Lab de Michael Misran : Magazine, Gazette et Projets réunis.',
+      description: 'Tout le Lab de Michael Misran : Gazette et Projets réunis.',
       selfHref: `${SITE_URL}/rss.xml`,
       items: [
-        ...magazine.map((item) => ({ ...item, title: `Magazine · ${item.title}` })),
         ...breves.map((item) => ({ ...item, title: `Gazette · ${item.title}` })),
         ...projets.map((item) => ({ ...item, title: `Projets · ${item.title}` })),
       ],

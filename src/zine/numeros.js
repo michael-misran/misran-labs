@@ -1,7 +1,7 @@
 // Chargement natif Vite (import.meta.glob), aucune dépendance : chaque
 // fichier de src/zine/numeros/ devient un numéro potentiel, validé selon
 // le format documenté dans FORMAT.md avant d'être affiché. Même schéma
-// de validation que src/breves/jours.js et src/magazine/numeros.js.
+// de validation que src/breves/jours.js.
 const modules = import.meta.glob('./numeros/*.json', { eager: true })
 
 const TYPES_BLOCS = ['photo', 'dessin', 'texte', 'carnet', 'jeu', 'bulle', 'etoile']
@@ -111,8 +111,8 @@ function loadNumeros() {
 
   structurallyValid.sort((a, b) => a.numero - b.numero)
 
-  // "numero" = position + 1, vérifié une fois les numéros triés (comme
-  // magazine/numeros.js, mais une séquence qui démarre à 1, pas à 0).
+  // "numero" = position + 1, vérifié une fois les numéros triés (une
+  // séquence qui démarre à 1).
   const sequenced = []
   for (let i = 0; i < structurallyValid.length; i++) {
     const numero = structurallyValid[i]

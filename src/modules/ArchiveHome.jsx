@@ -5,8 +5,6 @@ import { useLanguage } from '../shell/LanguageContext'
 import { STATUS, METHOD_STEP_COLORS } from '../lab/phases'
 import { RULES_CONTENT } from '../lab/labRulesContent'
 import { Stamp, Barcode } from '../design-system/ArchiveMarks'
-import { getIssues } from '../magazine/numeros'
-import { CouvertureNumero } from '../magazine/RevueParts'
 import { KRAFT } from '../lab/caseChrome'
 import { TamponDeclassifie, EtiquetteTapee } from '../lab/DossierParts'
 
@@ -37,10 +35,6 @@ const COPY = {
     protocolTitle: 'NOTE DE SERVICE — MÉTHODE DU LAB',
     protocolIntro: RULES_CONTENT.fr.intro,
     statusLegend: 'STATUTS UTILISÉS',
-    magLabel: 'MAGAZINE — DERNIER NUMÉRO',
-    magRead: 'Lire le numéro',
-    magAll: 'Tous les numéros',
-    magFollow: 'Suivre le Lab',
     indexTitle: 'DOSSIERS',
     indexSub: 'Classés par ordre d’ouverture, pas par importance.',
     keywords: 'MOTS-CLÉS',
@@ -73,10 +67,6 @@ const COPY = {
     protocolTitle: 'MEMO — LAB METHOD',
     protocolIntro: RULES_CONTENT.en.intro,
     statusLegend: 'STATUSES USED',
-    magLabel: 'MAGAZINE — LATEST ISSUE',
-    magRead: 'Read the issue',
-    magAll: 'All issues',
-    magFollow: 'Follow the Lab',
     indexTitle: 'FILES',
     indexSub: 'Ordered by when they were opened, not by importance.',
     keywords: 'KEYWORDS',
@@ -214,38 +204,6 @@ function NoteDeService({ c, lang }) {
   )
 }
 
-// Met en avant le dernier numéro du Magazine — seule partie de la home qui
-// change chaque semaine, sans intervention de code (pas de numéro
-// valide → pas de bloc). Réutilise CouvertureNumero (RevueParts.jsx) pour
-// rester dans le style « revue bleue » du Magazine plutôt que de recopier
-// l'ancien habillage archive du Lab (D5, mission kiosque-finitions).
-function LatestIssue({ c, lang }) {
-  const issue = getIssues()[0]
-  if (!issue) return null
-
-  return (
-    <div style={{ marginBottom: 'var(--space-xl)' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-sm)', flexWrap: 'wrap', marginBottom: 'var(--space-sm)' }}>
-        <span style={{ fontFamily: "var(--font-machine)", fontSize: 12, letterSpacing: '0.03em', color: 'var(--titre-lab)' }}>{c.magLabel}</span>
-      </div>
-
-      <CouvertureNumero issue={issue} lang={lang} variante="vedette" />
-
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-md-plus)', padding: 'var(--space-sm) 0 0' }}>
-        <Link to={`/magazine/${issue.date}`} style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', fontSize: 12, letterSpacing: '0.08em', fontWeight: 700, color: 'var(--titre-magazine)', textDecoration: 'none', borderBottom: '2px solid var(--titre-magazine)', paddingBottom: 1 }}>
-          {c.magRead} →
-        </Link>
-        <Link to="/magazine" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', fontSize: 12, letterSpacing: '0.08em', fontWeight: 700, color: 'var(--text2)', textDecoration: 'none' }}>
-          {c.magAll} →
-        </Link>
-        <Link to="/suivre" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', fontSize: 12, letterSpacing: '0.08em', fontWeight: 700, color: 'var(--text2)', textDecoration: 'none', marginLeft: 'auto' }}>
-          <span style={{ color: 'var(--titre-magazine)' }}>◉</span> {c.magFollow} →
-        </Link>
-      </div>
-    </div>
-  )
-}
-
 // Une chemise de l'index (D2) : onglet avec le numéro de dossier, léger
 // décalage alterné comme dans un tiroir de classeur, titre tapé, ligne de
 // méta (type, statut), lien vers /lab/<slug>.
@@ -344,7 +302,6 @@ export default function ArchiveHome() {
         <NoteDeService c={c} lang={lang} />
       </div>
 
-      <LatestIssue c={c} lang={lang} />
 
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 'var(--space-md)', marginBottom: 14, flexWrap: 'wrap' }}>
         <div>
