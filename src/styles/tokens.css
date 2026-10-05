@@ -163,6 +163,7 @@
   --primitive-font-anton: 'Anton', Impact, sans-serif;
   --primitive-font-press-start-2p: 'Press Start 2P', monospace;
   --primitive-font-vt323: 'VT323', monospace;
+  --primitive-font-silkscreen: 'Silkscreen', monospace;
   --primitive-font-special-elite: 'Special Elite', 'Courier New', monospace;
   --primitive-font-chango: 'Chango', 'Ultra', serif;
   --primitive-font-bowlby-one-sc: 'Bowlby One SC', 'Chango', Impact, sans-serif;
@@ -245,6 +246,8 @@
   --font-bd: var(--primitive-font-comic-book);
   --font-pixel: var(--primitive-font-press-start-2p);
   --font-ecran: var(--primitive-font-vt323);
+  /* Enseigne de l'Arcade du Lab (menu) : pixel étroit, lisible en petit */
+  --font-enseigne: var(--primitive-font-silkscreen);
   --font-machine: var(--primitive-font-special-elite);
 
   /* Pas de flou, pas de décalage lourd : une planche imprimée empile ses
