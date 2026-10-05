@@ -70,25 +70,22 @@ export default function NavTitres() {
       actif: estActif(pathname, ['/jeux']),
       couleur: 'var(--titre-jeux)',
       rythme: t(lang, 'navRythmeJeux'),
-      // « Toujours ouverts » en rose de l'enseigne quand l'Arcade est ouverte (noir sinon)
+      // « Toujours ouverts » en rose néon quand la salle de jeu est ouverte (noir sinon)
       couleurRythme: '#d81b84',
-      // Comme l'enseigne de la salle d'arcade : lettres pixel roses
-      // dans un cadre de tube cyan, sur deux lignes pour gagner en largeur.
-      // Couleurs reprises de NEON (src/jeux/salleArcadeDessin.js).
+      // Titre chromé façon années 80 (« Outrun ») : Kanit 900 italique,
+      // dégradé ciel / horizon / coucher de soleil, contour encre et
+      // ombre rose nette, sur deux lignes pour gagner en largeur.
       nom: (
         <span
           style={{
             display: 'inline-block',
-            padding: '5px 8px 4px',
-            // Briques en pixels (8 × 4, rangs décalés), comme le mur de la salle,
-            // assombries pour que le rose reste lisible
-            background: `#6b291e url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' shape-rendering='crispEdges'%3E%3Crect width='8' height='8' fill='%236b291e'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%23763022'/%3E%3Cpath fill='%233a1510' d='M0 0h8v1H0zM0 4h8v1H0zM0 1h1v3H0zM4 5h1v3H4z'/%3E%3C/svg%3E") 0 0 / 12px 12px`,
-            imageRendering: 'pixelated',
-            border: '2px solid #2fe6ff',
-            borderRadius: 6,
-            color: '#ff3fa4',
-            // Ombre nette d'un pixel (pas de halo) pour détacher les lettres des briques
-            textShadow: '1px 1px 0 #2a0f0b',
+            padding: '2px 4px',
+            background: 'linear-gradient(180deg, #e9f6ff 0%, #8fc7ff 45%, #2a2d6b 50%, #ff9a3c 54%, #fff1c2 100%)',
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            color: 'transparent',
+            WebkitTextStroke: '1px #1a1109',
+            filter: 'drop-shadow(2px 2px 0 #ff3fa4)',
           }}
         >
           {t(lang, 'navTitreJeux')}
@@ -98,11 +95,12 @@ export default function NavTitres() {
       ),
       style: {
         fontFamily: 'var(--font-enseigne)',
-        fontSize: 'clamp(14px, 1.6vw, 19px)',
-        lineHeight: 1.1,
+        fontStyle: 'italic',
+        fontWeight: 900,
+        fontSize: 'clamp(17px, 1.9vw, 23px)',
+        lineHeight: 1,
         textTransform: 'uppercase',
         whiteSpace: 'nowrap',
-        WebkitTextStroke: 0,
       },
     },
     {

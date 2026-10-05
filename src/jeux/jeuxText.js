@@ -2,7 +2,7 @@
 // jeu vivent dans son propre dossier.
 export const JEUX_TEXT = {
   fr: {
-    jeuxTitre: 'L’Arcade du Lab',
+    jeuxTitre: 'Ma salle de jeu',
     intro: 'Un petit défi chaque jour, noté sur 100 et partageable en un clic.',
     joueAujourdhui: 'Joué aujourd’hui ✓',
     nouveauDefi: 'Nouveau défi',
@@ -14,13 +14,15 @@ export const JEUX_TEXT = {
     modeEntrainement: 'Entraînement — ce résultat n’est pas enregistré',
     serieJours: (n) => `🔥 ${n} jour${n === 1 ? '' : 's'}`,
     demoBandeau: 'Démo : les réponses des autres joueurs sont simulées pour l’instant.',
-    arcadeTitre: 'L’ARCADE DU LAB',
+    arcadeTitre: 'MA SALLE DE JEU',
     joueur1: '1 JOUEUR',
     zeroPub: '0 PUB',
     bravo: 'BRAVO !',
+    inserer: 'INSÉRER ▶',
+    chambreDescription: 'Une chambre des années 80 : une étagère de cartouches de jeux vidéo à côté d’une télé.',
   },
   en: {
-    jeuxTitre: 'The Lab Arcade',
+    jeuxTitre: 'My game room',
     intro: 'One small challenge a day, scored out of 100 and shareable in one tap.',
     joueAujourdhui: 'Played today ✓',
     nouveauDefi: 'New challenge',
@@ -32,10 +34,12 @@ export const JEUX_TEXT = {
     modeEntrainement: 'Practice — this result is not saved',
     serieJours: (n) => `🔥 ${n} day${n === 1 ? '' : 's'}`,
     demoBandeau: 'Demo: other players’ answers are simulated for now.',
-    arcadeTitre: 'THE LAB ARCADE',
+    arcadeTitre: 'MY GAME ROOM',
     joueur1: '1 PLAYER',
     zeroPub: '0 ADS',
     bravo: 'WELL PLAYED !',
+    inserer: 'INSERT ▶',
+    chambreDescription: 'A 1980s bedroom: a shelf of video game cartridges next to a TV.',
   },
 }
 

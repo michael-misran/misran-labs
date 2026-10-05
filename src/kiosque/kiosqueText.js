@@ -32,10 +32,10 @@ export const KIOSQUE_TEXT = {
         legendeRythmeAvecNumero: 'mensuel',
       },
       jeux: {
-        titre: 'L’ARCADE DU LAB',
+        titre: 'MA SALLE DE JEU',
         sousTitre: ['MISRAN', 'LABS'],
         joueurs: '1 JOUEUR · 0 € · 0 PUB',
-        legendeNom: 'L’Arcade du Lab',
+        legendeNom: 'Ma salle de jeu',
         legendeRythme: 'toujours ouverts',
       },
       lab: {
@@ -82,10 +82,10 @@ export const KIOSQUE_TEXT = {
         legendeRythmeAvecNumero: 'monthly',
       },
       jeux: {
-        titre: 'THE LAB ARCADE',
+        titre: 'MY GAME ROOM',
         sousTitre: ['MISRAN', 'LABS'],
         joueurs: '1 PLAYER · 0 € · 0 ADS',
-        legendeNom: 'The Lab Arcade',
+        legendeNom: 'My game room',
         legendeRythme: 'always open',
       },
       lab: {
