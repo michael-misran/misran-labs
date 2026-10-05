@@ -5,7 +5,7 @@ Chaque étape indique l'agent et le modèle à utiliser. Procédures : `missions
 
 - [x] 0. Cadrage : SPEC, PLAN, CONTENU, fichiers de suivi → session principale (Opus)
 - [x] 1. État initial : build, lint notés dans PROGRESS.md → session principale (Opus, au cadrage)
-- [ ] 2. Points mécaniques de CONTENU §D (1 à 6), FR et EN : jalons, bilan chiffré (recompter `ls missions/`), note, mise en abyme, « ce qui me reste », intro → sous-agent (Haiku). Lui passer CONTENU §D et le chemin de la page ; relire le diff avant de commiter.
+- [x] 2. Points mécaniques de CONTENU §D (1 à 6), FR et EN : jalons, bilan chiffré (recompter `ls missions/`), note, mise en abyme, « ce qui me reste », intro → sous-agent (Haiku). Lui passer CONTENU §D et le chemin de la page ; relire le diff avant de commiter.
 - [ ] 3. Paragraphe Lightpanda FR + EN (SPEC D3, CONTENU §C) → session principale (Sonnet)
 - [ ] 4. Section « Trois routines de plus » FR + EN avec son tableau (SPEC D1, D2, CONTENU §A) : clés dans CONTENT, puis `<Section>` dans le rendu après la section tokens → session principale (Sonnet)
 - [ ] 5. Section « La refonte kiosque » FR + EN (SPEC D1, CONTENU §B), juste après → session principale (Sonnet)

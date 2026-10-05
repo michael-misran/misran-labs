@@ -240,7 +240,7 @@ const CONTENT = {
     tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
 
     intro:
-      "J'utilisais une IA locale pour économiser mon quota Claude. Je l'ai abandonnée, j'ai compris les vrais leviers du quota, et j'ai mis en place un système où Claude cadre une mission puis la mène seul, du brief jusqu'à la pull request. Cette page raconte cette séquence — et elle a été écrite par ce système lui-même.",
+      "J'utilisais une IA locale pour économiser mon quota Claude. Je l'ai abandonnée, j'ai compris les vrais leviers du quota, et j'ai mis en place un système où Claude cadre une mission puis la mène seul, du brief jusqu'à la pull request. Cette page raconte cette séquence — et elle a été écrite par ce système lui-même. Depuis, le système fait aussi tourner des routines quotidiennes et hebdomadaires, et a mené la refonte complète du site.",
 
     sequenceTitle: 'La séquence',
     milestones: [
@@ -261,7 +261,13 @@ const CONTENT = {
       { date: '15', label: 'Mise à jour de la page (mission 7)' },
       { date: '16', label: 'Un deuxième avis : Gemini' },
       { date: '17', label: 'Économiser les tokens' },
-      { date: '18', label: 'Cette mise à jour (mission 8)' },
+      { date: '18', label: 'Mise à jour de la page (mission 8)' },
+      { date: '19', label: "Les idées du dimanche" },
+      { date: '20', label: 'La Gazette du Lab et le carnet' },
+      { date: '21', label: 'Une semaine de missions' },
+      { date: '22', label: 'La refonte kiosque' },
+      { date: '23', label: 'Lightpanda, un navigateur en secours' },
+      { date: '24', label: 'Cette mise à jour (mission 42)' },
     ],
 
     startTitle: "Point de départ : l'IA locale",
@@ -576,9 +582,13 @@ const CONTENT = {
       ['6. home-magazine', '(même exécution)', 'Opus, Sonnet, Haiku'],
       ['7. utilisation-ia-maj', '—', 'voir DELEGATIONS.md de la mission'],
       ['8. utilisation-ia-economie', '—', 'voir DELEGATIONS.md de la mission'],
+      ['9 à 15. idées et audits du design system', '—', 'Sonnet en routine, Haiku délégué, Opus au cadrage'],
+      ['16 à 31. petites missions (30/09–01/10)', '—', 'Sonnet en routine, Haiku délégué, Opus au cadrage'],
+      ['32 à 41. refonte kiosque (03–04/10)', '—', 'Sonnet en routine, Haiku délégué, Opus au cadrage'],
+      ['42. cette mise à jour', '—', 'voir DELEGATIONS.md de la mission'],
     ],
     statsNoteP:
-      "Plus une routine hebdomadaire : le Magazine (numéro 1 daté du 28/09, fusionné le 27/09 après corrections). Tendance : de moins en moins d'interventions de moi, et Opus réservé aux étapes qui en ont besoin — cadrage, direction visuelle.",
+      "Plus quatre routines : le Magazine (lundi 7 h 30), les idées du dimanche (19 h), la Gazette du Lab (chaque jour 5 h 30), et les missions elles-mêmes (toutes les 2 h, en pause si la file est vide). Tendance : de moins en moins d'interventions de moi, et Opus réservé aux étapes qui en ont besoin — cadrage, direction visuelle.",
 
     finalLoopTitle: 'Le circuit final',
     finalFlow: [
@@ -597,13 +607,14 @@ const CONTENT = {
       'Le brief.',
       'Les autorisations du premier passage.',
       'Le modèle de chaque tâche programmée.',
+      'Le tri des idées et du carnet, le dimanche.',
       'La fusion (et le push de `main`, sur ma demande explicite).',
       'Les comptes et services externes.',
       'La validation juridique.',
     ],
 
     metaTitle: 'Mise en abyme',
-    metaP: "Cette page a été écrite par la deuxième mission du système, à partir du contenu que j'ai fourni. Elle est désormais entretenue par le système lui-même : cette mise à jour en est la huitième mission, cadrée puis exécutée sans moi, du brief jusqu'à la pull request. Le dossier missions/ du dépôt en garde la trace, mission par mission (spec, plan, décisions, délégations, rapport).",
+    metaP: "Cette page a été écrite par la deuxième mission du système, à partir du contenu que j'ai fourni. Elle est désormais entretenue par le système lui-même : cette mise à jour en est la 42ᵉ mission, cadrée puis exécutée sans moi, du brief jusqu'à la pull request. Le dossier missions/ du dépôt en garde la trace, mission par mission (spec, plan, décisions, délégations, rapport).",
 
     treeProject: TREE_PROJECT_FR,
     treeGlobal: TREE_GLOBAL_FR,
@@ -620,7 +631,7 @@ const CONTENT = {
     tagline: 'DESIGN IS INTENT. DETAILS ARE EVERYTHING.',
 
     intro:
-      'I used to run a local AI to save my Claude quota. I dropped it, learned what actually moves the needle on quota, and set up a system where Claude frames a mission and then runs it alone, from brief to pull request. This page tells that story — and it was written by that very system.',
+      "I used to run a local AI to save my Claude quota. I dropped it, learned what actually moves the needle on quota, and set up a system where Claude frames a mission and then runs it alone, from brief to pull request. This page tells that story — and it was written by that very system. Since then, the system has also been running daily and weekly routines, and carried out the site's full redesign.",
 
     sequenceTitle: 'The sequence',
     milestones: [
@@ -641,7 +652,13 @@ const CONTENT = {
       { date: '15', label: 'Page update (mission 7)' },
       { date: '16', label: 'A second opinion: Gemini' },
       { date: '17', label: 'Cutting token usage' },
-      { date: '18', label: 'This update (mission 8)' },
+      { date: '18', label: 'Page update (mission 8)' },
+      { date: '19', label: "Sunday's project ideas" },
+      { date: '20', label: 'The Lab Gazette and the notebook' },
+      { date: '21', label: 'A week of missions' },
+      { date: '22', label: 'The kiosk redesign' },
+      { date: '23', label: 'Lightpanda, a fallback browser' },
+      { date: '24', label: 'This update (mission 42)' },
     ],
 
     startTitle: 'Starting point: local AI',
@@ -956,9 +973,13 @@ const CONTENT = {
       ['6. home-magazine', '(same run)', 'Opus, Sonnet, Haiku'],
       ['7. utilisation-ia-maj', '—', "see the mission's DELEGATIONS.md"],
       ['8. utilisation-ia-economie', '—', "see the mission's DELEGATIONS.md"],
+      ['9 to 15. ideas and design-system audits', '—', 'Sonnet on routine, Haiku delegated, Opus at framing'],
+      ['16 to 31. small missions (09/30–10/01)', '—', 'Sonnet on routine, Haiku delegated, Opus at framing'],
+      ['32 to 41. kiosk redesign (10/03–10/04)', '—', 'Sonnet on routine, Haiku delegated, Opus at framing'],
+      ['42. this update', '—', "see the mission's DELEGATIONS.md"],
     ],
     statsNoteP:
-      'Plus a weekly routine: the Magazine (issue 1 dated 09/28, merged 09/27 after fixes). Trend: fewer and fewer interventions from me, with Opus reserved for the steps that actually need it — framing, visual direction.',
+      'Plus four routines: the Magazine (Monday 7:30 AM), Sunday\'s project ideas (7 PM), the Lab Gazette (daily at 5:30 AM), and the missions themselves (every 2 hours, pausing when the queue is empty). Trend: fewer and fewer interventions from me, with Opus reserved for the steps that actually need it — framing, visual direction.',
 
     finalLoopTitle: 'The final loop',
     finalFlow: [
@@ -977,13 +998,14 @@ const CONTENT = {
       'The brief.',
       'The first-pass permissions.',
       "Each scheduled task's model.",
+      'Sorting the ideas and the notebook, on Sundays.',
       'The merge (and pushing main, on my explicit request).',
       'External accounts and services.',
       'Legal sign-off.',
     ],
 
     metaTitle: 'Turtles all the way down',
-    metaP: "This page was written by the system's second mission, from the content I supplied. It's now maintained by the system itself: this update is its eighth mission, framed then run without me, from brief to pull request. The missions/ folder in the repo keeps the trail, mission by mission (spec, plan, decisions, delegations, report).",
+    metaP: "This page was written by the system's second mission, from the content I supplied. It's now maintained by the system itself: this update is its 42nd mission, framed then run without me, from brief to pull request. The missions/ folder in the repo keeps the trail, mission by mission (spec, plan, decisions, delegations, report).",
 
     treeProject: TREE_PROJECT_EN,
     treeGlobal: TREE_GLOBAL_EN,
