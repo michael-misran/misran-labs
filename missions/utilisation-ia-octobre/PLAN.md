@@ -11,4 +11,4 @@ Chaque étape indique l'agent et le modèle à utiliser. Procédures : `missions
 - [x] 5. Section « La refonte kiosque » FR + EN (SPEC D1, CONTENU §B), juste après → session principale (Sonnet)
 - [x] 6. Contrôles sans navigateur : build, lint, greps des critères 3, 4 et 7 → session principale (Sonnet)
 - [x] 7. Contrôles navigateur : critère 5 (FR, EN, 375 px, console, `/`) → verificateur (Haiku)
-- [ ] 8. RAPPORT.md → session principale (Sonnet)
+- [x] 8. RAPPORT.md → session principale (Sonnet)
