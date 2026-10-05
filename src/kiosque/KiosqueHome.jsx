@@ -8,7 +8,7 @@ import { SectionTitreKiosque, GazetteALaUne, Presentoirs, Bulletin } from './Kio
 
 // Le kiosque de la maison d'édition (D2) : la Gazette du jour à la une,
 // une couverture par titre sur les présentoirs, un bulletin d'abonnement.
-// Tout en données réelles, bilingue. /lab garde ArchiveHome (App.jsx).
+// Tout en données réelles, bilingue. /lab est le bureau du Lab (BureauLab, App.jsx).
 export default function KiosqueHome() {
   const { lang } = useLanguage()
   const t = KIOSQUE_TEXT[lang]

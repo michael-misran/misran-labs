@@ -1,7 +1,7 @@
 import { lazy } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Shell from './shell/Shell'
-import ArchiveHome from './modules/ArchiveHome'
+import BureauLab from './lab/BureauLab'
 import { LanguageProvider } from './shell/LanguageProvider'
 
 const KiosqueHome = lazy(() => import('./kiosque/KiosqueHome'))
@@ -25,7 +25,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Shell />}>
           <Route index element={<KiosqueHome />} />
-          <Route path="lab" element={<ArchiveHome />} />
+          <Route path="lab" element={<BureauLab />} />
           <Route path="lab/:slug" element={<ProjectPage />} />
           <Route path="lab/:slug/demo/:version?" element={<ProjectDemoPage />} />
           <Route path="breves" element={<BrevesHome />} />
