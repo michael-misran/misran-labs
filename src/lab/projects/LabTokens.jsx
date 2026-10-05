@@ -60,6 +60,30 @@ const TOKEN_GROUPS = [
     ],
   },
   {
+    // Palette d'avant la refonte kiosque : sert encore à la mascotte Fiole et au bloc inversé [data-invert].
+    category: { fr: 'Couleurs — primitives (ancienne palette corail : Fiole, bloc inversé)', en: 'Colors — primitives (former coral palette: Fiole, inverted block)' },
+    rows: [
+      { name: '--primitive-cream-50', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-cream-100', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-ink-900', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-coral-400', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-coral-500', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-coral-600', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-coral-700', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-coral-tint-100', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-coral-tint-200', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-ink-900-a12', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-cream-50-a10', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-cream-50-a12', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-cream-50-a18', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-cream-50-a35', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-black-a15', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-black-a18', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-black-a20', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-black-a25', tier: 'primitive', type: 'color', pointsTo: null },
+    ],
+  },
+  {
     category: { fr: 'Couleurs — primitives (catégorielles)', en: 'Colors — primitives (categorical)' },
     rows: [
       { name: '--primitive-ochre-500', tier: 'primitive', type: 'color', pointsTo: null },
@@ -89,11 +113,19 @@ const TOKEN_GROUPS = [
   {
     category: { fr: 'Polices — une par titre de la maison', en: 'Fonts — one per house masthead' },
     rows: [
-      { name: '--font-gothique', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-unifraktur-maguntia' },
+      { name: '--font-gothique', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-germanica' },
       { name: '--primitive-font-playfair-display', tier: 'primitive', type: 'font', pointsTo: null },
-      { name: '--font-bd', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-comic-neue' },
+      { name: '--font-bd', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-comic-book' },
       { name: '--font-pixel', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-press-start-2p' },
       { name: '--font-machine', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-special-elite' },
+      { name: '--font-bois', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-ultra' },
+      { name: '--font-bois-2', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-alfa-slab-one' },
+      { name: '--font-bois-3', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-rye' },
+      { name: '--font-etiquette', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-oswald' },
+      { name: '--font-chapo', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-im-fell-english' },
+      { name: '--font-ecran', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-vt323' },
+      { name: '--font-gothique-espace', tier: 'semantic', type: 'text', pointsTo: null },
+      { name: '--font-logo', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-chango' },
     ],
   },
   {
@@ -114,6 +146,13 @@ const TOKEN_GROUPS = [
       { name: '--primitive-font-vt323', tier: 'primitive', type: 'font', pointsTo: null },
       { name: '--primitive-font-crimson-pro', tier: 'primitive', type: 'font', pointsTo: null },
       { name: '--primitive-font-ibm-plex-mono', tier: 'primitive', type: 'font', pointsTo: null },
+      { name: '--primitive-font-germanica', tier: 'primitive', type: 'font', pointsTo: null },
+      { name: '--primitive-font-comic-book', tier: 'primitive', type: 'font', pointsTo: null },
+      { name: '--primitive-font-im-fell-english', tier: 'primitive', type: 'font', pointsTo: null },
+      { name: '--primitive-font-chango', tier: 'primitive', type: 'font', pointsTo: null },
+      // Polices de secours de Germanica et de Comic Book (Google Fonts)
+      { name: '--primitive-font-unifraktur-maguntia', tier: 'primitive', type: 'font', pointsTo: null },
+      { name: '--primitive-font-comic-neue', tier: 'primitive', type: 'font', pointsTo: null },
     ],
   },
   {
