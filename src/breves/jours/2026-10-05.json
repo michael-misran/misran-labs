@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-05",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Lightpanda 1.0 : le navigateur sans écran pour agents sort de bêta",
+        "en": "Lightpanda 1.0: the screenless browser for agents leaves beta"
+      },
+      "resume": {
+        "fr": "Annoncé le 2 octobre, Lightpanda 1.0 exécute pages web, JavaScript et DOM sans rien dessiner. Il réussit environ 80 % des sous-tests web de Chrome et active le CORS par défaut. Sans rendu graphique, pas de vraies captures d'écran.",
+        "en": "Announced on October 2, Lightpanda 1.0 runs web pages, JavaScript and the DOM without drawing anything. It passes about 80% of Chrome's web subtests and enforces CORS by default. With no graphical rendering, there are no real screenshots."
+      },
+      "sources": [
+        { "titre": "Lightpanda", "url": "https://lightpanda.io/blog/posts/lightpanda-1-0" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Clef : Cloudflare ouvre un modèle qui décide au lieu d'écrire",
+        "en": "Clef: Cloudflare opens a model that decides instead of writing"
+      },
+      "resume": {
+        "fr": "Le 1er octobre, Cloudflare a publié Clef et Clef-flash sous licence Apache 2.0. Ces modèles renvoient une probabilité pour chaque réponse permise plutôt que du texte, en 209,3 ms (Clef) et 38,8 ms (Clef-flash) en médiane.",
+        "en": "On October 1, Cloudflare released Clef and Clef-flash under the Apache 2.0 license. These models return a probability for each allowed answer instead of text, with median latencies of 209.3 ms (Clef) and 38.8 ms (Clef-flash)."
+      },
+      "sources": [
+        { "titre": "Cloudflare", "url": "https://blog.cloudflare.com/clef-decision-models/" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Modèle de décision",
+    "definition": {
+      "fr": "Modèle d'IA qui ne rédige pas de texte : il reçoit un état et des questions à réponses permises, puis renvoie une probabilité pour chacune.",
+      "en": "AI model that does not write text: it receives a state and questions with allowed answers, then returns a probability for each."
+    }
+  }
+}
