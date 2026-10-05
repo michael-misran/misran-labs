@@ -9,6 +9,6 @@ Chaque étape indique l'agent et le modèle à utiliser. Procédures : `missions
 - [x] 3. Paragraphe Lightpanda FR + EN (SPEC D3, CONTENU §C) → session principale (Sonnet)
 - [x] 4. Section « Trois routines de plus » FR + EN avec son tableau (SPEC D1, D2, CONTENU §A) : clés dans CONTENT, puis `<Section>` dans le rendu après la section tokens → session principale (Sonnet)
 - [x] 5. Section « La refonte kiosque » FR + EN (SPEC D1, CONTENU §B), juste après → session principale (Sonnet)
-- [ ] 6. Contrôles sans navigateur : build, lint, greps des critères 3, 4 et 7 → session principale (Sonnet)
-- [ ] 7. Contrôles navigateur : critère 5 (FR, EN, 375 px, console, `/`) → verificateur (Haiku)
+- [x] 6. Contrôles sans navigateur : build, lint, greps des critères 3, 4 et 7 → session principale (Sonnet)
+- [x] 7. Contrôles navigateur : critère 5 (FR, EN, 375 px, console, `/`) → verificateur (Haiku)
 - [ ] 8. RAPPORT.md → session principale (Sonnet)

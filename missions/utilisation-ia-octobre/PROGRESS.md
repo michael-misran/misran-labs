@@ -1,7 +1,7 @@
 # Mission utilisation-ia-octobre — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 6 (contrôles sans navigateur : build, lint, greps)
+**Prochaine action :** étape 8 (RAPPORT.md)
 **Blocages :** aucun pour la mission ; voir note lint ci-dessous
 
 ## État initial (2026-10-05, sur main après la PR #69)
@@ -18,3 +18,5 @@
 - 3. Paragraphe Lightpanda FR + EN (`tokensLightpandaP`) ajouté avant `tokensPublishP`, section « Économiser les tokens ».
 - 4. Section « Trois routines de plus » (intro, 3 items MetricsList, tableau 4 colonnes) ajoutée entre tokens et bilan chiffré.
 - 5. Section « La refonte kiosque » (3 paragraphes + liste « Ce que la refonte m'a appris ») ajoutée juste après.
+- 6. Contrôles sans navigateur : build OK, lint ciblé (0 erreur), critère 3 (couleurs) OK ; critère 4 et critère 7 ont une remarque, voir DECISIONS.md et RAPPORT.md.
+- 7. Contrôles navigateur (verificateur, `npx vite preview`) : FR/EN, console, 375 px, `/` — tout OK.
