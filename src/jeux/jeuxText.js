@@ -2,7 +2,7 @@
 // jeu vivent dans son propre dossier.
 export const JEUX_TEXT = {
   fr: {
-    jeuxTitre: 'Jeux',
+    jeuxTitre: 'L’Arcade du Lab',
     intro: 'Un petit défi chaque jour, noté sur 100 et partageable en un clic.',
     joueAujourdhui: 'Joué aujourd’hui ✓',
     nouveauDefi: 'Nouveau défi',
@@ -14,13 +14,13 @@ export const JEUX_TEXT = {
     modeEntrainement: 'Entraînement — ce résultat n’est pas enregistré',
     serieJours: (n) => `🔥 ${n} jour${n === 1 ? '' : 's'}`,
     demoBandeau: 'Démo : les réponses des autres joueurs sont simulées pour l’instant.',
-    arcadeTitre: 'LES JEUX',
+    arcadeTitre: 'L’ARCADE DU LAB',
     joueur1: '1 JOUEUR',
     zeroPub: '0 PUB',
     bravo: 'BRAVO !',
   },
   en: {
-    jeuxTitre: 'Games',
+    jeuxTitre: 'The Lab Arcade',
     intro: 'One small challenge a day, scored out of 100 and shareable in one tap.',
     joueAujourdhui: 'Played today ✓',
     nouveauDefi: 'New challenge',
@@ -32,7 +32,7 @@ export const JEUX_TEXT = {
     modeEntrainement: 'Practice — this result is not saved',
     serieJours: (n) => `🔥 ${n} day${n === 1 ? '' : 's'}`,
     demoBandeau: 'Demo: other players’ answers are simulated for now.',
-    arcadeTitre: 'THE GAMES',
+    arcadeTitre: 'THE LAB ARCADE',
     joueur1: '1 PLAYER',
     zeroPub: '0 ADS',
     bravo: 'WELL PLAYED !',
