@@ -22,10 +22,13 @@ export default function ProjetsHome() {
 
   function toggleStatut(statut) {
     setActifs((prev) => {
+      // Tout est affiché : le premier clic isole le statut choisi
+      if (prev.size === STATUT_KEYS.length) return new Set([statut])
       const next = new Set(prev)
       if (next.has(statut)) next.delete(statut)
       else next.add(statut)
-      return next
+      // Plus aucun statut coché : on revient à « tout »
+      return next.size === 0 ? new Set(STATUT_KEYS) : next
     })
   }
 
@@ -71,7 +74,7 @@ export default function ProjetsHome() {
               key={statut}
               statut={statut}
               count={counts[statut]}
-              active={actifs.has(statut)}
+              active={!allActive && actifs.has(statut)}
               lang={lang}
               onClick={() => toggleStatut(statut)}
             />
