@@ -2,10 +2,10 @@ import { Suspense } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
 import { useLanguage } from '../shell/LanguageContext'
 import Page404 from '../shell/Page404'
-import { getJeu } from './registre'
+import { getJeu, listeJeux } from './registre'
 import { jt } from './jeuxText'
 import { dateLocaleAujourdhui } from './socle/jour'
-import { BarreJeu, CadreBorne } from './ArcadeParts'
+import { BarreJeu, FondChambre, TeleCathodique } from './ArcadeParts'
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/
 
@@ -22,8 +22,12 @@ export default function JeuPage() {
   // jours consécutifs sans attendre.
   const date = import.meta.env.DEV && dateParam && DATE_RE.test(dateParam) ? dateParam : dateLocaleAujourdhui()
 
+  // Numéro de chaîne de la télé : la place de la cartouche sur l'étagère
+  const chaine = listeJeux().findIndex((j) => j.slug === jeu.slug) + 1
+
   return (
-    <div style={{ padding: 'var(--space-md-plus)', maxWidth: 640, margin: '0 auto' }}>
+    <FondChambre>
+    <div style={{ padding: 'var(--space-lg) clamp(8px, 3vw, 24px) 64px', maxWidth: 820, margin: '0 auto' }}>
       <style>{`
         @keyframes arcade-clignote { 50% { opacity: 0; } }
         .arcade-blink { animation: arcade-clignote 1s steps(1) infinite; }
@@ -39,8 +43,8 @@ export default function JeuPage() {
           style={{
             fontFamily: 'var(--font-mono)',
             fontSize: 12,
-            color: 'var(--muted)',
-            border: 'var(--border-thin) solid var(--border)',
+            color: '#e9d9b8',
+            border: 'var(--border-thin) solid rgba(233,217,184,.4)',
             borderRadius: 'var(--radius-sm)',
             padding: 'var(--space-xs) var(--space-sm)',
             marginBottom: 'var(--space-md)',
@@ -50,11 +54,12 @@ export default function JeuPage() {
         </div>
       )}
 
-      <CadreBorne>
+      <TeleCathodique chaine={chaine}>
         <Suspense fallback={null}>
           <jeu.Composant key={date} jeu={jeu} date={date} />
         </Suspense>
-      </CadreBorne>
+      </TeleCathodique>
     </div>
+    </FondChambre>
   )
 }
