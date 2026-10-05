@@ -6,8 +6,7 @@ import { formatDateLong } from '../magazine/magazineText'
 import useIsMobile from './useIsMobile'
 
 // En-tête pulp de la maison, façon couverture DoggyBags : bandeau rouge,
-// carton kraft, grand titre crème cerné de noir avec ombre rouge sang,
-// et le « i » de Misran remplacé par un tube radioactif scellé.
+// carton kraft, grand titre crème cerné de noir avec ombre rouge sang.
 // Maquette de référence : screens/header-doggybags.html.
 
 function todayIso() {
@@ -46,48 +45,6 @@ const DECALAGES = [
   [-4, -0.03, 1.18], [2, 0.02, 1], [-1, -0.02, 1], [3, 0.01, 1], [-2, 0.03, 1], [1, -0.02, 1],
   [0, 0, 1], [-3, 0.02, 1.12], [2, -0.01, 1], [-1, 0.03, 1], [3, -0.02, 1],
 ]
-
-// Le « i » de Misran : ampoule scellée radioactive. Repère : 100 unités = 1em,
-// ligne de base à y=90, haut du « i » de Bowlby One SC à y=23, même chasse
-// (.363em). Contour noir 11 unités ≈ le text-stroke des lettres ; ombre rouge
-// décalée de 5 unités = leur text-shadow de .05em.
-function TubeRadioactif() {
-  return (
-    <svg
-      viewBox="0 0 36 90"
-      aria-hidden="true"
-      style={{ width: '.363em', height: '.9em', verticalAlign: 'baseline', overflow: 'visible' }}
-    >
-      <rect transform="translate(5 5)" x="5" y="20" width="26" height="64" rx="4" fill="var(--masthead-ombre)" stroke="var(--masthead-ombre)" strokeWidth="11" />
-      {/* Ampoule pleine de liquide luminescent, avec son reflet */}
-      <rect x="5" y="20" width="26" height="64" rx="4" fill="var(--masthead-radioactif)" stroke="var(--masthead-encre)" strokeWidth="11" />
-      <path d="M12 34 V44" stroke="var(--masthead-lettre)" strokeWidth="3" strokeLinecap="round" />
-      {/* Trèfle radioactif */}
-      <g fill="var(--masthead-encre)">
-        <path d="M18 52 L14.5 45.94 A7 7 0 0 1 21.5 45.94 Z" />
-        <path d="M18 52 L25 52 A7 7 0 0 1 21.5 58.06 Z" />
-        <path d="M18 52 L14.5 58.06 A7 7 0 0 1 11 52 Z" />
-      </g>
-      <circle cx="18" cy="52" r="2.6" fill="var(--masthead-radioactif)" />
-      <circle cx="18" cy="52" r="1.6" fill="var(--masthead-encre)" />
-      {/* Capsules métalliques qui scellent l'ampoule */}
-      <g fill="var(--masthead-encre)" stroke="var(--masthead-encre)" strokeWidth="3">
-        <rect x="2" y="12" width="32" height="12" rx="2" />
-        <rect x="2" y="78" width="32" height="12" rx="2" />
-      </g>
-      <g stroke="var(--masthead-lettre)" strokeWidth="1.6">
-        <path d="M5 17 H31" />
-        <path d="M5 83 H31" />
-      </g>
-      {/* Éclats de lueur : ils font le point du « i » */}
-      <g stroke="var(--masthead-radioactif)" strokeWidth="2.6" strokeLinecap="round">
-        <path d="M18 1 V7" />
-        <path d="M8 4 L11 9" />
-        <path d="M28 4 L25 9" />
-      </g>
-    </svg>
-  )
-}
 
 // Rond entre deux noms du bandeau, comme les portraits d'auteurs de la couverture
 function Medaillon({ children, taille }) {
@@ -257,8 +214,7 @@ export default function Masthead() {
                       textShadow: '.05em .05em 0 var(--masthead-ombre)',
                     }}
                   >
-                    {/* Le « i » (position 1) devient le tube, avec la même inclinaison */}
-                    {i === 1 ? <TubeRadioactif /> : c}
+                    {c}
                   </span>
                 )
               })}
