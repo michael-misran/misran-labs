@@ -573,6 +573,46 @@ const CONTENT = {
     tokensPublishP:
       "Pour la première fois, une amélioration du système lui-même passe par une pull request, hors mission, que je fusionne. Cette page est mise à jour par la mission 8, utilisation-ia-economie : la première cadrée selon ces nouvelles règles (étapes mécaniques prévues pour Haiku, build et lint sans sous-agent).",
 
+    routinesTitle: 'Trois routines de plus',
+    routinesIntroP:
+      "Avant, deux tâches programmées : les missions (toutes les 2 h) et le Magazine (le lundi à 7 h 30). Depuis, trois de plus.",
+    routinesItems: [
+      {
+        label: 'Les idées du dimanche',
+        text: "Depuis le 27/09, chaque dimanche à 19 h, une routine propose des idées de projets numérotées P-NNN pour la rubrique /projets : une fiche publique sur le site et une note économique privée, rangée hors du dépôt public. Elle pousse sa branche auto/projets-<date> et ouvre la pull request ; je trie en une phrase (« garde 2, arrête 4 parce que… ») dans la session tour de contrôle, qui met les fiches à jour avec mes mots. « On développe P-NNN » fait passer la fiche « en cours » et cadre une mission. Depuis le 01/10, chaque idée a un modèle de revenu, un canal de distribution et un critère d'arrêt.",
+      },
+      {
+        label: 'La Gazette du Lab',
+        text: "Depuis le 29/09 (page /breves depuis le 30/09), chaque matin à 5 h 30, une routine rédige un journal à imprimer pour moi, dans le style d'un vieux journal — je préfère le papier. Elle en extrait la partie publique (la une IA, les articles tech, le mot et le chiffre du jour) pour la page /breves, sur une branche auto/breves-<date>, et ouvre la pull request. Elle travaille dans une copie de travail séparée du dépôt (un worktree Git), pour ne jamais toucher à mon dossier de travail. Depuis le 01/10, elle m'envoie une notification avec le lien de la pull request.",
+      },
+      {
+        label: 'Le carnet',
+        text: "Depuis le 29/09, quand j'écris « note : … » dans n'importe quelle session, Claude range la note telle quelle dans un carnet privé, répond « Noté. » et reprend le fil. La routine du dimanche trie le carnet : idée de projet, sujet pour le journal, mission, ou à garder.",
+      },
+    ],
+    routinesTableCols: ['Routine', 'Quand', "Ce qu'elle produit", 'Ce que je fais'],
+    routinesTableRows: [
+      ['Missions', 'Toutes les 2 h, en pause si la file est vide', 'Avance les missions cadrées, ouvre leurs pull requests', 'Je fusionne'],
+      ['Magazine', 'Lundi 7 h 30', 'Un numéro de veille IA, par pull request', 'Je fusionne'],
+      ['Idées', 'Dimanche 19 h', 'Des fiches de projet P-NNN, par pull request', 'Je trie, je fusionne'],
+      ['Gazette du Lab', 'Chaque jour 5 h 30', 'Un journal à imprimer et la page /breves, par pull request', "J'imprime, je fusionne"],
+    ],
+
+    kiosqueTitle: 'La refonte kiosque',
+    kiosqueCadenceP:
+      "La cadence : du 27/09 au 01/10, une trentaine de missions, souvent petites (une mascotte en pixel art, une vraie page 404, des flux RSS et la page /suivre, trois jeux quotidiens dans /jeux, des audits du design system). La file d'attente les enchaîne ; je clôture par lots depuis la tour de contrôle.",
+    kiosqueDirectionP:
+      "La direction artistique (03/10) : Claude produit des maquettes HTML et des planches de polices ; je réagis (« j'adore », « trop propre ») et je choisis. Résultat : un concept de maison d'édition, cinq titres (la Gazette, le Magazine, le Zine, les Jeux, le Lab), chacun sa couleur et sa police, uniquement des polices gratuites.",
+    kiosqueBranchP:
+      "La refonte elle-même (03 et 04/10) : dix missions (kiosque-maison, kiosque-une, gazette-web, magazine-web, jeux-arcade, lab-dossiers, idees-cv, zine, kiosque-annexes, kiosque-finitions). Choix : tout mettre en ligne d'un seul coup. Une branche d'intégration refonte-kiosque ; chaque mission en part et sa pull request la vise ; une pull request finale l'envoie sur main. En ligne le 04/10. Cette page elle-même a changé d'habit : le Lab est devenu un dossier confidentiel tapé à la machine.",
+    kiosqueLearnedLabel: "Ce que la refonte m'a appris :",
+    kiosqueLearned: [
+      "Vérifier une mission telle qu'elle sera une fois fusionnée, sans rien fusionner : Git sait calculer le résultat à part, et Claude l'ouvre dans une copie de travail temporaire.",
+      "Cette copie temporaire doit être supprimée à la fin : oubliée, elle a fait remonter des centaines de fausses erreurs de lint et bloqué la routine (dossier de travail plus « propre »).",
+      "À chaque clôture, il a fallu des retouches visuelles (lignes qui tombent à côté du texte, un signe absent d'une police, éléments qui se chevauchent). Le rapport du vérificateur ne suffit pas : Claude regarde lui-même avant de proposer la fusion.",
+      "Certaines commandes restent interdites à Claude (fusionner, supprimer une branche distante) : il me les donne, une par bloc, et je les lance.",
+    ],
+
     statsTitle: 'Bilan chiffré',
     statsTableCols: ['Mission', 'Durée', 'Modèles'],
     statsTableRows: [
@@ -966,6 +1006,46 @@ const CONTENT = {
     tokensPublishP:
       'For the first time, an improvement to the system itself goes through a pull request, outside any mission, which I merge. This page is updated by mission 8, utilisation-ia-economie: the first one framed under these new rules (mechanical steps earmarked for Haiku, build and lint without a sub-agent).',
 
+    routinesTitle: 'Three more routines',
+    routinesIntroP:
+      'Before, there were two scheduled tasks: the missions (every 2 hours) and the Magazine (Monday at 7:30 AM). Since then, three more.',
+    routinesItems: [
+      {
+        label: "Sunday's project ideas",
+        text: 'Since 09/27, every Sunday at 7 PM, a routine proposes project ideas numbered P-NNN for the /projets section: a public card on the site and a private economic note, kept outside the public repo. It pushes its auto/projets-<date> branch and opens the pull request; I sort them in one line ("keep 2, drop 4 because…") from the control-tower session, which updates the cards in my own words. "Let\'s build P-NNN" moves the card to "in progress" and frames a mission. Since 10/01, every idea carries a revenue model, a distribution channel and a stopping rule.',
+      },
+      {
+        label: 'The Lab Gazette',
+        text: 'Since 09/29 (the /breves page since 09/30), every morning at 5:30 AM, a routine writes up a paper I print out, styled like an old newspaper — I prefer print. It pulls out the public part (the AI front page, the tech articles, the word and number of the day) for the /breves page, on an auto/breves-<date> branch, and opens the pull request. It works in a separate working copy of the repo (a Git worktree), so it never touches my own working folder. Since 10/01, it sends me a notification with the pull request\'s link.',
+      },
+      {
+        label: 'The notebook',
+        text: 'Since 09/29, whenever I write "note: …" in any session, Claude files the note as-is into a private notebook, replies "Noted." and goes back to what we were doing. The Sunday routine sorts the notebook: a project idea, a topic for the Gazette, a mission, or something to keep.',
+      },
+    ],
+    routinesTableCols: ['Routine', 'When', 'What it produces', 'What I do'],
+    routinesTableRows: [
+      ['Missions', 'Every 2 hours, pausing when the queue is empty', 'Advances framed missions, opens their pull requests', 'I merge'],
+      ['Magazine', 'Monday 7:30 AM', 'One AI-watch issue, by pull request', 'I merge'],
+      ['Ideas', 'Sunday 7 PM', 'P-NNN project cards, by pull request', 'I sort, I merge'],
+      ['Lab Gazette', 'Daily 5:30 AM', 'A paper to print and the /breves page, by pull request', 'I print, I merge'],
+    ],
+
+    kiosqueTitle: 'The kiosk redesign',
+    kiosqueCadenceP:
+      'The pace: from 09/27 to 10/01, about thirty missions, often small ones (a pixel-art mascot, a real 404 page, RSS feeds and the /suivre page, three daily games in /jeux, design-system audits). The queue chains them one after another; I close them out in batches from the control tower.',
+    kiosqueDirectionP:
+      'The visual direction (10/03): Claude produces HTML mockups and font sheets; I react ("I love it", "too clean") and I pick. Result: a publishing-house concept, five titles (the Gazette, the Magazine, the Zine, the Games, the Lab), each with its own color and font, all free fonts only.',
+    kiosqueBranchP:
+      'The redesign itself (10/03 and 10/04): ten missions (kiosque-maison, kiosque-une, gazette-web, magazine-web, jeux-arcade, lab-dossiers, idees-cv, zine, kiosque-annexes, kiosque-finitions). Choice: ship it all at once. One integration branch, refonte-kiosque; each mission branches off it and its pull request targets it; one final pull request sends it to main. Live on 10/04. This very page changed its own outfit: the Lab became a confidential folder typed on a typewriter.',
+    kiosqueLearnedLabel: 'What the redesign taught me:',
+    kiosqueLearned: [
+      "Checking a mission as it will look once merged, without merging anything: Git can compute the result on its own, and Claude opens it in a temporary working copy.",
+      'That temporary copy has to be deleted afterward: forgotten, it surfaced hundreds of false lint errors and jammed the routine (whichever working folder was "cleaner").',
+      "Every wrap-up needed visual touch-ups (lines landing next to the text instead of on it, a missing font glyph, overlapping elements). The checker's report isn't enough: Claude looks for itself before proposing the merge.",
+      'Some commands stay off-limits to Claude (merging, deleting a remote branch): it hands them to me, one per block, and I run them.',
+    ],
+
     statsTitle: 'The numbers so far',
     statsTableCols: ['Mission', 'Duration', 'Models'],
     statsTableRows: [
@@ -1216,6 +1296,24 @@ export default function UtilisationIA({ project }) {
         <p style={{ marginBottom: 'var(--space-sm)' }}>{c.tokensRemainingP}</p>
         <p style={{ marginBottom: 'var(--space-sm)' }}>{c.tokensLightpandaP}</p>
         <p style={{ margin: 0 }}>{c.tokensPublishP}</p>
+      </Section>
+
+      <Section title={c.routinesTitle}>
+        <p style={{ marginBottom: 'var(--space-md-plus)' }}>{c.routinesIntroP}</p>
+        <div style={{ marginBottom: 'var(--space-md-plus)' }}>
+          <MetricsList items={c.routinesItems} />
+        </div>
+        <Table columns={c.routinesTableCols} rows={c.routinesTableRows} />
+      </Section>
+
+      <Section title={c.kiosqueTitle}>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.kiosqueCadenceP}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.kiosqueDirectionP}</p>
+        <p style={{ marginBottom: 'var(--space-md)' }}>{c.kiosqueBranchP}</p>
+        <div style={{ fontWeight: 600, marginBottom: 6 }}>{c.kiosqueLearnedLabel}</div>
+        <ul style={{ margin: 0, paddingLeft: 18, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {c.kiosqueLearned.map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
       </Section>
 
       <Section title={c.statsTitle}>

@@ -1,7 +1,7 @@
 # Mission utilisation-ia-octobre — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 4 (section « Trois routines de plus »)
+**Prochaine action :** étape 6 (contrôles sans navigateur : build, lint, greps)
 **Blocages :** aucun pour la mission ; voir note lint ci-dessous
 
 ## État initial (2026-10-05, sur main après la PR #69)
@@ -16,3 +16,5 @@
 - 1. État initial relevé.
 - 2. Points mécaniques CONTENU §D appliqués (intro, milestones 19-24, bilan chiffré 9-42, note, remaining, mise en abyme) — délégué à Haiku, diff vérifié.
 - 3. Paragraphe Lightpanda FR + EN (`tokensLightpandaP`) ajouté avant `tokensPublishP`, section « Économiser les tokens ».
+- 4. Section « Trois routines de plus » (intro, 3 items MetricsList, tableau 4 colonnes) ajoutée entre tokens et bilan chiffré.
+- 5. Section « La refonte kiosque » (3 paragraphes + liste « Ce que la refonte m'a appris ») ajoutée juste après.
