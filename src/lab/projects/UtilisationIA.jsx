@@ -1294,8 +1294,8 @@ export default function UtilisationIA({ project }) {
           {c.tokensRejected.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
         <p style={{ marginBottom: 'var(--space-sm)' }}>{c.tokensRemainingP}</p>
-        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.tokensLightpandaP}</p>
-        <p style={{ margin: 0 }}>{c.tokensPublishP}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.tokensPublishP}</p>
+        <p style={{ margin: 0 }}>{c.tokensLightpandaP}</p>
       </Section>
 
       <Section title={c.routinesTitle}>
