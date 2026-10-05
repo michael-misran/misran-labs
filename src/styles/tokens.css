@@ -323,6 +323,8 @@
   --masthead-lettre: var(--primitive-creme-pulp);
   --masthead-ombre: var(--primitive-rouge-pulp-fonce);
   --masthead-encre: var(--primitive-encre);
+  /* Intérieur du logo L'Alambic (verre, cuivre, yeux) : couleur du titre */
+  --masthead-logo-fond: var(--masthead-lettre);
   /* Barre du menu des titres (NavTitres.jsx) */
   --masthead-sommaire: var(--primitive-rouge-pulp-fonce);
 }

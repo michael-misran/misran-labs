@@ -176,7 +176,7 @@ export default function Masthead() {
         >
           {/* Logo de la maison d'édition L'Alambic (essai) */}
           <span style={{ color: 'var(--masthead-encre)' }}>
-            <LogoAlambic largeur={largeurLogo} fond="var(--masthead-fond)" />
+            <LogoAlambic largeur={largeurLogo} fond="var(--masthead-logo-fond)" />
           </span>
 
           <div style={{ minWidth: 0 }}>
