@@ -568,6 +568,8 @@ const CONTENT = {
     ],
     tokensRemainingP:
       "Il me reste une recommandation à appliquer : couper, pour ce projet, les connecteurs inutiles (messagerie, agenda, stockage, tableaux blancs, design), dont la liste occupe du contexte à chaque session.",
+    tokensLightpandaP:
+      "Un outil de plus (05/10) : Lightpanda, un navigateur sans affichage pour les agents, testé sur les 4 sources du dernier numéro du Magazine. Résultat : il ne fait pas économiser de tokens ici — l'outil de lecture habituel (WebFetch) renvoie un résumé, alors que Lightpanda renvoie la page entière — mais il lit ce que WebFetch ne peut pas lire : un site refusait WebFetch (erreur 403), Lightpanda a récupéré l'article complet. Décision : WebFetch d'abord, Lightpanda en secours pour le veilleur et le relecteur du Magazine, avec une taille de page plafonnée. Gratuit et open source, il tourne sur le Mac, télémétrie coupée.",
     tokensPublishP:
       "Pour la première fois, une amélioration du système lui-même passe par une pull request, hors mission, que je fusionne. Cette page est mise à jour par la mission 8, utilisation-ia-economie : la première cadrée selon ces nouvelles règles (étapes mécaniques prévues pour Haiku, build et lint sans sous-agent).",
 
@@ -959,6 +961,8 @@ const CONTENT = {
     ],
     tokensRemainingP:
       'One recommendation is still mine to apply: switch off, for this project, the connectors it does not need (mail, calendar, storage, whiteboards, design), whose list takes up context in every session.',
+    tokensLightpandaP:
+      "One more tool (10/05): Lightpanda, a headless browser for agents, tested on the last Magazine issue's 4 sources. Result: it doesn't save tokens here — the usual reading tool (WebFetch) returns a summary, while Lightpanda returns the whole page — but it reads what WebFetch can't: one site refused WebFetch (a 403 error), and Lightpanda pulled the full article. Decision: WebFetch first, Lightpanda as a fallback for the Magazine's veilleur and relecteur, with a capped page size. Free and open source, it runs on the Mac, with telemetry switched off.",
     tokensPublishP:
       'For the first time, an improvement to the system itself goes through a pull request, outside any mission, which I merge. This page is updated by mission 8, utilisation-ia-economie: the first one framed under these new rules (mechanical steps earmarked for Haiku, build and lint without a sub-agent).',
 
@@ -1210,6 +1214,7 @@ export default function UtilisationIA({ project }) {
           {c.tokensRejected.map((item, i) => <li key={i}>{item}</li>)}
         </ul>
         <p style={{ marginBottom: 'var(--space-sm)' }}>{c.tokensRemainingP}</p>
+        <p style={{ marginBottom: 'var(--space-sm)' }}>{c.tokensLightpandaP}</p>
         <p style={{ margin: 0 }}>{c.tokensPublishP}</p>
       </Section>
 

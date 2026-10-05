@@ -1,7 +1,7 @@
 # Mission utilisation-ia-octobre — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 3 (paragraphe Lightpanda FR + EN)
+**Prochaine action :** étape 4 (section « Trois routines de plus »)
 **Blocages :** aucun pour la mission ; voir note lint ci-dessous
 
 ## État initial (2026-10-05, sur main après la PR #69)
@@ -15,3 +15,4 @@
 - 0. Cadrage (SPEC, PLAN, CONTENU, suivi).
 - 1. État initial relevé.
 - 2. Points mécaniques CONTENU §D appliqués (intro, milestones 19-24, bilan chiffré 9-42, note, remaining, mise en abyme) — délégué à Haiku, diff vérifié.
+- 3. Paragraphe Lightpanda FR + EN (`tokensLightpandaP`) ajouté avant `tokensPublishP`, section « Économiser les tokens ».
