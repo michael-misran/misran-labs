@@ -10,7 +10,7 @@
       "Bash(git branch --list*)", "Bash(git for-each-ref*)",
       "Bash(grep *)", "Bash(ls *)", "Bash(cat *)", "Bash(head *)", "Bash(tail *)",
       "Bash(find *)", "Bash(wc *)", "Bash(sed -n *)",
-      "Bash(node missions/*)",
+      "Bash(node missions/*)", "Bash(node scripts/verifier-pages-doc.mjs)",
       "Agent",
       "Bash(echo *)", "Bash(npx vite preview*)", "Bash(npx eslint *)",
       "Edit(src/**)", "Write(src/**)", "Edit(missions/**)", "Write(missions/**)",

@@ -59,3 +59,9 @@ Si le dossier `src/private` n'est pas un dépôt Git (sauvegarde pas encore inst
 
 ## 7. Commandes shell
 Une commande simple par appel (pas de `&&`, `;`, boucle, `$(…)`, heredoc).
+
+## 8. Pages de documentation (après la publication)
+1. `node scripts/verifier-pages-doc.mjs` : le script dit si la page « Utilisation de l'IA » et la page des tokens sont à jour. Il ne modifie rien.
+2. Si la page « Utilisation de l'IA » est en retard mais qu'une branche `auto/utilisation-ia*` sans `RAPPORT.md` existe (`git for-each-ref --format='%(refname:short)' refs/heads/auto/`), la mise à jour est déjà en cours : le noter, ne rien signaler de plus.
+3. Sinon, si une page est en retard : ajouter au résumé final la liste donnée par le script, et envoyer une notification (PushNotification) : « Page(s) en retard : <noms>. Réponds « mets à jour » en tour de contrôle. »
+4. Ne jamais mettre à jour ces pages ni cadrer de mission dans cette routine : le tri entre public et privé se fait en session, avec Michael.
