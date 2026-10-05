@@ -4,11 +4,6 @@ import { writeRssFeeds } from './rss.js'
 
 export const SITE_URL = 'https://misran-labs.vercel.app'
 
-const MAGAZINE_FIXED = {
-  title: 'Le Magazine — veille IA hebdomadaire · Misran Labs',
-  description: 'Une veille IA chaque lundi, pour designers et développeurs.',
-  image: 'og-magazine.png',
-}
 const PROJETS_FIXED = {
   title: 'Les idées du Lab — idées en développement · Misran Labs',
   description: 'Des idées de produits numérotées, étudiées puis gardées ou arrêtées.',
@@ -22,7 +17,7 @@ const PROJETS_FONCTIONNEMENT_FIXED = {
 const BREVES_FIXED = {
   title: 'La Gazette du Lab — les brèves IA et tech du jour · Misran Labs',
   description: 'Chaque jour, quelques brèves d\'actu IA et tech tirées de La Gazette du Lab, le journal papier du matin, avec le mot et le chiffre du jour.',
-  image: 'og-magazine.png',
+  image: 'og-image.png',
 }
 const SUIVRE_FIXED = {
   title: 'Suivre le Lab · Misran Labs',
@@ -136,7 +131,7 @@ function buildSitemapXml(urls) {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${items}\n</urlset>\n`
 }
 
-// Lit un JSON de numéro de Magazine ou d'idée Projets ; ignore (avec
+// Lit un JSON de jour de Gazette ou d'idée Projets ; ignore (avec
 // avertissement) si le fichier est illisible ou sans les champs attendus.
 // Ne fait jamais échouer le build : le site ignore déjà ces fichiers de son côté.
 function readValidJson(filePath, requiredFields) {
@@ -182,43 +177,9 @@ export function collectZineNumeros(rootDir) {
   return pages
 }
 
-export function collectMagazineNumeros(rootDir) {
-  const dir = path.join(rootDir, 'src/magazine/numeros')
-  if (!fs.existsSync(dir)) return []
-  const pages = []
-  for (const file of fs.readdirSync(dir).sort()) {
-    if (!file.endsWith('.json')) continue
-    const dateFromName = file.replace(/\.json$/, '')
-    const data = readValidJson(path.join(dir, file), ['numero', 'titre.fr', 'edito.fr'])
-    if (!data) continue
-    if (data.date !== dateFromName) {
-      console.warn(`[share-previews] ignoré (date "${data.date}" ≠ nom de fichier) : ${file}`)
-      continue
-    }
-    const numeroImagePath = path.join(rootDir, 'public/og/magazine', `${dateFromName}.png`)
-    let image = MAGAZINE_FIXED.image
-    if (fs.existsSync(numeroImagePath)) {
-      image = `og/magazine/${dateFromName}.png`
-    } else {
-      console.warn(`[share-previews] pas d'image pour le numéro ${dateFromName}, image de rubrique utilisée`)
-    }
-
-    pages.push({
-      path: `/magazine/${dateFromName}`,
-      title: `Nº ${data.numero} — ${data.titre.fr} · Le Magazine`,
-      description: normalizeAndTruncate(data.edito.fr),
-      image,
-      type: 'article',
-      lastmod: data.date,
-      raw: data,
-    })
-  }
-  return pages
-}
-
-// D7 (mission breves) : pas de nouvelle image — l'image de rubrique du
-// Magazine sert aussi pour /breves et chaque jour, contrairement au
-// Magazine et aux idées Projets qui ont leur propre image par numéro/idée.
+// D7 (mission breves) : pas d'image propre — l'image générique du site
+// sert pour /breves et chaque jour, contrairement aux idées Projets qui ont
+// leur propre image par idée.
 export function collectBrevesJours(rootDir) {
   const dir = path.join(rootDir, 'src/breves/jours')
   if (!fs.existsSync(dir)) return []
@@ -367,20 +328,17 @@ export function sharePreviewsPlugin() {
       const homeUrl = `${SITE_URL}/`
       fs.writeFileSync(indexPath, setCanonical(baseHtml, homeUrl))
 
-      const magazinePages = collectMagazineNumeros(rootDir)
       const brevesPages = collectBrevesJours(rootDir)
       const projetsPages = collectProjetsIdees(rootDir)
       const jeuxPages = await collectJeux(rootDir)
 
       const pages = [
-        { path: '/magazine', title: MAGAZINE_FIXED.title, description: MAGAZINE_FIXED.description, image: MAGAZINE_FIXED.image, type: 'website' },
         { path: '/breves', title: BREVES_FIXED.title, description: BREVES_FIXED.description, image: BREVES_FIXED.image, type: 'website' },
         { path: '/projets', title: PROJETS_FIXED.title, description: PROJETS_FIXED.description, image: PROJETS_FIXED.image, type: 'website' },
         { path: '/projets/fonctionnement', title: PROJETS_FONCTIONNEMENT_FIXED.title, description: PROJETS_FONCTIONNEMENT_FIXED.description, image: PROJETS_FONCTIONNEMENT_FIXED.image, type: 'website' },
         { path: '/suivre', title: SUIVRE_FIXED.title, description: SUIVRE_FIXED.description, image: SUIVRE_FIXED.image, type: 'website' },
         { path: '/zine', title: ZINE_FIXED.title, description: ZINE_FIXED.description, image: ZINE_FIXED.image, type: 'website' },
         { path: '/jeux', title: JEUX_FIXED.title, description: JEUX_FIXED.description, image: JEUX_FIXED.image, type: 'website' },
-        ...magazinePages,
         ...collectZineNumeros(rootDir),
         ...brevesPages,
         ...projetsPages,
@@ -414,7 +372,7 @@ export function sharePreviewsPlugin() {
       fs.writeFileSync(path.join(distDir, '404.html'), build404Html(baseHtml))
       console.log('[share-previews] dist/404.html écrit')
 
-      writeRssFeeds({ distDir, magazinePages, brevesPages, projetsPages })
+      writeRssFeeds({ distDir, brevesPages, projetsPages })
     },
   }
 }

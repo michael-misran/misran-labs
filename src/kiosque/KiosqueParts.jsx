@@ -228,34 +228,6 @@ function CarteCouverture({ to, children, legendeNom, legendeRythme }) {
   return <Link className="kiq-couv-link" to={to} style={commonStyle}>{contenu}</Link>
 }
 
-function CouvertureMagazine({ lang, t, issue }) {
-  const p = t.presentoirs.magazine
-  const articles = issue.articles.slice(0, 4)
-  return (
-    <CarteCouverture to={`/magazine/${issue.date}`} legendeNom={p.legendeNom} legendeRythme={p.legendeRythme}>
-      <div style={{ background: 'var(--bg2)', padding: 16, display: 'flex', flexDirection: 'column', height: '100%' }}>
-        <div style={{ background: 'var(--titre-magazine)', color: 'var(--on-primary-surface)', margin: '-16px -16px 14px', padding: '12px 16px 10px', display: 'flex', justifyContent: 'space-between', alignItems: 'end' }}>
-          <b style={{ fontFamily: 'var(--primitive-font-playfair-display)', fontStyle: 'italic', fontWeight: 900, fontSize: 30, lineHeight: 0.9 }}>{p.bandeauNom[0]}<br />{p.bandeauNom[1]}</b>
-          <span style={{ ...etiquette, fontWeight: 700, fontSize: 11, lineHeight: 1.2, textAlign: 'right' }}>
-            N° {issue.numero}<br />{p.bandeauSub}<br />{issue.date.split('-').reverse().join('.')}
-          </span>
-        </div>
-        <h5 style={{ fontFamily: 'var(--primitive-font-playfair-display)', fontStyle: 'italic', fontWeight: 900, fontSize: 22, lineHeight: 1, marginBottom: 10, color: 'var(--text)' }}>
-          {issue.titre[lang] ?? issue.titre.fr}
-        </h5>
-        <ul style={{ listStyle: 'none', fontSize: 12.5, lineHeight: 1.3, marginTop: 'auto', padding: 0 }}>
-          {articles.map((article, i) => (
-            <li key={i} style={{ borderTop: '1px solid var(--muted)', padding: '5px 0', color: 'var(--text)' }}>
-              <b style={{ color: 'var(--titre-magazine)', fontFamily: 'var(--font-etiquette)', marginRight: 6 }}>{String(i + 1).padStart(2, '0')}</b>
-              {article.titre[lang] ?? article.titre.fr}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </CarteCouverture>
-  )
-}
-
 // Sans numéro, la couverture garde son étoile « Bientôt ! » ; dès que
 // getNumeros() renvoie un numéro, elle affiche son "#NN" et son titre à la
 // place, et la légende perd son "bientôt" (D6, mission kiosque-finitions).
@@ -384,15 +356,14 @@ function CouvertureLab({ t, nbProjets }) {
   )
 }
 
-// Sur les présentoirs : les 4 couvertures (D5), grille 4 / 2 / 1 colonnes.
-export function Presentoirs({ lang, t, issue, jeux, nbProjets }) {
+// Sur les présentoirs : les 3 couvertures (D5), grille 3 / 2 / 1 colonnes.
+export function Presentoirs({ lang, t, jeux, nbProjets }) {
   const narrow960 = useIsMobile(960)
   const narrow520 = useIsMobile(520)
-  const columns = narrow520 ? 1 : narrow960 ? 2 : 4
+  const columns = narrow520 ? 1 : narrow960 ? 2 : 3
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1fr)`, gap: narrow960 ? '26px 16px' : 30 }}>
-      {issue && <CouvertureMagazine lang={lang} t={t} issue={issue} />}
       <CouvertureZine t={t} lang={lang} />
       <CouvertureJeux lang={lang} t={t} jeux={jeux} />
       <CouvertureLab t={t} nbProjets={nbProjets} />

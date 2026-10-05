@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import LogoAlambic from './LogoAlambic'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
-import { formatDateLong } from '../magazine/magazineText'
+import { formatDateLong } from './dates'
 import useIsMobile from './useIsMobile'
 
 // En-tête pulp de la maison, façon couverture DoggyBags : bandeau rouge,

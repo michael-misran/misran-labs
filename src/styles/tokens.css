@@ -2,7 +2,7 @@
  * TOKENS — IDENTITÉ MAISON D'ÉDITION (refonte kiosque)
  *
  * Misran Labs devient une maison d'édition : chaque rubrique est un
- * titre (Gazette, Magazine, Zine, Jeux, Lab) avec sa couleur et sa
+ * titre (Gazette, Zine, Jeux, Lab) avec sa couleur et sa
  * typo. Les primitives papier/encre/gris/filet/titre-* portent cette
  * identité ; les sémantiques --bg/--text/--border/--primary/--font-*
  * ont été réaffectées sans être renommées. Les anciennes primitives
@@ -105,7 +105,6 @@
 
   --primitive-titre-gazette: #b3301d;
   --primitive-titre-gazette-dark: #932718;
-  --primitive-titre-magazine: #2b3a9b;
   --primitive-titre-zine: #ff4f8b;
   --primitive-titre-jeux: #ff8a1f;
   --primitive-titre-lab: #1f7a4d;
@@ -154,16 +153,13 @@
   --primitive-size-full: 999px;
 
   /* Polices de la maison (chargées dans index.html, voir D2 de la
-     mission kiosque-maison). Ultra/Alfa Slab One/Rye : lettres de bois.
-     Playfair Display sert uniquement le titre « Le Magazine » dans
-     NavTitres (pas de rôle sémantique dédié, un seul usage). */
+     mission kiosque-maison). Ultra/Alfa Slab One/Rye : lettres de bois. */
   --primitive-font-ultra: 'Ultra', Georgia, serif;
   --primitive-font-alfa-slab-one: 'Alfa Slab One', Georgia, serif;
   --primitive-font-rye: 'Rye', Georgia, serif;
   --primitive-font-oswald: 'Oswald', system-ui, sans-serif;
   --primitive-font-im-fell-english: 'IM Fell English', Georgia, serif;
   --primitive-font-crimson-pro: 'Crimson Pro', Georgia, serif;
-  --primitive-font-playfair-display: 'Playfair Display', Georgia, serif;
   --primitive-font-anton: 'Anton', Impact, sans-serif;
   --primitive-font-press-start-2p: 'Press Start 2P', monospace;
   --primitive-font-vt323: 'VT323', monospace;
@@ -222,12 +218,11 @@
   --selected-surface: var(--primitive-titre-gazette-dark);
   --on-selected: var(--primitive-papier-50);
 
-  /* Couleurs des 5 titres de la maison, et leurs typos propres (D5 :
+  /* Couleurs des 4 titres de la maison, et leurs typos propres (D5 :
      Masthead, NavTitres). font-bois/-2/-3 = lettres de bois
      (Ultra, Alfa Slab One, Rye) ; les autres sont nommées par le titre
      qui les porte. */
   --titre-gazette: var(--primitive-titre-gazette);
-  --titre-magazine: var(--primitive-titre-magazine);
   --titre-zine: var(--primitive-titre-zine);
   --titre-jeux: var(--primitive-titre-jeux);
   --titre-lab: var(--primitive-titre-lab);

@@ -30,7 +30,7 @@ Ne jamais modifier un numéro déjà publié une fois en ligne (archive), sauf c
 
 | Champ | Règle |
 |---|---|
-| `numero` | Entier ≥ 1. Jamais réutilisé. Doit valoir « le précédent + 1 » dans l'ordre chronologique des fichiers (comme `src/magazine/numeros.js`), à partir de 1. |
+| `numero` | Entier ≥ 1. Jamais réutilisé. Doit valoir « le précédent + 1 » dans l'ordre chronologique des fichiers, à partir de 1. |
 | `date` | Mois de parution, format `AAAA-MM` (ex. `2026-11`) — le Zine est mensuel, pas de jour précis. |
 | `titre` | `{ "fr": "…", "en": "…" }`, non vide. |
 | `encre` | Une couleur hexadécimale `#rrggbb` — l'encre du numéro. `--titre-zine` (`#ff4f8b`) par défaut, mais chaque numéro peut choisir sa propre couleur. |

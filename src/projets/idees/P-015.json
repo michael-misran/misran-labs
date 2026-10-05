@@ -19,5 +19,12 @@
   },
   "type": "amelioration",
   "taille": "petite",
-  "statut": "proposee"
+  "statut": "arretee",
+  "decision": {
+    "date": "2026-10-05",
+    "note": {
+      "fr": "Le Magazine est arrêté : redire ce que dit déjà la Gazette n'a pas de sens.",
+      "en": "The Magazine is discontinued: repeating what the Gazette already says makes no sense."
+    }
+  }
 }

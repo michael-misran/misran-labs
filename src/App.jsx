@@ -7,8 +7,6 @@ import { LanguageProvider } from './shell/LanguageProvider'
 const KiosqueHome = lazy(() => import('./kiosque/KiosqueHome'))
 const ProjectPage = lazy(() => import('./lab/ProjectPage'))
 const ProjectDemoPage = lazy(() => import('./lab/ProjectDemoPage'))
-const MagazineHome = lazy(() => import('./magazine/MagazineHome'))
-const MagazineIssue = lazy(() => import('./magazine/MagazineIssue'))
 const BrevesHome = lazy(() => import('./breves/BrevesHome'))
 const BrevesJour = lazy(() => import('./breves/BrevesJour'))
 const ProjetsHome = lazy(() => import('./projets/ProjetsHome'))
@@ -30,8 +28,6 @@ export default function App() {
           <Route path="lab" element={<ArchiveHome />} />
           <Route path="lab/:slug" element={<ProjectPage />} />
           <Route path="lab/:slug/demo/:version?" element={<ProjectDemoPage />} />
-          <Route path="magazine" element={<MagazineHome />} />
-          <Route path="magazine/:date" element={<MagazineIssue />} />
           <Route path="breves" element={<BrevesHome />} />
           <Route path="breves/:date" element={<BrevesJour />} />
           <Route path="projets" element={<ProjetsHome />} />
