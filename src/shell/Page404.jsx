@@ -18,7 +18,7 @@ const PAGE404_TEXT = {
     links: [
       { to: '/', label: 'Le kiosque', color: 'var(--text)' },
       { to: '/breves', label: 'La Gazette du Lab', color: 'var(--titre-gazette)' },
-      { to: '/jeux', label: 'L’Arcade du Lab', color: 'var(--titre-jeux)' },
+      { to: '/jeux', label: 'Ma salle de jeu', color: 'var(--titre-jeux)' },
       { to: '/lab', label: 'Le Lab', color: 'var(--titre-lab)' },
     ],
   },
@@ -33,7 +33,7 @@ const PAGE404_TEXT = {
     links: [
       { to: '/', label: 'The kiosk', color: 'var(--text)' },
       { to: '/breves', label: 'The Lab Gazette', color: 'var(--titre-gazette)' },
-      { to: '/jeux', label: 'The Lab Arcade', color: 'var(--titre-jeux)' },
+      { to: '/jeux', label: 'My game room', color: 'var(--titre-jeux)' },
       { to: '/lab', label: 'The Lab', color: 'var(--titre-lab)' },
     ],
   },
