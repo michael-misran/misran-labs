@@ -18,6 +18,7 @@ const JeuxHome = lazy(() => import('./jeux/JeuxHome'))
 const JeuPage = lazy(() => import('./jeux/JeuPage'))
 const ZineHome = lazy(() => import('./zine/ZineHome'))
 const ZineNumero = lazy(() => import('./zine/ZineNumero'))
+const SaviezVousPage = lazy(() => import('./saviez-vous/SaviezVousPage'))
 const Page404 = lazy(() => import('./shell/Page404'))
 
 export default function App() {
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="jeux/:slug" element={<JeuPage />} />
           <Route path="zine" element={<ZineHome />} />
           <Route path="zine/:numero" element={<ZineNumero />} />
+          <Route path="saviez-vous/:date?" element={<SaviezVousPage />} />
           <Route path="*" element={<Page404 />} />
         </Route>
       </Routes>
