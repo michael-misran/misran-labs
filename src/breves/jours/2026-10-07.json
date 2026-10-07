@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-07",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Anthropic ouvre ses modèles de cybersécurité par paliers",
+        "en": "Anthropic opens its cybersecurity models in tiers"
+      },
+      "resume": {
+        "fr": "Anthropic réunit Project Glasswing et le Cyber Verification Program en un seul programme à trois niveaux : défense, red team et accès spécialisé. Plus le niveau est élevé, moins les modèles refusent, après examen du candidat. Les partenaires de Glasswing ont trouvé au moins 129 000 vulnérabilités vérifiées.",
+        "en": "Anthropic merges Project Glasswing and the Cyber Verification Program into a single three-tier program: defense, red team and specialized access. The higher the tier, the fewer refusals from the models, after the applicant is reviewed. Glasswing partners found at least 129,000 verified vulnerabilities."
+      },
+      "sources": [
+        { "titre": "Anthropic", "url": "https://www.anthropic.com/news/cyber-verification-program" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Les pull requests empilées sont disponibles pour tous sur GitHub",
+        "en": "Stacked pull requests are generally available on GitHub"
+      },
+      "resume": {
+        "fr": "GitHub généralise les pull requests empilées : un gros changement devient une série ordonnée de petites pull requests relues séparément. Les approbations et les commits signés survivent au rebase, et la fusion automatique arrive dans les semaines à venir.",
+        "en": "GitHub makes stacked pull requests generally available: a large change becomes an ordered series of small pull requests, reviewed separately. Approvals and signed commits survive a rebase, and auto-merge is coming over the next few weeks."
+      },
+      "sources": [
+        { "titre": "GitHub Changelog", "url": "https://github.blog/changelog/2026-10-06-stacked-pull-requests-generally-available/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Copilot : les statistiques d'usage des agents étaient faussées",
+        "en": "Copilot: agent usage metrics were off"
+      },
+      "resume": {
+        "fr": "Les mesures de Copilot montraient une activité d'agent en baisse alors que l'usage grandissait, car des sessions passées au SDK n'indiquaient pas leur éditeur. Le correctif demande de mettre à jour son éditeur, par exemple VS Code 1.139.0 ou plus. La facturation n'est pas touchée.",
+        "en": "Copilot metrics showed falling agent activity while usage was growing, because sessions moved to the SDK did not identify their editor. The fix is to update your editor, for example VS Code 1.139.0 or later. Billing is not affected."
+      },
+      "sources": [
+        { "titre": "GitHub Changelog", "url": "https://github.blog/changelog/2026-10-06-update-your-ide-to-restore-agent-activity-in-copilot-usage-metrics/" }
+      ]
+    }
+  ]
+}
