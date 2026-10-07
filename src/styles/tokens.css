@@ -108,6 +108,9 @@
   --primitive-titre-zine: #ff4f8b;
   --primitive-titre-jeux: #ff8a1f;
   --primitive-titre-lab: #1f7a4d;
+  /* Bleus de la page d'édito (encre des logos et du titre, aplat du texte) */
+  --primitive-bleu-edito: #2e545d;
+  --primitive-bleu-edito-pale: #bec7be;
 
   /* Palette pulp de l'en-tête (relevée sur une couverture DoggyBags) :
      carton kraft, rouge sang, crème des lettres. */
@@ -239,6 +242,10 @@
   --font-logo: var(--primitive-font-chango);
   /* Chiffres du logo 1977 Éditions (Fraunces Black « Soft », Logo1977.jsx) */
   --font-1977: var(--primitive-font-fraunces);
+  /* Texte de l'édito */
+  --font-edito: var(--primitive-font-crimson-pro);
+  /* Titre « ÉDITO » : grosses capitales à empattements de caractère de bois */
+  --font-edito-titre: var(--primitive-font-alfa-slab-one);
   /* Grand titre pulp de l'en-tête, et son lettrage d'affiche (cartouche) */
   --font-pulp: var(--primitive-font-bowlby-one-sc);
   --font-affiche: var(--primitive-font-bangers);
@@ -328,6 +335,9 @@
   --masthead-logo-fond: var(--masthead-lettre);
   /* Barre du menu des titres (NavTitres.jsx) */
   --masthead-sommaire: var(--primitive-rouge-pulp-fonce);
+  /* Page d'édito (EditoPage.jsx) */
+  --edito-bleu: var(--primitive-bleu-edito);
+  --edito-bleu-pale: var(--primitive-bleu-edito-pale);
 }
 
 /* Portée inversée : la diapositive corail plein cadre d'une planche

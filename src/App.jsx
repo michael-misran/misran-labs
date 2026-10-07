@@ -13,6 +13,7 @@ const ProjetsHome = lazy(() => import('./projets/ProjetsHome'))
 const ProjetIdee = lazy(() => import('./projets/ProjetIdee'))
 const ProjetsFonctionnement = lazy(() => import('./projets/ProjetsFonctionnement'))
 const SuivrePage = lazy(() => import('./suivre/SuivrePage'))
+const EditoPage = lazy(() => import('./edito/EditoPage'))
 const JeuxHome = lazy(() => import('./jeux/JeuxHome'))
 const JeuPage = lazy(() => import('./jeux/JeuPage'))
 const ZineHome = lazy(() => import('./zine/ZineHome'))
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="projets/fonctionnement" element={<ProjetsFonctionnement />} />
           <Route path="projets/:id" element={<ProjetIdee />} />
           <Route path="suivre" element={<SuivrePage />} />
+          <Route path="edito" element={<EditoPage />} />
           <Route path="jeux" element={<JeuxHome />} />
           <Route path="jeux/:slug" element={<JeuPage />} />
           <Route path="zine" element={<ZineHome />} />

@@ -1,9 +1,8 @@
 // Logo de la maison d'édition 1977 Éditions : « 19 » sur « 77 » dans un bloc
-// façon caractère de bois, avec une deuxième encre décalée dessous (tirage mal
-// calé) et « ÉDITIONS » au pied. Maquettes : screens/logo-1977-situation.html.
+// façon caractère de bois, et « ÉDITIONS » au pied. Maquettes : screens/logo-1977-situation.html.
 // L'encre suit `color` (currentColor) ; `fond` est la couleur du papier
-// derrière (chiffres découpés dans le bloc) ; `accent` la deuxième encre.
-// La version `carre` (bloc seul, sans décalage ni « éditions ») sert aux petits formats.
+// derrière (chiffres découpés dans le bloc).
+// La version `carre` (bloc seul, sans « éditions ») sert aux petits formats.
 
 // Réglages de Fraunces : graisse maximale, empattements arrondis (« Soft »)
 const CHIFFRES = {
@@ -15,7 +14,6 @@ const CHIFFRES = {
 export default function Logo1977({
   largeur = 92,
   fond = 'var(--bg)',
-  accent = 'var(--titre-gazette)',
   carre = false,
   titre = '1977 Éditions',
 }) {
@@ -41,8 +39,6 @@ export default function Logo1977({
         </>
       ) : (
         <>
-          {/* Deuxième encre, décalée en bas à droite */}
-          <rect x="28" y="28" width="200" height="200" rx="6" fill={accent} />
           <rect x="20" y="20" width="200" height="200" rx="6" fill="currentColor" />
           {chiffres(120, 112, 202, 98, 164)}
           <text

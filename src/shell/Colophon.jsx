@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Logo1977 from './Logo1977'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
@@ -25,7 +26,7 @@ export default function Colophon() {
         }}
       >
         <span style={{ color: 'var(--text)' }}>
-          <Logo1977 largeur={96} accent="var(--titre-gazette)" />
+          <Logo1977 largeur={96} />
         </span>
 
         <div>
@@ -37,6 +38,19 @@ export default function Colophon() {
             {t(lang, 'colophonPolices')}
           </p>
           <p style={{ marginTop: 8, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+            <Link
+              to="/edito"
+              style={{
+                fontFamily: 'var(--font-etiquette)',
+                fontWeight: 600,
+                fontSize: 11,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: 'var(--text)',
+              }}
+            >
+              {t(lang, 'colophonEdito')}
+            </Link>
             <a
               href="https://github.com/michael-misran/misran-labs"
               target="_blank"

@@ -11,6 +11,7 @@ import { getNumero } from '../zine/numeros'
 // uniquement à distinguer une vraie 404 des autres routes connues.
 const KNOWN_ROUTES = [
   /^\/suivre\/?$/,
+  /^\/edito\/?$/,
 ]
 
 function notFoundMeta(lang) {
@@ -46,6 +47,7 @@ export function resolveRouteMeta(pathname, lang) {
   }
 
   if (pathname === '/suivre') return { icon: '◉', label: t(lang, 'suivreNav') }
+  if (pathname === '/edito') return { icon: '✎', label: t(lang, 'editoNav') }
 
   // Rubrique Jeux : titre de l'onglet et de la barre d'état ; un slug
   // inconnu renvoie la 404, comme /lab/ (D3).

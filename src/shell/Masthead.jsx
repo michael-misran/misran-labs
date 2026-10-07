@@ -176,7 +176,7 @@ export default function Masthead() {
         >
           {/* Logo de la maison d'édition 1977 Éditions */}
           <span style={{ color: 'var(--masthead-encre)' }}>
-            <Logo1977 largeur={largeurLogo} fond="var(--masthead-logo-fond)" accent="var(--masthead-bandeau)" />
+            <Logo1977 largeur={largeurLogo} fond="var(--masthead-logo-fond)" />
           </span>
 
           <div style={{ minWidth: 0 }}>
