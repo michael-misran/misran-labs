@@ -43,5 +43,7 @@
         { "titre": "GitHub Changelog", "url": "https://github.blog/changelog/2026-10-06-update-your-ide-to-restore-agent-activity-in-copilot-usage-metrics/" }
       ]
     }
-  ]
+  ],
+  "mot": { "terme": "Revenu récurrent", "definition": { "fr": "Argent qui revient à intervalle régulier sans nouvelle vente : abonnement, livraison programmée, maintenance. Son avantage : on peut prévoir ses stocks et ses mois.", "en": "Money that comes back at regular intervals without a new sale: subscriptions, scheduled deliveries, maintenance. Its advantage: you can plan your stock and your months ahead." } },
+  "chiffre": { "valeur": "84,4 %", "texte": { "fr": "des ventes de Chewy viennent d'Autoship, ses livraisons programmées.", "en": "of Chewy's sales come from Autoship, its scheduled deliveries." } }
 }
