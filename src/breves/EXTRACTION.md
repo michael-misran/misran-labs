@@ -19,7 +19,10 @@ Sélectionner uniquement, selon `src/breves/FORMAT.md` :
 - les articles de `page2`/`page3` dont `type` vaut `tech` (grands et « éclair »).
 
 **Jamais** : irritant, modèle économique, étude de cas, design (`type: "design"`), énigme, bonus, carnet — ces rubriques du journal restent privées.
-Le `mot` et le `chiffre` de `page4` peuvent être repris tels quels (facultatifs).
+**Toujours** reprendre le `mot` et le `chiffre` de `page4` quand le journal en a : le kiosque de /breves les affiche (affiches et page droite) et reste vide sans eux.
+- Retirer seulement les renvois de page (« (p. 2) », etc.) et, dans le texte, ce qui ne se comprend qu'avec un article privé ; garder le terme, la valeur et le sens.
+- `mot` : `terme` tel quel, `definition` en `fr` et `en`. `chiffre` : `valeur` telle quelle, `texte` en `fr` et `en`.
+- Ne les omettre que s'ils contiennent une donnée personnelle ou une mention du carnet ou des irritants.
 
 Pour chaque brève retenue :
 - `rubrique` : `ia` pour l'article `une`, `tech` pour les autres.
