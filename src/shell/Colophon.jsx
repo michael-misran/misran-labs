@@ -39,7 +39,7 @@ export default function Colophon() {
           </p>
           <p style={{ marginTop: 8, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
             <Link
-              to="/edito"
+              to="/"
               style={{
                 fontFamily: 'var(--font-etiquette)',
                 fontWeight: 600,

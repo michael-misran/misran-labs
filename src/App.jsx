@@ -1,5 +1,5 @@
 import { lazy } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Shell from './shell/Shell'
 import BureauLab from './lab/BureauLab'
 import { LanguageProvider } from './shell/LanguageProvider'
@@ -25,7 +25,9 @@ export default function App() {
     <LanguageProvider>
       <Routes>
         <Route path="/" element={<Shell />}>
-          <Route index element={<KiosqueHome />} />
+          {/* L'édito est la page d'accueil ; l'ancienne vitrine passe sur /kiosque */}
+          <Route index element={<EditoPage />} />
+          <Route path="kiosque" element={<KiosqueHome />} />
           <Route path="lab" element={<BureauLab />} />
           <Route path="lab/:slug" element={<ProjectPage />} />
           <Route path="lab/:slug/demo/:version?" element={<ProjectDemoPage />} />
@@ -35,7 +37,7 @@ export default function App() {
           <Route path="projets/fonctionnement" element={<ProjetsFonctionnement />} />
           <Route path="projets/:id" element={<ProjetIdee />} />
           <Route path="suivre" element={<SuivrePage />} />
-          <Route path="edito" element={<EditoPage />} />
+          <Route path="edito" element={<Navigate to="/" replace />} />
           <Route path="jeux" element={<JeuxHome />} />
           <Route path="jeux/:slug" element={<JeuPage />} />
           <Route path="zine" element={<ZineHome />} />

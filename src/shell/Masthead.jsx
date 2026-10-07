@@ -1,9 +1,11 @@
+import { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Logo1977 from './Logo1977'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 import { formatDateLong } from './dates'
 import useIsMobile from './useIsMobile'
+import Sommaire from './Sommaire'
 
 // En-tête pulp de la maison, façon couverture DoggyBags : bandeau rouge,
 // carton kraft, grand titre crème cerné de noir avec ombre rouge sang.
@@ -78,6 +80,8 @@ export default function Masthead() {
   // tienne en moins de 200 px à 375 px de large.
   const isNarrow = useIsMobile(600)
   const today = formatDateLong(todayIso(), lang)
+  const [sommaireOuvert, setSommaireOuvert] = useState(false)
+  const fermerSommaire = useCallback(() => setSommaireOuvert(false), [])
 
   const lien = {
     fontFamily: 'var(--font-bandeau)',
@@ -116,11 +120,32 @@ export default function Masthead() {
             gap: 12,
           }}
         >
-          {!isNarrow && (
-            <span style={{ ...etiquette, fontWeight: 500, fontSize: 12, color: 'var(--masthead-lettre)' }}>
-              {t(lang, 'mastheadBrand')}
-            </span>
-          )}
+          {/* Bouton du sommaire, façon onglet de magazine */}
+          <button
+            type="button"
+            onClick={() => setSommaireOuvert(true)}
+            aria-haspopup="dialog"
+            aria-expanded={sommaireOuvert}
+            style={{
+              ...etiquette,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              fontWeight: 700,
+              fontSize: isNarrow ? 11 : 13,
+              lineHeight: 1,
+              background: 'var(--masthead-lettre)',
+              color: 'var(--masthead-encre)',
+              border: '2px solid var(--masthead-encre)',
+              boxShadow: '2px 2px 0 var(--masthead-encre)',
+              padding: isNarrow ? '4px 6px' : '5px 10px',
+              cursor: 'pointer',
+              flexShrink: 0,
+            }}
+          >
+            <span aria-hidden="true" style={{ fontSize: isNarrow ? 13 : 15 }}>☰</span>
+            {t(lang, 'sommaireTitre')}
+          </button>
           <nav style={{ display: 'flex', alignItems: 'center', gap: isNarrow ? 8 : 10 }}>
             <Link to="/projets" style={lien}>{t(lang, 'mastheadIdees')}</Link>
             <Medaillon taille={tailleMedaillon}>★</Medaillon>
@@ -283,6 +308,8 @@ export default function Masthead() {
           )}
         </div>
       </header>
+
+      <Sommaire ouvert={sommaireOuvert} onFermer={fermerSommaire} />
     </div>
   )
 }
