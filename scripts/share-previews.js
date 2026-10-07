@@ -34,6 +34,11 @@ const ZINE_FIXED = {
   description: 'Le fanzine de Misran Labs, maison d’édition indépendante : photos, dessins, jeux et pages de carnet.',
   image: 'og-image.png',
 }
+const SAVIEZ_FIXED = {
+  title: 'Le saviez-vous ? — curiosités de la semaine · Misran Labs',
+  description: 'Chaque semaine, quelques choses vraies, insolites ou pas, à ressortir au dîner.',
+  image: 'og-image.png',
+}
 const JEUX_FIXED = {
   title: 'Jeux — petits défis quotidiens · Misran Labs',
   description: 'Un mini-jeu par jour, noté sur 100 et partageable en un clic, façon neal.fun.',
@@ -176,6 +181,28 @@ export function collectZineNumeros(rootDir) {
       title: `#${String(data.numero).padStart(2, '0')} — ${data.titre.fr} · Misran Zine`,
       description: normalizeAndTruncate(data.edito.fr),
       image: ZINE_FIXED.image,
+      type: 'article',
+    })
+  }
+  return pages
+}
+
+// « Le saviez-vous ? » : une page d'aperçu par parution déjà parue à la date
+// du build (une parution future n'a pas encore de page).
+export function collectSaviezVous(rootDir) {
+  const dir = path.join(rootDir, 'src/saviez-vous/parutions')
+  if (!fs.existsSync(dir)) return []
+  const aujourdhui = new Date().toISOString().slice(0, 10)
+  const pages = []
+  for (const file of fs.readdirSync(dir).sort()) {
+    if (!file.endsWith('.json')) continue
+    const data = readValidJson(path.join(dir, file), ['date', 'sujet.fr', 'intro.fr'])
+    if (!data || file !== `${data.date}.json` || data.date > aujourdhui) continue
+    pages.push({
+      path: `/saviez-vous/${data.date}`,
+      title: `Le saviez-vous ? — ${data.sujet.fr} · Misran Labs`,
+      description: normalizeAndTruncate(data.intro.fr),
+      image: SAVIEZ_FIXED.image,
       type: 'article',
     })
   }
@@ -336,6 +363,11 @@ export function sharePreviewsPlugin() {
       const brevesPages = collectBrevesJours(rootDir)
       const projetsPages = collectProjetsIdees(rootDir)
       const jeuxPages = await collectJeux(rootDir)
+      // « Le saviez-vous ? » n'a de page (ni d'entrée au sitemap) qu'une fois une parution sortie
+      const saviezParutions = collectSaviezVous(rootDir)
+      const saviezPages = saviezParutions.length > 0
+        ? [{ path: '/saviez-vous', title: SAVIEZ_FIXED.title, description: SAVIEZ_FIXED.description, image: SAVIEZ_FIXED.image, type: 'website' }, ...saviezParutions]
+        : []
 
       const pages = [
         { path: '/breves', title: BREVES_FIXED.title, description: BREVES_FIXED.description, image: BREVES_FIXED.image, type: 'website' },
@@ -345,6 +377,7 @@ export function sharePreviewsPlugin() {
         { path: '/kiosque', title: KIOSQUE_FIXED.title, description: KIOSQUE_FIXED.description, image: KIOSQUE_FIXED.image, type: 'website' },
         { path: '/zine', title: ZINE_FIXED.title, description: ZINE_FIXED.description, image: ZINE_FIXED.image, type: 'website' },
         { path: '/jeux', title: JEUX_FIXED.title, description: JEUX_FIXED.description, image: JEUX_FIXED.image, type: 'website' },
+        ...saviezPages,
         ...collectZineNumeros(rootDir),
         ...brevesPages,
         ...projetsPages,

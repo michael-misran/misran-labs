@@ -5,6 +5,7 @@ import { getDay } from '../breves/jours'
 import { formatDateLongNoWeekday } from './dates'
 import { getJeu } from '../jeux/registre'
 import { getNumero } from '../zine/numeros'
+import { getParution } from '../saviez-vous/parutions'
 
 // Chemins que App.jsx sait effectivement router, en dehors de '/', '/lab/…',
 // '/projets…' et '/breves…' (déjà traités plus bas) : sert
@@ -65,6 +66,14 @@ export function resolveRouteMeta(pathname, lang) {
     const numero = getNumero(Number(pathname.split('/')[2]))
     const label = numero ? `${t(lang, 'navTitreZine')} — ${numero.titre[lang] ?? numero.titre.fr}` : t(lang, 'navTitreZine')
     return { icon: '✦', label }
+  }
+
+  // Rubrique « Le saviez-vous ? » : dernière parution ou parution datée
+  if (pathname === '/saviez-vous') return { icon: '❦', label: t(lang, 'saviezVousNav') }
+  if (pathname.startsWith('/saviez-vous/')) {
+    const parution = getParution(pathname.split('/')[2])
+    const label = parution ? `${t(lang, 'saviezVousNav')} — ${formatDateLongNoWeekday(parution.date, lang)}` : t(lang, 'saviezVousNav')
+    return { icon: '❦', label }
   }
 
   if (KNOWN_ROUTES.some((re) => re.test(pathname))) return { icon: '◌', label: pathname }

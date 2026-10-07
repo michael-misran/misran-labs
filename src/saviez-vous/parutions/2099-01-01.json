@@ -1,0 +1,38 @@
+{
+  "date": "2099-01-01",
+  "sujet": { "fr": "Le Rubik’s Cube", "en": "The Rubik’s Cube" },
+  "intro": {
+    "fr": "Au départ, ce n’était pas un jouet. En 1974, à Budapest, Ernő Rubik, professeur d’architecture, cherche un objet pour expliquer l’espace en trois dimensions à ses étudiants. Il taille des petits cubes en bois et invente un mécanisme pour les faire tourner sans qu’ils se détachent… puis met lui-même plus d’un mois à remettre son casse-tête en ordre. Brevet déposé en 1975, vendu en Hongrie dès 1977 sous le nom de « Cube magique », il devient le « Rubik’s Cube » en 1980 quand un fabricant américain l’exporte dans le monde entier.",
+    "en": "It didn’t start as a toy. In 1974, in Budapest, architecture professor Ernő Rubik wanted an object to explain three-dimensional space to his students. He carved small wooden cubes and invented a mechanism to turn them without falling apart… then took more than a month to solve his own puzzle. Patent filed in 1975, sold in Hungary from 1977 as the “Magic Cube”, it became the “Rubik’s Cube” in 1980 when an American toymaker took it worldwide."
+  },
+  "fiche": {
+    "titre": { "fr": "Fiche technique du cube 3×3", "en": "3×3 cube spec sheet" },
+    "lignes": [
+      { "fr": "Inventeur : Ernő Rubik (Hongrie)", "en": "Inventor: Ernő Rubik (Hungary)" },
+      { "fr": "Prototype : 1974", "en": "Prototype: 1974" },
+      { "fr": "Faces : 6, de 6 couleurs", "en": "Faces: 6, in 6 colours" },
+      { "fr": "Pastilles visibles : 54", "en": "Visible stickers: 54" },
+      { "fr": "Pièces mobiles : 26 + 1 axe central", "en": "Moving parts: 26 + 1 central core" },
+      { "fr": "Combinaisons : 43 252 003 274 489 856 000", "en": "Combinations: 43,252,003,274,489,856,000" },
+      { "fr": "Coups max pour le résoudre : 20", "en": "Max moves to solve it: 20" }
+    ]
+  },
+  "legende": {
+    "titre": { "fr": "Le cube démonté", "en": "The cube taken apart" },
+    "items": [
+      { "fr": "Noyau : croix à trois axes", "en": "Core: three-axis cross" },
+      { "fr": "Centres (6), vissés au noyau, ne bougent jamais", "en": "Centres (6), screwed to the core, never move" },
+      { "fr": "Arêtes (12), deux couleurs chacune", "en": "Edges (12), two colours each" },
+      { "fr": "Coins (8), trois couleurs chacun", "en": "Corners (8), three colours each" },
+      { "fr": "Vis et ressorts, pour régler la tension", "en": "Screws and springs, to set the tension" }
+    ]
+  },
+  "conclusion": {
+    "fr": "Il faudra attendre 2010 pour qu’une équipe de chercheurs, aidée par des ordinateurs prêtés par Google, prouve que n’importe quel mélange se résout en 20 coups au plus. Les mathématiciens l’ont baptisé « le nombre de Dieu ». Avec des centaines de millions d’exemplaires vendus, c’est l’un des jouets les plus vendus de l’histoire.",
+    "en": "It took until 2010 for a team of researchers, helped by computers lent by Google, to prove that any scramble can be solved in 20 moves or fewer. Mathematicians called it “God’s number”. With hundreds of millions sold, it is one of the best-selling toys in history."
+  },
+  "sources": [
+    "https://www.rubiks.com/en-us/about",
+    "https://www.cube20.org/"
+  ]
+}

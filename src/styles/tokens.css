@@ -119,6 +119,8 @@
   --primitive-rouge-pulp: #b5231b;
   --primitive-rouge-pulp-fonce: #6e120d;
   --primitive-creme-pulp: #f0e2bd;
+  /* Papier bis des pages « Le saviez-vous ? » */
+  --primitive-papier-bis: #dccb9f;
 
   /* Couleurs avec transparence : suffixe -aNN = opacité en centièmes.
      Valeurs rgba recopiées telles quelles depuis les anciens semantics. */
@@ -338,6 +340,11 @@
   /* Page d'édito (EditoPage.jsx) */
   --edito-bleu: var(--primitive-bleu-edito);
   --edito-bleu-pale: var(--primitive-bleu-edito-pale);
+  /* Rubrique « Le saviez-vous ? » (SaviezVousPage.jsx) : page de magazine
+     papier bis façon DoggyBags, encadrés crème, encre ocre au sommaire */
+  --saviez-encre: var(--primitive-ochre-500);
+  --saviez-page: var(--primitive-papier-bis);
+  --saviez-fiche: var(--primitive-creme-pulp);
 }
 
 /* Portée inversée : la diapositive corail plein cadre d'une planche

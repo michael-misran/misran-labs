@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 import { getNumeros } from '../zine/numeros'
+import { getParutions } from '../saviez-vous/parutions'
 import useIsMobile from './useIsMobile'
 
 // Sommaire façon magazine : une page de papier qui s'ouvre par-dessus le site,
@@ -18,11 +19,16 @@ const etiquette = {
 // Entrées du sommaire, dans l'ordre du magazine ; page = numéro décoratif
 function entrees(lang) {
   const zineExiste = getNumeros().length > 0
+  // « Le saviez-vous ? » reste hors du sommaire tant qu'aucune parution n'est sortie
+  const saviezExiste = getParutions().length > 0
   return [
     { page: 3, to: '/', match: ['/'], titre: t(lang, 'editoNav'), chapo: t(lang, 'sommaireEdito'), couleur: 'var(--edito-bleu)', police: 'var(--font-pulp)' },
     { page: 5, to: '/breves', match: ['/breves'], titre: t(lang, 'brevesNav'), chapo: t(lang, 'sommaireGazette'), couleur: 'var(--titre-gazette)', police: 'var(--font-gothique)' },
     ...(zineExiste
       ? [{ page: 12, to: '/zine', match: ['/zine'], titre: t(lang, 'navTitreZine'), chapo: t(lang, 'sommaireZine'), couleur: 'var(--titre-zine)', police: 'var(--font-bd)' }]
+      : []),
+    ...(saviezExiste
+      ? [{ page: 16, to: '/saviez-vous', match: ['/saviez-vous'], titre: t(lang, 'saviezVousNav'), chapo: t(lang, 'sommaireSaviezVous'), couleur: 'var(--saviez-encre)', police: 'var(--font-bois-3)' }]
       : []),
     { page: 20, to: '/jeux', match: ['/jeux'], titre: t(lang, 'jeuxNav'), chapo: t(lang, 'sommaireJeux'), couleur: 'var(--titre-jeux)', police: 'var(--font-enseigne)' },
     { page: 28, to: '/lab', match: ['/lab'], titre: t(lang, 'navTitreLab'), chapo: t(lang, 'sommaireLab'), couleur: 'var(--titre-lab)', police: 'var(--font-machine)' },
