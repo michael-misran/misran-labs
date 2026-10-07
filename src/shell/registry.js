@@ -12,6 +12,7 @@ import { getNumero } from '../zine/numeros'
 const KNOWN_ROUTES = [
   /^\/suivre\/?$/,
   /^\/edito\/?$/,
+  /^\/kiosque\/?$/,
 ]
 
 function notFoundMeta(lang) {
@@ -19,7 +20,7 @@ function notFoundMeta(lang) {
 }
 
 export function resolveRouteMeta(pathname, lang) {
-  if (pathname === '/') return { icon: '⬡', label: t(lang, 'labHome') }
+  if (pathname === '/') return { icon: '✎', label: t(lang, 'editoNav') }
   if (pathname === '/lab') return { icon: '⬡', label: t(lang, 'labHome') }
 
   if (pathname.startsWith('/lab/')) {
@@ -48,6 +49,7 @@ export function resolveRouteMeta(pathname, lang) {
 
   if (pathname === '/suivre') return { icon: '◉', label: t(lang, 'suivreNav') }
   if (pathname === '/edito') return { icon: '✎', label: t(lang, 'editoNav') }
+  if (pathname === '/kiosque') return { icon: '⬡', label: t(lang, 'kiosqueNav') }
 
   // Rubrique Jeux : titre de l'onglet et de la barre d'état ; un slug
   // inconnu renvoie la 404, comme /lab/ (D3).

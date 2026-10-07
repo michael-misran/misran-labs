@@ -24,9 +24,9 @@ const SUIVRE_FIXED = {
   description: 'Misran Labs, maison d’édition indépendante : pas de compte à créer, un lecteur RSS ou un réseau suffit pour que les nouveautés viennent à vous.',
   image: 'og-image.png',
 }
-const EDITO_FIXED = {
-  title: 'Édito · Misran Labs',
-  description: 'Misran Labs, le laboratoire d’expérimentation de Michael Misran, publié par 1977 Éditions : pourquoi ce kiosque, ce qu’on y trouve et comment il est fabriqué.',
+const KIOSQUE_FIXED = {
+  title: 'La vitrine du kiosque · Misran Labs',
+  description: 'Tous les titres de Misran Labs, maison d’édition indépendante, sur un seul présentoir : la Gazette, le Zine, la salle de jeu et le Lab.',
   image: 'og-image.png',
 }
 const ZINE_FIXED = {
@@ -342,7 +342,7 @@ export function sharePreviewsPlugin() {
         { path: '/projets', title: PROJETS_FIXED.title, description: PROJETS_FIXED.description, image: PROJETS_FIXED.image, type: 'website' },
         { path: '/projets/fonctionnement', title: PROJETS_FONCTIONNEMENT_FIXED.title, description: PROJETS_FONCTIONNEMENT_FIXED.description, image: PROJETS_FONCTIONNEMENT_FIXED.image, type: 'website' },
         { path: '/suivre', title: SUIVRE_FIXED.title, description: SUIVRE_FIXED.description, image: SUIVRE_FIXED.image, type: 'website' },
-        { path: '/edito', title: EDITO_FIXED.title, description: EDITO_FIXED.description, image: EDITO_FIXED.image, type: 'website' },
+        { path: '/kiosque', title: KIOSQUE_FIXED.title, description: KIOSQUE_FIXED.description, image: KIOSQUE_FIXED.image, type: 'website' },
         { path: '/zine', title: ZINE_FIXED.title, description: ZINE_FIXED.description, image: ZINE_FIXED.image, type: 'website' },
         { path: '/jeux', title: JEUX_FIXED.title, description: JEUX_FIXED.description, image: JEUX_FIXED.image, type: 'website' },
         ...collectZineNumeros(rootDir),
