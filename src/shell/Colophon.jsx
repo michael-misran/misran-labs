@@ -1,4 +1,4 @@
-import LogoAlambic from './LogoAlambic'
+import Logo1977 from './Logo1977'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 
@@ -25,7 +25,7 @@ export default function Colophon() {
         }}
       >
         <span style={{ color: 'var(--text)' }}>
-          <LogoAlambic largeur={112} />
+          <Logo1977 largeur={96} accent="var(--titre-gazette)" />
         </span>
 
         <div>

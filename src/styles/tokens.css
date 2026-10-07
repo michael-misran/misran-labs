@@ -166,6 +166,7 @@
   --primitive-font-kanit: 'Kanit', 'Arial Black', sans-serif;
   --primitive-font-special-elite: 'Special Elite', 'Courier New', monospace;
   --primitive-font-chango: 'Chango', 'Ultra', serif;
+  --primitive-font-fraunces: 'Fraunces', 'Alfa Slab One', Georgia, serif;
   --primitive-font-bowlby-one-sc: 'Bowlby One SC', 'Chango', Impact, sans-serif;
   --primitive-font-bangers: 'Bangers', 'Anton', Impact, sans-serif;
   --primitive-font-germanica: 'Plain Germanica', 'UnifrakturMaguntia', cursive;
@@ -236,6 +237,8 @@
   --font-gothique: var(--primitive-font-germanica);
   /* Logo et grand titre de la maison (« MISRAN LABS ») */
   --font-logo: var(--primitive-font-chango);
+  /* Chiffres du logo 1977 Éditions (Fraunces Black « Soft », Logo1977.jsx) */
+  --font-1977: var(--primitive-font-fraunces);
   /* Grand titre pulp de l'en-tête, et son lettrage d'affiche (cartouche) */
   --font-pulp: var(--primitive-font-bowlby-one-sc);
   --font-affiche: var(--primitive-font-bangers);
@@ -321,7 +324,7 @@
   --masthead-lettre: var(--primitive-creme-pulp);
   --masthead-ombre: var(--primitive-rouge-pulp-fonce);
   --masthead-encre: var(--primitive-encre);
-  /* Intérieur du logo L'Alambic (verre, cuivre, yeux) : couleur du titre */
+  /* Chiffres découpés du logo 1977 Éditions : couleur du titre */
   --masthead-logo-fond: var(--masthead-lettre);
   /* Barre du menu des titres (NavTitres.jsx) */
   --masthead-sommaire: var(--primitive-rouge-pulp-fonce);

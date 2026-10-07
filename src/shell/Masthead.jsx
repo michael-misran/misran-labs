@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import LogoAlambic from './LogoAlambic'
+import Logo1977 from './Logo1977'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
 import { formatDateLong } from './dates'
@@ -174,9 +174,9 @@ export default function Masthead() {
             alignItems: 'center',
           }}
         >
-          {/* Logo de la maison d'édition L'Alambic (essai) */}
+          {/* Logo de la maison d'édition 1977 Éditions */}
           <span style={{ color: 'var(--masthead-encre)' }}>
-            <LogoAlambic largeur={largeurLogo} fond="var(--masthead-logo-fond)" />
+            <Logo1977 largeur={largeurLogo} fond="var(--masthead-logo-fond)" accent="var(--masthead-bandeau)" />
           </span>
 
           <div style={{ minWidth: 0 }}>

@@ -125,6 +125,7 @@ const TOKEN_GROUPS = [
       { name: '--font-enseigne', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-kanit' },
       { name: '--font-gothique-espace', tier: 'semantic', type: 'text', pointsTo: null },
       { name: '--font-logo', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-chango' },
+      { name: '--font-1977', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-fraunces' },
     ],
   },
   {
@@ -150,6 +151,7 @@ const TOKEN_GROUPS = [
       { name: '--primitive-font-comic-book', tier: 'primitive', type: 'font', pointsTo: null },
       { name: '--primitive-font-im-fell-english', tier: 'primitive', type: 'font', pointsTo: null },
       { name: '--primitive-font-chango', tier: 'primitive', type: 'font', pointsTo: null },
+      { name: '--primitive-font-fraunces', tier: 'primitive', type: 'font', pointsTo: null },
       // Polices de secours de Germanica et de Comic Book (Google Fonts)
       { name: '--primitive-font-unifraktur-maguntia', tier: 'primitive', type: 'font', pointsTo: null },
       { name: '--primitive-font-comic-neue', tier: 'primitive', type: 'font', pointsTo: null },
