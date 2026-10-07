@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-06",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "ChatGPT teste la publicité en images",
+        "en": "ChatGPT tests image-based ads"
+      },
+      "resume": {
+        "fr": "OpenAI annonce un format publicitaire visuel, testé d'abord pendant la génération d'images : l'annonce est étiquetée et séparée de l'image. Les essais démarrent plus tard en octobre aux États-Unis, avec un premier groupe d'annonceurs. Les outils de mesure s'élargissent, avec de nouveaux partenaires d'attribution.",
+        "en": "OpenAI announces a visual ad format, first tested during image generation: the ad is labelled and kept separate from the image. Tests start later in October in the US with a first group of advertisers. Measurement tools expand, with new attribution partners."
+      },
+      "sources": [
+        { "titre": "OpenAI", "url": "https://openai.com/index/new-chatgpt-ads-format-and-measurement/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "GitHub traque cinq nouveaux types de clés secrètes",
+        "en": "GitHub now hunts five new secret key types"
+      },
+      "resume": {
+        "fr": "Le 5 octobre, la détection de secrets de GitHub ajoute des clés de Lovable, de Supabase et de Pydantic. Lovable rejoint le programme partenaires : une clé trouvée dans un dépôt public lui est transmise pour qu'elle la révoque.",
+        "en": "On October 5, GitHub's secret scanning adds keys from Lovable, Supabase and Pydantic. Lovable joins the partner programme: a key found in a public repository is forwarded to it so it can revoke it."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-05-secret-scanning-adds-detectors-for-lovable-supabase-and-more" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Dark pattern",
+    "definition": {
+      "fr": "Interface conçue pour pousser l'utilisateur à faire ce qu'il n'aurait pas choisi de lui-même : case pré-cochée, désabonnement caché, bouton « refuser » en gris. En français : « interface trompeuse ».",
+      "en": "An interface designed to push users into doing something they would not have chosen on their own: a pre-ticked box, a hidden unsubscribe, a greyed-out “decline” button."
+    }
+  },
+  "chiffre": {
+    "valeur": "15,3 %",
+    "texte": {
+      "fr": "de coût d'acquisition attribué en moins pour WeightWatchers sur ChatGPT Ads (DV Rockerbox, cité par OpenAI).",
+      "en": "lower attributed acquisition cost for WeightWatchers on ChatGPT Ads (DV Rockerbox, cited by OpenAI)."
+    }
+  }
+}
