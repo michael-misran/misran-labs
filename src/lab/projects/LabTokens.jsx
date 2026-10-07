@@ -46,6 +46,8 @@ const TOKEN_GROUPS = [
       { name: '--primitive-titre-zine', tier: 'primitive', type: 'color', pointsTo: null },
       { name: '--primitive-titre-jeux', tier: 'primitive', type: 'color', pointsTo: null },
       { name: '--primitive-titre-lab', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-bleu-edito', tier: 'primitive', type: 'color', pointsTo: null },
+      { name: '--primitive-bleu-edito-pale', tier: 'primitive', type: 'color', pointsTo: null },
     ],
   },
   {
@@ -126,6 +128,8 @@ const TOKEN_GROUPS = [
       { name: '--font-gothique-espace', tier: 'semantic', type: 'text', pointsTo: null },
       { name: '--font-logo', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-chango' },
       { name: '--font-1977', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-fraunces' },
+      { name: '--font-edito', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-crimson-pro' },
+      { name: '--font-edito-titre', tier: 'semantic', type: 'font', pointsTo: '--primitive-font-alfa-slab-one' },
     ],
   },
   {
@@ -224,6 +228,8 @@ const TOKEN_GROUPS = [
       { name: '--masthead-encre', tier: 'component', type: 'color', pointsTo: '--primitive-encre' },
       { name: '--masthead-logo-fond', tier: 'component', type: 'color', pointsTo: '--masthead-lettre' },
       { name: '--masthead-sommaire', tier: 'component', type: 'color', pointsTo: '--primitive-rouge-pulp-fonce' },
+      { name: '--edito-bleu', tier: 'component', type: 'color', pointsTo: '--primitive-bleu-edito' },
+      { name: '--edito-bleu-pale', tier: 'component', type: 'color', pointsTo: '--primitive-bleu-edito-pale' },
     ],
   },
   {
