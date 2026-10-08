@@ -1,0 +1,182 @@
+/* Cadre du site-magazine : table de lecture sombre, une feuille posée dessus
+   (format A pour les pages du numéro, double page pour les rubriques), et les
+   commandes pour tourner les pages. */
+
+body { background: #1b1815; }
+
+.magazine {
+  min-height: 100vh;
+  background: #2a2622 radial-gradient(ellipse at 50% 0%, #3b342d, #1b1815 70%) fixed;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  padding: 28px 16px 40px;
+  overflow-x: hidden;
+}
+
+/* ---------- La feuille ---------- */
+.feuille { width: 100%; transform-origin: left center; }
+.feuille-page { width: min(620px, 100%); }
+.feuille-double {
+  width: min(1280px, 100%);
+  background: var(--bg);
+  box-shadow: 0 30px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(0,0,0,.25);
+  position: relative;
+}
+/* Pliure centrale discrète de la double page */
+.feuille-double::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 40px; transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,.06) 45%, rgba(0,0,0,.1) 50%, rgba(0,0,0,.06) 55%, transparent);
+  pointer-events: none; z-index: 0;
+}
+.feuille-corps { position: relative; z-index: 1; padding-bottom: 36px; }
+
+/* ---------- Effet livre ---------- */
+.magazine { --table: #1b1815; }
+.scene { position: relative; width: 100%; display: flex; justify-content: center; }
+.feuille { position: relative; z-index: 2; }
+/* Copie de la page qui s'en va : elle pivote autour de son bord gauche (la reliure) */
+.fantome { position: absolute; top: 0; left: 0; right: 0; margin: 0 auto; pointer-events: none;
+  transform-style: preserve-3d; transform-origin: left center; }
+.fantome-recto { position: relative; overflow: hidden; max-height: 160vh; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.fantome-verso { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg);
+  background: linear-gradient(90deg, #cdbf9f, #ece2c8 25%, #f5eddb 70%, #e6dbc0); box-shadow: inset 0 0 50px rgba(0,0,0,.25); }
+.fantome-avant { z-index: 5; animation: page-tourne .9s cubic-bezier(.45,.05,.35,1) forwards; }
+.fantome-avant .fantome-recto::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to left, rgba(0,0,0,.45), rgba(0,0,0,.1) 55%, transparent); animation: page-ombre .9s ease-in forwards; }
+.fantome-arriere { z-index: 1; animation: page-reste .65s linear forwards; }
+@keyframes page-tourne {
+  0% { transform: perspective(2400px) rotateY(0deg); }
+  100% { transform: perspective(2400px) rotateY(-180deg); }
+}
+@keyframes page-ombre { from { opacity: 0; } to { opacity: 1; } }
+@keyframes page-reste { 0%, 85% { opacity: 1; } 100% { opacity: 0; } }
+/* Nouvelle page : dans l'ombre de la page qui tourne, ou revenant par la gauche */
+.sous-page { animation: page-dessous .9s ease-out; }
+@keyframes page-dessous { from { filter: brightness(.6); } to { filter: brightness(1); } }
+.page-revient { z-index: 3; transform-origin: left center; animation: page-revient .65s cubic-bezier(.3,.6,.35,1) both; }
+@keyframes page-revient {
+  from { transform: perspective(2400px) rotateY(-95deg); }
+  to { transform: perspective(2400px) rotateY(0deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fantome { display: none; }
+  .sous-page, .page-revient { animation: none; }
+}
+
+/* Coins de page : cornés au survol, un clic tourne la page */
+.coin { position: absolute; bottom: 0; width: 56px; height: 56px; z-index: 6; }
+.coin-suivant { right: 0; }
+.coin-precedent { left: 0; }
+.coin::before { content: ''; position: absolute; bottom: 0; width: 20px; height: 20px; transition: width .2s ease, height .2s ease; box-shadow: 0 0 6px rgba(0,0,0,.35); }
+.coin-suivant::before { right: 0; background: linear-gradient(to top left, var(--table) 50%, #efe5cc 50%, #d6c8a6 100%); }
+.coin-precedent::before { left: 0; background: linear-gradient(to top right, var(--table) 50%, #efe5cc 50%, #d6c8a6 100%); }
+.coin:hover::before, .coin:focus-visible::before { width: 56px; height: 56px; }
+
+/* ---------- Tête courante des doubles pages ---------- */
+.tete-courante {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px;
+  padding: 10px 20px; border-bottom: 3px double var(--border);
+  font-family: var(--font-etiquette); text-transform: uppercase; letter-spacing: .14em; font-size: 12px; font-weight: 700;
+  color: var(--text2);
+}
+.tete-courante a { color: inherit; text-decoration: none; }
+.tete-courante a:hover { color: var(--text); text-decoration: underline; }
+.tc-titre { font-family: var(--font-bois); letter-spacing: .02em; font-size: 16px; font-weight: 400; color: var(--text) !important; }
+.tc-titre span { color: var(--titre-gazette); }
+.tc-rubrique { font-size: 13px; text-align: center; }
+.tc-sommaire { justify-self: end; }
+.folio-double { text-align: center; font: italic 15px var(--font-chapo); color: var(--muted); margin-top: 12px; }
+
+/* ---------- Commandes de lecture ---------- */
+.commandes {
+  width: min(1280px, 100%);
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: center;
+}
+.feuille-page + .commandes { width: min(620px, 100%); }
+.onglets { grid-column: 1 / -1; display: flex; justify-content: center; gap: 5px; flex-wrap: wrap; }
+.onglets a {
+  width: 26px; height: 32px; display: grid; place-items: center;
+  border: 2px solid #000; border-top: 5px solid var(--onglet, #8d8270); background: #8d8270;
+  font: 700 11px var(--font-etiquette); color: #000; text-decoration: none;
+}
+.onglets a.on { background: #f1e7cf; transform: translateY(-4px); }
+.onglets a:hover { background: #cfc4ad; }
+.tourner {
+  display: flex; flex-direction: column; gap: 2px; max-width: 280px;
+  background: #f1e7cf; color: #16120e; border: 3px solid #000; box-shadow: 4px 4px 0 #000;
+  padding: 8px 14px; text-decoration: none;
+  font: 700 16px/1.1 var(--font-etiquette); text-transform: uppercase; letter-spacing: .04em;
+}
+.tourner small { font: italic 13px var(--font-chapo); text-transform: none; letter-spacing: 0; color: #5a4f42; }
+.tourner.suivante { justify-self: end; text-align: right; }
+.tourner:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 #000; }
+.commandes-milieu { display: flex; gap: 8px; }
+.petit-bouton {
+  background: none; border: 2px solid #8d8270; color: #cfc4ad; padding: 6px 10px; cursor: pointer;
+  font: 700 12px var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase; text-decoration: none;
+}
+.petit-bouton:hover { border-color: #f1e7cf; color: #f1e7cf; }
+.astuce { color: #8d8270; font: italic 14px var(--font-chapo); text-align: center; }
+
+/* Sur téléphone : la feuille prend toute la largeur, commandes empilées */
+@media (max-width: 600px) {
+  .magazine { padding: 12px 8px 28px; }
+  .feuille-double::before { display: none; }
+  .tete-courante { grid-template-columns: 1fr auto; padding: 8px 12px; }
+  .tc-rubrique { display: none; }
+  .commandes { grid-template-columns: 1fr 1fr; }
+  .commandes-milieu { grid-column: 1 / -1; grid-row: 3; justify-content: center; }
+  .onglets a { width: 20px; height: 26px; font-size: 10px; }
+  .tourner { font-size: 13px; padding: 6px 10px; }
+  .tourner small { font-size: 11px; }
+}
+
+/* ---------- Thème du numéro : Halloween (octobre) ----------
+   Citrouille, violet nuit, vert slime et couleur os. Ne touche que la table
+   de lecture et les pages du numéro : les rubriques gardent leurs couleurs. */
+.theme-halloween {
+  --table: #424242;
+  background: #424242;
+}
+.theme-halloween .feuille-page {
+  --masthead-bandeau: #ff7518;
+  --masthead-fond: #2a1640;
+  --masthead-fond-ombre: #0c0614;
+  --masthead-lettre: #f6e7c8;
+  --masthead-ombre: #ff7518;
+  --masthead-sommaire: #6a2c91;
+  --masthead-logo-fond: #2a1640;
+  --pastille-2: #ff7518;
+  --n-papier: #f3e4c6;
+  --n-kraft: #e0a458;
+  --n-pub: #cdb8e6;
+  --n-pub-encre: #2a1640;
+  --n-nuit: #1a0d2b;
+}
+/* Sur le carton violet, les textes passent en couleur os */
+.theme-halloween .feuille-page .une-accroche,
+.theme-halloween .feuille-page .une-titres .rythme,
+.theme-halloween .feuille-page .fin-chapo,
+.theme-halloween .feuille-page .fin-relire { color: var(--masthead-lettre); }
+.theme-halloween .feuille-page .une-logo { color: #f6e7c8; }
+/* Toile d'araignée dans le coin du carton */
+.theme-halloween .feuille-page .toile { display: block; position: absolute; right: 0; top: 0; width: 15cqw; height: 15cqw; color: rgba(246,231,200,.55); transform: scaleX(-1); pointer-events: none; }
+/* Commandes : ombres et onglet actif citrouille */
+.theme-halloween .tourner { box-shadow: 4px 4px 0 #ff7518; border-color: #120a1c; }
+.theme-halloween .tourner:hover { box-shadow: 2px 2px 0 #ff7518; }
+.theme-halloween .onglets a { border-color: #120a1c; background: #6a5a7a; }
+.theme-halloween .onglets a.on { background: #ff7518; }
+.theme-halloween .petit-bouton { border-color: #8a6aa8; color: #d9c6ee; }
+.theme-halloween .astuce { color: #8a6aa8; }
+/* Kiosque de la couverture : nuit violette et rayons de citrouille */
+.theme-halloween .feuille-page .une-image img { filter: sepia(.2) saturate(1.3) hue-rotate(-12deg) brightness(.82) contrast(1.15); }
+.theme-halloween .feuille-page .une-image::before { background: repeating-conic-gradient(from 0deg at 50% 120%, rgba(255,117,24,.28) 0 6deg, rgba(58,29,82,.35) 6deg 12deg); }
+
+/* Page tournée à la main : elle suit le geste, sans animation automatique */
+.fantome-manuel { animation: none !important; }
+.fantome-manuel .fantome-recto::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to left, rgba(0,0,0,.45), rgba(0,0,0,.1) 55%, transparent); opacity: var(--progres, 0); }
+.fantome-arriere.fantome-manuel { opacity: 1; }
+.page-manuelle { z-index: 3; transform-origin: left center; transform: perspective(2400px) rotateY(-95deg); }
+.coin { cursor: grab; touch-action: none; }
+.coin:active { cursor: grabbing; }

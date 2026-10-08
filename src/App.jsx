@@ -19,6 +19,18 @@ const JeuPage = lazy(() => import('./jeux/JeuPage'))
 const ZineHome = lazy(() => import('./zine/ZineHome'))
 const ZineNumero = lazy(() => import('./zine/ZineNumero'))
 const SaviezVousPage = lazy(() => import('./saviez-vous/SaviezVousPage'))
+// Pages du numéro (format A), toutes dans le même module
+const numeroPage = (nom) => lazy(() => import('./numero/NumeroPages').then((m) => ({ default: m[nom] })))
+const Couverture = numeroPage('Couverture')
+const SommairePage = numeroPage('SommairePage')
+const Reclames = numeroPage('Reclames')
+const LabPresente = numeroPage('LabPresente')
+const Dossier = numeroPage('Dossier')
+const DossierSuite = numeroPage('DossierSuite')
+const Avertissement = numeroPage('Avertissement')
+const JeuPresente = numeroPage('JeuPresente')
+const DerniereMinute = numeroPage('DerniereMinute')
+const QuatriemeCouverture = numeroPage('QuatriemeCouverture')
 const Page404 = lazy(() => import('./shell/Page404'))
 
 export default function App() {
@@ -26,8 +38,20 @@ export default function App() {
     <LanguageProvider>
       <Routes>
         <Route path="/" element={<Shell />}>
-          {/* L'édito est la page d'accueil ; l'ancienne vitrine passe sur /kiosque */}
-          <Route index element={<EditoPage />} />
+          {/* Le site est un magazine : l'accueil est la couverture, l'édito suit le sommaire */}
+          <Route index element={<Couverture />} />
+          <Route path="sommaire" element={<SommairePage />} />
+          <Route path="edito" element={<EditoPage />} />
+          <Route path="reclames" element={<Reclames />} />
+          <Route path="lab/presente" element={<LabPresente />} />
+          <Route path="dossier" element={<Dossier />} />
+          <Route path="dossier/suite" element={<DossierSuite />} />
+          <Route path="avertissement" element={<Avertissement />} />
+          <Route path="jeux/presente" element={<JeuPresente />} />
+          <Route path="derniere-minute" element={<DerniereMinute />} />
+          <Route path="a-suivre" element={<QuatriemeCouverture />} />
+          <Route path="ours" element={<Navigate to="/a-suivre" replace />} />
+          <Route path="numero/:numero" element={<Navigate to="/" replace />} />
           <Route path="kiosque" element={<KiosqueHome />} />
           <Route path="lab" element={<BureauLab />} />
           <Route path="lab/:slug" element={<ProjectPage />} />
@@ -38,7 +62,6 @@ export default function App() {
           <Route path="projets/fonctionnement" element={<ProjetsFonctionnement />} />
           <Route path="projets/:id" element={<ProjetIdee />} />
           <Route path="suivre" element={<SuivrePage />} />
-          <Route path="edito" element={<Navigate to="/" replace />} />
           <Route path="jeux" element={<JeuxHome />} />
           <Route path="jeux/:slug" element={<JeuPage />} />
           <Route path="zine" element={<ZineHome />} />
