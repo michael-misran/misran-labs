@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-09",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Anthropic révise sa politique d'usage, effective le 12 novembre",
+        "en": "Anthropic revises its usage policy, effective November 12"
+      },
+      "resume": {
+        "fr": "Le texte publié le 8 octobre regroupe les règles sur les campagnes trompeuses et durcit celles sur la surveillance : suivre des personnes sans consentement est interdit. Les systèmes pilotant du matériel autonome doivent pouvoir être arrêtés par un opérateur qualifié.",
+        "en": "The text published on October 8 groups the rules on deceptive campaigns and tightens those on surveillance: tracking people without consent is prohibited. Systems driving autonomous equipment must be stoppable by a qualified operator."
+      },
+      "sources": [
+        { "titre": "Anthropic", "url": "https://www.anthropic.com/news/2026-usage-policy-update" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Copilot : le bac à sable local passe en disponibilité générale",
+        "en": "Copilot: the local sandbox reaches general availability"
+      },
+      "resume": {
+        "fr": "Depuis le 7 octobre, GitHub Copilot peut limiter ce que ses agents touchent : fichiers, réseau, identifiants Git et certains outils locaux. Disponible dans la CLI, l'application et VS Code, sous Windows, macOS et Linux, sans surcoût.",
+        "en": "Since October 7, GitHub Copilot can limit what its agents touch: files, network, Git credentials and some local tools. Available in the CLI, the app and VS Code, on Windows, macOS and Linux, at no extra cost."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Figma : un agent pour entretenir les design systems",
+        "en": "Figma: an agent to maintain design systems"
+      },
+      "resume": {
+        "fr": "Figma montre comment son agent documente les composants, repère les écarts avec la bibliothèque et harmonise les noms. Uber l'emploie sur sept plateformes. Réservé aux sièges Full de plusieurs plans payants.",
+        "en": "Figma shows how its agent documents components, spots deviations from the library and standardizes names. Uber uses it across seven platforms. Reserved for Full seats on several paid plans."
+      },
+      "sources": [
+        { "titre": "Figma", "url": "https://www.figma.com/blog/figma-agent-and-design-systems/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "npm : 48 heures pour valider une publication de confiance",
+        "en": "npm: 48 hours to validate trusted publishing"
+      },
+      "resume": {
+        "fr": "Depuis le 2 octobre, une configuration de publication de confiance npm non validée expire 48 heures après sa création. Une première publication réussie la valide ; si elle a expiré, on la recrée.",
+        "en": "Since October 2, an unvalidated npm trusted publishing configuration expires 48 hours after creation. A first successful publish validates it; if it expired, recreate it."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-02-unvalidated-npm-trusted-publishing-configurations-now-expire" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Bac à sable",
+    "definition": {
+      "fr": "Espace isolé où l'on exécute du code sans qu'il puisse toucher au reste du système. On y limite les fichiers, le réseau et les identifiants accessibles.",
+      "en": "An isolated space where code runs without being able to touch the rest of the system. Accessible files, network and credentials are restricted."
+    }
+  },
+  "chiffre": {
+    "valeur": "≈ 40",
+    "texte": {
+      "fr": "disquettes : c'est ce qu'il a fallu relire pour retrouver une sauvegarde de 1989 contenant un jeu NES jamais sorti.",
+      "en": "floppy disks: what it took to read back a 1989 backup containing a never-released NES game."
+    }
+  }
+}
