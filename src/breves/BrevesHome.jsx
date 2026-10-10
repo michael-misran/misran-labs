@@ -171,6 +171,23 @@ function couper(texte, police, largeur) {
   if (ligne) lignes.push(ligne)
   return lignes
 }
+// Taille de police maximale pour qu'un texte tienne sur une seule ligne de
+// la largeur donnée (le chiffre du jour sur l'affiche, ex. « 84,4 % »)
+function tailleAjustee(texte, police, tailleMax, largeur) {
+  if (!ctxMesure) ctxMesure = document.createElement('canvas').getContext('2d')
+  ctxMesure.font = police.replace('{taille}', tailleMax)
+  const mesure = ctxMesure.measureText(texte).width
+  return mesure > largeur ? Math.floor((tailleMax * largeur) / mesure * 10) / 10 : tailleMax
+}
+// Texte des petits bandeaux peints : 15 px au plus, avec une marge de 8 px
+// de chaque côté. Un mot long resserre d'abord son interlettrage (non compté
+// par le canvas), puis réduit sa taille.
+function styleBandeau(texte, largeurBandeau) {
+  for (const espace of [3, 2, 1, 0.5]) {
+    const taille = tailleAjustee(texte, '700 {taille}px Oswald', 15, largeurBandeau - 16 - espace * texte.length)
+    if (taille >= 12 || espace === 0.5) return { fontSize: taille, letterSpacing: String(espace) }
+  }
+}
 function usePolicesPretes() {
   const [pretes, setPretes] = useState(0)
   useEffect(() => {
@@ -261,6 +278,8 @@ export default function BrevesHome() {
   const motTerme = jour.mot ? couper(jour.mot.terme, "16px 'IM Fell English'", 60) : []
   const yDefMot = 40 + motTerme.length * 17 + 6
   const motDef = jour.mot ? couper(t(jour.mot.definition), "italic 7.4px 'IM Fell English'", 58).slice(0, 12) : []
+  const texteBandeauDroit = jour.chiffre ? c.leChiffre : c.enBref
+  const chiffreTaille = jour.chiffre ? tailleAjustee(jour.chiffre.valeur, "700 {taille}px Oswald", 30, 56) : 30
   const chiffreTexte = jour.chiffre ? couper(t(jour.chiffre.texte), "7.4px 'IM Fell English'", 60).slice(0, 12) : []
   const titresDroite = empiler(jour.breves.map((b) => couper(t(b.titre), '500 8.2px Oswald', 56).slice(0, 5)), 32, 10, 16)
 
@@ -342,9 +361,9 @@ export default function BrevesHome() {
           </text>
 
           {/* Petits bandeaux au-dessus des affiches, peints sur les pans en biais */}
-          <g fontFamily={TITRE} fontWeight="700" fontSize="15" fill="url(#kiosque-dorure)">
-            <T s={SURFACES.bandeauGauche} x={SURFACES.bandeauGauche.l / 2} y={21} textAnchor="middle" letterSpacing="3">{c.leMot}</T>
-            <T s={SURFACES.bandeauDroit} x={SURFACES.bandeauDroit.l / 2} y={22} textAnchor="middle" letterSpacing="3">{jour.chiffre ? c.leChiffre : c.enBref}</T>
+          <g fontFamily={TITRE} fontWeight="700" fill="url(#kiosque-dorure)">
+            <T s={SURFACES.bandeauGauche} x={SURFACES.bandeauGauche.l / 2} y={21} textAnchor="middle" {...styleBandeau(c.leMot, SURFACES.bandeauGauche.l)}>{c.leMot}</T>
+            <T s={SURFACES.bandeauDroit} x={SURFACES.bandeauDroit.l / 2} y={22} textAnchor="middle" {...styleBandeau(texteBandeauDroit, SURFACES.bandeauDroit.l)}>{texteBandeauDroit}</T>
           </g>
 
           {/* Le journal du jour, suspendu : chaque ligne suit sa page */}
@@ -406,7 +425,7 @@ export default function BrevesHome() {
               {jour.chiffre ? (
                 <>
                   <T s={SURFACES.afficheDroite} x={35} y={14} textAnchor="middle" fontFamily={TITRE} fontWeight="700" fontSize="6.4" letterSpacing="1.2" fill={ROUGE}>{c.chiffreDuJour}</T>
-                  <T s={SURFACES.afficheDroite} x={35} y={74} textAnchor="middle" fontFamily={TITRE} fontWeight="700" fontSize="30" fill={ROUGE}>{jour.chiffre.valeur}</T>
+                  <T s={SURFACES.afficheDroite} x={35} y={74} textAnchor="middle" fontFamily={TITRE} fontWeight="700" fontSize={chiffreTaille} fill={ROUGE}>{jour.chiffre.valeur}</T>
                   <Lignes s={SURFACES.afficheDroite} lignes={chiffreTexte} x={35} y={98} pas={9.5} textAnchor="middle" fontFamily={CORPS} fontSize={7.4} fill={ENCRE_CORPS} />
                 </>
               ) : (
