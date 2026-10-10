@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-10",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Vercel : un agent peut chercher un domaine, pas l'acheter seul",
+        "en": "Vercel: an agent can look up a domain, but not buy it alone"
+      },
+      "resume": {
+        "fr": "Le CLI de Vercel propose quatre commandes pour qu'un agent cherche, vérifie et chiffre un nom de domaine, puis lance l'achat. Quand c'est un agent qui l'exécute, l'achat renvoie une erreur structurée et la confirmation revient à l'humain, qui valide prix, renouvellement et coordonnées.",
+        "en": "Vercel's CLI offers four commands so an agent can search, check and price a domain name, then start the purchase. When an agent runs it, the purchase returns a structured error and confirmation goes back to the human, who approves price, renewal and contact details."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/agents-can-now-buy-domains-with-the-vercel-cli" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Vercel facture le stockage des déploiements aux équipes Pro",
+        "en": "Vercel starts billing deployment storage for Pro teams"
+      },
+      "resume": {
+        "fr": "Les équipes Pro existantes paient désormais le stockage des déploiements et des Functions, 0,10 $ par Go et par mois. Les déploiements de plus de 30 jours seront supprimés à partir du 23 octobre, sauf réglage contraire de la rétention.",
+        "en": "Existing Pro teams now pay for deployment and Functions storage at $0.10 per GB per month. Deployments older than 30 days will be deleted from October 23 unless the retention setting is changed."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/deployment-storage-pricing-expands-to-existing-teams" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "GitHub : les fils d'activité deviennent des listes pour les lecteurs d'écran",
+        "en": "GitHub: activity timelines become lists for screen readers"
+      },
+      "resume": {
+        "fr": "Les fils des issues et pull requests se parcourent comme des listes avec VoiceOver, NVDA et JAWS. Après un chargement supplémentaire, le lecteur d'écran annonce le nombre d'éléments ajoutés. L'apparence visuelle reste identique.",
+        "en": "Issue and pull request timelines can now be navigated as lists with VoiceOver, NVDA and JAWS. After loading more items, the screen reader announces how many were added. The visual look is unchanged."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-08-screen-readers-can-navigate-timelines-as-lists" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Humain dans la boucle",
+    "definition": {
+      "fr": "Principe de conception où un agent automatique prépare le travail mais s'arrête avant l'action qui compte (payer, supprimer, envoyer) pour demander la validation d'une personne.",
+      "en": "Design principle where an automated agent prepares the work but stops before the action that matters (paying, deleting, sending) to ask for a person's approval."
+    }
+  },
+  "chiffre": {
+    "valeur": "× 3,1",
+    "texte": {
+      "fr": "C'est ce que donne 10 % de croissance par mois pendant un an (1,1 puissance 12).",
+      "en": "That is what 10% monthly growth over a year gives (1.1 to the power of 12)."
+    }
+  }
+}
