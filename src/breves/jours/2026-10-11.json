@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-11",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Hugging Face : un agent entraîne six modèles pour environ 103 $",
+        "en": "Hugging Face: an agent trains six models for about $103"
+      },
+      "resume": {
+        "fr": "Un auteur de Hugging Face a construit six modèles avec « ML-Intern », un mode de HuggingChat qui part d'un budget nul et demande l'autorisation avant tout calcul payant. Le plus chiffré, un modèle de diagnostic des agrumes, passe de 14,9 % à 52,8 % de bonnes identifications pour environ 1,90 $.",
+        "en": "A Hugging Face author built six models with \"ML-Intern\", a HuggingChat mode that starts from a zero budget and asks permission before any paid compute. The most detailed one, a citrus diagnosis model, goes from 14.9% to 52.8% correct identifications for about $1.90."
+      },
+      "sources": [
+        { "titre": "Hugging Face", "url": "https://huggingface.co/blog/building-with-ml-intern" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "SVG 2 : le texte de référence est remis au propre",
+        "en": "SVG 2: the reference text gets a clean-up"
+      },
+      "resume": {
+        "fr": "Le groupe de travail SVG du W3C a publié le 6 octobre une version mise à jour du projet de recommandation candidate de SVG 2, avec des corrections et des clarifications pour que les navigateurs affichent les images de la même façon. Les commentaires publics restent possibles jusqu'au 1er décembre 2026.",
+        "en": "The W3C SVG working group published an updated candidate recommendation draft of SVG 2 on October 6, with corrections and clarifications so browsers render images the same way. Public comments are open until December 1, 2026."
+      },
+      "sources": [
+        { "titre": "W3C", "url": "https://www.w3.org/news/2026/updated-candidate-recommendation-scalable-vector-graphics-svg-2/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Node.js 26.11 renomme des classes de sqlite",
+        "en": "Node.js 26.11 renames sqlite classes"
+      },
+      "resume": {
+        "fr": "La version 26.11.0, publiée le 7 octobre, renomme DatabaseSync et StatementSync dans le module sqlite. Les nouveaux noms ne figurent pas sur la page d'annonce : consultez la documentation avant de mettre à jour du code qui s'en sert.",
+        "en": "Version 26.11.0, released on October 7, renames DatabaseSync and StatementSync in the sqlite module. The new names are not on the announcement page: check the documentation before updating code that uses them."
+      },
+      "sources": [
+        { "titre": "Node.js", "url": "https://nodejs.org/en/blog/release/v26.11.0" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Affinage",
+    "definition": {
+      "fr": "En anglais fine-tuning : réentraîner un modèle déjà formé sur un petit jeu d'exemples d'un seul métier, pour qu'il y devienne meilleur.",
+      "en": "Retraining an already trained model on a small set of examples from a single domain so it gets better at it. Also called fine-tuning."
+    }
+  },
+  "chiffre": {
+    "valeur": "1,90 $",
+    "texte": {
+      "fr": "C'est le coût de calcul annoncé pour le modèle de diagnostic des agrumes, qui passe de 14,9 % à 52,8 % de réussite.",
+      "en": "The compute cost reported for the citrus diagnosis model, which goes from 14.9% to 52.8% accuracy."
+    }
+  }
+}
