@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-12",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Ai2 remplace la file de priorités de ses GPU par des budgets de temps",
+        "en": "Ai2 swaps its GPU priority queue for time budgets"
+      },
+      "resume": {
+        "fr": "L'équipe d'infrastructure d'Ai2 décrit un ordonnanceur où chaque projet reçoit un budget de temps GPU, avec une durée minimale protégée de 8 heures au plus. Sur 30 jours de test, les équipes ont reçu 98 % des heures dues, et l'attente de débogage au 90ᵉ centile est passée de 2 heures à 30 secondes.",
+        "en": "Ai2's infrastructure team describes a scheduler where each project gets a GPU time budget, with a protected minimum runtime of up to 8 hours. Over a 30-day test, teams received 98% of the hours they were owed, and the 90th-percentile debugging wait fell from 2 hours to 30 seconds."
+      },
+      "sources": [
+        { "titre": "Hugging Face", "url": "https://huggingface.co/blog/allenai/impactful-scheduling" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Deno rejoint Cloudflare",
+        "en": "Deno joins Cloudflare"
+      },
+      "resume": {
+        "fr": "Cloudflare annonce l'arrivée de l'équipe Deno, avec Ryan Dahl et Bert Belder à la tête d'un chantier d'auto-hébergement pour workerd, le moteur open source de ses Workers. Le billet ne précise pas l'avenir du runtime Deno.",
+        "en": "Cloudflare announces that the Deno team is joining, with Ryan Dahl and Bert Belder leading an effort to make workerd, the open source engine behind its Workers, a first-class self-hosting option. The post does not say what happens to the Deno runtime."
+      },
+      "sources": [
+        { "titre": "Cloudflare", "url": "https://blog.cloudflare.com/deno-joins-cloudflare/" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "MVP",
+    "definition": {
+      "fr": "Produit minimum viable : la version la plus petite d'un produit qui permet déjà de vérifier si quelqu'un en a besoin.",
+      "en": "Minimum viable product: the smallest version of a product that can already show whether anyone needs it."
+    }
+  },
+  "chiffre": {
+    "valeur": "3 000 £",
+    "texte": {
+      "fr": "C'est la somme pour laquelle Robert Stein a vendu les droits occidentaux de Tetris à Mirrorsoft et Spectrum HoloByte, plus des redevances de 7,5 à 15 %.",
+      "en": "That is what Robert Stein sold the Western rights to Tetris to Mirrorsoft and Spectrum HoloByte for, plus royalties of 7.5 to 15%."
+    }
+  }
+}
