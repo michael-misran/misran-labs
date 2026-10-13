@@ -1,7 +1,7 @@
 # Mission p006-maquettes — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 6 (donne.html)
+**Prochaine action :** étape 7 (scores.html, joueurs.html)
 **Blocages :** aucun
 
 ## État initial (2026-10-13, base origin/main 09e84fc + PR #95 et #96)

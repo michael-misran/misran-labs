@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>La Marque — Nouvelle donne</title>
+    <link rel="stylesheet" href="p006.css" />
+  </head>
+  <body class="papier-quadrille">
+    <div class="page-shell">
+      <div class="page-toolbar">
+        <a class="back-link" href="scores.html">← Scores</a>
+        <h1>La Marque <span class="provisional-tag">Nom provisoire</span></h1>
+        <span></span>
+      </div>
+
+      <div class="phone">
+        <div class="dynamic-island"></div>
+        <div class="phone-screen papier-quadrille">
+          <div class="status-bar" data-status-bar></div>
+          <div class="screen-content">
+            <div class="screen-title">Nouvelle donne</div>
+
+            <div class="form-field">
+              <label>Qui a pris ?</label>
+              <div class="joueur-grid" id="grille-preneur"></div>
+            </div>
+
+            <div class="form-field" id="bloc-appele" hidden>
+              <label>Qui est l'appelé ?</label>
+              <div class="joueur-grid" id="grille-appele"></div>
+            </div>
+
+            <div class="form-field">
+              <label>Contrat</label>
+              <div class="btn-grid" id="grille-contrat">
+                <button type="button" class="btn" data-contrat="petite">Petite</button>
+                <button type="button" class="btn" data-contrat="garde">Garde</button>
+                <button type="button" class="btn" data-contrat="garde-sans">Garde sans</button>
+                <button type="button" class="btn" data-contrat="garde-contre">Garde contre</button>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label>Bouts dans le camp de l'attaque</label>
+              <div class="stepper">
+                <button type="button" id="bouts-moins" aria-label="Moins un bout">−</button>
+                <div class="valeur chiffres" id="bouts-valeur">0</div>
+                <button type="button" id="bouts-plus" aria-label="Plus un bout">+</button>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label>Points réalisés par l'attaque <span id="rappel-a-faire"></span></label>
+              <div class="stepper">
+                <button type="button" id="points-moins" aria-label="Moins un demi-point">−</button>
+                <div class="valeur chiffres" id="points-valeur">0</div>
+                <button type="button" id="points-plus" aria-label="Plus un demi-point">+</button>
+              </div>
+            </div>
+
+            <div class="resultat-direct" id="resultat-direct"></div>
+
+            <details class="options-bloc">
+              <summary>Petit au bout</summary>
+              <div class="options-bloc-contenu">
+                <div class="btn-row">
+                  <button type="button" class="btn" data-petit="aucun" aria-pressed="true">Personne</button>
+                  <button type="button" class="btn" data-petit="attaque">Attaque</button>
+                  <button type="button" class="btn" data-petit="defense">Défense</button>
+                </div>
+              </div>
+            </details>
+
+            <details class="options-bloc">
+              <summary>Poignée</summary>
+              <div class="options-bloc-contenu">
+                <div class="btn-row" style="margin-bottom: 10px;">
+                  <button type="button" class="btn" data-poignee-type="aucun" aria-pressed="true">Aucune</button>
+                  <button type="button" class="btn" data-poignee-type="simple">Simple</button>
+                  <button type="button" class="btn" data-poignee-type="double">Double</button>
+                  <button type="button" class="btn" data-poignee-type="triple">Triple</button>
+                </div>
+                <label style="font-size: 13px; color: var(--encre-muted); font-weight: 600;">Montrée par</label>
+                <div class="btn-row" id="bloc-poignee-camp" style="margin-top: 6px;">
+                  <button type="button" class="btn" data-poignee-camp="attaque" aria-pressed="true">Attaque</button>
+                  <button type="button" class="btn" data-poignee-camp="defense">Défense</button>
+                </div>
+              </div>
+            </details>
+
+            <details class="options-bloc">
+              <summary>Chelem</summary>
+              <div class="options-bloc-contenu">
+                <div class="btn-row">
+                  <button type="button" class="btn" data-chelem="aucun" aria-pressed="true">Aucun</button>
+                  <button type="button" class="btn" data-chelem="annonce-reussi">Annoncé réussi</button>
+                </div>
+                <div class="btn-row" style="margin-top: 8px;">
+                  <button type="button" class="btn" data-chelem="non-annonce-reussi">Non annoncé</button>
+                  <button type="button" class="btn" data-chelem="annonce-rate">Annoncé raté</button>
+                </div>
+              </div>
+            </details>
+
+            <button type="button" class="btn primary" id="btn-valider" style="width: 100%; margin-top: 18px;">Valider la donne</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="p006-calcul.js" defer></script>
+    <script src="p006.js" defer></script>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        const partie = window.P006.obtenirPartieCourante();
+        const joueurs = partie.joueurs;
+        const nbJoueurs = partie.nbJoueurs;
+
+        const saisie = {
+          nbJoueurs: nbJoueurs,
+          preneur: 0,
+          appele: nbJoueurs === 5 ? 1 : null,
+          contrat: 'petite',
+          bouts: 0,
+          pointsRealises: 56,
+          petitAuBout: 'aucun',
+          poignee: null,
+          chelem: 'aucun',
+        };
+
+        const grillePreneur = document.getElementById('grille-preneur');
+        const blocAppele = document.getElementById('bloc-appele');
+        const grilleAppele = document.getElementById('grille-appele');
+        const grilleContrat = document.getElementById('grille-contrat');
+        const boutsValeur = document.getElementById('bouts-valeur');
+        const pointsValeur = document.getElementById('points-valeur');
+        const rappelAFaire = document.getElementById('rappel-a-faire');
+        const resultatDirect = document.getElementById('resultat-direct');
+        const blocPoigneeCamp = document.getElementById('bloc-poignee-camp');
+
+        function rendreGrilleJoueurs(conteneur, attribut, valeurCourante) {
+          conteneur.innerHTML = joueurs
+            .map(
+              (nom, i) =>
+                `<button type="button" class="joueur-btn" data-${attribut}="${i}" aria-pressed="${i === valeurCourante}">${window.P006.escapeHtml(nom)}</button>`
+            )
+            .join('');
+        }
+
+        rendreGrilleJoueurs(grillePreneur, 'preneur', saisie.preneur);
+        if (nbJoueurs === 5) {
+          blocAppele.hidden = false;
+          rendreGrilleJoueurs(grilleAppele, 'appele', saisie.appele);
+        }
+
+        function recalculer() {
+          saisie.pointsRealises = Math.max(0, Math.min(91, saisie.pointsRealises));
+          const aFaire = window.TarotCalcul.pointsAFaire(saisie.bouts);
+          rappelAFaire.textContent = '(à faire : ' + aFaire + ' sur ' + window.TarotCalcul.POINTS_DU_JEU + ')';
+          boutsValeur.textContent = saisie.bouts;
+          pointsValeur.textContent = saisie.pointsRealises % 1 === 0 ? saisie.pointsRealises : saisie.pointsRealises.toFixed(1);
+
+          const resultat = window.TarotCalcul.calculerDonne(saisie);
+          resultatDirect.className = 'resultat-direct ' + (resultat.attaqueReussie ? 'reussi' : 'chute');
+          const detailScores = joueurs
+            .map((nom, i) => window.P006.escapeHtml(nom) + ' ' + window.P006.texteScore(resultat.scores[i]))
+            .join(' · ');
+          resultatDirect.innerHTML = resultat.resultatLabel + '<div class="detail">' + detailScores + '</div>';
+        }
+
+        grillePreneur.addEventListener('click', (evt) => {
+          const btn = evt.target.closest('button[data-preneur]');
+          if (!btn) return;
+          saisie.preneur = Number(btn.getAttribute('data-preneur'));
+          rendreGrilleJoueurs(grillePreneur, 'preneur', saisie.preneur);
+          recalculer();
+        });
+
+        if (nbJoueurs === 5) {
+          grilleAppele.addEventListener('click', (evt) => {
+            const btn = evt.target.closest('button[data-appele]');
+            if (!btn) return;
+            saisie.appele = Number(btn.getAttribute('data-appele'));
+            rendreGrilleJoueurs(grilleAppele, 'appele', saisie.appele);
+            recalculer();
+          });
+        }
+
+        grilleContrat.addEventListener('click', (evt) => {
+          const btn = evt.target.closest('button[data-contrat]');
+          if (!btn) return;
+          saisie.contrat = btn.getAttribute('data-contrat');
+          grilleContrat.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+          recalculer();
+        });
+        grilleContrat.querySelector('[data-contrat="petite"]').setAttribute('aria-pressed', 'true');
+
+        document.getElementById('bouts-moins').addEventListener('click', () => {
+          saisie.bouts = Math.max(0, saisie.bouts - 1);
+          recalculer();
+        });
+        document.getElementById('bouts-plus').addEventListener('click', () => {
+          saisie.bouts = Math.min(3, saisie.bouts + 1);
+          recalculer();
+        });
+        document.getElementById('points-moins').addEventListener('click', () => {
+          saisie.pointsRealises = Math.max(0, saisie.pointsRealises - 0.5);
+          recalculer();
+        });
+        document.getElementById('points-plus').addEventListener('click', () => {
+          saisie.pointsRealises = Math.min(91, saisie.pointsRealises + 0.5);
+          recalculer();
+        });
+
+        document.querySelectorAll('[data-petit]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            saisie.petitAuBout = btn.getAttribute('data-petit');
+            btn.parentElement.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+            recalculer();
+          });
+        });
+
+        let poigneeType = 'aucun';
+        document.querySelectorAll('[data-poignee-type]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            poigneeType = btn.getAttribute('data-poignee-type');
+            btn.parentElement.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+            blocPoigneeCamp.hidden = poigneeType === 'aucun';
+            majPoignee();
+          });
+        });
+        let poigneeCamp = 'attaque';
+        blocPoigneeCamp.querySelectorAll('button').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            poigneeCamp = btn.getAttribute('data-poignee-camp');
+            blocPoigneeCamp.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+            majPoignee();
+          });
+        });
+        function majPoignee() {
+          saisie.poignee = poigneeType === 'aucun' ? null : { camp: poigneeCamp, type: poigneeType };
+          recalculer();
+        }
+        blocPoigneeCamp.hidden = true;
+
+        document.querySelectorAll('[data-chelem]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            saisie.chelem = btn.getAttribute('data-chelem');
+            btn.parentElement.parentElement.querySelectorAll('button[data-chelem]').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+            recalculer();
+          });
+        });
+
+        document.getElementById('btn-valider').addEventListener('click', () => {
+          window.P006.calculerEtAjouterDonne(partie, saisie);
+          window.location.href = 'scores.html';
+        });
+
+        recalculer();
+      });
+    </script>
+  </body>
+</html>
