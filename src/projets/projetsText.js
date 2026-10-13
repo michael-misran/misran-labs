@@ -54,7 +54,7 @@ export const PROJ_TEXT = {
     home: {
       fileNo: 'RUBRIQUE — PROJETS',
       mastheadCenter: 'ARCHIVE DU LAB //// REGISTRE DES IDÉES',
-      mastheadRight: 'MISRAN LABS',
+      mastheadRight: '1977 ÉDITIONS',
       mastheadRightSub: 'HEBDOMADAIRE',
       title: 'Projets',
       subtitle: 'NOTES DE RECHERCHE — LES IDÉES DU LAB',
@@ -76,7 +76,7 @@ export const PROJ_TEXT = {
     idee: {
       mastheadCenter: 'ARCHIVE DU LAB //// REGISTRE DES IDÉES',
       backLabel: '← Projets',
-      right: 'MISRAN LABS',
+      right: '1977 ÉDITIONS',
       typeLabel: 'TYPE',
       tailleLabel: 'TAILLE',
       statutLabel: 'STATUT',
@@ -108,7 +108,7 @@ export const PROJ_TEXT = {
     home: {
       fileNo: 'SECTION — PROJECTS',
       mastheadCenter: 'LAB ARCHIVE //// IDEA REGISTER',
-      mastheadRight: 'MISRAN LABS',
+      mastheadRight: '1977 ÉDITIONS',
       mastheadRightSub: 'WEEKLY',
       title: 'Projects',
       subtitle: 'RESEARCH NOTES — THE LAB’S IDEAS',
@@ -130,7 +130,7 @@ export const PROJ_TEXT = {
     idee: {
       mastheadCenter: 'LAB ARCHIVE //// IDEA REGISTER',
       backLabel: '← Projects',
-      right: 'MISRAN LABS',
+      right: '1977 ÉDITIONS',
       typeLabel: 'TYPE',
       tailleLabel: 'SIZE',
       statutLabel: 'STATUS',

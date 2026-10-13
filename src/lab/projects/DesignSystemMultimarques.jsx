@@ -171,7 +171,7 @@ const CONTENT = {
 
     fileNo: 'DOSSIER Nº 001',
     mastheadCenter: 'ARCHIVE DU LAB //// DOSSIER PROJET',
-    mastheadRight: 'MISRAN LABS',
+    mastheadRight: '1977 ÉDITIONS',
     mastheadRightSub: 'ARCHIVE VISUEL',
     stampLabel: 'MISRAN · LABS · ARCHIVE ·',
     roleLabel: 'RÔLE',
@@ -369,7 +369,7 @@ const CONTENT = {
 
     fileNo: 'FILE Nº 001',
     mastheadCenter: 'LAB ARCHIVE //// PROJECT FILE',
-    mastheadRight: 'MISRAN LABS',
+    mastheadRight: '1977 ÉDITIONS',
     mastheadRightSub: 'VISUAL ARCHIVE',
     stampLabel: 'MISRAN · LABS · ARCHIVE ·',
     roleLabel: 'ROLE',

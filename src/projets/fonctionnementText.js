@@ -123,7 +123,7 @@ export const FONCT_TEXT = {
   fr: {
     fileNo: 'RUBRIQUE — PROJETS',
     mastheadCenter: 'ARCHIVE DU LAB //// FONCTIONNEMENT',
-    mastheadRight: 'MISRAN LABS',
+    mastheadRight: '1977 ÉDITIONS',
     mastheadRightSub: 'MODE D’EMPLOI',
     backLabel: '← Projets',
     backToList: '← Toutes les idées',
@@ -254,7 +254,7 @@ export const FONCT_TEXT = {
   en: {
     fileNo: 'SECTION — PROJECTS',
     mastheadCenter: 'LAB ARCHIVE //// HOW IT WORKS',
-    mastheadRight: 'MISRAN LABS',
+    mastheadRight: '1977 ÉDITIONS',
     mastheadRightSub: 'USER GUIDE',
     backLabel: '← Projects',
     backToList: '← All ideas',

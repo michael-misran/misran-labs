@@ -5,42 +5,42 @@ import { writeRssFeeds } from './rss.js'
 export const SITE_URL = 'https://misran-labs.vercel.app'
 
 const PROJETS_FIXED = {
-  title: 'Les idées du Lab — idées en développement · Misran Labs',
+  title: 'Les idées du Lab — idées en développement · 1977 Éditions',
   description: 'Des idées de produits numérotées, étudiées puis gardées ou arrêtées.',
   image: 'og-projets.png',
 }
 const PROJETS_FONCTIONNEMENT_FIXED = {
-  title: 'Comment fonctionnent les idées du Lab · Misran Labs',
+  title: 'Comment fonctionnent les idées du Lab · 1977 Éditions',
   description: 'La routine du dimanche, les fiches publiques, les décisions.',
   image: 'og-projets.png',
 }
 const BREVES_FIXED = {
-  title: 'La Gazette du Lab — les brèves IA et tech du jour · Misran Labs',
+  title: 'La Gazette du Lab — les brèves IA et tech du jour · 1977 Éditions',
   description: 'Chaque jour, quelques brèves d\'actu IA et tech tirées de La Gazette du Lab, le journal papier du matin, avec le mot et le chiffre du jour.',
   image: 'og-image.png',
 }
 const SUIVRE_FIXED = {
-  title: 'Suivre le Lab · Misran Labs',
-  description: 'Misran Labs, maison d’édition indépendante : pas de compte à créer, un lecteur RSS ou un réseau suffit pour que les nouveautés viennent à vous.',
+  title: 'Suivre le Lab · 1977 Éditions',
+  description: '1977 Éditions, maison d’édition indépendante : pas de compte à créer, un lecteur RSS ou un réseau suffit pour que les nouveautés viennent à vous.',
   image: 'og-image.png',
 }
 const KIOSQUE_FIXED = {
-  title: 'La vitrine du kiosque · Misran Labs',
-  description: 'Tous les titres de Misran Labs, maison d’édition indépendante, sur un seul présentoir : la Gazette, le Zine, la salle de jeu et le Lab.',
+  title: 'La vitrine du kiosque · 1977 Éditions',
+  description: 'Tous les titres de 1977 Éditions, maison d’édition indépendante, sur un seul présentoir : la Gazette, le Zine, la salle de jeu et le Lab.',
   image: 'og-image.png',
 }
 const ZINE_FIXED = {
-  title: 'Misran Zine — fait main, pas en série · Misran Labs',
-  description: 'Le fanzine de Misran Labs, maison d’édition indépendante : photos, dessins, jeux et pages de carnet.',
+  title: 'Misran Zine — fait main, pas en série · 1977 Éditions',
+  description: 'Le fanzine de 1977 Éditions, maison d’édition indépendante : photos, dessins, jeux et pages de carnet.',
   image: 'og-image.png',
 }
 const SAVIEZ_FIXED = {
-  title: 'Le saviez-vous ? — curiosités de la semaine · Misran Labs',
+  title: 'Le saviez-vous ? — curiosités de la semaine · 1977 Éditions',
   description: 'Chaque semaine, quelques choses vraies, insolites ou pas, à ressortir au dîner.',
   image: 'og-image.png',
 }
 const JEUX_FIXED = {
-  title: 'Jeux — petits défis quotidiens · Misran Labs',
+  title: 'Jeux — petits défis quotidiens · 1977 Éditions',
   description: 'Un mini-jeu par jour, noté sur 100 et partageable en un clic, façon neal.fun.',
   image: 'og-image.png',
 }
@@ -200,7 +200,7 @@ export function collectSaviezVous(rootDir) {
     if (!data || file !== `${data.date}.json` || data.date > aujourdhui) continue
     pages.push({
       path: `/saviez-vous/${data.date}`,
-      title: `Le saviez-vous ? — ${data.sujet.fr} · Misran Labs`,
+      title: `Le saviez-vous ? — ${data.sujet.fr} · 1977 Éditions`,
       description: normalizeAndTruncate(data.intro.fr),
       image: SAVIEZ_FIXED.image,
       type: 'article',
@@ -228,7 +228,7 @@ export function collectBrevesJours(rootDir) {
 
     pages.push({
       path: `/breves/${dateFromName}`,
-      title: `${data.breves[0].titre.fr} · La Gazette du Lab — Misran Labs`,
+      title: `${data.breves[0].titre.fr} · La Gazette du Lab — 1977 Éditions`,
       description: normalizeAndTruncate(data.breves[0].resume.fr),
       image: BREVES_FIXED.image,
       type: 'article',
@@ -254,7 +254,7 @@ export function collectProjetsIdees(rootDir) {
     }
     pages.push({
       path: `/projets/${idFromName}`,
-      title: `${idFromName} — ${data.titre.fr} · Misran Labs`,
+      title: `${idFromName} — ${data.titre.fr} · 1977 Éditions`,
       description: normalizeAndTruncate(data.resume.fr),
       image: PROJETS_FIXED.image,
       type: 'article',
@@ -292,7 +292,7 @@ async function collectJeux(rootDir) {
 
     pages.push({
       path: `/jeux/${meta.slug}`,
-      title: `${meta.titre.fr} · Jeux — Misran Labs`,
+      title: `${meta.titre.fr} · Jeux — 1977 Éditions`,
       description: normalizeAndTruncate(meta.accroche.fr),
       image: JEUX_FIXED.image,
       type: 'website',
@@ -305,7 +305,7 @@ async function collectLabProjects(rootDir) {
   const mod = await import(path.join(rootDir, 'src/lab/projects.js'))
   return mod.visibleProjects().map((p) => ({
     path: `/lab/${p.slug}`,
-    title: `${p.title.fr} — Lab · Misran Labs`,
+    title: `${p.title.fr} — Lab · 1977 Éditions`,
     description: normalizeAndTruncate(p.summary.fr),
     image: 'og-lab.png',
     type: 'website',
@@ -320,7 +320,7 @@ async function collectLabDemoPages(rootDir) {
   const pages = []
   for (const p of mod.visibleProjects()) {
     const base = {
-      title: `${p.title.fr} — démo · Misran Labs`,
+      title: `${p.title.fr} — démo · 1977 Éditions`,
       description: normalizeAndTruncate(p.summary.fr),
       image: 'og-lab.png',
       type: 'website',
@@ -335,7 +335,7 @@ async function collectLabDemoPages(rootDir) {
 // refusée, et sans URL canonique (une page 404 n'a pas d'adresse propre).
 function build404Html(baseHtml) {
   let html = baseHtml
-  html = replaceTitleTag(html, 'Page introuvable · Misran Labs')
+  html = replaceTitleTag(html, 'Page introuvable · 1977 Éditions')
   html = html.replace(/<link rel="canonical"[^>]*\/>\s*/, '')
   html = html.replace('<head>', '<head>\n    <meta name="robots" content="noindex">')
   return html
