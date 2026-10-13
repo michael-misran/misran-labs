@@ -36,13 +36,20 @@ body:has(.salon) { margin: 0; }
 
 /* ---------- Enseigne : sur la ceinture de la table, sous le présentoir ---------- */
 .lb-enseigne {
-  position: absolute; left: 50%; top: 69.8%; transform: translateX(-50%); margin: 0;
-  height: 2.7cqh; display: flex; align-items: center; padding: 0 1.6cqh; white-space: nowrap;
+  /* padding-bas 2px : remonte le texte de 1px, les minuscules de Lobster Two tirent vers le bas */
+  position: absolute; left: 50%; top: calc(69.8% + 2px); transform: translateX(-50%); margin: 0;
+  height: calc(2.7cqh - 2px); display: flex; align-items: center; padding: 0 1.6cqh 2px; white-space: nowrap;
   background: linear-gradient(#5a3523, #3f2416); color: #f3dfb8;
-  border: .25cqh solid #c9964f; border-radius: .4cqh;
+  border-radius: .4cqh;
   box-shadow: 0 .3cqh .5cqh rgba(40,20,10,.45);
-  font: italic 400 1.85cqh/1 var(--font-chapo); letter-spacing: .02em;
+  /* Lobster Two : manuscrite et chaleureuse, ardoise de café */
+  font: italic 700 1.85cqh/1 'Lobster Two', var(--font-chapo); letter-spacing: .02em;
   pointer-events: none;
+}
+/* Ombre du plateau : prolonge sur l'enseigne (fond + texte) la bande sombre peinte en haut de la planche */
+.lb-enseigne::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(rgba(20,8,2,.75), rgba(20,8,2,.4) 25%, transparent 55%);
 }
 
 /* ---------- Les publications exposées sur le présentoir ---------- */
