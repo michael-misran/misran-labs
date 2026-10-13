@@ -48,6 +48,13 @@ button {
   color: inherit;
 }
 
+/* L'attribut hidden doit toujours gagner, même sur un élément dont la classe fixe
+   display (.btn, .btn-row, .provisional-tag...) : une règle auteur sans !important
+   l'emporterait sinon sur la règle hidden de la feuille par défaut du navigateur. */
+[hidden] {
+  display: none !important;
+}
+
 h1,
 h2,
 h3 {
@@ -436,6 +443,12 @@ details.options-bloc[open] summary::after {
 
 .options-bloc-contenu {
   padding: 4px 16px 16px;
+}
+
+/* Masquage explicite plutôt que de compter sur le comportement natif de <details> :
+   certains moteurs rendent le contenu fermé en display:block, superposé au bloc suivant. */
+details.options-bloc:not([open]) .options-bloc-contenu {
+  display: none;
 }
 
 /* ---------- Résultat en direct (D9) ---------- */

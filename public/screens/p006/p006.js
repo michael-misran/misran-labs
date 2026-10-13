@@ -53,12 +53,9 @@
     };
   }
 
-  var prochainIdDonne = 1;
-
   function calculerEtAjouterDonne(partie, saisie) {
     var resultat = window.TarotCalcul.calculerDonne(saisie);
     var donne = {
-      id: prochainIdDonne++,
       preneur: saisie.preneur,
       appele: saisie.appele === undefined ? null : saisie.appele,
       contrat: saisie.contrat,
@@ -80,9 +77,7 @@
 
   function remplacerDonne(partie, index, saisie) {
     var resultat = window.TarotCalcul.calculerDonne(saisie);
-    var ancien = partie.donnes[index];
     partie.donnes[index] = {
-      id: ancien.id,
       preneur: saisie.preneur,
       appele: saisie.appele === undefined ? null : saisie.appele,
       contrat: saisie.contrat,
