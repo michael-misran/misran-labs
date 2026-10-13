@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-09",
+  "numero": 10,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Anthropic rewrites its usage policy: surveillance and robots in focus",
+    "chapo": "New version published October 8, in force from November 12. Those building on the API have a month to reread it.",
+    "paragraphes": [
+      "Yesterday Anthropic published an update to its usage policy, the text that sets what you can and can't do with Claude. It takes effect on November 12, 2026. Several sections are rewritten, others merged: the rules on deceptive campaigns and fake-account networks, previously scattered, now form a single section.",
+      "The most concrete point for a developer: surveillance. Tracking people without their consent is banned, in real time as well as on data already collected, and Claude may neither decide nor recommend whom to investigate, arrest or prosecute. Consented tracking, for example against fraud, remains allowed, as do moderation, journalism and legal research.",
+      "Another new item: systems connected to hardware that acts physically and on its own. A qualified operator must be able to observe the equipment and stop it, and it must stay in a safe state if Claude is disconnected. The weapons bans also cover the software that runs them and the arming of drones.",
+      "The page doesn't detail any API-specific effects: for the exact obligations, read the full policy before November, especially if your product touches surveillance, drones or decisions about people."
+    ],
+    "sources": ["https://www.anthropic.com/news/2026-usage-policy-update"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "chiffre", "rubrique": "The uncomfortable figure", "court": "Figure", "taille": "grand",
+        "titre": "61% of French people struggle with red tape",
+        "chapo": "It was 39% in 2016. Going digital was supposed to make life simpler; mostly it changed the nature of the obstacle.",
+        "paragraphes": [
+          "That's the finding of a survey by France's Defender of Rights, carried out by Ipsos among 5,030 people aged 18 to 79 in mainland France, by phone, between October 10, 2024 and January 11, 2025, and published October 13, 2025. In 2024, 61% of respondents say they have trouble with administrative procedures, up from 39% in 2016.",
+          "The most cited difficulty isn't the form: it's reaching someone to get information or an appointment. And 23% of users say they gave up on a benefit they were entitled to in the past five years, mainly because the procedures were too complex.",
+          "What's uncomfortable is the giving up: an entitlement exists, it's open to the person, and it goes unused because the path is too long. It's not a lack of technology, but a missing interface between a rule and someone who has neither the time nor the energy to decode it.",
+          "For a designer, it's a rare problem statement: a massive, measured need affecting more than one person in two."
+        ],
+        "colonnes": 2,
+        "encadre": { "titre": "Business angle", "texte": "An assistant that reads the letter or the file, says what you're entitled to, prepares the documents and reminds you of deadlines. Support services already exist (nonprofit, public, paid): study them before diving in. A possible angle is to charge per successful procedure rather than by subscription.", "plein": true },
+        "jauge": { "cout": 2, "difficulte": 3, "potentiel": 3 },
+        "sources": ["https://eno.ombudsman.europa.eu/home/news/archives-2025/maincontent/enquete-sur-l-acces-aux-droits-1.html", "https://www.alloforfait.fr/?p=147479"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Retro · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Retro gaming", "court": "Retro",
+        "titre": "An unreleased NES game, recovered from nearly 40 floppy disks",
+        "chapo": "It hadn't been seen in over thirty years. Reopening it took a real period machine.",
+        "paragraphes": [
+          "The game: an unreleased NES version of <i>Days of Thunder</i>, co-written by Chris Oberth at Mindscape. Another version, by Beam Software, was published instead. In 2020, the Video Game History Foundation team rebuilt the first one from a hard drive backup dated 1989.",
+          "That backup spanned nearly 40 floppy disks, 21 of them holding four partitions in PC Tools 5.1 format. The data was compressed then encrypted, and the DOSBox emulator failed to restore it: a volunteer, Foone, supplied real hardware to read the disks.",
+          "One disk was labeled \"NINTENDO HOT ROD TAXI FINAL\" but held only a tech demo. The decisive file was a 128 KB graphics binary (CHR), found elsewhere. Part of the code is probably missing, left on partitions absent from the batch."
+        ],
+        "encadre": { "titre": "The lesson", "texte": "A backup you can no longer read isn't a backup. Format, encryption, hardware: everything must be replayable. The code and build tool are published on GitHub, with the agreement of Oberth's family.", "plein": true },
+        "sources": ["https://gamehistory.org/days-of-thunder-nes-unreleased/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Copilot: a local sandbox for agents, now generally available",
+        "paragraphes": [
+          "Since October 7, GitHub Copilot's local sandbox has been generally available, at no extra cost. It limits what commands run by the agent can touch: accessible files and folders, network (internet and local), Git and GitHub CLI credentials, and some local tools such as MCP servers.",
+          "It works in Copilot CLI, the Copilot app and VS Code sessions with Agent Host, on Windows, macOS and Linux, through a shared policy translated into native controls. An organization can require it through managed settings."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "The more agents act alone, the more \"what are they allowed to touch?\" becomes a product: audits, per-team policies, access reports.", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Figma: an agent that tidies up design systems",
+        "paragraphes": [
+          "Figma describes (October 6) what its agent does for a design system: write component documentation, find screens that drift from the library (duplicates, hard-coded values), harmonize names like <i>small</i> and <i>sm</i>, and replace elements in bulk.",
+          "Uber uses it to document components across seven platforms; Granola, to replace imported buttons with the design system's own. Reserved for Full seats on Professional, Organization, Enterprise and some Education plans."
+        ],
+        "sources": ["https://www.figma.com/blog/figma-agent-and-design-systems/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "npm: 48 hours to validate",
+        "paragraphes": [
+          "Since October 2, an unvalidated npm trusted publishing configuration expires 48 hours after creation. It becomes valid after a first successful publish. If it has expired, just create it again."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-02-unvalidated-npm-trusted-publishing-configurations-now-expire"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Sandbox", "nature": "n.", "definition": "An isolated space where code runs without being able to touch the rest of the system. It limits which files, network and credentials are accessible." },
+    "chiffre": { "valeur": "≈ 40", "texte": "floppy disks: that's what had to be read to recover a 1989 backup holding an unreleased NES game." },
+    "bonus": { "type": "defi", "texte": "In under 30 minutes: pick a personal project that exists in only one place, copy it off that machine, then restore it into a fresh folder to check that it opens. Write down the date of the test." },
+    "enigme": { "question": "The more I'm shared, the less likely I am to be lost; the more I'm lost, the more you regret not copying me. What am I?", "reponse": "A backup." }
+  },
+  "sources": ["anthropic.com", "eno.ombudsman.europa.eu", "gamehistory.org", "github.blog", "figma.com"]
+}

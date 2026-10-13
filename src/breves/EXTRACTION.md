@@ -1,32 +1,33 @@
-# Procédure d'extraction — Brèves
+# Procédure de publication — L’Oracle du Matin sur le web
 
-Ce document se suffit à lui-même : il décrit comment tirer une version publique « Brèves » de L’Oracle du Matin (le journal papier du matin), sans avoir besoin de lire ailleurs. Le format du fichier produit est documenté dans `src/breves/FORMAT.md`.
+**Depuis le 2026-10-14 (décision de Michael) : tout le journal est public.** La page /oracle affiche le numéro complet, identique au papier (une, Business, Dev · Tech, mot, chiffre, bonus, énigme), en français et en anglais, avec le PDF à télécharger. Les brèves courtes continuent d'exister : elles nourrissent le flux RSS, la pile des numéros précédents et la page « Dernière minute » du magazine.
+
+Ce document se suffit à lui-même : il décrit comment publier le numéro du jour et tirer ses « Brèves », sans avoir besoin de lire ailleurs. Le format du fichier produit est documenté dans `src/breves/FORMAT.md`.
 
 Lue par la routine de L’Oracle du Matin (le journal papier du matin), après la fabrication du PDF du jour.
 
 ## 1. Vérifier qu'il y a quelque chose à faire
 
-Lire `src/private/journal/numeros/<date>.json` (le journal du jour, privé, déjà relu par le `relecteur`).
+Lire `src/private/journal/numeros/<date>.json` (le journal du jour, déjà relu par le `relecteur`) et vérifier que sa traduction `numeros/<date>.en.json` et les deux PDF `pdf/<date>-a4.pdf` et `pdf/<date>-a4-en.pdf` existent (REDACTION.md §7).
 
 Si l'une de ces conditions est vraie, **arrêter ici, sans rien faire d'autre** :
 - `src/breves/jours/<date>.json` existe déjà sur `origin/main`.
 - Une branche `auto/breves-<date>` existe déjà (locale ou distante).
 
-## 2. Extraire et rédiger
+## 2. Rédiger les brèves
 
-Sélectionner uniquement, selon `src/breves/FORMAT.md` :
+Sélectionner, selon `src/breves/FORMAT.md` (3 à 5 brèves au plus) :
 - l'article `une` (À la une · IA) ;
 - les articles de `page2`/`page3` dont `type` vaut `tech` (grands et « éclair »).
 
-**Jamais** : irritant, modèle économique, étude de cas, design (`type: "design"`), énigme, bonus, carnet — ces rubriques du journal restent privées.
-**Toujours** reprendre le `mot` et le `chiffre` de `page4` quand le journal en a : la page /oracle les affiche (affiches et page droite) et reste vide sans eux.
-- Retirer seulement les renvois de page (« (p. 2) », etc.) et, dans le texte, ce qui ne se comprend qu'avec un article privé ; garder le terme, la valeur et le sens.
+Le numéro complet étant public, il n'y a plus de rubrique privée ; seule règle : aucune donnée personnelle.
+**Toujours** reprendre le `mot` et le `chiffre` de `page4` :
+- Retirer seulement les renvois de page (« (p. 2) », etc.) ; garder le terme, la valeur et le sens.
 - `mot` : `terme` tel quel, `definition` en `fr` et `en`. `chiffre` : `valeur` telle quelle, `texte` en `fr` et `en`.
-- Ne les omettre que s'ils contiennent une donnée personnelle ou une mention du carnet ou des irritants.
 
 Pour chaque brève retenue :
 - `rubrique` : `ia` pour l'article `une`, `tech` pour les autres.
-- `titre` et `resume` : rédigés à nouveau en 2 à 3 phrases (≤ 60 mots), **jamais copiés** du journal — mais aucun fait ajouté, aucune donnée personnelle, aucune mention du carnet ni des irritants.
+- `titre` et `resume` : rédigés à nouveau en 2 à 3 phrases (≤ 60 mots), **jamais copiés** du journal — mais aucun fait ajouté, aucune donnée personnelle.
 - `sources` : reprendre les URL du journal, avec le nom du site comme `titre`.
 - Traduire `titre` et `resume` en anglais (`en`).
 
@@ -48,8 +49,22 @@ git worktree add .worktrees/breves -b auto/breves-<date> origin/main
 python3 -m json.tool .worktrees/breves/src/breves/jours/<date>.json
 ```
 Faire relire la forme par le sous-agent `secretaire` (fichier `.worktrees/breves/src/breves/jours/<date>.json` : orthographe, typographie, anglais) et appliquer ses corrections de forme, sans jamais ajouter de fait ; revalider le JSON avec la commande ci-dessus.
+Copier ensuite le numéro complet et ses PDF (quatre commandes, une par appel) :
 ```bash
-git -C .worktrees/breves add src/breves/jours/<date>.json
+cp src/private/journal/numeros/<date>.json .worktrees/breves/src/breves/numeros/<date>.json
+```
+```bash
+cp src/private/journal/numeros/<date>.en.json .worktrees/breves/src/breves/numeros/<date>.en.json
+```
+```bash
+cp src/private/journal/pdf/<date>-a4.pdf .worktrees/breves/public/oracle/pdf/<date>.pdf
+```
+```bash
+cp src/private/journal/pdf/<date>-a4-en.pdf .worktrees/breves/public/oracle/pdf/<date>-en.pdf
+```
+Si la traduction ou le PDF anglais manque (étape anglaise échouée), publier quand même le français : la page anglaise affiche alors les brèves.
+```bash
+git -C .worktrees/breves add src/breves/jours/<date>.json src/breves/numeros public/oracle/pdf
 ```
 ```bash
 git -C .worktrees/breves commit -m "breves: <date>" -m "Co-Authored-By: <modèle utilisé> <noreply@anthropic.com>"
@@ -59,9 +74,9 @@ Le worktree partage les branches du dépôt principal : le push et la pull reque
 git push -u origin auto/breves-<date>
 ```
 ```bash
-gh pr create --base main --head auto/breves-<date> --title "Brèves du <date>" --body "…"
+gh pr create --base main --head auto/breves-<date> --title "L’Oracle du Matin du <date>" --body "…"
 ```
-Le corps de la pull request liste les titres des brèves du jour.
+Le corps de la pull request liste les titres du numéro du jour.
 
 ```bash
 git worktree remove .worktrees/breves

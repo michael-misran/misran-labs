@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-02",
+  "numero": 3,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Copilot prend la souris : l'IA qui pilote vos applications",
+    "chapo": "GitHub laisse son assistant cliquer, taper et faire défiler dans les applications de bureau, même sans API.",
+    "paragraphes": [
+      "Le 1er octobre, GitHub a ouvert en préversion publique une fonction « computer use » pour Copilot. L'assistant peut lire le contenu accessible d'une application, cliquer sur des boutons, saisir et modifier du texte, appuyer sur des touches, faire défiler et glisser, en enchaînant ces gestes d'une application à l'autre.",
+      "L'intérêt est là où il n'existe ni API, ni ligne de commande, ni connecteur MCP : un vieux logiciel, un outil interne. Copilot passe par l'écran, comme vous le feriez.",
+      "Elle existe dans Copilot CLI et dans l'application Copilot (macOS, Windows) ; on l'active avec <i>/computer on</i>. Copilot demande l'accord avant de piloter une application, et une organisation peut désactiver la fonction. Sur Mac, il faut accorder les permissions Accessibilité et Enregistrement d'écran.",
+      "Pour un développeur ou un designer, c'est la fin d'une excuse : « pas d'API, donc pas d'automatisation »."
+    ],
+    "sources": [
+      "https://github.blog/changelog/2026-10-01-github-copilot-can-now-interact-with-desktop-apps"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant", "taille": "grand",
+        "titre": "Le prix affiché n'est peut-être pas le vôtre",
+        "chapo": "Même produit, même site, même minute : deux clients, deux prix.",
+        "paragraphes": [
+          "Un site peut estimer ce que vous êtes prêt à payer à partir de vos données (localisation, navigation, panier). C'est le prix personnalisé, selon la Commission fédérale du commerce américaine (FTC).",
+          "Les mesures existent. Selon l'enquête de Consumer Reports de juin 2026 sur Uber et Lyft, l'écart médian entre le groupe le moins cher et le plus cher atteignait 42,4 % sur des trajets virtuels. Sur Instacart, près de trois quarts des articles testés (étude de décembre 2025) s'affichaient à des prix différents selon l'acheteur, avec jusqu'à 23 % d'écart.",
+          "Le 19 août 2026, la FTC a publié pour consultation un projet de ligne directrice. Elle ne peut pas interdire la pratique en général, mais compte poursuivre les prix personnalisés trompeurs ou déloyaux, et attend des entreprises qu'elles disent comment les données influencent le prix. La consultation est close depuis le 25 septembre."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un outil d'<i>audit de prix</i> : des testeurs ou une extension qui consultent le même panier depuis plusieurs profils et documentent l'écart, vendu aux associations de consommateurs, aux journalistes et aux enseignes qui veulent prouver qu'elles sont équitables. Concurrence : Consumer Reports mène déjà ce type d'enquête ; l'angle est de l'automatiser.", "plein": true },
+        "sources": [
+          "https://www.ftc.gov/news-events/news/press-releases/2026/08/ftc-seeks-comment-enforcement-policy-statement-regarding-personalized-pricing",
+          "https://foxnews.com/tech/personal-data-changing-pay-online",
+          "https://www.ftc.gov/news-events/news/press-releases/2026/09/ftc-extends-public-comment-proposed-policy-statement-regarding-personalized-pricing"
+        ]
+      },
+      {
+        "type": "chiffre", "rubrique": "Le chiffre qui dérange", "court": "Chiffre", "taille": "grand",
+        "titre": "Le streaming grossit sans nouveaux abonnés",
+        "paragraphes": [
+          "Selon le rapport Media Nations 2026 de l'Ofcom (régulateur britannique), publié le 29 juillet, 70 % des foyers du Royaume-Uni avaient au moins un service de vidéo à la demande par abonnement au premier trimestre 2026. C'est seulement 2 points de plus qu'au premier trimestre 2022 : la croissance s'est arrêtée.",
+          "Pourtant, les revenus d'abonnement (télévision payante et vidéo à la demande) ont gagné plus d'un milliard de livres pour atteindre 11,4 milliards en 2025. D'après le rapport, cette hausse vient surtout des augmentations de prix et des offres groupées, pas de nouveaux abonnés.",
+          "Le chiffre qui dérange : une industrie qui grossit par la hausse de prix, pas par un public qui s'élargit. Pour le client, la facture monte sans que l'offre change."
+        ],
+        "sources": [
+          "https://www.ispreview.co.uk/index.php/2026/07/ofcom-subscription-streaming-services-in-uk-homes-have-plateaued.html"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Rétro · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Rétro gaming", "court": "Rétro",
+        "titre": "Pitfall! : 254 écrans, 4 Ko, et un tour de passe-passe",
+        "chapo": "La jungle d'Activision n'a jamais été dessinée écran par écran : elle est calculée.",
+        "paragraphes": [
+          "Quand David Crane programme <i>Pitfall!</i> pour l'Atari 2600 (1982), la cartouche n'offre que 4 Ko de mémoire. Impossible d'y stocker 254 écrans dessinés à la main : chaque écran est calculé mathématiquement quand le joueur y arrive.",
+          "Résultat : un monde entier pour presque rien en mémoire. Selon TechCrunch (2009), il a demandé environ 1 000 heures de programmation, pour un concept né en dix minutes. Le personnage qui court, lui, était imaginé dès 1979."
+        ],
+        "encadre": { "titre": "À retenir", "texte": "Quand la mémoire manque, on ne stocke pas le contenu : on stocke la recette.", "plein": true },
+        "sources": [
+          "https://techcrunch.com/2009/06/29/the-making-of-pitfall-for-the-atari-2600"
+        ]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech", "taille": "grand",
+        "titre": "GitHub impose des formulaires aux rapports de sécurité",
+        "paragraphes": [
+          "Depuis le 1er octobre, les rapports de vulnérabilité privés des dépôts publics ne tiennent plus dans une simple zone de texte. Quatre champs sont obligatoires : résumé, détails, preuve de concept (150 caractères minimum) et impact.",
+          "Un dépôt peut adapter le formulaire avec un fichier <i>.github/VULNERABILITY_REPORT.yml</i> et demander (réglage de l'organisation) un identifiant CWE avant l'envoi. But annoncé : réduire les signalements de faible qualité.",
+          "Elle concerne les dépôts publics ayant activé le signalement privé."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Quand les signalements d'IA se multiplient, le tri devient un métier : filtrage, reproduction automatique, réponses types pour mainteneurs débordés.", "plein": true },
+        "sources": [
+          "https://github.blog/changelog/2026-10-01-structured-forms-for-private-vulnerability-reports"
+        ]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Dependabot sur vos propres machines",
+        "paragraphes": [
+          "Depuis le 29 septembre, un administrateur peut choisir, dépôt par dépôt, sur quel exécuteur tournent les mises à jour Dependabot, avec libellés et groupes personnalisés. Utile pour un registre de paquets privé."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-09-29-repository-custom-runner-settings-for-dependabot"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Génération procédurale", "nature": "n. f.", "definition": "Technique qui produit du contenu (niveaux, cartes, textures) par un calcul plutôt qu'en le stockant. La même formule et le même point de départ redonnent toujours le même résultat : c'est ainsi que la jungle de <i>Pitfall!</i> tient dans 4 Ko (p. 3)." },
+    "chiffre": { "valeur": "42,4 %", "texte": "d'écart médian de prix entre le groupe le moins cher et le plus cher sur des trajets Uber et Lyft, selon l'étude de Consumer Reports (juin 2026) citée p. 2." },
+    "bonus": { "type": "defi", "texte": "En 20 minutes : choisissez un produit ou un billet, et comparez son prix affiché sur le même site en étant connecté, puis en navigation privée, puis depuis votre téléphone. Notez les écarts. Zéro écart ne prouve rien, mais un seul écart suffit à une idée de produit (p. 2)." },
+    "enigme": { "question": "J'ai 254 salles mais aucun plan dans ma mémoire. Chaque fois que tu reviens, tu me retrouves à l'identique : on ne me range pas, on me recalcule. Qui suis-je ?", "reponse": "la jungle de Pitfall! (p. 3)" }
+  },
+  "sources": ["github.blog", "ftc.gov", "foxnews.com", "ispreview.co.uk", "techcrunch.com"]
+}

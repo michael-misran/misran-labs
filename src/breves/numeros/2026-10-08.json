@@ -1,0 +1,161 @@
+{
+  "date": "2026-10-08",
+  "numero": 9,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Haiku 5.5 : le petit modèle d'Anthropic coûte jusqu'à dix fois moins cher",
+    "chapo": "Annoncé hier, le plus économique des modèles Claude passe à 0,10 $ le million de jetons en entrée (requêtes jusqu'à 100 000 jetons).",
+    "paragraphes": [
+      "Anthropic a présenté le 7 octobre <b>Claude Haiku 5.5</b>. Prix de départ : 0,10 $ par million de jetons en entrée et 0,50 $ en sortie, pour les requêtes jusqu'à 100 000 jetons. Haiku 4.5 coûtait 1 $ et 5 $. Anthropic parle d'un coût moyen environ 75 % plus bas, et de 90 % de baisse sous ce seuil de 100 000 jetons.",
+      "Le gain ne tient pas qu'au prix. Sur OSWorld 2.1 (sous-ensemble hors ligne, un test où le modèle manie un ordinateur), Haiku passe de 15,7 % à 72,4 %. Sur Terminal-Bench 4.0, de 0 % à 39,2 %. Sonnet 5.5 reste devant (83,9 % et 70,6 %).",
+      "Anthropic le range côté « sous-agents » : résumés, compactage, requêtes de base de données, classification, support client en direct, pilotage de navigateur. Il est déconseillé pour le codage agentique complexe, où Sonnet 5.5 ou Opus 5.5 restent préférables. C'est aussi le premier Haiku doté d'un réglage d'effort.",
+      "<b>Ce que ça change :</b> quand on enchaîne des centaines d'appels automatiques (trier, résumer, vérifier), la facture suit le modèle choisi. Un agent peut désormais confier ses tâches répétitives à un modèle bien moins cher et garder le gros pour les décisions. Disponible dès maintenant, y compris sur AWS, Google Cloud et Azure."
+    ],
+    "sources": [
+      "https://www.anthropic.com/claude-haiku-5-5"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant",
+        "rubrique": "L'irritant du jour",
+        "court": "Irritant",
+        "titre": "Ces petites retenues de santé que personne ne compte",
+        "chapo": "Un euro sur une boîte de médicaments, un euro sur une séance : à la fin de l'année, qui sait combien ?",
+        "paragraphes": [
+          "Les franchises médicales se déduisent du remboursement : 1 € par boîte de médicaments, 1 € par acte paramédical, 4 € par trajet de transport médical, selon Ameli. Elles apparaissent sur le décompte, noyées parmi les lignes de remboursement. Avec le tiers payant, elles sont déduites plus tard d'un autre remboursement.",
+          "Au 1er octobre 2026, le plafond annuel passe de 50 € à 70 € pour les franchises, et de 50 € à 70 € pour les participations forfaitaires, soit jusqu'à 140 € par an au lieu de 100 € (décret du 11 septembre 2026, d'après TPE Actu)."
+        ],
+        "encadre": {
+          "titre": "Piste de business",
+          "texte": "Un suivi du reste à charge : lire les décomptes, tenir le compteur annuel de franchises et dire où l'on en est. Le compte Ameli montre les décomptes, sans compteur annuel lisible : l'angle est une lecture claire pour une famille.",
+          "plein": true
+        },
+        "sources": [
+          "https://tpeactu.fr/2026/09/24/ce-qui-change-1er-octobre-2026-entreprises-salaries/",
+          "https://www.ameli.fr/assure/remboursements/reste-charge/franchise-medicale"
+        ]
+      },
+      {
+        "type": "idee",
+        "rubrique": "L'idée de business",
+        "court": "Idée",
+        "titre": "Le correcteur de devis funéraire",
+        "paragraphes": [
+          "Depuis le 1er octobre 2026 (décret n° 2026-770), les opérateurs funéraires doivent remettre une notice d'information standardisée et neutre aux familles, l'afficher visiblement et la rendre accessible depuis la page d'accueil de leur site. Elle rappelle la gratuité du devis, la distinction obligatoire / facultatif et la vérification d'un contrat obsèques auprès de l'Agira.",
+          "Une famille endeuillée n'a pas envie de lire un devis ligne à ligne. <b>L'idée :</b> téléverser le devis reçu ; l'IA marque chaque ligne « obligatoire », « selon les circonstances » ou « facultative » d'après le modèle officiel, et propose les questions à poser. Revenus : gratuit pour la famille, abonnement ou commission côté assureurs obsèques et associations.",
+          "Un comparateur de devis existe déjà (Comitam, en ligne depuis 2011) : il met en concurrence des opérateurs. Ici, on lit un devis déjà reçu, sans rien vendre ni mettre en relation."
+        ],
+        "jauge": {
+          "cout": 1,
+          "difficulte": 2,
+          "potentiel": 2
+        },
+        "sources": [
+          "https://blog.landot-avocats.net/2026/09/30/prestations-funeraires-entree-en-vigueur-ce-1er-octobre-2026-de-nouvelles-obligations-dinformation-des-familles/",
+          "https://www.quechoisir.org/actualite-pompes-funebres-enfin-une-meilleure-information-pour-les-familles-n178062/",
+          "https://lespepitestech.com/node/858"
+        ]
+      },
+      {
+        "type": "irritant",
+        "rubrique": "Irritant éclair",
+        "court": "Irritant",
+        "taille": "petit",
+        "titre": "Le prix du gaz bouge, votre facture aussi",
+        "paragraphes": [
+          "Au 1er octobre 2026, le prix repère du gaz passe de 172,05 à 182,88 €/MWh TTC (+6,3 %), selon la CRE. Surcoût moyen estimé pour les offres indexées : 5,28 € sur la facture d'octobre. Les offres à prix fixe ne sont pas automatiquement concernées.",
+          "<b>La piste :</b> une alerte qui compare votre offre au prix repère et prévient quand il vaut la peine de changer. Les comparateurs d'énergie existent déjà : le vrai manque, c'est le rappel, pas la comparaison."
+        ],
+        "sources": [
+          "https://tpeactu.fr/2026/09/24/ce-qui-change-1er-octobre-2026-entreprises-salaries/"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Histoire · Tech",
+    "articles": [
+      {
+        "type": "histoire",
+        "rubrique": "Histoire de la tech",
+        "court": "Histoire",
+        "titre": "Le premier SMS : un test de fête de Noël",
+        "chapo": "« Merry Christmas », envoyé d'un ordinateur vers un téléphone, sans pouvoir répondre.",
+        "paragraphes": [
+          "Le 3 décembre 1992, à Newbury (Royaume-Uni), l'ingénieur Neil Papworth teste un logiciel de messages courts. Il tape « Merry Christmas » sur un ordinateur et l'envoie vers un téléphone portable : celui de Richard Jarvis, présent à une fête de Noël.",
+          "Papworth ne le saura que par l'accusé du système (« The text had landed »). Impossible de répondre : à l'époque, un SMS ne partait que d'un ordinateur. Le standard GSM de 1984 prévoyait les SMS, mais seulement pour que l'opérateur prévienne l'abonné.",
+          "Les premiers services commerciaux arrivent en 1993, d'abord en Suède. Le Nokia 2010, de janvier 1994, est considéré comme le premier mobile où l'on écrit et envoie facilement un SMS."
+        ],
+        "encadre": {
+          "titre": "L'œil du business",
+          "texte": "Le SMS est né comme un simple avis de l'opérateur. Les usagers en ont fait une conversation.",
+          "plein": true
+        },
+        "sources": [
+          "https://www.xataka.com/especiales/feliz-navidad-primer-sms-de-la-historia-aunque-solo-una-persona-en-la-fiesta-de-navidad-de-vodafone-se-diera-cuenta",
+          "https://www.presse-citron.net/le-tout-premier-sms-a-ete-envoye-il-y-a-31-ans-que-disait-il/",
+          "https://www.tomsguide.fr/a-noel-vous-avez-envoye-le-meme-message-que-le-tout-premier-sms/"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "La tech",
+        "court": "Tech",
+        "titre": "GitHub entraîne un modèle à reconnaître les mots de passe dans le code",
+        "paragraphes": [
+          "GitHub a annoncé le 7 octobre un modèle affiné, dédié à la détection de secrets. Il lit le code autour d'une valeur pour repérer les identifiants probables, notamment des mots de passe sans format de jeton reconnaissable, que les motifs classiques ratent.",
+          "Les alertes de mots de passe détectées par IA migrent automatiquement, sans frais en plus avec Secret Protection (GHSP) ou Advanced Security (GHAS). Les nouvelles vérifications (au push, en préversion privée ; /security-review de Copilot, « à venir ») consommeront des AI Credits dans les semaines à venir. La vérification au push est facturée à l'organisation même si elle ne bloque rien : fixer un budget avant d'activer."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-10-07-purpose-built-model-for-leaked-secret-detection"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech éclair",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "Piloter un agent Cursor depuis son téléphone",
+        "paragraphes": [
+          "Depuis le 6 octobre, l'app iOS de Cursor affiche les agents qui tournent sur votre ordinateur et permet de leur répondre, après un appairage validé dans l'app de bureau. L'ordinateur doit rester allumé et connecté. Activé par défaut, sauf pour les organisations Enterprise, où un admin doit l'autoriser."
+        ],
+        "sources": [
+          "https://cursor.com/changelog/remote-control-local-agents"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "Franchise médicale",
+      "nature": "n. f.",
+      "definition": "Petite somme restant à la charge de l'assuré, déduite de son remboursement : 1 € par boîte de médicaments ou par acte paramédical, 4 € par trajet de transport médical, dans la limite d'un plafond annuel (70 € selon Ameli)."
+    },
+    "chiffre": {
+      "valeur": "135 €",
+      "texte": "au maximum pour l'enlèvement d'une voiture particulière en fourrière, plus 7,15 € par jour de garde, depuis le 1er octobre 2026 (hors grandes villes à barème propre)."
+    },
+    "bonus": {
+      "type": "question",
+      "texte": "Quelle petite dépense répétée avez-vous cessé de regarder, parce qu'elle est trop faible pour alerter ? Notez-la : une dépense invisible est souvent un produit qui n'existe pas encore."
+    },
+    "enigme": {
+      "question": "Je suis parti d'un ordinateur un 3 décembre, pour un téléphone, avec un vœu de saison. Je n'ai reçu aucune réponse. Qui suis-je ?",
+      "reponse": "le premier SMS (p. 3)"
+    }
+  },
+  "sources": [
+    "anthropic.com",
+    "github.blog",
+    "cursor.com",
+    "tpeactu.fr",
+    "ameli.fr",
+    "quechoisir.org",
+    "xataka.com",
+    "presse-citron.net"
+  ]
+}

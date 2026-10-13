@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-05",
+  "numero": 6,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Lightpanda 1.0: a browser built for agents, not for eyes",
+    "chapo": "The browser \"for machines\" leaves beta with one promise: run web pages without ever drawing them.",
+    "paragraphes": [
+      "To let an AI agent browse the web, people often lend it a windowless Chrome. Lightpanda takes the opposite approach: a browser built from scratch that runs JavaScript and the DOM but draws nothing on screen. After a beta launched in November 2024, version 1.0 was announced on October 2, 2026.",
+      "The project puts a number on its compatibility: 1,739,845 subtests of the Web Platform Tests suite passed, against 2,184,491 for Chrome, or about 80%. The gap comes mostly from CSS, editing and SVG tests, which require computing the layout. The post also claims about 16 times less memory than headless Chrome. Another change: cross-origin resource sharing (CORS) is now on by default.",
+      "For a developer, the benefit is concrete: hundreds of agents or test bots in parallel use less memory. The limit is just as clear: no rendering, so no real screenshots or faithful PDFs; visual tests still need Chrome."
+    ],
+    "sources": ["https://lightpanda.io/blog/posts/lightpanda-1-0", "https://lightpanda.io/blog/tags/announcement"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve",
+        "titre": "The appointment nobody shows up to",
+        "chapo": "A slot booked in three clicks, forgotten in three seconds.",
+        "paragraphes": [
+          "France's national medical council estimates that 6 to 10% of patients miss their appointment each week, or about 27 million missed appointments a year, an extrapolated figure. The numbers vary widely: the 2024 Doctolib study cited in the same summary gives 3.3% among its users, with automatic reminders.",
+          "About two thirds of these no-shows involve a first appointment. For the practice, an empty slot is paid time nobody makes up; for the next patient, one more wait."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A reminder built for small practices without a big platform: a confirmation text, a one-tap \"cancel\" button, and automatic release of the freed slot to a waiting list. Competition: Doctolib and other platforms already send reminders; the angle is the waiting list and the professions they serve poorly (physiotherapists, dentists, independent hairdressers).", "plein": true },
+        "sources": ["https://ainora.lt/fr/blog/statistiques-appels-manques-rendez-vous-non-honores-france-2026"]
+      },
+      {
+        "type": "idee", "rubrique": "The business idea", "court": "Idea",
+        "titre": "Sorting that decides in 40 milliseconds",
+        "paragraphes": [
+          "An online store receives messages: returns, invoices, breakdowns, spam. Sorting them by hand takes time; handing them to a large language model is expensive and the answers vary with the tone. \"Decision models\" (see p. 3) offer something else: a typed answer, with a probability, in a fraction of a second.",
+          "The idea: a ready-to-use labeling service for small shops' emails and forms, which classifies, routes to the right person and flags a doubt when the probability is low. Revenue: a monthly subscription per inbox. Competition: Cloudflare offers the models directly. The angle is turnkey setup for a given profession."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
+        "sources": ["https://blog.cloudflare.com/clef-decision-models/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Retro · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Retro: a game's design", "court": "Retro",
+        "titre": "Pac-Man: four ghosts, four minds, zero luck",
+        "chapo": "The enemies don't differ because they were drawn differently, but because each one aims at a different spot.",
+        "paragraphes": [
+          "Blinky, the red one, targets the tile Pac-Man is on: straight pursuit. Pinky targets four tiles ahead of him, in his direction of travel: she sets an ambush. Inky combines Pac-Man's position with Blinky's, and seems unpredictable. Clyde chases from afar, but retreats to his corner as soon as he is within eight tiles.",
+          "The ghosts also alternate between two modes: scatter (each heads for its corner, 7 seconds on the first level) and chase (20 seconds). These breathers give the player time to catch their breath and eat. Finally, an overflow bug shifts Pinky's target to the left when Pac-Man moves up: a flaw that stayed in the game."
+        ],
+        "encadre": { "titre": "Takeaway", "texte": "Simple rules, different for each enemy, create the impression of personalities. One targeting rule per enemy beats a long storyline.", "plein": true },
+        "sources": ["https://www.gamedeveloper.com/design/the-pac-man-dossier", "https://pacman.holenet.info/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Clef: Cloudflare's model that decides, not writes",
+        "paragraphes": [
+          "On October 1, Cloudflare released Clef and Clef-flash, two \"decision models\" under the Apache 2.0 license, hosted on Workers AI and available on Hugging Face. Instead of producing text, such a model receives a state and typed questions, then returns a probability for each allowed answer.",
+          "Clef (Qwen 27B base) answers in 209.3 ms at the median; Clef-flash (Qwen 9B base) in 38.8 ms. Both accept images and 64,000 tokens of context. Cloudflare ranks Clef first on the Jev Decision Index, named after TypeSafe's model it measures itself against."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "When sorting becomes a fast, cheap call, it slips in everywhere: see today's idea (p. 2).", "plein": true },
+        "sources": ["https://blog.cloudflare.com/clef-decision-models/"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Decision model", "nature": "n.", "definition": "An AI model that doesn't write text: it receives a state and a list of questions with allowed answers, then returns a probability for each. Built for sorting, routing and classification, as in today's idea (p. 2)." },
+    "chiffre": { "valeur": "6–10%", "texte": "of French patients miss their appointment each week, per the medical council (p. 2). Doctolib: 3.3%." },
+    "bonus": { "type": "question", "texte": "What sorting task do you still do by hand every week: emails, invoices, photos, messages? Write it down below: if a clear rule describes it, a model can do it for you, and others are doing it too." },
+    "enigme": { "question": "There are four of us chasing you, but none of us thinks alike. One aims at your shadow, another at your future. Who are we?", "reponse": "the ghosts of Pac-Man (p. 3)" }
+  },
+  "sources": ["lightpanda.io", "blog.cloudflare.com", "gamedeveloper.com", "pacman.holenet.info", "ainora.lt"]
+}

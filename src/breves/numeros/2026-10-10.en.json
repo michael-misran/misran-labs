@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-10",
+  "numero": 11,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Vercel teaches your agent to look for a domain name, but not to pay for it",
+    "chapo": "Vercel's CLI gives an AI agent four commands to find a domain. The last one, the purchase, deliberately stays in your hands.",
+    "paragraphes": [
+      "Since October 9, Vercel's CLI offers a family of <i>vercel domains</i> commands: <i>search</i> to find candidate names, <i>check</i> to verify availability, <i>price</i> to read the registrar's rate, and <i>buy</i> to start the purchase. The CLI also ships a skill, an instruction manual for agents, which describes the whole sequence to them without anyone having to explain it.",
+      "The detail that matters is the last step. In non-interactive mode, meaning when an agent types the command, <i>vercel domains buy</i> spends nothing: it returns a structured, machine-readable error with the next commands to run. The agent must then pass the confirmation on to you. The price, auto-renewal and registrant details are confirmed in an interactive terminal or in the dashboard.",
+      "For a developer, it's a pattern worth copying: let the agent do all the research, then put the action that costs money behind a clean, explicit refusal, rather than behind a mere instruction in a prompt. The announcement gives neither prices nor available extensions: test it before making it a habit."
+    ],
+    "sources": ["https://vercel.com/changelog/agents-can-now-buy-domains-with-the-vercel-cli"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve", "taille": "grand",
+        "titre": "CAPTCHAs: the seconds nobody gives back",
+        "chapo": "Check the box, spot the traffic lights. Researchers added up what it costs.",
+        "paragraphes": [
+          "A team at the University of California, Irvine (Andrew Searles, Renascence Prapty and Gene Tsudik) studied reCAPTCHA, Google's CAPTCHA, and published its findings in February 2025. Their estimate: at least 819 million hours of human time wasted solving it.",
+          "More troubling, the authors judge that the tool mainly serves to track visitors' behavior, and offers little real protection against bots. Visitors pay in seconds, sites in abandoned forms, and nobody is really protected."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A form protection service that assesses risk silently and only shows a test as a last resort, with a module ready to drop into WordPress, Webflow or Shopify. Competition exists: Cloudflare already sells Turnstile as a \"CAPTCHA replacement\". The open angle: small sites, a fixed price and zero setup.", "plein": true },
+        "sources": ["https://ics.uci.edu/2025/02/10/recaptcha-819-million-hours-of-wasted-human-time-and-billions-of-dollars-in-google-profits/", "https://www.cloudflare.com/application-services/products/turnstile/"]
+      },
+      {
+        "type": "etude", "rubrique": "Case study", "court": "Case study", "taille": "grand",
+        "titre": "DataFast: from 4 users to $20,000 a month in 512 days",
+        "chapo": "A tool born of a personal irritation: two dashboards for a single question.",
+        "paragraphes": [
+          "In 2024, Marc Lou used Plausible for his traffic and Stripe for his payments. He wanted to know which visitor sources brought in money, and no tool told him. He built a prototype in a few weeks: DataFast, which links traffic to Stripe revenue.",
+          "A modest start: four users (himself and three friends), then a public launch on X that brought a few dozen users and about $500 in monthly revenue. Four months to reach $1,000, then growth of about 10% a month. On March 10, 2026, he hit a little over $20,000 in monthly revenue, the goal he had set himself 512 days earlier.",
+          "What he takes from it: the breakthrough came from presenting the tool as a revenue attribution tool rather than yet another analytics tool, and from getting users very quickly to the moment they see where their money comes from."
+        ],
+        "encadre": { "titre": "Takeaway", "texte": "The product isn't new: it's a fresh angle on a saturated market, found by starting from your own frustration.", "plein": true },
+        "sources": ["https://newsletter.marclou.com/p/i-grew-a-saas-to-1m"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Science · Tech",
+    "articles": [
+      {
+        "type": "science", "rubrique": "Science in 5 lines", "court": "Science", "taille": "grand",
+        "titre": "The viruses that turn bacteria's alarm against them",
+        "paragraphes": [
+          "Bacteria have an immune system called CBASS. Researchers at University of Utah Health (Samuel Hobbs, Philip Kranzusch) show in <i>Science</i> that some bacterial viruses use it as a switch: their protease, an enzyme that cuts proteins, cleaves a host sensor protein and thereby triggers the immune response.",
+          "In extreme cases, the infected bacterium self-destructs to slow the spread. The authors link this pathway to a human immune pathway, a sign of a very ancient common origin. A lead for the future: designing therapeutic viruses that escape these defenses."
+        ],
+        "sources": ["https://www.sciencedaily.com/releases/2026/10/261007042100.htm"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech", "taille": "grand",
+        "titre": "Vercel: deployment storage becomes paid for Pro teams",
+        "paragraphes": [
+          "Announced October 9: Vercel is billing deployment and Functions storage at $0.10 per GB per month to all existing Pro teams. The billing start date is sent to each team by email, and the page mentions no free quota.",
+          "Another deadline: deployment retention drops to 30 days, and older deployments will be deleted from October 23, unless you change your retention settings before then. Teams already set to 30 days or less are unaffected."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "When a platform starts billing for what used to be invisible, cleanup and cost-tracking tools find their audience.", "plein": true },
+        "sources": ["https://vercel.com/changelog/deployment-storage-pricing-expands-to-existing-teams"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "GitHub: activity timelines readable as lists",
+        "paragraphes": [
+          "Since October 8, issue and pull request timelines can be browsed as a list with VoiceOver, NVDA and JAWS. After \"Load more\", the screen reader announces how many items loaded, for example \"11 new items loaded\". The look doesn't change."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-08-screen-readers-can-navigate-timelines-as-lists"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Human in the loop", "nature": "n. phr.", "definition": "A design principle where an automated agent prepares the work but stops before the action that matters (paying, deleting, sending) to ask a person for approval. Vercel's purchase command is an example." },
+    "chiffre": { "valeur": "× 3.1", "texte": "That's what 10% growth a month gives you over a year (1.1 to the power of 12)." },
+    "bonus": { "type": "citation", "texte": "The beginning always feels slower than it should.", "auteur": "Marc Lou, \"I grew a SaaS to $1M\", 2026" },
+    "enigme": { "question": "I've never pressed the button, but nothing goes out without me. The agent asks for me, the human gives me. What am I?", "reponse": "the confirmation (p. 1)" }
+  },
+  "sources": ["vercel.com", "github.blog", "sciencedaily.com", "ics.uci.edu", "newsletter.marclou.com", "cloudflare.com"]
+}

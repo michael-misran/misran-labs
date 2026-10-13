@@ -39,7 +39,7 @@ Ne jamais modifier un fichier déjà publié une fois en ligne (archive), sauf c
 - **`mot`** et **`chiffre`** sont facultatifs. `mot.terme` et `chiffre.valeur` sont de simples textes non vides.
 - **Pas de champ `numero`** : les jours ne forment pas de séquence numérotée, seulement une liste chronologique.
 - **Jamais d'actualité inventée.** Un `resume` est rédigé, jamais copié-collé depuis la source ; chaque fait avancé doit être vérifiable via au moins une des `sources`, et doit déjà figurer dans L’Oracle du Matin dont il est tiré.
-- **Ce qui ne devient jamais public** : irritants, idées de business, études de cas, modèles économiques, chiffre qui dérange, énigme, bonus, carnet — ces rubriques du Journal restent privées.
+- **Brèves = une IA + articles tech.** Le reste du journal (irritants, business, énigme, bonus) est public depuis le 2026-10-14, mais dans le numéro complet (`src/breves/numeros/`), pas dans les brèves.
 
 Un jour qui viole une de ces règles n'apparaît pas sur le site (ni dans la liste `/oracle`, ni à son URL `/oracle/AAAA-MM-JJ`) et produit un message dans la console du navigateur précisant le fichier et la règle en cause — jamais de plantage de page.
 

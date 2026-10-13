@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-04",
+  "numero": 5,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Copilot relit votre code sur commande, par API",
+    "chapo": "GitHub ouvre la revue de code de Copilot aux scripts et aux outils maison, avec un réglage de l'effort.",
+    "paragraphes": [
+      "Le 2 octobre, GitHub a annoncé que l'on peut désormais demander une relecture à Copilot depuis les API REST et GraphQL, et non plus seulement depuis l'interface. Chaque requête peut préciser le niveau d'effort voulu.",
+      "Deux niveaux existent : « Lite » et « Balanced ». Balanced est devenu le réglage par défaut, selon GitHub, à partir du 28 septembre. Le niveau se règle à quatre étages : entreprise, organisation, dépôt ou compte personnel, chaque étage pouvant corriger celui du dessus.",
+      "La fonction est ouverte aux abonnements Copilot Pro, Pro+, Max, Business et Enterprise.",
+      "Ce que cela change : la relecture par IA devient une brique que l'on branche. On peut la déclencher depuis un script de livraison, un outil interne ou un tableau de bord, sans passer par l'écran d'une pull request. Pour un développeur indépendant, c'est la matière première d'un contrôle qualité maison."
+    ],
+    "sources": ["https://github.blog/changelog/2026-10-02-copilot-code-review-api-support-and-new-default-effort-level"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "La facture envoyée, l'argent qui n'arrive pas",
+        "chapo": "Relancer un client est gênant, chronophage, et pourtant c'est le sort de la moitié des factures.",
+        "paragraphes": [
+          "Selon l'étude d'Altares sur le deuxième trimestre 2026, 49,7 % des entreprises françaises paient leurs fournisseurs à l'échéance, contre 45,2 % un an plus tôt. L'autre moitié paie en retard : 12,3 jours en moyenne, et 7,5 % des paiements dépassent trente jours.",
+          "Le retard n'est pas réparti au hasard. Les structures de moins de 50 salariés paient le plus vite (11,7 jours pour 1 à 9 salariés, 11,1 pour 10 à 49). Les organisations de plus de 1 000 salariés sont à 19,6 jours. Les établissements de santé : 24,1. Les grands comptes paient donc près de huit jours plus tard que les très petites structures, et c'est le petit prestataire qui a le moins de trésorerie pour patienter.",
+          "Les retards restent au-dessus du niveau de 2018, avant la pandémie."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Une relance <i>polie, graduée et automatique</i> pour indépendants : un rappel avant l'échéance, un message le lendemain, un courrier plus ferme à J+15, le tout avec le ton du prestataire. Concurrence : les logiciels de facturation proposent déjà des relances. L'angle est de cibler ceux qui facturent les grands comptes et de rédiger chaque relance avec le contexte du client.", "plein": true },
+        "sources": ["https://www.lejournaldesentreprises.com/article/altares-chiffre-123-jours-le-retard-de-paiement-moyen-en-france-au-deuxieme-trimestre-2026-2147726"]
+      },
+      {
+        "type": "idee", "rubrique": "L'idée de business", "court": "Idée",
+        "titre": "Le pense-bête des fins de support Windows",
+        "paragraphes": [
+          "Chaque version de Windows 11 a une date de fin de support. La 24H2 s'arrête pour Home et Pro à la mi-octobre 2026, selon la page de support de Microsoft. La 26H2, sortie le 29 septembre, tiendra jusqu'en octobre 2028. Entre les deux, des dizaines de petits cabinets, boutiques et associations ont des PC que personne ne surveille.",
+          "L'idée : un abonnement de quelques euros par mois, pour une TPE de 1 à 10 postes. Un petit agent lit la version de Windows de chaque machine, prévient le dirigeant en français simple six mois avant l'échéance, et propose une intervention à tarif fixe (mise à jour de la version, sauvegarde, vérification). Qui paie : le patron de TPE, sans service informatique. Lancement : démarcher dix cabinets de proximité, vendre d'abord l'intervention, puis l'abonnement.",
+          "Concurrence : les prestataires informatiques locaux et les outils de gestion de parc existent. L'angle est le prix fixe et l'alerte préventive."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 1 },
+        "sources": ["https://learn.microsoft.com/en-us/lifecycle/products/windows-11-home-and-pro", "https://www.thurrott.com/?p=342194"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "IA · Tech",
+    "articles": [
+      {
+        "type": "ia", "rubrique": "L'IA en pratique", "court": "IA",
+        "titre": "Dots : un agent qui travaille quand vous ne regardez pas",
+        "chapo": "OpenAI a lancé le 29 septembre des agents toujours actifs dans ChatGPT. Voici comment les cadrer.",
+        "paragraphes": [
+          "Un Dot reçoit un objectif et le poursuit seul, Il dispose de son propre ordinateur dans le nuage, accède à plus de 4 000 applications par les plugins d'OpenAI, et se joint à vous dans ChatGPT, Slack ou Teams.",
+          "OpenAI prévient que les agents peuvent se tromper et que le travail important doit être relu. Les actions qui touchent à un compte ou partagent des données passent par une validation.",
+          "Déploiement progressif pour ChatGPT Pro et Business Premium, un agent par abonnement. Les abonnés Pro de l'Espace économique européen, de Suisse et du Royaume-Uni en sont exclus."
+        ],
+        "encadre": { "titre": "Le bon cadrage", "texte": "<b>1.</b> Un objectif mesurable (« trier ces 40 factures par fournisseur », pas « range mes papiers »). <b>2.</b> Des droits en lecture d'abord. <b>3.</b> Un point de relecture fixé à l'avance, avant toute action sur un compte." },
+        "sources": ["https://siliconangle.com/2026/09/29/openai-launches-dots-always-on-ai-agents-in-chatgpt-with-their-own-cloud-computers/"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Windows 11 26H2 : une mise à jour qui change surtout la date de péremption",
+        "paragraphes": [
+          "Microsoft a commencé le 29 septembre à déployer Windows 11 version 26H2. Elle arrive sous forme de « paquet d'activation » : même base de code que les versions 24H2 et 25H2, donc une installation courte, qui allume des fonctions déjà présentes. Parmi elles : une barre des tâches déplaçable, une recherche plus tolérante aux fautes de frappe et des actions IA dans l'Explorateur.",
+          "Le vrai changement est le calendrier : 24 mois de support pour Home et Pro, 36 pour Enterprise et Education. Pour la voir, activer « Obtenir les dernières mises à jour dès qu'elles sont disponibles » dans Windows Update."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Chaque sortie remet une horloge en marche chez des milliers de petites structures : de l'accompagnement à vendre, voir l'idée du jour (p. 2).", "plein": true },
+        "sources": ["https://www.thurrott.com/?p=342194", "https://www.windowslatest.com/2026/09/29/windows-11-26h2-is-now-rolling-to-everyone-how-to-get-it-right-now-and-is-it-even-worth-installing/", "https://learn.microsoft.com/en-us/lifecycle/products/windows-11-home-and-pro"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Les jetons GitHub App passent de 40 à 520 caractères",
+        "paragraphes": [
+          "Le 2 octobre, GitHub a terminé le déploiement des jetons d'installation « sans état » : toujours préfixés <i>ghs_</i>, mais d'environ 520 caractères au lieu de 40. Vérifiez vos champs de base de données, vos règles de masquage dans les journaux et toute vérification de longueur codée à 40. L'en-tête de test sera retiré le 30 novembre."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-02-stateless-github-app-installation-tokens-rolled-out"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Paquet d'activation", "nature": "n. m.", "definition": "En anglais <i>enablement package</i> : minuscule mise à jour qui active des fonctions déjà livrées, mais en sommeil. C'est ainsi que la 26H2 arrive sur une 24H2 ou 25H2 (p. 3)." },
+    "chiffre": { "valeur": "49,7 %", "texte": "des entreprises paient à l'échéance (T2 2026), contre 45,2 % un an avant. Altares." },
+    "bonus": { "type": "question", "texte": "Quelle somme vous doit-on aujourd'hui, et depuis combien de jours ? Si la réponse vous agace, notez qui, combien et comment vous avez relancé : c'est le cahier des charges d'un produit." },
+    "enigme": { "question": "Je ne change presque rien à ton écran, mais je remets à zéro le compteur de vie de ton système. Qui suis-je ?", "reponse": "un paquet d'activation (p. 3)" }
+  },
+  "sources": ["github.blog", "lejournaldesentreprises.com", "learn.microsoft.com", "thurrott.com", "windowslatest.com", "siliconangle.com"]
+}

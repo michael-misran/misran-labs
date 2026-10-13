@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-13",
+  "numero": 14,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Meta's Muse Wonder moves in at Vercel",
+    "chapo": "A model built for coding agents, with a one-million-token context window, is now one line of code away.",
+    "paragraphes": [
+      "On October 12, Vercel added Muse Wonder, a model developed by Meta, to its AI Gateway. The announcement says it is designed for coding, long-running agents and computer use.",
+      "In practice, the model can break a job into several steps, hand sub-tasks to helper agents and recover after an error. It takes text, images and PDFs as input, can call tools and can return structured output. Its context window reaches one million tokens: a very large amount of code and documents in a single request.",
+      "For a developer, the switch fits on one line. Vercel gives the identifier <i>meta/muse-wonder-1.0</i> and a gateway API key, and the model also answers OpenAI-compatible clients at ai-gateway.vercel.sh/v1. No separate Meta account needed: comparing models comes down to changing that identifier.",
+      "One gap: the page gives no price. Before plugging anything in, read the model's page in the gateway."
+    ],
+    "sources": ["https://vercel.com/changelog/muse-wonder-now-available-on-ai-gateway"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve",
+        "titre": "Your name on a commit you never wrote",
+        "chapo": "In Git, a commit's author is just a line of text. Anyone can put any name there.",
+        "paragraphes": [
+          "GitHub made the point on October 12 when it launched push attribution: the \"author\" and \"committer\" fields come from the sender's machine, and anyone with write access can fill in whatever name and email they like. In the history, nothing then tells a real commit apart from one signed in your name.",
+          "A question the page doesn't ask, but that AI agents make urgent when they push code with a person's credentials: who really sent what? GitHub now records the authenticated user behind each push, visible in the interface and the API, and offers a rule, <i>Committer must match pusher</i>, that blocks a push whose email isn't one of the sender's verified addresses.",
+          "One detail matters: it is a limited public preview, reserved for GitHub Enterprise customers, on request through their account team."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A commit identity audit for small teams without an Enterprise plan: a weekly report of commits whose author doesn't match who pushed them, with an alert. Competition: GitHub itself, which may widen access. The angle is to serve the people this offer leaves out today, before it opens up.", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-12-push-attribution-public-preview"]
+      },
+      {
+        "type": "etude", "rubrique": "Case study", "court": "Case study",
+        "titre": "Zigpoll: $142,000 a month, one person, one app store",
+        "chapo": "A survey tool for online stores that lives almost entirely off the Shopify App Store.",
+        "paragraphes": [
+          "The founder studied computer science, worked for an e-commerce agency, then quit to build his own products, including an online-store app launched in 2016. Those projects taught him that customer feedback tells you what to build, hence Zigpoll.",
+          "According to an interview published by Niche Pursuits (page updated October 4, 2026), the service brings in about $142,000 in monthly recurring revenue, close to $1.7 million a year. It was around $10,000 to $15,000 a month in 2022. About 90% of the business comes through the Shopify App Store, and the company has no employees: the founder answers support emails himself and uses coding agents for development.",
+          "Lessons: targeting e-commerce sharpened the product, and reducing churn is treated as a revenue strategy. Downside: everything hangs on one platform, and these figures are self-reported by the founder, not audited."
+        ],
+        "sources": ["https://www.nichepursuits.com/?p=142837"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Dev · Tech",
+    "articles": [
+      {
+        "type": "dev", "rubrique": "Dev tool or tip", "court": "Tool",
+        "titre": "Archiving a pull request is no longer for admins only",
+        "chapo": "Since October 8, the \"triage\" role is enough to put away a dead pull request.",
+        "paragraphes": [
+          "Until now, only a repository's admins could archive a pull request. GitHub is opening it to the triage, write, maintain and admin roles.",
+          "Archiving closes the pull request and locks its conversation: no more comments, reactions or automated messages. It disappears from public view but stays visible to those same roles. If you unarchive it, the conversation resumes, but it <b>does not reopen</b>: you have to reopen it separately.",
+          "The obvious use: cleaning up an old open-source repository where abandoned pull requests still attract pointless comments or spam."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-08-triage-role-users-or-higher-can-now-archive-pull-requests/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Dependabot can finally connect to a registry without credentials",
+        "paragraphes": [
+          "On October 12, GitHub added the \"Anonymous\" authentication method to private registries defined at the organization level. It is meant for an internal package mirror that allows reading without credentials.",
+          "A registry defined this way applies to every allowed repository, including those with only security updates and no <i>dependabot.yml</i> file. You can't change an existing registry's method: you have to delete it and create it again. Registries declared only in an <i>.npmrc</i> or <i>nuget.config</i> are still blocked on github.com."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "Internal package mirrors are becoming a standard building block for companies: a market for anyone who can set them up and monitor them turnkey.", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-12-anonymous-organization-level-registries-for-dependabot/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Copilot for JetBrains: turn off MCP server auto-start",
+        "paragraphes": [
+          "A new setting, announced October 10, stops MCP servers from starting on their own for Copilot and Claude: you decide when the tools switch on. Enterprise admins can also set the default model for new conversations, without preventing users from picking another. Support for JetBrains 2025.1 ends."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-10-new-controls-and-chat-improvements-in-copilot-for-jetbrains"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Committer", "nature": "n.", "definition": "In Git, the person who recorded a commit, not to be confused with the author, who wrote the change. Both fields are text supplied by the sender's machine: nothing proves they are accurate without extra verification." },
+    "chiffre": { "valeur": "90%", "texte": "of Zigpoll's sales come from a single app store." },
+    "bonus": { "type": "defi", "texte": "In under 30 minutes: open one of your repositories and run <i>git log --format='%an | %cn'</i>. This command shows the author and committer of each commit. How many lines differ, and why?" },
+    "enigme": { "question": "I carry a name, yet anyone can write me as they please; I appear on every line of a project's history without proving it true. What am I?", "reponse": "the \"author\" field of a Git commit" }
+  },
+  "sources": ["vercel.com", "github.blog", "nichepursuits.com"]
+}

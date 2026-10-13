@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-01",
+  "numero": 2,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "GitHub teste l'IA qui choisit son propre modèle",
+    "chapo": "Plutôt que de choisir un modèle pour vous, HydraFusion en fait travailler plusieurs : un brouillon, un contrôle, une critique.",
+    "paragraphes": [
+      "Le 30 septembre, GitHub a lancé HydraFusion en préversion de recherche dans VS Code (version 1.140 ou plus) et dans l'application GitHub Copilot, pour les abonnements Pro, Pro+, Business et Enterprise. Il était déjà disponible dans Copilot CLI.",
+      "Le principe : au lieu de confier toute la tâche à un seul modèle, HydraFusion traite le choix du mode de travail comme un problème d'optimisation et en propose trois. <b>Single</b> : un modèle résout directement. <b>Cascade</b> : un modèle économe propose une solution, un contrôle décide de la garder ou de passer la main à un modèle plus puissant. <b>Critique</b> : un modèle propose, un critique indépendant relit, puis le premier révise une fois.",
+      "Pour un développeur, c'est la fin d'un petit rituel : se demander à chaque tâche quel modèle prendre. GitHub ne publie pas ici de chiffres de gain : à tester sur vos propres tâches.",
+      "Limites : préversion « susceptible de changer », et sur Business et Enterprise, un administrateur doit d'abord l'activer."
+    ],
+    "sources": [
+      "https://github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app",
+      "https://github.blog/changelog/2026-09-28-claude-sonnet-5-5-in-github-copilot",
+      "https://github.blog/changelog/2026-09-29-gpt-6-1-sol-in-github-copilot"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant", "taille": "grand",
+        "titre": "Le prix qui grossit à la caisse",
+        "chapo": "Un prix affiché, un autre au moment de payer. On connaît la scène.",
+        "paragraphes": [
+          "Le procédé s'appelle <i>drip pricing</i> : afficher un prix de base attractif, puis ajouter les frais obligatoires étape après étape, quand on a déjà investi du temps et choisi ses places. Billetterie, hôtels, locations : le terrain de jeu favori.",
+          "Aux États-Unis, la FTC, le régulateur fédéral, a tranché : depuis le 12 mai 2025, les vendeurs de billets de spectacle et d'hébergement de courte durée doivent afficher dès le début le prix total, frais obligatoires compris, et plus visiblement que tout prix partiel. L'amende peut atteindre 51 744 $ par infraction. Taxes, livraison et options facultatives restent exclues."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Une règle ne vaut que si elle est contrôlée. Un service qui <i>audite le prix total</i> de sites de billetterie ou de locations (capture du parcours, écart entre prix affiché et prix payé) peut se vendre aux annonceurs honnêtes, aux associations de consommateurs et aux avocats. Concurrence : les comparateurs de prix existent ; l’angle est la preuve documentée. Hors des États-Unis, vérifier la règle locale.", "plein": true },
+        "sources": [
+          "https://btlaw.com/en/insights/alerts/2025/ftc-finalizes-junk-fees-rule-new-pricing-disclosure-requirements-take-effect-may-12-2025"
+        ]
+      },
+      {
+        "type": "idee", "rubrique": "L'idée de business", "court": "Idée",
+        "titre": "Le guide de la facture électronique pour artisans",
+        "paragraphes": [
+          "Depuis le 1er septembre 2026, toute entreprise en France doit pouvoir <i>recevoir</i> une facture électronique ; l'obligation d'<i>émettre</i> concerne les PME, TPE et micro-entrepreneurs à partir du 1er septembre 2027. L'amende est de 15 € par facture, plafonnée à 15 000 € par an. Il existe 137 plateformes agréées (au 15 juin 2026) : trop pour un plombier.",
+          "L'idée : un service d'accompagnement clé en main pour les artisans et petits commerçants. On regarde leur situation en 20 minutes, on choisit avec eux la plateforme adaptée, on branche leur messagerie ou leur logiciel de facturation, et une IA vérifie chaque mois que tout est bien transmis. Revenus : forfait de mise en route, puis petit abonnement mensuel.",
+          "Concurrence honnête : les éditeurs de logiciels de facturation et de compta se positionnent déjà sur le sujet ; l’angle libre est celui de ceux qui n’ont <i>aucun</i> logiciel et veulent quelqu'un au téléphone."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 3 },
+        "sources": [
+          "https://www.cegid.com/fr/facturation-electronique/facture-electronique-obligatoire/calendrier-facture-electronique/",
+          "https://www.legifiscal.fr/actualites-fiscales/4536-facturation-electronique-137-plateformes-agreees.html"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Histoire · Tech",
+    "articles": [
+      {
+        "type": "histoire", "rubrique": "Histoire de la tech", "court": "Histoire",
+        "titre": "Le premier lecteur de CD, et la légende de Beethoven",
+        "chapo": "Le 1er octobre 1982, Sony vendait au Japon la première platine laser. D'où vient la durée du disque ?",
+        "paragraphes": [
+          "Le Sony CDP-101 est sorti au Japon le 1er octobre 1982, à 168 000 yens (environ 730 dollars). Au Japon seulement : Philips, partenaire du format, n'était pas prêt à la date convenue, et Sony a préféré ne pas attendre. Le reste du monde l'a eu six mois plus tard, en mars 1983.",
+          "Un seul convertisseur numérique-analogique servait les deux canaux, d'où un décalage d'environ 11 microsecondes entre gauche et droite : ces puces coûtaient cher.",
+          "Reste la légende : le disque aurait sa taille pour contenir la Neuvième de Beethoven. C'est la version officielle de Philips, attribuée à Norio Ohga, de Sony. Kees Immink, ingénieur en chef chez Philips, la conteste : le code EFM n'était pas choisi en décembre 1979, quand le diamètre de 120 mm a été adopté."
+        ],
+        "encadre": { "titre": "À retenir", "texte": "Un format se gagne autant par son récit que par ses chiffres." },
+        "rappel": { "annee": "1982", "texte": "<b>Il y a 44 ans, aujourd'hui</b> — le Sony CDP-101 entrait dans les magasins japonais." },
+        "sources": [
+          "https://en.wikipedia.org/wiki/Sony_CDP-101",
+          "https://en.wikipedia.org/wiki/Compact_disc"
+        ]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Googlebook : le successeur du Chromebook arrive",
+        "paragraphes": [
+          "Annoncé le 12 mai 2026, le Googlebook est un standard d'ordinateur portable de Google, qui tourne sous Googlebook OS, un système de bureau dérivé d'Android et intégrant Gemini. Acer, Asus, Dell, HP et Lenovo fabriquent les premiers modèles.",
+          "Disponibilité : le 4 octobre aux États-Unis, le 5 en France, Allemagne, Royaume-Uni, Irlande, Canada et Australie. Google les situe « haut de gamme » ; les Chromebook restent pris en charge."
+        ],
+        "sources": [
+          "https://en.wikipedia.org/wiki/Googlebook"
+        ]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "npm : moins de jetons à longue durée",
+        "paragraphes": [
+          "Depuis le 30 septembre, la publication « de confiance » npm depuis GitHub peut aussi gérer les <i>dist-tags</i> avec des identifiants OIDC de courte durée, sans jeton permanent. L'option « Allow npm dist-tag » est désactivée par défaut : à activer dans les réglages du paquet."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-09-30-opt-in-dist-tag-permissions-for-npm-trusted-publishing"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Drip pricing", "nature": "n. m.", "definition": "En français « tarification goutte-à-goutte » : afficher un prix de base bas, puis ajouter des frais obligatoires au fil du parcours d'achat, de sorte que le prix final n'apparaît qu'à la fin. C'est ce que la règle américaine de 2025 sur les billets et l'hébergement interdit (p. 2)." },
+    "chiffre": { "valeur": "11 µs", "texte": "de décalage entre les canaux gauche et droite du Sony CDP-101, qui n'avait qu'un seul convertisseur pour les deux (p. 3). Un compromis révélateur de ce que coûtait une puce en 1982." },
+    "bonus": { "type": "question", "texte": "Quel achat vous a déjà fait abandonner au dernier moment, à cause d'un frais découvert à la caisse ? Notez la boutique et le montant : chaque surprise répétée est un trou dans la confiance, donc un produit à inventer." },
+    "enigme": { "question": "Je tourne sans jamais avancer, je lis sans jamais toucher, et on m'a promis la Neuvième en entier. Qui suis-je ?", "reponse": "le disque compact (p. 3)" }
+  },
+  "sources": ["github.blog", "btlaw.com", "cegid.com", "legifiscal.fr", "wikipedia.org"]
+}

@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-08",
+  "numero": 9,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Haiku 5.5: Anthropic's small model costs up to ten times less",
+    "chapo": "Announced yesterday, the cheapest Claude model drops to $0.10 per million input tokens (requests up to 100,000 tokens).",
+    "paragraphes": [
+      "On October 7, Anthropic unveiled <b>Claude Haiku 5.5</b>. Starting price: $0.10 per million input tokens and $0.50 for output, for requests up to 100,000 tokens. Haiku 4.5 cost $1 and $5. Anthropic speaks of an average cost about 75% lower, and a 90% drop below that 100,000-token threshold.",
+      "The gain isn't only about price. On OSWorld 2.1 (offline subset, a test where the model operates a computer), Haiku goes from 15.7% to 72.4%. On Terminal-Bench 4.0, from 0% to 39.2%. Sonnet 5.5 stays ahead (83.9% and 70.6%).",
+      "Anthropic places it on the \"sub-agent\" side: summaries, compaction, database queries, classification, live customer support, browser control. It's not recommended for complex agentic coding, where Sonnet 5.5 or Opus 5.5 remain the better choice. It's also the first Haiku with an effort setting.",
+      "<b>What it changes:</b> when you chain hundreds of automatic calls (sorting, summarizing, checking), the bill follows the model you pick. An agent can now hand its repetitive tasks to a much cheaper model and keep the big one for decisions. Available now, including on AWS, Google Cloud and Azure."
+    ],
+    "sources": [
+      "https://www.anthropic.com/claude-haiku-5-5"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant",
+        "rubrique": "Today's pet peeve",
+        "court": "Pet peeve",
+        "titre": "Small health deductions nobody keeps track of",
+        "chapo": "One euro on a box of medicine, one euro on a session: by the end of the year, who knows how much?",
+        "paragraphes": [
+          "French \"medical deductibles\" are taken out of reimbursements: €1 per box of medicine, €1 per paramedical procedure, €4 per medical transport trip, according to Ameli, the national health insurance site. They appear on the statement, buried among the reimbursement lines. With direct billing, they are deducted later from another reimbursement.",
+          "As of October 1, 2026, the annual cap rises from €50 to €70 for deductibles, and from €50 to €70 for flat-rate contributions, or up to €140 a year instead of €100 (decree of September 11, 2026, according to TPE Actu)."
+        ],
+        "encadre": {
+          "titre": "Business lead",
+          "texte": "An out-of-pocket tracker: read the statements, keep the annual deductible counter and tell people where they stand. The Ameli account shows statements, without a readable annual counter: the angle is a clear view for a family.",
+          "plein": true
+        },
+        "sources": [
+          "https://tpeactu.fr/2026/09/24/ce-qui-change-1er-octobre-2026-entreprises-salaries/",
+          "https://www.ameli.fr/assure/remboursements/reste-charge/franchise-medicale"
+        ]
+      },
+      {
+        "type": "idee",
+        "rubrique": "The business idea",
+        "court": "Idea",
+        "titre": "The funeral quote checker",
+        "paragraphes": [
+          "Since October 1, 2026 (decree no. 2026-770), French funeral providers must give families a standardized, neutral information notice, display it visibly and make it reachable from their website's homepage. It reminds families that quotes are free, of the mandatory / optional distinction, and of checking for a funeral insurance contract with Agira.",
+          "A grieving family doesn't want to read a quote line by line. <b>The idea:</b> upload the quote received; the AI marks each line \"mandatory\", \"depending on circumstances\" or \"optional\" based on the official template, and suggests questions to ask. Revenue: free for the family, a subscription or commission from funeral insurers and associations.",
+          "A quote comparison site already exists (Comitam, online since 2011): it puts providers in competition. Here, you read a quote you've already received, without selling anything or making introductions."
+        ],
+        "jauge": {
+          "cout": 1,
+          "difficulte": 2,
+          "potentiel": 2
+        },
+        "sources": [
+          "https://blog.landot-avocats.net/2026/09/30/prestations-funeraires-entree-en-vigueur-ce-1er-octobre-2026-de-nouvelles-obligations-dinformation-des-familles/",
+          "https://www.quechoisir.org/actualite-pompes-funebres-enfin-une-meilleure-information-pour-les-familles-n178062/",
+          "https://lespepitestech.com/node/858"
+        ]
+      },
+      {
+        "type": "irritant",
+        "rubrique": "Pet peeve in brief",
+        "court": "Pet peeve",
+        "taille": "petit",
+        "titre": "Gas prices move, and so does your bill",
+        "paragraphes": [
+          "On October 1, 2026, France's reference gas price rises from €172.05 to €182.88/MWh including tax (+6.3%), according to the CRE regulator. Estimated average extra cost for indexed offers: €5.28 on the October bill. Fixed-price offers aren't automatically affected.",
+          "<b>The lead:</b> an alert that compares your plan with the reference price and tells you when it's worth switching. Energy comparison sites already exist: what's really missing is the reminder, not the comparison."
+        ],
+        "sources": [
+          "https://tpeactu.fr/2026/09/24/ce-qui-change-1er-octobre-2026-entreprises-salaries/"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "History · Tech",
+    "articles": [
+      {
+        "type": "histoire",
+        "rubrique": "Tech history",
+        "court": "History",
+        "titre": "The first text message: a Christmas party test",
+        "chapo": "\"Merry Christmas\", sent from a computer to a phone, with no way to reply.",
+        "paragraphes": [
+          "On December 3, 1992, in Newbury (UK), engineer Neil Papworth was testing short message software. He typed \"Merry Christmas\" on a computer and sent it to a mobile phone: Richard Jarvis's, who was at a Christmas party.",
+          "Papworth only found out through the system's receipt (\"The text had landed\"). Replying was impossible: back then, an SMS could only be sent from a computer. The 1984 GSM standard provided for SMS, but only so the operator could notify the subscriber.",
+          "The first commercial services arrived in 1993, starting in Sweden. The Nokia 2010, from January 1994, is considered the first phone on which you could easily write and send a text."
+        ],
+        "encadre": {
+          "titre": "Business angle",
+          "texte": "SMS was born as a simple operator notice. Users turned it into a conversation.",
+          "plein": true
+        },
+        "sources": [
+          "https://www.xataka.com/especiales/feliz-navidad-primer-sms-de-la-historia-aunque-solo-una-persona-en-la-fiesta-de-navidad-de-vodafone-se-diera-cuenta",
+          "https://www.presse-citron.net/le-tout-premier-sms-a-ete-envoye-il-y-a-31-ans-que-disait-il/",
+          "https://www.tomsguide.fr/a-noel-vous-avez-envoye-le-meme-message-que-le-tout-premier-sms/"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech",
+        "court": "Tech",
+        "titre": "GitHub trains a model to spot passwords in code",
+        "paragraphes": [
+          "On October 7, GitHub announced a fine-tuned model dedicated to secret detection. It reads the code around a value to spot likely credentials, especially passwords with no recognizable token format, which classic patterns miss.",
+          "AI-detected password alerts migrate automatically, at no extra cost with Secret Protection (GHSP) or Advanced Security (GHAS). The new checks (at push time, in private preview; Copilot's /security-review, \"coming soon\") will consume AI Credits in the coming weeks. The push-time check is billed to the organization even when it blocks nothing: set a budget before turning it on."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-10-07-purpose-built-model-for-leaked-secret-detection"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech in brief",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "Drive a Cursor agent from your phone",
+        "paragraphes": [
+          "Since October 6, Cursor's iOS app shows the agents running on your computer and lets you reply to them, after pairing approved in the desktop app. The computer must stay on and connected. On by default, except for Enterprise organizations, where an admin must allow it."
+        ],
+        "sources": [
+          "https://cursor.com/changelog/remote-control-local-agents"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "Medical deductible",
+      "nature": "n.",
+      "definition": "In France, a small sum left for the insured person to pay, deducted from their reimbursement: €1 per box of medicine or paramedical procedure, €4 per medical transport trip, up to an annual cap (€70 according to Ameli)."
+    },
+    "chiffre": {
+      "valeur": "€135",
+      "texte": "at most for towing a private car to the impound lot in France, plus €7.15 per day of storage, since October 1, 2026 (excluding large cities with their own rates)."
+    },
+    "bonus": {
+      "type": "question",
+      "texte": "Which small recurring expense have you stopped looking at, because it's too small to raise an alarm? Write it down: an invisible expense is often a product that doesn't exist yet."
+    },
+    "enigme": {
+      "question": "I left a computer one December 3, bound for a phone, with a seasonal wish. I never got a reply. What am I?",
+      "reponse": "the first text message (p. 3)"
+    }
+  },
+  "sources": [
+    "anthropic.com",
+    "github.blog",
+    "cursor.com",
+    "tpeactu.fr",
+    "ameli.fr",
+    "quechoisir.org",
+    "xataka.com",
+    "presse-citron.net"
+  ]
+}

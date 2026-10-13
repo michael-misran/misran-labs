@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-09",
+  "numero": 10,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Anthropic réécrit sa politique d'usage : surveillance et robots dans le viseur",
+    "chapo": "Nouvelle version publiée le 8 octobre, applicable à partir du 12 novembre. Ceux qui construisent sur l'API ont un mois pour relire.",
+    "paragraphes": [
+      "Anthropic a publié hier une mise à jour de sa politique d'usage, le texte qui fixe ce qu'on peut faire ou non avec Claude. Elle entre en vigueur le 12 novembre 2026. Plusieurs sections sont réécrites, d'autres regroupées : les règles sur les campagnes trompeuses et les réseaux de faux comptes, jusque-là dispersées, forment une section unique.",
+      "Le plus concret pour un développeur : la surveillance. Suivre des personnes sans leur consentement est interdit, en temps réel comme sur des données déjà collectées, et Claude ne peut ni décider ni recommander qui enquêter, arrêter ou poursuivre. Le suivi consenti, par exemple contre la fraude, reste permis, tout comme la modération, le journalisme et la recherche juridique.",
+      "Autre nouveauté : les systèmes branchés sur du matériel qui agit physiquement et seul. Un opérateur qualifié doit pouvoir observer l'équipement et l'arrêter, et celui-ci doit rester dans un état sûr si Claude est déconnecté. Les interdictions sur les armes couvrent aussi les logiciels qui les font fonctionner et l'armement de drones.",
+      "La page ne détaille pas d'effet propre à l'API : pour les obligations exactes, il faut lire la politique complète avant novembre, surtout si votre produit touche à la surveillance, aux drones ou à la décision sur des personnes."
+    ],
+    "sources": ["https://www.anthropic.com/news/2026-usage-policy-update"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "chiffre", "rubrique": "Le chiffre qui dérange", "court": "Chiffre", "taille": "grand",
+        "titre": "61 % des Français peinent avec l'administration",
+        "chapo": "Ils étaient 39 % en 2016. La dématérialisation devait simplifier la vie ; elle a surtout changé la nature de l'obstacle.",
+        "paragraphes": [
+          "C'est le résultat d'une enquête du Défenseur des droits, réalisée par Ipsos auprès de 5 030 personnes de 18 à 79 ans en France métropolitaine, par téléphone, entre le 10 octobre 2024 et le 11 janvier 2025, et publiée le 13 octobre 2025. En 2024, 61 % des sondés disent rencontrer des difficultés pour leurs démarches, contre 39 % en 2016.",
+          "La difficulté la plus citée n'est pas le formulaire : c'est de joindre quelqu'un pour obtenir une information ou un rendez-vous. Et 23 % des usagers déclarent avoir renoncé à un droit au cours des cinq dernières années, d'abord à cause de la complexité des démarches.",
+          "Ce qui dérange, c'est le renoncement : un droit existe, il est ouvert à la personne, et il reste inutilisé parce que le chemin est trop long. Ce n'est pas un problème de technologie qui manque, mais d'interface entre une règle et quelqu'un qui n'a ni le temps ni l'énergie de la décoder.",
+          "Pour un designer, c'est un énoncé de problème rare : un besoin massif, mesuré, qui touche plus d'une personne sur deux."
+        ],
+        "colonnes": 2,
+        "encadre": { "titre": "L'œil du business", "texte": "Un assistant qui lit le courrier ou le dossier, dit à quoi on a droit, prépare les pièces et rappelle les échéances. Des services d'accompagnement existent déjà (associatifs, publics, payants) : à étudier avant de se lancer. L'angle possible est de payer à la démarche réussie plutôt qu'à l'abonnement.", "plein": true },
+        "jauge": { "cout": 2, "difficulte": 3, "potentiel": 3 },
+        "sources": ["https://eno.ombudsman.europa.eu/home/news/archives-2025/maincontent/enquete-sur-l-acces-aux-droits-1.html", "https://www.alloforfait.fr/?p=147479"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Rétro · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Rétro gaming", "court": "Rétro",
+        "titre": "Un jeu NES jamais sorti, retrouvé sur près de 40 disquettes",
+        "chapo": "Il n'avait pas été vu depuis plus de trente ans. Pour le rouvrir, il a fallu une vraie machine d'époque.",
+        "paragraphes": [
+          "Le jeu : une version NES inédite de <i>Days of Thunder</i>, co-écrite par Chris Oberth chez Mindscape. C'est une autre version, signée Beam Software, qui a été publiée à sa place. En 2020, l'équipe de la Video Game History Foundation a reconstitué la première à partir d'une sauvegarde de disque dur datée de 1989.",
+          "Cette sauvegarde tenait sur près de 40 disquettes, dont 21 contenant quatre partitions au format PC Tools 5.1. Les données étaient compressées puis chiffrées, et l'émulateur DOSBox n'a pas réussi à les restaurer : un bénévole, Foone, a fourni du matériel réel pour relire les disquettes.",
+          "Une disquette portait l'étiquette « NINTENDO HOT ROD TAXI FINAL » mais ne contenait qu'une démo technique. Le fichier décisif était un binaire graphique (CHR) de 128 Ko, trouvé ailleurs. Une partie du code manque probablement, restée sur des partitions absentes du lot."
+        ],
+        "encadre": { "titre": "La leçon", "texte": "Une sauvegarde qu'on ne sait plus relire n'est pas une sauvegarde. Format, chiffrement, matériel : tout doit pouvoir être rejoué. Le code et l'outil de compilation sont publiés sur GitHub, avec l'accord de la famille d'Oberth.", "plein": true },
+        "sources": ["https://gamehistory.org/days-of-thunder-nes-unreleased/"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Copilot : un bac à sable local pour les agents, désormais en disponibilité générale",
+        "paragraphes": [
+          "Depuis le 7 octobre, le « sandbox » local de GitHub Copilot est en disponibilité générale, sans surcoût. Il encadre ce que les commandes lancées par l'agent peuvent toucher : fichiers et dossiers accessibles, réseau (Internet et local), identifiants Git et GitHub CLI, et certains outils locaux comme les serveurs MCP.",
+          "Il fonctionne dans Copilot CLI, l'application Copilot et les sessions VS Code avec Agent Host, sous Windows, macOS et Linux, grâce à une politique commune traduite en contrôles natifs. Une organisation peut l'exiger par des paramètres gérés."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Plus les agents agissent seuls, plus la question « qu'ont-ils le droit de toucher ? » devient un produit : audit, politiques par équipe, rapports d'accès.", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Figma : un agent qui fait le ménage dans les design systems",
+        "paragraphes": [
+          "Figma décrit (6 octobre) ce que son agent fait pour un design system : rédiger la documentation des composants, repérer les écrans qui s'écartent de la bibliothèque (doublons, valeurs codées en dur), harmoniser des noms comme <i>small</i> et <i>sm</i>, et remplacer des éléments en masse.",
+          "Uber l'utilise pour documenter des composants sur sept plateformes ; Granola, pour remplacer des boutons importés par celui du design system. Réservé aux sièges Full des plans Professional, Organization, Enterprise et certains plans Education."
+        ],
+        "sources": ["https://www.figma.com/blog/figma-agent-and-design-systems/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "npm : 48 heures pour valider",
+        "paragraphes": [
+          "Depuis le 2 octobre, une configuration de publication de confiance npm non validée expire 48 heures après sa création. Elle devient valide après une première publication réussie. Si elle a expiré, il suffit de la recréer."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-02-unvalidated-npm-trusted-publishing-configurations-now-expire"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Bac à sable", "nature": "n. m.", "definition": "Espace isolé où l'on exécute du code sans qu'il puisse toucher au reste du système. On y limite les fichiers, le réseau et les identifiants accessibles." },
+    "chiffre": { "valeur": "≈ 40", "texte": "disquettes : c'est ce qu'il a fallu relire pour retrouver une sauvegarde de 1989 contenant un jeu NES jamais sorti." },
+    "bonus": { "type": "defi", "texte": "En moins de 30 minutes : choisissez un projet perso qui n'existe qu'à un endroit, copiez-le hors de cette machine, puis restaurez-le dans un dossier neuf pour vérifier qu'il s'ouvre. Notez la date du test." },
+    "enigme": { "question": "Plus on me partage, moins je risque de me perdre ; plus on me perd, plus on regrette de ne pas m'avoir copiée. Que suis-je ?", "reponse": "Une sauvegarde." }
+  },
+  "sources": ["anthropic.com", "eno.ombudsman.europa.eu", "gamehistory.org", "github.blog", "figma.com"]
+}

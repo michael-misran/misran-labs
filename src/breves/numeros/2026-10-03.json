@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-03",
+  "numero": 4,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Anthropic veut former 10 000 « ingénieurs de déploiement »",
+    "chapo": "Un programme de 100 millions de dollars pour apprendre aux équipes des grandes entreprises à mettre des agents IA au travail.",
+    "paragraphes": [
+      "Le 2 octobre, Anthropic a annoncé la Claude Frontier Academy, dotée de 100 millions de dollars. L'objectif : former 10 000 « Frontier Deployed Engineers » d'ici fin 2027, des ingénieurs chargés d'installer Claude dans les processus d'une entreprise, et non de développer le modèle.",
+      "Deux temps : quelques jours en présentiel avec des déploiements simulés (cas d'usage, revue de sécurité, passation), puis une résidence de 12 semaines à la tête de vrais projets Claude dans l'organisation du participant.",
+      "Premières cohortes : Accenture, Bain, Capgemini, Deloitte, McKinsey, Morgan Stanley, Novo Nordisk, entre autres. On n'y entre pas seul : c'est l'entreprise qui nomme ses ingénieurs.",
+      "Ce que cela dit : le goulot d'étranglement n'est plus le modèle, c'est la personne capable de l'intégrer dans un vrai métier. Pour un développeur ou un designer indépendant, un métier se dessine : celui qui cadre, branche et sécurise des agents chez des PME que ces programmes n'atteindront pas."
+    ],
+    "sources": ["https://anthropic.com/news/claude-frontier-academy"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "etude", "rubrique": "Étude de cas", "court": "Étude",
+        "titre": "Plausible : 84 % d'inscriptions en plus en coupant du texte",
+        "chapo": "Une analytique web indépendante a simplifié sa page d'accueil. Sans nouvelle fonction ni publicité.",
+        "paragraphes": [
+          "Plausible Analytics, alternative open source à Google Analytics, se finance uniquement par ses abonnés, sans investisseurs. Fin janvier 2026, l'équipe remanie sa page d'accueil : la grille des fonctions remonte juste sous l'en-tête, les sections de prose passent de six à trois, et les boutons deviennent plus précis (« Start free trial » au lieu de « Get started »).",
+          "Résultat, d'après leur bilan : de janvier à avril, les inscriptions à l'essai gratuit bondissent de 84 % pour environ 2 % de trafic en plus. Le taux visiteur → essai passe de 2,65 % à 4,80 %. Avril 2026 devient leur meilleur mois en sept ans, avec 1 156 nouveaux abonnés payants, et le désabonnement reste stable.",
+          "Leur conclusion : la complexité s'accumule « un paragraphe à la fois »."
+        ],
+        "encadre": { "titre": "À retenir", "texte": "Avant de payer pour plus de visiteurs, retirer ce qui empêche ceux qui sont déjà là de comprendre. Un test à votre portée : qu'un inconnu lise votre page 5 secondes et dise ce qu'elle vend.", "plein": true },
+        "sources": ["https://plausible.io/blog/homepage-edits-conversion-lift", "https://plausible.io/about"]
+      },
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "« Presque juste, mais pas tout à fait »",
+        "chapo": "La première frustration des développeurs avec l'IA n'est pas qu'elle se trompe. C'est qu'elle se trompe presque pas.",
+        "paragraphes": [
+          "Dans l'enquête 2025 de Stack Overflow, 66 % des développeurs citent comme premier irritant les solutions d'IA « presque justes, mais pas tout à fait ». 45,2 % ajoutent que déboguer du code généré prend plus de temps que de l'écrire. Seuls 3,1 % disent faire très confiance à ses réponses.",
+          "Le sujet reste d'actualité : les 28 et 29 septembre, GitHub a ajouté à Copilot Claude Sonnet 5.5 puis GPT-6.1 Sol. Chaque modèle promet moins d'erreurs."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un outil de <i>revue de code généré</i> : il lit le diff produit par l'IA, relance les tests, signale ce qui ne correspond pas à la demande d'origine. Concurrence : les revues automatisées de pull requests existent déjà ; l'angle est le contrôle de conformité au cahier des charges, pas la chasse au bug.", "plein": true },
+        "sources": ["https://survey.stackoverflow.co/2025/ai", "https://github.blog/changelog/month/09-2026/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Science · Tech",
+    "articles": [
+      {
+        "type": "science", "rubrique": "Science en 5 lignes", "court": "Science",
+        "titre": "Le cerveau aurait deux origines, pas une",
+        "chapo": "Une étude de Stanford bouscule le schéma d'un cerveau issu d'une seule lignée de cellules.",
+        "paragraphes": [
+          "Publiée le 18 septembre dans <i>Nature Neuroscience</i>, l'étude dirigée par Kyle Loh (Stanford Medicine) a suivi des embryons de souris. Elle montre que deux familles de cellules progénitrices, qui ne se mélangent jamais, construisent le cerveau : celles qui expriment le gène Otx2 forment le cerveau antérieur et moyen, celles qui expriment Gbx2 forment le cerveau postérieur.",
+          "Le modèle dominant faisait partir tout le cerveau d'une cellule d'origine unique. Retombée : l'équipe a fabriqué en laboratoire, à partir de cellules souches humaines, des neurones du cerveau postérieur, de quoi étudier la SLA ou l'amyotrophie spinale."
+        ],
+        "sources": ["https://www.news-medical.net/news/20260918/New-discovery-overturns-a-prevailing-model-of-brain-development.aspx", "https://www.sciencealert.com/the-human-brain-has-two-distinct-origins-scientists-discover"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Gemini 4 Argon : le modèle que l'on ne peut pas encore acheter",
+        "paragraphes": [
+          "Dans son bilan de septembre publié le 2 octobre, Google présente Gemini 4 Argon, son nouveau modèle de pointe, avec un raisonnement avancé et une limite de sortie d'un million de jetons. Il est destiné aux tâches de cybersécurité et de travail intellectuel complexe, et ne se déploie pour l'instant qu'à des défenseurs de confiance via le programme Fairwind.",
+          "Ailleurs : Gemini 3.8 Flash, aussi rapide que le 3.7 mais meilleur en raisonnement et en code, et deux modèles de synthèse vocale expressive (Flash-Lite TTS et Flash TTS)."
+        ],
+        "sources": ["https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "GitHub coupe un vieux TLS le 7 octobre",
+        "paragraphes": [
+          "À partir du 7 octobre, GitHub Enterprise Cloud avec résidence des données (GHE.com) n'accepte plus les connexions TLS limitées à l'échange de clés X25519. Si un outil interne ou un script s'y connecte, vérifiez ses réglages TLS avant mercredi."
+        ],
+        "sources": ["https://github.blog/changelog/month/09-2026/"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Taux de conversion", "nature": "n. m.", "definition": "Part des visiteurs d'un site qui accomplissent l'action visée (essai gratuit, achat, inscription). Chez Plausible, il est passé de 2,65 % à 4,80 % de janvier à avril 2026 (p. 2) : presque le double, pour 2 % de visiteurs en plus." },
+    "chiffre": { "valeur": "1 156", "texte": "nouveaux abonnés payants gagnés par Plausible en avril 2026, son meilleur mois en sept ans, selon l'équipe (p. 2)." },
+    "bonus": { "type": "citation", "texte": "« Good design is as little design as possible. »", "auteur": "Dieter Rams, 10ᵉ principe du bon design (Vitsœ)" },
+    "enigme": { "question": "Plus on m'enlève de choses, plus je rapporte. Je ne fais pas grandir ton trafic, pourtant ton nombre d'inscrits augmente. Qui suis-je ?", "reponse": "une page d'accueil simplifiée (p. 2)" }
+  },
+  "sources": ["anthropic.com", "plausible.io", "survey.stackoverflow.co", "github.blog", "news-medical.net", "sciencealert.com", "blog.google", "vitsoe.com"]
+}

@@ -1,0 +1,104 @@
+{
+  "date": "2026-09-30",
+  "numero": 1,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "ChatGPT opens its sidebar to developers",
+    "chapo": "At DevDay, the most concrete news wasn't a model: it was room for third-party apps.",
+    "paragraphes": [
+      "On September 29, OpenAI held its DevDay. For developers, the news that matters is called \"plugin extensions\": a third-party app can install itself in ChatGPT's sidebar, open an interactive panel next to the conversation, or act as a viewer and editor for a file type.",
+      "It all builds on MCP, the open protocol linking AI to tools; kits exist in TypeScript and Python.",
+      "Alongside: an Agents API in public beta and GPT-6.1 Sol, at $2 per million input tokens and $10 per million output tokens. The persistent \"Dots\" agents come to Pro, Business and Enterprise, but not to the EEA, Switzerland or the UK.",
+      "What it changes: ChatGPT becomes a distribution channel. For a designer, the question becomes \"which panel next to a conversation?\""
+    ],
+    "sources": [
+      "https://community.openai.com/t/devday-2026-announcements-and-developer-resources/1402006",
+      "https://developers.openai.com/plugins/build/extensions",
+      "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve",
+        "titre": "The cookie banner, again and again",
+        "chapo": "Europe had the fix: a single setting in the browser. Member states pulled it in June.",
+        "paragraphes": [
+          "Accept, reject, \"customize\"… The same ritual on every site. The group noyb talks of several billion clicks a year in the EU, while according to the studies it cites, only 3 to 10% of users actually want to be tracked.",
+          "In its \"digital omnibus\", the Commission proposed an Article 88b: state your choice once, in the browser, and bar sites from asking again for six months. On June 18, 2026, the EU Council dropped it from its position, at the request of Germany, France and Poland among others. On September 10, a coalition of 19 organizations, including BEUC, noyb and the EFF, asked for it back. Only the European Parliament can still restore it."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "On the user side, the spot is taken: the open-source Consent-O-Matic extension, from Aarhus University, already fills in banners for you. The angle is on the site side: a turnkey audit for small businesses that finds what really triggers the banner and removes needless trackers.", "plein": true },
+        "sources": [
+          "https://noyb.eu/node/1641",
+          "https://www.euronews.com/next/2026/05/18/the-eus-plan-to-tackle-cookie-fatigue",
+          "https://ppc.land/19-groups-ask-eu-to-re-insert-the-cookie-banner-fix-google-lobbied-out/",
+          "https://consentomatic.au.dk/"
+        ]
+      },
+      {
+        "type": "modele", "rubrique": "The business model", "court": "Model",
+        "titre": "Duolingo: 9% pay for everyone",
+        "paragraphes": [
+          "In the second quarter of 2026, Duolingo reported 140.6 million monthly active users and 12.7 million paying subscribers: just 9%. Yet they are the ones who keep the company going: $258M in subscriptions out of $298.5M in revenue, or 86%. Advertising makes up 7%, the Duolingo English Test barely $10M.",
+          "The engine is habit. 58.7 million people open the app every day, 23% more than a year ago. The streak of consecutive days is the central weapon: in June, a one-off event let users win back their longest streak by doing three lessons. 15.4 million learners did it, including nearly 8 million who no longer had any active streak.",
+          "AI isn't wrecking the margin: 72.6% gross margin, thanks to a measured rollout of AI features according to management."
+        ],
+        "encadre": { "titre": "Takeaway", "texte": "A freemium that works sells the habit before the product: free is the funnel, retention the metric." },
+        "sources": [
+          "https://www.sec.gov/Archives/edgar/data/0001562088/000162828026053299/q2fy26duolingo6-30x26share.htm"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Design · Tech",
+    "articles": [
+      {
+        "type": "design", "rubrique": "Design & UX", "court": "Design",
+        "titre": "The dropdown menu can finally get dressed up",
+        "chapo": "With Safari 27, the native <i>select</i> becomes stylable in CSS, without JavaScript and without losing accessibility.",
+        "paragraphes": [
+          "Styling a dropdown used to mean rebuilding it out of <i>div</i>s and JavaScript, breaking the keyboard and screen readers. In its Safari 27 roundup on September 17, WebKit details the alternative: declare <i>appearance: base-select</i>, then style freely.",
+          "<i>::picker-icon</i> targets the arrow, <i>::checkmark</i> the check mark, and the <i>selectedcontent</i> element shows the chosen option, icon included, in the closed button.",
+          "The golden rule, which WebKit restated in June: every option keeps some text, even hidden. Otherwise it is silent to a screen reader."
+        ],
+        "encadre": { "titre": "Try it", "texte": "Wrap the styles in <i>@supports (appearance: base-select)</i>: elsewhere, the classic menu stays." },
+        "sources": [
+          "https://webkit.org/blog/18325/webkit-features-for-safari-27-0/",
+          "https://webkit.org/blog/18117/the-golden-rule-of-customizable-select/"
+        ]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Starship reaches orbit",
+        "paragraphes": [
+          "On Monday, September 28, from South Texas, SpaceX's rocket reached orbit for the first time, on the third test of its V3 version. The upper stage deployed 26 third-generation Starlink satellites, then came back down after 3 hours instead of 9: one of its six engines had failed. One such launch equals the capacity of 20 Falcon 9 flights loaded with older satellites."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "More capacity per launch means more satellite bandwidth to resell.", "plein": true },
+        "sources": [
+          "https://techcrunch.com/2026/09/28/spacexs-starship-rocket-reaches-orbit-for-the-first-time/"
+        ]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "A Walkman inside a foldable iPhone",
+        "paragraphes": [
+          "The iPhone Duo, Apple's foldable (7.6 inches open, 5.4 closed), already has its signature app: Duo-Man, by Vidit Bhargava. Open it to pick your \"tape\", close it to listen, with the clicks and hiss of a real Walkman."
+        ],
+        "sources": [
+          "https://techcrunch.com/2026/09/28/the-iphone-duo-may-already-have-its-first-killer-app-a-virtual-walkman/"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "CMP", "nature": "n. (acronym)", "definition": "<i>Consent Management Platform</i> (or <i>Provider</i>): the software hiding behind a site's cookie banner. It displays the choices, records the answer and tells analytics and advertising tools what they are allowed to do. Consent-O-Matic fills in banners for you by recognizing CMPs (p. 2)." },
+    "chiffre": { "valeur": "844", "texte": "issues fixed in Safari 27.0. According to WebKit, 86% of this release is fixes rather than new features." },
+    "bonus": { "type": "citation", "texte": "Less, but better.", "auteur": "Dieter Rams, 10th principle of good design" },
+    "enigme": { "question": "Closed, I show only one choice; open, I show them all. For years, people rebuilt me out of divs. What am I?", "reponse": "the dropdown menu (p. 3)" }
+  },
+  "sources": ["openai.com", "noyb.eu", "euronews.com", "ppc.land", "consentomatic.au.dk", "sec.gov", "webkit.org", "techcrunch.com", "vitsoe.com"]
+}

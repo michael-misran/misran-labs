@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-02",
+  "numero": 3,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Copilot grabs the mouse: the AI that drives your apps",
+    "chapo": "GitHub lets its assistant click, type and scroll in desktop apps, even without an API.",
+    "paragraphes": [
+      "On October 1, GitHub opened a \"computer use\" feature for Copilot in public preview. The assistant can read an app's accessible content, click buttons, enter and edit text, press keys, scroll and drag, chaining these actions from one app to another.",
+      "The value lies where there is no API, no command line and no MCP connector: an old piece of software, an internal tool. Copilot goes through the screen, as you would.",
+      "It's available in Copilot CLI and in the Copilot app (macOS, Windows); you turn it on with <i>/computer on</i>. Copilot asks for permission before driving an app, and an organization can disable the feature. On a Mac, you need to grant the Accessibility and Screen Recording permissions.",
+      "For a developer or a designer, one excuse is gone: \"no API, so no automation\"."
+    ],
+    "sources": [
+      "https://github.blog/changelog/2026-10-01-github-copilot-can-now-interact-with-desktop-apps"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve", "taille": "grand",
+        "titre": "The price you see may not be yours",
+        "chapo": "Same product, same site, same minute: two customers, two prices.",
+        "paragraphes": [
+          "A site can estimate what you're willing to pay from your data (location, browsing, cart). That's personalized pricing, according to the US Federal Trade Commission (FTC).",
+          "The measurements exist. According to Consumer Reports' June 2026 investigation into Uber and Lyft, the median gap between the cheapest and most expensive group reached 42.4% on simulated rides. On Instacart, nearly three quarters of the items tested (a December 2025 study) showed different prices depending on the shopper, with gaps of up to 23%.",
+          "On August 19, 2026, the FTC published a draft policy statement for comment. It can't ban the practice in general, but plans to go after deceptive or unfair personalized pricing, and expects companies to say how data affects the price. The comment period closed on September 25."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A <i>price audit</i> tool: testers or an extension that check the same cart from several profiles and document the gap, sold to consumer groups, journalists and retailers who want to prove they're fair. Competition: Consumer Reports already runs this kind of investigation; the angle is automating it.", "plein": true },
+        "sources": [
+          "https://www.ftc.gov/news-events/news/press-releases/2026/08/ftc-seeks-comment-enforcement-policy-statement-regarding-personalized-pricing",
+          "https://foxnews.com/tech/personal-data-changing-pay-online",
+          "https://www.ftc.gov/news-events/news/press-releases/2026/09/ftc-extends-public-comment-proposed-policy-statement-regarding-personalized-pricing"
+        ]
+      },
+      {
+        "type": "chiffre", "rubrique": "The uncomfortable figure", "court": "Figure", "taille": "grand",
+        "titre": "Streaming grows without new subscribers",
+        "paragraphes": [
+          "According to Ofcom's Media Nations 2026 report (the UK regulator), published July 29, 70% of UK households had at least one subscription video-on-demand service in the first quarter of 2026. That's only 2 points more than in the first quarter of 2022: growth has stalled.",
+          "Yet subscription revenue (pay TV and video on demand) rose by more than a billion pounds to reach £11.4 billion in 2025. According to the report, the rise comes mainly from price increases and bundles, not new subscribers.",
+          "The uncomfortable figure: an industry growing through price hikes, not a wider audience. For the customer, the bill goes up while the offer stays the same."
+        ],
+        "sources": [
+          "https://www.ispreview.co.uk/index.php/2026/07/ofcom-subscription-streaming-services-in-uk-homes-have-plateaued.html"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Retro · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Retro gaming", "court": "Retro",
+        "titre": "Pitfall!: 254 screens, 4 KB, and a sleight of hand",
+        "chapo": "Activision's jungle was never drawn screen by screen: it is computed.",
+        "paragraphes": [
+          "When David Crane programmed <i>Pitfall!</i> for the Atari 2600 (1982), the cartridge offered only 4 KB of memory. No way to store 254 hand-drawn screens: each screen is computed mathematically when the player reaches it.",
+          "The result: a whole world for almost nothing in memory. According to TechCrunch (2009), it took about 1,000 hours of programming, for a concept born in ten minutes. The running character, though, had been imagined as early as 1979."
+        ],
+        "encadre": { "titre": "Takeaway", "texte": "When memory runs short, you don't store the content: you store the recipe.", "plein": true },
+        "sources": [
+          "https://techcrunch.com/2009/06/29/the-making-of-pitfall-for-the-atari-2600"
+        ]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech", "taille": "grand",
+        "titre": "GitHub makes security reports use forms",
+        "paragraphes": [
+          "Since October 1, private vulnerability reports on public repositories no longer fit in a plain text box. Four fields are required: summary, details, proof of concept (150 characters minimum) and impact.",
+          "A repository can customize the form with a <i>.github/VULNERABILITY_REPORT.yml</i> file and require (an organization setting) a CWE identifier before submission. Stated goal: cut down on low-quality reports.",
+          "It applies to public repositories that have enabled private reporting."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "As AI-generated reports multiply, triage becomes a job: filtering, automatic reproduction, template replies for overwhelmed maintainers.", "plein": true },
+        "sources": [
+          "https://github.blog/changelog/2026-10-01-structured-forms-for-private-vulnerability-reports"
+        ]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Dependabot on your own machines",
+        "paragraphes": [
+          "Since September 29, an admin can choose, repository by repository, which runner Dependabot updates run on, with custom labels and groups. Handy for a private package registry."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-09-29-repository-custom-runner-settings-for-dependabot"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Procedural generation", "nature": "n.", "definition": "A technique that produces content (levels, maps, textures) by computation rather than by storing it. The same formula and the same starting point always give the same result: that's how the jungle of <i>Pitfall!</i> fits in 4 KB (p. 3)." },
+    "chiffre": { "valeur": "42.4%", "texte": "median price gap between the cheapest and most expensive group on Uber and Lyft rides, according to the Consumer Reports study (June 2026) cited on p. 2." },
+    "bonus": { "type": "defi", "texte": "In 20 minutes: pick a product or a ticket, and compare its displayed price on the same site while logged in, then in a private window, then from your phone. Note the gaps. Zero gap proves nothing, but a single gap is enough for a product idea (p. 2)." },
+    "enigme": { "question": "I have 254 rooms but no map in my memory. Every time you come back, you find me exactly the same: I'm not stored, I'm recomputed. What am I?", "reponse": "the jungle of Pitfall! (p. 3)" }
+  },
+  "sources": ["github.blog", "ftc.gov", "foxnews.com", "ispreview.co.uk", "techcrunch.com"]
+}
