@@ -8,10 +8,8 @@ export const NT = {
   fin: { fr: 'Fin du numéro', en: 'End of issue' },
   sommaireBtn: { fr: 'Sommaire', en: 'Contents' },
   page: { fr: 'Page', en: 'Page' },
-  astuce: {
-    fr: 'Flèches du clavier sur les pages du numéro, ou clic sur les renvois « suite page… »',
-    en: 'Arrow keys on the issue pages, or click the “continued on page…” links',
-  },
+  suite: { fr: 'suite', en: 'continued' },
+  suiteAuDos: { fr: 'Suite page suivante', en: 'Continued overleaf' },
 
   // Couverture
   uneMeta: { fr: '4 titres · 1 kiosque', en: '4 titles · 1 newsstand' },
@@ -42,7 +40,7 @@ export const NT = {
       r: { fr: 'Oui. Et elles ne réclament même pas d’heures sup’. La Fiole.', en: 'Yes. And they don’t even ask for overtime. The Flask.' },
     },
     {
-      q: { fr: 'J’ai joué au geste parfait trois heures d’affilée. Est-ce normal ?', en: 'I played The perfect touch for three hours straight. Is that normal?' },
+      q: { fr: 'J’ai joué au Geste parfait trois heures d’affilée. Est-ce normal ?', en: 'I played The perfect touch for three hours straight. Is that normal?' },
       sig: { fr: 'Une lectrice inquiète', en: 'A worried reader' },
       r: { fr: 'Parfaitement normal. Un seul défi par jour, pourtant…', en: 'Perfectly normal. Even though there’s only one challenge a day…' },
     },
@@ -104,7 +102,7 @@ export const NT = {
   labSous: { fr: 'par un outil qui compte les couleurs', en: 'by a tool that counts the colors' },
   labTexte: {
     fr: 'Combien de gris différents dans vos tokens ? Plus que vous ne le pensez. Collez-les, le rapport chiffré tombe, sans quitter votre navigateur.',
-    en: 'How many different greys in your tokens? More than you think. Paste them and get a numbers-based report, right in your browser.',
+    en: 'How many different grays in your tokens? More than you think. Paste them and get a numbers-based report, right in your browser.',
   },
   labBouton: { fr: 'Ouvrir le dossier →', en: 'Open the file →' },
 
@@ -143,11 +141,11 @@ export const NT = {
   bulleChut: { fr: 'Chut ! Ils bossent !', en: 'Shh! They’re working!' },
   d2: [
     { p: { fr: '…et c’est tout le sel de l’affaire. La machine propose, l’humain dispose. Une pull request attend sur le comptoir, avec un rapport et la liste des décisions prises en chemin.', en: '…and that’s the whole point. The machine proposes, the human disposes. A pull request waits on the counter, with a report and the list of decisions made along the way.' } },
-    { h: { fr: 'Le dimanche, 19 h', en: 'Sunday, 7 p.m.' } },
+    { h: { fr: 'Le dimanche, 19 h', en: 'Sunday, 7 pm' } },
     { p: { fr: 'Une autre routine fait la tournée des idées. Elle cherche des petits outils utiles, chiffre leur intérêt et les dépose au guichet. Vous en avez croisé quelques-unes déguisées en réclames, page {/reclames}.', en: 'Another routine does the rounds of ideas. It looks for small useful tools, sizes up their interest and drops them at the counter. You met a few of them disguised as adverts on page {/reclames}.' } },
     { fiche: { fr: '« Garde 2, arrête 4 parce que… » : la phrase qui décide du sort des idées.', en: '“Keep 2, stop 4 because…”: the sentence that decides the fate of ideas.' }, n: 2 },
     { h: { fr: 'Et le matin ?', en: 'And in the morning?' } },
-    { p: { fr: 'La Gazette sort des presses. Une page A5 façon vieux journal, et sa version web en dernière page de ce numéro.', en: 'The Gazette rolls off the press. An A5 page styled like an old newspaper, with its web version on the last page of this issue.' } },
+    { p: { fr: 'La Gazette sort des presses. Une page A5 façon vieux journal, et sa version web page {/derniere-minute}.', en: 'The Gazette rolls off the press. An A5 page styled like an old newspaper, with its web version on page {/derniere-minute}.' } },
     { citation: { fr: '« Je ne suis pas remplacé. Je suis rédacteur en chef d’une équipe qui ne prend jamais de café. »', en: '“I’m not replaced. I’m the editor-in-chief of a team that never takes a coffee break.”' } },
   ],
   pieceConviction: { fr: 'Pièce à conviction n°', en: 'Exhibit no.' },
@@ -177,7 +175,7 @@ export const NT = {
   finBandeau: { fr: 'À SUIVRE…', en: 'TO BE CONTINUED…' },
   finNumero: { fr: 'Misran Labs #2 · novembre 2026', en: 'Misran Labs #2 · November 2026' },
   finTitre: { fr: ['AU PROCHAIN', 'NUMÉRO'], en: ['IN THE NEXT', 'ISSUE'] },
-  finChapo: { fr: 'Le kiosque ne ferme jamais : voici ce qui se prépare dans l’atelier.', en: 'The kiosk never closes: here is what’s cooking in the workshop.' },
+  finChapo: { fr: 'Le kiosque ne ferme jamais : voici ce qui se prépare dans l’atelier.', en: 'The newsstand never closes: here is what’s cooking in the workshop.' },
   finTeasers: [
     { to: '/zine', couleur: 'var(--titre-zine)', police: 'var(--font-bd)', icone: '✦', sticker: { fr: 'Enfin !', en: 'At last!' },
       titre: { fr: 'Le Zine #1 sort de l’atelier', en: 'Zine #1 leaves the workshop' },
@@ -196,6 +194,15 @@ export const NT = {
   finRelire: { fr: '↺ Relire depuis la couverture', en: '↺ Read again from the cover' },
   finPrix: { fr: 'Prix libre · 0,00 €', en: 'Pay what you want' },
   bulleDemain: { fr: 'À demain, lecteur !', en: 'See you tomorrow, reader!' },
+
+  // Étagère (côté libre de la couverture et de la 4ᵉ de couverture)
+  etagereTitre: { fr: 'La bibliothèque du Lab', en: 'The Lab library' },
+  etagereLire: { fr: 'Lire', en: 'Read' },
+  etagereReprendre: { fr: 'Ouvrir ce numéro', en: 'Open this issue' },
+  etagereAParaitre: { fr: 'À paraître', en: 'Coming soon' },
+  etagereRanger: { fr: 'Remettre sur l’étagère', en: 'Put it back' },
+  etagereReserve: { fr: 'Place réservée aux prochains numéros', en: 'Space saved for future issues' },
+  etagereQuotidien: { fr: 'Quotidien', en: 'Daily' },
 }
 
 export const nt = (v, lang) => v[lang] ?? v.fr

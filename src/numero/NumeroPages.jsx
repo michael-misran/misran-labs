@@ -139,11 +139,10 @@ export function Couverture() {
       </div>
 
       <div className="une-image">
-        <img src="/decors/kiosque-gazette.jpg" alt="" />
-        <div className="pastille" style={{ left: '3cqw', top: '5cqw', width: '26cqw', height: '26cqw', transform: 'rotate(-10deg)' }}>{nt(NT.pastille1, lang)}</div>
-        <div className="pastille" style={{ right: '4cqw', bottom: '13cqw', width: '30cqw', height: '30cqw', transform: 'rotate(8deg)', background: 'var(--pastille-2, var(--titre-zine))', color: '#111' }}>{nt(NT.pastille2, lang)}</div>
-        <Fiole couleur="var(--titre-lab)" style={{ left: '40cqw', bottom: '6cqw', width: '17cqw' }} />
-        <Link to="/sommaire" className="bulle" style={{ left: '55cqw', bottom: '27cqw', width: '22cqw', textDecoration: 'none' }}>{nt(NT.uneBulle, lang)}</Link>
+        <img src="/decors/couverture-halloween.jpg" alt="" />
+        <div className="pastille" style={{ left: 'calc(3 * var(--u))', top: 'calc(5 * var(--u))', width: 'calc(26 * var(--u))', height: 'calc(26 * var(--u))', transform: 'rotate(-10deg)' }}>{nt(NT.pastille1, lang)}</div>
+        <div className="pastille" style={{ right: 'calc(4 * var(--u))', bottom: 'calc(13 * var(--u))', width: 'calc(30 * var(--u))', height: 'calc(30 * var(--u))', transform: 'rotate(8deg)', background: 'var(--pastille-2, var(--titre-zine))', color: '#111' }}>{nt(NT.pastille2, lang)}</div>
+        <Link to="/sommaire" className="bulle" style={{ left: 'calc(55 * var(--u))', bottom: 'calc(27 * var(--u))', width: 'calc(22 * var(--u))', textDecoration: 'none' }}>{nt(NT.uneBulle, lang)}</Link>
       </div>
       <div className="une-pied">
         <span>#{numero.numero} · {nt(NT.uneDirige, lang)} · {nt(NT.unePrix, lang)} {nt(NT.unePrix2, lang)}</span>
@@ -239,7 +238,7 @@ export function Reclames() {
           <Reclame id="P-014" lang={lang} />
         </div>
       </div>
-      <div className="tampon" style={{ left: '42cqw', bottom: '4cqw', color: 'var(--n-pub-encre)' }}>{nt(NT.pubTampon, lang)}</div>
+      <div className="tampon" style={{ left: 'calc(42 * var(--u))', bottom: 'calc(4 * var(--u))', color: 'var(--n-pub-encre)' }}>{nt(NT.pubTampon, lang)}</div>
       <Folio path="/reclames" />
     </section>
   )
@@ -313,8 +312,8 @@ export function Dossier() {
         <Corps blocs={NT.d1} lang={lang} />
         <div className="suite"><Renvoi to="/dossier/suite" texte={NT.suiteDossier} lang={lang} /></div>
       </div>
-      <Fiole style={{ right: '4cqw', bottom: '5cqw', width: '12cqw', transform: 'rotate(8deg)' }} fond="var(--n-kraft)" />
-      <div className="bulle" style={{ right: '16cqw', bottom: '18cqw', width: '20cqw' }}>{nt(NT.bulleChut, lang)}</div>
+      <Fiole style={{ right: 'calc(4 * var(--u))', bottom: 'calc(5 * var(--u))', width: 'calc(12 * var(--u))', transform: 'rotate(8deg)' }} fond="var(--n-kraft)" />
+      <div className="bulle" style={{ right: 'calc(16 * var(--u))', bottom: 'calc(18 * var(--u))', width: 'calc(20 * var(--u))' }}>{nt(NT.bulleChut, lang)}</div>
       <Folio path="/dossier" />
     </section>
   )
@@ -325,15 +324,15 @@ export function DossierSuite() {
   return (
     <section className="page p-dossier">
       <span className="dossier-onglet">{nt(NT.dossierSuiteOnglet, lang)}</span>
-      <h2 className="dossier-titre" style={{ fontSize: '8cqw' }}>
-        {nt(NT.dossierTitre1, lang)}<br />{nt(NT.dossierTitre2, lang)} <em>{nt(NT.dossierTitre3, lang)}</em> <span style={{ fontSize: '4cqw' }}>{nt(NT.dossierFin, lang)}</span>
+      <h2 className="dossier-titre" style={{ fontSize: 'calc(8 * var(--u))' }}>
+        {nt(NT.dossierTitre1, lang)}<br />{nt(NT.dossierTitre2, lang)} <em>{nt(NT.dossierTitre3, lang)}</em> <span style={{ fontSize: 'calc(4 * var(--u))' }}>{nt(NT.dossierFin, lang)}</span>
       </h2>
-      <p style={{ margin: '0 0 2cqw' }}><Renvoi to="/dossier" texte={NT.debutDossier} lang={lang} /></p>
+      <p style={{ margin: '0 0 calc(2 * var(--u))' }}><Renvoi to="/dossier" texte={NT.debutDossier} lang={lang} /></p>
       <div className="dossier-corps">
         <Corps blocs={NT.d2} lang={lang} />
         <div className="suite"><Link to="/derniere-minute" className="renvoi">{nt(NT.lireGazette, lang)}</Link></div>
       </div>
-      <div className="tampon" style={{ right: '5cqw', top: '4cqw', color: 'var(--titre-gazette)' }}>{nt(NT.pieceClassee, lang)}</div>
+      <div className="tampon" style={{ right: 'calc(5 * var(--u))', top: 'calc(4 * var(--u))', color: 'var(--titre-gazette)' }}>{nt(NT.pieceClassee, lang)}</div>
       <Folio path="/dossier/suite" />
     </section>
   )
@@ -407,8 +406,8 @@ export function DerniereMinute() {
           </div>
         </div>
       )}
-      <Fiole style={{ left: '5cqw', bottom: '5cqw', width: '10cqw' }} />
-      <div className="bulle" style={{ left: '16cqw', bottom: '13cqw', width: '22cqw' }}>{nt(NT.bulleDemain, lang)}</div>
+      <Fiole style={{ left: 'calc(5 * var(--u))', bottom: 'calc(5 * var(--u))', width: 'calc(10 * var(--u))' }} />
+      <div className="bulle" style={{ left: 'calc(16 * var(--u))', bottom: 'calc(13 * var(--u))', width: 'calc(22 * var(--u))' }}>{nt(NT.bulleDemain, lang)}</div>
       <Folio path="/derniere-minute" />
     </section>
   )
@@ -438,8 +437,8 @@ export function QuatriemeCouverture() {
             </Link>
           ))}
         </div>
-        <Fiole couleur="var(--titre-lab)" fond="var(--masthead-fond)" style={{ right: '4cqw', bottom: '1.6cqw', width: '8cqw' }} />
-        <div className="bulle" style={{ right: '14cqw', bottom: '2.4cqw', width: '34cqw', borderRadius: '40%' }}>{nt(NT.finBulle, lang)}</div>
+        <Fiole couleur="var(--titre-lab)" fond="var(--masthead-fond)" style={{ right: 'calc(4 * var(--u))', bottom: 'calc(1.6 * var(--u))', width: 'calc(8 * var(--u))' }} />
+        <div className="bulle" style={{ right: 'calc(14 * var(--u))', bottom: 'calc(2.4 * var(--u))', width: 'calc(34 * var(--u))', borderRadius: '40%' }}>{nt(NT.finBulle, lang)}</div>
         <Link to="/" className="fin-relire">{nt(NT.finRelire, lang)}</Link>
       </div>
       {/* L'ours, en petits caractères comme au dos d'un magazine */}

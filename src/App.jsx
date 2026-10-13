@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Shell from './shell/Shell'
 import BureauLab from './lab/BureauLab'
 import { LanguageProvider } from './shell/LanguageProvider'
+import { PAGES } from './numero/pages'
 
 const KiosqueHome = lazy(() => import('./kiosque/KiosqueHome'))
 const ProjectPage = lazy(() => import('./lab/ProjectPage'))
@@ -19,18 +20,10 @@ const JeuPage = lazy(() => import('./jeux/JeuPage'))
 const ZineHome = lazy(() => import('./zine/ZineHome'))
 const ZineNumero = lazy(() => import('./zine/ZineNumero'))
 const SaviezVousPage = lazy(() => import('./saviez-vous/SaviezVousPage'))
-// Pages du numéro (format A), toutes dans le même module
-const numeroPage = (nom) => lazy(() => import('./numero/NumeroPages').then((m) => ({ default: m[nom] })))
-const Couverture = numeroPage('Couverture')
-const SommairePage = numeroPage('SommairePage')
-const Reclames = numeroPage('Reclames')
-const LabPresente = numeroPage('LabPresente')
-const Dossier = numeroPage('Dossier')
-const DossierSuite = numeroPage('DossierSuite')
-const Avertissement = numeroPage('Avertissement')
-const JeuPresente = numeroPage('JeuPresente')
-const DerniereMinute = numeroPage('DerniereMinute')
-const QuatriemeCouverture = numeroPage('QuatriemeCouverture')
+// Pages du numéro (format A)
+const { '/': Couverture, '/sommaire': SommairePage, '/reclames': Reclames, '/lab/presente': LabPresente, '/dossier': Dossier,
+  '/dossier/suite': DossierSuite, '/avertissement': Avertissement, '/jeux/presente': JeuPresente,
+  '/derniere-minute': DerniereMinute, '/a-suivre': QuatriemeCouverture } = PAGES
 const Page404 = lazy(() => import('./shell/Page404'))
 
 export default function App() {

@@ -1,5 +1,5 @@
-import { Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Component, Suspense, useEffect, useRef, useState } from 'react'
+import { Link, Outlet, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import Fiole from './mascotte/Fiole'
 import SecondarySidebar from '../design-system/SecondarySidebar'
 import { SecondarySidebarContext } from './SecondarySidebarContext'
@@ -7,98 +7,210 @@ import { resolveRouteMeta } from './registry'
 import useIsMobile from './useIsMobile'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
-import { getChemin, getNumero, entreeDe, titreDe, folioDe } from '../numero/chemin'
+import { getChemin, getNumero, entreeDe, titreDe, pagesDe, nombrePlanches } from '../numero/chemin'
+import { PAGES } from '../numero/pages'
+import Etagere from '../numero/Etagere.jsx'
 import { NT, nt } from '../numero/numeroText'
 import './magazine.css'
 
-// Le site est un magazine : plus de bandeau ni de menu, l'en-tête est la
-// couverture (/). Chaque adresse est une page du chemin de fer
-// (numero/chemin.js) posée sur une table de lecture ; on la tourne avec les
-// boutons du bas, les onglets de page, le sommaire ou les renvois.
-// Les rubriques s'ouvrent en double page, avec une tête courante façon revue.
+// Le site est un magazine, toujours ouvert en double page (une « planche »)
+// posée sur une table de lecture, à la taille de l'écran :
+// - les pages du numéro (couverture, sommaire, dossier…) vont par deux ;
+// - une rubrique occupe toute la planche ; si elle déborde, la suite passe
+//   sur la planche suivante (adresse ?suite=2, 3…), comme dans une revue.
+// On tourne les pages avec les flèches des côtés, les coins de page, le
+// sommaire déroulant du bandeau ou les renvois. Le chemin de fer : numero/chemin.js.
 
 const mouvementReduit = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+
+// Garde une copie de la planche au moment où l'on tourne la page : React
+// appelle getSnapshotBeforeUpdate juste avant de remplacer l'affichage,
+// l'ancienne planche est donc encore lisible. Sert à l'effet livre.
+class Instantane extends Component {
+  getSnapshotBeforeUpdate(avant) {
+    const { tour, noeud } = this.props
+    if (avant.tour === tour || !noeud.current) return null
+    // Suite « fin » qui se résout en numéro : même planche, pas de page tournée
+    if (avant.tour.endsWith('#fin') && avant.tour.split('#')[0] === tour.split('#')[0]) return null
+    const n = noeud.current
+    const r = n.getBoundingClientRect()
+    return { html: n.innerHTML, classe: n.className.replace(/\bsous-page\b/g, ''), largeur: r.width, hauteur: r.height, de: avant.tour }
+  }
+  componentDidUpdate(_p, _s, copie) {
+    if (copie) this.props.surTour(copie)
+  }
+  render() {
+    return this.props.children
+  }
+}
+
+// Une demi-planche de la copie : la copie entière, décalée pour ne montrer qu'une moitié
+function Moitie({ copie, html, classe, droite }) {
+  return (
+    <div
+      className={classe}
+      style={{ position: 'absolute', top: 0, left: droite ? -copie.largeur / 2 : 0, width: copie.largeur, height: copie.hauteur }}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  )
+}
+
+// Flèche fine des côtés du livre (pointe à droite, retournée en CSS pour la précédente)
+function FlecheIcone() {
+  return (
+    <svg viewBox="0 0 152 63" aria-hidden="true">
+      <path d="M115.7 29L92.8 6.3c-.9-.9-1.2-2.8-.6-4.3.6-1.4 1.8-1.9 2.8-1l28.4 28.1c.6.6.9 1.6.9 2.6s-.4 2-.9 2.6L95 62.4c-.3.3-.7.5-1.1.5-.7 0-1.3-.5-1.7-1.4-.6-1.4-.3-3.4.6-4.3L115.3 35H3.4C2 35 .9 33.7.9 32s1.1-3 2.5-3h112.3z" />
+    </svg>
+  )
+}
 
 export default function Shell() {
   const location = useLocation()
   const navigate = useNavigate()
+  const [params] = useSearchParams()
   const { lang, toggle: basculerLangue } = useLanguage()
   const meta = resolveRouteMeta(location.pathname, lang)
   const isMobile = useIsMobile()
   const [secondaryNav, setSecondaryNav] = useState(null)
 
-  const chemin = getChemin()
-  const entree = entreeDe(location.pathname)
-  const index = entree ? entree.index : -1
-  const format = entree ? entree.format : 'double'
-  const prec = index > 0 ? chemin[index - 1] : null
-  const suiv = index >= 0 && index < chemin.length - 1 ? chemin[index + 1] : null
-
-  // Sens de la page qui tourne (en avant ou en arrière dans le numéro)
-  const [suivi, setSuivi] = useState({ index, sens: 'avant' })
-  if (suivi.index !== index) setSuivi({ index, sens: index >= suivi.index ? 'avant' : 'arriere' })
-
-  // Effet livre : au départ d'une page, on en garde une copie (« fantôme »)
-  // qui pivote autour de son bord gauche, montre son verso et dévoile la
-  // nouvelle page dessous ; en arrière, la nouvelle page revient par la gauche.
-  const cle = entree ? entree.path : location.pathname
-  // Copies rangées par page (le double montage du mode strict ne les mélange pas)
-  const copies = useRef({})
-  const [fantome, setFantome] = useState(null)
-  // Ref avec nettoyage (React 19) : la feuille qui s'en va est encore lisible ici
-  const elFeuille = useRef(null)
-  const elFantome = useRef(null)
-  const refFeuille = useCallback((noeud) => {
-    if (!noeud) return undefined
-    elFeuille.current = noeud
+  // Sommaire déroulant du bandeau : se ferme en changeant de page, au clic
+  // à côté ou avec Échap
+  // (on retient l'adresse où il a été ouvert : ailleurs, il est fermé)
+  const [sommaireIci, setSommaireIci] = useState(null)
+  const sommaireOuvert = sommaireIci === location.pathname
+  const setSommaireOuvert = (o) => {
+    const ouvert = typeof o === 'function' ? o(sommaireOuvert) : o
+    setSommaireIci(ouvert ? location.pathname : null)
+  }
+  const elSommaire = useRef(null)
+  useEffect(() => {
+    if (!sommaireOuvert) return undefined
+    const surClic = (e) => { if (!elSommaire.current?.contains(e.target)) setSommaireIci(null) }
+    const surTouche = (e) => { if (e.key === 'Escape') setSommaireIci(null) }
+    document.addEventListener('pointerdown', surClic)
+    document.addEventListener('keydown', surTouche)
     return () => {
-      const r = noeud.getBoundingClientRect()
-      copies.current[noeud.dataset.cle] = {
-        html: noeud.innerHTML,
-        classe: noeud.className.replace(/\b(sous-page|page-revient)\b/g, ''),
-        decalage: Math.max(0, Math.round(-r.top)),
-      }
+      document.removeEventListener('pointerdown', surClic)
+      document.removeEventListener('keydown', surTouche)
     }
-  }, [])
+  }, [sommaireOuvert])
+
+  const chemin = getChemin()
+  const nbPlanches = nombrePlanches()
+  const entree = entreeDe(location.pathname)
+  const planche = entree ? entree.planche : -1
+  const format = entree ? entree.format : 'double'
+  const pages = planche >= 0 ? pagesDe(planche) : []
+
+  // Planche affichée : la feuille ne change (et le contenu n'est remonté)
+  // qu'en passant à une autre planche ; les suites d'une rubrique ne font que
+  // décaler la coulée du texte
+  const cle = format === 'page' ? `planche-${planche}` : (entree ? entree.path : location.pathname)
+
+  // Suites d'une rubrique : nombre de doubles pages mesuré à l'affichage
+  const [mesure, setMesure] = useState({ cle: null, n: 1 })
+  const nbSuites = mesure.cle === cle ? mesure.n : 1
+  const suiteDemandee = format === 'double' ? params.get('suite') : null
+  const suite = suiteDemandee === 'fin'
+    ? nbSuites - 1
+    : Math.min(Math.max(1, parseInt(suiteDemandee, 10) || 1), nbSuites) - 1
+  const tour = `${cle}#${suiteDemandee === 'fin' && mesure.cle !== cle ? 'fin' : suite}`
+
+  // Pages voisines : la suite de la rubrique, sinon la planche voisine (en
+  // arrière, on retombe sur la dernière double page d'une rubrique)
+  const adresseSuite = (n) => (n <= 0 ? location.pathname : `${location.pathname}?suite=${n + 1}`)
+  const titre = entree ? titreDe(entree, lang) : meta.label
+  const versPlanche = (i, fin) => {
+    const ps = pagesDe(i)
+    const e = ps[0]
+    return {
+      to: e.format === 'double' && fin ? `${e.path}?suite=fin` : e.path,
+      titre: ps.map((p) => titreDe(p, lang)).join(' · '),
+      folio: e.folio,
+    }
+  }
+  const suiv = format === 'double' && suite < nbSuites - 1
+    ? { to: adresseSuite(suite + 1), titre: `${titre} (${nt(NT.suite, lang)})`, folio: null }
+    : planche >= 0 && planche < nbPlanches - 1 ? versPlanche(planche + 1) : null
+  const prec = format === 'double' && suite > 0
+    ? { to: adresseSuite(suite - 1), titre, folio: null }
+    : planche > 0 ? versPlanche(planche - 1, true) : null
+
+  // Mesure des suites : la rubrique coule en colonnes de la largeur de la
+  // planche ; on compte la colonne où tombe la fin du texte
+  const elFenetre = useRef(null)
+  const elCoulee = useRef(null)
+  const elFin = useRef(null)
+  useEffect(() => {
+    if (format !== 'double') return undefined
+    const mesurer = () => {
+      const c = elCoulee.current
+      const f = elFin.current
+      if (!c || !f) return
+      const largeur = c.clientWidth || 1
+      const n = Math.max(1, Math.floor((f.getBoundingClientRect().left - c.getBoundingClientRect().left + 1) / largeur) + 1)
+      setMesure((m) => (m.cle === cle && m.n === n ? m : { cle, n }))
+    }
+    mesurer()
+    const ro = new ResizeObserver(mesurer)
+    if (elFenetre.current) ro.observe(elFenetre.current)
+    const mo = new MutationObserver(mesurer)
+    if (elCoulee.current) mo.observe(elCoulee.current, { childList: true, subtree: true, characterData: true })
+    const surCharge = () => mesurer()
+    elCoulee.current?.addEventListener('load', surCharge, true)
+    document.fonts?.ready.then(mesurer)
+    const c = elCoulee.current
+    return () => {
+      ro.disconnect()
+      mo.disconnect()
+      c?.removeEventListener('load', surCharge, true)
+    }
+  }, [cle, format])
+  // « ?suite=fin » (retour en arrière) : une fois mesurée, l'adresse donne le vrai numéro
+  useEffect(() => {
+    if (suiteDemandee === 'fin' && mesure.cle === cle) navigate(adresseSuite(nbSuites - 1), { replace: true })
+  }, [suiteDemandee, mesure, cle]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Effet livre : la copie de l'ancienne planche reste posée ; sa moitié
+  // droite (en avant) ou gauche (en arrière) se soulève autour de la pliure,
+  // montre au verso la moitié correspondante de la nouvelle planche et
+  // retombe de l'autre côté
+  const [fantome, setFantome] = useState(null)
+  const elFeuille = useRef(null)
+  const elFeuillet = useRef(null)
   // Page tournée à la main (coin attrapé) : { sens, x0, largeur, p (0 → 1), bouge }
   const glisse = useRef(null)
   // Retour arrière après une page lâchée trop tôt : pas de nouvelle animation
   const annule = useRef(false)
-  const cleAvant = useRef(cle)
-  useLayoutEffect(() => {
-    const avant = cleAvant.current
-    cleAvant.current = cle
-    if (avant === cle) return
-    // Avant l'affichage (layout) : la copie doit couvrir la nouvelle page dès la première image
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+  const indexTour = (cleTour) => {
+    const [c, s] = cleTour.split('#')
+    const e = entreeDe(c.startsWith('planche-') ? pagesDe(Number(c.slice(8)))[0]?.path ?? '/' : c)
+    return (e ? e.planche : 0) * 1000 + (Number(s) || 0)
+  }
+  const surTour = (copie) => {
     if (annule.current) { annule.current = false; setFantome(null); return }
-    const copie = copies.current[avant]
-    if (!copie || mouvementReduit()) return
-    setFantome({ ...copie, sens: suivi.sens, manuel: !!glisse.current, id: `${avant}>${cle}` })
-  }, [cle]) // eslint-disable-line react-hooks/exhaustive-deps
+    if (mouvementReduit() || isMobile) return
+    const sens = indexTour(tour) >= indexTour(copie.de) ? 'avant' : 'arriere'
+    const neuf = elFeuille.current
+    setFantome({ ...copie, sens, verso: neuf ? neuf.innerHTML : '', classeVerso: neuf ? neuf.className : '', manuel: !!glisse.current, id: `${copie.de}>${tour}` })
+  }
   // Filet de sécurité : la copie disparaît même si la fin d'animation n'arrive pas
   useEffect(() => {
     if (!fantome || fantome.manuel) return undefined
-    const minuteur = setTimeout(() => setFantome(null), 1000)
+    const minuteur = setTimeout(() => setFantome(null), 1200)
     return () => clearTimeout(minuteur)
   }, [fantome])
 
-  // Pose la page à l'angle du geste : en avant, l'ancienne page (copie) se
-  // soulève ; en arrière, la nouvelle page arrive de la gauche
+  // Pose le feuillet à l'angle du geste
   const appliquer = (g) => {
-    if (g.sens === 'avant') {
-      const el = elFantome.current
-      if (!el) return
-      el.style.transform = `perspective(2400px) rotateY(${-180 * g.p}deg)`
-      el.style.setProperty('--progres', g.p)
-    } else {
-      const el = elFeuille.current
-      if (el) el.style.transform = `perspective(2400px) rotateY(${-95 * (1 - g.p)}deg)`
-    }
+    const el = elFeuillet.current
+    if (!el) return
+    el.style.transform = `perspective(2400px) rotateY(${(g.sens === 'avant' ? -180 : 180) * g.p}deg)`
+    el.style.setProperty('--progres', g.p)
   }
   // Lâcher : la page finit de tourner (valider) ou retombe à sa place
   const terminer = (g, valider) => {
-    const el = g.sens === 'avant' ? elFantome.current : elFeuille.current
+    const el = elFeuillet.current
     const fin = () => {
       glisse.current = null
       if (el) { el.style.transition = ''; el.style.transform = '' }
@@ -114,18 +226,18 @@ export default function Shell() {
   }
   const attraperCoin = (e, sens) => {
     const cible = sens === 'avant' ? suiv : prec
-    if (!cible || mouvementReduit() || (e.pointerType === 'mouse' && e.button !== 0)) return
+    if (!cible || mouvementReduit() || isMobile || (e.pointerType === 'mouse' && e.button !== 0)) return
     e.preventDefault()
     e.stopPropagation()
-    const largeur = elFeuille.current?.getBoundingClientRect().width || 600
+    const largeur = (elFeuille.current?.getBoundingClientRect().width || 1200) / 2
     glisse.current = { sens, x0: e.clientX, largeur, p: 0, bouge: false }
-    navigate(cible.path)
+    navigate(cible.to)
     const bouger = (ev) => {
       const g = glisse.current
       if (!g) return
       const dx = g.sens === 'avant' ? g.x0 - ev.clientX : ev.clientX - g.x0
       if (Math.abs(dx) > 4) g.bouge = true
-      g.p = Math.min(1, Math.max(0, dx / g.largeur))
+      g.p = Math.min(1, Math.max(0, dx / (2 * g.largeur)))
       appliquer(g)
     }
     const lacher = () => {
@@ -149,25 +261,25 @@ export default function Shell() {
     }
   }, [location.pathname, meta.label, lang])
 
-  // Nouvelle page : on revient en haut
-  const pagePrecedente = useRef(entree?.path)
+  // Nouvelle planche : on revient en haut (utile sur téléphone, où les pages s'empilent)
   useEffect(() => {
-    if (pagePrecedente.current !== entree?.path) window.scrollTo(0, 0)
-    pagePrecedente.current = entree?.path
-  }, [entree?.path])
+    window.scrollTo(0, 0)
+  }, [tour])
 
   // Flèches du clavier et glisser du doigt : seulement sur les pages du numéro
   // (les rubriques ont leurs propres jeux et contrôles)
+  const versSuiv = suiv?.to
+  const versPrec = prec?.to
   useEffect(() => {
     if (format !== 'page') return
     const surTouche = (e) => {
       if (e.target.closest?.('input, textarea, select, [contenteditable]')) return
-      if (e.key === 'ArrowRight' && suiv) navigate(suiv.path)
-      if (e.key === 'ArrowLeft' && prec) navigate(prec.path)
+      if (e.key === 'ArrowRight' && versSuiv) navigate(versSuiv)
+      if (e.key === 'ArrowLeft' && versPrec) navigate(versPrec)
     }
     window.addEventListener('keydown', surTouche)
     return () => window.removeEventListener('keydown', surTouche)
-  }, [format, prec, suiv, navigate])
+  }, [format, versPrec, versSuiv, navigate])
   const x0 = useRef(null)
   const glisser = format === 'page'
     ? {
@@ -177,7 +289,7 @@ export default function Shell() {
           const dx = e.changedTouches[0].clientX - x0.current
           if (Math.abs(dx) > 50) {
             const cible = dx < 0 ? suiv : prec
-            if (cible) navigate(cible.path)
+            if (cible) navigate(cible.to)
           }
           x0.current = null
         },
@@ -185,7 +297,26 @@ export default function Shell() {
     : {}
 
   const numero = getNumero()
-  const titre = entree ? titreDe(entree, lang) : meta.label
+  // Une page du numéro, ou le côté libre de la couverture / 4ᵉ de couverture,
+  // occupé par l'étagère des numéros
+  const cote = (e, sens) => {
+    if (!e) return <Etagere cote={sens} />
+    const Page = PAGES[e.path]
+    return (
+      <div className={`cote cote-${e.cote}`}>
+        <Suspense fallback={<div className="page" />}>
+          <Page />
+        </Suspense>
+      </div>
+    )
+  }
+  const gauche = pages.find((p) => p.cote === 'gauche') ?? null
+  const droite = pages.find((p) => p.cote === 'droite') ?? null
+  const folioDouble = entree
+    ? suite === 0
+      ? `${entree.folio} – ${entree.folio + 1}`
+      : `${titre} · ${nt(NT.suite, lang)} ${suite + 1}/${nbSuites}`
+    : ''
 
   return (
     <>
@@ -209,35 +340,46 @@ export default function Shell() {
       `}</style>
 
       <div className={`magazine${numero.theme ? ` theme-${numero.theme}` : ''}`}>
-        <div className="scene">
+        <div className="scene" style={{ '--lues': nbPlanches > 1 ? Math.max(planche, 0) / (nbPlanches - 1) : 0 }}>
+          <span className="tranche tranche-gauche no-print" aria-hidden="true" />
+          <span className="tranche tranche-droite no-print" aria-hidden="true" />
         {fantome && (
           <div
             key={fantome.id}
-            ref={elFantome}
-            className={`fantome fantome-${fantome.sens}${fantome.manuel ? ' fantome-manuel' : ''} ${fantome.classe}`}
+            className={`fantome fantome-${fantome.sens}${fantome.manuel ? ' fantome-manuel' : ''}`}
+            style={{ width: fantome.largeur, height: fantome.hauteur }}
             aria-hidden="true"
             inert
-            onAnimationEnd={(e) => { if (e.target === e.currentTarget) setFantome(null) }}
+            onAnimationEnd={(e) => { if (e.target.classList.contains('feuillet')) setFantome(null) }}
           >
-            <div className="fantome-recto">
-              <div style={{ marginTop: -fantome.decalage }} dangerouslySetInnerHTML={{ __html: fantome.html }} />
+            {/* La moitié qui reste posée */}
+            <div className={`demi demi-${fantome.sens === 'avant' ? 'gauche' : 'droite'}`}>
+              <Moitie copie={fantome} html={fantome.html} classe={fantome.classe} droite={fantome.sens !== 'avant'} />
             </div>
-            <div className="fantome-verso" />
+            {/* Le feuillet qui tourne autour de la pliure */}
+            <div ref={elFeuillet} className={`feuillet demi demi-${fantome.sens === 'avant' ? 'droite' : 'gauche'}`}>
+              <div className="feuillet-recto">
+                <Moitie copie={fantome} html={fantome.html} classe={fantome.classe} droite={fantome.sens === 'avant'} />
+              </div>
+              <div className="feuillet-verso">
+                <Moitie copie={fantome} html={fantome.verso} classe={fantome.classeVerso} droite={fantome.sens !== 'avant'} />
+              </div>
+            </div>
           </div>
         )}
+        <Instantane tour={tour} noeud={elFeuille} surTour={surTour}>
         <div
           key={cle}
-          ref={refFeuille}
-          data-cle={cle}
-          className={`feuille feuille-${format}${fantome ? (fantome.manuel ? (fantome.sens === 'arriere' ? ' page-manuelle' : '') : (fantome.sens === 'avant' ? ' sous-page' : ' page-revient')) : ''}`}
+          ref={elFeuille}
+          className={`feuille feuille-${format}${fantome && fantome.sens === 'avant' && !fantome.manuel ? ' sous-page' : ''}`}
           {...glisser}
         >
           {/* Coins de page : on les corne pour tourner la page */}
           {suiv && (
             <Link
-              to={suiv.path}
+              to={suiv.to}
               className="coin coin-suivant no-print"
-              aria-label={`${nt(NT.suivante, lang)} : ${titreDe(suiv, lang)}`}
+              aria-label={`${nt(NT.suivante, lang)} : ${suiv.titre}`}
               onPointerDown={(e) => attraperCoin(e, 'avant')}
               onTouchStart={(e) => e.stopPropagation()}
               onClick={(e) => { if (glisse.current) e.preventDefault() }}
@@ -245,97 +387,120 @@ export default function Shell() {
           )}
           {prec && (
             <Link
-              to={prec.path}
+              to={prec.to}
               className="coin coin-precedent no-print"
-              aria-label={`${nt(NT.precedente, lang)} : ${titreDe(prec, lang)}`}
+              aria-label={`${nt(NT.precedente, lang)} : ${prec.titre}`}
               onPointerDown={(e) => attraperCoin(e, 'arriere')}
               onTouchStart={(e) => e.stopPropagation()}
               onClick={(e) => { if (glisse.current) e.preventDefault() }}
             />
           )}
-          {format === 'double' && (
-            <header className="tete-courante no-print">
-              <Link to="/" className="tc-titre">MISRAN LABS <span>#{numero.numero}</span></Link>
-              <span className="tc-rubrique" style={{ color: entree?.couleur }}>{titre}</span>
-              <Link to="/sommaire" className="tc-sommaire">{nt(NT.sommaireBtn, lang)}{entree ? ` · p. ${index + 1}` : ''}</Link>
-            </header>
-          )}
 
           {format === 'double' ? (
-            <div className="feuille-corps" style={{ fontFamily: 'var(--font-body)', color: 'var(--text)' }}>
-              <div className="shell-body" style={{ display: 'flex', position: 'relative' }}>
-                {!isMobile && secondaryNav && (
-                  <div className="no-print" style={{ display: 'contents' }}>
-                    <SecondarySidebar items={secondaryNav.items} active={secondaryNav.active} onChange={secondaryNav.onChange} />
+            <>
+              <header className="tete-courante no-print">
+                <Link to="/" className="tc-titre">MISRAN LABS <span>#{numero.numero}</span></Link>
+                <span className="tc-rubrique" style={{ color: entree?.couleur }}>{titre}</span>
+                <Link to="/sommaire" className="tc-sommaire">{nt(NT.sommaireBtn, lang)}{entree ? ` · p. ${entree.folio}` : ''}</Link>
+              </header>
+              {/* Fenêtre de la planche : la rubrique y coule en colonnes de sa
+                  largeur, une colonne par double page ; on décale la coulée */}
+              <div ref={elFenetre} className="fenetre" style={{ fontFamily: 'var(--font-body)', color: 'var(--text)' }}>
+                <div ref={elCoulee} className="coulee" style={{ transform: `translateX(${-100 * suite}%)` }}>
+                  <div className="shell-body" style={{ display: 'flex', position: 'relative' }}>
+                    {!isMobile && secondaryNav && (
+                      <div className="no-print" style={{ display: 'contents' }}>
+                        <SecondarySidebar items={secondaryNav.items} active={secondaryNav.active} onChange={secondaryNav.onChange} />
+                      </div>
+                    )}
+                    <main className="shell-main" style={{ flex: 1, minWidth: 0, position: 'relative' }}>
+                      <SecondarySidebarContext.Provider value={setSecondaryNav}>
+                        <Suspense fallback={null}>
+                          <Outlet />
+                        </Suspense>
+                      </SecondarySidebarContext.Provider>
+                    </main>
                   </div>
-                )}
-                <main className="shell-main" style={{ flex: 1, minWidth: 0, position: 'relative' }}>
-                  <SecondarySidebarContext.Provider value={setSecondaryNav}>
-                    <Suspense fallback={null}>
-                      <Outlet />
-                    </Suspense>
-                  </SecondarySidebarContext.Provider>
-                </main>
+                  <span ref={elFin} className="fin-coulee" />
+                </div>
               </div>
-              {entree && <div className="folio-double">{index + 1}</div>}
-            </div>
+              <div className="folio-double">
+                {folioDouble}
+                {suite < nbSuites - 1 && <span className="a-suivre-coin">{nt(NT.suiteAuDos, lang)} →</span>}
+              </div>
+            </>
           ) : (
-            <main>
-              <Suspense fallback={null}>
-                <Outlet />
-              </Suspense>
+            <main className="planche">
+              {cote(gauche, 'gauche')}
+              {cote(droite, 'droite')}
             </main>
           )}
         </div>
+        </Instantane>
         </div>
 
-        {/* Commandes de lecture : la seule navigation du site */}
-        <nav className="commandes no-print" aria-label={t(lang, 'navAria')}>
-          <div className="onglets">
-            {chemin.map((e, i) => (
-              <Link
-                key={e.path}
-                to={e.path}
-                className={i === index ? 'on' : ''}
-                title={`${i === 0 ? '' : `p. ${i + 1} · `}${titreDe(e, lang)}`}
-                aria-label={titreDe(e, lang)}
-                aria-current={i === index ? 'page' : undefined}
-                style={e.format === 'double' ? { '--onglet': e.couleur } : undefined}
-              >
-                {i === 0 ? 'C' : i + 1}
-              </Link>
-            ))}
-          </div>
-          {prec ? (
-            <Link to={prec.path} className="tourner">
-              <small>← {nt(NT.precedente, lang)}{prec.path === '/' ? '' : ` · p. ${folioDe(prec.path)}`}</small>
-              {titreDe(prec, lang)}
-            </Link>
-          ) : <span />}
-          <div className="commandes-milieu">
-            <Link to="/sommaire" className="petit-bouton">{nt(NT.sommaireBtn, lang)}</Link>
+        {/* Bandeau discret au-dessus du livre : sommaire déroulant à gauche,
+            titre du numéro et langue à droite */}
+        <nav className="bandeau no-print" aria-label={t(lang, 'navAria')} ref={elSommaire}>
+          <div className={`bandeau-sommaire${sommaireOuvert ? ' ouvert' : ''}`}>
             <button
               type="button"
-              className="petit-bouton"
+              className="sommaire-bouton"
+              aria-expanded={sommaireOuvert}
+              onClick={() => setSommaireOuvert((o) => !o)}
+            >
+              {nt(NT.sommaireBtn, lang)} <span className="plus" aria-hidden="true" />
+            </button>
+            <span className="chapitre">{titre}</span>
+            <ol className="toc">
+              {Array.from({ length: nbPlanches }, (_, i) => {
+                const ps = pagesDe(i)
+                const etiquette = i === 0 ? 'C' : i === nbPlanches - 1 ? '4ᵉ' : String(ps[0].folio).padStart(2, '0')
+                return (
+                  <li key={i} style={{ '--i': i }}>
+                    <Link
+                      to={ps[0].path}
+                      className={i === planche ? 'actif' : ''}
+                      aria-current={i === planche ? 'page' : undefined}
+                      style={ps[0].format === 'double' ? { '--c': ps[0].couleur } : undefined}
+                      onClick={() => setSommaireOuvert(false)}
+                    >
+                      <span>{etiquette}</span>
+                      {ps.map((p) => titreDe(p, lang)).join(' · ')}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ol>
+          </div>
+          <div className="bandeau-droite">
+            <Link to="/">Misran Labs</Link> · <b>N°{numero.numero}</b> · {numero.mois[lang] ?? numero.mois.fr}
+            <button
+              type="button"
+              className="langue"
               onClick={basculerLangue}
               aria-label={lang === 'fr' ? 'Switch to English' : 'Passer en français'}
             >
               {lang === 'fr' ? 'EN' : 'FR'}
             </button>
           </div>
-          {suiv ? (
-            <Link to={suiv.path} className="tourner suivante">
-              <small>{nt(NT.suivante, lang)} · p. {folioDe(suiv.path)} →</small>
-              {titreDe(suiv, lang)}
-            </Link>
-          ) : (
-            <Link to="/" className="tourner suivante">
-              <small>{nt(NT.fin, lang)}</small>
-              {titreDe(chemin[0], lang)}
-            </Link>
-          )}
         </nav>
-        {format === 'page' && <p className="astuce no-print">{nt(NT.astuce, lang)}</p>}
+
+        {/* Flèches fines de part et d'autre du livre */}
+        {prec && (
+          <Link to={prec.to} className="fleche fleche-prec no-print" aria-label={`${nt(NT.precedente, lang)} : ${prec.titre}`} title={prec.titre}>
+            <FlecheIcone />
+          </Link>
+        )}
+        {suiv ? (
+          <Link to={suiv.to} className="fleche fleche-suiv no-print" aria-label={`${nt(NT.suivante, lang)} : ${suiv.titre}`} title={suiv.titre}>
+            <FlecheIcone />
+          </Link>
+        ) : (
+          <Link to="/" className="fleche fleche-suiv no-print" aria-label={`${nt(NT.fin, lang)} : ${titreDe(chemin[0], lang)}`} title={nt(NT.fin, lang)}>
+            <FlecheIcone />
+          </Link>
+        )}
       </div>
 
       <span
