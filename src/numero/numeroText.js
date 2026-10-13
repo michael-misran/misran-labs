@@ -18,7 +18,7 @@ export const NT = {
   unePrix2: { fr: '0,00 €', en: 'you want' },
   uneTampon: { fr: 'Fait main assisté par IA', en: 'Handmade, AI-assisted' },
   titres: {
-    gazette: { fr: 'La Gazette', en: 'The Gazette' },
+    gazette: { fr: 'L’Oracle du Matin', en: 'The Morning Oracle' },
     zine: { fr: 'Le Zine', en: 'The Zine' },
     jeux: { fr: 'Ma salle de jeu', en: 'My game room' },
     lab: { fr: 'Le Lab', en: 'The Lab' },
@@ -145,12 +145,12 @@ export const NT = {
     { p: { fr: 'Une autre routine fait la tournée des idées. Elle cherche des petits outils utiles, chiffre leur intérêt et les dépose au guichet. Vous en avez croisé quelques-unes déguisées en réclames, page {/reclames}.', en: 'Another routine does the rounds of ideas. It looks for small useful tools, sizes up their interest and drops them at the counter. You met a few of them disguised as adverts on page {/reclames}.' } },
     { fiche: { fr: '« Garde 2, arrête 4 parce que… » : la phrase qui décide du sort des idées.', en: '“Keep 2, stop 4 because…”: the sentence that decides the fate of ideas.' }, n: 2 },
     { h: { fr: 'Et le matin ?', en: 'And in the morning?' } },
-    { p: { fr: 'La Gazette sort des presses. Une page A5 façon vieux journal, et sa version web page {/derniere-minute}.', en: 'The Gazette rolls off the press. An A5 page styled like an old newspaper, with its web version on page {/derniere-minute}.' } },
+    { p: { fr: 'L’Oracle du Matin sort des presses. Une page A5 façon vieux journal, et sa version web page {/derniere-minute}.', en: 'The Morning Oracle rolls off the press. An A5 page styled like an old newspaper, with its web version on page {/derniere-minute}.' } },
     { citation: { fr: '« Je ne suis pas remplacé. Je suis rédacteur en chef d’une équipe qui ne prend jamais de café. »', en: '“I’m not replaced. I’m the editor-in-chief of a team that never takes a coffee break.”' } },
   ],
   pieceConviction: { fr: 'Pièce à conviction n°', en: 'Exhibit no.' },
   pieceClassee: { fr: 'Pièce classée', en: 'Case closed' },
-  lireGazette: { fr: 'Lire la Gazette du jour →', en: 'Read today’s Gazette →' },
+  lireGazette: { fr: 'Lire l’Oracle du jour →', en: 'Read today’s Oracle →' },
 
   // Salle de jeu
   jeuPresente: { fr: 'MA SALLE DE JEU PRÉSENTE', en: 'MY GAME ROOM PRESENTS' },
@@ -162,7 +162,7 @@ export const NT = {
 
   // Dernière page
   derniereMinute: { fr: 'Dernière minute', en: 'Stop press' },
-  gazetteTitre: { fr: 'La Gazette du Lab', en: 'La Gazette du Lab' },
+  gazetteTitre: { fr: 'L’Oracle du Matin', en: 'The Morning Oracle' },
   gazetteSous: { fr: 'Les brèves du jour, tirées à part', en: 'Today’s briefs, printed separately' },
   uneIA: { fr: 'La une IA', en: 'AI front page' },
   tech: { fr: 'Tech', en: 'Tech' },

@@ -1,8 +1,8 @@
 # Procédure d'extraction — Brèves
 
-Ce document se suffit à lui-même : il décrit comment tirer une version publique « Brèves » de La Gazette du Lab (le journal papier du matin), sans avoir besoin de lire ailleurs. Le format du fichier produit est documenté dans `src/breves/FORMAT.md`.
+Ce document se suffit à lui-même : il décrit comment tirer une version publique « Brèves » de L’Oracle du Matin (le journal papier du matin), sans avoir besoin de lire ailleurs. Le format du fichier produit est documenté dans `src/breves/FORMAT.md`.
 
-Lue par la routine de La Gazette du Lab (le journal papier du matin), après la fabrication du PDF du jour.
+Lue par la routine de L’Oracle du Matin (le journal papier du matin), après la fabrication du PDF du jour.
 
 ## 1. Vérifier qu'il y a quelque chose à faire
 
@@ -19,7 +19,7 @@ Sélectionner uniquement, selon `src/breves/FORMAT.md` :
 - les articles de `page2`/`page3` dont `type` vaut `tech` (grands et « éclair »).
 
 **Jamais** : irritant, modèle économique, étude de cas, design (`type: "design"`), énigme, bonus, carnet — ces rubriques du journal restent privées.
-**Toujours** reprendre le `mot` et le `chiffre` de `page4` quand le journal en a : le kiosque de /breves les affiche (affiches et page droite) et reste vide sans eux.
+**Toujours** reprendre le `mot` et le `chiffre` de `page4` quand le journal en a : la page /oracle les affiche (affiches et page droite) et reste vide sans eux.
 - Retirer seulement les renvois de page (« (p. 2) », etc.) et, dans le texte, ce qui ne se comprend qu'avec un article privé ; garder le terme, la valeur et le sens.
 - `mot` : `terme` tel quel, `definition` en `fr` et `en`. `chiffre` : `valeur` telle quelle, `texte` en `fr` et `en`.
 - Ne les omettre que s'ils contiennent une donnée personnelle ou une mention du carnet ou des irritants.

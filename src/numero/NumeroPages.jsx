@@ -71,7 +71,7 @@ export function Couverture() {
   const { lang, toggle: basculerLangue } = useLanguage()
   const numero = getNumero()
   const titres = [
-    { to: '/breves', rythme: t(lang, 'navRythmeGazette'), classe: 't-gazette', nom: `${t(lang, 'navTitreGazettePrefix')}${t(lang, 'navTitreGazetteInitiale')}${t(lang, 'navTitreGazetteReste')}` },
+    { to: '/oracle', rythme: t(lang, 'navRythmeGazette'), classe: 't-gazette', nom: `${t(lang, 'navTitreGazettePrefix')}${t(lang, 'navTitreGazetteInitiale')}${t(lang, 'navTitreGazetteReste')}` },
     { to: '/portfolio', rythme: nt(NT.navRythmePortfolio, lang), classe: 't-portfolio', nom: nt(NT.navTitrePortfolio, lang) },
     { to: '/jeux', rythme: t(lang, 'navRythmeJeux'), classe: 't-jeux', nom: <span>{t(lang, 'navTitreJeux')}<br />{t(lang, 'navTitreJeuxSuite')}</span> },
     { to: '/lab', rythme: t(lang, 'navRythmeLab'), classe: 't-lab', nom: t(lang, 'navTitreLab') },
@@ -388,7 +388,7 @@ export function DerniereMinute() {
                 <p>{sansBalises(nt(uneTech.resume, lang))}</p>
               </>
             )}
-            <Link to={`/breves/${jour.date}`} className="gaz-lien">{nt(NT.toutesBreves, lang)}</Link>
+            <Link to={`/oracle/${jour.date}`} className="gaz-lien">{nt(NT.toutesBreves, lang)}</Link>
           </div>
           <div>
             {jour.chiffre && (

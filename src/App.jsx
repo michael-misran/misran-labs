@@ -36,8 +36,8 @@ export default function App() {
         {/* L'accueil est la bibliothèque : on y choisit un livre à ouvrir */}
         <Route index element={livre(<Bibliotheque />)} />
         <Route path="/portfolio" element={livre(<PortfolioLivre />)} />
-        <Route path="/breves" element={livre(<GazetteJournal />)} />
-        <Route path="/breves/:date" element={livre(<GazetteJournal />)} />
+        <Route path="/oracle" element={livre(<GazetteJournal />)} />
+        <Route path="/oracle/:date" element={livre(<GazetteJournal />)} />
         {/* Le magazine Misran Labs : couverture sur /magazine, puis ses pages */}
         <Route path="/" element={<Shell />}>
           <Route path="magazine" element={<Couverture />} />

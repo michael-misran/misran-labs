@@ -41,7 +41,8 @@ export function Couverture({ v, lang }) {
     return (
       <div className="etg-couv etg-couv-gazette">
         <span className="etg-gaz-sur">{nt(NT.etagereQuotidien, lang)}</span>
-        <b>{titre}</b>
+        {/* Initiales en rouge (O et M), comme la tête du journal : toute capitale sauf la première lettre */}
+        <b>{[...titre].map((c, i) => (i > 0 && c !== c.toLowerCase() ? <span key={i} className="etg-gaz-initiale">{c}</span> : c))}</b>
         <span className="etg-gaz-filet" />
         <span className="etg-gaz-sous">{sous}</span>
         <span className="etg-gaz-colonnes" aria-hidden="true"><i /><i /><i /></span>

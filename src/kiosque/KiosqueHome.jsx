@@ -19,7 +19,7 @@ export default function KiosqueHome() {
   return (
     <div style={{ maxWidth: 1240, margin: '0 auto', padding: '0 28px 60px' }}>
       {/* CSS impossible en style inline : survol des couvertures (désactivé
-          sous prefers-reduced-motion), lettrine de la Gazette, case à
+          sous prefers-reduced-motion), lettrine de l’Oracle du Matin, case à
           cocher du bulletin, clignotement d'INSERT COIN. */}
       <style>{`
         .kiq-dropcap p:first-child::first-letter,

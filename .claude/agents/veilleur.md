@@ -1,6 +1,6 @@
 ---
 name: veilleur
-description: Collecte les nouveautés IA d'une fenêtre de dates sur des sources officielles, pour la Gazette et les idées de misran-labs. Renvoie une liste de candidats sourcés, sans rédiger d'article.
+description: Collecte les nouveautés IA d'une fenêtre de dates sur des sources officielles, pour l’Oracle du Matin et les idées de misran-labs. Renvoie une liste de candidats sourcés, sans rédiger d'article.
 model: haiku
 tools: WebSearch, WebFetch, Read, Bash
 ---

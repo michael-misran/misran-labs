@@ -55,7 +55,7 @@ function brevesItems(brevesPages) {
     if (day.mot) description += ` · Le mot : ${day.mot.terme}`
     if (day.chiffre) description += ` · Le chiffre : ${day.chiffre.valeur} ${day.chiffre.texte.fr}`
     return {
-      title: `La Gazette du ${formatDateLongNoWeekday(day.date, 'fr')}`,
+      title: `L’Oracle du ${formatDateLongNoWeekday(day.date, 'fr')}`,
       link: `${SITE_URL}${page.path}`,
       description,
       dateIso: day.date,
@@ -81,11 +81,11 @@ export function writeRssFeeds({ distDir, brevesPages, projetsPages }) {
 
   const feeds = [
     {
-      slug: 'breves/rss.xml',
-      title: 'La Gazette du Lab',
-      link: `${SITE_URL}/breves`,
+      slug: 'oracle/rss.xml',
+      title: 'L’Oracle du Matin',
+      link: `${SITE_URL}/oracle`,
       description: "Chaque jour, quelques brèves d'actu IA et tech, avec le mot et le chiffre du jour.",
-      selfHref: `${SITE_URL}/breves/rss.xml`,
+      selfHref: `${SITE_URL}/oracle/rss.xml`,
       items: breves,
     },
     {
@@ -100,10 +100,10 @@ export function writeRssFeeds({ distDir, brevesPages, projetsPages }) {
       slug: 'rss.xml',
       title: 'Tout le kiosque',
       link: `${SITE_URL}/`,
-      description: 'Tout le Lab de Michael Misran : Gazette et Projets réunis.',
+      description: 'Tout le Lab de Michael Misran : l’Oracle du Matin et Projets réunis.',
       selfHref: `${SITE_URL}/rss.xml`,
       items: [
-        ...breves.map((item) => ({ ...item, title: `Gazette · ${item.title}` })),
+        ...breves.map((item) => ({ ...item, title: `Oracle · ${item.title}` })),
         ...projets.map((item) => ({ ...item, title: `Projets · ${item.title}` })),
       ],
     },

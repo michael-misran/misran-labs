@@ -8,7 +8,7 @@ import './gazette-journal.css'
 // La Gazette du Lab, rangée dans la bibliothèque : un vrai quotidien plié en
 // deux, posé sur la table. On le déplie (la moitié du bas descend), on lit la
 // une du jour ; les numéros précédents attendent en pile à côté.
-// /breves = le numéro du jour, /breves/:date = un ancien numéro.
+// /oracle = le numéro du jour, /oracle/:date = un ancien numéro.
 
 const mouvementReduit = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
@@ -127,8 +127,8 @@ export default function GazetteJournal() {
   useEffect(() => {
     const surTouche = (e) => {
       if (etat !== 'ouvert') { if (e.key === 'Enter' || e.key === ' ') deplier(); return }
-      if (e.key === 'ArrowLeft' && previous) navigate(`/breves/${previous.date}`)
-      if (e.key === 'ArrowRight' && next) navigate(`/breves/${next.date}`)
+      if (e.key === 'ArrowLeft' && previous) navigate(`/oracle/${previous.date}`)
+      if (e.key === 'ArrowRight' && next) navigate(`/oracle/${next.date}`)
     }
     window.addEventListener('keydown', surTouche)
     return () => window.removeEventListener('keydown', surTouche)
@@ -170,11 +170,11 @@ export default function GazetteJournal() {
 
             {etat === 'ouvert' && (
               <nav className="gz-pied">
-                <span>{previous && <Link to={`/breves/${previous.date}`}>{tDay.previousDay}</Link>}</span>
+                <span>{previous && <Link to={`/oracle/${previous.date}`}>{tDay.previousDay}</Link>}</span>
                 <span>
-                  <a href="/breves/rss.xml">{tx(TX.rss, lang)}</a> · <Link to="/suivre">{tx(TX.suivre, lang)}</Link>
+                  <a href="/oracle/rss.xml">{tx(TX.rss, lang)}</a> · <Link to="/suivre">{tx(TX.suivre, lang)}</Link>
                 </span>
-                <span>{next && <Link to={`/breves/${next.date}`}>{tDay.nextDay}</Link>}</span>
+                <span>{next && <Link to={`/oracle/${next.date}`}>{tDay.nextDay}</Link>}</span>
               </nav>
             )}
           </div>
@@ -183,7 +183,7 @@ export default function GazetteJournal() {
             <div className="gz-feuille gz-introuvable">
               <h2>{jours.length ? tDay.notFoundTitle : BREVES_TEXT[lang].home.empty}</h2>
               {jours.length > 0 && <p>{tDay.notFoundBody}</p>}
-              {jours.length > 0 && <Link to="/breves">{tx(TX.aujourdhui, lang)} →</Link>}
+              {jours.length > 0 && <Link to="/oracle">{tx(TX.aujourdhui, lang)} →</Link>}
             </div>
           </div>
         )}
@@ -196,7 +196,7 @@ export default function GazetteJournal() {
               {jours.map((j, i) => (
                 <li key={j.date} style={{ '--r': `${((i * 37) % 7) - 3}deg` }}>
                   <Link
-                    to={i === 0 ? '/breves' : `/breves/${j.date}`}
+                    to={i === 0 ? '/oracle' : `/oracle/${j.date}`}
                     className={jour && j.date === jour.date ? 'actif' : undefined}
                     aria-current={jour && j.date === jour.date ? 'page' : undefined}
                     onClick={() => setEtat((e) => (e === 'plie' ? 'depli' : e))}

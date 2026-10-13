@@ -9,7 +9,7 @@ import { getParution } from '../saviez-vous/parutions'
 import { getChemin, titreDe } from '../numero/chemin'
 
 // Chemins que App.jsx sait effectivement router, en dehors de '/', '/lab/…',
-// '/projets…' et '/breves…' (déjà traités plus bas) : sert
+// '/projets…' et '/oracle…' (déjà traités plus bas) : sert
 // uniquement à distinguer une vraie 404 des autres routes connues.
 const KNOWN_ROUTES = [
   /^\/suivre\/?$/,
@@ -44,8 +44,8 @@ export function resolveRouteMeta(pathname, lang) {
 
   // Rubrique Brèves : titre de l'onglet et de la barre d'état, au lieu
   // du chemin brut (D7, mission rss-suivre).
-  if (pathname === '/breves') return { icon: '🗞', label: t(lang, 'brevesNav') }
-  if (pathname.startsWith('/breves/')) {
+  if (pathname === '/oracle') return { icon: '🗞', label: t(lang, 'brevesNav') }
+  if (pathname.startsWith('/oracle/')) {
     const day = getDay(pathname.split('/')[2])
     const label = day ? `${t(lang, 'brevesNav')} — ${formatDateLongNoWeekday(day.date, lang)}` : t(lang, 'brevesNav')
     return { icon: '🗞', label }

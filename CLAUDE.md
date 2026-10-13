@@ -26,7 +26,7 @@ Interdits absolus, valables dans toute session :
 - Michael n'est pas à l'aise avec Git/GitHub : expliquer chaque étape simplement, commande à lancer dans son propre bloc.
 
 ## Brèves
-Version web quotidienne du Journal du matin (/breves), un jour = un fichier JSON dans `src/breves/jours/`. Format : `src/breves/FORMAT.md`. Procédure : `src/breves/EXTRACTION.md`, suivie par la routine `lab-magazine-quotidien` (nom historique : c'est la routine de la Gazette) après le PDF. Seuls la une IA, les articles tech, le mot et le chiffre sont publics.
+Version web quotidienne de L’Oracle du Matin, le journal du matin (ex-Gazette du Lab, page /oracle), un jour = un fichier JSON dans `src/breves/jours/`. Format : `src/breves/FORMAT.md`. Procédure : `src/breves/EXTRACTION.md`, suivie par la routine `lab-magazine-quotidien` (nom historique : c'est la routine de la Gazette) après le PDF. Seuls la une IA, les articles tech, le mot et le chiffre sont publics.
 **Exception Git validée par Michael le 2026-09-30** : la routine du journal pousse sa branche `auto/breves-<date>` (préparée dans le worktree `.worktrees/breves`, jamais dans le dossier de travail) et ouvre la pull request. Jamais `main`. Fusionner reste à Michael.
 
 ## Projets

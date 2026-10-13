@@ -44,7 +44,7 @@ const TREE_LEVEL2_FR = `Documents/Projets/
     │   ├── settings.json           ← permissions du projet (copiées depuis templates/)
     │   ├── launch.json             ← comment lancer le site pour le prévisualiser
     │   └── agents/                 ← agents propres à ce projet
-    │       ├── veilleur.md         ← (veille pour la Gazette et les idées)
+    │       ├── veilleur.md         ← (veille pour l’Oracle du Matin et les idées)
     │       ├── relecteur.md        ← (vérification des chiffres)
     │       └── expert / explorateur / verificateur.md  ← copies locales, prioritaires sur celles de l'ordinateur
     │
@@ -98,7 +98,7 @@ const TREE_LEVEL2_EN = `Documents/Projets/
     │   ├── settings.json           ← project permissions (copied from templates/)
     │   ├── launch.json             ← how to start the site for preview
     │   └── agents/                 ← agents specific to this project
-    │       ├── veilleur.md         ← (research for the Gazette and ideas)
+    │       ├── veilleur.md         ← (research for the Morning Oracle and ideas)
     │       ├── relecteur.md        ← (fact-checking)
     │       └── expert / explorateur / verificateur.md  ← local copies, priority over computer ones
     │

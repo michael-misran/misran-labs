@@ -8,7 +8,7 @@ export { formatDateLong }
 export const KIOSQUE_TEXT = {
   fr: {
     sections: {
-      alaUne: { title: 'À la une', subtitle: 'la Gazette de ce matin' },
+      alaUne: { title: 'À la une', subtitle: 'l’Oracle de ce matin' },
       presentoirs: { title: 'Sur les présentoirs', subtitle: 'les autres titres de la maison' },
     },
     gazette: {
@@ -17,7 +17,7 @@ export const KIOSQUE_TEXT = {
       editionLabel: 'Édition du matin',
       prixLabel: 'Prix : un café',
       kickerPrefix: 'À la une',
-      lireLabel: 'Lire la Gazette du jour →',
+      lireLabel: 'Lire l’Oracle du jour →',
       toutesLabel: 'Toutes les éditions',
       autresBrevesLabel: 'Les autres brèves',
       motDuJourLabel: 'Le mot du jour',
@@ -58,7 +58,7 @@ export const KIOSQUE_TEXT = {
   },
   en: {
     sections: {
-      alaUne: { title: 'Front page', subtitle: 'this morning’s Gazette' },
+      alaUne: { title: 'Front page', subtitle: 'this morning’s Oracle' },
       presentoirs: { title: 'On the newsstand', subtitle: 'the house’s other titles' },
     },
     gazette: {
@@ -67,7 +67,7 @@ export const KIOSQUE_TEXT = {
       editionLabel: 'Morning edition',
       prixLabel: 'Price: one coffee',
       kickerPrefix: 'Front page',
-      lireLabel: 'Read today’s Gazette →',
+      lireLabel: 'Read today’s Oracle →',
       toutesLabel: 'All editions',
       autresBrevesLabel: 'Other briefs',
       motDuJourLabel: 'Word of the day',

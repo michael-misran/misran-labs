@@ -109,6 +109,7 @@
 .etg-couv-gazette { background: #f1e7cf; color: #16110c; padding: 2.4cqh 2cqh; align-items: center; text-align: center; }
 .etg-gaz-sur { font: 700 1.2cqh var(--font-etiquette); letter-spacing: .2em; text-transform: uppercase; color: #b3301d; }
 .etg-couv-gazette b { font: 400 5.6cqh/1 var(--font-gothique); word-spacing: var(--font-gothique-espace, 0); margin: 1.2cqh 0 1cqh; }
+.etg-gaz-initiale { color: #b3301d; }
 .etg-gaz-filet { align-self: stretch; height: .9cqh; border-block: .25cqh solid #16110c; }
 .etg-gaz-sous { margin: 1.2cqh 0 2cqh; font: italic 1.8cqh var(--font-chapo); }
 .etg-gaz-colonnes { flex: 1; align-self: stretch; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4cqh; }
