@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-03",
+  "numero": 4,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Anthropic wants to train 10,000 \"deployment engineers\"",
+    "chapo": "A $100 million program to teach teams at large companies how to put AI agents to work.",
+    "paragraphes": [
+      "On October 2, Anthropic announced the Claude Frontier Academy, backed by $100 million. The goal: train 10,000 \"Frontier Deployed Engineers\" by the end of 2027, engineers tasked with fitting Claude into a company's processes, not with building the model.",
+      "Two stages: a few days in person with simulated deployments (use cases, security review, handover), then a 12-week residency leading real Claude projects inside the participant's organization.",
+      "First cohorts: Accenture, Bain, Capgemini, Deloitte, McKinsey, Morgan Stanley and Novo Nordisk, among others. You can't sign up on your own: the company nominates its engineers.",
+      "What it says: the bottleneck is no longer the model, it's the person able to fit it into a real job. For an independent developer or designer, a role is taking shape: the one who scopes, connects and secures agents at small businesses these programs won't reach."
+    ],
+    "sources": ["https://anthropic.com/news/claude-frontier-academy"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "etude", "rubrique": "Case study", "court": "Case study",
+        "titre": "Plausible: 84% more sign-ups by cutting text",
+        "chapo": "An independent web analytics tool simplified its homepage. No new feature, no advertising.",
+        "paragraphes": [
+          "Plausible Analytics, an open-source alternative to Google Analytics, is funded solely by its subscribers, with no investors. In late January 2026, the team reworked its homepage: the feature grid moved up right under the header, the prose sections went from six to three, and the buttons became more specific (\"Start free trial\" instead of \"Get started\").",
+          "The result, according to their write-up: from January to April, free trial sign-ups jumped 84% for about 2% more traffic. The visitor-to-trial rate went from 2.65% to 4.80%. April 2026 became their best month in seven years, with 1,156 new paying subscribers, and churn stayed stable.",
+          "Their conclusion: complexity builds up \"one paragraph at a time\"."
+        ],
+        "encadre": { "titre": "Takeaway", "texte": "Before paying for more visitors, remove what keeps the ones already there from understanding. A test you can run: have a stranger read your page for 5 seconds and say what it sells.", "plein": true },
+        "sources": ["https://plausible.io/blog/homepage-edits-conversion-lift", "https://plausible.io/about"]
+      },
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve",
+        "titre": "\"Almost right, but not quite\"",
+        "chapo": "Developers' top frustration with AI isn't that it gets things wrong. It's that it gets them almost right.",
+        "paragraphes": [
+          "In Stack Overflow's 2025 survey, 66% of developers name AI solutions that are \"almost right, but not quite\" as their top frustration. 45.2% add that debugging generated code takes longer than writing it. Only 3.1% say they highly trust its answers.",
+          "The topic is still current: on September 28 and 29, GitHub added Claude Sonnet 5.5 and then GPT-6.1 Sol to Copilot. Every model promises fewer errors."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A <i>generated-code review</i> tool: it reads the diff produced by the AI, reruns the tests, and flags whatever doesn't match the original request. Competition: automated pull request reviews already exist; the angle is checking compliance with the spec, not bug hunting.", "plein": true },
+        "sources": ["https://survey.stackoverflow.co/2025/ai", "https://github.blog/changelog/month/09-2026/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Science · Tech",
+    "articles": [
+      {
+        "type": "science", "rubrique": "Science in 5 lines", "court": "Science",
+        "titre": "The brain may have two origins, not one",
+        "chapo": "A Stanford study shakes up the picture of a brain built from a single cell lineage.",
+        "paragraphes": [
+          "Published September 18 in <i>Nature Neuroscience</i>, the study led by Kyle Loh (Stanford Medicine) followed mouse embryos. It shows that two families of progenitor cells, which never mix, build the brain: those expressing the Otx2 gene form the forebrain and midbrain, those expressing Gbx2 form the hindbrain.",
+          "The dominant model had the whole brain starting from a single cell of origin. A spin-off: the team grew hindbrain neurons in the lab from human stem cells, a way to study ALS or spinal muscular atrophy."
+        ],
+        "sources": ["https://www.news-medical.net/news/20260918/New-discovery-overturns-a-prevailing-model-of-brain-development.aspx", "https://www.sciencealert.com/the-human-brain-has-two-distinct-origins-scientists-discover"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Gemini 4 Argon: the model you can't buy yet",
+        "paragraphes": [
+          "In its September roundup published October 2, Google presents Gemini 4 Argon, its new frontier model, with advanced reasoning and an output limit of one million tokens. It's aimed at cybersecurity and complex knowledge work, and for now is only rolling out to trusted defenders through the Fairwind program.",
+          "Elsewhere: Gemini 3.8 Flash, as fast as 3.7 but better at reasoning and code, and two expressive text-to-speech models (Flash-Lite TTS and Flash TTS)."
+        ],
+        "sources": ["https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "GitHub cuts off an old TLS setup on October 7",
+        "paragraphes": [
+          "From October 7, GitHub Enterprise Cloud with data residency (GHE.com) no longer accepts TLS connections limited to X25519 key exchange. If an internal tool or script connects to it, check its TLS settings before Wednesday."
+        ],
+        "sources": ["https://github.blog/changelog/month/09-2026/"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Conversion rate", "nature": "n.", "definition": "The share of a site's visitors who complete the intended action (free trial, purchase, sign-up). At Plausible, it went from 2.65% to 4.80% between January and April 2026 (p. 2): almost double, for 2% more visitors." },
+    "chiffre": { "valeur": "1,156", "texte": "new paying subscribers won by Plausible in April 2026, its best month in seven years, according to the team (p. 2)." },
+    "bonus": { "type": "citation", "texte": "\"Good design is as little design as possible.\"", "auteur": "Dieter Rams, 10th principle of good design (Vitsœ)" },
+    "enigme": { "question": "The more you take away from me, the more I earn. I don't grow your traffic, yet your sign-ups go up. What am I?", "reponse": "a simplified homepage (p. 2)" }
+  },
+  "sources": ["anthropic.com", "plausible.io", "survey.stackoverflow.co", "github.blog", "news-medical.net", "sciencealert.com", "blog.google", "vitsoe.com"]
+}

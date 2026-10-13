@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-06",
+  "numero": 7,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "In ChatGPT, ads go visual",
+    "chapo": "OpenAI is testing visual ads during image generation, and rolling out its measurement toolkit for advertisers.",
+    "paragraphes": [
+      "On October 5, OpenAI unveiled a new ad format for ChatGPT: images of products or usage scenarios, with a \"Learn more\" button. The first testing ground is image generation. The ad is labeled and kept separate from the generated image; OpenAI says ads don't influence answers. Tests begin \"later this month\" in the United States, with an initial group of advertisers.",
+      "The other half of the announcement is about money: integrations with Hightouch, Tealium and LiveRamp to send conversion data, attribution partners such as AppsFlyer, Triple Whale and Adjust, and incrementality experiments with Haus, Measured and WorkMagic. OpenAI cites two partner results: an attributed acquisition cost 15.3% below its paid search benchmark for WeightWatchers (according to DV Rockerbox), and 93% new visitors for Portland Leather (according to Triple Whale). These figures come from the company and its partners, not independent audits.",
+      "For a developer or a designer, the signal is twofold. A new ad space is opening, with image formats to design. And measurement plugs into tools brands already use: that's where small services around this channel will sell."
+    ],
+    "sources": ["https://openai.com/index/new-chatgpt-ads-format-and-measurement/"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve",
+        "titre": "Cold calling is banned, the phone rings anyway",
+        "chapo": "Since August 11 in France, no sales call without consent. A month later, 16,000 complaints.",
+        "paragraphes": [
+          "Since August 11, 2026, a business in France may only call a consumer to sell if it has their prior consent, or if the call concerns an existing contract. Consent must be free, specific, informed, limited to one year at most and revocable. Calls are allowed Monday to Friday, 10 a.m. to 1 p.m. and 2 p.m. to 8 p.m. Bloctel, the old opt-out list, ceased to exist that day.",
+          "In practice, the result is mixed. A Presse-citron article from September 11 reports about 16,000 complaints on Signal Conso in one month, and a 28-year-old man who received 49 calls in under three weeks. The causes cited: call centers outside France displaying fake French numbers, AI automation, and consent obtained through pre-checked boxes or buried in terms and conditions. According to the DGCCRF, the consumer authority quoted in the article, the rise in complaints may also reflect the publicity around the law."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "For honest companies: a simple \"consent vault\" to prove who agreed to be called, for which product, until when, with a reminder before the one-year expiry. For individuals: a substitute number that screens calls. Competition: public reporting already exists (Signal Conso), but it's a complaint desk, not a management tool.", "plein": true },
+        "sources": ["https://www.service-public.gouv.fr/particuliers/actualites/A19003", "https://www.presse-citron.net/quelle-blague-demarchage-telephonique-interdit-11-aout-pourquoi-continuer-recevoir-appels-incessants/"]
+      },
+      {
+        "type": "etude", "rubrique": "Case study", "court": "Case study",
+        "titre": "Buttondown: the newsletter with no funding and no noise",
+        "chapo": "A tool started on evenings and weekends, now a fifteen-person company funded by its customers.",
+        "paragraphes": [
+          "Justin Duke launched Buttondown in December 2016, while working as an engineer at Stripe. His starting point was a personal annoyance: email tools were either too heavy (Mailchimp, ConvertKit) or platforms that wanted to keep control (Medium, Substack). He wanted to drop a form on his blog and send emails, nothing more.",
+          "One growth engine: the \"Powered by Buttondown\" mention in customers' newsletters acts as advertising. Today, the About page says the company isn't funded by investors but \"by its customers\", that it is profitable, and lists fifteen people. The service is free up to 100 subscribers; beyond that, paid options at $9, $29 or $79 a month each, depending on features (teams and white label at $79).",
+          "<b>Takeaway:</b> a minimal product, built for oneself, that advertises itself through its users. Revenue figures circulate in interviews and don't match: we report none."
+        ],
+        "sources": ["https://starterstory.com/stories/buttondown", "https://buttondown.com/about", "https://buttondown.com/pricing"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Dev · Tech",
+    "articles": [
+      {
+        "type": "dev", "rubrique": "Dev tool or tip", "court": "Dev",
+        "titre": "DevTools: resend a request in two clicks, and review switched-off styles",
+        "chapo": "Two small Chrome 153–154 features that save you from retyping requests by hand.",
+        "paragraphes": [
+          "In the Network panel, right-click a request and choose <b>Edit and resend as fetch</b>. DevTools switches to the Console, with the <i>fetch()</i> call already pasted into the command line, along with comments on the parameters and a link to the original request. All that's left is to tweak a header or the body, then press Enter.",
+          "On the CSS side, the Elements panel can now keep showing rules that used to apply to an element and no longer do, with an \"inactive\" marker. Turn it on in the DevTools settings. Handy for understanding why a style disappeared after a state change or a media query.",
+          "These features are in the \"What's new in DevTools, October 2026\" roundup, published by the Chrome team on September 22."
+        ],
+        "encadre": { "titre": "Try it", "texte": "Open your own site, Network tab, right-click an API call, \"Edit and resend as fetch\". Change a parameter and watch the response." },
+        "sources": ["https://developer.chrome.com/blog/new-in-devtools-october-2026"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "GitHub watches for your Lovable, Supabase and Pydantic keys",
+        "paragraphes": [
+          "On October 5, GitHub secret scanning added five key types: <i>lovable_api_key</i>, two Supabase tokens, and two Pydantic keys (<i>logfire_token</i>, <i>pydantic_ai_gateway_api_key</i>).",
+          "Lovable joins the partner program: a key found in a public repository is sent to it so it can revoke it. Worth knowing if you tinker with these tools."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-05-secret-scanning-adds-detectors-for-lovable-supabase-and-more"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Dark pattern", "nature": "n.", "definition": "An interface designed to push users into doing what they wouldn't have chosen on their own: a pre-checked box, a hidden unsubscribe link, a grayed-out \"decline\" button. Also called a \"deceptive pattern\"." },
+    "chiffre": { "valeur": "15.3%", "texte": "lower attributed acquisition cost for WeightWatchers on ChatGPT Ads (DV Rockerbox, cited by OpenAI)." },
+    "bonus": { "type": "defi", "texte": "In under 30 minutes: open DevTools on a site you use, find an API request, replay it with \"Edit and resend as fetch\" while changing a parameter, and note what the response reveals about how the service works." },
+    "enigme": { "question": "I'm already checked when you arrive, yet they say you gave me your consent. What am I?", "reponse": "the pre-checked box (p. 2)" }
+  },
+  "sources": ["openai.com", "service-public.gouv.fr", "presse-citron.net", "buttondown.com", "starterstory.com", "developer.chrome.com", "github.blog"]
+}

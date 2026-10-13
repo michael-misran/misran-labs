@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-11",
+  "numero": 12,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Six models in a few days for $103, with an intern who asks for a budget",
+    "chapo": "Hugging Face shows an agent that trains and publishes custom models, starting with a zero-dollar budget.",
+    "paragraphes": [
+      "In an article from October 8, a Hugging Face author describes building six models with \"ML-Intern\", a mode of the HuggingChat assistant. The agent plans the work, runs a small trial before the real computation, then trains, evaluates and publishes the result on Hugging Face hardware. It starts with a zero budget and must get approval before any paid computation.",
+      "Total GPU and CPU compute for these six projects: about $103. The most telling is <i>Citrus Doctor</i>, a small model that diagnoses citrus diseases, pests and deficiencies from a photo. Trained on 3,017 images and 21 classes, it goes from 14.9% to 52.8% correct identifications on 335 test photos, for about $1.90.",
+      "52.8% is still modest in absolute terms. The limits are spelled out in the article: one drawing style ends up spilling over into unrelated requests, and one project took 48 runs, some of which failed. A model smaller than its \"teacher\" also remains a little less good.",
+      "For a developer or a designer, the lesson is the cost: specializing a small model for a single trade no longer takes a team or a big budget, just a set of well-labeled photos."
+    ],
+    "sources": ["https://huggingface.co/blog/building-with-ml-intern"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve",
+        "titre": "\"Delivered\", but the parcel isn't there",
+        "chapo": "Nearly one recipient in four has seen a parcel marked delivered that never arrived.",
+        "paragraphes": [
+          "According to a study by Arcep, France's telecoms and postal regulator, carried out by CREDOC (October 13, 2025), 89% of parcel recipients say they are satisfied, with an average score of 8.2 out of 10. But 79% have run into at least one difficulty from a list offered, and 23% have seen a parcel marked as delivered when it never was.",
+          "Other problems keep coming up: 27% had a parcel sent to a different pickup point than planned, without prior notice, and 20% struggled to reach customer service. For e-commerce parcels, a third of recipients who had a problem contacted no one; among those who contacted customer service, the problem was still unresolved in about one case in ten."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A \"proof file\" ready in two clicks: drop in the tracking, the screenshot of the \"delivered\" message, the photo of the pickup point and the address, and the tool writes the claim to the right carrier with the right deadlines. Competition exists: every carrier and every store has its own procedure, and parcel tracking apps inform without filing claims for you. The angle is filing the claim for the customer, paid on success.", "plein": true },
+        "sources": ["https://www.arcep.fr/uploads/tx_gspublication/etude-satisfaction-particuliers-destinataires-colis_RAPPORT_fev2026.pdf"]
+      },
+      {
+        "type": "idee", "rubrique": "The business idea", "court": "Idea",
+        "titre": "A plant doctor for niche growers",
+        "paragraphes": [
+          "Plantix already offers photo-based diagnosis of crop problems, but it's aimed mainly at farmers. That leaves room for small enthusiasts: a potted lemon tree, a home orchard, a cooperative vineyard.",
+          "The idea: pick <i>one</i> plant, gather a few thousand photos labeled with a specialist, fine-tune a small model (the Citrus Doctor case, p. 1, proves it costs a few dollars) and sell it to a specific audience: nurseries, garden centers, associations. The first test is done with 50 customers, before paying for more compute."
+        ],
+        "jauge": { "cout": 1, "difficulte": 3, "potentiel": 2 },
+        "sources": ["https://plantix.net/en/", "https://huggingface.co/blog/building-with-ml-intern"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "AI · Tech",
+    "articles": [
+      {
+        "type": "ia", "rubrique": "AI in practice", "court": "AI",
+        "titre": "A good intern's reflex: a small trial before the real work",
+        "chapo": "Hugging Face's agent tests first, asks second. You can copy the method.",
+        "paragraphes": [
+          "ML-Intern starts with a zero budget, asks for approval before any paid computation and runs a small test before the real computation. The same pattern works with any agent: never hand over a long, costly job straight away.",
+          "The Viewpoint Orbit project shows why: 48 runs in total, several of which failed because of missing packages or wrong paths. A small trial reveals these errors for a few cents rather than after a long run."
+        ],
+        "encadre": { "titre": "The method", "texte": "<b>1.</b> Set a spending cap. <b>2.</b> Require a trial on a tiny sample. <b>3.</b> Review the trial's result before launching the big computation." },
+        "sources": ["https://huggingface.co/blog/building-with-ml-intern"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "SVG 2: the reference text gets cleaned up",
+        "paragraphes": [
+          "On October 6, the W3C SVG working group published an updated version of the SVG 2 candidate recommendation draft. It brings fixes and clarifications, mainly so that browsers display the same images the same way.",
+          "Public comments are open until December 1, 2026, via the group's GitHub issues."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "A drawing format everyone understands the same way is a format you can build tools on: editors, icon generators, exports.", "plein": true },
+        "sources": ["https://www.w3.org/news/2026/updated-candidate-recommendation-scalable-vector-graphics-svg-2/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Node.js 26.11 renames sqlite classes",
+        "paragraphes": [
+          "Version 26.11.0, released October 7, renames <i>DatabaseSync</i> and <i>StatementSync</i> in the sqlite module. The replacement names aren't given on the announcement page: read the documentation before updating code that uses them."
+        ],
+        "sources": ["https://nodejs.org/en/blog/release/v26.11.0"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Fine-tuning", "nature": "n.", "definition": "Retraining an already trained model on a small set of examples from a single trade, so it gets better at it. The citrus model on page 1 is an example." },
+    "chiffre": { "valeur": "$1.90", "texte": "That's the announced compute cost for the citrus diagnosis model, which goes from 14.9% to 52.8% accuracy." },
+    "bonus": { "type": "question", "texte": "What small, precise problem, in a field you know better than most people, could a well-labeled photo or text solve? Write it down below: a specialized model starts with a trade you master." },
+    "enigme": { "question": "I'm marked \"arrived\" on your screen, but I'm not in your hand. The more you look for me, the less I exist. What am I?", "reponse": "the \"delivered\" parcel that never arrived (p. 2)" }
+  },
+  "sources": ["huggingface.co", "arcep.fr", "plantix.net", "w3.org", "nodejs.org"]
+}

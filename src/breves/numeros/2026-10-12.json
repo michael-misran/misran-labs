@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-12",
+  "numero": 13,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Ai2 a cessé de distribuer ses GPU par priorité : l'attente de débogage passe de 2 heures à 30 secondes",
+    "chapo": "Le labo de recherche remplace la file à priorités par des budgets de temps, et raconte aussi ce qui coince encore.",
+    "paragraphes": [
+      "Dans un billet du 9 octobre, l'équipe d'infrastructure d'Ai2 explique pourquoi son ancien ordonnanceur de GPU ne tenait plus. La demande dépasse l'offre de deux à trois fois, certains réservaient des machines avec de fausses tâches, et la priorité « haute » avait fini par être utilisée par toutes les charges de travail.",
+      "Le nouveau système distribue du <i>temps</i> GPU : chaque projet reçoit un budget dans une hiérarchie, et l'ordonnancement suit l'occupation des sept derniers jours. Chaque tâche déclare une durée minimale (8 heures au plus) pendant laquelle personne ne peut l'interrompre ; à zéro, elle accepte d'être coupée à tout moment.",
+      "Sur 30 jours de test, les équipes ont reçu 98 % des heures GPU qui leur étaient dues, avec 13 équipes sur 15 à 95 % ou plus. L'attente au 90ᵉ centile pour les tâches de débogage est passée de 2 heures à 30 secondes, et les réparations manuelles ont baissé de 74 %.",
+      "Le billet liste aussi les limites : le plafond de 8 heures pénalise les sessions interactives, la capacité peut se fragmenter, et l'échantillon de simulation était faible. Pour qui partage une machine ou un budget d'API entre plusieurs personnes, l'idée se transpose : donner un budget de temps vaut mieux qu'une étiquette « urgent » que tout le monde finit par coller."
+    ],
+    "sources": ["https://huggingface.co/blog/allenai/impactful-scheduling"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant", "taille": "grand",
+        "titre": "Le dossier de location, ce passage obligé où tout le monde triche un peu",
+        "chapo": "Fiches de paie, avis d'imposition, contrat de travail : pour louer, il faut tout prouver, et chacun se méfie de chacun.",
+        "paragraphes": [
+          "Dans un marché tendu, les candidats à une location envoient des dizaines de pièces à des bailleurs qui n'ont aucun moyen simple de les vérifier. Résultat, une méfiance dans les deux sens : une étude FLASHS pour Zelok (juin 2025) indique que 26 % des locataires reconnaissent avoir déjà falsifié une information dans un dossier, et que 58 % des propriétaires disent avoir déjà suspecté ou repéré un dossier frauduleux.",
+          "Côté public, DossierFacile, créé en 2018, fait contrôler les pièces par une équipe de 15 agents, avec un délai moyen de 48 heures, selon Économie Matin (mars 2026). Le même article cite des logiciels d'automatisation, parfois dotés d'IA, qui repèrent les incohérences entre documents côté bailleurs."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un dossier « vérifié une fois, partagé partout » : le candidat prouve ses revenus à la source (relevé bancaire connecté, avis d'impôt) et envoie un lien à plusieurs bailleurs. Le concurrent public est gratuit et reconnu : l'angle doit être la vitesse, ou les agences qui reçoivent 80 dossiers par annonce.", "plein": true },
+        "sources": ["https://www.economiematin.fr/?p=215791"]
+      },
+      {
+        "type": "idee", "rubrique": "L'idée de business", "court": "Idée",
+        "titre": "L'audit d'abonnement avant la loi européenne",
+        "paragraphes": [
+          "La Commission européenne prépare le <i>Digital Fairness Act</i>, qui doit traiter la résiliation et le renouvellement des abonnements numériques, ainsi que les interfaces trompeuses. Selon le tableau de suivi du Parlement européen (mis à jour le 20 septembre 2026), la proposition est attendue au quatrième trimestre 2026 : elle n'existe pas encore, et le texte final viendra plus tard.",
+          "L'idée : un audit rapide, à prix fixe, du parcours d'inscription, de renouvellement et de résiliation des petites boutiques et SaaS européens. Rapport illustré, captures d'écran et corrections de maquette. Qui paie : l'éditeur de 5 à 50 personnes sans juriste. Lancement : vendre d'abord l'audit à la main, automatiser ensuite. Honnêtement : des cabinets de conseil en design éthique et en conformité existent probablement déjà, à vérifier avant de se lancer ; surtout, les règles précises ne sont pas écrites, donc il faut vendre de la bonne pratique, pas de la « conformité »."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
+        "sources": ["https://www.europarl.europa.eu/legislative-train/theme-protecting-our-democracy-upholding-our-values/file-digital-fairness-act"]
+      },
+      {
+        "type": "irritant", "rubrique": "Irritant éclair", "court": "Irritant", "taille": "petit",
+        "titre": "L'imprimante qui refuse l'encre que vous avez payée",
+        "paragraphes": [
+          "Une plainte déposée en août 2026 auprès d'Altroconsumo décrit des cartouches Instant Ink que l'imprimante ne reconnaît plus après la résiliation, alors qu'elles avaient été payées. En France, l'association HOP a porté plainte contre HP en novembre 2024 pour un blocage à distance de cartouches, que HP n'a pas, à ce stade, été jugé avoir commis.",
+          "<b>La piste :</b> un outil qui vérifie, avant l'achat, si une imprimante accepte les cartouches non officielles ou refuse les anciennes après un abonnement. Données à collecter à la main, publiables en comparateur."
+        ],
+        "sources": ["https://www.altroconsumo.it/reclamare/bacheca-dei-reclami/hp-istant-ink/20e300ccc6f24fcbb3", "https://www.clubic.com/actualite-544961-une-obsolescence-programmee-de-ses-cartouches-d-encre-hp-accusee-de-tricher-ciblee-par-une-plainte-en-france.html"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Rétro · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Rétro · Design d'un jeu", "court": "Rétro", "taille": "grand",
+        "titre": "Tetris : sept pièces au lieu de douze, et un écran sans graphismes",
+        "chapo": "Le jeu le plus copié du monde est né d'une coupe : on a retiré cinq formes.",
+        "paragraphes": [
+          "Alexey Pajitnov travaillait sur la reconnaissance vocale et l'IA à Moscou quand il a voulu transformer les <i>pentominos</i>, ces puzzles de pièces à cinq carrés, en jeu. Un pentomino a douze formes. Il a jugé le jeu « trop compliqué » et est passé aux tétrominos, quatre carrés, donc sept formes seulement.",
+          "La machine, un Elektronika 60 (un clone soviétique de PDP-11), n'avait pas d'interface graphique : les pièces étaient dessinées avec des caractères de texte, des crochets et des espaces. La première version n'avait ni niveaux ni score. Pajitnov a dit en 1993 que le jeu avait pris environ trois semaines.",
+          "Le port pour PC d'IBM, avec la couleur et un tableau des scores, est venu ensuite avec Dmitry Pavlovsky et Vadim Gerasimov, 16 ans. La date exacte de la création est discutée : juin 1984 pour certaines sources, 1985 pour d'autres."
+        ],
+        "encadre": { "titre": "La leçon de design", "texte": "Douze formes rendaient le jeu plus riche sur le papier, sept le rendaient jouable en une minute. Avant d'ajouter une fonction, essayez d'en retirer une.", "plein": true },
+        "sources": ["https://en.wikipedia.org/wiki/Tetris", "https://en.wikipedia.org/wiki/Alexey_Pajitnov"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Deno rejoint Cloudflare",
+        "paragraphes": [
+          "Le 9 octobre, Cloudflare a annoncé que l'équipe Deno la rejoint, avec Ryan Dahl et Bert Belder à la tête d'un chantier : faire de <i>workerd</i>, le moteur open source de ses Workers, une solution d'auto-hébergement de premier plan.",
+          "Le billet ne dit rien de l'avenir du runtime Deno lui-même ; il renvoie au blog de Ryan Dahl."
+        ],
+        "sources": ["https://blog.cloudflare.com/deno-joins-cloudflare/"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "MVP", "nature": "n. m.", "definition": "Produit minimum viable : la version la plus petite d'un produit qui permet déjà de vérifier si quelqu'un en a besoin. Le premier Tetris, sans score ni niveaux, en était une." },
+    "chiffre": { "valeur": "3 000 £", "texte": "C'est la somme pour laquelle Robert Stein a vendu les droits occidentaux de Tetris à Mirrorsoft et Spectrum HoloByte, plus des redevances de 7,5 à 15 %." },
+    "bonus": { "type": "question", "texte": "Quel document avez-vous dû fournir trois fois, à trois endroits différents, cette année ? Notez-le : c'est un produit qui n'existe pas encore." },
+    "enigme": { "question": "Je tombe sans jamais me casser, et je disparais quand on me complète. Qui suis-je ?", "reponse": "une ligne de Tetris" }
+  },
+  "sources": ["huggingface.co", "economiematin.fr", "europarl.europa.eu", "altroconsumo.it", "clubic.com", "wikipedia.org", "cloudflare.com"]
+}

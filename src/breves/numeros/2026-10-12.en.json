@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-12",
+  "numero": 13,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Ai2 stopped handing out GPUs by priority: debugging wait drops from 2 hours to 30 seconds",
+    "chapo": "The research lab replaces its priority queue with time budgets, and also explains what still gets stuck.",
+    "paragraphes": [
+      "In a post from October 9, Ai2's infrastructure team explains why its old GPU scheduler no longer held up. Demand outstrips supply two to three times over, some people reserved machines with fake jobs, and the \"high\" priority had ended up being used by every workload.",
+      "The new system hands out GPU <i>time</i>: each project gets a budget within a hierarchy, and scheduling follows usage over the last seven days. Each job declares a minimum duration (8 hours at most) during which nobody can interrupt it; at zero, it accepts being cut off at any moment.",
+      "Over 30 days of testing, teams received 98% of the GPU hours owed to them, with 13 of 15 teams at 95% or more. The 90th-percentile wait for debugging jobs went from 2 hours to 30 seconds, and manual fixes dropped by 74%.",
+      "The post also lists the limits: the 8-hour cap penalizes interactive sessions, capacity can fragment, and the simulation sample was small. For anyone sharing a machine or an API budget among several people, the idea carries over: a time budget beats an \"urgent\" label that everyone ends up slapping on."
+    ],
+    "sources": ["https://huggingface.co/blog/allenai/impactful-scheduling"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve", "taille": "grand",
+        "titre": "The rental application, a rite of passage where everyone cheats a little",
+        "chapo": "Pay slips, tax notices, employment contract: to rent, you have to prove everything, and everyone distrusts everyone.",
+        "paragraphes": [
+          "In a tight market, rental applicants in France send dozens of documents to landlords who have no simple way to check them. The result is distrust both ways: a FLASHS study for Zelok (June 2025) indicates that 26% of tenants admit to having falsified information in an application, and that 58% of landlords say they have suspected or spotted a fraudulent application.",
+          "On the public side, DossierFacile, created in 2018, has documents checked by a team of 15 agents, with an average turnaround of 48 hours, according to Économie Matin (March 2026). The same article cites automation software, sometimes AI-powered, that spots inconsistencies between documents on the landlord side."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A \"verified once, shared everywhere\" application: the applicant proves income at the source (connected bank statement, tax notice) and sends a link to several landlords. The public competitor is free and well known: the angle has to be speed, or agencies that receive 80 applications per listing.", "plein": true },
+        "sources": ["https://www.economiematin.fr/?p=215791"]
+      },
+      {
+        "type": "idee", "rubrique": "The business idea", "court": "Idea",
+        "titre": "A subscription audit ahead of the EU law",
+        "paragraphes": [
+          "The European Commission is preparing the <i>Digital Fairness Act</i>, which is meant to address cancelling and renewing digital subscriptions, as well as deceptive interfaces. According to the European Parliament's tracker (updated September 20, 2026), the proposal is expected in the fourth quarter of 2026: it doesn't exist yet, and the final text will come later.",
+          "The idea: a quick, fixed-price audit of the sign-up, renewal and cancellation flow of small European shops and SaaS products. An illustrated report, screenshots and mockup fixes. Who pays: a 5-to-50-person publisher without a lawyer. Launch: sell the audit by hand first, automate later. Honestly: ethical design and compliance consultancies probably already exist, check before diving in; above all, the precise rules aren't written yet, so you have to sell good practice, not \"compliance\"."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
+        "sources": ["https://www.europarl.europa.eu/legislative-train/theme-protecting-our-democracy-upholding-our-values/file-digital-fairness-act"]
+      },
+      {
+        "type": "irritant", "rubrique": "Pet peeve in brief", "court": "Pet peeve", "taille": "petit",
+        "titre": "The printer that rejects the ink you paid for",
+        "paragraphes": [
+          "A complaint filed in August 2026 with Altroconsumo describes Instant Ink cartridges that the printer no longer recognizes after cancellation, even though they had been paid for. In France, the group HOP filed a complaint against HP in November 2024 over remote cartridge blocking, which HP has not, at this stage, been found to have done.",
+          "<b>The lead:</b> a tool that checks, before purchase, whether a printer accepts third-party cartridges or rejects old ones after a subscription. Data to collect by hand, publishable as a comparison site."
+        ],
+        "sources": ["https://www.altroconsumo.it/reclamare/bacheca-dei-reclami/hp-istant-ink/20e300ccc6f24fcbb3", "https://www.clubic.com/actualite-544961-une-obsolescence-programmee-de-ses-cartouches-d-encre-hp-accusee-de-tricher-ciblee-par-une-plainte-en-france.html"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Retro · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Retro · A game's design", "court": "Retro", "taille": "grand",
+        "titre": "Tetris: seven pieces instead of twelve, and a screen with no graphics",
+        "chapo": "The most copied game in the world was born of a cut: five shapes were removed.",
+        "paragraphes": [
+          "Alexey Pajitnov was working on speech recognition and AI in Moscow when he wanted to turn <i>pentominoes</i>, puzzles made of five-square pieces, into a game. A pentomino has twelve shapes. He found the game \"too complicated\" and switched to tetrominoes, four squares, so only seven shapes.",
+          "The machine, an Elektronika 60 (a Soviet PDP-11 clone), had no graphical interface: the pieces were drawn with text characters, brackets and spaces. The first version had neither levels nor score. Pajitnov said in 1993 that the game took about three weeks.",
+          "The IBM PC port, with color and a high-score table, came next with Dmitry Pavlovsky and 16-year-old Vadim Gerasimov. The exact date of creation is debated: June 1984 for some sources, 1985 for others."
+        ],
+        "encadre": { "titre": "The design lesson", "texte": "Twelve shapes made the game richer on paper, seven made it playable within a minute. Before adding a feature, try removing one.", "plein": true },
+        "sources": ["https://en.wikipedia.org/wiki/Tetris", "https://en.wikipedia.org/wiki/Alexey_Pajitnov"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Deno joins Cloudflare",
+        "paragraphes": [
+          "On October 9, Cloudflare announced that the Deno team is joining it, with Ryan Dahl and Bert Belder leading one project: making <i>workerd</i>, the open-source engine behind its Workers, a first-class self-hosting solution.",
+          "The post says nothing about the future of the Deno runtime itself; it points to Ryan Dahl's blog."
+        ],
+        "sources": ["https://blog.cloudflare.com/deno-joins-cloudflare/"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "MVP", "nature": "n.", "definition": "Minimum viable product: the smallest version of a product that already lets you check whether anyone needs it. The first Tetris, with no score or levels, was one." },
+    "chiffre": { "valeur": "£3,000", "texte": "That's the sum for which Robert Stein sold the Western rights to Tetris to Mirrorsoft and Spectrum HoloByte, plus royalties of 7.5 to 15%." },
+    "bonus": { "type": "question", "texte": "Which document have you had to provide three times, in three different places, this year? Write it down: it's a product that doesn't exist yet." },
+    "enigme": { "question": "I fall without ever breaking, and I disappear once I'm complete. What am I?", "reponse": "a line in Tetris" }
+  },
+  "sources": ["huggingface.co", "economiematin.fr", "europarl.europa.eu", "altroconsumo.it", "clubic.com", "wikipedia.org", "cloudflare.com"]
+}

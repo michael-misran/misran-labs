@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-10",
+  "numero": 11,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Vercel apprend à votre agent à chercher un nom de domaine, mais pas à le payer",
+    "chapo": "Le CLI de Vercel donne à un agent IA quatre commandes pour trouver un domaine. La dernière, l'achat, reste volontairement entre vos mains.",
+    "paragraphes": [
+      "Depuis le 9 octobre, le CLI de Vercel propose une famille de commandes <i>vercel domains</i> : <i>search</i> pour trouver des noms candidats, <i>check</i> pour vérifier leur disponibilité, <i>price</i> pour lire le tarif chez le registrar, et <i>buy</i> pour lancer l'achat. Le CLI embarque aussi un skill, un mode d'emploi destiné aux agents, qui leur décrit toute la séquence sans qu'il faille la leur expliquer.",
+      "Le détail qui compte est la dernière étape. En mode non interactif, c'est-à-dire quand c'est un agent qui tape la commande, <i>vercel domains buy</i> ne dépense rien : il renvoie une erreur structurée, lisible par une machine, avec les commandes suivantes à suivre. L'agent doit alors vous transmettre la confirmation. Le prix, le renouvellement automatique et les coordonnées du titulaire se valident dans un terminal interactif ou dans le tableau de bord.",
+      "Pour un développeur, c'est un modèle à copier : laisser l'agent faire tout le travail de recherche, puis placer l'action qui coûte de l'argent derrière un refus propre et explicite, plutôt que derrière une simple consigne dans un prompt. L'annonce ne précise ni les prix ni les extensions disponibles : à tester avant d'en faire un réflexe."
+    ],
+    "sources": ["https://vercel.com/changelog/agents-can-now-buy-domains-with-the-vercel-cli"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant", "taille": "grand",
+        "titre": "Le CAPTCHA, ces secondes que personne ne rend",
+        "chapo": "Cochez la case, repérez les feux rouges. Des chercheurs ont fait le compte de ce que cela coûte.",
+        "paragraphes": [
+          "Une équipe de l'université de Californie à Irvine (Andrew Searles, Renascence Prapty et Gene Tsudik) a étudié reCAPTCHA, le CAPTCHA de Google, et publié ses conclusions en février 2025. Leur estimation : au moins 819 millions d'heures de temps humain gaspillées à le résoudre.",
+          "Plus gênant, les auteurs jugent que l'outil sert surtout à suivre le comportement des visiteurs, et qu'il offre peu de protection réelle contre les robots. Le visiteur paie en secondes, le site en abandons de formulaire, et personne n'est vraiment protégé."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un service de protection de formulaires qui évalue le risque en silence et ne montre un test qu'en dernier recours, avec un module prêt à poser sur WordPress, Webflow ou Shopify. La concurrence existe : Cloudflare vend déjà Turnstile comme « remplacement de CAPTCHA ». L'angle libre : les petits sites, un prix fixe et zéro réglage.", "plein": true },
+        "sources": ["https://ics.uci.edu/2025/02/10/recaptcha-819-million-hours-of-wasted-human-time-and-billions-of-dollars-in-google-profits/", "https://www.cloudflare.com/application-services/products/turnstile/"]
+      },
+      {
+        "type": "etude", "rubrique": "Étude de cas", "court": "Étude", "taille": "grand",
+        "titre": "DataFast : de 4 utilisateurs à 20 000 $ par mois en 512 jours",
+        "chapo": "Un outil né d'une irritation personnelle : deux tableaux de bord pour une seule question.",
+        "paragraphes": [
+          "En 2024, Marc Lou utilisait Plausible pour son trafic et Stripe pour ses paiements. Il voulait savoir quelles sources de visiteurs rapportent de l'argent, et aucun outil ne le disait. Il a construit un prototype en quelques semaines : DataFast, qui relie le trafic aux revenus Stripe.",
+          "Départ modeste : quatre utilisateurs (lui et trois amis), puis un lancement public sur X qui apporte quelques dizaines d'utilisateurs et environ 500 $ de revenu mensuel. Quatre mois pour atteindre 1 000 $, puis une croissance d'environ 10 % par mois. Au 10 mars 2026, il atteint un peu plus de 20 000 $ de revenu mensuel, soit l'objectif qu'il s'était fixé 512 jours plus tôt.",
+          "Ce qu'il en tire : le déclic est venu en présentant l'outil comme un outil d'attribution des revenus plutôt que comme un énième outil de statistiques, et en amenant très vite l'utilisateur au moment où il voit d'où vient son argent."
+        ],
+        "encadre": { "titre": "À retenir", "texte": "Le produit n'est pas nouveau : c'est un angle neuf sur un marché saturé, trouvé en partant de sa propre frustration.", "plein": true },
+        "sources": ["https://newsletter.marclou.com/p/i-grew-a-saas-to-1m"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Science · Tech",
+    "articles": [
+      {
+        "type": "science", "rubrique": "Science en 5 lignes", "court": "Science", "taille": "grand",
+        "titre": "Les virus qui retournent l'alarme des bactéries contre elles",
+        "paragraphes": [
+          "Les bactéries ont un système immunitaire appelé CBASS. Des chercheurs de University of Utah Health (Samuel Hobbs, Philip Kranzusch) montrent, dans <i>Science</i>, que certains virus de bactéries s'en servent comme d'un interrupteur : leur protéase, une enzyme qui découpe des protéines, coupe une protéine-capteur de l'hôte et déclenche ainsi la réponse immunitaire.",
+          "Dans les cas extrêmes, la bactérie infectée s'autodétruit pour freiner la propagation. Les auteurs relient cette voie à une voie immunitaire humaine, signe d'une origine commune très ancienne. Piste évoquée pour la suite : concevoir des virus thérapeutiques qui échappent à ces défenses."
+        ],
+        "sources": ["https://www.sciencedaily.com/releases/2026/10/261007042100.htm"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech", "taille": "grand",
+        "titre": "Vercel : le stockage des déploiements devient payant pour les équipes Pro",
+        "paragraphes": [
+          "Annoncé le 9 octobre : Vercel facture le stockage des déploiements et des Functions à 0,10 $ par Go et par mois à toutes les équipes Pro existantes. La date de début de facturation est communiquée par e-mail à chaque équipe, et la page ne mentionne aucun quota gratuit.",
+          "Autre échéance : la rétention des déploiements passe à 30 jours, et les plus anciens seront supprimés à partir du 23 octobre, sauf si vous modifiez vos paramètres de rétention avant cette date. Les équipes déjà réglées à 30 jours ou moins ne changent pas."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Quand une plateforme se met à facturer ce qui était invisible, des outils de nettoyage et de suivi des coûts trouvent leur public.", "plein": true },
+        "sources": ["https://vercel.com/changelog/deployment-storage-pricing-expands-to-existing-teams"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "GitHub : les fils d'activité lisibles comme des listes",
+        "paragraphes": [
+          "Depuis le 8 octobre, les fils d'activité des issues et pull requests se parcourent comme une liste avec VoiceOver, NVDA et JAWS. Après « Load more », le lecteur d'écran annonce le nombre d'éléments chargés, par exemple « 11 new items loaded ». L'apparence ne change pas."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-08-screen-readers-can-navigate-timelines-as-lists"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Humain dans la boucle", "nature": "loc. nom.", "definition": "Principe de conception où un agent automatique prépare le travail mais s'arrête avant l'action qui compte (payer, supprimer, envoyer) pour demander la validation d'une personne. La commande d'achat de Vercel en est un exemple." },
+    "chiffre": { "valeur": "× 3,1", "texte": "C'est ce que donne 10 % de croissance par mois pendant un an (1,1 puissance 12)." },
+    "bonus": { "type": "citation", "texte": "The beginning always feels slower than it should.", "auteur": "Marc Lou, « I grew a SaaS to $1M », 2026" },
+    "enigme": { "question": "Je n'ai jamais appuyé sur le bouton, mais rien ne part sans moi. L'agent me cherche, l'humain me donne. Qui suis-je ?", "reponse": "la confirmation (p. 1)" }
+  },
+  "sources": ["vercel.com", "github.blog", "sciencedaily.com", "ics.uci.edu", "newsletter.marclou.com", "cloudflare.com"]
+}

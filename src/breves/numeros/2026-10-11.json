@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-11",
+  "numero": 12,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Six modèles en quelques jours pour 103 $, avec un stagiaire qui demande son budget",
+    "chapo": "Hugging Face montre un agent qui entraîne et publie des modèles sur mesure, en commençant avec zéro dollar de budget.",
+    "paragraphes": [
+      "Dans un article du 8 octobre, un auteur de Hugging Face raconte avoir construit six modèles avec « ML-Intern », un mode de l'assistant HuggingChat. L'agent planifie le travail, lance un petit essai avant le vrai calcul, puis entraîne, évalue et publie le résultat sur le matériel de Hugging Face. Il part avec un budget nul et doit obtenir une autorisation avant tout calcul payant.",
+      "Le total des calculs GPU et CPU de ces six projets : environ 103 $. Le plus parlant est <i>Citrus Doctor</i>, un petit modèle qui diagnostique maladies, ravageurs et carences des agrumes à partir d'une photo. Entraîné sur 3 017 images et 21 classes, il passe de 14,9 % à 52,8 % de bonnes identifications sur 335 photos de test, pour environ 1,90 $.",
+      "52,8 % reste modeste en valeur absolue. Les limites sont écrites dans l'article : un style de dessin finit par déborder sur des demandes sans rapport, et un projet a demandé 48 lancements dont certains en échec. Un modèle plus petit que son « professeur » reste aussi un peu moins bon.",
+      "Pour un développeur ou un designer, l'enseignement est le coût : spécialiser un petit modèle sur un seul métier ne demande plus ni équipe ni gros budget, seulement un jeu de photos bien étiquetées."
+    ],
+    "sources": ["https://huggingface.co/blog/building-with-ml-intern"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "« Livré », mais le colis n'est pas là",
+        "chapo": "Près d'un destinataire sur quatre a vu un colis marqué livré qu'il n'a jamais reçu.",
+        "paragraphes": [
+          "Selon une étude de l'Arcep réalisée par le CREDOC (13 octobre 2025), 89 % des destinataires de colis se disent satisfaits, avec une note moyenne de 8,2 sur 10. Mais 79 % ont rencontré au moins une difficulté parmi une liste proposée, et 23 % ont vu un colis indiqué comme livré alors qu'il ne l'avait jamais été.",
+          "D'autres problèmes reviennent : 27 % ont eu un colis envoyé dans un autre point relais que celui prévu, sans information préalable, et 20 % ont eu du mal à joindre un service client. Pour les colis du commerce en ligne, un tiers des destinataires ayant eu un souci n'a contacté personne ; parmi ceux qui ont contacté le service client, le problème n'était toujours pas résolu dans environ un cas sur dix."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un « dossier de preuve » prêt en deux clics : on y glisse le suivi, la capture du message « livré », la photo du point relais et l'adresse, et l'outil rédige la réclamation au bon transporteur avec les bons délais. La concurrence existe : chaque transporteur et chaque boutique a sa propre procédure, et les applications de suivi de colis informent sans réclamer à votre place. L'angle est la réclamation faite pour le client, payée au succès.", "plein": true },
+        "sources": ["https://www.arcep.fr/uploads/tx_gspublication/etude-satisfaction-particuliers-destinataires-colis_RAPPORT_fev2026.pdf"]
+      },
+      {
+        "type": "idee", "rubrique": "L'idée de business", "court": "Idée",
+        "titre": "Le médecin des plantes de niche",
+        "paragraphes": [
+          "Plantix propose déjà de diagnostiquer, sur photo, les problèmes des cultures, mais elle s'adresse d'abord aux agriculteurs. Reste la place des petits passionnés : un citronnier en pot, un verger de particulier, une vigne de coopérative.",
+          "L'idée : choisir <i>une</i> plante, réunir quelques milliers de photos étiquetées avec un spécialiste, affiner un petit modèle (le cas Citrus Doctor, p. 1, prouve que cela coûte quelques dollars) et le vendre à un public précis : pépiniéristes, jardineries, associations. Le premier test se fait avec 50 clients, avant de payer plus de calcul."
+        ],
+        "jauge": { "cout": 1, "difficulte": 3, "potentiel": 2 },
+        "sources": ["https://plantix.net/en/", "https://huggingface.co/blog/building-with-ml-intern"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "IA · Tech",
+    "articles": [
+      {
+        "type": "ia", "rubrique": "L'IA en pratique", "court": "IA",
+        "titre": "Le bon réflexe d'un stagiaire : un petit essai avant le vrai travail",
+        "chapo": "L'agent de Hugging Face teste d'abord, demande ensuite. Vous pouvez copier la méthode.",
+        "paragraphes": [
+          "ML-Intern commence par un budget de zéro, demande l'autorisation avant tout calcul payant et lance un petit test avant le vrai calcul. Le même schéma sert avec n'importe quel agent : ne jamais confier d'emblée un travail long et coûteux.",
+          "Le cas du projet Viewpoint Orbit montre pourquoi : 48 lancements au total, dont plusieurs échecs causés par des paquets manquants ou de mauvais chemins. Un petit essai révèle ces erreurs pour quelques centimes plutôt qu'après une longue exécution."
+        ],
+        "encadre": { "titre": "La méthode", "texte": "<b>1.</b> Fixer un plafond de dépense. <b>2.</b> Exiger un essai sur un échantillon minuscule. <b>3.</b> Relire le résultat de l'essai avant de lancer le gros calcul." },
+        "sources": ["https://huggingface.co/blog/building-with-ml-intern"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "SVG 2 : le texte de référence est remis au propre",
+        "paragraphes": [
+          "Le 6 octobre, le groupe de travail SVG du W3C a publié une version mise à jour du projet de recommandation candidate de SVG 2. Elle apporte des corrections et des clarifications, surtout pour que les navigateurs affichent les mêmes images de la même façon.",
+          "Les commentaires publics sont possibles jusqu'au 1er décembre 2026, via les issues GitHub du groupe."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Un format de dessin que tout le monde comprend de la même façon est un format sur lequel on peut bâtir des outils : éditeurs, générateurs d'icônes, exports.", "plein": true },
+        "sources": ["https://www.w3.org/news/2026/updated-candidate-recommendation-scalable-vector-graphics-svg-2/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Node.js 26.11 renomme des classes de sqlite",
+        "paragraphes": [
+          "La version 26.11.0, publiée le 7 octobre, renomme <i>DatabaseSync</i> et <i>StatementSync</i> du module sqlite. Les noms de remplacement ne sont pas donnés sur la page d'annonce : lisez la documentation avant de mettre à jour du code qui s'en sert."
+        ],
+        "sources": ["https://nodejs.org/en/blog/release/v26.11.0"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Affinage", "nature": "n. m.", "definition": "En anglais <i>fine-tuning</i> : réentraîner un modèle déjà formé sur un petit jeu d'exemples d'un seul métier, pour qu'il y devienne meilleur. Le modèle d'agrumes de la page 1 en est un exemple." },
+    "chiffre": { "valeur": "1,90 $", "texte": "C'est le coût de calcul annoncé pour le modèle de diagnostic des agrumes, qui passe de 14,9 % à 52,8 % de réussite." },
+    "bonus": { "type": "question", "texte": "Quel petit problème précis, dans un domaine que vous connaissez mieux que la plupart des gens, une photo ou un texte bien étiqueté pourrait-il résoudre ? Notez-le ci-dessous : un modèle spécialisé commence par un métier que vous maîtrisez." },
+    "enigme": { "question": "Je suis marqué « arrivé » sur ton écran, mais je ne suis pas dans ta main. Plus tu me cherches, moins j'existe. Qui suis-je ?", "reponse": "le colis « livré » qui n'a jamais été reçu (p. 2)" }
+  },
+  "sources": ["huggingface.co", "arcep.fr", "plantix.net", "w3.org", "nodejs.org"]
+}

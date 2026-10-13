@@ -1,0 +1,103 @@
+{
+  "date": "2026-09-30",
+  "numero": 1,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "ChatGPT ouvre sa barre latérale aux développeurs",
+    "chapo": "Au DevDay d'hier, l'annonce la plus concrète n'était pas un modèle : c'est la place faite aux applications tierces dans ChatGPT.",
+    "paragraphes": [
+      "Mardi 29 septembre, OpenAI tenait son DevDay. Pour un dev, la nouveauté qui compte s'appelle « extensions de plugin » : une application tierce peut s'installer dans la barre latérale de ChatGPT, ouvrir un panneau interactif à côté de la conversation, ou servir de visionneuse et d'éditeur pour un type de fichier. Figma et Adobe figurent parmi les exemples cités.",
+      "Le tout prolonge MCP, le protocole ouvert qui relie les IA aux outils ; des kits existent en TypeScript et en Python.",
+      "Autour : une API Agents en bêta publique et GPT-6.1 Sol, à 2 $ le million de jetons en entrée et 10 $ en sortie. Les agents persistants « Dots » arrivent sur les offres Pro, Business et Enterprise, mais pas dans l'Espace économique européen, en Suisse ni au Royaume-Uni.",
+      "Ce que ça change : ChatGPT devient un lieu de distribution. Pour un designer, la question devient « quel panneau à côté d'une conversation ? »."
+    ],
+    "sources": [
+      "https://community.openai.com/t/devday-2026-announcements-and-developer-resources/1402006",
+      "https://developers.openai.com/plugins/build/extensions",
+      "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "Le bandeau cookies, encore et encore",
+        "chapo": "L'Europe tenait la solution : un réglage unique dans le navigateur. Les États l'ont retirée en juin.",
+        "paragraphes": [
+          "Accepter, refuser, « paramétrer »… Sur chaque site, le même rituel. L'association noyb parle de plusieurs milliards de clics par an dans l'UE, alors que selon les études qu'elle cite, seuls 3 à 10 % des internautes veulent réellement être pistés.",
+          "Dans son « omnibus numérique », la Commission proposait un article 88b : exprimer son choix une fois, dans le navigateur, et interdire aux sites de redemander avant six mois. Le 18 juin 2026, le Conseil de l'UE l'a supprimé de sa position, à la demande notamment de l'Allemagne, de la France et de la Pologne. Le 10 septembre, une coalition de 19 organisations, dont le BEUC, noyb et l'EFF, a demandé son retour. Seul le Parlement européen peut encore le rétablir."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Côté internautes, la place est prise : l'extension open source Consent-O-Matic, de l'université d'Aarhus, remplit déjà les bandeaux à votre place. L'angle est côté sites : un audit clé en main pour PME, qui repère ce qui déclenche vraiment le bandeau et retire les traceurs inutiles.", "plein": true },
+        "sources": [
+          "https://noyb.eu/node/1641",
+          "https://www.euronews.com/next/2026/05/18/the-eus-plan-to-tackle-cookie-fatigue",
+          "https://ppc.land/19-groups-ask-eu-to-re-insert-the-cookie-banner-fix-google-lobbied-out/",
+          "https://consentomatic.au.dk/"
+        ]
+      },
+      {
+        "type": "modele", "rubrique": "Le modèle économique", "court": "Modèle",
+        "titre": "Duolingo : 9 % qui paient pour tous",
+        "paragraphes": [
+          "Au deuxième trimestre 2026, Duolingo a déclaré 140,6 millions d'utilisateurs actifs par mois et 12,7 millions d'abonnés payants : 9 % seulement. Ce sont pourtant eux qui font vivre l'entreprise : 258 M$ d'abonnements sur 298,5 M$ de chiffre d'affaires, soit 86 %. La publicité pèse 7 %, le Duolingo English Test à peine 10 M$.",
+          "Le moteur, c'est l'habitude. 58,7 millions de personnes ouvrent l'appli chaque jour, 23 % de plus qu'il y a un an. La série de jours consécutifs est l'arme centrale : en juin, un événement ponctuel permettait de récupérer sa plus longue série en faisant trois leçons. 15,4 millions d'apprenants l'ont fait, dont près de 8 millions qui n'avaient plus aucune série active.",
+          "L'IA ne ruine pas la marge : 72,6 % de marge brute, grâce à un déploiement mesuré des fonctions IA selon la direction."
+        ],
+        "encadre": { "titre": "À retenir", "texte": "Un freemium qui marche vend l'habitude avant le produit : le gratuit est l'entonnoir, la rétention l'indicateur." },
+        "sources": [
+          "https://www.sec.gov/Archives/edgar/data/0001562088/000162828026053299/q2fy26duolingo6-30x26share.htm"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Design · Tech",
+    "articles": [
+      {
+        "type": "design", "rubrique": "Design & UX", "court": "Design",
+        "titre": "Le menu déroulant se laisse enfin habiller",
+        "chapo": "Avec Safari 27, le <i>select</i> natif devient stylable en CSS, sans JavaScript et sans perdre l'accessibilité.",
+        "paragraphes": [
+          "Habiller un menu déroulant voulait dire le reconstruire en <i>div</i> et en JavaScript, en cassant le clavier et les lecteurs d'écran. Dans son bilan de Safari 27 du 17 septembre, WebKit détaille l'alternative : déclarer <i>appearance: base-select</i>, puis styler librement.",
+          "<i>::picker-icon</i> cible la flèche, <i>::checkmark</i> la coche, et l'élément <i>selectedcontent</i> affiche dans le bouton fermé l'option retenue, icône comprise.",
+          "La règle d'or, rappelée par WebKit en juin : chaque option garde un texte, même masqué. Sinon, elle est muette pour un lecteur d'écran."
+        ],
+        "encadre": { "titre": "À tester", "texte": "Envelopper le style dans <i>@supports (appearance: base-select)</i> : ailleurs, le menu classique reste." },
+        "sources": [
+          "https://webkit.org/blog/18325/webkit-features-for-safari-27-0/",
+          "https://webkit.org/blog/18117/the-golden-rule-of-customizable-select/"
+        ]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Starship atteint l'orbite",
+        "paragraphes": [
+          "Lundi 28 septembre, depuis le sud du Texas, la fusée de SpaceX a atteint l'orbite pour la première fois, au troisième essai de sa version V3. L'étage supérieur a largué 26 satellites Starlink de troisième génération, puis est redescendu après 3 heures au lieu de 9 : l'un de ses six moteurs avait lâché. Un tel lancement équivaut en capacité à 20 vols de Falcon 9 chargés de satellites plus anciens."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Plus de capacité par lancement, c'est plus de bande passante satellite à revendre.", "plein": true },
+        "sources": [
+          "https://techcrunch.com/2026/09/28/spacexs-starship-rocket-reaches-orbit-for-the-first-time/"
+        ]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Un Walkman dans un iPhone pliable",
+        "paragraphes": [
+          "L'iPhone Duo, pliable d'Apple (7,6 pouces ouvert, 5,4 fermé), a déjà son appli fétiche : Duo-Man, de Vidit Bhargava. On l'ouvre pour choisir sa « cassette », on le referme pour écouter, avec les clics et le souffle d'un vrai Walkman."
+        ],
+        "sources": [
+          "https://techcrunch.com/2026/09/28/the-iphone-duo-may-already-have-its-first-killer-app-a-virtual-walkman/"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "CMP", "nature": "n. f. (sigle)", "definition": "<i>Consent Management Platform</i> (ou <i>Provider</i>), outil de gestion du consentement : le logiciel qui se cache derrière le bandeau cookies d'un site. Il affiche les choix, enregistre la réponse et transmet aux outils de mesure et de publicité ce qu'ils ont le droit de faire. C'est en reconnaissant les CMP que Consent-O-Matic remplit les bandeaux à votre place (p. 2)." },
+    "chiffre": { "valeur": "844", "texte": "problèmes corrigés dans Safari 27.0. Selon WebKit, 86 % de cette version est consacrée à des corrections plutôt qu'à des nouveautés." },
+    "bonus": { "type": "citation", "texte": "Moins, mais mieux.", "auteur": "Dieter Rams, designer — dixième de ses principes du bon design" },
+    "enigme": { "question": "Fermé, je ne montre qu'un choix ; ouvert, je les montre tous. Pendant des années, on m'a reconstruit en div. Qui suis-je ?", "reponse": "le menu déroulant (p. 3)" }
+  },
+  "sources": ["openai.com", "noyb.eu", "euronews.com", "ppc.land", "consentomatic.au.dk", "sec.gov", "webkit.org", "techcrunch.com", "vitsoe.com"]
+}

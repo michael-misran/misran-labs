@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-05",
+  "numero": 6,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Lightpanda 1.0 : un navigateur pensé pour les agents, pas pour les yeux",
+    "chapo": "Le navigateur « pour machines » sort de la bêta, avec une promesse : faire tourner les pages web sans jamais les dessiner.",
+    "paragraphes": [
+      "Pour qu'un agent d'IA visite le web, on lui prête souvent un Chrome sans fenêtre visible. Lightpanda prend le contraire : un navigateur construit de zéro qui exécute le JavaScript et le DOM, mais ne dessine rien à l'écran. Après une bêta lancée en novembre 2024, la version 1.0 est annoncée le 2 octobre 2026.",
+      "Le projet chiffre sa compatibilité : 1 739 845 sous-tests de la suite Web Platform Tests réussis, contre 2 184 491 pour Chrome, soit environ 80 %. L'écart vient surtout des tests de CSS, d'édition et de SVG, qui exigent de calculer la mise en page. Le billet annonce aussi environ 16 fois moins de mémoire que Chrome sans fenêtre. Autre changement : le partage de ressources entre origines (CORS) est désormais actif par défaut.",
+      "Pour un dev, l'intérêt est concret : des centaines d'agents ou de robots de test en parallèle coûtent moins cher en mémoire. La limite est tout aussi nette : pas de rendu graphique, donc pas de vraies captures d'écran ni de PDF fidèles. Pour un test visuel, Chrome reste nécessaire."
+    ],
+    "sources": ["https://lightpanda.io/blog/posts/lightpanda-1-0", "https://lightpanda.io/blog/tags/announcement"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "Le rendez-vous médical où personne ne vient",
+        "chapo": "Un créneau réservé en trois clics, oublié en trois secondes.",
+        "paragraphes": [
+          "Le Conseil national de l'Ordre des médecins estime que 6 à 10 % des patients manquent leur rendez-vous chaque semaine, soit environ 27 millions de rendez-vous non honorés par an, un chiffre extrapolé. Les chiffres varient fortement : l'étude Doctolib de 2024 relevée dans la même synthèse donne 3,3 % chez ses utilisateurs, avec des rappels automatiques.",
+          "Environ deux tiers de ces absences concernent un premier rendez-vous. Pour le cabinet, un créneau vide est du temps payé que personne ne rattrape ; pour le patient suivant, une attente de plus."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un rappel pensé pour les petits cabinets sans grande plateforme : SMS de confirmation, bouton « annuler » en un geste, et remise automatique du créneau libéré à une liste d'attente. Concurrence : Doctolib et les autres plateformes font déjà les rappels ; l'angle est la liste d'attente et les professions qu'elles servent mal (kinés, dentistes, coiffeurs indépendants).", "plein": true },
+        "sources": ["https://ainora.lt/fr/blog/statistiques-appels-manques-rendez-vous-non-honores-france-2026"]
+      },
+      {
+        "type": "idee", "rubrique": "L'idée de business", "court": "Idée",
+        "titre": "Le tri qui décide en 40 millisecondes",
+        "paragraphes": [
+          "Une boutique en ligne reçoit des messages : retour, facture, panne, spam. Les trier à la main coûte du temps ; les confier à un grand modèle de langage coûte cher et répond au hasard du ton. Les « modèles de décision » (voir p. 3) proposent autre chose : une réponse typée, avec une probabilité, en une fraction de seconde.",
+          "L'idée : un service d'étiquetage prêt à l'emploi pour les e-mails et formulaires des petits commerces, qui classe, route vers la bonne personne et renvoie un doute quand la probabilité est faible. Revenus : abonnement mensuel par boîte de réception. Concurrence : Cloudflare propose les modèles en accès direct. L'angle est la configuration clé en main pour une profession donnée."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
+        "sources": ["https://blog.cloudflare.com/clef-decision-models/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Rétro · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Rétro : le design d'un jeu", "court": "Rétro",
+        "titre": "Pac-Man : quatre fantômes, quatre caractères, zéro hasard",
+        "chapo": "Les ennemis ne se ressemblent pas parce qu'on les a dessinés différents, mais parce que chacun vise un point différent.",
+        "paragraphes": [
+          "Blinky, le rouge, vise la case où se trouve Pac-Man : la poursuite directe. Pinky vise quatre cases devant lui, dans sa direction de marche : elle tend une embuscade. Inky combine la position de Pac-Man et celle de Blinky, et paraît imprévisible. Clyde poursuit de loin, mais se replie dans son coin dès qu'il est à moins de huit cases.",
+          "Les fantômes alternent aussi deux modes : dispersion (chacun file vers son coin, 7 secondes au premier niveau) et poursuite (20 secondes). Ces respirations laissent au joueur le temps de souffler et de manger. Un bug de débordement, enfin, décale la cible de Pinky vers la gauche quand Pac-Man monte : un défaut resté dans le jeu."
+        ],
+        "encadre": { "titre": "À retenir", "texte": "Des règles simples, différentes pour chaque ennemi, donnent l'impression de personnalités. Une règle de visée par ennemi vaut mieux qu'un long scénario.", "plein": true },
+        "sources": ["https://www.gamedeveloper.com/design/the-pac-man-dossier", "https://pacman.holenet.info/"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Clef : Cloudflare ouvre un modèle qui décide au lieu d'écrire",
+        "paragraphes": [
+          "Le 1er octobre, Cloudflare a publié Clef et Clef-flash, deux « modèles de décision » sous licence Apache 2.0, hébergés sur Workers AI et disponibles sur Hugging Face. Au lieu de produire du texte, un tel modèle reçoit un état et des questions typées, puis renvoie une probabilité pour chaque réponse permise.",
+          "Clef (base Qwen 27B) répond en 209,3 ms en médiane ; Clef-flash (base Qwen 9B) en 38,8 ms. Les deux acceptent des images et 64 000 jetons de contexte. Cloudflare place Clef en tête du Jev Decision Index, du nom du modèle de TypeSafe auquel il se mesure."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Quand le tri devient un appel rapide et pas cher, il s'insère partout : voir l'idée du jour (p. 2).", "plein": true },
+        "sources": ["https://blog.cloudflare.com/clef-decision-models/"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Modèle de décision", "nature": "n. m.", "definition": "Modèle d'IA qui ne rédige pas de texte : il reçoit un état et une liste de questions à réponses permises, puis renvoie pour chacune une probabilité. Fait pour le tri, le routage et la classification, par exemple dans l'idée du jour (p. 2)." },
+    "chiffre": { "valeur": "6 à 10 %", "texte": "des patients manquent leur rendez-vous chaque semaine en France, selon l'Ordre des médecins (p. 2). Chez Doctolib, 3,3 %." },
+    "bonus": { "type": "question", "texte": "Quelle tâche de tri faites-vous encore à la main chaque semaine : mails, factures, photos, messages ? Notez-la ci-dessous : si une règle claire la décrit, un modèle peut la faire pour vous, et d'autres la font aussi." },
+    "enigme": { "question": "Je suis quatre à te poursuivre, mais aucun de nous ne pense pareil. L'un vise ton ombre, l'autre ton avenir. Qui sommes-nous ?", "reponse": "les fantômes de Pac-Man (p. 3)" }
+  },
+  "sources": ["lightpanda.io", "blog.cloudflare.com", "gamedeveloper.com", "pacman.holenet.info", "ainora.lt"]
+}

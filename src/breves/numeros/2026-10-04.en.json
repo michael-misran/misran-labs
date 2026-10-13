@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-04",
+  "numero": 5,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Copilot reviews your code on demand, via API",
+    "chapo": "GitHub opens Copilot code review to scripts and in-house tools, with an effort setting.",
+    "paragraphes": [
+      "On October 2, GitHub announced that you can now request a Copilot review from the REST and GraphQL APIs, not just from the interface. Each request can specify the level of effort wanted.",
+      "There are two levels: \"Lite\" and \"Balanced\". Balanced became the default setting, according to GitHub, from September 28. The level can be set at four tiers: enterprise, organization, repository or personal account, each tier able to override the one above.",
+      "The feature is open to Copilot Pro, Pro+, Max, Business and Enterprise plans.",
+      "What it changes: AI review becomes a building block you plug in. You can trigger it from a release script, an internal tool or a dashboard, without going through a pull request screen. For an independent developer, it's the raw material for an in-house quality check."
+    ],
+    "sources": ["https://github.blog/changelog/2026-10-02-copilot-code-review-api-support-and-new-default-effort-level"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve",
+        "titre": "Invoice sent, money nowhere to be seen",
+        "chapo": "Chasing a client is awkward and time-consuming, yet it's the fate of half of all invoices.",
+        "paragraphes": [
+          "According to Altares' study of the second quarter of 2026, 49.7% of French companies pay their suppliers on time, up from 45.2% a year earlier. The other half pay late: 12.3 days on average, and 7.5% of payments are more than thirty days late.",
+          "The delay isn't spread at random. Organizations with fewer than 50 employees pay fastest (11.7 days for 1 to 9 employees, 11.1 for 10 to 49). Those with more than 1,000 employees are at 19.6 days. Healthcare institutions: 24.1. So large accounts pay nearly eight days later than very small businesses, and it's the small contractor who has the least cash to wait.",
+          "Late payments remain above their 2018 pre-pandemic level."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "<i>Polite, graduated and automatic</i> reminders for freelancers: a nudge before the due date, a message the day after, a firmer letter at day 15, all in the contractor's own tone. Competition: invoicing software already offers reminders. The angle is to target people who bill large accounts and to write each reminder with the client's context.", "plein": true },
+        "sources": ["https://www.lejournaldesentreprises.com/article/altares-chiffre-123-jours-le-retard-de-paiement-moyen-en-france-au-deuxieme-trimestre-2026-2147726"]
+      },
+      {
+        "type": "idee", "rubrique": "The business idea", "court": "Idea",
+        "titre": "A reminder service for Windows end-of-support dates",
+        "paragraphes": [
+          "Every Windows 11 version has an end-of-support date. Version 24H2 ends for Home and Pro in mid-October 2026, according to Microsoft's support page. Version 26H2, released September 29, will last until October 2028. In between, dozens of small practices, shops and nonprofits have PCs that nobody watches.",
+          "The idea: a subscription of a few euros a month for a micro-business with 1 to 10 machines. A small agent reads each machine's Windows version, warns the owner in plain language six months before the deadline, and offers a fixed-price service visit (version update, backup, check-up). Who pays: the owner of a small business with no IT department. Launch: approach ten local practices, sell the service visit first, then the subscription.",
+          "Competition: local IT providers and fleet management tools exist. The angle is the fixed price and the early warning."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 1 },
+        "sources": ["https://learn.microsoft.com/en-us/lifecycle/products/windows-11-home-and-pro", "https://www.thurrott.com/?p=342194"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "AI · Tech",
+    "articles": [
+      {
+        "type": "ia", "rubrique": "AI in practice", "court": "AI",
+        "titre": "Dots: an agent that works while you're not looking",
+        "chapo": "On September 29, OpenAI launched always-on agents in ChatGPT. Here's how to keep them on track.",
+        "paragraphes": [
+          "A Dot is given a goal and pursues it on its own. It has its own cloud computer, reaches more than 4,000 apps through OpenAI's plugins, and joins you in ChatGPT, Slack or Teams.",
+          "OpenAI warns that agents can make mistakes and that important work should be reviewed. Actions that touch an account or share data require approval.",
+          "Gradual rollout for ChatGPT Pro and Business Premium, one agent per subscription. Pro subscribers in the European Economic Area, Switzerland and the UK are excluded."
+        ],
+        "encadre": { "titre": "Setting it up right", "texte": "<b>1.</b> A measurable goal (\"sort these 40 invoices by supplier\", not \"tidy up my paperwork\"). <b>2.</b> Read-only access first. <b>3.</b> A review checkpoint set in advance, before any action on an account." },
+        "sources": ["https://siliconangle.com/2026/09/29/openai-launches-dots-always-on-ai-agents-in-chatgpt-with-their-own-cloud-computers/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Windows 11 26H2: an update that mostly changes the expiry date",
+        "paragraphes": [
+          "On September 29, Microsoft began rolling out Windows 11 version 26H2. It arrives as an \"enablement package\": the same codebase as versions 24H2 and 25H2, so a short install that switches on features already present. Among them: a movable taskbar, a search more forgiving of typos and AI actions in File Explorer.",
+          "The real change is the calendar: 24 months of support for Home and Pro, 36 for Enterprise and Education. To get it, turn on \"Get the latest updates as soon as they're available\" in Windows Update."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "Every release restarts a clock at thousands of small organizations: support to sell, see today's idea (p. 2).", "plein": true },
+        "sources": ["https://www.thurrott.com/?p=342194", "https://www.windowslatest.com/2026/09/29/windows-11-26h2-is-now-rolling-to-everyone-how-to-get-it-right-now-and-is-it-even-worth-installing/", "https://learn.microsoft.com/en-us/lifecycle/products/windows-11-home-and-pro"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "GitHub App tokens grow from 40 to 520 characters",
+        "paragraphes": [
+          "On October 2, GitHub finished rolling out \"stateless\" installation tokens: still prefixed <i>ghs_</i>, but about 520 characters long instead of 40. Check your database fields, your log masking rules and any length check hard-coded to 40. The test header will be removed on November 30."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-02-stateless-github-app-installation-tokens-rolled-out"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Enablement package", "nature": "n.", "definition": "A tiny update that switches on features already shipped but dormant. That's how 26H2 arrives on top of 24H2 or 25H2 (p. 3)." },
+    "chiffre": { "valeur": "49.7%", "texte": "of companies pay on time (Q2 2026), up from 45.2% a year earlier. Altares." },
+    "bonus": { "type": "question", "texte": "How much are you owed today, and for how many days? If the answer annoys you, write down who, how much and how you chased it: that's the spec for a product." },
+    "enigme": { "question": "I barely change anything on your screen, but I reset your system's life counter. What am I?", "reponse": "an enablement package (p. 3)" }
+  },
+  "sources": ["github.blog", "lejournaldesentreprises.com", "learn.microsoft.com", "thurrott.com", "windowslatest.com", "siliconangle.com"]
+}

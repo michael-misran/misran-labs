@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-07",
+  "numero": 8,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Anthropic ouvre la cyber",
+    "chapo": "Trois niveaux d'accès : plus on prouve son métier, moins le modèle refuse.",
+    "paragraphes": [
+      "Le 6 octobre, Anthropic a fusionné deux initiatives, Project Glasswing et le Cyber Verification Program, en un seul programme élargi. Principe : des professionnels vérifiés obtiennent des modèles aux garde-fous allégés.",
+      "Trois niveaux. « Défense » couvre la réponse à incident, la rétro-ingénierie de logiciels malveillants et l'analyse de vulnérabilités ; beaucoup d'organisations défensives devraient y être admises, avec une réponse visée sous quelques jours. « Red team » ajoute les tests d'intrusion autorisés, réservé aux organisations, avec des semaines d'examen. « Spécialisé » (aviation, réseaux électriques, télécoms, banque) est examiné avec le gouvernement américain.",
+      "Modèles concernés : Claude Opus 5.5, Sonnet 5.5 et Mythos 5.1. Glasswing a fait trouver à ses partenaires au moins 129 000 vulnérabilités vérifiées (avril-juillet 2026).",
+      "Pour un développeur qui teste ses propres produits : un modèle qui refusait hier peut répondre demain, une fois reconnu."
+    ],
+    "sources": ["https://www.anthropic.com/news/cyber-verification-program"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "Combien de temps durera cet appareil ?",
+        "chapo": "Deux lave-linge au même prix, aucune idée duquel tiendra dix ans.",
+        "paragraphes": [
+          "Au rayon, l'argument est la puissance, la capacité, la couleur. La durée de vie, elle, ne s'affiche pas. En France, un indice de durabilité, noté sur 10, tente de combler ce trou : il existe pour les téléviseurs depuis le 8 janvier 2025 et pour les lave-linge depuis le 8 avril 2025.",
+          "Il pèse la disponibilité et le prix des pièces détachées, la facilité de démontage et la résistance aux contraintes et à l'usure. Les autres produits (portables, lave-vaisselle, aspirateurs…) gardent l'indice de réparabilité : deux notes à jongler."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un comparateur « coût sur dix ans » : on scanne le code-barres, on voit la note de durabilité ou de réparabilité, le prix des pièces courantes et la durée de garantie, puis le coût réel par année d'usage. Concurrence : les tests de consommateurs existent, pas au moment de l'achat.", "plein": true },
+        "sources": ["https://www.ecologie.gouv.fr/dossiers/comment-consommer-plus-durablement/prendre-compte-indices-reparabilite-durabilite"]
+      },
+      {
+        "type": "modele", "rubrique": "Le modèle économique", "court": "Modèle",
+        "titre": "Chewy : 84 % de ventes sur abonnement",
+        "chapo": "Un sac de croquettes revient chaque mois. Autant que la livraison revienne aussi.",
+        "paragraphes": [
+          "Chewy vend de la nourriture et des produits pour animaux en ligne. Son service Autoship programme les livraisons à intervalle fixe : le client ne recommande plus, il ne fait que modifier ou annuler.",
+          "Au premier trimestre de son exercice 2026 (clos le 3 mai 2026), Autoship a pesé 2,833 milliards de dollars, soit 84,4 % des ventes nettes, contre 82,2 % un an plus tôt. Les ventes Autoship ont progressé de 10,5 %, alors que l'ensemble des ventes nettes (3,357 milliards) a gagné 7,7 %.",
+          "Résultat : une demande prévisible, 21,5 millions de clients actifs (+3,6 %), une marge brute de 30,1 % (+0,5 point) et un bénéfice net de 94,8 millions de dollars."
+        ],
+        "encadre": { "titre": "À retenir", "texte": "Un produit consommable, un rythme connu, un réabonnement par défaut : la récurrence se vend mieux sur ce que le client rachète de toute façon.", "plein": true },
+        "sources": ["https://www.sec.gov/Archives/edgar/data/0001766502/000162828026042058/chwyq12026exhibit991.htm", "https://globalpetindustry.com/news/chewy-lowers-fy2026-sales-forecast-after-solid-first-quarter/"]
+      },
+      {
+        "type": "irritant", "rubrique": "Irritant éclair", "court": "Irritant", "taille": "petit",
+        "titre": "Le premier paquet, publié à la main",
+        "paragraphes": [
+          "Jusqu'ici, créer un nouveau paquet npm obligeait à une première publication manuelle avant de pouvoir automatiser le reste. Le 2 octobre, npm a levé la contrainte : la première version d'un nouveau paquet passe par une file d'attente où un mainteneur la valide.",
+          "<b>La piste :</b> déjà réglée par npm. Quelle étape « manuelle une fois » bloque encore vos automatismes ?"
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-02-npm-staged-publishing-now-supports-creating-new-packages/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Design · Tech",
+    "articles": [
+      {
+        "type": "design", "rubrique": "Design & UX", "court": "Design",
+        "titre": "Quand l'assistant devient un tas de boue",
+        "chapo": "Le Nielsen Norman Group observe des gens qui bricolent des automatisations IA sans plus savoir comment elles tiennent.",
+        "paragraphes": [
+          "Dans une étude publiée le 2 octobre, Tanner Kohler décrit des utilisateurs non techniques qui font évoluer leurs outils d'IA par petites touches. Un résumé quotidien de courriels et de tâches grossit jusqu'à devenir ingérable : un participant dit être « coincé dans la façon dont ça marche ».",
+          "Autre cas : un widget Asana devenu, en trois étapes, un tableau de bord transversal avec algorithmes pondérés. Un autre laissait l'IA enregistrer ses fichiers à la racine de son Drive. Un dernier, avec un dossier « à synthétiser », a vu l'IA récupérer les mauvais articles : 45 minutes perdues à corriger ses instructions.",
+          "Le groupe propose de distinguer trois contextes : global (valable partout), local (propre à une tâche) et ambiant (flux d'informations), de nommer celui qu'on modifie, de relire périodiquement le contexte global et de rafraîchir le local quand les résultats se dégradent."
+        ],
+        "encadre": { "titre": "À retenir", "texte": "Quand vos utilisateurs construisent avec votre produit, donnez-leur de quoi voir et nommer ce qu'ils ont construit : une liste de leurs instructions, de leurs sources, de ce qui a changé.", "plein": true },
+        "sources": ["https://www.nngroup.com/articles/big-ball-of-mud-ai/"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Les pull requests empilées pour tous",
+        "paragraphes": [
+          "GitHub a déclaré le 6 octobre les « stacked pull requests » généralement disponibles, plus de deux mois après la préversion publique du 30 juillet. Le principe : découper un gros changement en une série ordonnée de petites pull requests, relues séparément.",
+          "La version finale conserve les approbations et les commits signés lors d'un rebase, retarget automatiquement les branches quand une base est supprimée, et la fusion automatique arrive dans les semaines qui suivent. On navigue entre les pull requests avec Maj+J et Maj+K, et l'extension <i>gh stack</i> gère les worktrees. Disponible sur tous les plans de github.com ; GitHub Enterprise Server suivra."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Les petites pull requests se relisent vite : les outils de relecture et de suivi de piles vont devenir un marché de niche.", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-06-stacked-pull-requests-generally-available/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Copilot : les statistiques d'usage mentaient",
+        "paragraphes": [
+          "Les mesures de Copilot montraient une activité d'agent en baisse alors que l'usage montait : des sessions passées au SDK n'indiquaient pas leur éditeur.",
+          "Correctif : VS Code 1.139.0 ou plus. Facturation non touchée ; données manquantes non rattrapées."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-06-update-your-ide-to-restore-agent-activity-in-copilot-usage-metrics/"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Revenu récurrent", "nature": "n. m.", "definition": "Argent qui revient à intervalle régulier sans nouvelle vente : abonnement, livraison programmée, maintenance. Chez Chewy, la livraison programmée Autoship en représente 84,4 % (p. 2). Son avantage : on peut prévoir ses stocks et ses mois." },
+    "chiffre": { "valeur": "84,4 %", "texte": "des ventes de Chewy viennent d'Autoship, ses livraisons programmées (p. 2)." },
+    "bonus": { "type": "citation", "texte": "« Less, but better » : le dixième principe du bon design.", "auteur": "Dieter Rams" },
+    "enigme": { "question": "Je reviens sans qu'on m'appelle, je ne frappe jamais à la porte, et tu ne me vois plus quand tu m'oublies. Qui suis-je ?", "reponse": "le prélèvement ou la livraison programmée (p. 2)" }
+  },
+  "sources": ["anthropic.com", "sec.gov", "github.blog", "nngroup.com", "ecologie.gouv.fr", "vitsoe.com"]
+}

@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-01",
+  "numero": 2,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "GitHub tests an AI that picks its own model",
+    "chapo": "Rather than choosing one model for you, HydraFusion puts several to work: a draft, a check, a critique.",
+    "paragraphes": [
+      "On September 30, GitHub launched HydraFusion as a research preview in VS Code (version 1.140 or later) and in the GitHub Copilot app, for Pro, Pro+, Business and Enterprise plans. It was already available in Copilot CLI.",
+      "The idea: instead of handing the whole task to a single model, HydraFusion treats the choice of working mode as an optimization problem and offers three. <b>Single</b>: one model solves it directly. <b>Cascade</b>: a cheaper model proposes a solution, and a check decides whether to keep it or pass it to a more powerful model. <b>Critique</b>: one model proposes, an independent critic reviews, then the first revises once.",
+      "For a developer, it ends a small ritual: wondering, task after task, which model to use. GitHub publishes no performance figures here: test it on your own tasks.",
+      "Limits: a preview \"subject to change\", and on Business and Enterprise an admin must enable it first."
+    ],
+    "sources": [
+      "https://github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app",
+      "https://github.blog/changelog/2026-09-28-claude-sonnet-5-5-in-github-copilot",
+      "https://github.blog/changelog/2026-09-29-gpt-6-1-sol-in-github-copilot"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve", "taille": "grand",
+        "titre": "The price that grows at checkout",
+        "chapo": "One price on display, another when you pay. We all know the scene.",
+        "paragraphes": [
+          "The trick is called <i>drip pricing</i>: show an attractive base price, then add mandatory fees step by step, once you've already invested time and picked your seats. Ticketing, hotels, rentals: its favorite playground.",
+          "In the United States, the FTC, the federal regulator, has ruled: since May 12, 2025, sellers of event tickets and short-term lodging must show the total price, mandatory fees included, from the start, and more prominently than any partial price. Fines can reach $51,744 per violation. Taxes, shipping and optional extras are excluded."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A rule is only as good as its enforcement. A service that <i>audits the total price</i> on ticketing or rental sites (recording the checkout flow, the gap between displayed and paid price) could sell to honest advertisers, consumer groups and lawyers. Competition: price comparison sites exist; the angle is documented proof. Outside the US, check the local rule.", "plein": true },
+        "sources": [
+          "https://btlaw.com/en/insights/alerts/2025/ftc-finalizes-junk-fees-rule-new-pricing-disclosure-requirements-take-effect-may-12-2025"
+        ]
+      },
+      {
+        "type": "idee", "rubrique": "The business idea", "court": "Idea",
+        "titre": "An e-invoicing guide for tradespeople",
+        "paragraphes": [
+          "Since September 1, 2026, every business in France must be able to <i>receive</i> an electronic invoice; the obligation to <i>issue</i> them applies to SMEs, micro-businesses and sole traders from September 1, 2027. The fine is €15 per invoice, capped at €15,000 a year. There are 137 approved platforms (as of June 15, 2026): too many for a plumber.",
+          "The idea: a turnkey support service for tradespeople and small shopkeepers. Review their situation in 20 minutes, pick the right platform with them, connect their email or invoicing software, and have an AI check every month that everything was sent properly. Revenue: a setup fee, then a small monthly subscription.",
+          "Honest competition: invoicing and accounting software vendors are already on the topic; the open angle is people who have <i>no</i> software at all and want someone on the phone."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 3 },
+        "sources": [
+          "https://www.cegid.com/fr/facturation-electronique/facture-electronique-obligatoire/calendrier-facture-electronique/",
+          "https://www.legifiscal.fr/actualites-fiscales/4536-facturation-electronique-137-plateformes-agreees.html"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "History · Tech",
+    "articles": [
+      {
+        "type": "histoire", "rubrique": "Tech history", "court": "History",
+        "titre": "The first CD player, and the Beethoven legend",
+        "chapo": "On October 1, 1982, Sony started selling the first laser disc player in Japan. Where does the disc's length come from?",
+        "paragraphes": [
+          "The Sony CDP-101 went on sale in Japan on October 1, 1982, for 168,000 yen (about 730 dollars). Only in Japan: Philips, Sony's partner on the format, wasn't ready by the agreed date, and Sony chose not to wait. The rest of the world got it six months later, in March 1983.",
+          "A single digital-to-analog converter served both channels, hence a lag of about 11 microseconds between left and right: those chips were expensive.",
+          "Then there's the legend: the disc supposedly got its size so it could hold Beethoven's Ninth. That's Philips' official version, credited to Norio Ohga of Sony. Kees Immink, chief engineer at Philips, disputes it: the EFM code hadn't been chosen in December 1979, when the 120 mm diameter was adopted."
+        ],
+        "encadre": { "titre": "Takeaway", "texte": "A format is won as much by its story as by its numbers." },
+        "rappel": { "annee": "1982", "texte": "<b>44 years ago today</b> — the Sony CDP-101 arrived in Japanese stores." },
+        "sources": [
+          "https://en.wikipedia.org/wiki/Sony_CDP-101",
+          "https://en.wikipedia.org/wiki/Compact_disc"
+        ]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Googlebook: the Chromebook's successor arrives",
+        "paragraphes": [
+          "Announced on May 12, 2026, the Googlebook is a Google laptop standard running Googlebook OS, a desktop system derived from Android with Gemini built in. Acer, Asus, Dell, HP and Lenovo make the first models.",
+          "Availability: October 4 in the United States, October 5 in France, Germany, the UK, Ireland, Canada and Australia. Google places them at the \"high end\"; Chromebooks remain supported."
+        ],
+        "sources": [
+          "https://en.wikipedia.org/wiki/Googlebook"
+        ]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "npm: fewer long-lived tokens",
+        "paragraphes": [
+          "Since September 30, npm \"trusted publishing\" from GitHub can also manage <i>dist-tags</i> with short-lived OIDC credentials, without a permanent token. The \"Allow npm dist-tag\" option is off by default: turn it on in the package settings."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-09-30-opt-in-dist-tag-permissions-for-npm-trusted-publishing"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Drip pricing", "nature": "n.", "definition": "Showing a low base price, then adding mandatory fees along the purchase path, so the final price only appears at the end. It's what the 2025 US rule on tickets and lodging bans (p. 2)." },
+    "chiffre": { "valeur": "11 µs", "texte": "of lag between the left and right channels of the Sony CDP-101, which had only one converter for both (p. 3). A telling trade-off on what a chip cost in 1982." },
+    "bonus": { "type": "question", "texte": "Which purchase have you abandoned at the last moment because of a fee discovered at checkout? Note the store and the amount: every repeated surprise is a hole in trust, and so a product waiting to be invented." },
+    "enigme": { "question": "I spin without ever moving forward, I read without ever touching, and I was promised the whole Ninth. What am I?", "reponse": "the compact disc (p. 3)" }
+  },
+  "sources": ["github.blog", "btlaw.com", "cegid.com", "legifiscal.fr", "wikipedia.org"]
+}

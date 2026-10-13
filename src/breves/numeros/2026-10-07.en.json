@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-07",
+  "numero": 8,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Anthropic opens up on cyber",
+    "chapo": "Three access tiers: the more you prove your trade, the less the model refuses.",
+    "paragraphes": [
+      "On October 6, Anthropic merged two initiatives, Project Glasswing and the Cyber Verification Program, into a single expanded program. The principle: verified professionals get models with lighter safeguards.",
+      "Three tiers. \"Defense\" covers incident response, malware reverse engineering and vulnerability analysis; many defensive organizations should qualify, with a response targeted within a few days. \"Red team\" adds authorized penetration testing, for organizations only, with weeks of review. \"Specialized\" (aviation, power grids, telecoms, banking) is reviewed with the US government.",
+      "Models covered: Claude Opus 5.5, Sonnet 5.5 and Mythos 5.1. Glasswing helped its partners find at least 129,000 verified vulnerabilities (April–July 2026).",
+      "For a developer testing their own products: a model that refused yesterday may answer tomorrow, once you're recognized."
+    ],
+    "sources": ["https://www.anthropic.com/news/cyber-verification-program"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve",
+        "titre": "How long will this appliance last?",
+        "chapo": "Two washing machines at the same price, no idea which one will last ten years.",
+        "paragraphes": [
+          "In the store, the selling points are power, capacity, color. Lifespan isn't shown. In France, a durability index, scored out of 10, tries to fill that gap: it has existed for TVs since January 8, 2025 and for washing machines since April 8, 2025.",
+          "It weighs the availability and price of spare parts, ease of disassembly, and resistance to stress and wear. Other products (laptops, dishwashers, vacuums…) keep the repairability index: two scores to juggle."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A \"ten-year cost\" comparison tool: scan the barcode, see the durability or repairability score, the price of common parts and the warranty length, then the real cost per year of use. Competition: consumer tests exist, but not at the moment of purchase.", "plein": true },
+        "sources": ["https://www.ecologie.gouv.fr/dossiers/comment-consommer-plus-durablement/prendre-compte-indices-reparabilite-durabilite"]
+      },
+      {
+        "type": "modele", "rubrique": "The business model", "court": "Model",
+        "titre": "Chewy: 84% of sales on subscription",
+        "chapo": "A bag of kibble comes back every month. Might as well have the delivery come back too.",
+        "paragraphes": [
+          "Chewy sells pet food and supplies online. Its Autoship service schedules deliveries at a fixed interval: the customer no longer reorders, they only change or cancel.",
+          "In the first quarter of its fiscal 2026 (ended May 3, 2026), Autoship accounted for $2.833 billion, or 84.4% of net sales, up from 82.2% a year earlier. Autoship sales grew 10.5%, while total net sales ($3.357 billion) rose 7.7%.",
+          "The result: predictable demand, 21.5 million active customers (+3.6%), a 30.1% gross margin (+0.5 points) and net income of $94.8 million."
+        ],
+        "encadre": { "titre": "Takeaway", "texte": "A consumable product, a known rhythm, renewal by default: recurrence sells best on what customers would buy again anyway.", "plein": true },
+        "sources": ["https://www.sec.gov/Archives/edgar/data/0001766502/000162828026042058/chwyq12026exhibit991.htm", "https://globalpetindustry.com/news/chewy-lowers-fy2026-sales-forecast-after-solid-first-quarter/"]
+      },
+      {
+        "type": "irritant", "rubrique": "Pet peeve in brief", "court": "Pet peeve", "taille": "petit",
+        "titre": "The first package, published by hand",
+        "paragraphes": [
+          "Until now, creating a new npm package required a first manual publish before you could automate the rest. On October 2, npm lifted that constraint: the first version of a new package goes through a queue where a maintainer approves it.",
+          "<b>The lead:</b> already solved by npm. Which \"manual just once\" step is still blocking your automations?"
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-02-npm-staged-publishing-now-supports-creating-new-packages/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Design · Tech",
+    "articles": [
+      {
+        "type": "design", "rubrique": "Design & UX", "court": "Design",
+        "titre": "When the assistant becomes a ball of mud",
+        "chapo": "The Nielsen Norman Group watches people tinker with AI automations until they no longer know how they hold together.",
+        "paragraphes": [
+          "In a study published October 2, Tanner Kohler describes non-technical users who evolve their AI tools bit by bit. A daily summary of emails and tasks grows until it becomes unmanageable: one participant says they are \"stuck with the way it works\".",
+          "Another case: an Asana widget that, in three steps, became a cross-team dashboard with weighted algorithms. Another participant let the AI save their files at the root of their Drive. A last one, with a \"to summarize\" folder, saw the AI fetch the wrong articles: 45 minutes lost fixing their instructions.",
+          "The group suggests distinguishing three contexts: global (valid everywhere), local (specific to a task) and ambient (streams of information), naming the one you're changing, periodically reviewing the global context and refreshing the local one when results degrade."
+        ],
+        "encadre": { "titre": "Takeaway", "texte": "When your users build with your product, give them a way to see and name what they've built: a list of their instructions, their sources, what changed.", "plein": true },
+        "sources": ["https://www.nngroup.com/articles/big-ball-of-mud-ai/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Stacked pull requests for everyone",
+        "paragraphes": [
+          "On October 6, GitHub declared \"stacked pull requests\" generally available, more than two months after the public preview of July 30. The idea: split a big change into an ordered series of small pull requests, reviewed separately.",
+          "The final version keeps approvals and signed commits through a rebase, automatically retargets branches when a base is deleted, and auto-merge arrives in the following weeks. You move between pull requests with Shift+J and Shift+K, and the <i>gh stack</i> extension handles worktrees. Available on all github.com plans; GitHub Enterprise Server will follow."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "Small pull requests are quick to review: review and stack-tracking tools are about to become a niche market.", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-06-stacked-pull-requests-generally-available/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Copilot: the usage statistics were lying",
+        "paragraphes": [
+          "Copilot metrics showed agent activity falling while usage was rising: sessions run through the SDK didn't report their editor.",
+          "Fix: VS Code 1.139.0 or later. Billing unaffected; missing data not backfilled."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-06-update-your-ide-to-restore-agent-activity-in-copilot-usage-metrics/"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Recurring revenue", "nature": "n.", "definition": "Money that comes back at regular intervals without a new sale: subscriptions, scheduled deliveries, maintenance. At Chewy, Autoship scheduled delivery accounts for 84.4% of it (p. 2). The upside: you can plan your stock and your months." },
+    "chiffre": { "valeur": "84.4%", "texte": "of Chewy's sales come from Autoship, its scheduled deliveries (p. 2)." },
+    "bonus": { "type": "citation", "texte": "\"Less, but better\": the tenth principle of good design.", "auteur": "Dieter Rams" },
+    "enigme": { "question": "I come back without being called, I never knock on the door, and you stop seeing me once you forget me. What am I?", "reponse": "the direct debit or the scheduled delivery (p. 2)" }
+  },
+  "sources": ["anthropic.com", "sec.gov", "github.blog", "nngroup.com", "ecologie.gouv.fr", "vitsoe.com"]
+}

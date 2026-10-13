@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-06",
+  "numero": 7,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Dans ChatGPT, les publicités se mettent à l'image",
+    "chapo": "OpenAI teste une publicité visuelle pendant la génération d'images, et déroule sa panoplie de mesure pour les annonceurs.",
+    "paragraphes": [
+      "Le 5 octobre, OpenAI a présenté un nouveau format d'annonce pour ChatGPT : des images de produits ou de situations d'usage, accompagnées d'un bouton « En savoir plus ». Le premier terrain d'essai est la génération d'images. L'annonce est étiquetée et reste séparée de l'image créée ; OpenAI assure que la publicité n'influence pas les réponses. Les tests commencent « plus tard ce mois-ci » aux États-Unis, avec un premier groupe d'annonceurs.",
+      "L'autre moitié de l'annonce parle d'argent : intégrations avec Hightouch, Tealium et LiveRamp pour envoyer des données de conversion, partenaires d'attribution comme AppsFlyer, Triple Whale ou Adjust, expériences d'incrémentalité avec Haus, Measured et WorkMagic. OpenAI cite deux résultats de partenaires : un coût d'acquisition attribué inférieur de 15,3 % à son benchmark de recherche payante pour WeightWatchers (selon DV Rockerbox), et 93 % de nouveaux visiteurs pour Portland Leather (selon Triple Whale). Ce sont des chiffres fournis par l'entreprise et ses partenaires, pas des audits indépendants.",
+      "Pour un développeur ou un designer, le signal est double. Un nouvel espace publicitaire s'ouvre, avec ses formats d'image à concevoir. Et la mesure se branche sur les outils que les marques utilisent déjà : c'est là que se vendent les petits services autour de ce canal."
+    ],
+    "sources": ["https://openai.com/index/new-chatgpt-ads-format-and-measurement/"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "Le démarchage est interdit, le téléphone sonne quand même",
+        "chapo": "Depuis le 11 août, plus d'appel commercial sans accord. Un mois plus tard, 16 000 signalements.",
+        "paragraphes": [
+          "Depuis le 11 août 2026, un professionnel ne peut appeler un consommateur pour vendre que s'il a son accord préalable, ou si l'appel concerne un contrat en cours. Le consentement doit être libre, précis, éclairé, limité à un an maximum et révocable. Les appels sont permis du lundi au vendredi, de 10 h à 13 h et de 14 h à 20 h. Bloctel a cessé d'exister ce jour-là.",
+          "Dans les faits, le résultat est mitigé. Un article de Presse-citron du 11 septembre rapporte environ 16 000 signalements sur Signal Conso en un mois, et un jeune homme de 28 ans qui a reçu 49 appels en moins de trois semaines. Les causes citées : des centres d'appels hors de France qui affichent de faux numéros français, l'automatisation par IA, et des consentements arrachés par des cases pré-cochées ou noyés dans des conditions générales. Selon la DGCCRF, citée par l'article, la hausse des signalements pourrait aussi traduire la médiatisation de la loi."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Côté entreprises honnêtes : un « coffre de consentements » simple pour prouver qui a accepté d'être appelé, pour quel produit, jusqu'à quelle date, avec relance avant l'expiration d'un an. Côté particuliers : un numéro de remplacement qui filtre les appels. Concurrence : le signalement public existe déjà (Signal Conso), mais c'est un guichet de plainte, pas un outil de gestion.", "plein": true },
+        "sources": ["https://www.service-public.gouv.fr/particuliers/actualites/A19003", "https://www.presse-citron.net/quelle-blague-demarchage-telephonique-interdit-11-aout-pourquoi-continuer-recevoir-appels-incessants/"]
+      },
+      {
+        "type": "etude", "rubrique": "Étude de cas", "court": "Étude",
+        "titre": "Buttondown : la newsletter sans fonds, sans bruit",
+        "chapo": "Un outil lancé le soir et le week-end, devenu une entreprise de quinze personnes financée par ses clients.",
+        "paragraphes": [
+          "Justin Duke lance Buttondown en décembre 2016, quand il est ingénieur chez Stripe. Son point de départ est un agacement personnel : les outils d'e-mailing sont soit trop lourds (Mailchimp, ConvertKit), soit des plateformes qui veulent garder le contrôle (Medium, Substack). Il veut déposer un formulaire sur son blog et envoyer des courriels, rien de plus.",
+          "Un moteur de croissance : la mention « Powered by Buttondown » dans les newsletters de ses clients fait office de publicité. Aujourd'hui, la page « À propos » affirme que l'entreprise n'est pas financée par des investisseurs mais « par ses clients », et qu'elle est rentable, et liste quinze personnes. L'offre est gratuite jusqu'à 100 abonnés ; au-delà, des options payantes à 9, 29 ou 79 $ par mois chacune, selon les fonctions (équipes et marque blanche à 79 $).",
+          "<b>À retenir :</b> un produit minimal, bâti pour soi, qui s'affiche lui-même chez ses utilisateurs. Les chiffres de revenus circulent dans des interviews et ne concordent pas : nous n'en retenons aucun."
+        ],
+        "sources": ["https://starterstory.com/stories/buttondown", "https://buttondown.com/about", "https://buttondown.com/pricing"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Dev · Tech",
+    "articles": [
+      {
+        "type": "dev", "rubrique": "Outil ou astuce dev", "court": "Dev",
+        "titre": "DevTools : renvoyer une requête en deux clics, et revoir les styles éteints",
+        "chapo": "Deux petits gestes de Chrome 153-154 qui évitent de recopier des requêtes à la main.",
+        "paragraphes": [
+          "Dans le panneau Network, faites un clic droit sur une requête et choisissez <b>Edit and resend as fetch</b>. DevTools bascule sur la Console, avec l'appel <i>fetch()</i> déjà collé dans la ligne de commande, accompagné de commentaires sur les paramètres et d'un lien vers la requête d'origine. Il ne reste qu'à modifier un en-tête ou le corps, puis à valider.",
+          "Côté CSS, le panneau Elements peut désormais continuer à afficher les règles qui s'appliquaient à un élément et qui ne s'appliquent plus, avec un indicateur « inactif ». À activer dans les réglages de DevTools. Pratique pour comprendre pourquoi un style a disparu après un changement d'état ou de média query.",
+          "Ces nouveautés figurent dans le récapitulatif « Nouveautés de DevTools d'octobre 2026 », publié par l'équipe Chrome le 22 septembre."
+        ],
+        "encadre": { "titre": "À essayer", "texte": "Ouvrez votre propre site, onglet Network, clic droit sur un appel d'API, « Edit and resend as fetch ». Changez un paramètre et observez la réponse." },
+        "sources": ["https://developer.chrome.com/blog/new-in-devtools-october-2026"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "GitHub guette vos clés Lovable, Supabase et Pydantic",
+        "paragraphes": [
+          "Le 5 octobre, la détection de secrets de GitHub ajoute cinq types de clés : <i>lovable_api_key</i>, deux jetons Supabase, et deux clés Pydantic (<i>logfire_token</i>, <i>pydantic_ai_gateway_api_key</i>).",
+          "Lovable rejoint le programme partenaires : une clé trouvée dans un dépôt public lui est transmise pour qu'elle la révoque. À savoir si vous bricolez avec ces outils."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-05-secret-scanning-adds-detectors-for-lovable-supabase-and-more"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Dark pattern", "nature": "n. m.", "definition": "Interface conçue pour pousser l'utilisateur à faire ce qu'il n'aurait pas choisi de lui-même : case pré-cochée, désabonnement caché, bouton « refuser » en gris. En français : « interface trompeuse »." },
+    "chiffre": { "valeur": "15,3 %", "texte": "de coût d'acquisition attribué en moins pour WeightWatchers sur ChatGPT Ads (DV Rockerbox, cité par OpenAI)." },
+    "bonus": { "type": "defi", "texte": "En moins de 30 minutes : ouvrez DevTools sur un site que vous utilisez, repérez une requête d'API, rejouez-la avec « Edit and resend as fetch » en changeant un paramètre, et notez ce que la réponse révèle sur le fonctionnement du service." },
+    "enigme": { "question": "Je suis déjà cochée quand tu arrives, et on dit pourtant que tu m'as donné ton accord. Qui suis-je ?", "reponse": "la case pré-cochée (p. 2)" }
+  },
+  "sources": ["openai.com", "service-public.gouv.fr", "presse-citron.net", "buttondown.com", "starterstory.com", "developer.chrome.com", "github.blog"]
+}
