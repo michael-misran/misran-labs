@@ -157,7 +157,7 @@ function VisualSlot({ label, file }) {
 
 const CONTENT = {
   fr: {
-    title: 'Design System multi-marques',
+    title: 'Design System client',
     role: 'Product Designer Senior — design system, DesignOps, pipeline design-to-code',
     period: 'Mai 2024 – Août 2026',
     tools: ['Figma (Variables, Auto-layout)', 'Tokens Studio', 'Style Dictionary', 'GitHub', 'Figma MCP', 'Agents IA custom'],
@@ -355,7 +355,7 @@ const CONTENT = {
   },
 
   en: {
-    title: 'Multi-brand Design System',
+    title: 'Client Design System',
     role: 'Senior Product Designer — design system, DesignOps, design-to-code pipeline',
     period: 'May 2024 – Aug 2026',
     tools: ['Figma (Variables, Auto-layout)', 'Tokens Studio', 'Style Dictionary', 'GitHub', 'Figma MCP', 'Custom AI agents'],

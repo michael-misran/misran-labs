@@ -33,10 +33,10 @@ export const PROJECTS = [
   {
     slug: 'design-system-multimarques',
     icon: '◼',
-    title: { fr: 'Design System multi-marques', en: 'Multi-brand Design System' },
+    title: { fr: 'Design System client', en: 'Client Design System' },
     summary: {
-      fr: 'Design system multi-marques, tokens en trois tiers et pipeline Figma vers GitHub.',
-      en: 'Multi-brand design system, three-tier tokens and a Figma-to-GitHub pipeline.',
+      fr: 'Design system client, tokens en trois tiers et pipeline Figma vers GitHub.',
+      en: 'Client design system, three-tier tokens and a Figma-to-GitHub pipeline.',
     },
     status: 'READY',
     type: 'case-study',

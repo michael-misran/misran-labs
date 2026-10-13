@@ -16,7 +16,7 @@
  *
  * Trois niveaux, une règle : un token ne porte jamais une valeur brute
  * s'il existe un niveau au-dessus de lui. C'est la même architecture que
- * celle documentée dans la fiche Design System multi-marques — appliquée
+ * celle documentée dans la fiche Design System client — appliquée
  * ici, pas juste racontée.
  *
  *   1. PRIMITIVE — valeurs brutes. Une échelle de teintes, aucune
