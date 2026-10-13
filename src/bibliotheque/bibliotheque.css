@@ -1,31 +1,16 @@
-/* Bibliothèque de l'accueil : une pièce claire, d'après la photo de Michael
-   (mur blanc, parquet blond, deux bibliothèques en bois clair).
-   La scène est un conteneur de taille : tout y est en cqw / cqh. */
+/* Bibliothèque de l'accueil : une pièce claire vue de face. L'illustration
+   (Gemini, d'après le dessin de Michael) couvre l'écran, calée en bas ; les
+   publications du Lab sont posées dans les trous laissés sur les étagères.
+   La scène garde les proportions de l'image : tout y est en % ou en cqw / cqh. */
 
 body:has(.salon) { margin: 0; }
 .salon {
-  --bois: #d2b18a;
-  --bois-clair: #e2c7a3;
-  --bois-fonce: #b38e66;
-  --mur: #f3f1ec;
   position: relative; overflow: hidden; box-sizing: border-box;
   height: 100vh; height: 100dvh; min-height: 520px;
-  background:
-    radial-gradient(ellipse at 92% 40%, rgba(255,250,235,.95), transparent 55%),
-    linear-gradient(90deg, #e6e2da, var(--mur) 45%, #faf8f4);
+  background: rgb(218 212 200); /* couleur du mur de l'image */
   font-family: var(--font-edito);
 }
 .salon *, .salon *::before, .salon *::after { box-sizing: border-box; }
-
-/* ---------- Parquet ---------- */
-.sl-parquet {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 17%;
-  border-top: 6px solid #ede9e1;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,.12), transparent 30%),
-    repeating-linear-gradient(90deg, transparent 0 180px, rgba(80,50,20,.18) 180px 182px),
-    repeating-linear-gradient(180deg, #cba57c 0 22px, #c09a70 22px 23px, #d1ad86 23px 45px, #b9926a 45px 46px);
-}
 
 /* ---------- Bandeau ---------- */
 .sl-bandeau {
@@ -41,77 +26,21 @@ body:has(.salon) { margin: 0; }
 .sl-bandeau button { background: none; border: 0; cursor: pointer; color: inherit; font: inherit; letter-spacing: inherit; }
 .sl-bandeau button:hover { color: #fff; }
 
-/* ---------- Scène ---------- */
+/* ---------- Scène : l'image calée en bas ----------
+   Elle couvre l'écran, mais sans jamais dépasser de plus de 25 % la taille où
+   elle tiendrait entière : les trous des étagères restent toujours visibles. */
 .sl-scene {
-  position: absolute; left: 50%; bottom: 1%; transform: translateX(-50%);
-  height: 91%; width: min(100%, 91dvh * 1.25);
+  position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+  width: min(max(100vw, 100dvh * var(--ratio)), 1.25 * min(100vw, 100dvh * var(--ratio)));
+  aspect-ratio: var(--ratio);
   container-type: size;
 }
-
-/* Les bibliothèques */
-.sl-meuble {
-  position: absolute; bottom: 7%; height: 82%; width: 44.5%;
-  display: flex; flex-direction: column;
-  border: solid var(--bois); border-width: 1.6cqh 1.3cqw 0;
-  background: linear-gradient(90deg, rgba(0,0,0,.07), transparent 12%, transparent 88%, rgba(0,0,0,.07)), #ebe5d8;
-  box-shadow: 1cqw 1.4cqh 2.4cqh rgba(60,40,20,.18);
-}
-.sl-meuble::before {
-  /* chant des montants : un filet plus clair */
-  content: ''; position: absolute; inset: -1.6cqh -1.3cqw 0; pointer-events: none;
-  border: solid var(--bois-clair); border-width: .3cqh .3cqw 0;
-}
-.sl-meuble::after {
-  /* pieds */
-  content: ''; position: absolute; left: -1.3cqw; right: -1.3cqw; bottom: -2.2cqh; height: 2.2cqh;
-  background: linear-gradient(90deg, var(--bois-fonce) 0 3%, transparent 3% 97%, var(--bois-fonce) 97%);
-}
-.sl-meuble-0 { left: 2%; }
-.sl-meuble-1 { left: 49%; height: 80.5%; }
-
-.sl-rayon {
-  position: relative; flex: 1; min-height: 0;
-  border-bottom: 1.5cqh solid var(--bois);
-  box-shadow: 0 .4cqh 0 rgba(0,0,0,.12), inset 0 1.2cqh 1.4cqh -1cqh rgba(0,0,0,.18);
-}
-.sl-rayon::after {
-  /* chant de la tablette */
-  content: ''; position: absolute; left: 0; right: 0; bottom: -1.5cqh; height: .35cqh; background: var(--bois-clair);
-}
-.sl-livres { height: 100%; display: flex; align-items: flex-end; gap: .12cqw; padding: 1.2cqh .5cqw 0; }
-
-/* Livres de décor */
-.sl-livre {
-  position: relative; flex: none; border-radius: .25cqh .25cqh 0 0;
-  box-shadow: inset .25cqw 0 .3cqw rgba(255,255,255,.18), inset -.3cqw 0 .4cqw rgba(0,0,0,.22);
-}
-.sl-livre.filet::before, .sl-livre.filet::after {
-  content: ''; position: absolute; left: 14%; right: 14%; height: .35cqh; background: rgba(255,255,255,.55);
-}
-.sl-livre.filet::before { top: 12%; }
-.sl-livre.filet::after { bottom: 12%; }
-.sl-livre.penche { transform: rotate(-7deg); transform-origin: bottom left; margin-left: 1cqw; }
-
-.sl-pile { flex: 1 1 auto; min-width: 7cqw; max-width: 10cqw; display: flex; flex-direction: column-reverse; align-items: center; gap: .1cqh; align-self: flex-end; }
-.sl-pile i { display: block; height: 1.6cqh; border-radius: .2cqh; box-shadow: inset 0 -.3cqh 0 rgba(0,0,0,.18); }
-
-/* Cadres */
-.sl-cadre { flex: none; align-self: flex-end; width: 7cqw; height: 72%; padding: .6cqw; background: #8a6a4a; box-shadow: .3cqw .4cqh .6cqh rgba(0,0,0,.25); margin-right: .6cqw; }
-.sl-cadre-2 { height: 60%; width: 5.6cqw; background: #2e2b28; }
-.sl-cadre svg { width: 100%; height: 100%; display: block; }
-
-/* Dessus des meubles */
-.sl-dessus { position: absolute; left: 0; right: 0; bottom: 100%; height: 9cqh; margin-bottom: 1.6cqh; display: flex; align-items: flex-end; gap: 1.2cqw; padding: 0 1cqw; }
-.sl-figurine { width: 1.4cqw; height: 3.2cqh; border-radius: 45% 45% 10% 10%; background: linear-gradient(#c79a4a, #8a6a2c); }
-.sl-figurine-2 { height: 2.6cqh; background: linear-gradient(#a5763c, #6e4d22); }
-.sl-arrosoir { width: 5cqw; height: auto; margin-left: auto; }
-.sl-vase { width: 4cqw; height: auto; margin-left: auto; margin-right: 6cqw; }
-.sl-boite { width: 6cqw; height: 2.6cqh; background: #b9946a; }
+.sl-image { position: absolute; inset: 0; width: 100%; height: 100%; display: block; user-select: none; -webkit-user-drag: none; }
 
 /* ---------- Les publications du Lab ---------- */
 .sl-volume {
-  position: relative; flex: none; width: 4.3cqw; cursor: pointer; padding: 1cqh 0;
-  border: 0; border-radius: .3cqh .3cqh 0 0;
+  position: relative; flex: 1 1 0; min-width: 0; cursor: pointer; padding: 1cqh 0;
+  border: 1px solid #3a2a1f; border-bottom: 0; border-radius: .3cqh .3cqh 0 0;
   background: var(--fond); color: var(--encre);
   box-shadow: inset .3cqw 0 .4cqw rgba(255,255,255,.15), inset -.4cqw 0 .5cqw rgba(0,0,0,.3), 0 0 0 0 rgba(255,196,90,0);
   writing-mode: vertical-rl; display: flex; align-items: center; justify-content: center;
@@ -123,15 +52,15 @@ body:has(.salon) { margin: 0; }
   0%, 70%, 100% { box-shadow: inset .3cqw 0 .4cqw rgba(255,255,255,.15), inset -.4cqw 0 .5cqw rgba(0,0,0,.3), 0 0 0 0 rgba(255,196,90,0); }
   85% { box-shadow: inset .3cqw 0 .4cqw rgba(255,255,255,.15), inset -.4cqw 0 .5cqw rgba(0,0,0,.3), 0 0 1.4cqh .4cqh rgba(255,196,90,.75); }
 }
-.sl-volume-titre { font: 400 min(2.1cqh, 2.6cqw)/1 var(--police); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 100%; }
+.sl-volume-titre { font: 400 min(2.1cqh, 1.9cqw)/1 var(--police); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 100%; }
 .sl-volume.pointille { background: transparent; border: .25cqw dashed var(--encre); box-shadow: none; animation: none; color: #8a7f6d; --encre: #8a7f6d; }
 .sl-volume:hover, .sl-volume:focus-visible { transform: translateY(-1.6cqh); }
 .sl-volume.sortie { transform: translateY(-3cqh); }
 
 /* Groupe des publications et sa plaque en laiton sur le chant de la tablette */
-.sl-groupe { position: relative; flex: none; height: 100%; display: flex; align-items: flex-end; gap: .25cqw; margin: 0 .5cqw; }
+.sl-groupe { position: absolute; display: flex; align-items: flex-end; gap: .3cqw; padding: 0 .4cqw; }
 .sl-plaque {
-  position: absolute; left: 50%; bottom: -1.45cqh; transform: translateX(-50%); z-index: 2;
+  position: absolute; left: 50%; bottom: -1.5cqh; transform: translateX(-50%); z-index: 2;
   white-space: nowrap; padding: .15cqh .7cqw; border-radius: .2cqh;
   background: linear-gradient(#e8cf8e, #c49a4a); color: #3a2a12; box-shadow: 0 .2cqh .3cqh rgba(0,0,0,.3);
   font: 600 max(8px, 1cqh)/1.1 var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase;
@@ -147,30 +76,12 @@ body:has(.salon) { margin: 0; }
 .sl-etiquette small { display: block; margin-top: .3cqh; font: 600 max(10px, 1.2cqh)/1 var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase; color: #a8462b; }
 .sl-volume:hover .sl-etiquette, .sl-volume:focus-visible .sl-etiquette { opacity: 1; transform: translateX(-50%); }
 
-/* ---------- Objets devant les meubles ---------- */
-.sl-lampe { position: absolute; right: -6%; bottom: 7%; height: 86%; width: auto; }
-.sl-guitare { position: absolute; right: -2%; bottom: 1%; height: 40%; width: auto; filter: drop-shadow(.6cqw 1cqh 1cqh rgba(0,0,0,.25)); }
-.sl-plante { position: absolute; left: 37%; bottom: 1%; height: 34%; width: auto; filter: drop-shadow(.6cqw 1cqh 1cqh rgba(0,0,0,.2)); pointer-events: none; }
-.sl-panier { position: absolute; left: -3%; bottom: 1%; height: 17%; width: auto; filter: drop-shadow(.6cqw 1cqh 1cqh rgba(0,0,0,.2)); }
-
 /* ---------- Volume sorti ---------- */
 .sl-sorti { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; container-type: size; }
 
 @media (max-width: 700px) {
   .sl-bandeau { padding: 12px 14px; }
   .sl-aide { font-size: 13px; }
-  .sl-scene { width: 100%; height: 91%; bottom: 1%; }
-  .sl-meuble { width: 47%; height: 84%; bottom: 7%; }
-  .sl-meuble-0 { left: 1.5%; }
-  .sl-meuble-1 { left: 51.5%; height: 84%; }
-  .sl-volume { width: 7cqw; }
-  .sl-volume-titre { font-size: min(1.9cqh, 4.4cqw); }
-  .sl-cadre { width: 9cqw; }
-  .sl-cadre-2 { width: 7cqw; }
-  .sl-lampe { display: none; }
-  .sl-guitare { right: 1%; height: 30%; }
-  .sl-plante { left: 32%; height: 26%; }
-  .sl-panier { left: 0; height: 12%; }
 }
 @media (prefers-reduced-motion: reduce) {
   .sl-volume { animation: none; transition: none; }
