@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-13",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": { "fr": "Muse Wonder, le modèle de Meta, arrive sur Vercel", "en": "Meta's Muse Wonder lands on Vercel" },
+      "resume": {
+        "fr": "Vercel a ajouté le 12 octobre Muse Wonder, un modèle de Meta conçu pour le code et les agents de longue durée, à son AI Gateway. Il lit texte, images et PDF, appelle des outils et dispose d'un million de tokens de contexte. La page ne donne aucun prix.",
+        "en": "On October 12, Vercel added Muse Wonder, a Meta model built for coding and long-running agents, to its AI Gateway. It reads text, images and PDFs, calls tools and offers a one-million-token context window. The page gives no price."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/muse-wonder-now-available-on-ai-gateway" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Dependabot accepte les registres sans identifiant", "en": "Dependabot accepts credential-free registries" },
+      "resume": {
+        "fr": "GitHub permet depuis le 12 octobre de déclarer un registre privé d'organisation en authentification « Anonymous », utile pour un miroir interne lisible sans identifiants. La méthode d'un registre existant ne se change pas : il faut le recréer.",
+        "en": "Since October 12, GitHub lets organizations declare a private registry with \"Anonymous\" authentication, useful for an internal mirror readable without credentials. An existing registry's method cannot be changed: it has to be recreated."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-12-anonymous-organization-level-registries-for-dependabot/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Copilot pour JetBrains : couper le démarrage auto des serveurs MCP", "en": "Copilot for JetBrains: turn off MCP auto-start" },
+      "resume": {
+        "fr": "Un nouveau réglage annoncé le 10 octobre empêche les serveurs MCP de démarrer seuls pour Copilot et Claude. Les administrateurs d'entreprise peuvent aussi fixer le modèle par défaut des nouvelles conversations. JetBrains 2025.1 n'est plus pris en charge.",
+        "en": "A new setting announced on October 10 stops MCP servers from starting automatically for Copilot and Claude. Enterprise administrators can also set the default model for new conversations. JetBrains 2025.1 is no longer supported."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-10-new-controls-and-chat-improvements-in-copilot-for-jetbrains" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Committer",
+    "definition": {
+      "fr": "Dans Git, personne qui a enregistré un commit, à ne pas confondre avec l'auteur, qui a écrit le changement. Les deux champs sont du texte fourni par le poste de l'expéditeur : rien ne prouve leur exactitude sans vérification supplémentaire.",
+      "en": "In Git, the person who recorded a commit, not to be confused with the author, who wrote the change. Both fields are text supplied by the sender's machine: nothing proves they are accurate without extra verification."
+    }
+  }
+}
