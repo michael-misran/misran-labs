@@ -12,7 +12,7 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 6. `donne.html` : saisie de D9 avec résultat en direct → session principale (Sonnet)
 - [x] 7. `scores.html` (totaux, qui mène, historique, correction et suppression d'une donne) et `joueurs.html` (3 à 5 joueurs) → session principale (Sonnet)
 - [x] 8. `accueil.html`, `fin.html` et `pro.html`, en réutilisant uniquement les composants de `p006.css` et les fonctions de `p006.js` (pas de nouveau style hors petits ajustements) → sous-agent general-purpose (Haiku), relu par la session principale avant commit
-- [ ] 9. Relecture des textes visibles des 7 pages (orthographe, typographie, cohérence des libellés) → secretaire (Sonnet) ; la session principale applique les corrections
+- [x] 9. Relecture des textes visibles des 7 pages (orthographe, typographie, cohérence des libellés) → secretaire (Sonnet) ; la session principale applique les corrections
 - [ ] 10. Vérification navigateur : critères 1, 2, 4, 5, 6 et 7 de la SPEC (parcours complets à 3, 4 et 5 joueurs, 390 et 375 px, console, réseau) → verificateur (Haiku). Build et lint : session principale
 - [ ] 11. Contrôle de la branche avant rapport (lint, build, secrets, fichiers qui ne doivent pas partir, cohérence avec la SPEC) → controleur (Haiku)
 - [ ] 12. `RAPPORT.md` avec la section « Qui a fait quoi » (D14), les points à faire valider par Michael (arrondi des demi-points, nom provisoire, direction visuelle) et les missions suivantes proposées → session principale (Sonnet)

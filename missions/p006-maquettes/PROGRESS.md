@@ -1,7 +1,7 @@
 # Mission p006-maquettes — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 9 (relecture des textes par secretaire)
+**Prochaine action :** étape 10 (vérification navigateur : verificateur + build/lint par la session principale)
 **Blocages :** aucun
 
 ## État initial (2026-10-13, base origin/main 09e84fc + PR #95 et #96)
