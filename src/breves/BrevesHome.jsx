@@ -28,7 +28,7 @@ const CRAIE = "'Caveat', cursive"
 
 const COPY = {
   fr: {
-    description: 'Un kiosque à journaux parisien à l’aube : la Gazette du Lab du jour accrochée en vitrine.',
+    description: 'Un kiosque à journaux parisien à l’aube : l’Oracle du Matin accroché en vitrine.',
     leMot: 'LE MOT',
     leChiffre: 'LE CHIFFRE',
     enBref: 'EN BREF',
@@ -45,7 +45,7 @@ const COPY = {
     toutesEditions: 'TOUTES LES ÉDITIONS',
     numeros: (n) => `${n} numéro${n > 1 ? 's' : ''}`,
     ouvert: 'Le kiosque est ouvert dès 5 h 30',
-    accroche: 'Chaque matin, la Gazette du Lab : l’actualité IA à la une, la tech en brèves, le mot du jour.',
+    accroche: 'Chaque matin, l’Oracle du Matin : l’actualité IA à la une, la tech en brèves, le mot du jour.',
     craie: ['toutes les', 'éditions →'],
     rss: 'Flux RSS',
     suivre: 'Suivre',
@@ -54,7 +54,7 @@ const COPY = {
     locale: 'fr-FR',
   },
   en: {
-    description: 'A Parisian newspaper kiosk at dawn: today’s Lab Gazette hanging in the window.',
+    description: 'A Parisian newspaper kiosk at dawn: today’s Morning Oracle hanging in the window.',
     leMot: 'THE WORD',
     leChiffre: 'THE FIGURE',
     enBref: 'IN BRIEF',
@@ -71,7 +71,7 @@ const COPY = {
     toutesEditions: 'ALL ISSUES',
     numeros: (n) => `${n} issue${n > 1 ? 's' : ''}`,
     ouvert: 'The kiosk opens at 5:30 am',
-    accroche: 'Every morning, the Lab Gazette: AI news on the front page, tech in brief, the word of the day.',
+    accroche: 'Every morning, the Morning Oracle: AI news on the front page, tech in brief, the word of the day.',
     craie: ['all', 'issues →'],
     rss: 'RSS feed',
     suivre: 'Follow',
@@ -265,7 +265,7 @@ export default function BrevesHome() {
   const titresDroite = empiler(jour.breves.map((b) => couper(t(b.titre), '500 8.2px Oswald', 56).slice(0, 5)), 32, 10, 16)
 
   // ----- Coupure de presse : contenus -----
-  const lienJour = { to: `/breves/${jour.date}`, texte: c.lireDuJour, principal: true }
+  const lienJour = { to: `/oracle/${jour.date}`, texte: c.lireDuJour, principal: true }
   const coupures = {
     une: { rubrique: c.alaUne, date: dateLongue(jour.date), titre: t(une.titre), texte: sansHtml(t(une.resume)), liens: [lienJour] },
     mot: jour.mot && { rubrique: c.motDuJour, date: dateLongue(jour.date), titre: jour.mot.terme, texte: t(jour.mot.definition), liens: [lienJour] },
@@ -278,8 +278,8 @@ export default function BrevesHome() {
       titre: c.ouvert,
       texte: c.accroche,
       liens: [
-        ...jours.map((j, i) => ({ to: `/breves/${j.date}`, texte: dateLongue(j.date), principal: i === 0 })),
-        { href: '/breves/rss.xml', texte: c.rss },
+        ...jours.map((j, i) => ({ to: `/oracle/${j.date}`, texte: dateLongue(j.date), principal: i === 0 })),
+        { href: '/oracle/rss.xml', texte: c.rss },
         { to: '/suivre', texte: c.suivre },
       ],
     },
@@ -291,7 +291,7 @@ export default function BrevesHome() {
       date: dateLongue(ed.date),
       titre: t(ia.titre),
       puces: ed.breves.filter((b) => b !== ia).map((b) => t(b.titre)),
-      liens: [{ to: `/breves/${ed.date}`, texte: c.lireNumero, principal: true }],
+      liens: [{ to: `/oracle/${ed.date}`, texte: c.lireNumero, principal: true }],
     }
   })
   const coupure = (actif && coupures[actif]) || coupures.toutes
@@ -338,7 +338,7 @@ export default function BrevesHome() {
 
           {/* Fronton : le titre peint */}
           <text x="689" y="270" textAnchor="middle" fontFamily={GOTHIQUE} fontSize="40" fill="url(#kiosque-dorure)" stroke="#0e1f17" strokeWidth="1.2" paintOrder="stroke" wordSpacing="-12">
-            La Gazette du Lab
+            L’Oracle du Matin
           </text>
 
           {/* Petits bandeaux au-dessus des affiches, peints sur les pans en biais */}
@@ -348,10 +348,10 @@ export default function BrevesHome() {
           </g>
 
           {/* Le journal du jour, suspendu : chaque ligne suit sa page */}
-          <Link to={`/breves/${jour.date}`} {...zone('une')} aria-label={`${c.alaUne} — ${t(une.titre)}`}>
+          <Link to={`/oracle/${jour.date}`} {...zone('une')} aria-label={`${c.alaUne} — ${t(une.titre)}`}>
             <g filter="url(#kiosque-impression)" style={{ mixBlendMode: 'multiply' }}>
               {/* Page de gauche : en-tête et une IA */}
-              <T s={SURFACES.pageGauche} x={47} y={14} textAnchor="middle" fontFamily={GOTHIQUE} fontSize="11.5" fill={ENCRE} wordSpacing="-4">La Gazette du Lab</T>
+              <T s={SURFACES.pageGauche} x={47} y={14} textAnchor="middle" fontFamily={GOTHIQUE} fontSize="11.5" fill={ENCRE} wordSpacing="-4">L’Oracle du Matin</T>
               <Filet s={SURFACES.pageGauche} y={19} x0={9} x1={85} stroke={ENCRE} strokeWidth=".7" />
               <Filet s={SURFACES.pageGauche} y={21.5} x0={9} x1={85} stroke={ENCRE} strokeWidth=".7" />
               <T s={SURFACES.pageGauche} x={47} y={28} textAnchor="middle" fontFamily={TITRE} fontSize="4.6" letterSpacing=".6" fill={ENCRE}>{dateLongue(jour.date).toUpperCase()}</T>
@@ -387,7 +387,7 @@ export default function BrevesHome() {
           </Link>
 
           {/* Affiche de gauche : le mot du jour */}
-          <Link to={`/breves/${jour.date}`} {...zone('mot')} aria-label={c.motDuJour}>
+          <Link to={`/oracle/${jour.date}`} {...zone('mot')} aria-label={c.motDuJour}>
             {jour.mot && (
               <g filter="url(#kiosque-impression)" style={{ mixBlendMode: 'multiply' }}>
                 <T s={SURFACES.afficheGauche} x={35} y={14} textAnchor="middle" fontFamily={TITRE} fontWeight="700" fontSize="6.4" letterSpacing="1.2" fill={ROUGE}>{c.motDuJour}</T>
@@ -401,7 +401,7 @@ export default function BrevesHome() {
           </Link>
 
           {/* Affiche de droite : le chiffre du jour, sinon les titres du jour */}
-          <Link to={`/breves/${jour.date}`} {...zone('droite')} aria-label={jour.chiffre ? c.chiffreDuJour : c.aujourdhui}>
+          <Link to={`/oracle/${jour.date}`} {...zone('droite')} aria-label={jour.chiffre ? c.chiffreDuJour : c.aujourdhui}>
             <g filter="url(#kiosque-impression)" style={{ mixBlendMode: 'multiply' }}>
               {jour.chiffre ? (
                 <>
@@ -433,7 +433,7 @@ export default function BrevesHome() {
             return (
               <Link
                 key={ed.date}
-                to={`/breves/${ed.date}`}
+                to={`/oracle/${ed.date}`}
                 {...zone(ed.date)}
                 className={`kiosque-zone kiosque-pile${actif === ed.date ? ' actif' : ''}`}
                 aria-label={`${c.ancienNumero} — ${dateLongue(ed.date)}`}

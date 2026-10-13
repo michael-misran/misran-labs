@@ -15,8 +15,8 @@ const PROJETS_FONCTIONNEMENT_FIXED = {
   image: 'og-projets.png',
 }
 const BREVES_FIXED = {
-  title: 'La Gazette du Lab — les brèves IA et tech du jour · 1977 Éditions',
-  description: 'Chaque jour, quelques brèves d\'actu IA et tech tirées de La Gazette du Lab, le journal papier du matin, avec le mot et le chiffre du jour.',
+  title: 'L’Oracle du Matin — les brèves IA et tech du jour · 1977 Éditions',
+  description: 'Chaque jour, quelques brèves d\'actu IA et tech tirées de L’Oracle du Matin, le journal papier du matin, avec le mot et le chiffre du jour.',
   image: 'og-image.png',
 }
 const SUIVRE_FIXED = {
@@ -26,7 +26,7 @@ const SUIVRE_FIXED = {
 }
 const KIOSQUE_FIXED = {
   title: 'La vitrine du kiosque · 1977 Éditions',
-  description: 'Tous les titres de 1977 Éditions, maison d’édition indépendante, sur un seul présentoir : la Gazette, le Zine, la salle de jeu et le Lab.',
+  description: 'Tous les titres de 1977 Éditions, maison d’édition indépendante, sur un seul présentoir : l’Oracle du Matin, le Zine, la salle de jeu et le Lab.',
   image: 'og-image.png',
 }
 const ZINE_FIXED = {
@@ -210,7 +210,7 @@ export function collectSaviezVous(rootDir) {
 }
 
 // D7 (mission breves) : pas d'image propre — l'image générique du site
-// sert pour /breves et chaque jour, contrairement aux idées Projets qui ont
+// sert pour /oracle et chaque jour, contrairement aux idées Projets qui ont
 // leur propre image par idée.
 export function collectBrevesJours(rootDir) {
   const dir = path.join(rootDir, 'src/breves/jours')
@@ -227,8 +227,8 @@ export function collectBrevesJours(rootDir) {
     }
 
     pages.push({
-      path: `/breves/${dateFromName}`,
-      title: `${data.breves[0].titre.fr} · La Gazette du Lab — 1977 Éditions`,
+      path: `/oracle/${dateFromName}`,
+      title: `${data.breves[0].titre.fr} · L’Oracle du Matin — 1977 Éditions`,
       description: normalizeAndTruncate(data.breves[0].resume.fr),
       image: BREVES_FIXED.image,
       type: 'article',
@@ -370,7 +370,7 @@ export function sharePreviewsPlugin() {
         : []
 
       const pages = [
-        { path: '/breves', title: BREVES_FIXED.title, description: BREVES_FIXED.description, image: BREVES_FIXED.image, type: 'website' },
+        { path: '/oracle', title: BREVES_FIXED.title, description: BREVES_FIXED.description, image: BREVES_FIXED.image, type: 'website' },
         { path: '/projets', title: PROJETS_FIXED.title, description: PROJETS_FIXED.description, image: PROJETS_FIXED.image, type: 'website' },
         { path: '/projets/fonctionnement', title: PROJETS_FONCTIONNEMENT_FIXED.title, description: PROJETS_FONCTIONNEMENT_FIXED.description, image: PROJETS_FONCTIONNEMENT_FIXED.image, type: 'website' },
         { path: '/suivre', title: SUIVRE_FIXED.title, description: SUIVRE_FIXED.description, image: SUIVRE_FIXED.image, type: 'website' },

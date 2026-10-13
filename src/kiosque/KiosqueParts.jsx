@@ -144,13 +144,13 @@ export function GazetteALaUne({ day, lang, t }) {
             dangerouslySetInnerHTML={{ __html: ia.resume[lang] ?? ia.resume.fr }}
           />
           <Link
-            to={`/breves/${day.date}`}
+            to={`/oracle/${day.date}`}
             style={{ display: 'inline-block', marginTop: 18, marginRight: 22, ...etiquette, fontWeight: 700, fontSize: 15, color: 'var(--text)', textDecoration: 'none', borderBottom: '3px solid var(--titre-gazette)', paddingBottom: 2 }}
           >
             {g.lireLabel}
           </Link>
           <Link
-            to="/breves"
+            to="/oracle"
             style={{ display: 'inline-block', marginTop: 18, ...etiquette, fontWeight: 700, fontSize: 15, color: 'var(--text)', textDecoration: 'none', borderBottom: '3px solid var(--border)', paddingBottom: 2 }}
           >
             {g.toutesLabel}

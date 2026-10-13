@@ -37,11 +37,11 @@ export const VOLUMES = [
     id: 'gazette',
     rayon: 1,
     couverture: 'gazette',
-    titre: { fr: 'La Gazette du Lab', en: 'La Gazette du Lab' },
+    titre: { fr: 'L’Oracle du Matin', en: 'The Morning Oracle' },
     sous: { fr: 'Chaque matin dès 5 h 30', en: 'Every morning from 5:30 am' },
     // Texte court pour la tranche (sinon : sous)
     sousTranche: { fr: 'Quotidien', en: 'Daily' },
-    to: '/breves',
+    to: '/oracle',
     tranche: { fond: '#f1e7cf', encre: '#b3301d', police: 'var(--font-gothique)' },
     hauteur: 94,
     epaisseur: 8,

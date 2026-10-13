@@ -9,7 +9,7 @@ import { getParutions } from '../saviez-vous/parutions'
 // - format 'double' : rubrique du site, sur toute une double page ; si elle
 //   déborde, elle continue sur les planches suivantes (« suites », calculées
 //   à l'affichage par le Shell)
-// - prefixe : les adresses enfants (/breves/2026-10-07, /jeux/geste-parfait…)
+// - prefixe : les adresses enfants (/oracle/2026-10-07, /jeux/geste-parfait…)
 //   appartiennent à cette page du chemin de fer.
 
 // theme : ambiance de couleurs propre au numéro (classe theme-<nom> sur la table, voir magazine.css)
@@ -20,7 +20,7 @@ const tr = (v, lang) => v[lang] ?? v.fr
 // Rubriques du site
 const R = {
   edito: { path: '/edito', format: 'double', cle: 'editoNav', chapo: 'sommaireEdito', couleur: 'var(--edito-bleu)', police: 'var(--font-pulp)' },
-  breves: { path: '/breves', format: 'double', prefixe: true, cle: 'brevesNav', chapo: 'sommaireGazette', couleur: 'var(--titre-gazette)', police: 'var(--font-gothique)' },
+  breves: { path: '/oracle', format: 'double', prefixe: true, cle: 'brevesNav', chapo: 'sommaireGazette', couleur: 'var(--titre-gazette)', police: 'var(--font-gothique)' },
   projets: { path: '/projets', format: 'double', prefixe: true, cle: 'mastheadIdees', chapo: 'sommaireIdees', couleur: 'var(--titre-lab)', police: 'var(--font-machine)' },
   lab: { path: '/lab', format: 'double', prefixe: true, cle: 'navTitreLab', chapo: 'sommaireLab', couleur: 'var(--titre-lab)', police: 'var(--font-machine)' },
   jeux: { path: '/jeux', format: 'double', prefixe: true, cle: 'jeuxNav', chapo: 'sommaireJeux', couleur: 'var(--titre-jeux)', police: 'var(--font-enseigne)' },

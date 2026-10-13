@@ -153,7 +153,7 @@ function Reclames({ lang, isNarrow }) {
           to={r.to}
           style={{ background: PAGE, color: ENCRE, textDecoration: 'none', padding: '10px 10px 12px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 6 }}
         >
-          <span style={{ fontFamily: r.police, fontSize: isNarrow ? 20 : 24, lineHeight: 1, fontStyle: r.to === '/jeux' ? 'italic' : 'normal', fontWeight: r.to === '/jeux' ? 900 : 400, wordSpacing: r.to === '/breves' ? 'var(--font-gothique-espace)' : 'normal' }}>
+          <span style={{ fontFamily: r.police, fontSize: isNarrow ? 20 : 24, lineHeight: 1, fontStyle: r.to === '/jeux' ? 'italic' : 'normal', fontWeight: r.to === '/jeux' ? 900 : 400, wordSpacing: r.to === '/oracle' ? 'var(--font-gothique-espace)' : 'normal' }}>
             {r.titre}
           </span>
           <span style={{ ...etiquette, fontSize: 11, background: ROUGE, color: FICHE, padding: '2px 6px' }}>{r.accroche}</span>

@@ -20,18 +20,18 @@ const FEED_STYLE = {
   tout: { fontFamily: 'var(--font-bois)', textTransform: 'uppercase', letterSpacing: '0.01em', color: 'var(--text)', fontSize: 16 },
 }
 
-// La Gazette porte son initiale en rouge (--titre-gazette), comme dans
-// NavTitres — "Gazette" apparaît tel quel dans le nom fr et en.
+// L’Oracle du Matin porte son initiale en rouge (--titre-gazette), comme dans
+// NavTitres — "Oracle" apparaît tel quel dans le nom fr et en.
 function FeedName({ feed, lang }) {
   const name = feed.name[lang] ?? feed.name.fr
   const style = FEED_STYLE[feed.key] ?? {}
-  const idx = feed.key === 'breves' ? name.indexOf('Gazette') : -1
+  const idx = feed.key === 'breves' ? name.indexOf('Oracle') : -1
 
   if (idx !== -1) {
     return (
       <span style={style}>
         {name.slice(0, idx)}
-        <span style={{ color: 'var(--titre-gazette)' }}>G</span>
+        <span style={{ color: 'var(--titre-gazette)' }}>O</span>
         {name.slice(idx + 1)}
       </span>
     )

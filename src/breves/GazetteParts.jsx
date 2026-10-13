@@ -19,7 +19,7 @@ const gothique = {
   wordSpacing: 'var(--font-gothique-espace, normal)',
 }
 
-// La tête de journal (D3), commune à /breves et /breves/:date. `date` et
+// La tête de journal (D3), commune à /oracle et /oracle/:date. `date` et
 // `count` sont facultatifs — absents sur la page « pas d'édition ce
 // jour-là », qui réutilise la même tête sans ligne de date exploitable.
 export function GazetteTete({ date, count, lang }) {
@@ -157,7 +157,7 @@ function EncadreChiffre({ chiffre, lang }) {
 
 // L'édition d'un jour (D4) : la une (brève "ia", à défaut la première),
 // les autres brèves en colonnes, le mot et le chiffre. Utilisée par
-// /breves et /breves/:date.
+// /oracle et /oracle/:date.
 export function GazetteEdition({ day, lang }) {
   const narrow = useIsMobile(760)
   const t = BREVES_TEXT[lang].edition

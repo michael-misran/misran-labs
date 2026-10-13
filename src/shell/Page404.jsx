@@ -17,7 +17,7 @@ const PAGE404_TEXT = {
     reward: 'Un café',
     links: [
       { to: '/', label: 'Le kiosque', color: 'var(--text)' },
-      { to: '/breves', label: 'La Gazette du Lab', color: 'var(--titre-gazette)' },
+      { to: '/oracle', label: 'L’Oracle du Matin', color: 'var(--titre-gazette)' },
       { to: '/jeux', label: 'Ma salle de jeu', color: 'var(--titre-jeux)' },
       { to: '/lab', label: 'Le Lab', color: 'var(--titre-lab)' },
     ],
@@ -32,7 +32,7 @@ const PAGE404_TEXT = {
     reward: 'One coffee',
     links: [
       { to: '/', label: 'The kiosk', color: 'var(--text)' },
-      { to: '/breves', label: 'The Lab Gazette', color: 'var(--titre-gazette)' },
+      { to: '/oracle', label: 'The Morning Oracle', color: 'var(--titre-gazette)' },
       { to: '/jeux', label: 'My game room', color: 'var(--titre-jeux)' },
       { to: '/lab', label: 'The Lab', color: 'var(--titre-lab)' },
     ],

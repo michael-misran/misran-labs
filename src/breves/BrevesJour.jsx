@@ -27,7 +27,7 @@ function NotFound({ date, lang }) {
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'var(--text2)', margin: '0 0 var(--space-md-plus)' }}>
           {t.notFoundBody}
         </p>
-        <Link to="/breves" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: 12, fontWeight: 700, color: 'var(--titre-gazette)', textDecoration: 'none' }}>
+        <Link to="/oracle" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: 12, fontWeight: 700, color: 'var(--titre-gazette)', textDecoration: 'none' }}>
           {t.backToList}
         </Link>
       </div>
@@ -68,17 +68,17 @@ export default function BrevesJour() {
       >
         <span>
           {previous ? (
-            <Link to={`/breves/${previous.date}`} style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.04em', fontSize: 12, fontWeight: 700, color: 'var(--text)', textDecoration: 'none' }}>
+            <Link to={`/oracle/${previous.date}`} style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.04em', fontSize: 12, fontWeight: 700, color: 'var(--text)', textDecoration: 'none' }}>
               {t.previousDay}
             </Link>
           ) : null}
         </span>
-        <Link to="/breves" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.04em', fontSize: 12, fontWeight: 700, color: 'var(--titre-gazette)', textDecoration: 'none' }}>
+        <Link to="/oracle" style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.04em', fontSize: 12, fontWeight: 700, color: 'var(--titre-gazette)', textDecoration: 'none' }}>
           {t.backToList}
         </Link>
         <span style={{ textAlign: 'right' }}>
           {next ? (
-            <Link to={`/breves/${next.date}`} style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.04em', fontSize: 12, fontWeight: 700, color: 'var(--text)', textDecoration: 'none' }}>
+            <Link to={`/oracle/${next.date}`} style={{ fontFamily: 'var(--font-etiquette)', textTransform: 'uppercase', letterSpacing: '0.04em', fontSize: 12, fontWeight: 700, color: 'var(--text)', textDecoration: 'none' }}>
               {t.nextDay}
             </Link>
           ) : null}
