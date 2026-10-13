@@ -1,13 +1,14 @@
-/* Bibliothèque de l'accueil : une pièce claire vue de face. L'illustration
-   (Gemini, d'après le dessin de Michael) couvre l'écran, calée en bas ; les
-   publications du Lab sont posées dans les trous laissés sur les étagères.
-   La scène garde les proportions de l'image : tout y est en % ou en cqw / cqh. */
+/* Librairie de l'accueil, vue de face. L'illustration (Gemini) couvre l'écran,
+   calée en bas et centrée : tout ce qui compte (le présentoir) est au centre,
+   donc sur téléphone on ne perd que les côtés. Les publications du Lab sont
+   posées de face sur le présentoir. La scène garde les proportions de
+   l'image : tout y est en % ou en cqw / cqh. */
 
 body:has(.salon) { margin: 0; }
 .salon {
   position: relative; overflow: hidden; box-sizing: border-box;
   height: 100vh; height: 100dvh; min-height: 520px;
-  background: rgb(218 212 200); /* couleur du mur de l'image */
+  background: #f6e8d6; /* couleur du mur de l'image */
   font-family: var(--font-edito);
 }
 .salon *, .salon *::before, .salon *::after { box-sizing: border-box; }
@@ -20,61 +21,53 @@ body:has(.salon) { margin: 0; }
   font: 500 13px/1 var(--font-etiquette); letter-spacing: .1em; text-transform: uppercase; color: #f6f0e6;
   background: rgba(58,46,36,.88); backdrop-filter: blur(3px);
 }
-.sl-marque { font-weight: 700; }
+.sl-marque { font-weight: 700; color: #e9c58e; }
 .sl-aide { font: italic 16px/1 var(--font-chapo); letter-spacing: 0; text-transform: none; }
-.sl-marque { color: #e9c58e; }
 .sl-bandeau button { background: none; border: 0; cursor: pointer; color: inherit; font: inherit; letter-spacing: inherit; }
 .sl-bandeau button:hover { color: #fff; }
 
-/* ---------- Scène : l'image calée en bas ----------
-   Elle couvre l'écran, mais sans jamais dépasser de plus de 25 % la taille où
-   elle tiendrait entière : les trous des étagères restent toujours visibles. */
+/* ---------- Scène : l'image en « cover », calée en bas, centrée ---------- */
 .sl-scene {
   position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
-  width: min(max(100vw, 100dvh * var(--ratio)), 1.25 * min(100vw, 100dvh * var(--ratio)));
-  aspect-ratio: var(--ratio);
+  width: max(100vw, 100dvh * var(--ratio)); aspect-ratio: var(--ratio);
   container-type: size;
 }
 .sl-image { position: absolute; inset: 0; width: 100%; height: 100%; display: block; user-select: none; -webkit-user-drag: none; }
 
-/* ---------- Les publications du Lab ---------- */
-.sl-volume {
-  position: relative; flex: 1 1 0; min-width: 0; cursor: pointer; padding: 1cqh 0;
-  border: 1px solid #3a2a1f; border-bottom: 0; border-radius: .3cqh .3cqh 0 0;
-  background: var(--fond); color: var(--encre);
-  box-shadow: inset .3cqw 0 .4cqw rgba(255,255,255,.15), inset -.4cqw 0 .5cqw rgba(0,0,0,.3), 0 0 0 0 rgba(255,196,90,0);
-  writing-mode: vertical-rl; display: flex; align-items: center; justify-content: center;
+/* ---------- Les publications exposées sur le présentoir ---------- */
+.lb-livre {
+  position: absolute; aspect-ratio: 3320 / 4887; padding: 0; border: 0; background: none; cursor: pointer;
+  transform-origin: bottom center;
   transition: transform .3s cubic-bezier(.16,1,.3,1);
-  animation: sl-repere 4s ease-in-out infinite;
+  animation: lb-repere 4s ease-in-out infinite;
 }
-.sl-volume:nth-of-type(2n) { animation-delay: 1.2s; }
-@keyframes sl-repere {
-  0%, 70%, 100% { box-shadow: inset .3cqw 0 .4cqw rgba(255,255,255,.15), inset -.4cqw 0 .5cqw rgba(0,0,0,.3), 0 0 0 0 rgba(255,196,90,0); }
-  85% { box-shadow: inset .3cqw 0 .4cqw rgba(255,255,255,.15), inset -.4cqw 0 .5cqw rgba(0,0,0,.3), 0 0 1.4cqh .4cqh rgba(255,196,90,.75); }
+.lb-livre:nth-of-type(2n) { animation-delay: 1.2s; }
+@keyframes lb-repere {
+  0%, 70%, 100% { filter: drop-shadow(0 0 0 rgba(255,196,90,0)); }
+  85% { filter: drop-shadow(0 0 .8cqh rgba(255,196,90,.95)); }
 }
-.sl-volume-titre { font: 400 min(2.1cqh, 1.9cqw)/1 var(--police); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 100%; }
-.sl-volume.pointille { background: transparent; border: .25cqw dashed var(--encre); box-shadow: none; animation: none; color: #8a7f6d; --encre: #8a7f6d; }
-.sl-volume:hover, .sl-volume:focus-visible { transform: translateY(-1.6cqh); }
-.sl-volume.sortie { transform: translateY(-3cqh); }
+.lb-livre:hover, .lb-livre:focus-visible { transform: translateY(-1.2cqh) scale(1.08); }
+.lb-livre.sortie { transform: translateY(-2cqh); }
 
-/* Groupe des publications et sa plaque en laiton sur le chant de la tablette */
-.sl-groupe { position: absolute; display: flex; align-items: flex-end; gap: .3cqw; padding: 0 .4cqw; }
-.sl-plaque {
-  position: absolute; left: 50%; bottom: -1.5cqh; transform: translateX(-50%); z-index: 2;
-  white-space: nowrap; padding: .15cqh .7cqw; border-radius: .2cqh;
-  background: linear-gradient(#e8cf8e, #c49a4a); color: #3a2a12; box-shadow: 0 .2cqh .3cqh rgba(0,0,0,.3);
-  font: 600 max(8px, 1cqh)/1.1 var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase;
+/* La couverture est dessinée pour un conteneur où elle mesure 62cqh :
+   on lui donne un conteneur 1/0,62 fois plus haut que l'emplacement. */
+.lb-echelle {
+  position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+  height: calc(100% / .62); width: 300%;
+  container-type: size; pointer-events: none;
+  display: flex; align-items: flex-end; justify-content: center;
 }
+.lb-echelle .etg-couv { box-shadow: .3cqh .6cqh 1cqh rgba(0,0,0,.35), 0 0 0 1px rgba(40,25,15,.7); }
 
 /* Étiquette au survol : le titre en clair */
 .sl-etiquette {
-  position: absolute; bottom: calc(100% + 1cqh); left: 50%; transform: translateX(-50%) translateY(.6cqh);
-  writing-mode: horizontal-tb; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity .2s, transform .2s;
+  position: absolute; bottom: calc(100% + 1.4cqh); left: 50%; transform: translateX(-50%) translateY(.6cqh);
+  white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity .2s, transform .2s;
   background: #fffaf0; color: #2a2018; border: 1px solid #c9b896; box-shadow: 0 .6cqh 1.4cqh rgba(0,0,0,.18);
   padding: .8cqh 1cqw; font: 400 max(13px, 1.9cqh)/1.1 var(--font-chapo); z-index: 5;
 }
 .sl-etiquette small { display: block; margin-top: .3cqh; font: 600 max(10px, 1.2cqh)/1 var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase; color: #a8462b; }
-.sl-volume:hover .sl-etiquette, .sl-volume:focus-visible .sl-etiquette { opacity: 1; transform: translateX(-50%); }
+.lb-livre:hover .sl-etiquette, .lb-livre:focus-visible .sl-etiquette { opacity: 1; transform: translateX(-50%); }
 
 /* ---------- Volume sorti ---------- */
 .sl-sorti { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; container-type: size; }
@@ -84,5 +77,5 @@ body:has(.salon) { margin: 0; }
   .sl-aide { font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .sl-volume { animation: none; transition: none; }
+  .lb-livre { animation: none; transition: none; }
 }
