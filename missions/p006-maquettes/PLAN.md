@@ -15,4 +15,4 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 9. Relecture des textes visibles des 7 pages (orthographe, typographie, cohérence des libellés) → secretaire (Sonnet) ; la session principale applique les corrections
 - [x] 10. Vérification navigateur : critères 1, 2, 4, 5, 6 et 7 de la SPEC (parcours complets à 3, 4 et 5 joueurs, 390 et 375 px, console, réseau) → verificateur (Haiku). Build et lint : session principale
 - [x] 11. Contrôle de la branche avant rapport (lint, build, secrets, fichiers qui ne doivent pas partir, cohérence avec la SPEC) → controleur (Haiku)
-- [ ] 12. `RAPPORT.md` avec la section « Qui a fait quoi » (D14), les points à faire valider par Michael (arrondi des demi-points, nom provisoire, direction visuelle) et les missions suivantes proposées → session principale (Sonnet)
+- [x] 12. `RAPPORT.md` avec la section « Qui a fait quoi » (D14), les points à faire valider par Michael (arrondi des demi-points, nom provisoire, direction visuelle) et les missions suivantes proposées → session principale (Sonnet)

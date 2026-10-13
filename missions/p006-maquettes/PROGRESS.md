@@ -1,7 +1,7 @@
 # Mission p006-maquettes — PROGRESS
 
-**Statut :** en cours
-**Prochaine action :** étape 12 (RAPPORT.md, dernière étape)
+**Statut :** terminée
+**Prochaine action :** clôture (session interactive avec Michael) — voir `missions/p006-maquettes/RAPPORT.md`
 **Blocages :** aucun
 
 ## Bugs trouvés et corrigés à l'étape 10
