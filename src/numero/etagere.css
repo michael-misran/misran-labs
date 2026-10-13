@@ -99,6 +99,13 @@
 .etg-couv-numero .etg-couv-tete span { display: block; margin-top: .8cqh; font: 700 1.3cqh var(--font-etiquette); letter-spacing: .14em; text-transform: uppercase; color: #ff7518; }
 .etg-couv-numero img { flex: 1; min-height: 0; width: 100%; object-fit: cover; display: block; }
 
+.etg-couv-midnight { background: #f7c86a center / cover no-repeat; color: #16110c; }
+.etg-ms-bandeau { display: flex; justify-content: space-between; padding: 1.3cqh 1.4cqh 0; font: 700 1.25cqh/1 var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase; }
+.etg-ms-logo { position: absolute; bottom: 1.2cqh; right: 1.2cqh; width: 5.8cqh; padding: .5cqh .5cqh .3cqh; background: #f7c86a; color: #16110c; border: .2cqh solid #16110c; box-shadow: .3cqh .3cqh 0 #16110c; }
+.etg-couv-midnight b { margin-top: 1.3cqh; text-align: center; font: 400 8.6cqh/.8 var(--font-affiche); letter-spacing: .02em; color: #e8352b;
+  -webkit-text-stroke: .4cqh #16110c; paint-order: stroke fill; text-shadow: .6cqh .6cqh 0 #16110c; transform: rotate(-3deg); }
+.etg-couv-midnight b span { display: block; color: #f6ecd8; }
+
 .etg-couv-gazette { background: #f1e7cf; color: #16110c; padding: 2.4cqh 2cqh; align-items: center; text-align: center; }
 .etg-gaz-sur { font: 700 1.2cqh var(--font-etiquette); letter-spacing: .2em; text-transform: uppercase; color: #b3301d; }
 .etg-couv-gazette b { font: 400 5.6cqh/1 var(--font-gothique); word-spacing: var(--font-gothique-espace, 0); margin: 1.2cqh 0 1cqh; }

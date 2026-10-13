@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useLanguage } from '../shell/LanguageContext'
 import { VOLUMES } from './volumes'
 import { NT, nt } from './numeroText'
+import Logo1977 from '../shell/Logo1977'
 import './etagere.css'
 
 // Étagère des numéros et autres publications du Lab, rangés par la tranche.
@@ -22,6 +23,17 @@ export function Couverture({ v, lang }) {
           <span>{sous}</span>
         </div>
         <img src={v.image} alt="" />
+      </div>
+    )
+  }
+  if (v.couverture === 'midnight') {
+    // Illustration (bandeau jaune laissé libre en haut) + titre pulp en police
+    return (
+      <div className="etg-couv etg-couv-midnight" style={{ backgroundImage: `url(${v.image})` }}>
+        <span className="etg-ms-bandeau"><span>{sous}</span></span>
+        {/* Logo de la maison d'édition, en bas à droite comme un label */}
+        <span className="etg-ms-logo"><Logo1977 largeur="100%" fond="#f7c86a" /></span>
+        <b>Midnight<span>Snack!</span></b>
       </div>
     )
   }

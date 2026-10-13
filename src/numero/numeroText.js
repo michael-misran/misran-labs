@@ -173,7 +173,7 @@ export const NT = {
 
   // 4e de couverture : ce qui va suivre
   finBandeau: { fr: 'À SUIVRE…', en: 'TO BE CONTINUED…' },
-  finNumero: { fr: 'Misran Labs #2 · novembre 2026', en: 'Misran Labs #2 · November 2026' },
+  finNumero: { fr: 'Midnight Snack #1 · novembre 2026', en: 'Midnight Snack #1 · November 2026' },
   finTitre: { fr: ['AU PROCHAIN', 'NUMÉRO'], en: ['IN THE NEXT', 'ISSUE'] },
   finChapo: { fr: 'Le kiosque ne ferme jamais : voici ce qui se prépare dans l’atelier.', en: 'The newsstand never closes: here is what’s cooking in the workshop.' },
   finTeasers: [
