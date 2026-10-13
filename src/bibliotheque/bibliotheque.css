@@ -74,8 +74,23 @@ body:has(.salon) { margin: 0; }
   67% { opacity: .9; }
   80% { opacity: .6; }
 }
+
+/* ---------- LED des guirlandes (Noël) ---------- */
+.lb-led {
+  position: absolute; width: 1.6%; aspect-ratio: 1; transform: translate(-50%, -50%);
+  border-radius: 50%; pointer-events: none; mix-blend-mode: screen;
+  background: radial-gradient(closest-side, rgba(255,250,215,.95), rgba(255,215,110,.55) 35%, rgba(255,180,60,.15) 70%, transparent);
+  animation: lb-scintille 2.2s ease-in-out infinite;
+}
+@keyframes lb-scintille {
+  0%, 100% { opacity: .15; transform: translate(-50%, -50%) scale(.7); }
+  45%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.1); }
+  60%      { opacity: .8;  transform: translate(-50%, -50%) scale(1); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .lb-lueur, .lb-lueur::after { animation: none; }
+  .lb-led { animation: none; opacity: .7; }
 }
 
 /* ---------- Enseigne : sur la ceinture de la table, sous le présentoir ---------- */
