@@ -8,7 +8,7 @@ export const LT = {
   metier: { fr: 'Product Designer Senior', en: 'Senior Product Designer' },
   specialite: { fr: 'DesignOps · Design systems · IA', en: 'DesignOps · Design systems · AI' },
   edition: { fr: 'Édition 2026', en: '2026 edition' },
-  bibliotheque: { fr: 'Retour à la bibliothèque', en: 'Back to the library' },
+  bibliotheque: { fr: 'Retour à la librairie', en: 'Back to the bookshop' },
   precedente: { fr: 'Page précédente', en: 'Previous page' },
   suivante: { fr: 'Page suivante', en: 'Next page' },
   imprimer: { fr: 'Imprimer / PDF', en: 'Print / PDF' },
