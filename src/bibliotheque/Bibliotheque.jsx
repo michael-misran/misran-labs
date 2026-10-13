@@ -56,7 +56,30 @@ const SAISONS = [
       { x: 92.2, y: 38.4, rx: 4, ry: 8 },
     ],
   },
-  { id: 'noel', image: '/bibliotheque/librairie-noel.jpg', du: '12-01', au: '01-06', leds: LEDS_NOEL },
+  {
+    id: 'noel', image: '/bibliotheque/librairie-noel.jpg', du: '12-01', au: '01-06', leds: LEDS_NOEL,
+    // Début de soirée, plaid et chocolat chaud : voile plus léger et plus chaud qu'à Halloween
+    voile: 'rgba(52, 24, 40, .4)',
+    eclaire: [
+      // Les 3 suspensions et leur cône de lumière
+      { x: 24.9, y: 36, rx: 11, ry: 26 },
+      { x: 49.9, y: 40, rx: 14, ry: 32 },
+      { x: 75.1, y: 36, rx: 11, ry: 26 },
+      // Ampoules murales
+      { x: 10.3, y: 21, rx: 6, ry: 11 },
+      { x: 89.3, y: 21, rx: 6, ry: 11 },
+      // Grande guirlande du haut
+      { x: 50, y: 9, rx: 46, ry: 11 },
+      // Guirlandes des étagères murales
+      { x: 4, y: 27, rx: 7, ry: 8 },
+      { x: 4, y: 42, rx: 7, ry: 8 },
+      { x: 96, y: 32, rx: 7, ry: 8 },
+      { x: 96, y: 45, rx: 7, ry: 8 },
+      // Sapin, et le fauteuil au plaid à côté
+      { x: 86, y: 57, rx: 10, ry: 22 },
+      { x: 91, y: 72, rx: 10, ry: 18 },
+    ],
+  },
 ]
 
 function saisonDuJour(date = new Date()) {
@@ -138,7 +161,11 @@ export default function Bibliotheque() {
         <img className="sl-image" src={image} alt="" onError={() => image !== IMAGE && setEnEchec(image)} />
         {/* Ambiance de soirée : voile sombre percé là où il y a de la lumière */}
         {image === saison?.image && saison.eclaire && (
-          <span className="lb-nuit" aria-hidden="true" style={{ '--trous': masqueNuit(saison.eclaire) }} />
+          <span
+            className="lb-nuit"
+            aria-hidden="true"
+            style={{ '--trous': masqueNuit(saison.eclaire), ...(saison.voile && { background: saison.voile }) }}
+          />
         )}
         {/* LED des guirlandes qui scintillent, chacune à son rythme */}
         {image === saison?.image && saison.leds?.map(([x, y], i) => (

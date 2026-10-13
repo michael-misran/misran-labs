@@ -34,7 +34,8 @@ body:has(.salon) { margin: 0; }
 }
 .sl-image { position: absolute; inset: 0; width: 100%; height: 100%; display: block; user-select: none; -webkit-user-drag: none; }
 
-/* ---------- Soirée d'Halloween : voile sombre hors des zones éclairées ---------- */
+/* ---------- Soirée (Halloween, Noël) : voile sombre hors des zones éclairées ---------- */
+/* Teinte par défaut : nuit d'Halloween ; Noël passe sa propre teinte (voile) */
 .lb-nuit {
   position: absolute; inset: 0; pointer-events: none;
   background: rgba(16, 8, 34, .62);
