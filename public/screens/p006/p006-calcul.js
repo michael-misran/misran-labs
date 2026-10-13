@@ -1,6 +1,7 @@
 // La Marque (P-006) — calcul du score d'une donne de Tarot (D8/D4). Fonctions pures, sans accès au DOM.
 // Utilisées par les pages (window.TarotCalcul) et par missions/p006-maquettes/verifier-calcul.mjs (module.exports).
 // Règles détaillées : missions/p006-maquettes/REGLES.md.
+/* global module */
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) {
     module.exports = factory();
