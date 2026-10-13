@@ -18,11 +18,12 @@ body:has(.salon) { margin: 0; }
   position: fixed; top: 0; left: 0; right: 0; z-index: 10;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding: 14px 24px;
-  font: 500 13px/1 var(--font-etiquette); letter-spacing: .1em; text-transform: uppercase; color: #f6f0e6;
+  font: 500 13px/1 var(--font-etiquette); letter-spacing: .1em; text-transform: uppercase; color: #e9c58e;
   background: rgba(58,46,36,.88); backdrop-filter: blur(3px);
 }
-.sl-marque { font-weight: 700; color: #e9c58e; }
-.sl-aide { font: italic 16px/1 var(--font-chapo); letter-spacing: 0; text-transform: none; }
+.sl-marque { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+/* Même police que « 1977 Éditions » à gauche (Oswald, hérité du bandeau) */
+.sl-aide { font-weight: 700; }
 .sl-bandeau button { background: none; border: 0; cursor: pointer; color: inherit; font: inherit; letter-spacing: inherit; }
 .sl-bandeau button:hover { color: #fff; }
 

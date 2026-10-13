@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useLanguage } from '../shell/LanguageContext'
 import { Couverture } from '../numero/Etagere.jsx'
+import Logo1977 from '../shell/Logo1977'
 import { VOLUMES } from '../numero/volumes'
 import { NT, nt } from '../numero/numeroText'
 import { LEDS_NOEL } from './leds-noel'
@@ -150,7 +151,10 @@ export default function Bibliotheque() {
   return (
     <div className="salon">
       <header className="sl-bandeau">
-        <span className="sl-marque">1977 Éditions</span>
+        <span className="sl-marque">
+          <Logo1977 carre largeur={26} fond="#3a2e24" />
+          1977 Éditions
+        </span>
         <span className="sl-aide">{lang === 'fr' ? 'Choisissez un livre sur le présentoir' : 'Pick a book from the display'}</span>
         <button type="button" onClick={basculerLangue} aria-label={lang === 'fr' ? 'Switch to English' : 'Passer en français'}>
           {lang === 'fr' ? 'EN' : 'FR'}
