@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>La Marque — Pro</title>
+    <link rel="stylesheet" href="p006.css" />
+  </head>
+  <body class="papier-quadrille">
+    <div class="page-shell">
+      <div class="page-toolbar">
+        <a class="back-link" href="accueil.html">← Accueil</a>
+        <h1>La Marque <span class="provisional-tag">Nom provisoire</span></h1>
+        <span></span>
+      </div>
+
+      <div class="phone">
+        <div class="dynamic-island"></div>
+        <div class="phone-screen papier-quadrille">
+          <div class="status-bar" data-status-bar></div>
+          <div class="screen-content">
+            <div class="pro-hero">
+              <div class="badge">La Marque Pro</div>
+              <h2>Passez à l'essentiel, en mieux</h2>
+              <div class="pro-price">2,99 € <small>· achat unique, pas d'abonnement</small></div>
+            </div>
+
+            <ul class="pro-features">
+              <li><span class="check">✓</span> Tous les jeux (Belote, Mölkky, Skyjo, Yams)</li>
+              <li><span class="check">✓</span> Historique de toutes les parties</li>
+              <li><span class="check">✓</span> Statistiques par joueur</li>
+              <li><span class="check">✓</span> Aucune publicité</li>
+            </ul>
+
+            <button type="button" class="btn primary" id="btn-acheter" style="width: 100%;">Acheter — 2,99 €</button>
+            <p id="achat-msg" hidden style="font-size: 13px; color: var(--encre-muted); text-align: center; margin: 10px 0 0;">Achat factice — maquette uniquement.</p>
+
+            <a class="pro-restore" href="#" id="btn-restaurer">Restaurer les achats</a>
+            <p id="restaurer-msg" hidden style="font-size: 13px; color: var(--encre-muted); text-align: center; margin: 10px 0 0;">Restauration factice — maquette uniquement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="p006-calcul.js" defer></script>
+    <script src="p006.js" defer></script>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('btn-acheter').addEventListener('click', () => {
+          document.getElementById('achat-msg').hidden = false;
+        });
+        document.getElementById('btn-restaurer').addEventListener('click', (evt) => {
+          evt.preventDefault();
+          document.getElementById('restaurer-msg').hidden = false;
+        });
+      });
+    </script>
+  </body>
+</html>

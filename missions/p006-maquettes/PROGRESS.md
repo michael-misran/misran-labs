@@ -1,7 +1,7 @@
 # Mission p006-maquettes — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 8 (accueil.html, fin.html, pro.html)
+**Prochaine action :** étape 9 (relecture des textes par secretaire)
 **Blocages :** aucun
 
 ## État initial (2026-10-13, base origin/main 09e84fc + PR #95 et #96)

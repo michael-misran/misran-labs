@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>La Marque — Fin de partie</title>
+    <link rel="stylesheet" href="p006.css" />
+  </head>
+  <body class="papier-quadrille">
+    <div class="page-shell">
+      <div class="page-toolbar">
+        <a class="back-link" href="scores.html">← Scores</a>
+        <h1>La Marque <span class="provisional-tag">Nom provisoire</span></h1>
+        <span></span>
+      </div>
+
+      <div class="phone">
+        <div class="dynamic-island"></div>
+        <div class="phone-screen papier-quadrille">
+          <div class="status-bar" data-status-bar></div>
+          <div class="screen-content">
+            <div class="screen-title">Fin de partie <span id="badge-exemple" class="provisional-tag" hidden>Exemple</span></div>
+
+            <div id="classement" class="classement"></div>
+
+            <div class="resume-partie">
+              <div>Donnes jouées : <b id="nb-donnes">0</b></div>
+              <div id="meilleure-donne">Meilleure donne : aucune</div>
+            </div>
+
+            <div class="btn-row">
+              <button type="button" class="btn" id="btn-partager">Partager</button>
+            </div>
+            <p id="partage-msg" hidden style="font-size: 13px; color: var(--encre-muted); text-align: center; margin: 10px 0 0;">Partage non disponible dans cette maquette</p>
+
+            <div class="btn-row" style="margin-top: 16px;">
+              <a class="btn primary" href="joueurs.html">Nouvelle partie</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="p006-calcul.js" defer></script>
+    <script src="p006.js" defer></script>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        const P006 = window.P006;
+        const partie = P006.obtenirPartieCourante();
+
+        document.getElementById('badge-exemple').hidden = !partie.estExemple;
+
+        // Classement : totaux décroissants
+        const totaux = P006.totauxParJoueur(partie);
+        const ordre = partie.joueurs
+          .map((nom, i) => ({ nom, total: totaux[i] }))
+          .sort((a, b) => b.total - a.total);
+
+        document.getElementById('classement').innerHTML = ordre
+          .map((joueur, index) => {
+            const classe = index === 0 ? ' premier' : '';
+            return `
+              <div class="classement-rang${classe}">
+                <span class="place">${index + 1}</span>
+                <span class="nom">${P006.escapeHtml(joueur.nom)}</span>
+                <span class="chiffres ${P006.classeScore(joueur.total)}">${P006.texteScore(joueur.total)}</span>
+              </div>`;
+          })
+          .join('');
+
+        // Résumé : nombre de donnes et meilleure donne (score le plus haut parmi tous les joueurs)
+        const donnes = partie.donnes || [];
+        document.getElementById('nb-donnes').textContent = String(donnes.length);
+
+        let meilleure = null;
+        let meilleurScore = -Infinity;
+        donnes.forEach((donne, index) => {
+          const max = Math.max(...donne.scores);
+          if (max > meilleurScore) {
+            meilleurScore = max;
+            meilleure = { donne, numero: index + 1 };
+          }
+        });
+
+        if (meilleure) {
+          const { donne, numero } = meilleure;
+          document.getElementById('meilleure-donne').textContent =
+            `Donne ${numero} : ${partie.joueurs[donne.preneur]} · ${P006.libelleContrat(donne.contrat)} · ${P006.texteScore(meilleurScore)}`;
+        }
+
+        document.getElementById('btn-partager').addEventListener('click', () => {
+          document.getElementById('partage-msg').hidden = false;
+        });
+      });
+    </script>
+  </body>
+</html>
