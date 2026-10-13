@@ -7,9 +7,8 @@ import { resolveRouteMeta } from './registry'
 import useIsMobile from './useIsMobile'
 import { useLanguage } from './LanguageContext'
 import { t } from '../i18n/ui'
-import { getChemin, getNumero, entreeDe, titreDe, pagesDe, nombrePlanches } from '../numero/chemin'
+import { getNumero, entreeDe, titreDe, pagesDe, nombrePlanches } from '../numero/chemin'
 import { PAGES } from '../numero/pages'
-import Etagere from '../numero/Etagere.jsx'
 import { NT, nt } from '../numero/numeroText'
 import './magazine.css'
 
@@ -95,7 +94,6 @@ export default function Shell() {
     }
   }, [sommaireOuvert])
 
-  const chemin = getChemin()
   const nbPlanches = nombrePlanches()
   const entree = entreeDe(location.pathname)
   const planche = entree ? entree.planche : -1
@@ -254,7 +252,7 @@ export default function Shell() {
   }
 
   useEffect(() => {
-    if (location.pathname === '/') {
+    if (location.pathname === '/magazine') {
       document.title = t(lang, 'homeDocumentTitle')
     } else {
       document.title = meta.label ? `${meta.label} · Misran Labs` : 'Misran Labs'
@@ -297,10 +295,16 @@ export default function Shell() {
     : {}
 
   const numero = getNumero()
-  // Une page du numéro, ou le côté libre de la couverture / 4ᵉ de couverture,
-  // occupé par l'étagère des numéros
+  // Une page du numéro, ou le côté libre de la couverture / 4ᵉ de couverture :
+  // la table de lecture, avec le chemin du retour à la bibliothèque
   const cote = (e, sens) => {
-    if (!e) return <Etagere cote={sens} />
+    if (!e) {
+      return (
+        <div className={`cote cote-vide cote-table cote-table-${sens}`}>
+          <Link to="/" className="retour-bibliotheque no-print">← {nt(NT.bibliotheque, lang)}</Link>
+        </div>
+      )
+    }
     const Page = PAGES[e.path]
     return (
       <div className={`cote cote-${e.cote}`}>
@@ -399,7 +403,7 @@ export default function Shell() {
           {format === 'double' ? (
             <>
               <header className="tete-courante no-print">
-                <Link to="/" className="tc-titre">MISRAN LABS <span>#{numero.numero}</span></Link>
+                <Link to="/magazine" className="tc-titre">MISRAN LABS <span>#{numero.numero}</span></Link>
                 <span className="tc-rubrique" style={{ color: entree?.couleur }}>{titre}</span>
                 <Link to="/sommaire" className="tc-sommaire">{nt(NT.sommaireBtn, lang)}{entree ? ` · p. ${entree.folio}` : ''}</Link>
               </header>
@@ -474,7 +478,8 @@ export default function Shell() {
             </ol>
           </div>
           <div className="bandeau-droite">
-            <Link to="/">Misran Labs</Link> · <b>N°{numero.numero}</b> · {numero.mois[lang] ?? numero.mois.fr}
+            <Link to="/" className="bandeau-bibliotheque">← {nt(NT.bibliotheque, lang)}</Link>
+            <Link to="/magazine">Misran Labs</Link> · <b>N°{numero.numero}</b> · {numero.mois[lang] ?? numero.mois.fr}
             <button
               type="button"
               className="langue"
@@ -497,7 +502,7 @@ export default function Shell() {
             <FlecheIcone />
           </Link>
         ) : (
-          <Link to="/" className="fleche fleche-suiv no-print" aria-label={`${nt(NT.fin, lang)} : ${titreDe(chemin[0], lang)}`} title={nt(NT.fin, lang)}>
+          <Link to="/" className="fleche fleche-suiv no-print" aria-label={nt(NT.bibliotheque, lang)} title={nt(NT.bibliotheque, lang)}>
             <FlecheIcone />
           </Link>
         )}

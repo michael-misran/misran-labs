@@ -5,7 +5,7 @@ import { lazy } from 'react'
 const numeroPage = (nom) => lazy(() => import('./NumeroPages').then((m) => ({ default: m[nom] })))
 
 export const PAGES = {
-  '/': numeroPage('Couverture'),
+  '/magazine': numeroPage('Couverture'),
   '/sommaire': numeroPage('SommairePage'),
   '/reclames': numeroPage('Reclames'),
   '/lab/presente': numeroPage('LabPresente'),

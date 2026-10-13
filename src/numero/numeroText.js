@@ -177,9 +177,9 @@ export const NT = {
   finTitre: { fr: ['AU PROCHAIN', 'NUMÉRO'], en: ['IN THE NEXT', 'ISSUE'] },
   finChapo: { fr: 'Le kiosque ne ferme jamais : voici ce qui se prépare dans l’atelier.', en: 'The newsstand never closes: here is what’s cooking in the workshop.' },
   finTeasers: [
-    { to: '/zine', couleur: 'var(--titre-zine)', police: 'var(--font-bd)', icone: '✦', sticker: { fr: 'Enfin !', en: 'At last!' },
-      titre: { fr: 'Le Zine #1 sort de l’atelier', en: 'Zine #1 leaves the workshop' },
-      texte: { fr: 'Photos, dessins et pages de carnet, collés à la main.', en: 'Photos, drawings and notebook pages, glued by hand.' } },
+    { to: '/portfolio', couleur: '#d4b06a', police: 'var(--font-chapo)', icone: '❦', sticker: { fr: 'Relié', en: 'Bound' },
+      titre: { fr: 'Le portfolio s’illustre', en: 'The portfolio gets its pictures' },
+      texte: { fr: 'Maquettes, captures et coulisses, page après page.', en: 'Mockups, screenshots and behind the scenes, page after page.' } },
     { to: '/jeux', couleur: 'var(--titre-jeux)', police: 'var(--font-pixel)', icone: '◎', sticker: { fr: 'Inédit', en: 'New' },
       titre: { fr: 'Une nouvelle cartouche', en: 'A new cartridge' },
       texte: { fr: 'Un jeu de plus dans la chambre. Préparez vos pouces.', en: 'One more game in the bedroom. Ready your thumbs.' } },
@@ -195,7 +195,13 @@ export const NT = {
   finPrix: { fr: 'Prix libre · 0,00 €', en: 'Pay what you want' },
   bulleDemain: { fr: 'À demain, lecteur !', en: 'See you tomorrow, reader!' },
 
-  // Étagère (côté libre de la couverture et de la 4ᵉ de couverture)
+  // Couverture : le portfolio dans la barre des titres
+  navTitrePortfolio: { fr: 'Portfolio', en: 'Portfolio' },
+  navRythmePortfolio: { fr: 'Relié', en: 'Bound' },
+  // Côté libre de la couverture et de la 4ᵉ : retour à la bibliothèque
+  bibliotheque: { fr: 'Retour à la bibliothèque', en: 'Back to the library' },
+
+  // Étagère (page d'accueil : la bibliothèque)
   etagereTitre: { fr: 'La bibliothèque du Lab', en: 'The Lab library' },
   etagereLire: { fr: 'Lire', en: 'Read' },
   etagereReprendre: { fr: 'Ouvrir ce numéro', en: 'Open this issue' },

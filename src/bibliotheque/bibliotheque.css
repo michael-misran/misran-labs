@@ -1,0 +1,40 @@
+/* Bibliothèque de la page d'accueil : un meuble au format d'une page,
+   au centre d'un mur sombre. L'étagère est dimensionnée en cqw / cqh du meuble. */
+
+body:has(.bibli) { margin: 0; }
+.bibli {
+  box-sizing: border-box;
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 52px 16px 24px;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(255,200,140,.10), transparent 60%),
+    repeating-linear-gradient(90deg, #1f1712 0 120px, #221913 120px 121px),
+    #1f1712;
+}
+.bibli-bandeau {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px 24px;
+  font: 500 13px/1 var(--font-etiquette); letter-spacing: .1em; text-transform: uppercase; color: #cfc4ad;
+}
+.bibli-marque { color: #e0a458; }
+.bibli-aide { font: italic 15px/1 var(--font-chapo); letter-spacing: 0; text-transform: none; }
+.bibli-bandeau button { background: none; border: 0; cursor: pointer; color: inherit; font: inherit; letter-spacing: inherit; }
+.bibli-bandeau button:hover { color: #fff; }
+
+/* Le meuble : proportions d'une demi-planche du magazine, à la hauteur de l'écran */
+.bibli-meuble {
+  position: relative; container-type: size;
+  height: calc(100dvh - 76px); min-height: 520px;
+  width: min(100%, calc((100dvh - 76px) * .72));
+  box-shadow: 0 30px 60px rgba(0,0,0,.6), 0 0 0 10px #3a2618, 0 0 0 12px #241710;
+}
+.etagere-plein { position: absolute; inset: 0; }
+
+@media (max-width: 600px) {
+  .bibli { padding: 48px 8px 8px; }
+  .bibli-bandeau { padding: 14px 16px; background: #1f1712; }
+  .bibli-aide { display: none; }
+  .bibli-meuble { width: 100%; height: calc(100dvh - 56px); box-shadow: none; }
+}
