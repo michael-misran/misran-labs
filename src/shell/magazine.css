@@ -232,6 +232,9 @@ body { background: #1b1815; }
   .cote { height: auto; container-type: normal; }
   .planche { flex-direction: column; gap: 12px; }
   .cote-vide { display: none; }
+  /* Sauf la bibliothèque à côté de la couverture : sur téléphone, on arrive
+     sur elle (tout l'écran), la couverture suit en dessous */
+  .cote-vide.etagere-gauche { display: block; height: calc(100dvh - 124px); min-height: 480px; container-type: size; }
   .feuille-double { height: calc(100dvh - 124px); }
   .feuille-double::before { display: none; }
   .a-suivre-coin { display: none; }
