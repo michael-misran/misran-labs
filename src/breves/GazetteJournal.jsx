@@ -197,9 +197,27 @@ function PageNumero({ n, lang }) {
         <span className="gz-kicker">☞ {une.rubrique}</span>
         <h2 dangerouslySetInnerHTML={{ __html: une.titre }} />
         {une.chapo && <p className="gz-chapo gz-chapo-une" dangerouslySetInnerHTML={{ __html: une.chapo }} />}
-        <div className="gz-colonnes gz-lettrine">
-          {une.paragraphes.map((p, k) => <p key={k} dangerouslySetInnerHTML={{ __html: p }} />)}
-        </div>
+        {une.paragraphes.length > 0 && (
+          <div className="gz-colonnes gz-lettrine">
+            {une.paragraphes.map((p, k) => <p key={k} dangerouslySetInnerHTML={{ __html: p }} />)}
+          </div>
+        )}
+        {/* Mercredi : les sorties cinéma du jour, affiches en noir et blanc */}
+        {une.films?.length > 0 && (
+          <div className="gz-films">
+            {une.films.map((f, k) => (
+              <div key={k} className="gz-film">
+                {f.affiche && <img src={`/oracle/affiches/${f.affiche}`} alt={f.titre} loading="lazy" />}
+                <div>
+                  <b dangerouslySetInnerHTML={{ __html: f.titre }} />
+                  {f.titre_original && f.titre_original !== f.titre && <i>{f.titre_original}</i>}
+                  <span>{[f.realisateur, f.genre, f.duree].filter(Boolean).join(' · ')}</span>
+                  <p dangerouslySetInnerHTML={{ __html: f.texte }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
         <SourcesNumero sources={une.sources} lang={lang} />
       </section>
 

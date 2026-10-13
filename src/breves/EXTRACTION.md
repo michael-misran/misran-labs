@@ -17,7 +17,7 @@ Si l'une de ces conditions est vraie, **arrêter ici, sans rien faire d'autre** 
 ## 2. Rédiger les brèves
 
 Sélectionner, selon `src/breves/FORMAT.md` (3 à 5 brèves au plus) :
-- l'article `une` (À la une · IA) ;
+- l'article `une` (À la une · IA) ; **le mercredi**, la une est consacrée aux sorties cinéma (type `cinema`) : elle n'est pas reprise en brève, et la brève `ia` est tirée de l'article d'actualité IA de la page 3 ;
 - les articles de `page2`/`page3` dont `type` vaut `tech` (grands et « éclair »).
 
 Le numéro complet étant public, il n'y a plus de rubrique privée ; seule règle : aucune donnée personnelle.
@@ -62,9 +62,13 @@ cp src/private/journal/pdf/<date>-a4.pdf .worktrees/breves/public/oracle/pdf/<da
 ```bash
 cp src/private/journal/pdf/<date>-a4-en.pdf .worktrees/breves/public/oracle/pdf/<date>-en.pdf
 ```
+Le mercredi, copier aussi chaque affiche de la une cinéma (une commande par film, `<n>` = 1 à 4) :
+```bash
+cp src/private/journal/affiches/<date>-<n>.jpg .worktrees/breves/public/oracle/affiches/<date>-<n>.jpg
+```
 Si la traduction ou le PDF anglais manque (étape anglaise échouée), publier quand même le français : la page anglaise affiche alors les brèves.
 ```bash
-git -C .worktrees/breves add src/breves/jours/<date>.json src/breves/numeros public/oracle/pdf
+git -C .worktrees/breves add src/breves/jours/<date>.json src/breves/numeros public/oracle/pdf public/oracle/affiches
 ```
 ```bash
 git -C .worktrees/breves commit -m "breves: <date>" -m "Co-Authored-By: <modèle utilisé> <noreply@anthropic.com>"
