@@ -1,7 +1,7 @@
 # Mission p006-maquettes — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 11 (controleur avant rapport)
+**Prochaine action :** étape 12 (RAPPORT.md, dernière étape)
 **Blocages :** aucun
 
 ## Bugs trouvés et corrigés à l'étape 10
