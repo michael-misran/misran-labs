@@ -6,7 +6,7 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 0. Cadrage : SPEC, PLAN, fichiers de suivi, fiche P-006 → session principale (Opus 5.5)
 - [x] 1. État initial : build, lint notés dans PROGRESS.md → session principale (Opus 5.5, fait au cadrage)
 - [x] 2. `REGLES.md` (règles de D8 détaillées, avec exemples) et `cas-tarot.json` : au moins 24 cas couvrant toute la liste de D11, résultat attendu par joueur → session principale (Sonnet)
-- [ ] 3. Vérification indépendante des 24 cas : recalculer chaque cas à la main depuis `REGLES.md` seul, sans lire `cas-tarot.json` ni aucun code, et lister les écarts → sous-agent general-purpose (Haiku). La session principale tranche chaque écart (correction des cas ou des règles) et le note dans DECISIONS.md
+- [x] 3. Vérification indépendante des 24 cas : recalculer chaque cas à la main depuis `REGLES.md` seul, sans lire `cas-tarot.json` ni aucun code, et lister les écarts → sous-agent general-purpose (Haiku). La session principale tranche chaque écart (correction des cas ou des règles) et le note dans DECISIONS.md
 - [ ] 4. `public/screens/p006/p006-calcul.js` (fonctions pures, D4) et `missions/p006-maquettes/verifier-calcul.mjs` ; `node missions/p006-maquettes/verifier-calcul.mjs` doit afficher `N/N cas OK` → session principale (Sonnet)
 - [ ] 5. `p006.css` (cadre D7, thème D6, composants : boutons 48 px, cartes, tableau de scores, champs) et `p006.js` (stockage D10, partie d'exemple, rendu commun), puis `index.html` → session principale (Sonnet)
 - [ ] 6. `donne.html` : saisie de D9 avec résultat en direct → session principale (Sonnet)

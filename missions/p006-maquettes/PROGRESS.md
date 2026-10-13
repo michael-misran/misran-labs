@@ -1,7 +1,7 @@
 # Mission p006-maquettes — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 3 (vérification indépendante des 24+ cas par sous-agent Haiku)
+**Prochaine action :** étape 4 (p006-calcul.js + verifier-calcul.mjs)
 **Blocages :** aucun
 
 ## État initial (2026-10-13, base origin/main 09e84fc + PR #95 et #96)
