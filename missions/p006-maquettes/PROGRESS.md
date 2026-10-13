@@ -1,7 +1,7 @@
 # Mission p006-maquettes — PROGRESS
 
-**Statut :** prête à démarrer
-**Prochaine action :** étape 2 (REGLES.md et cas-tarot.json)
+**Statut :** en cours
+**Prochaine action :** étape 3 (vérification indépendante des 24+ cas par sous-agent Haiku)
 **Blocages :** aucun
 
 ## État initial (2026-10-13, base origin/main 09e84fc + PR #95 et #96)
