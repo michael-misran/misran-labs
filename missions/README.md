@@ -27,7 +27,7 @@ Quand Michael donne un brief (« mission : … ») :
 
 **Jamais dans une session de routine** (tâche programmée « missions autonomes », Gazette ou idées), même si Michael y écrit « clôture » : ces sessions n'ont pas accès au navigateur, donc pas de vérification complète. Y répondre seulement : « Pour clôturer, passe par la session tour de contrôle (celle où Remote Control est activé) » — sans pousser ni ouvrir de pull request. (Exception : la routine du Magazine publie son propre numéro, voir « Magazine » dans `CLAUDE.md`.)
 1. Trouver les missions terminées : branches `auto/*` (hors `auto/projets-20*` et `auto/breves-20*`, branches datées des routines) dont `missions/<nom>/RAPPORT.md` existe.
-2. Pour chacune : lire `RAPPORT.md`, `DECISIONS.md`, `DELEGATIONS.md` ; vérifier soi-même dans le navigateur (passer sur la branche, preview « dev », puis arrêter le serveur et revenir sur `main`) ; vérifier qu'aucun secret ni donnée personnelle n'est dans `git diff main...auto/<nom>` (le dépôt est **public**).
+2. Pour chacune : lire `RAPPORT.md`, `DECISIONS.md`, `DELEGATIONS.md` ; vérifier soi-même dans le navigateur (passer sur la branche, preview « dev », puis arrêter le serveur et revenir sur `main`) ; lancer le sous-agent `controleur` sur `auto/<nom>` (lint, build, secrets et données personnelles — le dépôt est **public** —, fichiers qui ne doivent pas partir, cohérence avec la SPEC) : `BLOQUANT` → ne pas pousser, `ATTENTION` → regarder chaque point avant de pousser.
 3. Si tout est bon : pousser la branche (`git push -u origin auto/<nom>`, jamais `main`) et ouvrir la pull request (`gh pr create`, résumé du RAPPORT + modèles utilisés). Si un point bloque : ne pas pousser cette mission, l'expliquer à Michael.
 4. Résumer à Michael, court : par mission, le résultat, les modèles réellement utilisés, le lien de la PR. Le lien de prévisualisation Vercel est dans le commentaire Vercel de la PR (ou `gh pr checks <n>`).
 5. Michael fusionne (fusion interdite à Claude). Quand il le dit : `git checkout main`, `git pull`, `git fetch --prune`, puis supprimer les branches locales fusionnées (`git branch -d auto/<nom>`).
@@ -71,6 +71,7 @@ Session principale : Sonnet (exécution du plan). Sous-agents autorisés sans de
 |---|---|---|
 | `explorateur` | Haiku | Recherche large dans le code, inventaires (« où est utilisé X ? »). Pour un seul `grep`, le faire soi-même. |
 | `verificateur` | Haiku | Contrôle des pages dans le navigateur, snapshots de valeurs. **Pas pour `npm run build` / `npm run lint`** : la session principale les lance elle-même. |
+| `controleur` | Haiku | À la clôture, avant chaque push et pull request : contrôle de la branche (voir « Clôturer une mission »). Ne modifie rien. |
 | `expert` | Opus | Uniquement après 2 échecs sur un même problème, ou décision d'architecture non couverte par la SPEC. Rare. |
 
 Chaque sous-agent démarre à froid et relit le contexte : ne déléguer que ce qui coûte plus cher à faire soi-même (plusieurs lectures, navigateur). Chaque délégation est consignée dans `DELEGATIONS.md`.
