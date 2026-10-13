@@ -20,7 +20,7 @@
         <div class="phone-screen papier-quadrille">
           <div class="status-bar" data-status-bar></div>
           <div class="screen-content">
-            <div class="screen-title">Nouvelle donne</div>
+            <div class="screen-title" id="titre-ecran">Nouvelle donne</div>
 
             <div class="form-field">
               <label>Qui a pris ?</label>
@@ -105,6 +105,7 @@
             </details>
 
             <button type="button" class="btn primary" id="btn-valider" style="width: 100%; margin-top: 18px;">Valider la donne</button>
+            <button type="button" class="btn danger" id="btn-supprimer" style="width: 100%; margin-top: 10px;" hidden>Supprimer cette donne</button>
           </div>
         </div>
       </div>
@@ -118,17 +119,40 @@
         const joueurs = partie.joueurs;
         const nbJoueurs = partie.nbJoueurs;
 
-        const saisie = {
-          nbJoueurs: nbJoueurs,
-          preneur: 0,
-          appele: nbJoueurs === 5 ? 1 : null,
-          contrat: 'petite',
-          bouts: 0,
-          pointsRealises: 56,
-          petitAuBout: 'aucun',
-          poignee: null,
-          chelem: 'aucun',
-        };
+        const parametres = new URLSearchParams(window.location.search);
+        const indexEdition = parametres.has('corriger') ? Number(parametres.get('corriger')) : null;
+        const donneExistante =
+          indexEdition !== null && partie.donnes[indexEdition] ? partie.donnes[indexEdition] : null;
+
+        const saisie = donneExistante
+          ? {
+              nbJoueurs: nbJoueurs,
+              preneur: donneExistante.preneur,
+              appele: donneExistante.appele,
+              contrat: donneExistante.contrat,
+              bouts: donneExistante.bouts,
+              pointsRealises: donneExistante.pointsRealises,
+              petitAuBout: donneExistante.petitAuBout,
+              poignee: donneExistante.poignee,
+              chelem: donneExistante.chelem,
+            }
+          : {
+              nbJoueurs: nbJoueurs,
+              preneur: 0,
+              appele: nbJoueurs === 5 ? 1 : null,
+              contrat: 'petite',
+              bouts: 0,
+              pointsRealises: 56,
+              petitAuBout: 'aucun',
+              poignee: null,
+              chelem: 'aucun',
+            };
+
+        if (donneExistante) {
+          document.getElementById('titre-ecran').textContent = 'Corriger la donne';
+          document.getElementById('btn-valider').textContent = 'Enregistrer la correction';
+          document.getElementById('btn-supprimer').hidden = false;
+        }
 
         const grillePreneur = document.getElementById('grille-preneur');
         const blocAppele = document.getElementById('bloc-appele');
@@ -195,7 +219,9 @@
           grilleContrat.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
           recalculer();
         });
-        grilleContrat.querySelector('[data-contrat="petite"]').setAttribute('aria-pressed', 'true');
+        grilleContrat.querySelectorAll('button').forEach((b) => {
+          b.setAttribute('aria-pressed', b.getAttribute('data-contrat') === saisie.contrat ? 'true' : 'false');
+        });
 
         document.getElementById('bouts-moins').addEventListener('click', () => {
           saisie.bouts = Math.max(0, saisie.bouts - 1);
@@ -215,6 +241,7 @@
         });
 
         document.querySelectorAll('[data-petit]').forEach((btn) => {
+          btn.setAttribute('aria-pressed', btn.getAttribute('data-petit') === saisie.petitAuBout ? 'true' : 'false');
           btn.addEventListener('click', () => {
             saisie.petitAuBout = btn.getAttribute('data-petit');
             btn.parentElement.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
@@ -222,8 +249,10 @@
           });
         });
 
-        let poigneeType = 'aucun';
+        let poigneeType = saisie.poignee && saisie.poignee.type ? saisie.poignee.type : 'aucun';
+        let poigneeCamp = saisie.poignee && saisie.poignee.camp ? saisie.poignee.camp : 'attaque';
         document.querySelectorAll('[data-poignee-type]').forEach((btn) => {
+          btn.setAttribute('aria-pressed', btn.getAttribute('data-poignee-type') === poigneeType ? 'true' : 'false');
           btn.addEventListener('click', () => {
             poigneeType = btn.getAttribute('data-poignee-type');
             btn.parentElement.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
@@ -231,8 +260,8 @@
             majPoignee();
           });
         });
-        let poigneeCamp = 'attaque';
         blocPoigneeCamp.querySelectorAll('button').forEach((btn) => {
+          btn.setAttribute('aria-pressed', btn.getAttribute('data-poignee-camp') === poigneeCamp ? 'true' : 'false');
           btn.addEventListener('click', () => {
             poigneeCamp = btn.getAttribute('data-poignee-camp');
             blocPoigneeCamp.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
@@ -243,9 +272,10 @@
           saisie.poignee = poigneeType === 'aucun' ? null : { camp: poigneeCamp, type: poigneeType };
           recalculer();
         }
-        blocPoigneeCamp.hidden = true;
+        blocPoigneeCamp.hidden = poigneeType === 'aucun';
 
         document.querySelectorAll('[data-chelem]').forEach((btn) => {
+          btn.setAttribute('aria-pressed', btn.getAttribute('data-chelem') === saisie.chelem ? 'true' : 'false');
           btn.addEventListener('click', () => {
             saisie.chelem = btn.getAttribute('data-chelem');
             btn.parentElement.parentElement.querySelectorAll('button[data-chelem]').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
@@ -254,7 +284,16 @@
         });
 
         document.getElementById('btn-valider').addEventListener('click', () => {
-          window.P006.calculerEtAjouterDonne(partie, saisie);
+          if (donneExistante) {
+            window.P006.remplacerDonne(partie, indexEdition, saisie);
+          } else {
+            window.P006.calculerEtAjouterDonne(partie, saisie);
+          }
+          window.location.href = 'scores.html';
+        });
+
+        document.getElementById('btn-supprimer').addEventListener('click', () => {
+          window.P006.supprimerDonne(partie, indexEdition);
           window.location.href = 'scores.html';
         });
 

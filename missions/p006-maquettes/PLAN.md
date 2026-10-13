@@ -10,7 +10,7 @@ Chaque étape indique l'agent et le modèle à utiliser.
 - [x] 4. `public/screens/p006/p006-calcul.js` (fonctions pures, D4) et `missions/p006-maquettes/verifier-calcul.mjs` ; `node missions/p006-maquettes/verifier-calcul.mjs` doit afficher `N/N cas OK` → session principale (Sonnet)
 - [x] 5. `p006.css` (cadre D7, thème D6, composants : boutons 48 px, cartes, tableau de scores, champs) et `p006.js` (stockage D10, partie d'exemple, rendu commun), puis `index.html` → session principale (Sonnet)
 - [x] 6. `donne.html` : saisie de D9 avec résultat en direct → session principale (Sonnet)
-- [ ] 7. `scores.html` (totaux, qui mène, historique, correction et suppression d'une donne) et `joueurs.html` (3 à 5 joueurs) → session principale (Sonnet)
+- [x] 7. `scores.html` (totaux, qui mène, historique, correction et suppression d'une donne) et `joueurs.html` (3 à 5 joueurs) → session principale (Sonnet)
 - [ ] 8. `accueil.html`, `fin.html` et `pro.html`, en réutilisant uniquement les composants de `p006.css` et les fonctions de `p006.js` (pas de nouveau style hors petits ajustements) → sous-agent general-purpose (Haiku), relu par la session principale avant commit
 - [ ] 9. Relecture des textes visibles des 7 pages (orthographe, typographie, cohérence des libellés) → secretaire (Sonnet) ; la session principale applique les corrections
 - [ ] 10. Vérification navigateur : critères 1, 2, 4, 5, 6 et 7 de la SPEC (parcours complets à 3, 4 et 5 joueurs, 390 et 375 px, console, réseau) → verificateur (Haiku). Build et lint : session principale

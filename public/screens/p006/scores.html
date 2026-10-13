@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>La Marque — Scores</title>
+    <link rel="stylesheet" href="p006.css" />
+  </head>
+  <body class="papier-quadrille">
+    <div class="page-shell">
+      <div class="page-toolbar">
+        <a class="back-link" href="accueil.html">← Accueil</a>
+        <h1>La Marque <span class="provisional-tag">Nom provisoire</span></h1>
+        <span></span>
+      </div>
+
+      <div class="phone">
+        <div class="dynamic-island"></div>
+        <div class="phone-screen papier-quadrille">
+          <div class="status-bar" data-status-bar></div>
+          <div class="screen-content">
+            <div class="screen-title">Scores <span id="badge-exemple" class="provisional-tag" hidden>Exemple</span></div>
+
+            <div id="score-table-conteneur"></div>
+
+            <div id="aucune-donne" class="reprise-bloc" hidden>
+              <p>Aucune donne enregistrée pour le moment.</p>
+            </div>
+
+            <div class="btn-row" style="margin-top: 16px;">
+              <button type="button" class="btn primary" id="btn-nouvelle-donne" style="flex: 2;">+ Nouvelle donne</button>
+              <button type="button" class="btn" id="btn-terminer">Terminer</button>
+            </div>
+
+            <h2 style="font-size: 16px; margin: 22px 0 8px;">Historique des donnes</h2>
+            <div class="historique-liste" id="historique-liste"></div>
+
+            <div id="bloc-nouvelle-partie" style="margin-top: 24px;">
+              <button type="button" class="btn ghost" id="btn-demander-nouvelle-partie">Nouvelle partie…</button>
+              <div id="confirmation-nouvelle-partie" hidden>
+                <p style="font-size: 13px; color: var(--encre-muted);">Cela efface la partie en cours. Confirmer ?</p>
+                <div class="btn-row">
+                  <button type="button" class="btn danger" id="btn-confirmer-nouvelle-partie">Oui, effacer</button>
+                  <button type="button" class="btn" id="btn-annuler-nouvelle-partie">Annuler</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="p006-calcul.js" defer></script>
+    <script src="p006.js" defer></script>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        const partie = window.P006.obtenirPartieCourante();
+        const P006 = window.P006;
+
+        document.getElementById('badge-exemple').hidden = !partie.estExemple;
+
+        function rendreTableau() {
+          const totaux = P006.totauxParJoueur(partie);
+          const meneurs = P006.quiMene(partie);
+          const conteneur = document.getElementById('score-table-conteneur');
+
+          const enTete = partie.joueurs.map((nom) => `<th>${P006.escapeHtml(nom)}</th>`).join('');
+          const cellulesTotaux = partie.joueurs
+            .map((nom, i) => {
+              const classe = P006.classeScore(totaux[i]);
+              const couronne = meneurs.includes(i) ? ' <span class="couronne">👑</span>' : '';
+              return `<td class="chiffres ${classe}">${P006.texteScore(totaux[i])}${couronne}</td>`;
+            })
+            .join('');
+
+          conteneur.innerHTML = `
+            <table class="score-table">
+              <thead><tr><th class="joueur-nom">Joueur</th>${enTete}</tr></thead>
+              <tbody>
+                <tr><td class="joueur-nom">Total</td>${cellulesTotaux}</tr>
+              </tbody>
+            </table>`;
+
+          document.getElementById('aucune-donne').hidden = partie.donnes.length > 0;
+        }
+
+        function rendreHistorique() {
+          const liste = document.getElementById('historique-liste');
+          if (partie.donnes.length === 0) {
+            liste.innerHTML = '';
+            return;
+          }
+          liste.innerHTML = partie.donnes
+            .map((donne, index) => {
+              const resume = P006.resumeDonneCourte(donne, partie.joueurs);
+              const badgeClasse = donne.attaqueReussie ? 'positif' : 'negatif';
+              return `
+                <button type="button" class="historique-donne" data-index="${index}">
+                  <span class="numero">${index + 1}</span>
+                  <span class="resume">${P006.escapeHtml(resume)}</span>
+                  <span class="badge chiffres ${badgeClasse}">${donne.resultatLabel}</span>
+                </button>`;
+            })
+            .join('');
+        }
+
+        document.getElementById('historique-liste').addEventListener('click', (evt) => {
+          const btn = evt.target.closest('button[data-index]');
+          if (!btn) return;
+          window.location.href = 'donne.html?corriger=' + btn.getAttribute('data-index');
+        });
+
+        document.getElementById('btn-nouvelle-donne').addEventListener('click', () => {
+          window.location.href = 'donne.html';
+        });
+        document.getElementById('btn-terminer').addEventListener('click', () => {
+          window.location.href = 'fin.html';
+        });
+
+        document.getElementById('btn-demander-nouvelle-partie').addEventListener('click', () => {
+          document.getElementById('confirmation-nouvelle-partie').hidden = false;
+        });
+        document.getElementById('btn-annuler-nouvelle-partie').addEventListener('click', () => {
+          document.getElementById('confirmation-nouvelle-partie').hidden = true;
+        });
+        document.getElementById('btn-confirmer-nouvelle-partie').addEventListener('click', () => {
+          P006.effacerPartie();
+          window.location.href = 'accueil.html';
+        });
+
+        rendreTableau();
+        rendreHistorique();
+      });
+    </script>
+  </body>
+</html>
