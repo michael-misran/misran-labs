@@ -7,7 +7,7 @@ import { NT, nt } from '../numero/numeroText'
 import '../numero/etagere.css'
 import './bibliotheque.css'
 
-// Page d'accueil : la librairie de 1977 Éditions, vue de face (illustration
+// Page d'accueil : la Librairie du Chocolat Chaud, librairie de 1977 Éditions, vue de face (illustration
 // Gemini en fond). Les publications du Lab sont exposées de face sur le
 // présentoir, au centre ; un clic en sort une, sa couverture s'affiche en
 // grand avec « Lire ». Les volumes : numero/volumes.js.
@@ -74,7 +74,7 @@ export default function Bibliotheque() {
   const image = saison && saison.image !== enEchec ? saison.image : IMAGE
 
   useEffect(() => {
-    document.title = lang === 'fr' ? '1977 Éditions — la librairie' : '1977 Éditions — the bookshop'
+    document.title = 'Librairie du Chocolat Chaud — 1977 Éditions'
   }, [lang])
   useEffect(() => {
     if (!sorti) return undefined
@@ -95,6 +95,8 @@ export default function Bibliotheque() {
 
       <main className="sl-scene" style={{ '--ratio': RATIO }}>
         <img className="sl-image" src={image} alt="" onError={() => image !== IMAGE && setEnEchec(image)} />
+        {/* Enseigne clouée sur la ceinture de la table du présentoir */}
+        <p className="lb-enseigne">Librairie du Chocolat Chaud</p>
         {PRESENTOIR.map((place) => {
           const v = VOLUMES.find((x) => x.id === place.id)
           return v && <Expose key={v.id} v={v} place={place} lang={lang} sorti={sorti} onSortir={setSorti} />
