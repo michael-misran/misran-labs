@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useLanguage } from '../shell/LanguageContext'
 import { Couverture } from '../numero/Etagere.jsx'
 import { VOLUMES } from '../numero/volumes'
@@ -7,72 +7,56 @@ import { NT, nt } from '../numero/numeroText'
 import '../numero/etagere.css'
 import './bibliotheque.css'
 
-// Page d'accueil : la bibliothèque du Lab, une pièce claire vue de face
-// (illustration en fond, une version paysage et une portrait). Les publications du
-// Lab sont rangées parmi les autres livres ; un clic en sort une, sa
-// couverture s'affiche avec « Lire ». Les volumes : numero/volumes.js.
+// Page d'accueil : la librairie de 1977 Éditions, vue de face (illustration
+// Gemini en fond). Les publications du Lab sont exposées de face sur le
+// présentoir, au centre ; un clic en sort une, sa couverture s'affiche en
+// grand avec « Lire ». Les volumes : numero/volumes.js.
 
-// Titre court sur la tranche (le titre complet s'affiche au survol)
-const TRANCHES = {
-  'numero-1': { fr: 'N°1', en: 'No. 1' },
-  'numero-2': { fr: 'N°2', en: 'No. 2' },
-  gazette: { fr: 'Gazette', en: 'Gazette' },
-  portfolio: { fr: 'Portfolio', en: 'Portfolio' },
-}
-// Plaque sur le chant de la tablette, sous les publications
-const PLAQUES = {
-  0: { fr: 'Le magazine', en: 'The magazine' },
-  1: { fr: 'Gazette · Portfolio', en: 'Gazette · Portfolio' },
-}
+const IMAGE = '/bibliotheque/librairie.jpg'
+const RATIO = 1376 / 768
 
-// Les deux illustrations de la pièce (Gemini, d'après le dessin de Michael) et
-// l'emplacement des trous laissés sur les étagères, en % de l'image :
-// left / width = bord gauche et largeur du trou, bottom = dessus de la tablette,
-// height = hauteur libre jusqu'à la tablette du dessus.
-const SCENES = {
-  paysage: {
-    image: '/bibliotheque/salon-paysage.jpg',
-    ratio: 1312 / 816,
-    trous: [
-      { meuble: 0, ids: ['numero-1', 'numero-2'], left: 21.9, width: 6.2, bottom: 54.7, height: 16.2 },
-      { meuble: 1, ids: ['gazette', 'portfolio'], left: 69.7, width: 5.6, bottom: 54.7, height: 16.2 },
-    ],
-  },
-  portrait: {
-    image: '/bibliotheque/salon-portrait.jpg',
-    ratio: 768 / 1376,
-    trous: [
-      { meuble: 0, ids: ['numero-1', 'numero-2'], left: 21.1, width: 13, bottom: 63.4, height: 8.7 },
-      { meuble: 1, ids: ['gazette', 'portfolio'], left: 62.1, width: 17.8, bottom: 63.4, height: 8.7 },
-    ],
-  },
+// Décors de saison : même librairie, même cadrage, présentoir au même
+// endroit. Dates incluses, au format mois-jour (une saison peut passer
+// d'une année à l'autre). Tant que l'image d'une saison n'est pas dans
+// public/bibliotheque/, la librairie normale s'affiche.
+// Pour voir une saison avant l'heure : /?saison=halloween, /?saison=noel
+// ou /?saison=normale
+const SAISONS = [
+  { id: 'halloween', image: '/bibliotheque/librairie-halloween.jpg', du: '10-15', au: '11-02' },
+  { id: 'noel', image: '/bibliotheque/librairie-noel.jpg', du: '12-01', au: '01-06' },
+]
+
+function saisonDuJour(date = new Date()) {
+  const jour = `${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+  return SAISONS.find((s) => (s.du <= s.au ? jour >= s.du && jour <= s.au : jour >= s.du || jour <= s.au))
 }
 
-// Écran en hauteur (téléphone) : l'illustration en portrait
-const REQUETE_PORTRAIT = '(max-aspect-ratio: 4/5)'
-function usePortrait() {
-  const [portrait, setPortrait] = useState(() => window.matchMedia(REQUETE_PORTRAIT).matches)
-  useEffect(() => {
-    const mq = window.matchMedia(REQUETE_PORTRAIT)
-    const surChange = () => setPortrait(mq.matches)
-    mq.addEventListener('change', surChange)
-    return () => mq.removeEventListener('change', surChange)
-  }, [])
-  return portrait
-}
+// Les 4 emplacements du présentoir, en % de l'image : left / width = bord
+// gauche et largeur de la carte blanche ; REBORD = hauteur du rebord où
+// les livres sont posés, depuis le bas de l'image
+const PRESENTOIR = [
+  { id: 'numero-1', left: 39.7, width: 4.1 },
+  { id: 'numero-2', left: 45.1, width: 4.1 },
+  { id: 'gazette', left: 50.6, width: 4.1 },
+  { id: 'portfolio', left: 56.3, width: 4.1 },
+]
+const REBORD = 35.5
 
-// Une publication du Lab, rangée parmi les livres
-function Volume({ v, lang, sorti, onSortir }) {
+// Bouton du volume sorti : on le repose sur le présentoir
+const REPOSER = { fr: 'Reposer sur le présentoir', en: 'Put it back' }
+
+// Une publication exposée : sa couverture en miniature
+function Expose({ v, place, lang, sorti, onSortir }) {
   return (
     <button
       type="button"
-      className={`sl-volume${v.id === sorti ? ' sortie' : ''}${v.tranche.pointille ? ' pointille' : ''}`}
-      style={{ '--fond': v.tranche.fond, '--encre': v.tranche.encre, '--police': v.tranche.police, height: `${Math.min(97, v.hauteur + 4)}%` }}
+      className={`lb-livre${v.id === sorti ? ' sortie' : ''}`}
+      style={{ left: `${place.left}%`, width: `${place.width}%`, bottom: `${REBORD}%` }}
       aria-label={`${nt(v.titre, lang)} · ${nt(v.sous, lang)}`}
       aria-pressed={v.id === sorti}
       onClick={() => onSortir(v.id === sorti ? null : v.id)}
     >
-      <span className="sl-volume-titre">{nt(TRANCHES[v.id] ?? v.titre, lang)}</span>
+      <span className="lb-echelle" aria-hidden="true"><Couverture v={v} lang={lang} /></span>
       <span className="sl-etiquette" aria-hidden="true">{nt(v.titre, lang)}<small>{nt(v.sous, lang)}</small></span>
     </button>
   )
@@ -82,10 +66,15 @@ export default function Bibliotheque() {
   const { lang, toggle: basculerLangue } = useLanguage()
   const [sorti, setSorti] = useState(null)
   const volume = VOLUMES.find((v) => v.id === sorti)
-  const scene = SCENES[usePortrait() ? 'portrait' : 'paysage']
+  const [params] = useSearchParams()
+  const force = params.get('saison')
+  const saison = force === 'normale' ? null : SAISONS.find((x) => x.id === force) ?? saisonDuJour()
+  // Image de saison qui n'a pas pu se charger : on revient à la librairie normale
+  const [enEchec, setEnEchec] = useState(null)
+  const image = saison && saison.image !== enEchec ? saison.image : IMAGE
 
   useEffect(() => {
-    document.title = lang === 'fr' ? '1977 Éditions — la bibliothèque' : '1977 Éditions — the library'
+    document.title = lang === 'fr' ? '1977 Éditions — la librairie' : '1977 Éditions — the bookshop'
   }, [lang])
   useEffect(() => {
     if (!sorti) return undefined
@@ -94,32 +83,28 @@ export default function Bibliotheque() {
     return () => window.removeEventListener('keydown', surTouche)
   }, [sorti])
 
-  const props = { lang, sorti, onSortir: setSorti }
-
   return (
     <div className="salon">
       <header className="sl-bandeau">
         <span className="sl-marque">1977 Éditions</span>
-        <span className="sl-aide">{lang === 'fr' ? 'Choisissez un livre sur l’étagère' : 'Pick a book from the shelf'}</span>
+        <span className="sl-aide">{lang === 'fr' ? 'Choisissez un livre sur le présentoir' : 'Pick a book from the display'}</span>
         <button type="button" onClick={basculerLangue} aria-label={lang === 'fr' ? 'Switch to English' : 'Passer en français'}>
           {lang === 'fr' ? 'EN' : 'FR'}
         </button>
       </header>
 
-      <main className="sl-scene" style={{ '--ratio': scene.ratio }}>
-        <img className="sl-image" src={scene.image} alt="" />
-        {scene.trous.map((t) => (
-          <span key={t.meuble} className="sl-groupe" style={{ left: `${t.left}%`, width: `${t.width}%`, bottom: `${t.bottom}%`, height: `${t.height}%` }}>
-            {t.ids.map((id) => VOLUMES.find((v) => v.id === id)).filter(Boolean).map((v) => <Volume key={v.id} v={v} {...props} />)}
-            <span className="sl-plaque" aria-hidden="true">{nt(PLAQUES[t.meuble], lang)}</span>
-          </span>
-        ))}
+      <main className="sl-scene" style={{ '--ratio': RATIO }}>
+        <img className="sl-image" src={image} alt="" onError={() => image !== IMAGE && setEnEchec(image)} />
+        {PRESENTOIR.map((place) => {
+          const v = VOLUMES.find((x) => x.id === place.id)
+          return v && <Expose key={v.id} v={v} place={place} lang={lang} sorti={sorti} onSortir={setSorti} />
+        })}
       </main>
 
       {/* Volume sorti : sa couverture, et de quoi l'ouvrir */}
       {volume && (
         <div className="sl-sorti" role="dialog" aria-label={nt(volume.titre, lang)}>
-          <button type="button" className="etg-fond" aria-label={nt(NT.etagereRanger, lang)} onClick={() => setSorti(null)} />
+          <button type="button" className="etg-fond" aria-label={nt(REPOSER, lang)} onClick={() => setSorti(null)} />
           <div className="etg-presentoir">
             <Couverture v={volume} lang={lang} />
             <div className="etg-actions">
@@ -129,7 +114,7 @@ export default function Bibliotheque() {
                 <span className="etg-lire etg-lire-off">{nt(NT.etagereAParaitre, lang)}</span>
               )}
               <button type="button" className="etg-ranger" onClick={() => setSorti(null)}>
-                {nt(NT.etagereRanger, lang)}
+                {nt(REPOSER, lang)}
               </button>
             </div>
           </div>
