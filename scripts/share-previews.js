@@ -15,8 +15,8 @@ const PROJETS_FONCTIONNEMENT_FIXED = {
   image: 'og-projets.png',
 }
 const BREVES_FIXED = {
-  title: 'L’Oracle du Matin — les brèves IA et tech du jour · 1977 Éditions',
-  description: 'Chaque jour, quelques brèves d\'actu IA et tech tirées de L’Oracle du Matin, le journal papier du matin, avec le mot et le chiffre du jour.',
+  title: 'L’Oracle du Matin — le journal du matin IA, tech et business · 1977 Éditions',
+  description: 'Chaque matin, un vrai journal façon vieux broadsheet : l’actu IA à la une, la tech, un irritant et sa piste de business, le mot et le chiffre du jour. À lire en ligne ou à imprimer en PDF.',
   image: 'og-image.png',
 }
 const SUIVRE_FIXED = {
@@ -226,10 +226,13 @@ export function collectBrevesJours(rootDir) {
       continue
     }
 
+    // Numéro complet du jour s'il existe : sa manchette et son chapo, plus parlants que la brève
+    const cheminNumero = path.join(rootDir, 'src/breves/numeros', file)
+    const une = fs.existsSync(cheminNumero) ? readValidJson(cheminNumero, ['une.titre'])?.une : null
     pages.push({
       path: `/oracle/${dateFromName}`,
-      title: `${data.breves[0].titre.fr} · L’Oracle du Matin — 1977 Éditions`,
-      description: normalizeAndTruncate(data.breves[0].resume.fr),
+      title: `${une ? une.titre : data.breves[0].titre.fr} · L’Oracle du Matin — 1977 Éditions`,
+      description: normalizeAndTruncate(une?.chapo || data.breves[0].resume.fr),
       image: BREVES_FIXED.image,
       type: 'article',
       lastmod: data.date,
