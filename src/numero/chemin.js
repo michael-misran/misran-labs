@@ -40,17 +40,15 @@ const P = (path, fr, en) => ({ path, format: 'page', titre: { fr, en } })
 function planches() {
   const saviezExiste = getParutions().length > 0
   return [
-    [null, P('/', 'Couverture', 'Cover')],
+    [null, P('/magazine', 'Couverture', 'Cover')],
     [P('/sommaire', 'Courrier et sommaire', 'Letters and contents'), P('/reclames', 'Réclames', 'Adverts')],
     R.edito,
-    R.breves,
     R.projets,
     [P('/dossier', 'Le bureau qui travaille la nuit', 'The office that works at night'), P('/lab/presente', 'Le Lab vous présente', 'The Lab presents')],
     R.lab,
     [P('/avertissement', 'Avertissement au joueur', 'Warning to players'), P('/jeux/presente', 'Ma salle de jeu présente', 'My game room presents')],
     R.jeux,
     [P('/dossier/suite', 'Le bureau (suite et fin)', 'The office (continued)'), P('/derniere-minute', 'Dernière minute', 'Stop press')],
-    R.zine,
     ...(saviezExiste ? [R.saviez] : []),
     R.kiosque,
     R.suivre,

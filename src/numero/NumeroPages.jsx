@@ -6,7 +6,6 @@ import { t } from '../i18n/ui'
 import { formatDateLong } from '../shell/dates'
 import { getDays } from '../breves/jours'
 import { getIdea } from '../projets/idees'
-import { getNumeros } from '../zine/numeros'
 import { getChemin, getNumero, titreDe, folioDe, avecFolios } from './chemin'
 import { NT, nt } from './numeroText'
 import './numero.css'
@@ -73,7 +72,7 @@ export function Couverture() {
   const numero = getNumero()
   const titres = [
     { to: '/breves', rythme: t(lang, 'navRythmeGazette'), classe: 't-gazette', nom: `${t(lang, 'navTitreGazettePrefix')}${t(lang, 'navTitreGazetteInitiale')}${t(lang, 'navTitreGazetteReste')}` },
-    { to: '/zine', rythme: getNumeros().length > 0 ? t(lang, 'navRythmeZine') : t(lang, 'navBientot'), classe: 't-zine', nom: t(lang, 'navTitreZine') },
+    { to: '/portfolio', rythme: nt(NT.navRythmePortfolio, lang), classe: 't-portfolio', nom: nt(NT.navTitrePortfolio, lang) },
     { to: '/jeux', rythme: t(lang, 'navRythmeJeux'), classe: 't-jeux', nom: <span>{t(lang, 'navTitreJeux')}<br />{t(lang, 'navTitreJeuxSuite')}</span> },
     { to: '/lab', rythme: t(lang, 'navRythmeLab'), classe: 't-lab', nom: t(lang, 'navTitreLab') },
   ]
@@ -439,7 +438,7 @@ export function QuatriemeCouverture() {
         </div>
         <Fiole couleur="var(--titre-lab)" fond="var(--masthead-fond)" style={{ right: 'calc(4 * var(--u))', bottom: 'calc(1.6 * var(--u))', width: 'calc(8 * var(--u))' }} />
         <div className="bulle" style={{ right: 'calc(14 * var(--u))', bottom: 'calc(2.4 * var(--u))', width: 'calc(34 * var(--u))', borderRadius: '40%' }}>{nt(NT.finBulle, lang)}</div>
-        <Link to="/" className="fin-relire">{nt(NT.finRelire, lang)}</Link>
+        <Link to="/magazine" className="fin-relire">{nt(NT.finRelire, lang)}</Link>
       </div>
       {/* L'ours, en petits caractères comme au dos d'un magazine */}
       <footer className="fin-ours">

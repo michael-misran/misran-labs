@@ -356,15 +356,15 @@ function CouvertureLab({ t, nbProjets }) {
   )
 }
 
-// Sur les présentoirs : les 3 couvertures (D5), grille 3 / 2 / 1 colonnes.
+// Sur les présentoirs : les couvertures (D5), grille 2 / 1 colonnes.
 export function Presentoirs({ lang, t, jeux, nbProjets }) {
   const narrow960 = useIsMobile(960)
   const narrow520 = useIsMobile(520)
-  const columns = narrow520 ? 1 : narrow960 ? 2 : 3
+  // Le Zine est arrêté : restent les Jeux et le Lab
+  const columns = narrow520 ? 1 : 2
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: `repeat(${columns}, 1fr)`, gap: narrow960 ? '26px 16px' : 30 }}>
-      <CouvertureZine t={t} lang={lang} />
       <CouvertureJeux lang={lang} t={t} jeux={jeux} />
       <CouvertureLab t={t} nbProjets={nbProjets} />
     </div>

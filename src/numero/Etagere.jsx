@@ -5,8 +5,9 @@ import { VOLUMES } from './volumes'
 import { NT, nt } from './numeroText'
 import './etagere.css'
 
-// Étagère posée sur le côté libre de la couverture et de la 4ᵉ de couverture :
-// les numéros et autres publications du Lab, rangés par la tranche. Un clic
+// Étagère des numéros et autres publications du Lab, rangés par la tranche.
+// cote : 'plein' pour la bibliothèque de la page d'accueil (taille donnée par
+// son conteneur), 'gauche' / 'droite' pour un côté de planche du magazine. Un clic
 // sur une tranche sort le volume : sa couverture s'affiche avec « Lire ».
 
 // Couverture miniature d'un volume, selon son modèle
@@ -74,7 +75,7 @@ export default function Etagere({ cote }) {
   const rayons = [0, 1].map((r) => VOLUMES.filter((v) => v.rayon === r))
 
   return (
-    <div className={`cote cote-vide etagere etagere-${cote}${volume ? ' etagere-ouverte' : ''}`}>
+    <div className={`${cote === 'plein' ? '' : 'cote cote-vide '}etagere etagere-${cote}${volume ? ' etagere-ouverte' : ''}`}>
       <div className="etg-mur">
         <div className="etg-enseigne">{nt(NT.etagereTitre, lang)}</div>
         {rayons.map((vols, r) => (

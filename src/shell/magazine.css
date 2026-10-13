@@ -232,9 +232,6 @@ body { background: #1b1815; }
   .cote { height: auto; container-type: normal; }
   .planche { flex-direction: column; gap: 12px; }
   .cote-vide { display: none; }
-  /* Sauf la bibliothèque à côté de la couverture : sur téléphone, on arrive
-     sur elle (tout l'écran), la couverture suit en dessous */
-  .cote-vide.etagere-gauche { display: block; height: calc(100dvh - 124px); min-height: 480px; container-type: size; }
   .feuille-double { height: calc(100dvh - 124px); }
   .feuille-double::before { display: none; }
   .a-suivre-coin { display: none; }
@@ -284,3 +281,15 @@ body { background: #1b1815; }
 .fantome-manuel .feuillet-recto::after { opacity: var(--progres, 0); }
 .coin { cursor: grab; touch-action: none; }
 .coin:active { cursor: grabbing; }
+
+/* ---------- Côté libre du magazine fermé : la table, et le retour à la bibliothèque ---------- */
+.cote-table { display: flex; align-items: center; justify-content: center; }
+.retour-bibliotheque {
+  font: 500 clamp(12px, 1.6cqh, 16px)/1 var(--font-etiquette); letter-spacing: .14em; text-transform: uppercase;
+  color: #d8d0c2; text-decoration: none; padding: 1.2cqh 2.4cqw; border: 1px solid rgba(216,208,194,.4);
+}
+.retour-bibliotheque:hover { color: #fff; border-color: #fff; }
+.bandeau-bibliotheque { margin-right: 14px; }
+@media (max-width: 600px) {
+  .bandeau-droite > a.bandeau-bibliotheque { display: inline; font-size: 12px; margin-right: 10px; }
+}

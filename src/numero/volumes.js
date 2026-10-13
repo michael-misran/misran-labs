@@ -1,5 +1,4 @@
-// Volumes rangés sur l'étagère, à côté de la couverture et de la 4ᵉ de
-// couverture (côté laissé libre par le magazine fermé). Pour ajouter un
+// Volumes rangés sur l'étagère de la bibliothèque (page d'accueil). Pour ajouter un
 // numéro, un livre ou une autre revue : une entrée de plus ici.
 // - rayon : 0 (haut) ou 1 (bas)
 // - couverture : modèle de couverture affiché quand on sort le volume
@@ -16,8 +15,7 @@ export const VOLUMES = [
     titre: { fr: 'Misran Labs', en: 'Misran Labs' },
     sous: { fr: 'N°1 · octobre 2026', en: 'No. 1 · October 2026' },
     image: '/decors/couverture-halloween.jpg',
-    to: '/sommaire',
-    enCours: true,
+    to: '/magazine',
     tranche: { fond: '#2a1640', encre: '#ff7518', police: 'var(--font-pulp)' },
     hauteur: 92,
     epaisseur: 10,
@@ -45,17 +43,6 @@ export const VOLUMES = [
     tranche: { fond: '#f1e7cf', encre: '#b3301d', police: 'var(--font-gothique)' },
     hauteur: 94,
     epaisseur: 8,
-  },
-  {
-    id: 'zine-1',
-    rayon: 1,
-    couverture: 'zine',
-    titre: { fr: 'Le Zine', en: 'The Zine' },
-    sous: { fr: '#1 · fait main', en: '#1 · handmade' },
-    to: '/zine',
-    tranche: { fond: '#ff4f8b', encre: '#16110c', police: 'var(--font-bd)' },
-    hauteur: 82,
-    epaisseur: 7,
   },
   {
     // Portfolio relié pour les recruteurs (src/portfolio/)

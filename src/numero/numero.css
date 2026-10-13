@@ -97,6 +97,7 @@
 .feuille-page .une-titres .nom { display: inline-block; white-space: nowrap; line-height: 1.05; -webkit-text-stroke: calc(.5 * var(--u)) var(--masthead-lettre); paint-order: stroke fill; }
 .feuille-page .une-titres > a:hover .nom { filter: brightness(1.15); }
 .feuille-page .t-gazette { font: calc(5.2 * var(--u)) var(--font-gothique); word-spacing: var(--font-gothique-espace); color: var(--titre-gazette); transform: rotate(-1.5deg); }
+.feuille-page .t-portfolio { font: italic 400 calc(4.6 * var(--u)) var(--font-chapo); color: #e6c98a; -webkit-text-stroke: 0 !important; text-shadow: 0 calc(.3 * var(--u)) 0 #12261e; }
 .feuille-page .t-zine { font: italic 700 calc(5.2 * var(--u)) var(--font-bd); text-transform: uppercase; color: var(--titre-zine); transform: rotate(1.5deg); }
 .feuille-page .t-jeux { font: italic 900 calc(3.3 * var(--u))/1 var(--font-enseigne) !important; text-transform: uppercase; white-space: nowrap; transform: rotate(-1.5deg); }
 .feuille-page .t-jeux > span { display: inline-block; padding: calc(.3 * var(--u)) calc(.6 * var(--u)); color: transparent; -webkit-text-stroke: calc(.16 * var(--u)) #1a1109;
