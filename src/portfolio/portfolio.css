@@ -1,0 +1,325 @@
+/* Livre portfolio : relié toile verte, dorure, papier crème.
+   Toutes les tailles des pages sont en --u (1 % de la hauteur de page) :
+   1cqh sur le livre ouvert, une valeur fixe sur téléphone et à l'impression. */
+
+.pf-table {
+  --pf-toile: #1d3a2f;
+  --pf-toile-fonce: #12261e;
+  --pf-or: #d4b06a;
+  --pf-papier: #f6f0e2;
+  --pf-encre: #1f1b16;
+  --pf-gris: #6d6457;
+  --pf-accent: #a8462b;
+  --pf-filet: #d9cfba;
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  padding: 64px 24px 24px;
+  background: radial-gradient(ellipse at 50% 45%, #4d4d4d, #2e2e2e 75%);
+  color: var(--pf-encre);
+  font-family: var(--font-edito);
+}
+body:has(.pf-table) { margin: 0; }
+.pf-table, .pf-table *, .pf-table *::before, .pf-table *::after { box-sizing: border-box; }
+
+/* ---------- Bandeau ---------- */
+.pf-bandeau {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px 24px;
+  font: 500 13px/1 var(--font-etiquette); letter-spacing: .08em; text-transform: uppercase; color: #cfc6b6;
+}
+.pf-bandeau a, .pf-bandeau button { color: inherit; text-decoration: none; background: none; border: 0; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; }
+.pf-bandeau a:hover, .pf-bandeau button:hover { color: #fff; }
+.pf-bandeau-titre { color: var(--pf-or); }
+.pf-bandeau-titre i { font-style: normal; color: #cfc6b6; }
+.pf-bandeau-droite { display: flex; gap: 18px; }
+
+/* ---------- Livre ouvert ---------- */
+.pf-livre {
+  --h: min(calc(100dvh - 140px), calc((100vw - 96px) * .707));
+  position: relative; display: flex;
+  height: var(--h); width: calc(var(--h) * 1.4144);
+  perspective: 2800px;
+  transition: transform .8s cubic-bezier(.4, .1, .25, 1);
+}
+/* Livre fermé : la couverture au centre de la table ; à la fin, la 4ᵉ */
+.pf-livre.pf-ferme { transform: translateX(-25%); }
+.pf-livre.pf-dos { transform: translateX(25%); }
+
+.pf-cote, .pf-face { width: 50%; height: 100%; container-type: size; --u: 1cqh; }
+.pf-cote { position: relative; }
+.pf-cote-gauche:not(.pf-cote-vide) { box-shadow: -1.2vh 1.6vh 3vh rgba(0,0,0,.45); }
+.pf-cote-droite:not(.pf-cote-vide) { box-shadow: 1.2vh 1.6vh 3vh rgba(0,0,0,.45); }
+
+/* Feuillet qui tourne autour de la pliure */
+.pf-feuillet { position: absolute; top: 0; width: 50%; height: 100%; transform-style: preserve-3d; z-index: 4; }
+.pf-feuillet-droite { left: 50%; transform-origin: left center; animation: pf-tourne-avant .85s cubic-bezier(.45, .05, .3, 1) forwards; }
+.pf-feuillet-gauche { left: 0; transform-origin: right center; animation: pf-tourne-arriere .85s cubic-bezier(.45, .05, .3, 1) forwards; }
+@keyframes pf-tourne-avant { to { transform: rotateY(-180deg); } }
+@keyframes pf-tourne-arriere { to { transform: rotateY(180deg); } }
+.pf-face { position: absolute; inset: 0; width: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.pf-verso { transform: rotateY(180deg); }
+.pf-face::after { content: ''; position: absolute; inset: 0; pointer-events: none; animation: pf-ombre .85s ease-in-out; }
+@keyframes pf-ombre { 50% { background: rgba(0,0,0,.18); } }
+
+/* Zones cliquables : la moitié extérieure de chaque page */
+.pf-zone { position: absolute; top: 0; bottom: 0; width: 22%; z-index: 5; background: none; border: 0; cursor: pointer; }
+.pf-zone-gauche { left: 0; cursor: w-resize; }
+.pf-zone-droite { right: 0; cursor: e-resize; }
+.pf-ferme .pf-zone-droite { width: 50%; cursor: pointer; }
+
+/* ---------- Commandes ---------- */
+.pf-commandes { display: flex; align-items: center; gap: 16px; }
+.pf-commandes > button {
+  width: 34px; height: 34px; border-radius: 50%; border: 1px solid #8d8678; background: none; color: #e9e2d3;
+  font: 22px/1 var(--font-chapo); cursor: pointer;
+}
+.pf-commandes > button:disabled { opacity: .3; cursor: default; }
+.pf-commandes > button:not(:disabled):hover { background: var(--pf-or); border-color: var(--pf-or); color: var(--pf-toile-fonce); }
+.pf-pagination { display: flex; gap: 8px; }
+.pf-pagination button { width: 8px; height: 8px; padding: 0; border-radius: 50%; border: 0; background: #77716a; cursor: pointer; }
+.pf-pagination button.actif { background: var(--pf-or); transform: scale(1.3); }
+
+/* ---------- Page ---------- */
+.pf-page {
+  position: relative; width: 100%; height: 100%; overflow: hidden;
+  background: var(--pf-papier); color: var(--pf-encre);
+  font-size: calc(var(--u) * 1.85); line-height: 1.42;
+}
+/* Ombre de la pliure, côté reliure */
+.pf-page-gauche { background: linear-gradient(270deg, rgba(60,40,10,.16), transparent 7%), var(--pf-papier); }
+.pf-page-droite { background: linear-gradient(90deg, rgba(60,40,10,.16), transparent 7%), var(--pf-papier); }
+.pf-marge { position: absolute; inset: 0; display: flex; flex-direction: column; padding: calc(var(--u) * 5.5) calc(var(--u) * 5) calc(var(--u) * 4); }
+.pf-page-gauche .pf-marge { padding-right: calc(var(--u) * 6); }
+.pf-page-droite .pf-marge { padding-left: calc(var(--u) * 6); }
+.pf-contenu { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: calc(var(--u) * 1.4); }
+.pf-contenu p { margin: 0; }
+.pf-tete {
+  margin-bottom: calc(var(--u) * 2.4); padding-bottom: calc(var(--u) * .6); border-bottom: 1px solid var(--pf-filet);
+  font: 500 calc(var(--u) * 1.15)/1 var(--font-etiquette); letter-spacing: .16em; text-transform: uppercase; color: var(--pf-gris);
+}
+.pf-page-droite .pf-tete { text-align: right; }
+.pf-folio { margin-top: calc(var(--u) * 1.6); font: italic calc(var(--u) * 1.6)/1 var(--font-chapo); color: var(--pf-gris); }
+.pf-page-droite .pf-folio { text-align: right; }
+.pf-page a { color: var(--pf-accent); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+
+.pf-titre-page { margin: 0; font: 400 calc(var(--u) * 4)/1.05 var(--font-chapo); color: var(--pf-toile); }
+.pf-sous-titre { font: 500 calc(var(--u) * 1.3)/1.3 var(--font-etiquette) !important; letter-spacing: .12em; text-transform: uppercase; color: var(--pf-accent); }
+.pf-intertitre {
+  margin: calc(var(--u) * .8) 0 0; display: flex; align-items: center; gap: calc(var(--u) * 1);
+  font: 500 calc(var(--u) * 1.25)/1 var(--font-etiquette); letter-spacing: .16em; text-transform: uppercase; color: var(--pf-accent);
+}
+.pf-intertitre::after { content: ''; flex: 1; height: 1px; background: var(--pf-filet); }
+.pf-note { font-style: italic; color: var(--pf-gris); }
+.pf-regle {
+  margin: 0; padding: calc(var(--u) * .4) 0 calc(var(--u) * .4) calc(var(--u) * 1.6); border-left: calc(var(--u) * .35) solid var(--pf-or);
+  font: italic calc(var(--u) * 2.1)/1.3 var(--font-chapo); color: var(--pf-toile);
+}
+
+/* Lettrine de la page de garde */
+.pf-lettrine { font-size: calc(var(--u) * 2.05); }
+.pf-lettrine::first-letter { float: left; margin: calc(var(--u) * .5) calc(var(--u) * .9) 0 0; font: 400 calc(var(--u) * 6.4)/.8 var(--font-chapo); color: var(--pf-accent); }
+
+/* Sommaire */
+.pf-sommaire { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: calc(var(--u) * 1); }
+.pf-sommaire li { display: flex; align-items: baseline; gap: calc(var(--u) * .8); font-size: calc(var(--u) * 2); }
+.pf-sommaire i { flex: 1; border-bottom: 1px dotted var(--pf-gris); transform: translateY(-.3em); }
+.pf-sommaire b { font: italic 400 1em var(--font-chapo); color: var(--pf-accent); }
+.pf-garde .pf-contenu { justify-content: center; }
+
+/* Portrait */
+.pf-portrait-photo { float: right; width: 38%; margin: 0 0 calc(var(--u) * 1) calc(var(--u) * 2); }
+.pf-portrait .pf-contenu { display: block; }
+.pf-portrait .pf-contenu > * + * { margin-top: calc(var(--u) * 1.2); }
+.pf-portrait .pf-titre-page { margin-top: calc(var(--u) * 1); }
+.pf-contact { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: calc(var(--u) * .4); }
+.pf-contact li::before { content: '— '; color: var(--pf-or); }
+
+/* Postes du parcours */
+.pf-poste { font-size: calc(var(--u) * 1.62); }
+.pf-poste-tete { display: flex; justify-content: space-between; align-items: baseline; gap: calc(var(--u) * 1); margin-bottom: calc(var(--u) * .5); }
+.pf-poste-tete b { font: 400 calc(var(--u) * 2.1)/1.15 var(--font-chapo); color: var(--pf-toile); }
+.pf-poste-tete span { flex: none; font: 500 calc(var(--u) * 1.1)/1 var(--font-etiquette); letter-spacing: .1em; text-transform: uppercase; color: var(--pf-accent); }
+.pf-poste ul { margin: 0; padding-left: calc(var(--u) * 1.8); display: flex; flex-direction: column; gap: calc(var(--u) * .45); }
+.pf-poste em { font-style: normal; font-weight: 600; }
+.pf-competences { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 1) calc(var(--u) * 2); font-size: calc(var(--u) * 1.55); }
+.pf-competences dt { font-weight: 600; color: var(--pf-toile); }
+.pf-competences dd { margin: 0; }
+
+/* Ouverture de chapitre */
+.pf-chapitre { display: flex; flex-direction: column; gap: calc(var(--u) * 1); margin-bottom: calc(var(--u) * 1); }
+.pf-chapitre-num { font: 400 calc(var(--u) * 7)/1 var(--font-1977); color: var(--pf-or); }
+.pf-chapitre h2 { margin: 0; font: 400 calc(var(--u) * 4.2)/1.02 var(--font-chapo); color: var(--pf-toile); }
+.pf-chapo { font-size: calc(var(--u) * 2.1); line-height: 1.38; }
+
+/* Répartition du temps */
+.pf-barres { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: calc(var(--u) * 1.2); }
+.pf-barres li { display: flex; flex-direction: column; gap: calc(var(--u) * .4); font-size: calc(var(--u) * 1.65); }
+.pf-barre { display: block; height: calc(var(--u) * 2.6); background: var(--pf-filet); position: relative; }
+.pf-barre::before { content: ''; position: absolute; inset: 0 auto 0 0; width: calc(var(--part) * 1%); background: var(--pf-toile); }
+.pf-barre b { position: absolute; left: calc(var(--u) * 1); top: 50%; transform: translateY(-50%); font: 500 calc(var(--u) * 1.3)/1 var(--font-etiquette); letter-spacing: .08em; color: var(--pf-papier); }
+
+/* Tokens en trois tiers */
+.pf-tiers { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: calc(var(--u) * .6); }
+.pf-tiers li {
+  margin-left: calc(var(--i) * var(--u) * 3); padding: calc(var(--u) * .9) calc(var(--u) * 1.4);
+  border: 1px solid var(--pf-toile); background: color-mix(in srgb, var(--pf-toile) calc(var(--i) * 12% + 6%), var(--pf-papier));
+  display: flex; flex-direction: column; font-size: calc(var(--u) * 1.6);
+}
+.pf-tiers b { font: 500 calc(var(--u) * 1.25)/1.2 var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase; color: var(--pf-toile); }
+
+/* Étapes en chaîne */
+.pf-pipeline { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: calc(var(--u) * .6); counter-reset: etape; }
+.pf-pipeline li {
+  counter-increment: etape; padding: calc(var(--u) * .6) calc(var(--u) * 1); border: 1px solid var(--pf-encre); background: #fffaf0;
+  font: 500 calc(var(--u) * 1.25)/1.2 var(--font-etiquette); letter-spacing: .06em; text-transform: uppercase;
+}
+.pf-pipeline li::before { content: counter(etape) '. '; color: var(--pf-accent); }
+.pf-pipeline li + li { position: relative; margin-left: calc(var(--u) * 1.6); }
+.pf-pipeline li + li::after { content: '→'; position: absolute; left: calc(var(--u) * -1.9); top: 50%; transform: translateY(-50%); color: var(--pf-accent); }
+.pf-pipeline-vertical { flex-direction: column; align-items: stretch; }
+.pf-pipeline-vertical li + li { margin-left: 0; margin-top: calc(var(--u) * 1.2); }
+.pf-pipeline-vertical li + li::after { content: '↓'; left: 50%; top: calc(var(--u) * -1.55); transform: translateX(-50%); }
+
+/* Points clés (IA, projets du Lab) */
+.pf-points { margin: 0; display: flex; flex-direction: column; gap: calc(var(--u) * 1.4); }
+.pf-points dt { font: 400 calc(var(--u) * 2.2)/1.1 var(--font-chapo); color: var(--pf-toile); }
+.pf-points dt a { color: inherit; text-decoration: none; }
+.pf-points dt a:hover { color: var(--pf-accent); }
+.pf-points dd { margin: calc(var(--u) * .3) 0 0; font-size: calc(var(--u) * 1.75); }
+
+.pf-etiquettes { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: calc(var(--u) * .6); }
+.pf-etiquettes li { padding: calc(var(--u) * .5) calc(var(--u) * 1.1); background: var(--pf-toile); color: var(--pf-papier); font: 500 calc(var(--u) * 1.25)/1.2 var(--font-etiquette); letter-spacing: .08em; text-transform: uppercase; }
+
+/* ---------- Encarts (images et maquettes) ---------- */
+.pf-encart { margin: 0; display: flex; flex-direction: column; gap: calc(var(--u) * .6); }
+.pf-encart figcaption { font: italic calc(var(--u) * 1.5)/1.3 var(--font-chapo); color: var(--pf-gris); }
+.pf-encart-cadre, .pf-encart-image { width: 100%; display: block; border: 1px solid #bfb39b; }
+.pf-encart-image { object-fit: cover; background: #e8e0cf; }
+.pf-encart-cadre {
+  position: relative; display: grid; place-items: center; min-height: calc(var(--u) * 10);
+  background: repeating-linear-gradient(-45deg, #ece4d2 0 calc(var(--u) * .6), #e4dac5 calc(var(--u) * .6) calc(var(--u) * 1.2));
+}
+/* Repères de coupe aux angles */
+.pf-repere { position: absolute; width: calc(var(--u) * 1.6); height: calc(var(--u) * 1.6); border: 0 solid var(--pf-accent); }
+.pf-repere-hg { top: calc(var(--u) * .6); left: calc(var(--u) * .6); border-top-width: 2px; border-left-width: 2px; }
+.pf-repere-bd { bottom: calc(var(--u) * .6); right: calc(var(--u) * .6); border-bottom-width: 2px; border-right-width: 2px; }
+.pf-consigne {
+  max-width: 82%; padding: calc(var(--u) * 1.2) calc(var(--u) * 1.6); background: #fffaf0; border: 1px dashed var(--pf-accent);
+  display: flex; flex-direction: column; gap: calc(var(--u) * .5); text-align: center;
+  font: calc(var(--u) * 1.4)/1.35 var(--font-machine); color: var(--pf-encre);
+}
+.pf-consigne b { font: 500 calc(var(--u) * 1.2)/1 var(--font-etiquette); letter-spacing: .2em; text-transform: uppercase; color: var(--pf-accent); }
+.pf-consigne small { font-size: calc(var(--u) * 1.1); color: var(--pf-gris); }
+
+/* Pages de preuves : les encarts se partagent la hauteur */
+.pf-preuves .pf-contenu { gap: calc(var(--u) * 2); }
+.pf-preuves .pf-encart { flex: 1 1 0; min-height: 0; }
+.pf-preuves .pf-encart-grand { flex-grow: 1.7; }
+.pf-preuves .pf-encart-cadre, .pf-preuves .pf-encart-image { flex: 1; min-height: 0; aspect-ratio: auto !important; }
+
+/* Page de fin */
+.pf-fin .pf-contenu { justify-content: center; align-items: center; text-align: center; gap: calc(var(--u) * 2); }
+.pf-fin .pf-contenu > p { font-size: calc(var(--u) * 2.1); max-width: 90%; }
+.pf-fin .pf-contact li::before { content: none; }
+.pf-fin .pf-couv-fleuron { color: var(--pf-accent); }
+
+/* ---------- Couvertures (toile et dorure) ---------- */
+.pf-couverture {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.07), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,.05) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 3px),
+    var(--pf-toile);
+  color: var(--pf-or); border-radius: 0 calc(var(--u) * .8) calc(var(--u) * .8) 0;
+}
+/* Mors : la charnière de la reliure */
+.pf-couverture::before { content: ''; position: absolute; top: 0; bottom: 0; left: calc(var(--u) * 2.4); width: calc(var(--u) * .5); background: linear-gradient(90deg, rgba(0,0,0,.35), rgba(255,255,255,.06)); }
+.pf-quatrieme { border-radius: calc(var(--u) * .8) 0 0 calc(var(--u) * .8); }
+.pf-quatrieme::before { left: auto; right: calc(var(--u) * 2.4); }
+.pf-couv-cadre {
+  position: absolute; inset: calc(var(--u) * 5) calc(var(--u) * 4.5) calc(var(--u) * 5) calc(var(--u) * 6.5);
+  border: calc(var(--u) * .25) solid var(--pf-or); outline: 1px solid var(--pf-or); outline-offset: calc(var(--u) * -1);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(var(--u) * 1.6); text-align: center;
+  padding: calc(var(--u) * 3);
+  text-shadow: 0 1px 0 rgba(0,0,0,.4);
+}
+.pf-quatrieme .pf-couv-cadre { left: calc(var(--u) * 4.5); right: calc(var(--u) * 6.5); }
+.pf-couv-sur { font: 500 calc(var(--u) * 1.6)/1 var(--font-etiquette); letter-spacing: .5em; text-transform: uppercase; padding-left: .5em; }
+.pf-couv-fleuron { font-size: calc(var(--u) * 3.4); line-height: 1; }
+.pf-couverture h1 { margin: 0; font: 400 calc(var(--u) * 7.6)/.95 var(--font-chapo); color: #e6c98a; }
+.pf-couv-filet { width: 40%; height: calc(var(--u) * .9); border-block: 1px solid currentColor; }
+.pf-couv-metier { margin: 0; font: italic calc(var(--u) * 2.6)/1.2 var(--font-chapo); }
+.pf-couv-spe { margin: 0; font: 500 calc(var(--u) * 1.3)/1.4 var(--font-etiquette); letter-spacing: .2em; text-transform: uppercase; opacity: .85; }
+.pf-couv-edition { font: 500 calc(var(--u) * 1.15)/1.4 var(--font-etiquette); letter-spacing: .18em; text-transform: uppercase; opacity: .7; }
+.pf-couv-cadre .pf-couv-edition:first-of-type { margin-top: auto; }
+.pf-couverture .pf-couv-cadre > .pf-couv-sur { margin-bottom: auto; }
+.pf-quatrieme-citation { margin: 0; font: italic calc(var(--u) * 3)/1.25 var(--font-chapo); color: #e6c98a; }
+
+/* ---------- Pile : téléphone et impression ---------- */
+.pf-pile { display: none; }
+
+@media (max-width: 760px) {
+  .pf-table { padding: 60px 16px 24px; justify-content: flex-start; }
+  .pf-bandeau { background: #2e2e2e; padding: 14px 16px; font-size: 11px; }
+  .pf-bandeau-titre { display: none; }
+  .pf-livre, .pf-commandes { display: none; }
+  .pf-pile { display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 520px; }
+  .pf-pile-page { --u: 7.2px; box-shadow: 0 10px 24px rgba(0,0,0,.45); }
+  .pf-pile .pf-page { height: auto; min-height: calc(var(--u) * 70); }
+  .pf-pile .pf-marge { position: relative; inset: auto; min-height: inherit; padding: calc(var(--u) * 4) calc(var(--u) * 3.5) calc(var(--u) * 3); }
+  .pf-pile .pf-couverture { min-height: calc(var(--u) * 90); }
+  .pf-pile .pf-preuves .pf-encart { flex: none; }
+  .pf-pile .pf-preuves .pf-encart-cadre, .pf-pile .pf-preuves .pf-encart-image { flex: none; aspect-ratio: 16 / 10 !important; }
+  .pf-competences { grid-template-columns: 1fr; }
+}
+
+@media print {
+  @page { size: A5; margin: 0; }
+  .pf-table { display: block; padding: 0; background: none; min-height: 0; }
+  .pf-bandeau, .pf-livre, .pf-commandes { display: none !important; }
+  .pf-pile { display: block; }
+  .pf-pile-page { --u: 2.1mm; width: 148mm; height: 210mm; break-after: page; overflow: hidden; }
+  .pf-pile .pf-page { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .pf-consigne { display: none; }
+}
+
+/* Zones de clic : pas de cadre au focus, un léger reflet doré côté tranche */
+.pf-zone:focus { outline: none; }
+.pf-zone-droite:focus-visible { background: linear-gradient(270deg, rgba(212,176,106,.25), transparent 30%); }
+.pf-zone-gauche:focus-visible { background: linear-gradient(90deg, rgba(212,176,106,.25), transparent 30%); }
+
+/* Organigramme des agents (chapitre IV) */
+.pf-organigramme { display: flex; flex-direction: column; align-items: stretch; gap: calc(var(--u) * 1.1); }
+.pf-org-chef, .pf-org-tour {
+  position: relative; align-self: center; min-width: 62%; padding: calc(var(--u) * .7) calc(var(--u) * 1.4); text-align: center;
+  display: flex; flex-direction: column; gap: calc(var(--u) * .2); font-size: calc(var(--u) * 1.45);
+}
+.pf-org-chef { background: var(--pf-toile); color: var(--pf-papier); }
+.pf-org-chef b, .pf-org-tour b { font: 500 calc(var(--u) * 1.3)/1.2 var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase; }
+.pf-org-chef b { color: var(--pf-or); }
+.pf-org-tour { border: 1px solid var(--pf-toile); background: #fffaf0; }
+.pf-org-tour b { color: var(--pf-toile); }
+/* Traits de liaison entre les étages */
+.pf-org-tour::before, .pf-org-agents::before { content: ''; position: absolute; left: 50%; top: calc(var(--u) * -1.1); height: calc(var(--u) * 1.1); border-left: 1px solid var(--pf-toile); }
+.pf-org-agents { position: relative; list-style: none; margin: 0; padding: calc(var(--u) * .8) 0 0; border-top: 1px solid var(--pf-toile); display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(var(--u) * .7); }
+.pf-org-agents li { padding: calc(var(--u) * .6) calc(var(--u) * .8); border: 1px dashed var(--pf-gris); display: flex; flex-direction: column; gap: calc(var(--u) * .25); font-size: calc(var(--u) * 1.3); line-height: 1.3; }
+.pf-org-agents b { font: 400 calc(var(--u) * 1.8)/1.1 var(--font-chapo); color: var(--pf-toile); }
+.pf-modele { align-self: flex-start; padding: calc(var(--u) * .15) calc(var(--u) * .6); font: normal 500 calc(var(--u) * 1)/1.2 var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase; color: var(--pf-papier); }
+.pf-modele-haiku { background: #6f8a6a; }
+.pf-modele-sonnet { background: var(--pf-toile); }
+.pf-modele-opus { background: var(--pf-accent); }
+
+/* Chiffres clés */
+.pf-chiffres { list-style: none; margin: calc(var(--u) * .4) 0 0; padding: calc(var(--u) * 1) 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(var(--u) * 1); border-block: 1px solid var(--pf-filet); text-align: center; }
+.pf-chiffres li { display: flex; flex-direction: column; gap: calc(var(--u) * .3); font: italic calc(var(--u) * 1.4)/1.25 var(--font-chapo); color: var(--pf-gris); }
+.pf-chiffres b { font: 400 calc(var(--u) * 4.4)/1 var(--font-1977); font-style: normal; color: var(--pf-accent); }
+
+/* Encart qui prend la place restante d'une page de texte */
+.pf-encart-souple { flex: 1; min-height: calc(var(--u) * 12); display: flex; }
+.pf-encart-souple .pf-encart { flex: 1; min-height: 0; }
+.pf-encart-souple .pf-encart-cadre { flex: 1; min-height: 0; }
+@media (max-width: 760px) {
+  .pf-org-agents { grid-template-columns: 1fr 1fr; }
+  .pf-encart-souple .pf-encart-cadre { flex: none; aspect-ratio: 16 / 10; }
+}

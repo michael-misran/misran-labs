@@ -57,4 +57,17 @@ export const VOLUMES = [
     hauteur: 82,
     epaisseur: 7,
   },
+  {
+    // Portfolio relié pour les recruteurs (src/portfolio/)
+    id: 'portfolio',
+    rayon: 1,
+    couverture: 'portfolio',
+    titre: { fr: 'Portfolio', en: 'Portfolio' },
+    sous: { fr: 'Michael Misran · Product Designer', en: 'Michael Misran · Product Designer' },
+    sousTranche: { fr: 'M. Misran', en: 'M. Misran' },
+    to: '/portfolio',
+    tranche: { fond: '#1d3a2f', encre: '#d4b06a', police: 'var(--font-chapo)' },
+    hauteur: 88,
+    epaisseur: 9,
+  },
 ]

@@ -119,3 +119,19 @@
 .etg-couv-prochain b { font: 400 4.6cqh/.9 var(--font-pulp); text-transform: uppercase; opacity: .55; }
 .etg-couv-prochain span { font: 700 1.5cqh var(--font-etiquette); letter-spacing: .14em; text-transform: uppercase; }
 .etg-couv-prochain em { font: italic 2.2cqh var(--font-chapo); }
+
+/* Portfolio : relié toile verte, dorure */
+.etg-couv-portfolio {
+  aspect-ratio: 1 / 1.414; padding: 3cqh 2.4cqh 3cqh 3.4cqh; color: #d4b06a;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,.06) 0 1px, transparent 1px 3px), #1d3a2f;
+  border-radius: 0 .6cqh .6cqh 0;
+}
+.etg-pf-cadre {
+  flex: 1; border: .3cqh solid currentColor; outline: 1px solid currentColor; outline-offset: -.9cqh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.2cqh; text-align: center; padding: 2cqh;
+}
+.etg-pf-sur { font: 500 1.4cqh/1 var(--font-etiquette); letter-spacing: .45em; text-transform: uppercase; }
+.etg-pf-fleuron { font-size: 3cqh; line-height: 1; }
+.etg-couv-portfolio b { font: 400 5.2cqh/.95 var(--font-chapo); color: #e6c98a; }
+.etg-pf-filet { width: 40%; height: .8cqh; border-block: 1px solid currentColor; }
+.etg-couv-portfolio em { font: italic 2cqh var(--font-chapo); }

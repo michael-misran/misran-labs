@@ -1,4 +1,4 @@
-import { lazy } from 'react'
+import { lazy, Suspense } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Shell from './shell/Shell'
 import BureauLab from './lab/BureauLab'
@@ -25,11 +25,14 @@ const { '/': Couverture, '/sommaire': SommairePage, '/reclames': Reclames, '/lab
   '/dossier/suite': DossierSuite, '/avertissement': Avertissement, '/jeux/presente': JeuPresente,
   '/derniere-minute': DerniereMinute, '/a-suivre': QuatriemeCouverture } = PAGES
 const Page404 = lazy(() => import('./shell/Page404'))
+// Livre portfolio pour les recruteurs : hors du magazine, sur sa propre table de lecture
+const PortfolioLivre = lazy(() => import('./portfolio/PortfolioLivre'))
 
 export default function App() {
   return (
     <LanguageProvider>
       <Routes>
+        <Route path="/portfolio" element={<Suspense fallback={null}><PortfolioLivre /></Suspense>} />
         <Route path="/" element={<Shell />}>
           {/* Le site est un magazine : l'accueil est la couverture, l'édito suit le sommaire */}
           <Route index element={<Couverture />} />

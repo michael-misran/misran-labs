@@ -44,6 +44,19 @@ function Couverture({ v, lang }) {
       </div>
     )
   }
+  if (v.couverture === 'portfolio') {
+    return (
+      <div className="etg-couv etg-couv-portfolio">
+        <div className="etg-pf-cadre">
+          <span className="etg-pf-sur">{titre}</span>
+          <span className="etg-pf-fleuron" aria-hidden="true">❦</span>
+          <b>Michael Misran</b>
+          <span className="etg-pf-filet" />
+          <em>Product Designer</em>
+        </div>
+      </div>
+    )
+  }
   // Prochain numéro : couverture en attente, au crayon
   return (
     <div className="etg-couv etg-couv-prochain">
