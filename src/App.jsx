@@ -1,8 +1,9 @@
-import { lazy } from 'react'
+import { lazy, Suspense } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Shell from './shell/Shell'
 import BureauLab from './lab/BureauLab'
 import { LanguageProvider } from './shell/LanguageProvider'
+import { PAGES } from './numero/pages'
 
 const KiosqueHome = lazy(() => import('./kiosque/KiosqueHome'))
 const ProjectPage = lazy(() => import('./lab/ProjectPage'))
@@ -19,15 +20,34 @@ const JeuPage = lazy(() => import('./jeux/JeuPage'))
 const ZineHome = lazy(() => import('./zine/ZineHome'))
 const ZineNumero = lazy(() => import('./zine/ZineNumero'))
 const SaviezVousPage = lazy(() => import('./saviez-vous/SaviezVousPage'))
+// Pages du numéro (format A)
+const { '/': Couverture, '/sommaire': SommairePage, '/reclames': Reclames, '/lab/presente': LabPresente, '/dossier': Dossier,
+  '/dossier/suite': DossierSuite, '/avertissement': Avertissement, '/jeux/presente': JeuPresente,
+  '/derniere-minute': DerniereMinute, '/a-suivre': QuatriemeCouverture } = PAGES
 const Page404 = lazy(() => import('./shell/Page404'))
+// Livre portfolio pour les recruteurs : hors du magazine, sur sa propre table de lecture
+const PortfolioLivre = lazy(() => import('./portfolio/PortfolioLivre'))
 
 export default function App() {
   return (
     <LanguageProvider>
       <Routes>
+        <Route path="/portfolio" element={<Suspense fallback={null}><PortfolioLivre /></Suspense>} />
         <Route path="/" element={<Shell />}>
-          {/* L'édito est la page d'accueil ; l'ancienne vitrine passe sur /kiosque */}
-          <Route index element={<EditoPage />} />
+          {/* Le site est un magazine : l'accueil est la couverture, l'édito suit le sommaire */}
+          <Route index element={<Couverture />} />
+          <Route path="sommaire" element={<SommairePage />} />
+          <Route path="edito" element={<EditoPage />} />
+          <Route path="reclames" element={<Reclames />} />
+          <Route path="lab/presente" element={<LabPresente />} />
+          <Route path="dossier" element={<Dossier />} />
+          <Route path="dossier/suite" element={<DossierSuite />} />
+          <Route path="avertissement" element={<Avertissement />} />
+          <Route path="jeux/presente" element={<JeuPresente />} />
+          <Route path="derniere-minute" element={<DerniereMinute />} />
+          <Route path="a-suivre" element={<QuatriemeCouverture />} />
+          <Route path="ours" element={<Navigate to="/a-suivre" replace />} />
+          <Route path="numero/:numero" element={<Navigate to="/" replace />} />
           <Route path="kiosque" element={<KiosqueHome />} />
           <Route path="lab" element={<BureauLab />} />
           <Route path="lab/:slug" element={<ProjectPage />} />
@@ -38,7 +58,6 @@ export default function App() {
           <Route path="projets/fonctionnement" element={<ProjetsFonctionnement />} />
           <Route path="projets/:id" element={<ProjetIdee />} />
           <Route path="suivre" element={<SuivrePage />} />
-          <Route path="edito" element={<Navigate to="/" replace />} />
           <Route path="jeux" element={<JeuxHome />} />
           <Route path="jeux/:slug" element={<JeuPage />} />
           <Route path="zine" element={<ZineHome />} />

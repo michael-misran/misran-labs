@@ -46,7 +46,7 @@ function LogoBleu({ largeur }) {
 }
 
 // Case à cocher du coupon, cochable pour le plaisir
-function Case({ libelle }) {
+function Case({ libelle, taille = 13 }) {
   const [coche, setCoche] = useState(false)
   return (
     <button
@@ -66,11 +66,11 @@ function Case({ libelle }) {
         color: ENCRE,
         fontFamily: 'var(--font-etiquette)',
         fontWeight: 500,
-        fontSize: 13,
+        fontSize: taille,
         lineHeight: 1.25,
       }}
     >
-      <span aria-hidden="true" style={{ fontSize: 17, lineHeight: 1, flexShrink: 0 }}>{coche ? '☒' : '☐'}</span>
+      <span aria-hidden="true" style={{ fontSize: '1.3em', lineHeight: 1, flexShrink: 0 }}>{coche ? '☒' : '☐'}</span>
       {libelle}
     </button>
   )
@@ -87,12 +87,114 @@ function Colonne({ titre, cases, isNarrow }) {
   )
 }
 
+// Version double page (écran large) : l'édito tient sur une seule planche du
+// magazine. Page de gauche : bandeau et texte ; page de droite : photo, fin du
+// texte, coupon et ours. Les tailles sont en cqw (largeur de la planche),
+// plafonnées par --u-planche (hauteur de l'écran, voir magazine.css) pour que
+// tout tienne quel que soit le format de l'écran.
+const cq = (n) => `calc(${n} * min(1cqw, var(--u-planche, 1cqw)))`
+// Nombre de paragraphes sur la page de gauche, le reste passe à droite près de la photo
+const PARAGRAPHES_GAUCHE = 5
+
+function EditoDouble({ t, lang }) {
+  const p = t.paragraphes
+  const paragraphe = {
+    fontFamily: 'var(--font-edito)',
+    fontSize: cq(1.5),
+    lineHeight: 1.5,
+    textAlign: 'justify',
+    hyphens: 'auto',
+    marginBottom: cq(0.9),
+  }
+  const logo = (largeur) => (
+    <span className="edito-logo" style={{ width: cq(largeur) }}><LogoBleu largeur={100} /></span>
+  )
+  return (
+    <article lang={lang} style={{ containerType: 'inline-size', background: PAPIER, color: ENCRE }}>
+      {/* Le logo SVG suit la largeur de son conteneur (en cqw) */}
+      <style>{'.edito-logo { display: block; flex-shrink: 0; } .edito-logo svg { display: block; width: 100%; height: auto; }'}</style>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: cq(6), padding: `${cq(2)} ${cq(3)} ${cq(1.2)}` }}>
+        {/* ---------- Page de gauche ---------- */}
+        <div>
+          <header style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: cq(1.4) }}>
+            {logo(6)}
+            <h1 style={{ fontFamily: 'var(--font-edito-titre)', fontWeight: 400, fontSize: cq(6.4), lineHeight: 0.85, letterSpacing: '0.04em', textTransform: 'uppercase', color: BLEU }}>
+              {t.titre}
+            </h1>
+            {logo(6)}
+          </header>
+          <div style={{ background: BLEU_PALE, padding: `${cq(1.6)} ${cq(1.8)}`, columnCount: 2, columnGap: cq(1.8) }}>
+            {p.slice(0, PARAGRAPHES_GAUCHE).map((texte) => <p key={texte} style={paragraphe}>{texte}</p>)}
+          </div>
+        </div>
+
+        {/* ---------- Page de droite ---------- */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: cq(1.6) }}>
+          <div style={{ display: 'grid', gridTemplateColumns: `${cq(17)} 1fr`, gap: cq(1.6), alignItems: 'start' }}>
+            <figure>
+              <img
+                src="/edito/michael-masque.jpg"
+                alt={lang === 'fr' ? 'Michael Misran, portant un masque de hockey' : 'Michael Misran, wearing a hockey mask'}
+                width="675"
+                height="900"
+                style={{ display: 'block', width: '100%', height: 'auto', border: `${cq(0.45)} solid ${ENCRE}`, boxSizing: 'border-box', filter: 'grayscale(1) contrast(1.15)' }}
+              />
+              <figcaption style={{ fontFamily: 'var(--font-chapo)', fontStyle: 'italic', fontSize: cq(0.95), lineHeight: 1.3, marginTop: cq(0.4) }}>
+                {t.legende}
+              </figcaption>
+            </figure>
+            <div style={{ background: BLEU_PALE, padding: `${cq(1.6)} ${cq(1.8)}`, alignSelf: 'stretch' }}>
+              {p.slice(PARAGRAPHES_GAUCHE).map((texte) => <p key={texte} style={paragraphe}>{texte}</p>)}
+            </div>
+          </div>
+
+          {/* Coupon à découper */}
+          <section aria-label={t.coupon.cri} style={{ position: 'relative', border: `2px dashed ${ENCRE}`, background: COUPON, padding: `${cq(1.4)} ${cq(1.8)} ${cq(1.1)}` }}>
+            <span aria-hidden="true" style={{ position: 'absolute', top: cq(-1.1), left: cq(1.4), fontSize: cq(1.6), background: PAPIER, padding: '0 4px', lineHeight: 1 }}>✂</span>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: cq(1.2) }}>
+              {logo(2.6)}
+              <p style={{ ...lettragePulp(cq(3)), textTransform: 'uppercase', textAlign: 'center' }}>{t.coupon.cri}</p>
+              {logo(2.6)}
+            </div>
+            <p style={{ ...etiquette, fontWeight: 700, fontSize: cq(1.2), letterSpacing: '0.06em', textAlign: 'center', margin: `${cq(0.6)} 0 ${cq(1)}` }}>
+              {t.coupon.accroche[0]}
+              <span style={{ fontFamily: 'var(--font-pulp)', color: ROUGE, letterSpacing: '0.02em', WebkitTextStroke: `1px ${ENCRE}` }}>Misran Labs</span>
+              {t.coupon.accroche[1]}
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: cq(1.8) }}>
+              {[[t.coupon.moi, t.coupon.casesMoi], [t.coupon.ami, t.coupon.casesAmi]].map(([titre, cases]) => (
+                <div key={titre}>
+                  <b style={{ ...etiquette, display: 'block', fontFamily: 'var(--font-bandeau)', fontSize: cq(1.7), letterSpacing: '0.04em', marginBottom: cq(0.5) }}>{titre}</b>
+                  <div style={{ display: 'grid', gap: cq(0.45), fontSize: cq(1) }}>
+                    {cases.map((c) => <Case key={c} libelle={c} taille={cq(1)} />)}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p style={{ marginTop: cq(1), paddingTop: cq(0.7), borderTop: `1px solid ${ENCRE}`, display: 'flex', flexWrap: 'wrap', gap: `${cq(0.4)} ${cq(1)}`, alignItems: 'baseline', fontFamily: 'var(--font-chapo)', fontStyle: 'italic', fontSize: cq(1.1) }}>
+              {t.coupon.renvoi}
+              <Link to="/suivre" style={{ ...etiquette, fontStyle: 'normal', fontWeight: 700, fontSize: cq(1), color: ROUGE }}>{t.coupon.lien}</Link>
+            </p>
+          </section>
+
+          {/* Ours, en petits caractères */}
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: cq(0.85), lineHeight: 1.4, textAlign: 'justify', hyphens: 'auto' }}>
+            {t.ours}
+          </p>
+        </div>
+      </div>
+    </article>
+  )
+}
+
 export default function EditoPage() {
   const { lang } = useLanguage()
   const isMobile = useIsMobile()
   const isNarrow = useIsMobile(600)
   const t = EDITO_TEXT[lang] ?? EDITO_TEXT.fr
   const p = t.paragraphes
+  // Écran large : l'édito tient sur une double page du magazine
+  if (!isMobile) return <EditoDouble t={t} lang={lang} />
   // Le texte coule sur deux colonnes équilibrées ; la photo flotte à droite à
   // partir de ce paragraphe, et le texte l'habille à gauche (comme le modèle DoggyBags)
   const ANCRE_PHOTO = 5

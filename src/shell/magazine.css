@@ -1,0 +1,283 @@
+/* Cadre du site-magazine : le livre ouvert occupe tout l'écran, posé sur une
+   table sombre. Format A pour les pages du numéro, double page pour les
+   rubriques. Autour : un bandeau discret (sommaire déroulant, titre du
+   numéro), des flèches fines sur les côtés et la tranche du livre. */
+
+body { background: #1b1815; }
+
+.magazine {
+  min-height: 100vh; min-height: 100dvh;
+  background: #2a2622 radial-gradient(ellipse at 50% 0%, #3b342d, #1b1815 70%) fixed;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  padding: 44px 0 0;
+  overflow-x: hidden;
+}
+
+/* ---------- Taille du magazine ----------
+   Le livre ouvert occupe toute la zone d'affichage sous le bandeau (44px) :
+   chaque page fait la moitié de l'écran. Ce qui déborde d'une rubrique passe
+   sur la planche suivante. --u-planche : unité de l'édito, calée sur la
+   hauteur comme l'ancienne planche au format LowReader. */
+.magazine {
+  --page-w: calc(100vw / 2);
+  --page-h: calc(100dvh - 44px);
+  --u-planche: calc(var(--page-h) * 2 * 3320 / 4887 / 100);
+}
+@media (min-width: 601px) {
+  .magazine { height: 100dvh; overflow: hidden; }
+}
+
+/* ---------- La feuille (une planche) ---------- */
+.feuille { position: relative; z-index: 2; width: calc(2 * var(--page-w)); }
+
+/* Pages du numéro : deux pages côte à côte, la pliure au milieu */
+.planche { display: flex; position: relative; }
+.cote { width: var(--page-w); height: var(--page-h); flex: none; position: relative; container-type: size; }
+.cote-vide { height: var(--page-h); }
+.cote-gauche .page::before, .cote-droite .page::before {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 6%; z-index: 5; pointer-events: none;
+}
+.cote-gauche .page::before { right: 0; background: linear-gradient(90deg, transparent, rgba(0,0,0,.18)); }
+.cote-droite .page::before { left: 0; background: linear-gradient(270deg, transparent, rgba(0,0,0,.22)); }
+
+/* Rubrique : toute la planche, tête courante, fenêtre de lecture, folio */
+.feuille-double {
+  height: var(--page-h);
+  display: flex; flex-direction: column;
+  background: var(--bg);
+  box-shadow: 0 30px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(0,0,0,.25);
+}
+/* Pliure centrale discrète de la double page */
+.feuille-double::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 40px; transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,.06) 45%, rgba(0,0,0,.1) 50%, rgba(0,0,0,.06) 55%, transparent);
+  pointer-events: none; z-index: 3;
+}
+.fenetre { position: relative; z-index: 1; flex: 1; min-height: 0; overflow: clip; }
+/* La rubrique coule en colonnes de la largeur de la planche : chaque colonne
+   en trop est une double page de suite, posée à droite de la précédente */
+.coulee { height: 100%; columns: 1; column-gap: 0; column-fill: auto; }
+.fin-coulee { display: block; height: 1px; }
+.folio-double {
+  position: relative; z-index: 2; flex: none;
+  padding: 6px 20px 8px; text-align: center; font: italic 15px var(--font-chapo); color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+.a-suivre-coin { position: absolute; right: 64px; bottom: 8px; font-style: italic; color: var(--text2); }
+
+/* ---------- Effet livre ---------- */
+.magazine { --table: #1b1815; }
+.scene { position: relative; width: 100%; display: flex; justify-content: center; }
+/* Copie de l'ancienne planche, posée exactement sur la nouvelle */
+.fantome { position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 5; pointer-events: none; }
+.fantome .demi { position: absolute; top: 0; height: 100%; width: 50%; overflow: hidden; }
+.fantome .demi-gauche { left: 0; }
+.fantome .demi-droite { left: 50%; }
+/* Le feuillet tourne autour de la pliure (le milieu de la planche) */
+.fantome .feuillet { overflow: visible; transform-style: preserve-3d; z-index: 2; }
+.fantome .feuillet.demi-droite { transform-origin: left center; }
+.fantome .feuillet.demi-gauche { transform-origin: right center; }
+.feuillet-recto, .feuillet-verso { position: absolute; inset: 0; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.feuillet-verso { transform: rotateY(180deg); background: #ece2c8; }
+.feuillet-recto::after, .feuillet-verso::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0; }
+.feuillet.demi-droite .feuillet-recto::after { background: linear-gradient(to left, rgba(0,0,0,.45), rgba(0,0,0,.1) 55%, transparent); }
+.feuillet.demi-gauche .feuillet-recto::after { background: linear-gradient(to right, rgba(0,0,0,.45), rgba(0,0,0,.1) 55%, transparent); }
+.feuillet-verso::after { background: rgba(0,0,0,.35); }
+.fantome-avant .feuillet { animation: feuillet-avant .9s cubic-bezier(.45,.05,.35,1) forwards; }
+.fantome-arriere .feuillet { animation: feuillet-arriere .9s cubic-bezier(.45,.05,.35,1) forwards; }
+.fantome:not(.fantome-manuel) .feuillet-recto::after { animation: page-ombre .45s ease-in forwards; }
+.fantome:not(.fantome-manuel) .feuillet-verso::after { animation: page-lumiere .9s ease-out forwards; }
+@keyframes feuillet-avant {
+  from { transform: perspective(2400px) rotateY(0deg); }
+  to { transform: perspective(2400px) rotateY(-180deg); }
+}
+@keyframes feuillet-arriere {
+  from { transform: perspective(2400px) rotateY(0deg); }
+  to { transform: perspective(2400px) rotateY(180deg); }
+}
+@keyframes page-ombre { from { opacity: 0; } to { opacity: 1; } }
+@keyframes page-lumiere { 0%, 50% { opacity: 1; } 100% { opacity: 0; } }
+/* Nouvelle planche : dans l'ombre de la page qui tourne */
+.sous-page { animation: page-dessous .9s ease-out; }
+@keyframes page-dessous { from { filter: brightness(.7); } to { filter: brightness(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .fantome { display: none; }
+  .sous-page { animation: none; }
+}
+
+/* Coins de page : cornés au survol, un clic tourne la page */
+.coin { position: absolute; bottom: 0; width: 56px; height: 56px; z-index: 6; }
+.coin-suivant { right: 0; }
+.coin-precedent { left: 0; }
+.coin::before { content: ''; position: absolute; bottom: 0; width: 20px; height: 20px; transition: width .2s ease, height .2s ease; box-shadow: 0 0 6px rgba(0,0,0,.35); }
+.coin-suivant::before { right: 0; background: linear-gradient(to top left, var(--table) 50%, #efe5cc 50%, #d6c8a6 100%); }
+.coin-precedent::before { left: 0; background: linear-gradient(to top right, var(--table) 50%, #efe5cc 50%, #d6c8a6 100%); }
+.coin:hover::before, .coin:focus-visible::before { width: 56px; height: 56px; }
+
+/* ---------- Tête courante des doubles pages ---------- */
+.tete-courante {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px;
+  padding: 10px 20px; border-bottom: 3px double var(--border);
+  font-family: var(--font-etiquette); text-transform: uppercase; letter-spacing: .14em; font-size: 12px; font-weight: 700;
+  color: var(--text2);
+}
+.tete-courante a { color: inherit; text-decoration: none; }
+.tete-courante a:hover { color: var(--text); text-decoration: underline; }
+.tc-titre { font-family: var(--font-bois); letter-spacing: .02em; font-size: 16px; font-weight: 400; color: var(--text) !important; }
+.tc-titre span { color: var(--titre-gazette); }
+.tc-rubrique { font-size: 13px; text-align: center; }
+.tc-sommaire { justify-self: end; }
+
+/* ---------- Bandeau du haut ----------
+   Discret, posé sur la table : « Sommaire + » et la rubrique en cours à
+   gauche (la liste se déplie sur place), titre du numéro et langue à droite. */
+.magazine { --bandeau-encre: #cfc4ad; --bandeau-pale: #8d8270; --accent-bandeau: #f1e7cf; }
+.bandeau {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 30; height: 44px;
+  display: flex; justify-content: space-between; align-items: center; padding: 0 24px;
+  font: 500 12px var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase; color: var(--bandeau-pale);
+  pointer-events: none;
+}
+.bandeau > * { pointer-events: auto; }
+.bandeau a { color: inherit; text-decoration: none; }
+.bandeau a:hover { color: var(--accent-bandeau); }
+.bandeau-sommaire { position: relative; display: flex; align-items: baseline; gap: 14px; }
+.sommaire-bouton {
+  display: inline-flex; align-items: center; gap: 8px; background: none; border: 0; padding: 0; cursor: pointer;
+  font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--accent-bandeau);
+}
+.sommaire-bouton:hover { color: #fff; }
+/* Le + qui devient − à l'ouverture */
+.plus { position: relative; width: 8px; height: 8px; }
+.plus::before, .plus::after { content: ''; position: absolute; left: 0; top: 50%; width: 8px; height: 1.5px; margin-top: -.75px; background: currentColor; transition: transform .25s, opacity .25s; }
+.plus::after { transform: rotate(90deg); }
+.bandeau-sommaire.ouvert .plus::after { transform: rotate(0); opacity: 0; }
+.chapitre { color: var(--bandeau-encre); transition: opacity .2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 40vw; }
+.bandeau-sommaire.ouvert .chapitre { opacity: 0; }
+.toc {
+  position: absolute; top: calc(100% + 10px); left: -16px; min-width: 320px; max-height: calc(100dvh - 70px); overflow-y: auto;
+  list-style: none; padding: 10px 22px 12px 16px;
+  background: #f1e7cf; border-left: 3px solid var(--titre-gazette); box-shadow: 0 24px 50px -10px rgba(0,0,0,.6);
+  visibility: hidden; opacity: 0; transform: translateY(-6px);
+  transition: opacity .2s, transform .2s, visibility 0s .2s;
+}
+.bandeau-sommaire.ouvert .toc { visibility: visible; opacity: 1; transform: none; transition: opacity .35s cubic-bezier(.16,1,.3,1), transform .35s cubic-bezier(.16,1,.3,1); }
+.toc li { opacity: 0; transform: translateY(6px); }
+.bandeau-sommaire.ouvert .toc li { opacity: 1; transform: none; transition: opacity .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1); transition-delay: calc(var(--i) * 18ms); }
+.toc a {
+  display: flex; gap: 14px; padding: 5px 0; color: #6b604f !important;
+  font: 17px/1.25 var(--font-edito, Georgia, serif); letter-spacing: 0; text-transform: none;
+}
+.toc a span { flex: none; width: 24px; padding-top: 3px; font: 500 12px var(--font-etiquette); letter-spacing: .08em; color: #a3977f; }
+.toc a:hover, .toc a.actif { color: #16120e !important; }
+.toc a.actif span, .toc a:hover span { color: var(--c, var(--titre-gazette)); }
+.bandeau-droite { display: flex; align-items: center; gap: .5em; }
+.bandeau-droite b { color: var(--bandeau-encre); font-weight: 500; }
+.langue {
+  margin-left: 12px; background: none; border: 1px solid var(--bandeau-pale); color: var(--bandeau-encre); cursor: pointer;
+  font: inherit; letter-spacing: inherit; padding: 3px 7px;
+}
+.langue:hover { border-color: var(--accent-bandeau); color: var(--accent-bandeau); }
+
+/* ---------- Flèches fines ----------
+   Posées sur les bords des pages : une bande invisible au milieu de chaque
+   côté, la flèche n'apparaît qu'à l'approche de la souris pour ne pas
+   masquer le texte. */
+.fleche {
+  position: fixed; top: 30%; bottom: 30%; z-index: 25; width: 56px;
+  display: grid; place-items: center; color: var(--bandeau-encre);
+}
+.fleche svg {
+  width: 48px; height: 48px; padding: 17px 7px; box-sizing: border-box; fill: currentColor;
+  background: rgba(27,24,21,.6); border-radius: 50%; backdrop-filter: blur(2px);
+  opacity: 0; transition: opacity .25s, transform .2s, color .25s;
+}
+.fleche:hover svg, .fleche:focus-visible svg { opacity: 1; }
+.fleche:hover { color: #fff; }
+.fleche-prec { left: 0; }
+.fleche-prec svg { transform: rotate(180deg); }
+.fleche-suiv { right: 0; }
+.fleche-prec:hover svg { transform: rotate(180deg) translateX(3px); }
+.fleche-suiv:hover svg { transform: translateX(3px); }
+
+/* ---------- Tranche du livre ----------
+   Les pages lues s'empilent à gauche, celles qui restent à droite. */
+.tranche {
+  position: absolute; top: 0; bottom: 0; z-index: 7; pointer-events: none;
+  background: repeating-linear-gradient(90deg, #e6dbc0 0 1px, #b9ab8a 1px 2px);
+  box-shadow: 0 0 6px rgba(0,0,0,.4);
+  transition: width .6s cubic-bezier(.16,1,.3,1);
+}
+.tranche-gauche { left: 0; width: calc(10px * var(--lues)); }
+.tranche-droite { right: 0; width: calc(10px * (1 - var(--lues))); }
+
+/* Sur téléphone : la feuille prend toute la largeur, flèches en bas */
+@media (max-width: 600px) {
+  .magazine { padding: 44px 8px 72px; justify-content: flex-start; --page-w: calc(100vw - 16px); }
+  .bandeau { padding: 0 14px; background: #1b1815; }
+  .bandeau-droite > a, .bandeau-droite > b { display: none; }
+  .bandeau-droite { font-size: 0; }
+  .langue { font-size: 12px; }
+  .chapitre { max-width: 45vw; }
+  .toc { min-width: calc(100vw - 28px); left: 0; }
+  .fleche { top: auto; bottom: 14px; width: 48px; height: 48px; }
+  .fleche svg { opacity: 1; background: #1b1815; }
+  .fleche-prec { left: 14px; }
+  .fleche-suiv { right: 90px; }
+  .tranche { display: none; }
+  /* Sur téléphone, les deux pages d'une planche s'empilent ; une rubrique
+     garde la largeur de l'écran et la hauteur disponible */
+  .feuille { width: 100%; }
+  .cote { height: auto; container-type: normal; }
+  .planche { flex-direction: column; gap: 12px; }
+  .cote-vide { display: none; }
+  .feuille-double { height: calc(100dvh - 124px); }
+  .feuille-double::before { display: none; }
+  .a-suivre-coin { display: none; }
+  .tete-courante { grid-template-columns: 1fr auto; padding: 8px 12px; }
+  .tc-rubrique { display: none; }
+}
+
+/* ---------- Thème du numéro : Halloween (octobre) ----------
+   Citrouille, violet nuit, vert slime et couleur os. Ne touche que la table
+   de lecture et les pages du numéro : les rubriques gardent leurs couleurs. */
+.theme-halloween {
+  --table: #424242;
+  background: #424242;
+}
+.theme-halloween .feuille-page {
+  --masthead-bandeau: #ff7518;
+  --masthead-fond: #2a1640;
+  --masthead-fond-ombre: #0c0614;
+  --masthead-lettre: #f6e7c8;
+  --masthead-ombre: #ff7518;
+  --masthead-sommaire: #6a2c91;
+  --masthead-logo-fond: #2a1640;
+  --pastille-2: #ff7518;
+  --n-papier: #f3e4c6;
+  --n-kraft: #e0a458;
+  --n-pub: #cdb8e6;
+  --n-pub-encre: #2a1640;
+  --n-nuit: #1a0d2b;
+}
+/* Sur le carton violet, les textes passent en couleur os */
+.theme-halloween .feuille-page .une-accroche,
+.theme-halloween .feuille-page .une-titres .rythme,
+.theme-halloween .feuille-page .fin-chapo,
+.theme-halloween .feuille-page .fin-relire { color: var(--masthead-lettre); }
+.theme-halloween .feuille-page .une-logo { color: #f6e7c8; }
+/* Toile d'araignée dans le coin du carton */
+.theme-halloween .feuille-page .toile { display: block; position: absolute; right: 0; top: 0; width: calc(15 * var(--u)); height: calc(15 * var(--u)); color: rgba(246,231,200,.55); transform: scaleX(-1); pointer-events: none; }
+/* Bandeau et flèches : accents citrouille et violet */
+.theme-halloween { --bandeau-encre: #d9c6ee; --bandeau-pale: #8a6aa8; --accent-bandeau: #ff7518; }
+.theme-halloween .toc { border-left-color: #ff7518; }
+@media (max-width: 600px) {
+  .theme-halloween .bandeau, .theme-halloween .fleche svg { background: #424242; }
+}
+
+/* Page tournée à la main : le feuillet suit le geste, sans animation automatique */
+.fantome-manuel .feuillet { animation: none !important; }
+.fantome-manuel .feuillet-recto::after { opacity: var(--progres, 0); }
+.coin { cursor: grab; touch-action: none; }
+.coin:active { cursor: grabbing; }

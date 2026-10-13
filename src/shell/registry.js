@@ -6,6 +6,7 @@ import { formatDateLongNoWeekday } from './dates'
 import { getJeu } from '../jeux/registre'
 import { getNumero } from '../zine/numeros'
 import { getParution } from '../saviez-vous/parutions'
+import { getChemin, titreDe } from '../numero/chemin'
 
 // Chemins que App.jsx sait effectivement router, en dehors de '/', '/lab/…',
 // '/projets…' et '/breves…' (déjà traités plus bas) : sert
@@ -21,7 +22,9 @@ function notFoundMeta(lang) {
 }
 
 export function resolveRouteMeta(pathname, lang) {
-  if (pathname === '/') return { icon: '✎', label: t(lang, 'editoNav') }
+  // Pages du numéro (couverture, sommaire, réclames, dossier…) : titre du chemin de fer
+  const pageNumero = getChemin().find((e) => e.format === 'page' && e.path === pathname)
+  if (pageNumero) return { icon: '❡', label: titreDe(pageNumero, lang) }
   if (pathname === '/lab') return { icon: '⬡', label: t(lang, 'labHome') }
 
   if (pathname.startsWith('/lab/')) {
