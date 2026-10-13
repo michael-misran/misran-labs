@@ -47,6 +47,7 @@ git worktree add .worktrees/breves -b auto/breves-<date> origin/main
 ```bash
 python3 -m json.tool .worktrees/breves/src/breves/jours/<date>.json
 ```
+Faire relire la forme par le sous-agent `secretaire` (fichier `.worktrees/breves/src/breves/jours/<date>.json` : orthographe, typographie, anglais) et appliquer ses corrections de forme, sans jamais ajouter de fait ; revalider le JSON avec la commande ci-dessus.
 ```bash
 git -C .worktrees/breves add src/breves/jours/<date>.json
 ```
