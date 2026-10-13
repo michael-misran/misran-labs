@@ -36,7 +36,7 @@ function saisonDuJour(date = new Date()) {
 // les livres sont posés, depuis le bas de l'image
 const PRESENTOIR = [
   { id: 'numero-1', left: 39.7, width: 4.1 },
-  { id: 'numero-2', left: 45.1, width: 4.1 },
+  { id: 'midnight-1', left: 45.1, width: 4.1 },
   { id: 'gazette', left: 50.6, width: 4.1 },
   { id: 'portfolio', left: 56.3, width: 4.1 },
 ]
