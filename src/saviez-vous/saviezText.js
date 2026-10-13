@@ -1,7 +1,7 @@
 // Textes fr/en de la rubrique « Le saviez-vous ? ».
 export const SAVIEZ_TEXT = {
   fr: {
-    presente: 'Misran Labs présente : le saviez-vous ?',
+    presente: '1977 Éditions présente : le saviez-vous ?',
     parution: 'Parution du',
     illustrationAttente: 'Planche en préparation à l’atelier',
     sources: 'Sources',
@@ -19,7 +19,7 @@ export const SAVIEZ_TEXT = {
     ],
   },
   en: {
-    presente: 'Misran Labs presents: did you know?',
+    presente: '1977 Éditions presents: did you know?',
     parution: 'Issue of',
     illustrationAttente: 'Plate in the works at the studio',
     sources: 'Sources',

@@ -143,7 +143,7 @@ export default function Bibliotheque() {
   const volume = VOLUMES.find((v) => v.id === sorti)
 
   useEffect(() => {
-    document.title = lang === 'fr' ? 'Misran Labs — la bibliothèque' : 'Misran Labs — the library'
+    document.title = lang === 'fr' ? '1977 Éditions — la bibliothèque' : '1977 Éditions — the library'
   }, [lang])
   useEffect(() => {
     if (!sorti) return undefined
@@ -160,7 +160,7 @@ export default function Bibliotheque() {
       <div className="sl-parquet" aria-hidden="true" />
 
       <header className="sl-bandeau">
-        <span className="sl-marque">Misran Labs</span>
+        <span className="sl-marque">1977 Éditions</span>
         <span className="sl-aide">{lang === 'fr' ? 'Choisissez un livre sur l’étagère' : 'Pick a book from the shelf'}</span>
         <button type="button" onClick={basculerLangue} aria-label={lang === 'fr' ? 'Switch to English' : 'Passer en français'}>
           {lang === 'fr' ? 'EN' : 'FR'}

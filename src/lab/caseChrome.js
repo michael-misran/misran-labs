@@ -16,7 +16,7 @@ export const KRAFT = {
 export const CASE_CHROME = {
   fr: {
     mastheadCenter: 'ARCHIVE DU LAB //// DOSSIER PROJET',
-    mastheadRight: 'MISRAN LABS',
+    mastheadRight: '1977 ÉDITIONS',
     mastheadRightSub: 'ARCHIVE VISUEL',
     tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
     clearance: 'NIVEAU DE LECTURE — PUBLIC',
@@ -28,7 +28,7 @@ export const CASE_CHROME = {
   },
   en: {
     mastheadCenter: 'LAB ARCHIVE //// PROJECT FILE',
-    mastheadRight: 'MISRAN LABS',
+    mastheadRight: '1977 ÉDITIONS',
     mastheadRightSub: 'VISUAL ARCHIVE',
     tagline: 'DESIGN IS INTENT. DETAILS ARE EVERYTHING.',
     clearance: 'CLEARANCE LEVEL — PUBLIC',

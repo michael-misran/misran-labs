@@ -60,7 +60,7 @@ export const BREVES_TEXT = {
     home: {
       fileNo: 'RUBRIQUE — GAZETTE',
       mastheadCenter: 'ARCHIVE DU LAB //// ACTU DU JOUR',
-      mastheadRight: 'MISRAN LABS',
+      mastheadRight: '1977 ÉDITIONS',
       mastheadRightSub: 'QUOTIDIEN',
       title: 'La Gazette du Lab',
       subtitle: 'LES BRÈVES IA & TECH DU JOUR',
@@ -85,7 +85,7 @@ export const BREVES_TEXT = {
     day: {
       mastheadCenter: 'ARCHIVE DU LAB //// ACTU DU JOUR',
       backLabel: '← La Gazette',
-      right: 'MISRAN LABS',
+      right: '1977 ÉDITIONS',
       wordLabel: 'LE MOT',
       figureLabel: 'LE CHIFFRE',
       sourceLink: 'Lire la source ↗',
@@ -116,7 +116,7 @@ export const BREVES_TEXT = {
     home: {
       fileNo: 'SECTION — GAZETTE',
       mastheadCenter: 'LAB ARCHIVE //// DAILY BRIEFS',
-      mastheadRight: 'MISRAN LABS',
+      mastheadRight: '1977 ÉDITIONS',
       mastheadRightSub: 'DAILY',
       title: 'The Lab Gazette',
       subtitle: 'TODAY\'S AI & TECH BRIEFS',
@@ -141,7 +141,7 @@ export const BREVES_TEXT = {
     day: {
       mastheadCenter: 'LAB ARCHIVE //// DAILY BRIEFS',
       backLabel: '← The Gazette',
-      right: 'MISRAN LABS',
+      right: '1977 ÉDITIONS',
       wordLabel: 'THE WORD',
       figureLabel: 'THE FIGURE',
       sourceLink: 'Read the source ↗',

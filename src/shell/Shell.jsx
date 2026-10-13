@@ -255,7 +255,7 @@ export default function Shell() {
     if (location.pathname === '/magazine') {
       document.title = t(lang, 'homeDocumentTitle')
     } else {
-      document.title = meta.label ? `${meta.label} · Misran Labs` : 'Misran Labs'
+      document.title = meta.label ? `${meta.label} · 1977 Éditions` : '1977 Éditions'
     }
   }, [location.pathname, meta.label, lang])
 

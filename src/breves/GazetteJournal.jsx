@@ -120,7 +120,7 @@ export default function GazetteJournal() {
   const deplier = () => setEtat((e) => (e === 'plie' ? 'depli' : e))
 
   useEffect(() => {
-    document.title = `${BREVES_TEXT[lang].home.title} · Misran Labs`
+    document.title = `${BREVES_TEXT[lang].home.title} · 1977 Éditions`
   }, [lang])
 
   // Flèches du clavier : numéro précédent / suivant

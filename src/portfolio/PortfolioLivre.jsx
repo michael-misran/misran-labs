@@ -109,7 +109,7 @@ function Couverture({ lang }) {
         <span className="pf-couv-filet" aria-hidden="true" />
         <p className="pf-couv-metier">{lt(LT.metier, lang)}</p>
         <p className="pf-couv-spe">{lt(LT.specialite, lang)}</p>
-        <span className="pf-couv-edition">{lt(LT.edition, lang)} · Misran Labs</span>
+        <span className="pf-couv-edition">{lt(LT.edition, lang)} · 1977 Éditions</span>
       </div>
     </section>
   )
