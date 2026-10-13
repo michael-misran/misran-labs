@@ -38,7 +38,7 @@ export const CV = {
     concentrixBullets: [
       { label: 'Innovation IA & Automatisation', text: "Pionnier de l'intégration de l'IA générative dans le workflow de design. Configuration d'outils avancés (Figma MCP, agents IA) pour automatiser la production et accélérer l'idéation." },
       { label: 'Pipeline Design-to-Code (GitHub)', text: 'Connexion directe de Figma aux dépôts GitHub avec la Lead Tech. Synchronisation automatique des Design Tokens, garantissant la cohérence en production.' },
-      { label: 'Gouvernance & Scalabilité', text: "Conception et maintenance d'un Design System multi-marques pour accélérer le Time-to-Market." },
+      { label: 'Gouvernance & Scalabilité', text: "Conception et maintenance d'un Design System client pour accélérer le Time-to-Market." },
       { label: 'Alignement International', text: "Animation d'ateliers de co-conception avec les PO, PM et Tech Leads sur 3 zones (Europe, Amérique, Inde), pour fluidifier la prise de décision produit à l'échelle internationale." },
     ],
     iadTitle: 'IAD France',
@@ -100,7 +100,7 @@ export const CV = {
     concentrixBullets: [
       { label: 'AI Innovation & Automation', text: 'Pioneered the integration of generative AI into the design workflow. Set up advanced tooling (Figma MCP, AI agents) to automate production and speed up ideation.' },
       { label: 'Design-to-Code Pipeline (GitHub)', text: 'Direct connection from Figma to GitHub repos with the Lead Tech. Automatic Design Token sync, ensuring production consistency.' },
-      { label: 'Governance & Scalability', text: 'Designed and maintained a multi-brand Design System to speed up time-to-market.' },
+      { label: 'Governance & Scalability', text: 'Designed and maintained a client Design System to speed up time-to-market.' },
       { label: 'International Alignment', text: 'Ran co-design workshops with POs, PMs and Tech Leads across 3 regions (Europe, Americas, India), streamlining product decision-making at an international scale.' },
     ],
     iadTitle: 'IAD France',

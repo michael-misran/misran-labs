@@ -196,6 +196,8 @@ body:has(.pf-table) { margin: 0; }
 .pf-encart figcaption { font: italic calc(var(--u) * 1.5)/1.3 var(--font-chapo); color: var(--pf-gris); }
 .pf-encart-cadre, .pf-encart-image { width: 100%; display: block; border: 1px solid #bfb39b; }
 .pf-encart-image { object-fit: cover; background: #e8e0cf; }
+/* Schémas et maquettes : affichés en entier, jamais rognés */
+.pf-encart-entier { object-fit: contain; background: #fff; }
 .pf-encart-cadre {
   position: relative; display: grid; place-items: center; min-height: calc(var(--u) * 10);
   background: repeating-linear-gradient(-45deg, #ece4d2 0 calc(var(--u) * .6), #e4dac5 calc(var(--u) * .6) calc(var(--u) * 1.2));

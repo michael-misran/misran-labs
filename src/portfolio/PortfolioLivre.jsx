@@ -29,7 +29,7 @@ function Encart({ id, lang, atelier, grand }) {
   return (
     <figure className={`pf-encart${e.ratio ? '' : ' pf-encart-libre'}${grand ? ' pf-encart-grand' : ''}`}>
       {e.image ? (
-        <img className="pf-encart-image" src={e.image} alt={lt(e.legende, lang)} style={style} />
+        <img className={`pf-encart-image${e.entier ? ' pf-encart-entier' : ''}`} src={e.image} alt={lt(e.legende, lang)} style={style} />
       ) : (
         <div className="pf-encart-cadre" style={style}>
           <span className="pf-repere pf-repere-hg" aria-hidden="true" />
@@ -235,7 +235,7 @@ function pagesDuLivre(lang, atelier) {
       </Page>
     ),
 
-    // 8 — chapitre II : design system multi-marques
+    // 8 — chapitre II : design system client
     () => (
       <Page folio={8} tete={`${ROMAINS[1]} · ${lt(LT.ch2, lang)}`}>
         <Chapitre n={2} titre={lt(LT.ch2, lang)} chapo={lt(LT.ch2Chapo, lang)} />

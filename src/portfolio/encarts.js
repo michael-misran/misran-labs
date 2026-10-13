@@ -7,6 +7,7 @@
 // - en production : seulement le cadre hachuré et la légende.
 // - ratio : proportion conseillée du visuel (largeur / hauteur) ; sans ratio,
 //   l'encart prend toute la place libre de la page.
+// - entier: true : l'image est affichée en entier, jamais rognée (schémas).
 
 export const ENCARTS = {
   portrait: {
@@ -16,33 +17,38 @@ export const ENCARTS = {
     consigne: 'Une photo portrait, lumière naturelle, fond neutre. Pas forcément souriant : net et sobre.',
   },
   'workflow-board': {
-    image: null,
-    legende: { fr: 'Le tableau de bord du run et de l’unification', en: 'The run & unification board' },
-    consigne: 'Capture du board (Figma / FigJam / Notion) qui montre les demandes produit A, B, C et la colonne design system. Flouter les noms de clients.',
+    image: '/portfolio/workflow-board.jpg',
+    entier: true,
+    legende: { fr: 'La feuille de route du design system, de février à avril', en: 'The design system roadmap, February to April' },
+    consigne: 'Gantt de la roadmap (POC, primitives, sémantique, composants, passation), extrait du fichier Figma « workflow ».',
   },
   'workflow-rituels': {
-    image: null,
+    image: '/portfolio/workflow-rituels.jpg',
+    entier: true,
     ratio: '16 / 9',
-    legende: { fr: 'Un atelier de co-conception (Europe, Amérique, Inde)', en: 'A co-design workshop (Europe, Americas, India)' },
-    consigne: 'Photo ou capture d’un atelier : post-its, FigJam, tableau blanc. Sans visage identifiable sans accord.',
+    legende: { fr: 'Plusieurs designers sur un même système : branches et relecture', en: 'Several designers, one system: branches and peer review' },
+    consigne: 'Workflow de branches Figma entre designers, extrait du fichier Figma « workflow ».',
   },
   'ds-figma': {
-    image: null,
+    image: '/portfolio/ds-figma.jpg',
+    entier: true,
     ratio: '16 / 10',
     legende: { fr: 'Variables Figma : primitives, sémantiques, composants', en: 'Figma variables: primitive, semantic, component' },
     consigne: 'Capture du panneau Variables de Figma avec les collections par marque (modes). Idéalement deux marques côte à côte.',
   },
   'ds-github': {
-    image: null,
+    image: '/portfolio/ds-github.jpg',
+    entier: true,
     ratio: '16 / 10',
-    legende: { fr: 'Les tokens synchronisés dans le dépôt GitHub', en: 'Tokens synced into the GitHub repo' },
-    consigne: 'Capture d’une pull request automatique de tokens (diff JSON) ou du fichier tokens dans le dépôt. Masquer le nom de l’organisation.',
+    legende: { fr: 'De la variable Figma au thème du code : quatre niveaux', en: 'From Figma variable to code theme: four levels' },
+    consigne: 'Schéma des quatre niveaux de tokens (primitive, sémantique, composant, thème MUI), extrait du fichier Figma « workflow ».',
   },
   'ds-composants': {
-    image: null,
+    image: '/portfolio/ds-composants.jpg',
+    entier: true,
     ratio: '16 / 9',
-    legende: { fr: 'Un même composant, trois marques', en: 'One component, three brands' },
-    consigne: 'Planche Figma : un bouton ou une carte décliné dans les marques (marque blanche). Exporter en PNG 2x.',
+    legende: { fr: 'Avant de créer un composant : l’arbre de décision', en: 'Before building a component: the decision tree' },
+    consigne: 'Arbre de décision « nouveau composant », extrait du fichier Figma « workflow », logo du client retiré.',
   },
   'ia-session': {
     image: null,

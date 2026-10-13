@@ -60,7 +60,7 @@ export const LT = {
     en: 'If the run goes over 70% two weeks in a row: warning sign, we reprioritise.',
   },
 
-  ch2: { fr: 'Le design system multi-marques', en: 'The multi-brand design system' },
+  ch2: { fr: 'Le design system client', en: 'The client design system' },
   ch2Chapo: {
     fr: 'Un seul système pour plusieurs marques, du fichier Figma jusqu’au code en production, sans ressaisie à la main.',
     en: 'One system for several brands, from the Figma file all the way to production code, with no manual re-entry.',
