@@ -19,5 +19,13 @@
   },
   "type": "produit",
   "taille": "petite",
-  "statut": "proposee"
+  "statut": "en-cours",
+  "decision": {
+    "date": "2026-10-13",
+    "note": {
+      "fr": "Gardée par Michael : premier essai où Claude mène le projet seul jusqu'à la pull request, avec une maquette à valider avant de coder l'application.",
+      "en": "Kept by Michael: first trial where Claude runs the project alone up to the pull request, with a mock-up to approve before coding the app."
+    }
+  },
+  "mission": "p006-maquettes"
 }
