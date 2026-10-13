@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>La Marque — Nouvelle partie</title>
+    <link rel="stylesheet" href="p006.css" />
+  </head>
+  <body class="papier-quadrille">
+    <div class="page-shell">
+      <div class="page-toolbar">
+        <a class="back-link" href="accueil.html">← Accueil</a>
+        <h1>La Marque <span class="provisional-tag">Nom provisoire</span></h1>
+        <span></span>
+      </div>
+
+      <div class="phone">
+        <div class="dynamic-island"></div>
+        <div class="phone-screen papier-quadrille">
+          <div class="status-bar" data-status-bar></div>
+          <div class="screen-content">
+            <div class="screen-title">Nouvelle partie</div>
+            <p class="screen-subtitle">Tarot à 3, 4 ou 5 joueurs.</p>
+
+            <div id="avertissement-partie-existante" class="reprise-bloc" hidden>
+              <p>Une partie est en cours. Commencer ici l'effacera.</p>
+            </div>
+
+            <div class="form-field">
+              <label>Nombre de joueurs</label>
+              <div class="btn-row" id="choix-nb-joueurs">
+                <button type="button" class="btn" data-nb="3">3</button>
+                <button type="button" class="btn" data-nb="4">4</button>
+                <button type="button" class="btn" data-nb="5">5</button>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label>Prénoms, dans l'ordre autour de la table</label>
+              <div id="liste-prenoms"></div>
+            </div>
+
+            <button type="button" class="btn primary" id="btn-commencer" style="width: 100%; margin-top: 10px;">Commencer la partie</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="p006-calcul.js" defer></script>
+    <script src="p006.js" defer></script>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        const P006 = window.P006;
+        const partieExistante = P006.chargerPartie();
+        document.getElementById('avertissement-partie-existante').hidden = !partieExistante;
+
+        let nbJoueurs = (partieExistante && partieExistante.nbJoueurs) || 4;
+        const nomsDepart = (partieExistante && partieExistante.joueurs) || [];
+
+        const choixNb = document.getElementById('choix-nb-joueurs');
+        const listePrenoms = document.getElementById('liste-prenoms');
+
+        function rendreChampsPrenoms() {
+          const valeursActuelles = Array.from(listePrenoms.querySelectorAll('input')).map((i) => i.value);
+          let html = '';
+          for (let i = 0; i < nbJoueurs; i++) {
+            const valeur = valeursActuelles[i] !== undefined ? valeursActuelles[i] : nomsDepart[i] || '';
+            html += `
+              <div class="form-field">
+                <label for="prenom-${i}">Joueur ${i + 1}</label>
+                <input id="prenom-${i}" type="text" maxlength="20" placeholder="Joueur ${i + 1}" value="${P006.escapeHtml(valeur)}" />
+              </div>`;
+          }
+          listePrenoms.innerHTML = html;
+        }
+
+        choixNb.querySelectorAll('button').forEach((btn) => {
+          btn.setAttribute('aria-pressed', Number(btn.getAttribute('data-nb')) === nbJoueurs ? 'true' : 'false');
+          btn.addEventListener('click', () => {
+            nbJoueurs = Number(btn.getAttribute('data-nb'));
+            choixNb.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+            rendreChampsPrenoms();
+          });
+        });
+
+        rendreChampsPrenoms();
+
+        document.getElementById('btn-commencer').addEventListener('click', () => {
+          const joueurs = Array.from(listePrenoms.querySelectorAll('input')).map(
+            (input, i) => input.value.trim() || 'Joueur ' + (i + 1)
+          );
+          const partie = P006.nouvellePartieVide(joueurs);
+          P006.sauvegarderPartie(partie);
+          window.location.href = 'scores.html';
+        });
+      });
+    </script>
+  </body>
+</html>

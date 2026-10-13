@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>La Marque — Accueil</title>
+    <link rel="stylesheet" href="p006.css" />
+  </head>
+  <body class="papier-quadrille">
+    <div class="page-shell">
+      <div class="page-toolbar">
+        <a class="back-link" href="index.html">← Sommaire</a>
+        <h1>La Marque <span class="provisional-tag">Nom provisoire</span></h1>
+        <span></span>
+      </div>
+
+      <div class="phone">
+        <div class="dynamic-island"></div>
+        <div class="phone-screen papier-quadrille">
+          <div class="status-bar" data-status-bar></div>
+          <div class="screen-content">
+            <div class="screen-title">Jeux</div>
+
+            <div id="reprise" class="reprise-bloc" hidden>
+              <p id="reprise-texte"></p>
+              <a class="btn primary" href="scores.html">Reprendre la partie</a>
+            </div>
+
+            <div class="jeu-grid">
+              <a class="jeu-carte actif" href="joueurs.html">
+                <span class="emoji">♠</span>
+                <span class="nom">Tarot</span>
+              </a>
+              <div class="jeu-carte bientot">
+                <span class="emoji">🃏</span>
+                <span class="nom">Belote</span>
+                <span class="bientot">Bientôt</span>
+              </div>
+              <div class="jeu-carte bientot">
+                <span class="emoji">🎳</span>
+                <span class="nom">Mölkky</span>
+                <span class="bientot">Bientôt</span>
+              </div>
+              <div class="jeu-carte bientot">
+                <span class="emoji">🔢</span>
+                <span class="nom">Skyjo</span>
+                <span class="bientot">Bientôt</span>
+              </div>
+              <div class="jeu-carte bientot">
+                <span class="emoji">🎲</span>
+                <span class="nom">Yams</span>
+                <span class="bientot">Bientôt</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="p006-calcul.js" defer></script>
+    <script src="p006.js" defer></script>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        const partie = window.P006.chargerPartie();
+        if (!partie) return;
+
+        const nbDonnes = partie.donnes ? partie.donnes.length : 0;
+        document.getElementById('reprise-texte').textContent =
+          `Partie en cours : ${partie.nbJoueurs} joueurs, ${nbDonnes} donne(s) jouée(s).`;
+        document.getElementById('reprise').hidden = false;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,849 @@
+{
+  "cas": [
+    {
+      "nom": "3j-petite-reussi-pile-1bout",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 0,
+        "appele": null,
+        "contrat": "petite",
+        "bouts": 1,
+        "pointsRealises": 51,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 51,
+        "ecart": 0,
+        "attaqueReussie": true,
+        "scores": [
+          50,
+          -25,
+          -25
+        ]
+      }
+    },
+    {
+      "nom": "3j-garde-chute-0bout",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 1,
+        "appele": null,
+        "contrat": "garde",
+        "bouts": 0,
+        "pointsRealises": 40,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 56,
+        "ecart": 16,
+        "attaqueReussie": false,
+        "scores": [
+          82,
+          -164,
+          82
+        ]
+      }
+    },
+    {
+      "nom": "3j-gardesans-reussi-2bouts",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 2,
+        "appele": null,
+        "contrat": "garde-sans",
+        "bouts": 2,
+        "pointsRealises": 55,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 41,
+        "ecart": 14,
+        "attaqueReussie": true,
+        "scores": [
+          -156,
+          -156,
+          312
+        ]
+      }
+    },
+    {
+      "nom": "3j-gardecontre-chute-3bouts",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 0,
+        "appele": null,
+        "contrat": "garde-contre",
+        "bouts": 3,
+        "pointsRealises": 30,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 36,
+        "ecart": 6,
+        "attaqueReussie": false,
+        "scores": [
+          -372,
+          186,
+          186
+        ]
+      }
+    },
+    {
+      "nom": "3j-petitaubout-attaque",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 0,
+        "appele": null,
+        "contrat": "petite",
+        "bouts": 1,
+        "pointsRealises": 51,
+        "petitAuBout": "attaque",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 51,
+        "ecart": 0,
+        "attaqueReussie": true,
+        "scores": [
+          70,
+          -35,
+          -35
+        ]
+      }
+    },
+    {
+      "nom": "3j-petitaubout-defense-mais-attaque-gagne",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 1,
+        "appele": null,
+        "contrat": "garde",
+        "bouts": 1,
+        "pointsRealises": 60,
+        "petitAuBout": "defense",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 51,
+        "ecart": 9,
+        "attaqueReussie": true,
+        "scores": [
+          -48,
+          96,
+          -48
+        ]
+      }
+    },
+    {
+      "nom": "3j-poignee-simple",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 0,
+        "appele": null,
+        "contrat": "petite",
+        "bouts": 1,
+        "pointsRealises": 51,
+        "petitAuBout": "aucun",
+        "poignee": {
+          "camp": "attaque",
+          "type": "simple"
+        },
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 51,
+        "ecart": 0,
+        "attaqueReussie": true,
+        "scores": [
+          90,
+          -45,
+          -45
+        ]
+      }
+    },
+    {
+      "nom": "3j-poignee-double-chute",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 2,
+        "appele": null,
+        "contrat": "garde",
+        "bouts": 0,
+        "pointsRealises": 50,
+        "petitAuBout": "aucun",
+        "poignee": {
+          "camp": "defense",
+          "type": "double"
+        },
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 56,
+        "ecart": 6,
+        "attaqueReussie": false,
+        "scores": [
+          92,
+          92,
+          -184
+        ]
+      }
+    },
+    {
+      "nom": "3j-poignee-triple",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 0,
+        "appele": null,
+        "contrat": "petite",
+        "bouts": 2,
+        "pointsRealises": 60,
+        "petitAuBout": "aucun",
+        "poignee": {
+          "camp": "attaque",
+          "type": "triple"
+        },
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 41,
+        "ecart": 19,
+        "attaqueReussie": true,
+        "scores": [
+          168,
+          -84,
+          -84
+        ]
+      }
+    },
+    {
+      "nom": "3j-chelem-annonce-reussi",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 0,
+        "appele": null,
+        "contrat": "garde-sans",
+        "bouts": 3,
+        "pointsRealises": 91,
+        "petitAuBout": "attaque",
+        "poignee": null,
+        "chelem": "annonce-reussi"
+      },
+      "attendu": {
+        "pointsAFaire": 36,
+        "ecart": 55,
+        "attaqueReussie": true,
+        "scores": [
+          1520,
+          -760,
+          -760
+        ]
+      }
+    },
+    {
+      "nom": "3j-chelem-non-annonce-reussi",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 1,
+        "appele": null,
+        "contrat": "garde",
+        "bouts": 2,
+        "pointsRealises": 91,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "non-annonce-reussi"
+      },
+      "attendu": {
+        "pointsAFaire": 41,
+        "ecart": 50,
+        "attaqueReussie": true,
+        "scores": [
+          -350,
+          700,
+          -350
+        ]
+      }
+    },
+    {
+      "nom": "3j-chelem-annonce-rate",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 2,
+        "appele": null,
+        "contrat": "garde",
+        "bouts": 1,
+        "pointsRealises": 65,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "annonce-rate"
+      },
+      "attendu": {
+        "pointsAFaire": 51,
+        "ecart": 14,
+        "attaqueReussie": true,
+        "scores": [
+          122,
+          122,
+          -244
+        ]
+      }
+    },
+    {
+      "nom": "3j-demipoints-reussi",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 0,
+        "appele": null,
+        "contrat": "petite",
+        "bouts": 1,
+        "pointsRealises": 51.5,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 51,
+        "ecart": 1,
+        "attaqueReussie": true,
+        "scores": [
+          52,
+          -26,
+          -26
+        ]
+      }
+    },
+    {
+      "nom": "3j-demipoints-chute",
+      "donne": {
+        "nbJoueurs": 3,
+        "preneur": 1,
+        "appele": null,
+        "contrat": "garde",
+        "bouts": 0,
+        "pointsRealises": 55.5,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 56,
+        "ecart": 1,
+        "attaqueReussie": false,
+        "scores": [
+          52,
+          -104,
+          52
+        ]
+      }
+    },
+    {
+      "nom": "4j-petite-reussi-0bout",
+      "donne": {
+        "nbJoueurs": 4,
+        "preneur": 0,
+        "appele": null,
+        "contrat": "petite",
+        "bouts": 0,
+        "pointsRealises": 56,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 56,
+        "ecart": 0,
+        "attaqueReussie": true,
+        "scores": [
+          75,
+          -25,
+          -25,
+          -25
+        ]
+      }
+    },
+    {
+      "nom": "4j-garde-chute-1bout",
+      "donne": {
+        "nbJoueurs": 4,
+        "preneur": 1,
+        "appele": null,
+        "contrat": "garde",
+        "bouts": 1,
+        "pointsRealises": 45,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 51,
+        "ecart": 6,
+        "attaqueReussie": false,
+        "scores": [
+          62,
+          -186,
+          62,
+          62
+        ]
+      }
+    },
+    {
+      "nom": "4j-gardesans-reussi-3bouts",
+      "donne": {
+        "nbJoueurs": 4,
+        "preneur": 2,
+        "appele": null,
+        "contrat": "garde-sans",
+        "bouts": 3,
+        "pointsRealises": 70,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 36,
+        "ecart": 34,
+        "attaqueReussie": true,
+        "scores": [
+          -236,
+          -236,
+          708,
+          -236
+        ]
+      }
+    },
+    {
+      "nom": "4j-gardecontre-reussi-2bouts",
+      "donne": {
+        "nbJoueurs": 4,
+        "preneur": 3,
+        "appele": null,
+        "contrat": "garde-contre",
+        "bouts": 2,
+        "pointsRealises": 41,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 41,
+        "ecart": 0,
+        "attaqueReussie": true,
+        "scores": [
+          -150,
+          -150,
+          -150,
+          450
+        ]
+      }
+    },
+    {
+      "nom": "4j-petitaubout-defense",
+      "donne": {
+        "nbJoueurs": 4,
+        "preneur": 0,
+        "appele": null,
+        "contrat": "petite",
+        "bouts": 1,
+        "pointsRealises": 51,
+        "petitAuBout": "defense",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 51,
+        "ecart": 0,
+        "attaqueReussie": true,
+        "scores": [
+          45,
+          -15,
+          -15,
+          -15
+        ]
+      }
+    },
+    {
+      "nom": "4j-poignee-simple-defense-gagne",
+      "donne": {
+        "nbJoueurs": 4,
+        "preneur": 1,
+        "appele": null,
+        "contrat": "garde",
+        "bouts": 0,
+        "pointsRealises": 30,
+        "petitAuBout": "aucun",
+        "poignee": {
+          "camp": "attaque",
+          "type": "simple"
+        },
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 56,
+        "ecart": 26,
+        "attaqueReussie": false,
+        "scores": [
+          122,
+          -366,
+          122,
+          122
+        ]
+      }
+    },
+    {
+      "nom": "4j-poignee-double",
+      "donne": {
+        "nbJoueurs": 4,
+        "preneur": 2,
+        "appele": null,
+        "contrat": "petite",
+        "bouts": 2,
+        "pointsRealises": 41,
+        "petitAuBout": "aucun",
+        "poignee": {
+          "camp": "defense",
+          "type": "double"
+        },
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 41,
+        "ecart": 0,
+        "attaqueReussie": true,
+        "scores": [
+          -55,
+          -55,
+          165,
+          -55
+        ]
+      }
+    },
+    {
+      "nom": "4j-chelem-annonce-rate",
+      "donne": {
+        "nbJoueurs": 4,
+        "preneur": 0,
+        "appele": null,
+        "contrat": "garde",
+        "bouts": 0,
+        "pointsRealises": 70,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "annonce-rate"
+      },
+      "attendu": {
+        "pointsAFaire": 56,
+        "ecart": 14,
+        "attaqueReussie": true,
+        "scores": [
+          -366,
+          122,
+          122,
+          122
+        ]
+      }
+    },
+    {
+      "nom": "4j-demipoints-chute-proche",
+      "donne": {
+        "nbJoueurs": 4,
+        "preneur": 3,
+        "appele": null,
+        "contrat": "petite",
+        "bouts": 1,
+        "pointsRealises": 50.5,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 51,
+        "ecart": 1,
+        "attaqueReussie": false,
+        "scores": [
+          26,
+          26,
+          26,
+          -78
+        ]
+      }
+    },
+    {
+      "nom": "5j-petite-reussi-0bout",
+      "donne": {
+        "nbJoueurs": 5,
+        "preneur": 0,
+        "appele": 3,
+        "contrat": "petite",
+        "bouts": 0,
+        "pointsRealises": 60,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 56,
+        "ecart": 4,
+        "attaqueReussie": true,
+        "scores": [
+          58,
+          -29,
+          -29,
+          29,
+          -29
+        ]
+      }
+    },
+    {
+      "nom": "5j-garde-chute-1bout",
+      "donne": {
+        "nbJoueurs": 5,
+        "preneur": 1,
+        "appele": 4,
+        "contrat": "garde",
+        "bouts": 1,
+        "pointsRealises": 40,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 51,
+        "ecart": 11,
+        "attaqueReussie": false,
+        "scores": [
+          72,
+          -144,
+          72,
+          72,
+          -72
+        ]
+      }
+    },
+    {
+      "nom": "5j-gardesans-reussi-2bouts",
+      "donne": {
+        "nbJoueurs": 5,
+        "preneur": 2,
+        "appele": 0,
+        "contrat": "garde-sans",
+        "bouts": 2,
+        "pointsRealises": 50,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 41,
+        "ecart": 9,
+        "attaqueReussie": true,
+        "scores": [
+          136,
+          -136,
+          272,
+          -136,
+          -136
+        ]
+      }
+    },
+    {
+      "nom": "5j-gardecontre-chute-3bouts",
+      "donne": {
+        "nbJoueurs": 5,
+        "preneur": 3,
+        "appele": 1,
+        "contrat": "garde-contre",
+        "bouts": 3,
+        "pointsRealises": 30,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 36,
+        "ecart": 6,
+        "attaqueReussie": false,
+        "scores": [
+          186,
+          -186,
+          186,
+          -372,
+          186
+        ]
+      }
+    },
+    {
+      "nom": "5j-petitaubout-attaque",
+      "donne": {
+        "nbJoueurs": 5,
+        "preneur": 4,
+        "appele": 2,
+        "contrat": "garde",
+        "bouts": 2,
+        "pointsRealises": 45,
+        "petitAuBout": "attaque",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 41,
+        "ecart": 4,
+        "attaqueReussie": true,
+        "scores": [
+          -78,
+          -78,
+          78,
+          -78,
+          156
+        ]
+      }
+    },
+    {
+      "nom": "5j-poignee-simple",
+      "donne": {
+        "nbJoueurs": 5,
+        "preneur": 0,
+        "appele": 1,
+        "contrat": "petite",
+        "bouts": 1,
+        "pointsRealises": 51,
+        "petitAuBout": "aucun",
+        "poignee": {
+          "camp": "attaque",
+          "type": "simple"
+        },
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 51,
+        "ecart": 0,
+        "attaqueReussie": true,
+        "scores": [
+          90,
+          45,
+          -45,
+          -45,
+          -45
+        ]
+      }
+    },
+    {
+      "nom": "5j-chelem-annonce-reussi",
+      "donne": {
+        "nbJoueurs": 5,
+        "preneur": 2,
+        "appele": 4,
+        "contrat": "garde-sans",
+        "bouts": 3,
+        "pointsRealises": 91,
+        "petitAuBout": "attaque",
+        "poignee": {
+          "camp": "attaque",
+          "type": "triple"
+        },
+        "chelem": "annonce-reussi"
+      },
+      "attendu": {
+        "pointsAFaire": 36,
+        "ecart": 55,
+        "attaqueReussie": true,
+        "scores": [
+          -800,
+          -800,
+          1600,
+          -800,
+          800
+        ]
+      }
+    },
+    {
+      "nom": "5j-demipoints-chute",
+      "donne": {
+        "nbJoueurs": 5,
+        "preneur": 1,
+        "appele": 3,
+        "contrat": "garde",
+        "bouts": 0,
+        "pointsRealises": 50.5,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 56,
+        "ecart": 6,
+        "attaqueReussie": false,
+        "scores": [
+          62,
+          -124,
+          62,
+          -62,
+          62
+        ]
+      }
+    },
+    {
+      "nom": "5j-preneur-appele-lui-meme-reussi",
+      "donne": {
+        "nbJoueurs": 5,
+        "preneur": 0,
+        "appele": 0,
+        "contrat": "garde",
+        "bouts": 1,
+        "pointsRealises": 55,
+        "petitAuBout": "aucun",
+        "poignee": null,
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 51,
+        "ecart": 4,
+        "attaqueReussie": true,
+        "scores": [
+          232,
+          -58,
+          -58,
+          -58,
+          -58
+        ]
+      }
+    },
+    {
+      "nom": "5j-preneur-appele-lui-meme-chute",
+      "donne": {
+        "nbJoueurs": 5,
+        "preneur": 2,
+        "appele": 2,
+        "contrat": "garde-sans",
+        "bouts": 0,
+        "pointsRealises": 40,
+        "petitAuBout": "defense",
+        "poignee": {
+          "camp": "defense",
+          "type": "simple"
+        },
+        "chelem": "aucun"
+      },
+      "attendu": {
+        "pointsAFaire": 56,
+        "ecart": 16,
+        "attaqueReussie": false,
+        "scores": [
+          224,
+          224,
+          -896,
+          224,
+          224
+        ]
+      }
+    }
+  ]
+}
