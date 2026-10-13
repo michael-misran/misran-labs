@@ -10,8 +10,8 @@ import './etagere.css'
 // son conteneur), 'gauche' / 'droite' pour un côté de planche du magazine. Un clic
 // sur une tranche sort le volume : sa couverture s'affiche avec « Lire ».
 
-// Couverture miniature d'un volume, selon son modèle
-function Couverture({ v, lang }) {
+// Couverture miniature d'un volume, selon son modèle (reprise par la bibliothèque de l'accueil)
+export function Couverture({ v, lang }) {
   const titre = nt(v.titre, lang)
   const sous = nt(v.sous, lang)
   if (v.couverture === 'numero') {
