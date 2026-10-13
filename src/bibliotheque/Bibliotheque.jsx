@@ -4,6 +4,7 @@ import { useLanguage } from '../shell/LanguageContext'
 import { Couverture } from '../numero/Etagere.jsx'
 import { VOLUMES } from '../numero/volumes'
 import { NT, nt } from '../numero/numeroText'
+import { LEDS_NOEL } from './leds-noel'
 import '../numero/etagere.css'
 import './bibliotheque.css'
 
@@ -55,7 +56,7 @@ const SAISONS = [
       { x: 92.2, y: 38.4, rx: 4, ry: 8 },
     ],
   },
-  { id: 'noel', image: '/bibliotheque/librairie-noel.jpg', du: '12-01', au: '01-06' },
+  { id: 'noel', image: '/bibliotheque/librairie-noel.jpg', du: '12-01', au: '01-06', leds: LEDS_NOEL },
 ]
 
 function saisonDuJour(date = new Date()) {
@@ -139,6 +140,15 @@ export default function Bibliotheque() {
         {image === saison?.image && saison.eclaire && (
           <span className="lb-nuit" aria-hidden="true" style={{ '--trous': masqueNuit(saison.eclaire) }} />
         )}
+        {/* LED des guirlandes qui scintillent, chacune à son rythme */}
+        {image === saison?.image && saison.leds?.map(([x, y], i) => (
+          <span
+            key={i}
+            className="lb-led"
+            aria-hidden="true"
+            style={{ left: `${x}%`, top: `${y}%`, animationDuration: `${1.6 + ((i * 7) % 11) * 0.23}s`, animationDelay: `${-((i * 13) % 17) * 0.29}s` }}
+          />
+        ))}
         {/* Bougies dans les citrouilles (seulement si l'image de saison est bien affichée) */}
         {image === saison?.image && saison.lueurs?.map((g, i) => (
           <span
