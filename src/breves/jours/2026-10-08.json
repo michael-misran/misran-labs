@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-08",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Haiku 5.5 : le petit modèle d'Anthropic baisse fortement ses prix",
+        "en": "Haiku 5.5: Anthropic's small model cuts its prices sharply"
+      },
+      "resume": {
+        "fr": "Anthropic a dévoilé le 7 octobre Claude Haiku 5.5, facturé 0,10 $ le million de jetons en entrée et 0,50 $ en sortie jusqu'à 100 000 jetons, contre 1 $ et 5 $ pour Haiku 4.5. Il vise les sous-agents et les tâches répétitives ; Sonnet 5.5 et Opus 5.5 restent conseillés pour le code agentique complexe.",
+        "en": "On October 7, Anthropic unveiled Claude Haiku 5.5, priced at $0.10 per million input tokens and $0.50 for output up to 100,000 tokens, versus $1 and $5 for Haiku 4.5. It targets sub-agents and repetitive tasks; Sonnet 5.5 and Opus 5.5 remain recommended for complex agentic coding."
+      },
+      "sources": [
+        { "titre": "Anthropic", "url": "https://www.anthropic.com/claude-haiku-5-5" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "GitHub entraîne un modèle à repérer les mots de passe dans le code",
+        "en": "GitHub trains a model to spot passwords in code"
+      },
+      "resume": {
+        "fr": "GitHub a annoncé le 7 octobre un modèle dédié à la détection de secrets : il lit le code autour d'une valeur pour repérer des identifiants sans format reconnaissable, comme des mots de passe. Les alertes existantes migrent sans frais pour les clients concernés ; les nouvelles vérifications consommeront des AI Credits.",
+        "en": "On October 7, GitHub announced a model built for secret detection: it reads the code around a value to spot credentials with no recognizable format, such as passwords. Existing alerts migrate at no cost for eligible customers; the new checks will consume AI Credits."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-07-purpose-built-model-for-leaked-secret-detection" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Piloter un agent Cursor depuis son téléphone",
+        "en": "Controlling a Cursor agent from your phone"
+      },
+      "resume": {
+        "fr": "Depuis le 6 octobre, l'app iOS de Cursor montre les agents qui tournent sur votre ordinateur et permet de leur répondre, après un appairage validé dans l'app de bureau. L'ordinateur doit rester allumé et connecté.",
+        "en": "Since October 6, Cursor's iOS app shows the agents running on your computer and lets you reply to them, after a pairing approved in the desktop app. The computer must stay on and online."
+      },
+      "sources": [
+        { "titre": "Cursor", "url": "https://cursor.com/changelog/remote-control-local-agents" }
+      ]
+    }
+  ],
+  "chiffre": {
+    "valeur": "135 €",
+    "texte": {
+      "fr": "au maximum pour l'enlèvement d'une voiture particulière en fourrière, plus 7,15 € par jour de garde, depuis le 1er octobre 2026 (hors grandes villes à barème propre).",
+      "en": "maximum for towing a passenger car to the pound, plus €7.15 per day of storage, since October 1, 2026 (excluding large cities with their own rates)."
+    }
+  }
+}
