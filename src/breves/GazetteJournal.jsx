@@ -14,7 +14,7 @@ import './gazette-journal.css'
 const mouvementReduit = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
 const TX = {
-  retour: { fr: 'Retour à la bibliothèque', en: 'Back to the library' },
+  retour: { fr: 'Retour à la librairie', en: 'Back to the bookshop' },
   deplier: { fr: 'Déplier le journal', en: 'Unfold the paper' },
   anciens: { fr: 'Numéros précédents', en: 'Back issues' },
   aujourdhui: { fr: 'Le numéro du jour', en: 'Today’s issue' },

@@ -199,7 +199,7 @@ export const NT = {
   navTitrePortfolio: { fr: 'Portfolio', en: 'Portfolio' },
   navRythmePortfolio: { fr: 'Relié', en: 'Bound' },
   // Côté libre de la couverture et de la 4ᵉ : retour à la bibliothèque
-  bibliotheque: { fr: 'Retour à la bibliothèque', en: 'Back to the library' },
+  bibliotheque: { fr: 'Retour à la librairie', en: 'Back to the bookshop' },
 
   // Étagère (page d'accueil : la bibliothèque)
   etagereTitre: { fr: 'La bibliothèque du Lab', en: 'The Lab library' },
