@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-14",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "LFM2.5-24B-A2B : un agent local qui n'active que 2 milliards de paramètres",
+        "en": "LFM2.5-24B-A2B: a local agent that activates only 2 billion parameters"
+      },
+      "resume": {
+        "fr": "Liquid AI publie sur Hugging Face un modèle ouvert de 24 milliards de paramètres dont 2 seulement servent à chaque token, pensé pour des agents sur machine locale. Il tourne à 184 tokens par seconde sur un Apple M5 Max, mais reste en retrait sur le code. Sa licence n'est pas précisée.",
+        "en": "Liquid AI publishes an open model on Hugging Face with 24 billion parameters, only 2 billion of which are used for each token, built for agents running on a local machine. It runs at 184 tokens per second on an Apple M5 Max but lags behind on code. Its license is not specified."
+      },
+      "sources": [
+        { "titre": "Hugging Face", "url": "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "GitHub bloque par défaut les clés Anthropic",
+        "en": "GitHub blocks Anthropic keys by default"
+      },
+      "resume": {
+        "fr": "Annoncé le 13 octobre : GitHub bloque désormais au push, par défaut, les clés d'API Anthropic, même sur les dépôts publics gratuits où l'analyse des secrets est activée. Des détecteurs sont aussi ajoutés pour Salesforce et Cloudsmith.",
+        "en": "Announced October 13: GitHub now blocks Anthropic API keys at push by default, even on free public repositories where secret scanning is enabled. Detectors were also added for Salesforce and Cloudsmith."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-13-secret-scanning-blocks-anthropic-keys-by-default-adds-salesforce" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "ARR",
+    "definition": {
+      "fr": "Sigle de l'anglais annual recurring revenue : revenu récurrent annualisé, c'est-à-dire ce que rapporteraient sur un an les abonnements en cours. Chez Arlo, il atteint 365 millions de dollars.",
+      "en": "Short for annual recurring revenue: what current subscriptions would bring in over a year. At Arlo it reaches $365 million."
+    }
+  },
+  "chiffre": {
+    "valeur": "56 %",
+    "texte": {
+      "fr": "des sites répondent mal aux recherches de leurs visiteurs (Baymard).",
+      "en": "of sites handle their visitors' searches poorly (Baymard)."
+    }
+  }
+}
