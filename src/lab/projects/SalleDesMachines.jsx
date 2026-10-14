@@ -328,7 +328,7 @@ const CONTENT = {
 
     modsTitle: 'Les mods : des programmes dans Claude Code',
     modsIntro:
-      'Un mod est un petit programme TypeScript qui s’accroche à Claude Code : il voit passer chaque commande, chaque fin de tour, et peut afficher un panneau. Il ne consomme aucun token : c’est du code, pas un modèle. Les trois mods sont chargés par toutes les sessions de la machine, y compris les routines.',
+      'Un mod est un petit programme TypeScript qui s’accroche à Claude Code : il voit passer chaque commande, chaque fin de tour, et peut afficher un panneau. Il ne consomme aucun token : c’est du code, pas un modèle. Les quatre mods sont chargés par toutes les sessions de la machine, y compris les routines.',
     modOuLabel: 'Où il agit',
     modQuandLabel: 'Quand',
     modFaitLabel: 'Ce qu’il fait',
@@ -355,6 +355,13 @@ const CONTENT = {
         quand: 'À l’ouverture, puis toutes les 10 minutes.',
         fait: 'Affiche l’état de l’Oracle du jour, les missions en cours avec leurs étapes cochées, les missions à clôturer et les pull requests ouvertes. Lu directement dans git et GitHub.',
       },
+      {
+        nom: 'garde-controleur',
+        commande: '/garde-controleur',
+        ou: 'Dans chaque session, avant l’ouverture d’une pull request sur misran-labs.',
+        quand: 'Dès qu’une session veut ouvrir une PR (sauf les routines de l’Oracle et des idées, auto/breves-* et auto/projets-*).',
+        fait: 'Refuse la PR tant que l’agent controleur n’a pas posé son tampon, OK ou ATTENTION, sur la version exacte de la branche. Seul le controleur peut tamponner : un commit de plus après son passage, et il faut repasser. /garde-controleur liste les derniers tampons.',
+      },
     ],
     modsNote: 'Une session reconnaît qu’elle est une routine au premier message envoyé par une tâche programmée, et non par moi.',
 
@@ -367,7 +374,7 @@ const CONTENT = {
       ['secretaire', 'Sonnet', 'Orthographe, typographie, traductions anglaises, renvois de pages.', 'Session interactive'],
       ['explorateur', 'Haiku', 'Recherche en lecture seule dans le code, inventaires.', 'Missions, session interactive'],
       ['verificateur', 'Haiku', 'Rendu des pages, erreurs console, valeurs CSS dans le navigateur.', 'Missions'],
-      ['controleur', 'Haiku', 'Lint, build, secrets et données personnelles avant un push. Rend un verdict.', 'Clôture des missions'],
+      ['controleur', 'Haiku', 'Lint, build, secrets et données personnelles avant chaque pull request. Rend un verdict et pose son tampon.', 'Toute session avant une PR'],
       ['expert', 'Opus', 'Débloque un problème après deux échecs, ou tranche une question d’architecture.', 'Missions (rare)'],
     ],
     routinesSousTitre: 'Les routines',
@@ -386,13 +393,13 @@ const CONTENT = {
       ['1. Les consignes', 'CLAUDE.md liste les interdits absolus : jamais de commit sur main par une routine, jamais de --force, rien de personnel dans un commit.'],
       ['2. Le mode automatique', 'Un classifieur juge chaque action risquée avant qu’elle parte, avec mes règles en contexte.'],
       ['3. Le mod garde-git', 'Bloque techniquement les commandes interdites, même si les deux couches précédentes les laissent passer.'],
-      ['4. Le controleur', 'Relit la branche (build, lint, secrets) avant chaque push de clôture.'],
+      ['4. Le controleur et son mod', 'Relit la branche (build, lint, secrets) avant chaque pull request et la tamponne ; le mod garde-controleur refuse la PR sans ce tampon.'],
       ['5. Moi', 'Je fusionne chaque pull request moi-même. Rien n’arrive sur le site autrement.'],
     ],
 
     limitesTitle: 'Ce qui reste fragile',
     limites: [
-      'Les trois mods datent du 14 octobre 2026 : ils ont passé leur premier essai sur une vraie routine, pas encore des semaines d’usage.',
+      'Les quatre mods datent du 14 octobre 2026 : les trois premiers ont passé leur premier essai sur une vraie routine, garde-controleur fait ses premières pull requests ; pas encore des semaines d’usage.',
       'La tour ne relève la boîte que si elle est ouverte sur le Mac ; sinon les résumés attendent dans la boîte.',
       'Une routine qui demande une autorisation que personne ne donne peut rester bloquée : c’est arrivé, et c’est pour ça que les consignes lui interdisent de poser des questions.',
     ],
@@ -536,7 +543,7 @@ const CONTENT = {
 
     modsTitle: 'Mods: programs inside Claude Code',
     modsIntro:
-      'A mod is a small TypeScript program that plugs into Claude Code: it sees every command and every end of turn go by, and can draw a panel. It uses no tokens: it is code, not a model. All three mods load in every session on the machine, routines included.',
+      'A mod is a small TypeScript program that plugs into Claude Code: it sees every command and every end of turn go by, and can draw a panel. It uses no tokens: it is code, not a model. All four mods load in every session on the machine, routines included.',
     modOuLabel: 'Where it acts',
     modQuandLabel: 'When',
     modFaitLabel: 'What it does',
@@ -563,6 +570,13 @@ const CONTENT = {
         quand: 'When opened, then every 10 minutes.',
         fait: 'Shows today’s Oracle status, running missions with their ticked steps, missions to wrap up and open pull requests. Read straight from git and GitHub.',
       },
+      {
+        nom: 'garde-controleur',
+        commande: '/garde-controleur',
+        ou: 'In every session, before a pull request is opened on misran-labs.',
+        quand: 'Whenever a session wants to open a PR (except the Oracle and ideas routines, auto/breves-* and auto/projets-*).',
+        fait: 'Refuses the PR until the controleur agent has stamped the exact version of the branch, OK or ATTENTION. Only the controleur can stamp: one more commit after it ran, and it has to run again. /garde-controleur lists the latest stamps.',
+      },
     ],
     modsNote: 'A session knows it is a routine from its first message, sent by a scheduled task rather than by me.',
 
@@ -575,7 +589,7 @@ const CONTENT = {
       ['secretaire', 'Sonnet', 'Spelling, typography, English translations, page references.', 'Interactive session'],
       ['explorateur', 'Haiku', 'Read-only code search, inventories.', 'Missions, interactive session'],
       ['verificateur', 'Haiku', 'Page rendering, console errors, CSS values in the browser.', 'Missions'],
-      ['controleur', 'Haiku', 'Lint, build, secrets and personal data before a push. Returns a verdict.', 'Mission wrap-up'],
+      ['controleur', 'Haiku', 'Lint, build, secrets and personal data before every pull request. Returns a verdict and stamps the branch.', 'Any session before a PR'],
       ['expert', 'Opus', 'Unblocks a problem after two failures, or settles an architecture question.', 'Missions (rare)'],
     ],
     routinesSousTitre: 'Routines',
@@ -594,13 +608,13 @@ const CONTENT = {
       ['1. Instructions', 'CLAUDE.md lists the absolute rules: no routine ever commits to main, never --force, nothing personal in a commit.'],
       ['2. Auto mode', 'A classifier judges every risky action before it runs, with my rules as context.'],
       ['3. The garde-git mod', 'Technically blocks forbidden commands, even if the two layers above let them through.'],
-      ['4. The controleur', 'Checks the branch (build, lint, secrets) before every wrap-up push.'],
+      ['4. The controleur and its mod', 'Checks the branch (build, lint, secrets) before every pull request and stamps it; the garde-controleur mod refuses the PR without that stamp.'],
       ['5. Me', 'I merge every pull request myself. Nothing reaches the site any other way.'],
     ],
 
     limitesTitle: 'What is still fragile',
     limites: [
-      'All three mods date from 14 October 2026: they passed their first test on a real routine, not yet weeks of use.',
+      'All four mods date from 14 October 2026: the first three passed their first test on a real routine, garde-controleur is on its first pull requests; not yet weeks of use.',
       'The tower only checks the mailbox while it is open on the Mac; otherwise summaries wait in the box.',
       'A routine that asks for a permission nobody gives can get stuck: it happened, which is why its instructions forbid it from asking questions.',
     ],
