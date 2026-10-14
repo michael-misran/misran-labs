@@ -137,6 +137,20 @@ function SourcesNumero({ sources, lang }) {
   )
 }
 const domaine = (url) => { try { return new URL(url).hostname.replace(/^www\./, '') } catch { return url } }
+// Pastille citrouille en pixel art (10 × 10) : signale un film d'horreur sur son affiche
+const CITROUILLE = ['.....GG...', '....GG....', '..ODOODO..', '.OODOODOO.', 'OOKKOOKKOO', 'OOKKOOKKOO', 'OODOOOODOO', 'OOKOKKOKOO', '.OOKDDKOO.', '..OOOOOO..']
+const COULEURS_CITROUILLE = { O: '#e8731c', D: '#b9520f', G: '#3d6b2a', K: '#16110c' }
+function Citrouille({ lang }) {
+  return (
+    <span className="gz-citrouille" title={lang === 'en' ? 'Horror film' : 'Film d’horreur'}>
+      <svg viewBox="0 0 10 10" shapeRendering="crispEdges" aria-hidden="true">
+        {CITROUILLE.flatMap((ligne, y) => [...ligne].map((c, x) => COULEURS_CITROUILLE[c] && (
+          <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill={COULEURS_CITROUILLE[c]} />
+        )))}
+      </svg>
+    </span>
+  )
+}
 const points = (n) => '●'.repeat(n) + '○'.repeat(3 - n)
 
 // Un article de la page 2 ou 3 : rubrique, titre, chapo, texte et encadrés
@@ -207,7 +221,12 @@ function PageNumero({ n, lang }) {
           <div className="gz-films">
             {une.films.map((f, k) => (
               <div key={k} className="gz-film">
-                {f.affiche && <img src={`/oracle/affiches/${f.affiche}`} alt={f.titre} loading="lazy" />}
+                {f.affiche && (
+                  <div className="gz-affiche">
+                    <img src={`/oracle/affiches/${f.affiche}`} alt={f.titre} loading="lazy" />
+                    {f.horreur && <Citrouille lang={lang} />}
+                  </div>
+                )}
                 <div>
                   <b dangerouslySetInnerHTML={{ __html: f.titre }} />
                   {f.titre_original && f.titre_original !== f.titre && <i>{f.titre_original}</i>}

@@ -4,10 +4,20 @@
   "essai": false,
   "une": {
     "rubrique": "À la une · Cinéma",
-    "titre": "Hugo, Ryu, Clara",
+    "titre": "Ça frissonne",
     "chapo": "Quatre sorties du mercredi 14 octobre en salle.",
     "paragraphes": [],
     "films": [
+      {
+        "titre": "Malfaisante",
+        "titre_original": "Other Mommy",
+        "realisateur": "Rob Savage",
+        "genre": "Épouvante-horreur",
+        "duree": "1 h 34",
+        "texte": "La petite Bela vit chez elle avec une entité malveillante qui ressemble étrangement à sa mère. Avec Jessica Chastain ; interdit aux moins de 12 ans.",
+        "affiche": "2026-10-14-5.jpg",
+        "horreur": true
+      },
       {
         "titre": "Les Misérables",
         "realisateur": "Fred Cavayé",
@@ -25,14 +35,6 @@
         "affiche": "2026-10-14-2.jpg"
       },
       {
-        "titre": "Minotaure",
-        "realisateur": "Andreï Zviaguintsev",
-        "genre": "Drame",
-        "duree": "2 h 20",
-        "texte": "Russie, 2022. Gleb, chef d'entreprise prospère, voit ses difficultés grandir jusqu'à la violence.",
-        "affiche": "2026-10-14-3.jpg"
-      },
-      {
         "titre": "Le Corset",
         "realisateur": "Louis Clichy",
         "genre": "Animation",
@@ -43,9 +45,9 @@
     ],
     "sources": [
       "https://www.allocine.fr/film/sorties-semaine/",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000023068.html",
       "https://www.allocine.fr/film/fichefilm_gen_cfilm=326160.html",
       "https://www.allocine.fr/film/fichefilm_gen_cfilm=314939.html",
-      "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000022205.html",
       "https://www.allocine.fr/film/fichefilm_gen_cfilm=321790.html"
     ]
   },
