@@ -4,6 +4,26 @@ import { writeRssFeeds } from './rss.js'
 
 export const SITE_URL = 'https://misran-labs.vercel.app'
 
+// Pages qui n'avaient pas de page statique : le serveur répondait 404
+// (« Page introuvable ») avant que l'application ne les affiche
+const PORTFOLIO_FIXED = {
+  title: 'Portfolio · Michael Misran — Product Designer Senior',
+  description: 'Michael Misran, Product Designer Senior : DesignOps, design systems et IA. Le portfolio, relié comme un livre à feuilleter.',
+  image: 'og-image.png',
+}
+const MAGAZINE_FIXED = {
+  title: 'Misran Labs — le magazine · 1977 Éditions',
+  description: 'Le magazine Misran Labs, à feuilleter page par page : édito, dossier, réclames, le Lab et la salle de jeu. Tout ce qui sort du labo, même ce qui fume encore.',
+  image: 'og-image.png',
+}
+const LAB_FIXED = {
+  title: 'Le Lab — le bureau des expériences · 1977 Éditions',
+  description: 'Le bureau du Lab : les expériences, prototypes et outils de Michael Misran, rangés en dossiers.',
+  image: 'og-lab.png',
+}
+// Pages du magazine (src/numero/chemin.js) : même aperçu que la couverture
+const PAGES_MAGAZINE = ['/magazine', '/sommaire', '/edito', '/reclames', '/lab/presente', '/dossier', '/dossier/suite', '/avertissement', '/jeux/presente', '/derniere-minute', '/a-suivre']
+
 const PROJETS_FIXED = {
   title: 'Les idées du Lab — idées en développement · 1977 Éditions',
   description: 'Des idées de produits numérotées, étudiées puis gardées ou arrêtées.',
@@ -379,6 +399,9 @@ export function sharePreviewsPlugin() {
         { path: '/suivre', title: SUIVRE_FIXED.title, description: SUIVRE_FIXED.description, image: SUIVRE_FIXED.image, type: 'website' },
         { path: '/kiosque', title: KIOSQUE_FIXED.title, description: KIOSQUE_FIXED.description, image: KIOSQUE_FIXED.image, type: 'website' },
         { path: '/zine', title: ZINE_FIXED.title, description: ZINE_FIXED.description, image: ZINE_FIXED.image, type: 'website' },
+        { path: '/portfolio', title: PORTFOLIO_FIXED.title, description: PORTFOLIO_FIXED.description, image: PORTFOLIO_FIXED.image, type: 'profile' },
+        { path: '/lab', title: LAB_FIXED.title, description: LAB_FIXED.description, image: LAB_FIXED.image, type: 'website' },
+        ...PAGES_MAGAZINE.map((p) => ({ path: p, title: MAGAZINE_FIXED.title, description: MAGAZINE_FIXED.description, image: MAGAZINE_FIXED.image, type: 'website' })),
         { path: '/jeux', title: JEUX_FIXED.title, description: JEUX_FIXED.description, image: JEUX_FIXED.image, type: 'website' },
         ...saviezPages,
         ...collectZineNumeros(rootDir),
