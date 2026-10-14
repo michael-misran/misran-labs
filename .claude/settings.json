@@ -25,6 +25,11 @@
       "Bash(git -C .worktrees/breves add*)", "Bash(git -C .worktrees/breves commit*)",
       "Bash(python3 -m json.tool .worktrees/breves/*)",
       "Write(.worktrees/breves/src/breves/jours/**)",
+      "Bash(node src/private/journal/fabriquer.mjs *)",
+      "Bash(cp src/private/journal/numeros/* .worktrees/breves/src/breves/numeros/*)",
+      "Bash(cp src/private/journal/pdf/* .worktrees/breves/public/oracle/pdf/*)",
+      "Bash(curl -sL -o src/private/journal/affiches/* https://fr.web.img*.acsta.net/*)",
+      "Bash(cp src/private/journal/affiches/* .worktrees/breves/public/oracle/affiches/*)",
       "Bash(git push -u origin auto/breves-*)",
       "Bash(gh pr create --base main --head auto/breves-*)"
     ],
