@@ -430,7 +430,8 @@ export default function Shell() {
               </div>
               <div className="folio-double">
                 {folioDouble}
-                {suite < nbSuites - 1 && <span className="a-suivre-coin">{nt(NT.suiteAuDos, lang)} →</span>}
+                {/* Renvoi cliquable : tourne la page comme la flèche */}
+                {suite < nbSuites - 1 && <Link to={adresseSuite(suite + 1)} className="a-suivre-coin">{nt(NT.suiteAuDos, lang)} →</Link>}
               </div>
             </>
           ) : (
