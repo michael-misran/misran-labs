@@ -659,14 +659,21 @@ export default function SalleDesMachines({ project }) {
         <p style={{ fontSize: 13, color: 'var(--text2)', margin: 0 }}>{c.modsNote}</p>
       </Section>
 
+      {/* Titres et tableaux restent ensemble sur la même page (coulée en colonnes du magazine) */}
+      <div style={{ breakInside: 'avoid' }}>
       <Section title={c.tablesTitle}>
-        <SectionTitle>{c.routinesSousTitre}</SectionTitle>
-        <Table columns={c.routinesCols} rows={c.routinesRows} />
+        <div style={{ breakInside: 'avoid' }}>
+          <SectionTitle>{c.routinesSousTitre}</SectionTitle>
+          <Table columns={c.routinesCols} rows={c.routinesRows} />
+        </div>
         <div style={{ height: 'var(--space-md)' }} />
-        <SectionTitle>{c.agentsSousTitre}</SectionTitle>
-        <Table columns={c.agentsCols} rows={c.agentsRows} />
-        <p style={{ fontSize: 13, color: 'var(--text2)', margin: 'var(--space-sm) 0 0' }}>{c.modelesNote}</p>
+        <div style={{ breakInside: 'avoid' }}>
+          <SectionTitle>{c.agentsSousTitre}</SectionTitle>
+          <Table columns={c.agentsCols} rows={c.agentsRows} />
+          <p style={{ fontSize: 13, color: 'var(--text2)', margin: 'var(--space-sm) 0 0' }}>{c.modelesNote}</p>
+        </div>
       </Section>
+      </div>
 
       <Section title={c.gardeFousTitle}>
         <p style={{ marginTop: 0 }}>{c.gardeFousIntro}</p>
