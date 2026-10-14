@@ -22,6 +22,8 @@ Contrôles, dans cet ordre :
 
 4. **Cohérence** : la liste des fichiers modifiés correspond-elle à ce que la branche annonce (titre, SPEC ou RAPPORT de mission s'il y en a un dans `missions/<nom>/`) ? Signale les fichiers modifiés sans rapport apparent avec le sujet.
 
+**Tampon** : juste avant ta réponse finale, pose ton verdict avec l'outil `mcp__garde-controleur__tamponner` (verdict `OK`, `ATTENTION` ou `BLOQUANT`, la branche contrôlée, le verdict en une phrase). Charge-le d'abord avec ToolSearch (`select:mcp__garde-controleur__tamponner`) s'il n'est pas déjà disponible. Sans ce tampon, la garde refuse d'ouvrir la pull request. S'il n'existe pas du tout (mod absent), dis-le dans ta réponse et continue.
+
 Réponse finale :
 - première ligne : `OK`, `ATTENTION` (points à regarder, rien de bloquant) ou `BLOQUANT` (secret, donnée personnelle, contenu privé, build cassé) ;
 - puis au plus 12 lignes factuelles, une par point, du plus grave au moins grave ;
