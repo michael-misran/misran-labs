@@ -22,19 +22,6 @@
   pointer-events: auto;
 }
 
-/* Ombre discrète au sol, posée sur le bord de la barre (D2). */
-.fiole-shadow {
-  position: absolute;
-  left: 50%;
-  bottom: 1px;
-  transform: translateX(-50%);
-  width: 55%;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--primitive-ink-900-a12);
-  pointer-events: none;
-}
-
 .fiole-inner {
   display: block;
   animation: fiole-bob 1.4s steps(1) infinite;

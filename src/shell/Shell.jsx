@@ -268,7 +268,8 @@ export default function Shell() {
   // ex. les cartouches de /jeux). Glisser du doigt : pages du numéro seulement
   const versSuiv = suiv?.to
   const versPrec = prec?.to
-  const clavierLibre = !/^\/jeux\/[^/]+|^\/lab\/[^/]+\/demo/.test(location.pathname)
+  // (les pages du numéro restent libres : /jeux/presente n'est pas un jeu)
+  const clavierLibre = format === 'page' || !/^\/jeux\/[^/]+|^\/lab\/[^/]+\/demo/.test(location.pathname)
   useEffect(() => {
     if (!clavierLibre) return undefined
     const surTouche = (e) => {
