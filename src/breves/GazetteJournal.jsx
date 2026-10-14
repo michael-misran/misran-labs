@@ -140,17 +140,22 @@ const domaine = (url) => { try { return new URL(url).hostname.replace(/^www\./, 
 // Pastille citrouille en pixel art (10 × 10) : signale un film d'horreur sur son affiche
 const CITROUILLE = ['.....GG...', '....GG....', '..ODOODO..', '.OODOODOO.', 'OOKKOOKKOO', 'OOKKOOKKOO', 'OODOOOODOO', 'OOKOKKOKOO', '.OOKDDKOO.', '..OOOOOO..']
 const COULEURS_CITROUILLE = { O: '#e8731c', D: '#b9520f', G: '#3d6b2a', K: '#16110c' }
-function Citrouille({ lang }) {
+// Sapin en pixel art (10 × 10) : signale un film de Noël
+const SAPIN = ['....YY....', '....VV....', '...VVVV...', '..VVRVFV..', '...VVVV...', '..VVVVYV..', '.VRVVFVVV.', 'VVVVVVRVVF', '....TT....', '....TT....']
+const COULEURS_SAPIN = { Y: '#f2c230', V: '#2f7a37', F: '#1f4f24', R: '#c8321e', T: '#6b3e1f' }
+function Pixels({ motif, couleurs, titre }) {
   return (
-    <span className="gz-citrouille" title={lang === 'en' ? 'Horror film' : 'Film d’horreur'}>
+    <span className="gz-citrouille" title={titre}>
       <svg viewBox="0 0 10 10" shapeRendering="crispEdges" aria-hidden="true">
-        {CITROUILLE.flatMap((ligne, y) => [...ligne].map((c, x) => COULEURS_CITROUILLE[c] && (
-          <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill={COULEURS_CITROUILLE[c]} />
+        {motif.flatMap((ligne, y) => [...ligne].map((c, x) => couleurs[c] && (
+          <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill={couleurs[c]} />
         )))}
       </svg>
     </span>
   )
 }
+const Citrouille = ({ lang }) => <Pixels motif={CITROUILLE} couleurs={COULEURS_CITROUILLE} titre={lang === 'en' ? 'Horror film' : 'Film d’horreur'} />
+const Sapin = ({ lang }) => <Pixels motif={SAPIN} couleurs={COULEURS_SAPIN} titre={lang === 'en' ? 'Christmas film' : 'Film de Noël'} />
 const points = (n) => '●'.repeat(n) + '○'.repeat(3 - n)
 
 // Un article de la page 2 ou 3 : rubrique, titre, chapo, texte et encadrés
@@ -224,7 +229,7 @@ function PageNumero({ n, lang }) {
                 {f.affiche && (
                   <div className="gz-affiche">
                     <img src={`/oracle/affiches/${f.affiche}`} alt={f.titre} loading="lazy" />
-                    {f.horreur && <Citrouille lang={lang} />}
+                    {f.horreur ? <Citrouille lang={lang} /> : f.noel && <Sapin lang={lang} />}
                   </div>
                 )}
                 <div>
