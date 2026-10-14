@@ -1,0 +1,181 @@
+{
+  "date": "2026-10-14",
+  "numero": 15,
+  "essai": false,
+  "une": {
+    "rubrique": "Front page · Cinema",
+    "titre": "Hugo, Ryu, Clara",
+    "chapo": "Four films open in theaters this Wednesday, October 14.",
+    "paragraphes": [],
+    "films": [
+      {
+        "titre": "Les Misérables",
+        "realisateur": "Fred Cavayé",
+        "genre": "Drama, historical",
+        "duree": "2 h 56",
+        "texte": "Freed after nineteen years in the galleys, Jean Valjean tries to redeem himself, hunted by Javert.",
+        "affiche": "2026-10-14-1.jpg"
+      },
+      {
+        "titre": "Street Fighter",
+        "realisateur": "Kitao Sakurai",
+        "genre": "Action, martial arts",
+        "duree": "2 h 00",
+        "texte": "In 1993, Ryu and Ken are pulled back into the arena: Chun-Li recruits them for the World Warriors tournament.",
+        "affiche": "2026-10-14-2.jpg"
+      },
+      {
+        "titre": "Minotaure (Minotaur)",
+        "realisateur": "Andreï Zviaguintsev",
+        "genre": "Drama",
+        "duree": "2 h 20",
+        "texte": "Russia, 2022. Gleb, a prosperous businessman, sees his troubles grow until they turn violent.",
+        "affiche": "2026-10-14-3.jpg"
+      },
+      {
+        "titre": "Le Corset (The Corset)",
+        "realisateur": "Louis Clichy",
+        "genre": "Animation",
+        "duree": "1 h 30",
+        "texte": "In the Beauce region, 11-year-old Christophe must wear a corset. He grows up, discovers music and meets Clara.",
+        "affiche": "2026-10-14-4.jpg"
+      }
+    ],
+    "sources": [
+      "https://www.allocine.fr/film/sorties-semaine/",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=326160.html",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=314939.html",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000022205.html",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=321790.html"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "modele",
+        "rubrique": "Business model",
+        "court": "Model",
+        "titre": "Arlo: the camera pays the rent, the subscription makes the profit",
+        "chapo": "In Q2 2026, 59.7% of this camera maker's revenue came from subscriptions.",
+        "paragraphes": [
+          "Arlo sells connected security cameras, but most of its revenue is no longer hardware. In its August 6, 2026 release (quarter ended June 28), the company reports $155.9 million in revenue: $93.0 million from subscriptions and services and $62.9 million from products.",
+          "The key is margin: 81.1% gross margin (GAAP) on subscriptions, against 48.2% overall. The company has 6.3 million paid accounts (+23.2%) and annual recurring revenue (ARR) of $365 million (+15.6%).",
+          "The mechanism recalls razors and blades: the device gets the customer in, and the service comes back every month."
+        ],
+        "encadre": {
+          "titre": "Takeaway",
+          "texte": "A physical product can open the door to a recurring service: what counts is what a paying account earns over time.",
+          "plein": true
+        },
+        "sources": [
+          "https://www.sec.gov/Archives/edgar/data/0001736946/000173694626000058/arlo26q2earningsrelease-20.htm"
+        ]
+      },
+      {
+        "type": "irritant",
+        "rubrique": "Today's pet peeve",
+        "court": "Peeve",
+        "titre": "Searching a site and finding nothing",
+        "chapo": "According to Baymard, 56% of e-commerce sites handle what people come looking for poorly.",
+        "paragraphes": [
+          "In an October 2, 2026 article, the Baymard Institute notes that 56% of sites fail to adequately support users' search needs. Its advice: a real field with a visible button, keyword suggestions (not only products), the query kept on the results page.",
+          "For a few hundred products, an icon that expands into a field can be enough; for a catalog of 10,000 items, an always-visible bar with suggestions is justified."
+        ],
+        "encadre": {
+          "titre": "Business lead",
+          "texte": "An internal-search audit for independent shops: test 50 real queries (typos, synonyms, references), deliver an illustrated report of failures and a fix. Competition: Baymard already runs UX audits; the angle is the small merchant, at a flat fee.",
+          "plein": true
+        },
+        "sources": [
+          "https://baymard.com/blog/search-bar-ui"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Design · Tech",
+    "articles": [
+      {
+        "type": "design",
+        "rubrique": "Design & UX",
+        "court": "Design",
+        "titre": "A product comparison tool, $16 million claimed",
+        "chapo": "A clothing brand credits this gain to a single tool: comparing items right in the list.",
+        "paragraphes": [
+          "On October 7, 2026, Baymard published a testimonial from a premium clothing brand with technical lines, which says it gained $16 million in revenue across its site and app. The change: a product comparison tool on listing pages, recommended by a UX audit (guideline no. 495).",
+          "Caution: the figure is reported by the client, with no period or method to isolate the tool's effect, and the text is published by a company that sells these audits. The title speaks of a \"single\" insight, while the text mentions a full-site audit."
+        ],
+        "encadre": {
+          "titre": "Try it",
+          "texte": "Take two similar products from your shop: if a stranger opens three tabs to choose, comparison is missing.",
+          "plein": true
+        },
+        "sources": [
+          "https://baymard.com/blog/premium-apparel-brand-revenue-increase"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech",
+        "court": "Tech",
+        "titre": "LFM2.5-24B-A2B: a local agent that activates only 2 billion parameters",
+        "chapo": "Liquid AI publishes an open model built to run on a laptop.",
+        "paragraphes": [
+          "On October 13, Liquid AI published LFM2.5-24B-A2B on Hugging Face. The model has 24 billion parameters but activates only 2 billion for each token produced (a \"mixture of experts\" architecture). It reasons before answering and accepts 131,000 tokens of context.",
+          "Announced speeds: 184 tokens per second on an Apple M5 Max, 114 on a Ryzen AI Max+ 395. On AutomationBench it scores 27.69 against 8.72 for the best competitor cited.",
+          "But it lags on code: 51.0 on SWE-Bench Verified against 66.2 for a competitor. The license is not specified: check before any commercial use."
+        ],
+        "encadre": {
+          "titre": "Business angle",
+          "texte": "An agent that runs on the customer's machine avoids sending data to a cloud: an argument for sensitive trades (health, law, accounting).",
+          "plein": true
+        },
+        "sources": [
+          "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech in brief",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "GitHub blocks Anthropic keys by default",
+        "paragraphes": [
+          "Announced October 13: GitHub now blocks Anthropic API keys at push by default, even on free public repositories. Detectors were also added for Salesforce and Cloudsmith."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-10-13-secret-scanning-blocks-anthropic-keys-by-default-adds-salesforce"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "ARR",
+      "nature": "n.",
+      "definition": "Short for <i>annual recurring revenue</i>: what current subscriptions would bring in over a year. At Arlo it reaches $365 million (p. 2)."
+    },
+    "chiffre": {
+      "valeur": "56%",
+      "texte": "of sites handle their visitors' searches poorly (Baymard)."
+    },
+    "bonus": {
+      "type": "citation",
+      "texte": "“Good design is as little design as possible.”",
+      "auteur": "Dieter Rams (Vitsœ)"
+    },
+    "enigme": {
+      "question": "Sold once, I only pay off when renewed every month. What am I?",
+      "reponse": "the subscription plan"
+    }
+  },
+  "sources": [
+    "allocine.fr",
+    "sec.gov",
+    "baymard.com",
+    "huggingface.co",
+    "github.blog"
+  ],
+  "langue": "en"
+}
