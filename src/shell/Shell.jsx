@@ -1,6 +1,5 @@
 import { Component, Suspense, useEffect, useRef, useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
-import Fiole from './mascotte/Fiole'
 import SecondarySidebar from '../design-system/SecondarySidebar'
 import { SecondarySidebarContext } from './SecondarySidebarContext'
 import { resolveRouteMeta } from './registry'
@@ -264,20 +263,26 @@ export default function Shell() {
     window.scrollTo(0, 0)
   }, [tour])
 
-  // Flèches du clavier et glisser du doigt : seulement sur les pages du numéro
-  // (les rubriques ont leurs propres jeux et contrôles)
+  // Flèches du clavier : partout, sauf dans les jeux et démos (qui s'en
+  // servent) et quand une rubrique a déjà pris la touche (preventDefault,
+  // ex. les cartouches de /jeux). Glisser du doigt : pages du numéro seulement
   const versSuiv = suiv?.to
   const versPrec = prec?.to
+  const clavierLibre = !/^\/jeux\/[^/]+|^\/lab\/[^/]+\/demo/.test(location.pathname)
   useEffect(() => {
-    if (format !== 'page') return
+    if (!clavierLibre) return undefined
     const surTouche = (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return
+      if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return
       if (e.target.closest?.('input, textarea, select, [contenteditable]')) return
-      if (e.key === 'ArrowRight' && versSuiv) navigate(versSuiv)
-      if (e.key === 'ArrowLeft' && versPrec) navigate(versPrec)
+      const cible = e.key === 'ArrowRight' ? versSuiv : versPrec
+      if (!cible) return
+      // On attend la fin de la propagation pour savoir si une rubrique a pris la touche
+      setTimeout(() => { if (!e.defaultPrevented) navigate(cible) }, 0)
     }
     window.addEventListener('keydown', surTouche)
     return () => window.removeEventListener('keydown', surTouche)
-  }, [format, versPrec, versSuiv, navigate])
+  }, [clavierLibre, versPrec, versSuiv, navigate])
   const x0 = useRef(null)
   const glisser = format === 'page'
     ? {
@@ -508,14 +513,6 @@ export default function Shell() {
           </Link>
         )}
       </div>
-
-      <span
-        className="no-print"
-        style={{ position: 'fixed', right: 24, bottom: 24, zIndex: 20, pointerEvents: 'none' }}
-      >
-        <span className="fiole-shadow" aria-hidden="true" />
-        <Fiole variant="alambic" />
-      </span>
     </>
   )
 }
