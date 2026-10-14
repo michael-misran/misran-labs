@@ -63,7 +63,8 @@ body { background: #1b1815; }
   padding: 6px 20px 8px; text-align: center; font: italic 15px var(--font-chapo); color: var(--muted);
   border-top: 1px solid var(--border);
 }
-.a-suivre-coin { position: absolute; right: 64px; bottom: 8px; font-style: italic; color: var(--text2); }
+.a-suivre-coin { position: absolute; right: 64px; bottom: 8px; font-style: italic; color: var(--text2); text-decoration: none; }
+.a-suivre-coin:hover { color: var(--text); text-decoration: underline; }
 
 /* ---------- Effet livre ---------- */
 .magazine { --table: #1b1815; }
