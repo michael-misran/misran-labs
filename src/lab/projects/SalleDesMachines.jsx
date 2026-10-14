@@ -312,16 +312,17 @@ const CONTENT = {
       },
       {
         titre: 'Le retour de routine',
-        quand: 'à la fin de chaque routine · en rodage',
+        quand: 'à la fin de chaque routine',
         teinte: 'mod',
         etapes: [
           { verbe: 'termine', acteurs: [A('Une routine', 'Oracle, missions, idées', 'session')] },
           { verbe: 'intercepte', acteurs: [A('mod retour-routine', 'aucun token', 'mod')] },
-          { verbe: 'envoie', acteurs: [A('Tour de contrôle', 'message entre sessions', 'session'), A('ou file d’attente', 'si la tour est fermée', 'sortie', true)] },
+          { verbe: 'dépose', acteurs: [A('Boîte aux lettres', 'un fichier partagé', 'sortie')] },
+          { verbe: 'relève chaque minute', acteurs: [A('Tour de contrôle', 'tant qu’elle est ouverte', 'session')] },
           { verbe: 'me résume', acteurs: [A('Claude, dans la tour', 'ce qui est fait, ce qui attend', 'session')] },
           { verbe: 'je regarde', acteurs: [A('/kiosque', 'missions, PR, Oracle du jour', 'michael', true)] },
         ],
-        note: 'Avant ce mod, une session ne savait rien de la fin d’une routine tant que je ne demandais pas. Maintenant, la routine prévient elle-même.',
+        note: 'Avant ce mod, une session ne savait rien de la fin d’une routine tant que je ne demandais pas. Première idée : que la routine écrive directement à la tour. Refusé : par sécurité, une session lancée par un horaire n’a pas le droit d’écrire à une autre session. D’où la boîte aux lettres, que la tour vient relever elle-même.',
       },
     ],
 
@@ -343,9 +344,9 @@ const CONTENT = {
       {
         nom: 'retour-routine',
         commande: '/tour-de-controle',
-        ou: 'Dans les routines (émission) et la tour de contrôle (réception).',
+        ou: 'Dans les routines (dépôt) et la tour de contrôle (relève).',
         quand: 'À la fin de chaque tour d’une routine.',
-        fait: 'Envoie le résumé de la routine à la session désignée comme tour de contrôle, ou le garde en attente si elle est fermée.',
+        fait: 'Dépose le résumé de la routine dans une boîte aux lettres. La session désignée comme tour de contrôle la relève chaque minute et transmet les résumés à Claude, qui me les résume.',
       },
       {
         nom: 'kiosque',
@@ -391,8 +392,8 @@ const CONTENT = {
 
     limitesTitle: 'Ce qui reste fragile',
     limites: [
-      'Le retour de routine et le kiosque datent du 14 octobre 2026 et n’ont pas encore tourné sur une vraie routine.',
-      'Les messages entre sessions ne marchent que si la tour de contrôle est ouverte sur le Mac ; sinon ils attendent.',
+      'Les trois mods datent du 14 octobre 2026 : ils ont passé leur premier essai sur une vraie routine, pas encore des semaines d’usage.',
+      'La tour ne relève la boîte que si elle est ouverte sur le Mac ; sinon les résumés attendent dans la boîte.',
       'Une routine qui demande une autorisation que personne ne donne peut rester bloquée : c’est arrivé, et c’est pour ça que les consignes lui interdisent de poser des questions.',
     ],
   },
@@ -519,16 +520,17 @@ const CONTENT = {
       },
       {
         titre: 'Routine report',
-        quand: 'at the end of every routine · being tested',
+        quand: 'at the end of every routine',
         teinte: 'mod',
         etapes: [
           { verbe: 'finishes', acteurs: [A('A routine', 'Oracle, missions, ideas', 'session')] },
           { verbe: 'catches', acteurs: [A('retour-routine mod', 'no tokens', 'mod')] },
-          { verbe: 'sends', acteurs: [A('Control tower', 'session-to-session message', 'session'), A('or waiting queue', 'if the tower is closed', 'sortie', true)] },
+          { verbe: 'drops', acteurs: [A('Mailbox', 'a shared file', 'sortie')] },
+          { verbe: 'checks every minute', acteurs: [A('Control tower', 'while it is open', 'session')] },
           { verbe: 'sums up', acteurs: [A('Claude, in the tower', 'what is done, what waits', 'session')] },
           { verbe: 'I look', acteurs: [A('/kiosque', 'missions, PRs, today’s Oracle', 'michael', true)] },
         ],
-        note: 'Before this mod, a session knew nothing about a routine finishing until I asked. Now the routine reports in on its own.',
+        note: 'Before this mod, a session knew nothing about a routine finishing until I asked. First idea: have the routine write straight to the tower. Refused: for safety, a session started by a schedule may not write to another session. Hence the mailbox, which the tower comes to check itself.',
       },
     ],
 
@@ -550,9 +552,9 @@ const CONTENT = {
       {
         nom: 'retour-routine',
         commande: '/tour-de-controle',
-        ou: 'In routines (sending) and in the control tower (receiving).',
+        ou: 'In routines (drop-off) and in the control tower (pick-up).',
         quand: 'At the end of every routine turn.',
-        fait: 'Sends the routine’s summary to the session set as control tower, or keeps it waiting if that session is closed.',
+        fait: 'Drops the routine’s summary in a mailbox. The session set as control tower checks it every minute and hands the summaries to Claude, who sums them up for me.',
       },
       {
         nom: 'kiosque',
@@ -598,8 +600,8 @@ const CONTENT = {
 
     limitesTitle: 'What is still fragile',
     limites: [
-      'The routine report and the kiosk date from 14 October 2026 and have not yet run on a real routine.',
-      'Session-to-session messages only work if the control tower is open on the Mac; otherwise they wait.',
+      'All three mods date from 14 October 2026: they passed their first test on a real routine, not yet weeks of use.',
+      'The tower only checks the mailbox while it is open on the Mac; otherwise summaries wait in the box.',
       'A routine that asks for a permission nobody gives can get stuck: it happened, which is why its instructions forbid it from asking questions.',
     ],
   },
