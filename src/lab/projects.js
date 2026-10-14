@@ -7,6 +7,7 @@ const TheLostCauldronGame = lazy(() => import('./projects/TheLostCauldronGame'))
 const WorkflowSolo = lazy(() => import('./projects/WorkflowSolo'))
 const UtilisationIA = lazy(() => import('./projects/UtilisationIA'))
 const AuditTokens = lazy(() => import('./projects/AuditTokens'))
+const SalleDesMachines = lazy(() => import('./projects/SalleDesMachines'))
 const GameDemo = lazy(() => import('./GameDemo'))
 const GameDemoV2 = lazy(() => import('./GameDemoV2'))
 const ToolProcessTemplate = lazy(() => import('./ToolProcessTemplate'))
@@ -187,6 +188,24 @@ export const PROJECTS = [
     },
     phases: {},
     component: AuditTokens,
+  },
+  {
+    slug: 'salle-des-machines',
+    icon: '⚙',
+    title: { fr: 'La salle des machines', en: 'The engine room' },
+    summary: {
+      fr: 'La carte du système : sessions, routines, agents et mods, qui appelle qui et avec quel modèle.',
+      en: 'The system map: sessions, routines, agents and mods, who calls whom and with which model.',
+    },
+    status: 'READY',
+    type: 'case-study',
+    featured: false,
+    tags: {
+      fr: ['Claude Code', 'Mods', 'Routines', 'Agents'],
+      en: ['Claude Code', 'Mods', 'Routines', 'Agents'],
+    },
+    phases: {},
+    component: SalleDesMachines,
   },
 ]
 
