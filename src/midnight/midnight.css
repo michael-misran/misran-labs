@@ -41,6 +41,9 @@ body:has(.ms-table) { margin: 0; }
   background: var(--ms-rouge); color: var(--ms-creme);
   font: 700 12px/1.3 var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase;
 }
+/* Avec le bandeau d'épreuve, la table descend pour que le livre ne passe pas dessous */
+.ms-table:has(.ms-epreuve) { padding-top: 96px; }
+.ms-table:has(.ms-epreuve) .ms-livre { --h: min(calc(100dvh - 172px), calc((100vw - 96px) * .707)); }
 
 /* ---------- Livre ouvert ---------- */
 .ms-livre {
@@ -224,9 +227,14 @@ body:has(.ms-table) { margin: 0; }
   text-shadow: 0 1px 2px rgba(0,0,0,.5);
 }
 .ms-quatrieme .ms-couv-cadre { left: calc(var(--u) * 4.5); right: calc(var(--u) * 6.5); }
-.ms-couv-titre { margin: 0; font: 400 calc(var(--u) * 10)/.9 var(--font-affiche); color: var(--ms-rouge); -webkit-text-stroke: 2px var(--ms-creme); paint-order: stroke fill; }
-.ms-couv-sous { margin: 0; font: 400 calc(var(--u) * 4)/1 var(--font-affiche); color: var(--ms-creme); -webkit-text-stroke: 1.5px var(--ms-rouge); paint-order: stroke fill; }
-.ms-couv-edition { font: 500 calc(var(--u) * 1.3)/1.4 var(--font-etiquette); letter-spacing: .18em; text-transform: uppercase; background: var(--ms-encre); color: var(--ms-jaune); padding: calc(var(--u) * .4) calc(var(--u) * 1); margin-top: auto; }
+.ms-couverture:not(.ms-quatrieme) { display: flex; flex-direction: column; }
+.ms-couv-bandeau { display: flex; justify-content: space-between; padding: calc(var(--u) * 2.2) calc(var(--u) * 2.4) 0 calc(var(--u) * 4);
+  font: 700 calc(var(--u) * 2.1)/1 var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase; }
+.ms-couv-titre { margin: calc(var(--u) * 2.2) 0 0; text-align: center; font: 400 calc(var(--u) * 14.6)/.8 var(--font-affiche); letter-spacing: .02em; color: var(--ms-rouge);
+  -webkit-text-stroke: calc(var(--u) * .7) var(--ms-encre); paint-order: stroke fill; text-shadow: calc(var(--u) * 1) calc(var(--u) * 1) 0 var(--ms-encre); transform: rotate(-3deg); }
+.ms-couv-titre span { display: block; color: var(--ms-creme); }
+.ms-couv-logo { position: absolute; bottom: calc(var(--u) * 2); right: calc(var(--u) * 2); width: calc(var(--u) * 9.8); padding: calc(var(--u) * .85) calc(var(--u) * .85) calc(var(--u) * .5);
+  background: var(--ms-jaune); color: var(--ms-encre); border: calc(var(--u) * .35) solid var(--ms-encre); box-shadow: calc(var(--u) * .5) calc(var(--u) * .5) 0 var(--ms-encre); }
 .ms-quatrieme-titre { margin: 0; font: 400 calc(var(--u) * 3.2)/1.1 var(--font-affiche); color: var(--ms-rouge); }
 .ms-quatrieme-texte { margin: 0; font: italic calc(var(--u) * 1.9)/1.4 var(--font-chapo); }
 
@@ -250,6 +258,7 @@ body:has(.ms-table) { margin: 0; }
 
 @media (max-width: 760px) {
   .ms-table { padding: 60px 16px 24px; justify-content: flex-start; }
+  .ms-table:has(.ms-epreuve) { padding-top: 112px; }
   .ms-bandeau { background: #241a0c; padding: 14px 16px; font-size: 11px; }
   .ms-bandeau-titre { font-size: 15px; }
   .ms-livre, .ms-commandes { display: none; }
@@ -258,6 +267,10 @@ body:has(.ms-table) { margin: 0; }
   .ms-pile .ms-page { height: auto; min-height: calc(var(--u) * 70); }
   .ms-pile .ms-marge { position: relative; inset: auto; min-height: inherit; padding: calc(var(--u) * 4) calc(var(--u) * 3.5) calc(var(--u) * 3); }
   .ms-pile .ms-couverture, .ms-pile .ms-quatrieme { min-height: calc(var(--u) * 90); }
+  /* Couverture : proportions A5 et unité calée sur la largeur, comme dans le livre ouvert */
+  .ms-pile { container-type: inline-size; }
+  .ms-pile-page:has(> .ms-couverture:not(.ms-quatrieme)) { --u: calc(100cqw / 70.7); }
+  .ms-pile .ms-couverture:not(.ms-quatrieme) { min-height: 0; aspect-ratio: 148 / 210; }
   .ms-recette-grille, .ms-marmite-colonnes, .ms-clues { grid-template-columns: 1fr; }
 }
 
