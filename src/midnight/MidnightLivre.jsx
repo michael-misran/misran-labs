@@ -4,6 +4,7 @@ import { useLanguage } from '../shell/LanguageContext'
 import { ENCARTS } from './encarts'
 import { LT, lt } from './midnightTexte'
 import { getNumero, getNumeroParDefaut, estParu } from './numeros'
+import Logo1977 from '../shell/Logo1977'
 import './midnight.css'
 
 // Le livre Midnight Snack : même mécanique de tourne-page que le portfolio
@@ -85,13 +86,13 @@ function Intertitre({ children }) {
 // ---------- Les pages ----------
 
 function Couverture({ numero, lang }) {
+  // Même couverture que sur l'étagère (variante A validée, screens/couverture-midnight-snack.html) :
+  // illustration Gemini, bandeau, titre pulp en Bangers, logo 1977 sur étiquette jaune
   return (
     <section className="ms-page ms-couverture" style={{ backgroundImage: `url(${numero.couvertureImage})` }}>
-      <div className="ms-couv-cadre">
-        <h1 className="ms-couv-titre">MIDNIGHT</h1>
-        <p className="ms-couv-sous">SNACK!</p>
-        <span className="ms-couv-edition">{lt(numero.sousTitre, lang)} · 1977 Éditions</span>
-      </div>
+      <span className="ms-couv-bandeau"><span>{lt(numero.sousTitre, lang)}</span></span>
+      <h1 className="ms-couv-titre">Midnight<span>Snack!</span></h1>
+      <span className="ms-couv-logo"><Logo1977 largeur="100%" fond="#f7c86a" /></span>
     </section>
   )
 }
