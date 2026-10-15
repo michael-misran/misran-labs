@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-15",
+  "numero": 16,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Cursor ouvre sa boutique d'outils à tous les éditeurs",
+    "chapo": "Origin, la plateforme de Cursor, compte plus de 20 applications et accepte désormais les soumissions publiques.",
+    "paragraphes": [
+      "Le 13 octobre, Cursor a annoncé que sa marketplace Origin accueille plus de 20 applications, parmi lesquelles Cloudflare, Linear, Sentry et Socket Security. Surtout, elle accepte depuis ce 13 octobre les soumissions publiques : selon le texte, toute équipe qui construit des outils pour développeurs peut y publier une application.",
+      "Le catalogue couvre cinq familles : déploiement (Cloudflare, Netlify, Render, Vercel…), intégration continue (Buildkite, CircleCI, Depot…), revue de code (CodeRabbit, Greptile, Tenki), sécurité (Semgrep, Socket Security…) et, à l'unité, le suivi d'erreurs avec Sentry et la gestion de projet avec Linear.",
+      "Côté développeur d'outil, la marche est précise. On crée l'application dans son espace, en privé, on la construit avec l'API d'Origin (authentification par jeton d'application, événements reçus par webhook, écriture de contrôles, de commentaires et de revues sur les pull requests), puis on la rend publique. Il faut alors fournir un identifiant court, des étiquettes et une vidéo de démonstration qui montre l'installation, la désinstallation et les parcours principaux. Cursor examine la soumission avant publication.",
+      "Ce que la page ne dit pas : les critères et les délais de l'examen, ni d'éventuels frais. À lire avant de s'engager."
+    ],
+    "sources": ["https://cursor.com/changelog/origin-app-marketplace"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "idee", "rubrique": "L'idée de business", "court": "Idée",
+        "titre": "Le devis facturé à l'unité, pour ceux qui n'en envoient que quelques-uns",
+        "chapo": "Les logiciels de propositions commerciales se paient au mois. Beaucoup d'indépendants n'en ont besoin que de temps en temps.",
+        "paragraphes": [
+          "<b>Qui paie, pour quoi.</b> Un freelance ou un petit prestataire colle ses notes de rendez-vous dans un formulaire et reçoit un devis ou une proposition mis en page à ses couleurs, prêt à signer, à environ 3 € le document. Le client final ne voit qu'un lien ou un PDF propre.",
+          "<b>Le marché existe.</b> Qwilr et Proposify vendent déjà des propositions interactives et des signatures électroniques ; leur forfait d'entrée est affiché à 49 $ par utilisateur et par mois en facturation mensuelle, 35 $ en annuel. Proposify facture aussi la conception d'un modèle sur mesure 1 500 $. Un abonnement pour qui envoie des propositions chaque semaine.",
+          "<b>L'angle.</b> Celui qui n'en envoie que deux ou trois par mois paie un outil qu'il n'utilise pas. Le paiement à l'unité, sans compte à gérer, vise cet utilisateur-là.",
+          "<b>Pour lancer.</b> Un modèle bien dessiné, une page, un paiement par carte. Test : proposer le service à dix indépendants et compter combien commandent un deuxième document."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
+        "encadre": { "titre": "Concurrence", "texte": "Qwilr et Proposify sont installés, avec signature électronique et analyses. L'idée ne les attaque pas de front : elle vise l'usage occasionnel.", "plein": true },
+        "sources": ["https://www.qwilr.com/pricing/", "https://www.proposify.com/pricing"]
+      },
+      {
+        "type": "irritant", "rubrique": "L'irritant éclair", "court": "Irritant", "taille": "petit",
+        "titre": "204 heures par an à remplir des papiers",
+        "paragraphes": [
+          "Selon le « Freelancer Freedom Index » de Smallpdf, relayé le 1er juillet 2026 (397 indépendants interrogés), l'administratif, c'est 204 heures par an. La mise en forme des documents est citée comme la tâche la plus lourde chaque semaine par 38 % des répondants. Et malgré l'IA, utilisée pour l'administratif par 70 % d'entre eux, 48 % jugent que la charge a peu baissé."
+        ],
+        "sources": ["https://www.contentgrip.com/freelancer-admin-ai-gap/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Histoire · Tech",
+    "articles": [
+      {
+        "type": "histoire", "rubrique": "Histoire de la tech", "court": "Histoire",
+        "titre": "Le premier chat de France est né d'un mot de passe deviné par un enfant",
+        "chapo": "À Strasbourg, fin 1981, un service Minitel ennuyeux est devenu un réseau social par accident.",
+        "paragraphes": [
+          "À l'été 1981, l'expérience Télétel démarre à Vélizy, sous l'égide de la Direction générale des télécommunications. Quelques mois plus tard, les Dernières Nouvelles d'Alsace lancent la leur dans un quartier de Strasbourg : Gretel, un site unique qu'on joint en composant un numéro. On y trouve l'actualité, la météo, les trains, la banque et quelques jeux.",
+          "Selon le récit publié par Slate, c'était un service plutôt sage. Jusqu'à ce qu'un garçon d'une dizaine d'années, d'après les souvenirs de Michel Landaret qui pilotait la plateforme, découvre le mot de passe de la messagerie que l'équipe avait créée pour dépanner les utilisateurs perdus, celle qui permettait d'afficher un message sur l'écran d'une autre personne. Il écrit à ses amis comment faire. En quelques jours, le secret est éventé, et les développeurs n'ont plus qu'une solution : ouvrir la messagerie à tous.",
+          "Elle devient de très loin le service le plus utilisé. Les usagers multiplient par trois ou quatre leur vitesse de frappe ; les serveurs peinent. L'équipe affiche alors la liste des pseudos connectés, avec la possibilité de s'adresser à chacun : le premier salon de discussion. En 1982, les 32 modems tournent en moyenne 22 h 40 par jour chacun ; il faut environ une heure pour obtenir une ligne.",
+          "En février 1984, le kiosque 3615 commercialise la messagerie. L'usage, lui, était né d'un contournement."
+        ],
+        "encadre": { "titre": "La leçon de design", "texte": "Surveillez ce que vos utilisateurs détournent : c'est souvent votre vrai produit.", "plein": true },
+        "rappel": { "annee": "1981", "texte": "Gretel est lancée à Strasbourg quelques mois après l'expérience de Vélizy." },
+        "sources": ["https://www.slate.fr/story/46415/minitel-dna-internet-social"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "GitHub Actions : un lockfile pour que le code exécuté ne change pas sous vos pieds",
+        "paragraphes": [
+          "Le 14 octobre, GitHub a lancé en préversion publique les lockfiles de workflows. Le fichier <i>.github/workflows/actions.lock</i> enregistre les actions utilisées, leurs dépendances transitives et les workflows réutilisables, et lie les exécutions aux commits validés, même si un tag ou une branche est déplacé ensuite.",
+          "On le génère avec l'extension <i>gh actions-lock</i> de la CLI GitHub, puis on relit et on commite. L'adoption se fait workflow par workflow ; l'extension vérifie aussi qu'un lockfile est à jour, y compris en CI. Attention : verrouiller ne dit pas si une dépendance est sûre."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Quand les dépendances se figent, relire et mettre à jour devient un métier : un service qui résume ce qui a changé entre deux commits verrouillés.", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-14-github-actions-workflow-lockfiles-in-public-preview"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Amazon S3 entre dans la Vercel Marketplace",
+        "paragraphes": [
+          "Annoncé le 14 octobre : on crée un bucket S3 depuis le tableau de bord Vercel, les accès arrivent en variables d'environnement, avec des identifiants OIDC de courte durée plutôt que des clés AWS stockées. Un nouveau compte AWS créé par ce biais reçoit 100 $ de crédits pendant six mois. Aussi disponible dans v0."
+        ],
+        "sources": ["https://vercel.com/changelog/amazon-s3-joins-the-vercel-marketplace"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Lockfile", "nature": "n. m.", "definition": "Fichier qui fige les versions exactes des dépendances d'un projet, pour que deux exécutions utilisent le même code. GitHub vient d'en lancer un pour ses workflows Actions (p. 2)." },
+    "chiffre": { "valeur": "22 h 40", "texte": "par jour et par modem, en moyenne, sur Gretel en 1982." },
+    "bonus": { "type": "question", "texte": "Quel usage vos utilisateurs détournent-ils déjà dans votre produit ou dans un outil que vous utilisez, et que se passerait-il si vous le rendiez officiel ?" },
+    "enigme": { "question": "Je fige ce qui devrait rester pareil, je n'ajoute aucune ligne de code et pourtant le projet s'arrête de changer sans prévenir. Qui suis-je ?", "reponse": "un lockfile" }
+  },
+  "sources": ["cursor.com", "qwilr.com", "proposify.com", "contentgrip.com", "slate.fr", "github.blog", "vercel.com"]
+}

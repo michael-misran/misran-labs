@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-15",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": { "fr": "Cursor ouvre sa marketplace Origin à tous les éditeurs d'outils", "en": "Cursor opens its Origin marketplace to all tool publishers" },
+      "resume": {
+        "fr": "Origin, la plateforme de Cursor, compte plus de 20 applications (Cloudflare, Linear, Sentry, Socket Security…). Depuis le 13 octobre, toute équipe qui crée des outils pour développeurs peut soumettre la sienne, avec une vidéo de démonstration, avant examen par Cursor.",
+        "en": "Origin, Cursor's platform, lists more than 20 apps (Cloudflare, Linear, Sentry, Socket Security…). Since October 13, any team building developer tools can submit one, with a demo video, before review by Cursor."
+      },
+      "sources": [
+        { "titre": "Cursor", "url": "https://cursor.com/changelog/origin-app-marketplace" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "GitHub Actions : un lockfile pour figer le code des workflows", "en": "GitHub Actions: a lockfile to pin workflow code" },
+      "resume": {
+        "fr": "En préversion publique depuis le 14 octobre, le fichier actions.lock enregistre les actions utilisées et leurs dépendances, et lie les exécutions aux commits validés même si un tag ou une branche bouge. On le génère avec l'extension gh actions-lock. Verrouiller ne dit pas si une dépendance est sûre.",
+        "en": "In public preview since October 14, the actions.lock file records the actions used and their dependencies, and ties runs to approved commits even if a tag or branch moves. It is generated with the gh actions-lock extension. Locking does not tell you whether a dependency is safe."
+      },
+      "sources": [
+        { "titre": "GitHub Blog", "url": "https://github.blog/changelog/2026-10-14-github-actions-workflow-lockfiles-in-public-preview" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Amazon S3 rejoint la Vercel Marketplace", "en": "Amazon S3 joins the Vercel Marketplace" },
+      "resume": {
+        "fr": "Annoncé le 14 octobre : on crée un bucket S3 depuis le tableau de bord Vercel, avec des identifiants OIDC de courte durée plutôt que des clés AWS stockées. Un nouveau compte AWS créé par ce biais reçoit 100 $ de crédits pendant six mois.",
+        "en": "Announced October 14: you create an S3 bucket from the Vercel dashboard, with short-lived OIDC credentials rather than stored AWS keys. A new AWS account created this way gets $100 in credits for six months."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/amazon-s3-joins-the-vercel-marketplace" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Lockfile",
+    "definition": {
+      "fr": "Fichier qui fige les versions exactes des dépendances d'un projet, pour que deux exécutions utilisent le même code. GitHub vient d'en lancer un pour ses workflows Actions.",
+      "en": "A file that pins the exact versions of a project's dependencies, so two runs use the same code. GitHub has just launched one for its Actions workflows."
+    }
+  },
+  "chiffre": {
+    "valeur": "22 h 40",
+    "texte": {
+      "fr": "par jour et par modem, en moyenne, sur Gretel en 1982.",
+      "en": "a day per modem, on average, on Gretel in 1982."
+    }
+  }
+}
