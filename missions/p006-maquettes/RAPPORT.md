@@ -46,7 +46,7 @@ La maquette HTML « La Marque » (P-006, compteur de points pour le Tarot) est f
 ## Comment vérifier
 
 ```bash
-cd /Users/michaelmisran/Documents/Projets/misran-labs
+cd ~/Documents/Projets/misran-labs
 git checkout auto/p006-maquettes
 node missions/p006-maquettes/verifier-calcul.mjs   # doit afficher 33/33 cas OK
 npm run build
