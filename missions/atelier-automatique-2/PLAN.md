@@ -14,5 +14,5 @@ Chaque étape indique l'agent et le modèle à utiliser. Référence visuelle : 
 - [x] 8. Partie 8 — Carnet d'entretien (FR/EN), condensé de la chronologie de UtilisationIA.jsx → session principale (Sonnet)
 - [x] 9. Annexe — Glossaire (FR/EN) ; sommaire avec les vrais folios, plus aucune mention « en préparation » ; parité des pages (D3) → session principale (Sonnet)
 - [x] 10. Relecture de la forme FR/EN des textes ajoutés dans `src/atelier/atelierTexte.js` → secretaire (Sonnet) ; puis appliquer les corrections → session principale (Sonnet)
-- [ ] 11. Vérification finale : build, lint, greps des critères 3 et 6 par la session principale ; navigateur (critères 1, 2, 4, 5 : toutes les pages, console, folios du sommaire, 375 px) → verificateur (Haiku)
+- [x] 11. Vérification finale : build, lint, greps des critères 3 et 6 par la session principale ; navigateur (critères 1, 2, 4, 5 : toutes les pages, console, folios du sommaire, 375 px) → verificateur (Haiku)
 - [ ] 12. RAPPORT.md → session principale (Sonnet)

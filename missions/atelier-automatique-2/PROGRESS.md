@@ -1,7 +1,7 @@
 # Mission atelier-automatique-2 — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 11 (vérification finale)
+**Prochaine action :** étape 12 (RAPPORT.md)
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
@@ -98,3 +98,13 @@ terminologique appliquées (« 2 h » au lieu de « deux/2 heures »,
 variante incohérente) ; aucune faute d'orthographe ou de typographie
 relevée. Voir DELEGATIONS.md. `npm run build` et `npm run lint` : OK
 après corrections.
+
+## Étape 11 — Vérification finale (2026-10-15)
+Session principale : `npm run build` OK, `npm run lint` 0 erreur, grep
+critère 3 (« en préparation ») et critère 6 (secrets/chemins/e-mails) :
+aucun résultat dans `src/atelier/`. Agent verificateur (Haiku) sur
+`npx vite preview` : VERDICT OK — console vide, aucun débordement à
+375 px en FR et en EN (54 pages, dont 5 pages-figures mesurées à part
+faute de `.at-corps`), sommaire sans « en préparation » (10/10 folios
+corrects), fiche n° 0 bien rendue en FR (la version EN avait déjà été
+vérifiée par la session principale à l'étape 3). Voir DELEGATIONS.md.
