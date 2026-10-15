@@ -4,7 +4,7 @@ Cocher `[x]` chaque étape terminée, puis mettre à jour PROGRESS.md et commite
 Chaque étape indique l'agent et le modèle à utiliser.
 
 - [x] 0. Cadrage : SPEC, PLAN, fichiers de suivi, état initial → session principale (Opus 5.5)
-- [ ] 1. Lire `src/portfolio/PortfolioLivre.jsx`, `portfolio.css`, `encarts.js`, `livreTexte.js` et la route `/portfolio` de `src/App.jsx` ; noter dans PROGRESS ce qui sera copié → session principale (Sonnet)
+- [x] 1. Lire `src/portfolio/PortfolioLivre.jsx`, `portfolio.css`, `encarts.js`, `livreTexte.js` et la route `/portfolio` de `src/App.jsx` ; noter dans PROGRESS ce qui sera copié → session principale (Sonnet)
 - [ ] 2. Squelette du livre : `src/midnight/` (MidnightLivre, midnight.css, midnightTexte, encarts, numeros.js et numeros/01.js avec les 20 pages vides), route `/midnight/:numero?` dans `App.jsx`, navigation et impression (D1, D6, D7) → session principale (Sonnet)
 - [ ] 2b. Parution datée : page d'attente, mode `?epreuve` avec bandeau et noindex, `to` daté dans `volumes.js` (D2) → session principale (Sonnet)
 - [ ] 3. Couverture, sommaire + édito du raton, 4ᵉ de couverture (FR/EN) → session principale (Sonnet)
