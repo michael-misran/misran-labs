@@ -1,7 +1,7 @@
 # Mission midnight-snack-1 — PROGRESS
 
-**Statut :** étapes 1 à 10 faites (squelette + 20 pages du N°1 écrites, vérifiées)
-**Prochaine action :** étape 11 (RAPPORT.md)
+**Statut :** mission terminée (étapes 0 à 11 faites), RAPPORT.md écrit
+**Prochaine action :** aucune — clôture (push + pull request) en session interactive avec Michael
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-15, `main` = 1440f8e)
