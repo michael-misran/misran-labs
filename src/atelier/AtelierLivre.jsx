@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../shell/LanguageContext'
 import { LT, lt, PICTO_AGENT } from './atelierTexte'
-import { SchemaEclateAtelier, SchemaCircuit, SchemaRedacteur, SchemaControleur, Pictogramme } from './schemas'
+import { SchemaEclateAtelier, SchemaCircuit, SchemaRedacteur, SchemaControleur, SchemaCycleMission, Pictogramme } from './schemas'
 import './atelier.css'
 
 // « L'Atelier automatique », le livre de l'IA de 1977 Éditions, mis en page
@@ -338,6 +338,106 @@ function pagesDuLivre(lang) {
             ))}
           </tbody>
         </table>
+      </PagePapier>
+    )],
+
+    // partie 4, ouverture (plan)
+    ['p4', (folio) => (
+      <section className="at-page at-plan at-gauche at-ouverture">
+        <div className="at-corps">
+          <span className="at-num">4</span>
+          <h2>{lt(LT.p4Titre, lang)}</h2>
+          <p>{lt(LT.p4OuvertureTexte, lang)}</p>
+        </div>
+        <FolioNum n={folio} />
+      </section>
+    )],
+
+    // partie 4, figure : le cycle d'une mission (plan, gauche)
+    [null, (folio) => (
+      <section className="at-page at-plan at-gauche">
+        <Tetiere g={lt(LT.p4Titre, lang)} d="Fig. 9" />
+        <SchemaCycleMission lang={lang} />
+        <div className="at-cartouche">
+          <div><strong>{lt(LT.p4FigLegende, lang)}</strong>{lt(LT.p4Cartouche, lang)}</div>
+          <div>{lang === 'en' ? 'Scale' : 'Échelle'}<br />1 : 1</div>
+        </div>
+        <FolioNum n={folio} />
+      </section>
+    )],
+
+    // partie 4, texte (papier, droite)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p4Chap, lang), '4.1']}>
+        <h2><small>{lang === 'en' ? 'Part 4' : 'Partie 4'}</small>{lt(LT.p4Titre, lang)}</h2>
+        <p>{lt(LT.p4Texte1, lang)}</p>
+        <p>{lt(LT.p4Texte2, lang)}</p>
+      </PagePapier>
+    )],
+
+    // partie 4, les six fichiers d'une mission (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p4Chap, lang), '4.2']}>
+        <h2>{lt(LT.p4FichiersTitre, lang)}</h2>
+        <p>{lt(LT.p4FichiersTexte, lang)}</p>
+        <table className="at-recap">
+          <thead>
+            <tr>{lt(LT.p4FichiersCols, lang).map((c) => <th key={c}>{c}</th>)}</tr>
+          </thead>
+          <tbody>
+            {LT.p4FichiersRows.map((row, i) => (
+              <tr key={i}>
+                <td>{row[0]}</td>
+                <td>{lt(row[1], lang)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </PagePapier>
+    )],
+
+    // partie 4, file d'attente et reprise (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p4Chap, lang), '4.3']}>
+        <h2>{lt(LT.p4QueueTitre, lang)}</h2>
+        <p>{lt(LT.p4QueueTexte1, lang)}</p>
+        <p>{lt(LT.p4QueueTexte2, lang)}</p>
+      </PagePapier>
+    )],
+
+    // partie 4, le modèle par étape (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p4Chap, lang), '4.4']}>
+        <h2>{lt(LT.p4ModeleTitre, lang)}</h2>
+        <p>{lt(LT.p4ModeleTexte, lang)}</p>
+        <table className="at-recap">
+          <thead>
+            <tr>{lt(LT.p4ModeleCols, lang).map((c) => <th key={c}>{c}</th>)}</tr>
+          </thead>
+          <tbody>
+            {LT.p4ModeleRows.map((row, i) => (
+              <tr key={i}>
+                <td>{lt(row[0], lang)}</td>
+                <td>{row[1]}</td>
+                <td>{lt(row[2], lang)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </PagePapier>
+    )],
+
+    // partie 4, cas d'école : la première mission (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p4Chap, lang), '4.5']}>
+        <h2>{lt(LT.p4CasTitre, lang)}</h2>
+        <p>{lt(LT.p4CasTexte, lang)}</p>
+        <div className="at-ecran">
+          {LT.p4CasEcran.map((l, i) => (
+            <div key={i} className={l.ok ? 'at-ok' : ''}>{lt(l, lang)}</div>
+          ))}
+        </div>
+        <p className="at-note-fig">{lt(LT.p4CasNoteFig, lang)}</p>
       </PagePapier>
     )],
 

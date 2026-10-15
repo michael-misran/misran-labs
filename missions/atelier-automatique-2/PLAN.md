@@ -7,7 +7,7 @@ Chaque étape indique l'agent et le modèle à utiliser. Référence visuelle : 
 - [x] 1. État initial : build, lint notés dans PROGRESS.md → session principale (Opus, au cadrage)
 - [x] 2. Pagination : remplacer les folios en dur de `AtelierLivre.jsx` par un calcul (ou une table unique), pour que l'insertion de pages ne casse rien ; build OK, rendu identique → session principale (Sonnet)
 - [x] 3. Fiche n° 0 « Le rédacteur » : double page (machine à écrire éclatée + fiche), mise à jour de l'ouverture de la partie 2 et de la garde (D1) → session principale (Sonnet)
-- [ ] 4. Partie 4 — Les missions autonomes (FR/EN), figure du cycle → session principale (Sonnet)
+- [x] 4. Partie 4 — Les missions autonomes (FR/EN), figure du cycle → session principale (Sonnet)
 - [ ] 5. Partie 5 — Les accessoires (FR/EN) → session principale (Sonnet)
 - [ ] 6. Partie 6 — Réglages et consommation (FR/EN) → session principale (Sonnet)
 - [ ] 7. Partie 7 — Pannes et dépannage, tableau Symptôme / Cause / Remède (FR/EN) → session principale (Sonnet)

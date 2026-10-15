@@ -1,7 +1,7 @@
 # Mission atelier-automatique-2 — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 4 (partie 4 — Les missions autonomes)
+**Prochaine action :** étape 5 (partie 5 — Les accessoires)
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
@@ -29,3 +29,13 @@ avec l'exemple de la routine Oracle). Ouverture de la partie 2 mise à jour
 vérifié avec `npx vite preview` à 375 px : folios 2 à 27 continus, sommaire
 recalculé (partie « Les automates » passée de 18 à 20), aucune erreur
 console, aucun débordement. `npm run build` et `npm run lint` : OK.
+
+## Étape 4 — Partie 4, Les missions autonomes (2026-10-15)
+Ouverture + figure du cycle (`SchemaCycleMission`, Fig. 9, cadrage → branche
+→ exécution → RAPPORT → clôture → fusion → mission suivante) + 5 pages
+papier (texte, les six fichiers d'une mission, file d'attente et reprise,
+modèle par étape, cas d'école de la première mission : 13 min, 7 commits).
+Insérée avant la page « Notes » (jamais après — voir DECISIONS.md). Livre à
+35 pages ; vérifié avec `npx vite preview` à 375 px : folios continus,
+sommaire à jour (partie 4 → folio 27), aucune erreur console, aucun
+débordement. `npm run build` et `npm run lint` : OK.

@@ -312,6 +312,76 @@ export const LT = {
     [{ fr: 'Retour de routine', en: 'Routine report' }, { fr: 'fin de chaque routine', en: 'end of every routine' }, '—'],
   ],
 
+  // ---------- Partie 4 — Les missions autonomes ----------
+  p4Titre: { fr: 'Les missions autonomes', en: 'Autonomous missions' },
+  p4OuvertureTexte: {
+    fr: 'Une mission, c’est un travail délégué : Michael donne un brief, une session le cadre en SPEC et PLAN, puis une tâche programmée l’exécute seule, étape par étape, jusqu’à la pull request. Il ne reste à Michael qu’à fusionner.',
+    en: 'A mission is delegated work: Michael gives a brief, a session frames it as a SPEC and a PLAN, then a scheduled task runs it alone, step by step, through to the pull request. All that is left for Michael is to merge.',
+  },
+  p4Chap: { fr: 'Chap. 4 — Les missions autonomes', en: 'Chap. 4 — Autonomous missions' },
+  p4FigLegende: { fr: 'Fig. 9 — Le cycle d’une mission', en: 'Fig. 9 — The cycle of a mission' },
+  p4Cartouche: { fr: 'Du cadrage à la fusion, puis la mission suivante.', en: 'From scoping to merge, then the next mission.' },
+  p4Texte1: {
+    fr: 'Le cadrage se fait avec Michael, en session interactive. La tâche programmée, elle, ne pose jamais de question : elle reprend la plus ancienne mission sans rapport, exécute ses étapes dans l’ordre du plan, et consigne tout sur le disque à chaque étape — pour pouvoir s’arrêter et reprendre à tout moment.',
+    en: 'Scoping happens with Michael, in an interactive session. The scheduled task itself never asks a question: it picks up the oldest mission without a report, runs its steps in plan order, and writes everything to disk at every step — so it can stop and resume at any time.',
+  },
+  p4Texte2: {
+    fr: 'Reprise après une coupure de quota : le plan coché, le fichier de progression et un commit par étape suffisent à savoir où on en était. La tâche programmée relance le travail toutes les deux heures.',
+    en: 'Resuming after a quota cut-off: the checked-off plan, the progress file and a commit per step are enough to know where things stood. The scheduled task relaunches the work every two hours.',
+  },
+  p4FichiersTitre: { fr: 'Les six fichiers d’une mission', en: 'The six files of a mission' },
+  p4FichiersTexte: {
+    fr: 'Une mission vit entièrement dans un dossier, sur sa propre branche. Six fichiers suffisent à la cadrer, la suivre et la clore.',
+    en: 'A mission lives entirely in one folder, on its own branch. Six files are enough to scope it, track it and close it out.',
+  },
+  p4FichiersCols: { fr: ['Fichier', 'Rôle'], en: ['File', 'Role'] },
+  p4FichiersRows: [
+    ['SPEC.md', { fr: 'Objectif, décisions d’architecture, critères d’acceptation. Ne se modifie pas en cours de route.', en: 'Goal, architecture decisions, acceptance criteria. Never edited once work starts.' }],
+    ['PLAN.md', { fr: 'Étapes à cocher au fur et à mesure, chacune avec son agent et son modèle.', en: 'Steps checked off one by one, each with its agent and model.' }],
+    ['PROGRESS.md', { fr: 'État courant : où on en est, prochaine action, blocages. Réécrit à chaque étape.', en: 'Current state: where things stand, next action, blockers. Rewritten at every step.' }],
+    ['DECISIONS.md', { fr: 'Chaque décision prise sans Michael, avec sa raison.', en: 'Every decision made without Michael, with its reason.' }],
+    ['DELEGATIONS.md', { fr: 'Journal de chaque sous-agent lancé : agent, modèle, tâche, résultat.', en: 'A log of every sub-agent launched: agent, model, task, result.' }],
+    ['RAPPORT.md', { fr: 'Écrit à la fin : ce qui est fait, ce qui ne l’est pas, comment vérifier.', en: 'Written at the end: what is done, what is not, how to check.' }],
+  ],
+  p4QueueTitre: { fr: 'La file d’attente et la reprise', en: 'The queue and resuming' },
+  p4QueueTexte1: {
+    fr: 'Plusieurs missions peuvent être cadrées d’avance : chacune vit sur sa propre branche auto/<nom>, partie de main, et donne sa propre pull request. La tâche programmée cherche les missions dans les branches, jamais dans le dossier ouvert, prend la plus ancienne sans rapport, puis enchaîne sur la suivante s’il reste du quota.',
+    en: 'Several missions can be scoped ahead of time: each one lives on its own auto/<name> branch, off main, and gets its own pull request. The scheduled task looks for missions in the branches, never in the open folder, picks the oldest one without a report, then chains to the next if quota remains.',
+  },
+  p4QueueTexte2: {
+    fr: 'Premier usage de la file : deux missions exécutées à la suite, en une seule fois, en une trentaine de minutes.',
+    en: 'First use of the queue: two missions run back to back, in a single pass, in about thirty minutes.',
+  },
+  p4ModeleTitre: { fr: 'Le modèle par étape', en: 'The model per step' },
+  p4ModeleTexte: {
+    fr: 'Chaque étape du plan porte son modèle, choisi au cadrage selon sa difficulté. La tâche programmée suit cette indication et peut appeler l’expert en plus, jamais en moins.',
+    en: 'Every step of the plan carries its own model, chosen at scoping time to fit its difficulty. The scheduled task follows this indication and may call the expert in addition, never instead.',
+  },
+  p4ModeleCols: { fr: ['Poste', 'Modèle', 'Quand'], en: ['Post', 'Model', 'When'] },
+  p4ModeleRows: [
+    [{ fr: 'Session principale', en: 'Main session' }, 'Sonnet', { fr: 'exécution du plan, étape par étape', en: 'runs the plan, step by step' }],
+    [{ fr: 'Sous-agent mécanique', en: 'Mechanical sub-agent' }, 'Haiku', { fr: 'étape bien décrite : renommage, valeurs listées, donnée au format existant', en: 'well-specified step: renaming, listed values, data in an existing format' }],
+    [{ fr: 'Explorateur', en: 'Explorateur' }, 'Haiku', { fr: 'recherche large dans le code, inventaires', en: 'broad code search, inventories' }],
+    [{ fr: 'Vérificateur', en: 'Verificateur' }, 'Haiku', { fr: 'contrôle des pages dans le navigateur', en: 'checking pages in the browser' }],
+    [{ fr: 'Controleur', en: 'Controleur' }, 'Haiku', { fr: 'avant chaque pull request', en: 'before every pull request' }],
+    [{ fr: 'Expert', en: 'Expert' }, 'Opus', { fr: 'après deux échecs, ou décision d’architecture', en: 'after two failures, or an architecture decision' }],
+  ],
+  p4CasTitre: { fr: 'Cas d’école : la première mission', en: 'Case study: the first mission' },
+  p4CasTexte: {
+    fr: 'La toute première mission a été cadrée sur Opus, puis lancée pour vérifier que le système tenait debout. Elle a tourné seule, sans aucune question posée, jusqu’à son rapport.',
+    en: 'The very first mission was scoped on Opus, then launched to check that the system actually held up. It ran on its own, asking no question, through to its report.',
+  },
+  p4CasEcran: [
+    { fr: '> tâche programmée, lancée 23 h 09', en: '> scheduled task, started 11:09 pm' },
+    { fr: '7 commits ..... un par étape (2 à 8)', en: '7 commits ..... one per step (2 to 8)', ok: true },
+    { fr: 'durée ......... 13 min, 50 tours', en: 'duration ...... 13 min, 50 turns', ok: true },
+    { fr: 'terminée ...... 23 h 22, RAPPORT.md écrit', en: 'finished ...... 11:22 pm, RAPPORT.md written', ok: true },
+  ],
+  p4CasNoteFig: {
+    fr: 'Clôturée ensuite avec Michael : push, prévisualisation, première pull request, fusion.',
+    en: 'Then wrapped up with Michael: push, preview, first pull request, merge.',
+  },
+
   notesTitre: { fr: 'Notes', en: 'Notes' },
 
   // ---------- Quatrième de couverture ----------

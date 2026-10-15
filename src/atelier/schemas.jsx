@@ -142,6 +142,36 @@ export function SchemaControleur({ lang }) {
   )
 }
 
+// Fig. 9 — le cycle d'une mission : cadrage, branche, exécution étape par
+// étape, rapport, clôture, fusion — puis la mission suivante reprend au début.
+export function SchemaCycleMission({ lang }) {
+  const T = lang === 'en'
+    ? ['SCOPING (SPEC + PLAN)', 'BRANCH AUTO/<NAME>', 'EXECUTION, STEP BY STEP', 'RAPPORT.MD', 'WRAP-UP: PUSH + PULL REQUEST', 'MERGE (MICHAEL)']
+    : ['CADRAGE (SPEC + PLAN)', 'BRANCHE AUTO/<NOM>', 'EXÉCUTION, ÉTAPE PAR ÉTAPE', 'RAPPORT.MD', 'CLÔTURE : PUSH + PULL REQUEST', 'FUSION (MICHAEL)']
+  const suivante = lang === 'en' ? 'NEXT MISSION' : 'MISSION SUIVANTE'
+  const boites = [14, 50, 86, 122, 158, 194].map((y, i) => ({ y, h: 22, t: T[i] }))
+  return (
+    <svg className="at-fig-plan" viewBox="0 0 220 240" {...TRAIT} fontFamily="Oswald" aria-label={lang === 'en' ? 'The cycle of a mission' : "Le cycle d'une mission"}>
+      {boites.map((b, i) => (
+        <g key={i}>
+          <rect x="30" y={b.y} width="170" height={b.h} rx="2" />
+          <text x="115" y={b.y + b.h / 2 + 3} fill="#e9f1f8" stroke="none" fontSize="7.2" fontWeight="700" textAnchor="middle" letterSpacing="0.3">{b.t}</text>
+        </g>
+      ))}
+      {boites.slice(0, -1).map((b, i) => (
+        <path key={i} d={`M115 ${b.y + b.h} L115 ${boites[i + 1].y}`} strokeDasharray="3 3" markerEnd="url(#at-fleche-cycle)" />
+      ))}
+      <path d="M30 205 C4 205 4 25 30 25" strokeDasharray="2 3" markerEnd="url(#at-fleche-cycle)" />
+      <text fill="#e9f1f8" stroke="none" fontSize="6.5" textAnchor="middle" letterSpacing="0.5" transform="translate(10 115) rotate(-90)">{suivante}</text>
+      <defs>
+        <marker id="at-fleche-cycle" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 Z" fill="#e9f1f8" stroke="none" />
+        </marker>
+      </defs>
+    </svg>
+  )
+}
+
 // Pictogrammes au trait, un par agent (sauf le controleur : fig. 7)
 const PICTOS = {
   loupe: (
