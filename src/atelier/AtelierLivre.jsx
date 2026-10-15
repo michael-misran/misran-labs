@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../shell/LanguageContext'
 import { LT, lt, PICTO_AGENT } from './atelierTexte'
-import { SchemaEclateAtelier, SchemaCircuit, SchemaControleur, Pictogramme } from './schemas'
+import { SchemaEclateAtelier, SchemaCircuit, SchemaRedacteur, SchemaControleur, Pictogramme } from './schemas'
 import './atelier.css'
 
 // « L'Atelier automatique », le livre de l'IA de 1977 Éditions, mis en page
@@ -206,6 +206,41 @@ function pagesDuLivre(lang) {
         </div>
         <FolioNum n={folio} />
       </section>
+    )],
+
+    // partie 2, fiche n° 0 « Le rédacteur » : figure (plan, gauche)
+    [null, (folio) => (
+      <section className="at-page at-plan at-gauche">
+        <Tetiere g={lt(LT.p2Chap, lang)} d="Fig. 6" />
+        <SchemaRedacteur lang={lang} />
+        <div className="at-cartouche">
+          <div><strong>{`Fig. 6 — ${lt(LT.p2RedacteurTitre, lang)}`}</strong>A {lang === 'en' ? 'roller' : 'rouleau'} · B {lang === 'en' ? 'keyboard' : 'clavier'} · C {lang === 'en' ? 'carriage return lever' : 'levier de retour'} · D {lang === 'en' ? 'sheet' : 'feuille'}</div>
+          <div>{lang === 'en' ? 'Scale' : 'Échelle'}<br />1 : 1</div>
+        </div>
+        <FolioNum n={folio} />
+      </section>
+    )],
+
+    // partie 2, fiche n° 0 « Le rédacteur » : fiche (papier, droite)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p2Chap, lang), '2.0']}>
+        <h2><small>{lt(LT.p2RedacteurFicheN, lang)}</small>{lt(LT.p2RedacteurTitre, lang)}</h2>
+        <table className="at-fiche"><tbody>
+          {agentFicheRow(lang === 'en' ? 'Role' : 'Rôle', lt(LT.p2RedacteurRole, lang))}
+          {agentFicheRow(lang === 'en' ? 'Who sits here' : 'Qui l’occupe', lt(LT.p2RedacteurQui, lang))}
+          {agentFicheRow(lang === 'en' ? 'Called' : 'Appelé', lt(LT.p2RedacteurAppelle, lang))}
+          {agentFicheRow(lang === 'en' ? 'Never' : 'Ne fait jamais', lt(LT.p2RedacteurJamais, lang))}
+        </tbody></table>
+        <div className="at-attention">
+          <div className="at-bande" />
+          <div><strong>{lang === 'en' ? 'Warning' : 'Attention'}</strong>{lt(LT.p2RedacteurAttention, lang)}</div>
+        </div>
+        <div className="at-ecran">
+          {LT.p2RedacteurEcran.map((l, i) => (
+            <div key={i} className={l.ok ? 'at-ok' : ''}>{lt(l, lang)}</div>
+          ))}
+        </div>
+      </PagePapier>
     )],
 
     // partie 2, le controleur : figure (plan, gauche)

@@ -1,7 +1,7 @@
 # Mission atelier-automatique-2 — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 3 (fiche n° 0 « Le rédacteur »)
+**Prochaine action :** étape 4 (partie 4 — Les missions autonomes)
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
@@ -18,3 +18,14 @@ fait le lien. Vérifié avec `npx vite preview` : 26 pages, folios 2 à 25
 identiques à avant, sommaire identique (4/6/8/18 + « en préparation »),
 aucune erreur console, aucun débordement à 375 px. `npm run build` et
 `npm run lint` : OK.
+
+## Étape 3 — Fiche n° 0 « Le rédacteur » (2026-10-15)
+Double page insérée juste après l'ouverture de la partie 2, avant le
+controleur : figure `SchemaRedacteur` (machine à écrire éclatée, A rouleau /
+B clavier / C levier de retour / D feuille, Fig. 6) à gauche, fiche à droite
+(rôle, qui l'occupe, appelé, ne fait jamais, encadré ATTENTION, écran VT323
+avec l'exemple de la routine Oracle). Ouverture de la partie 2 mise à jour
+(« huit postes », « le rédacteur et sept agents »). Livre à 28 pages ;
+vérifié avec `npx vite preview` à 375 px : folios 2 à 27 continus, sommaire
+recalculé (partie « Les automates » passée de 18 à 20), aucune erreur
+console, aucun débordement. `npm run build` et `npm run lint` : OK.

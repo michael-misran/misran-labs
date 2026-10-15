@@ -108,9 +108,32 @@ export const LT = {
   // ---------- Partie 2 — Le personnel ----------
   p2Titre: { fr: 'Le personnel', en: 'Staff' },
   p2OuvertureTexte: {
-    fr: 'Sept automates secondent la session principale. Aucun ne commite : ils lisent, vérifient, collectent ou tranchent, puis rendent leur réponse à la session qui les a appelés.',
-    en: 'Seven automatons assist the main session. None of them commit: they read, check, gather or settle a question, then report back to the session that called them.',
+    fr: 'Huit postes : le rédacteur qui écrit, et sept agents qui l’assistent. Aucun agent ne commite : ils lisent, vérifient, collectent ou tranchent, puis rendent leur réponse à la session qui les a appelés.',
+    en: 'Eight posts: the rédacteur who writes, and seven agents that assist it. No agent commits: they read, check, gather or settle a question, then report back to the session that called them.',
   },
+  p2RedacteurFicheN: { fr: 'Fiche agent n° 0', en: 'Staff card no. 0' },
+  p2RedacteurTitre: { fr: 'Le rédacteur', en: 'The rédacteur' },
+  p2RedacteurRole: {
+    fr: 'Écrit le code et les textes, puis appelle les agents qui l’assistent. C’est lui qui tient la plume : aucun agent ne rédige.',
+    en: 'Writes the code and the texts, then calls the agents that assist it. It holds the pen: no agent drafts anything.',
+  },
+  p2RedacteurQui: {
+    fr: 'en session interactive avec Michael : Opus · dans les routines et les missions : Sonnet',
+    en: 'in an interactive session with Michael: Opus · in routines and missions: Sonnet',
+  },
+  p2RedacteurAppelle: {
+    fr: 'le controleur, le relecteur, la secrétaire, le veilleur, le vérificateur, l’explorateur, l’expert, selon le travail',
+    en: 'the controleur, the relecteur, the secretaire, the veilleur, the verificateur, the explorateur, the expert, depending on the task',
+  },
+  p2RedacteurJamais: { fr: 'fusionner, pousser main hors des exceptions écrites', en: 'merge, push main outside the written exceptions' },
+  p2RedacteurAttention: { fr: 'Seule la session principale commite ; les agents, jamais.', en: 'Only the main session commits; agents never do.' },
+  p2RedacteurEcran: [
+    { fr: '> routine oracle-du-matin', en: '> routine oracle-du-matin' },
+    { fr: 'rédaction .......... en cours', en: 'drafting ............ in progress' },
+    { fr: '→ veilleur .......... actualité collectée', en: '→ veilleur ........... news gathered', ok: true },
+    { fr: '→ relecteur ......... sources vérifiées', en: '→ relecteur .......... sources checked', ok: true },
+    { fr: '→ secrétaire ........ forme relue', en: '→ secretaire .......... copy-edited', ok: true },
+  ],
   p2ControleurFicheN: { fr: 'Fiche agent n° 1', en: 'Staff card no. 1' },
   p2ControleurTitre: { fr: 'Le controleur', en: 'The controleur' },
   p2ControleurTexte: {
