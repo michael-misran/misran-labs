@@ -279,18 +279,18 @@ import { Navigate } from 'react-router-dom'
   <!-- 03 — MCP Filesystem débloqué -->
   <div class="section">
     <div class="section-header"><div class="step-number">03</div><h2>MCP Filesystem — Accès au repo local débloqué</h2></div>
-    <p>Pour diagnostiquer le bug sans que Michael copie-colle le code manuellement, l'accès MCP Filesystem a été étendu au dossier <code>/Users/michaelmisran/misran-labs</code>. Claude peut maintenant lire et écrire directement dans le repo.</p>
+    <p>Pour diagnostiquer le bug sans que Michael copie-colle le code manuellement, l'accès MCP Filesystem a été étendu au dossier <code>~/misran-labs</code>. Claude peut maintenant lire et écrire directement dans le repo.</p>
 
     <h3>Configuration</h3>
     <pre>// ~/Library/Application Support/Claude/claude_desktop_config.json
 {
   "mcpServers": {
     "filesystem": {
-      "command": "/Users/michaelmisran/.npm-global/bin/mcp-server-filesystem",
+      "command": "~/.npm-global/bin/mcp-server-filesystem",
       "args": [
-        "/Users/michaelmisran/Documents",
-        "/Users/michaelmisran/Downloads",
-        "/Users/michaelmisran/misran-labs"   // ← ajouté
+        "~/Documents",
+        "~/Downloads",
+        "~/misran-labs"   // ← ajouté
       ]
     }
   }
@@ -305,7 +305,7 @@ import { Navigate } from 'react-router-dom'
       <div class="mcp-card">
         <div class="m-label">Fichiers créés directement</div>
         <div class="m-title">vercel.json écrit par Claude</div>
-        <div class="m-text">Claude a créé <code>/Users/michaelmisran/misran-labs/vercel.json</code> directement via MCP Filesystem. Michael n'avait qu'à pusher avec Claude Code.</div>
+        <div class="m-text">Claude a créé <code>~/misran-labs/vercel.json</code> directement via MCP Filesystem. Michael n'avait qu'à pusher avec Claude Code.</div>
       </div>
       <div class="mcp-card">
         <div class="m-label">Workflow amélioré</div>
