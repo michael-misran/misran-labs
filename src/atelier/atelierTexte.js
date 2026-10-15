@@ -525,6 +525,56 @@ export const LT = {
     [{ fr: 'Expert', en: 'Expert' }, 'Opus', { fr: 'étape délicate, ou après deux échecs', en: 'a delicate step, or after two failures' }],
   ],
 
+  // ---------- Partie 7 — Pannes et dépannage ----------
+  p7Titre: { fr: 'Pannes et dépannage', en: 'Troubleshooting' },
+  p7Chap: { fr: 'Chap. 7 — Pannes et dépannage', en: 'Chap. 7 — Troubleshooting' },
+  p7OuvertureTexte: {
+    fr: 'Sept pannes rencontrées, lues comme une notice de dépannage : le symptôme constaté, sa cause, et le remède appliqué.',
+    en: 'Seven breakdowns encountered, read like a troubleshooting notice: the observed symptom, its cause, and the fix applied.',
+  },
+  p7Cols: { fr: ['Symptôme', 'Cause', 'Remède'], en: ['Symptom', 'Cause', 'Fix'] },
+  p7Rows1: [
+    [
+      { fr: 'L’IA locale ne faisait pas vraiment gagner de quota', en: 'Local AI wasn’t really saving quota' },
+      { fr: 'Le script renvoyait tout dans le terminal (Claude recopiait puis relisait), affichait son raisonnement, et le calcul de coût mesurait les mauvais tokens', en: 'The script printed everything to the terminal (Claude had to copy it back in, then reread it), showed its reasoning, and the cost calculation measured the wrong tokens' },
+      { fr: 'Abandon de l’IA locale (Lily)', en: 'Dropping local AI (Lily)' },
+    ],
+    [
+      { fr: 'La session s’arrête et ne peut pas se relancer seule', en: 'The session stops and cannot relaunch itself' },
+      { fr: 'Limite glissante de 5 heures de l’abonnement Pro', en: 'The Pro subscription’s rolling 5-hour limit' },
+      { fr: 'État écrit sur le disque (plan coché, PROGRESS.md, un commit par étape) ; la tâche programmée relance toutes les 2 heures et relit SPEC, PLAN, PROGRESS', en: 'State written to disk (checked-off plan, PROGRESS.md, a commit per step); the scheduled task relaunches every 2 hours and rereads SPEC, PLAN, PROGRESS' },
+    ],
+  ],
+  p7Rows2: [
+    [
+      { fr: 'Un sous-agent ne rend aucun verdict', en: 'A sub-agent returns no verdict' },
+      { fr: 'Son lancement a raté', en: 'Its launch failed' },
+      { fr: 'Une seule nouvelle tentative, puis faire l’étape soi-même, noté dans DECISIONS.md et DELEGATIONS.md', en: 'One more attempt only, then do the step directly, noted in DECISIONS.md and DELEGATIONS.md' },
+    ],
+    [
+      { fr: 'Le passage d’une routine s’arrête à moitié', en: 'A routine’s turn stops halfway through' },
+      { fr: 'Un sous-agent lancé en arrière-plan : la session principale termine son tour pendant qu’il travaille encore', en: 'A sub-agent launched in the background: the main session ends its turn while it is still working' },
+      { fr: 'Toujours lancer un sous-agent au premier plan, dans une routine', en: 'Always launch a sub-agent in the foreground, inside a routine' },
+    ],
+    [
+      { fr: 'Une demande d’autorisation à laquelle personne ne répond', en: 'A permission request nobody answers' },
+      { fr: 'Commande shell composée (&&, ;, boucle, $(…), heredoc), non reconnue par les autorisations', en: 'A compound shell command (&&, ;, a loop, $(…), a heredoc), not recognised by the permissions' },
+      { fr: 'Une seule commande shell simple par appel', en: 'One single, simple shell command per call' },
+    ],
+  ],
+  p7Rows3: [
+    [
+      { fr: 'Premier essai d’interroger Gemini : échec', en: 'First attempt to ask Gemini: failure' },
+      { fr: 'L’extension Claude in Chrome n’était pas connectée', en: 'The Claude in Chrome extension wasn’t connected' },
+      { fr: 'Les étapes données sans chercher de contournement (installer l’extension, s’y connecter) ; deuxième essai réussi', en: 'The steps given with no attempt to work around it (install the extension, sign in); second attempt succeeded' },
+    ],
+    [
+      { fr: 'Un site refuse l’outil de lecture habituel', en: 'A site refuses the usual reading tool' },
+      { fr: 'Erreur 403', en: 'A 403 error' },
+      { fr: 'Lightpanda en secours, qui récupère la page entière', en: 'Lightpanda as a fallback, which retrieves the whole page' },
+    ],
+  ],
+
   notesTitre: { fr: 'Notes', en: 'Notes' },
 
   // ---------- Quatrième de couverture ----------

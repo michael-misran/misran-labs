@@ -589,6 +589,79 @@ function pagesDuLivre(lang) {
       </PagePapier>
     )],
 
+    // partie 7, ouverture (plan)
+    ['p7', (folio) => (
+      <section className="at-page at-plan at-gauche at-ouverture">
+        <div className="at-corps">
+          <span className="at-num">7</span>
+          <h2>{lt(LT.p7Titre, lang)}</h2>
+          <p>{lt(LT.p7OuvertureTexte, lang)}</p>
+        </div>
+        <FolioNum n={folio} />
+      </section>
+    )],
+
+    // partie 7, tableau de dépannage (1/3) (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p7Chap, lang), '7.1']}>
+        <h2><small>{lang === 'en' ? 'Part 7' : 'Partie 7'}</small>{lt(LT.p7Titre, lang)}</h2>
+        <table className="at-recap">
+          <thead>
+            <tr>{lt(LT.p7Cols, lang).map((c) => <th key={c}>{c}</th>)}</tr>
+          </thead>
+          <tbody>
+            {LT.p7Rows1.map((row, i) => (
+              <tr key={i}>
+                <td>{lt(row[0], lang)}</td>
+                <td>{lt(row[1], lang)}</td>
+                <td>{lt(row[2], lang)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </PagePapier>
+    )],
+
+    // partie 7, tableau de dépannage (2/3) (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p7Chap, lang), '7.2']}>
+        <table className="at-recap">
+          <thead>
+            <tr>{lt(LT.p7Cols, lang).map((c) => <th key={c}>{c}</th>)}</tr>
+          </thead>
+          <tbody>
+            {LT.p7Rows2.map((row, i) => (
+              <tr key={i}>
+                <td>{lt(row[0], lang)}</td>
+                <td>{lt(row[1], lang)}</td>
+                <td>{lt(row[2], lang)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </PagePapier>
+    )],
+
+    // partie 7, tableau de dépannage (3/3) (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p7Chap, lang), '7.3']}>
+        <table className="at-recap">
+          <thead>
+            <tr>{lt(LT.p7Cols, lang).map((c) => <th key={c}>{c}</th>)}</tr>
+          </thead>
+          <tbody>
+            {LT.p7Rows3.map((row, i) => (
+              <tr key={i}>
+                <td>{lt(row[0], lang)}</td>
+                <td>{lt(row[1], lang)}</td>
+                <td>{lt(row[2], lang)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </PagePapier>
+    )],
+
     // page de notes, lignée
     [null, (folio) => (
       <PagePapier folio={folio}>

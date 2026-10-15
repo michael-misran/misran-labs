@@ -1,7 +1,7 @@
 # Mission atelier-automatique-2 — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 7 (partie 7 — Pannes et dépannage)
+**Prochaine action :** étape 8 (partie 8 — Carnet d'entretien)
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
@@ -54,4 +54,13 @@ pages papier : les vrais leviers sur le quota, économiser les tokens
 (tableau avant/après des 3 principaux postes + Lightpanda en note), quel
 modèle pour quel travail (tableau Opus/Sonnet/Haiku). Livre à 44 pages ;
 vérifié avec `npx vite preview` à 375 px : aucun débordement, aucune erreur
+console. `npm run build` et `npm run lint` : OK.
+
+## Étape 7 — Partie 7, Pannes et dépannage (2026-10-15)
+Ouverture + 3 pages tableau Symptôme/Cause/Remède (7 pannes réparties sur
+les 3 pages) : abandon de l'IA locale, session arrêtée par la limite de
+quota, sous-agent sans verdict, sous-agent en arrière-plan qui coupe la
+routine, commande shell composée, premier essai Gemini raté, navigateur
+403 (Lightpanda). Livre à 48 pages ; vérifié avec `npx vite preview` à
+375 px : aucun débordement malgré les textes denses, aucune erreur
 console. `npm run build` et `npm run lint` : OK.
