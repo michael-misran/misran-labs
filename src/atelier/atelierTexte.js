@@ -34,8 +34,8 @@ export const LT = {
   // ---------- Garde : avant de lire ----------
   gardeTitre: { fr: 'Avant de lire', en: 'Before you read' },
   gardeTexte: {
-    fr: 'Ce manuel documente l’atelier qui écrit, relit et publie une bonne partie de Misran Labs : les sessions où Michael travaille avec Claude, les automates qui tournent seuls à heure fixe, et les agents spécialisés qu’ils appellent. Quatre parties sont prêtes ; les suivantes sont en chantier.',
-    en: 'This manual documents the workshop that writes, checks and publishes much of Misran Labs: the sessions where Michael works with Claude, the automated routines that run on their own on a schedule, and the specialised agents they call. Four parts are ready; the rest are being built.',
+    fr: 'Ce manuel documente l’atelier qui écrit, relit et publie une bonne partie de Misran Labs : les sessions où Michael travaille avec Claude, les automates qui tournent seuls à heure fixe, et les agents spécialisés qu’ils appellent — le rédacteur et sept agents en tout.',
+    en: 'This manual documents the workshop that writes, checks and publishes much of Misran Labs: the sessions where Michael works with Claude, the automated routines that run on their own on a schedule, and the specialised agents they call — the rédacteur and seven agents in all.',
   },
   gardeLecture: {
     fr: 'On tourne les pages au clavier (← →), à la souris ou au doigt. FR / EN se bascule en haut de l’écran.',
