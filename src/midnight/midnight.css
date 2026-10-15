@@ -1,0 +1,272 @@
+/* Livre Midnight Snack : couverture jaune/rouge façon pulp 70s, pages crème.
+   Mécanique de tourne-page reprise de src/portfolio/portfolio.css (préfixe
+   pf- → ms-), identité visuelle propre au magazine (SPEC D6). Tailles en
+   --u (1 % de la hauteur de page) : 1cqh sur le livre ouvert, valeur fixe
+   sur téléphone et à l'impression. */
+
+.ms-table {
+  --ms-jaune: #f7c86a;
+  --ms-jaune-fonce: #c89a46;
+  --ms-rouge: #e8352b;
+  --ms-creme: #f6ecd8;
+  --ms-encre: #16110c;
+  --ms-gris: #6d6457;
+  --ms-filet: #ddb97f;
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  padding: 64px 24px 24px;
+  background: radial-gradient(ellipse at 50% 45%, #332212, #1a1208 75%);
+  color: var(--ms-encre);
+  font-family: var(--font-chapo);
+}
+body:has(.ms-table) { margin: 0; }
+.ms-table, .ms-table *, .ms-table *::before, .ms-table *::after { box-sizing: border-box; }
+
+/* ---------- Bandeau ---------- */
+.ms-bandeau {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px 24px;
+  font: 500 13px/1 var(--font-etiquette); letter-spacing: .08em; text-transform: uppercase; color: #e9d9b8;
+}
+.ms-bandeau a, .ms-bandeau button { color: inherit; text-decoration: none; background: none; border: 0; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; }
+.ms-bandeau a:hover, .ms-bandeau button:hover { color: #fff; }
+.ms-bandeau-titre { color: var(--ms-jaune); font-family: var(--font-affiche); font-size: 18px; letter-spacing: .04em; }
+.ms-bandeau-droite { display: flex; gap: 18px; }
+
+/* Bandeau d'épreuve : numéro pas encore paru, consulté avec ?epreuve */
+.ms-epreuve {
+  position: fixed; top: 44px; left: 0; right: 0; z-index: 10;
+  padding: 8px 24px; text-align: center;
+  background: var(--ms-rouge); color: var(--ms-creme);
+  font: 700 12px/1.3 var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase;
+}
+
+/* ---------- Livre ouvert ---------- */
+.ms-livre {
+  --h: min(calc(100dvh - 140px), calc((100vw - 96px) * .707));
+  position: relative; display: flex;
+  height: var(--h); width: calc(var(--h) * 1.4144);
+  perspective: 2800px;
+  transition: transform .8s cubic-bezier(.4, .1, .25, 1);
+}
+.ms-livre.ms-ferme { transform: translateX(-25%); }
+.ms-livre.ms-dos { transform: translateX(25%); }
+
+.ms-cote, .ms-face { width: 50%; height: 100%; container-type: size; --u: 1cqh; }
+.ms-cote { position: relative; }
+.ms-cote-gauche:not(.ms-cote-vide) { box-shadow: -1.2vh 1.6vh 3vh rgba(0,0,0,.45); }
+.ms-cote-droite:not(.ms-cote-vide) { box-shadow: 1.2vh 1.6vh 3vh rgba(0,0,0,.45); }
+
+.ms-feuillet { position: absolute; top: 0; width: 50%; height: 100%; transform-style: preserve-3d; z-index: 4; }
+.ms-feuillet-droite { left: 50%; transform-origin: left center; animation: ms-tourne-avant .85s cubic-bezier(.45, .05, .3, 1) forwards; }
+.ms-feuillet-gauche { left: 0; transform-origin: right center; animation: ms-tourne-arriere .85s cubic-bezier(.45, .05, .3, 1) forwards; }
+@keyframes ms-tourne-avant { to { transform: rotateY(-180deg); } }
+@keyframes ms-tourne-arriere { to { transform: rotateY(180deg); } }
+.ms-face { position: absolute; inset: 0; width: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.ms-verso { transform: rotateY(180deg); }
+.ms-face::after { content: ''; position: absolute; inset: 0; pointer-events: none; animation: ms-ombre .85s ease-in-out; }
+@keyframes ms-ombre { 50% { background: rgba(0,0,0,.18); } }
+
+.ms-zone { position: absolute; top: 0; bottom: 0; width: 22%; z-index: 5; background: none; border: 0; cursor: pointer; }
+.ms-zone-gauche { left: 0; cursor: w-resize; }
+.ms-zone-droite { right: 0; cursor: e-resize; }
+.ms-ferme .ms-zone-droite { width: 50%; cursor: pointer; }
+.ms-zone:focus { outline: none; }
+.ms-zone-droite:focus-visible { background: linear-gradient(270deg, rgba(232,53,43,.2), transparent 30%); }
+.ms-zone-gauche:focus-visible { background: linear-gradient(90deg, rgba(232,53,43,.2), transparent 30%); }
+
+/* ---------- Commandes ---------- */
+.ms-commandes { display: flex; align-items: center; gap: 16px; }
+.ms-commandes > button {
+  width: 34px; height: 34px; border-radius: 50%; border: 1px solid #a88a55; background: none; color: #e9d9b8;
+  font: 22px/1 var(--font-chapo); cursor: pointer;
+}
+.ms-commandes > button:disabled { opacity: .3; cursor: default; }
+.ms-commandes > button:not(:disabled):hover { background: var(--ms-jaune); border-color: var(--ms-jaune); color: var(--ms-encre); }
+.ms-pagination { display: flex; gap: 8px; }
+.ms-pagination button { width: 8px; height: 8px; padding: 0; border-radius: 50%; border: 0; background: #7a6a48; cursor: pointer; }
+.ms-pagination button.actif { background: var(--ms-jaune); transform: scale(1.3); }
+
+/* ---------- Page ---------- */
+.ms-page {
+  position: relative; width: 100%; height: 100%; overflow: hidden;
+  background: var(--ms-creme); color: var(--ms-encre);
+  font-size: calc(var(--u) * 1.85); line-height: 1.42;
+}
+.ms-page-gauche { background: linear-gradient(270deg, rgba(60,40,10,.14), transparent 7%), var(--ms-creme); }
+.ms-page-droite { background: linear-gradient(90deg, rgba(60,40,10,.14), transparent 7%), var(--ms-creme); }
+.ms-marge { position: absolute; inset: 0; display: flex; flex-direction: column; padding: calc(var(--u) * 5.5) calc(var(--u) * 5) calc(var(--u) * 4); }
+.ms-page-gauche .ms-marge { padding-right: calc(var(--u) * 6); }
+.ms-page-droite .ms-marge { padding-left: calc(var(--u) * 6); }
+.ms-contenu { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: calc(var(--u) * 1.4); overflow: hidden; }
+.ms-contenu p { margin: 0; }
+.ms-tete {
+  margin-bottom: calc(var(--u) * 2.4); padding-bottom: calc(var(--u) * .6); border-bottom: 1px solid var(--ms-filet);
+  font: 500 calc(var(--u) * 1.15)/1 var(--font-etiquette); letter-spacing: .16em; text-transform: uppercase; color: var(--ms-gris);
+}
+.ms-page-droite .ms-tete { text-align: right; }
+.ms-folio { margin-top: calc(var(--u) * 1.6); font: italic calc(var(--u) * 1.6)/1 var(--font-chapo); color: var(--ms-gris); }
+.ms-page-droite .ms-folio { text-align: right; }
+.ms-page a { color: var(--ms-rouge); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+
+.ms-titre-page { margin: 0; font: 400 calc(var(--u) * 3.6)/1.05 var(--font-affiche); color: var(--ms-rouge); letter-spacing: .02em; }
+.ms-chapo { font: italic calc(var(--u) * 2.1)/1.35 var(--font-chapo); color: var(--ms-gris); }
+.ms-intertitre {
+  margin: calc(var(--u) * .8) 0 0; display: flex; align-items: center; gap: calc(var(--u) * 1);
+  font: 500 calc(var(--u) * 1.25)/1 var(--font-etiquette); letter-spacing: .16em; text-transform: uppercase; color: var(--ms-rouge);
+}
+.ms-intertitre::after { content: ''; flex: 1; height: 1px; background: var(--ms-filet); }
+.ms-note { font-style: italic; color: var(--ms-gris); }
+
+/* Sommaire */
+.ms-sommaire { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: calc(var(--u) * .9); }
+.ms-sommaire li { display: flex; align-items: baseline; gap: calc(var(--u) * .8); font-size: calc(var(--u) * 1.9); }
+.ms-sommaire i { flex: 1; border-bottom: 1px dotted var(--ms-gris); transform: translateY(-.3em); }
+.ms-sommaire b { font: italic 400 1em var(--font-chapo); color: var(--ms-rouge); }
+.ms-garde .ms-contenu { justify-content: flex-start; }
+.ms-edito p { font-size: calc(var(--u) * 1.95); }
+.ms-edito p:first-child::first-letter { font: 400 calc(var(--u) * 5.2)/.75 var(--font-affiche); color: var(--ms-rouge); float: left; margin: calc(var(--u) * .4) calc(var(--u) * .8) 0 0; }
+.ms-signature { text-align: right; font-style: italic; color: var(--ms-rouge); }
+
+/* Récits */
+.ms-recit-ouverture { display: flex; flex-direction: column; gap: calc(var(--u) * 1); }
+.ms-recit .ms-contenu p { font-size: calc(var(--u) * 1.85); }
+.ms-recit .ms-contenu p:first-of-type::first-letter {
+  font: 400 calc(var(--u) * 5.4)/.75 var(--font-affiche); color: var(--ms-rouge);
+  float: left; margin: calc(var(--u) * .4) calc(var(--u) * .7) 0 0;
+}
+.ms-recit-page2 .ms-contenu p:first-of-type::first-letter, .ms-recit-page3 .ms-contenu p:first-of-type::first-letter { all: unset; }
+
+/* Le saviez-vous ? */
+.ms-faits { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: calc(var(--u) * 1.6); }
+.ms-faits li { position: relative; padding-left: calc(var(--u) * 2.2); font-size: calc(var(--u) * 1.8); }
+.ms-faits li::before { content: '✶'; position: absolute; left: 0; top: 0; color: var(--ms-rouge); }
+
+/* Réclames rétro */
+.ms-reclames { display: flex; flex-direction: column; gap: calc(var(--u) * 2); }
+.ms-reclame { padding: calc(var(--u) * 1.6); border: calc(var(--u) * .25) solid var(--ms-encre); background: #fffaf0; }
+.ms-reclame h3 { margin: 0 0 calc(var(--u) * .6); font: 400 calc(var(--u) * 2.4)/1 var(--font-affiche); color: var(--ms-rouge); }
+.ms-reclame p { margin: 0; font: calc(var(--u) * 1.6)/1.4 var(--font-machine); }
+
+/* Recette (fiche cuisine 70s) */
+.ms-recette { display: flex; flex-direction: column; gap: calc(var(--u) * 1.2); }
+.ms-recette-grille { display: grid; grid-template-columns: 1fr 1.3fr; gap: calc(var(--u) * 2); }
+.ms-recette ul, .ms-recette ol { margin: 0; padding-left: calc(var(--u) * 1.8); display: flex; flex-direction: column; gap: calc(var(--u) * .5); font-size: calc(var(--u) * 1.6); }
+
+/* Courrier des insomniaques */
+.ms-courrier { display: flex; flex-direction: column; gap: calc(var(--u) * 1.3); }
+.ms-lettre p { margin: 0; font-size: calc(var(--u) * 1.7); }
+.ms-lettre .ms-q { font-style: italic; }
+.ms-lettre .ms-r { color: var(--ms-rouge); }
+.ms-lettre .ms-r::before { content: '— '; }
+
+/* Pages en attente (feuilleton, marmite) */
+.ms-attente-encadre {
+  margin-top: auto; padding: calc(var(--u) * 1.6); border: 1px dashed var(--ms-rouge); text-align: center;
+  font: italic calc(var(--u) * 1.8)/1.4 var(--font-chapo); color: var(--ms-gris);
+}
+.ms-marmite-colonnes { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 2); }
+.ms-marmite-colonnes h3 { margin: 0 0 calc(var(--u) * .6); font: 500 calc(var(--u) * 1.3)/1.2 var(--font-etiquette); letter-spacing: .1em; text-transform: uppercase; color: var(--ms-rouge); }
+.ms-reclame-jeu { margin-top: auto; text-align: center; font: calc(var(--u) * 1.6)/1.3 var(--font-etiquette); letter-spacing: .08em; text-transform: uppercase; }
+
+/* Jeu imprimable */
+.ms-jeu-page .ms-contenu { gap: calc(var(--u) * 2); }
+.ms-labyrinthe { display: flex; flex-direction: column; gap: calc(var(--u) * .6); align-items: center; }
+.ms-labyrinthe svg { width: 100%; max-width: calc(var(--u) * 40); height: auto; }
+.ms-mots-croises { display: flex; flex-direction: column; gap: calc(var(--u) * 1); }
+.ms-grille-mc { display: grid; gap: 1px; background: var(--ms-encre); width: fit-content; margin: 0 auto; }
+.ms-case-mc { width: calc(var(--u) * 2.2); height: calc(var(--u) * 2.2); background: var(--ms-creme); position: relative; }
+.ms-case-mc.ms-case-vide { background: transparent; }
+.ms-case-mc b { position: absolute; top: 1px; left: 2px; font-size: calc(var(--u) * .9); font-weight: 500; }
+.ms-clues { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u) * .3) calc(var(--u) * 1.6); font-size: calc(var(--u) * 1.4); }
+.ms-solution { margin-top: auto; text-align: center; font-size: calc(var(--u) * 1); color: var(--ms-gris); transform: rotate(180deg); }
+
+/* Encarts (images et maquettes), repris du portfolio */
+.ms-encart { margin: 0; display: flex; flex-direction: column; gap: calc(var(--u) * .6); }
+.ms-encart figcaption { font: italic calc(var(--u) * 1.5)/1.3 var(--font-chapo); color: var(--ms-gris); }
+.ms-encart-cadre, .ms-encart-image { width: 100%; display: block; border: 1px solid #c9ab6f; }
+.ms-encart-image { object-fit: cover; background: #ede0bf; }
+/* En bas de page, l'encart prend la place qui reste au lieu de déborder :
+   le cadre (ou l'image, recadrée) rétrécit, la légende reste visible */
+.ms-contenu > .ms-encart { flex: 0 1 auto; min-height: calc(var(--u) * 12); }
+.ms-contenu > .ms-encart > .ms-encart-cadre, .ms-contenu > .ms-encart > .ms-encart-image { flex: 0 1 auto; min-height: 0; }
+.ms-contenu > .ms-encart > figcaption { flex: none; }
+.ms-encart-cadre {
+  position: relative; display: grid; place-items: center; min-height: calc(var(--u) * 10);
+  background: repeating-linear-gradient(-45deg, #f0e3c2 0 calc(var(--u) * .6), #e7d6a9 calc(var(--u) * .6) calc(var(--u) * 1.2));
+}
+.ms-repere { position: absolute; width: calc(var(--u) * 1.6); height: calc(var(--u) * 1.6); border: 0 solid var(--ms-rouge); }
+.ms-repere-hg { top: calc(var(--u) * .6); left: calc(var(--u) * .6); border-top-width: 2px; border-left-width: 2px; }
+.ms-repere-bd { bottom: calc(var(--u) * .6); right: calc(var(--u) * .6); border-bottom-width: 2px; border-right-width: 2px; }
+.ms-consigne {
+  max-width: 86%; padding: calc(var(--u) * 1.2) calc(var(--u) * 1.6); background: #fffaf0; border: 1px dashed var(--ms-rouge);
+  display: flex; flex-direction: column; gap: calc(var(--u) * .5); text-align: center;
+  font: calc(var(--u) * 1.3)/1.35 var(--font-machine); color: var(--ms-encre);
+}
+.ms-consigne b { font: 500 calc(var(--u) * 1.15)/1 var(--font-etiquette); letter-spacing: .2em; text-transform: uppercase; color: var(--ms-rouge); }
+.ms-consigne small { font-size: calc(var(--u) * 1.05); color: var(--ms-gris); }
+.ms-consigne i { font-style: italic; }
+
+/* ---------- Couvertures ---------- */
+.ms-couverture {
+  background: var(--ms-jaune);
+  color: var(--ms-encre); border-radius: 0 calc(var(--u) * .8) calc(var(--u) * .8) 0;
+  background-size: cover; background-position: center;
+}
+.ms-couverture::before { content: ''; position: absolute; top: 0; bottom: 0; left: calc(var(--u) * 2.4); width: calc(var(--u) * .5); background: linear-gradient(90deg, rgba(0,0,0,.3), rgba(255,255,255,.08)); }
+.ms-quatrieme { border-radius: calc(var(--u) * .8) 0 0 calc(var(--u) * .8); background: var(--ms-encre); color: var(--ms-creme); }
+.ms-quatrieme::before { left: auto; right: calc(var(--u) * 2.4); }
+.ms-couv-cadre {
+  position: absolute; inset: calc(var(--u) * 5) calc(var(--u) * 4.5) calc(var(--u) * 5) calc(var(--u) * 6.5);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(var(--u) * 1.6); text-align: center;
+  padding: calc(var(--u) * 3);
+  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.ms-quatrieme .ms-couv-cadre { left: calc(var(--u) * 4.5); right: calc(var(--u) * 6.5); }
+.ms-couv-titre { margin: 0; font: 400 calc(var(--u) * 10)/.9 var(--font-affiche); color: var(--ms-rouge); -webkit-text-stroke: 2px var(--ms-creme); paint-order: stroke fill; }
+.ms-couv-sous { margin: 0; font: 400 calc(var(--u) * 4)/1 var(--font-affiche); color: var(--ms-creme); -webkit-text-stroke: 1.5px var(--ms-rouge); paint-order: stroke fill; }
+.ms-couv-edition { font: 500 calc(var(--u) * 1.3)/1.4 var(--font-etiquette); letter-spacing: .18em; text-transform: uppercase; background: var(--ms-encre); color: var(--ms-jaune); padding: calc(var(--u) * .4) calc(var(--u) * 1); margin-top: auto; }
+.ms-quatrieme-titre { margin: 0; font: 400 calc(var(--u) * 3.2)/1.1 var(--font-affiche); color: var(--ms-rouge); }
+.ms-quatrieme-texte { margin: 0; font: italic calc(var(--u) * 1.9)/1.4 var(--font-chapo); }
+
+/* ---------- Page d'attente (numéro pas encore paru) ---------- */
+.ms-attente {
+  --ms-jaune-fonce: #c89a46;
+  --ms-rouge: #e8352b;
+  --ms-creme: #f6ecd8;
+  min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+  padding: 64px 24px; text-align: center;
+  background: radial-gradient(ellipse at 50% 40%, var(--ms-jaune-fonce), #1a1208 75%);
+  color: var(--ms-creme); font-family: var(--font-chapo);
+}
+.ms-attente h1 { margin: 0; font: 400 clamp(32px, 7vw, 64px)/1 var(--font-affiche); color: var(--ms-rouge); -webkit-text-stroke: 2px var(--ms-creme); paint-order: stroke fill; }
+.ms-attente p { margin: 0; max-width: 560px; font-size: 16px; }
+.ms-attente-date { font: 500 14px/1 var(--font-etiquette); letter-spacing: .2em; text-transform: uppercase; color: var(--ms-jaune); }
+.ms-attente a { color: var(--ms-jaune); }
+
+/* ---------- Pile : téléphone et impression ---------- */
+.ms-pile { display: none; }
+
+@media (max-width: 760px) {
+  .ms-table { padding: 60px 16px 24px; justify-content: flex-start; }
+  .ms-bandeau { background: #241a0c; padding: 14px 16px; font-size: 11px; }
+  .ms-bandeau-titre { font-size: 15px; }
+  .ms-livre, .ms-commandes { display: none; }
+  .ms-pile { display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 520px; }
+  .ms-pile-page { --u: 7.2px; box-shadow: 0 10px 24px rgba(0,0,0,.45); }
+  .ms-pile .ms-page { height: auto; min-height: calc(var(--u) * 70); }
+  .ms-pile .ms-marge { position: relative; inset: auto; min-height: inherit; padding: calc(var(--u) * 4) calc(var(--u) * 3.5) calc(var(--u) * 3); }
+  .ms-pile .ms-couverture, .ms-pile .ms-quatrieme { min-height: calc(var(--u) * 90); }
+  .ms-recette-grille, .ms-marmite-colonnes, .ms-clues { grid-template-columns: 1fr; }
+}
+
+@media print {
+  @page { size: A5; margin: 0; }
+  .ms-table { display: block; padding: 0; background: none; min-height: 0; }
+  .ms-bandeau, .ms-epreuve, .ms-livre, .ms-commandes { display: none !important; }
+  .ms-pile { display: block; }
+  .ms-pile-page { --u: 2.1mm; width: 148mm; height: 210mm; break-after: page; overflow: hidden; }
+  .ms-pile .ms-page { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .ms-consigne { display: none; }
+}

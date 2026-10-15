@@ -6,6 +6,7 @@
 // - to : adresse ouverte par « Lire » (null = pas encore paru)
 // - hauteur / epaisseur : taille de la tranche, en % de la hauteur du rayon
 //   et en % de la largeur de l'étagère
+import { getNumero, estParu } from '../midnight/numeros'
 
 export const VOLUMES = [
   {
@@ -28,7 +29,8 @@ export const VOLUMES = [
     titre: { fr: 'Midnight Snack', en: 'Midnight Snack' },
     sous: { fr: 'N°1 · novembre 2026', en: 'No. 1 · November 2026' },
     image: '/decors/couverture-midnight-snack.jpg',
-    to: null,
+    // Parue le 2026-11-01 (SPEC midnight-snack-1 D2) : /midnight/1 s'ouvre tout seul ce jour-là
+    to: estParu(getNumero(1)) ? '/midnight/1' : null,
     tranche: { fond: '#f7c86a', encre: '#e8352b', police: 'var(--font-affiche)' },
     hauteur: 92,
     epaisseur: 10,
