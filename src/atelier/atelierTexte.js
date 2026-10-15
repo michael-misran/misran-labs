@@ -1,12 +1,12 @@
-// Textes du livre « L'Atelier automatique » (FR / EN). Tous les faits
+// Textes du livre « L’Atelier automatique » (FR / EN). Tous les faits
 // viennent du dépôt (D6 de la SPEC) : CLAUDE.md, missions/README.md,
 // src/lab/projects/UtilisationIA.jsx, src/lab/projects/SalleDesMachines.jsx,
 // .claude/agents/*.md et ~/.claude/agents/*.md.
 
 export const LT = {
   // Navigation
-  titreOnglet: { fr: "L'Atelier automatique", en: 'The Automatic Workshop' },
-  surTitre: { fr: "Manuel d'utilisation et d'entretien", en: 'Operation and maintenance manual' },
+  titreOnglet: { fr: 'L’Atelier automatique', en: 'The Automatic Workshop' },
+  surTitre: { fr: 'Manuel d’utilisation et d’entretien', en: 'Operation and maintenance manual' },
   bibliotheque: { fr: 'Retour à la librairie', en: 'Back to the bookshop' },
   precedente: { fr: 'Page précédente', en: 'Previous page' },
   suivante: { fr: 'Page suivante', en: 'Next page' },
@@ -15,14 +15,14 @@ export const LT = {
 
   // ---------- Couverture ----------
   bandeauCentre: { fr: 'Notice n° MM-1977', en: 'Manual No. MM-1977' },
-  titreL1: { fr: "L'Atelier", en: 'The Automatic' },
+  titreL1: { fr: 'L’Atelier', en: 'The Automatic' },
   titreL2: { fr: 'Automatique', en: 'Workshop' },
-  sousL1: { fr: "Manuel d'utilisation", en: 'Operation and' },
-  sousL2: { fr: "et d'entretien", en: 'maintenance manual' },
+  sousL1: { fr: 'Manuel d’utilisation', en: 'Operation and' },
+  sousL2: { fr: 'et d’entretien', en: 'maintenance manual' },
   editionCouv: { fr: 'Édition 01', en: 'Edition 01' },
   avisL1: { fr: 'Lire avant', en: 'Read before' },
   avisL2: { fr: 'toute utilisation', en: 'any use' },
-  figCouverture: { fr: "Fig. 1 — Vue éclatée de l'atelier", en: 'Fig. 1 — Exploded view of the workshop' },
+  figCouverture: { fr: 'Fig. 1 — Vue éclatée de l’atelier', en: 'Fig. 1 — Exploded view of the workshop' },
   legendeAgents: ['Controleur', 'Relecteur', 'Secrétaire', 'Veilleur', 'Vérificateur', 'Explorateur', 'Expert'],
   plaqueModeleK: { fr: 'Modèle', en: 'Model' },
   plaqueModeleV: { fr: 'MM-1977 · série 01', en: 'MM-1977 · series 01' },
@@ -34,8 +34,8 @@ export const LT = {
   // ---------- Garde : avant de lire ----------
   gardeTitre: { fr: 'Avant de lire', en: 'Before you read' },
   gardeTexte: {
-    fr: "Ce manuel documente l'atelier qui écrit, relit et publie une bonne partie de Misran Labs : les sessions où Michael travaille avec Claude, les automates qui tournent seuls à heure fixe, et les agents spécialisés qu'ils appellent. Quatre parties sont prêtes ; les suivantes sont en chantier.",
-    en: "This manual documents the workshop that writes, checks and publishes much of Misran Labs: the sessions where Michael works with Claude, the automated routines that run on their own on a schedule, and the specialised agents they call. Four parts are ready; the rest are being built.",
+    fr: 'Ce manuel documente l’atelier qui écrit, relit et publie une bonne partie de Misran Labs : les sessions où Michael travaille avec Claude, les automates qui tournent seuls à heure fixe, et les agents spécialisés qu’ils appellent. Quatre parties sont prêtes ; les suivantes sont en chantier.',
+    en: 'This manual documents the workshop that writes, checks and publishes much of Misran Labs: the sessions where Michael works with Claude, the automated routines that run on their own on a schedule, and the specialised agents they call. Four parts are ready; the rest are being built.',
   },
   gardeLecture: {
     fr: 'On tourne les pages au clavier (← →), à la souris ou au doigt. FR / EN se bascule en haut de l’écran.',
@@ -45,14 +45,14 @@ export const LT = {
   enPreparation: { fr: 'en préparation', en: 'in preparation' },
   parties: [
     { titre: { fr: 'Consignes de sécurité', en: 'Safety instructions' }, folio: 4 },
-    { titre: { fr: "Présentation de l'appareil", en: 'Presenting the appliance' }, folio: 6 },
+    { titre: { fr: 'Présentation de l’appareil', en: 'Presenting the appliance' }, folio: 6 },
     { titre: { fr: 'Le personnel', en: 'Staff' }, folio: 8 },
     { titre: { fr: 'Les automates', en: 'The automated routines' }, folio: 18 },
     { titre: { fr: 'Les missions autonomes', en: 'Autonomous missions' }, folio: null },
     { titre: { fr: 'Les accessoires', en: 'Accessories' }, folio: null },
     { titre: { fr: 'Réglages et consommation', en: 'Settings and consumption' }, folio: null },
     { titre: { fr: 'Pannes et dépannage', en: 'Troubleshooting' }, folio: null },
-    { titre: { fr: "Carnet d'entretien", en: 'Maintenance log' }, folio: null },
+    { titre: { fr: 'Carnet d’entretien', en: 'Maintenance log' }, folio: null },
     { titre: { fr: 'Glossaire', en: 'Glossary' }, folio: null, annexe: true },
   ],
 
@@ -60,7 +60,7 @@ export const LT = {
   p0Titre: { fr: 'Consignes de sécurité', en: 'Safety instructions' },
   p0Chapeau: { fr: 'Partie 0', en: 'Part 0' },
   p0Intro: {
-    fr: "Les règles qui suivent ne se discutent pas. Elles protègent un dépôt public et un site qui part en production dès que la branche main change.",
+    fr: 'Les règles qui suivent ne se discutent pas. Elles protègent un dépôt public et un site qui part en production dès que la branche main change.',
     en: 'The rules below are not up for debate. They protect a public repository and a site that goes live the moment the main branch changes.',
   },
   p0GitTitre: { fr: 'Attention — Git', en: 'Warning — Git' },
@@ -73,10 +73,10 @@ export const LT = {
     fr: 'Le dépôt est visible de tout le monde. Aucun secret et aucune donnée personnelle dans un commit : ni token, ni mot de passe, ni adresse postale, ni adresse e-mail autre que celle déjà publique.',
     en: 'The repository is visible to everyone. No secret and no personal data in a commit: no token, no password, no postal address, no email address other than the one already public.',
   },
-  p0CasTitre: { fr: "Cas d'école", en: 'Case study' },
+  p0CasTitre: { fr: 'Cas d’école', en: 'Case study' },
   p0CasTexte: {
-    fr: "En inspectant le dépôt, Claude a trouvé un token GitHub écrit en clair dans l'adresse du dépôt distant, dans la configuration Git locale du Mac. Le token a été révoqué, l'adresse nettoyée, la connexion refaite avec GitHub CLI : les identifiants vivent maintenant dans le trousseau macOS, plus aucun secret en clair.",
-    en: "While inspecting the repository, Claude found a GitHub token written in plaintext in the remote repository's address, inside the Mac's local Git configuration. The token was revoked, the address cleaned up, and the connection redone with the GitHub CLI: credentials now live in the macOS keychain, no more plaintext secrets.",
+    fr: 'En inspectant le dépôt, Claude a trouvé un token GitHub écrit en clair dans l’adresse du dépôt distant, dans la configuration Git locale du Mac. Le token a été révoqué, l’adresse nettoyée, la connexion refaite avec GitHub CLI : les identifiants vivent maintenant dans le trousseau macOS, plus aucun secret en clair.',
+    en: 'While inspecting the repository, Claude found a GitHub token written in plaintext in the remote repository’s address, inside the Mac’s local Git configuration. The token was revoked, the address cleaned up, and the connection redone with the GitHub CLI: credentials now live in the macOS keychain, no more plaintext secrets.',
   },
   p0Ecran: [
     { fr: '> git remote -v', en: '> git remote -v' },
@@ -86,27 +86,27 @@ export const LT = {
   p0EcranVerdict: { fr: 'VERDICT : CORRIGÉ', en: 'VERDICT: FIXED' },
   p0NoteFig: { fr: 'Fig. 2 — Avant / après le nettoyage de l’adresse du dépôt.', en: 'Fig. 2 — Before / after cleaning up the repository address.' },
 
-  // ---------- Partie 1 — Présentation de l'appareil ----------
-  p1Titre: { fr: "Présentation de l'appareil", en: 'Presenting the appliance' },
-  p1FigLegende: { fr: "Fig. 3 — Circuit d'une idée dans l'atelier", en: 'Fig. 3 — Circuit of an idea through the workshop' },
+  // ---------- Partie 1 — Présentation de l’appareil ----------
+  p1Titre: { fr: 'Présentation de l’appareil', en: 'Presenting the appliance' },
+  p1FigLegende: { fr: 'Fig. 3 — Circuit d’une idée dans l’atelier', en: 'Fig. 3 — Circuit of an idea through the workshop' },
   p1Cartouche: { fr: 'De Michael au site public, en six étapes.', en: 'From Michael to the live site, in six steps.' },
   p1Texte1: {
-    fr: "Michael travaille avec Claude dans une session interactive, ou une horloge déclenche une routine à sa place. La session exécute directement, ou cadre d'abord une mission autonome qu'une routine mènera seule.",
+    fr: 'Michael travaille avec Claude dans une session interactive, ou une horloge déclenche une routine à sa place. La session exécute directement, ou cadre d’abord une mission autonome qu’une routine mènera seule.',
     en: 'Michael works with Claude in an interactive session, or a clock fires a routine in his place. The session either executes directly, or first scopes an autonomous mission that a routine will then run on its own.',
   },
   p1Texte2: {
-    fr: "Routines et missions délèguent les tâches précises à des agents spécialisés, qui ne commitent jamais. Le résultat s'accumule en commits sur une branche, qui devient une pull request.",
+    fr: 'Routines et missions délèguent les tâches précises à des agents spécialisés, qui ne commitent jamais. Le résultat s’accumule en commits sur une branche, qui devient une pull request.',
     en: 'Routines and missions hand off precise tasks to specialised agents, which never commit. The result piles up as commits on a branch, which becomes a pull request.',
   },
   p1Texte3: {
-    fr: "Une seule porte mène au site : Michael fusionne la pull request. Dès que la branche main change, Vercel publie. Rien n'y arrive autrement.",
+    fr: 'Une seule porte mène au site : Michael fusionne la pull request. Dès que la branche main change, Vercel publie. Rien n’y arrive autrement.',
     en: 'Only one door leads to the site: Michael merges the pull request. The moment the main branch changes, Vercel publishes it. Nothing reaches it any other way.',
   },
 
   // ---------- Partie 2 — Le personnel ----------
   p2Titre: { fr: 'Le personnel', en: 'Staff' },
   p2OuvertureTexte: {
-    fr: "Sept automates secondent la session principale. Aucun ne commite : ils lisent, vérifient, collectent ou tranchent, puis rendent leur réponse à la session qui les a appelés.",
+    fr: 'Sept automates secondent la session principale. Aucun ne commite : ils lisent, vérifient, collectent ou tranchent, puis rendent leur réponse à la session qui les a appelés.',
     en: 'Seven automatons assist the main session. None of them commit: they read, check, gather or settle a question, then report back to the session that called them.',
   },
   p2ControleurFicheN: { fr: 'Fiche agent n° 1', en: 'Staff card no. 1' },
@@ -193,7 +193,7 @@ export const LT = {
         en: 'Steps in only after the main session has failed twice on the same problem, or to settle an architecture decision the SPEC leaves open.',
       },
       appele: { fr: 'rarement, en dernier recours', en: 'rarely, as a last resort' },
-      jamais: { fr: 's’appeler lui-même pour une première tentative', en: 'get called for a first attempt' },
+      jamais: { fr: 'être appelé pour une première tentative', en: 'get called for a first attempt' },
       modele: 'Opus',
     },
   ],
@@ -201,7 +201,7 @@ export const LT = {
   // ---------- Partie 3 — Les automates ----------
   p3Titre: { fr: 'Les automates', en: 'The automated routines' },
   p3OuvertureTexte: {
-    fr: "Cinq automates tournent à heure fixe ou sur un déclencheur, sans que Michael ouvre une session. Chacun produit quelque chose de vérifiable ; aucun ne fusionne sur main.",
+    fr: 'Cinq automates tournent à heure fixe ou sur un déclencheur, sans que Michael ouvre une session. Chacun produit quelque chose de vérifiable ; aucun ne fusionne sur main.',
     en: 'Five automatons run on a schedule or a trigger, without Michael opening a session. Each one produces something verifiable; none of them ever merges into main.',
   },
   p3Chap: { fr: 'Chap. 3 — Les automates', en: 'Chap. 3 — The automated routines' },
@@ -212,7 +212,7 @@ export const LT = {
 
   p3Routines: [
     {
-      titre: { fr: "L'Oracle du Matin", en: 'The Morning Oracle' },
+      titre: { fr: 'L’Oracle du Matin', en: 'The Morning Oracle' },
       horaire: { fr: 'chaque jour, 5 h 30', en: 'daily, 5:30 am' },
       modele: 'Sonnet',
       produit: {
@@ -227,7 +227,7 @@ export const LT = {
     },
     {
       titre: { fr: 'Les missions autonomes', en: 'Autonomous missions' },
-      horaire: { fr: 'toutes les 2 h', en: 'every 2 h' },
+      horaire: { fr: 'toutes les 2 h', en: 'every 2 hours' },
       modele: 'Sonnet',
       produit: { fr: 'des commits sur la branche auto/<nom>, un RAPPORT.md à la fin', en: 'commits on the auto/<name> branch, a RAPPORT.md at the end' },
       michael: {
@@ -280,8 +280,8 @@ export const LT = {
   p3TableTitre: { fr: 'Horaires de marche', en: 'Operating schedule' },
   p3TableCols: { fr: ['Automate', 'Horaire', 'Modèle'], en: ['Routine', 'Schedule', 'Model'] },
   p3TableRows: [
-    [{ fr: "L'Oracle du Matin", en: 'The Morning Oracle' }, { fr: 'chaque jour, 5 h 30', en: 'daily, 5:30 am' }, 'Sonnet'],
-    [{ fr: 'Missions autonomes', en: 'Autonomous missions' }, { fr: 'toutes les 2 h', en: 'every 2 h' }, 'Sonnet'],
+    [{ fr: 'L’Oracle du Matin', en: 'The Morning Oracle' }, { fr: 'chaque jour, 5 h 30', en: 'daily, 5:30 am' }, 'Sonnet'],
+    [{ fr: 'Missions autonomes', en: 'Autonomous missions' }, { fr: 'toutes les 2 h', en: 'every 2 hours' }, 'Sonnet'],
     [{ fr: 'Idées du dimanche', en: 'Sunday ideas' }, { fr: 'dimanche, 19 h', en: 'Sunday, 7 pm' }, 'Sonnet'],
     [{ fr: 'Carnet', en: 'Notebook' }, { fr: 'à tout moment', en: 'any time' }, '—'],
     [{ fr: 'Retour de routine', en: 'Routine report' }, { fr: 'fin de chaque routine', en: 'end of every routine' }, '—'],

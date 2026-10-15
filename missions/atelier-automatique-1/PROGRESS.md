@@ -1,7 +1,7 @@
 # Mission atelier-automatique-1 — PROGRESS
 
-**Statut :** étapes 2 à 7 faites (livre complet, build+lint OK, vérifié dans le navigateur)
-**Prochaine action :** étape 8 (relecture de la forme par l'agent secretaire)
+**Statut :** étapes 2 à 8 faites (livre complet, relu par la secretaire, corrections appliquées)
+**Prochaine action :** étape 9 (vérification finale : build, lint, greps, navigateur)
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main ec9f5ec)
