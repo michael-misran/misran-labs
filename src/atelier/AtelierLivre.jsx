@@ -126,7 +126,7 @@ function pagesDuLivre(lang) {
             <li key={i} className={p.annexe ? 'at-annexe' : ''}>
               <span>{lt(p.titre, lang)}</span>
               <i aria-hidden="true" />
-              {folios[p.cle] ? <b>{folios[p.cle]}</b> : <span className="at-prepa">{lt(LT.enPreparation, lang)}</span>}
+              <b>{folios[p.cle]}</b>
             </li>
           ))}
         </ol>
@@ -697,6 +697,25 @@ function pagesDuLivre(lang) {
         </PagePapier>
       )
     }]),
+
+    // annexe, glossaire (1/2) (papier)
+    ['glossaire', (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.glossaireChap, lang), 'A.1']}>
+        <h2>{lt(LT.glossaireTitre, lang)}</h2>
+        <table className="at-fiche"><tbody>
+          {LT.glossaireTermes1.map(([terme, def]) => agentFicheRow(lt(terme, lang), lt(def, lang)))}
+        </tbody></table>
+      </PagePapier>
+    )],
+
+    // annexe, glossaire (2/2) (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.glossaireChap, lang), 'A.2']}>
+        <table className="at-fiche"><tbody>
+          {LT.glossaireTermes2.map(([terme, def]) => agentFicheRow(lt(terme, lang), lt(def, lang)))}
+        </tbody></table>
+      </PagePapier>
+    )],
 
     // page de notes, lignée
     [null, (folio) => (

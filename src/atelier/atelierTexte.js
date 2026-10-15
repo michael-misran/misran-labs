@@ -42,7 +42,6 @@ export const LT = {
     en: 'Turn the pages with the keyboard (← →), the mouse or a finger. FR / EN switches at the top of the screen.',
   },
   sommaireTitre: { fr: 'Sommaire', en: 'Contents' },
-  enPreparation: { fr: 'en préparation', en: 'in preparation' },
   // folio calculé à l'affichage (AtelierLivre.jsx) à partir de la position
   // réelle de la page d'ouverture de chaque partie — jamais un nombre en dur.
   parties: [
@@ -478,14 +477,14 @@ export const LT = {
   },
   p6LeviersTitre: { fr: 'Les vrais leviers sur le quota', en: 'The real quota levers' },
   p6Leviers: [
-    { fr: 'Choisir le modèle selon la tâche : Sonnet par défaut, Opus seulement pour le difficile, effort de raisonnement réduit pour le simple.', en: 'Picking the model to fit the task: Sonnet by default, Opus only for hard work, reduced reasoning effort for simple work.' },
-    { fr: 'Contexte court : une tâche, une session ; on efface ou on condense entre deux sujets.', en: 'Short context: one task, one session; clear it or condense it between topics.' },
-    { fr: 'Éviter les opérations coûteuses : lire le texte d’une page plutôt qu’une capture d’écran, ne pas explorer un gros fichier sans cible.', en: 'Avoiding costly operations: reading a page’s text rather than a screenshot, not exploring a large file without a target.' },
-    { fr: 'Des sous-agents pour les explorations larges, avec un contexte vierge et un modèle moins cher.', en: 'Sub-agents for broad explorations, with a clean context and a cheaper model.' },
+    { fr: 'Choisir le modèle selon la tâche : Sonnet par défaut, Opus pour le difficile.', en: 'Picking the model to fit the task: Sonnet by default, Opus for hard work.' },
+    { fr: 'Contexte court : une tâche, une session ; on efface entre deux sujets.', en: 'Short context: one task, one session; clear it between topics.' },
+    { fr: 'Éviter les opérations coûteuses : lire le texte plutôt qu’une capture d’écran.', en: 'Avoiding costly operations: reading text rather than a screenshot.' },
+    { fr: 'Des sous-agents pour les explorations larges, à contexte vierge.', en: 'Sub-agents for broad explorations, with a clean context.' },
   ],
   p6LeviersNote: {
-    fr: 'Un sous-agent reste un coût réel : ses tokens comptent aussi dans le quota, il démarre à froid et il faut vérifier ce qu’il rapporte. Le vrai gain, c’est d’alléger le contexte principal.',
-    en: 'A sub-agent is still a real cost: its tokens also count against the quota, it starts cold, and what it reports needs checking. The real gain is lightening the main context.',
+    fr: 'Un sous-agent reste un coût réel : ses tokens comptent aussi. Le vrai gain, c’est d’alléger le contexte principal.',
+    en: 'A sub-agent is still a real cost: its tokens also count. The real gain is lightening the main context.',
   },
 
   p6EconomieTitre: { fr: 'Économiser les tokens', en: 'Cutting token usage' },
@@ -564,9 +563,9 @@ export const LT = {
   ],
   p7Rows3: [
     [
-      { fr: 'Premier essai d’interroger Gemini : échec', en: 'First attempt to ask Gemini: failure' },
-      { fr: 'L’extension Claude in Chrome n’était pas connectée', en: 'The Claude in Chrome extension wasn’t connected' },
-      { fr: 'Les étapes données sans chercher de contournement (installer l’extension, s’y connecter) ; deuxième essai réussi', en: 'The steps given with no attempt to work around it (install the extension, sign in); second attempt succeeded' },
+      { fr: 'Premier essai Gemini : échec', en: 'First Gemini attempt: failure' },
+      { fr: 'Extension Claude in Chrome non connectée', en: 'Claude in Chrome extension not connected' },
+      { fr: 'Étapes données sans contournement ; deuxième essai réussi', en: 'Steps given, no workaround; second attempt succeeded' },
     ],
     [
       { fr: 'Un site refuse l’outil de lecture habituel', en: 'A site refuses the usual reading tool' },
@@ -610,6 +609,33 @@ export const LT = {
     [{ fr: 'La refonte kiosque', en: 'The kiosk redesign' }, 'tache'],
     [{ fr: 'Lightpanda, un navigateur en secours', en: 'Lightpanda, a fallback browser' }, 'mc'],
     [{ fr: 'Cette mise à jour (mission 42)', en: 'This update (mission 42)' }, 'tache'],
+  ],
+
+  // ---------- Annexe — Glossaire ----------
+  glossaireTitre: { fr: 'Glossaire', en: 'Glossary' },
+  glossaireChap: { fr: 'Annexe — Glossaire', en: 'Appendix — Glossary' },
+  glossaireTermes1: [
+    [{ fr: 'Branche', en: 'Branch' }, { fr: 'Une copie de travail du code, séparée de la version en ligne.', en: 'A working copy of the code, separate from the live version.' }],
+    [{ fr: 'Commit', en: 'Commit' }, { fr: 'L’enregistrement d’une modification, avec un message qui explique pourquoi.', en: 'The record of a change, with a message explaining why.' }],
+    [{ fr: 'Pull request', en: 'Pull request' }, { fr: 'Une demande d’intégrer une branche ; elle se relit avant d’être acceptée.', en: 'A request to bring in a branch; it gets reviewed before being accepted.' }],
+    [{ fr: 'Fusion', en: 'Merge' }, { fr: 'L’action qui intègre une branche dans une autre — ici, dans main.', en: 'The action that brings one branch into another — here, into main.' }],
+    [{ fr: 'Main', en: 'Main' }, { fr: 'La branche du site en ligne ; dès qu’elle change, le site change.', en: 'The branch behind the live site; the moment it changes, so does the site.' }],
+    [{ fr: 'Worktree', en: 'Worktree' }, { fr: 'Une deuxième copie du dépôt sur le disque, pour travailler sans toucher au dossier principal.', en: 'A second copy of the repository on disk, for working without touching the main folder.' }],
+    [{ fr: 'Token', en: 'Token' }, { fr: 'L’unité qui mesure le texte qu’un modèle lit ou écrit ; elle compte dans le quota.', en: 'The unit that measures the text a model reads or writes; it counts against the quota.' }],
+    [{ fr: 'Modèle', en: 'Model' }, { fr: 'Le programme d’IA qui comprend et écrit le texte (Opus, Sonnet, Haiku, du plus capable au plus rapide).', en: 'The AI program that understands and writes text (Opus, Sonnet, Haiku, from most capable to fastest).' }],
+    [{ fr: 'Session', en: 'Session' }, { fr: 'Une conversation avec Claude, avec sa propre mémoire de travail.', en: 'A conversation with Claude, with its own working memory.' }],
+    [{ fr: 'Routine', en: 'Routine' }, { fr: 'Une session qu’une horloge démarre seule, à heure fixe.', en: 'A session a clock starts on its own, at a fixed time.' }],
+  ],
+  glossaireTermes2: [
+    [{ fr: 'Mission', en: 'Mission' }, { fr: 'Un travail délégué, cadré à l’avance puis exécuté seul, étape par étape.', en: 'Delegated work, scoped ahead of time then run alone, step by step.' }],
+    [{ fr: 'Sous-agent', en: 'Sub-agent' }, { fr: 'Une autre instance de Claude, lancée pour une tâche précise, qui ne renvoie qu’un résumé.', en: 'Another instance of Claude, launched for one precise task, which returns only a summary.' }],
+    [{ fr: 'Agent', en: 'Agent' }, { fr: 'Nom générique des sous-agents spécialisés de l’atelier (controleur, relecteur, et les autres).', en: 'The generic name for the workshop’s specialised sub-agents (controleur, relecteur, and the others).' }],
+    [{ fr: 'Skill', en: 'Skill' }, { fr: 'Un ensemble d’instructions prêtes à l’emploi, invoqué par une commande comme /mission.', en: 'A ready-made set of instructions, invoked by a command such as /mission.' }],
+    [{ fr: 'Mod', en: 'Mod' }, { fr: 'Un petit programme qui s’accroche à Claude Code et peut bloquer une action ou afficher un panneau, sans consommer de token.', en: 'A small program that plugs into Claude Code and can block an action or draw a panel, using no tokens.' }],
+    [{ fr: 'MCP', en: 'MCP' }, { fr: 'Le protocole qui relie Claude à un outil extérieur : un navigateur, un fichier, un service.', en: 'The protocol that connects Claude to an outside tool: a browser, a file, a service.' }],
+    [{ fr: 'Quota', en: 'Quota' }, { fr: 'La limite d’usage de l’abonnement ; glissante sur 5 heures pour l’abonnement Pro.', en: 'The subscription’s usage limit; a rolling 5 hours on the Pro subscription.' }],
+    [{ fr: 'Prévisualisation', en: 'Preview' }, { fr: 'Une version du site lancée localement, pour la regarder avant publication.', en: 'A version of the site run locally, to look at before publishing.' }],
+    [{ fr: 'Verdict', en: 'Verdict' }, { fr: 'La conclusion que rend un agent de contrôle — OK, ATTENTION ou BLOQUANT.', en: 'The conclusion a checking agent returns — OK, ATTENTION or BLOQUANT.' }],
   ],
 
   notesTitre: { fr: 'Notes', en: 'Notes' },

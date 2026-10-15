@@ -233,7 +233,6 @@ body:has(.at-table) { margin: 0; }
 .at-liste-sommaire li.at-annexe::before { content: 'A.'; }
 .at-liste-sommaire i { flex: 1; border-bottom: .2cqw dotted #8a8065; transform: translateY(-.3em); }
 .at-liste-sommaire b { font: 700 3cqw/1 var(--font-etiquette); color: var(--at-plan); }
-.at-liste-sommaire span.at-prepa { font-style: italic; color: #8a8065; }
 
 .at-intertitre {
   margin: 1.6cqw 0 0; display: flex; align-items: center; gap: 1.4cqw;

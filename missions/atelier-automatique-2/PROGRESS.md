@@ -1,7 +1,7 @@
 # Mission atelier-automatique-2 — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 9 (annexe glossaire, sommaire, parité)
+**Prochaine action :** étape 10 (relecture secretaire)
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
@@ -73,3 +73,19 @@ d'UtilisationIA.jsx. Colonne « Entrée » (numéro) au lieu de « Date » et
 Livre à 52 pages ; vérifié avec `npx vite preview` à 375 px : aucun
 débordement, contenu des 3 pages conforme, aucune erreur console.
 `npm run build` et `npm run lint` : OK.
+
+## Étape 9 — Annexe glossaire, sommaire, parité D3 (2026-10-15)
+Annexe glossaire : 2 pages papier, 19 termes (branche, commit, pull
+request, fusion, main, worktree, token, modèle, session, routine,
+mission, sous-agent, agent, skill, mod, MCP, quota, prévisualisation,
+verdict). Sommaire nettoyé : ternaire « en préparation » et clé LT
+supprimées (toutes les parties ont maintenant un vrai folio) ; critère 3
+vérifié par grep, aucun résultat. Livre à 54 pages (pair), 4ᵉ de
+couverture seule en dernier ; toutes les ouvertures de partie en bleu de
+plan sur un folio pair (D3). Un débordement détecté sur la page 1 du
+glossaire (texte trop dense) et un autre sur la page des leviers du
+quota (partie 6, version FR plus longue) : contenu raccourci dans les
+deux cas, revérifié FR et EN à 375 px, aucun débordement restant.
+Critère 6 (secrets) : seules les mentions attendues dans SPEC.md elle-même
+(qui documente la commande de contrôle). `npm run build` et
+`npm run lint` : OK.
