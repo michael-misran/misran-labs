@@ -325,7 +325,7 @@ export const LT = {
     en: 'Scoping happens with Michael, in an interactive session. The scheduled task itself never asks a question: it picks up the oldest mission without a report, runs its steps in plan order, and writes everything to disk at every step — so it can stop and resume at any time.',
   },
   p4Texte2: {
-    fr: 'Reprise après une coupure de quota : le plan coché, le fichier de progression et un commit par étape suffisent à savoir où on en était. La tâche programmée relance le travail toutes les deux heures.',
+    fr: 'Reprise après une coupure de quota : le plan coché, le fichier de progression et un commit par étape suffisent à savoir où on en était. La tâche programmée relance le travail toutes les 2 h.',
     en: 'Resuming after a quota cut-off: the checked-off plan, the progress file and a commit per step are enough to know where things stood. The scheduled task relaunches the work every two hours.',
   },
   p4FichiersTitre: { fr: 'Les six fichiers d’une mission', en: 'The six files of a mission' },
@@ -541,7 +541,7 @@ export const LT = {
     [
       { fr: 'La session s’arrête et ne peut pas se relancer seule', en: 'The session stops and cannot relaunch itself' },
       { fr: 'Limite glissante de 5 heures de l’abonnement Pro', en: 'The Pro subscription’s rolling 5-hour limit' },
-      { fr: 'État écrit sur le disque (plan coché, PROGRESS.md, un commit par étape) ; la tâche programmée relance toutes les 2 heures et relit SPEC, PLAN, PROGRESS', en: 'State written to disk (checked-off plan, PROGRESS.md, a commit per step); the scheduled task relaunches every 2 hours and rereads SPEC, PLAN, PROGRESS' },
+      { fr: 'État écrit sur le disque (plan coché, PROGRESS.md, un commit par étape) ; la tâche programmée relance toutes les 2 h et relit SPEC, PLAN, PROGRESS', en: 'State written to disk (checked-off plan, PROGRESS.md, a commit per step); the scheduled task relaunches every 2 hours and rereads SPEC, PLAN, PROGRESS' },
     ],
   ],
   p7Rows2: [
@@ -595,7 +595,7 @@ export const LT = {
     [{ fr: 'Clôture : push, prévisualisation, PR #1, fusion', en: 'Wrap-up: push, preview, PR #1, merge' }, 'mc'],
     [{ fr: 'Skill global /mission pour tous les projets', en: 'Global /mission skill for every project' }, 'mc'],
     [{ fr: 'Mission 3 : schémas en grille, fin des interruptions', en: 'Mission 3: grid diagrams, end of interruptions' }, 'tache'],
-    [{ fr: 'Le Magazine, son test et le relecteur', en: 'The Magazine, its test and the fact-checker' }, 'mc'],
+    [{ fr: 'Le Magazine, son test et le relecteur', en: 'The Magazine, its test and the relecteur' }, 'mc'],
     [{ fr: 'La file d’attente de missions', en: 'The mission queue' }, 'tache'],
     [{ fr: 'Piloter depuis le téléphone', en: 'Piloting from the phone' }, 'michael'],
     [{ fr: 'Le compromis sur le push de main', en: 'The main-push compromise' }, 'mc'],
@@ -603,7 +603,7 @@ export const LT = {
     [{ fr: 'Un deuxième avis : Gemini', en: 'A second opinion: Gemini' }, 'mc'],
     [{ fr: 'Économiser les tokens', en: 'Cutting token usage' }, 'mc'],
     [{ fr: 'Mise à jour de la page (mission 8)', en: 'Page update (mission 8)' }, 'tache'],
-    [{ fr: 'Les idées du dimanche', en: 'Sunday’s project ideas' }, 'tache'],
+    [{ fr: 'Les idées du dimanche', en: 'Sunday ideas' }, 'tache'],
     [{ fr: 'L’Oracle du Matin et le carnet', en: 'The Morning Oracle and the notebook' }, 'tache'],
     [{ fr: 'Une semaine de missions', en: 'A week of missions' }, 'tache'],
     [{ fr: 'La refonte kiosque', en: 'The kiosk redesign' }, 'tache'],

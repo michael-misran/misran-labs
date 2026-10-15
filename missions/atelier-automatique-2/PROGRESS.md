@@ -1,7 +1,7 @@
 # Mission atelier-automatique-2 — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 10 (relecture secretaire)
+**Prochaine action :** étape 11 (vérification finale)
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
@@ -89,3 +89,12 @@ deux cas, revérifié FR et EN à 375 px, aucun débordement restant.
 Critère 6 (secrets) : seules les mentions attendues dans SPEC.md elle-même
 (qui documente la commande de contrôle). `npm run build` et
 `npm run lint` : OK.
+
+## Étape 10 — Relecture secretaire (2026-10-15)
+Agent secretaire (Sonnet) lancé sur les textes ajoutés par cette mission
+(p2Redacteur*, p4 à p8, glossaire). 4 corrections de cohérence
+terminologique appliquées (« 2 h » au lieu de « deux/2 heures »,
+« relecteur » non traduit en anglais, « Sunday ideas » au lieu d'une
+variante incohérente) ; aucune faute d'orthographe ou de typographie
+relevée. Voir DELEGATIONS.md. `npm run build` et `npm run lint` : OK
+après corrections.
