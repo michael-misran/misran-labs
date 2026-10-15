@@ -187,6 +187,11 @@ body:has(.ms-table) { margin: 0; }
 .ms-encart figcaption { font: italic calc(var(--u) * 1.5)/1.3 var(--font-chapo); color: var(--ms-gris); }
 .ms-encart-cadre, .ms-encart-image { width: 100%; display: block; border: 1px solid #c9ab6f; }
 .ms-encart-image { object-fit: cover; background: #ede0bf; }
+/* En bas de page, l'encart prend la place qui reste au lieu de déborder :
+   le cadre (ou l'image, recadrée) rétrécit, la légende reste visible */
+.ms-contenu > .ms-encart { flex: 0 1 auto; min-height: calc(var(--u) * 12); }
+.ms-contenu > .ms-encart > .ms-encart-cadre, .ms-contenu > .ms-encart > .ms-encart-image { flex: 0 1 auto; min-height: 0; }
+.ms-contenu > .ms-encart > figcaption { flex: none; }
 .ms-encart-cadre {
   position: relative; display: grid; place-items: center; min-height: calc(var(--u) * 10);
   background: repeating-linear-gradient(-45deg, #f0e3c2 0 calc(var(--u) * .6), #e7d6a9 calc(var(--u) * .6) calc(var(--u) * 1.2));
