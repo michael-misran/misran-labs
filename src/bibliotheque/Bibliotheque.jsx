@@ -17,6 +17,48 @@ import './bibliotheque.css'
 const IMAGE = '/bibliotheque/librairie.jpg'
 const RATIO = 1376 / 768
 
+// Date locale du lecteur (AAAA-MM-JJ), même mécanisme que midnight/numeros.js :
+// une parution datée dans le futur reste cachée jusqu'à son jour.
+function aujourdhui() {
+  const d = new Date()
+  const p = (n) => String(n).padStart(2, '0')
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`
+}
+
+// Les 4 dernières parutions, du plus récent au plus ancien : ce que montre
+// le présentoir « Nouveautés ». Un volume peut être à la fois en vitrine et
+// dans son rayon.
+function nouveautes() {
+  return VOLUMES
+    .filter((v) => v.parution && v.parution <= aujourdhui())
+    .sort((a, b) => (a.parution < b.parution ? 1 : -1))
+    .slice(0, 4)
+}
+
+// Les 4 rayons muraux, de gauche à droite : une plaque de laiton, les
+// volumes de la collection (3 maximum), posés de face sur la 3ᵉ planche.
+const RAYON_TOP = 34.8
+const RAYON_PLAQUE_TOP = 43.6
+const RAYON_LARGEUR = 3.7
+const RAYON_ECART = 4.5
+const RAYONS = [
+  { collection: 'journaux', left: 21.9, titre: { fr: 'Journaux', en: 'Newspapers' }, sous: { fr: 'la presse du matin', en: 'the morning press' } },
+  { collection: 'magazines', left: 40.6, titre: { fr: 'Magazines', en: 'Magazines' }, sous: { fr: 'numéros et feuilletons', en: 'issues and serials' } },
+  { collection: 'manuels', left: 59.5, titre: { fr: 'Manuels', en: 'Manuals' }, sous: { fr: 'modes d’emploi de l’atelier', en: 'workshop manuals' } },
+  { collection: 'carnets', left: 77.9, titre: { fr: 'Carnets', en: 'Notebooks' }, sous: { fr: 'travaux et idées', en: 'works and ideas' } },
+]
+
+// Emplacements des volumes d'un rayon, groupe centré sur la colonne
+// (D3 : 3 livres maximum ; au-delà, ignorés — aucun rayon n'en a plus à ce jour)
+function placesDuRayon(rayon) {
+  const volumes = VOLUMES.filter((v) => v.collection === rayon.collection).slice(0, 3)
+  const n = volumes.length
+  return volumes.map((v, i) => ({
+    v,
+    left: rayon.left - RAYON_LARGEUR / 2 - ((n - 1) * RAYON_ECART) / 2 + i * RAYON_ECART,
+  }))
+}
+
 // Décors de saison : même librairie, même cadrage, présentoir au même
 // endroit. Dates incluses, au format mois-jour (une saison peut passer
 // d'une année à l'autre). Tant que l'image d'une saison n'est pas dans
@@ -99,29 +141,37 @@ function masqueNuit(zones) {
 // Les 4 emplacements du présentoir, en % de l'image : left / width = bord
 // gauche et largeur de la carte blanche ; REBORD = hauteur du rebord où
 // les livres sont posés, depuis le bas de l'image
+// Places du présentoir, du plus récent (gauche) au plus ancien (droite) —
+// la place n'est plus liée à un volume fixe, voir `nouveautes()`.
 const PRESENTOIR = [
-  { id: 'numero-1', left: 39.7, width: 4.1 },
-  { id: 'midnight-1', left: 45.1, width: 4.1 },
-  { id: 'gazette', left: 50.6, width: 4.1 },
-  { id: 'portfolio', left: 56.3, width: 4.1 },
+  { left: 39.7, width: 4.1 },
+  { left: 45.1, width: 4.1 },
+  { left: 50.6, width: 4.1 },
+  { left: 56.3, width: 4.1 },
 ]
 const REBORD = 35.5
 
 // Bouton du volume sorti : on le repose sur le présentoir
 const REPOSER = { fr: 'Reposer sur le présentoir', en: 'Put it back' }
 
-// Une publication exposée : sa couverture en miniature
-function Expose({ v, place, lang, sorti, onSortir }) {
+// Une publication exposée : sa couverture en miniature. `place` donne soit
+// `bottom` (présentoir, le livre grandit depuis le rebord), soit `top`
+// (rayon, posé à une hauteur fixe sur la planche).
+function Expose({ v, place, lang, sorti, onSortir, rayon = false }) {
+  const position = place.bottom !== undefined
+    ? { bottom: `${place.bottom}%` }
+    : { top: `${place.top}%` }
   return (
     <button
       type="button"
-      className={`lb-livre${v.id === sorti ? ' sortie' : ''}`}
-      style={{ left: `${place.left}%`, width: `${place.width}%`, bottom: `${REBORD}%` }}
+      className={`lb-livre${rayon ? ' lb-livre-rayon' : ''}${v.id === sorti ? ' sortie' : ''}`}
+      style={{ left: `${place.left}%`, width: `${place.width}%`, ...position }}
       aria-label={`${nt(v.titre, lang)} · ${nt(v.sous, lang)}`}
       aria-pressed={v.id === sorti}
       onClick={() => onSortir(v.id === sorti ? null : v.id)}
     >
       <span className="lb-echelle" aria-hidden="true"><Couverture v={v} lang={lang} /></span>
+      {!v.to && <span className="lb-tampon" aria-hidden="true">{nt(NT.etagereAParaitre, lang)}</span>}
       <span className="sl-etiquette" aria-hidden="true">{nt(v.titre, lang)}<small>{nt(v.sous, lang)}</small></span>
     </button>
   )
@@ -155,7 +205,7 @@ export default function Bibliotheque() {
           <Logo1977 carre largeur={26} fond="#3a2e24" />
           1977 Éditions
         </span>
-        <span className="sl-aide">{lang === 'fr' ? 'Choisissez un livre sur le présentoir' : 'Pick a book from the display'}</span>
+        <span className="sl-aide">{lang === 'fr' ? 'Choisissez un livre sur le présentoir ou dans les rayons' : 'Pick a book from the display or the shelves'}</span>
         <button type="button" onClick={basculerLangue} aria-label={lang === 'fr' ? 'Switch to English' : 'Passer en français'}>
           {lang === 'fr' ? 'EN' : 'FR'}
         </button>
@@ -191,9 +241,31 @@ export default function Bibliotheque() {
         ))}
         {/* Enseigne clouée sur la ceinture de la table du présentoir */}
         <p className="lb-enseigne">Librairie du Chocolat Chaud</p>
-        {PRESENTOIR.map((place) => {
-          const v = VOLUMES.find((x) => x.id === place.id)
-          return v && <Expose key={v.id} v={v} place={place} lang={lang} sorti={sorti} onSortir={setSorti} />
+
+        {/* Rayons muraux : une plaque par collection, les volumes posés de face */}
+        {RAYONS.map((rayon) => (
+          <div key={rayon.collection} className="lb-plaque" style={{ left: `${rayon.left}%`, top: `${RAYON_PLAQUE_TOP}%` }}>
+            {nt(rayon.titre, lang)}
+            <small>{nt(rayon.sous, lang)}</small>
+          </div>
+        ))}
+        {RAYONS.flatMap((rayon) => placesDuRayon(rayon)).map(({ v, left }) => (
+          <Expose
+            key={v.id}
+            v={v}
+            place={{ left, width: RAYON_LARGEUR, top: RAYON_TOP }}
+            lang={lang}
+            sorti={sorti}
+            onSortir={setSorti}
+            rayon
+          />
+        ))}
+
+        {/* Présentoir : les 4 dernières parutions */}
+        <p className="lb-nouveautes">{lang === 'fr' ? 'Nouveautés' : 'New releases'}</p>
+        {PRESENTOIR.map((place, i) => {
+          const v = nouveautes()[i]
+          return v && <Expose key={v.id} v={v} place={{ ...place, bottom: REBORD }} lang={lang} sorti={sorti} onSortir={setSorti} />
         })}
       </main>
 

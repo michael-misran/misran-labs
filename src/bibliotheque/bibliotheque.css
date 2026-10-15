@@ -148,6 +148,39 @@ body:has(.salon) { margin: 0; }
 .sl-etiquette small { display: block; margin-top: .3cqh; font: 600 max(10px, 1.2cqh)/1 var(--font-etiquette); letter-spacing: .12em; text-transform: uppercase; color: #a8462b; }
 .lb-livre:hover .sl-etiquette, .lb-livre:focus-visible .sl-etiquette { opacity: 1; transform: translateX(-50%); }
 
+/* ---------- Rayons muraux : plaque de laiton + livres posés de face ---------- */
+.lb-plaque {
+  position: absolute; transform: translateX(-50%); pointer-events: none; text-align: center;
+  padding: .35cqw 1.1cqw; border-radius: .25cqw;
+  background: linear-gradient(#e2c06c, #c9a14a 55%, #8a6a26); color: #2a1d14;
+  font: 700 .95cqw/1 var(--font-etiquette); letter-spacing: .18em; text-transform: uppercase;
+  box-shadow: 0 .2cqw .3cqw rgba(0,0,0,.35); white-space: nowrap;
+}
+.lb-plaque::before, .lb-plaque::after { content: ''; position: absolute; top: 50%; width: .35cqw; height: .35cqw; margin-top: -.175cqw; border-radius: 50%; background: #6e5420; }
+.lb-plaque::before { left: .35cqw; }
+.lb-plaque::after { right: .35cqw; }
+.lb-plaque small { display: block; margin-top: .25cqw; font: 400 .6cqw/1 var(--font-machine); letter-spacing: .02em; text-transform: none; }
+
+/* Les livres de rayon : même mécanique que ceux du présentoir, posés plus bas et plus serrés (ratio 5/7, D3) */
+.lb-livre-rayon { aspect-ratio: 5 / 7; }
+
+/* Tampon « à paraître », sur la miniature */
+.lb-tampon {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-14deg);
+  border: .12cqw solid #b3301d; color: #b3301d; background: rgba(246,236,216,.85);
+  font: 700 .55cqw/1 var(--font-etiquette); letter-spacing: .08em; text-transform: uppercase;
+  padding: .25cqw .4cqw; white-space: nowrap; pointer-events: none;
+}
+
+/* Enseigne « Nouveautés », sur la table du présentoir */
+.lb-nouveautes {
+  position: absolute; left: 50%; top: 64.6%; transform: translate(-50%, 0) rotate(-2deg); z-index: 2; margin: 0;
+  background: #b3301d; color: #f6ecd8;
+  font: italic 700 1.2cqw/1 'Lobster Two', var(--font-chapo);
+  padding: .3cqw 1.2cqw .4cqw; border-radius: .2cqw; box-shadow: 0 .2cqw .4cqw rgba(0,0,0,.4);
+  white-space: nowrap; pointer-events: none;
+}
+
 /* ---------- Volume sorti ---------- */
 .sl-sorti { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; container-type: size; }
 

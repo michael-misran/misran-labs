@@ -1,7 +1,7 @@
 # Mission librairie-rayons — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 4 (présentoir « Nouveautés » calculé + enseigne)
+**Prochaine action :** étape 6 (défilement téléphone)
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
@@ -23,3 +23,19 @@ et `npm run lint` : OK.
 - `carnet` : carnet noir, élastique rouge, étiquette en machine à écrire.
 `npm run build` et `npm run lint` : OK. Vérification visuelle (grande
 taille, dans le dialogue « sorti ») prévue avec le reste à l'étape 7.
+
+## Étapes 4 et 5 — Présentoir calculé, rayons, enseigne (2026-10-15)
+Présentoir : `nouveautes()` calcule les 4 volumes parus les plus récents
+(filtre `parution`, tri décroissant) ; `PRESENTOIR` ne référence plus un
+id fixe. Enseigne rouge « Nouveautés »/« New releases » ajoutée, celle du
+« Chocolat Chaud » inchangée. Rayons : 4 plaques de laiton (`RAYONS`,
+titres + sous-titres FR/EN), emplacements des livres calculés par formule
+(D3), `Expose` généralisé pour accepter `top` (rayon) en plus de `bottom`
+(présentoir), tampon « À paraître »/« Coming soon » sur les volumes non
+parus. Vérifié avec `npx vite preview` à 1300 px : aucune erreur console,
+7 livres en rayon + 4 au présentoir dans l'ordre attendu (Atelier,
+Portfolio, Misran Labs, Oracle), alignement correct sur les 3 images
+(normale, Halloween, Noël), tampons sur Midnight Snack/Nuancier/Carnet
+uniquement, 3 nouvelles couvertures lisibles en grand dans le dialogue,
+textes EN corrects (bandeau, enseigne, plaques, tampons). `npm run build`
+et `npm run lint` : OK.
