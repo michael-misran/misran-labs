@@ -79,6 +79,41 @@ export function SchemaCircuit({ lang }) {
   )
 }
 
+// Fig. 6 — le rédacteur en vue éclatée : rouleau, clavier, levier de
+// retour, feuille qui sort du rouleau.
+export function SchemaRedacteur({ lang }) {
+  return (
+    <svg viewBox="0 0 200 230" {...TRAIT} fontFamily="Oswald" aria-label={lang === 'en' ? 'The rédacteur, exploded view' : 'Le rédacteur en vue éclatée'}>
+      <rect x="66" y="12" width="54" height="44" strokeDasharray="3 3" strokeWidth="1" />
+      <path d="M74 22 h38 M74 30 h30 M74 38 h38 M74 46 h22" strokeWidth="1" />
+      <rect x="42" y="60" width="110" height="20" rx="10" />
+      <ellipse cx="42" cy="70" rx="4" ry="10" /><ellipse cx="152" cy="70" rx="4" ry="10" />
+      <path d="M58 70 h78" strokeWidth="1" strokeDasharray="1 3" />
+      <path d="M42 66 L16 48" /><circle cx="12" cy="44" r="6" />
+      <path d="M28 86 L168 86 L176 106 L20 106 Z" />
+      <rect x="32" y="106" width="136" height="70" rx="3" />
+      <g strokeWidth="1.1">
+        <circle cx="50" cy="120" r="4.2" /><circle cx="64" cy="120" r="4.2" /><circle cx="78" cy="120" r="4.2" /><circle cx="92" cy="120" r="4.2" /><circle cx="106" cy="120" r="4.2" /><circle cx="120" cy="120" r="4.2" /><circle cx="134" cy="120" r="4.2" /><circle cx="148" cy="120" r="4.2" />
+        <circle cx="57" cy="134" r="4.2" /><circle cx="71" cy="134" r="4.2" /><circle cx="85" cy="134" r="4.2" /><circle cx="99" cy="134" r="4.2" /><circle cx="113" cy="134" r="4.2" /><circle cx="127" cy="134" r="4.2" /><circle cx="141" cy="134" r="4.2" />
+        <circle cx="64" cy="148" r="4.2" /><circle cx="78" cy="148" r="4.2" /><circle cx="92" cy="148" r="4.2" /><circle cx="106" cy="148" r="4.2" /><circle cx="120" cy="148" r="4.2" /><circle cx="134" cy="148" r="4.2" />
+        <rect x="66" y="158" width="68" height="10" rx="4" />
+      </g>
+      <g strokeWidth="1">
+        <path d="M120 22 L168 22" />
+        <path d="M152 66 L178 58" />
+        <path d="M16 44 L2 24" />
+        <path d="M168 136 L186 136" />
+      </g>
+      <g fill="#173d69" strokeWidth="1.4">
+        <circle cx="176" cy="22" r="8" /><circle cx="186" cy="58" r="8" /><circle cx="10" cy="20" r="8" /><circle cx="194" cy="136" r="8" />
+      </g>
+      <g fill="#e9f1f8" stroke="none" fontSize="10" fontWeight="700" textAnchor="middle">
+        <text x="176" y="26">D</text><text x="186" y="62">A</text><text x="10" y="24">C</text><text x="194" y="140">B</text>
+      </g>
+    </svg>
+  )
+}
+
 // Fig. 7 — le controleur en vue éclatée : poignée, corps, semelle gravée,
 // empreinte tamponnée sur la pull request.
 export function SchemaControleur({ lang }) {
@@ -103,6 +138,36 @@ export function SchemaControleur({ lang }) {
       <g fill="#e9f1f8" stroke="none" fontSize="10" fontWeight="700" textAnchor="middle">
         <text x="176" y="34">A</text><text x="186" y="104">B</text><text x="186" y="160">C</text><text x="190" y="214">D</text>
       </g>
+    </svg>
+  )
+}
+
+// Fig. 9 — le cycle d'une mission : cadrage, branche, exécution étape par
+// étape, rapport, clôture, fusion — puis la mission suivante reprend au début.
+export function SchemaCycleMission({ lang }) {
+  const T = lang === 'en'
+    ? ['SCOPING (SPEC + PLAN)', 'BRANCH AUTO/<NAME>', 'EXECUTION, STEP BY STEP', 'RAPPORT.MD', 'WRAP-UP: PUSH + PULL REQUEST', 'MERGE (MICHAEL)']
+    : ['CADRAGE (SPEC + PLAN)', 'BRANCHE AUTO/<NOM>', 'EXÉCUTION, ÉTAPE PAR ÉTAPE', 'RAPPORT.MD', 'CLÔTURE : PUSH + PULL REQUEST', 'FUSION (MICHAEL)']
+  const suivante = lang === 'en' ? 'NEXT MISSION' : 'MISSION SUIVANTE'
+  const boites = [14, 50, 86, 122, 158, 194].map((y, i) => ({ y, h: 22, t: T[i] }))
+  return (
+    <svg className="at-fig-plan" viewBox="0 0 220 240" {...TRAIT} fontFamily="Oswald" aria-label={lang === 'en' ? 'The cycle of a mission' : "Le cycle d'une mission"}>
+      {boites.map((b, i) => (
+        <g key={i}>
+          <rect x="30" y={b.y} width="170" height={b.h} rx="2" />
+          <text x="115" y={b.y + b.h / 2 + 3} fill="#e9f1f8" stroke="none" fontSize="7.2" fontWeight="700" textAnchor="middle" letterSpacing="0.3">{b.t}</text>
+        </g>
+      ))}
+      {boites.slice(0, -1).map((b, i) => (
+        <path key={i} d={`M115 ${b.y + b.h} L115 ${boites[i + 1].y}`} strokeDasharray="3 3" markerEnd="url(#at-fleche-cycle)" />
+      ))}
+      <path d="M30 205 C4 205 4 25 30 25" strokeDasharray="2 3" markerEnd="url(#at-fleche-cycle)" />
+      <text fill="#e9f1f8" stroke="none" fontSize="6.5" textAnchor="middle" letterSpacing="0.5" transform="translate(10 115) rotate(-90)">{suivante}</text>
+      <defs>
+        <marker id="at-fleche-cycle" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 Z" fill="#e9f1f8" stroke="none" />
+        </marker>
+      </defs>
     </svg>
   )
 }
