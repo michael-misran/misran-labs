@@ -144,16 +144,10 @@
 .etg-pf-filet { width: 40%; height: .8cqh; border-block: 1px solid currentColor; }
 .etg-couv-portfolio em { font: italic 2cqh var(--font-chapo); }
 
-/* L'Atelier automatique : bleu de plan (cyanotype), bandeau crème */
-.etg-couv-atelier {
-  background-color: var(--titre-atelier);
-  background-image: linear-gradient(rgba(233,241,248,.2) 1px, transparent 1px), linear-gradient(90deg, rgba(233,241,248,.2) 1px, transparent 1px);
-  background-size: 6cqh 6cqh;
-  color: #e9f1f8; align-items: center; text-align: center; padding: 0;
-}
-.etg-at-bandeau { align-self: stretch; background: #f3ebdc; color: #173d69; font: 700 1.3cqh var(--font-etiquette); letter-spacing: .14em; text-transform: uppercase; padding: 1.2cqh 0; }
-.etg-at-titre { margin-top: 2.6cqh; padding: 0 1.6cqh; font: 700 3.6cqh/1.05 var(--font-etiquette); text-transform: uppercase; letter-spacing: .02em; }
-.etg-at-rouage { margin: auto 0 2.6cqh; width: 6.4cqh; height: 6.4cqh; border: .3cqh dashed #e9f1f8; border-radius: 50%; }
+/* L'Atelier automatique : la vraie couverture du livre, mise à l'échelle du
+   cadre (ses tailles sont en cqw, relatives à la largeur de .at-page) */
+.etg-couv-atelier { background: var(--titre-atelier); }
+.etg-couv-atelier .at-couv { position: absolute; inset: 0; width: 100%; height: 100%; box-shadow: none; }
 
 /* Le Nuancier : papier crème, bandes des couleurs des titres */
 .etg-couv-nuancier { background: #efe6d2; color: #2a1d14; position: relative; justify-content: flex-end; padding: 0 2cqh 3.6cqh; text-align: center; }

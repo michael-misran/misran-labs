@@ -5,6 +5,7 @@ import { VOLUMES } from './volumes'
 import { NT, nt } from './numeroText'
 import Logo1977 from '../shell/Logo1977'
 import './etagere.css'
+import { CouvertureAtelier } from '../atelier/CouvertureAtelier'
 
 // Étagère des numéros et autres publications du Lab, rangés par la tranche.
 // cote : 'plein' pour la bibliothèque de la page d'accueil (taille donnée par
@@ -73,10 +74,9 @@ export function Couverture({ v, lang }) {
   }
   if (v.couverture === 'atelier') {
     return (
+      // La vraie couverture du livre, en réduction (src/atelier/CouvertureAtelier.jsx)
       <div className="etg-couv etg-couv-atelier">
-        <b className="etg-at-bandeau">Notice MM-1977</b>
-        <span className="etg-at-titre">{titre}</span>
-        <i className="etg-at-rouage" aria-hidden="true" />
+        <CouvertureAtelier lang={lang} />
       </div>
     )
   }
