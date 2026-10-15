@@ -71,6 +71,31 @@ export function Couverture({ v, lang }) {
       </div>
     )
   }
+  if (v.couverture === 'atelier') {
+    return (
+      <div className="etg-couv etg-couv-atelier">
+        <b className="etg-at-bandeau">Notice MM-1977</b>
+        <span className="etg-at-titre">{titre}</span>
+        <i className="etg-at-rouage" aria-hidden="true" />
+      </div>
+    )
+  }
+  if (v.couverture === 'nuancier') {
+    return (
+      <div className="etg-couv etg-couv-nuancier">
+        <i className="etg-nu-bandes" aria-hidden="true" />
+        <b>{titre}</b>
+      </div>
+    )
+  }
+  if (v.couverture === 'carnet') {
+    return (
+      <div className="etg-couv etg-couv-carnet">
+        <i className="etg-ca-elastique" aria-hidden="true" />
+        <span className="etg-ca-etiquette">{titre}</span>
+      </div>
+    )
+  }
   // Prochain numéro : couverture en attente, au crayon
   return (
     <div className="etg-couv etg-couv-prochain">
