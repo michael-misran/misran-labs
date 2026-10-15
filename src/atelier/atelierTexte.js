@@ -469,6 +469,62 @@ export const LT = {
     en: 'A headless browser, for agents. The usual reading tool returns a summary; Lightpanda returns the whole page, useful when the usual tool is refused (a 403 error). Free, open source, runs on the Mac, telemetry switched off.',
   },
 
+  // ---------- Partie 6 — Réglages et consommation ----------
+  p6Titre: { fr: 'Réglages et consommation', en: 'Settings and consumption' },
+  p6Chap: { fr: 'Chap. 6 — Réglages et consommation', en: 'Chap. 6 — Settings and consumption' },
+  p6OuvertureTexte: {
+    fr: 'L’abonnement a une limite glissante de 5 heures. Tant que l’usage supplémentaire payant n’est pas activé, l’atelier ne coûte rien de plus : il travaille juste plus lentement, et partage le quota du travail quotidien — idéal la nuit.',
+    en: 'The subscription has a rolling 5-hour limit. As long as paid extra usage isn’t switched on, the workshop costs nothing more: it just works more slowly, sharing quota with everyday work — ideal overnight.',
+  },
+  p6LeviersTitre: { fr: 'Les vrais leviers sur le quota', en: 'The real quota levers' },
+  p6Leviers: [
+    { fr: 'Choisir le modèle selon la tâche : Sonnet par défaut, Opus seulement pour le difficile, effort de raisonnement réduit pour le simple.', en: 'Picking the model to fit the task: Sonnet by default, Opus only for hard work, reduced reasoning effort for simple work.' },
+    { fr: 'Contexte court : une tâche, une session ; on efface ou on condense entre deux sujets.', en: 'Short context: one task, one session; clear it or condense it between topics.' },
+    { fr: 'Éviter les opérations coûteuses : lire le texte d’une page plutôt qu’une capture d’écran, ne pas explorer un gros fichier sans cible.', en: 'Avoiding costly operations: reading a page’s text rather than a screenshot, not exploring a large file without a target.' },
+    { fr: 'Des sous-agents pour les explorations larges, avec un contexte vierge et un modèle moins cher.', en: 'Sub-agents for broad explorations, with a clean context and a cheaper model.' },
+  ],
+  p6LeviersNote: {
+    fr: 'Un sous-agent reste un coût réel : ses tokens comptent aussi dans le quota, il démarre à froid et il faut vérifier ce qu’il rapporte. Le vrai gain, c’est d’alléger le contexte principal.',
+    en: 'A sub-agent is still a real cost: its tokens also count against the quota, it starts cold, and what it reports needs checking. The real gain is lightening the main context.',
+  },
+
+  p6EconomieTitre: { fr: 'Économiser les tokens', en: 'Cutting token usage' },
+  p6EconomieTexte: {
+    fr: 'Objectif : diminuer le coût en tokens du système, en restant aussi efficace. Quatre postes, par ordre d’impact.',
+    en: 'Goal: cut the system’s token cost while staying just as effective. Four areas, by order of impact.',
+  },
+  p6EconomieCols: { fr: ['Poste', 'Avant', 'Après'], en: ['Area', 'Before', 'After'] },
+  p6EconomieRows: [
+    [
+      { fr: 'Tâche programmée', en: 'Scheduled task' },
+      { fr: 'Tournait toutes les 2 h même sans mission : chaque lancement chargeait tout le contexte pour répondre « Aucune mission active ».', en: 'Ran every 2 h even with no mission: every launch loaded the whole context just to answer “No active mission”.' },
+      { fr: 'Se met en pause toute seule quand la file est vide ; la session de cadrage la réactive.', en: 'Pauses itself when the queue is empty; the scoping session re-enables it.' },
+    ],
+    [
+      { fr: 'Reprise d’une mission', en: 'Resuming a mission' },
+      { fr: 'Relecture de tous les fichiers, y compris les journaux qui grossissent à chaque étape.', en: 'Rereading every file, including the logs that grow at every step.' },
+      { fr: 'SPEC, PLAN et PROGRESS seulement ; les journaux ne se relisent pas.', en: 'SPEC, PLAN and PROGRESS only; the logs are never reread.' },
+    ],
+    [
+      { fr: 'Build et lint', en: 'Build and lint' },
+      { fr: 'Confiés à un sous-agent, qui démarre à froid pour une seule commande.', en: 'Handed to a sub-agent, which starts cold for a single command.' },
+      { fr: 'Lancés directement par la session principale.', en: 'Run directly by the main session.' },
+    ],
+  ],
+  p6EconomieNote: {
+    fr: 'Non retenus : Gemini dans le navigateur (plus cher qu’il ne fait gagner) et l’IA locale (déjà écartée). Un outil de plus, Lightpanda, ne fait pas gagner de tokens mais lit ce que l’outil habituel refuse (erreur 403) — en secours seulement.',
+    en: 'Rejected: Gemini in the browser (costs more than it saves) and local AI (already ruled out). One more tool, Lightpanda, saves no tokens but reads what the usual tool refuses (a 403 error) — a fallback only.',
+  },
+
+  p6ModeleTitre: { fr: 'Quel modèle pour quel travail', en: 'Which model for which job' },
+  p6ModeleCols: { fr: ['Rôle', 'Modèle', 'Quand'], en: ['Role', 'Model', 'When'] },
+  p6ModeleRows: [
+    [{ fr: 'Architecte : cadrage, spec, plan', en: 'Architect: scoping, spec, plan' }, 'Opus', { fr: 'une fois, au lancement, en session avec Michael', en: 'once, at launch, in session with Michael' }],
+    [{ fr: 'Chef de projet / développeur', en: 'Project lead / developer' }, 'Sonnet', { fr: 'toutes les exécutions programmées', en: 'every scheduled execution' }],
+    [{ fr: 'Exécutants : explorateur, vérificateur', en: 'Executors: explorateur, verificateur' }, 'Haiku', { fr: 'recherche dans le code ; contrôles dans le navigateur', en: 'code search; checks in the browser' }],
+    [{ fr: 'Expert', en: 'Expert' }, 'Opus', { fr: 'étape délicate, ou après deux échecs', en: 'a delicate step, or after two failures' }],
+  ],
+
   notesTitre: { fr: 'Notes', en: 'Notes' },
 
   // ---------- Quatrième de couverture ----------

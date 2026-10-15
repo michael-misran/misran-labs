@@ -522,6 +522,73 @@ function pagesDuLivre(lang) {
       </PagePapier>
     )],
 
+    // partie 6, ouverture (plan)
+    ['p6', (folio) => (
+      <section className="at-page at-plan at-gauche at-ouverture">
+        <div className="at-corps">
+          <span className="at-num">6</span>
+          <h2>{lt(LT.p6Titre, lang)}</h2>
+          <p>{lt(LT.p6OuvertureTexte, lang)}</p>
+        </div>
+        <FolioNum n={folio} />
+      </section>
+    )],
+
+    // partie 6, les vrais leviers sur le quota (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p6Chap, lang), '6.1']}>
+        <h2><small>{lang === 'en' ? 'Part 6' : 'Partie 6'}</small>{lt(LT.p6LeviersTitre, lang)}</h2>
+        <ul>
+          {LT.p6Leviers.map((l, i) => (<li key={i}>{lt(l, lang)}</li>))}
+        </ul>
+        <p>{lt(LT.p6LeviersNote, lang)}</p>
+      </PagePapier>
+    )],
+
+    // partie 6, économiser les tokens (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p6Chap, lang), '6.2']}>
+        <h2>{lt(LT.p6EconomieTitre, lang)}</h2>
+        <p>{lt(LT.p6EconomieTexte, lang)}</p>
+        <table className="at-recap">
+          <thead>
+            <tr>{lt(LT.p6EconomieCols, lang).map((c) => <th key={c}>{c}</th>)}</tr>
+          </thead>
+          <tbody>
+            {LT.p6EconomieRows.map((row, i) => (
+              <tr key={i}>
+                <td>{lt(row[0], lang)}</td>
+                <td>{lt(row[1], lang)}</td>
+                <td>{lt(row[2], lang)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="at-note-fig">{lt(LT.p6EconomieNote, lang)}</p>
+      </PagePapier>
+    )],
+
+    // partie 6, quel modèle pour quel travail (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p6Chap, lang), '6.3']}>
+        <h2>{lt(LT.p6ModeleTitre, lang)}</h2>
+        <table className="at-recap">
+          <thead>
+            <tr>{lt(LT.p6ModeleCols, lang).map((c) => <th key={c}>{c}</th>)}</tr>
+          </thead>
+          <tbody>
+            {LT.p6ModeleRows.map((row, i) => (
+              <tr key={i}>
+                <td>{lt(row[0], lang)}</td>
+                <td>{row[1]}</td>
+                <td>{lt(row[2], lang)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </PagePapier>
+    )],
+
     // page de notes, lignée
     [null, (folio) => (
       <PagePapier folio={folio}>

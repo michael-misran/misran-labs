@@ -1,7 +1,7 @@
 # Mission atelier-automatique-2 — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 6 (partie 6 — Réglages et consommation)
+**Prochaine action :** étape 7 (partie 7 — Pannes et dépannage)
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
@@ -47,3 +47,11 @@ modes), les connexions utiles (navigateur intégré, Figma, Lightpanda en
 secours). Livre à 40 pages ; vérifié avec `npx vite preview` à 375 px :
 aucun débordement, aucune erreur console, contenu des pages mods conforme.
 `npm run build` et `npm run lint` : OK.
+
+## Étape 6 — Partie 6, Réglages et consommation (2026-10-15)
+Ouverture (limite glissante de 5 h, pas de surcoût sans usage payant) + 3
+pages papier : les vrais leviers sur le quota, économiser les tokens
+(tableau avant/après des 3 principaux postes + Lightpanda en note), quel
+modèle pour quel travail (tableau Opus/Sonnet/Haiku). Livre à 44 pages ;
+vérifié avec `npx vite preview` à 375 px : aucun débordement, aucune erreur
+console. `npm run build` et `npm run lint` : OK.
