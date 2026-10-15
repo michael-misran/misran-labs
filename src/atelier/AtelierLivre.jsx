@@ -662,6 +662,42 @@ function pagesDuLivre(lang) {
       </PagePapier>
     )],
 
+    // partie 8, ouverture (plan)
+    ['p8', (folio) => (
+      <section className="at-page at-plan at-gauche at-ouverture">
+        <div className="at-corps">
+          <span className="at-num">8</span>
+          <h2>{lt(LT.p8Titre, lang)}</h2>
+          <p>{lt(LT.p8OuvertureTexte, lang)}</p>
+        </div>
+        <FolioNum n={folio} />
+      </section>
+    )],
+
+    // partie 8, registre (1 à 3) (papier)
+    ...[0, 8, 16].map((debut, i) => [null, (folio) => {
+      const operateur = (code) => (code === 'michael' ? (lang === 'en' ? 'Michael' : 'Michael') : code === 'tache' ? lt(LT.p8ProgTache, lang) : code === 'mc' ? lt(LT.p8MichaelClaude, lang) : code)
+      return (
+        <PagePapier key={i} folio={folio} tete={[lt(LT.p8Chap, lang), `8.${i + 1}`]}>
+          {i === 0 && <h2><small>{lang === 'en' ? 'Part 8' : 'Partie 8'}</small>{lt(LT.p8Titre, lang)}</h2>}
+          <table className="at-recap">
+            <thead>
+              <tr>{lt(LT.p8Cols, lang).map((c) => <th key={c}>{c}</th>)}</tr>
+            </thead>
+            <tbody>
+              {LT.p8Entries.slice(debut, debut + 8).map(([label, code], j) => (
+                <tr key={j}>
+                  <td>{String(debut + j + 1).padStart(2, '0')}</td>
+                  <td>{lt(label, lang)}</td>
+                  <td>{operateur(code)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </PagePapier>
+      )
+    }]),
+
     // page de notes, lignée
     [null, (folio) => (
       <PagePapier folio={folio}>

@@ -1,7 +1,7 @@
 # Mission atelier-automatique-2 — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 8 (partie 8 — Carnet d'entretien)
+**Prochaine action :** étape 9 (annexe glossaire, sommaire, parité)
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
@@ -64,3 +64,12 @@ routine, commande shell composée, premier essai Gemini raté, navigateur
 403 (Lightpanda). Livre à 48 pages ; vérifié avec `npx vite preview` à
 375 px : aucun débordement malgré les textes denses, aucune erreur
 console. `npm run build` et `npm run lint` : OK.
+
+## Étape 8 — Partie 8, Carnet d'entretien (2026-10-15)
+Ouverture + 3 pages registre (8 entrées chacune, colonnes Entrée/
+Intervention/Opérateur), condensé des 24 entrées de la chronologie
+d'UtilisationIA.jsx. Colonne « Entrée » (numéro) au lieu de « Date » et
+« Opérateur » limité aux modèles sourcés par entrée (voir DECISIONS.md).
+Livre à 52 pages ; vérifié avec `npx vite preview` à 375 px : aucun
+débordement, contenu des 3 pages conforme, aucune erreur console.
+`npm run build` et `npm run lint` : OK.

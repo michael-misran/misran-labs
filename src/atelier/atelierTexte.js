@@ -575,6 +575,43 @@ export const LT = {
     ],
   ],
 
+  // ---------- Partie 8 — Carnet d'entretien ----------
+  p8Titre: { fr: 'Carnet d’entretien', en: 'Maintenance log' },
+  p8Chap: { fr: 'Chap. 8 — Carnet d’entretien', en: 'Chap. 8 — Maintenance log' },
+  p8OuvertureTexte: {
+    fr: 'Un registre, condensé de la séquence racontée dans le dossier « Utilisation de l’IA » du Lab : une ligne par entrée marquante, l’atelier et le modèle qui l’ont tenue.',
+    en: 'A log, condensed from the sequence told in the Lab’s “Using AI” file: one line per notable entry, the workshop and the model that held the pen.',
+  },
+  p8Cols: { fr: ['Entrée', 'Intervention', 'Opérateur'], en: ['Entry', 'Action', 'Operator'] },
+  p8ProgTache: { fr: 'Tâche programmée', en: 'Scheduled task' },
+  p8MichaelClaude: { fr: 'Michael + Claude', en: 'Michael + Claude' },
+  p8Entries: [
+    [{ fr: 'Abandon de l’IA locale (Lily, Qwen3-8B)', en: 'Dropping local AI (Lily, Qwen3-8B)' }, 'mc'],
+    [{ fr: 'Les vrais leviers sur le quota', en: 'The real quota levers' }, 'mc'],
+    [{ fr: 'Les sous-agents, expliqués', en: 'Sub-agents, explained' }, 'mc'],
+    [{ fr: 'Objectif : l’autonomie « fondateur »', en: 'Goal: “founder” autonomy' }, 'michael'],
+    [{ fr: 'Incident de sécurité : un token en clair, révoqué', en: 'Security incident: a plaintext token, revoked' }, 'mc'],
+    [{ fr: 'Mise en place de la mission test', en: 'Setting up the test mission' }, 'Opus'],
+    [{ fr: 'Exécution autonome : 13 min, 7 commits', en: 'Autonomous run: 13 min, 7 commits' }, 'tache'],
+    [{ fr: 'Clôture : push, prévisualisation, PR #1, fusion', en: 'Wrap-up: push, preview, PR #1, merge' }, 'mc'],
+    [{ fr: 'Skill global /mission pour tous les projets', en: 'Global /mission skill for every project' }, 'mc'],
+    [{ fr: 'Mission 3 : schémas en grille, fin des interruptions', en: 'Mission 3: grid diagrams, end of interruptions' }, 'tache'],
+    [{ fr: 'Le Magazine, son test et le relecteur', en: 'The Magazine, its test and the fact-checker' }, 'mc'],
+    [{ fr: 'La file d’attente de missions', en: 'The mission queue' }, 'tache'],
+    [{ fr: 'Piloter depuis le téléphone', en: 'Piloting from the phone' }, 'michael'],
+    [{ fr: 'Le compromis sur le push de main', en: 'The main-push compromise' }, 'mc'],
+    [{ fr: 'Mise à jour de la page (mission 7)', en: 'Page update (mission 7)' }, 'tache'],
+    [{ fr: 'Un deuxième avis : Gemini', en: 'A second opinion: Gemini' }, 'mc'],
+    [{ fr: 'Économiser les tokens', en: 'Cutting token usage' }, 'mc'],
+    [{ fr: 'Mise à jour de la page (mission 8)', en: 'Page update (mission 8)' }, 'tache'],
+    [{ fr: 'Les idées du dimanche', en: 'Sunday’s project ideas' }, 'tache'],
+    [{ fr: 'L’Oracle du Matin et le carnet', en: 'The Morning Oracle and the notebook' }, 'tache'],
+    [{ fr: 'Une semaine de missions', en: 'A week of missions' }, 'tache'],
+    [{ fr: 'La refonte kiosque', en: 'The kiosk redesign' }, 'tache'],
+    [{ fr: 'Lightpanda, un navigateur en secours', en: 'Lightpanda, a fallback browser' }, 'mc'],
+    [{ fr: 'Cette mise à jour (mission 42)', en: 'This update (mission 42)' }, 'tache'],
+  ],
+
   notesTitre: { fr: 'Notes', en: 'Notes' },
 
   // ---------- Quatrième de couverture ----------
