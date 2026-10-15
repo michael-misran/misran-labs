@@ -43,17 +43,19 @@ export const LT = {
   },
   sommaireTitre: { fr: 'Sommaire', en: 'Contents' },
   enPreparation: { fr: 'en préparation', en: 'in preparation' },
+  // folio calculé à l'affichage (AtelierLivre.jsx) à partir de la position
+  // réelle de la page d'ouverture de chaque partie — jamais un nombre en dur.
   parties: [
-    { titre: { fr: 'Consignes de sécurité', en: 'Safety instructions' }, folio: 4 },
-    { titre: { fr: 'Présentation de l’appareil', en: 'Presenting the appliance' }, folio: 6 },
-    { titre: { fr: 'Le personnel', en: 'Staff' }, folio: 8 },
-    { titre: { fr: 'Les automates', en: 'The automated routines' }, folio: 18 },
-    { titre: { fr: 'Les missions autonomes', en: 'Autonomous missions' }, folio: null },
-    { titre: { fr: 'Les accessoires', en: 'Accessories' }, folio: null },
-    { titre: { fr: 'Réglages et consommation', en: 'Settings and consumption' }, folio: null },
-    { titre: { fr: 'Pannes et dépannage', en: 'Troubleshooting' }, folio: null },
-    { titre: { fr: 'Carnet d’entretien', en: 'Maintenance log' }, folio: null },
-    { titre: { fr: 'Glossaire', en: 'Glossary' }, folio: null, annexe: true },
+    { titre: { fr: 'Consignes de sécurité', en: 'Safety instructions' }, cle: 'p0' },
+    { titre: { fr: 'Présentation de l’appareil', en: 'Presenting the appliance' }, cle: 'p1' },
+    { titre: { fr: 'Le personnel', en: 'Staff' }, cle: 'p2' },
+    { titre: { fr: 'Les automates', en: 'The automated routines' }, cle: 'p3' },
+    { titre: { fr: 'Les missions autonomes', en: 'Autonomous missions' }, cle: 'p4' },
+    { titre: { fr: 'Les accessoires', en: 'Accessories' }, cle: 'p5' },
+    { titre: { fr: 'Réglages et consommation', en: 'Settings and consumption' }, cle: 'p6' },
+    { titre: { fr: 'Pannes et dépannage', en: 'Troubleshooting' }, cle: 'p7' },
+    { titre: { fr: 'Carnet d’entretien', en: 'Maintenance log' }, cle: 'p8' },
+    { titre: { fr: 'Glossaire', en: 'Glossary' }, cle: 'glossaire', annexe: true },
   ],
 
   // ---------- Partie 0 — Consignes de sécurité ----------

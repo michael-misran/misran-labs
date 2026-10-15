@@ -94,42 +94,48 @@ function QuatriemeCouverture({ lang }) {
 }
 
 // ---------- Liste des pages, dans l'ordre de lecture ----------
+//
+// Chaque entrée est [cle, rendu] : `rendu(folio, folios)` reçoit son propre
+// folio, calculé depuis sa position dans la liste (jamais un nombre en dur),
+// et la table `folios` (cle de partie → folio de sa page d'ouverture), pour
+// que le sommaire affiche toujours les vrais numéros. `cle` n'est renseignée
+// que pour la première page de chaque partie (voir LT.parties).
 
 function pagesDuLivre(lang) {
   const agentFicheRow = (k, v) => (<tr key={k}><th>{k}</th><td>{v}</td></tr>)
 
-  return [
-    // 1 — couverture
-    () => <Couverture lang={lang} />,
+  const entrees = [
+    // couverture
+    [null, () => <Couverture lang={lang} />],
 
-    // 2 — garde : avant de lire (folio 2)
-    () => (
-      <PagePapier folio={2}>
+    // garde : avant de lire
+    [null, (folio) => (
+      <PagePapier folio={folio}>
         <h2>{lt(LT.gardeTitre, lang)}</h2>
         <p className="at-lettrine">{lt(LT.gardeTexte, lang)}</p>
         <p>{lt(LT.gardeLecture, lang)}</p>
       </PagePapier>
-    ),
+    )],
 
-    // 3 — sommaire (folio 3)
-    () => (
-      <PagePapier folio={3}>
+    // sommaire
+    [null, (folio, folios) => (
+      <PagePapier folio={folio}>
         <h2>{lt(LT.sommaireTitre, lang)}</h2>
         <ol className="at-liste-sommaire">
           {LT.parties.map((p, i) => (
             <li key={i} className={p.annexe ? 'at-annexe' : ''}>
               <span>{lt(p.titre, lang)}</span>
               <i aria-hidden="true" />
-              {p.folio ? <b>{p.folio}</b> : <span className="at-prepa">{lt(LT.enPreparation, lang)}</span>}
+              {folios[p.cle] ? <b>{folios[p.cle]}</b> : <span className="at-prepa">{lt(LT.enPreparation, lang)}</span>}
             </li>
           ))}
         </ol>
       </PagePapier>
-    ),
+    )],
 
-    // 4 — partie 0, page 1 : intro + règle Git (folio 4)
-    () => (
-      <PagePapier folio={4} tete={[lt(LT.p0Titre, lang), '0.1']}>
+    // partie 0, page 1 : intro + règle Git
+    ['p0', (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p0Titre, lang), '0.1']}>
         <h2><small>{lt(LT.p0Chapeau, lang)}</small>{lt(LT.p0Titre, lang)}</h2>
         <p>{lt(LT.p0Intro, lang)}</p>
         <div className="at-attention">
@@ -137,11 +143,11 @@ function pagesDuLivre(lang) {
           <div><strong>{lt(LT.p0GitTitre, lang)}</strong>{lt(LT.p0GitTexte, lang)}</div>
         </div>
       </PagePapier>
-    ),
+    )],
 
-    // 5 — partie 0, page 2 : dépôt public + cas d'école (folio 5)
-    () => (
-      <PagePapier folio={5} tete={[lt(LT.p0Titre, lang), '0.2']}>
+    // partie 0, page 2 : dépôt public + cas d'école
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p0Titre, lang), '0.2']}>
         <div className="at-attention">
           <div className="at-bande" />
           <div><strong>{lt(LT.p0PublicTitre, lang)}</strong>{lt(LT.p0PublicTexte, lang)}</div>
@@ -156,10 +162,10 @@ function pagesDuLivre(lang) {
         </div>
         <p className="at-note-fig">{lt(LT.p0NoteFig, lang)}</p>
       </PagePapier>
-    ),
+    )],
 
-    // 6 — partie 1, figure (plan, gauche, folio 6)
-    () => (
+    // partie 1, figure (plan, gauche)
+    ['p1', (folio) => (
       <section className="at-page at-plan at-gauche">
         <Tetiere g={lt(LT.p1Titre, lang)} d="Fig. 3" />
         <SchemaCircuit lang={lang} />
@@ -167,43 +173,43 @@ function pagesDuLivre(lang) {
           <div><strong>{lt(LT.p1FigLegende, lang)}</strong>{lt(LT.p1Cartouche, lang)}</div>
           <div>{lang === 'en' ? 'Scale' : 'Échelle'}<br />1 : 1</div>
         </div>
-        <FolioNum n={6} />
+        <FolioNum n={folio} />
       </section>
-    ),
+    )],
 
-    // 7 — partie 1, texte (papier, droite, folio 7)
-    () => (
-      <PagePapier folio={7} tete={[lt(LT.p1Titre, lang), '1.1']}>
+    // partie 1, texte (papier, droite)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p1Titre, lang), '1.1']}>
         <h2><small>{lang === 'en' ? 'Part 1' : 'Partie 1'}</small>{lt(LT.p1Titre, lang)}</h2>
         <p>{lt(LT.p1Texte1, lang)}</p>
         <p>{lt(LT.p1Texte2, lang)}</p>
         <p>{lt(LT.p1Texte3, lang)}</p>
       </PagePapier>
-    ),
+    )],
 
-    // 8 — partie 2, ouverture, gauche (plan, folio 8)
-    () => (
+    // partie 2, ouverture, gauche (plan)
+    ['p2', (folio) => (
       <section className="at-page at-plan at-gauche at-ouverture">
         <div className="at-corps">
           <span className="at-num">2</span>
           <h2>{lt(LT.p2Titre, lang)}</h2>
         </div>
-        <FolioNum n={8} />
+        <FolioNum n={folio} />
       </section>
-    ),
+    )],
 
-    // 9 — partie 2, ouverture, droite (papier, folio 9)
-    () => (
+    // partie 2, ouverture, droite (papier)
+    [null, (folio) => (
       <section className="at-page at-papier at-droite at-ouverture">
         <div className="at-corps">
           <p>{lt(LT.p2OuvertureTexte, lang)}</p>
         </div>
-        <FolioNum n={9} />
+        <FolioNum n={folio} />
       </section>
-    ),
+    )],
 
-    // 10 — partie 2, le controleur : figure (plan, gauche, folio 10)
-    () => (
+    // partie 2, le controleur : figure (plan, gauche)
+    [null, (folio) => (
       <section className="at-page at-plan at-gauche">
         <Tetiere g={lt(LT.titreOnglet, lang)} d="Fig. 7" />
         <SchemaControleur lang={lang} />
@@ -211,13 +217,13 @@ function pagesDuLivre(lang) {
           <div><strong>{`Fig. 7 — ${lt(LT.p2ControleurTitre, lang)}`}</strong>A {lang === 'en' ? 'handle' : 'poignée'} · B {lang === 'en' ? 'checks' : 'contrôles'} · C {lang === 'en' ? 'verdict' : 'verdict'} · D pull request</div>
           <div>{lang === 'en' ? 'Scale' : 'Échelle'}<br />1 : 1</div>
         </div>
-        <FolioNum n={10} />
+        <FolioNum n={folio} />
       </section>
-    ),
+    )],
 
-    // 11 — partie 2, le controleur : fiche (papier, droite, folio 11)
-    () => (
-      <PagePapier folio={11} tete={[lt(LT.p2Chap, lang), '2.1']}>
+    // partie 2, le controleur : fiche (papier, droite)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p2Chap, lang), '2.1']}>
         <h2><small>{lt(LT.p2ControleurFicheN, lang)}</small>{lt(LT.p2ControleurTitre, lang)}</h2>
         <p>{lt(LT.p2ControleurTexte, lang)}</p>
         <table className="at-fiche"><tbody>
@@ -237,57 +243,51 @@ function pagesDuLivre(lang) {
         </div>
         <p className="at-note-fig">{lt(LT.p2ControleurNoteFig, lang)}</p>
       </PagePapier>
-    ),
+    )],
 
-    // 12 à 17 — partie 2, les six autres agents (papier, folios 12 à 17)
-    ...LT.p2Agents.map((a, i) => () => {
-      const folio = 12 + i
-      return (
-        <PagePapier key={a.nom} folio={folio} tete={[lt(LT.p2Chap, lang), `2.${a.ficheN}`]}>
-          <div className="at-pictogramme"><Pictogramme nom={PICTO_AGENT[a.nom]} /></div>
-          <h2><small>{lang === 'en' ? `Staff card no. ${a.ficheN}` : `Fiche agent n° ${a.ficheN}`}</small>{lt(a.titre, lang)}</h2>
-          <table className="at-fiche"><tbody>
-            {agentFicheRow(lang === 'en' ? 'Role' : 'Rôle', lt(a.texte, lang))}
-            {agentFicheRow(lang === 'en' ? 'Called' : 'Appelé', lt(a.appele, lang))}
-            {agentFicheRow(lang === 'en' ? 'Never' : 'Ne fait jamais', lt(a.jamais, lang))}
-            {agentFicheRow(lang === 'en' ? 'Model' : 'Modèle', a.modele)}
-          </tbody></table>
-        </PagePapier>
-      )
-    }),
+    // partie 2, les six autres agents (papier)
+    ...LT.p2Agents.map((a) => [null, (folio) => (
+      <PagePapier key={a.nom} folio={folio} tete={[lt(LT.p2Chap, lang), `2.${a.ficheN}`]}>
+        <div className="at-pictogramme"><Pictogramme nom={PICTO_AGENT[a.nom]} /></div>
+        <h2><small>{lang === 'en' ? `Staff card no. ${a.ficheN}` : `Fiche agent n° ${a.ficheN}`}</small>{lt(a.titre, lang)}</h2>
+        <table className="at-fiche"><tbody>
+          {agentFicheRow(lang === 'en' ? 'Role' : 'Rôle', lt(a.texte, lang))}
+          {agentFicheRow(lang === 'en' ? 'Called' : 'Appelé', lt(a.appele, lang))}
+          {agentFicheRow(lang === 'en' ? 'Never' : 'Ne fait jamais', lt(a.jamais, lang))}
+          {agentFicheRow(lang === 'en' ? 'Model' : 'Modèle', a.modele)}
+        </tbody></table>
+      </PagePapier>
+    )]),
 
-    // 18 — partie 3, ouverture (plan, folio 18)
-    () => (
+    // partie 3, ouverture (plan)
+    ['p3', (folio) => (
       <section className="at-page at-plan at-gauche at-ouverture">
         <div className="at-corps">
           <span className="at-num">3</span>
           <h2>{lt(LT.p3Titre, lang)}</h2>
           <p>{lt(LT.p3OuvertureTexte, lang)}</p>
         </div>
-        <FolioNum n={18} />
+        <FolioNum n={folio} />
       </section>
-    ),
+    )],
 
-    // 19 à 23 — partie 3, une page par routine (papier, folios 19 à 23)
-    ...LT.p3Routines.map((r, i) => () => {
-      const folio = 19 + i
-      return (
-        <PagePapier key={i} folio={folio} tete={[lt(LT.p3Chap, lang), `3.${i + 1}`]}>
-          <h2>{lt(r.titre, lang)}</h2>
-          <table className="at-fiche"><tbody>
-            {agentFicheRow(lt(LT.p3HoraireK, lang), lt(r.horaire, lang))}
-            {agentFicheRow(lt(LT.p3ModeleK, lang), r.modele)}
-            {agentFicheRow(lt(LT.p3ProduitK, lang), lt(r.produit, lang))}
-            {agentFicheRow(lt(LT.p3MichaelK, lang), lt(r.michael, lang))}
-          </tbody></table>
-          <p>{lt(r.texte, lang)}</p>
-        </PagePapier>
-      )
-    }),
+    // partie 3, une page par routine (papier)
+    ...LT.p3Routines.map((r, i) => [null, (folio) => (
+      <PagePapier key={i} folio={folio} tete={[lt(LT.p3Chap, lang), `3.${i + 1}`]}>
+        <h2>{lt(r.titre, lang)}</h2>
+        <table className="at-fiche"><tbody>
+          {agentFicheRow(lt(LT.p3HoraireK, lang), lt(r.horaire, lang))}
+          {agentFicheRow(lt(LT.p3ModeleK, lang), r.modele)}
+          {agentFicheRow(lt(LT.p3ProduitK, lang), lt(r.produit, lang))}
+          {agentFicheRow(lt(LT.p3MichaelK, lang), lt(r.michael, lang))}
+        </tbody></table>
+        <p>{lt(r.texte, lang)}</p>
+      </PagePapier>
+    )]),
 
-    // 24 — partie 3, tableau récapitulatif (papier, folio 24)
-    () => (
-      <PagePapier folio={24} tete={[lt(LT.p3Chap, lang), '3.6']}>
+    // partie 3, tableau récapitulatif (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p3Chap, lang), '3.6']}>
         <h2>{lt(LT.p3TableTitre, lang)}</h2>
         <table className="at-recap">
           <thead>
@@ -304,19 +304,23 @@ function pagesDuLivre(lang) {
           </tbody>
         </table>
       </PagePapier>
-    ),
+    )],
 
-    // 25 — page de notes, lignée (folio 25)
-    () => (
-      <PagePapier folio={25}>
+    // page de notes, lignée
+    [null, (folio) => (
+      <PagePapier folio={folio}>
         <h2>{lt(LT.notesTitre, lang)}</h2>
         <div className="at-lignes" aria-hidden="true" />
       </PagePapier>
-    ),
+    )],
 
-    // 26 — 4ᵉ de couverture
-    () => <QuatriemeCouverture lang={lang} />,
+    // 4ᵉ de couverture
+    [null, () => <QuatriemeCouverture lang={lang} />],
   ]
+
+  const folios = {}
+  entrees.forEach(([cle], i) => { if (cle) folios[cle] = i + 1 })
+  return entrees.map(([, rendu], i) => () => rendu(i + 1, folios))
 }
 
 // Regroupe les pages en planches : couverture seule à droite, puis les pages
