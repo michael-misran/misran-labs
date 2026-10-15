@@ -47,7 +47,7 @@ Modèle technique à suivre : le livre Portfolio (`src/portfolio/PortfolioLivre.
 2. Toutes les pages de D5 existent, dans cet ordre, en FR et en EN (bascule de langue du site).
 3. À 375 px de large : pages empilées, aucun défilement horizontal, aucun texte qui déborde d'une page.
 4. À 1300 px : double page côte à côte ; la couverture et la double page du controleur ressemblent à la maquette (vérification visuelle avec capture).
-5. `grep` sur `src/atelier/` : aucune occurrence de `/Users/`, `@gmail`, `ghp_`, `michaelmisran`.
+5. `grep` sur `src/atelier/` : aucune occurrence de `/Users/`, `@gmail`, `ghp_` ni le nom d'utilisateur du Mac.
 6. `--titre-atelier` défini dans `tokens.css` et utilisé par `atelier.css`.
 7. Relecture de la forme (orthographe, typographie française, traductions) par l'agent `secretaire` : corrections appliquées.
 8. `npm run build` passe ; `npm run lint` : pas de nouvelle erreur par rapport à l'état initial.

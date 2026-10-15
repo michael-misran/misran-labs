@@ -26,7 +26,7 @@ Le livre **« L'Atelier automatique — Manuel d'utilisation et d'entretien »**
 2. **Toutes les pages de D5, dans l'ordre, en FR et en EN.** ✅ Vérifié page par page (26 pages) dans les deux langues.
 3. **375 px : pages empilées, aucun défilement horizontal, aucun texte qui déborde.** ✅ Vérifié (`scrollWidth === innerWidth` dans le navigateur intégré ; re-testé par le verificateur dans un contexte différent, sans débordement non plus).
 4. **1300 px : double page côte à côte ; couverture et double page du controleur fidèles à la maquette (capture).** ✅ Captures prises et comparées à la maquette (couleurs, polices, schémas, plaque signalétique, tampon).
-5. **`grep` sur `src/atelier/` : aucune occurrence de `/Users/`, `@gmail`, `ghp_`, `michaelmisran`.** ✅ Vérifié après chaque étape de contenu ; une décision a été nécessaire (voir Décisions) pour que l'exemple pédagogique du cas d'école ne contienne pas la sous-chaîne `ghp_`, même masquée.
+5. **`grep` sur `src/atelier/` : aucune occurrence de `/Users/`, `@gmail`, `ghp_` ni le nom d'utilisateur du Mac.** ✅ Vérifié après chaque étape de contenu ; une décision a été nécessaire (voir Décisions) pour que l'exemple pédagogique du cas d'école ne contienne pas la sous-chaîne `ghp_`, même masquée.
 6. **`--titre-atelier` défini dans `tokens.css` et utilisé par `atelier.css`.** ✅ `--primitive-titre-atelier` + `--titre-atelier` dans `tokens.css`, repris par `--at-plan` dans `atelier.css`.
 7. **Relecture de la forme par `secretaire`, corrections appliquées.** ✅ 3 points relevés, tous corrigés (voir Délégations).
 8. **`npm run build` passe ; `npm run lint` sans nouvelle erreur.** ✅ Build et lint propres, vérifiés après chaque étape de contenu et une dernière fois à la clôture.
