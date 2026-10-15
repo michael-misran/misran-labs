@@ -1,7 +1,7 @@
 # Mission atelier-automatique-2 — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 5 (partie 5 — Les accessoires)
+**Prochaine action :** étape 6 (partie 6 — Réglages et consommation)
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
@@ -39,3 +39,11 @@ Insérée avant la page « Notes » (jamais après — voir DECISIONS.md). Livre
 35 pages ; vérifié avec `npx vite preview` à 375 px : folios continus,
 sommaire à jour (partie 4 → folio 27), aucune erreur console, aucun
 débordement. `npm run build` et `npm run lint` : OK.
+
+## Étape 5 — Partie 5, Les accessoires (2026-10-15)
+Ouverture + 4 pages papier : les mods (garde-git, retour-routine, kiosque,
+garde-controleur, répartis sur 2 pages), le skill /mission (table des
+modes), les connexions utiles (navigateur intégré, Figma, Lightpanda en
+secours). Livre à 40 pages ; vérifié avec `npx vite preview` à 375 px :
+aucun débordement, aucune erreur console, contenu des pages mods conforme.
+`npm run build` et `npm run lint` : OK.

@@ -441,6 +441,87 @@ function pagesDuLivre(lang) {
       </PagePapier>
     )],
 
+    // partie 5, ouverture (plan)
+    ['p5', (folio) => (
+      <section className="at-page at-plan at-gauche at-ouverture">
+        <div className="at-corps">
+          <span className="at-num">5</span>
+          <h2>{lt(LT.p5Titre, lang)}</h2>
+          <p>{lt(LT.p5OuvertureTexte, lang)}</p>
+        </div>
+        <FolioNum n={folio} />
+      </section>
+    )],
+
+    // partie 5, les mods (1/2) : garde-git, retour-routine (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p5Chap, lang), '5.1']}>
+        <h2><small>{lang === 'en' ? 'Part 5' : 'Partie 5'}</small>{lang === 'en' ? 'Mods' : 'Les mods'}</h2>
+        <p>{lt(LT.p5ModsIntro, lang)}</p>
+        {LT.p5Mods.slice(0, 2).map((m) => (
+          <div key={m.nom}>
+            <Intertitre>{`${m.nom} · ${m.commande}`}</Intertitre>
+            <table className="at-fiche"><tbody>
+              {agentFicheRow(lt(LT.p5OuLabel, lang), lt(m.ou, lang))}
+              {agentFicheRow(lt(LT.p5QuandLabel, lang), lt(m.quand, lang))}
+              {agentFicheRow(lt(LT.p5FaitLabel, lang), lt(m.fait, lang))}
+            </tbody></table>
+          </div>
+        ))}
+      </PagePapier>
+    )],
+
+    // partie 5, les mods (2/2) : kiosque, garde-controleur (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p5Chap, lang), '5.2']}>
+        {LT.p5Mods.slice(2, 4).map((m) => (
+          <div key={m.nom}>
+            <Intertitre>{`${m.nom} · ${m.commande}`}</Intertitre>
+            <table className="at-fiche"><tbody>
+              {agentFicheRow(lt(LT.p5OuLabel, lang), lt(m.ou, lang))}
+              {agentFicheRow(lt(LT.p5QuandLabel, lang), lt(m.quand, lang))}
+              {agentFicheRow(lt(LT.p5FaitLabel, lang), lt(m.fait, lang))}
+            </tbody></table>
+          </div>
+        ))}
+      </PagePapier>
+    )],
+
+    // partie 5, le skill /mission (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p5Chap, lang), '5.3']}>
+        <h2>{lt(LT.p5SkillTitre, lang)}</h2>
+        <p>{lt(LT.p5SkillTexte, lang)}</p>
+        <table className="at-recap">
+          <thead>
+            <tr>{lt(LT.p5SkillModeCols, lang).map((c) => <th key={c}>{c}</th>)}</tr>
+          </thead>
+          <tbody>
+            {LT.p5SkillModes.map((row, i) => (
+              <tr key={i}>
+                <td>{lt(row[0], lang)}</td>
+                <td>{lt(row[1], lang)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p>{lt(LT.p5SkillTexte2, lang)}</p>
+      </PagePapier>
+    )],
+
+    // partie 5, les connexions utiles (papier)
+    [null, (folio) => (
+      <PagePapier folio={folio} tete={[lt(LT.p5Chap, lang), '5.4']}>
+        <h2>{lt(LT.p5ConnexTitre, lang)}</h2>
+        <Intertitre>{lt(LT.p5ConnexNavTitre, lang)}</Intertitre>
+        <p>{lt(LT.p5ConnexNavTexte, lang)}</p>
+        <Intertitre>{lt(LT.p5ConnexFigmaTitre, lang)}</Intertitre>
+        <p>{lt(LT.p5ConnexFigmaTexte, lang)}</p>
+        <Intertitre>{lt(LT.p5ConnexLightpandaTitre, lang)}</Intertitre>
+        <p>{lt(LT.p5ConnexLightpandaTexte, lang)}</p>
+      </PagePapier>
+    )],
+
     // page de notes, lignée
     [null, (folio) => (
       <PagePapier folio={folio}>

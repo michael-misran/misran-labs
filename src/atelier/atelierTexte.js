@@ -382,6 +382,93 @@ export const LT = {
     en: 'Then wrapped up with Michael: push, preview, first pull request, merge.',
   },
 
+  // ---------- Partie 5 — Les accessoires ----------
+  p5Titre: { fr: 'Les accessoires', en: 'Accessories' },
+  p5Chap: { fr: 'Chap. 5 — Les accessoires', en: 'Chap. 5 — Accessories' },
+  p5OuvertureTexte: {
+    fr: 'Quatre mods, un skill et trois connexions complètent l’atelier. Aucun n’écrit à ma place : ils préparent, vérifient ou signalent.',
+    en: 'Four mods, one skill and three connections round out the workshop. None of them writes in my place: they prepare, check or flag.',
+  },
+  p5ModsIntro: {
+    fr: 'Un mod est un petit programme qui s’accroche à Claude Code : il voit passer chaque commande et chaque fin de tour, et peut afficher un panneau. Il ne consomme aucun token — c’est du code, pas un modèle. Les quatre mods se chargent dans toutes les sessions, y compris les routines.',
+    en: 'A mod is a small program that plugs into Claude Code: it sees every command and every end of turn go by, and can draw a panel. It uses no tokens — it is code, not a model. All four mods load in every session, routines included.',
+  },
+  p5OuLabel: { fr: 'Où il agit', en: 'Where it acts' },
+  p5QuandLabel: { fr: 'Quand', en: 'When' },
+  p5FaitLabel: { fr: 'Ce qu’il fait', en: 'What it does' },
+  p5Mods: [
+    {
+      nom: 'garde-git', commande: '/garde-git',
+      ou: { fr: 'Dans chaque session, avant chaque commande touchant git, gh ou vercel.', en: 'In every session, before every command touching git, gh or vercel.' },
+      quand: { fr: 'Dès que la commande part.', en: 'The moment the command fires.' },
+      fait: {
+        fr: 'Bloque le push forcé partout. Dans une routine, bloque aussi : commit hors d’une branche auto/*, push d’autre chose que les branches de l’Oracle et des idées, merge, rebase, fusion de PR, déploiement.',
+        en: 'Blocks force-pushes everywhere. In a routine it also blocks: commits outside an auto/* branch, pushing anything but the Oracle and ideas branches, merge, rebase, merging a PR, deploying.',
+      },
+    },
+    {
+      nom: 'retour-routine', commande: '/tour-de-controle',
+      ou: { fr: 'Dans les routines (dépôt) et la tour de contrôle (relève).', en: 'In routines (drop-off) and the control tower (pick-up).' },
+      quand: { fr: 'À la fin de chaque tour d’une routine.', en: 'At the end of every routine turn.' },
+      fait: {
+        fr: 'Dépose le résumé de la routine dans une boîte aux lettres. La session désignée comme tour de contrôle la relève chaque minute et résume à Michael.',
+        en: 'Drops the routine’s summary in a mailbox. The session set as control tower checks it every minute and sums it up for Michael.',
+      },
+    },
+    {
+      nom: 'kiosque', commande: '/kiosque',
+      ou: { fr: 'Un panneau à côté de la conversation.', en: 'A panel next to the conversation.' },
+      quand: { fr: 'À l’ouverture, puis toutes les 10 minutes.', en: 'When opened, then every 10 minutes.' },
+      fait: {
+        fr: 'Affiche l’état de l’Oracle du jour, les missions en cours avec leurs étapes cochées, les missions à clôturer et les pull requests ouvertes. Lu directement dans git et GitHub.',
+        en: 'Shows today’s Oracle status, running missions with their ticked steps, missions to wrap up and open pull requests. Read straight from git and GitHub.',
+      },
+    },
+    {
+      nom: 'garde-controleur', commande: '/garde-controleur',
+      ou: { fr: 'Dans chaque session, avant l’ouverture d’une pull request.', en: 'In every session, before a pull request is opened.' },
+      quand: { fr: 'Sauf les routines de l’Oracle et des idées.', en: 'Except the Oracle and ideas routines.' },
+      fait: {
+        fr: 'Refuse la PR tant que le controleur n’a pas posé son tampon, OK ou ATTENTION, sur la version exacte de la branche. Un commit de plus après son passage, et il faut repasser.',
+        en: 'Refuses the PR until the controleur has stamped the exact version of the branch, OK or ATTENTION. One more commit after it ran, and it has to run again.',
+      },
+    },
+  ],
+
+  p5SkillTitre: { fr: 'Le skill /mission', en: 'The /mission skill' },
+  p5SkillTexte: {
+    fr: 'Michael tape /mission, écrit « mission : … », ou dit qu’une mission est terminée. Le skill regarde le dossier de travail et choisit un mode.',
+    en: 'Michael types /mission, writes “mission: …”, or says a mission is done. The skill looks at the working folder and picks a mode.',
+  },
+  p5SkillModeCols: { fr: ['Mode', 'Déclencheur'], en: ['Mode', 'Trigger'] },
+  p5SkillModes: [
+    [{ fr: 'Nouveau projet', en: 'New project' }, { fr: 'dossier vide, ou Michael décrit une idée', en: 'empty folder, or Michael describes an idea' }],
+    [{ fr: 'Installation', en: 'Installation' }, { fr: 'projet existant sans section « Missions autonomes »', en: 'existing project without an “Autonomous missions” section' }],
+    [{ fr: 'Lancement', en: 'Launch' }, { fr: 'projet déjà installé, plus un brief', en: 'already installed project, plus a brief' }],
+    [{ fr: 'Clôture', en: 'Wrap-up' }, { fr: 'Michael dit qu’une mission est terminée ou à fusionner', en: 'Michael says a mission is done or ready to merge' }],
+  ],
+  p5SkillTexte2: {
+    fr: 'Au lancement, le skill cadre SPEC.md, PLAN.md et les fichiers de suivi, crée la branche auto/<nom>, puis réactive la tâche programmée — elle s’était mise en pause faute de mission à traiter.',
+    en: 'On launch, the skill scopes SPEC.md, PLAN.md and the tracking files, creates the auto/<name> branch, then re-enables the scheduled task — it had paused itself for lack of a mission to run.',
+  },
+
+  p5ConnexTitre: { fr: 'Les connexions utiles', en: 'Useful connections' },
+  p5ConnexNavTitre: { fr: 'Le navigateur intégré', en: 'The built-in browser' },
+  p5ConnexNavTexte: {
+    fr: 'En session interactive, la vérification se fait dans une prévisualisation « dev ». Une routine n’y a pas droit : elle est refusée en session non surveillée. La routine lance alors sa propre prévisualisation du build et vérifie dedans.',
+    en: 'In an interactive session, checking happens in a “dev” preview. A routine has no right to it: it is refused in an unsupervised session. The routine then starts its own preview of the build and checks there instead.',
+  },
+  p5ConnexFigmaTitre: { fr: 'Figma', en: 'Figma' },
+  p5ConnexFigmaTexte: {
+    fr: 'Workflow conçu comme bidirectionnel entre Figma et Claude Code : les maquettes peuvent partir de Figma ou du code.',
+    en: 'A workflow designed to run both ways between Figma and Claude Code: mockups can start in Figma or in the code.',
+  },
+  p5ConnexLightpandaTitre: { fr: 'Lightpanda, en secours', en: 'Lightpanda, as a fallback' },
+  p5ConnexLightpandaTexte: {
+    fr: 'Un navigateur sans affichage, pour les agents. L’outil de lecture habituel renvoie un résumé ; Lightpanda renvoie la page entière, utile quand l’outil habituel est refusé (erreur 403). Gratuit, open source, tourne sur le Mac, télémétrie coupée.',
+    en: 'A headless browser, for agents. The usual reading tool returns a summary; Lightpanda returns the whole page, useful when the usual tool is refused (a 403 error). Free, open source, runs on the Mac, telemetry switched off.',
+  },
+
   notesTitre: { fr: 'Notes', en: 'Notes' },
 
   // ---------- Quatrième de couverture ----------
