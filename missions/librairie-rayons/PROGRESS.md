@@ -1,9 +1,25 @@
 # Mission librairie-rayons — PROGRESS
 
-**Statut :** prête à démarrer (après atelier-automatique-2 dans la file)
-**Prochaine action :** étape 2 (données)
+**Statut :** en cours
+**Prochaine action :** étape 4 (présentoir « Nouveautés » calculé + enseigne)
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
 - `npm run build` : OK
 - `npm run lint` : OK, 0 erreur, 0 avertissement
+
+## Étape 2 — Données (2026-10-15)
+Sous-agent Haiku : `collection` et `parution` ajoutés aux 4 volumes existants
+(numero-1, midnight-1, gazette, portfolio), 3 volumes ajoutés à la fin du
+tableau (atelier, nuancier, carnet), commentaire d'en-tête mis à jour.
+Diff relu par la session principale, conforme à la SPEC D1. `npm run build`
+et `npm run lint` : OK.
+
+## Étape 3 — Nouvelles couvertures (2026-10-15)
+3 nouveaux cas dans `Couverture` (Etagere.jsx) + CSS (etagere.css) :
+- `atelier` : bleu de plan (`--titre-atelier`), bandeau crème « Notice
+  MM-1977 », titre en Oswald, petit rouage en pointillé.
+- `nuancier` : papier crème, bandeau des 5 couleurs de titres en haut.
+- `carnet` : carnet noir, élastique rouge, étiquette en machine à écrire.
+`npm run build` et `npm run lint` : OK. Vérification visuelle (grande
+taille, dans le dialogue « sorti ») prévue avec le reste à l'étape 7.
