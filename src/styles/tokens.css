@@ -108,6 +108,7 @@
   --primitive-titre-zine: #ff4f8b;
   --primitive-titre-jeux: #ff8a1f;
   --primitive-titre-lab: #1f7a4d;
+  --primitive-titre-atelier: #1f4f86;
   /* Bleus de la page d'édito (encre des logos et du titre, aplat du texte) */
   --primitive-bleu-edito: #2e545d;
   --primitive-bleu-edito-pale: #bec7be;
@@ -233,6 +234,7 @@
   --titre-zine: var(--primitive-titre-zine);
   --titre-jeux: var(--primitive-titre-jeux);
   --titre-lab: var(--primitive-titre-lab);
+  --titre-atelier: var(--primitive-titre-atelier);
 
   --font-bois: var(--primitive-font-ultra);
   --font-bois-2: var(--primitive-font-alfa-slab-one);
