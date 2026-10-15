@@ -1,7 +1,7 @@
 # Mission librairie-rayons — PROGRESS
 
-**Statut :** en cours
-**Prochaine action :** étape 7 (vérification finale)
+**Statut :** terminée
+**Prochaine action :** clôture (push + pull request), en session interactive avec Michael
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
@@ -52,3 +52,13 @@ Revérifié : `document.documentElement.scrollWidth` égal à `clientWidth`
 rayons atteints, vérifié par un vrai geste de défilement), indication
 disparue après le geste, bureau (≥ 1024 px) strictement inchangé.
 `npm run build` et `npm run lint` : OK.
+
+## Étape 7 — Vérification finale (2026-10-15)
+Session principale : `npm run build` OK, `npm run lint` 0 erreur, grep
+secrets/chemins/e-mails sur `src/bibliotheque/` et `src/numero/` : aucun
+résultat. Agent verificateur (Haiku) sur `npx vite preview` : VERDICT OK —
+ordre du présentoir conforme, 7 livres en rayon + 4 plaques, dialogues
+« Lire »/« À paraître » corrects (Échap et clic fond ferment), 3 saisons
+alignées, défilement téléphone vérifié par un vrai geste de molette (pas
+une assignation JS) avec indication qui disparaît, textes EN complets,
+console vide. Voir DELEGATIONS.md.
