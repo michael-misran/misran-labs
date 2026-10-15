@@ -227,13 +227,16 @@ body:has(.ms-table) { margin: 0; }
 
 /* ---------- Page d'attente (numéro pas encore paru) ---------- */
 .ms-attente {
+  --ms-jaune-fonce: #c89a46;
+  --ms-rouge: #e8352b;
+  --ms-creme: #f6ecd8;
   min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
   padding: 64px 24px; text-align: center;
   background: radial-gradient(ellipse at 50% 40%, var(--ms-jaune-fonce), #1a1208 75%);
   color: var(--ms-creme); font-family: var(--font-chapo);
 }
 .ms-attente h1 { margin: 0; font: 400 clamp(32px, 7vw, 64px)/1 var(--font-affiche); color: var(--ms-rouge); -webkit-text-stroke: 2px var(--ms-creme); paint-order: stroke fill; }
-.ms-attente p { margin: 0; max-width: 480px; font-size: 16px; }
+.ms-attente p { margin: 0; max-width: 560px; font-size: 16px; }
 .ms-attente-date { font: 500 14px/1 var(--font-etiquette); letter-spacing: .2em; text-transform: uppercase; color: var(--ms-jaune); }
 .ms-attente a { color: var(--ms-jaune); }
 

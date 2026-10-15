@@ -1,7 +1,7 @@
 # Mission midnight-snack-1 — PROGRESS
 
-**Statut :** étapes 1 à 9 faites (squelette + 20 pages du N°1 écrites)
-**Prochaine action :** étape 10 (vérification build/lint/diff + navigateur)
+**Statut :** étapes 1 à 10 faites (squelette + 20 pages du N°1 écrites, vérifiées)
+**Prochaine action :** étape 11 (RAPPORT.md)
 **Blocages :** aucun
 
 ## État initial (cadrage, 2026-10-15, `main` = 1440f8e)
@@ -31,3 +31,11 @@
 - `npm run build` et `npm run lint` : OK après l'étape 9 (voir étape 10 pour le détail).
 - `git diff --stat main` (hors `missions/`) : seulement `src/App.jsx` et `src/numero/volumes.js` modifiés, `src/midnight/` nouveau — conforme à D1 (D1 autorise aussi `src/numero/volumes.js`, voir SPEC).
 - Décisions prises sans Michael : voir DECISIONS.md (commit groupé, un encart par récit, deux grilles de mots croisés FR/EN, labyrinthe dessiné à la main, faits du « saviez-vous » limités au très bien établi).
+
+## Étape 10 — vérification (navigateur, `npx vite preview`)
+- `npm run build` et `npm run lint` : OK, sans erreur.
+- `git diff --stat main` (hors `missions/`) : seulement `src/App.jsx`, `src/numero/volumes.js` modifiés et `src/midnight/` ajouté.
+- Vérifié dans le navigateur (`npx vite preview`, 1024×768 et 375×812, FR et EN, avec et sans `?atelier`/`?epreuve`) : couverture, bandeau épreuve, sommaire+édito, récits (drop cap sur la 1ʳᵉ page, pas sur les suivantes), encarts (consigne + prompt Gemini visibles en atelier), feuilleton et marmite (encadrés « à paraître »/« texte en attente »), labyrinthe et mots croisés (grille, numéros, solution à l'envers), pile mobile, page d'attente. Aucune erreur console sur aucune page testée.
+- Deux bugs trouvés et corrigés pendant la vérification : (1) page d'attente illisible (texte noir sur fond sombre) car les couleurs `--ms-*` n'étaient déclarées que sur `.ms-table`, pas sur `.ms-attente` ; (2) date française au format « 1 novembre » au lieu de « 1ᵉʳ novembre ».
+- Critère 6 (bascule à la parution) vérifié par relecture de `estParu()`/`getNumeroParDefaut()` plutôt qu'en simulant l'horloge, voir DECISIONS.md.
+- Serveur `vite preview` arrêté en fin de vérification.

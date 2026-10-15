@@ -13,9 +13,12 @@ import './midnight.css'
 const mouvementReduit = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 const modeAtelier = (search) => import.meta.env.DEV || new URLSearchParams(search).has('atelier')
 
-const formatDate = (dateStr, lang) =>
-  new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
-    .format(new Date(`${dateStr}T00:00:00`))
+const formatDate = (dateStr, lang) => {
+  const date = new Date(`${dateStr}T00:00:00`)
+  const formate = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).format(date)
+  // « 1er novembre », pas « 1 novembre »
+  return lang === 'fr' && date.getDate() === 1 ? formate.replace(/^1 /, '1ᵉʳ ') : formate
+}
 
 function useNoindex(actif) {
   useEffect(() => {
