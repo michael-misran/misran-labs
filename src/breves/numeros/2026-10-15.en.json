@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-15",
+  "numero": 16,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Cursor opens its tool store to every publisher",
+    "chapo": "Origin, Cursor's platform, now lists more than 20 apps and accepts public submissions.",
+    "paragraphes": [
+      "On October 13, Cursor announced that its Origin marketplace hosts more than 20 apps, including Cloudflare, Linear, Sentry and Socket Security. Above all, it has accepted public submissions since October 13: according to the text, any team building developer tools can publish an app there.",
+      "The catalog spans five families: deployment (Cloudflare, Netlify, Render, Vercel…), continuous integration (Buildkite, CircleCI, Depot…), code review (CodeRabbit, Greptile, Tenki), security (Semgrep, Socket Security…) and, one each, error tracking with Sentry and project management with Linear.",
+      "For tool builders, the steps are precise. You create the app in your own space, privately, build it with the Origin API (app token authentication, events received by webhook, writing checks, comments and reviews on pull requests), then make it public. You then provide a short slug, tags and a demo video showing installation, uninstallation and the main flows. Cursor reviews the submission before publishing.",
+      "What the page does not say: the review criteria and timing, or any fees. Worth reading before committing."
+    ],
+    "sources": ["https://cursor.com/changelog/origin-app-marketplace"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "idee", "rubrique": "The business idea", "court": "Idea",
+        "titre": "The pay-per-use quote, for those who only send a few",
+        "chapo": "Proposal software is paid by the month. Many freelancers only need it now and then.",
+        "paragraphes": [
+          "<b>Who pays, for what.</b> A freelancer or small provider pastes their meeting notes into a form and gets back a quote or proposal laid out in their colors, ready to sign, at about €3 per document. The end client only sees a clean link or PDF.",
+          "<b>The market exists.</b> Qwilr and Proposify already sell interactive proposals and e-signatures; their entry plan is listed at $49 per user per month billed monthly, $35 billed annually. Proposify also charges $1,500 for a custom template design. A subscription for those who send proposals every week.",
+          "<b>The angle.</b> Someone who sends two or three a month pays for a tool they barely use. Pay-per-use, with no account to manage, targets that user.",
+          "<b>To launch.</b> One well-designed template, one page, one card payment. Test: offer the service to ten freelancers and count how many order a second document."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
+        "encadre": { "titre": "Competition", "texte": "Qwilr and Proposify are established, with e-signatures and analytics. The idea does not attack them head-on: it targets occasional use.", "plein": true },
+        "sources": ["https://www.qwilr.com/pricing/", "https://www.proposify.com/pricing"]
+      },
+      {
+        "type": "irritant", "rubrique": "Pet peeve in brief", "court": "Peeve", "taille": "petit",
+        "titre": "204 hours a year filling in paperwork",
+        "paragraphes": [
+          "According to Smallpdf's \"Freelancer Freedom Index\", relayed on July 1, 2026 (397 freelancers surveyed), admin takes 204 hours a year. Formatting documents is named the heaviest weekly task by 38% of respondents. And despite AI, used for admin by 70% of them, 48% say the load has barely dropped."
+        ],
+        "sources": ["https://www.contentgrip.com/freelancer-admin-ai-gap/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "History · Tech",
+    "articles": [
+      {
+        "type": "histoire", "rubrique": "Tech history", "court": "History",
+        "titre": "France's first chat room was born from a password guessed by a child",
+        "chapo": "In Strasbourg, in late 1981, a dull Minitel service became a social network by accident.",
+        "paragraphes": [
+          "In summer 1981, the Télétel experiment started in Vélizy, under the Direction générale des télécommunications. A few months later, the newspaper Dernières Nouvelles d'Alsace launched its own in a Strasbourg neighborhood: Gretel, a single site reached by dialing a number. It offered news, weather, trains, banking and a few games.",
+          "According to Slate's account, it was a rather tame service. Until a boy of about ten, according to the recollections of Michel Landaret who ran the platform, discovered the password to the messaging feature the team had built to help lost users, the one that let you display a message on another person's screen. He told his friends how. Within days the secret was out, and the developers had only one option left: open the messaging to everyone.",
+          "It became by far the most used service. Users multiplied their typing speed by three or four; servers struggled. The team then displayed the list of connected nicknames, with the ability to address anyone: the first chat room. In 1982, the 32 modems each ran an average of 22 h 40 a day; getting a line took about an hour.",
+          "In February 1984, the 3615 kiosk commercialized the messaging. The usage, though, was born from a workaround."
+        ],
+        "encadre": { "titre": "Design lesson", "texte": "Watch what your users hijack: it is often your real product.", "plein": true },
+        "rappel": { "annee": "1981", "texte": "Gretel launches in Strasbourg a few months after the Vélizy experiment." },
+        "sources": ["https://www.slate.fr/story/46415/minitel-dna-internet-social"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "GitHub Actions: a lockfile so the code you run does not change under your feet",
+        "paragraphes": [
+          "On October 14, GitHub launched workflow lockfiles in public preview. The file <i>.github/workflows/actions.lock</i> records the actions used, their transitive dependencies and reusable workflows, and ties runs to the commits you approved, even if a tag or branch is moved later.",
+          "You generate it with the <i>gh actions-lock</i> extension for the GitHub CLI, then review and commit. Adoption is workflow by workflow; the extension also checks that a lockfile is up to date, including in CI. Note: locking does not tell you whether a dependency is safe."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "When dependencies freeze, reviewing and updating becomes a job: a service that summarizes what changed between two locked commits.", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-14-github-actions-workflow-lockfiles-in-public-preview"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Amazon S3 joins the Vercel Marketplace",
+        "paragraphes": [
+          "Announced October 14: you create an S3 bucket from the Vercel dashboard, access details arrive as environment variables, with short-lived OIDC credentials rather than stored AWS keys. A new AWS account created this way gets $100 in credits for six months. Also available in v0."
+        ],
+        "sources": ["https://vercel.com/changelog/amazon-s3-joins-the-vercel-marketplace"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Lockfile", "nature": "n.", "definition": "A file that pins the exact versions of a project's dependencies, so two runs use the same code. GitHub has just launched one for its Actions workflows (p. 2)." },
+    "chiffre": { "valeur": "22 h 40", "texte": "a day per modem, on average, on Gretel in 1982." },
+    "bonus": { "type": "question", "texte": "Which feature are your users already hijacking in your product, or in a tool you use, and what would happen if you made it official?" },
+    "enigme": { "question": "I freeze what should stay the same, I add no line of code, and yet the project stops changing without warning. What am I?", "reponse": "a lockfile" }
+  },
+  "sources": ["cursor.com", "qwilr.com", "proposify.com", "contentgrip.com", "slate.fr", "github.blog", "vercel.com"]
+}
