@@ -2,7 +2,8 @@ import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../shell/LanguageContext'
 import { LT, lt, PICTO_AGENT } from './atelierTexte'
-import { SchemaEclateAtelier, SchemaCircuit, SchemaRedacteur, SchemaControleur, SchemaCycleMission, Pictogramme } from './schemas'
+import { SchemaCircuit, SchemaRedacteur, SchemaControleur, SchemaCycleMission, Pictogramme } from './schemas'
+import { CouvertureAtelier } from './CouvertureAtelier'
 import './atelier.css'
 
 // « L'Atelier automatique », le livre de l'IA de 1977 Éditions, mis en page
@@ -44,39 +45,6 @@ function PagePapier({ folio, tete, classe = '', children }) {
 
 // ---------- Couverture ----------
 
-function Couverture({ lang }) {
-  return (
-    <section className="at-page at-plan at-couv">
-      <div className="at-bandeau">
-        <span>1977 Éditions</span>
-        <span>{lt(LT.bandeauCentre, lang)}</span>
-        <span>{lang.toUpperCase()}</span>
-      </div>
-      <div className="at-titre">
-        <span className="at-l1">{lt(LT.titreL1, lang)}</span>
-        <span className="at-l2">{lt(LT.titreL2, lang)}</span>
-        <div className="at-sous">
-          <span>{lt(LT.sousL1, lang)}<br />{lt(LT.sousL2, lang)}</span>
-          <span>{lt(LT.editionCouv, lang)}</span>
-        </div>
-      </div>
-      <SchemaEclateAtelier lang={lang} />
-      <div className="at-fig">{lt(LT.figCouverture, lang)}</div>
-      <div className="at-avis">{lt(LT.avisL1, lang)}<br />{lt(LT.avisL2, lang)}</div>
-      <div className="at-legende">
-        {LT.legendeAgents.map((nom, i) => (
-          <div key={nom}><b>{i + 1}</b>{nom}</div>
-        ))}
-      </div>
-      <div className="at-plaque">
-        <span className="at-k">{lt(LT.plaqueModeleK, lang)}</span><span className="at-v">{lt(LT.plaqueModeleV, lang)}</span>
-        <span className="at-k">{lt(LT.plaqueAlimK, lang)}</span><span className="at-v">{lt(LT.plaqueAlimV, lang)}</span>
-        <span className="at-k">{lt(LT.plaqueFabK, lang)}</span><span className="at-v">{lt(LT.plaqueFabV, lang)}</span>
-      </div>
-    </section>
-  )
-}
-
 function QuatriemeCouverture({ lang }) {
   return (
     <section className="at-page at-plan at-quatrieme">
@@ -106,7 +74,7 @@ function pagesDuLivre(lang) {
 
   const entrees = [
     // couverture
-    [null, () => <Couverture lang={lang} />],
+    [null, () => <CouvertureAtelier lang={lang} />],
 
     // garde : avant de lire
     [null, (folio) => (
