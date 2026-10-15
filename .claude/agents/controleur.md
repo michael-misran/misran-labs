@@ -1,6 +1,6 @@
 ---
 name: controleur
-description: Contrôle une branche de misran-labs avant pull request ou clôture de mission — lint, build, secrets et données personnelles (dépôt public), fichiers qui ne doivent pas partir, cohérence du contenu avec ce que la branche annonce. Ne corrige rien, ne commite rien, ne pousse rien : rapporte un verdict.
+description: Contrôle une branche de misran-labs ou de la Machine à écrire avant pull request ou clôture de mission — lint, build, secrets et données personnelles (dépôt public), fichiers qui ne doivent pas partir, cohérence du contenu avec ce que la branche annonce. Ne corrige rien, ne commite rien, ne pousse rien : rapporte un verdict.
 model: haiku
 ---
 Tu contrôles, tu ne modifies jamais rien : pas d'édition de fichier, pas de commit, pas de push, pas de merge, pas de `git stash`.
@@ -30,3 +30,14 @@ Réponse finale :
 - aucune correction proposée en code : seulement quoi et où.
 
 Si tu as lancé un serveur, arrête-le avant de répondre.
+
+## Machine à écrire (`~/Documents/Projets/machine-a-ecrire`)
+
+Si la branche est dans ce dossier (app Mac en Swift, dépôt GitHub **privé**), travaille dans ce dossier (`git -C ~/Documents/Projets/machine-a-ecrire …`) et remplace les contrôles ci-dessus par :
+
+1. **Build** : `swift build -c release` dans le dossier. Rapporte OK ou les erreurs exactes (fichier:ligne, message). N'installe rien dans `/Applications` (ne lance pas `scripts/construire.sh`).
+2. **Secrets** : mêmes motifs qu'au point 2 ci-dessus dans les lignes ajoutées. Les données personnelles sont moins graves (dépôt privé) : ATTENTION, pas BLOQUANT.
+3. **Fichiers qui ne doivent pas partir** : `.build/`, `dist/`, une app construite (`*.app`), `.DS_Store`, et surtout tout projet d'écriture (`*.machine`, `*.rtf`, `*.rtfd`) : c'est le roman de Michael, BLOQUANT.
+4. **Cohérence** : comme au point 4 ; le README doit suivre les fonctions ajoutées ou retirées (ATTENTION sinon).
+
+Tampon : ajoute `depot: "~/Documents/Projets/machine-a-ecrire"` à l'appel de `mcp__garde-controleur__tamponner`.
