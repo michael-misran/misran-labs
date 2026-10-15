@@ -220,11 +220,11 @@ function pagesDuLivre(lang) {
       <PagePapier folio={11} tete={[lt(LT.p2Chap, lang), '2.1']}>
         <h2><small>{lt(LT.p2ControleurFicheN, lang)}</small>{lt(LT.p2ControleurTitre, lang)}</h2>
         <p>{lt(LT.p2ControleurTexte, lang)}</p>
-        <table className="at-fiche">
+        <table className="at-fiche"><tbody>
           {agentFicheRow(lang === 'en' ? 'Called' : 'Appelé', lt(LT.p2ControleurAppele, lang))}
           {agentFicheRow(lang === 'en' ? 'Checks' : 'Contrôle', lt(LT.p2ControleurControle, lang))}
           {agentFicheRow(lang === 'en' ? 'Never' : 'Ne fait jamais', lt(LT.p2ControleurJamais, lang))}
-        </table>
+        </tbody></table>
         <div className="at-attention">
           <div className="at-bande" />
           <div><strong>{lang === 'en' ? 'Warning' : 'Attention'}</strong>{lt(LT.p2ControleurAttention, lang)}</div>
@@ -246,12 +246,12 @@ function pagesDuLivre(lang) {
         <PagePapier key={a.nom} folio={folio} tete={[lt(LT.p2Chap, lang), `2.${a.ficheN}`]}>
           <div className="at-pictogramme"><Pictogramme nom={PICTO_AGENT[a.nom]} /></div>
           <h2><small>{lang === 'en' ? `Staff card no. ${a.ficheN}` : `Fiche agent n° ${a.ficheN}`}</small>{lt(a.titre, lang)}</h2>
-          <table className="at-fiche">
+          <table className="at-fiche"><tbody>
             {agentFicheRow(lang === 'en' ? 'Role' : 'Rôle', lt(a.texte, lang))}
             {agentFicheRow(lang === 'en' ? 'Called' : 'Appelé', lt(a.appele, lang))}
             {agentFicheRow(lang === 'en' ? 'Never' : 'Ne fait jamais', lt(a.jamais, lang))}
             {agentFicheRow(lang === 'en' ? 'Model' : 'Modèle', a.modele)}
-          </table>
+          </tbody></table>
         </PagePapier>
       )
     }),
@@ -274,12 +274,12 @@ function pagesDuLivre(lang) {
       return (
         <PagePapier key={i} folio={folio} tete={[lt(LT.p3Chap, lang), `3.${i + 1}`]}>
           <h2>{lt(r.titre, lang)}</h2>
-          <table className="at-fiche">
+          <table className="at-fiche"><tbody>
             {agentFicheRow(lt(LT.p3HoraireK, lang), lt(r.horaire, lang))}
             {agentFicheRow(lt(LT.p3ModeleK, lang), r.modele)}
             {agentFicheRow(lt(LT.p3ProduitK, lang), lt(r.produit, lang))}
             {agentFicheRow(lt(LT.p3MichaelK, lang), lt(r.michael, lang))}
-          </table>
+          </tbody></table>
           <p>{lt(r.texte, lang)}</p>
         </PagePapier>
       )
