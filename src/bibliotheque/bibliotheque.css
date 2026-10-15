@@ -27,6 +27,9 @@ body:has(.salon) { margin: 0; }
 .sl-bandeau button { background: none; border: 0; cursor: pointer; color: inherit; font: inherit; letter-spacing: inherit; }
 .sl-bandeau button:hover { color: #fff; }
 
+/* ---------- Cadre de la scène : plein écran sur ordinateur, défilable sur téléphone (D6) ---------- */
+.sl-cadre { position: absolute; inset: 0; }
+
 /* ---------- Scène : l'image en « cover », calée en bas, centrée ---------- */
 .sl-scene {
   position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
@@ -187,7 +190,23 @@ body:has(.salon) { margin: 0; }
 @media (max-width: 700px) {
   .sl-bandeau { padding: 12px 14px; }
   .sl-aide { font-size: 13px; }
+  /* La scène ne tient plus dans l'écran : elle défile dans son cadre, jamais la page */
+  .sl-cadre { position: static; height: 100%; display: flex; align-items: flex-end; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+  /* reste positionné (relative, pas static) : les enfants en % (livres, plaques, enseignes) continuent de viser la scène, pas la fenêtre */
+  .sl-scene { position: relative; left: auto; bottom: auto; transform: none; flex: none; }
 }
+
+/* Indication de glissement, téléphone seulement */
+.sl-glisse {
+  display: none; position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 6;
+  margin: 0; padding: 8px 16px; border-radius: 999px;
+  background: rgba(26, 20, 14, .82); color: #f3dfb8;
+  font: 500 12px/1 var(--font-etiquette); letter-spacing: .08em; text-transform: uppercase;
+  pointer-events: none; animation: sl-glisse-pulse 1.8s ease-in-out infinite;
+}
+@media (max-width: 700px) { .sl-glisse { display: block; } }
+@keyframes sl-glisse-pulse { 0%, 100% { opacity: .6; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .sl-glisse { animation: none; } }
 @media (prefers-reduced-motion: reduce) {
   .lb-livre { animation: none; transition: none; }
 }

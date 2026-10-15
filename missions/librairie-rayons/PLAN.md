@@ -9,6 +9,6 @@ Chaque étape indique l'agent et le modèle à utiliser. Référence visuelle : 
 - [x] 3. Couvertures `'atelier'`, `'nuancier'`, `'carnet'` dans `Couverture` + CSS (D5) → session principale (Sonnet)
 - [x] 4. Présentoir « Nouveautés » calculé + enseigne (D2) → session principale (Sonnet)
 - [x] 5. Rayons : livres de face, plaques de laiton, même dialogue, tampon « À paraître » (D3, D4), textes FR/EN (D7) → session principale (Sonnet)
-- [ ] 6. Téléphone : scène défilable dans son cadre, centrée sur le présentoir, indication de glissement (D6) → session principale (Sonnet)
+- [x] 6. Téléphone : scène défilable dans son cadre, centrée sur le présentoir, indication de glissement (D6) → session principale (Sonnet)
 - [ ] 7. Vérification finale : build, lint par la session principale ; navigateur (critères 1 à 6, captures 1300 px, trois saisons, 375 px, EN) → verificateur (Haiku)
 - [ ] 8. RAPPORT.md → session principale (Sonnet)

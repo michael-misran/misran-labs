@@ -1,7 +1,7 @@
 # Mission librairie-rayons — PROGRESS
 
 **Statut :** en cours
-**Prochaine action :** étape 6 (défilement téléphone)
+**Prochaine action :** étape 7 (vérification finale)
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
@@ -39,3 +39,16 @@ Portfolio, Misran Labs, Oracle), alignement correct sur les 3 images
 uniquement, 3 nouvelles couvertures lisibles en grand dans le dialogue,
 textes EN corrects (bandeau, enseigne, plaques, tampons). `npm run build`
 et `npm run lint` : OK.
+
+## Étape 6 — Défilement téléphone (2026-10-15)
+`.sl-scene` enveloppée dans `.sl-cadre` (défilable sous 700 px, inchangé
+au-dessus), centrée sur le présentoir à l'ouverture (`scrollLeft` calculé),
+indication « ← Glissez pour voir les rayons → » qui disparaît au premier
+défilement réel (écouteur `scroll`, once). Bug trouvé et corrigé en
+vérifiant à 375 px : `.sl-scene` en `position:static` cassait le repère
+des enfants en % (voir DECISIONS.md) — passé en `position:relative`.
+Revérifié : `document.documentElement.scrollWidth` égal à `clientWidth`
+(aucun défilement de page), scène défilable sur toute sa largeur (les 4
+rayons atteints, vérifié par un vrai geste de défilement), indication
+disparue après le geste, bureau (≥ 1024 px) strictement inchangé.
+`npm run build` et `npm run lint` : OK.

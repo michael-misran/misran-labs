@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useLanguage } from '../shell/LanguageContext'
 import { Couverture } from '../numero/Etagere.jsx'
@@ -188,6 +188,20 @@ export default function Bibliotheque() {
   const [enEchec, setEnEchec] = useState(null)
   const image = saison && saison.image !== enEchec ? saison.image : IMAGE
 
+  // Téléphone (< 700 px) : la scène défile dans son cadre, centrée au
+  // départ sur le présentoir (D6) ; l'indication de glissement disparaît
+  // dès le premier défilement.
+  const cadreRef = useRef(null)
+  const [aGlisse, setAGlisse] = useState(false)
+  useEffect(() => {
+    const el = cadreRef.current
+    if (!el) return undefined
+    el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2
+    const surDefilement = () => setAGlisse(true)
+    el.addEventListener('scroll', surDefilement, { once: true, passive: true })
+    return () => el.removeEventListener('scroll', surDefilement)
+  }, [])
+
   useEffect(() => {
     document.title = 'Librairie du Chocolat Chaud — 1977 Éditions'
   }, [lang])
@@ -211,6 +225,7 @@ export default function Bibliotheque() {
         </button>
       </header>
 
+      <div className="sl-cadre" ref={cadreRef}>
       <main className="sl-scene" style={{ '--ratio': RATIO }}>
         <img className="sl-image" src={image} alt="" onError={() => image !== IMAGE && setEnEchec(image)} />
         {/* Ambiance de soirée : voile sombre percé là où il y a de la lumière */}
@@ -268,6 +283,12 @@ export default function Bibliotheque() {
           return v && <Expose key={v.id} v={v} place={{ ...place, bottom: REBORD }} lang={lang} sorti={sorti} onSortir={setSorti} />
         })}
       </main>
+      </div>
+      {!aGlisse && (
+        <p className="sl-glisse" aria-hidden="true">
+          {lang === 'fr' ? '← Glissez pour voir les rayons →' : '← Swipe to see the shelves →'}
+        </p>
+      )}
 
       {/* Volume sorti : sa couverture, et de quoi l'ouvrir */}
       {volume && (
