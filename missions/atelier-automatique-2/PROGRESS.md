@@ -1,7 +1,7 @@
 # Mission atelier-automatique-2 — PROGRESS
 
-**Statut :** en cours
-**Prochaine action :** étape 12 (RAPPORT.md)
+**Statut :** terminée
+**Prochaine action :** clôture (push + pull request), en session interactive avec Michael
 **Blocages :** aucun
 
 ## État initial (2026-10-15, depuis main 6a4fb06)
