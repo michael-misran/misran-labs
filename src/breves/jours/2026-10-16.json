@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-16",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": { "fr": "GitHub AI Scan : une IA lit les pull requests que CodeQL ne couvre pas", "en": "GitHub AI Scan: an AI reads the pull requests CodeQL does not cover" },
+      "resume": {
+        "fr": "Disponible pour tous depuis le 15 octobre, AI Scan cherche des failles dans les pull requests en PHP, Bash, Terraform, Dockerfile et d'autres langages hors de portée de CodeQL. Ses résultats sont consultatifs : ils ne bloquent pas une fusion, et l'outil ne tourne pas sur les forks ni sur Dependabot.",
+        "en": "Generally available since October 15, AI Scan looks for flaws in pull requests written in PHP, Bash, Terraform, Dockerfiles and other languages beyond CodeQL's reach. Its results are advisory: they do not block a merge, and the tool does not run on forks or on Dependabot."
+      },
+      "sources": [
+        { "titre": "GitHub Blog", "url": "https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Copilot corrige jusqu'à 25 alertes de sécurité d'un coup", "en": "Copilot fixes up to 25 security alerts at once" },
+      "resume": {
+        "fr": "Depuis le 15 octobre, on peut confier des alertes de code scanning à Copilot, qui propose un correctif, relance CodeQL pour le vérifier et ouvre une pull request en brouillon. Seules les alertes de la branche par défaut sont concernées, et il faut GitHub Enterprise Cloud avec Code Security ou Advanced Security.",
+        "en": "Since October 15, you can hand code scanning alerts to Copilot, which proposes a fix, reruns CodeQL to check it and opens a draft pull request. Only alerts on the default branch are covered, and you need GitHub Enterprise Cloud with Code Security or Advanced Security."
+      },
+      "sources": [
+        { "titre": "GitHub Blog", "url": "https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Copilot retire trois modèles le 16 novembre", "en": "Copilot retires three models on November 16" },
+      "resume": {
+        "fr": "Annoncé le 15 octobre : Claude Opus 4.8, Claude Opus 5 et GPT-5.6 Terra seront retirés de Copilot le 16 novembre. Les remplaçants suggérés sont Claude Opus 5.5 et GPT-6.1 Sol ou GPT-6 Luna.",
+        "en": "Announced October 15: Claude Opus 4.8, Claude Opus 5 and GPT-5.6 Terra will be retired from Copilot on November 16. Suggested replacements are Claude Opus 5.5 and GPT-6.1 Sol or GPT-6 Luna."
+      },
+      "sources": [
+        { "titre": "GitHub Blog", "url": "https://github.blog/changelog/2026-10-15-upcoming-deprecation-of-selected-github-copilot-models-in-mid-november" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Clé d'accès",
+    "definition": {
+      "fr": "Moyen de connexion qui remplace le mot de passe : une paire de clés cryptographiques dont la partie secrète reste sur l'appareil et se déverrouille par empreinte, visage ou code. Rien de secret n'est envoyé au site, donc rien à hameçonner. En anglais : passkey.",
+      "en": "A sign-in method that replaces the password: a pair of cryptographic keys whose secret half stays on the device and unlocks with a fingerprint, face or PIN. Nothing secret is sent to the site, so there is nothing to phish."
+    }
+  },
+  "chiffre": {
+    "valeur": "5 milliards",
+    "texte": {
+      "fr": "de clés d'accès sont en usage actif dans le monde, selon l'alliance FIDO.",
+      "en": "passkeys are in active use worldwide, according to the FIDO Alliance."
+    }
+  }
+}

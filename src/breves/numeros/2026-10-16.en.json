@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-16",
+  "numero": 17,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "GitHub reads your pull requests with AI, even in PHP and Terraform",
+    "chapo": "AI Scan, a security-flaw detector, is now generally available for the languages CodeQL does not cover.",
+    "paragraphes": [
+      "On October 15, GitHub made AI Scan generally available. The tool uses AI to look for vulnerabilities in the changes of a pull request. It complements CodeQL, GitHub's usual analyzer, for everything the latter cannot read: PHP, Shell and Bash scripts, Terraform, Dockerfiles, JSP for Java or Blazor for C#.",
+      "It runs on its own on every pull request as long as code scanning is enabled on the repository. Its results appear next to CodeQL's, in the \"Conversation\" and \"Files changed\" tabs, with an \"AI\" marker to tell them apart. Each alert can come with an explanation of the risk and a suggested fix.",
+      "On pricing, it is available for public repositories. For an organization's private or internal repository, you need GitHub Code Security or Advanced Security; no Copilot license is required. Usage consumes AI credits, which can be capped with budgets.",
+      "Two limits to know before relying on it. Results are advisory: they do not fail the check and cannot block a merge. And the tool does not run on pull requests from forks, nor on those from Dependabot. It is a second pair of eyes, not a guardrail."
+    ],
+    "sources": ["https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Peeve",
+        "titre": "\"Forgot password\": nearly one customer in two walks away",
+        "chapo": "At sign-in or checkout, a memory lapse is enough to lose the sale.",
+        "paragraphes": [
+          "In its 2026 report on passkeys, the FIDO Alliance surveyed 11,000 adults in ten countries, France included, in April 2026. Asked whether they would abandon a purchase or a sign-in if they could not remember their password, 47% said yes: 17% highly likely, 30% somewhat likely. Europe rises to 49%, the United States to 51%.",
+          "The same report notes that a third of respondents suffered an account compromise or received a breach notification during the year: passwords cost both in security and in lost sales.",
+          "A caveat: the survey is published by an alliance that promotes passkeys, and it measures a stated intention, not observed abandonment."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A service that measures, on an online shop's site, how many visitors start \"forgot password\" and never come back, with an estimate of the revenue lost. Competition: authentication providers, who sell the fix but rarely the diagnosis. The angle: prove the loss in dollars before selling the remedy.", "plein": true },
+        "sources": ["https://fidoalliance.org/wp-content/uploads/2026/05/The-State-of-Passkeys-Global-Consumer-and-Workforce-Report-1.pdf"]
+      },
+      {
+        "type": "chiffre", "rubrique": "The number that bothers", "court": "Number",
+        "titre": "57% of companies: sign-in still open to phishing",
+        "chapo": "Having rolled out passkeys does not mean having removed passwords.",
+        "paragraphes": [
+          "Another part of the same FIDO report: 1,400 decision-makers at companies of more than 500 employees, surveyed in April 2026. Of them, 68% are deploying, piloting or rolling out passkeys for employees. Yet 57% say a phishable sign-in method, such as the password, is still their main day-to-day method. Only 30% primarily use a passkey, 12% a smart card or certificate.",
+          "The detail: 28% combine a password and an authenticator app, 18% a password and an SMS or e-mail code, 11% have only the password. The new technology is added to the old one without replacing it."
+        ],
+        "encadre": { "titre": "The opportunity", "texte": "The barriers cited are legacy-system compatibility, budget and account recovery when a key is lost. A consultancy that migrates a 50-person company step by step, with the fallback procedure, sells peace of mind more than technology.", "plein": true },
+        "sources": ["https://fidoalliance.org/wp-content/uploads/2026/05/The-State-of-Passkeys-Global-Consumer-and-Workforce-Report-1.pdf"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Retro · Dev",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Retro gaming", "court": "Retro",
+        "titre": "Metroid: Samus's dead halt, designed against Mario",
+        "chapo": "A game built in answer to what Super Mario Bros. did not do.",
+        "paragraphes": [
+          "In an interview published by Nintendo in December 2016, designer Hiroji Kiyotake describes a simple idea: Mario slides a little before stopping, so the team wanted a \"dead halt\" for Samus. The goal was to offer what Super Mario Bros., then riding a wave of success, did not.",
+          "The starting team was tiny: Kiyotake and one other new hire worked for almost ten months, joined for the last three months only by Yoshio Sakamoto, then by the whole department near the end. Samus's very detailed animations used too much memory: they were cut back.",
+          "The famous final twist came from a wish: different endings depending on how fast the player finishes, with Samus removing her helmet. Someone suggested she be a woman, and the team agreed right away.",
+          "Lesson: a constraint and a model to work against."
+        ],
+        "sources": ["https://www.nintendo.com/en-gb/News/2016/December/Nintendo-Classic-Mini-NES-special-interview-Volume-5-Metroid-1164065.html"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Copilot fixes your security alerts, up to 25 at once",
+        "paragraphes": [
+          "On October 15, GitHub made agentic fixing of code scanning alerts generally available. You assign an alert to Copilot, which explores the relevant files, proposes a fix, reruns CodeQL to check the alert is gone, then opens a draft pull request with a summary and validation steps. You can select up to 25 alerts for a single pull request.",
+          "Limits: only alerts on the default branch are covered, and you need GitHub Enterprise Cloud with Code Security or Advanced Security, plus AI credits."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "When fixing becomes automatic, value shifts to review: who checks that the 25 fixes break nothing?", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Copilot retires three models on November 16",
+        "paragraphes": [
+          "Announced October 15: Claude Opus 4.8, Claude Opus 5 and GPT-5.6 Terra are retired from Copilot on November 16 (Opus 4.8 stays open to some individual annual subscribers). Suggested replacements are Claude Opus 5.5 and GPT-6.1 Sol or GPT-6 Luna. Update your workflows before then."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-15-upcoming-deprecation-of-selected-github-copilot-models-in-mid-november"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Passkey", "nature": "n.", "definition": "A sign-in method that replaces the password: a pair of cryptographic keys whose secret half stays on the device and unlocks with a fingerprint, face or PIN. Nothing secret is sent to the site, so there is nothing to phish." },
+    "chiffre": { "valeur": "5 billion", "texte": "passkeys are in active use worldwide, according to the FIDO Alliance." },
+    "bonus": { "type": "defi", "texte": "In under 30 minutes: pick a site you rarely use and start \"forgot password\" while timing it. How many steps and minutes before you are signed back in? Note what made you hesitate." },
+    "enigme": { "question": "The more I am asked for, the less I am remembered; I am written on paper to be kept, and I vanish when I am needed. What am I?", "reponse": "a password" }
+  },
+  "sources": ["github.blog", "fidoalliance.org", "nintendo.com"]
+}
