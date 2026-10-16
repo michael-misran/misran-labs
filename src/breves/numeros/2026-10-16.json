@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-16",
+  "numero": 17,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "GitHub lit vos pull requests avec une IA, jusque dans le PHP et le Terraform",
+    "chapo": "AI Scan, un détecteur de failles de sécurité, passe en disponibilité générale pour les langages que CodeQL ne couvre pas.",
+    "paragraphes": [
+      "Le 15 octobre, GitHub a déclaré AI Scan disponible pour tous. Cet outil analyse les modifications d'une pull request à la recherche de vulnérabilités, avec une IA. Il complète CodeQL, l'analyseur habituel de GitHub, pour tout ce que ce dernier ne sait pas lire : PHP, scripts Shell et Bash, Terraform, Dockerfiles, JSP pour Java ou Blazor pour C#.",
+      "Il se lance tout seul sur chaque pull request, dès lors que le code scanning est activé sur le dépôt. Ses résultats apparaissent à côté de ceux de CodeQL, dans les onglets « Conversation » et « Files changed », avec un repère « AI » pour les distinguer. Chaque alerte peut s'accompagner d'une explication du risque et d'un correctif proposé.",
+      "Côté tarif, il est disponible pour les dépôts publics. Pour un dépôt privé ou interne d'une organisation, il faut GitHub Code Security ou Advanced Security ; aucune licence Copilot n'est exigée. L'usage consomme des crédits d'IA, que l'on peut plafonner par budget.",
+      "Deux limites à connaître avant de s'y fier. Les résultats sont consultatifs : ils ne font pas échouer le contrôle et ne peuvent pas bloquer une fusion. Et l'outil ne s'exécute ni sur les pull requests venues de forks, ni sur celles de Dependabot. C'est un second regard, pas un garde-fou."
+    ],
+    "sources": ["https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "« Mot de passe oublié » : près d'un client sur deux s'en va",
+        "chapo": "Au moment de se connecter ou de payer, un trou de mémoire suffit à perdre la vente.",
+        "paragraphes": [
+          "Dans son rapport 2026 sur les clés d'accès (passkeys), l'alliance FIDO a interrogé 11 000 adultes dans dix pays, dont la France, en avril 2026. À la question « abandonneriez-vous un achat ou une connexion si vous ne vous souvenez plus de votre mot de passe ? », 47 % répondent oui : 17 % très probablement, 30 % plutôt probablement. L'Europe monte à 49 %, les États-Unis à 51 %.",
+          "Le même rapport note qu'un tiers des sondés a subi, dans l'année, une compromission de compte ou reçu une alerte de fuite : les mots de passe coûtent en sécurité comme en ventes perdues.",
+          "À nuancer : l'enquête est publiée par une alliance qui promeut les clés d'accès, et elle mesure une intention déclarée, pas des abandons observés."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un service qui mesure, sur le site d'une boutique en ligne, combien de visiteurs lancent « mot de passe oublié » puis ne reviennent jamais, avec un chiffrage du chiffre d'affaires perdu. Concurrence : les fournisseurs d'authentification, qui vendent la solution, mais rarement le diagnostic. L'angle : prouver la perte en euros avant de vendre le remède.", "plein": true },
+        "sources": ["https://fidoalliance.org/wp-content/uploads/2026/05/The-State-of-Passkeys-Global-Consumer-and-Workforce-Report-1.pdf"]
+      },
+      {
+        "type": "chiffre", "rubrique": "Le chiffre qui dérange", "court": "Chiffre",
+        "titre": "57 % des entreprises : une connexion encore hameçonnable",
+        "chapo": "Avoir déployé les clés d'accès ne veut pas dire avoir supprimé les mots de passe.",
+        "paragraphes": [
+          "Autre volet du même rapport FIDO : 1 400 décideurs d'entreprises de plus de 500 salariés, interrogés en avril 2026. Parmi elles, 68 % déploient, testent ou lancent les clés d'accès pour leurs employés. Pourtant, 57 % déclarent qu'un moyen de connexion piégeable, comme le mot de passe, reste leur méthode principale au quotidien. Seules 30 % utilisent d'abord une clé d'accès, 12 % une carte à puce ou un certificat.",
+          "Le détail : 28 % combinent mot de passe et application d'authentification, 18 % mot de passe et code par SMS ou e-mail, 11 % n'ont que le mot de passe. La nouvelle technologie s'ajoute à l'ancienne sans la remplacer."
+        ],
+        "encadre": { "titre": "L'opportunité", "texte": "Les freins cités sont la compatibilité avec les vieux systèmes, le budget et la récupération d'un compte quand la clé est perdue. Un cabinet qui fait migrer une PME de 50 salariés, étape par étape, avec la procédure de secours, vend de la tranquillité plus que de la technique.", "plein": true },
+        "sources": ["https://fidoalliance.org/wp-content/uploads/2026/05/The-State-of-Passkeys-Global-Consumer-and-Workforce-Report-1.pdf"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Rétro · Dev",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Rétro gaming", "court": "Rétro",
+        "titre": "Metroid : l'arrêt net de Samus, pensé contre Mario",
+        "chapo": "Un jeu construit en réponse à ce que Super Mario Bros. ne faisait pas.",
+        "paragraphes": [
+          "Dans une interview publiée par Nintendo en décembre 2016, le concepteur Hiroji Kiyotake raconte une idée simple : Mario glisse un peu avant de s'arrêter, alors l'équipe a voulu un « arrêt net » pour Samus. Le but était de proposer ce que Super Mario Bros., alors en plein succès, n'offrait pas.",
+          "L'équipe de départ était minuscule : Kiyotake et un autre jeune recruté ont travaillé près de dix mois, rejoints seulement pour les trois derniers mois par Yoshio Sakamoto, puis par tout le département à l'approche de la fin. Les animations très détaillées de Samus prenaient trop de mémoire : elles ont été réduites.",
+          "Le célèbre retournement final est né d'une envie : des fins différentes selon la rapidité du joueur, avec Samus qui retire son casque. Quelqu'un a suggéré qu'elle soit une femme, et l'équipe a tout de suite accepté.",
+          "Leçon : une contrainte et un modèle à contourner."
+        ],
+        "sources": ["https://www.nintendo.com/en-gb/News/2016/December/Nintendo-Classic-Mini-NES-special-interview-Volume-5-Metroid-1164065.html"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Copilot corrige vos alertes de sécurité, jusqu'à 25 d'un coup",
+        "paragraphes": [
+          "Le 15 octobre, GitHub a rendu disponible la correction agentique des alertes de code scanning. On assigne une alerte à Copilot, qui explore les fichiers concernés, propose un correctif, relance CodeQL pour vérifier que l'alerte disparaît, puis ouvre une pull request en brouillon avec un résumé et les étapes de validation. On peut sélectionner jusqu'à 25 alertes pour une seule pull request.",
+          "Limites : seules les alertes de la branche par défaut sont concernées, et il faut GitHub Enterprise Cloud avec Code Security ou Advanced Security, plus des crédits d'IA."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Quand la correction devient automatique, la valeur se déplace vers la relecture : qui vérifie que les 25 correctifs ne cassent rien ?", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Copilot retire trois modèles le 16 novembre",
+        "paragraphes": [
+          "Annoncé le 15 octobre : Claude Opus 4.8, Claude Opus 5 et GPT-5.6 Terra seront retirés de Copilot le 16 novembre (Opus 4.8 reste ouvert à certains abonnés individuels annuels). Les remplaçants suggérés sont Claude Opus 5.5 et GPT-6.1 Sol ou GPT-6 Luna. Pensez à mettre à jour vos workflows avant cette date."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-15-upcoming-deprecation-of-selected-github-copilot-models-in-mid-november"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Clé d'accès", "nature": "n. f.", "definition": "Moyen de connexion qui remplace le mot de passe : une paire de clés cryptographiques dont la partie secrète reste sur l'appareil et se déverrouille par empreinte, visage ou code. Rien de secret n'est envoyé au site, donc rien à hameçonner. En anglais : passkey." },
+    "chiffre": { "valeur": "5 milliards", "texte": "de clés d'accès sont en usage actif dans le monde, selon l'alliance FIDO." },
+    "bonus": { "type": "defi", "texte": "En moins de 30 minutes : prenez un site que vous utilisez peu et lancez « mot de passe oublié » en chronométrant. Combien d'étapes et de minutes avant d'être reconnecté ? Notez ce qui vous a fait hésiter." },
+    "enigme": { "question": "Plus on me demande, moins on me retient ; on m'écrit sur un papier pour me garder, et je disparais quand on a besoin de moi. Qui suis-je ?", "reponse": "un mot de passe" }
+  },
+  "sources": ["github.blog", "fidoalliance.org", "nintendo.com"]
+}
