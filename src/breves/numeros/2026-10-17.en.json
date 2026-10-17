@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-17",
+  "numero": 18,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Token Pass: $80 of tokens for $30, but only on two models",
+    "chapo": "Vercel launches a monthly plan whose inference credit exceeds its price, for Pro teams.",
+    "paragraphes": [
+      "On October 15, Vercel introduced Token Pass, an early-access plan: for $30 a month, a team gets $80 of shared credit on two models, GLM 5.3 and Kimi K3. More will follow.",
+      "The plan runs through AI Gateway and works with coding agents such as fx, Command Code or Pi, or a custom agent built on the AI SDK. You activate it, create an API key, then pick a model; both share the credit.",
+      "Zero data retention by default: inference runs in the US and EU, and prompts and responses are deleted after each request.",
+      "Two limits: unused credit does not roll over, and once it runs out, requests stop until the next period, with no extra billing. Predictable, but an overnight agent can stop mid-task."
+    ],
+    "sources": [
+      "https://vercel.com/changelog/introducing-token-pass"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant",
+        "rubrique": "Today's pet peeve",
+        "court": "Peeve",
+        "titre": "The displayed price is not the price you pay",
+        "chapo": "In the US, it took a federal rule to force ticket sellers to show the total up front.",
+        "paragraphes": [
+          "You find a ticket at a fair price, click through the screens, and the total climbs at every step: service fees, processing fees, delivery fees. This is drip pricing. The US Federal Trade Commission addressed it with a rule on deceptive fees, in force since May 12, 2025: the total price of event tickets, mandatory fees included, must be shown before any other price.",
+          "On April 9, 2026, the FTC announced a $10 million settlement with StubHub. According to the agency, in mid-May 2025, after the rule took effect, the first two price screens often left out mandatory fees, and the third listed fees without a total. Buyers from May 12 to 14, 2025 are to be refunded; the agreement only has the force of law once a judge approves it.",
+          "Takeaway: a rule is not enough to change an interface."
+        ],
+        "encadre": {
+          "titre": "Business lead",
+          "texte": "A browser extension that computes the real total of a cart from the first screen and compares it across sellers (tickets, rentals, bookings). Competition: the platforms themselves, now required to show the total for tickets in the US, and existing comparison sites. The angle: sectors the rule does not cover.",
+          "plein": true
+        },
+        "sources": [
+          "https://www.ftc.gov/news-events/news/press-releases/2026/04/stubhub-refunding-10-million-fees-consumers-after-deceptive-ticket-pricing"
+        ]
+      },
+      {
+        "type": "etude",
+        "rubrique": "Case study",
+        "court": "Case",
+        "titre": "Voicy: a dictation app built for a father, $16,000 to $20,000 a month",
+        "chapo": "A Chrome extension built in two weeks for someone who typed too slowly, now a multi-platform product.",
+        "paragraphes": [
+          "The founder, Kourosh, left Tehran for London at 18, taught himself to code during Covid and worked in fintech. A first app had reached about $5,000 a month without taking off. The idea for Voicy came from a hospital stay: his father typed slowly, and he wanted dictation everywhere. A Chrome extension, built on OpenAI's Whisper API, reached a prototype in two weeks; Windows, Mac, Linux, iOS and Android followed.",
+          "According to the interview published by Starter Story on October 14, 2026, the dashboard shows about $11,000 in recurring revenue, and the monthly total reaches $16,000 to $20,000 with lifetime plans (about $260, versus $8.49 a month). It has 2,500 daily active users and 1,400 active subscriptions.",
+          "Growth comes mostly from search: about 200 blog posts and 30 landing pages, in four or five languages. Lesson: serve people for whom the tool is a need. Caveat: figures are self-reported, not audited."
+        ],
+        "sources": [
+          "https://www.starterstory.com/stories/i-built-this-app-for-my-dad-now-it-makes-18k-month"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Science · Tech",
+    "articles": [
+      {
+        "type": "science",
+        "rubrique": "Science in 5 lines",
+        "court": "Science",
+        "titre": "A \"Pac-Man\" enzyme eats bioplastics, and also breaks down penicillin",
+        "chapo": "Researchers at the University of Konstanz identified a bacterial enzyme with two talents.",
+        "paragraphes": [
+          "The team buried films of bioplastics (long-chain polyesters) ten centimeters deep in forest soil and measured the CO₂ released over a year: all degraded in roughly 250 to 330 days, versus 80 for cellulose; high-density polyethylene barely changed.",
+          "The enzyme responsible, an esterase anchored to the surface of bacteria, owes its nickname to its very wide active site. It also cuts the β-lactam ring of penicillin. Caveat: doing so in the lab does not prove it makes bacteria resistant, and common plastic was not degraded. Source: ScienceDaily, October 16, 2026, based on The ISME Journal."
+        ],
+        "sources": [
+          "https://www.sciencedaily.com/releases/2026/10/261014015509.htm"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech",
+        "court": "Tech",
+        "titre": "Vercel Daemons: processes that run without a web server",
+        "paragraphes": [
+          "On October 15, Vercel opened Daemons in public beta: long-running processes that pull work from queues or databases, with no HTTP server. They run as containers in the same project as the app; Vercel keeps the configured number of instances per region and restarts the ones that crash.",
+          "Examples: Celery, BullMQ, RabbitMQ or Kafka consumers, Temporal workers, self-hosted CI runners. Setup: a <i>daemons</i> entry in <i>vercel.json</i> and a Dockerfile. The page says nothing about pricing."
+        ],
+        "encadre": {
+          "titre": "Business angle",
+          "texte": "Self-hosted CI runners are a cost and maintenance burden for small teams: an offer that installs and monitors them turnkey has an audience.",
+          "plein": true
+        },
+        "sources": [
+          "https://vercel.com/changelog/vercel-daemons-is-now-in-public-beta"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech in brief",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "GitHub stops push emails",
+        "paragraphes": [
+          "Since October 15, GitHub no longer sends push-event emails, to prevent spam and abuse. To keep them, create a GitHub Actions workflow triggered on push that sends them through your own SMTP server."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-10-15-email-notifications-for-repository-push-events-have-been-retired"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "Zero retention",
+      "nature": "n.",
+      "definition": "A setting by which an AI provider stores neither your requests nor the model's responses once processing is done."
+    },
+    "chiffre": {
+      "valeur": "200",
+      "texte": "blog posts for Voicy, a dictation app."
+    },
+    "bonus": {
+      "type": "citation",
+      "texte": "\"Programming is one of the most difficult branches of applied mathematics.\"",
+      "auteur": "Edsger W. Dijkstra, EWD498, 1975"
+    },
+    "enigme": {
+      "question": "I'm paid monthly and don't keep: what you haven't spent by period's end, I erase. What am I?",
+      "reponse": "a non-rolling monthly credit"
+    }
+  },
+  "sources": [
+    "vercel.com",
+    "ftc.gov",
+    "starterstory.com",
+    "sciencedaily.com",
+    "github.blog",
+    "cs.utexas.edu"
+  ]
+}
