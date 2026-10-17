@@ -15,7 +15,7 @@ import './bibliotheque.css'
 // grand avec « Lire ». Les volumes : numero/volumes.js.
 
 const IMAGE = '/bibliotheque/librairie.jpg'
-const RATIO = 1376 / 768
+const RATIO = 2752 / 1536
 
 // Date locale du lecteur (AAAA-MM-JJ), même mécanisme que midnight/numeros.js :
 // une parution datée dans le futur reste cachée jusqu'à son jour.
@@ -35,17 +35,19 @@ function nouveautes() {
     .slice(0, 4)
 }
 
-// Les 4 rayons muraux, de gauche à droite : une plaque de laiton, les
-// volumes de la collection (3 maximum), posés de face sur la 3ᵉ planche.
+// Les 4 rayons muraux, de gauche à droite : le nom gravé sur la plaque de
+// laiton peinte en haut de chaque colonne, les volumes de la collection
+// (3 maximum), posés de face sur la 3ᵉ planche.
 const RAYON_TOP = 34.8
-const RAYON_PLAQUE_TOP = 43.6
+// Plaque peinte : haut, hauteur et largeur en % de l'image
+const PLAQUE = { top: 4.36, height: 3.45, width: 6.65 }
 const RAYON_LARGEUR = 3.7
 const RAYON_ECART = 4.5
 const RAYONS = [
-  { collection: 'journaux', left: 21.9, titre: { fr: 'Journaux', en: 'Newspapers' }, sous: { fr: 'la presse du matin', en: 'the morning press' } },
-  { collection: 'magazines', left: 40.6, titre: { fr: 'Magazines', en: 'Magazines' }, sous: { fr: 'numéros et feuilletons', en: 'issues and serials' } },
-  { collection: 'manuels', left: 59.5, titre: { fr: 'Manuels', en: 'Manuals' }, sous: { fr: 'modes d’emploi de l’atelier', en: 'workshop manuals' } },
-  { collection: 'carnets', left: 77.9, titre: { fr: 'Carnets', en: 'Notebooks' }, sous: { fr: 'travaux et idées', en: 'works and ideas' } },
+  { collection: 'journaux', left: 21.6, titre: { fr: 'Journaux', en: 'Newspapers' } },
+  { collection: 'magazines', left: 40.57, titre: { fr: 'Magazines', en: 'Magazines' } },
+  { collection: 'manuels', left: 59.43, titre: { fr: 'Manuels', en: 'Manuals' } },
+  { collection: 'carnets', left: 78.47, titre: { fr: 'Carnets', en: 'Notebooks' } },
 ]
 
 // Emplacements des volumes d'un rayon, groupe centré sur la colonne
@@ -70,72 +72,29 @@ const SAISONS = [
     id: 'halloween', image: '/bibliotheque/librairie-halloween.jpg', du: '10-15', au: '11-02',
     // Lueurs de bougie : centre (x, y) et largeur en % de l'image
     lueurs: [
-      // Citrouilles
-      { x: 17.4, y: 39.6, l: 6.2 },
-      { x: 66.9, y: 85.4, l: 8.4 },
-      { x: 92.2, y: 27.3, l: 4.6 },
-      // Bougies sur la table de gauche (flammes)
-      { x: 1.7, y: 53.7, l: 3.4 },
-      { x: 3.05, y: 56.8, l: 2.8 },
-      // Bougie sur l'étagère murale de droite
-      { x: 92.2, y: 38.4, l: 2.8 },
-    ],
-    // Soirée : l'image est assombrie sauf autour des sources de lumière.
-    // Ellipses : centre (x, y) et demi-axes (rx, ry) en % de l'image
-    eclaire: [
-      // Les 3 suspensions et leur cône de lumière
-      { x: 24.9, y: 36, rx: 10, ry: 24 },
-      { x: 49.9, y: 40, rx: 13, ry: 30 },
-      { x: 75.1, y: 36, rx: 10, ry: 24 },
-      // Ampoules murales
-      { x: 10.4, y: 21, rx: 5, ry: 10 },
-      { x: 89.5, y: 21, rx: 5, ry: 10 },
-      // Citrouilles
-      { x: 17.4, y: 39.6, rx: 8, ry: 14 },
-      { x: 66.9, y: 85.4, rx: 10, ry: 17 },
-      { x: 92.2, y: 27.3, rx: 6, ry: 10 },
-      // Bougies
-      { x: 2.4, y: 55.5, rx: 6, ry: 11 },
-      { x: 92.2, y: 38.4, rx: 4, ry: 8 },
+      // Citrouilles des étagères
+      { x: 22.9, y: 29.6, l: 3.6 },
+      { x: 74.5, y: 17, l: 3.6 },
+      { x: 75.85, y: 41.2, l: 4.2 },
+      { x: 34, y: 53.8, l: 3.4 },
+      { x: 83.75, y: 53.6, l: 3.6 },
+      // Citrouilles posées au sol
+      { x: 27.25, y: 87.4, l: 5.6 },
+      { x: 33.25, y: 82.4, l: 7.6 },
+      { x: 67, y: 86.9, l: 5.6 },
+      { x: 71.75, y: 82, l: 6.6 },
+      // Bougies sur la table du présentoir
+      { x: 38.25, y: 66.1, l: 2 },
+      { x: 40.4, y: 65.9, l: 2 },
+      { x: 60.65, y: 66.1, l: 2 },
     ],
   },
-  {
-    id: 'noel', image: '/bibliotheque/librairie-noel.jpg', du: '12-01', au: '01-06', leds: LEDS_NOEL,
-    // Début de soirée, plaid et chocolat chaud : voile plus léger et plus chaud qu'à Halloween
-    voile: 'rgba(52, 24, 40, .4)',
-    eclaire: [
-      // Les 3 suspensions et leur cône de lumière
-      { x: 24.9, y: 36, rx: 11, ry: 26 },
-      { x: 49.9, y: 40, rx: 14, ry: 32 },
-      { x: 75.1, y: 36, rx: 11, ry: 26 },
-      // Ampoules murales
-      { x: 10.3, y: 21, rx: 6, ry: 11 },
-      { x: 89.3, y: 21, rx: 6, ry: 11 },
-      // Grande guirlande du haut
-      { x: 50, y: 9, rx: 46, ry: 11 },
-      // Guirlandes des étagères murales
-      { x: 4, y: 27, rx: 7, ry: 8 },
-      { x: 4, y: 42, rx: 7, ry: 8 },
-      { x: 96, y: 32, rx: 7, ry: 8 },
-      { x: 96, y: 45, rx: 7, ry: 8 },
-      // Sapin, et le fauteuil au plaid à côté
-      { x: 86, y: 57, rx: 10, ry: 22 },
-      { x: 91, y: 72, rx: 10, ry: 18 },
-    ],
-  },
+  { id: 'noel', image: '/bibliotheque/librairie-noel.jpg', du: '12-01', au: '01-06', leds: LEDS_NOEL },
 ]
 
 function saisonDuJour(date = new Date()) {
   const jour = `${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
   return SAISONS.find((s) => (s.du <= s.au ? jour >= s.du && jour <= s.au : jour >= s.du || jour <= s.au))
-}
-
-// Masque du voile de nuit : une ellipse transparente par source de lumière,
-// combinées en intersection (le voile ne reste que hors de toutes les ellipses)
-function masqueNuit(zones) {
-  return zones
-    .map((z) => `radial-gradient(ellipse ${z.rx}% ${z.ry}% at ${z.x}% ${z.y}%, transparent 20%, #000 100%)`)
-    .join(', ')
 }
 
 // Les 4 emplacements du présentoir, en % de l'image : left / width = bord
@@ -144,12 +103,12 @@ function masqueNuit(zones) {
 // Places du présentoir, du plus récent (gauche) au plus ancien (droite) —
 // la place n'est plus liée à un volume fixe, voir `nouveautes()`.
 const PRESENTOIR = [
-  { left: 39.7, width: 4.1 },
-  { left: 45.1, width: 4.1 },
-  { left: 50.6, width: 4.1 },
-  { left: 56.3, width: 4.1 },
+  { left: 39.64, width: 4.3 },
+  { left: 45.02, width: 4.3 },
+  { left: 50.72, width: 4.3 },
+  { left: 56.06, width: 4.3 },
 ]
-const REBORD = 35.5
+const REBORD = 35.2
 
 // Bouton du volume sorti : on le repose sur le présentoir
 const REPOSER = { fr: 'Reposer sur le présentoir', en: 'Put it back' }
@@ -228,14 +187,6 @@ export default function Bibliotheque() {
       <div className="sl-cadre" ref={cadreRef}>
       <main className="sl-scene" style={{ '--ratio': RATIO }}>
         <img className="sl-image" src={image} alt="" onError={() => image !== IMAGE && setEnEchec(image)} />
-        {/* Ambiance de soirée : voile sombre percé là où il y a de la lumière */}
-        {image === saison?.image && saison.eclaire && (
-          <span
-            className="lb-nuit"
-            aria-hidden="true"
-            style={{ '--trous': masqueNuit(saison.eclaire), ...(saison.voile && { background: saison.voile }) }}
-          />
-        )}
         {/* LED des guirlandes qui scintillent, chacune à son rythme */}
         {image === saison?.image && saison.leds?.map(([x, y], i) => (
           <span
@@ -259,9 +210,9 @@ export default function Bibliotheque() {
 
         {/* Rayons muraux : une plaque par collection, les volumes posés de face */}
         {RAYONS.map((rayon) => (
-          <div key={rayon.collection} className="lb-plaque" style={{ left: `${rayon.left}%`, top: `${RAYON_PLAQUE_TOP}%` }}>
+          <div key={rayon.collection} className="lb-plaque" style={{ left: `${rayon.left}%`, top: `${PLAQUE.top}%`, width: `${PLAQUE.width}%`, height: `${PLAQUE.height}%` }}>
+            {/* Plaque peinte trop petite pour le sous-titre : le nom seul */}
             {nt(rayon.titre, lang)}
-            <small>{nt(rayon.sous, lang)}</small>
           </div>
         ))}
         {RAYONS.flatMap((rayon) => placesDuRayon(rayon)).map(({ v, left }) => (
