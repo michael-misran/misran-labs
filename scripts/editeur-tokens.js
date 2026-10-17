@@ -51,6 +51,17 @@ export function editeurTokensPlugin(racineProjet) {
           return
         }
         if (req.method !== 'POST') { res.statusCode = 405; res.end('{}'); return }
+        // Écriture réservée au site local lui-même : une autre page ouverte dans
+        // le navigateur (autre origine) ou un envoi de formulaire est refusé.
+        // Le JSON obligatoire force aussi le navigateur à demander la permission avant un appel d'ailleurs.
+        const origine = req.headers.origin
+        let memeSite = false
+        try { memeSite = !origine || new URL(origine).host === req.headers.host } catch { /* origine illisible */ }
+        if (!memeSite || !String(req.headers['content-type']).startsWith('application/json')) {
+          res.statusCode = 403
+          res.end(JSON.stringify({ error: 'Appel refusé : réservé au site local' }))
+          return
+        }
         let corps = ''
         req.on('data', (morceau) => { corps += morceau })
         req.on('end', () => {
