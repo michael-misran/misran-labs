@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-17",
+  "numero": 18,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Token Pass : 80 $ de jetons pour 30 $, mais seulement sur deux modèles",
+    "chapo": "Vercel lance un abonnement mensuel dont le crédit d'inférence dépasse le prix, réservé aux équipes Pro.",
+    "paragraphes": [
+      "Le 15 octobre, Vercel a présenté Token Pass, un plan en accès anticipé : pour 30 $ par mois, une équipe reçoit 80 $ de crédit partagé, utilisable sur deux modèles, GLM 5.3 et Kimi K3. D'autres modèles suivront.",
+      "Le plan passe par l'AI Gateway et fonctionne avec des agents de code comme fx, Command Code ou Pi, ou un agent maison bâti sur l'AI SDK. On active l'abonnement, on crée une clé d'API dédiée, puis on choisit un modèle ; les deux partagent le même crédit.",
+      "Rétention nulle par défaut : l'inférence tourne aux États-Unis et dans l'UE, et prompts et réponses sont effacés après chaque requête.",
+      "Deux limites à lire avant de s'abonner : le crédit non utilisé ne se reporte pas, et quand il est épuisé, les requêtes s'arrêtent jusqu'à la période suivante, sans facturation en supplément. Prévisible, mais un agent qui tourne la nuit peut s'arrêter en plein travail."
+    ],
+    "sources": [
+      "https://vercel.com/changelog/introducing-token-pass"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant",
+        "rubrique": "L'irritant du jour",
+        "court": "Irritant",
+        "titre": "Le prix affiché n'est pas le prix payé",
+        "chapo": "Aux États-Unis, il a fallu une règle fédérale pour obliger les billetteries à montrer le total dès le début.",
+        "paragraphes": [
+          "Vous trouvez un billet à un prix correct, vous avancez dans les écrans, et le total grimpe à chaque étape : frais de service, de traitement, de livraison. C'est le « drip pricing », la tarification au goutte-à-goutte. La Federal Trade Commission américaine l'a encadré par une règle sur les frais trompeurs, en vigueur depuis le 12 mai 2025 : le prix total des billets d'événements, frais obligatoires compris, doit être affiché avant tout autre prix.",
+          "Le 9 avril 2026, la FTC a annoncé un règlement de 10 millions de dollars avec StubHub. Selon elle, à la mi-mai 2025, après l'entrée en vigueur de la règle, les deux premiers écrans de prix excluaient souvent les frais obligatoires, et le troisième listait des frais sans total. Les acheteurs des 12 au 14 mai 2025 doivent être remboursés ; l'accord n'a force de loi qu'une fois approuvé par un juge.",
+          "À retenir : une règle ne suffit pas à changer une interface."
+        ],
+        "encadre": {
+          "titre": "Piste de business",
+          "texte": "Une extension de navigateur qui calcule le total réel d'un panier dès le premier écran et le compare entre vendeurs (billets, locations, réservations). Concurrence : les plateformes, tenues d'afficher le total pour les billets aux États-Unis, et les comparateurs existants. L'angle : les secteurs que la règle ne couvre pas.",
+          "plein": true
+        },
+        "sources": [
+          "https://www.ftc.gov/news-events/news/press-releases/2026/04/stubhub-refunding-10-million-fees-consumers-after-deceptive-ticket-pricing"
+        ]
+      },
+      {
+        "type": "etude",
+        "rubrique": "L'étude de cas",
+        "court": "Étude",
+        "titre": "Voicy : une application de dictée pour un père, 16 000 à 20 000 $ par mois",
+        "chapo": "Une extension Chrome construite en deux semaines pour quelqu'un qui tapait trop lentement, devenue un produit multi-plateformes.",
+        "paragraphes": [
+          "Le fondateur, Kourosh, a quitté Téhéran pour Londres à 18 ans, appris le code seul pendant le Covid et travaillé en fintech. Une première appli avait atteint environ 5 000 $ par mois sans décoller. L'idée de Voicy vient d'un séjour à l'hôpital : son père tapait lentement, il a voulu la dictée partout. Une extension Chrome, bâtie sur l'API Whisper d'OpenAI, a atteint un prototype en deux semaines ; Windows, Mac, Linux, iOS et Android ont suivi.",
+          "Selon l'entretien publié par Starter Story le 14 octobre 2026, le tableau de bord affiche environ 11 000 $ de revenu récurrent, et le total mensuel monte à 16 000 à 20 000 $ avec les accès à vie (environ 260 $, contre 8,49 $ par mois). Il compte 2 500 utilisateurs actifs par jour et 1 400 abonnements actifs.",
+          "La croissance vient surtout du référencement : environ 200 articles de blog et 30 pages d'atterrissage, en quatre ou cinq langues. Leçon : servir des gens pour qui l'outil est un besoin. Réserve : chiffres déclarés, non audités."
+        ],
+        "sources": [
+          "https://www.starterstory.com/stories/i-built-this-app-for-my-dad-now-it-makes-18k-month"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Science · Tech",
+    "articles": [
+      {
+        "type": "science",
+        "rubrique": "Science en 5 lignes",
+        "court": "Science",
+        "titre": "Une enzyme « Pac-Man » mange des bioplastiques, et défait aussi la pénicilline",
+        "chapo": "Des chercheurs de l'université de Constance ont identifié une enzyme bactérienne à double talent.",
+        "paragraphes": [
+          "L'équipe a enterré dans un sol de forêt, à dix centimètres, des films de bioplastiques (polyesters à longue chaîne) et mesuré le CO₂ dégagé pendant un an : tous se sont dégradés en 250 à 330 jours environ, contre 80 pour la cellulose ; le polyéthylène haute densité n'a presque pas bougé.",
+          "L'enzyme responsable, une estérase fixée à la surface des bactéries, doit son surnom à son site actif très large. Elle coupe aussi le cycle β-lactame de la pénicilline. Limite : le faire en laboratoire ne prouve pas qu'elle rende des bactéries résistantes, et le plastique courant n'a pas été dégradé. Source : ScienceDaily, 16 octobre 2026, d'après The ISME Journal."
+        ],
+        "sources": [
+          "https://www.sciencedaily.com/releases/2026/10/261014015509.htm"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "La tech",
+        "court": "Tech",
+        "titre": "Vercel Daemons : des processus qui tournent sans serveur web",
+        "paragraphes": [
+          "Le 15 octobre, Vercel a ouvert en bêta publique les Daemons : des processus longs qui vont chercher du travail dans des files ou des bases, sans serveur HTTP. Ils tournent comme des conteneurs dans le même projet que l'application ; Vercel garde le nombre d'instances voulu par région et relance celles qui plantent.",
+          "Exemples : consommateurs Celery, BullMQ, RabbitMQ ou Kafka, workers Temporal, exécuteurs CI auto-hébergés. Configuration : une entrée <i>daemons</i> dans <i>vercel.json</i> et un Dockerfile. La page ne dit rien du prix."
+        ],
+        "encadre": {
+          "titre": "L'œil du business",
+          "texte": "Les exécuteurs d'intégration continue auto-hébergés sont un poste de coût et de maintenance pour les petites équipes : une offre qui les installe et les surveille clé en main a un public.",
+          "plein": true
+        },
+        "sources": [
+          "https://vercel.com/changelog/vercel-daemons-is-now-in-public-beta"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech éclair",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "GitHub arrête les e-mails de push",
+        "paragraphes": [
+          "Depuis le 15 octobre, GitHub n'envoie plus d'e-mails pour les événements de push d'un dépôt. La raison avancée : éviter le spam et les abus, car les destinataires n'avaient pas à y consentir et l'infrastructure de GitHub pouvait servir à écrire à des inconnus. Pour continuer à recevoir ces messages, il faut créer un workflow GitHub Actions déclenché à chaque push, qui les envoie via son propre serveur SMTP ou son fournisseur d'e-mail. L'annonce ne précise pas qui était concerné : si vous comptiez sur ces courriers, vérifiez votre boîte."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-10-15-email-notifications-for-repository-push-events-have-been-retired"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "Rétention nulle",
+      "nature": "loc. nom. f.",
+      "definition": "Réglage par lequel un fournisseur d'IA n'enregistre ni vos requêtes ni les réponses du modèle une fois le traitement terminé. Ces données ne peuvent donc ni être relues plus tard ni servir à entraîner un modèle."
+    },
+    "chiffre": {
+      "valeur": "200",
+      "texte": "articles de blog pour Voicy, une appli de dictée."
+    },
+    "bonus": {
+      "type": "citation",
+      "texte": "« Programming is one of the most difficult branches of applied mathematics. »",
+      "auteur": "Edsger W. Dijkstra, note EWD498, 1975"
+    },
+    "enigme": {
+      "question": "On me verse chaque mois et je ne me garde pas : ce que tu n'as pas dépensé avant la fin de la période, je l'efface. Qui suis-je ?",
+      "reponse": "un crédit mensuel non reportable"
+    }
+  },
+  "sources": [
+    "vercel.com",
+    "ftc.gov",
+    "starterstory.com",
+    "sciencedaily.com",
+    "github.blog",
+    "cs.utexas.edu"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-17",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": { "fr": "Token Pass : 80 $ de crédit d'inférence pour 30 $ par mois", "en": "Token Pass: $80 of inference credit for $30 a month" },
+      "resume": {
+        "fr": "Vercel a lancé le 15 octobre, en accès anticipé pour les équipes Pro, un abonnement de 30 $ qui donne 80 $ de crédit partagé sur GLM 5.3 et Kimi K3, via l'AI Gateway. Le crédit non utilisé ne se reporte pas, et les requêtes s'arrêtent quand il est épuisé.",
+        "en": "On October 15, Vercel launched, in early access for Pro teams, a $30 subscription giving $80 of shared credit on GLM 5.3 and Kimi K3, through the AI Gateway. Unused credit does not roll over, and requests stop once it runs out."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/introducing-token-pass" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Vercel Daemons : des processus longs, sans serveur web", "en": "Vercel Daemons: long-running processes, no web server" },
+      "resume": {
+        "fr": "Ouverts en bêta publique le 15 octobre, les Daemons exécutent comme conteneurs des consommateurs de files (Celery, BullMQ, Kafka…), des workers Temporal ou des exécuteurs CI auto-hébergés. Vercel maintient le nombre d'instances voulu par région. La page ne donne pas de prix.",
+        "en": "Opened in public beta on October 15, Daemons run queue consumers (Celery, BullMQ, Kafka…), Temporal workers or self-hosted CI runners as containers. Vercel keeps the configured number of instances per region. The page gives no pricing."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/vercel-daemons-is-now-in-public-beta" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "GitHub arrête les e-mails de push", "en": "GitHub stops push emails" },
+      "resume": {
+        "fr": "Depuis le 15 octobre, GitHub n'envoie plus d'e-mails pour les événements de push, afin d'éviter le spam et les abus. Pour les garder, il faut un workflow GitHub Actions qui les envoie via votre propre serveur SMTP ou fournisseur d'e-mail.",
+        "en": "Since October 15, GitHub no longer sends emails for push events, to prevent spam and abuse. To keep them, you need a GitHub Actions workflow that sends them through your own SMTP server or email provider."
+      },
+      "sources": [
+        { "titre": "GitHub Blog", "url": "https://github.blog/changelog/2026-10-15-email-notifications-for-repository-push-events-have-been-retired" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Rétention nulle",
+    "definition": {
+      "fr": "Réglage par lequel un fournisseur d'IA n'enregistre ni vos requêtes ni les réponses du modèle une fois le traitement terminé. Ces données ne peuvent donc ni être relues plus tard ni servir à entraîner un modèle.",
+      "en": "A setting by which an AI provider stores neither your requests nor the model's responses once processing is done. The data can therefore be neither re-read later nor used to train a model."
+    }
+  },
+  "chiffre": {
+    "valeur": "200",
+    "texte": {
+      "fr": "articles de blog pour Voicy, une appli de dictée.",
+      "en": "blog posts for Voicy, a dictation app."
+    }
+  }
+}
