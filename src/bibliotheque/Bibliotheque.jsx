@@ -97,18 +97,49 @@ function saisonDuJour(date = new Date()) {
   return SAISONS.find((s) => (s.du <= s.au ? jour >= s.du && jour <= s.au : jour >= s.du || jour <= s.au))
 }
 
-// Les 4 emplacements du présentoir, en % de l'image : left / width = bord
-// gauche et largeur de la carte blanche ; REBORD = hauteur du rebord où
-// les livres sont posés, depuis le bas de l'image
-// Places du présentoir, du plus récent (gauche) au plus ancien (droite) —
-// la place n'est plus liée à un volume fixe, voir `nouveautes()`.
+// Les 4 places du présentoir, du plus récent (gauche) au plus ancien (droite) —
+// la place n'est pas liée à un volume fixe, voir `nouveautes()`.
+// Chaque place = les 4 coins de la face du livre blanc peint, en % de l'image
+// (x, y), dans l'ordre haut-gauche, haut-droite, bas-droite, bas-gauche :
+// la couverture est déformée pour tomber exactement dessus (perspective du
+// pupitre). Pour les régler à la main : /?reglage
 const PRESENTOIR = [
-  { left: 39.64, width: 4.3 },
-  { left: 45.02, width: 4.3 },
-  { left: 50.72, width: 4.3 },
-  { left: 56.06, width: 4.3 },
+  [[40.12, 55.24], [44.08, 55.25], [43.68, 64.74], [39.66, 64.74]],
+  [[45.36, 54.98], [49.27, 55.01], [49.03, 64.78], [45.09, 64.78]],
+  [[50.94, 55.09], [54.99, 55.10], [55.14, 64.78], [51.13, 64.94]],
+  [[56.21, 55.21], [60.14, 55.24], [60.59, 64.78], [56.62, 64.74]],
 ]
-const REBORD = 35.2
+// Proportions des couvertures (largeur / hauteur)
+const RATIO_COUV = 3320 / 4887
+
+// Déformation qui envoie un rectangle w × h (coin haut-gauche en 0,0) sur un
+// quadrilatère quelconque (coins en px, même ordre que PRESENTOIR) :
+// homographie carré → quadrilatère (Heckbert), écrite en matrix3d CSS.
+function matrice(w, h, [[x0, y0], [x1, y1], [x2, y2], [x3, y3]]) {
+  const dx1 = x1 - x2, dx2 = x3 - x2, dx3 = x0 - x1 + x2 - x3
+  const dy1 = y1 - y2, dy2 = y3 - y2, dy3 = y0 - y1 + y2 - y3
+  const det = dx1 * dy2 - dx2 * dy1
+  const g = (dx3 * dy2 - dx2 * dy3) / det
+  const k = (dx1 * dy3 - dx3 * dy1) / det
+  const a = x1 - x0 + g * x1, b = x3 - x0 + k * x3
+  const d = y1 - y0 + g * y1, e = y3 - y0 + k * y3
+  return `matrix3d(${[a / w, d / w, 0, g / w, b / h, e / h, 0, k / h, 0, 0, 1, 0, x0, y0, 0, 1].join(',')})`
+}
+
+// Largeur de la scène en px, suivie au redimensionnement (la déformation se calcule en px)
+function useLargeur(ref) {
+  const [largeur, setLargeur] = useState(0)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return undefined
+    // Mesure immédiate : ResizeObserver ne se déclenche pas dans un onglet en arrière-plan
+    setLargeur(el.getBoundingClientRect().width)
+    const obs = new ResizeObserver(([entree]) => setLargeur(entree.contentRect.width))
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [ref])
+  return largeur
+}
 
 // Bouton du volume sorti : on le repose sur le présentoir
 const REPOSER = { fr: 'Reposer sur le présentoir', en: 'Put it back' }
@@ -116,7 +147,7 @@ const REPOSER = { fr: 'Reposer sur le présentoir', en: 'Put it back' }
 // Une publication exposée : sa couverture en miniature. `place` donne soit
 // `bottom` (présentoir, le livre grandit depuis le rebord), soit `top`
 // (rayon, posé à une hauteur fixe sur la planche).
-function Expose({ v, place, lang, sorti, onSortir, rayon = false }) {
+function Expose({ v, place, style, lang, sorti, onSortir, rayon = false }) {
   const position = place.bottom !== undefined
     ? { bottom: `${place.bottom}%` }
     : { top: `${place.top}%` }
@@ -124,7 +155,7 @@ function Expose({ v, place, lang, sorti, onSortir, rayon = false }) {
     <button
       type="button"
       className={`lb-livre${rayon ? ' lb-livre-rayon' : ''}${v.id === sorti ? ' sortie' : ''}`}
-      style={{ left: `${place.left}%`, width: `${place.width}%`, ...position }}
+      style={style ?? { left: `${place.left}%`, width: `${place.width}%`, ...position }}
       aria-label={`${nt(v.titre, lang)} · ${nt(v.sous, lang)}`}
       aria-pressed={v.id === sorti}
       onClick={() => onSortir(v.id === sorti ? null : v.id)}
@@ -146,6 +177,34 @@ export default function Bibliotheque() {
   // Image de saison qui n'a pas pu se charger : on revient à la librairie normale
   const [enEchec, setEnEchec] = useState(null)
   const image = saison && saison.image !== enEchec ? saison.image : IMAGE
+
+  // Présentoir : coins des livres, réglables à la souris en mode /?reglage
+  // (gardés dans le navigateur pendant le réglage, à recopier ensuite dans PRESENTOIR)
+  const reglage = params.has('reglage')
+  const sceneRef = useRef(null)
+  const largeur = useLargeur(sceneRef)
+  const hauteur = largeur / RATIO
+  const [coins, setCoins] = useState(() => {
+    if (!reglage) return PRESENTOIR
+    try { return JSON.parse(localStorage.getItem('lb-reglage')) ?? PRESENTOIR } catch { return PRESENTOIR }
+  })
+  const [prise, setPrise] = useState(null)
+  const [copie, setCopie] = useState(false)
+  useEffect(() => {
+    if (!reglage) return
+    try { localStorage.setItem('lb-reglage', JSON.stringify(coins)) } catch { /* navigation privée */ }
+  }, [coins, reglage])
+  const deplacer = (e) => {
+    const r = sceneRef.current.getBoundingClientRect()
+    const x = Math.round(((e.clientX - r.left) / r.width) * 10000) / 100
+    const y = Math.round(((e.clientY - r.top) / r.height) * 10000) / 100
+    const [i, j] = prise
+    setCoins((c) => c.map((quad, a) => (a !== i ? quad : quad.map((p, b) => (b === j ? [x, y] : p)))))
+  }
+  const copier = () => {
+    const texte = `const PRESENTOIR = [\n${coins.map((q) => `  [${q.map(([x, y]) => `[${x.toFixed(2)}, ${y.toFixed(2)}]`).join(', ')}],`).join('\n')}\n]`
+    navigator.clipboard?.writeText(texte).then(() => { setCopie(true); setTimeout(() => setCopie(false), 1500) })
+  }
 
   // Téléphone (< 700 px) : la scène défile dans son cadre, centrée au
   // départ sur le présentoir (D6) ; l'indication de glissement disparaît
@@ -185,7 +244,7 @@ export default function Bibliotheque() {
       </header>
 
       <div className="sl-cadre" ref={cadreRef}>
-      <main className="sl-scene" style={{ '--ratio': RATIO }}>
+      <main className="sl-scene" ref={sceneRef} style={{ '--ratio': RATIO }}>
         <img className="sl-image" src={image} alt="" onError={() => image !== IMAGE && setEnEchec(image)} />
         {/* LED des guirlandes qui scintillent, chacune à son rythme */}
         {image === saison?.image && saison.leds?.map(([x, y], i) => (
@@ -229,12 +288,49 @@ export default function Bibliotheque() {
 
         {/* Présentoir : les 4 dernières parutions */}
         <p className="lb-nouveautes">{lang === 'fr' ? 'Nouveautés' : 'New releases'}</p>
-        {PRESENTOIR.map((place, i) => {
-          const v = nouveautes()[i]
-          return v && <Expose key={v.id} v={v} place={{ ...place, bottom: REBORD }} lang={lang} sorti={sorti} onSortir={setSorti} />
-        })}
+        {/* Pupitre : chaque couverture déformée sur les 4 coins de son livre peint */}
+        <div className="lb-pupitre">
+          {largeur > 0 && coins.map((quad, i) => {
+            const v = nouveautes()[i]
+            if (!v) return null
+            const px = quad.map(([x, y]) => [(x / 100) * largeur, (y / 100) * hauteur])
+            // Rectangle de départ ≈ taille du livre peint, pour une déformation douce
+            const h = Math.hypot(px[3][0] - px[0][0], px[3][1] - px[0][1])
+            const w = h * RATIO_COUV
+            return (
+              <Expose
+                key={v.id}
+                v={v}
+                place={{}}
+                style={{ left: 0, top: 0, width: `${w}px`, height: `${h}px`, transform: matrice(w, h, px) }}
+                lang={lang}
+                sorti={sorti}
+                onSortir={setSorti}
+              />
+            )
+          })}
+        </div>
+
+        {/* Mode réglage (/?reglage) : une poignée par coin, à glisser sur les coins peints */}
+        {reglage && coins.map((quad, i) => quad.map(([x, y], j) => (
+          <span
+            key={`${i}-${j}`}
+            className="lb-poignee"
+            style={{ left: `${x}%`, top: `${y}%` }}
+            onPointerDown={(e) => { e.currentTarget.setPointerCapture(e.pointerId); setPrise([i, j]) }}
+            onPointerMove={(e) => prise?.[0] === i && prise?.[1] === j && deplacer(e)}
+            onPointerUp={() => setPrise(null)}
+          />
+        )))}
       </main>
       </div>
+      {reglage && (
+        <div className="lb-reglage">
+          <p>Glissez les poignées sur les coins des livres peints.</p>
+          <button type="button" onClick={copier}>{copie ? 'Copié !' : 'Copier les valeurs'}</button>
+          <button type="button" onClick={() => setCoins(PRESENTOIR)}>Réinitialiser</button>
+        </div>
+      )}
       {!aGlisse && (
         <p className="sl-glisse" aria-hidden="true">
           {lang === 'fr' ? '← Glissez pour voir les rayons →' : '← Swipe to see the shelves →'}
