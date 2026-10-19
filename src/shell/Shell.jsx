@@ -307,7 +307,7 @@ export default function Shell() {
     if (!e) {
       return (
         <div className={`cote cote-vide cote-table cote-table-${sens}`}>
-          <Link to="/" className="retour-bibliotheque no-print">← {nt(NT.bibliotheque, lang)}</Link>
+          <Link to="/librairie" className="retour-bibliotheque no-print">← {nt(NT.bibliotheque, lang)}</Link>
         </div>
       )
     }
@@ -485,7 +485,7 @@ export default function Shell() {
             </ol>
           </div>
           <div className="bandeau-droite">
-            <Link to="/" className="bandeau-bibliotheque">← {nt(NT.bibliotheque, lang)}</Link>
+            <Link to="/librairie" className="bandeau-bibliotheque">← {nt(NT.bibliotheque, lang)}</Link>
             <Link to="/magazine">Misran Labs</Link> · <b>N°{numero.numero}</b> · {numero.mois[lang] ?? numero.mois.fr}
             <button
               type="button"
@@ -509,7 +509,7 @@ export default function Shell() {
             <FlecheIcone />
           </Link>
         ) : (
-          <Link to="/" className="fleche fleche-suiv no-print" aria-label={nt(NT.bibliotheque, lang)} title={nt(NT.bibliotheque, lang)}>
+          <Link to="/librairie" className="fleche fleche-suiv no-print" aria-label={nt(NT.bibliotheque, lang)} title={nt(NT.bibliotheque, lang)}>
             <FlecheIcone />
           </Link>
         )}

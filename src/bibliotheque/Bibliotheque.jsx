@@ -9,7 +9,7 @@ import { LEDS_NOEL } from './leds-noel'
 import '../numero/etagere.css'
 import './bibliotheque.css'
 
-// Page d'accueil : la Librairie du Chocolat Chaud, librairie de 1977 Éditions, vue de face (illustration
+// La librairie L'Entre Deux Pages (/librairie), librairie de 1977 Éditions, vue de face (illustration
 // Gemini en fond). Les publications du Lab sont exposées de face sur le
 // présentoir, au centre ; un clic en sort une, sa couverture s'affiche en
 // grand avec « Lire ». Les volumes : numero/volumes.js.
@@ -221,7 +221,7 @@ export default function Bibliotheque() {
   }, [])
 
   useEffect(() => {
-    document.title = 'Librairie du Chocolat Chaud — 1977 Éditions'
+    document.title = "L'Entre Deux Pages — 1977 Éditions"
   }, [lang])
   useEffect(() => {
     if (!sorti) return undefined
@@ -233,10 +233,11 @@ export default function Bibliotheque() {
   return (
     <div className="salon">
       <header className="sl-bandeau">
-        <span className="sl-marque">
+        {/* Le logo ramène dans la rue (l'accueil) */}
+        <Link to="/" className="sl-marque" aria-label={lang === 'fr' ? 'Retour dans la rue' : 'Back to the street'}>
           <Logo1977 carre largeur={26} fond="#3a2e24" />
-          1977 Éditions
-        </span>
+          ← {lang === 'fr' ? 'La rue' : 'The street'}
+        </Link>
         <span className="sl-aide">{lang === 'fr' ? 'Choisissez un livre sur le présentoir ou dans les rayons' : 'Pick a book from the display or the shelves'}</span>
         <button type="button" onClick={basculerLangue} aria-label={lang === 'fr' ? 'Switch to English' : 'Passer en français'}>
           {lang === 'fr' ? 'EN' : 'FR'}
@@ -265,7 +266,7 @@ export default function Bibliotheque() {
           />
         ))}
         {/* Enseigne clouée sur la ceinture de la table du présentoir */}
-        <p className="lb-enseigne">Librairie du Chocolat Chaud</p>
+        <p className="lb-enseigne">L'Entre Deux Pages</p>
 
         {/* Rayons muraux : une plaque par collection, les volumes posés de face */}
         {RAYONS.map((rayon) => (

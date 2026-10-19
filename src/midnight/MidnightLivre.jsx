@@ -410,7 +410,7 @@ function PageAttente({ numero, lang }) {
       <div className="ms-attente">
         <h1>MIDNIGHT SNACK</h1>
         <p>{lt(LT.attenteAucun, lang)}</p>
-        <Link to="/">← {lt(LT.bibliotheque, lang)}</Link>
+        <Link to="/librairie">← {lt(LT.bibliotheque, lang)}</Link>
       </div>
     )
   }
@@ -421,7 +421,7 @@ function PageAttente({ numero, lang }) {
         {lt(numero.sousTitre, lang)} · {lt(LT.attenteEnKiosque, lang)} {formatDate(numero.parution, lang)}
       </p>
       <p>{lt(LT.attenteTexte, lang)}</p>
-      <Link to="/">← {lt(LT.bibliotheque, lang)}</Link>
+      <Link to="/librairie">← {lt(LT.bibliotheque, lang)}</Link>
     </div>
   )
 }
@@ -497,7 +497,7 @@ function LivreOuvert({ numero, lang, atelier, epreuve, basculerLangue }) {
   return (
     <div className="ms-table">
       <nav className="ms-bandeau no-print">
-        <Link to="/" className="ms-retour">← {lt(LT.bibliotheque, lang)}</Link>
+        <Link to="/librairie" className="ms-retour">← {lt(LT.bibliotheque, lang)}</Link>
         <span className="ms-bandeau-titre">{lt(LT.surTitre, lang)}</span>
         <span className="ms-bandeau-droite">
           <button type="button" onClick={() => window.print()}>{lt(LT.imprimer, lang)}</button>

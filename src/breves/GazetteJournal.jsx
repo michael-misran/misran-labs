@@ -339,7 +339,7 @@ export default function GazetteJournal() {
   return (
     <div className="gz-table">
       <nav className="gz-bandeau">
-        <Link to="/">← {tx(TX.retour, lang)}</Link>
+        <Link to="/librairie">← {tx(TX.retour, lang)}</Link>
         <span className="gz-bandeau-titre">{BREVES_TEXT[lang].home.title}</span>
         <button type="button" onClick={basculerLangue} aria-label={lang === 'fr' ? 'Switch to English' : 'Passer en français'}>
           {lang === 'fr' ? 'EN' : 'FR'}

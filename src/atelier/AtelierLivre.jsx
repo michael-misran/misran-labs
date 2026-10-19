@@ -784,7 +784,7 @@ export default function AtelierLivre() {
   return (
     <div className="at-table">
       <nav className="at-nav no-print">
-        <Link to="/" className="at-retour">← {lt(LT.bibliotheque, lang)}</Link>
+        <Link to="/librairie" className="at-retour">← {lt(LT.bibliotheque, lang)}</Link>
         <span className="at-nav-titre">{lt(LT.titreOnglet, lang)}</span>
         <span className="at-nav-droite">
           <button type="button" onClick={() => window.print()}>{lt(LT.imprimer, lang)}</button>

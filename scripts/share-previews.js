@@ -59,6 +59,13 @@ const SAVIEZ_FIXED = {
   description: 'Chaque semaine, quelques choses vraies, insolites ou pas, à ressortir au dîner.',
   image: 'og-image.png',
 }
+// La librairie L'Entre Deux Pages : depuis que l'accueil est la rue, elle a sa propre adresse
+const LIBRAIRIE_FIXED = {
+  title: "L'Entre Deux Pages — la librairie de 1977 Éditions",
+  description: 'Les livres, magazines et carnets de 1977 Éditions, exposés sur le présentoir et dans les rayons.',
+  image: 'og-image.png',
+}
+
 const JEUX_FIXED = {
   title: 'Jeux — petits défis quotidiens · 1977 Éditions',
   description: 'Un mini-jeu par jour, noté sur 100 et partageable en un clic, façon neal.fun.',
@@ -402,6 +409,7 @@ export function sharePreviewsPlugin() {
         { path: '/portfolio', title: PORTFOLIO_FIXED.title, description: PORTFOLIO_FIXED.description, image: PORTFOLIO_FIXED.image, type: 'profile' },
         { path: '/lab', title: LAB_FIXED.title, description: LAB_FIXED.description, image: LAB_FIXED.image, type: 'website' },
         ...PAGES_MAGAZINE.map((p) => ({ path: p, title: MAGAZINE_FIXED.title, description: MAGAZINE_FIXED.description, image: MAGAZINE_FIXED.image, type: 'website' })),
+        { path: '/librairie', title: LIBRAIRIE_FIXED.title, description: LIBRAIRIE_FIXED.description, image: LIBRAIRIE_FIXED.image, type: 'website' },
         { path: '/jeux', title: JEUX_FIXED.title, description: JEUX_FIXED.description, image: JEUX_FIXED.image, type: 'website' },
         ...saviezPages,
         ...collectZineNumeros(rootDir),
