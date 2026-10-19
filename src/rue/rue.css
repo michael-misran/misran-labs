@@ -103,6 +103,70 @@ body:has(.rue) { margin: 0; }
 }
 @keyframes rue-bougie { 0%, 100% { opacity: .85; } 20% { opacity: .55; } 35% { opacity: 1; } 60% { opacity: .7; } 80% { opacity: .95; } }
 
+/* Petites flammes (Halloween) : bougies, lanternes, guirlande de citrouilles */
+.rue-flamme {
+  position: absolute; width: .9%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none; mix-blend-mode: screen;
+  background: radial-gradient(closest-side, rgba(255,236,170,.9), rgba(255,170,60,.45) 40%, rgba(255,120,30,.1) 75%, transparent);
+  animation: rue-flamme 1.6s ease-in-out infinite;
+}
+@keyframes rue-flamme { 0%, 100% { opacity: .55; } 18% { opacity: .95; } 32% { opacity: .4; } 50% { opacity: 1; } 68% { opacity: .6; } 84% { opacity: .9; } }
+
+/* Feuilles mortes (Halloween) : une rafale de temps en temps, de gauche à droite.
+   Forme = petit SVG dans la page, couleur = currentColor ; seul transform est animé. */
+.rue-feuilles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.rue-feuille {
+  position: absolute; left: 0; width: var(--taille); height: var(--taille); opacity: 0; overflow: visible;
+  filter: drop-shadow(0 .2cqh .2cqh rgba(0,0,0,.35));
+  animation: rue-rafale 16s linear infinite;
+  will-change: transform, opacity;
+}
+.rue-feuille-orange { color: #e2711d; }
+.rue-feuille-rouge { color: #b8321f; }
+.rue-feuille-jaune { color: #e8b23a; }
+.rue-feuille-brun { color: #8a4f24; }
+@keyframes rue-rafale {
+  0%, 58% { opacity: 0; transform: translate3d(-6cqw, 0, 0) rotate(0deg); }
+  60% { opacity: .95; }
+  68% { transform: translate3d(22cqw, 7cqh, 0) rotate(150deg); }
+  77% { transform: translate3d(47cqw, -1cqh, 0) rotate(290deg); }
+  87% { transform: translate3d(74cqw, 9cqh, 0) rotate(420deg); }
+  97% { opacity: .95; }
+  100% { opacity: 0; transform: translate3d(106cqw, 4cqh, 0) rotate(560deg); }
+}
+
+/* Ampoules des guirlandes (Noël) : chacune scintille à son rythme */
+.rue-led {
+  position: absolute; width: 1.1%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none; mix-blend-mode: screen;
+  background: radial-gradient(closest-side, rgba(255,250,220,.95), rgba(255,215,120,.5) 35%, rgba(255,180,60,.12) 70%, transparent);
+  animation: rue-scintille 2.2s ease-in-out infinite;
+}
+@keyframes rue-scintille { 0%, 100% { opacity: .1; } 45% { opacity: 1; } 60% { opacity: .75; } }
+
+/* Neige (Noël) : trois couches de flocons dessinées en dégradés, aucune image.
+   Chaque couche fait deux fois la hauteur de la scène et glisse d'une moitié :
+   la boucle est invisible. Seul transform est animé (léger pour le navigateur). */
+.rue-neige { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.rue-neige::before, .rue-neige::after {
+  content: ''; position: absolute; left: 0; right: 0; top: -100%; height: 200%;
+  animation: rue-neige-tombe linear infinite;
+  will-change: transform;
+}
+/* Flocons proches : plus gros, plus rapides */
+.rue-neige::before {
+  background-image: radial-gradient(circle, rgba(255,255,255,.95) 0 2.4px, transparent 3.2px), radial-gradient(circle, rgba(255,255,255,.85) 0 1.8px, transparent 2.6px);
+  background-size: 230px 260px, 310px 290px;
+  background-position: 20px 40px, 150px 170px;
+  animation-duration: 12s;
+}
+/* Pavage de flocons lointains : petits, lents, plus discrets */
+.rue-neige::after {
+  background-image: radial-gradient(circle, rgba(255,255,255,.75) 0 1.2px, transparent 1.8px), radial-gradient(circle, rgba(255,255,255,.6) 0 1px, transparent 1.6px);
+  background-size: 140px 160px, 90px 110px;
+  background-position: 0 0, 45px 60px;
+  animation-duration: 26s; opacity: .8;
+}
+@keyframes rue-neige-tombe { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-2%, 50%, 0); } }
+
 /* ---------- Décor de saison : la saison du moment et la rue de toute l'année ---------- */
 .rue-saisons { position: fixed; z-index: 11; right: 16px; bottom: 16px; display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: rgba(26,20,30,.85); }
 .rue-saisons button { white-space: nowrap; border: 0; border-radius: 999px; padding: 8px 12px; background: none; color: #f1d7a8; cursor: pointer; font: 500 11px/1 var(--font-etiquette); letter-spacing: .08em; text-transform: uppercase; }
@@ -129,5 +193,6 @@ body:has(.rue) { margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .rue-monde { transition: none; }
-  .rue-enseigne-jeux, .rue-lueur, .rue-bulle { animation: none; opacity: 1; }
+  .rue-enseigne-jeux, .rue-lueur, .rue-bulle, .rue-led, .rue-flamme { animation: none; opacity: 1; }
+  .rue-neige, .rue-feuilles { display: none; }
 }
