@@ -27,7 +27,8 @@ const PortfolioLivre = lazy(() => import('./portfolio/PortfolioLivre'))
 const AtelierLivre = lazy(() => import('./atelier/AtelierLivre'))
 // Midnight Snack, le nouveau magazine de 1977 Éditions : hors du Shell, sur sa propre table
 const MidnightLivre = lazy(() => import('./midnight/MidnightLivre'))
-// Accueil : la bibliothèque ; la Gazette a son propre format (journal plié)
+// Accueil : la rue (librairie + arcade) ; la librairie est sur /librairie ; la Gazette a son propre format (journal plié)
+const Rue = lazy(() => import('./rue/Rue'))
 const Bibliotheque = lazy(() => import('./bibliotheque/Bibliotheque'))
 const GazetteJournal = lazy(() => import('./breves/GazetteJournal'))
 // Un livre de l'étagère, hors du magazine, sur sa propre table
@@ -37,8 +38,10 @@ export default function App() {
   return (
     <LanguageProvider>
       <Routes>
-        {/* L'accueil est la bibliothèque : on y choisit un livre à ouvrir */}
-        <Route index element={livre(<Bibliotheque />)} />
+        {/* L'accueil est la rue : on y choisit sa boutique (livres, jeux) ou Michael (portfolio) */}
+        <Route index element={livre(<Rue />)} />
+        {/* La librairie L'Entre Deux Pages : on y choisit un livre à ouvrir */}
+        <Route path="/librairie" element={livre(<Bibliotheque />)} />
         <Route path="/portfolio" element={livre(<PortfolioLivre />)} />
         <Route path="/atelier" element={livre(<AtelierLivre />)} />
         <Route path="/midnight/:numero?" element={livre(<MidnightLivre />)} />
@@ -69,7 +72,7 @@ export default function App() {
           <Route path="suivre" element={<SuivrePage />} />
           <Route path="jeux" element={<JeuxHome />} />
           <Route path="jeux/:slug" element={<JeuPage />} />
-          {/* Le Zine est arrêté : ses anciennes adresses ramènent à la bibliothèque */}
+          {/* Le Zine est arrêté : ses anciennes adresses ramènent à l'accueil */}
           <Route path="zine/*" element={<Navigate to="/" replace />} />
           <Route path="saviez-vous/:date?" element={<SaviezVousPage />} />
           <Route path="*" element={<Page404 />} />
