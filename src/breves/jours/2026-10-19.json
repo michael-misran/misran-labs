@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-19",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Beam, un modèle ouvert géant pour le code et les agents",
+        "en": "Beam, a giant open model for code and agents"
+      },
+      "resume": {
+        "fr": "Reflection a publié Beam le 16 octobre : 501 milliards de paramètres dont 23 milliards actifs, un million de tokens de contexte, licence Apache 2.0. Il fonctionne dès le premier jour dans transformers, vLLM et SGLang. La version la plus compacte pèse environ 280 Go.",
+        "en": "Reflection released Beam on October 16: 501 billion parameters with 23 billion active, a one-million-token context window, and an Apache 2.0 license. It runs from day one in transformers, vLLM and SGLang. The most compact version weighs about 280 GB."
+      },
+      "sources": [
+        { "titre": "Hugging Face", "url": "https://huggingface.co/blog/reflection-beam" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Figma Specs : le cahier des charges sur le canvas",
+        "en": "Figma Specs: the requirements document on the canvas"
+      },
+      "resume": {
+        "fr": "Figma a lancé Specs le 15 octobre, un conteneur partagé qui réunit du Markdown, des diagrammes, des frames et des couches de code. Les agents peuvent le lire et le mettre à jour, notamment via le serveur MCP de Figma. C'est une bêta ouverte réservée aux offres payantes.",
+        "en": "Figma launched Specs on October 15, a shared container that gathers Markdown, diagrams, frames and code layers. Agents can read and update it, notably through Figma's MCP server. It is an open beta reserved for paid plans."
+      },
+      "sources": [
+        { "titre": "Figma", "url": "https://www.figma.com/blog/introducing-figma-specs/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Vercel : un cache de prompt mieux exploité par défaut",
+        "en": "Vercel: better prompt caching by default"
+      },
+      "resume": {
+        "fr": "Depuis le 18 octobre, l'AI Gateway envoie chaque tour d'une conversation au même fournisseur, qui garde déjà l'essentiel du prompt en cache. Une vue Sessions affiche le coût, le taux de cache et l'agent utilisé pour chaque session.",
+        "en": "Since October 18, AI Gateway sends each turn of a conversation to the same provider, which already holds most of the prompt in cache. A Sessions view shows cost, cache rate and agent used for each session."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/ai-gateway-logs-now-show-session-affinity" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Cache de prompt",
+    "definition": {
+      "fr": "Mémoire où un fournisseur d'IA garde le début d'un prompt déjà lu, pour ne pas le retraiter au tour suivant. Plus la part lue dans le cache est grande, moins la conversation coûte en calcul.",
+      "en": "Memory where an AI provider keeps the beginning of a prompt it has already read, so it doesn't reprocess it on the next turn. The larger the share read from cache, the less the conversation costs in compute."
+    }
+  },
+  "chiffre": {
+    "valeur": "8 × 8",
+    "texte": {
+      "fr": "pixels : la taille du lemming de départ, dessiné en une heure environ.",
+      "en": "pixels: the size of the original lemming, drawn in about an hour."
+    }
+  }
+}

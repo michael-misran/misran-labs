@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-19",
+  "numero": 20,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Beam : un modèle ouvert de 501 milliards de paramètres, sous licence Apache 2.0",
+    "chapo": "Reflection publie un modèle pour le code et les agents, avec un million de tokens de contexte, utilisable sans demander la permission à personne.",
+    "paragraphes": [
+      "Le 16 octobre, Hugging Face a présenté Beam, un modèle de la société Reflection. C'est un modèle « à experts » : il compte 501 milliards de paramètres au total, mais seulement 23 milliards travaillent à chaque mot produit, ce qui limite le coût de calcul. Il lit et écrit du texte uniquement, avec une fenêtre de contexte d'un million de tokens.",
+      "Le point qui compte pour un indépendant : la licence est Apache 2.0, l'une des plus permissives. Les poids sont téléchargeables sur le Hub, et le modèle tourne dès le premier jour dans transformers, vLLM et SGLang. On peut aussi l'appeler via les fournisseurs d'inférence de Hugging Face (Baseten, Fireworks, Together) ou le déployer en un clic.",
+      "Il faut mesurer l'échelle. La version la plus compacte (NVFP4) pèse environ 280 Go, et le billet suggère quatre GPU B200 comme configuration pratique. Ce n'est pas un modèle de portable : pour la plupart d'entre nous, ce sera l'API d'un fournisseur.",
+      "Les scores annoncés, comme 81,6 % sur SWE-bench Verified, viennent de l'équipe de Reflection elle-même : à vérifier sur vos propres tâches avant de s'y fier."
+    ],
+    "sources": ["https://huggingface.co/blog/reflection-beam"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "Vous avez payé 70 $ un jeu qui disparaît de la vitrine le 30 octobre",
+        "chapo": "Acheter un jeu numérique, c'est souvent obtenir une licence que l'éditeur peut éteindre.",
+        "paragraphes": [
+          "NBA 2K25 est sorti en 2024 à 70 $. Il sera retiré des boutiques numériques le 30 octobre, et ses serveurs en ligne doivent s'arrêter en décembre, soit environ deux ans après la sortie. Le 15 octobre, Engadget rapportait que l'élu new-yorkais Ritchie Torres annonçait le Power to the Players Act, qui chargerait l'autorité américaine de la consommation (FTC) de faire en sorte qu'un joueur possède ce qu'il achète et de réclamer un mode hors ligne quand les serveurs ferment.",
+          "Le texte n'a pas encore été déposé au Congrès, et une loi californienne voisine a échoué en commission en juin. En Europe, l'initiative « Stop Destroying Videogames » a recueilli plus de 1,29 million de signatures valides ; la Commission a répondu le 16 juin 2026."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un outil de « fin de vie » pour petits studios : avant la fermeture d'un jeu en ligne, il génère un serveur privé à lancer soi-même et un mode hors ligne documenté, vendu à l'éditeur comme argument de confiance. Concurrence : les projets de la communauté et les initiatives de préservation, gratuits mais artisanaux. L'angle est de le vendre aux éditeurs, qui seront bientôt obligés de s'en soucier si ces lois passent.", "plein": true },
+        "sources": ["https://engadget.com/2288193/ny-congressman-to-introduce-bill-protecting-video-game-ownership/", "https://citizens-initiative.europa.eu/news/european-commission-replies-stop-destroying-videogames-initiative-2026-06-16_cs"]
+      },
+      {
+        "type": "idee", "rubrique": "L'idée de business", "court": "Idée",
+        "titre": "Surveiller les prix de cinq concurrents pour 0,11 $ par mois",
+        "chapo": "L'API de recherche de DeepSeek rend la lecture d'une page web presque gratuite : de quoi bâtir un veilleur de prix pour un secteur précis.",
+        "paragraphes": [
+          "DeepSeek propose une API « Fetch » qui renvoie le contenu d'une page en Markdown, facturée 0,75 $ les 1 000 requêtes réussies. Les requêtes échouées ne sont pas facturées. La facturation commence le 1ᵉʳ novembre 2026 ; avant, les appels passés depuis certains outils d'agents sont gratuits.",
+          "Le calcul : 5 pages de prix lues chaque jour font 150 requêtes par mois, soit environ 0,11 $ ; 10 pages, environ 0,23 $. Le coût de la donnée n'est plus l'obstacle.",
+          "L'idée : un bulletin hebdomadaire en clair pour un métier précis (salles de sport, cabinets, petits hôtels), qui dit « votre concurrent a baissé son forfait de 10 € », sans configuration. Lancement : choisir un secteur, suivre 20 sites à la main, envoyer le premier bulletin gratuitement.",
+          "Concurrence : Visualping surveille déjà les pages (5 gratuites, 14 $ par mois pour 10). Votre différence : le secteur et le résumé en langage de métier."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
+        "sources": ["https://api-docs.deepseek.com/guides/search", "https://visualping.io/pricing"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Rétro · Design · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Rétro · le design d'un jeu", "court": "Rétro",
+        "titre": "Lemmings est né d'un pari sur la taille d'un bonhomme : 8 pixels sur 8",
+        "chapo": "Tout commence par une animation de démonstration, pas par une idée de jeu.",
+        "paragraphes": [
+          "En août 1989, DMA Design vient d'emménager dans son premier bureau et prépare Walker, un jeu de robot marcheur dans la lignée de Blood Money. Scott Johnson dessine de petits bonhommes à abattre, dans une boîte de 16 × 16 pixels.",
+          "Mike Dailly soutient qu'on peut faire plus petit : 8 × 8. Il le prouve en une heure environ, sur un Amiga emprunté pendant une pause déjeuner. Gary Timmons améliore ensuite l'animation en ajoutant, entre autres, une bouche qui mâche et une main qui applaudit.",
+          "Russell Kay lance « il y a un jeu là-dedans » et trouve le nom « Lemmings ». Fin septembre 1989, il remet la démo à Psygnosis au salon PCW. L'éditeur de niveaux reprend l'interface de Deluxe Paint, que l'équipe connaissait déjà.",
+          "Leçon : la contrainte a fait le concept, des personnages si petits qu'on les guide en foule. Selon Dailly, l'Amiga en a vendu plus de 55 000 exemplaires le premier jour."
+        ],
+        "rappel": { "annee": "1989", "texte": "Il y a 37 ans, une animation de 8 × 8 pixels devenait un jeu." },
+        "sources": ["https://lemmings.info/?p=289"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Figma Specs : le cahier des charges vit désormais sur le canvas",
+        "paragraphes": [
+          "Le 15 octobre, Figma a lancé Specs, un conteneur partagé sur le canvas qui rassemble du texte en Markdown, des diagrammes FigJam, des frames, des couches de code et des extraits Code Connect. On crée un spec en faisant glisser un fichier .md sur le canvas, ou en appuyant sur la touche D.",
+          "Les agents y ont accès : celui de Figma répond aux commentaires et modifie le texte à la demande ; via le serveur MCP, un agent de code comme Codex lit le spec et peut le mettre à jour.",
+          "C'est une bêta ouverte, sur web, bureau et mobile, réservée aux offres payantes. L'article ne donne aucune limite d'usage."
+        ],
+        "sources": ["https://www.figma.com/blog/introducing-figma-specs/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Vercel : un cache de prompt mieux exploité par défaut",
+        "paragraphes": [
+          "Depuis le 18 octobre, l'AI Gateway envoie chaque tour d'une conversation au même fournisseur, qui garde déjà l'essentiel du prompt en cache. Une vue Sessions affiche par session le coût, le taux de cache et l'agent utilisé."
+        ],
+        "sources": ["https://vercel.com/changelog/ai-gateway-logs-now-show-session-affinity"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Cache de prompt", "nature": "n. m.", "definition": "Mémoire où un fournisseur d'IA garde le début d'un prompt déjà lu, pour ne pas le retraiter au tour suivant. Plus la part lue dans le cache est grande, moins la conversation coûte en calcul." },
+    "chiffre": { "valeur": "8 × 8", "texte": "pixels : la taille du lemming de départ, dessiné en une heure environ." },
+    "bonus": { "type": "question", "texte": "Quel achat numérique avez-vous déjà perdu, ou failli perdre, parce qu'un service a fermé ou changé ses règles ? Chaque réponse est peut-être un irritant à transformer en produit." },
+    "enigme": { "question": "Je tiens dans huit pixels de côté, je marche tout droit, je creuse et je construis, mais seul, je ne sais pas m'arrêter devant le vide. Qui suis-je ?", "reponse": "un lemming" }
+  },
+  "sources": ["huggingface.co", "engadget.com", "citizens-initiative.europa.eu", "api-docs.deepseek.com", "visualping.io", "lemmings.info", "figma.com", "vercel.com"]
+}

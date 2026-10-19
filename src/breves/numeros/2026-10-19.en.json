@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-19",
+  "numero": 20,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Beam: an open 501-billion-parameter model under the Apache 2.0 license",
+    "chapo": "Reflection releases a model for code and agents, with a one-million-token context window, that anyone can use without asking permission.",
+    "paragraphes": [
+      "On October 16, Hugging Face presented Beam, a model from the company Reflection. It is a mixture-of-experts model: 501 billion parameters in total, but only 23 billion work on each word produced, which keeps the compute cost down. It reads and writes text only, with a context window of one million tokens.",
+      "What matters for an independent developer: the license is Apache 2.0, one of the most permissive. The weights can be downloaded from the Hub, and the model runs from day one in transformers, vLLM and SGLang. You can also call it through Hugging Face's inference providers (Baseten, Fireworks, Together) or deploy it in one click.",
+      "Mind the scale. The most compact version (NVFP4) weighs about 280 GB, and the post suggests four B200 GPUs as a practical setup. This is not a laptop model: for most of us, it will be a provider's API.",
+      "The announced scores, such as 81.6% on SWE-bench Verified, come from the Reflection team itself: test them on your own tasks before relying on them."
+    ],
+    "sources": ["https://huggingface.co/blog/reflection-beam"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Peeve",
+        "titre": "You paid $70 for a game that leaves the store on October 30",
+        "chapo": "Buying a digital game often means getting a license the publisher can switch off.",
+        "paragraphes": [
+          "NBA 2K25 came out in 2024 at $70. It will be pulled from digital stores on October 30, and its online servers are due to shut down in December, about two years after release. On October 15, Engadget reported that New York Rep. Ritchie Torres was announcing the Power to the Players Act, which would direct the US Federal Trade Commission (FTC) to make sure players own what they buy and to require an offline mode when servers close.",
+          "The bill has not yet been introduced in Congress, and a similar California bill failed in committee in June. In Europe, the \"Stop Destroying Videogames\" initiative gathered more than 1.29 million valid signatures; the Commission replied on June 16, 2026."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "An \"end-of-life\" tool for small studios: before an online game shuts down, it generates a private server to self-host and a documented offline mode, sold to the publisher as a trust signal. Competition: community projects and preservation efforts, free but hand-made. The angle is to sell to publishers, who will soon have to care if these laws pass.", "plein": true },
+        "sources": ["https://engadget.com/2288193/ny-congressman-to-introduce-bill-protecting-video-game-ownership/", "https://citizens-initiative.europa.eu/news/european-commission-replies-stop-destroying-videogames-initiative-2026-06-16_cs"]
+      },
+      {
+        "type": "idee", "rubrique": "The business idea", "court": "Idea",
+        "titre": "Monitoring five competitors' prices for $0.11 a month",
+        "chapo": "DeepSeek's search API makes reading a web page almost free: enough to build a price watcher for one specific industry.",
+        "paragraphes": [
+          "DeepSeek offers a \"Fetch\" API that returns a page's content as Markdown, billed at $0.75 per 1,000 successful requests. Failed requests are not billed. Billing starts on November 1, 2026; before that, calls made from certain agent tools are free.",
+          "The math: reading 5 price pages every day makes 150 requests a month, about $0.11; 10 pages, about $0.23. The cost of the data is no longer the obstacle.",
+          "The idea: a weekly plain-language bulletin for one trade (gyms, clinics, small hotels) that says \"your competitor cut its plan by €10\", with no setup. Launch: pick a sector, track 20 sites by hand, send the first bulletin for free.",
+          "Competition: Visualping already monitors pages (5 free, $14 a month for 10). Your difference: the sector and the summary in the trade's own language."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
+        "sources": ["https://api-docs.deepseek.com/guides/search", "https://visualping.io/pricing"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Retro · Design · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Retro · a game's design", "court": "Retro",
+        "titre": "Lemmings was born from a bet on the size of a little man: 8 by 8 pixels",
+        "chapo": "It all started with a demo animation, not with a game idea.",
+        "paragraphes": [
+          "In August 1989, DMA Design has just moved into its first office and is starting Walker, a walking-robot game in the line of Blood Money. Scott Johnson draws little men to shoot at, in a 16 × 16 pixel box.",
+          "Mike Dailly argues that it can be done smaller: 8 × 8. He proves it in about an hour, on an Amiga borrowed during a lunch break. Gary Timmons then improves the animation, adding among other things a chomping mouth and a clapping hand.",
+          "Russell Kay says \"there's a game in that\" and comes up with the name \"Lemmings\". In late September 1989, he hands the demo to Psygnosis at the PCW show. The level editor reuses the Deluxe Paint interface, which the team already knew.",
+          "Lesson: the constraint made the concept, characters so small you guide them as a crowd. According to Dailly, the Amiga version sold more than 55,000 copies on its first day."
+        ],
+        "rappel": { "annee": "1989", "texte": "37 years ago, an 8 × 8 pixel animation became a game." },
+        "sources": ["https://lemmings.info/?p=289"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Figma Specs: the requirements document now lives on the canvas",
+        "paragraphes": [
+          "On October 15, Figma launched Specs, a shared container on the canvas that gathers Markdown text, FigJam diagrams, frames, code layers and Code Connect snippets. You create a spec by dragging a .md file onto the canvas, or by pressing D.",
+          "Agents have access: Figma's agent answers comments and edits the text on request; through the MCP server, a coding agent such as Codex reads the spec and can update it.",
+          "It is an open beta on web, desktop and mobile, reserved for paid plans. The article gives no usage limits."
+        ],
+        "sources": ["https://www.figma.com/blog/introducing-figma-specs/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Vercel: better prompt caching by default",
+        "paragraphes": [
+          "Since October 18, AI Gateway sends each turn of a conversation to the same provider, which already holds most of the prompt in cache. A Sessions view shows cost, cache rate and agent used for each session."
+        ],
+        "sources": ["https://vercel.com/changelog/ai-gateway-logs-now-show-session-affinity"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Prompt cache", "nature": "n.", "definition": "Memory where an AI provider keeps the beginning of a prompt it has already read, so it doesn't reprocess it on the next turn. The larger the share read from cache, the less the conversation costs in compute." },
+    "chiffre": { "valeur": "8 × 8", "texte": "pixels: the size of the original lemming, drawn in about an hour." },
+    "bonus": { "type": "question", "texte": "What digital purchase have you lost, or nearly lost, because a service shut down or changed its rules? Each answer may be a pet peeve to turn into a product." },
+    "enigme": { "question": "I fit in eight pixels by eight, I walk straight ahead, I dig and I build, but alone, I never stop at the edge. Who am I?", "reponse": "a lemming" }
+  },
+  "sources": ["huggingface.co", "engadget.com", "citizens-initiative.europa.eu", "api-docs.deepseek.com", "visualping.io", "lemmings.info", "figma.com", "vercel.com"]
+}
