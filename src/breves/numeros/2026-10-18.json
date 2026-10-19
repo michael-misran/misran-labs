@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-18",
+  "numero": 19,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Perplexity ouvre le code de l'environnement isolé où tournent ses agents",
+    "chapo": "SPACE, publié le 15 octobre sous licence Apache 2.0, fait tourner chaque tâche d'agent dans sa propre micro-machine virtuelle.",
+    "paragraphes": [
+      "Le 15 octobre, Perplexity a publié SPACE, la plateforme qui exécute le code de ses agents. Chaque tâche tourne dans une microVM Firecracker, une machine virtuelle minimale qui sépare le code de l'agent du reste du serveur. Le dépôt, écrit en Rust, est ouvert sous licence Apache 2.0 : on peut l'utiliser, le modifier et l'intégrer dans un produit commercial.",
+      "Une API HTTP permet de créer un environnement Linux, d'y lancer des commandes, de lire leur sortie, puis de mettre l'environnement en pause ou de le réveiller. Perplexity annonce un temps médian de création d'environ 60 millisecondes, contre 185 auparavant, et des instantanés conservés jusqu'à une semaine. Les identifiants sont fournis de l'extérieur au moment voulu, jamais stockés dans l'environnement.",
+      "Selon Perplexity, SPACE sert sa production depuis juin 2026, et un test d'attaque en septembre (108 tentatives) n'a produit aucune évasion. Ces chiffres sont ceux de l'entreprise, pas d'un audit indépendant. Le déploiement local décrit dans le dépôt passe par Kubernetes.",
+      "Pour un développeur ou un designer qui bâtit un outil où une IA exécute du code, c'est une base de référence gratuite pour apprendre comment isoler un agent, sans payer un service tiers."
+    ],
+    "sources": ["https://cryptobriefing.com/perplexity-open-sources-space-agent-sandbox/", "https://github.com/perplexityai/space"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "Les grands paient en retard, les petits avancent l'argent",
+        "chapo": "Moins d'une grande entreprise sur deux paie ses fournisseurs dans les 60 jours légaux.",
+        "paragraphes": [
+          "Le rapport annuel de l'Observatoire des délais de paiement, remis le 23 septembre 2026 et mis en ligne le lendemain, montre des progrès lents. Les délais clients et fournisseurs ont reculé de 1,5 jour, et la part des entreprises qui paient dans le délai légal de 60 jours a gagné 2 points, pour la quatrième année de suite.",
+          "Mais moins d'une grande entreprise sur deux respecte ce délai. Selon le rapport, les PME et les microentreprises auraient disposé de 13 milliards d'euros de trésorerie en plus sans ces retards. Fin 2025, le retard moyen atteignait 13,4 jours, un peu au-dessus de la moyenne européenne.",
+          "Les contrôles de la DGCCRF confirment le malaise : 54,2 % d'anomalies relevées sur 882 établissements contrôlés, contre 42,3 % l'année précédente."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un « baromètre de payeurs » pour indépendants : on y entre ses factures, l'outil calcule le délai réel de chaque client, signale ceux qui dépassent 30 jours de moyenne et chiffre la trésorerie bloquée. Concurrence : les logiciels de facturation relancent déjà les clients ; l'angle libre est de conseiller <i>avant</i> de signer, en classant les mauvais payeurs.", "plein": true },
+        "sources": ["https://www.banque-france.fr/fr/communiques-de-presse/le-rapport-annuel-2025-de-lobservatoire-des-delais-de-paiement-des-resultats-contrastes-selon-les"]
+      },
+      {
+        "type": "idee", "rubrique": "L'idée de business", "court": "Idée",
+        "titre": "Brancher les petits commerces à la facture électronique, à forfait",
+        "paragraphes": [
+          "Depuis le 1er septembre 2026, toute entreprise, même une micro-entreprise, doit pouvoir <i>recevoir</i> des factures électroniques via une plateforme agréée. L'obligation d'<i>émettre</i> arrive le 1er septembre 2027 pour les PME, TPE et micro-entreprises.",
+          "Le logiciel n'est pas le problème : Pennylane, Qonto, Tiime, Indy et Abby annoncent des offres gratuites pour les micro-entrepreneurs (des pages de vendeurs, à vérifier). Ce qui manque, c'est quelqu'un qui le fait à leur place. L'idée : un forfait de deux heures pour une boulangerie, un artisan ou une association : choisir la plateforme, brancher la boîte de réception, envoyer une première facture de test, expliquer les statuts.",
+          "Qui paie : les petites structures sans comptable. Lancement : dix clients dans un quartier, par bouche-à-oreille, avant d'écrire la moindre ligne de code. Risque : les plateformes simplifient leur parcours et le besoin fond avant septembre 2027."
+        ],
+        "jauge": { "cout": 1, "difficulte": 1, "potentiel": 2 },
+        "sources": ["https://www.keobiz.fr/le-mag/facturation-electronique-calendrier-2026-2027/", "https://www.pennylane.com/fr/fiches-pratiques/facture-electronique/comparatif-des-plateformes-agreees", "https://www.indy.fr/guide/facturation/electronique/independants/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "IA · Tech",
+    "articles": [
+      {
+        "type": "ia", "rubrique": "L'IA en pratique", "court": "IA",
+        "titre": "Écrire la spec d'abord, laisser l'agent la tenir à jour",
+        "chapo": "Figma lance Specs : un fichier Markdown sur le canvas que designers et agents lisent tous les deux.",
+        "paragraphes": [
+          "Le 15 octobre, Figma a lancé Specs en bêta ouverte, pour les plans payants. Un fichier Markdown glissé sur le canvas devient une spec, où l'on peut aussi intégrer un cadre, un diagramme FigJam ou des couches de code. Une fois la direction validée, on colle le lien de la spec dans le prompt d'un agent de code : le texte et les cadres suivent via le serveur MCP de Figma.",
+          "L'ingénieur Noah Finer, de Figma, raconte avoir écrit une spec pour son agent, puis l'avoir mise à jour par MCP pendant le développement. Même sans Figma, la méthode se copie avec un simple fichier SPEC.md à la racine du projet."
+        ],
+        "encadre": { "titre": "La méthode", "texte": "<b>1.</b> Écrire en dix lignes ce que l'on veut, et ce que l'on ne veut pas. <b>2.</b> Donner ce fichier à l'agent avant la première consigne. <b>3.</b> Lui demander de mettre la spec à jour dès qu'un nom ou une décision change." },
+        "sources": ["https://www.figma.com/blog/introducing-figma-specs/"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "dotnetup : un gestionnaire de versions pour .NET, sans droits administrateur",
+        "paragraphes": [
+          "Le 15 octobre, Microsoft a présenté dotnetup, en préversion publique. Il installe et met à jour les SDK et runtimes .NET dans le compte de l'utilisateur, sans droits administrateur, à la manière de rustup ou nvm, et respecte les fichiers <i>global.json</i>.",
+          "Le script d'installation est donné pour macOS, Linux et PowerShell ; la gestion des installations système de Windows est annoncée pour plus tard. Point d'attention : mettre à jour la machine ne corrige pas une application déjà déployée en mode autonome, qu'il faut recompiler."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Quand les versions se gèrent en une commande, les équipes testent plus vite plusieurs versions : de la place pour des outils qui vérifient la compatibilité d'un projet avant chaque mise à jour.", "plein": true },
+        "sources": ["https://devblogs.microsoft.com/dotnet/introducing-dotnetup/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "GitHub Actions : l'image Xcode 27 est disponible pour tous",
+        "paragraphes": [
+          "Le 15 octobre, GitHub a déclaré l'image de runner Xcode 27 (macOS 27) en disponibilité générale. Les étiquettes sont <i>xcode-27</i> et <i>xcode-27-xlarge</i>, uniquement sur Apple Silicon."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-15-xcode-27-runner-image-generally-available"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "MicroVM", "nature": "n. f.", "definition": "Machine virtuelle réduite à l'essentiel, avec son propre noyau Linux, qui démarre très vite et isole un programme du reste de la machine au niveau matériel. SPACE de Perplexity en lance une par tâche d'agent (p. 1)." },
+    "chiffre": { "valeur": "108", "texte": "Attaques testées sur SPACE en septembre : aucune évasion." },
+    "bonus": { "type": "question", "texte": "Quel client ou fournisseur de votre entourage paie toujours en retard ? Notez son délai réel moyen sur les trois derniers mois : c'est le premier chiffre d'un baromètre de payeurs." },
+    "enigme": { "question": "On me crée en soixante millisecondes, on m'enferme avec mes commandes, et ce que je fais chez moi ne sort pas. Qui suis-je ?", "reponse": "l'environnement isolé d'un agent, la microVM (p. 1)" }
+  },
+  "sources": ["cryptobriefing.com", "github.com", "banque-france.fr", "keobiz.fr", "pennylane.com", "indy.fr", "figma.com", "microsoft.com", "github.blog"]
+}
