@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-18",
+  "numero": 19,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Perplexity opens the code of the isolated environment where its agents run",
+    "chapo": "SPACE, released on October 15 under the Apache 2.0 license, runs each agent task in its own micro virtual machine.",
+    "paragraphes": [
+      "On October 15, Perplexity released SPACE, the platform that executes its agents' code. Each task runs in a Firecracker microVM, a minimal virtual machine that separates the agent's code from the rest of the server. The repository, written in Rust, is open under the Apache 2.0 license: it can be used, modified and built into a commercial product.",
+      "An HTTP API creates a Linux environment, runs commands in it, reads their output, then pauses or wakes the environment. Perplexity reports a median creation time of about 60 milliseconds, down from 185, and snapshots kept for up to a week. Credentials are supplied from outside at the moment they are needed, never stored inside the environment.",
+      "According to Perplexity, SPACE has served its production traffic since June 2026, and a September attack test (108 attempts) produced no escape. These figures come from the company, not from an independent audit. The local deployment described in the repository goes through Kubernetes.",
+      "For a developer or designer building a tool where an AI runs code, this is a free reference for learning how to isolate an agent without paying for a third-party service."
+    ],
+    "sources": ["https://cryptobriefing.com/perplexity-open-sources-space-agent-sandbox/", "https://github.com/perplexityai/space"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve",
+        "titre": "Big companies pay late, small ones front the cash",
+        "chapo": "Fewer than one large company in two pays its suppliers within the legal 60 days.",
+        "paragraphes": [
+          "The annual report of France's Observatory of Payment Times, handed over on September 23, 2026 and put online the next day, shows slow progress. Customer and supplier payment times fell by 1.5 days, and the share of companies paying within the legal 60-day limit rose by 2 points, for the fourth year running.",
+          "But fewer than one large company in two meets that limit. According to the report, small and micro businesses would have had 13 billion euros more in cash without late payments. At the end of 2025, the average delay was 13.4 days, slightly above the European average.",
+          "Inspections by the consumer-fraud authority (DGCCRF) confirm the unease: 54.2% of the 882 establishments checked showed anomalies, against 42.3% the year before."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A “payer barometer” for freelancers: you enter your invoices, the tool computes each client's real payment time, flags those averaging over 30 days and puts a figure on the cash tied up. Competition: invoicing software already sends reminders; the open angle is advising <i>before</i> signing, by ranking bad payers.", "plein": true },
+        "sources": ["https://www.banque-france.fr/fr/communiques-de-presse/le-rapport-annuel-2025-de-lobservatoire-des-delais-de-paiement-des-resultats-contrastes-selon-les"]
+      },
+      {
+        "type": "idee", "rubrique": "The business idea", "court": "Idea",
+        "titre": "Plugging small shops into e-invoicing, for a flat fee",
+        "paragraphes": [
+          "Since September 1, 2026, every company in France, even a micro-business, must be able to <i>receive</i> electronic invoices through an approved platform. The obligation to <i>issue</i> them arrives on September 1, 2027 for small and medium businesses and micro-businesses.",
+          "Software is not the problem: Pennylane, Qonto, Tiime, Indy and Abby advertise free plans for micro-entrepreneurs (vendor pages, to be checked). What is missing is someone to do it for them. The idea: a two-hour package for a bakery, a craftsperson or a non-profit: choose the platform, connect the inbox, send a first test invoice, explain the statuses.",
+          "Who pays: small businesses without an accountant. Launch: ten clients in one neighborhood by word of mouth, before writing a line of code. Risk: the platforms simplify their onboarding and the need melts away before September 2027."
+        ],
+        "jauge": { "cout": 1, "difficulte": 1, "potentiel": 2 },
+        "sources": ["https://www.keobiz.fr/le-mag/facturation-electronique-calendrier-2026-2027/", "https://www.pennylane.com/fr/fiches-pratiques/facture-electronique/comparatif-des-plateformes-agreees", "https://www.indy.fr/guide/facturation/electronique/independants/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "AI · Tech",
+    "articles": [
+      {
+        "type": "ia", "rubrique": "AI in practice", "court": "AI",
+        "titre": "Write the spec first, let the agent keep it up to date",
+        "chapo": "Figma launches Specs: a Markdown file on the canvas that designers and agents both read.",
+        "paragraphes": [
+          "On October 15, Figma launched Specs in open beta, for paid plans. A Markdown file dropped onto the canvas becomes a spec, where you can also embed a frame, a FigJam diagram or code layers. Once the direction is settled, you paste the spec's link into a coding agent's prompt: the text and frames follow through Figma's MCP server.",
+          "Figma engineer Noah Finer describes writing a spec for his agent, then updating it through MCP during development. Even without Figma, the method works with a plain SPEC.md file at the root of the project."
+        ],
+        "encadre": { "titre": "The method", "texte": "<b>1.</b> Write in ten lines what you want, and what you don't. <b>2.</b> Give that file to the agent before the first instruction. <b>3.</b> Ask it to update the spec whenever a name or a decision changes." },
+        "sources": ["https://www.figma.com/blog/introducing-figma-specs/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "dotnetup: a version manager for .NET, with no admin rights",
+        "paragraphes": [
+          "On October 15, Microsoft introduced dotnetup, in public preview. It installs and updates .NET SDKs and runtimes in the user's own account, without administrator rights, in the manner of rustup or nvm, and respects <i>global.json</i> files.",
+          "The install script is provided for macOS, Linux and PowerShell; managing Windows system installs is announced for later. One caution: updating the machine does not patch an application already deployed as self-contained, which has to be rebuilt."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "When versions are managed with one command, teams test several versions faster: room for tools that check a project's compatibility before each update.", "plein": true },
+        "sources": ["https://devblogs.microsoft.com/dotnet/introducing-dotnetup/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "GitHub Actions: the Xcode 27 image is available to everyone",
+        "paragraphes": [
+          "On October 15, GitHub declared the Xcode 27 runner image (macOS 27) generally available. The labels are <i>xcode-27</i> and <i>xcode-27-xlarge</i>, on Apple Silicon only."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-15-xcode-27-runner-image-generally-available"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "MicroVM", "nature": "n.", "definition": "A virtual machine stripped to the essentials, with its own Linux kernel, that starts very fast and isolates a program from the rest of the machine at the hardware level. Perplexity's SPACE launches one per agent task (p. 1)." },
+    "chiffre": { "valeur": "108", "texte": "Attacks tested on SPACE in September: no escape." },
+    "bonus": { "type": "question", "texte": "Which client or supplier around you always pays late? Write down their real average delay over the last three months: it is the first figure of a payer barometer." },
+    "enigme": { "question": "I am created in sixty milliseconds, locked in with my commands, and what I do at home never gets out. Who am I?", "reponse": "an agent's isolated environment, the microVM (p. 1)" }
+  },
+  "sources": ["cryptobriefing.com", "github.com", "banque-france.fr", "keobiz.fr", "pennylane.com", "indy.fr", "figma.com", "microsoft.com", "github.blog"]
+}

@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-18",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Perplexity publie le code de SPACE, l'environnement isolé de ses agents",
+        "en": "Perplexity publishes the code of SPACE, the isolated environment for its agents"
+      },
+      "resume": {
+        "fr": "Le 15 octobre, Perplexity a ouvert SPACE sous licence Apache 2.0. Chaque tâche d'agent y tourne dans une microVM Firecracker, créée en environ 60 millisecondes selon l'entreprise. Ces chiffres sont ceux de Perplexity, pas d'un audit indépendant.",
+        "en": "On October 15, Perplexity released SPACE under the Apache 2.0 license. Each agent task runs in a Firecracker microVM, created in about 60 milliseconds according to the company. These figures come from Perplexity, not from an independent audit."
+      },
+      "sources": [
+        { "titre": "Crypto Briefing", "url": "https://cryptobriefing.com/perplexity-open-sources-space-agent-sandbox/" },
+        { "titre": "GitHub", "url": "https://github.com/perplexityai/space" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "dotnetup : un gestionnaire de versions pour .NET, sans droits administrateur",
+        "en": "dotnetup: a version manager for .NET, with no admin rights"
+      },
+      "resume": {
+        "fr": "Microsoft a présenté dotnetup le 15 octobre, en préversion publique. Il installe et met à jour les SDK et runtimes .NET dans le compte de l'utilisateur, à la manière de rustup ou nvm. La gestion des installations système de Windows viendra plus tard.",
+        "en": "Microsoft introduced dotnetup on October 15, in public preview. It installs and updates .NET SDKs and runtimes in the user's own account, like rustup or nvm. Managing Windows system installs will come later."
+      },
+      "sources": [
+        { "titre": "Microsoft .NET Blog", "url": "https://devblogs.microsoft.com/dotnet/introducing-dotnetup/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "GitHub Actions : l'image Xcode 27 est disponible pour tous",
+        "en": "GitHub Actions: the Xcode 27 image is available to everyone"
+      },
+      "resume": {
+        "fr": "Le 15 octobre, GitHub a déclaré l'image de runner Xcode 27 (macOS 27) en disponibilité générale. Les étiquettes sont xcode-27 et xcode-27-xlarge, uniquement sur Apple Silicon.",
+        "en": "On October 15, GitHub made the Xcode 27 runner image (macOS 27) generally available. The labels are xcode-27 and xcode-27-xlarge, on Apple Silicon only."
+      },
+      "sources": [
+        { "titre": "GitHub Changelog", "url": "https://github.blog/changelog/2026-10-15-xcode-27-runner-image-generally-available" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "MicroVM",
+    "definition": {
+      "fr": "Machine virtuelle réduite à l'essentiel, avec son propre noyau Linux, qui démarre très vite et isole un programme du reste de la machine au niveau matériel. SPACE de Perplexity en lance une par tâche d'agent.",
+      "en": "A virtual machine stripped to the essentials, with its own Linux kernel, that starts very fast and isolates a program from the rest of the machine at the hardware level. Perplexity's SPACE launches one per agent task."
+    }
+  },
+  "chiffre": {
+    "valeur": "108",
+    "texte": {
+      "fr": "Attaques testées sur SPACE en septembre : aucune évasion.",
+      "en": "Attacks tested on SPACE in September: none escaped."
+    }
+  }
+}
