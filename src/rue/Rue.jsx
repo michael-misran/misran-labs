@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useLanguage } from '../shell/LanguageContext'
 import Logo1977 from '../shell/Logo1977'
+import { LEDS_RUE_NOEL } from './leds-noel'
+import { FLAMMES_RUE_HALLOWEEN } from './lumieres-halloween'
 import './rue.css'
 
 // Page d'accueil : la rue de 1977 Éditions (illustration Gemini). Deux
@@ -28,8 +30,25 @@ const SAISONS = [
     ],
     // Gemini a peint un fantôme sur le chevalet : pas de texte à la craie par-dessus
     sansArdoisePied: true,
+    // Petites flammes qui vacillent + feuilles mortes emportées par le vent de temps en temps
+    flammes: FLAMMES_RUE_HALLOWEEN,
+    feuilles: true,
   },
-  // Noël : image à refaire, alignée sur la version normale (du 12-01 au 01-06)
+  // Noël : retouche ChatGPT de la rue normale, alignée au pixel, agrandie avec Upscayl
+  // Ampoules des guirlandes qui scintillent + neige qui tombe (en CSS, rien à charger)
+  { id: 'noel', image: '/rue/rue-noel.jpg', du: '12-01', au: '01-06', lueurs: [], leds: LEDS_RUE_NOEL, neige: true },
+]
+
+// Feuilles mortes (Halloween) : hauteur de départ en %, taille, couleur et rythme.
+// Elles traversent l'écran par rafales : chacune n'est visible qu'une partie de son cycle.
+const FEUILLES = [
+  { y: 18, taille: 4.2, couleur: 'orange', delai: 2, duree: 16 },
+  { y: 32, taille: 3.4, couleur: 'rouge', delai: 3.2, duree: 16 },
+  { y: 9, taille: 2.9, couleur: 'jaune', delai: 4.1, duree: 16 },
+  { y: 46, taille: 3.8, couleur: 'brun', delai: 2.6, duree: 16 },
+  { y: 26, taille: 2.6, couleur: 'orange', delai: 11, duree: 19 },
+  { y: 55, taille: 3.5, couleur: 'rouge', delai: 12.4, duree: 19 },
+  { y: 38, taille: 3.0, couleur: 'jaune', delai: 13.1, duree: 19 },
 ]
 
 function saisonDuJour(date = new Date()) {
@@ -84,7 +103,9 @@ export default function Rue() {
   // Image de saison absente : retour à la rue normale
   const [enEchec, setEnEchec] = useState(null)
   const image = saison.image !== enEchec ? saison.image : NORMALE.image
-  const lueurs = image === saison.image ? saison.lueurs : []
+  // Décors animés seulement si l'image de la saison est bien affichée
+  const decor = image === saison.image
+  const lueurs = decor ? saison.lueurs : []
 
   // Entrée dans une boutique : zoom vers sa porte, fondu, puis changement de page
   const [entree, setEntree] = useState(null)
@@ -144,6 +165,39 @@ export default function Rue() {
             <p className="rue-ardoise rue-ardoise-mur">{T.ardoiseMur[lang].map((l, i) => <span key={i}>{l}</span>)}</p>
             {!(image === saison.image && saison.sansArdoisePied) && (
               <p className="rue-ardoise rue-ardoise-pied">{T.ardoisePied[lang].map((l, i) => <span key={i}>{l}</span>)}</p>
+            )}
+            {decor && saison.leds?.map(([x, y], i) => (
+              <span
+                key={`led-${i}`}
+                className="rue-led"
+                aria-hidden="true"
+                style={{ left: `${x}%`, top: `${y}%`, animationDuration: `${1.6 + ((i * 7) % 11) * 0.23}s`, animationDelay: `${-((i * 13) % 17) * 0.29}s` }}
+              />
+            ))}
+            {decor && saison.flammes?.map(([x, y], i) => (
+              <span
+                key={`flamme-${i}`}
+                className="rue-flamme"
+                aria-hidden="true"
+                style={{ left: `${x}%`, top: `${y}%`, animationDuration: `${1.3 + ((i * 7) % 9) * 0.17}s`, animationDelay: `${-((i * 11) % 13) * 0.21}s` }}
+              />
+            ))}
+            {decor && saison.neige && <div className="rue-neige" aria-hidden="true" />}
+            {decor && saison.feuilles && (
+              <div className="rue-feuilles" aria-hidden="true">
+                {FEUILLES.map((f, i) => (
+                  <svg
+                    key={i}
+                    viewBox="0 0 24 24"
+                    className={`rue-feuille rue-feuille-${f.couleur}`}
+                    style={{ top: `${f.y}%`, '--taille': `${f.taille}cqh`, animationDelay: `${f.delai}s`, animationDuration: `${f.duree}s` }}
+                  >
+                    {/* Feuille et sa nervure */}
+                    <path d="M12 1c6 4 9 11 2 19l-1 3h-2l-1-3C3 12 6 5 12 1z" fill="currentColor" stroke="#2a1608" strokeWidth="1.2" strokeLinejoin="round" />
+                    <path d="M12 4v17" stroke="rgba(60,25,10,.45)" strokeWidth="1" fill="none" />
+                  </svg>
+                ))}
+              </div>
             )}
             {lueurs.map(([x, y, l], i) => (
               <span key={i} className="rue-lueur" aria-hidden="true" style={{ left: `${x}%`, top: `${y}%`, width: `${l}%`, animationDelay: `${-i * 0.6}s` }} />
