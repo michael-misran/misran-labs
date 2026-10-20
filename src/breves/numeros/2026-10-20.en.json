@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-20",
+  "numero": 21,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "OpenAI: successful COBOL migrations go from 5% to 87%",
+    "chapo": "Two evaluations measure how well models build and migrate code in rare languages. One of them is public.",
+    "paragraphes": [
+      "On October 19, OpenAI published a study on \"low-resource\" programming languages: COBOL, Fortran and Visual Basic, scarce in training data yet still at the heart of banking and scientific systems. The company cites IBM figures: COBOL would sit behind more than 40% of online banking systems.",
+      "First test, MultiLangBench: the model must build a SQLite-compatible database engine from scratch in 20 languages. GPT‑6 Astra passes 87.4% of tests on average, against 26.8% for GPT‑5.6 Sol. In COBOL, the score goes from 10.9% to 72.1%.",
+      "Second test: migrate COBOL programs to C++, Java, Kotlin, Python or Rust with byte-for-byte identical results. GPT‑6.1 Sol succeeds 86.6% of the time at low reasoning effort (5.4% for its predecessor) and 97.9% at higher effort. The classic trap: COBOL's fixed-point arithmetic truncates decimals, while a rewrite that rounds runs without errors but changes the amounts.",
+      "For developers, the most useful part is MultiLangBench, published on GitHub: you can test a model on your own languages. OpenAI's own caveat: a production migration still needs expert review."
+    ],
+    "sources": ["https://openai.com/index/low-resource-programming-languages/"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Peeve",
+        "titre": "Proving you were allowed to call",
+        "chapo": "Since August 11, cold-calling a consumer in France requires prior consent, and the proof must be kept for three years.",
+        "paragraphes": [
+          "For consumers, the annoyance flips: no more Bloctel list to sign up to, commercial calls are banned without consent. For small businesses that still prospect by phone, it begins. Consent must be free, specific, informed, unambiguous and revocable, valid for one year at most, and can be withdrawn even orally.",
+          "The burden falls on the company: date, time and the information provided must be kept for at least three years, in a verifiable way. Calling hours are unchanged (Monday to Friday, 10 a.m. to 1 p.m. and 2 p.m. to 8 p.m., at most four calls per consumer over thirty days). Announced penalties go up to €75,000 per call for an individual and €375,000 for a company.",
+          "One exception worth noting: prospecting between businesses is not covered by this regime."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A low-cost consent register for tradespeople, brokers and freelancers: it records the agreement (date, time, text shown), warns before the one-year expiry and handles withdrawal. Competition: customer relationship software, to be checked one by one to see which already cover this case. The angle is simplicity for those without a CRM.", "plein": true },
+        "sources": ["https://www.blogdumoderateur.com/demarchage-telephonique-fin-bloctel-11-aout/"]
+      },
+      {
+        "type": "etude", "rubrique": "Case study", "court": "Case",
+        "titre": "Tech Lockdown: a blocker for adults worth $20,000 a month",
+        "chapo": "Born from free content written to solve its founder's own problem.",
+        "paragraphes": [
+          "During the 2020 lockdowns, Ben Bozzay, working from home, wanted stricter guardrails on his own internet use; being technical, he applied enterprise-style controls to his devices. He wrote about it on Medium, Reddit and YouTube, then sold paid guides and a membership, before adding DNS filtering.",
+          "According to a Niche Pursuits interview published on July 8, 2026, the product generates about $20,000 in monthly recurring revenue. When he was laid off in 2023, it had about 300 customers and made under $2,000 a month in profit. The main channel is organic search, with up to 70,000 organic visitors a month at one point.",
+          "Lessons: targeting adults who want to restrict themselves, not parental control, gave a sharp positioning; free content builds trust before the sale. Downsides: the paid guides mostly saved buyers setup time, hence the move to software, and traffic has been shaken by Google's AI summaries. Figures reported by the founder."
+        ],
+        "sources": ["https://www.nichepursuits.com/ben-bozzay/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Dev · Tech",
+    "articles": [
+      {
+        "type": "dev", "rubrique": "Dev tool or tip", "court": "Tool",
+        "titre": "Node.js: high-severity fixes expected tomorrow",
+        "chapo": "The 26, 24 and 22 lines will each get a HIGH-severity fix, starting October 21.",
+        "paragraphes": [
+          "The Node.js project announced (page updated October 14) a set of security releases for Wednesday, October 21, 2026, \"on or shortly after.\" They cover the 26.x, 24.x and 22.x lines; the highest severity fixed is HIGH. The number of flaws is not stated.",
+          "Tip of the day: find out now where Node lives in your setup, not after the release. Check the version in <i>.nvmrc</i> or <i>engines</i>, in the Docker image and in CI. The project reminds readers that end-of-life versions are always affected by security issues: if one of your projects depends on one, today is a good day to plan the upgrade.",
+          "To be notified, the project recommends subscribing to the <i>nodejs-sec</i> list."
+        ],
+        "sources": ["https://nodejs.org/en/blog/vulnerability/october-2026-security-releases"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "GitHub may require a token to clone a public repo",
+        "paragraphes": [
+          "On October 19, GitHub warned that during unusual traffic spikes, some unauthenticated HTTPS clones and fetches of public repositories may fail. Authenticated operations, SSH and pushes are not affected; how long the measure lasts is not stated.",
+          "For pipelines, GitHub recommends <i>GITHUB_TOKEN</i> in Actions and, elsewhere, a GitHub App installation token (a personal token also works). Without it, a build that clones a public repo can fail one day with no code change."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "Builds that break because of a third party are a team-level annoyance: monitoring and authenticating a CI's dependencies is a service you can sell.", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-19-some-git-over-https-may-temporarily-require-authentication"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Copilot: model policies can now be managed by API",
+        "paragraphes": [
+          "Announced on October 19, the Copilot model policies REST API is generally available: read and update (GET and PATCH) for enterprises, their teams, their apps and organizations. An enterprise policy can delegate model choice to organizations or to teams."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Opt-in", "nature": "n.", "definition": "The principle that a person can only be contacted after giving prior consent, as opposed to opt-out, where you contact them until they object. For phone cold-calling of consumers, France moved to opt-in on August 11, 2026." },
+    "chiffre": { "valeur": "87.4%", "texte": "pass rate for GPT‑6 Astra across 20 languages (26.8% before)." },
+    "bonus": { "type": "defi", "texte": "In under 30 minutes: search your repos for CI workflows that clone a public repo over HTTPS, for example with <i>grep -rn \"git clone https\" .github</i>. Which ones do it without a token?" },
+    "enigme": { "question": "I am a promise you must be able to show for three years; without me, the phone must stay silent, and I can be withdrawn with a single word. What am I?", "reponse": "consent" }
+  },
+  "sources": ["openai.com", "blogdumoderateur.com", "nichepursuits.com", "nodejs.org", "github.blog"]
+}
