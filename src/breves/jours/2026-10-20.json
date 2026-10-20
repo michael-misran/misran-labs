@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-20",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "OpenAI : les migrations COBOL réussies passent de 5 % à 87 %",
+        "en": "OpenAI: successful COBOL migrations go from 5% to 87%"
+      },
+      "resume": {
+        "fr": "Le 19 octobre, OpenAI a publié deux évaluations sur les langages rares. GPT‑6.1 Sol réussit 86,6 % des migrations COBOL à faible effort de réflexion, contre 5,4 % pour GPT‑5.6 Sol. MultiLangBench, qui teste 20 langages, est publié sur GitHub.",
+        "en": "On October 19, OpenAI published two evaluations on rare languages. GPT‑6.1 Sol succeeds on 86.6% of COBOL migrations at low reasoning effort, against 5.4% for GPT‑5.6 Sol. MultiLangBench, which tests 20 languages, is published on GitHub."
+      },
+      "sources": [
+        { "titre": "OpenAI", "url": "https://openai.com/index/low-resource-programming-languages/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "GitHub peut exiger un jeton pour cloner un dépôt public",
+        "en": "GitHub may require a token to clone a public repo"
+      },
+      "resume": {
+        "fr": "Depuis le 19 octobre, lors de pics de trafic inhabituels, certains clones et fetch HTTPS non authentifiés de dépôts publics peuvent échouer. SSH et les opérations authentifiées ne sont pas touchés. Dans Actions, GitHub conseille le GITHUB_TOKEN.",
+        "en": "Since October 19, during unusual traffic spikes, some unauthenticated HTTPS clones and fetches of public repositories may fail. SSH and authenticated operations are not affected. In Actions, GitHub recommends GITHUB_TOKEN."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-19-some-git-over-https-may-temporarily-require-authentication" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Copilot : les politiques de modèles se gèrent par API",
+        "en": "Copilot: model policies can now be managed by API"
+      },
+      "resume": {
+        "fr": "Annoncée le 19 octobre, l'API REST des politiques de modèles Copilot est en disponibilité générale pour les entreprises, leurs équipes, leurs applications et les organisations. Une politique d'entreprise peut déléguer le choix des modèles.",
+        "en": "Announced on October 19, the Copilot model policies REST API is generally available for enterprises, their teams, their apps and organizations. An enterprise policy can delegate model choice."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Opt-in",
+    "definition": {
+      "fr": "Principe selon lequel on ne peut contacter une personne qu'après son accord préalable, par opposition à l'opt-out, où l'on contacte tant qu'elle ne s'y oppose pas. Pour le démarchage téléphonique des particuliers, la France est passée à l'opt-in le 11 août 2026.",
+      "en": "The principle that a person can only be contacted after giving prior consent, as opposed to opt-out, where you contact them until they object. For phone cold-calling of consumers, France moved to opt-in on August 11, 2026."
+    }
+  },
+  "chiffre": {
+    "valeur": "87,4 %",
+    "texte": {
+      "fr": "de réussite pour GPT‑6 Astra sur 20 langages (26,8 % avant).",
+      "en": "pass rate for GPT‑6 Astra across 20 languages (26.8% before)."
+    }
+  }
+}

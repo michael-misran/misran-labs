@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-20",
+  "numero": 21,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "OpenAI : les migrations COBOL réussies passent de 5 % à 87 %",
+    "chapo": "Deux évaluations mesurent la capacité des modèles à construire et à migrer du code dans des langages rares. L'une est publique.",
+    "paragraphes": [
+      "Le 19 octobre, OpenAI a publié une étude sur les langages « à faibles ressources » : COBOL, Fortran, Visual Basic, peu présents dans les données d'entraînement, mais encore au cœur de systèmes bancaires et scientifiques. L'entreprise cite des chiffres d'IBM : le COBOL serait derrière plus de 40 % des systèmes bancaires en ligne.",
+      "Premier test, MultiLangBench : le modèle doit écrire un moteur de base de données compatible SQLite, de zéro, dans 20 langages. GPT‑6 Astra atteint 87,4 % de tests réussis en moyenne, contre 26,8 % pour GPT‑5.6 Sol. En COBOL, le score passe de 10,9 % à 72,1 %.",
+      "Second test : migrer des programmes COBOL vers C++, Java, Kotlin, Python ou Rust avec des résultats identiques à l'octet près. GPT‑6.1 Sol réussit 86,6 % au plus bas niveau de réflexion (5,4 % pour son prédécesseur) et 97,9 % au niveau supérieur. Le piège type : l'arithmétique à virgule fixe du COBOL tronque les décimales, alors qu'une réécriture qui arrondit tourne sans erreur mais change les montants.",
+      "Pour un développeur, le plus utile est MultiLangBench, publié sur GitHub : on peut tester un modèle sur ses propres langages. Précaution d'OpenAI elle-même : une migration en production exige encore une relecture d'expert."
+    ],
+    "sources": ["https://openai.com/index/low-resource-programming-languages/"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "Prouver qu'on vous a demandé la permission d'appeler",
+        "chapo": "Depuis le 11 août, démarcher un particulier par téléphone exige son accord préalable, et la preuve se garde trois ans.",
+        "paragraphes": [
+          "Pour les particuliers, l'irritant s'inverse : plus de liste Bloctel à remplir, l'appel commercial est interdit sans consentement. Pour les petites entreprises qui prospectent encore au téléphone, il commence. Le consentement doit être libre, spécifique, éclairé, univoque et révocable, valable un an au plus, et révocable même à l'oral.",
+          "Le fardeau est pour l'entreprise : date, heure et informations transmises doivent être conservées au moins trois ans, de façon vérifiable. Les règles d'horaires restent les mêmes (du lundi au vendredi, de 10 h à 13 h et de 14 h à 20 h, quatre appels au plus par consommateur sur trente jours). Les sanctions annoncées montent jusqu'à 75 000 € par appel pour une personne physique et 375 000 € pour une personne morale.",
+          "Une exception à noter : la prospection entre professionnels n'est pas concernée par ce régime."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un registre de consentement à bas prix pour artisans, courtiers et indépendants : il enregistre l'accord (date, heure, texte montré), prévient avant l'expiration d'un an et gère le retrait. Concurrence : les logiciels de gestion de la relation client, à vérifier un par un pour voir lesquels couvrent déjà ce cas. L'angle est la simplicité pour ceux qui n'ont pas de CRM.", "plein": true },
+        "sources": ["https://www.blogdumoderateur.com/demarchage-telephonique-fin-bloctel-11-aout/"]
+      },
+      {
+        "type": "etude", "rubrique": "L'étude de cas", "court": "Étude",
+        "titre": "Tech Lockdown : un bloqueur pour adultes qui vaut 20 000 $ par mois",
+        "chapo": "Né de contenus gratuits écrits pour résoudre le problème de son fondateur.",
+        "paragraphes": [
+          "Pendant les confinements de 2020, Ben Bozzay, qui travaillait depuis chez lui, voulait se fixer des garde-fous plus stricts sur son usage d'Internet ; technicien, il a appliqué à ses appareils des contrôles de type entreprise. Il a écrit sur le sujet sur Medium, Reddit et YouTube, puis vendu des guides payants et une adhésion, avant d'ajouter un filtrage DNS.",
+          "Selon un entretien de Niche Pursuits publié le 8 juillet 2026, le produit génère environ 20 000 $ de revenu mensuel récurrent. À son licenciement en 2023, il comptait environ 300 clients et dégageait moins de 2 000 $ de bénéfice par mois. Le canal principal est le référencement naturel, avec jusqu'à 70 000 visiteurs organiques mensuels à un moment donné.",
+          "Leçons : cibler les adultes qui veulent se restreindre eux-mêmes, et non le contrôle parental, a donné un positionnement net ; le contenu gratuit crée la confiance avant la vente. Revers : les guides payants faisaient surtout gagner du temps de configuration, d'où le passage au logiciel, et le trafic a été secoué par les résumés d'IA de Google. Chiffres déclarés par le fondateur."
+        ],
+        "sources": ["https://www.nichepursuits.com/ben-bozzay/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Dev · Tech",
+    "articles": [
+      {
+        "type": "dev", "rubrique": "Outil ou astuce dev", "court": "Outil",
+        "titre": "Node.js : des correctifs de sévérité haute attendus demain",
+        "chapo": "Les branches 26, 24 et 22 recevront chacune un correctif de gravité HIGH, à partir du 21 octobre.",
+        "paragraphes": [
+          "Le projet Node.js a annoncé (page mise à jour le 14 octobre) une série de versions de sécurité pour le mercredi 21 octobre 2026, « ou peu après ». Elle concerne les lignes 26.x, 24.x et 22.x ; la gravité la plus élevée corrigée est HIGH. Le nombre de failles n'est pas précisé.",
+          "Astuce du jour : repérez maintenant où vit Node chez vous, pas après la sortie. Vérifiez la version dans <i>.nvmrc</i> ou <i>engines</i>, dans l'image Docker et dans la CI. Le projet rappelle que les versions en fin de vie sont toujours affectées par les failles de sécurité : si l'un de vos projets en dépend, le jour est bon pour planifier la montée de version.",
+          "Pour être prévenu, le projet recommande de s'abonner à la liste <i>nodejs-sec</i>."
+        ],
+        "sources": ["https://nodejs.org/en/blog/vulnerability/october-2026-security-releases"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "GitHub peut exiger un jeton pour cloner un dépôt public",
+        "paragraphes": [
+          "Le 19 octobre, GitHub a prévenu que, lors de pics de trafic inhabituels, certains clones et fetch en HTTPS de dépôts publics, faits sans authentification, peuvent échouer. Les opérations authentifiées, SSH et les pushes ne sont pas touchés ; la durée de la mesure n'est pas précisée.",
+          "Pour les pipelines, GitHub conseille le <i>GITHUB_TOKEN</i> dans Actions et, ailleurs, un jeton d'installation d'une GitHub App (un jeton personnel marche aussi). Sans cela, un build qui clone un dépôt public peut tomber un jour sans changement de code."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Les builds qui cassent à cause d'un tiers sont un irritant d'équipe : surveiller et authentifier les dépendances d'une CI est un service qu'on peut vendre.", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-19-some-git-over-https-may-temporarily-require-authentication"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Copilot : les politiques de modèles se gèrent par API",
+        "paragraphes": [
+          "Annoncée le 19 octobre, l'API REST des politiques de modèles Copilot est en disponibilité générale : lecture et modification (GET et PATCH) pour les entreprises, leurs équipes, leurs applications et les organisations. Une politique d'entreprise peut déléguer le choix des modèles aux organisations ou aux équipes."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Opt-in", "nature": "n. m.", "definition": "Principe selon lequel on ne peut contacter une personne qu'après son accord préalable, par opposition à l'opt-out, où l'on contacte tant qu'elle ne s'y oppose pas. Pour le démarchage téléphonique des particuliers, la France est passée à l'opt-in le 11 août 2026." },
+    "chiffre": { "valeur": "87,4 %", "texte": "de réussite pour GPT‑6 Astra sur 20 langages (26,8 % avant)." },
+    "bonus": { "type": "defi", "texte": "En moins de 30 minutes : cherchez dans vos dépôts les workflows de CI qui clonent un dépôt public en HTTPS, par exemple avec <i>grep -rn \"git clone https\" .github</i>. Lesquels le font sans jeton ?" },
+    "enigme": { "question": "Je suis une promesse que l'on doit pouvoir montrer pendant trois ans ; sans moi, le téléphone doit rester muet, et je peux être retiré d'un simple mot. Qui suis-je ?", "reponse": "le consentement" }
+  },
+  "sources": ["openai.com", "blogdumoderateur.com", "nichepursuits.com", "nodejs.org", "github.blog"]
+}
