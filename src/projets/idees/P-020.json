@@ -1,0 +1,23 @@
+{
+  "id": "P-020",
+  "date": "2026-10-20",
+  "titre": {
+    "fr": "Un mode éditeur en direct pour les tokens visuels du site",
+    "en": "A live editor mode for the site's visual tokens"
+  },
+  "resume": {
+    "fr": "Étendre le mode réglage existant (poignées à glisser, copier les valeurs) à un vrai panneau qui modifie en direct les couleurs, polices et arrondis du site, puis reporte les valeurs choisies dans le code.",
+    "en": "Extend the existing adjustment mode (draggable handles, copy values) into a real panel that edits the site's colors, fonts and roundness live, then carries the chosen values back into the code."
+  },
+  "probleme": {
+    "fr": "Ajuster finement une couleur, une police ou un arrondi demande aujourd'hui des allers-retours entre l'œil sur la page et la modification du code.",
+    "en": "Fine-tuning a color, font or corner radius today means going back and forth between what the eye sees on the page and editing the code."
+  },
+  "idee": {
+    "fr": "Un panneau de développement qui expose les variables de style du site, permet de les modifier en direct sur la vraie page, puis reporte les valeurs choisies dans leur fichier source.",
+    "en": "A development panel that exposes the site's style variables, lets them be edited live on the real page, then writes the chosen values back into their source file."
+  },
+  "type": "amelioration",
+  "taille": "moyenne",
+  "statut": "proposee"
+}

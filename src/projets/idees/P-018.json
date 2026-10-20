@@ -1,0 +1,23 @@
+{
+  "id": "P-018",
+  "date": "2026-10-20",
+  "titre": {
+    "fr": "Dictée vocale partout, en extension de navigateur",
+    "en": "Voice dictation everywhere, as a browser extension"
+  },
+  "resume": {
+    "fr": "Une extension de navigateur qui transforme la voix en texte dans n'importe quel champ d'un site, pensée d'abord comme un petit test avant d'envisager plus grand.",
+    "en": "A browser extension that turns speech into text in any field on any site, built first as a small test before considering anything bigger."
+  },
+  "probleme": {
+    "fr": "Certaines personnes tapent lentement ou préfèrent parler, mais la dictée du système ne couvre pas toujours bien tous les sites et toutes les langues, et change de comportement d'une page à l'autre.",
+    "en": "Some people type slowly or would rather speak, but the system's built-in dictation does not always cover every site and language well, and behaves differently from one page to the next."
+  },
+  "idee": {
+    "fr": "Une extension de navigateur qui ajoute un bouton de dictée dans n'importe quel champ de texte, avec ponctuation parlée et correction simple, testée sur un public restreint avant toute version pour application native.",
+    "en": "A browser extension adding a dictation button to any text field, with spoken punctuation and simple correction, tried out with a small audience before any native-app version."
+  },
+  "type": "outil",
+  "taille": "petite",
+  "statut": "proposee"
+}
