@@ -1,0 +1,125 @@
+{
+  "date": "2026-10-21",
+  "numero": 22,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · Cinéma",
+    "titre": "Halloween en salle",
+    "chapo": "Quatre sorties du mercredi 21 octobre pour la semaine des citrouilles.",
+    "paragraphes": [],
+    "films": [
+      {
+        "titre": "Shaun le Mouton : La Bêêête d'Halloween",
+        "titre_original": "Shaun the Sheep: The Beast of Mossy Bottom",
+        "realisateur": "Steve Cox et Matthew Walker",
+        "genre": "Animation, aventure, comédie",
+        "duree": "1 h 20",
+        "texte": "À Halloween, le Fermier détruit les citrouilles du troupeau, et une bête rôde bientôt dans les bois.",
+        "affiche": "2026-10-21-1.jpg"
+      },
+      {
+        "titre": "Clayface",
+        "realisateur": "James Watkins",
+        "genre": "Drame, épouvante-horreur, thriller",
+        "duree": "1 h 49",
+        "texte": "Une star défigurée suit un traitement qui lui rend son visage mais brouille son rapport au réel. Interdit aux moins de 12 ans.",
+        "affiche": "2026-10-21-2.jpg",
+        "horreur": true
+      },
+      {
+        "titre": "Wicker",
+        "realisateur": "Alex Huston Fischer et Eleanor Wilson",
+        "genre": "Comédie, drame, fantastique",
+        "duree": "1 h 45",
+        "texte": "Rejetée de son village, une pêcheuse commande un mari en osier. Avec Olivia Colman.",
+        "affiche": "2026-10-21-3.jpg"
+      },
+      {
+        "titre": "Nadja",
+        "realisateur": "Michael Almereyda",
+        "genre": "Comédie, épouvante-horreur",
+        "duree": "1 h 37",
+        "texte": "Après la mort de Dracula, sa fille Nadja, vampire, erre à New York. Film de 1994.",
+        "affiche": "2026-10-21-4.jpg",
+        "horreur": true
+      }
+    ],
+    "sources": [
+      "https://www.allocine.fr/film/sorties-semaine/",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000024131.html",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000016901.html",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=322884.html",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=37179.html"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "modele", "rubrique": "Un modèle économique expliqué", "court": "Modèle",
+        "titre": "Spotify : l'abonnement paie, la publicité regarde",
+        "chapo": "Neuf euros sur dix viennent de l'offre payante, et environ deux tiers de chaque euro repartent en coûts de contenu.",
+        "paragraphes": [
+          "Dans son rapport déposé auprès du régulateur américain pour le deuxième trimestre 2026, Spotify affiche 4 777 millions d'euros de revenus, en hausse de 14 %. L'offre Premium en fournit 4 331 millions (91 %), l'offre gratuite financée par la publicité 446 millions (9 %), à peine plus qu'un an plus tôt.",
+          "Le coût principal est le catalogue : le coût des revenus atteint 3 181 millions, composé surtout de droits et de frais de diffusion. Pour les abonnements, les droits musicaux se calculent mensuellement sur le plus élevé de deux montants, un pourcentage des revenus concernés ou une somme par utilisateur.",
+          "Le volume est bien là : 777 millions d'utilisateurs actifs, dont 300 millions d'abonnés. Le résultat d'exploitation grimpe à 655 millions d'euros contre 406 un an plus tôt."
+        ],
+        "encadre": { "titre": "Ce qu'on en retient", "texte": "Quand le coût principal dépend du nombre d'utilisateurs, la marge ne se gagne qu'en ajoutant des abonnés et en relevant le revenu par abonné.", "plein": true },
+        "sources": ["https://www.sec.gov/Archives/edgar/data/0001639920/000162828026052543/spot-20260630x6xk.htm"]
+      },
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "Résilier est toujours plus long que s'abonner",
+        "chapo": "New York vient d'imposer que se désabonner soit aussi simple que s'inscrire.",
+        "paragraphes": [
+          "Depuis le 1ᵉʳ octobre, une loi de la ville de New York oblige les abonnements en ligne et par application à être aussi faciles à résilier qu'à souscrire. Sont interdits : raccrocher au nez d'un client qui appelle pour résilier, donner de fausses informations sur la procédure, ou tenter de le retenir avec une remise. Les amendes vont de 525 à 3 500 dollars.",
+          "L'article précise que l'État de New York a une loi semblable, et que les clients peuvent signaler les abus sur le site de la ville."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un service qui résilie à la place des petites entreprises et des indépendants : on connecte la liste des abonnements, il envoie les demandes et garde les preuves. Concurrence : des applications grand public de suivi d'abonnements existent déjà. L'angle libre est la facture pro : exiger des preuves de résiliation exploitables en cas de litige.", "plein": true },
+        "sources": ["https://abc7ny.com/post/click-cancel-what-know-nycs-new-law/19897716/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Design · Tech",
+    "articles": [
+      {
+        "type": "design", "rubrique": "Design & UX", "court": "Design",
+        "titre": "Utilisateurs synthétiques : même conclusion, moins de variété",
+        "chapo": "Nielsen Norman Group a comparé 604 professionnels réels à 120 répondants générés par IA.",
+        "paragraphes": [
+          "Dans un article du 16 octobre, NN/g a reposé une question ouverte déjà posée à 604 professionnels de la tech et du design : quel nom donner au métier qui recueille des insights sur les besoins des gens et formule des recommandations de produit ? Puis la même question à 120 répondants synthétiques, générés avec la plateforme Synthetic Users.",
+          "Verdict : les deux groupes désignent « UX » comme terme dominant. Mais les synthétiques s'y rallient davantage (84 % contre environ 70 %) et leur vocabulaire s'étrécit : une douzaine d'intitulés différents, contre plus de cinquante chez les humains. Chez les chefs de produit, 93 % des synthétiques emploient un terme UX, contre 44 % des humains.",
+          "La consigne de NN/g tient en une phrase : les utilisateurs synthétiques servent à formuler des hypothèses ou vérifier une tendance générale, pas à prouver ce que pensent les gens. Dès que les réponses rares ou les sous-groupes comptent, il faut de vrais participants."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Le produit n'est pas de simuler des utilisateurs, c'est de dire quand cette simulation ne suffit pas : un outil qui signale les questions où la variété humaine compte.", "plein": true },
+        "sources": ["https://www.nngroup.com/articles/synthetic-users-vs-human-respondents/"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "PyTorch 2.15 : jusqu'à 6,5 fois plus vite sur Mac",
+        "paragraphes": [
+          "Le 20 octobre, Hugging Face a détaillé ce que PyTorch 2.15 apporte à MPS, le moteur graphique des Mac Apple silicon. Les tenseurs FP8 occupent la moitié de la mémoire du format BF16, et les modèles à mélange d'experts décodent 5 à 6,5 fois plus vite qu'en 2.14.",
+          "Exemple sur un M3 Ultra avec <i>torch.compile</i> : Qwen3.6-35B-A3B passe de 9,4 à 61,3 tokens par seconde. Précautions : il faut macOS 15 ou plus et Python 3.11 ou plus, la version est encore candidate, et un autre graphique de l'article montre un gain plus modeste (environ 1,3 fois) sans expliquer clairement l'écart."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Plus les modèles tournent bien en local, moins il faut payer d'API pour des tâches simples : un argument pour les outils qui promettent la confidentialité.", "plein": true },
+        "sources": ["https://huggingface.co/blog/mps-pytorch-2-15"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Un pare-feu GitHub pour npm",
+        "paragraphes": [
+          "Annoncé le 20 octobre en préversion, il inspecte les téléchargements entre vos agents et les registres. Entreprise seulement, npm seulement."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-20-github-package-firewall-in-public-preview"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Mode collapse", "nature": "n. m.", "definition": "En IA générative, tendance d'un modèle à produire des réponses de plus en plus semblables, au détriment de la diversité. NN/g n'explique pas précisément pourquoi les réponses synthétiques se concentrent ainsi (p. 2)." },
+    "chiffre": { "valeur": "91 %", "texte": "des revenus de Spotify au deuxième trimestre 2026 viennent des abonnements Premium." },
+    "bonus": { "type": "citation", "texte": "« Good design is honest. »", "auteur": "Dieter Rams (Vitsœ)" },
+    "enigme": { "question": "Je répète la même réponse à tous ceux qui m'interrogent, et j'en change à peine la forme. Qui suis-je ?", "reponse": "un panel d'utilisateurs synthétiques" }
+  },
+  "sources": ["allocine.fr", "sec.gov", "abc7ny.com", "nngroup.com", "huggingface.co", "github.blog", "vitsoe.com"]
+}

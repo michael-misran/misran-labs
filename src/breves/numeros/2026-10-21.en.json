@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-21",
+  "numero": 22,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · Cinema",
+    "titre": "Halloween in theaters",
+    "chapo": "Four releases on Wednesday, October 21, for pumpkin week.",
+    "paragraphes": [],
+    "films": [
+      {
+        "titre": "Shaun the Sheep: The Beast of Mossy Bottom",
+        "titre_original": "Shaun le Mouton : La Bêêête d'Halloween",
+        "realisateur": "Steve Cox and Matthew Walker",
+        "genre": "Animation, adventure, comedy",
+        "duree": "1 h 20",
+        "texte": "At Halloween, the Farmer destroys the flock's pumpkins, and a beast soon prowls the woods.",
+        "affiche": "2026-10-21-1.jpg"
+      },
+      {
+        "titre": "Clayface",
+        "realisateur": "James Watkins",
+        "genre": "Drama, horror, thriller",
+        "duree": "1 h 49",
+        "texte": "A disfigured star undergoes a treatment that restores his face but warps his sense of reality. Banned for under 12s.",
+        "affiche": "2026-10-21-2.jpg",
+        "horreur": true
+      },
+      {
+        "titre": "Wicker",
+        "realisateur": "Alex Huston Fischer and Eleanor Wilson",
+        "genre": "Comedy, drama, fantasy",
+        "duree": "1 h 45",
+        "texte": "Cast out by her village, a fisherwoman orders a husband made of wicker. With Olivia Colman.",
+        "affiche": "2026-10-21-3.jpg"
+      },
+      {
+        "titre": "Nadja",
+        "realisateur": "Michael Almereyda",
+        "genre": "Comedy, horror",
+        "duree": "1 h 37",
+        "texte": "After Dracula's death, his daughter Nadja, a vampire, wanders New York. A 1994 film.",
+        "affiche": "2026-10-21-4.jpg",
+        "horreur": true
+      }
+    ],
+    "sources": [
+      "https://www.allocine.fr/film/sorties-semaine/",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000024131.html",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000016901.html",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=322884.html",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=37179.html"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "modele", "rubrique": "A business model explained", "court": "Model",
+        "titre": "Spotify: subscriptions pay, ads watch",
+        "chapo": "Nine euros in ten come from the paid tier, and about two-thirds of each euro goes to content costs.",
+        "paragraphes": [
+          "In its filing with the US regulator for the second quarter of 2026, Spotify reports €4,777 million in revenue, up 14%. The Premium tier brings in €4,331 million (91%), the ad-supported free tier €446 million (9%), barely more than a year earlier.",
+          "The main cost is the catalog: cost of revenue reaches €3,181 million, made up mostly of royalty and distribution costs. For subscriptions, music royalties are calculated monthly on the greater of two amounts, a percentage of the relevant revenue or a per-user amount.",
+          "The volume is there: 777 million monthly active users, including 300 million subscribers. Operating income rises to €655 million, against €406 million a year earlier."
+        ],
+        "encadre": { "titre": "Takeaway", "texte": "When the main cost depends on the number of users, margin comes only from adding subscribers and raising revenue per subscriber.", "plein": true },
+        "sources": ["https://www.sec.gov/Archives/edgar/data/0001639920/000162828026052543/spot-20260630x6xk.htm"]
+      },
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Peeve",
+        "titre": "Canceling always takes longer than subscribing",
+        "chapo": "New York has just required that unsubscribing be as simple as signing up.",
+        "paragraphes": [
+          "Since October 1, a New York City law requires online and in-app subscriptions to be as easy to cancel as to sign up for. Banned: hanging up on a customer who calls to cancel, giving false information about the process, or trying to keep them with a discount. Fines range from $525 to $3,500.",
+          "The article adds that New York State has a similar law, and that customers can report violations on the city's website."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A service that cancels on behalf of small businesses and freelancers: connect the list of subscriptions, it sends the requests and keeps the proof. Competition: consumer subscription-tracking apps already exist. The open angle is the business invoice: proof of cancellation usable in a dispute.", "plein": true },
+        "sources": ["https://abc7ny.com/post/click-cancel-what-know-nycs-new-law/19897716/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Design · Tech",
+    "articles": [
+      {
+        "type": "design", "rubrique": "Design & UX", "court": "Design",
+        "titre": "Synthetic users: same conclusion, less variety",
+        "chapo": "Nielsen Norman Group compared 604 real professionals with 120 AI-generated respondents.",
+        "paragraphes": [
+          "In an October 16 article, NN/g re-asked an open-ended question already put to 604 tech and design professionals: what name should be given to the job that gathers insights about people's needs and makes product recommendations? Then the same question to 120 synthetic respondents, generated with the Synthetic Users platform.",
+          "Verdict: both groups name “UX” as the dominant term. But the synthetic ones converge on it more (84% versus about 70%) and their vocabulary narrows: about a dozen different job titles, against more than fifty among humans. Among product managers, 93% of the synthetic ones use a UX term, versus 44% of humans.",
+          "NN/g's advice fits in one sentence: synthetic users serve to form hypotheses or check a general trend, not to prove what people think. As soon as rare answers or subgroups matter, you need real participants."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "The product is not simulating users, it is saying when that simulation is not enough: a tool that flags the questions where human variety matters.", "plein": true },
+        "sources": ["https://www.nngroup.com/articles/synthetic-users-vs-human-respondents/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "PyTorch 2.15: up to 6.5 times faster on Mac",
+        "paragraphes": [
+          "On October 20, Hugging Face detailed what PyTorch 2.15 brings to MPS, the graphics engine of Apple silicon Macs. FP8 tensors take half the memory of the BF16 format, and mixture-of-experts models decode 5 to 6.5 times faster than in 2.14.",
+          "Example on an M3 Ultra with <i>torch.compile</i>: Qwen3.6-35B-A3B goes from 9.4 to 61.3 tokens per second. Caveats: you need macOS 15 or later and Python 3.11 or later, the release is still a candidate, and another chart in the article shows a more modest gain (about 1.3 times) without clearly explaining the gap."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "The better models run locally, the less you pay for APIs on simple tasks: an argument for tools that promise privacy.", "plein": true },
+        "sources": ["https://huggingface.co/blog/mps-pytorch-2-15"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "A GitHub firewall for npm",
+        "paragraphes": [
+          "Announced October 20 in preview, it inspects downloads between your agents and the registries. Enterprise only, npm only."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-20-github-package-firewall-in-public-preview"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Mode collapse", "nature": "n.", "definition": "In generative AI, a model's tendency to produce ever more similar answers, at the expense of diversity. NN/g does not precisely explain why synthetic answers concentrate this way (p. 2)." },
+    "chiffre": { "valeur": "91%", "texte": "of Spotify's revenue in the second quarter of 2026 came from Premium subscriptions." },
+    "bonus": { "type": "citation", "texte": "“Good design is honest.”", "auteur": "Dieter Rams (Vitsœ)" },
+    "enigme": { "question": "I give everyone who asks me the same answer, and barely change its form. What am I?", "reponse": "a panel of synthetic users" }
+  },
+  "sources": ["allocine.fr", "sec.gov", "abc7ny.com", "nngroup.com", "huggingface.co", "github.blog", "vitsoe.com"]
+}
