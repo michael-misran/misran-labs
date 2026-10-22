@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-21",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "PyTorch 2.15 : jusqu'à 6,5 fois plus vite sur Mac",
+        "en": "PyTorch 2.15: up to 6.5 times faster on Mac"
+      },
+      "resume": {
+        "fr": "Hugging Face détaille le moteur MPS de PyTorch 2.15 pour les Mac Apple silicon : les tenseurs FP8 occupent deux fois moins de mémoire que le BF16, et les modèles à mélange d'experts décodent 5 à 6,5 fois plus vite qu'en 2.14. La version reste candidate et demande macOS 15.",
+        "en": "Hugging Face details the MPS engine in PyTorch 2.15 for Apple silicon Macs: FP8 tensors take half the memory of BF16, and mixture-of-experts models decode 5 to 6.5 times faster than in 2.14. The release is still a candidate and requires macOS 15."
+      },
+      "sources": [
+        { "titre": "Hugging Face", "url": "https://huggingface.co/blog/mps-pytorch-2-15" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Un pare-feu GitHub pour npm",
+        "en": "A GitHub firewall for npm"
+      },
+      "resume": {
+        "fr": "Annoncé le 20 octobre en préversion publique : un pare-feu qui inspecte les téléchargements entre les agents de code et les registres de paquets. Il est réservé à GitHub Enterprise Cloud et ne gère que npm pour l'instant.",
+        "en": "Announced on October 20 in public preview: a firewall that inspects downloads between coding agents and package registries. It is limited to GitHub Enterprise Cloud and only supports npm for now."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-20-github-package-firewall-in-public-preview" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Mode collapse",
+    "definition": {
+      "fr": "En IA générative, tendance d'un modèle à produire des réponses de plus en plus semblables, au détriment de la diversité. NN/g n'explique pas précisément pourquoi les réponses synthétiques se concentrent ainsi.",
+      "en": "In generative AI, a model's tendency to produce ever more similar answers, at the expense of diversity. NN/g does not precisely explain why synthetic answers concentrate this way."
+    }
+  },
+  "chiffre": {
+    "valeur": "91 %",
+    "texte": {
+      "fr": "des revenus de Spotify au deuxième trimestre 2026 viennent des abonnements Premium.",
+      "en": "of Spotify's revenue in the second quarter of 2026 came from Premium subscriptions."
+    }
+  }
+}
