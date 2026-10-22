@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-22",
+  "numero": 23,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Mistral Large 4: a trillion parameters, 49 billion of them active",
+    "chapo": "Mistral and NVIDIA unveil a model built for engineering, in public preview, with open weights promised for the end of the month.",
+    "paragraphes": [
+      "On October 21, Mistral unveiled Mistral Large 4, nicknamed “Le Chonk” in its announcement. The model has about 1 trillion parameters in total, of which 49 billion are active for each answer. It is multimodal and available in public preview.",
+      "It was trained on 3,800 NVIDIA Grace Blackwell GPUs, in data centers that Mistral operates in Europe. It targets engineering: computer-aided engineering and electronic design automation, with use cases cited in aerospace, automotive and semiconductors.",
+      "Two points matter for developers. Mistral says the open weights will be released at the end of October, with no exact day: you could then run it yourself, if you have the hardware. And the company is preparing public benchmarks and open datasets to evaluate physics models.",
+      "One gap: the page publishes no benchmark score for Large 4. Until they arrive, the promise remains to be checked."
+    ],
+    "sources": ["https://mistral.ai/news/mistral-nvidia-ai-for-industrial-engineering/"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Pet peeve",
+        "titre": "“Pay in three installments”: not credit, until now, in the eyes of the law",
+        "chapo": "On November 20, split payment enters the scope of consumer credit rules in France.",
+        "paragraphes": [
+          "A “pay in three installments, interest-free” option looks like a simple checkout choice. Yet it was largely outside French consumer credit rules. According to Moneyvox (October 2025 article), the reform stemming from ordinance 2025-880 changes that: split payment, mini-loans and lease-to-own now fall within scope, from one euro up to 100,000 euros.",
+          "In practice, the lender will have to assess the borrower's solvency and check the register of repayment incidents, except for credits under three months, free of charge or under 201 euros. Advertising will carry the warning “A credit costs money and must be repaid.” The text dates from last year, and the article noted that lawmakers could still take up some elements: entry into force is set for November 20, 2026.",
+          "Context (Banque de France, cited by the article): 134,803 over-indebtedness cases in 2024, up 10.8% from 2023."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A sales-page checker for independent shops that display “pay in installments”: it spots the missing notices before the deadline. Competition: payment providers and law firms, who will warn their clients. To check first: who, the merchant or the lender, bears the display obligation.", "plein": true },
+        "sources": ["https://www.moneyvox.fr/credit/actualites/105594/credit-consommation-pourquoi-ces-nouvelles-regles-sont-une-tres-bonne-nouvelle-pour-vos-prets"]
+      },
+      {
+        "type": "idee", "rubrique": "The business idea", "court": "Idea",
+        "titre": "One place to know what you owe the authorities",
+        "chapo": "A quarter of American small business owners have already received a compliance warning or fine.",
+        "paragraphes": [
+          "According to a LegalZoom survey (press release of March 26, 2026, 1,000 American small business owners surveyed in December 2025), 25% received a compliance-related warning, fine or citation, most often between $2,000 and $10,000 (fines, fees and lost revenue included). 23% say they often or always feel unclear about their obligations, and 46% find the workload heavier than a year earlier.",
+          "One wish, cited by 31%: a single platform to manage all these tasks. The idea: a compliance calendar for French micro-entrepreneurs, listing filings and deadlines by activity, with e-mail reminders. Who pays: the freelancer, a few euros a month. Launch: one page, a hand-entered list of deadlines for three trades, then measure how many subscribe.",
+          "Caveat: the survey is American and comes from a company that sells this kind of service; the French offering has not been mapped."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
+        "sources": ["https://www.legalzoom.com/press-releases/legalzoom-compliance-survey-2026"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "History · Tech",
+    "articles": [
+      {
+        "type": "histoire", "rubrique": "Tech history", "court": "History",
+        "titre": "The Alto's case was designed by a small Mountain View studio",
+        "chapo": "Behind the computer that inspired Apple, a design firm outside Xerox.",
+        "paragraphes": [
+          "In 1979, Xerox let Steve Jobs study an Alto while Apple was working on the Lisa. Less well known: according to the San Jose Mercury News (2009 article), the Alto's case, detachable keyboard and other hardware accessories were designed by Clement Designlabs, a design firm in Mountain View, California.",
+          "Its founder, Carl Clement, 87 at the time, said Xerox would then “stuff in the electronics.” He had beaten two other design teams with a foam-core mock-up. The keyboard and mouse slid under the chassis for storage.",
+          "Xerox first asked if he could deliver 80, then 100, then 500 more; Clement ended up producing just over 2,000. Takeaway: a simple foam-core mock-up was enough to win over the PARC researchers."
+        ],
+        "sources": ["https://phys.org/news/2009-02-unheralded-mac-happy-silicon-valley.html"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "TypeScript 7.1 beta: 1.2 to 1.9 times faster than 7.0",
+        "paragraphes": [
+          "The beta announced on October 20 adds the <i>--target es2026</i> option, import attributes in ambient module declarations (a file is typed by its attribute, not its extension) and source imports for WebAssembly. “Content mappers” type-check Vue, Svelte or Astro files, using the <i>--runExternalCode</i> flag.",
+          "On five tested projects, type-checking only with four threads, compilation gains from 1.2 times (bluesky, vscode) to 1.9 times (mui-docs) over 7.0, and memory drops by 15.8% to 49.6%. Caution: stricter checks on distributive type parameters may produce new errors. A release candidate is expected in about a month."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "Content mappers open type-checking to in-house formats: room for anyone publishing plugins for a niche framework.", "plein": true },
+        "sources": ["https://devblogs.microsoft.com/typescript/announcing-typescript-7-1-beta/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "GitHub CLI: tokens that expire on their own",
+        "paragraphes": [
+          "Since October 21, version 2.103.0 offers in public preview <i>gh auth login --expiring</i>: short-lived access tokens, renewed automatically, so unusable within hours if they leak. Opt-in; Git 2.46 or newer is recommended."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-21-github-cli-opt-in-to-expiring-auto-refreshing-oauth-tokens"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Open weights", "nature": "n. pl.", "definition": "Files containing the learned parameters of an AI model, which you can download and run yourself. Not the same as free software: training data and training code are not necessarily provided." },
+    "chiffre": { "valeur": "49 B", "texte": "active parameters, out of about 1 trillion, for Mistral Large 4." },
+    "bonus": { "type": "question", "texte": "Which administrative task takes the most of your time each month, and which due date do you forget most often? Your answer may be the start of a product." },
+    "enigme": { "question": "I count a trillion settings, but wake only a small share of them for each answer; I am promised for download before the end of the month. Who am I?", "reponse": "an AI model with partially active parameters, like Mistral Large 4" }
+  },
+  "sources": ["mistral.ai", "moneyvox.fr", "legalzoom.com", "phys.org", "devblogs.microsoft.com", "github.blog"]
+}

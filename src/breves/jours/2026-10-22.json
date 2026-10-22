@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-22",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Mistral Large 4 : mille milliards de paramètres, dont 49 milliards actifs",
+        "en": "Mistral Large 4: a trillion parameters, 49 billion of them active"
+      },
+      "resume": {
+        "fr": "Le 21 octobre, Mistral a présenté Large 4, un modèle multimodal en préversion publique, entraîné sur 3 800 GPU NVIDIA Grace Blackwell en Europe. Il vise l'ingénierie assistée par ordinateur et la conception électronique. Les poids ouverts sont annoncés pour fin octobre.",
+        "en": "On October 21, Mistral unveiled Large 4, a multimodal model in public preview, trained on 3,800 NVIDIA Grace Blackwell GPUs in Europe. It targets computer-aided engineering and electronic design. Open weights are announced for the end of October."
+      },
+      "sources": [
+        { "titre": "Mistral AI", "url": "https://mistral.ai/news/mistral-nvidia-ai-for-industrial-engineering/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "TypeScript 7.1 en bêta : de 1,2 à 1,9 fois plus rapide que la 7.0",
+        "en": "TypeScript 7.1 beta: 1.2 to 1.9 times faster than 7.0"
+      },
+      "resume": {
+        "fr": "La bêta du 20 octobre ajoute la cible es2026 et les imports de source pour WebAssembly. Sur cinq projets testés, la vérification de types gagne de 1,2 à 1,9 fois en vitesse, et la mémoire baisse de 15,8 % à 49,6 %. Une version candidate est prévue dans environ un mois.",
+        "en": "The October 20 beta adds the es2026 target and source imports for WebAssembly. On five tested projects, type-checking is 1.2 to 1.9 times faster and memory drops by 15.8% to 49.6%. A release candidate is expected in about a month."
+      },
+      "sources": [
+        { "titre": "Microsoft DevBlogs", "url": "https://devblogs.microsoft.com/typescript/announcing-typescript-7-1-beta/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "GitHub CLI : des jetons qui expirent tout seuls",
+        "en": "GitHub CLI: tokens that expire on their own"
+      },
+      "resume": {
+        "fr": "Depuis le 21 octobre, la version 2.103.0 propose en préversion publique des jetons d'accès de courte durée, renouvelés automatiquement, via gh auth login --expiring. Un jeton qui fuit devient inutilisable en quelques heures. L'option est facultative.",
+        "en": "Since October 21, version 2.103.0 offers short-lived access tokens in public preview, renewed automatically, via gh auth login --expiring. A leaked token becomes unusable within hours. The option is opt-in."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-21-github-cli-opt-in-to-expiring-auto-refreshing-oauth-tokens" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Poids ouverts",
+    "definition": {
+      "fr": "Fichiers contenant les paramètres appris d'un modèle d'IA, que l'on peut télécharger et exécuter soi-même. Ce n'est pas la même chose qu'un logiciel libre : les données et le code d'entraînement ne sont pas forcément fournis.",
+      "en": "Files containing the learned parameters of an AI model, which you can download and run yourself. Not the same as free software: training data and training code are not necessarily provided."
+    }
+  },
+  "chiffre": {
+    "valeur": "49 Md",
+    "texte": {
+      "fr": "de paramètres actifs, sur environ 1 000 milliards, pour Mistral Large 4.",
+      "en": "active parameters, out of about 1 trillion, for Mistral Large 4."
+    }
+  }
+}
