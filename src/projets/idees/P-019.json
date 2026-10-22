@@ -1,0 +1,23 @@
+{
+  "id": "P-019",
+  "date": "2026-10-20",
+  "titre": {
+    "fr": "Un carnet de coloriage pour les Petits Gardiens des Saisons",
+    "en": "A coloring book for the Little Guardians of the Seasons"
+  },
+  "resume": {
+    "fr": "Un carnet de coloriage imprimé, en autoédition, construit autour d'un univers jeunesse déjà en préparation au Lab.",
+    "en": "A printed, self-published coloring book built around a children's universe already in the works at the Lab."
+  },
+  "probleme": {
+    "fr": "Beaucoup de carnets de coloriage pour jeunes enfants proposent des dessins génériques, sans personnages attachants ni univers cohérent.",
+    "en": "Many coloring books for young children offer generic drawings, without endearing characters or a coherent universe."
+  },
+  "idee": {
+    "fr": "Un carnet de coloriage imprimé réunissant des personnages d'un même univers jeunesse, publié en autoédition via une plateforme d'impression à la demande.",
+    "en": "A printed coloring book bringing together characters from one children's universe, self-published through a print-on-demand platform."
+  },
+  "type": "produit",
+  "taille": "petite",
+  "statut": "proposee"
+}
