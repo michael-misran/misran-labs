@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-22",
+  "numero": 23,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Mistral Large 4 : mille milliards de paramètres, dont 49 milliards actifs",
+    "chapo": "Mistral et NVIDIA présentent un modèle pensé pour l'ingénierie, en préversion publique, avec des poids ouverts promis pour la fin du mois.",
+    "paragraphes": [
+      "Le 21 octobre, Mistral a présenté Mistral Large 4, surnommé « Le Chonk » dans son annonce. Le modèle compte environ 1 000 milliards de paramètres au total, dont 49 milliards sont actifs à chaque réponse. Il est multimodal et disponible en préversion publique.",
+      "Il a été entraîné sur 3 800 GPU NVIDIA Grace Blackwell, dans des centres de données que Mistral exploite en Europe. Sa cible est l'ingénierie : l'ingénierie assistée par ordinateur et l'automatisation de la conception électronique, avec des usages cités dans l'aérospatiale, l'automobile et les semi-conducteurs.",
+      "Pour un développeur, deux points comptent. Mistral annonce la publication des poids ouverts pour la fin d'octobre, sans jour précis : on pourra alors le faire tourner chez soi, si l'on a le matériel. Et l'entreprise prépare des benchmarks publics et des jeux de données ouverts pour juger les modèles de physique.",
+      "Un manque : la page ne publie aucun score de benchmark pour Large 4. Tant qu'ils ne sont pas là, la promesse reste à vérifier."
+    ],
+    "sources": ["https://mistral.ai/news/mistral-nvidia-ai-for-industrial-engineering/"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "« Payez en trois fois » : pas de crédit, jusqu'ici, aux yeux de la loi",
+        "chapo": "Le 20 novembre, le paiement fractionné entre dans le champ du crédit à la consommation.",
+        "paragraphes": [
+          "Un « payez en trois fois sans frais » ressemble à un simple choix de caisse. Il était pourtant largement hors du cadre du crédit à la consommation. Selon Moneyvox (article d'octobre 2025), la réforme issue de l'ordonnance 2025-880 change cela : le paiement fractionné, les mini-crédits et la location avec option d'achat y entrent, de un euro jusqu'à 100 000 euros.",
+          "Concrètement, le prêteur devra évaluer la solvabilité de l'emprunteur et consulter le fichier des incidents de remboursement, sauf pour les crédits de moins de trois mois, sans frais ou de moins de 201 euros. La publicité portera la mention « Un crédit coûte de l'argent et doit être remboursé ». Le texte date de l'an dernier, et l'article précisait que le législateur pouvait encore reprendre certains éléments : l'entrée en vigueur est fixée au 20 novembre 2026.",
+          "Contexte (Banque de France, cité par l'article) : 134 803 dossiers de surendettement en 2024, soit 10,8 % de plus qu'en 2023."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un contrôle de pages de vente pour boutiques indépendantes qui affichent « payez en plusieurs fois » : il repère les mentions manquantes avant la date limite. Concurrence : les prestataires de paiement et les cabinets d'avocats, qui préviendront leurs clients. À vérifier d'abord : qui, du marchand ou du prêteur, porte l'obligation d'affichage.", "plein": true },
+        "sources": ["https://www.moneyvox.fr/credit/actualites/105594/credit-consommation-pourquoi-ces-nouvelles-regles-sont-une-tres-bonne-nouvelle-pour-vos-prets"]
+      },
+      {
+        "type": "idee", "rubrique": "L'idée de business", "court": "Idée",
+        "titre": "Un seul endroit pour savoir ce qu'on doit à l'administration",
+        "chapo": "Un quart des petits patrons américains ont déjà reçu un avertissement ou une amende de conformité.",
+        "paragraphes": [
+          "Selon une enquête de LegalZoom (communiqué du 26 mars 2026, 1 000 propriétaires de petites entreprises américaines interrogés en décembre 2025), 25 % ont reçu un avertissement, une amende ou une citation liés à la conformité, le plus souvent entre 2 000 et 10 000 dollars (amendes, frais et manque à gagner compris). 23 % se disent souvent ou toujours incertains de leurs obligations, et 46 % trouvent la charge plus lourde qu'un an plus tôt.",
+          "Un souhait, cité par 31 % : une plateforme unique pour gérer toutes ces tâches. L'idée : un calendrier de conformité pour les micro-entrepreneurs français, qui liste les déclarations et échéances selon leur activité, avec rappels par e-mail. Qui paie : l'indépendant, quelques euros par mois. Lancement : une page, une liste d'échéances saisie à la main pour trois métiers, puis on mesure combien s'abonnent.",
+          "Précaution : l'enquête est américaine et émane d'une société qui vend ce type de service ; l'offre française n'est pas cartographiée."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
+        "sources": ["https://www.legalzoom.com/press-releases/legalzoom-compliance-survey-2026"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Histoire · Tech",
+    "articles": [
+      {
+        "type": "histoire", "rubrique": "Histoire de la tech", "court": "Histoire",
+        "titre": "Le boîtier de l'Alto a été dessiné par un petit bureau de Mountain View",
+        "chapo": "Derrière l'ordinateur qui inspira Apple, une société de design extérieure à Xerox.",
+        "paragraphes": [
+          "En 1979, Xerox laisse Steve Jobs étudier un Alto, pendant qu'Apple travaille sur le Lisa. Moins connu : selon le San Jose Mercury News (article de 2009), le boîtier, le clavier détachable et d'autres accessoires de l'Alto ont été conçus par Clement Designlabs, une société de design de Mountain View, en Californie.",
+          "Son fondateur, Carl Clement, 87 ans à l'époque, disait que Xerox y « fourrait » ensuite l'électronique. Il avait battu deux autres équipes de design avec une maquette en mousse. Clavier et souris se rangeaient sous le châssis.",
+          "Xerox a d'abord demandé s'il pouvait en livrer 80, puis 100, puis 500 de plus ; Clement a fini par en produire un peu plus de 2 000. À retenir : une simple maquette en mousse a suffi à convaincre les chercheurs de PARC."
+        ],
+        "sources": ["https://phys.org/news/2009-02-unheralded-mac-happy-silicon-valley.html"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "TypeScript 7.1 en bêta : de 1,2 à 1,9 fois plus rapide que la 7.0",
+        "paragraphes": [
+          "La bêta annoncée le 20 octobre ajoute la cible <i>--target es2026</i>, des attributs d'import dans les déclarations de modules ambiants (on type un fichier selon son attribut, et non son extension) et les imports de source pour WebAssembly. Des « content mappers » vérifient les types de fichiers Vue, Svelte ou Astro, avec le drapeau <i>--runExternalCode</i>.",
+          "Sur cinq projets testés, en vérification seule avec quatre threads, la compilation gagne de 1,2 fois (bluesky, vscode) à 1,9 fois (mui-docs) par rapport à la 7.0, et la mémoire baisse de 15,8 % à 49,6 %. Attention : des contrôles plus stricts sur les paramètres de type distributifs peuvent produire de nouvelles erreurs. Une version candidate est prévue dans environ un mois."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Les « content mappers » ouvrent la vérification de types aux formats maison : un terrain pour qui publie des plugins pour un framework de niche.", "plein": true },
+        "sources": ["https://devblogs.microsoft.com/typescript/announcing-typescript-7-1-beta/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "GitHub CLI : des jetons qui expirent tout seuls",
+        "paragraphes": [
+          "Depuis le 21 octobre, la version 2.103.0 propose en préversion publique <i>gh auth login --expiring</i> : des jetons d'accès de courte durée, renouvelés automatiquement, donc inutilisables en quelques heures s'ils fuitent. Facultatif ; Git 2.46 ou plus récent est recommandé."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-21-github-cli-opt-in-to-expiring-auto-refreshing-oauth-tokens"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Poids ouverts", "nature": "n. m. pl.", "definition": "Fichiers contenant les paramètres appris d'un modèle d'IA, que l'on peut télécharger et exécuter soi-même. Ce n'est pas la même chose qu'un logiciel libre : les données et le code d'entraînement ne sont pas forcément fournis." },
+    "chiffre": { "valeur": "49 Md", "texte": "de paramètres actifs, sur environ 1 000 milliards, pour Mistral Large 4." },
+    "bonus": { "type": "question", "texte": "Quelle démarche administrative vous prend le plus de temps chaque mois, et à quelle date l'oubliez-vous le plus souvent ? Votre réponse est peut-être le début d'un produit." },
+    "enigme": { "question": "Je compte mille milliards de réglages, mais je n'en réveille qu'une petite part à chaque réponse ; on me promet en téléchargement avant la fin du mois. Qui suis-je ?", "reponse": "un modèle d'IA à paramètres actifs partiels, comme Mistral Large 4" }
+  },
+  "sources": ["mistral.ai", "moneyvox.fr", "legalzoom.com", "phys.org", "devblogs.microsoft.com", "github.blog"]
+}
