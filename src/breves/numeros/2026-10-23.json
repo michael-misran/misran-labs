@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-23",
+  "numero": 24,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Les Agent Skills quittent Anthropic pour la Linux Foundation",
+    "chapo": "Le format qui apprend un métier à un agent d'IA devient un standard neutre, déjà repris par plus de 70 plateformes.",
+    "paragraphes": [
+      "Le 22 octobre, Anthropic a annoncé qu'il confiait Agent Skills, un standard ouvert publié en décembre 2025, à l'Agentic AI Foundation, rattachée à la Linux Foundation. Il donne aussi le nom, le logo, l'organisation GitHub et le domaine agentskills.io.",
+      "Un skill sert à donner à un agent des connaissances et des workflows spécialisés. Selon Anthropic, plus de 70 plateformes d'agents l'ont intégré, dont ChatGPT, Cursor, GitHub Copilot et VS Code, avec plus d'un million de skills publiés et près de 280 millions d'installations.",
+      "Concrètement, un skill écrit une fois doit se brancher partout. Le standard est maintenu à titre individuel par des ingénieurs d'Anthropic, de Google, d'OpenAI et d'autres, et on peut l'utiliser ou y contribuer sans rejoindre la fondation. Au programme : des versions numérotées, un processus formel de propositions et des recommandations de sécurité pour écrire et installer des skills. Les retours se font sur le Discord du projet."
+    ],
+    "sources": [
+      "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant",
+        "rubrique": "L'irritant du jour",
+        "court": "Irritant",
+        "titre": "Répondre STOP : bientôt, c'est l'entreprise qui choisit comment",
+        "chapo": "Aux États-Unis, le régulateur des télécoms laisse les sociétés imposer leur méthode pour se désinscrire des appels et SMS.",
+        "paragraphes": [
+          "Le 1ᵉʳ octobre, la FCC américaine a publié une décision (FCC 26-67) sur la façon de retirer son consentement aux appels et SMS automatisés. Les règles de 2024 exigeaient d'honorer toute méthode raisonnable, et un refus visant un type de message valait pour tous. Le « tout révoquer » est abandonné pour les messages d'information ; pour le marketing, le refus reste global.",
+          "Surtout, une entreprise peut désormais désigner des méthodes exclusives parmi trois : une touche pendant l'appel, un mot-clé par SMS, ou un site ou numéro désigné. Elle doit indiquer la méthode (un seul mot-clé suffit à l'affichage) et accepter sept mots dont stop, cancel et unsubscribe. Les règles entrent en vigueur 30 jours après publication au Federal Register, pas encore faite au 7 octobre (analyse Nixon Peabody)."
+        ],
+        "encadre": {
+          "titre": "Piste de business",
+          "texte": "Un tableau de bord de désinscription pour petites entreprises qui envoient des SMS, avec un journal prouvant chaque révocation traitée à temps. Concurrence : les plateformes de SMS gèrent déjà « STOP » ; l'angle est la preuve d'audit.",
+          "plein": true
+        },
+        "sources": [
+          "https://www.nixonpeabody.com/insights/alerts/2026/10/07/fcc-scraps-revoke-all-and-lets-businesses-pick-how-consumers-opt-out"
+        ]
+      },
+      {
+        "type": "chiffre",
+        "rubrique": "Le chiffre qui dérange",
+        "court": "Chiffre",
+        "titre": "7 applis de voitures sur 30 partagent vos données avec des régies",
+        "chapo": "Des chercheurs ont écouté 21 voitures et leurs applis compagnes. Le plus bavard n'est pas la voiture.",
+        "paragraphes": [
+          "L'étude « Automatic Transmission », présentée à la conférence ACM IMC '26 (12-16 octobre), a été menée par des chercheurs de Northeastern, en partenariat avec Consumer Reports. Ils ont testé 21 véhicules américains de 19 marques et 30 applications de constructeurs, d'octobre 2024 à août 2025.",
+          "Sur 1 338 domaines contactés, 367 relèvent de la publicité ou du suivi. Côté applis, 70 % contactent plus de cinq de ces domaines, contre 29 % des véhicules. Et sept applis envoient des données personnelles à ces entreprises : par exemple, HondaLink a transmis la localisation à Amplitude ; Honda a fait supprimer ces données par Amplitude et arrêté l'envoi.",
+          "Limites des auteurs : ce n'est pas un piratage, le trafic des voitures est surtout chiffré, et les chiffres sont des minimums."
+        ],
+        "encadre": {
+          "titre": "L'œil du business",
+          "texte": "Un audit à prix fixe de ce que contacte une appli, avec la liste des domaines, pour les petites marques de matériel connecté. Concurrence : cabinets de conformité et scanners de vie privée.",
+          "plein": true
+        },
+        "sources": [
+          "https://blog.jdneer.com/2026/10/22/your-cars-app-may-be-the-bigger-privacy-leak-study-maps-where-21-cars-and-30-apps-send-data/"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Rétro · Tech",
+    "articles": [
+      {
+        "type": "retro",
+        "rubrique": "Rétro gaming",
+        "court": "Rétro",
+        "titre": "Hunchback est né Robin des Bois, et son costume n'a pas suivi",
+        "chapo": "Le succès d'arcade de 1983 a changé de héros en cours de route, sans changer de costume.",
+        "paragraphes": [
+          "Hunchback, sorti en 1983 par Century Electronics, devait d'abord mettre en scène Robin des Bois dans la forêt de Sherwood. Le décor est passé au château de Nottingham, jugé trop proche de <i>Pitfall!</i>, la principale inspiration du jeu. Puis l'ajout d'une cloche en récompense a fait basculer le thème vers le Bossu de Notre-Dame.",
+          "Dans le jeu, un chevalier qui grimpe le mur sert de minuterie : s'il atteint le haut, le joueur perd une vie. Les graphismes, eux, n'ont pas été retravaillés faute de temps avant un salon du secteur : le personnage a gardé son costume vert Lincoln.",
+          "Ocean Software a obtenu la licence des versions domestiques, son premier portage d'arcade, qui a atteint la première place des ventes au Royaume-Uni. Century, elle, a déclaré faillite en janvier 1984."
+        ],
+        "sources": [
+          "https://en.wikipedia.org/wiki/Hunchback_(video_game)",
+          "https://www.retrogamesnow.co.uk/?p=234"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "La tech",
+        "court": "Tech",
+        "titre": "Hugging Face : le TPU de Google devient « un périphérique comme un autre »",
+        "paragraphes": [
+          "Le 20 octobre, Hugging Face a annoncé la prise en charge native des TPU via TorchTPU, un backend PyTorch. Transformers, Diffusers et Kernels tournent directement sur TPU, sans passer par torch_xla ni JAX ; sur une machine TPU, l'installation tient en un <i>pip install torch-tpu</i>. On charge un modèle avec <i>device_map=\"tpu\"</i> ou on envoie un pipeline avec <i>pipe.to(\"tpu\")</i>.",
+          "Chiffres donnés : une image Qwen-Image-2.1 en 3,5 s compilé contre 8,0 s sans. Réserve : 96,5 % des tests exécutés sur TPU passent."
+        ],
+        "sources": [
+          "https://huggingface.co/blog/hf-torchtpu"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech éclair",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "Vercel : les WebSockets sortent de bêta, et le middleware parle Python",
+        "paragraphes": [
+          "Le 20 octobre, les WebSockets dans Vercel Functions passent en disponibilité générale : mêmes limites et tarifs que les autres appels, CPU facturé seulement pendant le traitement des messages. Depuis la bêta, 300 millions de connexions ont été servies. Le 21, le middleware de routage accepte aussi du Python (FastAPI, Flask, Django) via <i>vercel.toml</i>."
+        ],
+        "sources": [
+          "https://vercel.com/changelog/websocket-support-is-now-generally-available",
+          "https://vercel.com/changelog/routing-middleware-now-supports-python"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "Standard ouvert",
+      "nature": "n. m.",
+      "definition": "Spécification publique que n'importe qui peut implémenter sans autorisation d'un éditeur. Confiée à une fondation, elle ne dépend plus d'une seule entreprise : c'est le cas des Agent Skills depuis le 22 octobre."
+    },
+    "chiffre": {
+      "valeur": "7 sur 30",
+      "texte": "applis de constructeurs automobiles testées envoient des données personnelles à des entreprises de publicité ou d'analyse."
+    },
+    "bonus": {
+      "type": "defi",
+      "texte": "En moins de 30 minutes : ouvrez un de vos sites, lancez les outils de développement, onglet Réseau, rechargez la page, et comptez les noms de domaine qui ne sont pas les vôtres. Lesquels pouvez-vous justifier ?"
+    },
+    "enigme": {
+      "question": "Je donne un métier à un agent sans qu'il l'ait appris, et je me partage d'une plateforme à l'autre sans changer de forme. Qui suis-je ?",
+      "reponse": "un skill d'agent (Agent Skills)"
+    }
+  },
+  "sources": [
+    "anthropic.com",
+    "nixonpeabody.com",
+    "blog.jdneer.com",
+    "wikipedia.org",
+    "retrogamesnow.co.uk",
+    "huggingface.co",
+    "vercel.com"
+  ]
+}
