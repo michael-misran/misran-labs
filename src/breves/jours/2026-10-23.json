@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-23",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Les Agent Skills passent à la Linux Foundation",
+        "en": "Agent Skills move to the Linux Foundation"
+      },
+      "resume": {
+        "fr": "Le 22 octobre, Anthropic a confié le standard ouvert Agent Skills à l'Agentic AI Foundation, rattachée à la Linux Foundation, avec le nom, le logo et le domaine agentskills.io. Plus de 70 plateformes d'agents l'ont déjà intégré. Le standard reste utilisable sans rejoindre la fondation.",
+        "en": "On October 22, Anthropic handed the open Agent Skills standard to the Agentic AI Foundation, part of the Linux Foundation, along with the name, logo and agentskills.io domain. More than 70 agent platforms have already adopted it. The standard stays usable without joining the foundation."
+      },
+      "sources": [
+        { "titre": "Anthropic", "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Hugging Face : le TPU de Google devient « un périphérique comme un autre »",
+        "en": "Hugging Face: Google's TPU becomes “just another device”"
+      },
+      "resume": {
+        "fr": "Le 20 octobre, Hugging Face a annoncé la prise en charge native des TPU via TorchTPU, un backend PyTorch. Transformers, Diffusers et Kernels tournent sur TPU sans torch_xla ni JAX. Une image Qwen-Image-2.1 passe de 8,0 s à 3,5 s une fois compilée.",
+        "en": "On October 20, Hugging Face announced native TPU support through TorchTPU, a PyTorch backend. Transformers, Diffusers and Kernels run on TPU without torch_xla or JAX. A Qwen-Image-2.1 image drops from 8.0 s to 3.5 s once compiled."
+      },
+      "sources": [
+        { "titre": "Hugging Face", "url": "https://huggingface.co/blog/hf-torchtpu" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Vercel : les WebSockets sortent de bêta, et le middleware parle Python",
+        "en": "Vercel: WebSockets leave beta, and middleware speaks Python"
+      },
+      "resume": {
+        "fr": "Le 20 octobre, les WebSockets de Vercel Functions passent en disponibilité générale, avec les mêmes limites et tarifs que les autres appels. Le 21, le middleware de routage accepte aussi du Python (FastAPI, Flask, Django) via vercel.toml.",
+        "en": "On October 20, WebSockets in Vercel Functions became generally available, with the same limits and pricing as other invocations. On the 21st, Routing Middleware also accepts Python (FastAPI, Flask, Django) via vercel.toml."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/websocket-support-is-now-generally-available" },
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/routing-middleware-now-supports-python" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Standard ouvert",
+    "definition": {
+      "fr": "Spécification publique que n'importe qui peut implémenter sans autorisation d'un éditeur. Confiée à une fondation, elle ne dépend plus d'une seule entreprise : c'est le cas des Agent Skills depuis le 22 octobre.",
+      "en": "A public specification anyone can implement without a vendor's permission. Handed to a foundation, it no longer depends on a single company: this is the case for Agent Skills since October 22."
+    }
+  },
+  "chiffre": {
+    "valeur": "7 sur 30",
+    "texte": {
+      "fr": "applis de constructeurs automobiles testées envoient des données personnelles à des entreprises de publicité ou d'analyse.",
+      "en": "car-maker apps tested send personal data to advertising or analytics companies."
+    }
+  }
+}

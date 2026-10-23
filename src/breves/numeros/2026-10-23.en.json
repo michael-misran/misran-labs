@@ -1,0 +1,139 @@
+{
+  "date": "2026-10-23",
+  "numero": 24,
+  "essai": false,
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Agent Skills leave Anthropic for the Linux Foundation",
+    "chapo": "The format that teaches an AI agent a trade becomes a neutral standard, already adopted by more than 70 platforms.",
+    "paragraphes": [
+      "On October 22, Anthropic announced it is donating Agent Skills, an open standard published in December 2025, to the Agentic AI Foundation, part of the Linux Foundation. It is also giving the name, the logo, the GitHub organization and the agentskills.io domain.",
+      "A skill gives an agent specialized knowledge and workflows. According to Anthropic, more than 70 agent platforms have integrated it, including ChatGPT, Cursor, GitHub Copilot and VS Code, with over a million skills published and nearly 280 million installs.",
+      "In practice, a skill written once should plug in everywhere. The standard is maintained by individual engineers from Anthropic, Google, OpenAI and others, and you can use it or contribute without joining the foundation. On the roadmap: numbered versions, a formal proposal process and security guidance for writing and installing skills. Feedback goes through the project's Discord."
+    ],
+    "sources": [
+      "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant",
+        "rubrique": "Today's pet peeve",
+        "court": "Pet peeve",
+        "titre": "Replying STOP: soon, the company picks how",
+        "chapo": "In the US, the telecom regulator lets companies impose their own method for opting out of calls and texts.",
+        "paragraphes": [
+          "On October 1, the US FCC published a decision (FCC 26-67) on how to withdraw consent to automated calls and texts. The 2024 rules required honoring any reasonable method, and refusing one type of message counted for all of them. The \"revoke all\" rule is dropped for informational messages; for marketing, a refusal stays global.",
+          "Above all, a company can now designate exclusive methods among three: a keypress during the call, a keyword by text, or a designated website or number. It must state the method (a single keyword is enough in the display) and accept seven words, including stop, cancel and unsubscribe. The rules take effect 30 days after publication in the Federal Register, which had not happened as of October 7 (Nixon Peabody analysis)."
+        ],
+        "encadre": {
+          "titre": "Business lead",
+          "texte": "An opt-out dashboard for small businesses that send texts, with a log proving each revocation was handled on time. Competition: SMS platforms already handle \"STOP\"; the angle is audit proof.",
+          "plein": true
+        },
+        "sources": [
+          "https://www.nixonpeabody.com/insights/alerts/2026/10/07/fcc-scraps-revoke-all-and-lets-businesses-pick-how-consumers-opt-out"
+        ]
+      },
+      {
+        "type": "chiffre",
+        "rubrique": "The figure that bothers",
+        "court": "Figure",
+        "titre": "7 car apps out of 30 share your data with ad firms",
+        "chapo": "Researchers listened in on 21 cars and their companion apps. The chattiest one isn't the car.",
+        "paragraphes": [
+          "The study \"Automatic Transmission\", presented at the ACM IMC '26 conference (October 12-16), was carried out by Northeastern researchers in partnership with Consumer Reports. They tested 21 US vehicles from 19 brands and 30 manufacturer apps, from October 2024 to August 2025.",
+          "Of 1,338 domains contacted, 367 relate to advertising or tracking. Among apps, 70% contact more than five of these domains, against 29% of vehicles. And seven apps send personal data to these companies: for example, HondaLink sent location to Amplitude; Honda had Amplitude delete that data and stopped the transfer.",
+          "Authors' caveats: this is not hacking, vehicle traffic is mostly encrypted, and the figures are lower bounds."
+        ],
+        "encadre": {
+          "titre": "Business angle",
+          "texte": "A fixed-price audit of what an app contacts, with the list of domains, for small connected-hardware brands. Competition: compliance firms and privacy scanners.",
+          "plein": true
+        },
+        "sources": [
+          "https://blog.jdneer.com/2026/10/22/your-cars-app-may-be-the-bigger-privacy-leak-study-maps-where-21-cars-and-30-apps-send-data/"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Rétro · Tech",
+    "articles": [
+      {
+        "type": "retro",
+        "rubrique": "Retro gaming",
+        "court": "Retro",
+        "titre": "Hunchback was born Robin Hood, and his costume didn't follow",
+        "chapo": "The 1983 arcade hit changed heroes along the way, without changing outfits.",
+        "paragraphes": [
+          "Hunchback, released in 1983 by Century Electronics, was first meant to star Robin Hood in Sherwood Forest. The setting moved to Nottingham Castle, judged too close to <i>Pitfall!</i>, the game's main inspiration. Then adding a bell as a reward tipped the theme toward the Hunchback of Notre-Dame.",
+          "In the game, a knight climbing the wall acts as a timer: if he reaches the top, the player loses a life. The graphics weren't reworked for lack of time before an industry trade show: the character kept his Lincoln-green costume.",
+          "Ocean Software got the license for the home versions, its first arcade port, which reached number one in UK sales. Century itself went bankrupt in January 1984."
+        ],
+        "sources": [
+          "https://en.wikipedia.org/wiki/Hunchback_(video_game)",
+          "https://www.retrogamesnow.co.uk/?p=234"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech",
+        "court": "Tech",
+        "titre": "Hugging Face: Google's TPU becomes \"just another device\"",
+        "paragraphes": [
+          "On October 20, Hugging Face announced native TPU support through TorchTPU, a PyTorch backend. Transformers, Diffusers and Kernels run directly on TPU, without torch_xla or JAX; on a TPU machine, installation is a single <i>pip install torch-tpu</i>. You load a model with <i>device_map=\"tpu\"</i> or send a pipeline with <i>pipe.to(\"tpu\")</i>.",
+          "Figures given: a Qwen-Image-2.1 image in 3.5 s compiled versus 8.0 s without. Caveat: 96.5% of the tests run on TPU pass."
+        ],
+        "sources": [
+          "https://huggingface.co/blog/hf-torchtpu"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech in brief",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "Vercel: WebSockets leave beta, and middleware speaks Python",
+        "paragraphes": [
+          "On October 20, WebSockets in Vercel Functions became generally available: same limits and pricing as other invocations, CPU billed only while processing messages. Since the beta, 300 million connections have been served. On the 21st, Routing Middleware also accepts Python (FastAPI, Flask, Django) via <i>vercel.toml</i>."
+        ],
+        "sources": [
+          "https://vercel.com/changelog/websocket-support-is-now-generally-available",
+          "https://vercel.com/changelog/routing-middleware-now-supports-python"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "Open standard",
+      "nature": "n.",
+      "definition": "A public specification anyone can implement without a vendor's permission. Handed to a foundation, it no longer depends on a single company: this is the case for Agent Skills since October 22."
+    },
+    "chiffre": {
+      "valeur": "7 of 30",
+      "texte": "car-maker apps tested send personal data to advertising or analytics companies."
+    },
+    "bonus": {
+      "type": "defi",
+      "texte": "In under 30 minutes: open one of your sites, launch the developer tools, Network tab, reload the page, and count the domain names that aren't yours. Which ones can you justify?"
+    },
+    "enigme": {
+      "question": "I give an agent a trade it never learned, and I move from one platform to another without changing shape. Who am I?",
+      "reponse": "an agent skill (Agent Skills)"
+    }
+  },
+  "sources": [
+    "anthropic.com",
+    "nixonpeabody.com",
+    "blog.jdneer.com",
+    "wikipedia.org",
+    "retrogamesnow.co.uk",
+    "huggingface.co",
+    "vercel.com"
+  ],
+  "langue": "en"
+}
