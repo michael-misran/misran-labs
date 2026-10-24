@@ -1,0 +1,139 @@
+{
+  "langue": "en",
+  "date": "2026-10-24",
+  "numero": 25,
+  "essai": false,
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Figma's agent learns your design system's rules",
+    "chapo": "Figma publishes a guide so its agent follows your components and your rules.",
+    "paragraphes": [
+      "On October 23, Figma published a guide on giving its agent the context of a design system: it works better when it knows your components and your written rules.",
+      "First step, connect the published library via “Libraries”: the agent then uses approved components instead of inventing styles. Next come guidelines (which button for a payment, which for “Back”), examples, and skills launched with “/”.",
+      "Figma notes that guidelines mainly help when creating, not editing. Review the output: the agent can make mistakes."
+    ],
+    "sources": [
+      "https://www.figma.com/blog/how-to-put-your-design-system-to-work-with-the-figma-agent/"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "etude",
+        "rubrique": "Case study",
+        "court": "Case",
+        "titre": "Links: $31,500 a month, with $5 subscriptions",
+        "chapo": "A “link in bio” page builder made in two weeks in 2019, a salary a few years later.",
+        "paragraphes": [
+          "Charlie Clark, a software engineer, launched Links (liinks.co) in 2019 in about two weeks, while another project, a print-on-demand marketplace, was struggling. He had noticed artists using Linktree and built a more polished, mobile-first alternative.",
+          "Validation was done by hand: he built pages for artists he knew, then a Product Hunt launch brought traffic and the paid plan reached about $100 in monthly revenue within a few months. According to the interview Starter Story published on October 21, the Premium plan costs $5 a month ($4 before a June increase that added nearly $5,000 in monthly revenue) and Pro starts at $12, with customers paying over $100. Monthly recurring revenue is about $31,500.",
+          "On acquisition: Instagram ads worked at first then declined, and Google ads, around $100 a day, have been the main channel for about four years. The founder left his salaried job in August 2024, when Links caught up with his salary.",
+          "Takeaways: many small subscriptions, a pricier tier for heavy users, and patience. Downsides: reliance on one ad channel, and figures reported by the founder, not verified."
+        ],
+        "sources": [
+          "https://www.starterstory.com/stories/how-i-built-it-30k-month-micro-saas"
+        ]
+      },
+      {
+        "type": "irritant",
+        "rubrique": "Today's pet peeve",
+        "court": "Peeve",
+        "titre": "Moving to macOS 27 can switch off your code scanning",
+        "chapo": "A system update can strip a code-analysis tool of part of its abilities.",
+        "paragraphes": [
+          "On October 19, GitHub warned that CodeQL, its code-analysis tool, can no longer trace builds on Xcode 27 for C/C++, C#, Go, Java, Kotlin and Swift, and may not on macOS 27. Cause: Apple is removing Intel code from some system binaries the tool relies on. Swift 6.4 is not supported on any platform.",
+          "The suggested fix: stay on macOS 26 and Xcode 26, and pin the image and toolchain in GitHub Actions rather than following “latest”. For C/C++, C# and Java, a mode that doesn't trace the build exists. And support for Intel Macs will be deprecated in mid-December 2026."
+        ],
+        "encadre": {
+          "titre": "Business lead",
+          "texte": "A compatibility watch for small teams: you list your toolchain (system, compiler, security scanners), and a message warns you before an update breaks one of them. Competition: vendors' release notes, which you have to read yourself; I haven't checked whether a dedicated tool already exists.",
+          "plein": true
+        },
+        "sources": [
+          "https://github.blog/changelog/2026-10-19-codeql-changes-for-macos-27-xcode-27-and-swift-6-4"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Science · Tech",
+    "articles": [
+      {
+        "type": "science",
+        "rubrique": "Science in 5 lines",
+        "court": "Science",
+        "titre": "2,884 supernovae reopen the dark energy debate",
+        "chapo": "What if the force accelerating the Universe's expansion isn't constant?",
+        "paragraphes": [
+          "An international team led from the University of Queensland re-analyzed 2,884 Type Ia supernovae, the stellar explosions used as distance markers.",
+          "It recalibrated measurements across telescopes and corrected for dust, host-galaxy mass and gravitational lensing, then combined them with cosmic microwave background data and galaxy maps.",
+          "A cautious verdict: the results “may” point to dark energy that changes over time, against the standard model where it is constant.",
+          "Safeguards: the work is posted on arXiv, the deviation does not point quite the same way as the Dark Energy Survey's in 2024, and the release claims no confirmed detection."
+        ],
+        "sources": [
+          "https://www.sciencedaily.com/releases/2026/10/261021231244.htm"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech",
+        "court": "Tech",
+        "titre": "Vercel: deploy without an account, for one hour",
+        "paragraphes": [
+          "Since October 22, the <i>vercel deploy --temporary</i> command publishes a project, or a single file like <i>prototype.html</i>, without a Vercel account. It gives a shareable address on the tmp.now domain.",
+          "The deployment expires after one hour unless claimed through the link in the command's output, which requires signing in or creating an account. That link must stay private. Condition: a folder not linked to Vercel."
+        ],
+        "encadre": {
+          "titre": "Business angle",
+          "texte": "Show a prototype to a client without them creating anything: a platform's first trial is played before sign-up.",
+          "plein": true
+        },
+        "sources": [
+          "https://vercel.com/changelog/deploy-without-an-account-using-vercel-cli"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech in brief",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "Vercel: set a budget from the CLI",
+        "paragraphes": [
+          "Since October 23, <i>vercel budgets set --amount</i> sets a team's budget; <b>--pause</b> stops production at 100% of spend. Without it, nothing stops. <i>vercel budgets alerts</i> shows the alert history. Owner and Billing roles only."
+        ],
+        "sources": [
+          "https://vercel.com/changelog/vercel-cli-adds-spend-management"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "Dark energy",
+      "nature": "n.",
+      "definition": "Name given to the unknown cause of the accelerating expansion of the Universe. In the standard model it is constant; recent supernova measurements leave open the idea that it changes over time."
+    },
+    "chiffre": {
+      "valeur": "$31,500",
+      "texte": "a month: Links (reported)."
+    },
+    "bonus": {
+      "type": "citation",
+      "texte": "“The details are not details,” said Charles. “They make the product.”",
+      "auteur": "Charles Eames, as reported by Herman Miller"
+    },
+    "enigme": {
+      "question": "You can't see me, but I'm suspected of stretching the Universe ever faster. What am I?",
+      "reponse": "dark energy"
+    }
+  },
+  "sources": [
+    "figma.com",
+    "starterstory.com",
+    "github.blog",
+    "sciencedaily.com",
+    "vercel.com",
+    "hermanmiller.com"
+  ]
+}
