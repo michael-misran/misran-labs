@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-24",
+  "numero": 25,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "L'agent de Figma apprend les règles de votre design system",
+    "chapo": "Figma publie un mode d'emploi pour que son agent suive vos composants et vos règles.",
+    "paragraphes": [
+      "Le 23 octobre, Figma a publié un guide pour donner à son agent le contexte d'un design system : il produit mieux quand il connaît vos composants et vos règles écrites.",
+      "Première étape, connecter la bibliothèque publiée via « Libraries » : l'agent utilise alors les composants validés au lieu d'inventer des styles. Ensuite viennent des guidelines (quel bouton pour un paiement, lequel pour « Retour »), des exemples et des skills lancés avec « / ».",
+      "Figma précise que les guidelines servent surtout à créer, pas à modifier. À relire : l'agent peut se tromper."
+    ],
+    "sources": [
+      "https://www.figma.com/blog/how-to-put-your-design-system-to-work-with-the-figma-agent/"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "etude",
+        "rubrique": "L'étude de cas",
+        "court": "Étude",
+        "titre": "Links : 31 500 $ par mois, avec des abonnements à 5 $",
+        "chapo": "Un « lien dans la bio » conçu en deux semaines en 2019, devenu un salaire quelques années plus tard.",
+        "paragraphes": [
+          "Charlie Clark, ingénieur logiciel, a lancé Links (liinks.co) en 2019 en deux semaines environ, alors qu'un autre projet, une place de marché d'impression à la demande, peinait. Il avait remarqué des artistes qui utilisaient Linktree et a construit une alternative plus soignée, pensée pour le mobile.",
+          "La validation s'est faite à la main : il a monté des pages pour des artistes de son entourage, puis un lancement sur Product Hunt a apporté du trafic et l'offre payante a atteint environ 100 $ de revenu mensuel en quelques mois. Selon l'entretien publié le 21 octobre par Starter Story, l'offre Premium coûte 5 $ par mois (4 $ avant une hausse en juin, qui a ajouté près de 5 000 $ de revenu mensuel) et l'offre Pro démarre à 12 $, avec des clients qui dépassent 100 $. Le revenu mensuel récurrent s'élève à environ 31 500 $.",
+          "Côté acquisition : les publicités Instagram ont marché au début puis décliné, et les publicités Google, autour de 100 $ par jour, sont le canal principal depuis environ quatre ans. Le fondateur a quitté son emploi salarié en août 2024, quand Links a rattrapé son salaire.",
+          "À retenir : beaucoup de petits abonnements, un palier plus cher pour les gros utilisateurs, et la patience. Revers : dépendance à un canal publicitaire, et des chiffres déclarés par le fondateur, non vérifiés."
+        ],
+        "sources": [
+          "https://www.starterstory.com/stories/how-i-built-it-30k-month-micro-saas"
+        ]
+      },
+      {
+        "type": "irritant",
+        "rubrique": "L'irritant du jour",
+        "court": "Irritant",
+        "titre": "Passer à macOS 27, c'est parfois éteindre son analyse de sécurité",
+        "chapo": "Une mise à jour du système peut priver un outil d'analyse de code d'une partie de ses moyens.",
+        "paragraphes": [
+          "Le 19 octobre, GitHub a prévenu que CodeQL, son outil d'analyse de code, ne peut plus suivre les compilations sur Xcode 27 pour C/C++, C#, Go, Java, Kotlin et Swift, et peut ne plus le faire sur macOS 27. Cause : Apple retire le code Intel de certains binaires système dont l'outil se sert. Swift 6.4, lui, n'est pris en charge sur aucune plateforme.",
+          "La parade proposée : rester sur macOS 26 et Xcode 26, et figer l'image et la chaîne d'outils dans GitHub Actions plutôt que de suivre « la dernière ». Pour C/C++, C#, Java, un mode « sans traçage de la compilation » existe. Et le support des Mac Intel sera abandonné à la mi-décembre 2026."
+        ],
+        "encadre": {
+          "titre": "Piste de business",
+          "texte": "Une veille de compatibilité pour petites équipes : on indique sa chaîne d'outils (système, compilateur, scanners de sécurité), et un message prévient avant qu'une mise à jour ne casse l'un d'eux. Concurrence : les notes de version des éditeurs, qu'il faut lire soi-même ; je n'ai pas vérifié s'il existe déjà un outil dédié.",
+          "plein": true
+        },
+        "sources": [
+          "https://github.blog/changelog/2026-10-19-codeql-changes-for-macos-27-xcode-27-and-swift-6-4"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Science · Tech",
+    "articles": [
+      {
+        "type": "science",
+        "rubrique": "Science en 5 lignes",
+        "court": "Science",
+        "titre": "2 884 supernovae relancent le débat sur l'énergie noire",
+        "chapo": "Et si la force qui accélère l'expansion de l'Univers n'était pas constante ?",
+        "paragraphes": [
+          "Une équipe internationale menée depuis l'Université du Queensland a réanalysé 2 884 supernovae de type Ia, ces explosions d'étoiles qui servent de repères de distance.",
+          "Elle a recalibré les mesures entre télescopes et corrigé l'effet de la poussière, de la masse des galaxies hôtes et des lentilles gravitationnelles, puis les a croisées avec des données du fond diffus cosmologique et des cartes de galaxies.",
+          "Verdict prudent : les résultats « pourraient » indiquer une énergie noire qui varie avec le temps, contre le modèle standard où elle est constante.",
+          "Garde-fous : les travaux sont publiés sur arXiv, l'écart ne pointe pas tout à fait dans la même direction que celui du Dark Energy Survey en 2024, et le communiqué ne revendique aucune détection confirmée."
+        ],
+        "sources": [
+          "https://www.sciencedaily.com/releases/2026/10/261021231244.htm"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "La tech",
+        "court": "Tech",
+        "titre": "Vercel : déployer sans compte, pour une heure",
+        "paragraphes": [
+          "Depuis le 22 octobre, la commande <i>vercel deploy --temporary</i> publie un projet, ou un seul fichier comme <i>prototype.html</i>, sans compte Vercel. Elle donne une adresse à partager, sur le domaine tmp.now.",
+          "La mise en ligne expire au bout d'une heure, sauf si on la réclame via le lien fourni dans la sortie de la commande, ce qui demande de se connecter ou de créer un compte. Ce lien doit rester privé. Condition : un dossier non relié à Vercel."
+        ],
+        "encadre": {
+          "titre": "L'œil du business",
+          "texte": "Montrer un prototype à un client sans qu'il crée quoi que ce soit : le premier essai d'une plateforme se joue avant l'inscription.",
+          "plein": true
+        },
+        "sources": [
+          "https://vercel.com/changelog/deploy-without-an-account-using-vercel-cli"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech éclair",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "Vercel : un budget à poser depuis la CLI",
+        "paragraphes": [
+          "Depuis le 23 octobre, <i>vercel budgets set --amount</i> fixe le budget d'une équipe ; <b>--pause</b> arrête la production à 100 %. Sans elle, rien ne s'arrête. <i>vercel budgets alerts</i> affiche l'historique des alertes. Réservé aux rôles Owner et Billing."
+        ],
+        "sources": [
+          "https://vercel.com/changelog/vercel-cli-adds-spend-management"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "Énergie noire",
+      "nature": "n. f.",
+      "definition": "Nom donné à la cause, inconnue, de l'accélération de l'expansion de l'Univers. Dans le modèle standard, elle est constante ; des mesures récentes de supernovae laissent ouverte l'idée qu'elle varie avec le temps."
+    },
+    "chiffre": {
+      "valeur": "31 500 $",
+      "texte": "par mois : Links (déclaré)."
+    },
+    "bonus": {
+      "type": "citation",
+      "texte": "« Les détails ne sont pas des détails, dit Charles. Ils font le produit. »",
+      "auteur": "Charles Eames, rapporté par Herman Miller"
+    },
+    "enigme": {
+      "question": "On ne me voit pas, mais on me soupçonne d'étirer l'Univers toujours plus vite. Qui suis-je ?",
+      "reponse": "l'énergie noire"
+    }
+  },
+  "sources": [
+    "figma.com",
+    "starterstory.com",
+    "github.blog",
+    "sciencedaily.com",
+    "vercel.com",
+    "hermanmiller.com"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-24",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Figma explique comment former son agent à votre design system",
+        "en": "Figma explains how to train its agent on your design system"
+      },
+      "resume": {
+        "fr": "Figma a publié le 23 octobre un guide pour que son agent travaille avec vos composants et vos règles. On connecte la bibliothèque publiée, on joint des guidelines et des exemples, et on lance des skills avec « / ». Les guidelines servent surtout à créer, pas à modifier.",
+        "en": "On October 23, Figma published a guide for making its agent work with your components and your rules. You connect the published library, attach guidelines and examples, and launch skills with “/”. Guidelines mainly help when creating, not editing."
+      },
+      "sources": [
+        { "titre": "Figma", "url": "https://www.figma.com/blog/how-to-put-your-design-system-to-work-with-the-figma-agent/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Vercel : déployer sans compte, pour une heure",
+        "en": "Vercel: deploy without an account, for one hour"
+      },
+      "resume": {
+        "fr": "Depuis le 22 octobre, la commande vercel deploy --temporary publie un projet sur le domaine tmp.now sans compte Vercel. L'adresse expire au bout d'une heure, sauf si on la réclame avec un compte.",
+        "en": "Since October 22, the vercel deploy --temporary command publishes a project on the tmp.now domain without a Vercel account. The address expires after one hour unless claimed with an account."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/deploy-without-an-account-using-vercel-cli" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Vercel : un budget à poser depuis la CLI",
+        "en": "Vercel: set a budget from the CLI"
+      },
+      "resume": {
+        "fr": "Depuis le 23 octobre, la commande vercel budgets fixe le budget d'une équipe. L'option --pause arrête la production à 100 % de dépense ; sans elle, rien ne s'arrête. Réservé aux rôles Owner et Billing.",
+        "en": "Since October 23, the vercel budgets command sets a team's budget. The --pause option stops production at 100% of spend; without it, nothing stops. Owner and Billing roles only."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/vercel-cli-adds-spend-management" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Énergie noire",
+    "definition": {
+      "fr": "Nom donné à la cause, inconnue, de l'accélération de l'expansion de l'Univers. Dans le modèle standard, elle est constante ; des mesures récentes de supernovae laissent ouverte l'idée qu'elle varie avec le temps.",
+      "en": "Name given to the unknown cause of the accelerating expansion of the Universe. In the standard model it is constant; recent supernova measurements leave open the idea that it changes over time."
+    }
+  },
+  "chiffre": {
+    "valeur": "31 500 $",
+    "texte": {
+      "fr": "par mois : Links (déclaré).",
+      "en": "a month: Links (reported)."
+    }
+  }
+}
