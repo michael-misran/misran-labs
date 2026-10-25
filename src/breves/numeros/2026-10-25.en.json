@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-25",
+  "numero": 26,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "A Stripe key for each agent, created by Vercel for you",
+    "chapo": "Vercel Connect can now generate a restricted key per agent or per task, without anyone copying a secret key.",
+    "paragraphes": [
+      "On October 23, Vercel added a \"Managed API Key\" option to its Stripe connector. Instead of pasting your secret key into a project, you pick the permissions you want: Vercel then creates, in your Stripe account, a restricted key limited to those permissions only, and keeps it on its side.",
+      "The problem it targets is familiar: Stripe's default secret key opens the whole account. If an AI agent receives it, it can do anything. Vercel gives two examples of how to split things up: a revenue-report agent that only reads payments, an onboarding agent that only writes to customers. Each has its own key, and a leak only compromises a small perimeter.",
+      "On the operations side, the key is rotated from the connector settings, with no redeploy. The old one stays valid for up to 24 hours during the transition. To start: add the Stripe connector, choose the method, tick the permissions, attach it to the project, or start the setup from the CLI. Existing methods (MCP, a key you supply) remain available.",
+      "Two unknowns: the announcement says neither whether the feature is in beta or open to everyone, nor what it costs. Check the documentation before adopting it."
+    ],
+    "sources": [
+      "https://vercel.com/changelog/vercel-connect-adds-managed-stripe-api-keys"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant",
+        "rubrique": "Today's pet peeve",
+        "court": "Pet peeve",
+        "titre": "You clicked \"Reject\", and the site sets its cookies anyway",
+        "chapo": "A March 2026 audit tested 7,634 sites: more than one in two ignores the opt-out signal.",
+        "paragraphes": [
+          "The auditing company webXray visited 7,634 popular sites from a California address, twice each: once normally, once with the <i>Global Privacy Control</i> signal, a browser setting that says \"don't track me.\" Result: 55% of sites (4,170) set advertising cookies despite that refusal, 125,106 cookies in all.",
+          "The audit adds that all 11 consent management platforms tested let advertising cookies through after a refusal. Read with caution: webXray is an auditing firm, the test covers California, and Google, Microsoft and Meta dispute how the results are read."
+        ],
+        "encadre": {
+          "titre": "Business lead",
+          "texte": "An opt-out checker for small brands: every week, it visits the site with and without the opt-out signal and lists the cookies that still get through, with the fix. Competition: webXray and the big consent platforms. The angle: a simple report, in French, with no lawyer needed.",
+          "plein": true
+        },
+        "sources": [
+          "https://globalprivacyaudit.org/2026/california",
+          "https://mezha.ua/en/news/doslidzhennya-knopka-vidhiliti-cookies-chasto-ne-pracyuye-310329/"
+        ]
+      },
+      {
+        "type": "idee",
+        "rubrique": "The business idea",
+        "court": "Idea",
+        "titre": "A monthly accessibility check for shops that have just passed 10 employees",
+        "chapo": "Since June 28, 2025, online retail must be accessible. Microenterprises are exempt, others are not.",
+        "paragraphes": [
+          "The European directive has applied to online commerce since June 28, 2025, except to microenterprises: fewer than 10 employees and less than €2 million in turnover. Otherwise, the fine can reach €7,500 per infraction, €15,000 for repeat offenses, according to a law firm.",
+          "On June 4, 2026, the Caen court, ruling in summary proceedings brought by the associations apiDV and Droit Pluriel, ordered Carrefour to make its website and app fully accessible within six months. The judge dismissed the argument of a 71% compliance rate: it is an obligation of result.",
+          "<b>The idea:</b> a subscription that analyzes the site of a 10-to-50-employee shop every month, ranks the defects by priority and drafts the accessibility statement. Who pays: the e-commerce manager with no budget for a one-off audit. Launch: a scanner, a few pilot sites, a report in French. Competition: AudioEye, Silktide, tools for Shopify. The angle: French and monthly follow-up; an automatic tool only catches part of the defects."
+        ],
+        "jauge": {
+          "cout": 1,
+          "difficulte": 2,
+          "potentiel": 2
+        },
+        "sources": [
+          "https://informations.handicap.fr/a-accessibilite-web-carrefour-condamne-par-la-justice-39309.php",
+          "https://www.degaullefleurance.com/en/actualites/digital-accessibility-new-obligations-for-the-private-sector/",
+          "https://stacker.com/stories/business-economy/one-year-after-european-accessibility-act-most-businesses-are-still",
+          "https://silktide.com/",
+          "https://www.fudge.ai/fr/blog/european-accessibility-act-shopify/"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "AI · Tech",
+    "articles": [
+      {
+        "type": "ia",
+        "rubrique": "AI in practice",
+        "court": "AI",
+        "titre": "Twenty tasks drawn from real failures: your agent's first test",
+        "chapo": "Anthropic explains, in a January article, how to measure an agent without waiting for hundreds of cases.",
+        "paragraphes": [
+          "An \"eval\" is a test for an AI system: you give it an input, then grading logic judges its output. Anthropic's engineering team distinguishes three kinds of graders: code (unit tests, end-state checks, fast but rigid), a model acting as judge (flexible, but non-deterministic and in need of calibration) and humans (the reference, but slow and costly).",
+          "The advice for getting started: 20 to 50 simple tasks drawn from real failures are enough. Start from reported bugs, write unambiguous tasks with a reference solution, and read the transcripts to check the grader. A task that always fails, even after a hundred tries, is more likely broken than too hard.",
+          "<i>pass@k</i> measures the chance of at least one success in k tries; <i>pass^k</i> that of succeeding all k times. At 75% per try, <i>pass^3</i> drops to about 42%."
+        ],
+        "sources": [
+          "https://anthropic.com/engineering/demystifying-evals-for-ai-agents"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech",
+        "court": "Tech",
+        "titre": "Node.js fixes 10 flaws, 4 of them high severity",
+        "chapo": "Versions 22.23.4, 24.22.1 and 26.12.1 came out on October 21.",
+        "paragraphes": [
+          "Among the four high-severity flaws: two bypasses of TLS verification using unusually written IP addresses, a truncation of DNS names at the null byte that can bypass an allow list, and an out-of-bounds write in the Brotli decoder, which can lead to a crash or remote code execution. Three flaws are medium, three low. End-of-life versions are also affected."
+        ],
+        "sources": [
+          "https://nodejs.org/en/blog/vulnerability/october-2026-security-releases"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech in brief",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "GitHub Apps: enterprise-level installation is open to everyone",
+        "paragraphes": [
+          "Announced on October 23, it lets you replace personal tokens with GitHub Apps for more automations. New permissions cover governance, two-factor authentication, IP allow lists and rulesets. They will arrive in GitHub Enterprise Server 3.24."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-10-23-enterprise-installations-for-github-apps-generally-available"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "Eval",
+      "nature": "n.",
+      "definition": "A test of an AI system: an input, then grading logic that judges the output. The grader can be code, another model or a human."
+    },
+    "chiffre": {
+      "valeur": "55%",
+      "texte": "of the 7,634 sites tested set advertising cookies despite an opt-out signal (webXray audit, March 2026)."
+    },
+    "bonus": {
+      "type": "question",
+      "texte": "Which rule in your online life or your work have you already \"accepted\" knowing it would not be checked? Who would pay to have someone check it for you?"
+    },
+    "enigme": {
+      "question": "The more consecutive successes you demand of me, the lower I get: at 75% per try, three tries leave me at 42%. Who am I?",
+      "reponse": "pass^k, the chance of succeeding on all k tries"
+    }
+  },
+  "sources": [
+    "vercel.com",
+    "globalprivacyaudit.org",
+    "handicap.fr",
+    "degaullefleurance.com",
+    "anthropic.com",
+    "nodejs.org",
+    "github.blog"
+  ]
+}

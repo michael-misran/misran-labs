@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-25",
+  "numero": 26,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Une clé Stripe pour chaque agent, créée par Vercel à votre place",
+    "chapo": "Vercel Connect sait désormais fabriquer une clé restreinte par agent ou par tâche, sans qu'on copie la moindre clé secrète.",
+    "paragraphes": [
+      "Le 23 octobre, Vercel a ajouté une option « Managed API Key » à son connecteur Stripe. Au lieu de coller votre clé secrète dans un projet, vous choisissez les permissions voulues : Vercel crée alors, dans votre compte Stripe, une clé restreinte limitée à ces seules permissions, et la garde de son côté.",
+      "Le problème visé est connu : la clé secrète par défaut de Stripe ouvre tout le compte. Si un agent d'IA la reçoit, il peut tout faire. Vercel donne deux exemples de découpage : un agent de rapport de revenus qui ne lit que les paiements, un agent d'onboarding qui n'écrit que sur les clients. Chacun a sa clé, et une fuite ne compromet qu'un petit périmètre.",
+      "Côté exploitation, la clé se renouvelle depuis les réglages du connecteur, sans redéployer. L'ancienne reste valide jusqu'à 24 heures, le temps de la transition. Pour démarrer : ajouter le connecteur Stripe, choisir la méthode, cocher les permissions, rattacher le tout au projet, ou lancer la configuration depuis la CLI. Les méthodes existantes (MCP, clé fournie par vous) restent disponibles.",
+      "Deux inconnues : l'annonce ne dit ni si la fonction est en bêta ou ouverte à tous, ni son prix. À vérifier dans la documentation avant de l'adopter."
+    ],
+    "sources": [
+      "https://vercel.com/changelog/vercel-connect-adds-managed-stripe-api-keys"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant",
+        "rubrique": "L'irritant du jour",
+        "court": "Irritant",
+        "titre": "Vous avez cliqué sur « Refuser », et le site pose quand même ses cookies",
+        "chapo": "Un audit de mars 2026 a testé 7 634 sites : plus d'un sur deux ignore le signal de refus.",
+        "paragraphes": [
+          "La société d'audit webXray a visité 7 634 sites populaires depuis une adresse californienne, deux fois chacun : une fois normalement, une fois avec le signal <i>Global Privacy Control</i>, un réglage du navigateur qui dit « ne me suivez pas ». Résultat : 55 % des sites (4 170) posent des cookies publicitaires malgré ce refus, soit 125 106 cookies en tout.",
+          "L'audit ajoute que les 11 plateformes de gestion du consentement testées ont toutes laissé passer des cookies publicitaires après un refus. À lire avec prudence : webXray est une entreprise d'audit, le test porte sur la Californie, et Google, Microsoft et Meta contestent la lecture des résultats."
+        ],
+        "encadre": {
+          "titre": "Piste de business",
+          "texte": "Un vérificateur de refus pour les petites marques : chaque semaine, il visite le site avec et sans signal de refus et liste les cookies qui passent quand même, avec la correction. Concurrence : webXray et les grandes plateformes de consentement. L'angle : un rapport simple, en français, sans juriste.",
+          "plein": true
+        },
+        "sources": [
+          "https://globalprivacyaudit.org/2026/california",
+          "https://mezha.ua/en/news/doslidzhennya-knopka-vidhiliti-cookies-chasto-ne-pracyuye-310329/"
+        ]
+      },
+      {
+        "type": "idee",
+        "rubrique": "L'idée de business",
+        "court": "Idée",
+        "titre": "Un contrôle mensuel d'accessibilité pour les boutiques qui viennent de passer 10 salariés",
+        "chapo": "Depuis le 28 juin 2025, le commerce en ligne doit être accessible. Les microentreprises sont exemptées, pas les autres.",
+        "paragraphes": [
+          "La directive européenne s'applique au commerce en ligne depuis le 28 juin 2025, sauf aux microentreprises : moins de 10 salariés et moins de 2 millions d'euros de chiffre d'affaires. Sinon, l'amende peut atteindre 7 500 € par infraction, 15 000 € en cas de récidive, selon un cabinet d'avocats.",
+          "Le 4 juin 2026, le tribunal de Caen, saisi en référé par les associations apiDV et Droit Pluriel, a ordonné à Carrefour de rendre son site et son application pleinement accessibles sous six mois. Le juge a écarté l'argument d'un taux de conformité de 71 % : c'est une obligation de résultat.",
+          "<b>L'idée :</b> un abonnement qui analyse chaque mois le site d'une boutique de 10 à 50 salariés, classe les défauts par priorité et rédige la déclaration d'accessibilité. Qui paie : le responsable e-commerce sans budget pour un audit ponctuel. Lancement : un scanner, quelques sites pilotes, un rapport en français. Concurrence : AudioEye, Silktide, des outils pour Shopify. L'angle : le français et le suivi mensuel ; un outil automatique ne repère qu'une partie des défauts."
+        ],
+        "jauge": {
+          "cout": 1,
+          "difficulte": 2,
+          "potentiel": 2
+        },
+        "sources": [
+          "https://informations.handicap.fr/a-accessibilite-web-carrefour-condamne-par-la-justice-39309.php",
+          "https://www.degaullefleurance.com/en/actualites/digital-accessibility-new-obligations-for-the-private-sector/",
+          "https://stacker.com/stories/business-economy/one-year-after-european-accessibility-act-most-businesses-are-still",
+          "https://silktide.com/",
+          "https://www.fudge.ai/fr/blog/european-accessibility-act-shopify/"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "IA · Tech",
+    "articles": [
+      {
+        "type": "ia",
+        "rubrique": "L'IA en pratique",
+        "court": "IA",
+        "titre": "Vingt tâches tirées de vrais ratés : le premier test de votre agent",
+        "chapo": "Anthropic explique, dans un article de janvier, comment mesurer un agent sans attendre des centaines de cas.",
+        "paragraphes": [
+          "Un « eval » est un test pour un système d'IA : on lui donne une entrée, puis une logique de notation juge sa sortie. L'équipe d'ingénierie d'Anthropic en distingue trois types de correcteurs : du code (tests unitaires, vérification de l'état final, rapide mais rigide), un modèle qui juge (souple, mais non déterministe et à calibrer) et des humains (la référence, mais lents et chers).",
+          "Le conseil pour débuter : 20 à 50 tâches simples tirées de vrais échecs suffisent. Partez des bugs signalés, écrivez des tâches sans ambiguïté avec une solution de référence, et lisez les transcriptions pour vérifier le correcteur. Une tâche qui échoue toujours, même après cent essais, est plutôt cassée que trop dure.",
+          "<i>pass@k</i> mesure la chance d'avoir au moins une réussite en k essais ; <i>pass^k</i> celle de réussir les k fois. À 75 % par essai, <i>pass^3</i> tombe à environ 42 %."
+        ],
+        "sources": [
+          "https://anthropic.com/engineering/demystifying-evals-for-ai-agents"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "La tech",
+        "court": "Tech",
+        "titre": "Node.js corrige 10 failles, dont 4 de sévérité haute",
+        "chapo": "Les versions 22.23.4, 24.22.1 et 26.12.1 sont sorties le 21 octobre.",
+        "paragraphes": [
+          "Parmi les quatre failles hautes : deux contournements de la vérification TLS avec des adresses IP écrites de façon inhabituelle, une troncature des noms DNS à l'octet nul qui peut contourner une liste d'autorisation, et une écriture hors limites dans le décodeur Brotli, qui peut mener à un plantage ou à l'exécution de code à distance. Trois failles sont moyennes, trois faibles. Les versions en fin de vie sont aussi concernées."
+        ],
+        "sources": [
+          "https://nodejs.org/en/blog/vulnerability/october-2026-security-releases"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech éclair",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "GitHub Apps : l'installation au niveau de l'entreprise est ouverte à tous",
+        "paragraphes": [
+          "Annoncée le 23 octobre, elle permet de remplacer des jetons personnels par des GitHub Apps pour davantage d'automatisations. De nouvelles permissions couvrent la gouvernance, la double authentification, les listes d'adresses IP ou les rulesets. Elles arriveront dans GitHub Enterprise Server 3.24."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-10-23-enterprise-installations-for-github-apps-generally-available"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "Eval",
+      "nature": "n. m.",
+      "definition": "Test d'un système d'IA : une entrée, puis une logique de notation qui juge la sortie. Le correcteur peut être du code, un autre modèle ou un humain."
+    },
+    "chiffre": {
+      "valeur": "55 %",
+      "texte": "des 7 634 sites testés posent des cookies publicitaires malgré un signal de refus (audit webXray, mars 2026)."
+    },
+    "bonus": {
+      "type": "question",
+      "texte": "Quelle règle de votre vie en ligne ou de votre travail avez-vous déjà « acceptée » en sachant qu'elle ne serait pas vérifiée ? Qui paierait pour que quelqu'un la vérifie à votre place ?"
+    },
+    "enigme": {
+      "question": "Plus on m'exige de réussites d'affilée, moins je suis haut : à 75 % par essai, trois essais me laissent à 42 %. Qui suis-je ?",
+      "reponse": "le pass^k, la chance de réussir les k essais"
+    }
+  },
+  "sources": [
+    "vercel.com",
+    "globalprivacyaudit.org",
+    "handicap.fr",
+    "degaullefleurance.com",
+    "anthropic.com",
+    "nodejs.org",
+    "github.blog"
+  ]
+}
