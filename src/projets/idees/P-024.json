@@ -1,0 +1,23 @@
+{
+  "id": "P-024",
+  "date": "2026-10-25",
+  "titre": {
+    "fr": "Une carte de risque visuel pour les pull requests qui touchent le design",
+    "en": "A visual risk card for pull requests that touch design"
+  },
+  "resume": {
+    "fr": "Un outil qui résume, sur une pull request touchant les tokens ou les composants visuels, ce qui change et à quoi ça ressemble avant/après, pour aider la personne qui approuve à juger l'impact visuel sans tout relire en détail.",
+    "en": "A tool that summarizes, on a pull request touching tokens or visual components, what changes and what it looks like before/after, to help the approver judge the visual impact without reading everything in detail."
+  },
+  "probleme": {
+    "fr": "Relire une pull request qui touche des tokens de design ou des composants visuels ne dit pas grand-chose sur son impact réel à l'écran ; plusieurs outils récents cherchent à donner à la personne qui approuve un repère de risque, mais aucun ne s'adresse spécifiquement au visuel ou aux design systems.",
+    "en": "Reviewing a pull request that touches design tokens or visual components doesn't say much about its real on-screen impact; several recent tools try to give the approver a risk marker, but none specifically addresses visual or design-system changes."
+  },
+  "idee": {
+    "fr": "Une action qui, sur une pull request touchant les fichiers de tokens ou de composants, commente automatiquement quels tokens ou composants changent et une capture avant/après des pages concernées, comme repère de risque visuel pour l'approbation.",
+    "en": "An action that, on a pull request touching token or component files, automatically comments which tokens or components change along with a before/after screenshot of the affected pages, as a visual risk marker for approval."
+  },
+  "type": "outil",
+  "taille": "moyenne",
+  "statut": "proposee"
+}
