@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-25",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Vercel crée une clé Stripe restreinte pour chaque agent",
+        "en": "Vercel creates a restricted Stripe key for each agent"
+      },
+      "resume": {
+        "fr": "Depuis le 23 octobre, le connecteur Stripe de Vercel Connect peut générer dans votre compte une clé limitée aux permissions choisies, une par agent ou par tâche. Plus de clé secrète à copier ; elle se renouvelle sans redéploiement, l’ancienne restant valide 24 heures. L’annonce ne précise ni le statut de bêta ni le prix.",
+        "en": "Since October 23, the Stripe connector in Vercel Connect can generate a key in your account limited to the permissions you pick, one per agent or task. No secret key to copy; it rotates without a redeploy, and the old one stays valid for 24 hours. The announcement gives neither a beta status nor a price."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/vercel-connect-adds-managed-stripe-api-keys" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Node.js corrige dix failles, dont 4 de sévérité haute",
+        "en": "Node.js fixes ten flaws, 4 of them high severity"
+      },
+      "resume": {
+        "fr": "Les versions 22.23.4, 24.22.1 et 26.12.1, publiées le 21 octobre, corrigent dix vulnérabilités : quatre hautes, trois moyennes, trois faibles. Les plus graves touchent la vérification TLS, la résolution DNS et le décodeur Brotli. Les versions en fin de vie sont aussi concernées.",
+        "en": "Versions 22.23.4, 24.22.1 and 26.12.1, released on October 21, fix ten vulnerabilities: four high, three medium, three low. The most serious affect TLS verification, DNS resolution and the Brotli decoder. End-of-life versions are also affected."
+      },
+      "sources": [
+        { "titre": "Node.js", "url": "https://nodejs.org/en/blog/vulnerability/october-2026-security-releases" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "GitHub Apps : l’installation au niveau de l’entreprise est ouverte à tous",
+        "en": "GitHub Apps: enterprise-level installation is open to everyone"
+      },
+      "resume": {
+        "fr": "Annoncée le 23 octobre, elle permet de remplacer des jetons personnels par des GitHub Apps pour davantage d’automatisations. De nouvelles permissions couvrent la gouvernance, la double authentification, les listes d’adresses IP et les rulesets. Elles arriveront dans GitHub Enterprise Server 3.24.",
+        "en": "Announced on October 23, it lets you replace personal tokens with GitHub Apps for more automations. New permissions cover governance, two-factor authentication, IP allow lists and rulesets. They will arrive in GitHub Enterprise Server 3.24."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-23-enterprise-installations-for-github-apps-generally-available" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Eval",
+    "definition": {
+      "fr": "Test d’un système d’IA : une entrée, puis une logique de notation qui juge la sortie. Le correcteur peut être du code, un autre modèle ou un humain.",
+      "en": "A test of an AI system: an input, then grading logic that judges the output. The grader can be code, another model or a human."
+    }
+  },
+  "chiffre": {
+    "valeur": "55 %",
+    "texte": {
+      "fr": "des 7 634 sites testés posent des cookies publicitaires malgré un signal de refus (audit webXray, mars 2026).",
+      "en": "of the 7,634 sites tested set advertising cookies despite an opt-out signal (webXray audit, March 2026)."
+    }
+  }
+}
