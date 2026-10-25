@@ -1,0 +1,23 @@
+{
+  "id": "P-023",
+  "date": "2026-10-25",
+  "titre": {
+    "fr": "Un outil de suivi et d'alerte de la limite d'usage de Claude Code",
+    "en": "A usage-limit tracker and alert tool for Claude Code"
+  },
+  "resume": {
+    "fr": "Construire, à partir de l'expérience déjà acquise en écrivant des petits modules pour ses propres sessions Claude Code, un outil plus abouti qui prévient avant d'atteindre la limite d'usage, avec une version gratuite et une version payante plus riche.",
+    "en": "Build, from the experience already gained writing small modules for his own Claude Code sessions, a more polished tool that warns before the usage limit is reached, with a free version and a richer paid version."
+  },
+  "probleme": {
+    "fr": "Atteindre la limite d'usage de Claude Code en plein milieu d'une tâche fait perdre l'élan ; un outil ouvert existant qui tente de résoudre ce problème a trouvé un public réel récemment.",
+    "en": "Hitting the Claude Code usage limit mid-task breaks momentum; an existing open tool trying to solve this found a real audience recently."
+  },
+  "idee": {
+    "fr": "Un module qui mesure le rythme de consommation de la fenêtre d'usage et prévient avant la limite, avec une version gratuite basique et une version payante (alertes, tableau de bord sur plusieurs sessions).",
+    "en": "A module that measures how fast the usage window is burning and warns before the limit, with a basic free version and a paid version (alerts, a dashboard across several sessions)."
+  },
+  "type": "outil",
+  "taille": "petite",
+  "statut": "proposee"
+}

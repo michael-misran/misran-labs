@@ -1,0 +1,23 @@
+{
+  "id": "P-021",
+  "date": "2026-10-25",
+  "titre": {
+    "fr": "Un livre sur le site pour le projet Canopée",
+    "en": "A book on the site for the Canopée project"
+  },
+  "resume": {
+    "fr": "Documenter le projet d'apprentissage « Canopée » (recherche documentaire, agents IA, anonymisation des données) sous la forme d'un livre à feuilleter sur le site, comme l'Atelier automatique raconte les missions autonomes.",
+    "en": "Document the \"Canopée\" learning project (document search, AI agents, data anonymization) as a flip-through book on the site, the way the Automatic Workshop tells the story of autonomous missions."
+  },
+  "probleme": {
+    "fr": "Canopée est un projet d'apprentissage mené en dehors du site, sur comment les organisations avancées utilisent l'IA sur des données publiques et privées (recherche documentaire sourcée, agents spécialisés, anonymisation) ; il reste invisible pour qui visite le site, alors que la démarche et les choix faits mériteraient d'être montrés, comme pour d'autres projets déjà racontés sous forme de livre.",
+    "en": "Canopée is a learning project carried out outside the site, about how advanced organizations use AI on public and private data (sourced document search, specialized agents, anonymization); it stays invisible to site visitors, even though the approach and the choices made would be worth showing, the way other projects are already told as a book."
+  },
+  "idee": {
+    "fr": "Un nouveau livre à feuilleter (sur le modèle de l'Atelier automatique) qui raconte Canopée : l'objectif du bac à sable, les étapes construites, les choix techniques et de confidentialité, sans exposer de détail sensible du projet lui-même.",
+    "en": "A new flip-through book (on the Automatic Workshop's model) telling the story of Canopée: the sandbox's goal, the steps built, the technical and privacy choices made, without exposing any sensitive detail of the project itself."
+  },
+  "type": "amelioration",
+  "taille": "grosse",
+  "statut": "proposee"
+}

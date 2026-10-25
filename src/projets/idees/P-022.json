@@ -1,0 +1,23 @@
+{
+  "id": "P-022",
+  "date": "2026-10-25",
+  "titre": {
+    "fr": "Un skill d'audit de design system, publié dans les catalogues d'agents",
+    "en": "A design-system audit skill, published in agent skill catalogs"
+  },
+  "resume": {
+    "fr": "Transformer la méthode d'audit de design system déjà construite en un skill au format ouvert (SKILL.md), publié dans les catalogues de skills pour agents IA, avec une version gratuite et une version plus poussée payante.",
+    "en": "Turn the design-system audit method already built into a skill in the open SKILL.md format, published in AI agent skill catalogs, with a free version and a paid, deeper version."
+  },
+  "probleme": {
+    "fr": "Proposer un audit de design system comme service demande de trouver un client à chaque fois ; un savoir-faire déjà construit (repérage d'incohérences de tokens, de nommage, de contraste) reste difficile à découvrir sans canal de diffusion existant.",
+    "en": "Offering a design-system audit as a service means finding a client every time; know-how that is already built (spotting inconsistent tokens, naming, contrast) stays hard to discover without an existing distribution channel."
+  },
+  "idee": {
+    "fr": "Empaqueter la méthode d'audit dans un skill au format SKILL.md, utilisable par un agent IA sur le design system d'un tiers, publié dans un catalogue de skills ouvert ; une version gratuite pour la visibilité, une version payante avec des vérifications plus poussées.",
+    "en": "Package the audit method into a SKILL.md-format skill, usable by an AI agent on a third party's design system, published in an open skill catalog; a free version for visibility, a paid version with deeper checks."
+  },
+  "type": "outil",
+  "taille": "moyenne",
+  "statut": "proposee"
+}
