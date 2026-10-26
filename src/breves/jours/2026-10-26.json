@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-26",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Claude Duet : les garde-fous d'un agent qui ne voit pas vos mots de passe",
+        "en": "Claude Duet: the safeguards of an agent that never sees your passwords"
+      },
+      "resume": {
+        "fr": "Anthropic a décrit le 23 octobre la sécurité de Claude Duet, un agent en préversion qui travaille sur un ordinateur cloud. Il demande votre accord avant les actions sensibles, un classifieur filtre les messages sortants, et mots de passe, cookies et jetons restent hors de sa portée.",
+        "en": "On October 23, Anthropic described how Claude Duet, a preview agent working on a cloud computer, is secured. It asks for your approval before sensitive actions, a classifier filters outgoing messages, and passwords, cookies and tokens stay out of its reach."
+      },
+      "sources": [
+        { "titre": "claude.com", "url": "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Figma : les code layers en bêta, gratuits jusqu'au 4 novembre",
+        "en": "Figma: code layers in beta, free until November 4"
+      },
+      "resume": {
+        "fr": "Figma a ouvert le 23 octobre en bêta des couches de code posées à côté des maquettes, pour bâtir des prototypes interactifs. L'outil consomme des crédits d'IA ; sur les offres payantes, créer et modifier est gratuit jusqu'au 4 novembre 2026.",
+        "en": "On October 23, Figma opened code layers in beta: layers of code placed beside designs, to build interactive prototypes. The tool uses AI credits; on paid plans, creating and editing is free through November 4, 2026."
+      },
+      "sources": [
+        { "titre": "figma.com", "url": "https://www.figma.com/blog/6-ways-teams-are-experimenting-with-code-layers/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Copilot compte aussi ce que font Claude Code et Codex",
+        "en": "Copilot now counts what Claude Code and Codex do too"
+      },
+      "resume": {
+        "fr": "Depuis le 23 octobre, l'API de métriques d'usage de GitHub Copilot ajoute un détail par client : OpenCode, Claude Code, Codex et d'autres. Une requête est un appel de modèle, pas un prompt, et l'étiquette du client reste une estimation.",
+        "en": "Since October 23, GitHub Copilot's usage metrics API adds a per-client breakdown: OpenCode, Claude Code, Codex and others. A request is a model call, not a prompt, and the client label is a best-effort estimate."
+      },
+      "sources": [
+        { "titre": "github.blog", "url": "https://github.blog/changelog/2026-10-23-usage-metrics-api-adds-usage-from-tools-like-opencode" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Sommet",
+    "definition": {
+      "fr": "En 3D, point où se rejoignent les arêtes d'un polygone. Plus un objet compte de sommets, plus la machine doit en calculer à chaque image : d'où le choix de formes simples sur les consoles anciennes.",
+      "en": "In 3D, a point where the edges of a polygon meet. The more vertices an object has, the more the machine must compute each frame: hence the simple shapes on old consoles."
+    }
+  },
+  "chiffre": {
+    "valeur": "2 ans",
+    "texte": {
+      "fr": "pour développer la puce Super FX de Star Fox.",
+      "en": "to develop the Super FX chip behind Star Fox."
+    }
+  }
+}

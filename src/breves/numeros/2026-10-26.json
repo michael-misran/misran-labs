@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-26",
+  "numero": 27,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Claude Duet : un agent qui n'a jamais vu vos mots de passe",
+    "chapo": "Anthropic détaille les garde-fous de son agent qui travaille sur un ordinateur cloud, même quand vous êtes parti.",
+    "paragraphes": [
+      "Le 23 octobre, Anthropic a publié la description de la sécurité de Claude Duet, un agent en préversion de recherche annoncé le 21 octobre. Il tourne sur un ordinateur cloud, travaille dans les applications que vous connectez et continue après la fermeture de l'appli. Accès sur liste d'attente, d'abord pour les abonnés Pro et Max américains.",
+      "Premier garde-fou : avant d'envoyer un message sensible, de payer ou de supprimer quelque chose, l'agent montre l'action, sa destination et son contenu complet, puis attend votre accord. Un contrôle automatisé, extérieur au modèle, vérifie aussi que chaque action correspond à votre demande. Les achats passent par une carte à usage unique, limitée à un commerçant et à un montant.",
+      "Deuxième garde-fou : un classifieur lit chaque message sortant selon deux niveaux. Identifiants de connexion, numéros de carte complets et numéros de pièce d'identité ne sortent jamais ; les autres données privées, comme la santé ou les finances, exigent votre consentement. Mots de passe, cookies et jetons restent hors de portée de l'agent ; pour les jetons, un intermédiaire extérieur insère la vraie valeur au moment de la requête.",
+      "Pour un développeur, c'est un catalogue de motifs à copier : isoler le navigateur, ne jamais confier un secret au modèle, séparer l'agent de celui qui vérifie ses actes. Limite assumée : le texte ne publie aucun taux d'erreur du classifieur, et Anthropic dit calibrer encore la fréquence des demandes d'accord."
+    ],
+    "sources": ["https://claude.com/resources/articles/claude-duet-safety-privacy-and-security"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "Votre hébergeur ferme : il vous reste le temps de tout déménager vous-même",
+        "chapo": "Zeabur, plateforme de déploiement, s'arrêtera au 31 décembre. Les sauvegardes s'arrêtent avec elle.",
+        "paragraphes": [
+          "Le 17 octobre, le fondateur de Zeabur a annoncé la fermeture du service, après deux incidents de sécurité en 2026, dont un le 14 octobre. Dès l'annonce, plus d'achat de serveur dédié ni de domaine. Le 1er décembre, les services des clusters partagés sont mis en pause ; le 31 décembre est la date finale, certains serveurs dédiés s'arrêtant plus tôt, à leur échéance.",
+          "Le déménagement revient aux clients. Les sauvegardes quotidiennes des bases disparaissent avec le service : il faut exporter soi-même. Les adresses en zeabur.app cessent de fonctionner : domaine, DNS et certificats HTTPS sont à refaire. La date limite d'export n'est pas annoncée.",
+          "Zeabur fournit un guide, avec une version Markdown pour agents de code. Il cite Railway, Coolify, k3s ou Docker Compose, sans en recommander une."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un déménagement à forfait pour petites équipes pressées : inventaire, export des bases, bascule des DNS, test de reprise. Concurrence : le guide gratuit de Zeabur et les agents de code. L'angle : vendre la responsabilité du résultat, pas les commandes.", "plein": true },
+        "sources": ["https://zeabur.com/blogs/zeabur-is-shutting-down", "https://zeabur.com/blogs/migrate-from-zeabur"]
+      },
+      {
+        "type": "idee", "rubrique": "L'idée de business", "court": "Idée",
+        "titre": "Un contrôleur de lockfile pnpm pour que les alertes de sécurité ne se taisent pas",
+        "chapo": "Dependabot ne lit pas encore un format de lockfile que pnpm 12 produit par défaut.",
+        "paragraphes": [
+          "Le 20 octobre, GitHub a étendu Dependabot à npm 12, pnpm 11 et 12 et Bun 1.4. Mais il signale une limite connue : quand pnpm 12 écrit <i>pnpm-lock.yaml</i> en deux documents YAML, ce qui est son comportement par défaut pour un projet qui épingle une version de pnpm, Dependabot ne voit pas ces dépendances. Les mises à jour de version marchent ; les alertes et les mises à jour de sécurité ne sont pas créées, et des alertes existantes peuvent se fermer.",
+          "Le produit : une petite GitHub Action qui détecte ce format et prévient par un ticket que la protection est muette. Qui paie : les agences qui gèrent de nombreux dépôts clients. Lancement : un week-end, un essai gratuit sur dix dépôts. Le marché est temporaire, GitHub travaillant à une prise en charge : viser plus large, tous les trous silencieux de la chaîne de dépendances."
+        ],
+        "encadre": { "titre": "Concurrence", "texte": "Je n'ai pas trouvé d'outil pour ce cas précis, mais GitHub peut le rendre inutile du jour au lendemain. Un script gratuit dans le dépôt suffit pour la détection : seule la surveillance continue d'un parc de dépôts se vend.", "plein": true },
+        "jauge": { "cout": 1, "difficulte": 1, "potentiel": 1 },
+        "sources": ["https://github.blog/changelog/2026-10-20-dependabot-now-supports-npm-12-pnpm-11-and-12-and-bun-1-4"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Rétro · Design · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Rétro · le design d'un jeu", "court": "Rétro",
+        "titre": "Star Fox : des grues en papier refusées à cause de leurs sommets",
+        "chapo": "Avec une puce qui coûta environ deux ans de développement, chaque polygone devait se justifier.",
+        "paragraphes": [
+          "Pour un jeu entièrement en polygones sur Super Nintendo, Nintendo a mis au point la puce Super FX, environ deux ans de travail, selon un entretien publié en 2017 avec Shigeru Miyamoto et deux membres de l'équipe.",
+          "La contrainte a façonné le dessin : chasseurs au minimum de polygones, bâtiments carrés ou triangulaires, ennemis plats, sol en simple dégradé. Des grues en papier ont été écartées pour leurs trop nombreux sommets ; le niveau caché a reçu des avions en papier.",
+          "Dans Star Fox 2, une version où l'appareil tournait sur lui-même a été abandonnée : le pilote aurait le tournis. Le jeu, terminé en 1995, a été annulé en 1996, à cause du prix de la puce Super FX 2 et du calendrier de la Nintendo 64."
+        ],
+        "sources": ["https://www.nintendo.com/en-gb/News/2017/September/Nintendo-Classic-Mini-SNES-developer-interview-Volume-1-Star-Fox-Star-Fox-2-1273086.html"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Figma : le code s'installe sur le canvas, gratuit jusqu'au 4 novembre",
+        "paragraphes": [
+          "Le 23 octobre, Figma a ouvert en bêta les « code layers » : des couches de code posées à côté des maquettes, pour bâtir des prototypes interactifs. L'outil consomme des crédits d'IA ; sur les offres payantes, créer et modifier est gratuit jusqu'au 4 novembre 2026.",
+          "Merkle annonce des itérations 30 % plus rapides ; une cheffe de produit de Cox Automotive dit avoir produit 19 versions en environ une heure. Chiffres déclarés, dans un texte promotionnel. Les témoignages notent aussi des limites : consignes précises nécessaires, parfois deux passes de nettoyage."
+        ],
+        "sources": ["https://www.figma.com/blog/6-ways-teams-are-experimenting-with-code-layers/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Copilot compte aussi ce que font Claude Code et Codex",
+        "paragraphes": [
+          "Depuis le 23 octobre, l'API de métriques d'usage de GitHub Copilot ajoute un détail par client : OpenCode, Claude Code, Codex et d'autres, avec requêtes, sessions et tokens par modèle. Attention : une requête est un appel de modèle, pas un prompt, et l'étiquette du client est une estimation."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-23-usage-metrics-api-adds-usage-from-tools-like-opencode"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Sommet", "nature": "n. m.", "definition": "En 3D, point où se rejoignent les arêtes d'un polygone. Plus un objet compte de sommets, plus la machine doit en calculer à chaque image : d'où le choix de formes simples sur les consoles anciennes." },
+    "chiffre": { "valeur": "2 ans", "texte": "pour développer la puce Super FX de Star Fox." },
+    "bonus": { "type": "question", "texte": "Quelle tâche de votre semaine repose sur un service dont vous ne possédez pas la sortie (hébergement, outil en ligne) ? Si ce service fermait dans deux mois, combien de temps faudrait-il pour tout exporter ?" },
+    "enigme": { "question": "Je n'ai ni couleur ni épaisseur, mais je relie tout ce qui a des arêtes ; plus on m'ajoute, plus la machine ralentit. Qui suis-je ?", "reponse": "un sommet (en 3D)" }
+  },
+  "sources": ["claude.com", "zeabur.com", "github.blog", "nintendo.com", "figma.com"]
+}
