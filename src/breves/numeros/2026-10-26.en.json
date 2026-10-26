@@ -1,0 +1,87 @@
+{
+  "langue": "en",
+  "date": "2026-10-26",
+  "numero": 27,
+  "essai": false,
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Claude Duet: an agent that has never seen your passwords",
+    "chapo": "Anthropic details the safeguards of its agent that works on a cloud computer, even while you are away.",
+    "paragraphes": [
+      "On October 23, Anthropic published a description of how Claude Duet is secured, a research-preview agent introduced on October 21. It runs on a cloud computer, works across the apps you connect and keeps going after you close the app. Access is by waitlist, starting with US Pro and Max subscribers.",
+      "First safeguard: before sending a sensitive message, paying or deleting something, the agent shows the action, its destination and its full content, then waits for your approval. An automated check, running outside the model, also tests that each action matches your request. Purchases use a one-time card, limited to one merchant and one amount.",
+      "Second safeguard: a classifier reads each outgoing message in two tiers. Sign-in credentials, full card numbers and government ID numbers never go out; other private details, such as health or finances, need your consent. Passwords, cookies and tokens stay out of the agent's reach; for tokens, an outside proxy inserts the real value at request time.",
+      "For a developer, it is a catalog of patterns to copy: isolate the browser, never hand a secret to the model, separate the agent from whatever checks its actions. A stated limit: the text publishes no error rate for the classifier, and Anthropic says it is still calibrating how often approval is requested."
+    ],
+    "sources": ["https://claude.com/resources/articles/claude-duet-safety-privacy-and-security"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Peeve",
+        "titre": "Your host is closing: you have time to move everything yourself",
+        "chapo": "Zeabur, a deployment platform, shuts down by December 31. Backups end with it.",
+        "paragraphes": [
+          "On October 17, Zeabur's founder announced the service is closing, after two security incidents in 2026, one of them on October 14. From the announcement on, no new dedicated servers or domains can be bought. On December 1, shared-cluster services are paused; December 31 is the final date, with some dedicated servers stopping earlier, at their expiry.",
+          "The move falls to customers. Daily database backups disappear with the service: you must export them yourself. zeabur.app addresses stop working: domain, DNS and HTTPS certificates must be redone. The data export deadline has not been announced.",
+          "Zeabur provides a guide, with a Markdown version for coding agents. It names Railway, Coolify, k3s or Docker Compose, without recommending one."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A flat-fee migration for small teams in a hurry: inventory, database export, DNS switch, recovery test. Competition: Zeabur's free guide and coding agents. The angle: sell responsibility for the result, not the commands.", "plein": true },
+        "sources": ["https://zeabur.com/blogs/zeabur-is-shutting-down", "https://zeabur.com/blogs/migrate-from-zeabur"]
+      },
+      {
+        "type": "idee", "rubrique": "The business idea", "court": "Idea",
+        "titre": "A pnpm lockfile checker so security alerts don't go silent",
+        "chapo": "Dependabot can't yet read a lockfile format that pnpm 12 produces by default.",
+        "paragraphes": [
+          "On October 20, GitHub extended Dependabot to npm 12, pnpm 11 and 12, and Bun 1.4. But it flags a known limitation: when pnpm 12 writes <i>pnpm-lock.yaml</i> as two YAML documents, its default for a project that pins a pnpm version, Dependabot doesn't see those dependencies. Version updates work; alerts and security updates are not created, and existing alerts may close.",
+          "The product: a small GitHub Action that detects this format and raises an issue saying protection is silent. Who pays: agencies managing many client repositories. Launch: one weekend, a free trial on ten repositories. The market is temporary, since GitHub is working on support: aim wider, at every silent gap in the dependency chain."
+        ],
+        "encadre": { "titre": "Competition", "texte": "I found no tool for this exact case, but GitHub could make it obsolete overnight. A free script in the repository is enough for detection: only continuous monitoring of a fleet of repositories can be sold.", "plein": true },
+        "jauge": { "cout": 1, "difficulte": 1, "potentiel": 1 },
+        "sources": ["https://github.blog/changelog/2026-10-20-dependabot-now-supports-npm-12-pnpm-11-and-12-and-bun-1-4"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Retro · Design · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Retro · a game's design", "court": "Retro",
+        "titre": "Star Fox: paper cranes rejected because of their vertices",
+        "chapo": "With a chip that took about two years to develop, every polygon had to earn its place.",
+        "paragraphes": [
+          "For a fully polygonal game on the Super Nintendo, Nintendo developed the Super FX chip, about two years of work, according to a 2017 interview with Shigeru Miyamoto and two members of the team.",
+          "The constraint shaped the art: fighters with as few polygons as possible, square or triangular buildings, flat enemies, a plain gradient for the ground. Paper cranes were dropped for having too many vertices; the hidden stage got paper planes instead.",
+          "In Star Fox 2, a version where the craft spun on itself was abandoned: the pilot would get dizzy. The game, finished in 1995, was cancelled in 1996 because of the price of the Super FX 2 chip and the timing of the Nintendo 64."
+        ],
+        "sources": ["https://www.nintendo.com/en-gb/News/2017/September/Nintendo-Classic-Mini-SNES-developer-interview-Volume-1-Star-Fox-Star-Fox-2-1273086.html"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Figma: code moves onto the canvas, free until November 4",
+        "paragraphes": [
+          "On October 23, Figma opened code layers in beta: layers of code placed beside the designs, to build interactive prototypes. The tool uses AI credits; on paid plans, creating and editing is free through November 4, 2026.",
+          "Merkle reports 30% faster iteration; a senior product manager at Cox Automotive says she produced 19 versions in about an hour. These are self-reported figures, in a promotional text. The testimonials also note limits: precise prompts are needed, sometimes two cleanup passes."
+        ],
+        "sources": ["https://www.figma.com/blog/6-ways-teams-are-experimenting-with-code-layers/"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Copilot now counts what Claude Code and Codex do too",
+        "paragraphes": [
+          "Since October 23, GitHub Copilot's usage metrics API adds a per-client breakdown: OpenCode, Claude Code, Codex and others, with requests, sessions and tokens per model. Careful: a request is a model call, not a prompt, and the client label is a best-effort estimate."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-23-usage-metrics-api-adds-usage-from-tools-like-opencode"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Vertex", "nature": "n.", "definition": "In 3D, a point where the edges of a polygon meet. The more vertices an object has, the more the machine must compute each frame: hence the simple shapes on old consoles." },
+    "chiffre": { "valeur": "2 years", "texte": "to develop the Super FX chip behind Star Fox." },
+    "bonus": { "type": "question", "texte": "Which task of your week relies on a service whose output you don't own (hosting, an online tool)? If that service closed in two months, how long would it take to export everything?" },
+    "enigme": { "question": "I have no color and no thickness, yet I join everything that has edges; the more of me you add, the slower the machine runs. What am I?", "reponse": "a vertex (in 3D)" }
+  },
+  "sources": ["claude.com", "zeabur.com", "github.blog", "nintendo.com", "figma.com"]
+}
