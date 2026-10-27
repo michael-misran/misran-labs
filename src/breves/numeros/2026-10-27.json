@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-27",
+  "numero": 28,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Anthropic dépose son dossier d'introduction en bourse",
+    "chapo": "Le S-1 est déposé auprès de la SEC : cotation visée au Nasdaq sous le symbole « ANT », mais rien n'est encore fixé.",
+    "paragraphes": [
+      "Le 26 octobre, Anthropic a annoncé avoir déposé auprès de la SEC, le gendarme américain des marchés, un formulaire S-1 pour une introduction en bourse de ses actions ordinaires de classe A. Les titres seraient cotés au Nasdaq Global Select Market, sous le symbole « ANT ».",
+      "Le S-1 est le document d'enregistrement qu'une entreprise américaine dépose avant de s'introduire en bourse. L'annonce précise deux choses : le nombre d'actions et la fourchette de prix ne sont pas encore fixés, et le dossier n'est pas encore « effectif ». Tant qu'il ne l'est pas, aucun titre ne peut être vendu ni aucune offre acceptée. Goldman Sachs et Morgan Stanley sont les deux banques auprès desquelles on peut obtenir le prospectus préliminaire.",
+      "Le texte rappelle aussi qu'Anthropic est une <i>public benefit corporation</i>, une société à mission, dont l'objectif affiché est que le monde traverse en sécurité la transition vers une IA transformatrice. La page ne dit rien de l'usage des fonds ni des produits ou des clients.",
+      "Pour un développeur ou un indépendant qui bâtit sur ces modèles, l'intérêt est concret : un prospectus oblige à publier des chiffres, des risques et des dépendances que l'on ne lit d'ordinaire nulle part. Reste à voir ce que le document contiendra une fois public."
+    ],
+    "sources": ["https://www.anthropic.com/news/s1-sec"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "Neuf heures sans réseau : pour être indemnisé, il faut prouver son préjudice",
+        "chapo": "La panne d'Orange du 21 octobre a touché presque tous les abonnés mobiles. Reste à savoir qui peut réclamer quoi.",
+        "paragraphes": [
+          "Selon Que Choisir (article du 23 octobre), le réseau mobile d'Orange et de sa marque Sosh est tombé le mercredi 21 octobre de 11 h 20 à 20 h 30, pour les particuliers comme pour les entreprises. Seul le Wi-Fi fonctionnait. L'opérateur parle d'un « incident technique majeur » sur son cœur de réseau.",
+          "Côté droits, l'opérateur doit indemniser les abonnés qui ont subi un dommage, quelle que soit la durée de la panne, mais il faut prouver ce dommage, et la résiliation sans frais est exclue. Son geste commercial : le double de data pendant un mois, annoncé par SMS le 22 octobre. Le chemin conseillé : un courrier recommandé, puis le médiateur, avec un signalement possible à l'Arcep."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un journal de pannes pour indépendants : un outil léger qui teste le réseau chaque minute et fabrique un dossier horodaté à joindre à une réclamation. Concurrence : les sites de suivi de pannes et le signalement de l'Arcep, qui ne produisent pas de preuve au nom d'un client.", "plein": true },
+        "sources": ["https://www.quechoisir.org/actualite-panne-chez-orange-les-clients-peuvent-ils-pretendre-a-une-indemnisation-n178986/"]
+      },
+      {
+        "type": "etude", "rubrique": "L'étude de cas", "court": "Étude",
+        "titre": "HabitKit : 2 $ par mois, porté par le classement des boutiques",
+        "chapo": "Une application indépendante, sortie fin 2022, dont les ventes suivent presque entièrement le classement dans l'App Store et Google Play.",
+        "paragraphes": [
+          "Sebastian Röhl a lancé HabitKit en novembre 2022 : une vue en tuiles, inspirée du graphique de contributions de GitHub, pour voir sa régularité d'un coup d'œil. Après une première tentative d'indépendance et un retour à temps partiel dans son ancien emploi, il a quitté ce poste en novembre 2023 pour s'y consacrer à plein temps.",
+          "Selon un entretien publié le 22 octobre 2025 par Happy Bootstrapping, l'abonnement coûte 2 $ par mois sur iOS et 1 $ sur Android, avec une option à vie à 32 $. Le revenu mensuel monte jusqu'à 30 000 $ en décembre et janvier, autour de 15 000 $ l'été. Sa croissance repose sur le classement dans les boutiques ; les publicités payantes n'ont pas convaincu.",
+          "Leçon : ne pas toucher à une fiche qui marche tant que le classement est bon. Revers : la dépendance aux deux boutiques, et des chiffres déclarés par le fondateur."
+        ],
+        "sources": ["https://happybootstrapping.com/p/30000-per-month-sebastian-ruhls-journey"]
+      },
+      {
+        "type": "irritant", "rubrique": "Irritant éclair", "court": "Irritant", "taille": "petit",
+        "titre": "« Prix inchangé » : inchangé par rapport à quand ?",
+        "paragraphes": [
+          "Peugeot annonce des finitions enrichies « pour un prix inchangé ». Que Choisir (23 octobre) confirme que les prix du 1ᵉʳ octobre sont ceux du 1ᵉʳ septembre, mais une 308 GT Plus hybride 145, à 38 550 €, coûte 800 € de plus que la GT qu'elle remplace."
+        ],
+        "sources": ["https://www.quechoisir.org/actualite-peugeot-enrichit-sa-gamme-sans-hausse-de-prix-vraiment-n178982/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Dev · Tech",
+    "articles": [
+      {
+        "type": "dev", "rubrique": "Outil ou astuce dev", "court": "Outil",
+        "titre": "Cursor Agent SDK : un agent, c'est un dossier de code",
+        "chapo": "Disponible depuis le 20 octobre, avec des tests intégrés et un déploiement en une commande.",
+        "paragraphes": [
+          "Un agent est un dossier : <i>instructions.md</i> pour la consigne, <i>tools/</i> pour les actions typées, <i>skills/</i> pour les procédures chargées à la demande, <i>mcp-connections/</i> et <i>channels/</i> pour les outils et les canaux. On crée avec <i>npx @cursor/agent-sdk init ./my-bot</i>, on teste avec <i>agent-sdk dev</i>, puis <i>agent-sdk deploy</i> publie l'agent sur l'infrastructure de Cursor. Déclencheurs : GitHub, GitLab, Bitbucket, Slack, webhook ou cron.",
+          "Le plus utile : les <i>evals</i>, qui vérifient quels outils ont tourné et avec quels paramètres, et <i>agent-sdk github replay</i>, qui rejoue une vraie pull request. La page ne précise ni langages ni prix."
+        ],
+        "sources": ["https://cursor.com/changelog/agent-sdk"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Copilot : un modèle juge si une commande peut s'exécuter sans vous",
+        "paragraphes": [
+          "Depuis le 26 octobre, les « permissions assistées » sont disponibles pour tous dans Copilot CLI, l'application Copilot et VS Code. Quand l'agent veut lancer une commande, accéder à un chemin ou ouvrir une URL, un modèle évalue la demande : celles jugées clairement sûres passent, les autres attendent votre accord.",
+          "Réglage : <i>/permissions</i> puis « assisted » dans la CLI. La page ne détaille pas ce qui compte comme « clairement sûr »."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-26-github-copilot-assisted-permissions-generally-available"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Vercel Sandbox accepte l'entrée standard",
+        "paragraphes": [
+          "Depuis le 26 octobre, on peut envoyer des données à une commande en cours dans un Sandbox, par exemple pour dialoguer avec un serveur MCP en stdio. En TypeScript : <i>writeStdin()</i> et <i>closeStdin()</i> ; en Python : <i>stdin.send()</i> et <i>communicate()</i>."
+        ],
+        "sources": ["https://vercel.com/changelog/vercel-sandbox-commands-now-support-stdin"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Prospectus", "nature": "n. m.", "definition": "Document que publie une entreprise avant d'offrir ses titres au public : activité, risques, finances. Un prospectus « préliminaire » circule avant que le prix et le nombre d'actions soient fixés." },
+    "chiffre": { "valeur": "9 h 10", "texte": "de panne chez Orange, le 21 octobre." },
+    "bonus": { "type": "defi", "texte": "En moins de 30 minutes : sur papier, écrivez trois cas de test pour un agent de votre choix (message d'entrée, outil attendu, forme de la réponse). C'est exactement ce qu'un <i>eval</i> vérifie." },
+    "enigme": { "question": "Je suis déposé avant d'exister en bourse ; tant que je ne suis pas « effectif », personne ne peut acheter ce que je décris. Qui suis-je ?", "reponse": "un formulaire S-1 (le dossier d'introduction en bourse)" }
+  },
+  "sources": ["anthropic.com", "quechoisir.org", "happybootstrapping.com", "cursor.com", "github.blog", "vercel.com"]
+}

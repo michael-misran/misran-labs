@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-27",
+  "numero": 28,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Anthropic files for an initial public offering",
+    "chapo": "The S-1 is filed with the SEC: a Nasdaq listing under the symbol “ANT” is planned, but nothing is set yet.",
+    "paragraphes": [
+      "On October 26, Anthropic announced it had filed a Form S-1 with the SEC, the US markets regulator, for a proposed initial public offering of its Class A common stock. The shares would be listed on the Nasdaq Global Select Market under the symbol “ANT”.",
+      "The S-1 is the registration document a US company files before going public. The announcement states two things: the number of shares and the price range have not been set, and the filing is not yet “effective”. Until it is, no securities can be sold and no offers accepted. Goldman Sachs and Morgan Stanley are the two banks from which the preliminary prospectus can be obtained.",
+      "The text also reminds readers that Anthropic is a <i>public benefit corporation</i>, whose stated goal is for the world to get through the transition to transformative AI safely. The page says nothing about the use of proceeds, products or customers.",
+      "For a developer or freelancer building on these models, the interest is concrete: a prospectus forces the publication of figures, risks and dependencies that are usually found nowhere else. We will see what the document contains once it is public."
+    ],
+    "sources": ["https://www.anthropic.com/news/s1-sec"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Peeve",
+        "titre": "Nine hours without a network: to be compensated, you must prove your loss",
+        "chapo": "Orange's October 21 outage hit almost every mobile subscriber. The question is who can claim what.",
+        "paragraphes": [
+          "According to Que Choisir (article of October 23), the mobile network of Orange and its Sosh brand went down on Wednesday, October 21, from 11:20 a.m. to 8:30 p.m., for individuals and businesses alike. Only Wi-Fi worked. The operator called it a “major technical incident” on its core network.",
+          "On rights, the operator must compensate subscribers who suffered harm, whatever the outage's length, but the harm has to be proven, and penalty-free termination is ruled out. Its goodwill gesture: double data for a month, announced by text message on October 22. Recommended route: a registered letter, then the mediator, with a possible report to Arcep."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "An outage log for freelancers: a light tool that tests the network every minute and builds a timestamped file to attach to a claim. Competition: outage-tracking sites and Arcep's reporting platform, which do not produce evidence in a given customer's name.", "plein": true },
+        "sources": ["https://www.quechoisir.org/actualite-panne-chez-orange-les-clients-peuvent-ils-pretendre-a-une-indemnisation-n178986/"]
+      },
+      {
+        "type": "etude", "rubrique": "Case study", "court": "Case",
+        "titre": "HabitKit: $2 a month, carried by app store rankings",
+        "chapo": "An independent app, released in late 2022, whose sales follow almost entirely its ranking in the App Store and Google Play.",
+        "paragraphes": [
+          "Sebastian Röhl launched HabitKit in November 2022: a tile view, inspired by GitHub's contribution graph, to see your consistency at a glance. After a first attempt at independence and a return to his old job part-time, he quit that job in November 2023 to work on it full-time.",
+          "According to an interview published on October 22, 2025 by Happy Bootstrapping, the subscription costs $2 a month on iOS and $1 on Android, with a $32 lifetime option. Monthly revenue climbs to $30,000 in December and January, around $15,000 in summer. His growth rests on store rankings; paid ads did not convince.",
+          "Lesson: don't touch a store listing that works while the ranking is good. Downside: dependence on two stores, and figures reported by the founder."
+        ],
+        "sources": ["https://happybootstrapping.com/p/30000-per-month-sebastian-ruhls-journey"]
+      },
+      {
+        "type": "irritant", "rubrique": "Pet peeve in brief", "court": "Peeve", "taille": "petit",
+        "titre": "“Unchanged price”: unchanged compared to when?",
+        "paragraphes": [
+          "Peugeot announces enriched trim levels “at an unchanged price”. Que Choisir (October 23) confirms that October 1 prices match September 1, but a 308 GT Plus hybrid 145, at €38,550, costs €800 more than the GT it replaces."
+        ],
+        "sources": ["https://www.quechoisir.org/actualite-peugeot-enrichit-sa-gamme-sans-hausse-de-prix-vraiment-n178982/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Dev · Tech",
+    "articles": [
+      {
+        "type": "dev", "rubrique": "Dev tool or tip", "court": "Tool",
+        "titre": "Cursor Agent SDK: an agent is a folder of code",
+        "chapo": "Available since October 20, with built-in tests and one-command deployment.",
+        "paragraphes": [
+          "An agent is a folder: <i>instructions.md</i> for the prompt, <i>tools/</i> for typed actions, <i>skills/</i> for procedures loaded on demand, <i>mcp-connections/</i> and <i>channels/</i> for tools and channels. Create with <i>npx @cursor/agent-sdk init ./my-bot</i>, test with <i>agent-sdk dev</i>, then <i>agent-sdk deploy</i> publishes the agent on Cursor's infrastructure. Triggers: GitHub, GitLab, Bitbucket, Slack, webhook or cron.",
+          "The most useful part: <i>evals</i>, which check which tools ran and with what parameters, and <i>agent-sdk github replay</i>, which replays a real pull request. The page states neither languages nor pricing."
+        ],
+        "sources": ["https://cursor.com/changelog/agent-sdk"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Copilot: a model judges whether a command can run without you",
+        "paragraphes": [
+          "Since October 26, “assisted permissions” are generally available in Copilot CLI, the Copilot app and VS Code. When the agent wants to run a command, access a path or open a URL, a model evaluates the request: those judged clearly safe go through, the others wait for your approval.",
+          "Setting: <i>/permissions</i> then “assisted” in the CLI. The page does not detail what counts as “clearly safe”."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-26-github-copilot-assisted-permissions-generally-available"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Vercel Sandbox accepts standard input",
+        "paragraphes": [
+          "Since October 26, you can send data to a running command in a Sandbox, for example to talk to a stdio MCP server. In TypeScript: <i>writeStdin()</i> and <i>closeStdin()</i>; in Python: <i>stdin.send()</i> and <i>communicate()</i>."
+        ],
+        "sources": ["https://vercel.com/changelog/vercel-sandbox-commands-now-support-stdin"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Prospectus", "nature": "n.", "definition": "Document a company publishes before offering its securities to the public: business, risks, finances. A “preliminary” prospectus circulates before the price and the number of shares are set." },
+    "chiffre": { "valeur": "9 h 10", "texte": "of outage at Orange, on October 21." },
+    "bonus": { "type": "defi", "texte": "In under 30 minutes: on paper, write three test cases for an agent of your choice (input message, expected tool, shape of the reply). That is exactly what an <i>eval</i> checks." },
+    "enigme": { "question": "I am filed before I exist on the stock market; until I am “effective”, nobody can buy what I describe. Who am I?", "reponse": "an S-1 form (the IPO filing)" }
+  },
+  "sources": ["anthropic.com", "quechoisir.org", "happybootstrapping.com", "cursor.com", "github.blog", "vercel.com"]
+}

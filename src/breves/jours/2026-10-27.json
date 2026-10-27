@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-27",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "Anthropic dépose son dossier d'introduction en bourse",
+        "en": "Anthropic files for an initial public offering"
+      },
+      "resume": {
+        "fr": "Le 26 octobre, Anthropic a déposé auprès de la SEC un formulaire S-1 en vue d'une cotation au Nasdaq sous le symbole « ANT ». Le nombre d'actions et la fourchette de prix ne sont pas fixés, et le dossier n'est pas encore effectif : aucun titre ne peut être vendu.",
+        "en": "On October 26, Anthropic filed a Form S-1 with the SEC for a Nasdaq listing under the symbol “ANT”. The number of shares and the price range are not set, and the filing is not yet effective: no securities can be sold."
+      },
+      "sources": [
+        { "titre": "anthropic.com", "url": "https://www.anthropic.com/news/s1-sec" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Copilot : un modèle juge si une commande peut s'exécuter sans vous",
+        "en": "Copilot: a model judges whether a command can run without you"
+      },
+      "resume": {
+        "fr": "Depuis le 26 octobre, les permissions assistées sont disponibles pour tous dans Copilot CLI, l'application Copilot et VS Code. Un modèle évalue chaque commande, chemin ou URL demandé : le clairement sûr passe, le reste attend votre accord.",
+        "en": "Since October 26, assisted permissions are generally available in Copilot CLI, the Copilot app and VS Code. A model evaluates each requested command, path or URL: what is clearly safe goes through, the rest waits for your approval."
+      },
+      "sources": [
+        { "titre": "github.blog", "url": "https://github.blog/changelog/2026-10-26-github-copilot-assisted-permissions-generally-available" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Cursor Agent SDK : un agent, c'est un dossier de code",
+        "en": "Cursor Agent SDK: an agent is a folder of code"
+      },
+      "resume": {
+        "fr": "Disponible depuis le 20 octobre, le SDK de Cursor définit un agent comme un dossier de code, avec des tests (evals) et un déploiement par commande. Les déclencheurs vont de GitHub à Slack, d'un webhook à un cron.",
+        "en": "Available since October 20, Cursor's SDK defines an agent as a folder of code, with tests (evals) and command-line deployment. Triggers range from GitHub to Slack, a webhook or a cron."
+      },
+      "sources": [
+        { "titre": "cursor.com", "url": "https://cursor.com/changelog/agent-sdk" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Vercel Sandbox accepte l'entrée standard",
+        "en": "Vercel Sandbox accepts standard input"
+      },
+      "resume": {
+        "fr": "Depuis le 26 octobre, on peut envoyer des données à une commande en cours dans un Sandbox, par exemple pour dialoguer avec un serveur MCP en stdio. Les SDK TypeScript et Python ont chacun leurs méthodes.",
+        "en": "Since October 26, you can send data to a running command in a Sandbox, for example to talk to a stdio MCP server. The TypeScript and Python SDKs each have their own methods."
+      },
+      "sources": [
+        { "titre": "vercel.com", "url": "https://vercel.com/changelog/vercel-sandbox-commands-now-support-stdin" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Prospectus",
+    "definition": {
+      "fr": "Document que publie une entreprise avant d'offrir ses titres au public : activité, risques, finances. Un prospectus « préliminaire » circule avant que le prix et le nombre d'actions soient fixés.",
+      "en": "A document a company publishes before offering its securities to the public: business, risks, finances. A “preliminary” prospectus circulates before the price and the number of shares are set."
+    }
+  },
+  "chiffre": {
+    "valeur": "9 h 10",
+    "texte": {
+      "fr": "de panne chez Orange, le 21 octobre.",
+      "en": "of outage at Orange, on October 21."
+    }
+  }
+}
