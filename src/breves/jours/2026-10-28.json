@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-28",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": { "fr": "Claude en biotech : 35 000 anticorps en un mois, encore rien chez l'humain", "en": "Claude in biotech: 35,000 antibodies in a month, nothing in humans yet" },
+      "resume": {
+        "fr": "Anthropic a publié le 27 octobre les premiers résultats de six partenariats biotech. Chez Divergence Labs, environ 35 000 designs d'anticorps ont été générés en un mois, et la relecture de documents chez Enveda est passée de plus de 25 heures à moins de 3. Le travail reste précoce et préclinique.",
+        "en": "On October 27, Anthropic published first results from six biotech partnerships. Divergence Labs generated about 35,000 antibody designs in a month, and Enveda's document review dropped from over 25 hours to under 3. The work remains early and preclinical."
+      },
+      "sources": [
+        { "titre": "Anthropic", "url": "https://www.anthropic.com/research/early-progress-drug-development" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Vercel déploie un Dockerfile tel quel", "en": "Vercel deploys a plain Dockerfile" },
+      "resume": {
+        "fr": "Depuis le 27 octobre, en bêta, un Dockerfile à la racine d'un projet suffit à Vercel quand aucun framework n'est détecté : il construit l'image et lui envoie tout le trafic. Facturation à l'Active CPU.",
+        "en": "Since October 27, in beta, a Dockerfile at a project's root is enough for Vercel when no framework is detected: it builds the image and routes all traffic to it. Billed on Active CPU."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/deploy-a-container-from-a-plain-dockerfile" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Copilot : des agents sans compte personnel", "en": "Copilot: agents without a personal account" },
+      "resume": {
+        "fr": "En préversion publique depuis le 27 octobre, une GitHub App installée sur une organisation peut faire tourner des agents du SDK Copilot, facturés à l'organisation.",
+        "en": "In public preview since October 27, a GitHub App installed on an organization can run Copilot SDK agents, billed to the organization."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-27-github-copilot-supports-server-to-server-authentication" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Bookings",
+    "definition": {
+      "fr": "Montants facturés ou engagés par les clients sur une période, qui ne deviennent des revenus qu'au fil de la prestation.",
+      "en": "Amounts invoiced or committed by customers over a period, which only become revenue as the service is delivered."
+    }
+  },
+  "chiffre": {
+    "valeur": "86 %",
+    "texte": {
+      "fr": "des revenus de Duolingo au deuxième trimestre 2026 viennent des abonnements.",
+      "en": "of Duolingo's second-quarter 2026 revenue comes from subscriptions."
+    }
+  }
+}
