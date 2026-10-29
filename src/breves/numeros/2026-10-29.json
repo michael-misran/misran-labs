@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-29",
+  "numero": 30,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Liquid AI publie LFM3 : des modèles de 2 milliards de paramètres, dont un tient dans 1 Go",
+    "chapo": "Texte, image, voix, vidéo : une famille de petits modèles « open-weight » pensée pour tourner sur l'appareil.",
+    "paragraphes": [
+      "Le 27 octobre, Liquid AI a présenté LFM3 sur Hugging Face : six modèles d'environ 2 milliards de paramètres, tous bâtis sur la même base de texte, LFM3-1.7B, pré-entraînée sur 22 000 milliards de tokens. On y trouve un modèle texte, un modèle qui lit images et vidéo (LFM3-VL-2B), un modèle de voix, une version qui mêle tout, et deux modèles de décision, « d1 ».",
+      "Les chiffres donnés par l'éditeur : le modèle texte tient dans environ 1 Go en 4 bits et accepte 256 000 tokens de contexte. LFM3-VL-2B (1,9 milliard de paramètres) obtient 71,4 de moyenne sur 62 tests de vision, contre 57,6 pour son prédécesseur de 3,1 milliards. Le modèle de voix parle 18 langues, avec un premier token dès 50 millisecondes. Ce sont des mesures de Liquid AI, non vérifiées de façon indépendante.",
+      "Pour un développeur ou un designer, l'intérêt est de prototyper un assistant vocal ou une analyse d'image sans clé d'API ni facture au token : les modèles se chargent avec <i>transformers</i>, et LFM3-VL-2B tourne aussi sur l'appareil avec llama.cpp. Les poids se téléchargent sous <i>LiquidAI/&lt;nom&gt;</i>.",
+      "Une réserve : la page parle d'« open-weight » sans préciser la licence. Avant d'en faire un produit payant, il faudra lire la fiche de chaque modèle."
+    ],
+    "sources": [
+      "https://huggingface.co/blog/LiquidAI/lfm3"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant",
+        "rubrique": "L'irritant du jour",
+        "court": "Irritant",
+        "titre": "Le supplément carte qui apparaît au dernier clic",
+        "chapo": "Des commerçants ajoutent 3 à 4 % sur les paiements par carte, et les clients le sanctionnent.",
+        "paragraphes": [
+          "Selon PYMNTS (février 2026, citant une étude J.D. Power 2026), 35 % des petites entreprises américaines interrogées appliquent une surcharge de 3 à 4 % sur les cartes de crédit. Parmi elles, 32 % disent que des clients annulent leur achat quand les frais apparaissent, au moins parfois.",
+          "Côté acheteurs, 56 % se disent très susceptibles de changer de commerçant à cause de ces frais, et 68 % vérifient presque tous leurs tickets. Échantillons et méthode ne sont pas précisés : un ordre de grandeur. Depuis le 1ᵉʳ octobre, la banque centrale australienne interdit ces surcharges."
+        ],
+        "encadre": {
+          "titre": "Piste de business",
+          "texte": "Un module de paiement qui affiche dès la fiche produit le prix final selon le moyen de paiement, sans supplément surprise. Concurrence : je n'ai pas trouvé d'outil dédié ; les plateformes de paiement pourraient l'ajouter.",
+          "plein": true
+        },
+        "sources": [
+          "https://www.pymnts.com/?p=3496719",
+          "https://www.timeout.com/australia/news/australia-is-officially-banning-surcharges-on-card-payments-but-is-it-all-good-news-040226"
+        ]
+      },
+      {
+        "type": "idee",
+        "rubrique": "L'idée de business",
+        "court": "Idée",
+        "titre": "Un auditeur de relevés de frais de carte, en libre-service",
+        "chapo": "Les plafonds baissent en Australie : encore faut-il que le commerçant voie la baisse sur son relevé.",
+        "paragraphes": [
+          "Depuis le 1ᵉʳ octobre, en Australie, l'interchange des cartes de crédit grand public passe de 0,8 % à 0,3 %, soit environ 910 millions de dollars par an d'économie estimée pour les commerçants (Time Out, 28 septembre). L'organisation de petits commerçants COSBOA craint que les petits commerces n'en voient pas la couleur.",
+          "L'idée : le commerçant dépose son relevé mensuel ; l'outil montre ce qu'il paie par type de carte et ce qui a baissé ou non. 15 à 20 $ par mois, ou une part des économies. Lancement : une vingtaine d'audits à la main, puis automatiser.",
+          "Concurrence : Swipesum offre un audit gratuit, mais fait par une équipe humaine qui revient vers vous. Je n'ai pas trouvé d'outil immédiat en libre-service : c'est l'angle."
+        ],
+        "jauge": {
+          "cout": 1,
+          "difficulte": 2,
+          "potentiel": 2
+        },
+        "sources": [
+          "https://www.timeout.com/australia/news/australia-is-officially-banning-surcharges-on-card-payments-but-is-it-all-good-news-040226",
+          "https://dynamicbusiness.com/topics/news/no-more-card-surcharges-from-october-but-small-businesses-say-the-timing-is-wrong.html",
+          "https://www.swipesum.com/statement-audit-upload"
+        ]
+      },
+      {
+        "type": "irritant",
+        "rubrique": "Irritant éclair",
+        "court": "Éclair",
+        "taille": "petit",
+        "titre": "Ce que l'interdiction australienne n'interdit pas",
+        "paragraphes": [
+          "Elle ne couvre ni les frais de week-end ou de jour férié, ni les frais de réservation ou de service. Et des commerçants pourraient proposer des remises pour un paiement en espèces, par PayID ou par virement : le supplément change de nom plutôt que de disparaître."
+        ],
+        "sources": [
+          "https://www.timeout.com/australia/news/australia-is-officially-banning-surcharges-on-card-payments-but-is-it-all-good-news-040226"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Histoire · Tech",
+    "articles": [
+      {
+        "type": "histoire",
+        "rubrique": "Histoire de la tech",
+        "court": "Histoire",
+        "titre": "« lo » : le premier message d'ARPANET est tombé sur un tampon trop petit",
+        "chapo": "Le 29 octobre 1969, le réseau allait 500 fois plus vite que ce que l'ordinateur d'en face attendait.",
+        "paragraphes": [
+          "À 22 h 30, l'étudiant Charley Kline, à l'UCLA, tape sur un ordinateur de la taille d'un réfrigérateur le début de « login », destiné au Stanford Research Institute, à environ 380 miles. Au téléphone, l'ingénieur Bill Duvall confirme l'arrivée de chaque lettre. Seul « lo » passe : le système plante.",
+          "La cause est rarement citée : l'ordinateur de Stanford attendait 10 caractères par seconde, ARPANET en envoyait 5 000. Son tampon, la mémoire d'attente, a débordé. « Comme remplir un verre avec une lance d'incendie », a dit Duvall à BBC Future, cité par Live Science. Une heure plus tard, le réseau de quatre ordinateurs fonctionnait."
+        ],
+        "rappel": {
+          "annee": "1969",
+          "texte": "Il y a 57 ans, ce soir-là, un tampon trop petit faisait planter le premier message du réseau ancêtre d'Internet."
+        },
+        "sources": [
+          "https://www.livescience.com/technology/communications/science-history-first-computer-to-computer-message-lays-the-foundation-for-the-internet-but-it-crashes-halfway-through-oct-29-1969"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "La tech",
+        "court": "Tech",
+        "titre": "GitHub Agentic Workflows : des agents dans Actions, écrits en Markdown",
+        "paragraphes": [
+          "Le 28 octobre, GitHub a fait passer en disponibilité générale ce projet de GitHub Next, sur github.com pour les offres Free, Team et Enterprise. On décrit en Markdown une tâche de raisonnement (tri des tickets, analyse d'un échec de CI, mise à jour de la documentation, rédaction de tests) ; le fichier est compilé en YAML Actions standard et réutilise vos runners et vos politiques.",
+          "Le moteur par défaut est Copilot CLI, qui exige une licence Copilot ; on peut amener son propre agent. Permissions en lecture seule par défaut, conteneur derrière un pare-feu. Aucun tarif annoncé ; <i>gh aw forecast</i> estime la dépense en crédits d'IA."
+        ],
+        "encadre": {
+          "titre": "L'œil du business",
+          "texte": "La page ne chiffre pas le coût : un marché pour qui sait prévoir et plafonner les dépenses d'agents de CI d'une équipe.",
+          "plein": true
+        },
+        "sources": [
+          "https://github.blog/changelog/2026-10-28-github-agentic-workflows-generally-available"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech éclair",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "Vercel CI en bêta : un tag dans turbo.json",
+        "paragraphes": [
+          "Annoncé le 28 octobre pour les dépôts Turborepo : ajoutez le tag « ci » à une tâche et elle s'exécute à chaque push, seules les tâches touchées étant lancées, avec cache distant. Vercel annonce, dans ses dépôts internes, un délai entre push et CI réussie 2 à 6 fois plus court."
+        ],
+        "sources": [
+          "https://vercel.com/changelog/vercel-ci-is-now-in-beta"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "Tampon",
+      "nature": "n. m.",
+      "definition": "Zone de mémoire où l'on met en attente des données qui arrivent plus vite qu'on ne peut les traiter (en anglais <i>buffer</i>). S'il déborde, des données sont perdues ou le programme plante, comme en 1969 chez le premier ordinateur d'ARPANET."
+    },
+    "chiffre": {
+      "valeur": "500×",
+      "texte": "l'écart entre la vitesse d'ARPANET en 1969 (5 000 caractères par seconde) et celle qu'attendait l'ordinateur de Stanford (10)."
+    },
+    "bonus": {
+      "type": "question",
+      "texte": "Dans un produit que vous utilisez ou construisez, quelle étape suppose que l'utilisateur ou un autre système ira à une certaine vitesse ? Que se passe-t-il s'il va 500 fois plus vite ? Chaque point qui casse est peut-être un irritant à résoudre pour d'autres."
+    },
+    "enigme": {
+      "question": "Je suis un réservoir qui déborde quand on y verse plus vite que je ne me vide. En 1969, j'ai fait planter le premier message d'un réseau. Qui suis-je ?",
+      "reponse": "le tampon (buffer) de l'ordinateur de Stanford"
+    }
+  },
+  "sources": [
+    "huggingface.co",
+    "pymnts.com",
+    "timeout.com",
+    "dynamicbusiness.com",
+    "swipesum.com",
+    "livescience.com",
+    "github.blog",
+    "vercel.com"
+  ]
+}
