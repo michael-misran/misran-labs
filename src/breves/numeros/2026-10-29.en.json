@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-29",
+  "numero": 30,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Liquid AI releases LFM3: 2-billion-parameter models, one of which fits in 1 GB",
+    "chapo": "Text, image, voice, video: a family of small open-weight models built to run on the device.",
+    "paragraphes": [
+      "On October 27, Liquid AI introduced LFM3 on Hugging Face: six models of about 2 billion parameters, all built on the same text base, LFM3-1.7B, pre-trained on 22 trillion tokens. The family includes a text model, a model that reads images and video (LFM3-VL-2B), a voice model, a version that combines everything, and two \"d1\" models that return calibrated answers.",
+      "The publisher's figures: the text model fits in about 1 GB at 4-bit and accepts 256,000 tokens of context. LFM3-VL-2B (1.9 billion parameters) scores an average of 71.4 across 62 vision tests, against 57.6 for its 3.1-billion-parameter predecessor. The voice model speaks 18 languages, with a first token in as little as 50 milliseconds. These are Liquid AI's own measurements, not independently verified.",
+      "For a developer or designer, the appeal is prototyping a voice assistant or an image analysis without an API key or a per-token bill: the models load with <i>transformers</i>, and LFM3-VL-2B also runs on the device with llama.cpp. The weights download under <i>LiquidAI/&lt;name&gt;</i>.",
+      "One caveat: the page says \"open-weight\" without stating the license. Before building a paid product on it, read each model's card."
+    ],
+    "sources": ["https://huggingface.co/blog/LiquidAI/lfm3"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Peeve",
+        "titre": "The card surcharge that shows up at the last click",
+        "chapo": "Merchants add 3 to 4% to card payments, and customers punish them for it.",
+        "paragraphes": [
+          "According to PYMNTS (February 2026, citing a 2026 J.D. Power study), 35% of the U.S. small businesses surveyed apply a 3 to 4% surcharge on credit cards. Among them, 32% say customers cancel their purchase when the fee appears, at least sometimes.",
+          "On the shopper side, 56% say they are very or extremely likely to switch merchants because of these fees, and 68% check almost all their receipts. Sample sizes and methods are not given: treat these as orders of magnitude. Since October 1, Australia's central bank has banned these surcharges."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A payment module that shows the final price for the chosen payment method right on the product page, with no surprise surcharge. Competition: I found no dedicated tool; payment platforms could add it.", "plein": true },
+        "sources": ["https://www.pymnts.com/?p=3496719", "https://www.timeout.com/australia/news/australia-is-officially-banning-surcharges-on-card-payments-but-is-it-all-good-news-040226"]
+      },
+      {
+        "type": "idee", "rubrique": "The business idea", "court": "Idea",
+        "titre": "A self-serve auditor for card-fee statements",
+        "chapo": "Caps are falling in Australia: the merchant still has to see the drop on their statement.",
+        "paragraphes": [
+          "Since October 1 in Australia, interchange on domestic consumer credit cards has dropped from 0.8% to 0.3%, an estimated A$910 million a year in savings for merchants (Time Out, September 28). The small-business organization COSBOA fears small shops won't see any of it.",
+          "The idea: the merchant uploads their monthly statement; the tool shows what they pay per card type and what has or hasn't gone down. $15 to $20 a month, or a share of the savings found. Launch: about twenty manual audits, then automate what repeats.",
+          "Competition: Swipesum offers a free audit, but done by a human team that gets back to you. I found no instant self-serve tool: that's the angle."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
+        "sources": ["https://www.timeout.com/australia/news/australia-is-officially-banning-surcharges-on-card-payments-but-is-it-all-good-news-040226", "https://dynamicbusiness.com/topics/news/no-more-card-surcharges-from-october-but-small-businesses-say-the-timing-is-wrong.html", "https://www.swipesum.com/statement-audit-upload"]
+      },
+      {
+        "type": "irritant", "rubrique": "Pet peeve in brief", "court": "Brief", "taille": "petit",
+        "titre": "What the Australian ban doesn't ban",
+        "paragraphes": [
+          "It covers neither weekend or public-holiday fees, nor booking or service fees. And merchants could offer discounts for cash, PayID or bank transfer: the surcharge changes its name rather than disappearing."
+        ],
+        "sources": ["https://www.timeout.com/australia/news/australia-is-officially-banning-surcharges-on-card-payments-but-is-it-all-good-news-040226"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "History · Tech",
+    "articles": [
+      {
+        "type": "histoire", "rubrique": "Tech history", "court": "History",
+        "titre": "\"lo\": ARPANET's first message fell into a buffer that was too small",
+        "chapo": "On October 29, 1969, the network ran 500 times faster than the computer at the other end expected.",
+        "paragraphes": [
+          "At 10:30 p.m., UCLA student Charley Kline typed the start of \"login\" on a refrigerator-sized computer, addressed to the Stanford Research Institute about 380 miles away. On the phone, engineer Bill Duvall confirmed each letter's arrival. Only \"lo\" got through: the system crashed.",
+          "The cause is rarely mentioned: the Stanford computer expected 10 characters per second, and ARPANET was sending 5,000. Its buffer, the waiting memory, overflowed. \"It was like filling a glass with a fire hose,\" Duvall told BBC Future, as quoted by Live Science. An hour later, the four-computer network was working."
+        ],
+        "rappel": { "annee": "1969", "texte": "57 years ago tonight, a buffer that was too small crashed the first message on the network that preceded the internet." },
+        "sources": ["https://www.livescience.com/technology/communications/science-history-first-computer-to-computer-message-lays-the-foundation-for-the-internet-but-it-crashes-halfway-through-oct-29-1969"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "GitHub Agentic Workflows: agents in Actions, written in Markdown",
+        "paragraphes": [
+          "On October 28, GitHub made this GitHub Next project generally available on github.com for Free, Team and Enterprise plans. You describe a reasoning task in Markdown (issue triage, CI failure analysis, documentation updates, test writing); the file is compiled into standard Actions YAML and reuses your runners and policies.",
+          "The default engine is Copilot CLI, which requires a Copilot license; you can bring your own agent. Read-only permissions by default, container behind a firewall. No pricing announced; <i>gh aw forecast</i> estimates AI-credit spend."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "The page puts no number on cost: a market for whoever can forecast and cap a team's CI agent spending.", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-28-github-agentic-workflows-generally-available"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Vercel CI in beta: one tag in turbo.json",
+        "paragraphes": [
+          "Announced October 28 for Turborepo repositories: add the \"ci\" tag to a task and it runs on every push, only the affected tasks being launched, with remote cache. Vercel reports that in its internal repositories the time from push to passing CI is 2 to 6 times shorter."
+        ],
+        "sources": ["https://vercel.com/changelog/vercel-ci-is-now-in-beta"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Buffer", "nature": "n.", "definition": "A memory area where incoming data waits when it arrives faster than it can be processed. If it overflows, data is lost or the program crashes, as happened in 1969 on ARPANET's first receiving computer." },
+    "chiffre": { "valeur": "500×", "texte": "the gap between ARPANET's speed in 1969 (5,000 characters per second) and what the Stanford computer expected (10)." },
+    "bonus": { "type": "question", "texte": "In a product you use or build, which step assumes the user or another system will go at a certain speed? What happens if they go 500 times faster? Every point that breaks may be a pet peeve worth solving for others." },
+    "enigme": { "question": "I'm a reservoir that overflows when you pour in faster than I drain. In 1969, I crashed a network's first message. What am I?", "reponse": "the buffer of the Stanford computer" }
+  },
+  "sources": ["huggingface.co", "pymnts.com", "timeout.com", "dynamicbusiness.com", "swipesum.com", "livescience.com", "github.blog", "vercel.com"]
+}

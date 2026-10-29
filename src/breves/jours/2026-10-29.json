@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-29",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "LFM3 : de petits modèles ouverts pour texte, image et voix",
+        "en": "LFM3: small open-weight models for text, image and voice"
+      },
+      "resume": {
+        "fr": "Liquid AI a publié le 27 octobre six modèles d'environ 2 milliards de paramètres, dont un modèle texte d'environ 1 Go en 4 bits. Les chiffres sont ceux de l'éditeur. La page parle de poids ouverts sans préciser la licence : à vérifier avant tout usage commercial.",
+        "en": "On October 27, Liquid AI released six models of about 2 billion parameters, including a text model of about 1 GB at 4-bit. The figures are the publisher's own. The page says open-weight without stating the license: check it before any commercial use."
+      },
+      "sources": [
+        { "titre": "Hugging Face", "url": "https://huggingface.co/blog/LiquidAI/lfm3" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "GitHub Agentic Workflows passe en disponibilité générale",
+        "en": "GitHub Agentic Workflows reaches general availability"
+      },
+      "resume": {
+        "fr": "Depuis le 28 octobre, on peut décrire en Markdown des tâches confiées à des agents dans GitHub Actions, sur les offres Free, Team et Enterprise. Le moteur par défaut, Copilot CLI, exige une licence Copilot. Aucun tarif n'est annoncé.",
+        "en": "Since October 28, tasks given to agents in GitHub Actions can be described in Markdown, on Free, Team and Enterprise plans. The default engine, Copilot CLI, requires a Copilot license. No pricing is announced."
+      },
+      "sources": [
+        { "titre": "GitHub Changelog", "url": "https://github.blog/changelog/2026-10-28-github-agentic-workflows-generally-available" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Vercel CI en bêta pour les dépôts Turborepo",
+        "en": "Vercel CI in beta for Turborepo repositories"
+      },
+      "resume": {
+        "fr": "Un tag « ci » dans turbo.json suffit pour lancer une tâche à chaque push, avec seulement les tâches touchées et un cache distant. Vercel annonce, dans ses dépôts internes, un délai jusqu'à une CI réussie 2 à 6 fois plus court.",
+        "en": "A \"ci\" tag in turbo.json is enough to run a task on every push, with only the affected tasks and a remote cache. Vercel reports that in its internal repositories the time to a passing CI is 2 to 6 times shorter."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/vercel-ci-is-now-in-beta" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Tampon",
+    "definition": {
+      "fr": "Zone de mémoire où l'on met en attente des données qui arrivent plus vite qu'on ne peut les traiter (en anglais <i>buffer</i>). S'il déborde, des données sont perdues ou le programme plante, comme en 1969 sur le premier ordinateur d'ARPANET.",
+      "en": "A memory area where incoming data waits when it arrives faster than it can be processed. If it overflows, data is lost or the program crashes, as happened in 1969 on ARPANET's first receiving computer."
+    }
+  },
+  "chiffre": {
+    "valeur": "500×",
+    "texte": {
+      "fr": "l'écart entre la vitesse d'ARPANET en 1969 (5 000 caractères par seconde) et celle qu'attendait l'ordinateur de Stanford (10).",
+      "en": "the gap between ARPANET's speed in 1969 (5,000 characters per second) and what the Stanford computer expected (10)."
+    }
+  }
+}
