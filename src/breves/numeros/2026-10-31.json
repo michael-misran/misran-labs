@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-31",
+  "numero": 32,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "OpenAI respectera un signal commun dans robots.txt pour l'entraînement",
+    "chapo": "Le 30 octobre, l'entreprise a annoncé qu'elle tiendrait compte d'une préférence unique, au lieu d'une règle par fournisseur d'IA.",
+    "paragraphes": [
+      "Aujourd'hui, un site qui ne veut pas servir à entraîner des modèles d'IA doit nommer chaque robot d'exploration et tenir une règle distincte pour chaque fournisseur. Le 30 octobre, OpenAI a annoncé qu'elle respecterait un signal commun placé dans le fichier robots.txt, qui exprime la préférence du site sur l'usage de son contenu pour l'entraînement des modèles d'IA générative.",
+      "Ce signal s'appuie sur les travaux du groupe de travail « AI Preferences » de l'IETF, l'organisme qui normalise les protocoles d'Internet. OpenAI précise que l'effort est volontaire, qu'elle rejoint d'autres participants du groupe dans cette annonce, et qu'elle encourage les autres fournisseurs à faire de même. L'objectif : dire une seule fois sa préférence à plusieurs acteurs participants.",
+      "Rien ne change tout de suite. OpenAI vise une mise en œuvre « dans les prochains mois » et publiera alors un nouveau point sur les détails. Le signal ne remplace pas les règles actuelles : les contrôles de robots existants continuent de s'appliquer et d'être respectés.",
+      "Pour un développeur qui gère un site ou un blog, c'est à garder en tête sans rien modifier aujourd'hui : le jour où le signal sera finalisé, une seule ligne dans robots.txt pourra simplifier la liste de robots à maintenir à la main."
+    ],
+    "sources": [
+      "https://openai.com/index/helping-websites-express-ai-training-preferences/"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant",
+        "rubrique": "L'irritant du jour",
+        "court": "Irritant",
+        "titre": "Patreon : le 1ᵉʳ novembre, Apple impose sa commission de 30 % sur iOS",
+        "chapo": "Les créateurs encore sur l'ancienne facturation doivent basculer demain, sous peine de voir Patreon menacé dans l'App Store.",
+        "paragraphes": [
+          "Apple a rétabli une obligation : les créateurs de Patreon encore sur la facturation « historique » doivent passer à un abonnement géré par les achats intégrés d'Apple, au plus tard le 1ᵉʳ novembre 2026, soit demain. Une première échéance, en novembre 2025, avait été écartée en mai.",
+          "Le prix du passage : la commission d'Apple de 30 % sur les abonnements souscrits dans l'application iOS. Patreon se dit en profond désaccord et dénonce un troisième revirement d'Apple en dix-huit mois, mais estime n'avoir pas le choix, Apple ayant bloqué une mise à jour de l'application fin 2025.",
+          "Seuls environ 4 % des créateurs utilisent encore l'ancien modèle, selon TechCrunch cité par Engadget. Pour compenser, un créateur peut relever ses prix côté iOS."
+        ],
+        "encadre": {
+          "titre": "Piste de business",
+          "texte": "Un simulateur de prix pour créateurs : on entre ses paliers d'abonnement et la part de fans sur iOS, l'outil calcule ce qui reste net avec ou sans la commission, et suggère un prix iOS pour garder le même revenu. Concurrence : un tableur gratuit y suffit à la rigueur, et Patreon peut ajouter l'outil lui-même. L'angle est de couvrir plusieurs plateformes à la fois, pas seulement Patreon.",
+          "plein": true
+        },
+        "sources": [
+          "https://www.engadget.com/big-tech/patreon-creators-have-to-switch-to-subscription-billing-by-november-thanks-to-apple-203759852.html",
+          "https://www.tubefilter.com/2026/01/29/patreon-apple-app-store-fee-dispute-subscription-billing-change/",
+          "https://mjtsai.com/blog/2026/01/30/patreon-iap-deadline-of-november-2026/"
+        ]
+      },
+      {
+        "type": "etude",
+        "rubrique": "L'étude de cas",
+        "court": "Étude",
+        "titre": "Une liste d'attente par SMS : 100 $ par mois, et des restaurants sans liste papier",
+        "chapo": "Un ancien ingénieur, sept ans de croissance lente, et plus de 40 000 $ de revenu mensuel.",
+        "paragraphes": [
+          "En 2017, Joe Rozek, ancien ingénieur puis manager chez Shutterfly, voit un client de restaurant forcé de télécharger Yelp pour connaître son temps d'attente. Sa femme lui suggère une application de liste d'attente. Prototype en six mois, lancement après environ un an et demi, 10 téléchargements la première semaine.",
+          "L'application envoie le temps d'attente par SMS. Selon la vidéo Starter Story du 13 septembre 2025 (résumée sur Rosetta), il coûte 100 $ par mois, tout compris, contre plusieurs centaines de dollars chez Yelp et OpenTable. Plus de 15 000 entreprises l'ont essayé, 700 paient. Le revenu annuel cité passe de 14 500 $ la deuxième année à 445 000 $ la septième.",
+          "Canal d'acquisition : Apple Search Ads, environ 130 $ par client, pour une valeur vie estimée à 750–1 000 $. Leçon : améliorer une solution existante dans une niche. Revers : chiffres déclarés par le fondateur, source de seconde main, SMS à environ 2 500 $ par mois."
+        ],
+        "sources": [
+          "https://rosetta.to/u/starterstory/my-app-makes-41k-month"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Science · Tech",
+    "articles": [
+      {
+        "type": "science",
+        "rubrique": "Science en 5 lignes",
+        "court": "Science",
+        "titre": "Plus courts chemins : une garantie vieille de 1996 enfin étendue aux sommets proches",
+        "chapo": "Dans un grand réseau, estimer vite toutes les distances est un classique de l'informatique théorique.",
+        "paragraphes": [
+          "Calculer le plus court chemin entre toutes les paires de points d'un grand graphe est coûteux : dans un réseau dense, certaines méthodes classiques demandent un temps cubique. En 1996, Dor, Halperin et Zwick ont montré comment estimer ces distances à un facteur 2 près, mais seulement pour des paires assez éloignées.",
+          "Manoj Gupta, de l'IIT Gandhinagar, étend cette garantie à des paires bien plus proches, sans augmenter le temps d'exécution global. Le travail, évalué par des pairs, est paru dans les actes de FOCS 2025. Limite : il reste théorique, sans amélioration immédiate pour un système commercial précis."
+        ],
+        "sources": [
+          "https://www.sciencedaily.com/releases/2026/10/261029072146.htm"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "La tech",
+        "court": "Tech",
+        "titre": "Vercel : le Data Cache devient Runtime Cache, et les lectures deviennent payantes",
+        "paragraphes": [
+          "Le 30 octobre, Vercel a annoncé que Data Cache quitte la bêta pour Runtime Cache. Les caches <i>fetch</i> et <i>unstable_cache</i> de Next.js basculent seuls, sans toucher au code. Les équipes Hobby migreront le 29 novembre 2026.",
+          "Côté facture : les lectures et écritures, jusqu'ici non facturées, le seront, dès 0,40 $ le million de lectures et 4 $ le million d'écritures selon la région. Sur Pro, l'usage s'impute d'abord sur le crédit mensuel de 20 $."
+        ],
+        "encadre": {
+          "titre": "L'œil du business",
+          "texte": "Une facturation à la lecture crée un besoin : un outil qui dit quels appels de cache coûtent le plus, avant la première facture.",
+          "plein": true
+        },
+        "sources": [
+          "https://vercel.com/changelog/data-cache-is-moving-to-runtime-cache"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech éclair",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "GitHub Actions : une partie des jobs Linux tourne aussi sur AWS",
+        "paragraphes": [
+          "Depuis le 28 octobre, certains jobs sur les runners Linux standard de 2 et 4 cœurs sont répartis entre Azure et AWS, automatiquement sur les offres Free, Pro et Team. Les adresses IP sortantes changent : une liste d'autorisation limitée aux plages Azure peut bloquer un job. Référence conseillée : le champ <i>actions</i> de l'API <i>meta</i> de GitHub."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-10-28-github-actions-adds-multi-cloud-compute-to-improve-reliability"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "Facteur d'approximation",
+      "nature": "n. m.",
+      "definition": "Écart maximal garanti entre le résultat d'un algorithme et la réponse exacte. Une « 2-approximation » ne se trompe jamais de plus du double, ce qui permet de calculer beaucoup plus vite qu'avec la méthode exacte."
+    },
+    "chiffre": {
+      "valeur": "130 $",
+      "texte": "par client, pour 750 $ de valeur ou plus."
+    },
+    "bonus": {
+      "type": "citation",
+      "texte": "« WOW is the one to aim for. »",
+      "auteur": "Milton Glaser (GDUSA)"
+    },
+    "enigme": {
+      "question": "Je ne vous donne jamais la distance exacte, mais je promets de ne pas me tromper de plus du double. Qui suis-je ?",
+      "reponse": "une 2-approximation"
+    }
+  },
+  "sources": [
+    "openai.com",
+    "engadget.com",
+    "tubefilter.com",
+    "mjtsai.com",
+    "rosetta.to",
+    "sciencedaily.com",
+    "vercel.com",
+    "github.blog",
+    "gdusa.com"
+  ]
+}

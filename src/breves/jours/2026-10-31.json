@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-31",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": {
+        "fr": "OpenAI suivra un signal commun dans robots.txt",
+        "en": "OpenAI will follow a common robots.txt signal"
+      },
+      "resume": {
+        "fr": "OpenAI a annoncé le 30 octobre qu'elle respecterait un signal partagé dans robots.txt, pour que les sites disent une fois leur préférence sur l'entraînement des modèles. La mise en œuvre est prévue dans les prochains mois, et les contrôles de robots actuels restent valables.",
+        "en": "On October 30, OpenAI announced it would honor a shared robots.txt signal, so sites can state their training preference once. Implementation is planned in the coming months, and the current crawler controls remain valid."
+      },
+      "sources": [
+        { "titre": "OpenAI", "url": "https://openai.com/index/helping-websites-express-ai-training-preferences/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "Vercel : Runtime Cache remplace Data Cache",
+        "en": "Vercel: Runtime Cache replaces Data Cache"
+      },
+      "resume": {
+        "fr": "Les caches <i>fetch</i> et <i>unstable_cache</i> de Next.js passent seuls à Runtime Cache, sans changer le code. Les lectures et écritures seront facturées, dès 0,40 $ le million de lectures, et les équipes Hobby migrent le 29 novembre.",
+        "en": "Next.js's <i>fetch</i> and <i>unstable_cache</i> caches switch to Runtime Cache on their own, with no code change. Reads and writes will be billed, from $0.40 per million reads, and Hobby teams migrate on November 29."
+      },
+      "sources": [
+        { "titre": "Vercel", "url": "https://vercel.com/changelog/data-cache-is-moving-to-runtime-cache" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": {
+        "fr": "GitHub Actions : des jobs Linux aussi sur AWS",
+        "en": "GitHub Actions: Linux jobs on AWS too"
+      },
+      "resume": {
+        "fr": "Une partie des jobs sur runners Linux standard de 2 et 4 cœurs est répartie entre Azure et AWS. Les adresses IP sortantes changent : une liste d'autorisation limitée à Azure peut bloquer un job.",
+        "en": "Some jobs on standard 2- and 4-core Linux runners are now split between Azure and AWS. Outbound IP addresses change: an allowlist limited to Azure can block a job."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-28-github-actions-adds-multi-cloud-compute-to-improve-reliability" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "Facteur d'approximation",
+    "definition": {
+      "fr": "Écart maximal garanti entre le résultat d'un algorithme et la réponse exacte. Une « 2-approximation » ne se trompe jamais de plus du double.",
+      "en": "The maximum guaranteed gap between an algorithm's result and the exact answer. A “2-approximation” is never off by more than double."
+    }
+  },
+  "chiffre": {
+    "valeur": "130 $",
+    "texte": {
+      "fr": "par client, pour 750 $ de valeur ou plus.",
+      "en": "per customer, worth $750 or more."
+    }
+  }
+}

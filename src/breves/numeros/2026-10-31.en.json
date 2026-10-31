@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-31",
+  "numero": 32,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "OpenAI will honor a common robots.txt signal for training",
+    "chapo": "On October 30, the company announced it would respect a single preference, instead of one rule per AI provider.",
+    "paragraphes": [
+      "Today, a site that doesn't want to be used to train AI models has to name each crawler and keep a separate rule for every provider. On October 30, OpenAI announced it would honor a common signal placed in the robots.txt file, which expresses a site's preference on the use of its content for training generative AI models.",
+      "The signal builds on the work of the IETF's \"AI Preferences\" working group, the body that standardizes Internet protocols. OpenAI states that the effort is voluntary, that it joins other group participants in this announcement, and that it encourages other providers to do the same. The aim: state a preference once, to several participating parties.",
+      "Nothing changes right away. OpenAI aims to implement it \"in the coming months\" and will then share another update with details. The signal does not replace current rules: the existing crawler controls keep applying and being respected.",
+      "For a developer running a site or a blog, this is worth keeping in mind without changing anything today: once the signal is final, a single line in robots.txt may simplify the list of crawlers to maintain by hand."
+    ],
+    "sources": ["https://openai.com/index/helping-websites-express-ai-training-preferences/"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Peeve",
+        "titre": "Patreon: on November 1, Apple imposes its 30% cut on iOS",
+        "chapo": "Creators still on the old billing must switch tomorrow, or Patreon risks trouble in the App Store.",
+        "paragraphes": [
+          "Apple has reinstated a requirement: Patreon creators still on \"legacy\" billing must move to a subscription handled by Apple's in-app purchases, by November 1, 2026 at the latest, which is tomorrow. A first deadline, in November 2025, had been set aside in May.",
+          "The price of the switch: Apple's 30% commission on subscriptions started inside the iOS app. Patreon says it strongly disagrees and denounces Apple's third reversal in eighteen months, yet believes it has no choice, since Apple blocked an app update in late 2025.",
+          "Only about 4% of creators still use the old model, according to TechCrunch cited by Engadget. To compensate, a creator can raise prices on iOS."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A pricing simulator for creators: enter your subscription tiers and the share of fans on iOS, and the tool calculates what is left net with or without the commission, and suggests an iOS price to keep the same income. Competition: a free spreadsheet will do at a pinch, and Patreon could add the tool itself. The angle is to cover several platforms at once, not only Patreon.", "plein": true },
+        "sources": ["https://www.engadget.com/big-tech/patreon-creators-have-to-switch-to-subscription-billing-by-november-thanks-to-apple-203759852.html", "https://www.tubefilter.com/2026/01/29/patreon-apple-app-store-fee-dispute-subscription-billing-change/", "https://mjtsai.com/blog/2026/01/30/patreon-iap-deadline-of-november-2026/"]
+      },
+      {
+        "type": "etude", "rubrique": "Case study", "court": "Case",
+        "titre": "A text-message waitlist: $100 a month, and restaurants with no paper list",
+        "chapo": "A former engineer, seven years of slow growth, and more than $40,000 in monthly revenue.",
+        "paragraphes": [
+          "In 2017, Joe Rozek, a former software engineer and then manager at Shutterfly, watched a restaurant customer forced to download Yelp to find out the wait time. His wife suggested a waitlist app. Prototype in six months, launch after about a year and a half, 10 downloads in the first week.",
+          "The app sends the wait time by text message. According to the Starter Story video of September 13, 2025 (summarized on Rosetta), it costs $100 a month, all included, against several hundred dollars at Yelp and OpenTable. More than 15,000 businesses have tried it, 700 pay. Annual revenue cited rises from $14,500 in the second year to $445,000 in the seventh.",
+          "Acquisition channel: Apple Search Ads, about $130 per customer, for an estimated lifetime value of $750–1,000. Lesson: improve an existing solution in a niche. Downsides: figures reported by the founder, a secondhand source, texts costing about $2,500 a month."
+        ],
+        "sources": ["https://rosetta.to/u/starterstory/my-app-makes-41k-month"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Science · Tech",
+    "articles": [
+      {
+        "type": "science", "rubrique": "Science in 5 lines", "court": "Science",
+        "titre": "Shortest paths: a 1996 guarantee finally extended to nearby vertices",
+        "chapo": "In a large network, quickly estimating all distances is a classic of theoretical computer science.",
+        "paragraphes": [
+          "Computing the shortest path between every pair of points in a large graph is costly: in a dense network, some classic methods take cubic time. In 1996, Dor, Halperin and Zwick showed how to estimate these distances within a factor of 2, but only for pairs that are far enough apart.",
+          "Manoj Gupta, of IIT Gandhinagar, extends this guarantee to much closer pairs, without increasing the overall running time. The peer-reviewed work appeared in the proceedings of FOCS 2025. Limit: it remains theoretical, with no immediate improvement for a specific commercial system."
+        ],
+        "sources": ["https://www.sciencedaily.com/releases/2026/10/261029072146.htm"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Vercel: Data Cache becomes Runtime Cache, and reads become paid",
+        "paragraphes": [
+          "On October 30, Vercel announced that Data Cache leaves beta for Runtime Cache. Next.js's <i>fetch</i> and <i>unstable_cache</i> caches switch on their own, with no code change. Hobby teams will migrate on November 29, 2026.",
+          "On the bill: reads and writes, so far free, will be charged, from $0.40 per million reads and $4 per million writes depending on the region. On Pro, usage is first applied to the $20 monthly credit."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "Read-based billing creates a need: a tool that says which cache calls cost the most, before the first bill.", "plein": true },
+        "sources": ["https://vercel.com/changelog/data-cache-is-moving-to-runtime-cache"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "GitHub Actions: some Linux jobs now run on AWS too",
+        "paragraphes": [
+          "Since October 28, some jobs on standard 2- and 4-core Linux runners are split between Azure and AWS, automatically on Free, Pro and Team plans. Outbound IP addresses change: an allowlist limited to Azure ranges can block a job. Recommended reference: the <i>actions</i> field of GitHub's <i>meta</i> API."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-28-github-actions-adds-multi-cloud-compute-to-improve-reliability"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Approximation factor", "nature": "n.", "definition": "The maximum guaranteed gap between an algorithm's result and the exact answer. A \"2-approximation\" is never off by more than double, which makes it possible to compute much faster than with the exact method." },
+    "chiffre": { "valeur": "$130", "texte": "per customer, worth $750 or more." },
+    "bonus": { "type": "citation", "texte": "“WOW is the one to aim for.”", "auteur": "Milton Glaser (GDUSA)" },
+    "enigme": { "question": "I never give you the exact distance, but I promise not to be off by more than double. What am I?", "reponse": "a 2-approximation" }
+  },
+  "sources": ["openai.com", "engadget.com", "tubefilter.com", "mjtsai.com", "rosetta.to", "sciencedaily.com", "vercel.com", "github.blog", "gdusa.com"]
+}
