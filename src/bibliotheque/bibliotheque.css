@@ -91,24 +91,6 @@ body:has(.salon) { margin: 0; }
   .lb-led { animation: none; opacity: .7; }
 }
 
-/* ---------- Enseigne : sur la ceinture de la table, sous le présentoir ---------- */
-.lb-enseigne {
-  /* padding-bas 2px : remonte le texte de 1px, les minuscules de Lobster Two tirent vers le bas */
-  position: absolute; left: 50%; top: calc(71.1% + 2px); transform: translateX(-50%); margin: 0;
-  height: calc(2.7cqh - 2px); display: flex; align-items: center; padding: 0 1.6cqh 2px; white-space: nowrap;
-  background: linear-gradient(#5a3523, #3f2416); color: #f3dfb8;
-  border-radius: .4cqh;
-  box-shadow: 0 .3cqh .5cqh rgba(40,20,10,.45);
-  /* Lobster Two : manuscrite et chaleureuse, ardoise de café */
-  font: italic 700 1.85cqh/1 'Lobster Two', var(--font-chapo); letter-spacing: .02em;
-  pointer-events: none;
-}
-/* Ombre du plateau : prolonge sur l'enseigne (fond + texte) la bande sombre peinte en haut de la planche */
-.lb-enseigne::after {
-  content: ''; position: absolute; inset: 0; border-radius: inherit;
-  background: linear-gradient(rgba(20,8,2,.75), rgba(20,8,2,.4) 25%, transparent 55%);
-}
-
 /* ---------- Les publications exposées sur le présentoir ---------- */
 .lb-livre {
   position: absolute; aspect-ratio: 3320 / 4887; padding: 0; border: 0; background: none; cursor: pointer;
@@ -174,7 +156,7 @@ body:has(.salon) { margin: 0; }
   position: absolute; transform: translateX(-50%); pointer-events: none; text-align: center;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   color: #2a1d10; text-shadow: 0 .06cqw 0 rgba(255,232,170,.45);
-  font: 700 .95cqw/1 var(--font-etiquette); letter-spacing: .14em; text-transform: uppercase; white-space: nowrap;
+  font: 700 .72cqw/1 var(--font-etiquette); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap;
 }
 
 /* Les livres de rayon : même mécanique que ceux du présentoir, posés plus bas et plus serrés (ratio 5/7, D3) */
@@ -190,7 +172,7 @@ body:has(.salon) { margin: 0; }
 
 /* Enseigne « Nouveautés », sur la table du présentoir */
 .lb-nouveautes {
-  position: absolute; left: 50%; top: 65%; transform: translate(-50%, 0) rotate(-2deg); z-index: 2; margin: 0;
+  position: absolute; left: 50%; top: 69.6%; transform: translate(-50%, 0) rotate(-2deg); z-index: 2; margin: 0;
   background: #b3301d; color: #f6ecd8;
   font: italic 700 1.2cqw/1 'Lobster Two', var(--font-chapo);
   padding: .3cqw 1.2cqw .4cqw; border-radius: .2cqw; box-shadow: 0 .2cqw .4cqw rgba(0,0,0,.4);
