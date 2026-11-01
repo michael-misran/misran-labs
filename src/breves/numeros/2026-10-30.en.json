@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-30",
+  "numero": 31,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Gemini 4 Carbon: Google's strongest model, for now under lock and key",
+    "chapo": "A model built for cybersecurity and long-running tasks, already priced, but reserved for a hand-picked group of defenders.",
+    "paragraphes": [
+      "On October 28, Google introduced Gemini 4 Carbon, which it describes as its most capable model to date. It arrives two weeks after Gemini 4 Argon and takes first place on the Artificial Analysis Intelligence Index v5.0, with a score of 59.",
+      "The emphasis is on code security. Google reports 88.2% on SEC-bench Pro (vulnerability detection), 54.8% on ExploitGym (exploitation) and 71.0% on CWE-bench (fixing), measured without guardrails. According to Google, internal teams have also let it work for several days in a row on complex bugs in large codebases.",
+      "As for access, nothing for developers yet: only a subset of cybersecurity defenders can use it, and other trusted partners will follow through the Fairwind program. The introductory price is already published, $2 per million input tokens and $10 for output, before moving to $4 and $20.",
+      "Worth keeping in mind: several results are internal measurements, and the page gives neither a general availability date nor a context size."
+    ],
+    "sources": ["https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Peeve",
+        "titre": "Blocking the training bots without shutting out the assistants",
+        "chapo": "A robot that copies your site to train on it and an assistant that fetches a page at a user's request are not the same thing.",
+        "paragraphes": [
+          "On October 29, Vercel added \"AI Bots\" rules to its firewall that separate two families: crawlers, which collect content for indexing and training, and assistants, which fetch pages in response to a user's action or a search. Each can be logged or blocked on its own, on every plan (Security > Firewall > Rules, or <i>vercel firewall publish</i>)."
+        ],
+        "colonnes": 2,
+        "encadre": { "titre": "Business lead", "texte": "A service that tells a small publisher which AI bots read their site and what blocking them costs. Competition: Vercel, but only on its own platform.", "plein": true },
+        "sources": ["https://vercel.com/changelog/block-ai-crawlers-and-assistants-independently-with-managed-rules"]
+      },
+      {
+        "type": "chiffre", "rubrique": "The figure that bothers", "court": "Figure",
+        "titre": "AI saves ten hours a week for 26% of developers, down from 68% last year",
+        "chapo": "Atlassian's 2026 developer experience report.",
+        "paragraphes": [
+          "According to InfoQ (October 27), which summarizes the survey, the share of developers saving at least ten hours a week thanks to AI fell from 68% to 26% in a year, even though 95% say their organization uses it. Only 28% see noticeably less friction, 65% fix generated work that missed the intent, and 41% use it more than necessary out of obligation."
+        ],
+        "colonnes": 2,
+        "encadre": { "titre": "The opportunity", "texte": "Companies measure AI usage, not its effect: 42% of leaders say they have the right metrics. Self-reported data, 1,560 respondents.", "plein": true },
+        "sources": ["https://infoq.com/news/2026/10/atlassian-devex-2026"]
+      },
+      {
+        "type": "irritant", "rubrique": "Pet peeve in brief", "court": "Peeve", "taille": "petit",
+        "titre": "Your Node version changes without you touching anything",
+        "paragraphes": [
+          "Vercel made Node.js 26 LTS generally available on October 29. If <i>engines.node</i> allows 26 (for example <i>&gt;=20</i>), your next deployment will use it. Check that line."
+        ],
+        "sources": ["https://vercel.com/changelog/node-js-26-lts-is-now-generally-available-on-vercel"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Retro · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Retro gaming", "court": "Retro",
+        "titre": "Another World: a 20-instruction language written with no comments",
+        "chapo": "At GDC 2011, Éric Chahi explained how a game made entirely of polygons almost didn't fit on an Amiga.",
+        "paragraphes": [
+          "Chahi wanted a game made entirely of polygons. He first built the backgrounds from tiny polygons he called \"pixigons\", before judging the approach unworkable and switching to bitmaps for the backdrops. Around it, he built his own tools: a modeler and a language interpreted in real time, without compilation, with 20 instructions and 256 variables, and no comments possible. He kept track of his variables on paper.",
+          "The BREAK instruction paused execution until the next loop, so this code doubled as an animation sequencer. For the hero's movements, he rotoscoped video shown behind the game thanks to the Amiga's genlock, taking care not to give Lester dark hair, which would have made him too close to himself.",
+          "The schedule is the real lesson: in December 1990, after 17 months, a third of the game was done, so about two years of work remained at that pace. In June 1991, he committed to Delphine to deliver the game for November."
+        ],
+        "colonnes": 2,
+        "sources": ["https://gamedeveloper.com/game-platforms/gdc-2011-eric-chahi-s-retro-postmortem-i-another-world-i-"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "GitHub Actions: a lockfile to pin the actions your workflows call",
+        "paragraphes": [
+          "Since October 28, workflow lockfiles are generally available on GitHub Enterprise Cloud, Team and Free. They keep readable references (tags, branches) in your workflows while running the exact commits recorded, even if those references move. Locking also covers transitive dependencies.",
+          "You generate one with the <i>gh actions-lock</i> extension of the GitHub CLI, which creates <i>.github/workflows/actions.lock</i>, to be committed. Dependabot updates the entry in the same pull request, and administrators can enforce use. GitHub's caveat: locking doesn't prove a dependency is safe."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-28-github-actions-workflow-lockfiles-are-generally-available"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Copilot Fusion: a system that picks the models for you",
+        "paragraphes": [
+          "Available since October 28 on all Copilot plans, it offers three effort levels (Standard, High, Max) and three patterns: a single model, a cascade with quality control, or a critique where a second model reviews. Each model is billed at its own rate, with a 30% discount for a limited time on paid plans."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Rotoscoping", "nature": "n.", "definition": "A technique of tracing a filmed movement frame by frame to get realistic animation. Éric Chahi used it for Another World, helped by the video displayed behind the game." },
+    "chiffre": { "valeur": "17%", "texte": "of developers say their organization has a clear, actively implemented AI strategy (Atlassian)." },
+    "bonus": { "type": "defi", "texte": "In under 30 minutes: open the <i>package.json</i> of a project deployed on Vercel and look at the <i>engines.node</i> line. Does it allow Node 26 without you having decided it? If so, pin the version you want." },
+    "enigme": { "question": "I trace reality frame by frame, and the hero moves like his author. Who am I?", "reponse": "rotoscoping" }
+  },
+  "sources": ["blog.google", "vercel.com", "infoq.com", "gamedeveloper.com", "github.blog"]
+}

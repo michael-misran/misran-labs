@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-30",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": { "fr": "Gemini 4 Carbon : le modèle le plus fort de Google, pour l'instant sous clé", "en": "Gemini 4 Carbon: Google's strongest model, for now under lock and key" },
+      "resume": {
+        "fr": "Présenté le 28 octobre, il prend la première place de l'Artificial Analysis Intelligence Index v5.0 avec un score de 59, et brille en détection et correction de failles. Seuls des défenseurs en cybersécurité y ont accès, d'autres partenaires suivront via le programme Fairwind. Le tarif introductif est de 2 $ en entrée et 10 $ en sortie par million de tokens.",
+        "en": "Introduced on October 28, it ranks first on the Artificial Analysis Intelligence Index v5.0 with a score of 59, and excels at finding and fixing vulnerabilities. Only cybersecurity defenders have access for now, with other partners to follow through the Fairwind program. The introductory price is $2 per million input tokens and $10 for output."
+      },
+      "sources": [
+        { "titre": "Google", "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "GitHub Actions : un lockfile pour figer les actions de vos workflows", "en": "GitHub Actions: a lockfile to pin your workflows' actions" },
+      "resume": {
+        "fr": "Disponibles depuis le 28 octobre sur Enterprise Cloud, Team et Free, les lockfiles de workflows exécutent les commits exacts enregistrés, même si les tags ou branches bougent. On les génère avec l'extension <i>gh actions-lock</i>, et Dependabot met à jour l'entrée concernée dans la même pull request.",
+        "en": "Available since October 28 on Enterprise Cloud, Team and Free, workflow lockfiles run the exact commits recorded, even if tags or branches move. You generate one with the <i>gh actions-lock</i> extension, and Dependabot updates the entry in the same pull request."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-28-github-actions-workflow-lockfiles-are-generally-available" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Copilot Fusion : un système qui choisit les modèles à votre place", "en": "Copilot Fusion: a system that picks the models for you" },
+      "resume": {
+        "fr": "Disponible depuis le 28 octobre sur tous les plans Copilot, il choisit et combine les modèles pour chaque requête, avec trois niveaux d'effort (Standard, High, Max). Chaque modèle est facturé à son tarif, avec une remise de 30 % pour une durée limitée sur les plans payants.",
+        "en": "Available since October 28 on all Copilot plans, it picks and combines models for each request, with three effort levels (Standard, High, Max). Each model is billed at its own rate, with a limited-time 30% discount on paid plans."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion" }
+      ]
+    }
+  ],
+  "mot": { "terme": "Rotoscopie", "definition": { "fr": "Technique qui consiste à décalquer image par image un mouvement filmé pour obtenir une animation réaliste.", "en": "A technique of tracing a filmed movement frame by frame to get realistic animation." } },
+  "chiffre": { "valeur": "17 %", "texte": { "fr": "des développeurs disent que leur organisation a une stratégie IA claire et mise en œuvre (Atlassian).", "en": "of developers say their organization has a clear, actively implemented AI strategy (Atlassian)." } }
+}

@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-30",
+  "numero": 31,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "Gemini 4 Carbon : le modèle le plus fort de Google, pour l'instant sous clé",
+    "chapo": "Un modèle taillé pour la cybersécurité et les tâches longues, déjà tarifé, mais réservé à des défenseurs triés sur le volet.",
+    "paragraphes": [
+      "Le 28 octobre, Google a présenté Gemini 4 Carbon, qu'il décrit comme son modèle le plus performant à ce jour. Il arrive deux semaines après Gemini 4 Argon et prend la première place de l'Artificial Analysis Intelligence Index v5.0, avec un score de 59.",
+      "L'accent est mis sur la sécurité du code. Google annonce 88,2 % sur SEC-bench Pro (détection de failles), 54,8 % sur ExploitGym (exploitation) et 71,0 % sur CWE-bench (correction), mesurés sans garde-fous. Selon Google, des équipes internes l'ont aussi laissé travailler plusieurs jours de suite sur des bogues complexes dans de grandes bases de code.",
+      "Côté accès, rien pour les développeurs pour l'instant : seul un sous-ensemble de défenseurs en cybersécurité y a droit, et d'autres partenaires de confiance suivront via le programme Fairwind. Le tarif introductif est déjà publié, 2 $ par million de tokens en entrée et 10 $ en sortie, avant de passer à 4 $ et 20 $.",
+      "Ce qu'il faut garder en tête : plusieurs résultats sont des mesures internes, et la page ne donne ni date de disponibilité générale ni taille de contexte."
+    ],
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant",
+        "rubrique": "L'irritant du jour",
+        "court": "Irritant",
+        "titre": "Bloquer les robots d'entraînement sans fermer la porte aux assistants",
+        "chapo": "Un robot qui copie votre site pour s'entraîner et un assistant qui vient chercher une page à la demande d'un utilisateur ne sont pas la même chose.",
+        "paragraphes": [
+          "Le 29 octobre, Vercel a ajouté à son pare-feu des règles « AI Bots » qui séparent deux familles : les crawlers, qui collectent pour l'indexation et l'entraînement, et les assistants, qui récupèrent des pages à la demande d'un utilisateur. Chacune se journalise ou se bloque à part, sur tous les forfaits (Security > Firewall > Rules, ou <i>vercel firewall publish</i>)."
+        ],
+        "colonnes": 2,
+        "encadre": {
+          "titre": "Piste de business",
+          "texte": "Un service qui dit à un petit éditeur quels robots IA lisent son site et ce que coûte de les bloquer. Concurrence : Vercel, mais seulement chez lui.",
+          "plein": true
+        },
+        "sources": [
+          "https://vercel.com/changelog/block-ai-crawlers-and-assistants-independently-with-managed-rules"
+        ]
+      },
+      {
+        "type": "chiffre",
+        "rubrique": "Le chiffre qui dérange",
+        "court": "Chiffre",
+        "titre": "L'IA fait gagner dix heures par semaine à 26 % des développeurs, contre 68 % l'an dernier",
+        "chapo": "Le rapport Atlassian 2026 sur l'expérience développeur.",
+        "paragraphes": [
+          "Selon InfoQ (27 octobre), qui résume l'enquête, la part des développeurs gagnant au moins dix heures par semaine grâce à l'IA est passée de 68 % à 26 % en un an, alors que 95 % disent que leur organisation l'utilise. Seuls 28 % constatent une friction nettement réduite, 65 % corrigent des travaux générés qui ratent l'intention, et 41 % l'utilisent plus que nécessaire par obligation."
+        ],
+        "colonnes": 2,
+        "encadre": {
+          "titre": "L'opportunité",
+          "texte": "Les entreprises mesurent l'usage de l'IA, pas son effet : 42 % des responsables disent avoir les bons indicateurs. Données auto-déclarées, 1 560 répondants.",
+          "plein": true
+        },
+        "sources": [
+          "https://infoq.com/news/2026/10/atlassian-devex-2026"
+        ]
+      },
+      {
+        "type": "irritant",
+        "rubrique": "L'irritant éclair",
+        "court": "Irritant",
+        "taille": "petit",
+        "titre": "Votre version de Node change sans que vous touchiez à rien",
+        "paragraphes": [
+          "Vercel a mis Node.js 26 LTS en disponibilité générale le 29 octobre. Si <i>engines.node</i> autorise 26 (par exemple <i>&gt;=20</i>), votre prochain déploiement l'utilisera. Vérifiez cette ligne."
+        ],
+        "sources": [
+          "https://vercel.com/changelog/node-js-26-lts-is-now-generally-available-on-vercel"
+        ]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Rétro · Tech",
+    "articles": [
+      {
+        "type": "retro",
+        "rubrique": "Rétro gaming",
+        "court": "Rétro",
+        "titre": "Another World : un langage de 20 instructions écrit sans commentaires",
+        "chapo": "Éric Chahi raconte, à la GDC 2011, comment un jeu entièrement en polygones a failli ne jamais tenir sur Amiga.",
+        "paragraphes": [
+          "Chahi voulait un jeu entièrement fait de polygones. Il a d'abord construit les décors avec de minuscules polygones qu'il appelait « pixigons », avant de juger l'approche irréalisable et de passer aux bitmaps pour les fonds. Autour, il a fabriqué lui-même ses outils : un modeleur et un langage interprété en temps réel, sans compilation, de 20 instructions et 256 variables, sans commentaires possibles. Il notait ses variables sur papier.",
+          "L'instruction BREAK suspendait l'exécution jusqu'à la boucle suivante, si bien que ce code servait aussi de séquenceur d'animation. Pour les gestes du héros, il a rotoscopé une vidéo affichée derrière le jeu grâce au genlock de l'Amiga, en évitant de donner à Lester des cheveux foncés, qui l'auraient trop rapproché de lui-même.",
+          "Le calendrier est la vraie leçon : en décembre 1990, après 17 mois, un tiers du jeu était fait, il restait donc environ deux ans de travail à ce rythme. En juin 1991, il s'est engagé auprès de Delphine à livrer le jeu pour novembre."
+        ],
+        "colonnes": 2,
+        "sources": [
+          "https://gamedeveloper.com/game-platforms/gdc-2011-eric-chahi-s-retro-postmortem-i-another-world-i-"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "La tech",
+        "court": "Tech",
+        "titre": "GitHub Actions : un lockfile pour figer les actions que vos workflows appellent",
+        "paragraphes": [
+          "Depuis le 28 octobre, les lockfiles de workflows sont en disponibilité générale sur GitHub Enterprise Cloud, Team et Free. Ils laissent des références lisibles (tags, branches) dans vos workflows tout en exécutant les commits exacts enregistrés, même si ces références bougent. Le verrouillage couvre aussi les dépendances transitives.",
+          "On le génère avec l'extension <i>gh actions-lock</i> de la CLI GitHub, qui crée <i>.github/workflows/actions.lock</i>, à committer. Dependabot met à jour l'entrée dans la même pull request, et les administrateurs peuvent imposer l'usage. Réserve de GitHub : verrouiller ne prouve pas qu'une dépendance est sûre."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-10-28-github-actions-workflow-lockfiles-are-generally-available"
+        ]
+      },
+      {
+        "type": "tech",
+        "rubrique": "Tech éclair",
+        "court": "Tech",
+        "taille": "petit",
+        "titre": "Copilot Fusion : un système qui choisit les modèles à votre place",
+        "paragraphes": [
+          "Disponible depuis le 28 octobre sur tous les plans Copilot, il offre trois niveaux d'effort (Standard, High, Max) et trois schémas : un seul modèle, une cascade avec contrôle qualité, ou une critique où un second modèle relit. Chaque modèle est facturé à son tarif, avec une remise de 30 % pour une durée limitée sur les plans payants."
+        ],
+        "sources": [
+          "https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion"
+        ]
+      }
+    ]
+  },
+  "page4": {
+    "mot": {
+      "terme": "Rotoscopie",
+      "nature": "n. f.",
+      "definition": "Technique qui consiste à décalquer image par image un mouvement filmé pour obtenir une animation réaliste. Éric Chahi l'a employée pour Another World, en s'aidant de la vidéo affichée derrière le jeu."
+    },
+    "chiffre": {
+      "valeur": "17 %",
+      "texte": "des développeurs disent que leur organisation a une stratégie IA claire et mise en œuvre (Atlassian)."
+    },
+    "bonus": {
+      "type": "defi",
+      "texte": "En moins de 30 minutes : ouvrez le <i>package.json</i> d'un projet déployé sur Vercel et regardez la ligne <i>engines.node</i>. Autorise-t-elle Node 26 sans que vous l'ayez décidé ? Si oui, fixez la version voulue."
+    },
+    "enigme": {
+      "question": "Je décalque le réel image après image, et le héros bouge comme son auteur. Qui suis-je ?",
+      "reponse": "la rotoscopie"
+    }
+  },
+  "sources": [
+    "blog.google",
+    "vercel.com",
+    "infoq.com",
+    "gamedeveloper.com",
+    "github.blog"
+  ]
+}
