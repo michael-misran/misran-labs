@@ -5,7 +5,6 @@ import { Couverture } from '../numero/Etagere.jsx'
 import Logo1977 from '../shell/Logo1977'
 import { VOLUMES } from '../numero/volumes'
 import { NT, nt } from '../numero/numeroText'
-import { LEDS_NOEL } from './leds-noel'
 import '../numero/etagere.css'
 import './bibliotheque.css'
 
@@ -14,8 +13,8 @@ import './bibliotheque.css'
 // présentoir, au centre ; un clic en sort une, sa couverture s'affiche en
 // grand avec « Lire ». Les volumes : numero/volumes.js.
 
-const IMAGE = '/bibliotheque/librairie.jpg'
-const RATIO = 2752 / 1536
+const IMAGE = '/bibliotheque/librairie-alcoves.jpg'
+const RATIO = 2000 / 1125
 
 // Date locale du lecteur (AAAA-MM-JJ), même mécanisme que midnight/numeros.js :
 // une parution datée dans le futur reste cachée jusqu'à son jour.
@@ -35,25 +34,25 @@ function nouveautes() {
     .slice(0, 4)
 }
 
-// Les 4 rayons muraux, de gauche à droite : le nom gravé sur la plaque de
-// laiton peinte en haut de chaque colonne, les volumes de la collection
-// (3 maximum), posés de face sur la 3ᵉ planche.
-const RAYON_TOP = 34.8
+// Les 4 alcôves du mur, de gauche à droite : le nom gravé sur la plaque de
+// laiton peinte en haut de l'arche, les volumes de la collection (2 maximum
+// à cette taille), posés de face sur le rebord vide.
+const RAYON_TOP = 35.5
 // Plaque peinte : haut, hauteur et largeur en % de l'image
-const PLAQUE = { top: 4.36, height: 3.45, width: 6.65 }
-const RAYON_LARGEUR = 3.7
-const RAYON_ECART = 4.5
+const PLAQUE = { top: 12.36, height: 2.93, width: 5.25 }
+const RAYON_LARGEUR = 5
+const RAYON_ECART = 5.7
 const RAYONS = [
-  { collection: 'journaux', left: 21.6, titre: { fr: 'Journaux', en: 'Newspapers' } },
-  { collection: 'magazines', left: 40.57, titre: { fr: 'Magazines', en: 'Magazines' } },
-  { collection: 'manuels', left: 59.43, titre: { fr: 'Manuels', en: 'Manuals' } },
-  { collection: 'carnets', left: 78.47, titre: { fr: 'Carnets', en: 'Notebooks' } },
+  { collection: 'journaux', left: 28.55, titre: { fr: 'Journaux', en: 'Newspapers' } },
+  { collection: 'magazines', left: 42.85, titre: { fr: 'Magazines', en: 'Magazines' } },
+  { collection: 'manuels', left: 57.15, titre: { fr: 'Manuels', en: 'Manuals' } },
+  { collection: 'carnets', left: 71.45, titre: { fr: 'Carnets', en: 'Notebooks' } },
 ]
 
 // Emplacements des volumes d'un rayon, groupe centré sur la colonne
-// (D3 : 3 livres maximum ; au-delà, ignorés — aucun rayon n'en a plus à ce jour)
+// (2 livres maximum ; au-delà, ignorés — aucun rayon n'en a plus à ce jour)
 function placesDuRayon(rayon) {
-  const volumes = VOLUMES.filter((v) => v.collection === rayon.collection).slice(0, 3)
+  const volumes = VOLUMES.filter((v) => v.collection === rayon.collection).slice(0, 2)
   const n = volumes.length
   return volumes.map((v, i) => ({
     v,
@@ -68,28 +67,9 @@ function placesDuRayon(rayon) {
 // Pour voir une saison avant l'heure : /?saison=halloween, /?saison=noel
 // ou /?saison=normale
 const SAISONS = [
-  {
-    id: 'halloween', image: '/bibliotheque/librairie-halloween.jpg', du: '10-15', au: '11-02',
-    // Lueurs de bougie : centre (x, y) et largeur en % de l'image
-    lueurs: [
-      // Citrouilles des étagères
-      { x: 22.9, y: 29.6, l: 3.6 },
-      { x: 74.5, y: 17, l: 3.6 },
-      { x: 75.85, y: 41.2, l: 4.2 },
-      { x: 34, y: 53.8, l: 3.4 },
-      { x: 83.75, y: 53.6, l: 3.6 },
-      // Citrouilles posées au sol
-      { x: 27.25, y: 87.4, l: 5.6 },
-      { x: 33.25, y: 82.4, l: 7.6 },
-      { x: 67, y: 86.9, l: 5.6 },
-      { x: 71.75, y: 82, l: 6.6 },
-      // Bougies sur la table du présentoir
-      { x: 38.25, y: 66.1, l: 2 },
-      { x: 40.4, y: 65.9, l: 2 },
-      { x: 60.65, y: 66.1, l: 2 },
-    ],
-  },
-  { id: 'noel', image: '/bibliotheque/librairie-noel.jpg', du: '12-01', au: '01-06', leds: LEDS_NOEL },
+  // Décors à repeindre sur la boutique aux alcôves, lueurs et LED à remesurer ensuite
+  { id: 'halloween', image: '/bibliotheque/librairie-alcoves-halloween.jpg', du: '10-15', au: '11-02' },
+  { id: 'noel', image: '/bibliotheque/librairie-alcoves-noel.jpg', du: '12-01', au: '01-06' },
 ]
 
 function saisonDuJour(date = new Date()) {
@@ -104,10 +84,10 @@ function saisonDuJour(date = new Date()) {
 // la couverture est déformée pour tomber exactement dessus (perspective du
 // pupitre). Pour les régler à la main : /?reglage
 const PRESENTOIR = [
-  [[40.12, 55.24], [44.08, 55.25], [43.68, 64.74], [39.66, 64.74]],
-  [[45.36, 54.98], [49.27, 55.01], [49.03, 64.78], [45.09, 64.78]],
-  [[50.94, 55.09], [54.99, 55.10], [55.14, 64.78], [51.13, 64.94]],
-  [[56.21, 55.21], [60.14, 55.24], [60.59, 64.78], [56.62, 64.74]],
+  [[35.75, 54.25], [41.05, 54.25], [41.05, 66.76], [35.75, 66.76]],
+  [[43.35, 54.25], [48.70, 54.25], [48.70, 66.76], [43.35, 66.76]],
+  [[51.05, 54.25], [56.45, 54.25], [56.45, 66.76], [51.05, 66.76]],
+  [[58.72, 54.25], [64.15, 54.25], [64.15, 66.76], [58.72, 66.76]],
 ]
 // Proportions des couvertures (largeur / hauteur)
 const RATIO_COUV = 3320 / 4887
@@ -265,9 +245,6 @@ export default function Bibliotheque() {
             style={{ left: `${g.x}%`, top: `${g.y}%`, width: `${g.l}%`, animationDelay: `${-i * 0.73}s` }}
           />
         ))}
-        {/* Enseigne clouée sur la ceinture de la table du présentoir */}
-        <p className="lb-enseigne">L'Entre Deux Pages</p>
-
         {/* Rayons muraux : une plaque par collection, les volumes posés de face */}
         {RAYONS.map((rayon) => (
           <div key={rayon.collection} className="lb-plaque" style={{ left: `${rayon.left}%`, top: `${PLAQUE.top}%`, width: `${PLAQUE.width}%`, height: `${PLAQUE.height}%` }}>
