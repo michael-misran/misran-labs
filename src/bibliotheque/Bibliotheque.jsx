@@ -5,6 +5,7 @@ import { Couverture } from '../numero/Etagere.jsx'
 import Logo1977 from '../shell/Logo1977'
 import { VOLUMES } from '../numero/volumes'
 import { NT, nt } from '../numero/numeroText'
+import { LEDS_NOEL } from './leds-noel'
 import '../numero/etagere.css'
 import './bibliotheque.css'
 
@@ -14,7 +15,7 @@ import './bibliotheque.css'
 // grand avec « Lire ». Les volumes : numero/volumes.js.
 
 const IMAGE = '/bibliotheque/librairie-alcoves.jpg'
-const RATIO = 2000 / 1125
+const RATIO = 2752 / 1548
 
 // Date locale du lecteur (AAAA-MM-JJ), même mécanisme que midnight/numeros.js :
 // une parution datée dans le futur reste cachée jusqu'à son jour.
@@ -67,9 +68,9 @@ function placesDuRayon(rayon) {
 // Pour voir une saison avant l'heure : /?saison=halloween, /?saison=noel
 // ou /?saison=normale
 const SAISONS = [
-  // Décors à repeindre sur la boutique aux alcôves, lueurs et LED à remesurer ensuite
+  // Décor à repeindre sur la boutique aux alcôves, lueurs à mesurer ensuite
   { id: 'halloween', image: '/bibliotheque/librairie-alcoves-halloween.jpg', du: '10-15', au: '11-02' },
-  { id: 'noel', image: '/bibliotheque/librairie-alcoves-noel.jpg', du: '12-01', au: '01-06' },
+  { id: 'noel', image: '/bibliotheque/librairie-alcoves-noel.jpg', du: '12-01', au: '01-06', leds: LEDS_NOEL, lueurs: [{ x: 2.9, y: 12.9, l: 4.5 }] },
 ]
 
 // Lumières de la boutique, toute l'année : centre (x, y) et largeur en % de l'image.
@@ -83,7 +84,8 @@ const LUMIERES = [
   // Pièces de côté : cuisine, frigo, kiosque, établi, bureau
   { type: 'lampe', x: 10.5, y: 25.3, l: 6 },
   { type: 'hublot', x: 14.5, y: 37.1, l: 3.6 },
-  { type: 'bougie', x: 5.5, y: 30.2, l: 4.5 },
+  // Le kiosque est caché par le sapin à Noël
+  { type: 'bougie', x: 5.5, y: 30.2, l: 4.5, hors: 'noel' },
   { type: 'lampe', x: 83.1, y: 40, l: 4 },
   { type: 'verte', x: 95.6, y: 38.8, l: 6.5 },
   // La lanterne posée au sol
@@ -250,7 +252,7 @@ export default function Bibliotheque() {
       <main className="sl-scene" ref={sceneRef} style={{ '--ratio': RATIO }}>
         <img className="sl-image" src={image} alt="" onError={() => image !== IMAGE && setEnEchec(image)} />
         {/* Lumières de la boutique, sous les livres */}
-        {LUMIERES.map((g, i) => (
+        {LUMIERES.filter((g) => !(g.hors && image === saison?.image && saison.id === g.hors)).map((g, i) => (
           <span
             key={i}
             className={`lb-lum lb-lum-${g.type}`}
@@ -275,7 +277,7 @@ export default function Bibliotheque() {
             style={{ left: `${x}%`, top: `${y}%`, animationDuration: `${1.6 + ((i * 7) % 11) * 0.23}s`, animationDelay: `${-((i * 13) % 17) * 0.29}s` }}
           />
         ))}
-        {/* Bougies dans les citrouilles (seulement si l'image de saison est bien affichée) */}
+        {/* Lueurs de saison, comme l'étoile du sapin (seulement si l'image de saison est bien affichée) */}
         {image === saison?.image && saison.lueurs?.map((g, i) => (
           <span
             key={i}
