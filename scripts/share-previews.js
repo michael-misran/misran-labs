@@ -66,6 +66,11 @@ const LIBRAIRIE_FIXED = {
   image: 'og-image.png',
 }
 
+const MIDNIGHT_FIXED = {
+  title: 'Midnight Snack — le magazine de minuit · 1977 Éditions',
+  description: 'Midnight Snack, le magazine de 1977 Éditions : un raton laveur, un frigo et des histoires à lire la nuit.',
+}
+
 const JEUX_FIXED = {
   title: 'Jeux — petits défis quotidiens · 1977 Éditions',
   description: 'Un mini-jeu par jour, noté sur 100 et partageable en un clic, façon neal.fun.',
@@ -295,6 +300,31 @@ export function collectProjetsIdees(rootDir) {
   return pages
 }
 
+// Midnight Snack : une page statique par numéro, parue ou non, car un numéro
+// à paraître affiche sa page d'attente puis s'ouvre seul le jour J, sans
+// nouveau déploiement. `paru` dit seulement s'il entre au sitemap.
+async function collectMidnight(rootDir) {
+  const dir = path.join(rootDir, 'src/midnight/numeros')
+  if (!fs.existsSync(dir)) return []
+  const aujourdhui = new Date().toISOString().slice(0, 10)
+  const pages = []
+  for (const file of fs.readdirSync(dir).sort()) {
+    if (!file.endsWith('.js')) continue
+    const mod = await import(path.join(dir, file))
+    const numero = mod.default ?? mod
+    pages.push({
+      path: `/midnight/${numero.numero}`,
+      title: `${numero.titre.fr} ${numero.sousTitre.fr} · 1977 Éditions`,
+      description: MIDNIGHT_FIXED.description,
+      image: numero.couvertureImage.replace(/^\//, ''),
+      type: 'article',
+      paru: numero.parution <= aujourdhui,
+    })
+  }
+  if (pages.length === 0) return []
+  return [{ ...pages[pages.length - 1], ...MIDNIGHT_FIXED, path: '/midnight', type: 'website', paru: pages.some((p) => p.paru) }, ...pages]
+}
+
 // Lecture générique de src/jeux/*/meta.js (D3) : pas de liste codée en dur,
 // un jeu de plus = un dossier de plus, lu automatiquement au build.
 async function collectJeux(rootDir) {
@@ -435,9 +465,17 @@ export function sharePreviewsPlugin() {
       console.log(`[share-previews] ${demoPages.length} page(s) de démo générées (hors sitemap) :`)
       for (const page of demoPages) console.log(`  - ${page.path}`)
 
+      const midnightPages = await collectMidnight(rootDir)
+      for (const page of midnightPages) {
+        const html = applyPreview(baseHtml, page)
+        writePage(distDir, page.path, html)
+      }
+      console.log(`[share-previews] ${midnightPages.length} page(s) Midnight Snack générées`)
+
       const sitemapUrls = [
         { loc: homeUrl },
         ...pages.map((page) => ({ loc: `${SITE_URL}${page.path}`, lastmod: page.lastmod })),
+        ...midnightPages.filter((page) => page.paru).map((page) => ({ loc: `${SITE_URL}${page.path}` })),
       ]
       fs.writeFileSync(path.join(distDir, 'sitemap.xml'), buildSitemapXml(sitemapUrls))
       console.log(`[share-previews] sitemap.xml : ${sitemapUrls.length} URL`)
