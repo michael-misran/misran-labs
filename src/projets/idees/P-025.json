@@ -1,0 +1,23 @@
+{
+  "id": "P-025",
+  "date": "2026-11-01",
+  "titre": {
+    "fr": "Essayer les code layers de Figma sur le design system du Lab",
+    "en": "Try Figma's code layers on the Lab's design system"
+  },
+  "resume": {
+    "fr": "Figma propose en bêta publique gratuite, jusqu'au 4 novembre, des « code layers » qui rapprochent la maquette du code : une occasion à coût nul de les tester sur le design system du Lab avant la fin de la gratuité.",
+    "en": "Figma offers a free public beta, until November 4, of \"code layers\" that bring the design closer to code: a zero-cost chance to test them on the Lab's design system before the free window closes."
+  },
+  "probleme": {
+    "fr": "Le va-et-vient entre Figma et le code repose aujourd'hui sur les tokens et des copies manuelles ; personne n'a encore vérifié si un pont plus direct entre la maquette et le code tiendrait ses promesses sur un vrai design system, et la fenêtre de test gratuite se referme bientôt.",
+    "en": "Going back and forth between Figma and code today relies on tokens and manual copying; nobody has checked yet whether a more direct bridge between design and code would hold up on a real design system, and the free test window closes soon."
+  },
+  "idee": {
+    "fr": "Activer les code layers sur un fichier Figma du design system du Lab (tokens, un composant simple), comparer le code généré aux tokens existants, et noter ce qui serait utilisable avant la fin de la bêta gratuite.",
+    "en": "Turn on code layers for a Figma file of the Lab's design system (tokens, one simple component), compare the generated code to the existing tokens, and note what would be usable before the free beta ends."
+  },
+  "type": "amelioration",
+  "taille": "petite",
+  "statut": "proposee"
+}

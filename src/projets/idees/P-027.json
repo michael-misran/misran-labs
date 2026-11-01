@@ -1,0 +1,23 @@
+{
+  "id": "P-027",
+  "date": "2026-11-01",
+  "titre": {
+    "fr": "Un pack de modèles pour les nouveaux workflows agentiques de GitHub",
+    "en": "A template pack for GitHub's new agentic workflows"
+  },
+  "resume": {
+    "fr": "GitHub vient de généraliser des workflows pilotés par agents, écrits en simple texte : très peu de modèles existent encore pour les tâches courantes, une fenêtre d'avance pour qui publie les premiers.",
+    "en": "GitHub has just rolled out agent-driven workflows written in plain text: very few templates exist yet for common tasks, a head-start window for whoever publishes first."
+  },
+  "probleme": {
+    "fr": "Les équipes qui veulent essayer les nouveaux workflows pilotés par agents partent d'une page blanche, la fonctionnalité venant d'être généralisée et la documentation ne couvrant que des exemples minimaux.",
+    "en": "Teams who want to try the new agent-driven workflows start from a blank page, since the feature was just rolled out and the documentation only covers minimal examples."
+  },
+  "idee": {
+    "fr": "Rédiger et publier une poignée de modèles de workflows prêts à l'emploi pour des tâches courantes (triage d'incidents, relecture de proposition de code, mise à jour de dépendances), gratuits dans un premier temps pour la visibilité.",
+    "en": "Write and publish a handful of ready-to-use workflow templates for common tasks (issue triage, code proposal review, dependency updates), free at first for visibility."
+  },
+  "type": "contenu",
+  "taille": "petite",
+  "statut": "proposee"
+}

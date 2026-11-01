@@ -1,0 +1,23 @@
+{
+  "id": "P-026",
+  "date": "2026-11-01",
+  "titre": {
+    "fr": "Un mod de permissions intelligentes pour les agents de code autonomes",
+    "en": "A smart-permissions mod for autonomous coding agents"
+  },
+  "resume": {
+    "fr": "Plusieurs grandes plateformes viennent de généraliser des outils de gouvernance pour agents IA (classification automatique des demandes sûres, plafonds de budget) : l'occasion de généraliser une version ouverte, utilisable par d'autres personnes qui font tourner des agents de code en autonomie.",
+    "en": "Several large platforms have just rolled out governance tools for AI agents (automatic classification of safe requests, budget caps): a chance to generalize an open version other people running autonomous coding agents could use."
+  },
+  "probleme": {
+    "fr": "Les personnes qui font tourner des agents de code en autonomie doivent valider beaucoup de demandes de permission une par une, ou risquer d'en autoriser trop d'un coup ; peu d'outils ouverts offrent une classification automatique des demandes sûres, en dehors des grandes plateformes.",
+    "en": "People running autonomous coding agents must approve many permission requests one by one, or risk approving too many at once; few open tools offer automatic classification of safe requests outside the big platforms."
+  },
+  "idee": {
+    "fr": "Un outil installable qui classe automatiquement les demandes d'un agent de code (commande, fichier visé) en sûres ou à valider, avec une configuration simple par projet.",
+    "en": "An installable tool that automatically classifies a coding agent's requests (command, target file) as safe or needing approval, with simple per-project configuration."
+  },
+  "type": "outil",
+  "taille": "moyenne",
+  "statut": "proposee"
+}
