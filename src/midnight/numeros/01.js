@@ -1,4 +1,4 @@
-// Midnight Snack — Numéro 1 (novembre 2026). Voir ../numeros.js pour le format
+// Midnight Snack — Numéro 1 (décembre 2026). Voir ../numeros.js pour le format
 // et la procédure du numéro suivant.
 //
 // `feuilleton.texte` et `marmite.colonnes[].texte` valent `null` : ce sont les
@@ -8,10 +8,10 @@
 
 export default {
   numero: 1,
-  parution: '2026-11-01',
+  parution: '2026-12-01',
 
   titre: { fr: 'Midnight Snack', en: 'Midnight Snack' },
-  sousTitre: { fr: 'N°1 · novembre 2026', en: 'No. 1 · November 2026' },
+  sousTitre: { fr: 'N°1 · décembre 2026', en: 'No. 1 · December 2026' },
   couvertureImage: '/decors/couverture-midnight-snack.jpg',
 
   sommaire: [
@@ -26,7 +26,7 @@ export default {
     { folio: 16, titre: { fr: 'The Lost Cauldron — Épisode 1', en: 'The Lost Cauldron — Episode 1' } },
     { folio: 18, titre: { fr: 'Dans la marmite', en: 'In the cauldron' } },
     { folio: 19, titre: { fr: 'Jeu imprimable', en: 'Printable game page' } },
-    { folio: 20, titre: { fr: 'N°2 en décembre', en: 'Issue No. 2 in December' } },
+    { folio: 20, titre: { fr: 'N°2 en janvier', en: 'Issue No. 2 in January' } },
   ],
 
   edito: {
@@ -404,10 +404,10 @@ export default {
 
   quatrieme: {
     folio: 20,
-    titre: { fr: 'N°2 — décembre 2026', en: 'Issue No. 2 — December 2026' },
+    titre: { fr: 'N°2 — janvier 2027', en: 'Issue No. 2 — January 2027' },
     texte: {
-      fr: 'Spécial Noël qui tourne mal. Le raton revient avec une nouvelle fournée de minuit — et un sapin qui n’aurait peut-être pas dû rester allumé toute la nuit.',
-      en: 'A Christmas special that goes wrong. The raccoon returns with a fresh batch of midnight tales — and a Christmas tree that maybe shouldn’t have been left lit all night.',
+      fr: 'Spécial lendemain de fêtes. Le raton revient avec une nouvelle fournée de minuit — et un sapin qu’on aurait peut-être dû descendre bien plus tôt.',
+      en: 'A morning-after-the-holidays special. The raccoon returns with a fresh batch of midnight tales — and a Christmas tree that maybe should have come down a lot sooner.',
     },
   },
 }

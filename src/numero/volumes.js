@@ -31,11 +31,11 @@ export const VOLUMES = [
     rayon: 0,
     couverture: 'midnight',
     collection: 'magazines',
-    parution: '2026-11-01',
+    parution: '2026-12-01',
     titre: { fr: 'Midnight Snack', en: 'Midnight Snack' },
-    sous: { fr: 'N°1 · novembre 2026', en: 'No. 1 · November 2026' },
+    sous: { fr: 'N°1 · décembre 2026', en: 'No. 1 · December 2026' },
     image: '/decors/couverture-midnight-snack.jpg',
-    // Parue le 2026-11-01 (SPEC midnight-snack-1 D2) : /midnight/1 s'ouvre tout seul ce jour-là
+    // Parution repoussée au 2026-12-01 : /midnight/1 s'ouvre tout seul ce jour-là
     to: estParu(getNumero(1)) ? '/midnight/1' : null,
     tranche: { fond: '#f7c86a', encre: '#e8352b', police: 'var(--font-affiche)' },
     hauteur: 92,
