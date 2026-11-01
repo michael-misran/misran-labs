@@ -40,6 +40,75 @@ body:has(.salon) { margin: 0; }
 }
 .sl-image { position: absolute; inset: 0; width: 100%; height: 100%; display: block; user-select: none; -webkit-user-drag: none; }
 
+/* ---------- Lumières de la boutique, toute l'année ---------- */
+.lb-lum {
+  position: absolute; aspect-ratio: 1; transform: translate(-50%, -50%);
+  border-radius: 50%; pointer-events: none; mix-blend-mode: screen;
+  background: radial-gradient(closest-side, rgba(255,214,130,.8), rgba(255,160,60,.34) 45%, rgba(255,130,30,.08) 75%, transparent);
+}
+.lb-lum-lampe { animation: lb-lampe 5.5s ease-in-out infinite; }
+.lb-lum-contact { animation: lb-contact 9s linear infinite; }
+.lb-lum-bougie { animation: lb-lum-bougie 2.3s infinite; }
+.lb-lum-hublot {
+  background: radial-gradient(closest-side, rgba(255,240,190,.85), rgba(255,200,120,.3) 55%, transparent);
+  animation: lb-lampe 3.8s ease-in-out infinite;
+}
+.lb-lum-verte {
+  background: radial-gradient(closest-side, rgba(120,255,140,.65), rgba(40,220,90,.26) 50%, transparent);
+  animation: lb-lampe 6.5s ease-in-out infinite;
+}
+@keyframes lb-lampe {
+  0%, 100% { opacity: .95; }
+  35% { opacity: .55; }
+  60% { opacity: .85; }
+  80% { opacity: .65; }
+}
+/* Ampoule qui grésille de temps en temps, puis repart */
+@keyframes lb-contact {
+  0%, 62%, 74%, 100% { opacity: .9; }
+  64% { opacity: .15; }
+  66% { opacity: .85; }
+  68% { opacity: .1; }
+  70% { opacity: .1; }
+  72% { opacity: .95; }
+}
+@keyframes lb-lum-bougie {
+  0%, 100% { opacity: .9; }
+  14% { opacity: .55; }
+  30% { opacity: 1; }
+  47% { opacity: .65; }
+  63% { opacity: .95; }
+  82% { opacity: .6; }
+}
+/* Néon bleu de l'établi : stable, avec un hoquet */
+.lb-neon {
+  position: absolute; pointer-events: none; mix-blend-mode: screen; border-radius: 1cqw;
+  background: rgba(120,225,255,.75);
+  box-shadow: 0 0 .7cqw .25cqw rgba(70,190,255,.75), 0 0 2.2cqw .7cqw rgba(50,150,255,.4);
+  animation: lb-neon 7s linear infinite;
+}
+@keyframes lb-neon {
+  0%, 40%, 47%, 100% { opacity: 1; }
+  41% { opacity: .25; }
+  43% { opacity: .95; }
+  45% { opacity: .35; }
+}
+/* Vapeur du chocolat chaud : 3 volutes qui montent et s'effacent */
+.lb-vapeur { position: absolute; width: 0; height: 0; pointer-events: none; }
+.lb-vapeur i {
+  position: absolute; left: -.4cqw; bottom: 0; width: .8cqw; height: 2.8cqw; border-radius: 50%;
+  background: rgba(255,252,245,.95); filter: blur(.22cqw); opacity: 0;
+  animation: lb-vapeur 5s ease-out infinite;
+}
+.lb-vapeur i:nth-child(2) { left: .25cqw; animation-delay: -1.7s; }
+.lb-vapeur i:nth-child(3) { left: -.75cqw; animation-delay: -3.4s; }
+@keyframes lb-vapeur {
+  0% { opacity: 0; transform: translate(0, 0) scaleX(.7); }
+  25% { opacity: .75; }
+  60% { opacity: .35; transform: translate(.35cqw, -2.4cqw) scaleX(1.1); }
+  100% { opacity: 0; transform: translate(-.25cqw, -4.8cqw) scaleX(1.5); }
+}
+
 /* ---------- Bougies dans les citrouilles (Halloween) ---------- */
 .lb-lueur {
   position: absolute; aspect-ratio: 1; transform: translate(-50%, -50%);
@@ -88,6 +157,8 @@ body:has(.salon) { margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .lb-lueur, .lb-lueur::after { animation: none; }
+  .lb-lum, .lb-neon { animation: none; opacity: .8; }
+  .lb-vapeur { display: none; }
   .lb-led { animation: none; opacity: .7; }
 }
 

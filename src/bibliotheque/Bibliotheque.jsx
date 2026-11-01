@@ -72,6 +72,28 @@ const SAISONS = [
   { id: 'noel', image: '/bibliotheque/librairie-alcoves-noel.jpg', du: '12-01', au: '01-06' },
 ]
 
+// Lumières de la boutique, toute l'année : centre (x, y) et largeur en % de l'image.
+// Le type donne la couleur et le rythme (bibliotheque.css).
+const LUMIERES = [
+  // Les 4 lampes des alcôves ; celle des Manuels a un faux contact
+  { type: 'lampe', x: 28.7, y: 21.9, l: 8 },
+  { type: 'lampe', x: 42.85, y: 21.9, l: 8 },
+  { type: 'contact', x: 57.1, y: 21.9, l: 8 },
+  { type: 'lampe', x: 71.3, y: 21.9, l: 8 },
+  // Pièces de côté : cuisine, frigo, kiosque, établi, bureau
+  { type: 'lampe', x: 10.5, y: 25.3, l: 6 },
+  { type: 'hublot', x: 14.5, y: 37.1, l: 3.6 },
+  { type: 'bougie', x: 5.5, y: 30.2, l: 4.5 },
+  { type: 'lampe', x: 83.1, y: 40, l: 4 },
+  { type: 'verte', x: 95.6, y: 38.8, l: 6.5 },
+  // La lanterne posée au sol
+  { type: 'bougie', x: 4.6, y: 70.2, l: 5.5 },
+]
+// Néon bleu de l'établi : un tube, donc un rectangle
+const NEON = { left: 82, top: 26.9, width: 6.6, height: .8 }
+// Vapeur du chocolat chaud, au-dessus de la tasse
+const VAPEUR = { left: 97.5, top: 70 }
+
 function saisonDuJour(date = new Date()) {
   const jour = `${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
   return SAISONS.find((s) => (s.du <= s.au ? jour >= s.du && jour <= s.au : jour >= s.du || jour <= s.au))
@@ -227,6 +249,23 @@ export default function Bibliotheque() {
       <div className="sl-cadre" ref={cadreRef}>
       <main className="sl-scene" ref={sceneRef} style={{ '--ratio': RATIO }}>
         <img className="sl-image" src={image} alt="" onError={() => image !== IMAGE && setEnEchec(image)} />
+        {/* Lumières de la boutique, sous les livres */}
+        {LUMIERES.map((g, i) => (
+          <span
+            key={i}
+            className={`lb-lum lb-lum-${g.type}`}
+            aria-hidden="true"
+            style={{ left: `${g.x}%`, top: `${g.y}%`, width: `${g.l}%`, animationDelay: `${-i * 1.37}s` }}
+          />
+        ))}
+        <span
+          className="lb-neon"
+          aria-hidden="true"
+          style={{ left: `${NEON.left}%`, top: `${NEON.top}%`, width: `${NEON.width}%`, height: `${NEON.height}%` }}
+        />
+        <span className="lb-vapeur" aria-hidden="true" style={{ left: `${VAPEUR.left}%`, top: `${VAPEUR.top}%` }}>
+          <i /><i /><i />
+        </span>
         {/* LED des guirlandes qui scintillent, chacune à son rythme */}
         {image === saison?.image && saison.leds?.map(([x, y], i) => (
           <span
