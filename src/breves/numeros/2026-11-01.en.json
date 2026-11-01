@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-01",
+  "numero": 33,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "Figma explains how it trained its own editing model",
+    "chapo": "The agent that edits your screens increasingly relies on an in-house model, post-trained on an open model.",
+    "paragraphes": [
+      "On October 29, Figma published an account of how it trained the model behind its editing agent. The model evaluated, which is unreleased, is post-trained from Qwen 3.8 27B. A first pipeline used Llama 3.3 70B, trained on more than 250,000 examples.",
+      "Each example pairs a starting design, a synthetic edit request and a successful edit. Designs are represented in Figma's native file format; larger \"teacher\" models produce the edits, checked by deterministic validators and visual judges. Figma adds reinforcement learning, because supervised training alone pushes a model to imitate the designs it has seen.",
+      "On the internal \"Figma design edits v3\" test, the model scores 77.8%, against 76.9% for Sol 6.1. Between beta and general availability, the agent is about 20% faster, undos fall by 60% and user ratings rise by 33%. Figma credits these gains to the whole set of models, tools and harness, not to the model alone.",
+      "Worth keeping in mind: these scores are internal and only one other model appears on the chart. Third-party models are still used for images and vectors."
+    ],
+    "sources": ["https://www.figma.com/blog/training-a-figma-fluent-editing-model/"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Peeve",
+        "titre": "Your editor updates its extensions without asking you",
+        "chapo": "Automatic updates are handy, until the day one of them is booby-trapped.",
+        "paragraphes": [
+          "On October 29, Cursor reported that versions 2.1.312 and 2.1.313 of the \"Anthropic.claude-code\" extension, on Windows and macOS, had been distributed from its extension marketplace without having been published by Anthropic. They could collect the hostname, Git email and public IP address, and try to open remote SSH access, between about 2:27 am and 1:35 pm Pacific time. Uninstalling is not enough: you need to look for an SSH key and rotate your credentials.",
+          "VS Code introduced a two-hour delay in June before an extension's new version auto-updates, except for trusted publishers, which InfoQ calls short. It is unknown whether it applies to Cursor."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A quarantine service for editor extensions: an approved list per team, and every new version held back seven days. Target: agencies and small teams with no IT department. Competition: the allowlists and internal marketplaces InfoQ mentions, which take time to set up. The angle: one setting, one report a week.", "plein": true },
+        "sources": ["https://cursor.com/blog/claude-code-extension-security-notice", "https://infoq.com/news/2026/06/vscode-extension-update-delay"]
+      },
+      {
+        "type": "idee", "rubrique": "The business idea", "court": "Idea",
+        "titre": "Replica Hub, turnkey: host a design team's AI prototypes",
+        "chapo": "GitHub is opening a prototyping tool whose team sharing requires your own server.",
+        "paragraphes": [
+          "On October 28, GitHub introduced Replica, an open-source tool (MIT) created by GitHub Design and Microsoft CoreAI Design. You describe a screen in natural language in the GitHub Copilot app, and the tool produces an interactive prototype that reuses the components of the team's design system.",
+          "Locally, Replica works without a server. To share prototypes and gather comments, you need a Replica Hub that the organization runs itself: a Linux server, a dedicated domain with wildcard DNS and HTTPS, GitHub permissions.",
+          "<b>The idea:</b> offer this Hub as a managed subscription. Who pays: product and design teams of a few people with no system administrator. Launch: automated deployment, a domain provided, a fixed monthly fee, tested with three teams. Competition: self-hosting, and a possible offer from GitHub. A quick search showed no hosted offer of this kind."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
+        "sources": ["https://github.blog/changelog/2026-10-28-introducing-replica-an-open-source-ai-prototyping-tool", "https://github.com/github/replica"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "AI · Tech",
+    "articles": [
+      {
+        "type": "ia", "rubrique": "AI in practice", "court": "AI",
+        "titre": "Agent Merge: Copilot unblocks a pull request for you",
+        "chapo": "A button, \"Watch and fix\", fixes whatever keeps a pull request from being merged.",
+        "paragraphes": [
+          "Announced October 28, Agent Merge handles failing GitHub Actions workflows and merge conflicts. It already existed in the Copilot app and Visual Studio Code; it now arrives in pull requests on GitHub.",
+          "How to use it: in the merge box, click \"Watch and fix\" and choose which blockers to watch. When one appears, Copilot starts a job in a cloud environment to fix it. It can be enabled by default in Copilot settings.",
+          "Combined with auto-merge, the pull request stays ready and GitHub merges it as soon as the requirements are met: review what the agent pushed, and only enable this where tests are reliable. A paid Copilot plan is required; the page gives no price or precise status."
+        ],
+        "sources": ["https://github.blog/changelog/2026-10-28-agent-merge-watches-and-fixes-pull-requests-in-the-cloud"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Dependabot tells you if your dependency's flaw affects you",
+        "paragraphes": [
+          "In public preview since October 28, reachability analysis looks for call paths between your code and the vulnerable functions of your dependencies, and rates each alert: <i>Reachable</i>, <i>Potentially reachable</i> (treat as reachable), <i>Unreachable</i> (lower priority) or <i>Reachability unavailable</i>. No alert is closed automatically.",
+          "Limits: JavaScript and TypeScript with an npm, Yarn or pnpm lockfile; GitHub Enterprise Cloud; GitHub-hosted runners; off by default (Settings > Advanced Security). Free during the preview."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "Small teams outside Enterprise lack this triage: a market for other languages.", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-28-prioritize-dependabot-alerts-with-reachability-analysis"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Vercel Flags starts 7 times faster",
+        "paragraphes": [
+          "Announced October 29: on a cold start, SDK initialization drops from over 70 ms to 10 ms (p75, Vercel's own testing), and a flag read stays under 1 ms (p99). Functions are no longer extended for usage reporting. You need <i>@flags-sdk/vercel</i> 1.5.3 or later, then redeploy."
+        ],
+        "sources": ["https://vercel.com/changelog/vercel-flags-starts-7x-faster-and-no-longer-extends-function-duration"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Reachability", "nature": "n.", "definition": "For a flaw in a dependency: whether your code actually calls the vulnerable function. An \"unreachable\" alert still exists, but ranks below those that really affect you." },
+    "chiffre": { "valeur": "11 h", "texte": "of exposure for a booby-trapped extension, on October 29." },
+    "bonus": { "type": "question", "texte": "How many editor extensions, plugins or GitHub Actions update themselves in your setup? Which would you install without reading them, and who on your team could say which version is running today?" },
+    "enigme": { "question": "I warn without closing, I sort without deciding; on my verdict, some flaws rise to the top of the list and others stay at the bottom. Who am I?", "reponse": "the reachability verdict of a security alert" }
+  },
+  "sources": ["figma.com", "cursor.com", "infoq.com", "github.blog", "github.com", "vercel.com"]
+}
