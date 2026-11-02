@@ -1,0 +1,794 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "annexe-c-la-methode-de-mesure-des-couts",
+   "x": [
+    "Annexe C. La méthode de mesure des coûts"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Annexes · comment les chiffres du chapitre 13 ont été obtenus"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un chiffre sans sa méthode n'est qu'une impression. Cette annexe donne donc ce qu'il faut pour juger ceux du livre : ce qui a été compté, comment, et sur quelles hypothèses reposent les estimations."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "la-regle",
+   "x": [
+    "La règle"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     "Une valeur ",
+     {
+      "g": [
+       "mesurée"
+      ]
+     },
+     " est lue dans un journal, à l'unité près."
+    ],
+    [
+     "Une valeur ",
+     {
+      "g": [
+       "estimée"
+      ]
+     },
+     " est calculée à partir d'une hypothèse, dite à chaque fois."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Tout vient d'un script versionné dans le projet, ",
+    {
+     "c": "outils/couts.py"
+    },
+    ". Il ne lit ",
+    {
+     "g": [
+      "que des compteurs"
+     ]
+    },
+    " : jamais le texte d'une conversation, jamais une donnée privée. Le versionner a une vertu simple : la mesure suivante est faite de la même façon, et un écart entre deux mesures s'explique."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "claude-les-quatre-compteurs",
+   "x": [
+    "Claude : les quatre compteurs"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Chaque requête de Claude Code au modèle laisse quatre compteurs dans la transcription de la session."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Compteur"
+    ],
+    [
+     "Ce que c'est"
+    ],
+    [
+     "Poids dans l'usage effectif"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Entrée neuve"
+     ],
+     [
+      "Le texte que le modèle lit pour la première fois"
+     ],
+     [
+      "×1"
+     ]
+    ],
+    [
+     [
+      "Cache écrit"
+     ],
+     [
+      "Le texte mis en mémoire pour être relu ensuite"
+     ],
+     [
+      "×2"
+     ]
+    ],
+    [
+     [
+      "Cache lu"
+     ],
+     [
+      "Le texte déjà en mémoire, relu à chaque requête : l'historique de la conversation"
+     ],
+     [
+      "×0,1"
+     ]
+    ],
+    [
+     [
+      "Sortie"
+     ],
+     [
+      "Ce que le modèle écrit"
+     ],
+     [
+      "×5"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'",
+    {
+     "g": [
+      "usage effectif"
+     ]
+    },
+    " est la somme pondérée de ces compteurs :"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "usage effectif = entrée neuve + 2 × cache écrit + 0,1 × cache lu + 5 × sortie"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est une seule unité, comparable d'une session à l'autre. ",
+    {
+     "g": [
+      "Ce n'est pas un prix"
+     ]
+    },
+    " : avec l'abonnement, on paie un forfait."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les poids reprennent le rapport des prix de l'API. Le ×0,1 du cache lu est une convention, gardée pour que les sessions restent comparables : au tarif réel de Claude Opus 5.5, ce rapport est de ×0,05."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Un exemple, sur tout le projet."
+     ]
+    },
+    " 595 M de tokens lus en cache, 13,2 M écrits en cache, 2,2 M en sortie, et une entrée neuve négligeable, donnent 59,5 + 26,4 + 11 = 96,9 M. La mesure dit 97,0 M : la différence vient de ce calcul refait à partir de valeurs arrondies."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Ce qui est compté."
+     ]
+    },
+    " Les requêtes sont celles des sessions ; l'usage effectif comprend en plus celui de leurs sous-agents. Le script ne lit que les sessions qu'on lui désigne : les dossiers et les sessions se donnent en arguments, parce que trois sessions de Canopée avaient été ouvertes depuis un autre dossier. Les autres sessions de ce dossier, sans rapport avec le projet, ne sont pas comptées."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ollama-les-lignes-du-journal",
+   "x": [
+    "Ollama : les lignes du journal"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le service Ollama écrit un journal. Le script n'en lit que trois sortes de lignes :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Ligne du journal (exemples)"
+    ],
+    [
+     "Ce qu'on en tire"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "c": "[GIN] … | 200 | 4.2s | … POST \"/api/generate\""
+      }
+     ],
+     [
+      "Une requête, sa route et sa durée"
+     ]
+    ],
+    [
+     [
+      {
+       "c": "prompt eval time = … ms / 812 tokens"
+      }
+     ],
+     [
+      "Les tokens ",
+      {
+       "g": [
+        "lus"
+       ]
+      },
+      " par le modèle"
+     ]
+    ],
+    [
+     [
+      {
+       "c": "eval time = … ms / 88 tokens"
+      }
+     ],
+     [
+      "Les tokens ",
+      {
+       "g": [
+        "écrits"
+       ]
+      },
+      " par le modèle"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Il en tire le nombre de ",
+    {
+     "g": [
+      "générations"
+     ]
+    },
+    " (une réponse produite), de ",
+    {
+     "g": [
+      "calculs de vecteurs"
+     ]
+    },
+    ", et le ",
+    {
+     "g": [
+      "temps de calcul"
+     ]
+    },
+    ". Les déchargements de modèle, qui ne calculent rien, sont exclus : 438 à la mesure du 23 octobre."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le journal ne commence que le 22 octobre à 14 h 07, en cours d'étape 2 : c'est là qu'Ollama a été remplacé par sa version native. La partie antérieure n'a laissé aucune trace mesurable, d'où le « minimum » de cette étape."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "rattacher-les-couts-aux-etapes",
+   "x": [
+    "Rattacher les coûts aux étapes"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Claude."
+     ]
+    },
+    " Chaque étape a sa session, sous-agents compris. L'étape 1 n'en a pas eu : elle s'est faite dans la session de pilotage, avant l'ouverture de l'étape 2. On la mesure donc par les requêtes de cette session dans cette fenêtre."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Ollama."
+     ]
+    },
+    " Le journal dit l'heure d'une requête, pas qui l'a lancée. Chaque requête est rattachée à la session d'étape ouverte à cette heure-là. C'est une ",
+    {
+     "g": [
+      "attribution par période"
+     ]
+    },
+    ", pas par lanceur : un calcul que j'aurais lancé dans mon terminal pendant une session serait compté pour cette étape. En pratique, les 9,65 h du journal tombent toutes dans une session d'étape."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-hypotheses-des-estimations",
+   "x": [
+    "Les hypothèses des estimations"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-tarifs-utilises",
+   "x": [
+    "Les tarifs utilisés"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Tarifs de l'API d'Anthropic relevés le 23 octobre 2026, par million de tokens (source : ",
+    {
+     "c": "docs/couts.md"
+    },
+    ", sections 4 et 11)."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|---|---|",
+   "entete": [
+    [
+     "Modèle"
+    ],
+    [
+     "Entrée"
+    ],
+    [
+     "Sortie"
+    ],
+    [
+     "Cache lu"
+    ],
+    [
+     "Cache écrit"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Claude Haiku 5.5"
+     ],
+     [
+      "0,10 $"
+     ],
+     [
+      "0,50 $"
+     ],
+     [
+      "—"
+     ],
+     [
+      "—"
+     ]
+    ],
+    [
+     [
+      "Claude Sonnet 5.5"
+     ],
+     [
+      "2 $"
+     ],
+     [
+      "10 $"
+     ],
+     [
+      "—"
+     ],
+     [
+      "—"
+     ]
+    ],
+    [
+     [
+      "Claude Opus 5.5"
+     ],
+     [
+      "4 $"
+     ],
+     [
+      "20 $"
+     ],
+     [
+      "0,20 $"
+     ],
+     [
+      "8 $ (cache d'une heure)"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ces tarifs valent pour cette date. Ils ont pu changer depuis. Celui de Claude Haiku 5.5 s'applique aux requêtes de moins de 100 000 tokens."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "chaque-estimation-avec-son-calcul",
+   "x": [
+    "Chaque estimation, avec son calcul"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Estimation"
+    ],
+    [
+     "Résultat"
+    ],
+    [
+     "Hypothèse et calcul"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "g": [
+        "Énergie du calcul local"
+       ]
+      }
+     ],
+     [
+      "0,29 à 0,39 kWh pour 9,65 h"
+     ],
+     [
+      "La puce M2 Pro consomme 30 à 40 W en calcul soutenu : 9,65 h × 30 W, puis × 40 W. À environ 0,20 € le kWh, cela fait quelques centimes"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Tokens d'Ollama au 23 octobre"
+       ]
+      }
+     ],
+     [
+      "environ 3 840 000 lus et 230 000 écrits"
+     ],
+     [
+      "3 113 394 lus et 186 652 écrits sont mesurés. Le moteur MLX, utilisé au début de l'étape 3, n'écrit pas ces lignes. On suppose que ses requêtes ressemblaient aux autres, et on multiplie par le rapport entre toutes les générations et celles qui sont détaillées"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Le travail local par l'API"
+       ]
+      }
+     ],
+     [
+      "≈ 0,50 $, ≈ 10 $, ≈ 20 $"
+     ],
+     [
+      "Ces mêmes tokens estimés, une requête par tâche, au tarif de chaque modèle. Par exemple pour Opus 5.5 : 3,84 × 4 $ + 0,23 × 20 $. Moitié prix en traitement par lots"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Sa durée par l'API"
+       ]
+      }
+     ],
+     [
+      "30 minutes à 2 heures"
+     ],
+     [
+      "Quelques requêtes en parallèle, sur des modèles bien plus rapides que sur le Mac. Rien n'a été chronométré"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Le même travail dans Claude Code"
+       ]
+      }
+     ],
+     [
+      "environ 10 fois plus de tokens"
+     ],
+     [
+      "Chaque requête relirait tout l'historique de la session. Ordre de grandeur, jamais essayé"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Claude Code au tarif de l'API, tout le projet"
+       ]
+      }
+     ],
+     [
+      "≈ 270 $"
+     ],
+     [
+      "Compteurs mesurés au tarif d'Opus 5.5 : 595 M × 0,20 $ ≈ 119 $, 13,2 M × 8 $ ≈ 105 $, 2,2 M × 20 $ ≈ 45 $ (le compteur non arrondi donne un peu plus que 44 $). Toutes les requêtes sont comptées à ce tarif, y compris celles de l'étape 10, passée à Claude Opus 4.8, et celles des sous-agents sur d'autres modèles"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Claude Code au tarif de l'API, deux premiers jours"
+       ]
+      }
+     ],
+     [
+      "≈ 70 $"
+     ],
+     [
+      "Même méthode, sur les 25,6 M d'unités du 23 octobre. Le rapport est le même : environ 2,8 $ par million d'unités"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "La répartition par usage"
+       ]
+      }
+     ],
+     [
+      "instructions 40 %, fichiers 24 %, terminal 16 %, conversation 11 %, sous-agents 8 %, web 1 %"
+     ],
+     [
+      "Le total est mesuré, la répartition non. Le script suit chaque bloc qui entre dans le contexte et compte combien de requêtes l'ont relu. Taille d'un bloc : 3,5 caractères par token. Le tout est ramené au total mesuré"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Le poids d'Ollama face à Claude"
+       ]
+      }
+     ],
+     [
+      "environ un cinquième (19 %), au 23 octobre"
+     ],
+     [
+      "Les tokens estimés d'Ollama, avec les mêmes poids (sortie ×5), soit 5,0 M d'unités, face aux 25,6 M de Claude"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Rembourser un Mac par les économies"
+       ]
+      }
+     ],
+     [
+      "des centaines de campagnes"
+     ],
+     [
+      "Un Mac mini de 64 Go à environ 3 100 € (estimation datée, relevée le 23 octobre 2026, pas un devis), face à ≈ 10 $ par campagne avec Sonnet 5.5"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "pourquoi-les-mesures-changent",
+   "x": [
+    "Pourquoi les mesures changent"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le script a été lancé à plusieurs dates, et une session continue tant qu'elle n'est pas close. Une valeur se lit donc toujours avec sa date."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|---|",
+   "entete": [
+    [
+     "Date"
+    ],
+    [
+     "Claude"
+    ],
+    [
+     "Ollama"
+    ],
+    [
+     "Ce que couvre la mesure"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "23 octobre"
+     ],
+     [
+      "676 requêtes, 25,6 M"
+     ],
+     [
+      "7 805 générations, 6 h 52"
+     ],
+     [
+      "Étape 1 à la mission climat"
+     ]
+    ],
+    [
+     [
+      "27 octobre"
+     ],
+     [
+      "1 560 requêtes, 76,5 M"
+     ],
+     [
+      "11 672 générations, 9,65 h"
+     ],
+     [
+      "Jusqu'à l'étape 9, avant son contrôle et sa pull request"
+     ]
+    ],
+    [
+     [
+      "30 octobre"
+     ],
+     [
+      "2 034 requêtes, 97,0 M"
+     ],
+     [
+      "11 675 générations, 9,65 h"
+     ],
+     [
+      "Tout le projet, étapes 10 et 11 closes"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-n-a-pas-pu-etre-mesure",
+   "x": [
+    "Ce qui n'a pas pu être mesuré"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "La répartition par usage"
+      ]
+     },
+     " de Claude : elle est estimée."
+    ],
+    [
+     {
+      "g": [
+       "Le modèle"
+      ]
+     },
+     " qui a servi chaque requête d'Ollama : le journal ne le dit pas."
+    ],
+    [
+     {
+      "g": [
+       "Le début du projet"
+      ]
+     },
+     " côté Ollama : le journal commence en cours d'étape 2."
+    ],
+    [
+     {
+      "g": [
+       "L'énergie"
+      ]
+     },
+     " de Claude : elle se dépense dans un centre de données, et je n'en ai aucune mesure."
+    ],
+    [
+     {
+      "g": [
+       "La fin du projet"
+      ]
+     },
+     " côté Claude : la session de pilotage et celle qui finit le livre étaient encore ouvertes à la mesure finale. L'écriture de ces annexes, par exemple, n'y figure pas."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "refaire-la-mesure",
+   "x": [
+    "Refaire la mesure"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une commande suffit pour les sessions ouvertes depuis le dossier du projet :"
+   ]
+  },
+  {
+   "t": "code",
+   "langue": "bash",
+   "texte": ".venv/bin/python outils/couts.py"
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le découpage par étape se demande en ajoutant ",
+    {
+     "c": "--par-etape"
+    },
+    ", et ",
+    {
+     "c": "--depuis"
+    },
+    " fixe le début de la période prise en compte. Les sessions ouvertes ailleurs se désignent avec ",
+    {
+     "c": "--session"
+    },
+    " (répétable), la session de pilotage avec ",
+    {
+     "c": "--pilotage"
+    },
+    ", et ",
+    {
+     "c": "--dossier"
+    },
+    " lit un autre dossier de transcriptions."
+   ]
+  }
+ ]
+}

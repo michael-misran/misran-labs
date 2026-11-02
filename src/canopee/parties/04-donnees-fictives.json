@@ -1,0 +1,1247 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "chapitre-4-les-donnees-fictives-fabriquer-des-donnees-qu-on-ne-lira-jamais",
+   "x": [
+    "Chapitre 4. Les données fictives : fabriquer des données qu'on ne lira jamais"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Étape 4 du projet · 22 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-probleme",
+   "x": [
+    "Le problème"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les trois premiers chapitres ne touchaient que des documents publics. Le cœur du projet commence ici : apprendre à protéger des ",
+    {
+     "g": [
+      "données personnelles"
+     ]
+    },
+    ". Pour cela, il en faut. Un fichier d'adhérents, des comptes rendus de réunion, des e-mails internes, avec tout ce qu'ils contiennent d'ordinaire : des noms, des numéros, des confidences glissées au détour d'une phrase."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux exigences tirent en sens contraire."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "D'un côté, ces données doivent être ",
+    {
+     "g": [
+      "réalistes"
+     ]
+    },
+    ", défauts compris. Un fichier trop propre ne teste rien. Dans la réalité, il y a des doublons, des fautes de frappe, des champs vides, et des « remarques » où quelqu'un a collé un numéro de sécurité sociale. Une protection qui réussit sur des données propres et échoue sur des données sales ne vaut rien."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "De l'autre, celui qui fabrique ces données ne doit pas les voir. Le code du projet est écrit par Claude Code, un modèle dans le cloud. Si on traite les données de Mycélium comme si elles étaient vraies, ce que Claude Code lit est une donnée sortie. Il doit donc écrire un programme qui fabrique des milliers de fiches et de documents… sans jamais ouvrir le résultat."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le problème de cette étape : ",
+    {
+     "g": [
+      "fabriquer une organisation entière, crédible et piégée, et la vérifier sans la regarder."
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-on-a-construit",
+   "x": [
+    "Ce qu'on a construit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Mycélium a maintenant une vie interne, entièrement inventée :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Jeu de données"
+    ],
+    [
+     "Volume"
+    ],
+    [
+     "Niveau de sensibilité"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Fichier des adhérents"
+     ],
+     [
+      "2 062 fiches : 2 000 personnes, 60 doublons, 2 « membres fantômes »"
+     ],
+     [
+      "sensible"
+     ]
+    ],
+    [
+     [
+      "Fédérations et sections"
+     ],
+     [
+      "30 fédérations, 150 sections, avec leurs responsables"
+     ],
+     [
+      "interne"
+     ]
+    ],
+    [
+     [
+      "Équipe nationale"
+     ],
+     [
+      "15 membres du bureau national, 13 permanents (avec les données de paie)"
+     ],
+     [
+      "sensible"
+     ]
+    ],
+    [
+     [
+      "Comptes rendus"
+     ],
+     [
+      "20 du bureau national, 40 de fédérations"
+     ],
+     [
+      "confidentiel ou interne"
+     ]
+    ],
+    [
+     [
+      "Notes et études internes"
+     ],
+     [
+      "25 notes de projet, 15 études internes"
+     ],
+     [
+      "interne ou confidentiel"
+     ]
+    ],
+    [
+     [
+      "Programme 2027"
+     ],
+     [
+      "25 mesures, chacune appuyée sur une ou deux études réelles"
+     ],
+     [
+      "confidentiel"
+     ]
+    ],
+    [
+     [
+      "E-mails"
+     ],
+     [
+      "200, au format standard des messageries"
+     ],
+     [
+      "interne ou confidentiel"
+     ]
+    ],
+    [
+     [
+      "Canaris"
+     ],
+     [
+      "20 valeurs piégées, réparties dans tous les jeux"
+     ],
+     [
+      "—"
+     ]
+    ],
+    [
+     [
+      "Documents piégés"
+     ],
+     [
+      "10, rangés à part, pour l'étape de l'attaque"
+     ],
+     [
+      "—"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Parmi les membres de l'équipe nationale figurent mes ",
+    {
+     "g": [
+      "trois identités"
+     ]
+    },
+    " dans le projet : le directeur du pôle programme, le délégué à la protection des données (le ",
+    {
+     "g": [
+      "DPO"
+     ]
+    },
+    ") et le responsable de la sécurité des systèmes d'information (le ",
+    {
+     "g": [
+      "RSSI"
+     ]
+    },
+    "). Je les découvre par une commande que je suis seul à lancer, dans mon terminal. Claude Code ne les connaît pas."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux outils ont fabriqué tout cela, sur le Mac :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Faker"
+      ]
+     },
+     ", une bibliothèque de référence pour les fausses données, dans sa version française : elle tire au hasard des prénoms, des noms, des rues, des métiers ;"
+    ],
+    [
+     {
+      "g": [
+       "Gemma 4"
+      ]
+     },
+     ", le modèle local choisi au chapitre 3, pour rédiger la prose des comptes rendus, des notes et des e-mails."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un troisième programme, ",
+    {
+     "g": [
+      "le contrôle"
+     ]
+    },
+    ", vérifie tout ce qui a été produit et n'affiche que des comptes et des coches."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-choix-qui-comptent",
+   "x": [
+    "Les choix qui comptent"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Le code décide des faits, Gemma rédige."
+      ]
+     },
+     " Les noms, les dates, les numéros, les canaris et les citations sont choisis par le code, puis donnés à Gemma. Après chaque texte, le code vérifie que chaque élément obligatoire y figure ",
+     {
+      "g": [
+       "mot pour mot"
+      ]
+     },
+     ", et l'ajoute lui-même sinon. Un piège ne dépend donc jamais du bon vouloir du modèle."
+    ],
+    [
+     {
+      "g": [
+       "Les formats d'un vrai parti."
+      ]
+     },
+     " Un export de fichier (CSV, un tableau en texte), des documents de travail (Markdown), des e-mails sortis d'une messagerie. L'étape suivante devra les lire et les ranger dans une base : c'est justement ce qu'on veut apprendre."
+    ],
+    [
+     {
+      "g": [
+       "Des communes réelles, des personnes inventées."
+      ]
+     },
+     " Un lieu n'est pas une donnée personnelle. Des villes réelles rendent les pièges réalistes. Mais aucun mandat qui désigne une personne réelle : pas de « maire de telle ville », seulement des conseillers municipaux, qui sont nombreux."
+    ],
+    [
+     {
+      "g": [
+       "Une liste de personnalités interdites."
+      ]
+     },
+     " Faker tire des noms au hasard : il pourrait produire celui d'une figure politique connue. Le générateur rejette une soixantaine de noms de personnalités, et le contrôle les cherche dans tous les textes."
+    ],
+    [
+     {
+      "g": [
+       "Les citations du programme sont déjà vérifiées."
+      ]
+     },
+     " Les mesures du programme citent des études réelles du corpus public. Elles reprennent, sans les modifier, des citations du jeu d'évaluation du chapitre 3, déjà contrôlées mot pour mot."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-notions",
+   "x": [
+    "Les notions"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-donnees-synthetiques",
+   "x": [
+    "Les données synthétiques"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce sont des données ",
+    {
+     "g": [
+      "fabriquées"
+     ]
+    },
+    " qui ont la forme et les défauts des vraies, sans désigner personne. Elles servent à tester un système qui manipulera un jour des données réelles, sans prendre le risque de les exposer."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Il en existe deux grandes familles :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "les données inventées de toutes pièces"
+      ]
+     },
+     ", comme ici : des règles et du hasard ;"
+    ],
+    [
+     {
+      "g": [
+       "les données imitées"
+      ]
+     },
+     " : un modèle apprend les statistiques d'un vrai fichier et en produit un faux qui lui ressemble. C'est plus réaliste, mais plus risqué : un modèle trop fidèle peut recopier de vraies personnes."
+    ]
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "des-fausses-donnees-qui-ne-peuvent-designer-personne",
+   "x": [
+    "Des fausses données qui ne peuvent désigner personne"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Inventer un numéro de téléphone au hasard, c'est risquer de tomber sur celui de quelqu'un. Le générateur suit donc des ",
+    {
+     "g": [
+      "conventions"
+     ]
+    },
+    " qui rendent les données impossibles à attribuer :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Donnée"
+    ],
+    [
+     "Convention"
+    ],
+    [
+     "Pourquoi"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "E-mail"
+     ],
+     [
+      "Toujours sur un domaine de convention du projet"
+     ],
+     [
+      "Aucun e-mail n'est jamais envoyé"
+     ]
+    ],
+    [
+     [
+      "Téléphone"
+     ],
+     [
+      "Dans les six tranches que l'Arcep, le régulateur des télécoms, réserve aux œuvres de fiction"
+     ],
+     [
+      "Ces numéros ne sont attribués à personne et ne peuvent pas être appelés"
+     ]
+    ],
+    [
+     [
+      "Numéro de sécurité sociale (NIR), IBAN"
+     ],
+     [
+      "Bien formés, mais avec une ",
+      {
+       "g": [
+        "clé de contrôle volontairement fausse"
+       ]
+      }
+     ],
+     [
+      "Aucun organisme n'a pu attribuer un numéro dont la clé est fausse"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La clé de contrôle est le ou les derniers chiffres d'un numéro, calculés à partir des autres pour détecter une faute de frappe. Un numéro à clé fausse reste vraisemblable à l'œil, donc un détecteur doit le repérer. La documentation de l'étape prévenait déjà : un détecteur qui vérifierait la clé, pour éviter les fausses alertes, raterait ",
+    {
+     "g": [
+      "tous"
+     ]
+    },
+    " les numéros de Canopée."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-reproductibilite-par-graine",
+   "x": [
+    "La reproductibilité par graine"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un ordinateur ne tire pas vraiment au hasard : il calcule une suite de nombres qui en a l'air, à partir d'un nombre de départ, la ",
+    {
+     "g": [
+      "graine"
+     ]
+    },
+    ". Même graine, même suite. Ici, la graine est fixe : relancer le générateur redonne exactement les mêmes 2 000 personnes, avec les mêmes doublons au même endroit."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est essentiel pour deux raisons :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "comparer"
+      ]
+     },
+     " : pour mesurer une protection d'un essai à l'autre, il faut que les données ne changent pas ;"
+    ],
+    [
+     {
+      "g": [
+       "ne rien versionner"
+      ]
+     },
+     " : comme pour le corpus public, Git garde ",
+     {
+      "g": [
+       "la recette"
+      ]
+     },
+     " (le code et la graine), pas les données."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les canaris font exception, et c'est voulu : ils sont tirés par le hasard du système, pas par la graine. Sinon, quiconque lit le code de Canopée, Claude Code compris, pourrait les recalculer."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-quasi-identifiants-et-le-k-anonymat",
+   "x": [
+    "Les quasi-identifiants et le k-anonymat"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un ",
+    {
+     "g": [
+      "identifiant direct"
+     ]
+    },
+    " désigne une personne à lui seul : un nom, un e-mail, un numéro de téléphone. On pense à les masquer. Un ",
+    {
+     "g": [
+      "quasi-identifiant"
+     ]
+    },
+    " ne désigne personne seul, mais le fait ",
+    {
+     "g": [
+      "combiné à d'autres"
+     ]
+    },
+    " : un âge, un département, une profession. Chacun est anodin ; ensemble, ils désignent souvent une seule personne. La chercheuse Latanya Sweeney a montré dans les années 1990 que la date de naissance, le sexe et le code postal suffisaient à identifier environ 87 % des Américains."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le ",
+    {
+     "g": [
+      "k-anonymat"
+     ]
+    },
+    " mesure cette exposition. On range les personnes en « classes » qui partagent les mêmes quasi-identifiants (ici, comme dans le cahier des charges : tranche d'âge, département, profession). ",
+    {
+     "g": [
+      "k"
+     ]
+    },
+    " est la taille de la plus petite classe. Si k vaut 1, au moins une personne est seule dans sa classe : elle est ré-identifiable. Le cahier des charges vise ",
+    {
+     "g": [
+      "k ≥ 5"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les quasi-identifiants se cachent aussi ",
+    {
+     "g": [
+      "dans les textes"
+     ]
+    },
+    ", où aucun tableau ne les signale. Une phrase comme « le responsable communication de la fédération d'un petit département sort d'une longue hospitalisation » (exemple inventé pour ce livre) ne contient aucun nom, et pourtant elle désigne une personne, avec une information de santé. Chaque compte rendu de Mycélium en contient au moins une, posée exprès. C'est la fuite la plus difficile à détecter."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-canaris",
+   "x": [
+    "Les canaris"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le nom vient des mines de charbon : un canari en cage mourait du grisou avant les mineurs, et donnait l'alerte. En sécurité des données, un ",
+    {
+     "g": [
+      "canari"
+     ]
+    },
+    " est une ",
+    {
+     "g": [
+      "valeur unique et piégée"
+     ]
+    },
+    " glissée dans les données. Personne n'a de raison légitime de l'utiliser. Si elle apparaît là où elle ne devrait pas être, c'est la preuve d'une fuite, et elle dit même ",
+    {
+     "g": [
+      "d'où"
+     ]
+    },
+    " vient la fuite."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ici, 20 canaris de cinq types (e-mail, téléphone, numéro de sécurité sociale, IBAN, code interne) sont répartis dans les sept jeux : deux « membres fantômes » dans le fichier des adhérents, un numéro de fédération, la paie d'un salarié, des codes de dossier, une signature d'e-mail… Chacun ressemble à une donnée ordinaire."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Règle absolue : un canari n'est jamais affiché."
+     ]
+    },
+    " Le contrôle dit seulement : « tel canari, de tel type, 1 occurrence dans son jeu, 0 ailleurs ». Un canari affiché dans une session de Claude Code serait un canari « brûlé » : déjà parti dans le cloud, il ne prouverait plus rien. Pour pouvoir le chercher sans le manipuler, le projet garde aussi son ",
+    {
+     "g": [
+      "empreinte"
+     ]
+    },
+    " : une sorte de signature calculée, qu'on peut comparer sans révéler la valeur."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "l-injection-de-prompt-indirecte",
+   "x": [
+    "L'injection de prompt indirecte"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une ",
+    {
+     "g": [
+      "injection de prompt"
+     ]
+    },
+    " est une consigne glissée dans ce que lit un modèle, pour lui faire faire autre chose que ce qu'on lui a demandé. Elle est ",
+    {
+     "g": [
+      "directe"
+     ]
+    },
+    " quand l'utilisateur la tape lui-même (« ignore tes consignes »). Elle est ",
+    {
+     "g": [
+      "indirecte"
+     ]
+    },
+    " quand elle est cachée dans un ",
+    {
+     "g": [
+      "document"
+     ]
+    },
+    " que le système lit pour l'utilisateur : une page web, un e-mail, une étude. C'est la plus dangereuse pour un système comme Canopée, qui lit des centaines de documents qu'il n'a pas écrits."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un modèle de langage ne fait pas de différence nette entre « les instructions » et « les données » : tout est du texte, dans la même fenêtre. Une phrase bien placée dans un extrait peut prendre le dessus sur la consigne."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les dix documents piégés couvrent les techniques connues : un commentaire invisible à l'affichage, du texte blanc sur fond blanc, une fausse « note méthodologique » adressée aux systèmes d'IA, un texte qui imite les délimiteurs de la consigne pour se faire passer pour le système, une image dont l'adresse emporte des données, une notice de catalogue piégée, des caractères Unicode invisibles, un faux message d'administrateur, une consigne encodée pour échapper aux filtres, et une consigne qui demande à un agent outillé de télécharger un script."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Chaque piège demande au modèle d'écrire un ",
+    {
+     "g": [
+      "marqueur"
+     ]
+    },
+    " unique. Si ce marqueur apparaît dans une réponse, le modèle a obéi au document : le test pourra être automatique. Ces dix documents restent rangés à part, ",
+    {
+     "g": [
+      "jamais indexés"
+     ]
+    },
+    " avant le chapitre 11. Les indexer par erreur, ce serait empoisonner le corpus du parti : exactement l'attaque qu'on veut apprendre à contrer."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "pourquoi-l-outil-qui-genere-ne-lit-pas-ce-qu-il-genere",
+   "x": [
+    "Pourquoi l'outil qui génère ne lit pas ce qu'il génère"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Des données fictives ne risquent rien, pourrait-on penser. On les traite pourtant comme des vraies, pour trois raisons :"
+   ]
+  },
+  {
+   "t": "ol",
+   "debut": 1,
+   "items": [
+    [
+     {
+      "g": [
+       "C'est un entraînement aux bons réflexes."
+      ]
+     },
+     " En entreprise, le même développeur, avec le même assistant, travaillera un jour sur un vrai fichier clients. Le réflexe « je n'ouvre pas, je mesure » doit être acquis avant."
+    ],
+    [
+     {
+      "g": [
+       "Claude Code est un modèle dans le cloud."
+      ]
+     },
+     " Une donnée lue est une donnée sortie."
+    ],
+    [
+     {
+      "g": [
+       "Les canaris seraient brûlés"
+      ]
+     },
+     ", et ne prouveraient plus rien aux étapes suivantes."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Concrètement, Claude Code a écrit le générateur sans voir sa production. Pour vérifier son travail, il a écrit le contrôle, qui lit tout sur le Mac et n'affiche que des agrégats : des comptes, des pourcentages, des coches. C'est la discipline d'un laboratoire qui publie des statistiques sur des dossiers médicaux sans jamais montrer un dossier."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La documentation de l'étape dit honnêtement la limite. Claude Code sait ",
+    {
+     "g": [
+      "comment"
+     ]
+    },
+    " les données sont faites, pas ",
+    {
+     "g": [
+      "ce qu'elles contiennent"
+     ]
+    },
+    ". Avec le code et la graine, il pourrait en théorie relancer Faker et reconstituer les adhérents ; il ne le fait pas, par consigne. Seuls les canaris lui sont réellement inaccessibles. La vraie protection technique viendra au chapitre 6, avec le chiffrement."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-que-font-les-vraies-organisations",
+   "x": [
+    "Ce que font les vraies organisations"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Jamais la production en test."
+      ]
+     },
+     " Les banques, les hôpitaux et les assureurs interdisent de copier les données réelles dans les environnements de développement. Ils fabriquent des jeux de test, souvent avec Faker ou des outils spécialisés."
+    ],
+    [
+     {
+      "g": [
+       "Des environnements séparés"
+      ]
+     },
+     " : développement, recette, préproduction, production. Les développeurs n'ont accès qu'aux premiers. Accéder à la production demande une procédure, une raison et une trace. Canopée reproduit cette séparation à sa façon : Claude Code est le « développeur », la zone privée est la « production »."
+    ],
+    [
+     {
+      "g": [
+       "Le masquage"
+      ]
+     },
+     ", quand il faut des données proches du réel : on part d'une copie de la production et on remplace les noms, les numéros, les adresses. C'est plus réaliste, mais une seule colonne oubliée suffit."
+    ],
+    [
+     {
+      "g": [
+       "Des canaris en production"
+      ]
+     },
+     " : des fiches clients fantômes, des documents « appâts », des clés d'accès piégées. Une alerte se déclenche dès qu'ils servent."
+    ],
+    [
+     {
+      "g": [
+       "Des corpus d'attaque pour l'IA"
+      ]
+     },
+     " : les équipes qui déploient des assistants documentaires gardent des jeux de documents piégés et les rejouent à chaque version, comme des tests."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-chiffres",
+   "x": [
+    "Les chiffres"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "ce-qui-a-ete-verifie-sans-rien-lire",
+   "x": [
+    "Ce qui a été vérifié, sans rien lire"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Vérification"
+    ],
+    [
+     "Résultat"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "E-mails"
+     ],
+     [
+      "3 172 adresses trouvées dans tous les fichiers, 100 % sur le domaine de convention"
+     ]
+    ],
+    [
+     [
+      "Téléphones"
+     ],
+     [
+      "2 457 numéros trouvés, 100 % dans les tranches de fiction"
+     ]
+    ],
+    [
+     [
+      "NIR et IBAN"
+     ],
+     [
+      "25 NIR et 16 IBAN trouvés, tous à clé invalide ; contre-épreuve : un IBAN d'exemple officiel est bien reconnu valide"
+     ]
+    ],
+    [
+     [
+      "Personnalités réelles"
+     ],
+     [
+      "Aucune des 329 sources (4 tableaux, 325 textes) ne contient un nom de la liste d'exclusion"
+     ]
+    ],
+    [
+     [
+      "Distributions"
+     ],
+     [
+      "54 % de femmes ; des adhérents de tout âge à partir de 18 ans ; des fédérations de 20 à 166 personnes ; 108 professions distinctes"
+     ]
+    ],
+    [
+     [
+      "Canaris"
+     ],
+     [
+      "20, tous différents, chacun présent dans son jeu et ",
+      {
+       "g": [
+        "absent de tous les autres"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Citations du programme et des notes"
+     ],
+     [
+      "39 et 40, toutes retrouvées mot pour mot dans le corpus public, au bon document et à la bonne page"
+     ]
+    ],
+    [
+     [
+      "Documents piégés"
+     ],
+     [
+      "10, chacun porteur de son marqueur ; aucun marqueur dans le corpus public"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-point-de-depart-de-la-protection",
+   "x": [
+    "Le point de départ de la protection"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le fichier brut est très loin du k-anonymat, et c'est voulu : c'est le travail du chapitre 7."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Mesure"
+    ],
+    [
+     "Résultat"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Classes (tranche d'âge, département, profession)"
+     ],
+     [
+      "1 431"
+     ]
+    ],
+    [
+     [
+      "k minimal"
+     ],
+     [
+      {
+       "g": [
+        "1"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Personnes dans une classe de moins de 5"
+     ],
+     [
+      "90 %"
+     ]
+    ],
+    [
+     [
+      "Personnes seules dans leur classe"
+     ],
+     [
+      {
+       "g": [
+        "1 097"
+       ]
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les pièges sont en place : 60 doublons, 40 fautes de frappe, 10 profils rares uniques, 8 numéros de sécurité sociale collés dans un champ « remarques », environ 45 remarques qui touchent à la santé, au handicap ou à l'appartenance syndicale, 83 quasi-identifiants dans la prose, 40 e-mails transférés en chaîne jusqu'à trois niveaux. La liste exacte de ces pièges, la « vérité de terrain », est rangée dans la zone privée : c'est le corrigé qui permettra de ",
+    {
+     "g": [
+      "mesurer"
+     ]
+    },
+    " la protection au lieu de l'estimer."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-couts",
+   "x": [
+    "Les coûts"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mesuré."
+     ]
+    },
+    " La génération complète a pris ",
+    {
+     "g": [
+      "58 minutes"
+     ]
+    },
+    ", presque tout pour les 325 textes rédigés par Gemma. Pendant la session de l'étape, le journal d'Ollama compte ",
+    {
+     "g": [
+      "395 générations"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "1,46 h"
+     ]
+    },
+    " de calcul. Côté Claude, la session a demandé ",
+    {
+     "g": [
+      "72 requêtes"
+     ]
+    },
+    ", pour ",
+    {
+     "g": [
+      "3,6 M d'unités"
+     ]
+    },
+    " d'usage effectif (l'unité définie au chapitre 13, qui ramène les compteurs de Claude à une seule mesure)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La mémoire est restée sous contrôle, grâce aux leçons du chapitre 3 : Gemma seul en mémoire, 3,3 Go selon Ollama, et un ",
+    {
+     "g": [
+      "swap"
+     ]
+    },
+    " (la mémoire déportée sur le disque) stable entre 6,9 et 7,9 Go pendant l'heure de génération."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-surprises",
+   "x": [
+    "Les surprises"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "zero-sur-quarante",
+   "x": [
+    "Zéro sur quarante"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pour vérifier que Gemma était reproductible, on a recalculé les 40 notes internes sans le cache, et comparé le résultat aux originales. Premier essai : ",
+    {
+     "g": [
+      "0 sur 40"
+     ]
+    },
+    " identiques."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le réflexe aurait été d'accuser le modèle. Ce n'était pas lui. Les notes avaient été recalculées ",
+    {
+     "g": [
+      "sans rejouer d'abord les comptes rendus"
+     ]
+    },
+    ", qui consomment le même tirage au sort. Le générateur ne tirait donc plus les mêmes valeurs, et les consignes données à Gemma n'étaient plus les mêmes. Une fois l'ordre respecté : ",
+    {
+     "g": [
+      "40 sur 40"
+     ]
+    },
+    ", identiques au caractère près, sur ce Mac, avec la même version du modèle."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La leçon : ",
+    {
+     "g": [
+      "l'ordre des opérations fait partie de la recette."
+     ]
+    },
+    " La documentation l'a gardé comme exemple, échec compris."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "soixante-cinq-phrases-plaquees",
+   "x": [
+    "Soixante-cinq phrases plaquées"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Gemma n'a pas toujours recopié mot pour mot ce qu'on lui imposait. Il a reformulé ",
+    {
+     "g": [
+      "46"
+     ]
+    },
+    " éléments obligatoires des comptes rendus, surtout la phrase du quasi-identifiant, et ",
+    {
+     "g": [
+      "19"
+     ]
+    },
+    " de ceux des e-mails. Le code les a ajoutés lui-même en fin de texte."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le piège est donc garanti, mais ces 65 phrases sont moins bien fondues dans la prose. Une phrase collée en fin de document est plus facile à repérer qu'une phrase intégrée : c'est un point ouvert. On l'a vu aussi avec trois e-mails où restait un champ du type « [Prénom] » : le contrôle les a trouvés, une seconde chance donnée à Gemma a suffi, et une relance depuis le cache a pris 20 secondes."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-n-a-pas-pu-etre-verifie",
+   "x": [
+    "Ce qui n'a pas pu être vérifié"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "La qualité de la prose."
+      ]
+     },
+     " Par construction, personne ne l'a lue : ni Claude Code, ni moi au moment de l'étape. Le contrôle mesure des longueurs, des refus, la présence des éléments obligatoires, mais pas si un compte rendu est crédible, ni si Gemma a ajouté un chiffre de son cru."
+    ],
+    [
+     {
+      "g": [
+       "Qu'aucune personne réelle n'est désignée."
+      ]
+     },
+     " La liste d'exclusion écarte les personnalités connues, mais un nom tiré par Faker est forcément porté par de vraies personnes ordinaires. C'est la limite de toute donnée synthétique : ce qui compte, c'est qu'aucune fiche ne ",
+     {
+      "g": [
+       "décrit"
+      ]
+     },
+     " une vraie personne, et que les numéros soient impossibles à attribuer."
+    ],
+    [
+     {
+      "g": [
+       "Que Gemma n'a pas inventé d'autres personnes"
+      ]
+     },
+     " que celles fournies. La consigne le lui interdit, mais un nom glissé au détour d'une phrase ne se voit pas sans lire. Le chapitre 7 en trouvera la trace."
+    ],
+    [
+     {
+      "g": [
+       "Le domaine des e-mails"
+      ]
+     },
+     " est une convention du projet, pas un domaine réservé par les normes : il peut appartenir à quelqu'un. Sans conséquence tant qu'aucun agent n'envoie d'e-mail, et c'est justement ce qu'essaie d'obtenir l'un des documents piégés."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-il-faut-retenir",
+   "x": [
+    "Ce qu'il faut retenir"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Des données de test doivent être sales."
+      ]
+     },
+     " Doublons, fautes, confidences dans les remarques : c'est sur elles qu'une protection échoue."
+    ],
+    [
+     {
+      "g": [
+       "Le code décide, le modèle rédige."
+      ]
+     },
+     " Tout ce qui doit être vrai (un piège, un numéro, une citation) est posé par le code et vérifié après coup, jamais confié au bon vouloir d'un modèle."
+    ],
+    [
+     {
+      "g": [
+       "Je n'ouvre pas, je mesure."
+      ]
+     },
+     " Vérifier un travail par des comptes, sans jamais regarder le contenu, est un réflexe qui s'acquiert sur des données fictives, avant d'en avoir besoin sur des vraies."
+    ],
+    [
+     {
+      "g": [
+       "Un canari affiché est un canari perdu."
+      ]
+     },
+     " Une preuve de fuite ne vaut que si personne ne l'a jamais vue."
+    ]
+   ]
+  }
+ ]
+}

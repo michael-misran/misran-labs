@@ -1,0 +1,2138 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "annexe-b-les-chiffres-cles",
+   "x": [
+    "Annexe B. Les chiffres clés"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Annexes · un tableau par étape, avec la source de chaque chiffre"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Cette annexe rassemble les chiffres du livre et dit d'où ils viennent. Deux précisions avant de les lire."
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Mesuré ou estimé."
+      ]
+     },
+     " Sauf mention « estimé », tout est mesuré : lu dans un journal ou un rapport, à l'unité près. La méthode et les hypothèses sont dans l'annexe C."
+    ],
+    [
+     {
+      "g": [
+       "Les sources."
+      ]
+     },
+     " « Chap. 3 » renvoie au chapitre du livre. Les chemins (",
+     {
+      "c": "docs/etapes/…"
+     },
+     ", ",
+     {
+      "c": "rapports/…"
+     },
+     ") sont ceux du dépôt du projet : ce sont les documents d'où le chapitre tire ses chiffres. Ce dépôt reste privé : ces références disent d'où vient un chiffre, sans qu'on puisse aller le relire en ligne."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un chiffre vaut à sa date. Le système a grandi d'étape en étape, et plusieurs compteurs ont changé en cours de route : la dernière section les explique."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-couts-etape-par-etape",
+   "x": [
+    "Les coûts, étape par étape"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Mesure finale du 30 octobre 2026. Source : chap. 13, ",
+    {
+     "c": "docs/couts.md"
+    },
+    " (section 11). L'« usage effectif » est défini dans l'annexe C."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|---|---|---|",
+   "entete": [
+    [
+     "Étape"
+    ],
+    [
+     "Claude : requêtes"
+    ],
+    [
+     "Claude : usage effectif"
+    ],
+    [
+     "Ollama : générations"
+    ],
+    [
+     "Ollama : vecteurs"
+    ],
+    [
+     "Ollama : calcul"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "1. Socle"
+     ],
+     [
+      "77"
+     ],
+     [
+      "1,6 M"
+     ],
+     [
+      "0"
+     ],
+     [
+      "0"
+     ],
+     [
+      "0 h"
+     ]
+    ],
+    [
+     [
+      "2. Corpus public"
+     ],
+     [
+      "74"
+     ],
+     [
+      "1,8 M"
+     ],
+     [
+      "65"
+     ],
+     [
+      "223"
+     ],
+     [
+      "0,15 h (minimum)"
+     ]
+    ],
+    [
+     [
+      "3. Évaluation"
+     ],
+     [
+      "154"
+     ],
+     [
+      "7,2 M"
+     ],
+     [
+      "6 392"
+     ],
+     [
+      "585"
+     ],
+     [
+      "4,58 h"
+     ]
+    ],
+    [
+     [
+      "4. Données fictives"
+     ],
+     [
+      "72"
+     ],
+     [
+      "3,6 M"
+     ],
+     [
+      "395"
+     ],
+     [
+      "0"
+     ],
+     [
+      "1,46 h"
+     ]
+    ],
+    [
+     [
+      "4 b. Corpus climat et coûts"
+     ],
+     [
+      "106"
+     ],
+     [
+      "4,3 M"
+     ],
+     [
+      "953"
+     ],
+     [
+      "481"
+     ],
+     [
+      "0,68 h"
+     ]
+    ],
+    [
+     [
+      "5. Corpus privé"
+     ],
+     [
+      "93"
+     ],
+     [
+      "4,0 M"
+     ],
+     [
+      "2 695"
+     ],
+     [
+      "3 734"
+     ],
+     [
+      "1,60 h"
+     ]
+    ],
+    [
+     [
+      "6. Passerelle"
+     ],
+     [
+      "96"
+     ],
+     [
+      "4,5 M"
+     ],
+     [
+      "0"
+     ],
+     [
+      "3 661"
+     ],
+     [
+      "0,05 h"
+     ]
+    ],
+    [
+     [
+      "7. Agents métier"
+     ],
+     [
+      "157"
+     ],
+     [
+      "7,7 M"
+     ],
+     [
+      "907"
+     ],
+     [
+      "1 197"
+     ],
+     [
+      "0,91 h"
+     ]
+    ],
+    [
+     [
+      "8. Portail interne"
+     ],
+     [
+      "170"
+     ],
+     [
+      "10,5 M"
+     ],
+     [
+      "1"
+     ],
+     [
+      "71"
+     ],
+     [
+      "0,01 h"
+     ]
+    ],
+    [
+     [
+      "9. Agent CNIL"
+     ],
+     [
+      "138"
+     ],
+     [
+      "5,9 M"
+     ],
+     [
+      "264"
+     ],
+     [
+      "264"
+     ],
+     [
+      "0,21 h"
+     ]
+    ],
+    [
+     [
+      "10. Red team"
+     ],
+     [
+      "217"
+     ],
+     [
+      "6,9 M"
+     ],
+     [
+      "0"
+     ],
+     [
+      "0"
+     ],
+     [
+      "0 h"
+     ]
+    ],
+    [
+     [
+      "11. Exercices"
+     ],
+     [
+      "142"
+     ],
+     [
+      "8,4 M"
+     ],
+     [
+      "3"
+     ],
+     [
+      "72"
+     ],
+     [
+      "0,01 h"
+     ]
+    ],
+    [
+     [
+      "Session de pilotage (hors étape 1)"
+     ],
+     [
+      "525"
+     ],
+     [
+      "30,3 M"
+     ],
+     [
+      "—"
+     ],
+     [
+      "—"
+     ],
+     [
+      "—"
+     ]
+    ],
+    [
+     [
+      "Finition du livre (au moment de la mesure)"
+     ],
+     [
+      "13"
+     ],
+     [
+      "0,4 M"
+     ],
+     [
+      "—"
+     ],
+     [
+      "—"
+     ],
+     [
+      "—"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Total au 30 octobre"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "2 034"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "97,0 M"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "11 675"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "10 288"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "9,65 h"
+       ]
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-totaux-du-projet",
+   "x": [
+    "Les totaux du projet"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|---|",
+   "entete": [
+    [
+     "Chiffre"
+    ],
+    [
+     "Valeur"
+    ],
+    [
+     "Nature"
+    ],
+    [
+     "Source"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Tokens relus en cache par Claude"
+     ],
+     [
+      "595 M"
+     ],
+     [
+      "mesuré"
+     ],
+     [
+      {
+       "c": "docs/couts.md"
+      },
+      ", section 11"
+     ]
+    ],
+    [
+     [
+      "Tokens écrits en cache"
+     ],
+     [
+      "13,2 M"
+     ],
+     [
+      "mesuré"
+     ],
+     [
+      {
+       "c": "docs/couts.md"
+      },
+      ", section 11"
+     ]
+    ],
+    [
+     [
+      "Tokens écrits par le modèle"
+     ],
+     [
+      "2,2 M"
+     ],
+     [
+      "mesuré"
+     ],
+     [
+      {
+       "c": "docs/couts.md"
+      },
+      ", section 11"
+     ]
+    ],
+    [
+     [
+      "Énergie du calcul local"
+     ],
+     [
+      "0,29 à 0,39 kWh"
+     ],
+     [
+      "estimé"
+     ],
+     [
+      "chap. 13, ",
+      {
+       "c": "docs/couts.md"
+      },
+      ", section 11"
+     ]
+    ],
+    [
+     [
+      "Part des instructions dans l'usage de Claude"
+     ],
+     [
+      "51 % au 23 octobre, 40 % au 30 octobre"
+     ],
+     [
+      "estimé"
+     ],
+     [
+      "chap. 13, ",
+      {
+       "c": "docs/couts.md"
+      },
+      ", sections 1 et 11"
+     ]
+    ],
+    [
+     [
+      "Tout le projet au tarif de l'API"
+     ],
+     [
+      "≈ 270 $"
+     ],
+     [
+      "estimé"
+     ],
+     [
+      "chap. 13, ",
+      {
+       "c": "docs/couts.md"
+      },
+      ", section 11"
+     ]
+    ],
+    [
+     [
+      "Les deux premiers jours au tarif de l'API"
+     ],
+     [
+      "≈ 70 $"
+     ],
+     [
+      "estimé"
+     ],
+     [
+      "chap. 13, ",
+      {
+       "c": "docs/couts.md"
+      },
+      ", section 4"
+     ]
+    ],
+    [
+     [
+      "Le travail local par l'API"
+     ],
+     [
+      "≈ 0,50 $, ≈ 10 $ ou ≈ 20 $ selon le modèle"
+     ],
+     [
+      "estimé"
+     ],
+     [
+      "chap. 13, ",
+      {
+       "c": "docs/couts.md"
+      },
+      ", section 4"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "etape-1-le-socle-chapitre-1",
+   "x": [
+    "Étape 1. Le socle (chapitre 1)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Source : chap. 1, ",
+    {
+     "c": "docs/etapes/01-socle.md"
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Chiffre"
+    ],
+    [
+     "Valeur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Barrières au premier jour"
+     ],
+     [
+      "3"
+     ]
+    ],
+    [
+     [
+      "Essais du test des règles ",
+      {
+       "c": "deny"
+      }
+     ],
+     [
+      "2 (le premier raté, le second réussi)"
+     ]
+    ],
+    [
+     [
+      "Tokens écrits par Claude pendant l'étape"
+     ],
+     [
+      "68 k"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "etape-2-le-corpus-public-chapitre-2",
+   "x": [
+    "Étape 2. Le corpus public (chapitre 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Source : chap. 2, ",
+    {
+     "c": "docs/etapes/02-corpus-public.md"
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Chiffre"
+    ],
+    [
+     "Valeur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Documents"
+     ],
+     [
+      "92 (66 OpenAlex, 24 HAL, 1 ADEME, 1 GIEC)"
+     ]
+    ],
+    [
+     [
+      "Passages"
+     ],
+     [
+      "2 191"
+     ]
+    ],
+    [
+     [
+      "Volume des sources"
+     ],
+     [
+      "68 Mo"
+     ]
+    ],
+    [
+     [
+      "Taille de la base"
+     ],
+     [
+      "18 Mo"
+     ]
+    ],
+    [
+     [
+      "Construction de la base"
+     ],
+     [
+      "environ 4 min 30"
+     ]
+    ],
+    [
+     [
+      "Temps de réponse"
+     ],
+     [
+      "50 à 90 s par question"
+     ]
+    ],
+    [
+     [
+      "Reranking avec Qwen"
+     ],
+     [
+      "environ 4 s par passage"
+     ]
+    ],
+    [
+     [
+      "Doublons retirés"
+     ],
+     [
+      "2"
+     ]
+    ],
+    [
+     [
+      "Niveaux de preuve"
+     ],
+     [
+      "77 études revues par les pairs, 10 rapports institutionnels, 5 méta-analyses"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "etape-3-l-evaluation-chapitre-3",
+   "x": [
+    "Étape 3. L'évaluation (chapitre 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Source : chap. 3, ",
+    {
+     "c": "docs/etapes/03-evaluation.md"
+    },
+    ", ",
+    {
+     "c": "evaluation/resultats/2026-10-22-1806.md"
+    },
+    " et ",
+    {
+     "c": "2026-10-22-1945.md"
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Chiffre"
+    ],
+    [
+     "Valeur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Jeu d'évaluation"
+     ],
+     [
+      "55 questions, dont 48 avec réponse et 7 sans réponse"
+     ]
+    ],
+    [
+     [
+      "Rappel@5, hybride et reranker"
+     ],
+     [
+      "96 % (86 % sans reranker, 59 % avec les mots seuls)"
+     ]
+    ],
+    [
+     [
+      "Taux de citation"
+     ],
+     [
+      "96 %"
+     ]
+    ],
+    [
+     [
+      "Fidélité (Gemma 4, juge Qwen)"
+     ],
+     [
+      "94 %"
+     ]
+    ],
+    [
+     [
+      "Bonnes abstentions"
+     ],
+     [
+      "100 % (7 sur 7)"
+     ]
+    ],
+    [
+     [
+      "Fidélité : Qwen 3.5 / Gemma 4 / Mistral 7B (juge Qwen)"
+     ],
+     [
+      "84 % / 94 % / 72 %"
+     ]
+    ],
+    [
+     [
+      "Bonnes abstentions : Qwen 3.5 / Gemma 4 / Mistral 7B"
+     ],
+     [
+      "71 % / 100 % / 57 %"
+     ]
+    ],
+    [
+     [
+      "Reranking : Qwen 3.5 / Gemma 4 / Mistral 7B"
+     ],
+     [
+      "2,6 / 1,2 / 2,2 s par passage"
+     ]
+    ],
+    [
+     [
+      "Fiabilité du juge Qwen, du juge Gemma"
+     ],
+     [
+      "environ 90 % et 88 % (estimé)"
+     ]
+    ],
+    [
+     [
+      "Campagne complète"
+     ],
+     [
+      "98 min"
+     ]
+    ],
+    [
+     [
+      "Qwen ",
+      {
+       "c": "nvfp4"
+      },
+      " en mémoire"
+     ],
+     [
+      "16 Go, sur un Mac de 16 Go"
+     ]
+    ],
+    [
+     [
+      "Swap au blocage"
+     ],
+     [
+      "17,2 Go sur 18,4"
+     ]
+    ],
+    [
+     [
+      "Qwen ",
+      {
+       "c": "q4_K_M"
+      },
+      " en mémoire"
+     ],
+     [
+      "4,8 Go selon Ollama (voir les écarts)"
+     ]
+    ],
+    [
+     [
+      "Moteur de Qwen sans recyclage"
+     ],
+     [
+      "10 Go après 60 requêtes, environ 150 Mo de plus par requête"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "etape-4-les-donnees-fictives-chapitre-4",
+   "x": [
+    "Étape 4. Les données fictives (chapitre 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Source : chap. 4, ",
+    {
+     "c": "docs/etapes/04-donnees-fictives.md"
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Chiffre"
+    ],
+    [
+     "Valeur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Fiches d'adhérents"
+     ],
+     [
+      "2 062 (2 000 personnes, 60 doublons, 2 « membres fantômes »)"
+     ]
+    ],
+    [
+     [
+      "Fédérations, sections"
+     ],
+     [
+      "30 et 150"
+     ]
+    ],
+    [
+     [
+      "Équipe nationale"
+     ],
+     [
+      "15 membres du bureau, 13 permanents"
+     ]
+    ],
+    [
+     [
+      "Comptes rendus, notes et études, mesures, e-mails"
+     ],
+     [
+      "60, 40, 25, 200"
+     ]
+    ],
+    [
+     [
+      "Canaris, documents piégés"
+     ],
+     [
+      "20 et 10"
+     ]
+    ],
+    [
+     [
+      "Adresses e-mail contrôlées"
+     ],
+     [
+      "3 172, 100 % conformes"
+     ]
+    ],
+    [
+     [
+      "Téléphones contrôlés"
+     ],
+     [
+      "2 457, 100 % conformes"
+     ]
+    ],
+    [
+     [
+      "Classes du fichier brut"
+     ],
+     [
+      "1 431, k minimal de 1"
+     ]
+    ],
+    [
+     [
+      "Personnes seules dans leur classe"
+     ],
+     [
+      "1 097"
+     ]
+    ],
+    [
+     [
+      "Personnes dans une classe de moins de 5"
+     ],
+     [
+      "90 %"
+     ]
+    ],
+    [
+     [
+      "Génération complète"
+     ],
+     [
+      "58 min"
+     ]
+    ],
+    [
+     [
+      "Reproductibilité de Gemma"
+     ],
+     [
+      "0 sur 40, puis 40 sur 40 une fois l'ordre respecté"
+     ]
+    ],
+    [
+     [
+      "Éléments obligatoires ajoutés par le code"
+     ],
+     [
+      "65 (46 + 19)"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "etape-4-b-faire-grandir-le-corpus-chapitre-5",
+   "x": [
+    "Étape 4 b. Faire grandir le corpus (chapitre 5)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Source : chap. 5, ",
+    {
+     "c": "docs/etapes/04b-corpus-climat.md"
+    },
+    ", ",
+    {
+     "c": "evaluation/resultats/2026-10-23-0627.md"
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Chiffre"
+    ],
+    [
+     "Valeur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Corpus après la mission"
+     ],
+     [
+      "110 documents, 4 300 passages, 1 version archivée"
+     ]
+    ],
+    [
+     [
+      "Premier lot"
+     ],
+     [
+      "18 documents, 2 166 passages, en 3 min 16 s"
+     ]
+    ],
+    [
+     [
+      "Nouvelle version"
+     ],
+     [
+      "12 s, 173 passages sortis de la recherche"
+     ]
+    ],
+    [
+     [
+      "Jeu d'évaluation"
+     ],
+     [
+      "65 questions"
+     ]
+    ],
+    [
+     [
+      "Rappel@5 sur les 55 anciennes questions"
+     ],
+     [
+      "de 96 % à 98 %"
+     ]
+    ],
+    [
+     [
+      "Rappel@5 de BM25 seul"
+     ],
+     [
+      "de 59 % à 53 %"
+     ]
+    ],
+    [
+     [
+      "Nouvelle référence (65 questions)"
+     ],
+     [
+      "rappel@5 de 98 %, 100 % de bonnes abstentions, citation 96 %, fidélité 92 %, exactitude 96 %"
+     ]
+    ],
+    [
+     [
+      "Énergie"
+     ],
+     [
+      "0,02 à 0,03 kWh (estimé)"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "etape-5-le-corpus-prive-chapitre-6",
+   "x": [
+    "Étape 5. Le corpus privé (chapitre 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Source : chap. 6, ",
+    {
+     "c": "docs/etapes/05-corpus-prive.md"
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Chiffre"
+    ],
+    [
+     "Valeur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Base privée"
+     ],
+     [
+      "2 595 documents, 2 848 passages, 16,6 Mo"
+     ]
+    ],
+    [
+     [
+      "Construction"
+     ],
+     [
+      "3 min 20 s"
+     ]
+    ],
+    [
+     [
+      "Clé"
+     ],
+     [
+      "256 bits"
+     ]
+    ],
+    [
+     [
+      "Rôles"
+     ],
+     [
+      "6"
+     ]
+    ],
+    [
+     [
+      "Passages interdits renvoyés"
+     ],
+     [
+      "0 sur 15 874, en 497 recherches"
+     ]
+    ],
+    [
+     [
+      "Questions posées par un rôle sans droit"
+     ],
+     [
+      "142 : 0 fait obtenu, 98,6 % d'abstentions"
+     ]
+    ],
+    [
+     [
+      "Qualité, rôle autorisé"
+     ],
+     [
+      "rappel@5 de 100 %, exactitude de 97 % (69 sur 71), citation 99 %"
+     ]
+    ],
+    [
+     [
+      "Évaluation privée"
+     ],
+     [
+      "91 min de bout en bout, 1,43 h de calcul"
+     ]
+    ],
+    [
+     [
+      "Énergie"
+     ],
+     [
+      "0,05 à 0,06 kWh (estimé)"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "etape-6-la-passerelle-chapitre-7",
+   "x": [
+    "Étape 6. La passerelle (chapitre 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Source : chap. 7, ",
+    {
+     "c": "docs/etapes/06-passerelle.md"
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Chiffre"
+    ],
+    [
+     "Valeur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Canaris dans une sortie pseudonymisée"
+     ],
+     [
+      "0 sur 20"
+     ]
+    ],
+    [
+     [
+      "Rappel"
+     ],
+     [
+      "99,98 % (20 138 données annotées, objectif 98 %)"
+     ]
+    ],
+    [
+     [
+      "Précision"
+     ],
+     [
+      "99,47 % (objectif 90 %)"
+     ]
+    ],
+    [
+     [
+      "Personnes retrouvées par les 3 couches"
+     ],
+     [
+      "99,96 % (expressions régulières 0 %, spaCy 87 %, dictionnaire 99,9 %)"
+     ]
+    ],
+    [
+     [
+      "Personnes uniques"
+     ],
+     [
+      "fichier brut 54,8 %, fiches pseudonymisées 18,6 %, extraction k-anonyme 0 % (k minimal de 6)"
+     ]
+    ],
+    [
+     [
+      "Cohérence des codes"
+     ],
+     [
+      "61 sorties sur 61"
+     ]
+    ],
+    [
+     [
+      "Temps"
+     ],
+     [
+      "moins de 40 ms par document"
+     ]
+    ],
+    [
+     [
+      "spaCy en mémoire, modèle moyen / grand"
+     ],
+     [
+      "0,6 Go / 1,2 Go"
+     ]
+    ],
+    [
+     [
+      "Confidentialité différentielle"
+     ],
+     [
+      "ε = 1, soit environ ± 3 par case"
+     ]
+    ],
+    [
+     [
+      "Faux noms d'auteurs au premier essai"
+     ],
+     [
+      "379"
+     ]
+    ],
+    [
+     [
+      "Personnes absentes de la vérité de terrain"
+     ],
+     [
+      "97 signalées, dont 26 aux noms de la liste de Faker"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "etape-7-les-agents-metier-chapitre-8",
+   "x": [
+    "Étape 7. Les agents métier (chapitre 8)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Source : chap. 8, ",
+    {
+     "c": "docs/etapes/07-agents.md"
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Chiffre"
+    ],
+    [
+     "Valeur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Gardien : pièges bloqués"
+     ],
+     [
+      "170 sur 170"
+     ]
+    ],
+    [
+     [
+      "Gardien : blocages abusifs"
+     ],
+     [
+      "0 sur 178"
+     ]
+    ],
+    [
+     [
+      "Gardien : vitesse"
+     ],
+     [
+      "348 sorties contrôlées en 6 s"
+     ]
+    ],
+    [
+     [
+      "Veilleur : essai sans réseau"
+     ],
+     [
+      "30 contrôles sur 30"
+     ]
+    ],
+    [
+     [
+      "Vérificateur : phrases fautives détectées"
+     ],
+     [
+      "98,6 % (136 sur 138)"
+     ]
+    ],
+    [
+     [
+      "Vérificateur : fausses alertes"
+     ],
+     [
+      "13 % (6 sur 46)"
+     ]
+    ],
+    [
+     [
+      "Analyste : niveau de preuve"
+     ],
+     [
+      "93,5 % (règle seule : 87,1 %)"
+     ]
+    ],
+    [
+     [
+      "Rédacteur public"
+     ],
+     [
+      "citation 100 %, fidélité 97,8 % (90 sur 92)"
+     ]
+    ],
+    [
+     [
+      "Rédacteur privé"
+     ],
+     [
+      "citation 100 %, fidélité 100 % (48 sur 48)"
+     ]
+    ],
+    [
+     [
+      "Énergie"
+     ],
+     [
+      "0,03 à 0,04 kWh (estimé)"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "etape-8-le-portail-chapitre-9",
+   "x": [
+    "Étape 8. Le portail (chapitre 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Source : chap. 9, ",
+    {
+     "c": "docs/etapes/08-portail.md"
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Chiffre"
+    ],
+    [
+     "Valeur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Accès interdits"
+     ],
+     [
+      "0, sur 256 requêtes (32 routes × 8 profils) et 112 ouvertures de documents"
+     ]
+    ],
+    [
+     [
+      "Formulaires forgés refusés"
+     ],
+     [
+      "48 sur 48"
+     ]
+    ],
+    [
+     [
+      "Formulaires de navigateur acceptés"
+     ],
+     [
+      "36 sur 36"
+     ]
+    ],
+    [
+     [
+      "Sessions"
+     ],
+     [
+      "8 sur 8"
+     ]
+    ],
+    [
+     [
+      "Scénarios métier"
+     ],
+     [
+      "44 sur 44"
+     ]
+    ],
+    [
+     [
+      "Pages sans Markdown brut ni HTML piégé interprété"
+     ],
+     [
+      "116 sur 116"
+     ]
+    ],
+    [
+     [
+      "Contrastes conformes"
+     ],
+     [
+      "12 paires sur 12"
+     ]
+    ],
+    [
+     [
+      "Écart sur la base complète"
+     ],
+     [
+      "0, pour 7 comptes et 2 595 documents"
+     ]
+    ],
+    [
+     [
+      "Failles injectées pour tester les mesures"
+     ],
+     [
+      "3 (2, 43 et 32 anomalies détectées)"
+     ]
+    ],
+    [
+     [
+      "Connexion"
+     ],
+     [
+      "un dixième de seconde, 32 Mo par essai"
+     ]
+    ],
+    [
+     [
+      "Fiches touchées par le défaut « Adhé »"
+     ],
+     [
+      "2 062 sur 2 062"
+     ]
+    ],
+    [
+     [
+      "Défauts trouvés par le parcours humain"
+     ],
+     [
+      "8"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "etape-9-l-agent-cnil-chapitre-10",
+   "x": [
+    "Étape 9. L'agent CNIL (chapitre 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Source : chap. 10, ",
+    {
+     "c": "docs/etapes/09-cnil.md"
+    },
+    ", ",
+    {
+     "c": "rapports/audits-cnil/2026-10-27-0836.md"
+    },
+    ", ",
+    {
+     "c": "evaluation/resultats/2026-10-27-0815.md"
+    },
+    ", ",
+    {
+     "c": "docs/rgpd/"
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Chiffre"
+    ],
+    [
+     "Valeur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Registre, AIPD"
+     ],
+     [
+      "12 traitements ; 3 risques dont 2 élevés ; 11 mesures"
+     ]
+    ],
+    [
+     [
+      "Premier audit"
+     ],
+     [
+      "18 points : 1 grave, 6 élevés, 5 moyens, 2 faibles, 4 conformes"
+     ]
+    ],
+    [
+     [
+      "Journal d'Ollama"
+     ],
+     [
+      "1,59 million de lignes, 140 Mo, 0 prompt"
+     ]
+    ],
+    [
+     [
+      "Corpus public"
+     ],
+     [
+      "119 documents, 972 passages ajoutés, 5 272 au total"
+     ]
+    ],
+    [
+     [
+      "Jeu d'évaluation"
+     ],
+     [
+      "73 questions"
+     ]
+    ],
+    [
+     [
+      "Questions RGPD"
+     ],
+     [
+      "7 réponses exactes sur 7, et l'abstention réussie sur la huitième"
+     ]
+    ],
+    [
+     [
+      "Rappel sur le RGPD"
+     ],
+     [
+      "vecteurs 43 %, BM25 71 %, hybride et reranker 86 %"
+     ]
+    ],
+    [
+     [
+      "Évaluation complète au 27 octobre"
+     ],
+     [
+      "rappel@5 de 96 %, citation 97 %, fidélité 93 %, exactitude 97 %"
+     ]
+    ],
+    [
+     [
+      "Rejeu retrouvé par l'audit"
+     ],
+     [
+      "3 levées en 64 secondes, sur 145 lignes de journal"
+     ]
+    ],
+    [
+     [
+      "Portail"
+     ],
+     [
+      "56 scénarios sur 56, 0 accès interdit sur 280 requêtes"
+     ]
+    ],
+    [
+     [
+      "Durée de l'audit"
+     ],
+     [
+      "environ 2 min 20"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "etape-10-la-red-team-chapitre-11",
+   "x": [
+    "Étape 10. La red team (chapitre 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Source : chap. 11, ",
+    {
+     "c": "docs/etapes/10-red-team.md"
+    },
+    ", ",
+    {
+     "c": "rapports/audits-cnil/2026-10-28-2225.md"
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Chiffre"
+    ],
+    [
+     "Valeur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Attaque MCP"
+     ],
+     [
+      "de 2 595 métadonnées et 2 015 noms à 0"
+     ]
+    ],
+    [
+     [
+      "Attaque terminal"
+     ],
+     [
+      "de 0 à 7 commandes privées bloquées sur 7"
+     ]
+    ],
+    [
+     [
+      "Attaque par injection"
+     ],
+     [
+      "10 sorties piégées bloquées sur 10, sans modèle"
+     ]
+    ],
+    [
+     [
+      "Attaque du portail"
+     ],
+     [
+      "56 formulaires forgés refusés sur 56"
+     ]
+    ],
+    [
+     [
+      "Ré-identification du fichier brut"
+     ],
+     [
+      "54,8 % d'isolés (voir les écarts)"
+     ]
+    ],
+    [
+     [
+      "Purple team"
+     ],
+     [
+      "6 tests sur 6"
+     ]
+    ],
+    [
+     [
+      "Campagne complète"
+     ],
+     [
+      "14 à 20 s, aucun modèle par défaut"
+     ]
+    ],
+    [
+     [
+      "Levées rapprochées"
+     ],
+     [
+      "3 dans le portail, 3 dans la passerelle, 0 manquante"
+     ]
+    ],
+    [
+     [
+      "Deuxième audit"
+     ],
+     [
+      "18 points : 1 grave, 6 élevés, 3 moyens, 3 faibles, 5 conformes"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "etape-11-les-exercices-chapitre-12",
+   "x": [
+    "Étape 11. Les exercices (chapitre 12)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Source : chap. 12, ",
+    {
+     "c": "docs/etapes/11-exercices.md"
+    },
+    ", ",
+    {
+     "c": "rapports/droits/"
+    },
+    ", ",
+    {
+     "c": "rapports/audits-cnil/2026-10-29-2335.md"
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Chiffre"
+    ],
+    [
+     "Valeur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Droit d'accès"
+     ],
+     [
+      "9 lieux, 8 codes levés, 29 laissés"
+     ]
+    ],
+    [
+     [
+      "Droit à l'effacement, sur une copie"
+     ],
+     [
+      "22 lieux, 23 s, 0 élément restant"
+     ]
+    ],
+    [
+     [
+      "Fact-checking"
+     ],
+     [
+      "20 phrases dont 12 à sourcer ; 10 sans source, 1 soutenue, 1 non soutenue ; 19 s"
+     ]
+    ],
+    [
+     [
+      "Purple team"
+     ],
+     [
+      "10 tests sur 10, 19 s, aucun modèle"
+     ]
+    ],
+    [
+     [
+      "Séparation des tâches"
+     ],
+     [
+      "5 tentatives, 5 refusées"
+     ]
+    ],
+    [
+     [
+      "Fiches pseudonymisées"
+     ],
+     [
+      "de 18,6 % à 0 % d'isolés"
+     ]
+    ],
+    [
+     [
+      "Purge"
+     ],
+     [
+      "20 règles ; 3 anciens exports au-delà de leur durée (simulation)"
+     ]
+    ],
+    [
+     [
+      "Cache oublié"
+     ],
+     [
+      "172 entrées en clair, depuis chiffrées"
+     ]
+    ],
+    [
+     [
+      "Dernier audit"
+     ],
+     [
+      "20 points : 1 grave, 3 élevés, 5 moyens, 6 faibles, 5 conformes, en 207 s"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-ecarts-entre-sources",
+   "x": [
+    "Les écarts entre sources"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Quand deux chiffres ne coïncident pas, le livre le dit au lieu de choisir en silence."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Sujet"
+    ],
+    [
+     "Les chiffres"
+    ],
+    [
+     "L'explication"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Personnes isolées dans le fichier brut"
+     ],
+     [
+      "54,8 % (chap. 7 et 11), 54,9 % (",
+      {
+       "c": "docs/etapes/06-passerelle.md"
+      },
+      ", audit du 29 octobre), 1 097 personnes (chap. 4)"
+     ],
+     [
+      "Le rapport de la passerelle compte 1 098 personnes seules sur 2 002, soit 54,845 %, donc 54,8 %. Il l'écrit 0,5485, et cet arrondi, arrondi une seconde fois, donnait 54,9 % dans les documents datés, qui n'ont pas été réécrits. Le contrôle du chapitre 4 compte 1 097 personnes sur 2 000 : ce n'est pas tout à fait le même décompte"
+     ]
+    ],
+    [
+     [
+      "Textes de Gemma"
+     ],
+     [
+      "325 (chap. 4), 326 une seule fois (",
+      {
+       "c": "docs/etapes/04-donnees-fictives.md"
+      },
+      ")"
+     ],
+     [
+      "Les jeux de données donnent 325 (60 + 40 + 25 + 200), et le contrôle en compte autant. Rien ne justifie 326 dans le dépôt : le livre retient 325"
+     ]
+    ],
+    [
+     [
+      "Droits du portail"
+     ],
+     [
+      "34 routes, 8 profils, 256 requêtes (chap. 9)"
+     ],
+     [
+      "Les 2 routes de la page de connexion sont publiques, et la mesure ne les joue pas : 32 routes × 8 profils font 256 requêtes"
+     ]
+    ],
+    [
+     [
+      "Sessions de Claude"
+     ],
+     [
+      "Étape 4 b : 3,1 M puis 4,3 M. Étape 5 : 2,7 M puis 4,0 M. Étape 6 : 3,3 M puis 4,5 M. Étape 7 : 5,9 M puis 7,7 M. Étape 8 : 2,8 M puis 10,5 M. Étape 9 : 4,6 M puis 5,9 M. Étape 11 : 6,1 M puis 8,4 M"
+     ],
+     [
+      "La première valeur est prise pendant l'étape, avant la documentation, le contrôle ou la pull request. La seconde couvre la session entière"
+     ]
+    ],
+    [
+     [
+      "Total de Claude"
+     ],
+     [
+      "25,6 M (23 octobre), 76,5 M (27 octobre), 97,0 M (30 octobre)"
+     ],
+     [
+      "Trois mesures, à trois dates du projet"
+     ]
+    ],
+    [
+     [
+      "Part des instructions"
+     ],
+     [
+      "51 % au 23 octobre, 40 % au 30 octobre (chap. 13)"
+     ],
+     [
+      "Une estimation qui baisse sur la fin du projet, quand les étapes lisent, testent et délèguent davantage"
+     ]
+    ],
+    [
+     [
+      "Total du calcul local"
+     ],
+     [
+      "9,65 h, alors que les lignes arrondies du tableau font 9,66 h"
+     ],
+     [
+      "Un effet d'arrondi"
+     ]
+    ],
+    [
+     [
+      "Rappel de la passerelle"
+     ],
+     [
+      "99,98 % (toutes les données) et 99,96 % (mentions de personnes)"
+     ],
+     [
+      "Deux périmètres différents"
+     ]
+    ],
+    [
+     [
+      "Rédacteur public"
+     ],
+     [
+      "Fidélité de 97,8 % à la fin, moyenne de 83,4 % puis 91,7 % avant et après révision"
+     ],
+     [
+      "Le premier chiffre compte les phrases du résultat final, les deux autres sont des moyennes sur la révision"
+     ]
+    ],
+    [
+     [
+      "Mémoire de Qwen ",
+      {
+       "c": "q4_K_M"
+      }
+     ],
+     [
+      "4,8 Go (chap. 3, selon Ollama), 5,6 Go (mémoire annoncée dans le tableau du chap. 3), 4,8 à 5,6 Go (chap. 13)"
+     ],
+     [
+      "Des relevés différents du même modèle ; ",
+      {
+       "c": "top"
+      },
+      " voyait même 10 Go tant que le moteur n'était pas rechargé"
+     ]
+    ],
+    [
+     [
+      "Portail"
+     ],
+     [
+      "Formulaires forgés : 48, puis 56. Scénarios : 44, 56, puis 75. Requêtes : 256, 280, puis 328"
+     ],
+     [
+      "Le portail a grandi aux étapes 9 et 11 : plus de routes, plus de scénarios à mesurer"
+     ]
+    ],
+    [
+     [
+      "Vraisemblance de l'accès illégitime"
+     ],
+     [
+      "3 dans l'AIPD (chap. 10), 2 dans l'analyse de la violation (chap. 12)"
+     ],
+     [
+      "Deux estimations, à deux moments et pour deux objets : le risque du traitement, puis celui de la copie, dont le tiers est identifié. Le niveau reste élevé dans les deux cas"
+     ]
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,479 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "conclusion-ce-que-l-ia-voit-ce-qu-elle-ne-voit-pas",
+   "x": [
+    "Conclusion. Ce que l'IA voit, ce qu'elle ne voit pas"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "29 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "huit-jours-onze-etapes",
+   "x": [
+    "Huit jours, onze étapes"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le projet a commencé le 22 octobre 2026 par un dépôt vide et trois barrières. Il s'achève le 29 octobre avec un système complet : un corpus public de 119 documents réels, un corpus privé chiffré de 2 595 documents inventés, une passerelle d'anonymisation, cinq agents, un portail interne, un auditeur, un attaquant, et six exercices joués de bout en bout."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Tout a été construit avec une IA du cloud qui n'a jamais lu une seule donnée privée. Et tout a tourné, pour le privé, sur un Mac de 16 Go."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce que le projet voulait comprendre tenait en six points. Voici, pour chacun, ce que j'en retiens."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Frise des onze étapes, du 22 au 29 octobre 2026",
+   "src": "frise.svg"
+  },
+  {
+   "t": "h2",
+   "id": "ce-que-le-projet-a-appris",
+   "x": [
+    "Ce que le projet a appris"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La recherche avec citations."
+     ]
+    },
+    " Un modèle de langage invente quand il ne sait pas. La parade n'est pas un meilleur modèle, c'est un meilleur corpus, une recherche en plusieurs étages, des citations obligatoires, et surtout ",
+    {
+     "g": [
+      "une mesure"
+     ]
+    },
+    " : 55 puis 73 questions vérifiées, relancées à chaque changement. Sans jeu d'évaluation, on ne sait pas, on croit savoir. Et le meilleur modèle n'est pas le plus gros : c'est le plus discipliné."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La séparation du public et du privé."
+     ]
+    },
+    " Elle ne tient pas dans une règle, elle tient dans l'",
+    {
+     "g": [
+      "architecture"
+     ]
+    },
+    " : deux bases, deux modules, des contraintes qui rendent le mélange impossible et pas seulement interdit, des rôles appliqués dans la requête avant la recherche, et des clés distinctes pour chaque usage."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Le routage entre local et cloud."
+     ]
+    },
+    " Ce qui décide où tourne un traitement, ce n'est pas sa difficulté, c'est la zone des données qu'il touche. Le cloud construit et travaille sur le public ou le pseudonymisé ; le local fait tourner tout ce qui touche au privé. Entre les deux, un passage unique, gardé par une ",
+    {
+     "g": [
+      "règle codée"
+     ]
+    },
+    " et non par un modèle qu'on pourrait convaincre. Quand les dix documents piégés ont été lâchés contre le système, ils n'ont même pas atteint un modèle."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "L'anonymisation."
+     ]
+    },
+    " Elle n'existe presque jamais. Ce qu'on fait, c'est de la ",
+    {
+     "g": [
+      "pseudonymisation"
+     ]
+    },
+    " : elle réduit le risque sans le supprimer. Trois informations banales, une tranche d'âge, un lieu, un métier, isolaient plus d'une personne sur deux dans le fichier brut. Il a fallu généraliser, retirer, bruiter, jusqu'à zéro dans ce qui sort, et accepter que la protection se paie en information."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La conformité."
+     ]
+    },
+    " Elle se ",
+    {
+     "g": [
+      "démontre"
+     ]
+    },
+    ". Un registre, une analyse d'impact, un audit reproductible, un journal exhaustif, minimisé et chaîné. L'auditeur n'a jamais rien vu en clair, et il a pourtant retrouvé, dans les seules empreintes, un incident que j'avais trouvé à la main. Ce qu'on ne peut pas prouver sans regarder est un écart, pas une raison de regarder."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La sécurité face à une attaque."
+     ]
+    },
+    " Une attaque réussie devient un test. Une porte dérobée ne se corrige pas, on retire le secret du composant exposé. Une barrière seule ne suffit jamais, et la seconde doit être d'une autre nature que la première."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-fil-rouge-on-ne-voit-pas-tout-ce-qu-on-mesure",
+   "x": [
+    "Le fil rouge : on ne voit pas tout ce qu'on mesure"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Si je devais garder une seule leçon, ce serait celle-ci, parce qu'elle revient dans presque chaque chapitre : ",
+    {
+     "g": [
+      "les mesures ne voient que ce qu'on a pensé à mesurer."
+     ]
+    }
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     "La passerelle avait 99,98 % de rappel sur plus de vingt mille données annotées. La lecture d'",
+     {
+      "g": [
+       "un seul"
+      ]
+     },
+     " document a trouvé un nom de commune en minuscules, resté en clair."
+    ],
+    [
+     "Le portail passait des centaines de tests automatiques. Le ",
+     {
+      "g": [
+       "premier clic"
+      ]
+     },
+     " humain, dans un vrai navigateur, a trouvé que tous les formulaires étaient refusés."
+    ],
+    [
+     "La passerelle tronquait une date dans ",
+     {
+      "g": [
+       "toutes"
+      ]
+     },
+     " les fiches d'adhérent depuis deux étapes. Ses scores n'avaient pas bougé, parce qu'ils comptaient des détections, pas des mots."
+    ],
+    [
+     "Toutes les barrières surveillaient le code et les outils. Aucune ne regardait la machine, qui envoyait très probablement tout vers iCloud."
+    ],
+    [
+     "Un cache, ajouté en passant, gardait des passages privés en clair. Il a fallu cartographier tous les lieux où vit une personne pour le trouver."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'inverse est vrai aussi. Les lectures humaines n'ont jamais remplacé les mesures : elles ont trouvé des défauts, et chaque défaut est devenu une mesure de plus. ",
+    {
+     "g": [
+      "Une recette humaine ne remplace pas les mesures, et les mesures ne remplacent pas la recette."
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-n-a-pas-pu-etre-verifie",
+   "x": [
+    "Ce qui n'a pas pu être vérifié"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le livre l'a dit chapitre par chapitre ; le voici rassemblé."
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "La qualité de la prose fictive."
+      ]
+     },
+     " Personne n'a lu les comptes rendus, les notes et les e-mails de Mycélium, à part moi, avec mes rôles. Ni leur crédibilité, ni ce que Gemma y a ajouté de son cru."
+    ],
+    [
+     {
+      "g": [
+       "Les personnes inventées par Gemma."
+      ]
+     },
+     " 26 noms repérés par la passerelle, absents de la vérité de terrain, viennent sans doute de lui, malgré la consigne. Ils sont masqués, mais on ne peut pas les confirmer sans lire."
+    ],
+    [
+     {
+      "g": [
+       "Les tournures imprévues."
+      ]
+     },
+     " La passerelle reconnaît trois formes de quasi-identifiants. Une quatrième, que personne n'a imaginée, passerait."
+    ],
+    [
+     {
+      "g": [
+       "La difficulté des évaluations."
+      ]
+     },
+     " Un rappel de 100 % sur le privé dit surtout que les questions étaient faciles pour la recherche."
+    ],
+    [
+     {
+      "g": [
+       "Le juge du juge."
+      ]
+     },
+     " La relecture « humaine » du juge automatique, au chapitre 3, a été faite par Claude Code, qui est lui aussi un modèle."
+    ],
+    [
+     {
+      "g": [
+       "Ce que fait iCloud des fichiers"
+      ]
+     },
+     " : où ils sont stockés, et s'il en reste des copies supprimées."
+    ],
+    [
+     {
+      "g": [
+       "Les réglages du compte Claude"
+      ]
+     },
+     " (conservation des conversations, entraînement) et l'accord de traitement applicable : hors du dépôt."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-reste-ouvert",
+   "x": [
+    "Ce qui reste ouvert"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le projet s'est arrêté avec des décisions en attente, et c'était voulu : elles appartiennent à un humain. Je les ai prises en finissant ce livre, sauf deux."
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "La violation iCloud"
+      ]
+     },
+     " : ",
+     {
+      "g": [
+       "notifier"
+      ]
+     },
+     ", avec les motifs du retard, comme le recommandait l'auditeur. Mycélium est fictif : la notification reste un exercice, et la copie iCloud reste documentée, pas corrigée."
+    ],
+    [
+     {
+      "g": [
+       "La purge réelle"
+      ]
+     },
+     " : décidée. ",
+     {
+      "g": [
+       "La sauvegarde chiffrée"
+      ]
+     },
+     " : sur un disque externe chiffré. Les deux restent à lancer."
+    ],
+    [
+     {
+      "g": [
+       "La rotation"
+      ]
+     },
+     " du journal d'Ollama et l'",
+     {
+      "g": [
+       "ancrage hebdomadaire"
+      ]
+     },
+     " du journal : préparés, toujours en attente de mon accord."
+    ],
+    [
+     {
+      "g": [
+       "Les fichiers sources en clair"
+      ]
+     },
+     " de la zone privée : c'est eux qui font la gravité de la violation. Les chiffrer serait la mesure suivante."
+    ],
+    [
+     {
+      "g": [
+       "Le cumul des rôles"
+      ]
+     },
+     " : je suis DPO, directeur du programme et RSSI. La séparation des tâches tient entre comptes, pas entre personnes. C'est la limite assumée d'un bac à sable tenu par une seule personne."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-se-transpose-dans-une-vraie-organisation",
+   "x": [
+    "Ce qui se transpose dans une vraie organisation"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Canopée tient sur un Mac. Une vraie organisation a des serveurs, des équipes, des contrats. Mais les principes se transposent presque mot pour mot."
+   ]
+  },
+  {
+   "t": "ol",
+   "debut": 1,
+   "items": [
+    [
+     {
+      "g": [
+       "L'outil de développement est un cloud."
+      ]
+     },
+     " L'assistant de programmation lit ce qu'on lui montre. Il se traite comme n'importe quel service externe : il voit le code et le public, jamais la production."
+    ],
+    [
+     {
+      "g": [
+       "Le développeur travaille sur un jeu de test"
+      ]
+     },
+     ", avec le même code que la production, et vérifie la production par des comptes."
+    ],
+    [
+     {
+      "g": [
+       "Le privé tourne en local, ou dans son propre centre de données."
+      ]
+     },
+     " Le cloud reçoit du public ou du pseudonymisé, par un passage unique, gardé par une règle."
+    ],
+    [
+     {
+      "g": [
+       "Une règle garde la porte, un modèle juge la qualité."
+      ]
+     },
+     " Pour ce qui ne doit jamais arriver, on code ; pour ce qui doit arriver le moins possible, on mesure."
+    ],
+    [
+     {
+      "g": [
+       "On mesure avant de croire."
+      ]
+     },
+     " Un jeu d'évaluation, des rapports datés, une non-régression à chaque changement, et la séparation stricte du mesuré et de l'estimé."
+    ],
+    [
+     {
+      "g": [
+       "On conçoit pour être audité."
+      ]
+     },
+     " Des journaux sans texte libre, des empreintes, des contrôles qui rendent des coches : un auditeur peut alors conclure sans rien voir."
+    ],
+    [
+     {
+      "g": [
+       "On joue la crise avant qu'elle arrive."
+      ]
+     },
+     " Droit d'accès, effacement, violation : la procédure existe, les rôles sont séparés, la case de la décision humaine est prête."
+    ],
+    [
+     {
+      "g": [
+       "On regarde à côté."
+      ]
+     },
+     " La synchronisation du poste, les caches, les exports de travail, les fichiers temporaires : c'est là que les fuites arrivent, parce que c'est là que les protections arrivent en dernier."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-dernier-mot-sur-les-couts",
+   "x": [
+    "Le dernier mot sur les coûts"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le cloud a coûté surtout de la longueur de session ; le local, surtout du temps et de la mémoire. Par l'API, le travail local du projet aurait coûté entre quelques dizaines de centimes et une vingtaine de dollars. Le prix n'a jamais été la raison de garder le privé sur le Mac. La raison, c'est la confidentialité."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Et l'essentiel de l'effort n'est jamais allé à l'IA qui répond. Il est allé à tout ce qui permet de dire, chiffres à l'appui, que le système fait ce qu'on croit : la mesure, le contrôle, la preuve. C'est peut-être la conclusion la moins spectaculaire de ce livre, et la plus utile. ",
+    {
+     "g": [
+      "Faire travailler l'IA sur des données privées, ce n'est pas surtout de l'IA. C'est surtout de la discipline."
+     ]
+    }
+   ]
+  }
+ ]
+}

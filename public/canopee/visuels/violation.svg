@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 502" width="720" height="502" role="img" aria-labelledby="titre desc">
+<title id="titre">Le déroulé d&#x27;une violation de données</title>
+<desc id="desc">Frise du 22 au 30 octobre 2026 : le responsable sait le 23, les 72 heures de l&#x27;article 33 sont échues le 26, l&#x27;exercice analyse la violation le 29, Michael décide de notifier le 30, avec les motifs du retard. Puis le circuit : constat sans donnée personnelle, qualification par le RSSI, analyse par canopee-cnil, décision du DPO (un autre compte), projet de notification. Rien n&#x27;est envoyé.</desc>
+<style>
+text{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;font-size:12.5px}
+.titre{font-size:17px;font-weight:650}.gras{font-weight:600}.petit{font-size:11.5px}.moyen{font-size:13.5px}.chiffre{font-variant-numeric:tabular-nums}
+.fond{fill:#fcfcfb}.texte{fill:#0b0b0b}.secondaire{fill:#52514e}.discret{fill:#7d7c77}.trait{stroke:#d9d8d3}.f-trait{fill:#d9d8d3}.carte{fill:#f3f2ef}.s-texte{stroke:#52514e}.f-fond{fill:#fcfcfb}.s-fond{stroke:#fcfcfb}.f-cloud{fill:#2a78d6}.s-cloud{stroke:#2a78d6}.t-cloud{fill:#e7eff7}.f-local{fill:#eb6834}.s-local{stroke:#eb6834}.t-local{fill:#faede7}.f-public{fill:#1baf7a}.s-public{stroke:#1baf7a}.t-public{fill:#e6f4ee}.f-controle{fill:#6250d6}.s-controle{stroke:#6250d6}.t-controle{fill:#edebf7}.f-neutre{fill:#7d7c77}.s-neutre{stroke:#7d7c77}.t-neutre{fill:#efefee}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#e4f3e3}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#fcf5e4}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#faf0eb}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#f8e9e8}.f-grave{fill:#8e1f2c}.s-grave{stroke:#8e1f2c}.t-grave{fill:#f1e6e6}.f-r0{fill:#86b6ef}.s-r0{stroke:#86b6ef}.f-r1{fill:#2a78d6}.s-r1{stroke:#2a78d6}.f-r2{fill:#104281}.s-r2{stroke:#104281}.e-conforme{fill:#ffffff}.e-faible{fill:#0b0b0b}.e-moyen{fill:#0b0b0b}.e-eleve{fill:#ffffff}.e-grave{fill:#ffffff}
+@media (prefers-color-scheme:dark){.fond{fill:#1a1a19}.texte{fill:#f0efec}.secondaire{fill:#c3c2b7}.discret{fill:#94938b}.trait{stroke:#3a3a37}.f-trait{fill:#3a3a37}.carte{fill:#242423}.s-texte{stroke:#c3c2b7}.f-fond{fill:#1a1a19}.s-fond{stroke:#1a1a19}.f-cloud{fill:#3987e5}.s-cloud{stroke:#3987e5}.t-cloud{fill:#203042}.f-local{fill:#d95926}.s-local{stroke:#d95926}.t-local{fill:#40271c}.f-public{fill:#199e70}.s-public{stroke:#199e70}.t-public{fill:#1a342a}.f-controle{fill:#9085e9}.s-controle{stroke:#9085e9}.t-controle{fill:#322f43}.f-neutre{fill:#94938b}.s-neutre{stroke:#94938b}.t-neutre{fill:#323230}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#173516}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#473819}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#442f26}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#3e2120}.f-grave{fill:#b8323f}.s-grave{stroke:#b8323f}.t-grave{fill:#3a1f21}.f-r0{fill:#184f95}.s-r0{stroke:#184f95}.f-r1{fill:#3987e5}.s-r1{stroke:#3987e5}.f-r2{fill:#9ec5f4}.s-r2{stroke:#9ec5f4}}
+</style>
+<defs><marker id="m-neutre" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="f-neutre" d="M0,1 L9,5 L0,9 z"/></marker></defs>
+<rect class="fond" width="720" height="502" rx="10"/>
+<text class="texte titre" x="24" y="34">Le déroulé d&#x27;une violation de données</text>
+<text class="secondaire" x="24" y="55">L&#x27;exercice de l&#x27;étape 11, sur la copie iCloud : 72 heures pour notifier, à compter du jour où l&#x27;on sait</text>
+<rect class="t-eleve s-eleve" x="135.0" y="118.0" width="225.0" height="28.0" rx="4" stroke-width="1"/>
+<text class="texte gras" x="247.5" y="136.0" text-anchor="middle">72 heures</text>
+<rect class="carte" x="360.0" y="118.0" width="300.0" height="28.0" rx="4"/>
+<text class="secondaire" x="510.0" y="136.0" text-anchor="middle">toute notification est tardive</text>
+<line class="trait" x1="60.0" y1="154.0" x2="660.0" y2="154.0" stroke-width="1.5"/>
+<line class="trait" x1="60.0" y1="150.0" x2="60.0" y2="158.0" stroke-width="1.5"/>
+<text class="discret petit" x="60.0" y="174.0" text-anchor="middle">22/10</text>
+<line class="trait" x1="135.0" y1="150.0" x2="135.0" y2="158.0" stroke-width="1.5"/>
+<text class="discret petit" x="135.0" y="174.0" text-anchor="middle">23/10</text>
+<line class="trait" x1="210.0" y1="150.0" x2="210.0" y2="158.0" stroke-width="1.5"/>
+<text class="discret petit" x="210.0" y="174.0" text-anchor="middle">24/10</text>
+<line class="trait" x1="285.0" y1="150.0" x2="285.0" y2="158.0" stroke-width="1.5"/>
+<text class="discret petit" x="285.0" y="174.0" text-anchor="middle">25/10</text>
+<line class="trait" x1="360.0" y1="150.0" x2="360.0" y2="158.0" stroke-width="1.5"/>
+<text class="discret petit" x="360.0" y="174.0" text-anchor="middle">26/10</text>
+<line class="trait" x1="435.0" y1="150.0" x2="435.0" y2="158.0" stroke-width="1.5"/>
+<text class="discret petit" x="435.0" y="174.0" text-anchor="middle">27/10</text>
+<line class="trait" x1="510.0" y1="150.0" x2="510.0" y2="158.0" stroke-width="1.5"/>
+<text class="discret petit" x="510.0" y="174.0" text-anchor="middle">28/10</text>
+<line class="trait" x1="585.0" y1="150.0" x2="585.0" y2="158.0" stroke-width="1.5"/>
+<text class="discret petit" x="585.0" y="174.0" text-anchor="middle">29/10</text>
+<line class="trait" x1="660.0" y1="150.0" x2="660.0" y2="158.0" stroke-width="1.5"/>
+<text class="discret petit" x="660.0" y="174.0" text-anchor="middle">30/10</text>
+<circle class="f-eleve s-fond" cx="135.0" cy="154" r="6" stroke-width="2"/>
+<text class="texte gras" x="135.0" y="86.0" text-anchor="start">Le responsable sait</text>
+<text class="secondaire petit" x="135.0" y="101.0" text-anchor="start">la synchronisation est documentée</text>
+<circle class="f-eleve s-fond" cx="360.0" cy="154" r="6" stroke-width="2"/>
+<text class="texte gras" x="360.0" y="194.0" text-anchor="middle">Délai échu</text>
+<text class="secondaire petit" x="360.0" y="209.0" text-anchor="middle">article 33 du RGPD</text>
+<circle class="f-controle s-fond" cx="585.0" cy="154" r="6" stroke-width="2"/>
+<text class="texte gras" x="585.0" y="86.0" text-anchor="middle">L&#x27;exercice</text>
+<text class="secondaire petit" x="585.0" y="101.0" text-anchor="middle">violation au sens de l&#x27;art. 4.12</text>
+<circle class="f-conforme s-fond" cx="660.0" cy="154" r="6" stroke-width="2"/>
+<text class="texte gras" x="660.0" y="194.0" text-anchor="end">Décision</text>
+<text class="secondaire petit" x="660.0" y="209.0" text-anchor="end">notifier, motifs du retard</text>
+<line class="trait" x1="24.0" y1="232.0" x2="696.0" y2="232.0" stroke-width="1"/>
+<text class="texte gras" x="24.0" y="252.0" text-anchor="start" style="font-size:13.5px">Qui fait quoi</text>
+<rect class="t-neutre s-neutre" x="24.0" y="282.0" width="123.2" height="132.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="85.6" y="313.2" text-anchor="middle" style="font-size:13px">Constat</text>
+<text class="secondaire" x="85.6" y="330.2" text-anchor="middle" style="font-size:11.5px">ce qui part vers</text>
+<text class="secondaire" x="85.6" y="345.7" text-anchor="middle" style="font-size:11.5px">Apple, en</text>
+<text class="secondaire" x="85.6" y="361.2" text-anchor="middle" style="font-size:11.5px">comptes, sans</text>
+<text class="secondaire" x="85.6" y="376.8" text-anchor="middle" style="font-size:11.5px">aucune donnée</text>
+<text class="secondaire" x="85.6" y="392.3" text-anchor="middle" style="font-size:11.5px">personnelle</text>
+<circle class="f-neutre" cx="85.6" cy="268.0" r="9"/>
+<text class="f-fond gras" x="85.6" y="272.0" text-anchor="middle" style="font-size:11px">1</text>
+<rect class="t-local s-local" x="161.2" y="282.0" width="123.2" height="132.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="222.8" y="305.4" text-anchor="middle" style="font-size:13px">RSSI qualifie</text>
+<text class="secondaire" x="222.8" y="322.4" text-anchor="middle" style="font-size:11.5px">atteinte à la</text>
+<text class="secondaire" x="222.8" y="337.9" text-anchor="middle" style="font-size:11.5px">confidentialité,</text>
+<text class="secondaire" x="222.8" y="353.5" text-anchor="middle" style="font-size:11.5px">plus de 1 000</text>
+<text class="secondaire" x="222.8" y="369.0" text-anchor="middle" style="font-size:11.5px">personnes,</text>
+<text class="secondaire" x="222.8" y="384.5" text-anchor="middle" style="font-size:11.5px">gravité, motif</text>
+<text class="secondaire" x="222.8" y="400.1" text-anchor="middle" style="font-size:11.5px">écrit</text>
+<circle class="f-local" cx="222.8" cy="268.0" r="9"/>
+<text class="f-fond gras" x="222.8" y="272.0" text-anchor="middle" style="font-size:11px">2</text>
+<path class="s-neutre" d="M148.2,348.0 L160.2,348.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-neutre)"/>
+<rect class="t-cloud s-cloud" x="298.4" y="282.0" width="123.2" height="132.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="360.0" y="297.7" text-anchor="middle" style="font-size:13px">L&#x27;auditeur analyse</text>
+<text class="secondaire" x="360.0" y="314.7" text-anchor="middle" style="font-size:11.5px">canopee-cnil :</text>
+<text class="secondaire" x="360.0" y="330.2" text-anchor="middle" style="font-size:11.5px">violation qui</text>
+<text class="secondaire" x="360.0" y="345.7" text-anchor="middle" style="font-size:11.5px">continue ; risque</text>
+<text class="secondaire" x="360.0" y="361.2" text-anchor="middle" style="font-size:11.5px">élevé ;</text>
+<text class="secondaire" x="360.0" y="376.8" text-anchor="middle" style="font-size:11.5px">notification</text>
+<text class="secondaire" x="360.0" y="392.3" text-anchor="middle" style="font-size:11.5px">obligatoire et</text>
+<text class="secondaire" x="360.0" y="407.8" text-anchor="middle" style="font-size:11.5px">tardive</text>
+<circle class="f-cloud" cx="360.0" cy="268.0" r="9"/>
+<text class="f-fond gras" x="360.0" y="272.0" text-anchor="middle" style="font-size:11px">3</text>
+<path class="s-neutre" d="M285.4,348.0 L297.4,348.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-neutre)"/>
+<rect class="t-local s-local" x="435.6" y="282.0" width="123.2" height="132.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="497.2" y="320.9" text-anchor="middle" style="font-size:13px">DPO décide</text>
+<text class="secondaire" x="497.2" y="337.9" text-anchor="middle" style="font-size:11.5px">un autre compte</text>
+<text class="secondaire" x="497.2" y="353.5" text-anchor="middle" style="font-size:11.5px">que le RSSI ;</text>
+<text class="secondaire" x="497.2" y="369.0" text-anchor="middle" style="font-size:11.5px">notifier ou non,</text>
+<text class="secondaire" x="497.2" y="384.5" text-anchor="middle" style="font-size:11.5px">motif écrit</text>
+<circle class="f-local" cx="497.2" cy="268.0" r="9"/>
+<text class="f-fond gras" x="497.2" y="272.0" text-anchor="middle" style="font-size:11px">4</text>
+<path class="s-neutre" d="M422.6,348.0 L434.6,348.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-neutre)"/>
+<rect class="t-controle s-controle" x="572.8" y="282.0" width="123.2" height="132.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="634.4" y="305.4" text-anchor="middle" style="font-size:13px">Notification</text>
+<text class="secondaire" x="634.4" y="322.4" text-anchor="middle" style="font-size:11.5px">un projet pour le</text>
+<text class="secondaire" x="634.4" y="337.9" text-anchor="middle" style="font-size:11.5px">formulaire de la</text>
+<text class="secondaire" x="634.4" y="353.5" text-anchor="middle" style="font-size:11.5px">CNIL ; registre</text>
+<text class="secondaire" x="634.4" y="369.0" text-anchor="middle" style="font-size:11.5px">des violations ;</text>
+<text class="secondaire" x="634.4" y="384.5" text-anchor="middle" style="font-size:11.5px">information des</text>
+<text class="secondaire" x="634.4" y="400.1" text-anchor="middle" style="font-size:11.5px">personnes</text>
+<circle class="f-controle" cx="634.4" cy="268.0" r="9"/>
+<text class="f-fond gras" x="634.4" y="272.0" text-anchor="middle" style="font-size:11px">5</text>
+<path class="s-neutre" d="M559.8,348.0 L571.8,348.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-neutre)"/>
+<text class="secondaire" x="24.0" y="442.0" text-anchor="start">Mycélium est fictif : la notification reste un exercice et rien n&#x27;est envoyé à la vraie CNIL. Ce qui</text>
+<text class="secondaire" x="24.0" y="458.9" text-anchor="start">compte, c&#x27;est que la case soit remplie, par la bonne personne, avec un motif écrit.</text>
+<text class="discret petit" x="24" y="488">Source : docs/etapes/11-exercices.md, docs/livre/12-exercices.md · généré par outils/schemas.py</text>
+</svg>

@@ -1,0 +1,1192 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "chapitre-6-le-corpus-prive-chiffrer-et-cloisonner",
+   "x": [
+    "Chapitre 6. Le corpus privé : chiffrer et cloisonner"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Étape 5 du projet · 23 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-probleme",
+   "x": [
+    "Le problème"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les données internes de Mycélium existent maintenant, dans des fichiers épars. Pour qu'elles servent, il faut pouvoir les ",
+    {
+     "g": [
+      "interroger"
+     ]
+    },
+    " comme le corpus public du chapitre 2 : poser une question, obtenir une réponse citée. Mais avec trois exigences de plus."
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Que chacun ne voie que ce qui le concerne."
+      ]
+     },
+     " Un adhérent de Paris n'a pas à lire les comptes rendus d'une autre fédération. Le pôle programme n'a pas à voir le fichier des adhérents. Le responsable de la sécurité n'a pas à lire la stratégie politique."
+    ],
+    [
+     {
+      "g": [
+       "Qu'un fichier volé ne parle pas."
+      ]
+     },
+     " Le chapitre précédent l'a montré : un fichier peut partir sans que personne ne l'ait voulu."
+    ],
+    [
+     {
+      "g": [
+       "Que la qualité se mesure sans regarder."
+      ]
+     },
+     " Pour le corpus public, Claude Code avait écrit les questions de l'évaluation en lisant les documents. Ici, c'est interdit."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-on-a-construit",
+   "x": [
+    "Ce qu'on a construit"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Une base séparée et chiffrée en entier"
+      ]
+     },
+     ", avec SQLCipher, une version de SQLite qui chiffre tout le fichier. Elle contient les 2 595 documents de Mycélium, leurs passages, leur index de recherche et leurs vecteurs."
+    ],
+    [
+     {
+      "g": [
+       "Une clé de 256 bits"
+      ]
+     },
+     ", tirée au hasard, rangée dans le ",
+     {
+      "g": [
+       "Trousseau"
+      ]
+     },
+     " de macOS."
+    ],
+    [
+     {
+      "g": [
+       "Six rôles d'accès"
+      ]
+     },
+     " (adhérent, cadre, programme, DPO, RSSI, bureau), appliqués ",
+     {
+      "g": [
+       "dans la requête"
+      ]
+     },
+     " à la base : un passage interdit n'est jamais lu, ni classé, ni renvoyé."
+    ],
+    [
+     {
+      "g": [
+       "Une évaluation à l'aveugle"
+      ]
+     },
+     " : les questions et les réponses attendues sont écrites par le générateur lui-même, et tout se mesure sur le Mac. Claude Code n'en voit que des scores."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le code de la zone privée vit dans un module à part. Le module du corpus public dit, dès sa première ligne, qu'il ne touche jamais la zone privée. Le garder ainsi est une protection : un module qui ne sait pas ouvrir la base privée ne peut pas la faire fuiter. Le module privé ",
+    {
+     "g": [
+      "réutilise"
+     ]
+    },
+    " tout ce qui ne dépend d'aucune donnée (le découpage, le reranker, la rédaction des réponses), mais garde pour lui seul la clé, la base et les rôles."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-notions",
+   "x": [
+    "Les notions"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-chiffrement-au-repos",
+   "x": [
+    "Le chiffrement au repos"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une donnée est ",
+    {
+     "g": [
+      "au repos"
+     ]
+    },
+    " quand elle dort sur un disque, ",
+    {
+     "g": [
+      "en transit"
+     ]
+    },
+    " quand elle circule sur un réseau, ",
+    {
+     "g": [
+      "en usage"
+     ]
+    },
+    " quand un programme la manipule en mémoire. Chaque état a sa protection. Le chiffrement au repos protège contre celui qui met la main sur ",
+    {
+     "g": [
+      "le fichier"
+     ]
+    },
+    " : un disque volé, une sauvegarde égarée, une copie dans le cloud."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "SQLCipher chiffre ",
+    {
+     "g": [
+      "chaque page"
+     ]
+    },
+    " du fichier, par blocs de 4 Ko, avec l'algorithme AES-256. Il y ajoute un code d'authentification : une page modifiée par quelqu'un qui n'a pas la clé est détectée. Tout est chiffré, sans exception : les documents, l'index plein texte, les vecteurs, le journal. Sans la clé, le fichier n'est qu'un bruit d'octets, et SQLite ordinaire répond : « file is not a database »."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce que le chiffrement ne fait pas : il ne protège pas la base ",
+    {
+     "g": [
+      "ouverte"
+     ]
+    },
+    ". Pendant une recherche, la clé et les données sont en mémoire, en clair. C'est le rôle des contrôles d'accès, et de la sécurité de la machine."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-gestion-des-cles",
+   "x": [
+    "La gestion des clés"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un chiffrement ne vaut que ce que vaut la garde de sa clé. Une clé écrite dans un fichier à côté de la base, c'est une serrure avec la clé sur la porte. Les règles suivies sont celles des vraies organisations :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Règle"
+    ],
+    [
+     "Dans Canopée"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "La clé est ",
+      {
+       "g": [
+        "aléatoire"
+       ]
+      },
+      ", pas un mot de passe"
+     ],
+     [
+      "256 bits tirés au hasard : elle n'est pas devinable"
+     ]
+    ],
+    [
+     [
+      "Elle est ",
+      {
+       "g": [
+        "ailleurs que les données"
+       ]
+      }
+     ],
+     [
+      "Dans le Trousseau de macOS, le coffre-fort à secrets du système, déverrouillé avec la session. Jamais sur le disque du projet, jamais dans Git"
+     ]
+    ],
+    [
+     [
+      "Elle ne ",
+      {
+       "g": [
+        "transite"
+       ]
+      },
+      " pas en clair"
+     ],
+     [
+      "Transmise à l'outil du Trousseau par son entrée standard, pas en argument : un argument de commande est visible de tous les programmes de la machine le temps qu'elle tourne"
+     ]
+    ],
+    [
+     [
+      "Elle n'est ",
+      {
+       "g": [
+        "jamais affichée"
+       ]
+      }
+     ],
+     [
+      "Ni par Canopée, ni dans une session de Claude Code. Le contrôle vérifie qu'elle n'apparaît dans aucun fichier suivi par Git, sans jamais l'écrire"
+     ]
+    ],
+    [
+     [
+      "Elle n'est ",
+      {
+       "g": [
+        "jamais remplacée par erreur"
+       ]
+      }
+     ],
+     [
+      "La commande de création refuse d'écraser une clé existante : sans elle, la base serait perdue pour toujours"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La limite, la documentation la dit franchement : tout programme lancé sous ma session peut demander la clé au Trousseau, Claude Code compris. C'est d'ailleurs ainsi que le module privé l'obtient. Le Trousseau protège contre le vol du ",
+    {
+     "g": [
+      "fichier"
+     ]
+    },
+    ", pas contre un programme malveillant qui tournerait sous mon nom. En entreprise, la clé serait dans un ",
+    {
+     "g": [
+      "gestionnaire de clés"
+     ]
+    },
+    ", qui ne la livre qu'à un service identifié et journalise chaque lecture."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-controle-d-acces-par-role-cote-serveur",
+   "x": [
+    "Le contrôle d'accès par rôle, côté serveur"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "On ne donne pas des droits à des personnes, mais à des ",
+    {
+     "g": [
+      "rôles"
+     ]
+    },
+    ", puis des rôles aux personnes. C'est le ",
+    {
+     "g": [
+      "contrôle d'accès par rôle"
+     ]
+    },
+    " (en anglais ",
+    {
+     "i": [
+      "RBAC"
+     ]
+    },
+    "). Ici, chaque rôle est une règle sur trois attributs de chaque document : sa ",
+    {
+     "g": [
+      "sensibilité"
+     ]
+    },
+    ", sa ",
+    {
+     "g": [
+      "fédération"
+     ]
+    },
+    " et son ",
+    {
+     "g": [
+      "domaine"
+     ]
+    },
+    " (programme, direction, adhérents, ressources humaines, sécurité…). Quand la règle porte sur des attributs, on parle aussi de contrôle par attributs (",
+    {
+     "i": [
+      "ABAC"
+     ]
+    },
+    ")."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Rôle"
+    ],
+    [
+     "Voit"
+    ],
+    [
+     "Ne voit jamais"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Adhérent"
+     ],
+     [
+      "L'interne de sa fédération"
+     ],
+     [
+      "La correspondance des autres adhérents, le confidentiel, le sensible"
+     ]
+    ],
+    [
+     [
+      "Cadre"
+     ],
+     [
+      "Tout l'interne, le confidentiel de sa fédération"
+     ],
+     [
+      "Le sensible, le confidentiel national"
+     ]
+    ],
+    [
+     [
+      "Programme"
+     ],
+     [
+      "L'interne, le confidentiel du programme"
+     ],
+     [
+      "Le fichier des adhérents, les fiches des salariés"
+     ]
+    ],
+    [
+     [
+      "DPO"
+     ],
+     [
+      "Rien pour l'instant : ",
+      {
+       "g": [
+        "refus par défaut"
+       ]
+      }
+     ],
+     [
+      "Il ne verra que du pseudonymisé, au chapitre suivant"
+     ]
+    ],
+    [
+     [
+      "RSSI"
+     ],
+     [
+      "Les documents du domaine sécurité"
+     ],
+     [
+      "Tout contenu politique"
+     ]
+    ],
+    [
+     [
+      "Bureau"
+     ],
+     [
+      "Tout"
+     ],
+     [
+      "—"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "« Côté serveur »"
+     ]
+    },
+    " veut dire : là où sont les données, pas dans l'interface. Une interface qui cache un bouton n'empêche rien ; il suffit d'appeler le service directement. Ici, la règle du rôle est écrite ",
+    {
+     "g": [
+      "dans la requête"
+     ]
+    },
+    " à la base, avant le tri et la limite du nombre de résultats."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pourquoi ne pas chercher partout, puis retirer ce qui est interdit ? Cette méthode, le ",
+    {
+     "g": [
+      "post-filtrage"
+     ]
+    },
+    ", a trois défauts :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "un oubli suffit"
+      ]
+     },
+     " : un seul chemin du code qui ne filtre pas, et tout fuit ;"
+    ],
+    [
+     {
+      "g": [
+       "les passages interdits prennent la place des autres"
+      ]
+     },
+     " : la recherche d'un adhérent ne trouverait presque rien dans un corpus dominé par des fiches qu'il n'a pas le droit de voir ;"
+    ],
+    [
+     {
+      "g": [
+       "les passages interdits sont déjà sortis"
+      ]
+     },
+     " de la base, en mémoire, peut-être dans un journal."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Trois garde-fous complètent la règle : le rôle est revérifié à chaque requête, la règle est répétée au chargement des passages, et tout ce qui n'est pas explicitement prévu est ",
+    {
+     "g": [
+      "refusé"
+     ]
+    },
+    " (un rôle inconnu, le DPO, un adhérent sans fédération)."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Matrice des six rôles : ce que chacun voit, lève et valide",
+   "src": "roles.svg"
+  },
+  {
+   "t": "h3",
+   "id": "la-separation-des-zones",
+   "x": [
+    "La séparation des zones"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux zones, deux fichiers, deux modules, deux régimes. La base publique accepte seulement des documents de niveau « public », la base privée seulement « interne », « confidentiel » et « sensible ». Ces contraintes sont écrites dans le schéma même des bases : une erreur qui voudrait ranger un document interne dans la base publique ",
+    {
+     "g": [
+      "échoue à l'écriture"
+     ]
+    },
+    ". Le mélange n'est pas seulement interdit, il est impossible."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Sur le disque, la séparation se lit dans le dossier des données, entièrement hors de Git. Chaque base privée a sa propre clé, rangée dans le Trousseau de macOS :"
+   ]
+  },
+  {
+   "t": "code",
+   "langue": "",
+   "texte": "donnees/\n├── public/                sources réelles téléchargées, un dossier par source\n├── public.db              la base publique : texte, index des mots, vecteurs\n├── prive/                 les données fictives de Mycélium, que Claude ne lit jamais\n├── prive.db               la base privée, chiffrée en entier\n├── correspondance.db      les pseudonymes et leur personne, chiffrée, clé distincte\n├── portail.db             le portail, chiffré, clé distincte\n├── journal-passerelle.db  le journal de la passerelle, sans aucune valeur\n├── journal-gardien.db     le journal du gardien\n├── veille.db              la file d'attente du veilleur\n└── pieges/                les documents piégés de la red team, jamais indexés"
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux règles d'ingestion ",
+    {
+     "g": [
+      "relèvent"
+     ]
+    },
+    " le niveau d'un document, et ne l'abaissent jamais :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "l'héritage"
+      ]
+     },
+     " : un e-mail qui transfère ou cite un message prend le niveau de l'original. Le générateur avait étiqueté « interne » tous les transferts, y compris celui d'un e-mail des ressources humaines qui recopiait un numéro de sécurité sociale. C'était un piège, et l'ingestion le corrige ;"
+    ],
+    [
+     {
+      "g": [
+       "la détection"
+      ]
+     },
+     " : un document « interne » où l'on trouve un numéro de sécurité sociale ou un IBAN devient « confidentiel »."
+    ]
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "evaluer-sans-regarder",
+   "x": [
+    "Évaluer sans regarder"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pour le corpus public, les questions avaient été écrites en lisant les documents. Ici, la solution est de les faire écrire par ",
+    {
+     "g": [
+      "celui qui connaît les faits sans avoir besoin de lire la prose"
+     ]
+    },
+    " : le générateur du chapitre 4. Il sait quel coût il a donné à chaque mesure, où il a posé chaque code interne, quel est le téléphone de chaque fédération. Il écrit 71 questions, chacune avec un ",
+    {
+     "g": [
+      "document attendu"
+     ]
+    },
+    " et un ",
+    {
+     "g": [
+      "fait attendu"
+     ]
+    },
+    ". Personne ne les lit."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Tout se mesure ensuite par ",
+    {
+     "g": [
+      "comparaison exacte"
+     ]
+    },
+    ", sur le Mac : le document attendu est-il dans les 5 premiers passages ? le fait attendu est-il dans la réponse ? Pas besoin de juge : un numéro de téléphone est dans la réponse ou il n'y est pas."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le ",
+    {
+     "g": [
+      "respect des rôles"
+     ]
+    },
+    " se mesure de deux façons :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "structurelle"
+      ]
+     },
+     " : chaque passage renvoyé est comparé à la politique des rôles ",
+     {
+      "g": [
+       "réécrite une seconde fois"
+      ]
+     },
+     ", dans un autre langage, indépendamment de la requête à la base. Deux implémentations écrites séparément qui donnent le même résultat, c'est une preuve bien plus forte qu'une seule qui se contrôle elle-même ;"
+    ],
+    [
+     {
+      "g": [
+       "par les réponses"
+      ]
+     },
+     " : une question est posée par un rôle qui n'a accès à aucun document contenant le fait. S'il l'obtient quand même, c'est une fuite."
+    ]
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "pourquoi-les-vecteurs-prives-sont-des-donnees-personnelles",
+   "x": [
+    "Pourquoi les vecteurs privés sont des données personnelles"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un vecteur, une liste de 1 024 nombres, semble ne rien dire. C'est faux, pour trois raisons :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "on peut le recalculer et le comparer."
+      ]
+     },
+     " Le modèle qui calcule les vecteurs est public. Quelqu'un qui vole les vecteurs peut vectoriser le prénom, le nom, la profession et le département d'une personne, et chercher le vecteur le plus proche : il saura si elle est dans le fichier. C'est une ",
+     {
+      "g": [
+       "attaque par appartenance"
+      ]
+     },
+     " ;"
+    ],
+    [
+     {
+      "g": [
+       "on peut l'inverser"
+      ]
+     },
+     " : des travaux de recherche reconstruisent une bonne partie du texte d'origine à partir de son vecteur ;"
+    ],
+    [
+     {
+      "g": [
+       "il révèle des proximités"
+      ]
+     },
+     " : deux fiches très proches désignent peut-être la même personne."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les vecteurs privés sont donc chiffrés, filtrés par rôle, calculés sur le Mac, et ils suivront la personne si on l'efface."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-que-font-les-vraies-organisations",
+   "x": [
+    "Ce que font les vraies organisations"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Le chiffrement au repos partout, la clé ailleurs."
+      ]
+     },
+     " Bases de données, sauvegardes, disques des portables. Les clés sont dans un service dédié (un ",
+     {
+      "g": [
+       "KMS"
+      ]
+     },
+     ", ",
+     {
+      "i": [
+       "key management service"
+      ]
+     },
+     ") ou un boîtier matériel dont la clé ne sort jamais (un ",
+     {
+      "g": [
+       "HSM"
+      ]
+     },
+     ")."
+    ],
+    [
+     {
+      "g": [
+       "Le chiffrement d'enveloppe."
+      ]
+     },
+     " La donnée est chiffrée par une clé de données, elle-même chiffrée par une clé maîtresse. Changer la clé maîtresse ne demande pas de tout rechiffrer."
+    ],
+    [
+     {
+      "g": [
+       "Le filtrage par la base elle-même."
+      ]
+     },
+     " Certaines bases ajoutent d'office la règle du rôle à chaque requête, quel que soit le programme qui la pose : c'est la sécurité au niveau des lignes (",
+     {
+      "i": [
+       "row-level security"
+      ]
+     },
+     "). Les moteurs de recherche d'entreprise font de même avec des filtres de sécurité appliqués avant le classement."
+    ],
+    [
+     {
+      "g": [
+       "Les droits hérités des sources."
+      ]
+     },
+     " Un assistant documentaire d'entreprise recopie les droits de l'intranet, document par document. Les fuites les plus fréquentes viennent de documents ",
+     {
+      "g": [
+       "trop partagés"
+      ]
+     },
+     " à la source, que l'assistant rend soudain faciles à trouver."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-chiffres",
+   "x": [
+    "Les chiffres"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Mesure"
+    ],
+    [
+     "Résultat"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Base privée"
+     ],
+     [
+      {
+       "g": [
+        "2 595 documents, 2 848 passages"
+       ]
+      },
+      ", 16,6 Mo, chiffrés en entier, construits en ",
+      {
+       "g": [
+        "3 min 20 s"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Chiffrement"
+     ],
+     [
+      "Pas d'en-tête SQLite lisible ; aucun de cinq mots courants du corpus retrouvé dans les octets ; SQLite sans clé ne l'ouvre pas"
+     ]
+    ],
+    [
+     [
+      "Rôles, exhaustivement"
+     ],
+     [
+      "Pour chaque rôle et chaque fédération, la requête et la contre-épreuve donnent ",
+      {
+       "g": [
+        "exactement"
+       ]
+      },
+      " les mêmes documents : programme 421, RSSI 18, bureau 2 595, cadre de 381 à 384, adhérent de 7 à 16"
+     ]
+    ],
+    [
+     [
+      "Fuite structurelle"
+     ],
+     [
+      "497 recherches, 15 874 passages renvoyés, ",
+      {
+       "g": [
+        "0 interdit"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Fuite par les réponses"
+     ],
+     [
+      "142 questions posées par un rôle sans droit : ",
+      {
+       "g": [
+        "0 fait obtenu"
+       ]
+      },
+      ", 0 canari hors de son périmètre, 98,6 % d'abstentions"
+     ]
+    ],
+    [
+     [
+      "Qualité, rôle autorisé"
+     ],
+     [
+      "Rappel@5 de ",
+      {
+       "g": [
+        "100 %"
+       ]
+      },
+      ", exactitude de ",
+      {
+       "g": [
+        "97 %"
+       ]
+      },
+      " (69 sur 71), taux de citation de 99 %"
+     ]
+    ],
+    [
+     [
+      "Canaris"
+     ],
+     [
+      "Les 20 dans la base privée, aucun dans la base publique"
+     ]
+    ],
+    [
+     [
+      "Évaluation publique"
+     ],
+     [
+      "Aucune régression"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les deux échecs d'exactitude sont des ",
+    {
+     "g": [
+      "fausses abstentions"
+     ]
+    },
+    " : le bon document était dans les 5 premiers passages, mais le reranker ou Gemma l'a jugé insuffisant."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-couts",
+   "x": [
+    "Les coûts"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mesuré."
+     ]
+    },
+    " L'indexation a demandé ",
+    {
+     "g": [
+      "3 734 calculs de vecteurs"
+     ]
+    },
+    ", soit 0,17 h de calcul. L'évaluation privée, ",
+    {
+     "g": [
+      "2 695 générations"
+     ]
+    },
+    " et 1,43 h, pour 91 minutes de bout en bout. Au total, ",
+    {
+     "g": [
+      "1,6 h"
+     ]
+    },
+    " de calcul local. Côté Claude, la photo par étape du 27 octobre donne ",
+    {
+     "g": [
+      "93 requêtes"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "4,0 M d'unités"
+     ]
+    },
+    " pour la session."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Estimé."
+     ]
+    },
+    " 0,05 à 0,06 kWh, soit environ un centime."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La lecture."
+     ]
+    },
+    " Le coût de l'étape est presque tout entier dans l'",
+    {
+     "g": [
+      "évaluation privée"
+     ]
+    },
+    ", parce qu'elle essaie chaque question avec plusieurs rôles : 213 réponses complètes (71 autorisées, 142 interdites), chacune avec 15 passages notés par le reranker. ",
+    {
+     "g": [
+      "Ce qui coûte, c'est le contrôle des fuites."
+     ]
+    },
+    " Le chiffrement, lui, ne coûte rien de mesurable à cette taille : l'indexation va au rythme du calcul des vecteurs, pas du chiffrement."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-surprises",
+   "x": [
+    "Les surprises"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-niveau-ne-suffit-pas-il-faut-le-domaine",
+   "x": [
+    "Le niveau ne suffit pas, il faut le domaine"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le premier découpage des droits ne regardait que le niveau de sensibilité. Avec lui, un adhérent aurait vu l'e-mail « changement d'adresse » d'un autre adhérent de sa fédération : il était « interne », comme une note de réunion. D'où un attribut de plus, le ",
+    {
+     "g": [
+      "domaine"
+     ]
+    },
+    " : la correspondance des adhérents a le sien, et seuls le bureau et les cadres de la fédération la voient."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La leçon dépasse Canopée : une échelle de confidentialité à quatre niveaux ne dit pas ",
+    {
+     "g": [
+      "de qui"
+     ]
+    },
+    " parle un document. Le niveau dit « à quel point c'est secret », le domaine dit « à qui c'est »."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-synchronisation-icloud-encore",
+   "x": [
+    "La synchronisation iCloud, encore"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'incident du chapitre précédent tient toujours : la base privée part elle aussi chez Apple. Mais ",
+    {
+     "g": [
+      "sa copie est chiffrée"
+     ]
+    },
+    ", et sa clé n'y est pas. C'est un bon exemple de défense en profondeur : une barrière est percée (rien ne devait sortir du Mac), une autre protège encore le contenu."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Seulement la base, hélas. Les fichiers sources du chapitre 4 (les tableaux, les comptes rendus, les e-mails), le cache de génération, les canaris et le jeu de questions restent ",
+    {
+     "g": [
+      "en clair"
+     ]
+    },
+    ", et partent dans iCloud aussi. Ils jouent le rôle de l'export d'un système source ; une vraie organisation les supprimerait après ingestion, ou les rangerait dans un coffre chiffré. C'est eux qui feront, au chapitre 12, la gravité de la violation de données."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-n-a-pas-pu-etre-verifie",
+   "x": [
+    "Ce qui n'a pas pu être vérifié"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "La qualité réelle des réponses"
+      ]
+     },
+     ", au-delà du fait attendu. L'exactitude mesure si le numéro ou le nom est dans la réponse, pas si le reste est juste. Personne ne les a lues, sauf moi, avec mes rôles."
+    ],
+    [
+     {
+      "g": [
+       "La difficulté du jeu."
+      ]
+     },
+     " Un rappel de 100 % dit surtout que les questions sont faciles pour la recherche : elles nomment la mesure, la fédération ou la date. Les questions de synthèse ne sont pas couvertes : le générateur ne connaît pas la prose de Gemma."
+    ],
+    [
+     {
+      "g": [
+       "La justesse de la classification."
+      ]
+     },
+     " Les rôles appliquent fidèlement les niveaux et les domaines ; un document mal étiqueté à la source sera mal protégé."
+    ],
+    [
+     {
+      "g": [
+       "La résistance à une attaque."
+      ]
+     },
+     " Une injection de prompt ne peut rien contre un filtre écrit dans la requête (le passage interdit n'est jamais chargé). Mais d'autres chemins existent : ce sera le travail de l'équipe d'attaque, au chapitre 11."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-il-faut-retenir",
+   "x": [
+    "Ce qu'il faut retenir"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Un filtre qui s'applique avant la recherche vaut mieux qu'un filtre qui trie après."
+      ]
+     },
+     " Ce qui n'est jamais chargé ne peut pas fuir."
+    ],
+    [
+     {
+      "g": [
+       "Une règle écrite deux fois, indépendamment, se prouve."
+      ]
+     },
+     " Une règle écrite une fois se contrôle elle-même."
+    ],
+    [
+     {
+      "g": [
+       "Le chiffrement protège le fichier, pas la base ouverte."
+      ]
+     },
+     " Il faut aussi des rôles, et une machine sûre."
+    ],
+    [
+     {
+      "g": [
+       "On peut évaluer sans regarder"
+      ]
+     },
+     " : il suffit que celui qui a posé les faits écrive les questions."
+    ],
+    [
+     {
+      "g": [
+       "Ce qui coûte, c'est le contrôle des fuites"
+      ]
+     },
+     ", pas le chiffrement."
+    ]
+   ]
+  }
+ ]
+}

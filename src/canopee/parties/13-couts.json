@@ -1,0 +1,1574 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "chapitre-13-ce-que-coute-vraiment-l-ia",
+   "x": [
+    "Chapitre 13. Ce que coûte vraiment l'IA"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Bilan · mesures du 23 au 30 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-probleme",
+   "x": [
+    "Le problème"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Sur les réseaux sociaux, l'IA locale est vantée sans chiffres. « Faites tourner votre modèle chez vous, gratuitement, sans rien envoyer à personne. » On ne dit ni combien de temps ça prend, ni ce que la machine endure, ni ce que ça aurait coûté autrement, ni ce qu'on perd en qualité. Et l'IA du cloud, de son côté, est souvent présentée par un abonnement mensuel qui cache tout ce qu'il absorbe."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce chapitre fait le bilan de Canopée ",
+    {
+     "g": [
+      "en chiffres réels"
+     ]
+    },
+    " : ce que le projet a consommé côté cloud (Claude, via Claude Code) et côté local (Ollama, sur le Mac), étape par étape, avec une règle tenue du début à la fin : ",
+    {
+     "g": [
+      "on sépare toujours ce qui est mesuré de ce qui est estimé."
+     ]
+    },
+    " Une valeur ",
+    {
+     "g": [
+      "mesurée"
+     ]
+    },
+    " est lue dans un journal, à l'unité près. Une valeur ",
+    {
+     "g": [
+      "estimée"
+     ]
+    },
+    " est calculée à partir d'une hypothèse, dite à chaque fois."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "la-methode",
+   "x": [
+    "La méthode"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "un-script-pas-une-impression",
+   "x": [
+    "Un script, pas une impression"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Tout vient d'un script versionné dans le projet, écrit pendant la mission du chapitre 5 et complété au chapitre 10. Il ne lit ",
+    {
+     "g": [
+      "que des compteurs"
+     ]
+    },
+    " : jamais le texte d'une conversation, jamais une donnée privée. Le versionner a une vertu simple : la prochaine mesure sera faite exactement de la même façon, et un écart entre deux mesures s'explique au lieu de se discuter."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Il a fallu le corriger une dernière fois avant la publication. Il ne lisait que les sessions ouvertes depuis le dossier du projet, plus une session écrite en dur dans le code. Or trois sessions de Canopée avaient été ouvertes depuis un autre dossier : celle de pilotage, et celles des étapes 10 et 11. Les dossiers et les sessions à compter se donnent maintenant en arguments, et le code ne contient plus aucun chemin personnel. Le même dossier contenait d'autres sessions, sans rapport avec Canopée : on ne les compte pas, et on ne lit d'aucune session autre chose que ses compteurs."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "cote-claude-l-usage-effectif",
+   "x": [
+    "Côté Claude : l'usage effectif"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Chaque requête de Claude Code au modèle laisse quatre compteurs dans la transcription de la session. Le ",
+    {
+     "g": [
+      "token"
+     ]
+    },
+    " est l'unité dans laquelle un modèle découpe le texte, un morceau de mot ; pour ses estimations, le script compte 3,5 caractères par token."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Compteur"
+    ],
+    [
+     "Ce que c'est"
+    ],
+    [
+     "Poids"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Entrée neuve"
+     ],
+     [
+      "Le texte que le modèle lit pour la première fois"
+     ],
+     [
+      "×1"
+     ]
+    ],
+    [
+     [
+      "Cache écrit"
+     ],
+     [
+      "Le texte mis en mémoire pour être relu ensuite"
+     ],
+     [
+      "×2"
+     ]
+    ],
+    [
+     [
+      "Cache lu"
+     ],
+     [
+      "Le texte déjà en mémoire, relu à chaque requête : l'historique de la conversation"
+     ],
+     [
+      "×0,1"
+     ]
+    ],
+    [
+     [
+      "Sortie"
+     ],
+     [
+      "Ce que le modèle écrit"
+     ],
+     [
+      "×5"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les poids reprennent le rapport des prix de l'API, le service payant à l'usage d'Anthropic. L'",
+    {
+     "g": [
+      "usage effectif"
+     ]
+    },
+    ", l'unité de ce livre, est la somme pondérée de ces quatre compteurs : une seule mesure, comparable d'une session à l'autre. ",
+    {
+     "g": [
+      "Ce n'est pas un prix"
+     ]
+    },
+    " : avec l'abonnement, on paie un forfait."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "cote-ollama-le-journal",
+   "x": [
+    "Côté Ollama : le journal"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le service Ollama écrit un journal. Le script n'en lit que trois sortes de lignes : une requête et sa durée, les tokens lus par le modèle, les tokens écrits. Il en tire le nombre de ",
+    {
+     "g": [
+      "générations"
+     ]
+    },
+    " (une réponse produite), de ",
+    {
+     "g": [
+      "calculs de vecteurs"
+     ]
+    },
+    ", et surtout le ",
+    {
+     "g": [
+      "temps de calcul"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "rattacher-le-local-aux-etapes",
+   "x": [
+    "Rattacher le local aux étapes"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le journal d'Ollama ne dit pas qui a lancé une requête, seulement l'heure. Chaque requête est donc rattachée à la session d'étape ouverte à cette heure-là. C'est une ",
+    {
+     "g": [
+      "attribution par période"
+     ]
+    },
+    ", pas par lanceur : un calcul que j'aurais lancé dans mon terminal pendant une session serait compté pour cette étape. En pratique, toutes les heures de calcul du journal tombent dans une session d'étape : rien n'a tourné en dehors."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-chiffres",
+   "x": [
+    "Les chiffres"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "etape-par-etape",
+   "x": [
+    "Étape par étape"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Mesure finale du 30 octobre 2026, toutes les sessions d'étape closes :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|---|---|---|",
+   "entete": [
+    [
+     "Étape"
+    ],
+    [
+     "Claude : requêtes"
+    ],
+    [
+     "Claude : usage effectif"
+    ],
+    [
+     "Ollama : générations"
+    ],
+    [
+     "Ollama : vecteurs"
+    ],
+    [
+     "Ollama : calcul"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "1. Socle"
+     ],
+     [
+      "77"
+     ],
+     [
+      "1,6 M"
+     ],
+     [
+      "0"
+     ],
+     [
+      "0"
+     ],
+     [
+      "0 h"
+     ]
+    ],
+    [
+     [
+      "2. Corpus public"
+     ],
+     [
+      "74"
+     ],
+     [
+      "1,8 M"
+     ],
+     [
+      "65"
+     ],
+     [
+      "223"
+     ],
+     [
+      "0,15 h (minimum)"
+     ]
+    ],
+    [
+     [
+      "3. Évaluation"
+     ],
+     [
+      "154"
+     ],
+     [
+      "7,2 M"
+     ],
+     [
+      "6 392"
+     ],
+     [
+      "585"
+     ],
+     [
+      {
+       "g": [
+        "4,58 h"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "4. Données fictives"
+     ],
+     [
+      "72"
+     ],
+     [
+      "3,6 M"
+     ],
+     [
+      "395"
+     ],
+     [
+      "0"
+     ],
+     [
+      "1,46 h"
+     ]
+    ],
+    [
+     [
+      "4 b. Corpus climat et coûts"
+     ],
+     [
+      "106"
+     ],
+     [
+      "4,3 M"
+     ],
+     [
+      "953"
+     ],
+     [
+      "481"
+     ],
+     [
+      "0,68 h"
+     ]
+    ],
+    [
+     [
+      "5. Corpus privé"
+     ],
+     [
+      "93"
+     ],
+     [
+      "4,0 M"
+     ],
+     [
+      "2 695"
+     ],
+     [
+      "3 734"
+     ],
+     [
+      "1,60 h"
+     ]
+    ],
+    [
+     [
+      "6. Passerelle"
+     ],
+     [
+      "96"
+     ],
+     [
+      "4,5 M"
+     ],
+     [
+      "0"
+     ],
+     [
+      "3 661"
+     ],
+     [
+      "0,05 h"
+     ]
+    ],
+    [
+     [
+      "7. Agents métier"
+     ],
+     [
+      "157"
+     ],
+     [
+      "7,7 M"
+     ],
+     [
+      "907"
+     ],
+     [
+      "1 197"
+     ],
+     [
+      "0,91 h"
+     ]
+    ],
+    [
+     [
+      "8. Portail interne"
+     ],
+     [
+      "170"
+     ],
+     [
+      {
+       "g": [
+        "10,5 M"
+       ]
+      }
+     ],
+     [
+      "1"
+     ],
+     [
+      "71"
+     ],
+     [
+      "0,01 h"
+     ]
+    ],
+    [
+     [
+      "9. Agent CNIL"
+     ],
+     [
+      "138"
+     ],
+     [
+      "5,9 M"
+     ],
+     [
+      "264"
+     ],
+     [
+      "264"
+     ],
+     [
+      "0,21 h"
+     ]
+    ],
+    [
+     [
+      "10. Red team"
+     ],
+     [
+      "217"
+     ],
+     [
+      "6,9 M"
+     ],
+     [
+      "0"
+     ],
+     [
+      "0"
+     ],
+     [
+      "0 h"
+     ]
+    ],
+    [
+     [
+      "11. Exercices"
+     ],
+     [
+      "142"
+     ],
+     [
+      "8,4 M"
+     ],
+     [
+      "3"
+     ],
+     [
+      "72"
+     ],
+     [
+      "0,01 h"
+     ]
+    ],
+    [
+     [
+      "Session de pilotage (hors étape 1)"
+     ],
+     [
+      "525"
+     ],
+     [
+      "30,3 M"
+     ],
+     [
+      "—"
+     ],
+     [
+      "—"
+     ],
+     [
+      "—"
+     ]
+    ],
+    [
+     [
+      "Finition du livre (au moment de la mesure)"
+     ],
+     [
+      "13"
+     ],
+     [
+      "0,4 M"
+     ],
+     [
+      "—"
+     ],
+     [
+      "—"
+     ],
+     [
+      "—"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Total au 30 octobre"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "2 034"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "97,0 M"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "11 675"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "10 288"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "9,65 h"
+       ]
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Quelques précisions de lecture :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     "l'étape 1 n'a pas eu de session à elle : elle s'est faite dans la session de ",
+     {
+      "g": [
+       "pilotage"
+      ]
+     },
+     ", celle d'où je dirigeais les sessions d'étape. On la mesure par les requêtes de cette session avant l'ouverture de l'étape 2 ;"
+    ],
+    [
+     "le journal d'Ollama ne commence qu'en cours d'étape 2 : la partie antérieure n'est pas mesurable, d'où le « minimum » ;"
+    ],
+    [
+     "la session de pilotage (30,3 M) n'est pas répartie entre les étapes : elle pilote, relaie et relit, et c'est aussi d'elle qu'a été écrite la plus grande partie de ce livre. Elle était encore ouverte au moment de la mesure, comme la session qui finit le livre ;"
+    ],
+    [
+     "les requêtes comptées sont celles des sessions ; l'usage effectif comprend en plus celui de leurs sous-agents ;"
+    ],
+    [
+     "au 27 octobre, la même mesure donnait 1 560 requêtes et 76,5 M d'unités : les étapes 10 et 11, les contrôles de l'étape 9 et l'écriture du livre ont ajouté environ 20 M."
+    ]
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Le coût de chaque étape : l'usage de Claude et le calcul d'Ollama, sur deux axes séparés",
+   "src": "couts-etapes.svg"
+  },
+  {
+   "t": "h3",
+   "id": "ce-que-dit-le-tableau",
+   "x": [
+    "Ce que dit le tableau"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Le calcul local se concentre sur deux moments."
+     ]
+    },
+    " L'évaluation du chapitre 3 pèse à elle seule près de la moitié du temps de calcul ; le corpus privé du chapitre 6 vient ensuite. Les étapes de la passerelle et du portail n'appellent presque aucun modèle génératif, et les trois dernières, l'audit, l'attaque et les exercices, à peine 0,22 h à elles trois."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Le coût de Claude suit la longueur des sessions, pas la difficulté technique."
+     ]
+    },
+    " L'étape la plus chère côté Claude, le portail, n'a presque rien demandé à Ollama. La plus chère côté Ollama, l'évaluation, est loin d'être la plus chère côté Claude. La raison tient dans le compteur « cache lu » : à chaque requête, le modèle relit ",
+    {
+     "g": [
+      "tout l'historique"
+     ]
+    },
+    " de la session. Une session longue relit donc des millions de tokens, même si chaque requête n'ajoute presque rien. Sur la première mesure, au 23 octobre : 161 M de tokens relus en cache, pour 564 000 écrits par le modèle. Sur tout le projet, au 30 octobre : 595 M relus en cache, pour 2,2 M écrits par le modèle."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "a-quoi-servent-ces-tokens",
+   "x": [
+    "À quoi servent ces tokens"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La répartition n'est pas mesurée : les transcriptions ne disent pas « ce token-là, c'est un fichier ». Le script l'",
+    {
+     "g": [
+      "estime"
+     ]
+    },
+    " en suivant chaque bloc qui entre dans le contexte de la conversation et en comptant combien de requêtes l'ont relu ensuite. Sur la mesure du 23 octobre (25,6 M d'unités), puis sur tout le projet au 30 octobre (97,0 M) :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Usage"
+    ],
+    [
+     "Part estimée, 23 octobre"
+    ],
+    [
+     "Part estimée, 30 octobre"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Instructions (consignes système, définitions des outils, règles du projet), relues à chaque requête"
+     ],
+     [
+      {
+       "g": [
+        "51 %"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "40 %"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Fichiers lus, écrits ou modifiés"
+     ],
+     [
+      "20 %"
+     ],
+     [
+      "24 %"
+     ]
+    ],
+    [
+     [
+      "Commandes du terminal et leurs sorties"
+     ],
+     [
+      "13 %"
+     ],
+     [
+      "16 %"
+     ]
+    ],
+    [
+     [
+      "Conversation"
+     ],
+     [
+      "10 %"
+     ],
+     [
+      "11 %"
+     ]
+    ],
+    [
+     [
+      "Sous-agents"
+     ],
+     [
+      "4 %"
+     ],
+     [
+      "8 %"
+     ]
+    ],
+    [
+     [
+      "Web"
+     ],
+     [
+      "1 %"
+     ],
+     [
+      "1 %"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La moitié de l'usage au 23 octobre, et encore 40 % sur tout le projet, vient des instructions relues à chaque requête"
+     ]
+    },
+    ", pas du travail lui-même. Plus une session est longue, plus ce socle fixe pèse. C'est l'argument des ",
+    {
+     "g": [
+      "sessions courtes"
+     ]
+    },
+    ", une par étape, qui repartent chacune d'un contexte léger. La part baisse sur la fin du projet parce que les dernières étapes ont davantage lu, testé et délégué à des sous-agents (le contrôleur, l'auditeur, l'attaquant)."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-volume-compare",
+   "x": [
+    "Le volume comparé"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Au 23 octobre, avec les mêmes poids, Ollama pesait ",
+    {
+     "g": [
+      "environ un cinquième"
+     ]
+    },
+    " de Claude en volume de tokens. Ce qui pèse vraiment côté local, ce n'est pas le nombre de tokens, c'est ",
+    {
+     "g": [
+      "le temps de calcul"
+     ]
+    },
+    " : des heures sur le Mac, là où un service en ligne ferait le travail beaucoup plus vite."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "l-energie",
+   "x": [
+    "L'énergie"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le journal d'Ollama donne la durée de calcul, pas la consommation. ",
+    {
+     "g": [
+      "Estimé"
+     ]
+    },
+    ", en supposant que la puce consomme 30 à 40 W en calcul soutenu : ",
+    {
+     "g": [
+      "0,29 à 0,39 kWh"
+     ]
+    },
+    " pour les 9,65 h, soit quelques centimes. Côté Claude, l'énergie est ",
+    {
+     "g": [
+      "inconnue"
+     ]
+    },
+    " : elle se dépense dans un centre de données."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "local-ou-cloud-le-tableau",
+   "x": [
+    "Local ou cloud : le tableau"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Critère"
+    ],
+    [
+     "Local (Ollama sur le Mac)"
+    ],
+    [
+     "Cloud (Claude)"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "g": [
+        "Coût direct"
+       ]
+      }
+     ],
+     [
+      "0 € de plus, le Mac était déjà là ; électricité : quelques centimes (estimé)"
+     ],
+     [
+      "Le forfait de l'abonnement ; par l'API, voir l'hypothèse plus bas"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Temps"
+       ]
+      }
+     ],
+     [
+      "Lent : une évaluation complète prend 30 minutes à une heure, et le Mac est occupé pendant ce temps"
+     ],
+     [
+      "Rapide, et le calcul se fait ailleurs"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Qualité"
+       ]
+      }
+     ],
+     [
+      "Bonne pour des tâches cadrées : 94 % de fidélité et 100 % de bonnes abstentions pour Gemma 4 sur notre jeu ; plafonnée par la taille du modèle"
+     ],
+     [
+      "Nettement supérieure pour le raisonnement, le code, la rédaction longue"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Confidentialité"
+       ]
+      }
+     ],
+     [
+      "Totale : rien ne quitte le Mac. ",
+      {
+       "g": [
+        "Seule option pour les données privées"
+       ]
+      }
+     ],
+     [
+      "Les données partent chez un tiers : public ou pseudonymisé seulement"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Contraintes"
+       ]
+      }
+     ],
+     [
+      "La mémoire : 16 Go, dont environ 11 utilisables, un seul gros modèle à la fois ; l'incident du chapitre 3 ; des réglages (variantes, moteurs, recyclage)"
+     ],
+     [
+      "Dépendance au fournisseur, quotas de l'abonnement, connexion nécessaire ; par l'API, une facture à l'usage"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Le bon partage, celui de Canopée :"
+     ]
+    },
+    " le cloud pour ",
+    {
+     "g": [
+      "construire"
+     ]
+    },
+    " (le code, la documentation) sur des données publiques ; le local pour ",
+    {
+     "g": [
+      "faire tourner"
+     ]
+    },
+    " le système sur tout ce qui touche au privé, et pour les tâches répétitives et cadrées (le reranking, le juge, la génération de données)."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "l-hypothese-et-si-claude-avait-fait-le-travail-d-ollama",
+   "x": [
+    "L'hypothèse : et si Claude avait fait le travail d'Ollama ?"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Tout ce qui suit est ",
+    {
+     "g": [
+      "estimé"
+     ]
+    },
+    ", à partir des tarifs de l'API relevés le 23 octobre 2026, et du travail local mesuré à cette date (7 805 générations, environ 3,8 millions de tokens lus et 230 000 écrits)."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Voie"
+    ],
+    [
+     "Temps"
+    ],
+    [
+     "Coût estimé"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "g": [
+        "Ollama sur le Mac"
+       ]
+      },
+      " (ce qu'on a fait)"
+     ],
+     [
+      "6 h 52 de calcul, mesuré à cette date"
+     ],
+     [
+      "≈ 0 €"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "L'API de Claude"
+       ]
+      },
+      ", une requête par tâche"
+     ],
+     [
+      "30 minutes à 2 heures"
+     ],
+     [
+      {
+       "g": [
+        "≈ 0,50 $"
+       ]
+      },
+      " avec le plus petit modèle, ",
+      {
+       "g": [
+        "≈ 10 $"
+       ]
+      },
+      " avec le modèle intermédiaire, ",
+      {
+       "g": [
+        "≈ 20 $"
+       ]
+      },
+      " avec le plus grand ; moitié prix en traitement par lots"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Claude Code"
+       ]
+      },
+      ", en lui demandant de tout faire dans une session"
+     ],
+     [
+      "Bien plus long : une requête après l'autre"
+     ],
+     [
+      "Environ 10 fois plus de tokens, chaque requête relisant l'historique : hors de portée d'un abonnement individuel"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La lecture."
+     ]
+    },
+    " Par l'API, le même travail coûterait de quelques dizaines de centimes à une vingtaine de dollars, et prendrait beaucoup moins de temps. ",
+    {
+     "g": [
+      "Ce qui interdit le cloud dans Canopée, ce n'est pas le prix : c'est la confidentialité"
+     ]
+    },
+    " des données privées. Pour les données publiques, le local se justifie surtout par l'apprentissage et l'indépendance."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Et Claude Code lui-même, au prix de l'API ?"
+     ]
+    },
+    " Les 25,6 M d'unités mesurées au 23 octobre, pour les deux premiers jours de travail, correspondent à environ ",
+    {
+     "g": [
+      "70 $"
+     ]
+    },
+    " au tarif du plus grand modèle (estimé à partir des quatre compteurs). Refaite de la même façon sur tout le projet au 30 octobre (97,0 M d'unités), l'estimation donne environ ",
+    {
+     "g": [
+      "270 $"
+     ]
+    },
+    " : 119 $ pour les 595 M de tokens relus en cache, 105 $ pour les 13,2 M écrits en cache, 45 $ pour les 2,2 M de sortie. C'est l'ordre de grandeur de ce que l'abonnement a absorbé en huit jours. Deux limites : toutes les requêtes sont comptées au tarif de Claude Opus 5.5, y compris celles de l'étape 10, passée à Claude Opus 4.8, et celles des sous-agents qui tournaient sur d'autres modèles ; et le tarif est celui relevé le 23 octobre."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "la-memoire-ressource-rare",
+   "x": [
+    "La mémoire, ressource rare"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le chapitre 3 l'a montré par l'incident : la variante par défaut de Qwen occupait ",
+    {
+     "g": [
+      "16 Go"
+     ]
+    },
+    " sur un Mac de 16 Go, et la mémoire déportée sur le disque est montée à ",
+    {
+     "g": [
+      "17,2 Go sur 18,4"
+     ]
+    },
+    ". Une autre variante du même modèle tenait en 4,8 à 5,6 Go. Puis le moteur grossissait de requête en requête, jusqu'à 10 Go après 60 requêtes, tant qu'on ne le rechargeait pas."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "En local, la ressource rare n'est pas l'argent, c'est la mémoire."
+     ]
+    },
+    " Un modèle qui ne tient pas fait saturer la machine, et le temps de calcul s'effondre. L'empreinte réelle se mesure, avec plusieurs outils ; elle ne se déduit pas de la taille du fichier."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "La mémoire occupée par chaque modèle local, face aux 16 Go du Mac",
+   "src": "memoire.svg"
+  },
+  {
+   "t": "h2",
+   "id": "ou-investir",
+   "x": [
+    "Où investir ?"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Option"
+    ],
+    [
+     "Ce que ça change"
+    ],
+    [
+     "Ce que ça ne change pas"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "g": [
+        "Une puce plus récente, même mémoire"
+       ]
+      },
+      " (16 à 24 Go)"
+     ],
+     [
+      "Plus rapide : plus de tokens par seconde, une évaluation plus courte"
+     ],
+     [
+      {
+       "g": [
+        "La qualité"
+       ]
+      },
+      " : on reste sur les mêmes petits modèles, faute de place ; la saturation reste un risque"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "48 à 64 Go de mémoire"
+       ]
+      }
+     ],
+     [
+      "Des modèles de ",
+      {
+       "g": [
+        "27 à 32 milliards de paramètres"
+       ]
+      },
+      " deviennent possibles (contre 4 à 9 milliards aujourd'hui ; environ 18 à 22 Go une fois compressés) : un vrai saut de qualité en rédaction et en raisonnement ; plusieurs modèles chargés à la fois ; plus de saturation"
+     ],
+     [
+      "La vitesse par token, qui dépend surtout de la puce"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La règle : la mémoire avant la puce."
+     ]
+    },
+    " La mémoire décide de ",
+    {
+     "i": [
+      "quels modèles"
+     ]
+    },
+    " on peut faire tourner, donc de la qualité ; la puce décide seulement de ",
+    {
+     "i": [
+      "à quelle vitesse"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Le calcul, avec nos chiffres."
+     ]
+    },
+    " Un Mac mini avec 64 Go de mémoire coûtait environ ",
+    {
+     "g": [
+      "3 100 €"
+     ]
+    },
+    " à son lancement (estimation datée, relevée le 23 octobre 2026, pas un devis). Le travail local des deux premiers jours aurait coûté ",
+    {
+     "g": [
+      "≈ 10 $"
+     ]
+    },
+    " par l'API, avec le modèle intermédiaire. À ce rythme, il faudrait ",
+    {
+     "g": [
+      "des centaines de campagnes"
+     ]
+    },
+    " comme celle-ci pour rembourser la machine par les seules économies."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Conclusion honnête : acheter du matériel pour économiser sur le cloud n'est pas rentable"
+     ]
+    },
+    " à l'échelle de Canopée. On l'achète pour trois autres raisons :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "la confidentialité"
+      ]
+     },
+     " : le privé ne peut pas partir ;"
+    ],
+    [
+     {
+      "g": [
+       "l'indépendance"
+      ]
+     },
+     " : pas de quota, pas de fournisseur, pas de connexion ;"
+    ],
+    [
+     {
+      "g": [
+       "la qualité locale"
+      ]
+     },
+     " : des modèles plus gros pour les données privées, là où le cloud est interdit."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-lecons-etape-par-etape",
+   "x": [
+    "Les leçons, étape par étape"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Chaque chapitre s'est terminé par sa ligne de coûts. Mises bout à bout, elles racontent où va vraiment l'effort :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Étape"
+    ],
+    [
+     "Ce qui a coûté"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Évaluation (chapitre 3)"
+     ],
+     [
+      {
+       "g": [
+        "La mesure"
+       ]
+      },
+      " elle-même : trois rédacteurs, deux juges, trois rerankers, près de la moitié de tout le calcul local"
+     ]
+    ],
+    [
+     [
+      "Corpus climat (chapitre 5)"
+     ],
+     [
+      "Le reranking d'un corpus deux fois plus gros, que le cache ne couvrait plus"
+     ]
+    ],
+    [
+     [
+      "Corpus privé (chapitre 6)"
+     ],
+     [
+      {
+       "g": [
+        "Le contrôle des fuites"
+       ]
+      },
+      " : chaque question posée avec plusieurs rôles ; le chiffrement, lui, ne coûte rien de mesurable"
+     ]
+    ],
+    [
+     [
+      "Passerelle (chapitre 7)"
+     ],
+     [
+      {
+       "g": [
+        "La mise au point sans lire"
+       ]
+      },
+      " : chaque fausse alerte diagnostiquée par sa forme, jamais par son contenu"
+     ]
+    ],
+    [
+     [
+      "Agents (chapitre 8)"
+     ],
+     [
+      {
+       "g": [
+        "La mesure"
+       ]
+      },
+      " : construire et relire les jeux de test ; le gardien, lui, coûte quelques millisecondes"
+     ]
+    ],
+    [
+     [
+      "Portail (chapitre 9)"
+     ],
+     [
+      {
+       "g": [
+        "La preuve sans regarder"
+       ]
+      },
+      " : un jeu de test complet, des droits écrits deux fois ; et une session longue"
+     ]
+    ],
+    [
+     [
+      "CNIL, red team, exercices (chapitres 10 à 12)"
+     ],
+     [
+      {
+       "g": [
+        "La conception"
+       ]
+      },
+      " : des contrôles qui concluent sans voir, des correctifs qui ne dégradent rien, une cartographie des données ; à l'exécution, quelques secondes à quelques minutes, presque aucun modèle"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le fil est net. ",
+    {
+     "g": [
+      "Ce qui coûte n'est presque jamais l'IA qui répond."
+     ]
+    },
+    " C'est la mesure, le contrôle, la preuve : tout ce qui permet de dire, chiffres à l'appui, que le système fait ce qu'on croit. Et c'est le prix de la règle n°1 : construire sans regarder demande plus de travail que construire en regardant."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-n-a-pas-pu-etre-mesure",
+   "x": [
+    "Ce qui n'a pas pu être mesuré"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "La répartition par usage"
+      ]
+     },
+     " de Claude est estimée, pas mesurée."
+    ],
+    [
+     {
+      "g": [
+       "Le modèle"
+      ]
+     },
+     " qui a servi chaque requête d'Ollama : le journal ne le dit pas."
+    ],
+    [
+     {
+      "g": [
+       "Le début du projet"
+      ]
+     },
+     " côté Ollama : le journal ne commence qu'en cours d'étape 2."
+    ],
+    [
+     {
+      "g": [
+       "L'énergie"
+      ]
+     },
+     " de Claude : elle se dépense ailleurs, et je n'en ai aucune mesure."
+    ],
+    [
+     {
+      "g": [
+       "La fin du projet"
+      ]
+     },
+     " côté Claude : la session de pilotage et celle qui finit le livre étaient encore ouvertes au moment de la mesure finale."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-il-faut-retenir",
+   "x": [
+    "Ce qu'il faut retenir"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Mesuré et estimé ne se mélangent pas."
+      ]
+     },
+     " Un chiffre sans sa méthode n'est qu'une impression."
+    ],
+    [
+     {
+      "g": [
+       "Le coût du cloud suit la longueur des sessions."
+      ]
+     },
+     " De 40 à 51 % selon la date (estimé) vient des instructions relues à chaque requête : des sessions courtes coûtent moins. Tout le projet aurait coûté environ 270 $ au tarif de l'API (estimé)."
+    ],
+    [
+     {
+      "g": [
+       "Le coût du local, c'est le temps et la mémoire"
+      ]
+     },
+     ", pas l'argent."
+    ],
+    [
+     {
+      "g": [
+       "Ce qui interdit le cloud, c'est la confidentialité, pas le prix."
+      ]
+     },
+     " Par l'API, le travail local de Canopée aurait coûté entre quelques dizaines de centimes et une vingtaine de dollars."
+    ],
+    [
+     {
+      "g": [
+       "La mémoire avant la puce."
+      ]
+     },
+     " Et on n'achète pas une machine pour économiser, mais pour garder le privé chez soi avec des modèles assez bons."
+    ]
+   ]
+  }
+ ]
+}

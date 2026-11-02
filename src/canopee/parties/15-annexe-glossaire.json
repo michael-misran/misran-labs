@@ -1,0 +1,2924 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "annexe-a-glossaire",
+   "x": [
+    "Annexe A. Glossaire"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Annexes · les termes du livre, en langage courant"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Chaque terme technique du livre est expliqué à sa première apparition. Ce glossaire les reprend, pour qu'on puisse les retrouver sans relire le chapitre. Le numéro renvoie au chapitre où le terme est le plus développé."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "a",
+   "x": [
+    "A"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "ABAC"
+     ]
+    },
+    " (contrôle d'accès par attributs) : un droit d'accès décidé par les caractéristiques d'un document, comme sa sensibilité, sa fédération ou son domaine. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Abstention"
+     ]
+    },
+    " : le fait, pour le système, de dire qu'il ne peut pas répondre plutôt que d'inventer. Une ",
+    {
+     "g": [
+      "bonne abstention"
+     ]
+    },
+    " porte sur une question dont la réponse n'est pas dans les documents ; une ",
+    {
+     "g": [
+      "fausse abstention"
+     ]
+    },
+    " renonce alors que la réponse y était. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "ADEME"
+     ]
+    },
+    " : l'Agence de la transition écologique, dont le rapport ",
+    {
+     "i": [
+      "Transition(s) 2050"
+     ]
+    },
+    " est au corpus public. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Adéquation"
+     ]
+    },
+    " (décision d') : la reconnaissance, par la Commission européenne, qu'un pays hors de l'Union protège suffisamment les données personnelles. (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "AES-256"
+     ]
+    },
+    " : un algorithme de chiffrement très répandu, utilisé ici avec une clé de 256 bits. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Agent"
+     ]
+    },
+    " : un programme qui reçoit un but et décide lui-même d'une partie du chemin, à l'aide d'un modèle de langage et d'outils. Un ",
+    {
+     "g": [
+      "script"
+     ]
+    },
+    ", lui, suit un chemin écrit d'avance. (Chap. 8)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Agent cloud, agent local"
+     ]
+    },
+    " : un agent qui tourne chez un fournisseur en ligne, ou sur la machine. Dans Canopée, c'est la zone des données touchées qui décide, pas la tâche. (Chap. 8)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "AIPD"
+     ]
+    },
+    " (analyse d'impact relative à la protection des données) : l'étude des risques d'un traitement pour les personnes : accès illégitime, modification, disparition des données. Obligatoire pour les traitements risqués (article 35 du RGPD). (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Analyste"
+     ]
+    },
+    " : l'agent de Canopée qui extrait d'une étude ses affirmations clés, avec leur niveau de preuve et la citation exacte. (Chap. 8)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Ancrage"
+     ]
+    },
+    " : le dépôt de la dernière empreinte d'un journal en dehors de lui, pour qu'on ne puisse pas le réécrire en entier sans que ça se voie. (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Anonymisation"
+     ]
+    },
+    " : rendre la ré-identification impossible pour quiconque, de façon irréversible. Des données vraiment anonymes sortent du RGPD. À ne pas confondre avec la ",
+    {
+     "g": [
+      "pseudonymisation"
+     ]
+    },
+    ". (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "ANSSI"
+     ]
+    },
+    " : l'Agence nationale de la sécurité des systèmes d'information, l'autorité française en cybersécurité. (Chap. 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "API"
+     ]
+    },
+    " : la porte d'entrée d'un service pour d'autres programmes. Dans ce livre, le mot désigne surtout le service payant à l'usage d'Anthropic. (Chap. 13)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Arcep"
+     ]
+    },
+    " : le régulateur français des télécoms. Il réserve des tranches de numéros aux œuvres de fiction. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Archivage"
+     ]
+    },
+    " : retirer une ancienne version d'un document des recherches, sans l'effacer. (Chap. 5)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Article 9"
+     ]
+    },
+    " : l'article du RGPD qui interdit par principe de traiter les données sensibles, dont les opinions politiques, sauf exceptions. Celle des partis est la ",
+    {
+     "g": [
+      "9.2.d"
+     ]
+    },
+    ". (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Attaque par appartenance"
+     ]
+    },
+    " : une attaque qui cherche à savoir si une personne figure dans un fichier, par exemple en comparant des vecteurs. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Audit"
+     ]
+    },
+    " : un contrôle méthodique qui vérifie que la réalité suit les règles. Celui de Canopée se refait à l'identique par une commande. (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Authentification"
+     ]
+    },
+    " : la preuve de qui l'on est (",
+    {
+     "i": [
+      "qui es-tu ?"
+     ]
+    },
+    "). À distinguer de l'",
+    {
+     "g": [
+      "autorisation"
+     ]
+    },
+    ", qui décide de ce qu'on a le droit de faire. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "b",
+   "x": [
+    "B"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Bac à sable"
+     ]
+    },
+    " : un environnement d'essai où l'on peut apprendre et se tromper sans conséquence sur le monde réel. (Introduction)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Base légale"
+     ]
+    },
+    " : la justification juridique d'un traitement. L'article 6 du RGPD en prévoit six, dont le contrat et le consentement. (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "bge-m3"
+     ]
+    },
+    " : le modèle local qui calcule les embeddings dans Canopée. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Blue team"
+     ]
+    },
+    " : l'équipe qui défend un système. Voir ",
+    {
+     "g": [
+      "red team"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "purple team"
+     ]
+    },
+    ". (Chap. 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "BM25"
+     ]
+    },
+    " : l'algorithme de la recherche par mots des moteurs classiques. Il note un passage selon les mots de la question qu'il contient, en donnant plus de poids aux mots rares. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Bordereau"
+     ]
+    },
+    " : le document de sortie d'un exercice sur les droits : il ne contient que des comptes, aucune donnée sur la personne. (Chap. 12)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Brief"
+     ]
+    },
+    " : la consigne écrite donnée à une session ou à un agent. Dans le circuit de la passerelle, c'est aussi le dossier pseudonymisé confié à Claude. (Chap. 8 et 11)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "c",
+   "x": [
+    "C"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Cache"
+     ]
+    },
+    " : un stockage qui garde un résultat pour ne pas le recalculer. Pour Claude, le ",
+    {
+     "g": [
+      "cache lu"
+     ]
+    },
+    " est le texte déjà en mémoire, relu à chaque requête. Un cache peut aussi contenir des données qu'on avait oubliées. (Chap. 3, 12 et 13)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Canari"
+     ]
+    },
+    " : une valeur unique et piégée, glissée dans les données. Personne n'a de raison légitime de s'en servir : si elle apparaît ailleurs, c'est la preuve d'une fuite, et elle dit d'où elle vient. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Caviardage"
+     ]
+    },
+    " : le remplacement d'une mention dans un document, ici par « [personne effacée] » : le document reste utile, la présence de la personne non. (Chap. 12)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Chaîne d'empreintes"
+     ]
+    },
+    " : un journal où chaque ligne porte l'empreinte de la précédente. Effacer une ligne casse la chaîne. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Change data capture"
+     ]
+    },
+    " : la technique qui ne retraite que ce qui a changé, en comparant l'empreinte du contenu de chaque document. (Chap. 5)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Chevauchement"
+     ]
+    },
+    " : la reprise de la fin d'un passage au début du suivant, pour qu'une idée coupée en deux reste lisible quelque part. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Chiffrement au repos"
+     ]
+    },
+    " : la protection d'une donnée qui dort sur un disque. Sans la clé, le fichier n'est qu'un bruit d'octets. La protection diffère pour une donnée ",
+    {
+     "g": [
+      "en transit"
+     ]
+    },
+    " (sur un réseau) ou ",
+    {
+     "g": [
+      "en usage"
+     ]
+    },
+    " (en mémoire). (Chap. 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Chiffrement d'enveloppe"
+     ]
+    },
+    " : la donnée est chiffrée par une clé, elle-même chiffrée par une clé maîtresse. Changer la clé maîtresse ne demande pas de tout rechiffrer. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Citation obligatoire"
+     ]
+    },
+    " : la règle qui veut que chaque phrase d'une réponse renvoie à l'extrait qui la justifie. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Citepa"
+     ]
+    },
+    " : l'organisme qui publie l'inventaire des émissions de la France, au corpus public. (Chap. 5)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Classificateur"
+     ]
+    },
+    " : un modèle qui juge une action ou un message, et peut les refuser avant qu'ils s'exécutent. (Chap. 10 et 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Claude, Claude Code"
+     ]
+    },
+    " : le modèle de langage d'Anthropic, et son assistant de programmation. Dans Canopée, c'est l'IA du cloud, celle qui construit. (Introduction)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Clé de contrôle"
+     ]
+    },
+    " : le ou les derniers chiffres d'un numéro, calculés à partir des autres pour détecter une faute de frappe. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Cloud"
+     ]
+    },
+    " : un service qui tourne sur les serveurs d'un fournisseur. Ce qu'on lui envoie quitte la machine. (Introduction)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "CNIL"
+     ]
+    },
+    " : la Commission nationale de l'informatique et des libertés, l'autorité française de protection des données. (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Code cohérent"
+     ]
+    },
+    " : un pseudonyme attribué une fois pour toutes à une personne, comme ",
+    {
+     "c": "[PERSONNE_017]"
+    },
+    " (exemple d'illustration). Le cloud peut raisonner sur ce code sans savoir de qui il s'agit. (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Commit"
+     ]
+    },
+    " : un enregistrement d'une version du code dans Git, avec un message qui dit ce qui a changé. (Chap. 1)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Confidentialité différentielle"
+     ]
+    },
+    " : publier une statistique avec un bruit aléatoire calibré, pour qu'on ne puisse pas savoir si une personne donnée est dans le fichier. Le paramètre ",
+    {
+     "g": [
+      "ε"
+     ]
+    },
+    " (epsilon), ou budget, mesure la fuite maximale : plus il est petit, plus le bruit est fort. (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Conflit de synchronisation"
+     ]
+    },
+    " : la situation où un service comme iCloud trouve deux versions d'un même fichier, et garde les deux. (Chap. 5)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Connecteur"
+     ]
+    },
+    " : un programme qui synchronise une source de documents avec un moteur de recherche d'entreprise. (Chap. 5)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Cookie"
+     ]
+    },
+    " : une petite donnée que le site confie au navigateur, et que celui-ci lui renvoie à chaque requête. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Corpus"
+     ]
+    },
+    " : l'ensemble des documents dans lesquels le système cherche ses réponses. Canopée en a deux : le ",
+    {
+     "g": [
+      "public"
+     ]
+    },
+    " et le ",
+    {
+     "g": [
+      "privé"
+     ]
+    },
+    ". (Chap. 2 et 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Corrélation"
+     ]
+    },
+    " : l'un des trois critères de l'anonymisation : peut-on relier deux jeux de données qui concernent la même personne ? (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Crochet"
+     ]
+    },
+    " (",
+    {
+     "i": [
+      "hook"
+     ]
+    },
+    ") : un petit programme que Claude Code exécute avant chaque commande du terminal, et qui peut la refuser. C'est la seconde barrière technique de la règle n°1. (Chap. 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "CSRF"
+     ]
+    },
+    " (falsification de requête intersite) : une attaque où une page piégée fait envoyer un formulaire par votre navigateur vers un site où vous êtes connecté. Le ",
+    {
+     "g": [
+      "jeton anti-CSRF"
+     ]
+    },
+    " la bloque, car la page piégée ne peut pas le lire. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "CSV"
+     ]
+    },
+    " : un format de tableau écrit en simple texte, courant dans les exports de fichiers. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "d",
+   "x": [
+    "D"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Déchargement"
+     ]
+    },
+    " : le retrait d'un modèle de la mémoire. Il vide aussi ce que son moteur a accumulé. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Découpage"
+     ]
+    },
+    " : la coupe d'un document en passages d'environ 1 500 caractères, pour la recherche. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Défense en profondeur"
+     ]
+    },
+    " : ne jamais compter sur une seule protection, et en empiler plusieurs, de natures différentes. (Chap. 1)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Dépendance"
+     ]
+    },
+    " : une bibliothèque de code écrite par d'autres, dont le projet a besoin. Chacune est une surface d'attaque de plus. (Chap. 1)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Dépôt"
+     ]
+    },
+    " : le dossier d'un projet suivi par Git, avec tout son historique. (Chap. 1)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "DLP"
+     ]
+    },
+    " (prévention des fuites) : des règles qui inspectent ce qui sort d'une organisation, et bloquent par exemple un numéro de carte. (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Domaine"
+     ]
+    },
+    " : dans Canopée, l'attribut d'un document qui dit à qui il se rapporte (programme, adhérents, sécurité…), en plus de sa sensibilité. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Données personnelles"
+     ]
+    },
+    " : toute information qui se rapporte à une personne identifiée ou identifiable. Une donnée pseudonymisée en reste une. (Chap. 4 et 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Données sensibles"
+     ]
+    },
+    " : les données que le RGPD protège le plus : santé, religion, origine, opinions politiques… Être dans le fichier d'un parti en révèle déjà une. (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Données synthétiques"
+     ]
+    },
+    " : des données fabriquées, qui ont la forme et les défauts des vraies sans désigner personne. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "DPO"
+     ]
+    },
+    " (délégué à la protection des données) : la personne qui conseille l'organisation, contrôle le respect du RGPD et sert de contact à la CNIL. Elle doit être indépendante. (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Droit d'accès, droit à l'effacement"
+     ]
+    },
+    " : le droit de toute personne d'obtenir les données qu'une organisation détient sur elle (article 15 du RGPD), et d'en demander la suppression (article 17). (Chap. 12)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "e",
+   "x": [
+    "E"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Effacement sécurisé"
+     ]
+    },
+    " : écraser réellement les octets d'une donnée supprimée. Supprimer une ligne ne suffit pas : les octets restent sur le disque. (Chap. 12)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Embedding"
+     ]
+    },
+    " : un texte transformé en une liste de nombres, placée de sorte que deux textes de même sens soient proches, même sans mot commun. On dit aussi ",
+    {
+     "g": [
+      "vecteur"
+     ]
+    },
+    ". (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Empreinte"
+     ]
+    },
+    " : une valeur calculée à partir d'une donnée, dont on ne peut pas remonter à la donnée. Elle permet de comparer sans révéler. (Chap. 4, 9 et 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Empreinte salée"
+     ]
+    },
+    " : une empreinte calculée avec un ",
+    {
+     "g": [
+      "sel"
+     ]
+    },
+    ", pour qu'on ne puisse pas retrouver la donnée en essayant toutes les valeurs courantes. (Chap. 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Entité nommée"
+     ]
+    },
+    " (reconnaissance d') : la technique qui repère dans un texte les noms de personnes, de lieux ou d'organisations. (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Environnement virtuel"
+     ]
+    },
+    " : un dossier qui isole les bibliothèques d'un projet Python du reste de l'ordinateur. (Chap. 1)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Évaluation"
+     ]
+    },
+    " (jeu d') : un examen corrigé à l'avance, repassé à chaque changement : chaque question a sa réponse attendue et sa source. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Exactitude"
+     ]
+    },
+    " : la réponse donne-t-elle la bonne information ? À ne pas confondre avec la ",
+    {
+     "g": [
+      "fidélité"
+     ]
+    },
+    ". (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Expression régulière"
+     ]
+    },
+    " : un motif de texte qui repère ce qui a une forme fixe, comme un e-mail ou un numéro de téléphone. (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Extraction k-anonyme"
+     ]
+    },
+    " : une copie du fichier généralisée jusqu'à respecter le k-anonymat, faite pour être partagée. (Chap. 7)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "f",
+   "x": [
+    "F"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Fact-checking"
+     ]
+    },
+    " : la vérification d'une affirmation contre ses sources. (Chap. 8 et 12)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Faker"
+     ]
+    },
+    " : une bibliothèque qui tire au hasard de faux noms, de fausses adresses et de faux métiers. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "FastAPI"
+     ]
+    },
+    " : une bibliothèque Python pour écrire un serveur web. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Fédération"
+     ]
+    },
+    " : l'échelon départemental du parti. Mycélium en a 30, qui regroupent ses sections locales. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Fidélité"
+     ]
+    },
+    " : chaque phrase est-elle soutenue par l'extrait qu'elle cite ? Une réponse peut être fidèle à de mauvais extraits, ou exacte sans s'appuyer sur eux. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Finalité"
+     ]
+    },
+    " : la raison pour laquelle on traite une donnée. Un traitement sans finalité précise n'a pas de raison d'être. (Chap. 10 et 12)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "FinOps"
+     ]
+    },
+    " : le suivi et la maîtrise des coûts d'un service à l'usage, ici des tokens de l'IA. (Chap. 5)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Formation restreinte"
+     ]
+    },
+    " : l'instance de la CNIL qui peut prononcer des sanctions, dont une amende. (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Fusion par rangs réciproques"
+     ]
+    },
+    " (RRF) : la méthode qui combine deux listes de résultats en ne regardant que le classement de chaque passage, puisque leurs scores ne sont pas comparables. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "g",
+   "x": [
+    "G"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Garde-fou"
+     ]
+    },
+    " (",
+    {
+     "i": [
+      "guardrail"
+     ]
+    },
+    ") : un contrôle qui bloque une action ou une sortie. Un garde-fou ",
+    {
+     "g": [
+      "codé"
+     ]
+    },
+    " applique une règle exacte ; un garde-fou ",
+    {
+     "g": [
+      "par modèle"
+     ]
+    },
+    " juge du sens. (Chap. 8)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Gardien"
+     ]
+    },
+    " : l'agent de Canopée qui contrôle toute sortie vers Claude. C'est une règle codée, pas un modèle : on ne peut pas le convaincre. (Chap. 8)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Gemma 4"
+     ]
+    },
+    " : le modèle local de référence de Canopée, choisi à l'évaluation. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Généralisation"
+     ]
+    },
+    " : remplacer une valeur précise par une catégorie qui désigne plus de monde : un âge devient une tranche, une commune une région. (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "GIEC"
+     ]
+    },
+    " : le groupe d'experts intergouvernemental sur l'évolution du climat, dont les rapports sont au corpus public. (Chap. 2 et 5)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Git, GitHub"
+     ]
+    },
+    " : Git conserve l'historique de toutes les versions d'un code ; GitHub héberge ces dépôts en ligne. (Chap. 1)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      {
+       "c": ".gitignore"
+      }
+     ]
+    },
+    " : la liste de ce que Git doit ignorer, par exemple les données et les secrets. (Chap. 1)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Go, Mo"
+     ]
+    },
+    " : gigaoctet et mégaoctet, des unités de taille pour un fichier ou pour la mémoire. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "GPU"
+     ]
+    },
+    " (processeur graphique) : la puce qui fait l'essentiel du calcul en IA. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Graine"
+     ]
+    },
+    " : le nombre de départ d'un tirage pseudo-aléatoire. Même graine, même suite : on peut refaire exactement les mêmes données. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "h",
+   "x": [
+    "H"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Hachage"
+     ]
+    },
+    " : le calcul d'une empreinte. Pour un mot de passe, on choisit un hachage volontairement ",
+    {
+     "g": [
+      "lent"
+     ]
+    },
+    ", pour ruiner celui qui essaierait des milliards de combinaisons. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "HAL"
+     ]
+    },
+    " : l'archive ouverte de la recherche française. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Haut Conseil pour le climat"
+     ]
+    },
+    " : l'instance qui évalue la politique climatique de la France, et dont les rapports annuels sont au corpus public. (Chap. 5)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Hook"
+     ]
+    },
+    " : voir ",
+    {
+     "g": [
+      "crochet"
+     ]
+    },
+    ". (Chap. 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "HSM"
+     ]
+    },
+    " : un boîtier matériel qui garde des clés de chiffrement sans jamais les laisser sortir. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "i",
+   "x": [
+    "I"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "iCloud Drive"
+     ]
+    },
+    " : le service de synchronisation d'Apple. Ici, il envoyait très probablement tout le dossier du projet sur les serveurs d'Apple. (Chap. 5)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Identifiant direct"
+     ]
+    },
+    " : ce qui désigne une personne à lui seul : un nom, un e-mail, un téléphone. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Incrémentale"
+     ]
+    },
+    " (mise à jour) : ne traiter que ce qui a changé, sans tout reconstruire. (Chap. 5)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Individualisation"
+     ]
+    },
+    " : l'un des trois critères de l'anonymisation : peut-on isoler une personne ? (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Inférence"
+     ]
+    },
+    " : l'un des trois critères de l'anonymisation : peut-on déduire une information sur une personne ? (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Injection de prompt"
+     ]
+    },
+    " : une consigne glissée dans ce que lit un modèle pour lui faire faire autre chose. Elle est ",
+    {
+     "g": [
+      "directe"
+     ]
+    },
+    " quand l'utilisateur la tape, ",
+    {
+     "g": [
+      "indirecte"
+     ]
+    },
+    " quand elle est cachée dans un document. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Intégration continue"
+     ]
+    },
+    " : l'automatisme qui relance les tests à chaque modification du code. (Chap. 3 et 12)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Intranet"
+     ]
+    },
+    " : un site web interne à une organisation, comme le portail de Mycélium. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "j",
+   "x": [
+    "J"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Jeton"
+     ]
+    },
+    " : une valeur secrète qui prouve un droit : une session, un formulaire, une levée à usage unique. À ne pas confondre avec le ",
+    {
+     "g": [
+      "token"
+     ]
+    },
+    ", l'unité de texte d'un modèle. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Jeu de test"
+     ]
+    },
+    " : des données fabriquées exprès pour développer et photographier une application, avec le même code que sur la base complète. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Journal d'audit"
+     ]
+    },
+    " : le registre de qui a fait quoi, quand, sous quel rôle et avec quel résultat. Il doit être exhaustif, minimisé et chaîné. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "JSON"
+     ]
+    },
+    " : un format de texte structuré, que les programmes échangent facilement. (Chap. 8)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "k",
+   "x": [
+    "K"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "k-anonymat"
+     ]
+    },
+    " : la mesure de l'exposition d'un fichier. On range les personnes en classes qui partagent les mêmes quasi-identifiants ; ",
+    {
+     "g": [
+      "k"
+     ]
+    },
+    " est la taille de la plus petite classe. Si k vaut 1, quelqu'un est seul, donc ré-identifiable. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "KMS"
+     ]
+    },
+    " : un service dédié à la gestion des clés de chiffrement. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "kWh"
+     ]
+    },
+    " (kilowattheure) : l'unité de consommation d'électricité de nos factures. (Chap. 13)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "l",
+   "x": [
+    "L"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Levée de pseudonymes"
+     ]
+    },
+    " : remettre en clair le nom derrière un code, sur la machine, pour un rôle qui en a le droit. (Chap. 7, 9 et 12)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Liste blanche"
+     ]
+    },
+    " : la liste de ce qui est autorisé d'office ; tout le reste passe par un humain. (Chap. 5 et 8)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "llama.cpp"
+     ]
+    },
+    " : le moteur historique qui fait tourner des modèles en local, très économe. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "LLM juge"
+     ]
+    },
+    " : un modèle de langage chargé de noter les réponses d'un autre. Il a des biais connus, et il se calibre. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "m",
+   "x": [
+    "M"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Markdown"
+     ]
+    },
+    " : un format de texte simple, avec quelques signes pour les titres et les listes. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Marqueur"
+     ]
+    },
+    " : le mot unique qu'un document piégé demande d'écrire. S'il apparaît dans une réponse, le modèle a obéi au document. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Masquage"
+     ]
+    },
+    " : le remplacement des noms et des numéros dans une copie de données réelles, pour s'en servir en test. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "MCP"
+     ]
+    },
+    " (",
+    {
+     "i": [
+      "Model Context Protocol"
+     ]
+    },
+    ") : un protocole ouvert qui dit comment une application découvre et appelle les outils d'un serveur. Un outil MCP est une porte : tout ce qu'il renvoie part vers le modèle. (Chap. 8)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mémoire unifiée"
+     ]
+    },
+    " : sur un Mac à puce Apple, le processeur et le processeur graphique partagent la même mémoire. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mesuré, estimé"
+     ]
+    },
+    " : une valeur ",
+    {
+     "g": [
+      "mesurée"
+     ]
+    },
+    " est lue dans un journal, à l'unité près. Une valeur ",
+    {
+     "g": [
+      "estimée"
+     ]
+    },
+    " est calculée à partir d'une hypothèse, dite à chaque fois. (Annexe C)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Métadonnées"
+     ]
+    },
+    " : la fiche d'identité d'un document : source, date, auteurs, niveau de preuve, sensibilité. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Minimisation"
+     ]
+    },
+    " : ne traiter que les données nécessaires, et seulement pour qui en a besoin. (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mise en demeure"
+     ]
+    },
+    " : l'ordre de la CNIL de se mettre en conformité dans un délai fixé. Ce n'est pas une sanction. Le rapport de Canopée en imite la forme, sans émaner de la CNIL. (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mistral 7B"
+     ]
+    },
+    " : l'un des trois modèles locaux comparés à l'évaluation. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "MLX"
+     ]
+    },
+    " : la bibliothèque d'Apple pour ses puces, utilisée par Ollama pour certains formats de modèles. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mode automatique"
+     ]
+    },
+    " : le fonctionnement de Claude Code où un classificateur juge chaque action, sans demander d'accord à chaque fois. (Chap. 1 et 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Modèle de langage"
+     ]
+    },
+    " (LLM) : un programme entraîné sur de grandes quantités de texte, qui prédit la suite d'un texte. Quand il ne sait pas, il a tendance à inventer une réponse plausible. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Modèle ouvert"
+     ]
+    },
+    " : un modèle dont les poids sont publiés, et qu'on peut faire tourner sur sa propre machine. (Introduction)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Moindre privilège"
+     ]
+    },
+    " : un composant ne doit tenir que ce dont il a strictement besoin. (Chap. 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Moteur"
+     ]
+    },
+    " : le programme qui exécute réellement les calculs d'un modèle, comme llama.cpp ou MLX. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "n",
+   "x": [
+    "N"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Natif"
+     ]
+    },
+    " : un programme écrit pour la puce de la machine, sans couche de traduction. Voir ",
+    {
+     "g": [
+      "Rosetta"
+     ]
+    },
+    ". (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "NIR"
+     ]
+    },
+    " : le numéro de sécurité sociale. Tous ceux de Mycélium ont volontairement une clé de contrôle fausse. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Niveau de preuve"
+     ]
+    },
+    " : la solidité d'une source : méta-analyse, étude revue par les pairs, rapport institutionnel… (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Non-régression"
+     ]
+    },
+    " (test de) : un test qui vérifie qu'un changement n'a rien cassé de ce qui marchait. (Chap. 3 et 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "nvfp4, q4_K_M"
+     ]
+    },
+    " : deux variantes du modèle Qwen 3.5. À taille de fichier proche, la première occupait 16 Go en mémoire sur le Mac, la seconde environ 5. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "o",
+   "x": [
+    "O"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Ollama"
+     ]
+    },
+    " : le logiciel qui fait tourner les modèles ouverts sur le Mac. (Introduction)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "OpenAlex"
+     ]
+    },
+    " : un catalogue mondial et ouvert de la recherche scientifique. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Orchestration"
+     ]
+    },
+    " : la façon dont des agents s'enchaînent : un chef d'orchestre, ou une chaîne fixe écrite dans le code. (Chap. 8)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      {
+       "c": "Origin"
+      }
+     ]
+    },
+    " : l'information que le navigateur ajoute à une requête pour dire de quel site vient un formulaire. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "p",
+   "x": [
+    "P"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Paramètres"
+     ]
+    },
+    " : les nombres appris par un modèle. Leur quantité (9 milliards, soit « 9B ») donne sa taille. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Passage"
+     ]
+    },
+    " : un morceau de document, l'unité de base de la recherche. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Passerelle"
+     ]
+    },
+    " (d'anonymisation, d'IA) : un passage obligé entre les données et le cloud. Elle repère les données personnelles, les remplace, et refuse ce qui ne doit pas sortir. (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Plafond"
+     ]
+    },
+    " (de la recherche) : le rappel sur les 15 candidats donnés au reranker, qui ne peut pas remonter un passage absent de cette liste. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Porte dérobée"
+     ]
+    },
+    " : un accès caché ou oublié, qui permet d'atteindre ce qui devrait être fermé, sans rien forcer. (Chap. 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Post-filtrage"
+     ]
+    },
+    " : chercher partout, puis retirer ce qui est interdit. C'est moins sûr qu'un filtre appliqué dans la requête. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "PostgreSQL"
+     ]
+    },
+    " : une base de données classique, très utilisée en entreprise, qui sait aussi chercher par le sens avec une extension. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Précision"
+     ]
+    },
+    " : sur toutes les transformations faites, combien portaient vraiment sur une donnée personnelle ? Voir ",
+    {
+     "g": [
+      "rappel"
+     ]
+    },
+    ". (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Presidio"
+     ]
+    },
+    " : l'outil open source de Microsoft pour détecter et masquer les données personnelles. (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Principe de responsabilité"
+     ]
+    },
+    " : l'obligation de pouvoir démontrer qu'on respecte le RGPD (article 5.2), pas seulement de le respecter. (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Production"
+     ]
+    },
+    " : le système réel et ses vraies données, par opposition aux environnements de développement et de test. (Chap. 4 et 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Prompt"
+     ]
+    },
+    " : le texte envoyé à un modèle : la consigne et ce qu'on lui donne à lire. (Chap. 2 et 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Pseudonymisation"
+     ]
+    },
+    " : remplacer ce qui identifie une personne par un code, en gardant le moyen de revenir en arrière. Les données restent des données personnelles, et le RGPD s'applique. (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Pull request"
+     ]
+    },
+    " (demande de fusion) : la proposition d'intégrer une branche de code dans la version principale, que quelqu'un relit et accepte. (Chap. 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Purge"
+     ]
+    },
+    " : la suppression des données arrivées au bout de leur durée de conservation. (Chap. 12)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Purple team"
+     ]
+    },
+    " : faire travailler ensemble l'attaque et la défense : chaque attaque réussie devient un test automatique. (Chap. 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Push"
+     ]
+    },
+    " : l'envoi des commits vers le dépôt en ligne. (Chap. 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Python"
+     ]
+    },
+    " : le langage de programmation du projet. (Chap. 1)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "q",
+   "x": [
+    "Q"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Quantification"
+     ]
+    },
+    " : arrondir les nombres d'un modèle sur moins de bits, comme on compresse une photo en JPEG : on perd un peu de finesse, on gagne beaucoup de place. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Quasi-identifiant"
+     ]
+    },
+    " : une information qui ne désigne personne seule, mais le fait combinée à d'autres : un âge, un département, une profession. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Qwen 3.5"
+     ]
+    },
+    " : le modèle local d'une autre famille que Gemma, qui sert de juge et d'attaquant. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "r",
+   "x": [
+    "R"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "RAG"
+     ]
+    },
+    " (",
+    {
+     "i": [
+      "Retrieval-Augmented Generation"
+     ]
+    },
+    ") : faire répondre un modèle à partir de passages retrouvés dans des documents, et non de sa mémoire. Un examen « documents autorisés ». (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Rappel"
+     ]
+    },
+    " : pour la passerelle, sur toutes les données personnelles, combien ont été transformées ? Pour la recherche, voir ",
+    {
+     "g": [
+      "rappel@k"
+     ]
+    },
+    ". (Chap. 3 et 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Rappel@k"
+     ]
+    },
+    " (rappel@5 dans ce livre) : parmi les sources attendues, combien figurent dans les k premiers résultats ? (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "RBAC"
+     ]
+    },
+    " (contrôle d'accès par rôle) : on donne des droits à des rôles, puis des rôles aux personnes. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Recette"
+     ]
+    },
+    " : le test d'une application par son utilisateur, avant de l'accepter. Dans un autre sens, ce livre appelle aussi « recette » le moyen de refaire un résultat : le code et la graine plutôt que les données. (Chap. 1 et 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Recherche hybride"
+     ]
+    },
+    " : lancer une recherche par mots et une recherche par le sens, puis fusionner les deux listes. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Red team"
+     ]
+    },
+    " : une équipe qui attaque son propre système avec les méthodes d'un adversaire, pour trouver les failles avant lui. (Chap. 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Rédacteur"
+     ]
+    },
+    " : l'agent de Canopée qui rédige une note ou une mesure, avec des citations obligatoires, puis la fait vérifier. (Chap. 8)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Référent"
+     ]
+    },
+    " : l'adresse de la page d'où vient une requête, que le navigateur peut transmettre ou non selon la ",
+    {
+     "g": [
+      "politique de référent"
+     ]
+    },
+    " du site. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Registre des traitements"
+     ]
+    },
+    " : l'inventaire de ce qu'une organisation fait des données personnelles (article 30 du RGPD). (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Registre des violations"
+     ]
+    },
+    " : la liste interne de toutes les violations de données, notifiées ou non. (Chap. 12)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Règles ",
+      {
+       "c": "deny"
+      }
+     ]
+    },
+    " : les règles qui interdisent à un outil de Claude Code d'ouvrir certains chemins. Elles ne valent pas pour une commande du terminal. (Chap. 1)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Régression"
+     ]
+    },
+    " : une amélioration à un endroit qui dégrade un autre endroit sans qu'on le voie. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Ré-identification"
+     ]
+    },
+    " : retrouver la personne derrière une donnée. C'est soit une levée autorisée, soit une attaque par recoupement. (Chap. 7 et 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Reranker"
+     ]
+    },
+    " : un modèle qui lit la question et un passage côte à côte, et juge si le passage répond. Plus précis et plus lent qu'une recherche, il n'est appliqué qu'aux meilleurs candidats. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Responsable du traitement"
+     ]
+    },
+    " : celui qui décide pourquoi et comment on traite des données. Ici, Mycélium. Voir ",
+    {
+     "g": [
+      "sous-traitant"
+     ]
+    },
+    ". (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "RGPD"
+     ]
+    },
+    " : le règlement général sur la protection des données, le texte européen de référence. (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Rôle"
+     ]
+    },
+    " : un ensemble de droits. Canopée en a six : adhérent, cadre, programme, DPO, RSSI, bureau. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Rosetta"
+     ]
+    },
+    " : la couche qui traduit à la volée les programmes Intel pour les puces Apple. Un moteur d'IA qui passe par elle est privé du processeur graphique. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Rotation"
+     ]
+    },
+    " : pour un journal, l'archivage périodique qui l'empêche de grossir sans fin ; pour une clé, son remplacement régulier. (Chap. 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Routage"
+     ]
+    },
+    " : envoyer une requête sur la machine ou dans le cloud, selon la sensibilité des données qu'elle touche. (Introduction)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "RSSI"
+     ]
+    },
+    " : le responsable de la sécurité des systèmes d'information. (Chap. 4)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "s",
+   "x": [
+    "S"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Scanner de secrets"
+     ]
+    },
+    " : un outil qui cherche une clé ou un mot de passe oublié dans le code, avant qu'il ne parte. (Chap. 1)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Script"
+     ]
+    },
+    " : un programme qui suit un chemin écrit d'avance. Voir ",
+    {
+     "g": [
+      "agent"
+     ]
+    },
+    ". (Chap. 8)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "scrypt"
+     ]
+    },
+    " : un algorithme de hachage des mots de passe, volontairement lent et gourmand en mémoire. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Sécurité au niveau des lignes"
+     ]
+    },
+    " (",
+    {
+     "i": [
+      "row-level security"
+     ]
+    },
+    ") : la base ajoute elle-même la règle du rôle à chaque requête, quel que soit le programme qui la pose. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Sel"
+     ]
+    },
+    " : une valeur ajoutée avant le calcul d'une empreinte, pour que deux valeurs identiques n'aient pas la même empreinte, ou qu'on ne puisse pas les retrouver en essayant. (Chap. 9 et 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Sensibilité"
+     ]
+    },
+    " (niveau de) : l'étiquette d'un document dans Canopée : public, interne, confidentiel ou sensible. (Chap. 2 et 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Séparation des tâches"
+     ]
+    },
+    " : le principe des ",
+    {
+     "g": [
+      "quatre yeux"
+     ]
+    },
+    " : la personne qui prépare n'est pas celle qui approuve. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Serveur"
+     ]
+    },
+    " : un programme qui attend des demandes et y répond. « Côté serveur » veut dire là où sont les données, pas dans l'interface. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Session"
+     ]
+    },
+    " : pour un site web, la période pendant laquelle on reste connecté. Pour Claude Code, une conversation de travail, dont le modèle relit tout l'historique à chaque requête. La ",
+    {
+     "g": [
+      "session de pilotage"
+     ]
+    },
+    " est celle d'où j'ai dirigé les sessions d'étape. (Chap. 9 et 13)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "SIEM"
+     ]
+    },
+    " : un outil central qui collecte et surveille les journaux d'une organisation. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Signature"
+     ]
+    },
+    " : dans l'exercice du droit d'accès, l'ensemble de ce qui permet de reconnaître une personne : identifiants, formes de son nom, e-mails, téléphones, codes. (Chap. 12)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Sous-agent"
+     ]
+    },
+    " : un agent lancé par une session pour une tâche précise, comme le contrôle d'une branche. (Chap. 13)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Sous-traitant"
+     ]
+    },
+    " : celui qui traite des données pour le compte du responsable du traitement, et sur ses instructions. Un contrat est obligatoire (article 28 du RGPD). (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "spaCy"
+     ]
+    },
+    " : une bibliothèque d'analyse de la langue, qui reconnaît ici les noms de personnes. (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "SQLCipher"
+     ]
+    },
+    " : une version de SQLite qui chiffre tout le fichier de la base. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "SQLite"
+     ]
+    },
+    " : un moteur de base de données qui tient en un seul fichier. (Chap. 2)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "SSO"
+     ]
+    },
+    " (authentification unique) : un seul compte et une seule connexion pour tous les outils d'une organisation. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Statistiques bruitées"
+     ]
+    },
+    " : des statistiques publiées avec un bruit aléatoire. Voir ",
+    {
+     "g": [
+      "confidentialité différentielle"
+     ]
+    },
+    ". (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Swap"
+     ]
+    },
+    " : quand la mémoire physique est pleine, le système en écrit une partie sur le disque, des milliers de fois plus lent. Au-delà d'un seuil, la machine ne répond plus. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "t",
+   "x": [
+    "T"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Taux de citation"
+     ]
+    },
+    " : la part des réponses qui citent un extrait à chaque phrase. C'est un contrôle de forme, pas de fond. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Temps constant"
+     ]
+    },
+    " (comparaison à) : une comparaison dont la durée ne dépend pas de ce qui est comparé, pour ne rien trahir par le temps de réponse. (Chap. 9)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Terminal"
+     ]
+    },
+    " : la fenêtre où l'on tape des commandes à l'ordinateur. (Chap. 1)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Test d'intrusion"
+     ]
+    },
+    " : une attaque menée à la demande de l'organisation, pour éprouver ses protections. (Chap. 11)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Token"
+     ]
+    },
+    " : l'unité dans laquelle un modèle découpe le texte, un morceau de mot. Le script de mesure en compte un pour 3,5 caractères dans ses estimations. (Chap. 13)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Tokenisation"
+     ]
+    },
+    " : en banque, le remplacement d'un numéro de carte par un jeton sans valeur. (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Traitement"
+     ]
+    },
+    " : au sens du RGPD, tout usage de données personnelles : les collecter, les stocker, les consulter, les envoyer… (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Transfert hors de l'Union"
+     ]
+    },
+    " : l'envoi de données personnelles vers un pays tiers, permis seulement avec une décision d'adéquation ou des garanties, le plus souvent des ",
+    {
+     "g": [
+      "clauses contractuelles types"
+     ]
+    },
+    ". (Chap. 10)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Trousseau"
+     ]
+    },
+    " : le coffre-fort à secrets de macOS, où sont rangées les clés des bases. (Chap. 6)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "u",
+   "x": [
+    "U"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Usage effectif"
+     ]
+    },
+    " : l'unité de ce livre pour mesurer Claude : la somme pondérée de ses quatre compteurs de tokens. Ce n'est pas un prix. (Chap. 13 et annexe C)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "v",
+   "x": [
+    "V"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Variante"
+     ]
+    },
+    " : l'une des versions d'un même modèle, plus ou moins quantifiée. (Chap. 3)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Vecteur"
+     ]
+    },
+    " : voir ",
+    {
+     "g": [
+      "embedding"
+     ]
+    },
+    ". ",
+    {
+     "g": [
+      "Vectoriser"
+     ]
+    },
+    ", c'est calculer ce vecteur pour un passage. (Chap. 2 et 5)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Veilleur"
+     ]
+    },
+    " : l'agent qui tient le corpus public à jour : la liste blanche entre seule, le reste est proposé à un humain. (Chap. 8)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Vérificateur"
+     ]
+    },
+    " : l'agent de Canopée qui relit un texte phrase par phrase, et signale ce qui n'est pas sourcé ou contredit la source. (Chap. 8)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Vérité de terrain"
+     ]
+    },
+    " : le corrigé qui permet de mesurer une détection : la liste exacte de ce qu'il fallait trouver. Ici, c'est le générateur qui l'écrit. (Chap. 7)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Version opposable"
+     ]
+    },
+    " : la version d'un document qui fait foi à une date donnée. (Chap. 5)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Violation de données"
+     ]
+    },
+    " : une atteinte à la sécurité de données personnelles, pas forcément un piratage. Le responsable doit la notifier à la CNIL dans les 72 heures, sauf si elle n'entraîne aucun risque (articles 4.12 et 33 du RGPD). (Chap. 12)"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "w",
+   "x": [
+    "W"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Workflow"
+     ]
+    },
+    " : une chaîne d'opérations au chemin fixe, où seul le contenu est généré par un modèle. (Chap. 8)"
+   ]
+  }
+ ]
+}

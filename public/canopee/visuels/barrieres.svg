@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 498" width="720" height="498" role="img" aria-labelledby="titre desc">
+<title id="titre">La défense en profondeur</title>
+<desc id="desc">Cinq barrières emboîtées autour des données privées : l&#x27;exclusion de Git, les règles deny de Claude Code, la consigne du CLAUDE.md, le crochet qui refuse le terminal sur la zone privée (étape 10) et le chiffrement des bases (étape 5). Chacune a sa limite, couverte par une autre.</desc>
+<style>
+text{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;font-size:12.5px}
+.titre{font-size:17px;font-weight:650}.gras{font-weight:600}.petit{font-size:11.5px}.moyen{font-size:13.5px}.chiffre{font-variant-numeric:tabular-nums}
+.fond{fill:#fcfcfb}.texte{fill:#0b0b0b}.secondaire{fill:#52514e}.discret{fill:#7d7c77}.trait{stroke:#d9d8d3}.f-trait{fill:#d9d8d3}.carte{fill:#f3f2ef}.s-texte{stroke:#52514e}.f-fond{fill:#fcfcfb}.s-fond{stroke:#fcfcfb}.f-cloud{fill:#2a78d6}.s-cloud{stroke:#2a78d6}.t-cloud{fill:#e7eff7}.f-local{fill:#eb6834}.s-local{stroke:#eb6834}.t-local{fill:#faede7}.f-public{fill:#1baf7a}.s-public{stroke:#1baf7a}.t-public{fill:#e6f4ee}.f-controle{fill:#6250d6}.s-controle{stroke:#6250d6}.t-controle{fill:#edebf7}.f-neutre{fill:#7d7c77}.s-neutre{stroke:#7d7c77}.t-neutre{fill:#efefee}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#e4f3e3}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#fcf5e4}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#faf0eb}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#f8e9e8}.f-grave{fill:#8e1f2c}.s-grave{stroke:#8e1f2c}.t-grave{fill:#f1e6e6}.f-r0{fill:#86b6ef}.s-r0{stroke:#86b6ef}.f-r1{fill:#2a78d6}.s-r1{stroke:#2a78d6}.f-r2{fill:#104281}.s-r2{stroke:#104281}.e-conforme{fill:#ffffff}.e-faible{fill:#0b0b0b}.e-moyen{fill:#0b0b0b}.e-eleve{fill:#ffffff}.e-grave{fill:#ffffff}
+@media (prefers-color-scheme:dark){.fond{fill:#1a1a19}.texte{fill:#f0efec}.secondaire{fill:#c3c2b7}.discret{fill:#94938b}.trait{stroke:#3a3a37}.f-trait{fill:#3a3a37}.carte{fill:#242423}.s-texte{stroke:#c3c2b7}.f-fond{fill:#1a1a19}.s-fond{stroke:#1a1a19}.f-cloud{fill:#3987e5}.s-cloud{stroke:#3987e5}.t-cloud{fill:#203042}.f-local{fill:#d95926}.s-local{stroke:#d95926}.t-local{fill:#40271c}.f-public{fill:#199e70}.s-public{stroke:#199e70}.t-public{fill:#1a342a}.f-controle{fill:#9085e9}.s-controle{stroke:#9085e9}.t-controle{fill:#322f43}.f-neutre{fill:#94938b}.s-neutre{stroke:#94938b}.t-neutre{fill:#323230}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#173516}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#473819}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#442f26}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#3e2120}.f-grave{fill:#b8323f}.s-grave{stroke:#b8323f}.t-grave{fill:#3a1f21}.f-r0{fill:#184f95}.s-r0{stroke:#184f95}.f-r1{fill:#3987e5}.s-r1{stroke:#3987e5}.f-r2{fill:#9ec5f4}.s-r2{stroke:#9ec5f4}}
+</style>
+<defs></defs>
+<rect class="fond" width="720" height="498" rx="10"/>
+<text class="texte titre" x="24" y="34">La défense en profondeur</text>
+<text class="secondaire" x="24" y="55">Cinq barrières de nature différente autour des données privées : une fuite demande plusieurs erreurs</text>
+<rect class="t-neutre s-neutre" x="24.0" y="82.0" width="672.0" height="376.0" rx="12" stroke-width="1.25"/>
+<text class="texte gras" x="38.0" y="103.0" text-anchor="start">1 · .gitignore</text>
+<text class="secondaire petit" x="682.0" y="103.0" text-anchor="end">étape 1 · exclusion</text>
+<text class="secondaire petit" x="38.0" y="121.0" text-anchor="start">empêche : que les données partent sur GitHub avec le code</text>
+<text class="discret petit" x="682.0" y="121.0" text-anchor="end">limite : un fichier déjà suivi, un ajout forcé</text>
+<rect class="t-neutre s-neutre" x="36.0" y="134.0" width="648.0" height="312.0" rx="12" stroke-width="1.25"/>
+<text class="texte gras" x="50.0" y="155.0" text-anchor="start">2 · Règles deny de Claude Code</text>
+<text class="secondaire petit" x="670.0" y="155.0" text-anchor="end">étape 1 · permission</text>
+<text class="secondaire petit" x="50.0" y="173.0" text-anchor="start">empêche : que l&#x27;outil de lecture ouvre un fichier privé</text>
+<text class="discret petit" x="670.0" y="173.0" text-anchor="end">limite : une commande du terminal, comme cat</text>
+<rect class="t-controle s-controle" x="48.0" y="186.0" width="624.0" height="248.0" rx="12" stroke-width="1.25"/>
+<text class="texte gras" x="62.0" y="207.0" text-anchor="start">3 · CLAUDE.md, règle n°1</text>
+<text class="secondaire petit" x="658.0" y="207.0" text-anchor="end">étape 1 · consigne</text>
+<text class="secondaire petit" x="62.0" y="225.0" text-anchor="start">empêche : les contournements par le terminal ou un script</text>
+<text class="discret petit" x="658.0" y="225.0" text-anchor="end">limite : une consigne n&#x27;est pas un verrou</text>
+<rect class="t-controle s-controle" x="60.0" y="238.0" width="600.0" height="184.0" rx="12" stroke-width="1.25"/>
+<text class="texte gras" x="74.0" y="259.0" text-anchor="start">4 · Crochet sur le terminal</text>
+<text class="secondaire petit" x="646.0" y="259.0" text-anchor="end">étape 10 · contrôle</text>
+<text class="secondaire petit" x="74.0" y="277.0" text-anchor="start">empêche : les commandes du terminal sur la zone privée</text>
+<text class="discret petit" x="646.0" y="277.0" text-anchor="end">limite : seulement les outils de Claude Code</text>
+<rect class="t-local s-local" x="72.0" y="290.0" width="576.0" height="120.0" rx="12" stroke-width="1.25"/>
+<text class="texte gras" x="86.0" y="311.0" text-anchor="start">5 · Chiffrement des bases</text>
+<text class="secondaire petit" x="634.0" y="311.0" text-anchor="end">étape 5 · verrou</text>
+<text class="secondaire petit" x="86.0" y="329.0" text-anchor="start">empêche : toute lecture du fichier sans la clé</text>
+<text class="discret petit" x="634.0" y="329.0" text-anchor="end">limite : la clé doit elle-même être gardée</text>
+<text class="texte gras" x="360.0" y="376.0" text-anchor="middle" style="font-size:14px">Les données privées</text>
+<text class="secondaire petit" x="360.0" y="394.0" text-anchor="middle">le dossier privé et les bases chiffrées</text>
+<text class="discret petit" x="24" y="484">Source : docs/livre/01-socle.md, docs/etapes/05-corpus-prive.md et 10-red-team.md · généré par outils/schemas.py</text>
+</svg>

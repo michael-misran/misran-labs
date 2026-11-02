@@ -85,6 +85,20 @@ export const VOLUMES = [
     epaisseur: 9,
   },
   {
+    // Placé avant le Nuancier : le rayon n'expose que 2 volumes par alcôve
+    id: 'canopee',
+    rayon: 1,
+    couverture: 'canopee',
+    collection: 'manuels',
+    parution: '2026-11-02',
+    titre: { fr: 'Canopée', en: 'Canopée' },
+    sous: { fr: 'Huit jours pour faire travailler l’IA sur des données privées', en: 'In French: eight days putting AI to work on private data' },
+    to: '/canopee',
+    tranche: { fond: '#3f5a2e', encre: '#efe7d3', police: 'var(--font-chapo)' },
+    hauteur: 90,
+    epaisseur: 9,
+  },
+  {
     id: 'nuancier',
     rayon: 0,
     couverture: 'nuancier',

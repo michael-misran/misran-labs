@@ -1,0 +1,28 @@
+/* Couverture de « Canopée », partagées avec la librairie : tout est en cqw
+   pour s'adapter au cadre, comme la couverture de L'Atelier automatique. */
+
+.cn-couv {
+  position: relative; width: 100%; height: 100%; overflow: hidden; box-sizing: border-box;
+  container-type: inline-size; text-align: left;
+}
+.cn-couv *, .cn-couv *::before, .cn-couv *::after { box-sizing: border-box; }
+.cn-couv h2 { margin: 0; font-weight: 400; }
+.cn-couv p { margin: 0; }
+
+.cn-couv-coupe { background: #231b13; }
+.cn-couv-coupe svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cn-cc-tete {
+  position: absolute; top: 3cqw; left: 5cqw; right: 5cqw; display: flex; justify-content: space-between;
+  font: 600 2.6cqw/1 var(--font-etiquette); letter-spacing: .16em; text-transform: uppercase; color: #2a2015;
+}
+.cn-cc-titre {
+  position: absolute; left: 5cqw; right: 5cqw; top: 101cqw;
+  font: 400 21cqw/.9 var(--font-chapo) !important; letter-spacing: -.01em; color: #efe7d3;
+}
+.cn-cc-repere { position: absolute; font: italic 400 3.2cqw/1 var(--font-chapo); }
+.cn-cc-haut { right: 5cqw; top: 59.6cqw; color: #2a2015; background: #efe7d3; padding: .6cqw 1.4cqw; }
+.cn-cc-bas { right: 5cqw; top: 66cqw; color: #d8b75c; background: #231b13; padding: .6cqw 1.4cqw; }
+.cn-cc-sous {
+  position: absolute; left: 5cqw; right: 5cqw; bottom: 4cqw; padding: 2.4cqw 0 0;
+  border-top: .5cqw solid #d8b75c; font: 400 4.3cqw/1.25 var(--font-chapo); color: #efe7d3;
+}

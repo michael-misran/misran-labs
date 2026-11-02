@@ -1,0 +1,814 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "introduction-un-parti-qui-n-existe-pas-des-donnees-traitees-comme-vraies",
+   "x": [
+    "Introduction. Un parti qui n'existe pas, des données traitées comme vraies"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "la-question-de-depart",
+   "x": [
+    "La question de départ"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Tout le monde parle d'intelligence artificielle. Peu de gens savent ce qui se passe vraiment quand une organisation sérieuse la fait travailler sur ses propres données : ses études, ses comptes rendus, son fichier de membres, ses e-mails."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Sur les réseaux, on voit surtout des démonstrations. Un assistant répond juste, un modèle tourne « en local, gratuitement », un agent fait tout seul le travail d'une équipe. On voit rarement le reste : où vont les données, qui a le droit de lire quoi, ce que coûte le calcul, ce qui casse, et comment on s'en aperçoit."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce livre raconte ce reste. Il le fait d'une façon simple : en construisant, étape par étape, un système complet, et en notant tout ce qui s'est passé. Ce qui a marché, ce qui a échoué, ce que ça a coûté."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-terrain-d-essai-canopee",
+   "x": [
+    "Le terrain d'essai : Canopée"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le projet s'appelle ",
+    {
+     "g": [
+      "Canopée"
+     ]
+    },
+    ". C'est un ",
+    {
+     "g": [
+      "bac à sable d'apprentissage"
+     ]
+    },
+    " : reproduire, à l'échelle d'un seul ordinateur, un Mac, la façon dont les organisations les plus avancées utilisent l'IA sur un mélange de données publiques et de données privées."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce que je voulais comprendre en le construisant tient en six points, tirés du cahier des charges du projet :"
+   ]
+  },
+  {
+   "t": "ol",
+   "debut": 1,
+   "items": [
+    [
+     "la ",
+     {
+      "g": [
+       "recherche augmentée"
+      ]
+     },
+     " : faire répondre une IA à partir de documents, avec des citations obligatoires ;"
+    ],
+    [
+     "la ",
+     {
+      "g": [
+       "séparation stricte"
+      ]
+     },
+     " entre données publiques et données privées ;"
+    ],
+    [
+     "le ",
+     {
+      "g": [
+       "routage"
+      ]
+     },
+     " des requêtes selon la sensibilité des données : sur la machine, ou dans le cloud ;"
+    ],
+    [
+     "l'",
+     {
+      "g": [
+       "anonymisation"
+      ]
+     },
+     " et la ",
+     {
+      "g": [
+       "pseudonymisation"
+      ]
+     },
+     " ;"
+    ],
+    [
+     "la ",
+     {
+      "g": [
+       "conformité au RGPD"
+      ]
+     },
+     " et l'audit, de bout en bout ;"
+    ],
+    [
+     "la ",
+     {
+      "g": [
+       "sécurité"
+      ]
+     },
+     " des agents face à une attaque."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "mycelium-un-parti-qui-n-existe-pas",
+   "x": [
+    "Mycélium, un parti qui n'existe pas"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Il fallait un cas concret. J'ai choisi un parti écologiste pour mêler études scientifiques et documents internes. J'ai découvert ensuite que ce choix rendait l'exercice plus exigeant : les opinions politiques sont des ",
+    {
+     "g": [
+      "données sensibles"
+     ]
+    },
+    " (article 9 du RGPD)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce parti s'appelle ",
+    {
+     "g": [
+      "Mycélium"
+     ]
+    },
+    ". Son image est le réseau souterrain qui relie les arbres. C'est un parti écologiste qui prépare l'élection présidentielle de 2027. Il a un bureau national, une trentaine de fédérations départementales, des sections locales, des adhérents, des militants, des élus."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mycélium est entièrement fictif."
+     ]
+    },
+    " Une recherche faite le 22 octobre 2026 n'a trouvé aucun parti ni mouvement réel portant ce nom. Rien n'a été publié, et rien ne sera publié, au nom d'un vrai mouvement."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La ",
+    {
+     "g": [
+      "CNIL"
+     ]
+    },
+    ", elle, est bien réelle, mais elle n'a ni participé à ce projet ni rien reçu. L'« agent CNIL » dont parle ce livre est un programme qui imite son regard, et ses audits sont des exercices."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le projet mélange donc deux mondes, et il faut les distinguer dès maintenant :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [],
+    [
+     "Ce qui est réel"
+    ],
+    [
+     "Ce qui est fictif"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "g": [
+        "Quoi"
+       ]
+      }
+     ],
+     [
+      "Les études scientifiques et les rapports publics : GIEC, ADEME, Haut Conseil pour le climat, articles de recherche…"
+     ],
+     [
+      "Tout ce qui est interne à Mycélium : adhérents, équipe, comptes rendus, notes, programme, e-mails"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "D'où"
+       ]
+      }
+     ],
+     [
+      "Téléchargé depuis des sources publiques (OpenAlex, HAL, sites des institutions)"
+     ],
+     [
+      "Fabriqué sur le Mac, par un programme"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Comment on le traite"
+       ]
+      }
+     ],
+     [
+      "Comme une donnée publique"
+     ],
+     [
+      {
+       "g": [
+        "Comme si c'était vrai"
+       ]
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Cette dernière ligne est le cœur du livre. Les adhérents de Mycélium n'existent pas. Leurs noms, leurs adresses, leurs numéros sont inventés, et choisis pour ne désigner personne : des adresses e-mail sur un domaine de convention, des numéros de téléphone dans les tranches que l'Arcep réserve aux œuvres de fiction, des numéros de sécurité sociale volontairement invalides. Pourtant, tout au long du projet, ces données ont été protégées ",
+    {
+     "g": [
+      "comme si elles étaient vraies"
+     ]
+    },
+    " : chiffrées, cloisonnées, jamais lues par l'IA du cloud."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pourquoi tant de précautions pour des données inventées ? Parce que les bons réflexes s'acquièrent avant d'en avoir besoin. Le jour où il faudra travailler sur un vrai fichier de membres, il sera trop tard pour apprendre."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "la-regle-n-1",
+   "x": [
+    "La règle n°1"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une règle a gouverné tout le projet. Elle est écrite en tête du fichier de consignes que lit l'IA qui code :"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      {
+       "g": [
+        "Les données privées ne passent jamais par l'IA du cloud."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Cette règle a une conséquence que beaucoup d'organisations oublient. Pour construire Canopée, j'ai travaillé avec ",
+    {
+     "g": [
+      "Claude Code"
+     ]
+    },
+    ", un assistant de programmation d'Anthropic. C'est lui qui a écrit l'essentiel du code et de la documentation, sous ma direction. Or Claude Code est un modèle ",
+    {
+     "g": [
+      "dans le cloud"
+     ]
+    },
+    " : tout ce qu'il lit part sur les serveurs d'Anthropic."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'outil qui construit le système est donc, lui aussi, un « cloud » dont il faut se protéger. Concrètement :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     "Claude Code a écrit le programme qui fabrique les données fictives, ",
+     {
+      "g": [
+       "sans jamais lire ce que ce programme a produit"
+      ]
+     },
+     " ;"
+    ],
+    [
+     "pour vérifier son travail, il a écrit d'autres programmes qui tournent sur le Mac et n'affichent que des ",
+     {
+      "g": [
+       "comptes"
+      ]
+     },
+     ", des ",
+     {
+      "g": [
+       "pourcentages"
+      ]
+     },
+     " et des ",
+     {
+      "g": [
+       "coches"
+      ]
+     },
+     " ;"
+    ],
+    [
+     "il a construit le portail interne de Mycélium sans jamais voir une page de ce portail remplie de la base complète de Mycélium : il a travaillé sur un jeu de test fabriqué exprès."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est une contrainte forte. Elle a coûté du temps, et ce livre dit combien. Elle a aussi produit quelques-unes des leçons les plus utiles du projet."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "deux-sortes-d-ia-celle-du-cloud-et-celle-du-mac",
+   "x": [
+    "Deux sortes d'IA : celle du cloud et celle du Mac"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Canopée utilise deux familles de modèles, avec un partage des rôles net :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [],
+    [
+     "L'IA du cloud"
+    ],
+    [
+     "L'IA locale"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "g": [
+        "Qui"
+       ]
+      }
+     ],
+     [
+      "Claude, par Claude Code"
+     ],
+     [
+      "Des modèles ouverts, qui tournent sur le Mac grâce à Ollama : Gemma 4, Qwen 3.5, bge-m3"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Pour quoi"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "Construire"
+       ]
+      },
+      " : écrire le code, la documentation, piloter les étapes"
+     ],
+     [
+      {
+       "g": [
+        "Faire tourner"
+       ]
+      },
+      " le système : rechercher, noter les passages, rédiger les réponses, juger, générer les données fictives"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Sur quelles données"
+       ]
+      }
+     ],
+     [
+      "Le public, et le pseudonymisé passé par des contrôles"
+     ],
+     [
+      "Tout, selon le rôle de celui qui demande"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le Mac a une puce M2 Pro et 16 Go de mémoire. Ce détail compte : comme on le verra, en IA locale, la mémoire décide de presque tout."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "L'architecture de Canopée : le cloud, le Mac, la zone publique, la zone privée et les deux seules portes entre eux",
+   "src": "architecture.svg"
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-distingue-ce-livre-la-transparence",
+   "x": [
+    "Ce qui distingue ce livre : la transparence"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les démonstrations d'IA locale montrent rarement des chiffres. Ce livre en donne beaucoup, et il les donne avec une règle stricte, tenue d'un bout à l'autre du projet :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "ce qui est mesuré"
+      ]
+     },
+     " est lu dans un journal, à l'unité près : le nombre de requêtes, le temps de calcul, les scores ;"
+    ],
+    [
+     {
+      "g": [
+       "ce qui est estimé"
+      ]
+     },
+     " est calculé à partir d'une hypothèse, et l'hypothèse est dite à chaque fois : l'énergie consommée, le prix qu'aurait coûté le même travail dans le cloud."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pour vous donner le ton, voici quelques chiffres mesurés que vous retrouverez dans les chapitres :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     "les deux premiers jours du projet, de l'étape 1 à la mission « corpus climat », ont demandé ",
+     {
+      "g": [
+       "676 requêtes"
+      ]
+     },
+     " à Claude et ",
+     {
+      "g": [
+       "6 h 52 de calcul"
+      ]
+     },
+     " aux modèles locaux du Mac ;"
+    ],
+    [
+     "le modèle local finalement retenu, Gemma 4, cite un extrait à chaque phrase dans ",
+     {
+      "g": [
+       "96 %"
+      ]
+     },
+     " de ses réponses, et s'abstient de répondre aux ",
+     {
+      "g": [
+       "7 questions sur 7"
+      ]
+     },
+     " dont la réponse n'est pas dans les documents ;"
+    ],
+    [
+     "une variante d'un autre modèle, Qwen 3.5, occupait ",
+     {
+      "g": [
+       "16 Go"
+      ]
+     },
+     " de mémoire sur un Mac qui en a 16, et l'a fait tomber."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le livre donne aussi les ",
+    {
+     "g": [
+      "inconvénients"
+     ]
+    },
+    ". L'IA locale est confidentielle, et pour les données privées c'est la seule option possible. Mais elle est lente, plafonnée par la mémoire, moins fine que les grands modèles du cloud. Et contrairement à une idée répandue, ce qui interdit le cloud pour les données privées de Mycélium, ce n'est pas le prix : c'est la confidentialité. Le chapitre sur les coûts le montre chiffres à l'appui."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-incidents-racontes-en-entier",
+   "x": [
+    "Les incidents, racontés en entier"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un projet qui ne raconte que ses réussites n'apprend rien à personne. Chaque chapitre raconte donc l'incident ou la surprise de son étape, avec ce qu'il a appris. Quelques exemples :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "la mémoire saturée"
+      ]
+     },
+     " : la première campagne d'évaluation a figé le Mac, et il a fallu apprendre à mesurer la mémoire réelle d'un modèle, qui n'a rien à voir avec la taille de son fichier ;"
+    ],
+    [
+     {
+      "g": [
+       "la synchronisation iCloud"
+      ]
+     },
+     " : en plein projet, on découvre que le dossier entier, données privées comprises, part sur les serveurs d'Apple, et qu'aucune des protections construites ne l'avait vu ;"
+    ],
+    [
+     {
+      "g": [
+       "une seule lecture"
+      ]
+     },
+     " : à l'étape de l'anonymisation, toutes les mesures étaient excellentes ; la lecture humaine d'un seul document a pourtant trouvé un défaut qu'aucune ne voyait ;"
+    ],
+    [
+     {
+      "g": [
+       "le premier clic"
+      ]
+     },
+     " : le portail interne passait des centaines de tests automatiques ; au premier clic d'un humain dans un vrai navigateur, tous les formulaires ont été refusés."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Chaque chapitre dit aussi, honnêtement, ",
+    {
+     "g": [
+      "ce qui n'a pas pu être vérifié"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "qui-decide-de-quoi",
+   "x": [
+    "Qui décide de quoi"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un mot sur la façon dont le travail s'est partagé, puisque c'est aussi un sujet du livre."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "J'ai fixé le cadre et les règles. J'ai délégué à l'IA presque tous les ",
+    {
+     "g": [
+      "choix techniques"
+     ]
+    },
+    ", en exigeant qu'elle les justifie par écrit. Les ",
+    {
+     "g": [
+      "décisions de politique"
+     ]
+    },
+    " sont restées humaines : installer ou non une nouvelle bibliothèque, faire entrer ou non une source, corriger ou non un défaut connu, publier ou non une version du code. Chaque dépendance a été validée avant d'être installée, et chaque envoi du code vers le dépôt en ligne a demandé un accord explicite."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est, en petit, la répartition qu'on retrouve dans les organisations qui utilisent sérieusement l'IA : la machine propose et exécute, l'humain décide de ce qui engage."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Le circuit Git du projet : branche, accord, commit, contrôleur, push par Michael, pull request, fusion par Michael",
+   "src": "git.svg"
+  },
+  {
+   "t": "h2",
+   "id": "comment-lire-ce-livre",
+   "x": [
+    "Comment lire ce livre"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le livre suit les étapes du projet, dans l'ordre où elles ont été construites :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Partie I, les fondations"
+      ]
+     },
+     " : le socle, la recherche dans les documents publics, la mesure de la qualité ;"
+    ],
+    [
+     {
+      "g": [
+       "Partie II, le privé"
+      ]
+     },
+     " : les données fictives, le corpus qui grandit, la base chiffrée, la passerelle d'anonymisation ;"
+    ],
+    [
+     {
+      "g": [
+       "Partie III, les agents et les humains"
+      ]
+     },
+     " : les agents métier, le portail de relecture ;"
+    ],
+    [
+     {
+      "g": [
+       "Partie IV, contrôler et attaquer"
+      ]
+     },
+     " : l'audit de conformité, l'attaque, les exercices. Elles n'étaient pas encore faites quand ces lignes ont été écrites, le 26 octobre ; elles l'ont été dans les trois jours suivants ;"
+    ],
+    [
+     {
+      "g": [
+       "Partie V, le bilan"
+      ]
+     },
+     " : ce que coûte vraiment l'IA."
+    ]
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Frise des onze étapes, du 22 au 29 octobre 2026",
+   "src": "frise.svg"
+  },
+  {
+   "t": "p",
+   "x": [
+    "Chaque chapitre d'étape suit le même plan, pour que vous vous y retrouviez :"
+   ]
+  },
+  {
+   "t": "ol",
+   "debut": 1,
+   "items": [
+    [
+     {
+      "g": [
+       "le problème"
+      ]
+     },
+     " que l'étape résout ;"
+    ],
+    [
+     {
+      "g": [
+       "ce qu'on a construit"
+      ]
+     },
+     " ;"
+    ],
+    [
+     {
+      "g": [
+       "les notions"
+      ]
+     },
+     ", expliquées simplement ;"
+    ],
+    [
+     {
+      "g": [
+       "ce que font les vraies organisations"
+      ]
+     },
+     " ;"
+    ],
+    [
+     {
+      "g": [
+       "les chiffres"
+      ]
+     },
+     " ;"
+    ],
+    [
+     {
+      "g": [
+       "l'incident ou la surprise"
+      ]
+     },
+     " de l'étape ;"
+    ],
+    [
+     {
+      "g": [
+       "ce qu'il faut retenir"
+      ]
+     },
+     "."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Vous n'avez pas besoin de savoir programmer. Les quelques extraits de code ou de commandes sont là pour montrer que tout cela est concret ; on peut les sauter sans perdre le fil. Chaque terme technique est expliqué à sa première apparition, et le glossaire en fin de livre les reprend tous."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une dernière précision. Tous les chiffres de ce livre viennent de la documentation du projet, écrite au fil des étapes. Quand une information manquait, je l'ai signalé plutôt que de l'inventer."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Commençons par le commencement : avant d'écrire la moindre ligne « intelligente », il fallait poser des barrières."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,866 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "chapitre-1-le-socle-proteger-avant-de-construire",
+   "x": [
+    "Chapitre 1. Le socle : protéger avant de construire"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Étape 1 du projet · 22 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-probleme",
+   "x": [
+    "Le problème"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Quand on démarre un projet d'IA, on a envie d'aller tout de suite à la partie spectaculaire : poser une question, voir une réponse s'écrire. La première étape de Canopée ne contient rien de tout cela. Aucune IA n'y répond à aucune question."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Elle répond à une question plus terre à terre, et plus importante : ",
+    {
+     "g": [
+      "comment empêcher les données privées de sortir, avant même qu'elles existent ?"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La question se pose dès le premier jour pour une raison qu'on oublie souvent. Le projet est construit avec un assistant de programmation, Claude Code, qui est un modèle ",
+    {
+     "g": [
+      "dans le cloud"
+     ]
+    },
+    ". Tout ce qu'il lit part chez son éditeur, Anthropic. Si cet assistant ouvre un jour, par inadvertance, le fichier des adhérents de Mycélium, ce fichier est sorti. Peu importe que le reste du système soit irréprochable."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Dans une vraie organisation, cette première étape est souvent bâclée, et c'est souvent celle qu'on regrette le plus."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-on-a-construit",
+   "x": [
+    "Ce qu'on a construit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Rien de visible, mais quatre fondations :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "un dépôt Git"
+      ]
+     },
+     " : l'historique de toutes les versions du code, conservé sur le Mac, puis sur un dépôt GitHub ",
+     {
+      "g": [
+       "privé"
+      ]
+     },
+     ". Il ne contient que du code et de la documentation, jamais de données ;"
+    ],
+    [
+     {
+      "g": [
+       "une arborescence"
+      ]
+     },
+     " de dossiers qui reflète l'architecture prévue ;"
+    ],
+    [
+     {
+      "g": [
+       "trois barrières"
+      ]
+     },
+     " qui empêchent les données privées de sortir ;"
+    ],
+    [
+     {
+      "g": [
+       "les règles du projet"
+      ]
+     },
+     ", écrites deux fois : une fois pour les humains, une fois pour l'assistant."
+    ]
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Fichier ou dossier"
+    ],
+    [
+     "À quoi il sert"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "c": ".gitignore"
+      }
+     ],
+     [
+      "La liste de ce que Git doit ignorer : données privées, bases de données, rapports d'attaque, secrets"
+     ]
+    ],
+    [
+     [
+      {
+       "c": ".claude/settings.json"
+      }
+     ],
+     [
+      "Interdit à Claude Code de lire les données privées avec son outil de lecture"
+     ]
+    ],
+    [
+     [
+      {
+       "c": "CLAUDE.md"
+      }
+     ],
+     [
+      "Les règles que Claude Code lit à chaque session dans ce projet"
+     ]
+    ],
+    [
+     [
+      {
+       "c": "README.md"
+      }
+     ],
+     [
+      "La porte d'entrée du projet pour un humain"
+     ]
+    ],
+    [
+     [
+      {
+       "c": "pyproject.toml"
+      }
+     ],
+     [
+      "La carte d'identité du projet Python : nom, version, dépendances"
+     ]
+    ],
+    [
+     [
+      {
+       "c": "docs/"
+      }
+     ],
+     [
+      "Le cahier des charges et la documentation de chaque étape"
+     ]
+    ],
+    [
+     [
+      "Les dossiers de code"
+     ],
+     [
+      "Un dossier par brique de l'architecture, vides pour l'instant"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-notions",
+   "x": [
+    "Les notions"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "une-arborescence-est-une-decision-d-architecture",
+   "x": [
+    "Une arborescence est une décision d'architecture"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les dossiers reprennent les zones du cahier des charges : ",
+    {
+     "c": "donnees/public"
+    },
+    " et ",
+    {
+     "c": "donnees/prive"
+    },
+    ", ",
+    {
+     "c": "corpus"
+    },
+    " pour la recherche, ",
+    {
+     "c": "passerelle"
+    },
+    " pour l'anonymisation, ",
+    {
+     "c": "portail"
+    },
+    " pour l'intranet. Quelqu'un qui découvre le projet comprend le système rien qu'en lisant la liste des dossiers."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est la même idée qu'un bon système de design, où le nom d'un élément dit sa responsabilité. Ici, le nom d'un dossier dit quelles données il a le droit de toucher."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Voici l'arborescence telle qu'elle était à la fin du projet, onze étapes plus tard. Chaque dossier de code est une brique de l'architecture, et les deux derniers ne partent jamais dans Git :"
+   ]
+  },
+  {
+   "t": "code",
+   "langue": "",
+   "texte": "canopee/\n├── CLAUDE.md        règles pour l'assistant de programmation\n├── README.md        porte d'entrée pour un humain\n├── docs/            cahier des charges, une doc par étape, le livre, les visuels\n├── corpus/          zone publique : ingestion, index, recherche\n├── prive/           zone privée : base chiffrée, rôles, recherche\n├── generateur/      fabrique les données fictives\n├── passerelle/      détecte, pseudonymise, ré-identifie\n├── agents/          gardien, analyste, vérificateur, rédacteur, veilleur\n├── mcp/             les deux serveurs MCP, et pas un de plus\n├── portail/         l'intranet de relecture, sur le Mac seulement\n├── evaluation/      questions, mesures, rapports datés\n├── cnil/            l'audit de conformité\n├── hacker/          la red team et la purple team\n├── droits/          accès, effacement, purges\n├── exercices/       les six exercices\n├── outils/          coûts, visuels, garde-fou du terminal\n├── rapports/        audits, bordereaux, incidents (sans donnée personnelle)\n├── donnees/         public et privé : hors de Git\n└── sorties/         ce que produit la passerelle : hors de Git"
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un détail amusant : Git ne sait pas garder un dossier vide. Chaque dossier encore vide contient donc un petit fichier, ",
+    {
+     "c": ".gitkeep"
+    },
+    ", qui ne sert qu'à le faire exister."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-defense-en-profondeur",
+   "x": [
+    "La défense en profondeur"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est le principe de base de la sécurité des entreprises : ",
+    {
+     "g": [
+      "ne jamais compter sur une seule protection"
+     ]
+    },
+    ". Chaque barrière a une faille ; on en empile plusieurs, de nature différente, pour qu'une fuite demande plusieurs erreurs à la suite."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Dès le premier jour, Canopée en a trois. Une quatrième arrive plus tard dans le livre."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Barrière"
+    ],
+    [
+     "Ce qu'elle empêche"
+    ],
+    [
+     "Sa limite"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "g": [
+        {
+         "c": ".gitignore"
+        }
+       ]
+      }
+     ],
+     [
+      "Que des données privées partent sur GitHub avec le code"
+     ],
+     [
+      "Elle ne protège pas un fichier déjà enregistré dans Git, ni un ajout forcé"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Règles ",
+        {
+         "c": "deny"
+        }
+       ]
+      },
+      " de Claude Code"
+     ],
+     [
+      "Que Claude Code ouvre un fichier privé avec son outil de lecture"
+     ],
+     [
+      "Elle ne bloque pas une commande tapée dans le terminal, comme ",
+      {
+       "c": "cat"
+      },
+      ", qui affiche un fichier"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        {
+         "c": "CLAUDE.md"
+        }
+       ]
+      },
+      ", règle n°1"
+     ],
+     [
+      "Que Claude Code contourne la barrière précédente par le terminal ou par un script"
+     ],
+     [
+      "C'est une consigne, pas un verrou : elle repose sur l'obéissance du modèle"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Le chiffrement de la base"
+       ]
+      },
+      " (chapitre 6)"
+     ],
+     [
+      "Toute lecture du fichier sans la clé, quel que soit l'outil"
+     ],
+     [
+      "La clé doit elle-même être protégée"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce tableau dit quelque chose d'important : la troisième barrière est ",
+    {
+     "g": [
+      "une simple consigne"
+     ]
+    },
+    ". Elle fonctionne parce que le modèle la respecte. C'est mieux que rien, mais ce n'est pas une serrure. Il faudra attendre le chiffrement pour fermer vraiment la porte."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "La défense en profondeur : cinq barrières emboîtées autour des données privées",
+   "src": "barrieres.svg"
+  },
+  {
+   "t": "h3",
+   "id": "l-outil-de-developpement-est-lui-aussi-un-cloud",
+   "x": [
+    "L'outil de développement est lui aussi un « cloud »"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est le point le plus souvent oublié en entreprise. Une équipe construit une passerelle d'anonymisation soignée pour son application. Puis un développeur, pour comprendre un bug, colle un extrait du fichier clients dans son assistant IA. Toute la passerelle est contournée en un copier-coller."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Dans Canopée, Claude Code est donc traité comme n'importe quel modèle externe :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     "il ne voit que le code, la documentation et les données publiques ;"
+    ],
+    [
+     "pour travailler sur le privé, il écrit du code qui tourne ",
+     {
+      "g": [
+       "sur le Mac"
+      ]
+     },
+     ", et n'en lit que des statistiques."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Beaucoup d'entreprises ont d'abord interdit les assistants IA à leurs développeurs pour cette raison. Elles les ont ensuite autorisés, mais encadrés par des règles de ce type."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "ce-qui-va-dans-git-et-ce-qui-n-y-va-pas",
+   "x": [
+    "Ce qui va dans Git, et ce qui n'y va pas"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Dans Git"
+    ],
+    [
+     "Hors de Git"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Le code, la documentation, la configuration"
+     ],
+     [
+      "Les données, privées comme publiques"
+     ]
+    ],
+    [
+     [
+      "La liste des dépendances"
+     ],
+     [
+      "Les bases de données et leurs fichiers annexes"
+     ]
+    ],
+    [
+     [
+      "Les tests, les jeux d'évaluation sans donnée personnelle"
+     ],
+     [
+      "Les secrets : clés, mots de passe"
+     ]
+    ],
+    [
+     [],
+     [
+      "Les rapports d'attaque, qui peuvent contenir des données ré-identifiées"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Même les sources publiques restent hors de Git. Elles sont volumineuses, et on peut les télécharger de nouveau. En entreprise, on versionne ",
+    {
+     "g": [
+      "la recette"
+     ]
+    },
+    " (quelles sources, comment les obtenir), pas les données. Ce principe reviendra souvent dans le livre : on garde le moyen de refaire, pas le résultat."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "deux-fichiers-deux-publics",
+   "x": [
+    "Deux fichiers, deux publics"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       {
+        "c": "README.md"
+       }
+      ]
+     },
+     " s'adresse à un humain qui découvre le projet : ce que c'est, où il en est, où lire la suite."
+    ],
+    [
+     {
+      "g": [
+       {
+        "c": "CLAUDE.md"
+       }
+      ]
+     },
+     " s'adresse à l'agent : les règles non négociables, les conventions, les commandes."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les entreprises qui utilisent des agents de code ont toutes ce double niveau. Le fichier pour l'agent est court et impératif. La documentation pour les humains explique le pourquoi."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "l-environnement-virtuel",
+   "x": [
+    "L'environnement virtuel"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le projet est écrit en Python. Un ",
+    {
+     "g": [
+      "environnement virtuel"
+     ]
+    },
+    " est un dossier qui isole les bibliothèques du projet de celles du reste de l'ordinateur : ce qu'on installe pour Canopée ne touche à rien d'autre. Il n'est pas encore créé à cette étape, car aucune bibliothèque n'est encore installée. Et une règle est posée tout de suite : ",
+    {
+     "g": [
+      "aucune dépendance n'est installée sans accord"
+     ]
+    },
+    ". Chaque bibliothèque ajoutée est une surface d'attaque de plus."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-que-font-les-vraies-organisations",
+   "x": [
+    "Ce que font les vraies organisations"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Un modèle de dépôt."
+      ]
+     },
+     " Tous les nouveaux projets démarrent avec le même socle : le même fichier d'exclusions, les mêmes règles de sécurité, la même structure de documentation."
+    ],
+    [
+     {
+      "g": [
+       "Des scanners de secrets avant chaque envoi de code"
+      ]
+     },
+     ", par exemple gitleaks ou la protection intégrée de GitHub. Ils cherchent une clé ou un mot de passe oublié dans le code avant qu'il ne parte. Dans Canopée, ce rôle est tenu par un agent de contrôle qui relit chaque branche avant qu'elle soit proposée."
+    ],
+    [
+     {
+      "g": [
+       "Une classification des données dès le premier jour."
+      ]
+     },
+     " On décide ce qui est public, interne ou confidentiel ",
+     {
+      "g": [
+       "avant"
+      ]
+     },
+     " d'avoir des données, pas après une fuite."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-chiffres",
+   "x": [
+    "Les chiffres"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Cette étape est la plus légère du projet, et ses chiffres sont surtout des vérifications :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Vérification"
+    ],
+    [
+     "Résultat"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Version de Python"
+     ],
+     [
+      "3.14"
+     ]
+    ],
+    [
+     [
+      "Compatibilité des bibliothèques prévues avec Python 3.14 (spaCy, Presidio, Faker, sqlite-vec, SQLCipher, FastAPI, Jinja2)"
+     ],
+     [
+      "Oui, selon le catalogue officiel des bibliothèques Python : pas besoin de revenir à une version plus ancienne"
+     ]
+    ],
+    [
+     [
+      "Version de SQLite, le moteur de base de données"
+     ],
+     [
+      "Récente, avec la recherche plein texte et le chargement d'extensions"
+     ]
+    ],
+    [
+     [
+      {
+       "c": ".gitignore"
+      }
+     ],
+     [
+      "Exclut bien les données privées, les bases, les rapports d'attaque, les secrets et les sources téléchargées"
+     ]
+    ],
+    [
+     [
+      "Règles ",
+      {
+       "c": "deny"
+      }
+     ],
+     [
+      "Bloquées au second essai (voir l'incident)"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Les coûts."
+     ]
+    },
+    " La mesure systématique des coûts n'est arrivée qu'avec la mission « corpus climat » (chapitre 5), mais l'étape 1 a pu être isolée après coup. Elle n'a pas eu de session à elle : elle s'est faite dans la session de pilotage, avant l'ouverture de la session de l'étape 2. Mesuré sur cette fenêtre d'une heure et demie : ",
+    {
+     "g": [
+      "77 requêtes"
+     ]
+    },
+    " à Claude, pour ",
+    {
+     "g": [
+      "1,6 M d'unités"
+     ]
+    },
+    " d'usage effectif, dont 68 k tokens écrits par le modèle (l'unité est expliquée au chapitre 13). Côté modèles locaux : ",
+    {
+     "g": [
+      "rien"
+     ]
+    },
+    ". Aucun modèle n'a tourné, et le journal d'Ollama ne commence d'ailleurs qu'au chapitre 2."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "l-incident-la-barriere-qui-ne-tenait-pas",
+   "x": [
+    "L'incident : la barrière qui ne tenait pas"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une barrière qu'on n'a pas essayée n'est qu'une promesse. Les règles ",
+    {
+     "c": "deny"
+    },
+    " ont donc été testées tout de suite, et le premier essai a échoué."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Premier essai : raté."
+     ]
+    },
+    " Un fichier test placé dans ",
+    {
+     "c": "donnees/prive/"
+    },
+    " a pu être lu par Claude Code. La règle était pourtant bien écrite. La cause : la session de travail avait été ouverte depuis ",
+    {
+     "g": [
+      "un autre projet"
+     ]
+    },
+    ". Les réglages de Canopée ne s'appliquaient donc pas à cette session. La règle existait, elle ne protégeait rien."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Second essai, le 22 octobre 2026, dans une session ouverte dans le dossier de Canopée : réussi."
+     ]
+    },
+    " L'outil de lecture refuse les chemins interdits avec un message clair : le fichier « est dans un dossier interdit par vos réglages de permission ». Il refuse même ",
+    {
+     "g": [
+      "avant de vérifier si le fichier existe"
+     ]
+    },
+    ". Une contre-épreuve le confirme : un fichier absent d'un dossier autorisé renvoie bien « le fichier n'existe pas ». La règle porte donc sur le chemin, pas sur le contenu."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Une surprise rassurante."
+     ]
+    },
+    " Pour ce second essai, il a été impossible de créer le fichier test dans le dossier privé. L'outil d'écriture de Claude Code était bloqué par une règle sœur, et le mode automatique de Claude Code a aussi refusé l'écriture par le terminal. Le test a donc porté sur un chemin interdit, sans fichier dedans."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Ce que l'incident apprend."
+     ]
+    },
+    " Une protection dépend de son ",
+    {
+     "g": [
+      "contexte d'exécution"
+     ]
+    },
+    ". Une règle écrite dans le bon fichier ne sert à rien si l'outil est lancé depuis le mauvais endroit. En entreprise, c'est la même chose avec une politique de sécurité installée sur un poste et pas sur un autre, ou une règle de pare-feu qui s'applique à un réseau et pas au réseau voisin. La seule façon de le savoir est d'essayer."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Et une limite reste ouverte, écrite noir sur blanc dans la documentation de l'étape : les règles ",
+    {
+     "c": "deny"
+    },
+    " ne valent que pour les outils de Claude Code. Un ",
+    {
+     "c": "cat"
+    },
+    " dans le terminal reste possible en théorie. Seules la consigne du ",
+    {
+     "c": "CLAUDE.md"
+    },
+    " et, ici, le mode automatique l'en empêchent. Le chiffrement, au chapitre 6, fermera cette porte."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-il-faut-retenir",
+   "x": [
+    "Ce qu'il faut retenir"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "On protège avant de construire."
+      ]
+     },
+     " La classification des données et les barrières se décident avant que la première donnée existe."
+    ],
+    [
+     {
+      "g": [
+       "L'outil qui construit est lui aussi un risque."
+      ]
+     },
+     " Un assistant de programmation dans le cloud est un modèle externe comme un autre."
+    ],
+    [
+     {
+      "g": [
+       "Aucune barrière n'est parfaite."
+      ]
+     },
+     " On les empile, de natures différentes : une exclusion, une permission, une consigne, puis un chiffrement."
+    ],
+    [
+     {
+      "g": [
+       "Une consigne n'est pas un verrou."
+      ]
+     },
+     " Elle repose sur l'obéissance du modèle. Il faut savoir laquelle de ses protections n'est qu'une consigne."
+    ],
+    [
+     {
+      "g": [
+       "Une barrière non testée n'existe pas."
+      ]
+     },
+     " La première a échoué pour une raison de contexte, pas de syntaxe. Sans le test, personne ne l'aurait su."
+    ]
+   ]
+  }
+ ]
+}

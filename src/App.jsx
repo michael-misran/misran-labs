@@ -25,6 +25,8 @@ const Page404 = lazy(() => import('./shell/Page404'))
 const PortfolioLivre = lazy(() => import('./portfolio/PortfolioLivre'))
 // L'Atelier automatique : le livre de l'IA de 1977 Éditions, hors du Shell
 const AtelierLivre = lazy(() => import('./atelier/AtelierLivre'))
+// Canopée : le livre sur l'IA d'entreprise, une page de lecture par partie, hors du Shell
+const CanopeeLivre = lazy(() => import('./canopee/CanopeeLivre'))
 // Midnight Snack, le nouveau magazine de 1977 Éditions : hors du Shell, sur sa propre table
 const MidnightLivre = lazy(() => import('./midnight/MidnightLivre'))
 // Accueil : la rue (librairie + arcade) ; la librairie est sur /librairie ; la Gazette a son propre format (journal plié)
@@ -44,6 +46,7 @@ export default function App() {
         <Route path="/librairie" element={livre(<Bibliotheque />)} />
         <Route path="/portfolio" element={livre(<PortfolioLivre />)} />
         <Route path="/atelier" element={livre(<AtelierLivre />)} />
+        <Route path="/canopee/:partie?" element={livre(<CanopeeLivre />)} />
         <Route path="/midnight/:numero?" element={livre(<MidnightLivre />)} />
         <Route path="/oracle" element={livre(<GazetteJournal />)} />
         <Route path="/oracle/:date" element={livre(<GazetteJournal />)} />

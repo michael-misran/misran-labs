@@ -1,0 +1,1073 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "chapitre-9-le-portail-interne",
+   "x": [
+    "Chapitre 9. Le portail interne"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Étape 8 du projet · 23 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-probleme",
+   "x": [
+    "Le problème"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les agents du chapitre précédent produisent des rédactions, des fiches de vérification, des propositions de sources. Ils attendent une décision humaine. Or les humains de Mycélium ne lisent ni Markdown ni terminal. Le directeur du pôle programme veut ouvrir une note, voir les phrases douteuses surlignées, commenter, valider. Le DPO veut traiter une demande d'accès. Le responsable de la sécurité veut lire les journaux."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Il leur faut un ",
+    {
+     "g": [
+      "intranet"
+     ]
+    },
+    " : un site web interne, avec des droits stricts et une trace de chaque action. Et ce site pose un problème nouveau. Il ",
+    {
+     "g": [
+      "affiche"
+     ]
+    },
+    " des données privées en clair, à des humains qui ont le droit de les voir. Or celui qui le construit, Claude Code, n'a pas ce droit. Comment développer, tester et photographier une interface qu'on n'a pas le droit de regarder ?"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-on-a-construit",
+   "x": [
+    "Ce qu'on a construit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un site local, accessible seulement depuis le Mac, où chacun se connecte avec son rôle :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     "le ",
+     {
+      "g": [
+       "directeur du pôle programme"
+      ]
+     },
+     " relit les rédactions des agents. Les phrases signalées par le vérificateur sont surlignées, avec leur motif. Il tranche chaque signalement, commente, renvoie au rédacteur ou valide. Il décide aussi des propositions du veilleur ;"
+    ],
+    [
+     "le ",
+     {
+      "g": [
+       "DPO"
+      ]
+     },
+     " consulte le corpus pseudonymisé, lève un pseudonyme sur demande justifiée, et traite les demandes d'accès et d'effacement ;"
+    ],
+    [
+     "le ",
+     {
+      "g": [
+       "RSSI"
+      ]
+     },
+     " lit les journaux techniques et le rapport du gardien, sans aucun contenu politique ;"
+    ],
+    [
+     {
+      "g": [
+       "chaque action est journalisée"
+      ]
+     },
+     ", dans un journal chaîné que l'auditeur du chapitre suivant pourra examiner."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Côté technique : FastAPI, une bibliothèque de serveur web en Python, des pages HTML sans aucun JavaScript, une base chiffrée avec sa propre clé, et des mots de passe que je suis seul à recevoir, par une commande qui refuse de tourner ailleurs que dans mon terminal."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La règle qui a guidé l'étape :"
+     ]
+    },
+    " tout a été développé et testé sur un ",
+    {
+     "g": [
+      "jeu de test"
+     ]
+    },
+    " fabriqué de toutes pièces (13 faux documents, 7 faux comptes, 3 fausses rédactions, de faux journaux), avec ",
+    {
+     "g": [
+      "exactement le même code"
+     ]
+    },
+    " que sur la base complète de Mycélium, ses 2 595 documents inventés. Les captures d'écran ne montrent que ce jeu. Sur la base complète, Claude Code n'a lancé que des contrôles qui affichent des comptes, et n'a ouvert que la page de connexion. La recette, le test par l'utilisateur, c'est moi qui l'ai faite."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-notions",
+   "x": [
+    "Les notions"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "authentification-et-autorisation",
+   "x": [
+    "Authentification et autorisation"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux questions différentes, souvent confondues :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "l'authentification"
+      ]
+     },
+     " : ",
+     {
+      "i": [
+       "qui es-tu ?"
+      ]
+     },
+     " On le prouve par ce qu'on sait (un mot de passe), ce qu'on possède (un téléphone, une clé physique) ou ce qu'on est (une empreinte) ;"
+    ],
+    [
+     {
+      "g": [
+       "l'autorisation"
+      ]
+     },
+     " : ",
+     {
+      "i": [
+       "qu'as-tu le droit de faire ?"
+      ]
+     },
+     " Une fois la personne reconnue, son rôle décide de ce qu'elle voit."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "On peut être parfaitement authentifié et n'avoir le droit de rien, comme le RSSI devant un document politique."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-hachage-lent-des-mots-de-passe",
+   "x": [
+    "Le hachage lent des mots de passe"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "On ne stocke jamais un mot de passe, même chiffré : on stocke son ",
+    {
+     "g": [
+      "empreinte"
+     ]
+    },
+    ", une valeur calculée qu'on ne peut pas inverser. À la connexion, on recalcule l'empreinte de ce qui est tapé et on compare."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pourquoi un calcul ",
+    {
+     "g": [
+      "lent"
+     ]
+    },
+    " ? Si la base est volée, l'attaquant essaie des milliards de mots de passe courants. Une empreinte ordinaire se calcule des milliards de fois par seconde sur une carte graphique. L'algorithme retenu, ",
+    {
+     "g": [
+      "scrypt"
+     ]
+    },
+    ", est fait pour être lent (un dixième de seconde) et gourmand en mémoire (32 Mo par essai). Imperceptible pour qui se connecte ; ruineux pour qui essaie des milliards de combinaisons."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux détails comptent : un ",
+    {
+     "g": [
+      "sel"
+     ]
+    },
+    ", une valeur aléatoire propre à chaque compte, pour que deux mots de passe identiques aient deux empreintes différentes ; et une comparaison ",
+    {
+     "g": [
+      "à temps constant"
+     ]
+    },
+    ", pour que la durée de la réponse ne trahisse ni le nombre de caractères justes, ni l'existence d'un compte."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-sessions-et-les-cookies",
+   "x": [
+    "Les sessions et les cookies"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le web est « sans mémoire » : chaque requête arrive seule. Pour ne pas redemander le mot de passe à chaque page, le serveur donne au navigateur un ",
+    {
+     "g": [
+      "jeton de session"
+     ]
+    },
+    " dans un ",
+    {
+     "g": [
+      "cookie"
+     ]
+    },
+    ", que le navigateur renvoie à chaque requête. Le cookie du portail est illisible par le code de la page, envoyé seulement sur une connexion sûre, jamais joint à une requête venue d'un autre site, et il disparaît à la fermeture du navigateur. Côté serveur, la session expire après 30 minutes sans activité et 8 heures au plus. Et la base ne garde que l'empreinte du jeton : qui la vole n'a aucune session valide."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-csrf",
+   "x": [
+    "Le CSRF"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le ",
+    {
+     "i": [
+      "cross-site request forgery"
+     ]
+    },
+    ", ou falsification de requête intersite. Vous êtes connecté au portail dans un onglet. Dans un autre, vous ouvrez une page piégée. Elle contient un formulaire invisible qui s'envoie tout seul vers le portail, par exemple pour valider une mesure. Votre navigateur y joint votre cookie, et le portail croit que c'est vous."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux parades, cumulées : le navigateur ne joint pas le cookie à une requête venue d'un autre site ; et chaque formulaire porte un ",
+    {
+     "g": [
+      "jeton anti-CSRF"
+     ]
+    },
+    ", propre à la session, que la page piégée ne peut pas lire, donc pas recopier. Le portail vérifie aussi l'en-tête ",
+    {
+     "g": [
+      {
+       "c": "Origin"
+      }
+     ]
+    },
+    ", que le navigateur ajoute pour dire de quel site vient le formulaire. C'est ce troisième contrôle qui fera l'incident de l'étape."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-controle-d-acces-cote-serveur",
+   "x": [
+    "Le contrôle d'accès, côté serveur"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Cacher un bouton n'est pas un contrôle d'accès : n'importe qui peut taper une adresse à la main. Le portail vérifie à deux niveaux, à chaque requête :"
+   ]
+  },
+  {
+   "t": "ol",
+   "debut": 1,
+   "items": [
+    [
+     {
+      "g": [
+       "la route"
+      ]
+     },
+     " : chaque adresse déclare les rôles qui peuvent l'ouvrir. Une route oubliée empêche le portail de démarrer : une page ajoutée sans réfléchir ne peut pas être ouverte à tous ;"
+    ],
+    [
+     {
+      "g": [
+       "la donnée"
+      ]
+     },
+     " : la requête à la base ne renvoie que les documents que le rôle peut lire, avec la règle du chapitre 6, écrite une seule fois."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un cadre qui devine l'adresse d'un document d'une autre fédération reçoit « introuvable », pas « interdit » : dire « interdit », ce serait confirmer que le document existe."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-journal-d-audit",
+   "x": [
+    "Le journal d'audit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un journal d'audit répond, des mois plus tard, à la question : ",
+    {
+     "i": [
+      "qui a fait quoi, quand, sous quel rôle, sur quel document, avec quel résultat ?"
+     ]
+    },
+    " Le RGPD demande de pouvoir ",
+    {
+     "g": [
+      "démontrer"
+     ]
+    },
+    " sa conformité : le journal est cette démonstration. Trois exigences :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "l'exhaustivité"
+      ]
+     },
+     " : les refus comptent autant que les réussites. Une tentative interdite est exactement ce que cherche un auditeur ;"
+    ],
+    [
+     {
+      "g": [
+       "la minimisation"
+      ]
+     },
+     " : le journal ne recopie ni commentaire, ni motif, ni nom. Un commentaire est désigné par son identifiant et sa longueur. Sinon, le journal deviendrait une copie du privé ;"
+    ],
+    [
+     {
+      "g": [
+       "l'intégrité"
+      ]
+     },
+     " : chaque ligne porte l'empreinte de la précédente. Effacer une ligne gênante casse la ",
+     {
+      "g": [
+       "chaîne"
+      ]
+     },
+     "."
+    ]
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-separation-des-taches",
+   "x": [
+    "La séparation des tâches"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est le principe des ",
+    {
+     "g": [
+      "quatre yeux"
+     ]
+    },
+    " : la personne qui prépare n'est pas celle qui approuve. Celui qui saisit une facture ne la paie pas ; un virement important demande deux signatures. Dans le portail, un compte qui a soumis un dossier ne peut pas le valider. Avec mon seul compte « programme », je ne peux donc pas valider ce que j'ai soumis : un second compte du pôle joue le second regard."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Le circuit de relecture du portail et la séparation des tâches",
+   "src": "portail.svg"
+  },
+  {
+   "t": "h3",
+   "id": "pourquoi-le-developpeur-teste-sur-un-jeu-de-test",
+   "x": [
+    "Pourquoi le développeur teste sur un jeu de test"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Dans une vraie organisation, le développeur ",
+    {
+     "g": [
+      "n'a pas accès"
+     ]
+    },
+    " aux données de production. Ce n'est pas de la méfiance, c'est la ",
+    {
+     "g": [
+      "minimisation"
+     ]
+    },
+    " du RGPD et le moindre privilège. Ici, la contrainte est plus forte encore : le développeur est dans le cloud, et une capture d'écran du portail rempli de la base complète serait une sortie des données privées. D'où trois pièces : le même code sur les deux jeux ; des contrôles qui n'affichent que des comptes sur la base complète ; et la recette faite par celui qui a le droit de voir."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-que-font-les-vraies-organisations",
+   "x": [
+    "Ce que font les vraies organisations"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Des intranets de relecture"
+      ]
+     },
+     ", avec des statuts, des commentaires ancrés dans le texte et des droits par rôle ; les plateformes d'IA d'entreprise y ajoutent une file de « revue humaine »."
+    ],
+    [
+     {
+      "g": [
+       "L'authentification unique"
+      ]
+     },
+     " (",
+     {
+      "i": [
+       "SSO"
+      ]
+     },
+     ") et un ",
+     {
+      "g": [
+       "second facteur"
+      ]
+     },
+     ". Les mots de passe, quand ils existent encore, sont hachés avec un algorithme lent."
+    ],
+    [
+     {
+      "g": [
+       "Le journal d'audit"
+      ]
+     },
+     " envoyé vers un outil central de surveillance, sur un stockage où l'on écrit une fois sans pouvoir réécrire, hors de portée des administrateurs qu'il surveille."
+    ],
+    [
+     {
+      "g": [
+       "La séparation des tâches"
+      ]
+     },
+     ", exigée par les normes de contrôle interne et vérifiée automatiquement par les grands progiciels."
+    ],
+    [
+     {
+      "g": [
+       "Les données de test"
+      ]
+     },
+     " : jamais la production pour développer. L'accès à la production est réservé, tracé, et souvent temporaire."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-chiffres",
+   "x": [
+    "Les chiffres"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Mesurés sur le jeu de test (rapport final de l'étape, après les retours du parcours humain) :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Mesure"
+    ],
+    [
+     "Objectif"
+    ],
+    [
+     "Résultat"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Accès interdits : 256 requêtes, soit 32 routes × 8 profils (sur 34 routes, les 2 de la page de connexion, publiques, ne sont pas jouées), plus 112 ouvertures de documents"
+     ],
+     [
+      "0"
+     ],
+     [
+      {
+       "g": [
+        "0"
+       ]
+      },
+      ", et 0 refus à tort"
+     ]
+    ],
+    [
+     [
+      "Formulaires forgés (sans jeton, faux jeton, autre site, origine « null »)"
+     ],
+     [
+      "tous refusés"
+     ],
+     [
+      {
+       "g": [
+        "48 sur 48"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Formulaires envoyés comme par un vrai navigateur"
+     ],
+     [
+      "tous acceptés"
+     ],
+     [
+      {
+       "g": [
+        "36 sur 36"
+       ]
+      },
+      " (mesure ajoutée par le correctif)"
+     ]
+    ],
+    [
+     [
+      "Sessions : expirations, déconnexion, blocage après 5 échecs"
+     ],
+     [
+      "tout réussi"
+     ],
+     [
+      {
+       "g": [
+        "8 sur 8"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Séparation des tâches et scénarios métier"
+     ],
+     [
+      "tout réussi"
+     ],
+     [
+      {
+       "g": [
+        "44 étapes sur 44"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Requêtes sans ligne de journal"
+     ],
+     [
+      "0"
+     ],
+     [
+      {
+       "g": [
+        "0"
+       ]
+      },
+      " sur les requêtes des comptes connectés ; chaîne intacte"
+     ]
+    ],
+    [
+     [
+      "Pages où le Markdown apparaît brut, ou le HTML d'un document piégé est interprété"
+     ],
+     [
+      "0"
+     ],
+     [
+      {
+       "g": [
+        "0"
+       ]
+      },
+      " sur 116 pages"
+     ]
+    ],
+    [
+     [
+      "Écoute réseau"
+     ],
+     [
+      "la machine seulement"
+     ],
+     [
+      {
+       "g": [
+        "oui"
+       ]
+      },
+      " ; refusé depuis le réseau local"
+     ]
+    ],
+    [
+     [
+      "Contrastes des couleurs (accessibilité, niveau AA)"
+     ],
+     [
+      "conformes"
+     ],
+     [
+      {
+       "g": [
+        "12 paires sur 12"
+       ]
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Sur la base complète, ",
+    {
+     "c": "portail controler"
+    },
+    " compare, pour chacun des 7 comptes, le filtre de la base à la contre-épreuve indépendante, sur les 2 595 documents : ",
+    {
+     "g": [
+      "0 écart"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Les mesures savent-elles voir une faille ?"
+     ]
+    },
+    " On l'a vérifié en injectant volontairement trois failles, hors du dépôt : le journal ouvert au pôle programme (2 accès interdits détectés), la lecture d'un document sans la règle des rôles (43 détectés), le CSRF non vérifié (32 formulaires acceptés à tort détectés). Une mesure qui ne voit jamais rien ne prouve rien ; celles-ci voient."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-couts",
+   "x": [
+    "Les coûts"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mesuré."
+     ]
+    },
+    " Côté Ollama, ",
+    {
+     "g": [
+      "une seule"
+     ]
+    },
+    " génération pendant toute la session : un portail n'appelle aucun modèle (la seule génération est un essai de traduction). Les mesures prennent 10 s, et scrypt un dixième de seconde par connexion. Côté Claude, en revanche, c'est la session ",
+    {
+     "g": [
+      "la plus chère"
+     ]
+    },
+    " de tout le projet : ",
+    {
+     "g": [
+      "170 requêtes"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "10,5 M d'unités"
+     ]
+    },
+    ", correctif et retours compris, contre 2,8 M mesurés avant la documentation."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La lecture."
+     ]
+    },
+    " Un portail ne coûte presque rien à faire tourner. Ce qui a coûté, c'est de le ",
+    {
+     "g": [
+      "prouver sans le regarder"
+     ]
+    },
+    " : un jeu de test complet, une matrice des droits écrite deux fois (dans le code et dans la mesure), des captures fabriquées à partir de ce jeu. Et une session qui s'allonge avec chaque retour : le coût de Claude suit la longueur des sessions, pas la difficulté technique."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-incidents-ce-que-le-premier-clic-a-trouve",
+   "x": [
+    "Les incidents : ce que le premier clic a trouvé"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-bug-de-l-en-tete-origin",
+   "x": [
+    "Le bug de l'en-tête Origin"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Toutes les mesures étaient vertes. Au ",
+    {
+     "g": [
+      "premier clic"
+     ]
+    },
+    " de mon parcours de test, sur la base complète, sur le bouton « Signalement juste », le portail a répondu : « Formulaire refusé : il ne vient pas du portail ». ",
+    {
+     "g": [
+      "Tous"
+     ]
+    },
+    " les formulaires étaient refusés. Seule la connexion marchait."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La cause tenait à deux protections justes chacune, qui se contredisaient."
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     "Pour ne rien laisser fuiter vers d'autres sites, le portail demandait au navigateur de ne jamais envoyer l'adresse de la page d'origine (une ",
+     {
+      "g": [
+       "politique de référent"
+      ]
+     },
+     " « aucun référent »)."
+    ],
+    [
+     "Or la norme du web dit que, dans ce cas, le navigateur envoie ",
+     {
+      "g": [
+       {
+        "c": "Origin: null"
+       }
+      ]
+     },
+     " sur un formulaire, même quand ce formulaire vient du portail lui-même."
+    ],
+    [
+     "Le contrôle d'origine, ajouté contre le CSRF, lisait « null », n'y trouvait pas l'adresse du portail, et refusait."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pourquoi les mesures n'avaient rien vu : le client de test n'est pas un navigateur. Il n'envoie aucun en-tête ",
+    {
+     "c": "Origin"
+    },
+    ", et l'absence d'en-tête était acceptée (certains outils n'en envoient pas ; le jeton anti-CSRF reste la vraie protection). Aucun test ne jouait le comportement réel d'un navigateur."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le correctif : une politique de référent qui envoie l'origine au portail lui-même et rien aux autres sites ; un « null » désormais refusé explicitement (l'accepter aurait ouvert une porte, car une page piégée peut elle aussi envoyer « null ») ; deux mesures de plus, dont des formulaires envoyés exactement comme par un navigateur. La vérification s'est faite aussi dans un vrai navigateur, sur le jeu de test : avec l'ancien code, le même message ; avec le correctif, tout passe."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-levee-de-pseudonymes-rejouee",
+   "x": [
+    "La levée de pseudonymes rejouée"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le parcours a trouvé sept autres défauts. Le plus sérieux était une faille de sécurité. Chez le DPO, après une levée de pseudonymes justifiée, ",
+    {
+     "g": [
+      "recharger la page"
+     ]
+    },
+    " (et confirmer le renvoi du formulaire, comme le propose le navigateur) relevait les noms ",
+    {
+     "g": [
+      "une seconde fois"
+     ]
+    },
+    ", avec une nouvelle ligne de journal."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le correctif : un ",
+    {
+     "g": [
+      "jeton à usage unique"
+     ]
+    },
+    " par levée, tiré quand la page pseudonymisée s'affiche, lié au compte et au document, valable 30 minutes, et consommé au premier envoi. Un renvoi est refusé (« cette levée a déjà été consultée : refaites une demande avec un motif ») et journalisé. Le rejeu, l'absence de jeton, le jeton d'un autre document et un jeton périmé sont refusés, mesure à l'appui."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "On retrouvera ce rejeu au chapitre suivant : l'auditeur l'a reconstitué tout seul, dans le journal, sans rien lire."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-fragment-adhe",
+   "x": [
+    "Le fragment « Adhé »"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Troisième trouvaille : dans une fiche d'adhérent pseudonymisée, un fragment étrange, « Adhé », suivi du montant de la cotisation. La cause n'était pas dans le portail, mais dans la passerelle, ",
+    {
+     "g": [
+      "deux étapes plus tôt"
+     ]
+    },
+    ". La détection de la date d'adhésion couvrait toute l'expression « Adhésion le » suivie de la date ; le remplacement gardait les quatre premiers caractères en croyant garder l'année. Résultat : « Adhé »."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Compté sur le corpus complet, sans rien lire : ",
+    {
+     "g": [
+      "2 062 fiches sur 2 062"
+     ]
+    },
+    " contenaient ce motif. Toutes. Les scores de la passerelle n'avaient pas bougé, parce qu'ils comptent des détections, pas des mots tronqués. La date devient maintenant « Adhésion en » suivie de l'année, et les scores restent identiques."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-cinq-autres",
+   "x": [
+    "Les cinq autres"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les autres retours touchaient au confort : le nom de l'auteur sur chaque commentaire, la liste des signalements encore à trancher, un compteur cliquable, la séparation des tâches visible ",
+    {
+     "g": [
+      "avant"
+     ]
+    },
+    " le clic plutôt qu'au refus, un espace DPO à deux entrées distinctes. Et une demande : ",
+    {
+     "g": [
+      "traduire"
+     ]
+    },
+    " les sources en anglais. La traduction est faite par Gemma, sur le Mac, gardée en cache ; la page affiche « seul l'original fait foi », et les citations utilisent toujours l'original."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "ce-que-les-trois-defauts-ont-en-commun",
+   "x": [
+    "Ce que les trois défauts ont en commun"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Chacun se situe là où le test automatique ne regardait pas. Le premier tient au comportement réel d'un navigateur ; le deuxième, à un geste humain (recharger une page) ; le troisième, au texte affiché, que la mesure ne relit pas. Et chacun est devenu une mesure de plus."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-n-a-pas-pu-etre-verifie",
+   "x": [
+    "Ce qui n'a pas pu être vérifié"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Le portail sur la base complète, page par page"
+      ]
+     },
+     " : c'est mon parcours, par construction."
+    ],
+    [
+     {
+      "g": [
+       "Le navigateur Safari"
+      ]
+     },
+     " : les captures ont été faites avec Chrome. Le comportement de Safari avec un cookie sécurisé sur l'adresse locale n'a pas été vérifié."
+    ],
+    [
+     {
+      "g": [
+       "Le lecteur d'écran"
+      ]
+     },
+     " : la structure est prévue pour lui, mais il n'a pas été essayé."
+    ],
+    [
+     {
+      "g": [
+       "Une vraie intégration depuis la file du veilleur"
+      ]
+     },
+     " : accepter une proposition télécharge le document ; seulement essayé sur le jeu de test."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-il-faut-retenir",
+   "x": [
+    "Ce qu'il faut retenir"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "On développe sur un jeu de test, avec le même code."
+      ]
+     },
+     " C'est ainsi qu'on construit, mesure et photographie une interface qu'on n'a pas le droit de regarder."
+    ],
+    [
+     {
+      "g": [
+       "Le contrôle d'accès se fait sur le serveur, deux fois"
+      ]
+     },
+     " : la route, puis la donnée. L'interface ne fait que suivre."
+    ],
+    [
+     {
+      "g": [
+       "Un journal d'audit est exhaustif, minimisé et chaîné"
+      ]
+     },
+     ", ou il ne prouve rien."
+    ],
+    [
+     {
+      "g": [
+       "Une mesure automatique ne vérifie que ce qu'elle simule."
+      ]
+     },
+     " Un faux navigateur ne reproduit pas les règles d'un vrai, et c'est souvent à la frontière entre deux protections que ça casse."
+    ],
+    [
+     {
+      "g": [
+       "Une recette humaine ne remplace pas les mesures, et les mesures ne remplacent pas la recette."
+      ]
+     },
+     " Chaque défaut trouvé à la main devient une mesure de plus."
+    ]
+   ]
+  }
+ ]
+}

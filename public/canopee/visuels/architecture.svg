@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 712" width="720" height="712" role="img" aria-labelledby="titre desc">
+<title id="titre">L&#x27;architecture de Canopée</title>
+<desc id="desc">Claude, dans le cloud, construit le système et ne voit que le public et le pseudonymisé, par deux serveurs MCP. Sur le Mac, la zone publique et la zone privée chiffrée ; Ollama fait tourner les modèles locaux ; une donnée privée ne monte vers le cloud qu&#x27;après la passerelle et le gardien, et seulement si elle est de niveau interne. Le portail sert aux humains, en local.</desc>
+<style>
+text{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;font-size:12.5px}
+.titre{font-size:17px;font-weight:650}.gras{font-weight:600}.petit{font-size:11.5px}.moyen{font-size:13.5px}.chiffre{font-variant-numeric:tabular-nums}
+.fond{fill:#fcfcfb}.texte{fill:#0b0b0b}.secondaire{fill:#52514e}.discret{fill:#7d7c77}.trait{stroke:#d9d8d3}.f-trait{fill:#d9d8d3}.carte{fill:#f3f2ef}.s-texte{stroke:#52514e}.f-fond{fill:#fcfcfb}.s-fond{stroke:#fcfcfb}.f-cloud{fill:#2a78d6}.s-cloud{stroke:#2a78d6}.t-cloud{fill:#e7eff7}.f-local{fill:#eb6834}.s-local{stroke:#eb6834}.t-local{fill:#faede7}.f-public{fill:#1baf7a}.s-public{stroke:#1baf7a}.t-public{fill:#e6f4ee}.f-controle{fill:#6250d6}.s-controle{stroke:#6250d6}.t-controle{fill:#edebf7}.f-neutre{fill:#7d7c77}.s-neutre{stroke:#7d7c77}.t-neutre{fill:#efefee}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#e4f3e3}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#fcf5e4}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#faf0eb}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#f8e9e8}.f-grave{fill:#8e1f2c}.s-grave{stroke:#8e1f2c}.t-grave{fill:#f1e6e6}.f-r0{fill:#86b6ef}.s-r0{stroke:#86b6ef}.f-r1{fill:#2a78d6}.s-r1{stroke:#2a78d6}.f-r2{fill:#104281}.s-r2{stroke:#104281}.e-conforme{fill:#ffffff}.e-faible{fill:#0b0b0b}.e-moyen{fill:#0b0b0b}.e-eleve{fill:#ffffff}.e-grave{fill:#ffffff}
+@media (prefers-color-scheme:dark){.fond{fill:#1a1a19}.texte{fill:#f0efec}.secondaire{fill:#c3c2b7}.discret{fill:#94938b}.trait{stroke:#3a3a37}.f-trait{fill:#3a3a37}.carte{fill:#242423}.s-texte{stroke:#c3c2b7}.f-fond{fill:#1a1a19}.s-fond{stroke:#1a1a19}.f-cloud{fill:#3987e5}.s-cloud{stroke:#3987e5}.t-cloud{fill:#203042}.f-local{fill:#d95926}.s-local{stroke:#d95926}.t-local{fill:#40271c}.f-public{fill:#199e70}.s-public{stroke:#199e70}.t-public{fill:#1a342a}.f-controle{fill:#9085e9}.s-controle{stroke:#9085e9}.t-controle{fill:#322f43}.f-neutre{fill:#94938b}.s-neutre{stroke:#94938b}.t-neutre{fill:#323230}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#173516}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#473819}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#442f26}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#3e2120}.f-grave{fill:#b8323f}.s-grave{stroke:#b8323f}.t-grave{fill:#3a1f21}.f-r0{fill:#184f95}.s-r0{stroke:#184f95}.f-r1{fill:#3987e5}.s-r1{stroke:#3987e5}.f-r2{fill:#9ec5f4}.s-r2{stroke:#9ec5f4}}
+</style>
+<defs><marker id="m-controle" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="f-controle" d="M0,1 L9,5 L0,9 z"/></marker><marker id="m-local" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="f-local" d="M0,1 L9,5 L0,9 z"/></marker><marker id="m-public" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="f-public" d="M0,1 L9,5 L0,9 z"/></marker></defs>
+<rect class="fond" width="720" height="712" rx="10"/>
+<text class="texte titre" x="24" y="34">L&#x27;architecture de Canopée</text>
+<text class="secondaire" x="24" y="55">Deux zones sur le Mac, un modèle dans le cloud, et deux portes seulement entre eux</text>
+<rect class="t-cloud s-cloud" x="24.0" y="84.0" width="672.0" height="104.0" rx="12" stroke-width="1.25" stroke-dasharray="5 4" fill-opacity="0.55"/>
+<text class="f-cloud gras" x="38.0" y="104.0" text-anchor="start" style="font-size:11px">DANS LE CLOUD · ANTHROPIC</text>
+<rect class="t-cloud s-cloud" x="150.0" y="108.0" width="420.0" height="64.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="360.0" y="128.5" text-anchor="middle" style="font-size:13px">Claude, par Claude Code</text>
+<text class="secondaire" x="360.0" y="145.5" text-anchor="middle" style="font-size:11.5px">Construit le système : code, documentation.</text>
+<text class="secondaire" x="360.0" y="161.0" text-anchor="middle" style="font-size:11.5px">Agents cloud : analyste, vérificateur, rédacteur, CNIL, hacker.</text>
+<rect class="t-local s-local" x="24.0" y="218.0" width="672.0" height="370.0" rx="12" stroke-width="1.25" stroke-dasharray="5 4" fill-opacity="0.55"/>
+<text class="f-local gras" x="38.0" y="238.0" text-anchor="start" style="font-size:11px">SUR LE MAC</text>
+<text class="secondaire" x="682.0" y="238.0" text-anchor="end" style="font-size:11.5px">M2 Pro, 16 Go · rien d&#x27;autre n&#x27;est exposé au cloud</text>
+<rect class="t-public s-public" x="40.0" y="250.0" width="212.0" height="52.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="146.0" y="264.5" text-anchor="middle" style="font-size:13px">Serveur MCP public</text>
+<text class="secondaire" x="146.0" y="281.5" text-anchor="middle" style="font-size:11.5px">chercher, lire, vérifier une</text>
+<text class="secondaire" x="146.0" y="297.0" text-anchor="middle" style="font-size:11.5px">citation</text>
+<rect class="t-controle s-controle" x="276.0" y="250.0" width="168.0" height="52.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="360.0" y="272.2" text-anchor="middle" style="font-size:13px">Boîte d&#x27;envoi (MCP)</text>
+<text class="secondaire" x="360.0" y="289.2" text-anchor="middle" style="font-size:11.5px">lire, déposer</text>
+<rect class="carte s-neutre" x="476.0" y="250.0" width="204.0" height="52.0" rx="8" stroke-width="1.25" stroke-dasharray="5 4"/>
+<text class="texte gras" x="578.0" y="272.0" text-anchor="middle" style="font-size:13px">Aucune porte vers le privé</text>
+<text class="secondaire petit" x="578.0" y="289.0" text-anchor="middle">pas de serveur MCP, par choix</text>
+<path class="s-public" d="M200.0,174.0 L200.0,248.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-public)" marker-start="url(#m-public)"/>
+<path class="s-controle" d="M360.0,174.0 L360.0,248.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-controle)" marker-start="url(#m-controle)"/>
+<text class="secondaire s-fond" x="207.0" y="207.0" text-anchor="start" style="font-size:11.5px" stroke-width="4" paint-order="stroke" stroke-linejoin="round">public</text>
+<text class="secondaire s-fond" x="367.0" y="207.0" text-anchor="start" style="font-size:11.5px" stroke-width="4" paint-order="stroke" stroke-linejoin="round">pseudonymisé, contrôlé</text>
+<rect class="t-public s-public" x="40.0" y="320.0" width="212.0" height="172.0" rx="12" stroke-width="1.25" stroke-dasharray="5 4" fill-opacity="0.55"/>
+<text class="f-public gras" x="54.0" y="340.0" text-anchor="start" style="font-size:11px">ZONE PUBLIQUE</text>
+<rect class="t-public s-public" x="52.0" y="346.0" width="188.0" height="62.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="146.0" y="365.5" text-anchor="middle" style="font-size:13px">public.db</text>
+<text class="secondaire" x="146.0" y="382.5" text-anchor="middle" style="font-size:11.5px">études réelles : GIEC,</text>
+<text class="secondaire" x="146.0" y="398.0" text-anchor="middle" style="font-size:11.5px">ADEME, HAL, RGPD, CNIL…</text>
+<rect class="t-public s-public" x="52.0" y="418.0" width="188.0" height="62.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="146.0" y="437.5" text-anchor="middle" style="font-size:13px">Veilleur</text>
+<text class="secondaire" x="146.0" y="454.5" text-anchor="middle" style="font-size:11.5px">la liste blanche entre</text>
+<text class="secondaire" x="146.0" y="470.0" text-anchor="middle" style="font-size:11.5px">seule, le reste est proposé</text>
+<path class="s-public" d="M200.0,344.0 L200.0,304.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-public)"/>
+<rect class="t-controle s-controle" x="276.0" y="336.0" width="168.0" height="58.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="360.0" y="353.5" text-anchor="middle" style="font-size:13px">Gardien</text>
+<text class="secondaire" x="360.0" y="370.5" text-anchor="middle" style="font-size:11.5px">règle codée, refus par</text>
+<text class="secondaire" x="360.0" y="386.0" text-anchor="middle" style="font-size:11.5px">défaut</text>
+<rect class="t-controle s-controle" x="276.0" y="418.0" width="168.0" height="64.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="360.0" y="438.5" text-anchor="middle" style="font-size:13px">Passerelle</text>
+<text class="secondaire" x="360.0" y="455.5" text-anchor="middle" style="font-size:11.5px">détecte, pseudonymise ;</text>
+<text class="secondaire" x="360.0" y="471.0" text-anchor="middle" style="font-size:11.5px">ré-identifie la réponse</text>
+<path class="s-controle" d="M360.0,416.0 L360.0,396.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-controle)"/>
+<path class="s-controle" d="M360.0,334.0 L360.0,304.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-controle)"/>
+<rect class="t-local s-local" x="476.0" y="320.0" width="204.0" height="172.0" rx="12" stroke-width="1.25" stroke-dasharray="5 4" fill-opacity="0.55"/>
+<text class="f-local gras" x="490.0" y="340.0" text-anchor="start" style="font-size:11px">ZONE PRIVÉE</text>
+<text class="secondaire" x="666.0" y="340.0" text-anchor="end" style="font-size:11.5px">données fictives</text>
+<rect class="t-local s-local" x="488.0" y="346.0" width="180.0" height="62.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="578.0" y="365.5" text-anchor="middle" style="font-size:13px">Clés à part</text>
+<text class="secondaire" x="578.0" y="382.5" text-anchor="middle" style="font-size:11.5px">Trousseau macOS : une clé</text>
+<text class="secondaire" x="578.0" y="398.0" text-anchor="middle" style="font-size:11.5px">par base</text>
+<rect class="t-local s-local" x="488.0" y="418.0" width="180.0" height="62.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="578.0" y="437.5" text-anchor="middle" style="font-size:13px">prive.db</text>
+<text class="secondaire" x="578.0" y="454.5" text-anchor="middle" style="font-size:11.5px">2 595 documents, chiffrée</text>
+<text class="secondaire" x="578.0" y="470.0" text-anchor="middle" style="font-size:11.5px">(SQLCipher)</text>
+<path class="s-local" d="M486.0,450.0 L446.0,450.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-local)"/>
+<text class="secondaire s-fond" x="460.0" y="442.0" text-anchor="middle" style="font-size:10.5px" stroke-width="4" paint-order="stroke" stroke-linejoin="round">interne</text>
+<rect class="t-local s-local" x="40.0" y="506.0" width="404.0" height="68.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="52.0" y="520.7" text-anchor="start" style="font-size:13px">Ollama : les modèles locaux</text>
+<text class="secondaire" x="52.0" y="537.7" text-anchor="start" style="font-size:11.5px">Gemma 4 rédige et note, Qwen 3.5 juge et attaque, bge-m3 calcule</text>
+<text class="secondaire" x="52.0" y="553.2" text-anchor="start" style="font-size:11.5px">les vecteurs.</text>
+<text class="secondaire" x="52.0" y="568.8" text-anchor="start" style="font-size:11.5px">Les agents locaux lisent tout, selon le rôle du demandeur.</text>
+<rect class="t-local s-local" x="476.0" y="506.0" width="204.0" height="68.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="578.0" y="528.5" text-anchor="middle" style="font-size:13px">Portail interne</text>
+<text class="secondaire" x="578.0" y="545.5" text-anchor="middle" style="font-size:11.5px">127.0.0.1 · programme, DPO,</text>
+<text class="secondaire" x="578.0" y="561.0" text-anchor="middle" style="font-size:11.5px">RSSI, chacun son rôle</text>
+<text class="texte gras" x="24.0" y="616.0" text-anchor="start">Routage par sensibilité</text>
+<rect class="f-public" x="24.0" y="631.0" width="52.3" height="17.0" rx="8.5"/>
+<text class="f-fond gras" x="50.1" y="643.5" text-anchor="middle" style="font-size:11px">public</text>
+<text class="secondaire" x="122.0" y="643.5" text-anchor="start">peut aller dans le cloud</text>
+<rect class="f-controle" x="364.0" y="631.0" width="58.7" height="17.0" rx="8.5"/>
+<text class="f-fond gras" x="393.3" y="643.5" text-anchor="middle" style="font-size:11px">interne</text>
+<text class="secondaire" x="462.0" y="643.5" text-anchor="start">après la passerelle et le gardien</text>
+<rect class="f-local" x="24.0" y="655.0" width="90.6" height="17.0" rx="8.5"/>
+<text class="f-fond gras" x="69.3" y="667.5" text-anchor="middle" style="font-size:11px">confidentiel</text>
+<text class="secondaire" x="122.0" y="667.5" text-anchor="start">jamais : reste sur le Mac</text>
+<rect class="f-eleve" x="364.0" y="655.0" width="65.0" height="17.0" rx="8.5"/>
+<text class="e-eleve gras" x="396.5" y="667.5" text-anchor="middle" style="font-size:11px">sensible</text>
+<text class="secondaire" x="462.0" y="667.5" text-anchor="start">jamais : agents locaux, rôle bureau</text>
+<text class="discret petit" x="24" y="698">Source : docs/cahier-des-charges.md, section 4 · généré par outils/schemas.py</text>
+</svg>

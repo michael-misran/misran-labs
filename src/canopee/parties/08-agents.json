@@ -1,0 +1,1290 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "chapitre-8-les-agents-metier",
+   "x": [
+    "Chapitre 8. Les agents métier"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Étape 7 du projet · 23 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-probleme",
+   "x": [
+    "Le problème"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Jusqu'ici, le système répondait à des questions. Une organisation veut davantage : confier des ",
+    {
+     "g": [
+      "tâches entières"
+     ]
+    },
+    ". Lire une étude et en extraire ce qu'elle affirme. Relire une note phrase par phrase pour vérifier ses sources. Rédiger une mesure du programme. Tenir le corpus à jour sans y passer ses lundis."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est la promesse des ",
+    {
+     "g": [
+      "agents"
+     ]
+    },
+    ", le mot le plus galvaudé de l'IA en 2026. Elle pose une question que les démonstrations évitent : si on laisse un programme décider d'une partie de son chemin, ",
+    {
+     "g": [
+      "comment garder le contrôle de ce qui sort ?"
+     ]
+    },
+    " Un agent qui lit la zone privée et qui parle au cloud, c'est exactement la fuite que tout le projet cherche à empêcher."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-on-a-construit",
+   "x": [
+    "Ce qu'on a construit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Cinq agents travaillent maintenant pour le pôle programme de Mycélium, tous préfixés ",
+    {
+     "c": "canopee-"
+    },
+    " :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Agent"
+    ],
+    [
+     "Ce qu'il fait"
+    ],
+    [
+     "Ce qu'il est"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "g": [
+        "Le gardien"
+       ]
+      }
+     ],
+     [
+      "Contrôle ",
+      {
+       "g": [
+        "toute"
+       ]
+      },
+      " sortie vers Claude : canaris, données personnelles, documents confidentiels ou sensibles, fiches d'adhérent (même pseudonymisées), réponses sans citation"
+     ],
+     [
+      "Une ",
+      {
+       "g": [
+        "règle codée"
+       ]
+      },
+      ", pas un modèle"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "L'analyste"
+       ]
+      }
+     ],
+     [
+      "Extrait d'une étude ses affirmations clés, avec leur niveau de preuve et la citation exacte"
+     ],
+     [
+      "Un programme qui appelle Gemma"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Le vérificateur"
+       ]
+      }
+     ],
+     [
+      "Relit un texte phrase par phrase et signale ce qui n'est pas sourcé ou contredit la source"
+     ],
+     [
+      "Un programme qui appelle Qwen, le juge du chapitre 3"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Le rédacteur"
+       ]
+      }
+     ],
+     [
+      "Rédige une note ou une mesure, avec des citations obligatoires, puis la fait vérifier"
+     ],
+     [
+      "Un programme qui appelle Gemma"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Le veilleur"
+       ]
+      }
+     ],
+     [
+      "Tient le corpus public à jour : la liste blanche entre seule, le reste est proposé"
+     ],
+     [
+      "Un programme, sans modèle"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La règle d'architecture qui a tout décidé :"
+     ]
+    },
+    " un agent qui touche au privé tourne ",
+    {
+     "g": [
+      "sur le Mac"
+     ]
+    },
+    ". Les cinq agents sont donc d'abord des programmes locaux. Trois d'entre eux (l'analyste, le vérificateur, le rédacteur) ont aussi une ",
+    {
+     "g": [
+      "version cloud"
+     ]
+    },
+    " : un agent de Claude Code qui ne voit que le public et le pseudonymisé."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pour que ces versions cloud puissent travailler, deux ",
+    {
+     "g": [
+      "serveurs MCP"
+     ]
+    },
+    " ont été écrits, sans aucune bibliothèque ajoutée : l'un ouvre le corpus public (chercher, lire, vérifier une citation), l'autre une ",
+    {
+     "g": [
+      "boîte d'envoi"
+     ]
+    },
+    " où le gardien dépose ce qui a le droit de sortir. Il n'existe ",
+    {
+     "g": [
+      "aucun serveur pour la zone privée"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-circuit",
+   "x": [
+    "Le circuit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le chemin d'une donnée privée vers le cloud est écrit, et il est unique :"
+   ]
+  },
+  {
+   "t": "ol",
+   "debut": 1,
+   "items": [
+    [
+     "un rôle local (le pôle programme, par exemple) cherche dans la base privée ;"
+    ],
+    [
+     "la passerelle du chapitre 7 pseudonymise ce qui a le droit de sortir ;"
+    ],
+    [
+     "le gardien contrôle le résultat, et le dépose dans la boîte d'envoi ;"
+    ],
+    [
+     "Claude lit la boîte d'envoi, rédige, et dépose sa réponse ;"
+    ],
+    [
+     "sur le Mac, la réponse est ré-identifiée selon le rôle, puis relue par le vérificateur ;"
+    ],
+    [
+     "un humain tranche."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Aucune flèche ne va de la base privée vers Claude sans passer par la passerelle ",
+    {
+     "g": [
+      "et"
+     ]
+    },
+    " par le gardien."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Le circuit unique d'une donnée privée vers le cloud, et ce que voit chacun des sept agents",
+   "src": "agents.svg"
+  },
+  {
+   "t": "h2",
+   "id": "les-notions",
+   "x": [
+    "Les notions"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "un-agent-ou-un-script",
+   "x": [
+    "Un agent ou un script ?"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un ",
+    {
+     "g": [
+      "script"
+     ]
+    },
+    " suit un chemin écrit d'avance : lire, calculer, écrire. Un ",
+    {
+     "g": [
+      "agent"
+     ]
+    },
+    " reçoit un but et décide lui-même d'une partie du chemin : quelles sources chercher, quoi lire, quand s'arrêter. Il le fait avec un modèle de langage et des ",
+    {
+     "g": [
+      "outils"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Dans Canopée, la frontière est volontairement nette :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     "le ",
+     {
+      "g": [
+       "gardien"
+      ]
+     },
+     " et le ",
+     {
+      "g": [
+       "veilleur"
+      ]
+     },
+     " sont des scripts, et c'est voulu : ce qu'ils font doit être prévisible et vérifiable ;"
+    ],
+    [
+     "l'",
+     {
+      "g": [
+       "analyste"
+      ]
+     },
+     ", le ",
+     {
+      "g": [
+       "vérificateur"
+      ]
+     },
+     " et le ",
+     {
+      "g": [
+       "rédacteur"
+      ]
+     },
+     " locaux sont des scripts qui ",
+     {
+      "g": [
+       "appellent"
+      ]
+     },
+     " un modèle à des endroits précis. Le chemin est fixe, seul le contenu est généré : on parle parfois de ",
+     {
+      "i": [
+       "workflow"
+      ]
+     },
+     " plutôt que d'agent ;"
+    ],
+    [
+     "les versions ",
+     {
+      "g": [
+       "cloud"
+      ]
+     },
+     " sont de vrais agents : Claude choisit ses recherches, ses lectures, et le moment de rédiger."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est le conseil le plus répété par les équipes qui en construisent : commencer par le chemin le plus simple qui marche, et ne laisser au modèle que les décisions qui ont besoin de lui."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "agents-locaux-agents-cloud",
+   "x": [
+    "Agents locaux, agents cloud"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce qui décide où tourne un agent, ce n'est pas sa tâche, c'est ",
+    {
+     "g": [
+      "la zone des données"
+     ]
+    },
+    " qu'il touche."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [],
+    [
+     "Agent local"
+    ],
+    [
+     "Agent cloud"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Modèle"
+     ],
+     [
+      "Gemma 4, Qwen 3.5, sur le Mac"
+     ],
+     [
+      "Claude"
+     ]
+    ],
+    [
+     [
+      "Données"
+     ],
+     [
+      "Tout, selon le rôle"
+     ],
+     [
+      "Le public, et le pseudonymisé passé par le gardien"
+     ]
+    ],
+    [
+     [
+      "Force"
+     ],
+     [
+      "Rien ne sort, pas de coût par appel, tourne sans session ouverte"
+     ],
+     [
+      "Bien meilleur en rédaction et en raisonnement, choisit ses outils"
+     ]
+    ],
+    [
+     [
+      "Faiblesse"
+     ],
+     [
+      "Plus lent, moins fin, contexte court"
+     ],
+     [
+      "Tout ce qu'il lit est une sortie : il faut un gardien"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un même métier peut donc exister deux fois. Le rédacteur local écrit une mesure avec les chiffres confidentiels ; le rédacteur cloud écrit à partir du public, ou d'un brief pseudonymisé."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "mcp-le-model-context-protocol",
+   "x": [
+    "MCP, le Model Context Protocol"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "MCP"
+     ]
+    },
+    " est un protocole ouvert, publié par Anthropic fin 2024 et repris depuis par la plupart des outils d'IA. Il dit comment un ",
+    {
+     "g": [
+      "client"
+     ]
+    },
+    " (Claude Code, un éditeur, une application) découvre et appelle les ",
+    {
+     "g": [
+      "outils"
+     ]
+    },
+    " d'un ",
+    {
+     "g": [
+      "serveur"
+     ]
+    },
+    ". C'est une prise standard : un serveur écrit une fois sert à tous les clients."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Concrètement, Claude Code lance le serveur et lui parle en messages JSON, un format de texte structuré : « qui es-tu ? », « quels outils as-tu ? », « appelle l'outil chercher avec cette question ». Le serveur public de Canopée tient en une centaine de lignes, écrites sans bibliothèque : c'est aussi la meilleure façon de comprendre ce qu'est MCP."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce qu'il faut retenir pour la sécurité : ",
+    {
+     "g": [
+      "un outil MCP est une porte."
+     ]
+    },
+    " Tout ce qu'il renvoie part dans le cloud. D'où trois règles : chaque réponse passe par le gardien ; le serveur ne fait que ce qu'on a décidé (pas de « lire n'importe quel fichier ») ; et ",
+    {
+     "g": [
+      "pas de serveur du tout"
+     ]
+    },
+    " pour une zone qui ne doit pas sortir. Le serveur prévu pour la zone privée n'a pas été construit : son seul client possible était Claude Code, dans le cloud. Le construire, même fermé, aurait été dessiner une porte sur le mur."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "garde-fous-codes-et-garde-fous-par-modele",
+   "x": [
+    "Garde-fous codés et garde-fous par modèle"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [],
+    [
+     "Garde-fou codé (le gardien)"
+    ],
+    [
+     "Garde-fou par modèle (le vérificateur)"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Ce qu'il sait faire"
+     ],
+     [
+      "Appliquer une règle exacte : « ce texte contient-il un canari ? un document confidentiel ? »"
+     ],
+     [
+      "Juger du sens : « cette phrase dit-elle ce que dit la source ? »"
+     ]
+    ],
+    [
+     [
+      "Fiabilité"
+     ],
+     [
+      "100 % sur ce qu'il sait reconnaître, 0 % sur le reste"
+     ],
+     [
+      "Bonne en moyenne, jamais parfaite"
+     ]
+    ],
+    [
+     [
+      "Face à une attaque"
+     ],
+     [
+      "Ne se laisse pas convaincre : « ignore tes consignes » ne lui fait rien"
+     ],
+     [
+      "Peut être manipulé par le texte qu'il lit"
+     ]
+    ],
+    [
+     [
+      "Quand l'utiliser"
+     ],
+     [
+      "Pour ce qui ne doit ",
+      {
+       "g": [
+        "jamais"
+       ]
+      },
+      " arriver"
+     ],
+     [
+      "Pour ce qui doit arriver ",
+      {
+       "g": [
+        "le moins possible"
+       ]
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La limite du garde-fou codé est symétrique : il ne voit que ce qu'on lui a appris à voir. C'est pourquoi le gardien vient ",
+    {
+     "g": [
+      "après"
+     ]
+    },
+    " la passerelle, et non à sa place."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux détails de conception du gardien comptent. Il ",
+    {
+     "g": [
+      "ne croit pas"
+     ]
+    },
+    " la sensibilité que déclare celui qui demande une sortie : il la relit à la source. Et il reconnaît une fiche d'adhérent ",
+    {
+     "g": [
+      "à sa forme"
+     ]
+    },
+    " : une fiche pseudonymisée n'a plus de nom, mais ses rubriques (statut, adhésion, cotisation, consentement…) survivent, et trois rubriques suffisent à bloquer. Enfin, il ",
+    {
+     "g": [
+      "refuse par défaut"
+     ]
+    },
+    " : une nature inconnue, une source introuvable, il bloque. Un garde-fou qui laisse passer quand il ne sait pas n'en est pas un."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "l-orchestration",
+   "x": [
+    "L'orchestration"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'",
+    {
+     "g": [
+      "orchestration"
+     ]
+    },
+    ", c'est la façon dont les agents s'enchaînent. Soit un chef d'orchestre qui appelle les autres selon un plan, soit une chaîne fixe. Canopée utilise une chaîne fixe, écrite dans le code : rédacteur, vérificateur, ",
+    {
+     "g": [
+      "une seule"
+     ]
+    },
+    " révision, vérificateur, statut."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pourquoi pas un « super-agent » qui déciderait de tout ? Parce qu'on veut pouvoir dire à l'auditeur, au responsable de la sécurité ou au directeur du programme ",
+    {
+     "g": [
+      "exactement"
+     ]
+    },
+    " par où passe une donnée. Une chaîne écrite se lit. Un agent qui improvise son chemin se mesure, mais ne se prouve pas."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Et pourquoi une seule révision ? Une boucle sans fin entre deux modèles peut tourner longtemps, et finir par effacer tout ce qui gêne. Une révision, puis l'humain."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-circuit-redaction-verification",
+   "x": [
+    "Le circuit rédaction, vérification"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Faire relire un modèle par un autre, c'est le principe des ",
+    {
+     "g": [
+      "« quatre yeux »"
+     ]
+    },
+    " appliqué à l'IA. Trois précautions le rendent utile : ",
+    {
+     "g": [
+      "un autre modèle"
+     ]
+    },
+    " (Qwen juge ce qu'écrit Gemma) ; ",
+    {
+     "g": [
+      "juger phrase par phrase"
+     ]
+    },
+    ", contre la seule source citée ; ",
+    {
+     "g": [
+      "s'arrêter vite"
+     ]
+    },
+    ". Le vérificateur ne réécrit pas, il signale. Le statut final, « en relecture » ou « à corriger », ne remplace pas l'humain : il lui dit où regarder."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-liste-blanche-au-domaine",
+   "x": [
+    "La liste blanche, au domaine"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le veilleur applique la liste blanche du chapitre 5. Deux détails font la différence entre une liste blanche utile et une liste blanche décorative :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "reconnaître la source à ce qu'on ne peut pas falsifier"
+      ]
+     },
+     " : le domaine de l'adresse, en connexion sécurisée, et pas le nom écrit dans la notice. Une notice qui se dit « GIEC » sur un domaine qui ressemble à celui du GIEC reste une simple proposition (essayé) ;"
+    ],
+    [
+     {
+      "g": [
+       "rendre compte après coup"
+      ]
+     },
+     " : la validation humaine n'a pas disparu, elle a changé de moment."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un ",
+    {
+     "g": [
+      "verrou"
+     ]
+    },
+    " complète le tout : si l'évaluation baisse de 5 points ou plus après un lot, le lot suivant est bloqué jusqu'à relecture. Et seul le rôle du pôle programme décide d'une proposition."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-que-font-les-vraies-organisations",
+   "x": [
+    "Ce que font les vraies organisations"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Les garde-fous de sortie"
+      ]
+     },
+     " (",
+     {
+      "i": [
+       "guardrails"
+      ]
+     },
+     ") : des produits qui mélangent règles et modèles classifieurs, et placent les règles ",
+     {
+      "g": [
+       "avant"
+      ]
+     },
+     " les modèles pour ce qui touche à la fuite de données."
+    ],
+    [
+     {
+      "g": [
+       "Les passerelles d'IA"
+      ]
+     },
+     ", déjà vues au chapitre 7 : un point de passage unique vers le cloud."
+    ],
+    [
+     {
+      "g": [
+       "MCP en entreprise"
+      ]
+     },
+     " : la plupart des éditeurs publient des serveurs MCP. Les équipes de sécurité tiennent un ",
+     {
+      "g": [
+       "registre des serveurs autorisés"
+      ]
+     },
+     ", refusent par défaut ceux qui n'ont pas été revus, et appliquent le moindre privilège."
+    ],
+    [
+     {
+      "g": [
+       "Le fact-checking assisté"
+      ]
+     },
+     " : les agences de vérification utilisent des modèles pour repérer les affirmations vérifiables et retrouver les sources ; la conclusion reste humaine."
+    ],
+    [
+     {
+      "g": [
+       "La séparation local et cloud"
+      ]
+     },
+     " : banques, hôpitaux et administrations font tourner des modèles ouverts dans leurs propres centres de données pour les données sensibles. C'est l'architecture de Canopée, à l'échelle d'un Mac."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-chiffres",
+   "x": [
+    "Les chiffres"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Agent"
+    ],
+    [
+     "Mesure"
+    ],
+    [
+     "Résultat"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Gardien"
+     ],
+     [
+      "Pièges bloqués"
+     ],
+     [
+      {
+       "g": [
+        "170 sur 170"
+       ]
+      },
+      ", avec le bon motif dans 100 % des cas"
+     ]
+    ],
+    [
+     [
+      "Gardien"
+     ],
+     [
+      "Sorties légitimes bloquées à tort"
+     ],
+     [
+      {
+       "g": [
+        "0 sur 178"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Veilleur"
+     ],
+     [
+      "Essai de bout en bout, sans réseau, sur une copie du corpus"
+     ],
+     [
+      {
+       "g": [
+        "30 contrôles sur 30"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Vérificateur"
+     ],
+     [
+      "Phrases fausses, hors source ou non sourcées détectées"
+     ],
+     [
+      {
+       "g": [
+        "98,6 %"
+       ]
+      },
+      " (136 sur 138)"
+     ]
+    ],
+    [
+     [
+      "Vérificateur"
+     ],
+     [
+      "Phrases vraies signalées à tort"
+     ],
+     [
+      {
+       "g": [
+        "13 %"
+       ]
+      },
+      " (6 sur 46)"
+     ]
+    ],
+    [
+     [
+      "Analyste"
+     ],
+     [
+      "Niveau de preuve du document"
+     ],
+     [
+      {
+       "g": [
+        "93,5 %"
+       ]
+      },
+      " (règle seule : 87,1 %)"
+     ]
+    ],
+    [
+     [
+      "Rédacteur, public"
+     ],
+     [
+      "Taux de citation, fidélité"
+     ],
+     [
+      {
+       "g": [
+        "100 %"
+       ]
+      },
+      ", ",
+      {
+       "g": [
+        "97,8 %"
+       ]
+      },
+      " (90 phrases soutenues sur 92)"
+     ]
+    ],
+    [
+     [
+      "Rédacteur, privé"
+     ],
+     [
+      "Taux de citation, fidélité (scores seulement)"
+     ],
+     [
+      {
+       "g": [
+        "100 %"
+       ]
+      },
+      ", ",
+      {
+       "g": [
+        "100 %"
+       ]
+      },
+      " (48 sur 48)"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les 170 pièges du gardien : 57 canaris (les 20, tels quels et réécrits avec des points, sans espaces, avec l'indicatif international), 45 données personnelles, 22 documents confidentiels ou sensibles, 20 fiches d'adhérent pseudonymisées dont 10 déguisées sous une source publique, 25 réponses sans citation, une nature inconnue."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La révision sert : la fidélité moyenne du rédacteur public passe de ",
+    {
+     "g": [
+      "83,4 %"
+     ]
+    },
+    " en première version à ",
+    {
+     "g": [
+      "91,7 %"
+     ]
+    },
+    " après. Et l'analyste n'atteint 93,5 % qu'en combinant le modèle et une règle : seuls, ils avaient la même justesse (87 %), mais pas sur les mêmes documents. La règle ne rate jamais une méta-analyse qui se déclare ; le modèle reconnaît une tribune."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le score du rédacteur privé est à lire avec prudence : les notes internes ont été écrites par Gemma au chapitre 4, à partir des mêmes citations publiques. Gemma reprend des textes qui lui ressemblent, et le juge les soutient sans peine."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-couts",
+   "x": [
+    "Les coûts"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mesuré."
+     ]
+    },
+    " Côté Ollama, ",
+    {
+     "g": [
+      "907 générations"
+     ]
+    },
+    " et 1 197 calculs de vecteurs, soit ",
+    {
+     "g": [
+      "0,91 h"
+     ]
+    },
+    " : surtout le vérificateur (184 phrases, 9 min), l'analyste (14 min) et le rédacteur (27 min avec son circuit). Le gardien coûte quelques millisecondes par sortie : 348 sorties contrôlées en 6 s. Côté Claude, la photo par étape donne ",
+    {
+     "g": [
+      "157 requêtes"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "7,7 M d'unités"
+     ]
+    },
+    ", l'une des sessions les plus chères."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Estimé."
+     ]
+    },
+    " 0,03 à 0,04 kWh."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La lecture."
+     ]
+    },
+    " Une fois écrits, les agents sont bon marché à faire tourner : une rédaction vérifiée prend 2 à 4 minutes de calcul local. ",
+    {
+     "g": [
+      "Ce qui coûte, c'est la mesure"
+     ]
+    },
+    " : construire et relire les jeux de test (184 phrases, 56 annotations), et faire tourner deux modèles l'un après l'autre sur un Mac de 16 Go."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-surprises",
+   "x": [
+    "Les surprises"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-33",
+   "x": [
+    "Le « +33 »"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Au premier essai, le gardien bloquait bien tous les pièges, mais pas tous pour la bonne raison. Quatre canaris de téléphone, réécrits avec l'indicatif international « +33 » au lieu du 0, n'étaient arrêtés que par la règle des données personnelles, pas par celle des canaris. Le résultat était le même ; le motif, non. Or le motif compte : un canari détecté prouve une fuite et dit d'où elle vient. L'indicatif est maintenant ramené au 0 avant la comparaison."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "ce-que-la-lecture-de-claude-a-trouve",
+   "x": [
+    "Ce que la lecture de Claude a trouvé"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Avec mon accord, le circuit par Claude a été joué une fois, sur une note interne. Le brief : 6 passages trouvés, ",
+    {
+     "g": [
+      "1 écarté"
+     ]
+    },
+    " parce que confidentiel, 5 autorisés (deux d'une note interne, pseudonymisés, trois publics). Claude a lu le brief, rédigé 8 phrases citées, et déposé sa réponse. Sur le Mac, après ré-identification, le vérificateur a jugé 5 phrases soutenues, ",
+    {
+     "g": [
+      "3 non soutenues"
+     ]
+    },
+    " : statut « à corriger ». Le texte de Claude n'est pas cru sur parole : il repasse par le même circuit que celui de Gemma."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La lecture a surtout trouvé deux défauts qu'aucune mesure ne voyait :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "un passage public illisible"
+      ]
+     },
+     " : un extrait d'un article scientifique n'était qu'une suite de caractères sans sens, parce que les polices du PDF avaient été mal décodées. Le reranker l'avait pourtant bien noté. Il y en a sans doute d'autres dans le corpus ;"
+    ],
+    [
+     {
+      "g": [
+       "une source mal employée par la note interne"
+      ]
+     },
+     " : la note appuyait son constat sur une étude menée ",
+     {
+      "g": [
+       "dans un autre pays"
+      ]
+     },
+     ", présentée comme valant pour la France. Claude l'a signalé. C'est exactement le défaut que le vérificateur ne voit pas : la phrase est fidèle à sa source, c'est la source qui est hors sujet."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-n-a-pas-pu-etre-verifie",
+   "x": [
+    "Ce qui n'a pas pu être vérifié"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Les versions cloud dans une vraie session"
+      ]
+     },
+     " : les serveurs MCP ne se chargent qu'au démarrage de Claude Code. La démonstration a joué le rôle du rédacteur cloud à la main, avec les mêmes fichiers."
+    ],
+    [
+     {
+      "g": [
+       "Le gardien face à une sortie qu'on n'a pas imaginée."
+      ]
+     },
+     " 100 % est le score sur 170 pièges construits ici. Une donnée personnelle sans forme fixe (« la trésorière de telle section ») n'est vue que par la passerelle."
+    ],
+    [
+     {
+      "g": [
+       "La justesse de l'analyste au-delà de l'échantillon"
+      ]
+     },
+     " : 31 documents et 25 affirmations, annotés par Claude Code seul."
+    ],
+    [
+     {
+      "g": [
+       "Le fond des rédactions privées"
+      ]
+     },
+     " : seuls les scores sont connus. Une mesure bien citée peut rester une mauvaise mesure."
+    ],
+    [
+     {
+      "g": [
+       "Un vrai passage du veilleur"
+      ]
+     },
+     " : il aurait téléchargé. L'essai s'est fait sur une copie, sans réseau."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-il-faut-retenir",
+   "x": [
+    "Ce qu'il faut retenir"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Le lieu d'un agent dépend des données qu'il touche, pas de sa tâche."
+      ]
+     },
+     " Ce qui touche au privé tourne en local ; le cloud ne voit que le public et le pseudonymisé."
+    ],
+    [
+     {
+      "g": [
+       "Un outil MCP est une porte."
+      ]
+     },
+     " On ne construit pas de porte vers une zone qui ne doit pas sortir."
+    ],
+    [
+     {
+      "g": [
+       "Une chaîne écrite se prouve, un agent qui improvise se mesure."
+      ]
+     },
+     " Pour ce qui engage, on préfère la chaîne."
+    ],
+    [
+     {
+      "g": [
+       "On ne demande jamais à un modèle de garder la porte qu'un attaquant essaiera de forcer avec du texte."
+      ]
+     },
+     " La porte est gardée par une règle ; le modèle juge de la qualité."
+    ],
+    [
+     {
+      "g": [
+       "Une phrase fidèle à une mauvaise source reste fausse."
+      ]
+     },
+     " Aucun vérificateur automatique ne remplace la question : « cette étude parle-t-elle bien de nous ? »"
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 450" width="720" height="450" role="img" aria-labelledby="titre desc">
+<title id="titre">L&#x27;évaluation tient quand le corpus grandit</title>
+<desc id="desc">Cinq indicateurs de l&#x27;évaluation du corpus public, mesurés à trois dates : avant le corpus climat, après, puis après l&#x27;ajout du RGPD et des guides de la CNIL. Tous restent entre 92 % et 100 %.</desc>
+<style>
+text{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;font-size:12.5px}
+.titre{font-size:17px;font-weight:650}.gras{font-weight:600}.petit{font-size:11.5px}.moyen{font-size:13.5px}.chiffre{font-variant-numeric:tabular-nums}
+.fond{fill:#fcfcfb}.texte{fill:#0b0b0b}.secondaire{fill:#52514e}.discret{fill:#7d7c77}.trait{stroke:#d9d8d3}.f-trait{fill:#d9d8d3}.carte{fill:#f3f2ef}.s-texte{stroke:#52514e}.f-fond{fill:#fcfcfb}.s-fond{stroke:#fcfcfb}.f-cloud{fill:#2a78d6}.s-cloud{stroke:#2a78d6}.t-cloud{fill:#e7eff7}.f-local{fill:#eb6834}.s-local{stroke:#eb6834}.t-local{fill:#faede7}.f-public{fill:#1baf7a}.s-public{stroke:#1baf7a}.t-public{fill:#e6f4ee}.f-controle{fill:#6250d6}.s-controle{stroke:#6250d6}.t-controle{fill:#edebf7}.f-neutre{fill:#7d7c77}.s-neutre{stroke:#7d7c77}.t-neutre{fill:#efefee}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#e4f3e3}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#fcf5e4}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#faf0eb}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#f8e9e8}.f-grave{fill:#8e1f2c}.s-grave{stroke:#8e1f2c}.t-grave{fill:#f1e6e6}.f-r0{fill:#86b6ef}.s-r0{stroke:#86b6ef}.f-r1{fill:#2a78d6}.s-r1{stroke:#2a78d6}.f-r2{fill:#104281}.s-r2{stroke:#104281}.e-conforme{fill:#ffffff}.e-faible{fill:#0b0b0b}.e-moyen{fill:#0b0b0b}.e-eleve{fill:#ffffff}.e-grave{fill:#ffffff}
+@media (prefers-color-scheme:dark){.fond{fill:#1a1a19}.texte{fill:#f0efec}.secondaire{fill:#c3c2b7}.discret{fill:#94938b}.trait{stroke:#3a3a37}.f-trait{fill:#3a3a37}.carte{fill:#242423}.s-texte{stroke:#c3c2b7}.f-fond{fill:#1a1a19}.s-fond{stroke:#1a1a19}.f-cloud{fill:#3987e5}.s-cloud{stroke:#3987e5}.t-cloud{fill:#203042}.f-local{fill:#d95926}.s-local{stroke:#d95926}.t-local{fill:#40271c}.f-public{fill:#199e70}.s-public{stroke:#199e70}.t-public{fill:#1a342a}.f-controle{fill:#9085e9}.s-controle{stroke:#9085e9}.t-controle{fill:#322f43}.f-neutre{fill:#94938b}.s-neutre{stroke:#94938b}.t-neutre{fill:#323230}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#173516}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#473819}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#442f26}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#3e2120}.f-grave{fill:#b8323f}.s-grave{stroke:#b8323f}.t-grave{fill:#3a1f21}.f-r0{fill:#184f95}.s-r0{stroke:#184f95}.f-r1{fill:#3987e5}.s-r1{stroke:#3987e5}.f-r2{fill:#9ec5f4}.s-r2{stroke:#9ec5f4}}
+</style>
+<defs></defs>
+<rect class="fond" width="720" height="450" rx="10"/>
+<text class="texte titre" x="24" y="34">L&#x27;évaluation tient quand le corpus grandit</text>
+<text class="secondaire" x="24" y="55">Gemma 4 rédige, Qwen 3.5 juge · mêmes questions, plus quelques-unes à chaque ajout</text>
+<circle class="f-r0" cx="29" cy="100" r="5"/>
+<text class="secondaire" x="39.0" y="104.0" text-anchor="start" style="font-size:11.5px">22/10 · 92 documents</text>
+<circle class="f-r1" cx="194.5" cy="100" r="5"/>
+<text class="secondaire" x="204.5" y="104.0" text-anchor="start" style="font-size:11.5px">23/10 · 110 documents</text>
+<circle class="f-r2" cx="366.32500000000005" cy="100" r="5"/>
+<text class="secondaire" x="376.3" y="104.0" text-anchor="start" style="font-size:11.5px">27/10 · 119 documents</text>
+<text class="secondaire petit" x="696.0" y="118.0" text-anchor="end">le 27/10</text>
+<line class="trait" x1="268.0" y1="126.0" x2="268.0" y2="380.0" stroke-width="1"/>
+<text class="discret petit" x="268.0" y="396.0" text-anchor="middle">80 %</text>
+<line class="trait" x1="357.0" y1="126.0" x2="357.0" y2="380.0" stroke-width="1"/>
+<text class="discret petit" x="357.0" y="396.0" text-anchor="middle">85 %</text>
+<line class="trait" x1="446.0" y1="126.0" x2="446.0" y2="380.0" stroke-width="1"/>
+<text class="discret petit" x="446.0" y="396.0" text-anchor="middle">90 %</text>
+<line class="trait" x1="535.0" y1="126.0" x2="535.0" y2="380.0" stroke-width="1"/>
+<text class="discret petit" x="535.0" y="396.0" text-anchor="middle">95 %</text>
+<line class="trait" x1="624.0" y1="126.0" x2="624.0" y2="380.0" stroke-width="1"/>
+<text class="discret petit" x="624.0" y="396.0" text-anchor="middle">100 %</text>
+<text class="texte gras" x="254.0" y="144.0" text-anchor="end">Rappel@5 de la recherche</text>
+<text class="secondaire petit" x="254.0" y="159.0" text-anchor="end" style="font-size:10.5px">le bon passage est dans les 5 premiers</text>
+<line class="s-texte" x1="556.4" y1="140.0" x2="581.3" y2="140.0" stroke-width="1.5"/>
+<circle class="f-r0 s-fond" cx="556.4" cy="140" r="6.5" stroke-width="2"><title>Rappel@5 de la recherche, 2026-10-22 : 96,2 %</title></circle>
+<circle class="f-r1 s-fond" cx="581.3" cy="140" r="6.5" stroke-width="2"><title>Rappel@5 de la recherche, 2026-10-23 : 97,6 %</title></circle>
+<circle class="f-r2 s-fond" cx="558.1" cy="140" r="6.5" stroke-width="2"><title>Rappel@5 de la recherche, 2026-10-27 : 96,3 %</title></circle>
+<text class="texte chiffre gras" x="696.0" y="144.0" text-anchor="end">96,3 %</text>
+<text class="texte gras" x="254.0" y="196.0" text-anchor="end">Taux de citation</text>
+<text class="secondaire petit" x="254.0" y="211.0" text-anchor="end" style="font-size:10.5px">chaque phrase cite un extrait</text>
+<line class="s-texte" x1="547.5" y1="192.0" x2="567.0" y2="192.0" stroke-width="1.5"/>
+<circle class="f-r0 s-fond" cx="547.5" cy="192" r="6.5" stroke-width="2"><title>Taux de citation, 2026-10-22 : 95,7 %</title></circle>
+<circle class="f-r1 s-fond" cx="559.9" cy="192" r="6.5" stroke-width="2"><title>Taux de citation, 2026-10-23 : 96,4 %</title></circle>
+<circle class="f-r2 s-fond" cx="567.0" cy="192" r="6.5" stroke-width="2"><title>Taux de citation, 2026-10-27 : 96,8 %</title></circle>
+<text class="texte chiffre gras" x="696.0" y="196.0" text-anchor="end">96,8 %</text>
+<text class="texte gras" x="254.0" y="248.0" text-anchor="end">Fidélité</text>
+<text class="secondaire petit" x="254.0" y="263.0" text-anchor="end" style="font-size:10.5px">la phrase dit ce que dit l&#x27;extrait</text>
+<line class="s-texte" x1="488.7" y1="244.0" x2="517.2" y2="244.0" stroke-width="1.5"/>
+<circle class="f-r0 s-fond" cx="517.2" cy="244" r="6.5" stroke-width="2"><title>Fidélité, 2026-10-22 : 94,0 %</title></circle>
+<circle class="f-r1 s-fond" cx="488.7" cy="244" r="6.5" stroke-width="2"><title>Fidélité, 2026-10-23 : 92,4 %</title></circle>
+<circle class="f-r2 s-fond" cx="501.2" cy="244" r="6.5" stroke-width="2"><title>Fidélité, 2026-10-27 : 93,1 %</title></circle>
+<text class="texte chiffre gras" x="696.0" y="248.0" text-anchor="end">93,1 %</text>
+<text class="texte gras" x="254.0" y="300.0" text-anchor="end">Bonnes abstentions</text>
+<text class="secondaire petit" x="254.0" y="315.0" text-anchor="end" style="font-size:10.5px">« aucune source » à bon escient</text>
+<line class="s-texte" x1="624.0" y1="296.0" x2="624.0" y2="296.0" stroke-width="1.5"/>
+<circle class="f-r0 s-fond" cx="624.0" cy="296" r="6.5" stroke-width="2"><title>Bonnes abstentions, 2026-10-22 : 100,0 %</title></circle>
+<circle class="f-r1 s-fond" cx="624.0" cy="296" r="6.5" stroke-width="2"><title>Bonnes abstentions, 2026-10-23 : 100,0 %</title></circle>
+<circle class="f-r2 s-fond" cx="624.0" cy="296" r="6.5" stroke-width="2"><title>Bonnes abstentions, 2026-10-27 : 100,0 %</title></circle>
+<text class="texte chiffre gras" x="696.0" y="300.0" text-anchor="end">100,0 %</text>
+<text class="texte gras" x="254.0" y="352.0" text-anchor="end">Chiffres exacts</text>
+<text class="secondaire petit" x="254.0" y="367.0" text-anchor="end" style="font-size:10.5px">les nombres recopiés sans erreur</text>
+<line class="s-texte" x1="552.8" y1="348.0" x2="609.8" y2="348.0" stroke-width="1.5"/>
+<circle class="f-r0 s-fond" cx="552.8" cy="348" r="6.5" stroke-width="2"><title>Chiffres exacts, 2026-10-22 : 96,0 %</title></circle>
+<circle class="f-r1 s-fond" cx="608.0" cy="348" r="6.5" stroke-width="2"><title>Chiffres exacts, 2026-10-23 : 99,1 %</title></circle>
+<circle class="f-r2 s-fond" cx="609.8" cy="348" r="6.5" stroke-width="2"><title>Chiffres exacts, 2026-10-27 : 99,2 %</title></circle>
+<text class="texte chiffre gras" x="696.0" y="352.0" text-anchor="end">99,2 %</text>
+<text class="secondaire petit" x="24.0" y="420.0" text-anchor="start">L&#x27;axe commence à 80 % pour montrer les écarts : chaque point est une mesure, pas une longueur.</text>
+<text class="discret petit" x="24" y="436">Source : evaluation/resultats/*-resume.json · généré par outils/visuels.py</text>
+</svg>

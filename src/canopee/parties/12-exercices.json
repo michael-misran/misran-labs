@@ -1,0 +1,1349 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "chapitre-12-les-exercices-jouer-la-crise-avant-qu-elle-arrive",
+   "x": [
+    "Chapitre 12. Les exercices : jouer la crise avant qu'elle arrive"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Étape 11 du projet · 29 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-probleme",
+   "x": [
+    "Le problème"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les deux chapitres précédents ont ",
+    {
+     "g": [
+      "constaté"
+     ]
+    },
+    " : l'auditeur a écrit un audit à la manière d'une mise en demeure, l'équipe d'attaque a transformé ses écarts en attaques. Reste à savoir si l'organisation sait ",
+    {
+     "g": [
+      "agir"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une vraie organisation qui traite des données personnelles doit savoir mener, un jour ou l'autre, six gestes précis : répondre à une personne qui demande ses données ; l'effacer partout ; traiter une violation de données ; vérifier une mesure du programme avant de la publier ; garder ses correctifs par des tests ; faire tenir la séparation des tâches. Ce sont les six exercices du cahier des charges."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "On ne les apprend pas le jour de la crise. On les ",
+    {
+     "g": [
+      "joue"
+     ]
+    },
+    " avant, comme un exercice d'évacuation."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-on-a-construit",
+   "x": [
+    "Ce qu'on a construit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un module pour les ",
+    {
+     "g": [
+      "droits des personnes"
+     ]
+    },
+    " (retrouver une personne partout, répondre, effacer, purger), un module qui liste et joue les ",
+    {
+     "g": [
+      "exercices"
+     ]
+    },
+    ", et dans le portail : la gestion des ",
+    {
+     "g": [
+      "violations de données"
+     ]
+    },
+    " (le RSSI qualifie, le DPO décide), et des règles plus strictes pour les demandes de droits et les levées de pseudonymes."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La règle qui a guidé l'étape :"
+     ]
+    },
+    " tous les exercices tournent dans des modules qui ne montrent à Claude Code que des ",
+    {
+     "g": [
+      "comptes et des verdicts"
+     ]
+    },
+    ". La réponse d'accès, qui contient les données d'une personne, est écrite dans la zone privée. Ce qui en sort, le ",
+    {
+     "g": [
+      "bordereau"
+     ]
+    },
+    " et la ",
+    {
+     "g": [
+      "preuve d'effacement"
+     ]
+    },
+    ", ne contient aucune donnée. Les validations dans le portail sont jouées sur le jeu de test."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Exercice"
+    ],
+    [
+     "Résultat"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "1. Droit d'accès"
+     ],
+     [
+      {
+       "g": [
+        "Réussi."
+       ]
+      },
+      " Un adhérent tiré au hasard, jamais affiché, retrouvé dans 9 lieux ; la réponse ne lève que ses codes"
+     ]
+    ],
+    [
+     [
+      "2. Droit à l'effacement"
+     ],
+     [
+      {
+       "g": [
+        "Réussi, sur une copie."
+       ]
+      },
+      " 22 lieux examinés, effacement complet en 23 s, preuve sans aucune donnée"
+     ]
+    ],
+    [
+     [
+      "3. Violation de données"
+     ],
+     [
+      {
+       "g": [
+        "Préparé, décision en attente."
+       ]
+      },
+      " Constat, analyse, projet de décision et projet de notification"
+     ]
+    ],
+    [
+     [
+      "4. Fact-checking"
+     ],
+     [
+      {
+       "g": [
+        "Réussi jusqu'au portail."
+       ]
+      },
+      " Une mesure relue phrase par phrase, 10 phrases à sourcer sans source"
+     ]
+    ],
+    [
+     [
+      "5. Purple team"
+     ],
+     [
+      {
+       "g": [
+        "10 tests sur 10"
+       ]
+      },
+      " en une seule commande"
+     ]
+    ],
+    [
+     [
+      "6. Séparation des tâches"
+     ],
+     [
+      {
+       "g": [
+        "Réussi."
+       ]
+      },
+      " 5 tentatives au mauvais rôle ou au même compte, 5 refusées et relevées par l'audit"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-six-exercices",
+   "x": [
+    "Les six exercices"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "1-le-droit-d-acces",
+   "x": [
+    "1. Le droit d'accès"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Toute personne peut demander à une organisation ",
+    {
+     "g": [
+      "toutes"
+     ]
+    },
+    " les données qu'elle détient sur elle (article 15 du RGPD). Pour l'exercice, le système tire au hasard un adhérent que deux documents au moins mentionnent, sans homonyme, et range son identifiant dans la zone privée, sans l'afficher."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Puis il le cherche ",
+    {
+     "g": [
+      "partout"
+     ]
+    },
+    ", par sa ",
+    {
+     "g": [
+      "signature"
+     ]
+    },
+    " : ses identifiants (doublons compris), toutes les formes de son nom que connaît la passerelle, ses e-mails, ses téléphones, ses codes de pseudonyme."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Lieu"
+    ],
+    [
+     "Trouvé"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Sa fiche, dans la base privée"
+     ],
+     [
+      "1"
+     ]
+    ],
+    [
+     [
+      "La table des personnes"
+     ],
+     [
+      "1"
+     ]
+    ],
+    [
+     [
+      "Les documents qui le mentionnent"
+     ],
+     [
+      "3 (6 passages, 6 vecteurs)"
+     ]
+    ],
+    [
+     [
+      "Les fichiers sources"
+     ],
+     [
+      "4"
+     ]
+    ],
+    [
+     [
+      "Les jeux d'évaluation et la vérité de terrain"
+     ],
+     [
+      "2"
+     ]
+    ],
+    [
+     [
+      "Les empreintes du gardien"
+     ],
+     [
+      "3"
+     ]
+    ],
+    [
+     [
+      "Les journaux, les caches, le portail, les sorties, le journal d'Ollama, les conversations de Claude Code"
+     ],
+     [
+      "0"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La réponse contient sa fiche, les extraits qui le concernent, ce qui a été calculé à partir de lui (vecteurs, pseudonyme), où il apparaît encore, et les copies hors de portée (iCloud, Claude, sauvegardes). Et elle respecte une règle qu'on oublie souvent : ",
+    {
+     "g": [
+      "répondre à une personne ne doit pas révéler les autres"
+     ]
+    },
+    " (article 15.4). Les extraits sont donc pseudonymisés, puis ",
+    {
+     "g": [
+      "seuls ses codes"
+     ]
+    },
+    " sont levés : 8 pseudonymes levés, ",
+    {
+     "g": [
+      "29 laissés"
+     ]
+    },
+    " aux autres personnes."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le bordereau, lui, n'a que des comptes. Et le portail ",
+    {
+     "g": [
+      "refuse désormais de valider une demande sans son bordereau"
+     ]
+    },
+    " : valider ne prouvait pas qu'on avait répondu."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "2-le-droit-a-l-effacement",
+   "x": [
+    "2. Le droit à l'effacement"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Effacer une personne, ce n'est pas supprimer une ligne. Elle vit dans des index, des vecteurs, des caches, des fichiers de travail. L'effacement a été joué ",
+    {
+     "g": [
+      "sur une copie"
+     ]
+    },
+    " des bases, rouvertes avec les mêmes clés dans un dossier temporaire hors d'iCloud, puis détruite. Effacer pour de vrai aurait cassé l'évaluation privée, la vérité de terrain qui mesure la passerelle, et la graine du générateur, qui aurait recréé la personne à la génération suivante. La commande d'effacement réel existe, réservée à moi, avec une confirmation écrite."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Sur la copie : ",
+    {
+     "g": [
+      "22 lieux, de 1 à 6 éléments avant, 0 après."
+     ]
+    },
+    " Une fiche supprimée, 3 documents et 5 passages ",
+    {
+     "g": [
+      "caviardés"
+     ]
+    },
+    " (ses mentions deviennent « [personne effacée] » : un compte rendu reste utile au parti, sa présence non), ",
+    {
+     "g": [
+      "5 vecteurs recalculés"
+     ]
+    },
+    ", un code de pseudonyme supprimé, 6 fichiers sources caviardés, 2 fichiers de sortie supprimés (dont la réponse d'accès elle-même), 3 empreintes retirées."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Trois détails font la différence entre un effacement réel et un effacement de façade :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "les vecteurs sont recalculés"
+      ]
+     },
+     ", pas seulement gardés : un vecteur dérive du texte, et des attaques savent remonter d'un vecteur au texte ;"
+    ],
+    [
+     {
+      "g": [
+       "les octets sont écrasés."
+      ]
+     },
+     " Supprimer une ligne dans SQLite marque ses pages comme libres, mais les octets restent jusqu'à ce qu'elles soient réutilisées. Des options d'effacement sécurisé et une réécriture complète de la base les font disparaître ; l'index plein texte, lui, doit être compacté, sinon il garde les entrées « supprimées » ;"
+    ],
+    [
+     {
+      "g": [
+       "la preuve refait la recherche"
+      ]
+     },
+     ", avec la même signature : chaque lieu doit répondre zéro. Une réponse d'accès incomplète et un effacement incomplet sont le même défaut, d'où ",
+     {
+      "g": [
+       "une seule fonction d'inventaire"
+      ]
+     },
+     " pour les deux."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce qui n'est pas effacé est dit, plutôt que tu : la copie d'Apple, les conversations de Claude, et le journal d'audit du portail. Celui-ci est chaîné : modifier une ligne casserait la preuve de tout le reste. Il ne garde que la clé de la fiche, qui ne désigne plus personne une fois la fiche, les fichiers et la table de correspondance effacés."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Les droits d'accès et d'effacement : une seule fonction d'inventaire, deux usages, une preuve",
+   "src": "droits.svg"
+  },
+  {
+   "t": "h3",
+   "id": "3-la-violation-de-donnees",
+   "x": [
+    "3. La violation de données"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      {
+       "g": [
+        "Ceci est un exercice."
+       ]
+      },
+      " Mycélium n'existe pas, les fiches sont inventées, aucune personne réelle n'est concernée. Rien n'a été envoyé à la CNIL, qui n'a rien constaté ni rien décidé."
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une ",
+    {
+     "g": [
+      "violation de données"
+     ]
+    },
+    " n'est pas seulement un piratage. Une copie non voulue chez un tiers en est une (article 4.12). Le responsable doit la notifier à la CNIL ",
+    {
+     "g": [
+      "dans les 72 heures"
+     ]
+    },
+    " après en avoir eu connaissance, sauf si elle n'entraîne aucun risque ; l'inscrire dans tous les cas à son registre des violations ; et prévenir les personnes si le risque est élevé. Passé 72 heures, on notifie quand même, en donnant les motifs du retard."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'incident choisi pour l'exercice est ",
+    {
+     "g": [
+      "la copie iCloud"
+     ]
+    },
+    ", découverte au chapitre 5 : la synchronisation est réelle, les personnes sont inventées. Le dossier de l'incident ne contient aucune donnée personnelle :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "le constat"
+      ]
+     },
+     " : ce que la synchronisation envoie vers Apple, sans qu'on puisse le vérifier de son côté. Les 2 062 fiches d'adhérent fictives en clair, les 28 fiches de l'équipe, fictives elles aussi, avec numéros de sécurité sociale et IBAN, 325 documents internes et e-mails, un cache des agents (on y revient plus bas), et trois bases chiffrées dont les clés sont restées sur le Mac. Qualification proposée au RSSI : atteinte à la confidentialité, plus de 1 000 personnes, gravité élevée ;"
+    ],
+    [
+     {
+      "g": [
+       "l'analyse"
+      ]
+     },
+     " de l'auditeur : c'est une violation au sens du RGPD, et elle ",
+     {
+      "g": [
+       "continue"
+      ]
+     },
+     " ; risque ",
+     {
+      "g": [
+       "élevé"
+      ]
+     },
+     " (gravité 4, vraisemblance 2) ; notification ",
+     {
+      "g": [
+       "obligatoire et tardive"
+      ]
+     },
+     " ; information des personnes due ;"
+    ],
+    [
+     {
+      "g": [
+       "un projet de décision"
+      ]
+     },
+     ", avec les deux options et la recommandation de l'auditeur : ",
+     {
+      "g": [
+       "notifier"
+      ]
+     },
+     ", avec les motifs du retard. La case de décision est ",
+     {
+      "g": [
+       "laissée vide"
+      ]
+     },
+     " ;"
+    ],
+    [
+     {
+      "g": [
+       "un projet de notification"
+      ]
+     },
+     ", prêt à reporter dans le formulaire de la CNIL ",
+     {
+      "g": [
+       "si"
+      ]
+     },
+     " la décision est de notifier. Rien n'est envoyé."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La violation est datée du ",
+    {
+     "g": [
+      "23 octobre 2026"
+     ]
+    },
+    ", le jour où le responsable a su, c'est-à-dire le jour où j'ai décidé de documenter la synchronisation. Les 72 heures étaient échues le 26. Toute notification est tardive, et l'analyse le dit franchement."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Dans le portail, le RSSI qualifie l'incident (gravité, atteintes, nombre de personnes, motif), puis le DPO lit l'analyse et décide. Deux comptes différents, sinon refus journalisé. Le circuit a été mesuré sur le jeu de test : 11 scénarios."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La décision m'appartient."
+     ]
+    },
+    " Elle n'était pas prise à la fin de l'étape ; je l'ai prise en finissant ce livre, le 30 octobre : ",
+    {
+     "g": [
+      "notifier"
+     ]
+    },
+    ", en donnant les motifs du retard, comme le recommandait l'auditeur. Le motif tient en une phrase : des fiches d'adhérent en clair, des numéros de sécurité sociale et des IBAN copiés chez un tiers sans contrat de sous-traitance, ce serait un risque élevé pour un vrai parti, et une notification tardive vaut mieux que pas de notification. Le retard s'explique, il ne s'excuse pas : la copie a été vue le 23 octobre et documentée comme un incident, mais elle n'a été analysée comme une violation au sens du RGPD qu'à cet exercice, le 29."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Mycélium est fictif : la notification reste un exercice, et rien n'est envoyé à la vraie CNIL. Ce qui compte, c'est que la case soit remplie, par la bonne personne, avec un motif écrit. La copie iCloud, elle, n'est pas corrigée dans le bac à sable : elle reste le constat que ce livre documente."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Le déroulé d'une violation de données : la frise des 72 heures et le circuit RSSI, auditeur, DPO",
+   "src": "violation.svg"
+  },
+  {
+   "t": "h3",
+   "id": "4-le-fact-checking",
+   "x": [
+    "4. Le fact-checking"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le vérificateur du chapitre 8 relit une mesure du programme contre les études publiques qu'elle cite. En 19 secondes, sur le Mac : 20 phrases, dont 8 propositions politiques, qui n'ont pas besoin de source. Sur les ",
+    {
+     "g": [
+      "12 phrases à sourcer, 10 n'ont aucun appel de source"
+     ]
+    },
+    ", 1 est soutenue, 1 ne l'est pas. Statut proposé : « à corriger ». Le dossier est entré dans le circuit du portail réel, où le directeur du pôle programme tranchera chaque signalement."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La leçon : une mesure générée « appuyée sur des études publiques » n'appuie en fait que 2 affirmations sur 12. Le vérificateur ne réécrit pas : il signale, et l'humain décide."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "5-la-purple-team",
+   "x": [
+    "5. La purple team"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une seule commande de non-régression, ",
+    {
+     "g": [
+      "10 tests, 19 secondes, aucun modèle"
+     ]
+    },
+    " : les six attaques du chapitre 11, plus un test pour chaque écart corrigé ici. L'accès et l'effacement sur un jeu d'essai inventé (12 vérifications : chaque lieu trouvé, les doublons, les autres personnes non levées, l'index vide, les vecteurs recalculés, la preuve sans donnée) ; une levée du DPO sans rattachement refusée ; une purge qui ne touche à rien en simulation et jamais au journal chaîné ; un cache privé qui ne s'ouvre pas sans la clé."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est désormais ",
+    {
+     "g": [
+      "la"
+     ]
+    },
+    " commande à relancer après tout changement des modules sensibles."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "6-la-separation-des-taches",
+   "x": [
+    "6. La séparation des tâches"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Cinq tentatives, jouées sur le jeu de test : le compte qui a soumis une mesure la valide ; le DPO valide une mesure ; le RSSI aussi ; le bureau valide une demande de droits ; le pôle programme décide d'une violation. ",
+    {
+     "g": [
+      "Les cinq sont refusées."
+     ]
+    },
+    " Puis l'auditeur lit l'export du journal : il les retrouve toutes, et classe conformes la séparation des tâches et les accès par rôle."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-ecarts-corriges-en-chemin",
+   "x": [
+    "Les écarts corrigés en chemin"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-re-identification-ramenee-a-zero",
+   "x": [
+    "La ré-identification, ramenée à zéro"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les fiches pseudonymisées que lit le DPO isolaient encore ",
+    {
+     "g": [
+      "18,6 %"
+     ]
+    },
+    " des adhérents (chapitre 7). La mesure a comparé quatre réglages : l'âge en trois tranches seul laissait 5,5 % de personnes isolées ; masquer en plus la profession dans les fiches d'adhérent descend à ",
+    {
+     "g": [
+      "0 %"
+     ]
+    },
+    ", chaque combinaison désignant au moins trois personnes. Les scores de la passerelle n'ont pas bougé : 0 canari, rappel de 99,98 %, précision de 99,47 %."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce qui reste ne se réduit pas par le code : le ",
+    {
+     "g": [
+      "fichier brut"
+     ]
+    },
+    " en clair, très probablement copié par iCloud. Il n'y a même pas besoin de ré-identifier : les noms y sont."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "La part des adhérents isolés selon ce qu'on partage : fichier brut, fiches pseudonymisées, extraction k-anonyme",
+   "src": "reidentification.svg"
+  },
+  {
+   "t": "h3",
+   "id": "les-levees-rattachees-et-limitees",
+   "x": [
+    "Les levées, rattachées et limitées"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Toute levée de pseudonymes par le DPO se rattache désormais à une ",
+    {
+     "g": [
+      "demande de droits"
+     ]
+    },
+    " (et seule la personne concernée est levée) ou à une ",
+    {
+     "g": [
+      "finalité"
+     ]
+    },
+    " prévue (contrôle de la pseudonymisation, incident, obligation légale). Le rattachement est une référence, inscrite aux journaux, que l'auditeur lit sans jamais voir le motif. C'était l'écart de minimisation du chapitre 10 : 49 personnes levées d'un coup pour un motif qui n'en concernait peut-être qu'une."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-purge",
+   "x": [
+    "La purge"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une commande applique les ",
+    {
+     "g": [
+      "20 règles"
+     ]
+    },
+    " de durée du registre : sorties de travail 7 jours, extractions 1 an, journaux techniques et journal d'Ollama 1 an, codes de correspondance orphelins 6 mois, demandes closes 3 ans… Elle ",
+    {
+     "g": [
+      "simule par défaut"
+     ]
+    },
+    " : une purge efface, c'est irréversible. La simulation du 29 octobre ne trouve que ",
+    {
+     "g": [
+      "3 anciens exports d'audit"
+     ]
+    },
+    " au-delà de leur durée. L'exécution réelle attend mon accord."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Trois règles ne s'exécutent pas, et le disent : le journal chaîné du portail (il faudra une procédure pour le recouper avant octobre 2027), et deux règles sur les anciens adhérents et les sympathisants, parce que le fichier n'a ni statut « ancien adhérent » ni date de dernier contact. Une durée qu'on ne peut pas appliquer révèle un fichier mal conçu."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "la-surprise-le-cache-oublie",
+   "x": [
+    "La surprise : le cache oublié"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "En cartographiant les lieux où une personne peut se trouver, l'exercice a trouvé un lieu que personne n'avait listé : le ",
+    {
+     "g": [
+      "cache des agents sur le privé"
+     ]
+    },
+    ". Pour éviter de recalculer les réponses d'Ollama, les agents du chapitre 8 gardaient leurs requêtes et leurs réponses dans un petit fichier. Sur le privé, ces requêtes contenaient des ",
+    {
+     "g": [
+      "passages privés"
+     ]
+    },
+    " : 172 entrées, ",
+    {
+     "g": [
+      "en clair"
+     ]
+    },
+    ", dans le dossier synchronisé avec iCloud."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le cache de l'évaluation privée avait été chiffré dès le chapitre 6. Celui des agents, ajouté deux étapes plus tard, avait échappé à la règle. Il est maintenant chiffré avec la clé de la base privée, un ancien cache en clair est converti, et un test de la purple team vérifie qu'il ne s'ouvre pas sans la clé."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La leçon rejoint celle d'iCloud : ",
+    {
+     "g": [
+      "les données vivent aussi là où on ne les range pas."
+     ]
+    },
+    " Les caches, les fichiers temporaires, les exports de travail sont les lieux où les protections arrivent en dernier."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-que-font-les-vraies-organisations",
+   "x": [
+    "Ce que font les vraies organisations"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Elles tiennent une ",
+    {
+     "g": [
+      "cartographie des données"
+     ]
+    },
+    " (où vit chaque donnée personnelle, avec quelle durée) et un ",
+    {
+     "g": [
+      "outil de traitement des demandes"
+     ]
+    },
+    " qui l'interroge ; elles répondent dans le mois, avec une réponse relue par le DPO. L'effacement suit des procédures écrites, sauvegardes comprises : on ne restaure pas une personne effacée. Les violations suivent une ",
+    {
+     "g": [
+      "procédure de gestion des incidents"
+     ]
+    },
+    " : qualification par la sécurité, analyse par le DPO, décision documentée, notification sur le service en ligne de la CNIL, registre des violations. Une notification tardive vaut mieux que pas de notification : le RGPD demande alors d'en donner les motifs. Enfin, les tests de sécurité tournent dans l'",
+    {
+     "g": [
+      "intégration continue"
+     ]
+    },
+    ", à chaque modification du code."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-chiffres",
+   "x": [
+    "Les chiffres"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "l-evolution-des-ecarts-de-l-etape-9-a-l-etape-11",
+   "x": [
+    "L'évolution des écarts, de l'étape 9 à l'étape 11"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|---|",
+   "entete": [
+    [
+     "Écart"
+    ],
+    [
+     "27 octobre"
+    ],
+    [
+     "28 octobre"
+    ],
+    [
+     "29 octobre"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Synchronisation iCloud"
+     ],
+     [
+      "grave"
+     ],
+     [
+      "grave"
+     ],
+     [
+      {
+       "g": [
+        "grave"
+       ]
+      },
+      " (traitée comme une violation)"
+     ]
+    ],
+    [
+     [
+      "Levées de pseudonymes"
+     ],
+     [
+      "élevé"
+     ],
+     [
+      "élevé"
+     ],
+     [
+      {
+       "g": [
+        "faible"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Durées de conservation"
+     ],
+     [
+      "élevé"
+     ],
+     [
+      "élevé"
+     ],
+     [
+      {
+       "g": [
+        "moyen"
+       ]
+      },
+      " (purge écrite, exécution en attente)"
+     ]
+    ],
+    [
+     [
+      "Demandes de droits"
+     ],
+     [
+      "élevé"
+     ],
+     [
+      "élevé"
+     ],
+     [
+      {
+       "g": [
+        "faible"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Clés et sauvegardes"
+     ],
+     [
+      "élevé"
+     ],
+     [
+      "élevé"
+     ],
+     [
+      "élevé (support à choisir)"
+     ]
+    ],
+    [
+     [
+      "Claude, sous-traitant"
+     ],
+     [
+      "élevé"
+     ],
+     [
+      "élevé"
+     ],
+     [
+      "élevé (hors du code)"
+     ]
+    ],
+    [
+     [
+      "Cumul des rôles du DPO"
+     ],
+     [
+      "élevé"
+     ],
+     [
+      "élevé"
+     ],
+     [
+      "élevé (limite assumée)"
+     ]
+    ],
+    [
+     [
+      "Sorties qui s'accumulent"
+     ],
+     [
+      "moyen"
+     ],
+     [
+      "moyen"
+     ],
+     [
+      {
+       "g": [
+        "faible"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Serveur MCP public"
+     ],
+     [
+      "moyen"
+     ],
+     [
+      "conforme"
+     ],
+     [
+      "conforme"
+     ]
+    ],
+    [
+     [
+      "La règle n°1 et le terminal"
+     ],
+     [
+      "moyen"
+     ],
+     [
+      "faible"
+     ],
+     [
+      "faible"
+     ]
+    ],
+    [
+     [
+      "Ré-identification"
+     ],
+     [
+      "—"
+     ],
+     [
+      "élevé (attaque)"
+     ],
+     [
+      {
+       "g": [
+        "moyen"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Registre des violations (nouveau)"
+     ],
+     [
+      "—"
+     ],
+     [
+      "—"
+     ],
+     [
+      "moyen, tant que la décision n'est pas prise"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le dernier audit compte ",
+    {
+     "g": [
+      "1 manquement grave, 3 élevés, 5 moyens, 6 faibles et 5 conformes"
+     ]
+    },
+    ", en 207 secondes."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "La gravité de chaque contrôle de l'audit de l'agent canopee-cnil, un exercice qui n'émane pas de la CNIL, aux étapes 9, 10 et 11",
+   "src": "audit-cnil.svg"
+  },
+  {
+   "t": "h3",
+   "id": "les-couts",
+   "x": [
+    "Les coûts"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mesuré."
+     ]
+    },
+    " Les exercices ne coûtent presque rien à faire tourner : 3 générations d'Ollama (le juge du vérificateur) et 72 calculs de vecteurs pendant la session ; l'effacement sur copie, 23 s ; la purple team, 19 s ; l'évaluation de la passerelle, 4 min 49 ; l'audit, environ 3 minutes. Côté Claude, la session et l'agent ",
+    {
+     "c": "canopee-cnil"
+    },
+    " ont demandé ",
+    {
+     "g": [
+      "121 requêtes"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "6,1 M d'unités"
+     ]
+    },
+    " avant le contrôle et la pull request, relevés directement dans la transcription de la session : elle avait été ouverte depuis un autre dossier, et l'outil de mesure ne la voyait pas. Une fois la session close et l'outil rendu configurable, la mesure complète donne ",
+    {
+     "g": [
+      "142 requêtes"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "8,4 M d'unités"
+     ]
+    },
+    ", sous-agents compris."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "L'écart."
+     ]
+    },
+    " L'estimation faite à la fin de l'étape prévoyait environ 1 M d'unités de plus pour le contrôle, les commits et la pull request. Il en a fallu 2,3 M : une estimation reste une estimation, et c'est pour cela qu'on la refait par une mesure."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La lecture."
+     ]
+    },
+    " Ce qui coûte, c'est de ",
+    {
+     "g": [
+      "cartographier"
+     ]
+    },
+    " où vit une personne, et de rédiger l'analyse d'une violation : l'agent ",
+    {
+     "c": "canopee-cnil"
+    },
+    " y a passé près de 100 000 tokens."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-reste-ouvert",
+   "x": [
+    "Ce qui reste ouvert"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Trois décisions m'appartenaient"
+      ]
+     },
+     ", prises le 30 octobre en suivant les trois recommandations : ",
+     {
+      "g": [
+       "notifier"
+      ]
+     },
+     " la violation iCloud, avec les motifs du retard ; ",
+     {
+      "g": [
+       "exécuter la purge réelle"
+      ]
+     },
+     " (elle n'efface que trois anciens exports d'audit) ; garder la ",
+     {
+      "g": [
+       "sauvegarde chiffrée"
+      ]
+     },
+     " sur un ",
+     {
+      "g": [
+       "disque externe chiffré"
+      ]
+     },
+     ". Décidées ne veut pas dire faites : la purge et la première sauvegarde restent à lancer, par moi."
+    ],
+    [
+     {
+      "g": [
+       "Les fichiers sources en clair"
+      ]
+     },
+     " de la zone privée : ce sont eux qui font la gravité de la violation. Les chiffrer au repos serait la mesure suivante."
+    ],
+    [
+     {
+      "g": [
+       "Le second regard sur les motifs de levée"
+      ]
+     },
+     ", par le RSSI, sans le texte : pas construit."
+    ],
+    [
+     {
+      "g": [
+       "L'analyse de l'incident"
+      ]
+     },
+     " cite le RGPD ; ses citations sont à repasser par l'outil qui vérifie une citation mot pour mot, que l'agent n'avait pas dans sa session."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-il-faut-retenir",
+   "x": [
+    "Ce qu'il faut retenir"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Répondre et effacer, c'est d'abord savoir trouver."
+      ]
+     },
+     " Les données d'une personne vivent dans les index, les vecteurs, les caches, les journaux, les exports, et chez les sous-traitants."
+    ],
+    [
+     {
+      "g": [
+       "Un effacement se prouve"
+      ]
+     },
+     " : on refait la recherche, on garde une preuve qui dit, lieu par lieu, avant et après, sans redire ce qu'on a effacé. Et on dit ce qu'on n'a pas pu effacer."
+    ],
+    [
+     {
+      "g": [
+       "Le droit d'accès protège aussi les autres"
+      ]
+     },
+     " : tout est pseudonymisé, puis seule la personne concernée est remise en clair."
+    ],
+    [
+     {
+      "g": [
+       "Une violation n'est pas forcément un piratage."
+      ]
+     },
+     " Une synchronisation non voulue en est une, avec ses 72 heures."
+    ],
+    [
+     {
+      "g": [
+       "On joue la crise avant qu'elle arrive."
+      ]
+     },
+     " Le jour venu, la procédure existe, les rôles sont séparés, et la décision humaine a sa case, prête à être remplie."
+    ]
+   ]
+  }
+ ]
+}
