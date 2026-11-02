@@ -1,0 +1,88 @@
+{
+  "langue": "en",
+  "date": "2026-11-02",
+  "numero": 34,
+  "essai": false,
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "ChatGPT will be able to end a conversation by itself",
+    "chapo": "OpenAI announces new limits on violence: when an exchange turns into a fixation, the assistant will be able to end it.",
+    "paragraphes": [
+      "On October 30, OpenAI published two safety announcements. The first: a \"Community Safety Report\", whose first edition will appear in early 2027, covering the second half of 2026, then every six months. OpenAI also says it made more than 200 referrals to law enforcement in the third quarter of 2026.",
+      "The second directly affects the product's behavior. When a conversation shows that someone is fixating on violence, ChatGPT will be able to end the chat automatically. If this happens repeatedly, the account may be temporarily paused. The assistant will also respond more cautiously after warning signs seen in recent chats, and will give fewer details about reconstructing past attacks, whatever the user's age.",
+      "For users under 18, limits on weapons and security systems get tighter, even with no apparent violent intent. An adult wrongly placed among minors will be able to re-verify through Persona.",
+      "For anyone building a product on top of a model, the lesson is about design: cutting off a conversation is an interface decision, with a message to write and a state to handle. OpenAI says these protections will roll out \"in the next few weeks\"."
+    ],
+    "sources": ["https://openai.com/index/community-safety-report-and-new-protections-for-teens/"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Peeve",
+        "titre": "Secret protection only protects what you switched on",
+        "chapo": "GitHub's new classifier blocks secrets with no recognizable format, but it is off by default.",
+        "paragraphes": [
+          "On October 28, GitHub extended push protection beyond known secret patterns. A classifier, built with Microsoft Applied Sciences, looks at how a string is used in the surrounding code and can block a secret with no identifiable format. Early results: the number of pushes where a secret was caught \"more than doubled\".",
+          "What stings: it is a public preview, off by default. You need Secret Protection or Advanced Security, then tick \"Block AI-detected secrets\". The detection uses AI credits, billed from the moment you enable it.",
+          "What isn't ticked protects nothing."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "An inventory of the security settings actually enabled, repo by repo, for small teams that never look at their settings: an \"on / off\" table and a monthly reminder. Competition: GitHub already offers custom security configurations. The angle: plain language for those with no security team.", "plein": true },
+        "sources": ["https://github.blog/changelog/2026-10-28-push-protection-beyond-predefined-secret-patterns"]
+      },
+      {
+        "type": "idee", "rubrique": "The business idea", "court": "Idea",
+        "titre": "An agent-permissions reviewer for repos without a security license",
+        "chapo": "GitHub now scans AI applications in pull requests, with its Advanced Security license.",
+        "paragraphes": [
+          "On October 28, GitHub opened a public preview of a detector for AI applications: indirect prompt injection, sensitive information disclosure and \"excessive agency\", when an agent has more rights than its task requires. It analyzes pull requests and shows alerts there. Conditions: github.com, Advanced Security license. For scale, Code Security, a neighboring offer, is listed at $30 per active committer per month.",
+          "The idea: the same review for a very small team. Who pays: an agency or a SaaS vendor embedding an agent. Price: a flat fee per repo. Launch: a GitHub Action that lists, in the pull request, the agent's tools and permissions and flags those the code never uses.",
+          "Competition: SecureAI-Scan, an open-source scanner (MIT) listed by OWASP. The ground isn't empty; the angle is a readable report, inside the pull request."
+        ],
+        "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
+        "sources": ["https://github.blog/changelog/2026-10-28-code-scanning-for-ai-applications-in-public-preview", "https://github.blog/changelog/2025-03-04-introducing-github-secret-protection-and-github-code-security/", "https://genai.owasp.org/solution/secureai-scan/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Retro · Tech",
+    "articles": [
+      {
+        "type": "retro", "rubrique": "Retro · a game's design", "court": "Retro",
+        "titre": "Loom, the adventure game with no verbs and no death",
+        "chapo": "In 1990, Lucasfilm Games replaces the action list with four musical notes.",
+        "paragraphes": [
+          "Led by Brian Moriarty, a former Infocom writer, Loom is the fourth game to use the SCUMM engine and the first to drop the \"verb plus object\" interface. Instead, the hero plays \"drafts\", four-note melodies. He knows only three notes at the start: C, D, E.",
+          "Some drafts reverse: \"dye\" becomes \"bleach\" when played backwards. In \"expert\" mode, no notes are shown and you have to play by ear. Another radical decision: Bobbin cannot die by accident, following the LucasArts philosophy summarized by Game Developer: never a dead end or a forced restart.",
+          "Critics were split (\"too lightweight\" for Scorpia, a special award for artistic achievement from Computer Gaming World), and sales did not justify sequels (Rogue Leaders). Removing commands is a product choice."
+        ],
+        "rappel": { "annee": "1990", "texte": "Loom comes out in 1990 from Lucasfilm Games; the 16-color EGA version dates from May." },
+        "sources": ["https://en.wikipedia.org/wiki/Loom_(video_game)", "https://www.gamedeveloper.com/audio/video-brian-moriarty-s-classic-postmortem-of-i-loom-i-"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Node.js 26 goes long-term support, through end of April 2029",
+        "paragraphes": [
+          "On October 28, version 26.13.0 moved the 26 branch into LTS, codename \"Lithium\", with updates through the end of April 2029.",
+          "A catch if you come from an older LTS (24 or 22): since Node.js 25, the official Linux binaries are linked against libatomic, which you may need to install separately depending on your distribution."
+        ],
+        "sources": ["https://nodejs.org/en/blog/release/v26.13.0"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Vercel: a daemon that answers badly gets restarted",
+        "paragraphes": [
+          "Since October 30, a daemon can declare a <i>livenessProbe</i> in vercel.json, for example a request to <i>/health</i> on port 1234. If the check fails, Vercel restarts the container, which catches a service that is alive but stuck."
+        ],
+        "sources": ["https://vercel.com/changelog/add-liveness-checks-to-your-daemons"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Excessive agency", "nature": "n.", "definition": "A situation where an AI agent has more capabilities, rights or autonomy than its task requires. The risk is fixed at design time: remove the unneeded tools before hoping the agent holds back." },
+    "chiffre": { "valeur": "200+", "texte": "law-enforcement referrals by OpenAI in the third quarter of 2026, according to the company." },
+    "bonus": { "type": "question", "texte": "Which security setting in your projects is off by default, and how long since you checked whether it was? An honest answer may be a whole team's pet peeve." },
+    "enigme": { "question": "I am a list handed to an agent. The longer I am, the more it can do, and the more it can get wrong; the best way to protect me is to shorten me. What am I?", "reponse": "the list of tools and permissions granted to the agent" }
+  },
+  "sources": ["openai.com", "github.blog", "nodejs.org", "vercel.com", "wikipedia.org", "gamedeveloper.com", "owasp.org"]
+}
