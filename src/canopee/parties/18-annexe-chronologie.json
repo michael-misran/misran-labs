@@ -1,0 +1,797 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "annexe-d-chronologie",
+   "x": [
+    "Annexe D. Chronologie"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Annexes · les dates des commits et des fusions"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Cette chronologie vient de l'historique Git du projet : elle dit quand le travail a été enregistré, pas quand il a commencé. Une étape peut donc porter, en tête de son chapitre, la date où elle a été menée, et être enregistrée le lendemain : c'est le cas de l'étape 4."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les heures sont celles de Paris. Le 25 octobre 2026, le passage à l'heure d'hiver a fait passer la France de UTC+2 à UTC+1. Deux commits écrits en heure universelle sont convertis ici."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un ",
+    {
+     "g": [
+      "commit"
+     ]
+    },
+    " enregistre une version sur une branche. La ",
+    {
+     "g": [
+      "fusion"
+     ]
+    },
+    " l'intègre à la version principale, à travers une pull request que j'accepte moi-même."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-22-octobre-les-fondations",
+   "x": [
+    "Le 22 octobre : les fondations"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Heure"
+    ],
+    [
+     "Événement"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "13 h 54"
+     ],
+     [
+      "Initialisation du dépôt, commit de l'étape 1"
+     ]
+    ],
+    [
+     [
+      "13 h 56"
+     ],
+     [
+      {
+       "g": [
+        "Étape 1, socle"
+       ]
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "14 h 07"
+     ],
+     [
+      "Début du journal d'Ollama, avec sa version native"
+     ]
+    ],
+    [
+     [
+      "15 h 13"
+     ],
+     [
+      "Étape 2 : dernier commit"
+     ]
+    ],
+    [
+     [
+      "15 h 14"
+     ],
+     [
+      {
+       "g": [
+        "Étape 2, corpus public"
+       ]
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "18 h 06"
+     ],
+     [
+      "Rapport de la campagne d'évaluation (3 rédacteurs, 2 juges, 3 rerankers)"
+     ]
+    ],
+    [
+     [
+      "19 h 45"
+     ],
+     [
+      "Rapport de l'évaluation par défaut, avec Gemma 4"
+     ]
+    ],
+    [
+     [
+      "22 h 04"
+     ],
+     [
+      "Étape 3 : commit"
+     ]
+    ],
+    [
+     [
+      "22 h 11"
+     ],
+     [
+      {
+       "g": [
+        "Étape 3, évaluation"
+       ]
+      },
+      " : fusion"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La recherche web qui n'a trouvé aucun parti réel nommé Mycélium date de ce jour-là, ainsi que ma décision d'une mise à jour semi-automatique du corpus."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-23-octobre-le-prive-les-agents-le-portail",
+   "x": [
+    "Le 23 octobre : le privé, les agents, le portail"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Heure"
+    ],
+    [
+     "Événement"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "05 h 40"
+     ],
+     [
+      "Étape 4 : commit, après une nuit de travail"
+     ]
+    ],
+    [
+     [
+      "05 h 45"
+     ],
+     [
+      {
+       "g": [
+        "Étape 4, données fictives"
+       ]
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "06 h 27"
+     ],
+     [
+      "Rapport de la nouvelle référence d'évaluation, sur 65 questions"
+     ]
+    ],
+    [
+     [
+      "06 h 52"
+     ],
+     [
+      "Mission climat : commit"
+     ]
+    ],
+    [
+     [
+      "06 h 56"
+     ],
+     [
+      {
+       "g": [
+        "Étape 4 b, corpus climat et coûts"
+       ]
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "09 h 12"
+     ],
+     [
+      "Étape 5 : dernier commit"
+     ]
+    ],
+    [
+     [
+      "09 h 13"
+     ],
+     [
+      {
+       "g": [
+        "Étape 5, corpus privé"
+       ]
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "12 h 33"
+     ],
+     [
+      "Étape 6 : commit"
+     ]
+    ],
+    [
+     [
+      "12 h 52"
+     ],
+     [
+      {
+       "g": [
+        "Étape 6, passerelle"
+       ]
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "15 h 44"
+     ],
+     [
+      "Étape 7 : commit"
+     ]
+    ],
+    [
+     [
+      "15 h 57"
+     ],
+     [
+      {
+       "g": [
+        "Étape 7, agents métier"
+       ]
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "16 h 29"
+     ],
+     [
+      "Étape 8 : commit"
+     ]
+    ],
+    [
+     [
+      "16 h 43"
+     ],
+     [
+      {
+       "g": [
+        "Étape 8, portail"
+       ]
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "17 h 16"
+     ],
+     [
+      "Correctif de l'en-tête ",
+      {
+       "c": "Origin"
+      },
+      " : commit"
+     ]
+    ],
+    [
+     [
+      "18 h 08"
+     ],
+     [
+      "Correctif de l'en-tête ",
+      {
+       "c": "Origin"
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "22 h 45"
+     ],
+     [
+      "Retours de mon parcours de test : dernier commit"
+     ]
+    ],
+    [
+     [
+      "22 h 50"
+     ],
+     [
+      "Retours de mon parcours de test : fusion"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est aussi le jour de la découverte de la synchronisation iCloud. Comme j'ai alors décidé de la documenter, c'est la date retenue pour l'exercice de violation de données du chapitre 12."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "du-24-au-26-octobre-la-pause-puis-le-plan-du-livre",
+   "x": [
+    "Du 24 au 26 octobre : la pause, puis le plan du livre"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Date"
+    ],
+    [
+     "Heure"
+    ],
+    [
+     "Événement"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "24 et 25 octobre"
+     ],
+     [
+      "—"
+     ],
+     [
+      "Aucun commit"
+     ]
+    ],
+    [
+     [
+      "26 octobre"
+     ],
+     [
+      "07 h 18"
+     ],
+     [
+      "Plan et chapitres 1 à 3 du livre : premier commit"
+     ]
+    ],
+    [
+     [
+      "26 octobre"
+     ],
+     [
+      "07 h 22"
+     ],
+     [
+      "Plan et chapitres 1 à 3 du livre : dernier commit"
+     ]
+    ],
+    [
+     [
+      "26 octobre"
+     ],
+     [
+      "07 h 25"
+     ],
+     [
+      {
+       "g": [
+        "Livre, plan et chapitres 1 à 3"
+       ]
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "26 octobre"
+     ],
+     [
+      "—"
+     ],
+     [
+      "Fin du délai de 72 heures dans l'exercice de violation iCloud (chap. 12)"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "du-27-au-29-octobre-controler-et-attaquer",
+   "x": [
+    "Du 27 au 29 octobre : contrôler et attaquer"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Date"
+    ],
+    [
+     "Heure"
+    ],
+    [
+     "Événement"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "27 octobre"
+     ],
+     [
+      "08 h 15"
+     ],
+     [
+      "Rapport d'évaluation sur 73 questions"
+     ]
+    ],
+    [
+     [
+      "27 octobre"
+     ],
+     [
+      "08 h 36"
+     ],
+     [
+      "Premier audit de l'agent ",
+      {
+       "c": "canopee-cnil"
+      }
+     ]
+    ],
+    [
+     [
+      "27 octobre"
+     ],
+     [
+      "09 h 05"
+     ],
+     [
+      "Étape 9 : commit"
+     ]
+    ],
+    [
+     [
+      "27 octobre"
+     ],
+     [
+      "09 h 12"
+     ],
+     [
+      {
+       "g": [
+        "Étape 9, agent CNIL"
+       ]
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "28 octobre"
+     ],
+     [
+      "11 h 30"
+     ],
+     [
+      "Étape 10 : premier commit"
+     ]
+    ],
+    [
+     [
+      "28 octobre"
+     ],
+     [
+      "22 h 25"
+     ],
+     [
+      "Deuxième audit de l'agent ",
+      {
+       "c": "canopee-cnil"
+      }
+     ]
+    ],
+    [
+     [
+      "29 octobre"
+     ],
+     [
+      "13 h 19"
+     ],
+     [
+      "Étape 10 : dernier commit"
+     ]
+    ],
+    [
+     [
+      "29 octobre"
+     ],
+     [
+      "20 h 19"
+     ],
+     [
+      {
+       "g": [
+        "Étape 10, red team"
+       ]
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "29 octobre"
+     ],
+     [
+      "20 h 35"
+     ],
+     [
+      "Simulation de la purge"
+     ]
+    ],
+    [
+     [
+      "29 octobre"
+     ],
+     [
+      "23 h 35"
+     ],
+     [
+      "Troisième audit de l'agent ",
+      {
+       "c": "canopee-cnil"
+      }
+     ]
+    ],
+    [
+     [
+      "29 octobre"
+     ],
+     [
+      "23 h 40"
+     ],
+     [
+      "Étape 11 : commit"
+     ]
+    ],
+    [
+     [
+      "29 octobre"
+     ],
+     [
+      "23 h 45"
+     ],
+     [
+      {
+       "g": [
+        "Étape 11, exercices"
+       ]
+      },
+      " : fusion"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-30-octobre-le-livre-et-le-bilan",
+   "x": [
+    "Le 30 octobre : le livre et le bilan"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Heure"
+    ],
+    [
+     "Événement"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "00 h 00"
+     ],
+     [
+      "Chapitres 4 à 13 et conclusion du livre : commit, après leur écriture dans la soirée du 29"
+     ]
+    ],
+    [
+     [
+      "05 h 25"
+     ],
+     [
+      {
+       "g": [
+        "Livre, chapitres 4 à 13 et conclusion"
+       ]
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "05 h 51"
+     ],
+     [
+      "Finition du livre : dernier commit"
+     ]
+    ],
+    [
+     [
+      "05 h 53"
+     ],
+     [
+      {
+       "g": [
+        "Finition du livre"
+       ]
+      },
+      " : fusion"
+     ]
+    ],
+    [
+     [
+      "22 h 38"
+     ],
+     [
+      "Visuels de la documentation : dernier commit"
+     ]
+    ],
+    [
+     [
+      "22 h 40"
+     ],
+     [
+      {
+       "g": [
+        "Visuels"
+       ]
+      },
+      " : fusion"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux autres faits datent de ce jour-là, sans heure précise dans la documentation : la mesure finale des coûts, le matin, et mes décisions sur la violation, la purge et la sauvegarde."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-2-novembre-les-annexes",
+   "x": [
+    "Le 2 novembre : les annexes"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ces annexes sont écrites après la dernière mesure. Leur coût n'entre donc pas dans les chiffres du chapitre 13."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "en-resume",
+   "x": [
+    "En résumé"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [],
+    []
+   ],
+   "lignes": [
+    [
+     [
+      "Première étape"
+     ],
+     [
+      "22 octobre 2026, 13 h 56"
+     ]
+    ],
+    [
+     [
+      "Dernière étape"
+     ],
+     [
+      "29 octobre 2026, 23 h 45"
+     ]
+    ],
+    [
+     [
+      "Durée"
+     ],
+     [
+      "huit jours calendaires, dont trois sans étape (24, 25 et 26 octobre)"
+     ]
+    ],
+    [
+     [
+      "Fusions d'étapes"
+     ],
+     [
+      "les 22, 23, 27 et 29 octobre"
+     ]
+    ],
+    [
+     [
+      "Pull requests fusionnées au 30 octobre"
+     ],
+     [
+      "18, dont 12 pour les étapes et 6 pour les correctifs du portail, le livre et les visuels"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La frise du livre compte cinq journées de travail, parce qu'elle suit la date en tête de chaque chapitre et non celle de la fusion. Les heures des rapports d'évaluation, d'audit et de purge sont celles de leur nom de fichier."
+   ]
+  }
+ ]
+}

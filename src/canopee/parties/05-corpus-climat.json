@@ -1,0 +1,1118 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "chapitre-5-faire-grandir-le-corpus",
+   "x": [
+    "Chapitre 5. Faire grandir le corpus"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Étape 4 b du projet, hors numérotation · 23 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-probleme",
+   "x": [
+    "Le problème"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le corpus du chapitre 2 abordait le climat surtout par la politique : la taxe carbone, l'atténuation, le rapport du GIEC sur 1,5 °C. Il lui manquait ",
+    {
+     "g": [
+      "la science du réchauffement, la France et les impacts"
+     ]
+    },
+    ". Un parti écologiste qui prépare un programme ne peut pas s'en passer."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ajouter des documents semble trivial. Ça ne l'est pas, pour trois raisons :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "un corpus vieillit."
+      ]
+     },
+     " Un rapport annuel change chaque année ; un inventaire d'émissions est révisé à chaque édition. Il faut savoir remplacer une version par la suivante, sans perdre la mémoire de l'ancienne ;"
+    ],
+    [
+     {
+      "g": [
+       "reconstruire coûte."
+      ]
+     },
+     " Tout recalculer à chaque nouveau document, c'est simple, mais de plus en plus cher à mesure que le corpus grossit ;"
+    ],
+    [
+     {
+      "g": [
+       "ajouter peut casser."
+      ]
+     },
+     " De nouveaux documents entrent en concurrence avec les anciens dans la recherche. Une question qui trouvait la bonne étude peut soudain trouver autre chose."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Cette mission, glissée entre deux étapes et restée hors numérotation, sert donc de ",
+    {
+     "g": [
+      "premier test de mise à jour du corpus"
+     ]
+    },
+    ". Elle a aussi produit deux choses inattendues : la première fiche des coûts du projet, et l'incident le plus instructif du livre."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-on-a-construit",
+   "x": [
+    "Ce qu'on a construit"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "19 sources climat"
+      ]
+     },
+     " de confiance : le sixième rapport du GIEC, les rapports du Haut Conseil pour le climat, le bilan climatique de Météo-France, l'inventaire des émissions du Citepa, les scénarios de RTE et de l'ADEME, l'évaluation européenne des risques climatiques, la synthèse d'Explore2 sur l'eau, l'état du climat en Europe de Copernicus, et la trajectoire d'adaptation du ministère de la Transition écologique. Toutes en accès libre, adresses vérifiées, téléchargées avec mon accord (une seule demande groupée, environ 75 Mo)."
+    ],
+    [
+     {
+      "g": [
+       "Une mise à jour incrémentale"
+      ]
+     },
+     " : une commande qui n'ajoute que ce qui manque, sans reconstruire la base."
+    ],
+    [
+     {
+      "g": [
+       "Une règle des versions"
+      ]
+     },
+     " : une nouvelle édition d'un rapport remplace l'ancienne dans les recherches ; l'ancienne reste archivée."
+    ],
+    [
+     {
+      "g": [
+       "10 questions climat"
+      ]
+     },
+     " de plus dans le jeu d'évaluation, qui passe à 65 questions."
+    ],
+    [
+     {
+      "g": [
+       "La liste blanche"
+      ]
+     },
+     " du futur agent de veille, inscrite dans le cahier des charges."
+    ],
+    [
+     {
+      "g": [
+       "La fiche « Ce que coûte Canopée »"
+      ]
+     },
+     " et son script de mesure, qui nourrissent le chapitre 13."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Quelques sources ont été écartées, et la documentation dit pourquoi : un rapport trop lourd (24,7 Mo, au-dessus du plafond de 15 Mo par fichier fixé au chapitre 2), un site qui renvoie tout téléchargement automatique vers sa page d'accueil, deux sites en maintenance ce jour-là."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-choix-qui-comptent",
+   "x": [
+    "Les choix qui comptent"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Les sources dans un fichier lisible, pas dans le code."
+      ]
+     },
+     " Les sources choisies à la main sont des données. Un humain relit d'un coup d'œil un ajout dans ce fichier."
+    ],
+    [
+     {
+      "g": [
+       "La liste ne fait que s'allonger."
+      ]
+     },
+     " Relancer la recherche initiale d'études aurait pu en remplacer certaines sans le vouloir, parce que les catalogues en ligne changent. La commande d'ajout ne touche à rien de ce qui existe."
+    ],
+    [
+     {
+      "g": [
+       "Archiver, et non supprimer."
+      ]
+     },
+     " On veut pouvoir dire ce que disait le rapport de l'an dernier, et expliquer pourquoi une réponse a changé."
+    ],
+    [
+     {
+      "g": [
+       "N'archiver qu'une fois la nouvelle version indexée."
+      ]
+     },
+     " Un téléchargement raté ne doit jamais faire disparaître l'ancienne."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-notions",
+   "x": [
+    "Les notions"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-mise-a-jour-incrementale",
+   "x": [
+    "La mise à jour incrémentale"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Reconstruire un index de zéro à chaque nouveau document, c'est simple. La mise à jour ",
+    {
+     "g": [
+      "incrémentale"
+     ]
+    },
+    " ne traite que ",
+    {
+     "g": [
+      "la différence"
+     ]
+    },
+    " : ce qui est nouveau est ajouté, ce qui a disparu est retiré, le reste n'est pas touché."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Elle repose sur un ",
+    {
+     "g": [
+      "identifiant stable"
+     ]
+    },
+    " par document. L'indexation compare les identifiants de la liste des sources à ceux de la base, et ne découpe et ne vectorise que les nouveaux. Rappel du chapitre 2 : ",
+    {
+     "g": [
+      "vectoriser"
+     ]
+    },
+    ", c'est calculer pour chaque passage un ",
+    {
+     "g": [
+      "embedding"
+     ]
+    },
+    ", une liste de nombres qui représente son sens. C'est l'opération la plus coûteuse de l'indexation."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "En entreprise, on parle de ",
+    {
+     "i": [
+      "change data capture"
+     ]
+    },
+    " : chaque document a un identifiant et une empreinte de son contenu, et seule une empreinte qui change déclenche un nouveau calcul."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-versions-et-l-archivage",
+   "x": [
+    "Les versions et l'archivage"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Si deux éditions d'un même rapport restent dans la recherche, le système peut citer le chiffre périmé, ou mélanger les deux. Si on supprime l'ancienne, on perd la mémoire. La règle retenue combine les deux exigences :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "la nouvelle version remplace l'ancienne dans les recherches"
+      ]
+     },
+     " ;"
+    ],
+    [
+     {
+      "g": [
+       "l'ancienne reste archivée"
+      ]
+     },
+     ", avec ses passages, sa date d'archivage et le nom de la version qui la remplace ;"
+    ],
+    [
+     {
+      "g": [
+       "les questions d'évaluation qui la citent sont signalées"
+      ]
+     },
+     ", pour qu'on reprenne leur preuve dans la nouvelle version."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est le principe de la ",
+    {
+     "g": [
+      "gestion documentaire"
+     ]
+    },
+    " : on ne détruit pas une pièce, on la marque comme remplacée. Les juristes parlent de « version opposable » : celle qui fait foi à une date donnée."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pour tester la règle sur un cas réel, le rapport 2025 du Haut Conseil pour le climat est entré dans un premier lot, et le rapport 2026 l'a remplacé dans un second."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-liste-blanche",
+   "x": [
+    "La liste blanche"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une ",
+    {
+     "g": [
+      "liste blanche"
+     ]
+    },
+    " dit ce qui est autorisé d'office ; tout le reste passe par un humain. C'est l'inverse d'une liste noire, qui énumère ce qui est interdit."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pour l'agent de veille qui tiendra plus tard le corpus à jour (chapitre 8), c'est le compromis entre deux risques :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "tout valider à la main"
+      ]
+     },
+     " : c'est lent, et le corpus vieillit ;"
+    ],
+    [
+     {
+      "g": [
+       "tout laisser entrer"
+      ]
+     },
+     " : une fausse étude, un document piégé, une source militante présentée comme scientifique."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les institutions de la liste (GIEC, ADEME, Insee, Météo-France…) publient des documents relus, à des adresses stables. Leurs documents entrent seuls, avec un ",
+    {
+     "g": [
+      "rapport après coup"
+     ]
+    },
+    ". Les autres sont ",
+    {
+     "g": [
+      "proposés"
+     ]
+    },
+    " au directeur du pôle programme. J'ai pris cette décision le 22 octobre : une mise à jour ",
+    {
+     "g": [
+      "semi-automatique"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une limite à garder en tête : une liste blanche protège de la source, pas du contenu. Si le site d'une institution était compromis, le document piégé entrerait quand même."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-non-regression-en-deux-temps",
+   "x": [
+    "La non-régression en deux temps"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ajouter 19 documents et doubler le nombre de passages, c'est ajouter de la concurrence dans la recherche. Le test se fait donc en deux temps, selon le conseil du chapitre 3 : ne jamais changer deux choses à la fois."
+   ]
+  },
+  {
+   "t": "ol",
+   "debut": 1,
+   "items": [
+    [
+     {
+      "g": [
+       "D'abord les 55 anciennes questions seules"
+      ]
+     },
+     ", sur le corpus enrichi. Si les scores baissent, c'est l'effet des nouveaux documents."
+    ],
+    [
+     {
+      "g": [
+       "Ensuite le jeu complet"
+      ]
+     },
+     ", avec les 10 questions climat. Ce rapport devient la nouvelle référence."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-que-font-les-vraies-organisations",
+   "x": [
+    "Ce que font les vraies organisations"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Des connecteurs"
+      ]
+     },
+     " qui synchronisent les sources (intranets, wikis, sites publics) de façon incrémentale : seuls les documents nouveaux ou modifiés sont réindexés."
+    ],
+    [
+     {
+      "g": [
+       "Des métadonnées de cycle de vie"
+      ]
+     },
+     " sur chaque document : version, date de validité, statut (en vigueur, remplacé, archivé). Les moteurs de recherche d'entreprise filtrent par défaut sur « en vigueur »."
+    ],
+    [
+     {
+      "g": [
+       "Une gouvernance des sources"
+      ]
+     },
+     " : une liste de sources de confiance tenue par un responsable éditorial, et un circuit de validation pour le reste."
+    ],
+    [
+     {
+      "g": [
+       "L'évaluation dans la chaîne de mise à jour"
+      ]
+     },
+     " : un lot de documents n'entre dans la recherche que si le jeu d'évaluation ne baisse pas. Sinon, il est mis en quarantaine."
+    ],
+    [
+     {
+      "g": [
+       "Un suivi des coûts par usage"
+      ]
+     },
+     ", qu'on appelle parfois le ",
+     {
+      "i": [
+       "FinOps"
+      ]
+     },
+     " de l'IA : tokens par équipe et par fonction, comparaison entre services en ligne et modèles internes."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-chiffres",
+   "x": [
+    "Les chiffres"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-mise-a-jour",
+   "x": [
+    "La mise à jour"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Mesure"
+    ],
+    [
+     "Résultat"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Corpus"
+     ],
+     [
+      {
+       "g": [
+        "110 documents"
+       ]
+      },
+      " en recherche (92 + 18), ",
+      {
+       "g": [
+        "4 300 passages"
+       ]
+      },
+      " (2 191 avant), 1 version archivée"
+     ]
+    ],
+    [
+     [
+      "Premier lot"
+     ],
+     [
+      "18 documents, 2 166 passages, ajoutés en ",
+      {
+       "g": [
+        "3 min 16 s"
+       ]
+      },
+      ", téléchargement compris, sans recalculer les 2 191 anciens passages (contre environ 4 min 30 pour construire les 92 premiers documents au chapitre 2)"
+     ]
+    ],
+    [
+     [
+      "Nouvelle version"
+     ],
+     [
+      "Le rapport 2026 du Haut Conseil indexé, le rapport 2025 archivé en ",
+      {
+       "g": [
+        "12 s"
+       ]
+      },
+      " : 173 passages sortis de la recherche, toujours présents dans la base"
+     ]
+    ],
+    [
+     [
+      "Signalement"
+     ],
+     [
+      "Une question citait l'ancien rapport ; elle a été reprise sur le nouveau (même 2,2 °C, mais sur 2016-2025 au lieu de 2015-2024), puis 0 signalement"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-non-regression",
+   "x": [
+    "La non-régression"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Indicateur"
+    ],
+    [
+     "Avant"
+    ],
+    [
+     "Sur le corpus enrichi"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Rappel@5, recherche hybride et reranker (la référence)"
+     ],
+     [
+      "96 %"
+     ],
+     [
+      {
+       "g": [
+        "98 %"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Exactitude"
+     ],
+     [
+      "96 %"
+     ],
+     [
+      "98 %"
+     ]
+    ],
+    [
+     [
+      "Bonnes abstentions"
+     ],
+     [
+      "100 %"
+     ],
+     [
+      "100 %"
+     ]
+    ],
+    [
+     [
+      "Fidélité"
+     ],
+     [
+      "94 %"
+     ],
+     [
+      "93 % (dans le bruit)"
+     ]
+    ],
+    [
+     [
+      "Rappel@5, BM25 seul"
+     ],
+     [
+      "59 %"
+     ],
+     [
+      {
+       "g": [
+        "53 %"
+       ]
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les 10 questions climat : 7 sur 8 retrouvent toutes leurs sources dans les 5 premiers passages, 7 réponses exactes sur 8, et les deux questions sans réponse donnent bien une abstention. La nouvelle référence, sur 65 questions : rappel@5 de 98 %, 100 % de bonnes abstentions, taux de citation de 96 %, fidélité de 92 %, exactitude de 96 %."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Les indicateurs de l'évaluation à trois dates, avant et après l'agrandissement du corpus",
+   "src": "evaluation-evolution.svg"
+  },
+  {
+   "t": "h3",
+   "id": "le-recul-de-bm25-explique",
+   "x": [
+    "Le recul de BM25, expliqué"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "BM25"
+     ]
+    },
+    ", la recherche par mots-clés du chapitre 2, note un passage selon les mots de la question qu'il contient, pondérés par leur ",
+    {
+     "g": [
+      "rareté"
+     ]
+    },
+    " dans le corpus. Les nouveaux rapports français parlent tous de « réchauffement », d'« émissions », du « GIEC » : ces mots sont devenus plus fréquents, donc moins discriminants. Et ces longs rapports offrent beaucoup de passages qui contiennent plusieurs mots de la question."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux exemples relevés dans le rapport d'évaluation : pour une question sur la pêche maritime, BM25 classe désormais en tête des passages sans rapport avec la pêche ; pour une question sur la rénovation dans une communauté de communes, il classe en tête des passages de RTE qui parlent d'émissions et de bâtiments."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les dix questions concernées gardent pourtant leur bonne réponse, parce que la recherche par le sens comprend la question et que le ",
+    {
+     "g": [
+      "reranker"
+     ]
+    },
+    " relit chaque passage. C'est l'argument de la recherche hybride : une méthode seule a des angles morts, et ce sont souvent les nouveaux documents qui les révèlent."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-couts",
+   "x": [
+    "Les coûts"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mesuré."
+     ]
+    },
+    " Côté Ollama, la mission a demandé ",
+    {
+     "g": [
+      "953 générations"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "481 calculs de vecteurs"
+     ]
+    },
+    ", soit ",
+    {
+     "g": [
+      "0,68 h"
+     ]
+    },
+    " de calcul : l'indexation (3 min 16 s, puis 12 s) et deux évaluations (25 min, puis 17 min grâce au cache). L'essentiel est le reranking : avec un corpus deux fois plus gros, beaucoup de candidats ont changé, et le cache n'a pas pu servir pour eux."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Côté Claude, la session a demandé ",
+    {
+     "g": [
+      "87 requêtes"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "3,1 M d'unités"
+     ]
+    },
+    " au moment de la première mesure ; la photo par étape du 27 octobre, qui inclut la fin de la session, donne ",
+    {
+     "g": [
+      "106 requêtes"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "4,3 M d'unités"
+     ]
+    },
+    ". Le coût vient surtout des ",
+    {
+     "g": [
+      "instructions relues"
+     ]
+    },
+    " à chaque requête et de la ",
+    {
+     "g": [
+      "recherche de sources"
+     ]
+    },
+    " (pages web, vérification des adresses)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Estimé."
+     ]
+    },
+    " 0,02 à 0,03 kWh d'électricité, en supposant une puce qui consomme 30 à 40 W en calcul."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "l-incident-les-donnees-partaient-dans-icloud",
+   "x": [
+    "L'incident : les données partaient dans iCloud"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "ce-qui-s-est-passe",
+   "x": [
+    "Ce qui s'est passé"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "En plein travail, des fichiers inconnus sont apparus dans le dossier du projet : des copies de fichiers de code et de documentation, avec un suffixe « 2 » à la fin du nom. Ce suffixe est la signature d'",
+    {
+     "g": [
+      "iCloud Drive"
+     ]
+    },
+    ", le service de synchronisation d'Apple, quand il rencontre deux versions d'un même fichier : un ",
+    {
+     "g": [
+      "conflit de synchronisation"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La vérification l'a confirmé : le dossier Documents du Mac était synchronisé avec iCloud, par l'option « Bureau et Documents » de macOS. Or Canopée vivait dans ce dossier. ",
+    {
+     "g": [
+      "Tout le projet partait donc très probablement sur les serveurs d'Apple"
+     ]
+    },
+    ", y compris les données privées de Mycélium : le fichier des adhérents, les comptes rendus, les e-mails, les canaris."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "pourquoi-c-est-une-fuite-comme-si-c-etait-vrai",
+   "x": [
+    "Pourquoi c'est une fuite, « comme si c'était vrai »"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les données sont fictives, mais la règle du projet est de les traiter comme des vraies. Si elles l'étaient :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "des opinions politiques"
+      ]
+     },
+     ", donc des données sensibles au sens de l'article 9 du RGPD, seraient copiées chez un tiers, sans contrat, sans base légale, sans mention au registre ;"
+    ],
+    [
+     {
+      "g": [
+       "un transfert hors de l'Union européenne"
+      ]
+     },
+     " serait possible, selon l'endroit où iCloud stocke les fichiers ;"
+    ],
+    [
+     {
+      "g": [
+       "l'effacement serait incomplet"
+      ]
+     },
+     " : supprimer un adhérent sur le Mac ne garantit pas sa disparition des copies ; un fichier supprimé reste environ 30 jours dans « Supprimés récemment » ;"
+    ],
+    [
+     "la sécurité dépendrait aussi du compte Apple : son mot de passe, ses appareils, ses partages."
+    ]
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "pourquoi-aucune-barriere-ne-l-a-vu",
+   "x": [
+    "Pourquoi aucune barrière ne l'a vu"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Barrière"
+    ],
+    [
+     "Ce qu'elle protège"
+    ],
+    [
+     "Pourquoi elle ne voit rien"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "La liste des fichiers ignorés par Git"
+     ],
+     [
+      "Rien de privé ne part sur GitHub"
+     ],
+     [
+      "iCloud ne passe pas par Git"
+     ]
+    ],
+    [
+     [
+      "Les règles d'interdiction de Claude Code"
+     ],
+     [
+      "Claude ne lit pas la zone privée"
+     ],
+     [
+      "iCloud n'est pas Claude"
+     ]
+    ],
+    [
+     [
+      "La future passerelle d'anonymisation"
+     ],
+     [
+      "Rien ne part vers un modèle du cloud sans pseudonymisation"
+     ],
+     [
+      "La synchronisation n'est pas une requête à un modèle"
+     ]
+    ],
+    [
+     [
+      "Les canaris"
+     ],
+     [
+      "Une fuite dans une requête sortante est détectée"
+     ],
+     [
+      "Le test ne surveille que les requêtes de Canopée"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Toutes les protections surveillaient ",
+    {
+     "g": [
+      "le code et les outils"
+     ]
+    },
+    ", aucune ",
+    {
+     "g": [
+      "l'environnement"
+     ]
+    },
+    ". C'est un classique de la sécurité : ",
+    {
+     "g": [
+      "la fuite vient d'à côté"
+     ]
+    },
+    ". Le code est irréprochable, mais la machine qui l'exécute copie tout ailleurs."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-decision",
+   "x": [
+    "La décision"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux corrections étaient possibles sur macOS : renommer le dossier des données avec le suffixe ",
+    {
+     "c": ".nosync"
+    },
+    ", qu'iCloud ignore, ou déplacer le projet hors du dossier Documents. Dans les deux cas, les copies déjà envoyées restent environ 30 jours chez Apple."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Ma décision : documenter, ne pas corriger."
+     ]
+    },
+    " C'est un bac à sable, et je préfère garder cette synchronisation. La fuite est inscrite dans la liste des fuites connues du cahier des charges, pour que l'auditeur de conformité et l'équipe d'attaque la vérifient. On la retrouvera au chapitre 10, où elle devient le seul manquement grave de l'audit, et au chapitre 12, où elle est traitée comme une violation de données."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce choix est assumé, et il a une vertu pédagogique : il laisse dans le système une vraie copie de données inventées, que chaque protection construite ensuite devra regarder en face."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-n-a-pas-pu-etre-verifie-et-ce-qui-reste-ouvert",
+   "x": [
+    "Ce qui n'a pas pu être vérifié, et ce qui reste ouvert"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Une question climat échoue alors que la source est là"
+      ]
+     },
+     " : sur l'eau et les débits d'étiage, Gemma répond à côté. C'est un défaut de rédaction, pas de recherche."
+    ],
+    [
+     {
+      "g": [
+       "BM25 sur un corpus qui grossit"
+      ]
+     },
+     " : enlever de la requête les mots devenus trop fréquents, ou donner moins de poids à BM25 dans la fusion. À mesurer avant de changer quoi que ce soit."
+    ],
+    [
+     {
+      "g": [
+       "Les PDF mal extraits"
+      ]
+     },
+     " : certaines ligatures sont mal décodées. Ça n'a pas gêné la recherche, mais un autre extracteur ferait mieux."
+    ],
+    [
+     {
+      "g": [
+       "Dé-archiver une version"
+      ]
+     },
+     " qui s'avérerait fausse n'est pas automatisé."
+    ],
+    [
+     {
+      "g": [
+       "Où iCloud stocke les fichiers"
+      ]
+     },
+     ", et ce qu'il en reste côté Apple : impossible à vérifier depuis le Mac."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-il-faut-retenir",
+   "x": [
+    "Ce qu'il faut retenir"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Un corpus se met à jour par différence"
+      ]
+     },
+     ", avec un identifiant stable par document : on ajoute ce qui manque, on ne reconstruit pas."
+    ],
+    [
+     {
+      "g": [
+       "Une nouvelle version remplace, elle n'efface pas."
+      ]
+     },
+     " L'ancienne reste archivée, et les questions qui la citaient sont signalées."
+    ],
+    [
+     {
+      "g": [
+       "Chaque ajout se teste en deux temps"
+      ]
+     },
+     " : les anciennes questions d'abord, le jeu complet ensuite. Les nouveaux documents révèlent les angles morts des anciennes méthodes."
+    ],
+    [
+     {
+      "g": [
+       "La fuite vient souvent d'à côté."
+      ]
+     },
+     " Les barrières surveillaient le code et les outils ; la machine, elle, envoyait très probablement tout dans le cloud."
+    ]
+   ]
+  }
+ ]
+}

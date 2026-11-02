@@ -1,0 +1,1194 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "chapitre-11-la-red-team-attaquer-son-propre-systeme",
+   "x": [
+    "Chapitre 11. La red team : attaquer son propre système"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Étape 10 du projet · 28 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-probleme",
+   "x": [
+    "Le problème"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Au chapitre précédent, l'auditeur a ",
+    {
+     "g": [
+      "constaté"
+     ]
+    },
+    " : un audit rédigé à la manière d'une mise en demeure, dix-huit points, des écarts classés par gravité. Mais un constat n'est pas une preuve. Dire « le serveur public détient la clé de la base privée », c'est une chose. Montrer ce qu'un attaquant en ferait, c'en est une autre. Et vérifier qu'un correctif ferme vraiment la porte, c'en est une troisième."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est le travail d'une ",
+    {
+     "g": [
+      "red team"
+     ]
+    },
+    " : une équipe qui attaque son propre système, avec les méthodes d'un adversaire, pour trouver les failles avant lui."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le problème de cette étape a une forme particulière. ",
+    {
+     "g": [
+      "Un attaquant interne est dangereux pour l'organisation qui l'héberge."
+     ]
+    },
+    " S'il affiche ce qu'il trouve, il fait fuir lui-même les données qu'il devait protéger. Comment attaquer la zone privée de Mycélium sans que rien de privé n'apparaisse jamais, ni à l'écran, ni dans le cloud ?"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-on-a-construit",
+   "x": [
+    "Ce qu'on a construit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'attaquant s'appelle ",
+    {
+     "c": "canopee-hacker"
+    },
+    ". Il ne cherche pas des failles au hasard : il ",
+    {
+     "g": [
+      "rejoue les écarts de l'audit"
+     ]
+    },
+    " et les transforme en attaques mesurées. Chaque attaque dit son objectif, sa méthode, son résultat et sa gravité, et ne sort que des ",
+    {
+     "g": [
+      "compteurs"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Comme l'auditeur, il existe en deux versions :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "un module local"
+      ]
+     },
+     ", qui mène les attaques sur le Mac. Ses rapports détaillés restent hors de Git, dans un dossier que Claude Code ne lit jamais ; seule une synthèse agrégée est versionnée. Son modèle est ",
+     {
+      "g": [
+       "Qwen 3.5"
+      ]
+     },
+     ", d'une autre famille que Gemma, le modèle des défenseurs : on n'attaque pas avec le modèle qu'on veut tester ;"
+    ],
+    [
+     {
+      "g": [
+       "un agent Claude"
+      ]
+     },
+     ", sans terminal, qui ",
+     {
+      "g": [
+       "raisonne sur la surface d'attaque"
+      ]
+     },
+     " à partir du public, du code, de la documentation et des compteurs. Il ne voit jamais une donnée privée, un document piégé, ni un rapport détaillé."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La règle qui a guidé l'étape :"
+     ]
+    },
+    " aucune commande lancée par Claude Code ne nomme un chemin privé. Tout passe par une commande du module, qui fait le travail privé ",
+    {
+     "g": [
+      "à l'intérieur"
+     ]
+    },
+    " et n'affiche que des comptes. La règle n°1 tient donc par construction, y compris pendant qu'on attaque."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-six-attaques",
+   "x": [
+    "Les six attaques"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|---|",
+   "entete": [
+    [
+     "Attaque"
+    ],
+    [
+     "Objectif"
+    ],
+    [
+     "Avant le correctif"
+    ],
+    [
+     "Après"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "g": [
+        "iCloud"
+       ]
+      }
+     ],
+     [
+      "Récupérer les données hors de la machine, sans forcer aucune barrière"
+     ],
+     [
+      {
+       "g": [
+        "Réussie, grave"
+       ]
+      },
+      " : le projet entier est très probablement copié chez Apple ; 12 fichiers en conflit montrent que la synchronisation est active"
+     ],
+     [
+      "Constat seul, par décision de l'auteur"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "MCP"
+       ]
+      }
+     ],
+     [
+      "Depuis le serveur public, piloté par le cloud, atteindre la clé de la base privée et la liste des noms"
+     ],
+     [
+      {
+       "g": [
+        "Réussie"
+       ]
+      },
+      " : 2 595 métadonnées et 2 015 noms dans la mémoire du serveur"
+     ],
+     [
+      {
+       "g": [
+        "Repoussée"
+       ]
+      },
+      " : 0 métadonnée, 0 nom"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Terminal"
+       ]
+      }
+     ],
+     [
+      "Lire une base privée par une commande du terminal, ce que les règles de l'outil de lecture ne bloquent pas"
+     ],
+     [
+      {
+       "g": [
+        "Réussie"
+       ]
+      },
+      " : aucun garde-fou, 0 commande bloquée sur 7"
+     ],
+     [
+      {
+       "g": [
+        "Repoussée"
+       ]
+      },
+      " : 7 commandes privées bloquées sur 7, 0 commande ordinaire gênée"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Injection"
+       ]
+      }
+     ],
+     [
+      "Cacher une consigne dans un faux document public, la faire exécuter, exfiltrer une donnée"
+     ],
+     [
+      "Repoussée : le gardien bloque 10 sorties piégées sur 10"
+     ],
+     [
+      "Inchangée"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Portail"
+       ]
+      }
+     ],
+     [
+      "Agir sans droit : CSRF, rôles, séparation des tâches, rejeu"
+     ],
+     [
+      "Repoussée : 56 formulaires forgés refusés sur 56"
+     ],
+     [
+      "Inchangée"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Ré-identification"
+       ]
+      }
+     ],
+     [
+      "Retrouver une personne en croisant tranche d'âge, lieu et profession"
+     ],
+     [
+      {
+       "g": [
+        "Réussie, élevée"
+       ]
+      },
+      " : 54,8 % des adhérents isolés dans le fichier brut ; 0 % dans l'extraction partagée"
+     ],
+     [
+      "Reportée au chapitre 12"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux attaques réussies ont été corrigées, et chaque correctif vérifié en ",
+    {
+     "g": [
+      "rejouant l'attaque"
+     ]
+    },
+    ". Deux restent ouvertes, pour des raisons différentes, et le chapitre suivant s'en occupe."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'attaque par ",
+    {
+     "g": [
+      "injection"
+     ]
+    },
+    " mérite un mot. Les dix documents piégés du chapitre 4, rangés à part depuis le début, servent enfin. Résultat : le gardien, une règle codée, a bloqué les dix sorties piégées. ",
+    {
+     "g": [
+      "Les modèles n'ont même pas été interrogés."
+     ]
+    },
+    " C'est la démonstration la plus nette de la leçon du chapitre 8 : la porte était gardée par une règle, pas par un modèle qu'on aurait pu convaincre."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'attaque par ",
+    {
+     "g": [
+      "ré-identification"
+     ]
+    },
+    " a une conclusion instructive. L'extraction k-anonyme, faite pour être partagée, laisse 0 % de personnes isolées. Le danger n'est pas là : il est dans le ",
+    {
+     "g": [
+      "fichier brut"
+     ]
+    },
+    ", qui ne doit jamais sortir… et qui sort très probablement, par iCloud."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Les six attaques de la red team, avant et après les correctifs",
+   "src": "red-team.svg"
+  },
+  {
+   "t": "h2",
+   "id": "les-notions",
+   "x": [
+    "Les notions"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "red-team-blue-team-purple-team",
+   "x": [
+    "Red team, blue team, purple team"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La ",
+    {
+     "g": [
+      "red team"
+     ]
+    },
+    " attaque, la ",
+    {
+     "g": [
+      "blue team"
+     ]
+    },
+    " défend. La ",
+    {
+     "g": [
+      "purple team"
+     ]
+    },
+    ", c'est faire travailler les deux ensemble : chaque attaque réussie devient un ",
+    {
+     "g": [
+      "test automatique"
+     ]
+    },
+    ", qui vérifie que le correctif tient et qui échouera le jour où une modification rouvrira la faille. On parle de ",
+    {
+     "g": [
+      "test de non-régression"
+     ]
+    },
+    " : il garantit qu'on ne revient pas en arrière."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Dans Canopée, une seule commande rejoue toutes les attaques sous forme de tests. À la fin de l'étape : ",
+    {
+     "g": [
+      "6 tests sur 6"
+     ]
+    },
+    " au vert."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "attaquer-sans-jamais-exposer",
+   "x": [
+    "Attaquer sans jamais exposer"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La red team de Canopée ne renvoie que des compteurs : « 2 015 noms dans la mémoire du serveur », jamais un nom. Ses rapports détaillés sont écrits hors de Git, dans un dossier interdit à Claude Code. Le travail privé reste dans le module, jamais sur la ligne de commande. C'est la même discipline que le contrôle du chapitre 4, appliquée à l'attaque."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "une-porte-derobee-n-est-pas-un-bug",
+   "x": [
+    "Une porte dérobée n'est pas un bug"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'attaque MCP ne forçait rien. Le serveur public ",
+    {
+     "g": [
+      "détenait légitimement"
+     ]
+    },
+    " la clé de la base privée et la liste des noms : le gardien, qu'il charge pour contrôler chaque réponse, en avait besoin pour reconnaître ce qu'il doit bloquer. C'était même noté comme un point ouvert au chapitre 8 : « un serveur exposé au cloud qui ouvre la base privée, même pour des métadonnées »."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La parade n'est donc pas de corriger un bug, c'est de ",
+    {
+     "g": [
+      "retirer le secret du processus exposé"
+     ]
+    },
+    ". Un composant ne doit tenir que ce dont il a strictement besoin : c'est le ",
+    {
+     "g": [
+      "principe du moindre privilège"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-empreintes-salees",
+   "x": [
+    "Les empreintes salées"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le correctif repose sur une notion déjà croisée : l'",
+    {
+     "g": [
+      "empreinte"
+     ]
+    },
+    ", une valeur calculée à partir d'une donnée, dont on ne peut pas remonter à la donnée. Une étape locale, lancée une fois après chaque génération des données, calcule l'empreinte de chaque nom et de chaque clé de document, avec un ",
+    {
+     "g": [
+      "sel"
+     ]
+    },
+    ", une valeur secrète ajoutée avant le calcul pour qu'on ne puisse pas retrouver un nom en essayant tous les noms courants. Le serveur ne lit plus que ce fichier d'empreintes, et ",
+    {
+     "g": [
+      "compare des empreintes"
+     ]
+    },
+    ". Il ne détient plus ni la clé, ni les noms, ni les métadonnées en clair."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un résidu est assumé : la vingtaine de canaris reste lisible dans ce fichier, parce qu'ils doivent être reconnus même au milieu d'un texte. Mais ni la clé de la base, ni les 2 000 noms n'y sont."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-crochet-seconde-barriere",
+   "x": [
+    "Le crochet, seconde barrière"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La règle n°1 n'avait qu'",
+    {
+     "g": [
+      "une"
+     ]
+    },
+    " barrière technique : les règles qui interdisent à l'outil de lecture de Claude Code d'ouvrir la zone privée. Le terminal passait à côté. Une commande comme ",
+    {
+     "c": "cat"
+    },
+    ", qui affiche un fichier, ou ",
+    {
+     "c": "sqlite3"
+    },
+    ", qui ouvre une base, n'était arrêtée que par la consigne… ou, on l'a vu au chapitre précédent, par un classificateur."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le correctif ajoute un ",
+    {
+     "g": [
+      "crochet"
+     ]
+    },
+    " : un petit programme que Claude Code exécute ",
+    {
+     "g": [
+      "avant"
+     ]
+    },
+    " chaque commande du terminal, et qui peut la refuser. Celui-ci refuse toute commande qui nomme un chemin privé. Il laisse passer les commandes des modules du projet, qui touchent le privé à l'intérieur et n'affichent que des comptes."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est la ",
+    {
+     "g": [
+      "défense en profondeur"
+     ]
+    },
+    " du chapitre 1, enfin complète : une seconde barrière, d'un autre type que la première."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-que-font-les-vraies-organisations",
+   "x": [
+    "Ce que font les vraies organisations"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les grandes organisations mènent des ",
+    {
+     "g": [
+      "campagnes de red team"
+     ]
+    },
+    ", internes ou confiées à un tiers, et des ",
+    {
+     "g": [
+      "tests d'intrusion"
+     ]
+    },
+    " réguliers, souvent exigés par une norme de sécurité. L'idée de transformer chaque faille trouvée en test de non-régression vient de la sécurité logicielle. Le ",
+    {
+     "g": [
+      "moindre privilège"
+     ]
+    },
+    " et la ",
+    {
+     "g": [
+      "défense en profondeur"
+     ]
+    },
+    " sont deux piliers du guide de la sécurité de la CNIL comme des référentiels de l'ANSSI, l'agence nationale de la sécurité des systèmes d'information."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-chiffres",
+   "x": [
+    "Les chiffres"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "l-evolution-des-ecarts-de-l-audit",
+   "x": [
+    "L'évolution des écarts de l'audit"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Écart"
+    ],
+    [
+     "Audit du 27 octobre"
+    ],
+    [
+     "Audit du 28 octobre"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Le serveur MCP public et les métadonnées privées"
+     ],
+     [
+      "moyen"
+     ],
+     [
+      {
+       "g": [
+        "conforme"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "La règle n°1 et le terminal"
+     ],
+     [
+      "moyen"
+     ],
+     [
+      {
+       "g": [
+        "faible"
+       ]
+      },
+      " : le crochet est en place"
+     ]
+    ],
+    [
+     [
+      "Les journaux privés invisibles de l'auditeur"
+     ],
+     [
+      "faible"
+     ],
+     [
+      "faible, mais ",
+      {
+       "g": [
+        "visibles et rapprochés"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "La rotation du journal d'Ollama"
+     ],
+     [
+      "faible"
+     ],
+     [
+      {
+       "g": [
+        "préparée"
+       ]
+      },
+      ", à installer"
+     ]
+    ],
+    [
+     [
+      "L'ancrage de la chaîne du journal"
+     ],
+     [
+      "moyen"
+     ],
+     [
+      {
+       "g": [
+        "préparé"
+       ]
+      },
+      ", à activer"
+     ]
+    ],
+    [
+     [
+      "La sauvegarde chiffrée"
+     ],
+     [
+      "élevé"
+     ],
+     [
+      {
+       "g": [
+        "proposée"
+       ]
+      },
+      ", en attente de décision"
+     ]
+    ],
+    [
+     [
+      "La synchronisation iCloud"
+     ],
+     [
+      "grave"
+     ],
+     [
+      {
+       "g": [
+        "constat maintenu"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "La ré-identification du fichier brut"
+     ],
+     [
+      "—"
+     ],
+     [
+      "mesurée, ",
+      {
+       "g": [
+        "élevée"
+       ]
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le correctif du gardien ne dégrade rien : il bloque toujours ",
+    {
+     "g": [
+      "170 pièges sur 170"
+     ]
+    },
+    ", sans aucun blocage abusif."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "rendre-les-journaux-visibles-sans-rien-montrer",
+   "x": [
+    "Rendre les journaux visibles sans rien montrer"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux journaux échappaient à l'auditeur, enfermés dans des bases chiffrées : celui des interrogations de la base privée, et celui des levées de pseudonymes, avec leurs motifs en clair. Une commande locale les exporte maintenant ",
+    {
+     "g": [
+      "sans aucun texte libre"
+     ]
+    },
+    " : la question n'y figure que par son empreinte, le motif d'une levée seulement par sa longueur."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'auditeur peut alors ",
+    {
+     "g": [
+      "rapprocher"
+     ]
+    },
+    " les deux sources : toute levée faite par le DPO dans le portail doit figurer au journal de la passerelle, par où passe toute ré-identification. Résultat : 3 levées dans le portail, 3 retrouvées dans la passerelle, ",
+    {
+     "g": [
+      "0 manquante"
+     ]
+    },
+    ". Reste une levée faite en ligne de commande, sans motif, à rattacher à une demande au chapitre suivant."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "trois-protections-preparees-non-activees",
+   "x": [
+    "Trois protections préparées, non activées"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Trois protections sont ",
+    {
+     "g": [
+      "prêtes"
+     ]
+    },
+    ", mais demandent une décision humaine, parce qu'elles touchent au système, à une tâche programmée ou à un support externe :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "la rotation du journal d'Ollama"
+      ]
+     },
+     " : un fichier de configuration pour une rotation mensuelle, douze archives gardées. Il faut les droits d'administrateur pour l'installer ;"
+    ],
+    [
+     {
+      "g": [
+       "l'ancrage hebdomadaire de la chaîne"
+      ]
+     },
+     " : un script et une tâche programmée chaque semaine. Aucune tâche n'est installée sans mon accord ;"
+    ],
+    [
+     {
+      "g": [
+       "la sauvegarde chiffrée"
+      ]
+     },
+     " : une proposition en trois temps. Une copie chiffrée hors du Mac ; les trois clés exportées une fois, scellées et rangées ",
+     {
+      "g": [
+       "ailleurs"
+      ]
+     },
+     " que la sauvegarde (une clé sans la copie, ou l'inverse, ne sert à rien) ; une restauration essayée une fois par trimestre. Le support reste à choisir."
+    ]
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-couts",
+   "x": [
+    "Les coûts"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mesuré."
+     ]
+    },
+    " La campagne complète tourne en ",
+    {
+     "g": [
+      "14 à 20 secondes"
+     ]
+    },
+    " et, par défaut, ",
+    {
+     "g": [
+      "n'interroge aucun modèle"
+     ]
+    },
+    " : les attaques mesurent (attributs iCloud, empreintes, k-anonymat, formulaires du portail), elles ne génèrent rien. Le modèle Qwen de la red team n'est chargé que sur demande. Les tests de la purple team prennent quelques secondes ; l'audit complet, environ 3 minutes."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pendant toute la session, du 28 octobre au matin au 29 en fin d'après-midi, le journal d'Ollama ne compte ",
+    {
+     "g": [
+      "aucune"
+     ]
+    },
+    " génération ni aucun calcul de vecteurs."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Côté Claude :"
+     ]
+    },
+    " la session de l'étape a demandé ",
+    {
+     "g": [
+      "217 requêtes"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "6,9 M d'unités"
+     ]
+    },
+    " d'usage effectif, sous-agents compris (mesuré le 30 octobre, une fois la session close). Elle avait été ouverte depuis un autre dossier que celui du projet, et l'outil de mesure ne la voyait pas : il a fallu le rendre configurable pour la compter (chapitre 13)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La lecture."
+     ]
+    },
+    " Une red team reproductible ne coûte presque rien à faire tourner. Ce qui a coûté, c'est de ",
+    {
+     "g": [
+      "concevoir"
+     ]
+    },
+    " des correctifs qui ferment la faille sans rien dégrader, et de garder la règle n°1 vraie pendant l'attaque."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-incidents",
+   "x": [
+    "Les incidents"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-classificateur-a-arrete-la-red-team",
+   "x": [
+    "Le classificateur a arrêté la red team"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Au chapitre précédent, le classificateur du mode automatique de Claude Code avait refusé une seule commande de l'auditeur. Pendant cette étape, un autre garde-fou est allé plus loin : il a ",
+    {
+     "g": [
+      "arrêté la red team avant qu'elle commence"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Comme pour chaque étape, la session de pilotage a ouvert une sous-session avec un brief : le contexte, la tâche, les règles. Ce brief était ",
+    {
+     "g": [
+      "défensif"
+     ]
+    },
+    " : attaquer notre propre bac à sable, sur des données fictives, pour en corriger les failles. Mais il en avait le vocabulaire : « attaques », « hacker », « contournement ». Le ",
+    {
+     "g": [
+      "premier message"
+     ]
+    },
+    " de la sous-session a été arrêté par le classificateur de sécurité du modèle, qui a pris ce brief pour une demande suspecte."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'application m'a alors proposé de continuer avec un autre modèle, ",
+    {
+     "g": [
+      "Claude Opus 4.8"
+     ]
+    },
+    ". J'ai choisi l'option qui bascule automatiquement, et la session a repris avec ce modèle. C'est pourquoi les commits de l'étape sont signés par Claude Opus 4.8, alors que les étapes précédentes et la suivante le sont par Claude Opus 5.5. Le travail lui-même n'a pas changé de nature : même brief, mêmes règles, mêmes contrôles."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une session qui écrit des attaques, même contre son propre système, ressemble de près à une session malveillante. Le classificateur ne voit pas l'intention, il voit les mots et les gestes. Qu'un garde-fou automatique s'arrête sur une red team n'est pas absurde : c'est le prix d'une protection qui doit refuser les vraies attaques sans connaître celui qui demande. L'architecture de ",
+    {
+     "c": "canopee-hacker"
+    },
+    " répond, elle, à une autre exigence, la règle n°1 : tout le travail sensible ",
+    {
+     "g": [
+      "dans un module local"
+     ]
+    },
+    ", et des sorties réduites à des compteurs, pour que rien de privé n'apparaisse."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-push-bloque",
+   "x": [
+    "Le push bloqué"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'étape finie, contrôlée et validée, il restait à envoyer la branche sur GitHub (",
+    {
+     "c": "git push"
+    },
+    ") pour ouvrir la demande de fusion. La commande a été ",
+    {
+     "g": [
+      "refusée par les règles d'autorisation"
+     ]
+    },
+    " de Claude Code : d'abord dans la sous-session, puis dans la session de pilotage, ",
+    {
+     "g": [
+      "même après mon accord"
+     ]
+    },
+    " donné dans la conversation. La règle ne lit pas la conversation : elle bloque la commande, quel que soit celui qui l'a approuvée."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Personne n'a cherché à la contourner, par une autre commande ou un autre chemin. Les deux sessions m'ont rendu la main, avec la commande exacte à lancer. Je l'ai lancée moi-même, dans mon terminal. La première fois, elle a échoué : mon terminal n'était pas dans le dossier du projet. La seconde a été la bonne. Depuis, c'est la règle : les sessions préparent, je pousse."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La leçon tient en deux temps. ",
+    {
+     "g": [
+      "Un garde-fou bloque aussi le légitime"
+     ]
+    },
+    " : c'est inévitable, une règle simple ne distingue pas un envoi voulu d'un envoi malveillant. Et ",
+    {
+     "g": [
+      "la bonne réaction"
+     ]
+    },
+    ", devant un garde-fou qui bloque une action légitime, n'est pas de le contourner : c'est de rendre la main à l'humain. Un agent qui contourne un garde-fou « parce que c'était pour la bonne cause » a appris exactement ce qu'un attaquant voudrait qu'il sache faire."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-reste-ouvert",
+   "x": [
+    "Ce qui reste ouvert"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "iCloud"
+      ]
+     },
+     " reste grave : c'est mon choix de documenter la fuite plutôt que de la masquer."
+    ],
+    [
+     {
+      "g": [
+       "La ré-identification"
+      ]
+     },
+     " du fichier brut reste élevée : elle rappelle que le fichier ne doit jamais sortir."
+    ],
+    [
+     {
+      "g": [
+       "La rotation du journal"
+      ]
+     },
+     " et l'",
+     {
+      "g": [
+       "ancrage hebdomadaire"
+      ]
+     },
+     " attendent une décision ; le support de la ",
+     {
+      "g": [
+       "sauvegarde"
+      ]
+     },
+     " sera choisi à l'étape suivante (chapitre 12)."
+    ],
+    [
+     {
+      "g": [
+       "Une levée sans motif"
+      ]
+     },
+     " reste au journal, à rattacher à une demande de droits."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-il-faut-retenir",
+   "x": [
+    "Ce qu'il faut retenir"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Une attaque réussie devient un test."
+      ]
+     },
+     " C'est la purple team : le correctif est prouvé quand l'attaque, rejouée, échoue, et il reste prouvé tant que le test passe."
+    ],
+    [
+     {
+      "g": [
+       "Un attaquant interne ne doit rien montrer."
+      ]
+     },
+     " Des compteurs, des rapports hors de portée, et le travail privé enfermé dans le module."
+    ],
+    [
+     {
+      "g": [
+       "Une porte dérobée n'est pas un bug."
+      ]
+     },
+     " On ne la corrige pas, on retire le secret du composant exposé : le moindre privilège."
+    ],
+    [
+     {
+      "g": [
+       "Une seule barrière ne suffit jamais."
+      ]
+     },
+     " Il a fallu une seconde barrière, d'un autre type, pour que la règle n°1 tienne aussi dans le terminal."
+    ],
+    [
+     {
+      "g": [
+       "La règle codée a gagné."
+      ]
+     },
+     " Les dix documents piégés n'ont même pas atteint un modèle."
+    ],
+    [
+     {
+      "g": [
+       "Devant un garde-fou qui bloque le légitime, on rend la main à l'humain."
+      ]
+     },
+     " On ne le contourne pas."
+    ]
+   ]
+  }
+ ]
+}

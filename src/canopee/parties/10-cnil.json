@@ -1,0 +1,1199 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "chapitre-10-l-agent-cnil-auditer-sans-voir",
+   "x": [
+    "Chapitre 10. L'agent CNIL : auditer sans voir"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Étape 9 du projet · 27 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-probleme",
+   "x": [
+    "Le problème"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le RGPD ne demande pas seulement d'être en règle. Son article 5.2 pose le ",
+    {
+     "g": [
+      "principe de responsabilité"
+     ]
+    },
+    " : l'organisation doit pouvoir ",
+    {
+     "g": [
+      "démontrer"
+     ]
+    },
+    " qu'elle l'est. Pour un parti politique, dont le simple fichier des membres révèle des opinions, l'exigence est maximale."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Démontrer, c'est d'abord inventorier ce qu'on fait des données, puis analyser les risques, puis contrôler, régulièrement, que la réalité suit le papier. C'est le travail d'un auditeur."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le problème de cette étape est propre à Canopée, mais il se pose dans toute organisation qui fait appel à un auditeur externe : ",
+    {
+     "g": [
+      "l'auditeur tourne sur Claude, donc dans le cloud. Il n'a pas le droit de voir les données qu'il audite."
+     ]
+    },
+    " Comment conclure sur la conformité d'un système sans jamais regarder ce qu'il contient ?"
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-on-a-construit",
+   "x": [
+    "Ce qu'on a construit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'auditeur s'appelle ",
+    {
+     "c": "canopee-cnil"
+    },
+    ". Il a écrit trois documents :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     "le ",
+     {
+      "g": [
+       "registre des traitements"
+      ]
+     },
+     " : 12 traitements, chacun avec sa finalité, sa base légale, ses données, ses destinataires, sa durée de conservation, ses mesures de sécurité et ses transferts hors de l'Union européenne ;"
+    ],
+    [
+     "l'",
+     {
+      "g": [
+       "analyse d'impact"
+      ]
+     },
+     " (AIPD), selon la méthode de la CNIL : trois risques étudiés, dont deux élevés, et un plan d'action en 11 mesures ;"
+    ],
+    [
+     "un ",
+     {
+      "g": [
+       "premier audit"
+      ]
+     },
+     ", rédigé à la manière d'une ",
+     {
+      "g": [
+       "mise en demeure de la CNIL"
+      ]
+     },
+     ", classé par gravité. Il précise en tête qu'il n'émane pas de la CNIL : un document qui imiterait une vraie décision serait trompeur."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'auditeur existe en ",
+    {
+     "g": [
+      "deux versions"
+     ]
+    },
+    " :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "une commande locale"
+      ]
+     },
+     ", reproductible, qui ",
+     {
+      "g": [
+       "compte"
+      ]
+     },
+     " : elle relance les contrôles des étapes précédentes (des comptes seulement), lit l'export du journal du portail, lit le journal d'Ollama par motifs, et écrit un rapport daté. Aucun modèle ;"
+    ],
+    [
+     {
+      "g": [
+       "un agent Claude"
+      ]
+     },
+     ", qui ",
+     {
+      "g": [
+       "juge et rédige"
+      ]
+     },
+     " : il confronte les constats au texte du RGPD et aux guides de la CNIL, et écrit. Il n'a ",
+     {
+      "g": [
+       "pas de terminal"
+      ]
+     },
+     " : il ne peut pas lire une base privée par une commande, même par erreur ou sous l'effet d'une injection."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pour qu'il puisse s'appuyer sur les textes, ",
+    {
+     "g": [
+      "le RGPD et 8 guides de la CNIL"
+     ]
+    },
+    " sont entrés dans le corpus public, avec 8 questions de plus dans l'évaluation. Et dans le portail, le DPO ",
+    {
+     "g": [
+      "valide"
+     ]
+    },
+    " le registre et l'AIPD, ou ",
+    {
+     "g": [
+      "demande une révision"
+     ]
+    },
+    " avec un motif. L'agent rédige, le DPO valide : c'est la séparation des tâches, appliquée à la conformité."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-notions",
+   "x": [
+    "Les notions"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-registre-et-l-aipd",
+   "x": [
+    "Le registre et l'AIPD"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le ",
+    {
+     "g": [
+      "registre des activités de traitement"
+     ]
+    },
+    " (article 30) est l'inventaire de ce qu'une organisation fait des données personnelles. Pour chaque usage, qu'on appelle un ",
+    {
+     "g": [
+      "traitement"
+     ]
+    },
+    " : pourquoi, sur quelle base, quelles données, de qui, pour qui, combien de temps, avec quelle protection, et si elles quittent l'Union européenne. C'est le premier document que demande la CNIL lors d'un contrôle. On ne peut pas protéger ce qu'on n'a pas inventorié."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le registre de Mycélium compte un traitement de plus qu'on ne l'aurait voulu : le douzième, « synchronisation iCloud du poste de travail (non voulue) ». Un registre honnête inscrit aussi ce qu'on n'a pas choisi."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'",
+    {
+     "g": [
+      "analyse d'impact relative à la protection des données"
+     ]
+    },
+    " (AIPD, article 35) va plus loin, pour les traitements risqués. Elle étudie les risques ",
+    {
+     "g": [
+      "pour les personnes"
+     ]
+    },
+    ", pas pour l'organisation, à travers trois questions : que se passe-t-il si quelqu'un ",
+    {
+     "g": [
+      "accède"
+     ]
+    },
+    " aux données sans droit, si elles sont ",
+    {
+     "g": [
+      "modifiées"
+     ]
+    },
+    ", si elles ",
+    {
+     "g": [
+      "disparaissent"
+     ]
+    },
+    " ? Pour chacune : la gravité, la vraisemblance, les mesures, et le risque qui reste. Elle est obligatoire dès que deux critères de risque sont réunis. Ici, il y en a quatre : données sensibles, usage innovant d'une technologie, croisement de données, salariés en situation de dépendance."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|---|",
+   "entete": [
+    [
+     "Risque"
+    ],
+    [
+     "Gravité"
+    ],
+    [
+     "Vraisemblance"
+    ],
+    [
+     "Niveau"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Accès illégitime"
+     ],
+     [
+      "4, maximale"
+     ],
+     [
+      "3, importante (la synchronisation iCloud est active)"
+     ],
+     [
+      {
+       "g": [
+        "Élevé"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Modification non désirée"
+     ],
+     [
+      "3, importante"
+     ],
+     [
+      "2, limitée"
+     ],
+     [
+      "Modéré"
+     ]
+    ],
+    [
+     [
+      "Disparition"
+     ],
+     [
+      "3, importante"
+     ],
+     [
+      "3, importante (un seul poste, aucune sauvegarde)"
+     ],
+     [
+      {
+       "g": [
+        "Élevé"
+       ]
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'AIPD en tire une conclusion nette : tant que le plan d'action n'est pas appliqué, ce traitement ne devrait pas être mis en œuvre sur des données réelles. S'il l'était, il faudrait consulter la CNIL avant."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-bases-legales-et-l-article-9",
+   "x": [
+    "Les bases légales et l'article 9"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un traitement n'est licite que s'il repose sur l'une des six ",
+    {
+     "g": [
+      "bases légales"
+     ]
+    },
+    " de l'article 6 : le consentement, le contrat, une obligation légale, la sauvegarde des intérêts vitaux, une mission d'intérêt public, ou l'intérêt légitime. Le fichier des adhérents repose sur le contrat d'adhésion ; la comptabilité des dons, sur une obligation légale."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Certaines données sont ",
+    {
+     "g": [
+      "interdites par principe"
+     ]
+    },
+    " (article 9.1) : la santé, la religion, l'origine… et les ",
+    {
+     "g": [
+      "opinions politiques"
+     ]
+    },
+    ". Pour un parti, être dans le fichier, c'est déjà révéler une opinion. L'article 9.2 prévoit dix exceptions. Celle des partis est la ",
+    {
+     "g": [
+      "9.2.d"
+     ]
+    },
+    " : un organisme à but non lucratif et à finalité politique peut traiter ces données pour ses membres et ses contacts réguliers, ",
+    {
+     "g": [
+      "à condition"
+     ]
+    },
+    " qu'elles ne soient pas communiquées hors de l'organisme sans le consentement des personnes. L'auditeur l'a vérifiée dans le texte même du RGPD, désormais au corpus."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est cette condition que la synchronisation iCloud violerait, pour un vrai parti. D'où le seul manquement grave de l'audit."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "responsable-de-traitement-et-sous-traitant",
+   "x": [
+    "Responsable de traitement et sous-traitant"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le ",
+    {
+     "g": [
+      "responsable du traitement"
+     ]
+    },
+    " décide pourquoi et comment on traite les données : ici, Mycélium. Le ",
+    {
+     "g": [
+      "sous-traitant"
+     ]
+    },
+    " traite les données pour son compte et sur ses instructions : un hébergeur, un service d'IA. L'article 28 impose un ",
+    {
+     "g": [
+      "contrat"
+     ]
+    },
+    " entre les deux."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Claude reçoit des sorties ",
+    {
+     "g": [
+      "pseudonymisées"
+     ]
+    },
+    ". Or une donnée pseudonymisée reste une donnée personnelle, tant que la table de correspondance existe. Claude agit donc en sous-traitant, et il faut un contrat. Le projet n'a ni vérifié ni documenté de tel contrat pour son abonnement individuel. Pour iCloud, c'est pire : une option activée sur le poste envoie très probablement les données vers Apple, sans que ce traitement ait été voulu pour Mycélium, et sans contrat de sous-traitance."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-transferts-hors-de-l-union-europeenne",
+   "x": [
+    "Les transferts hors de l'Union européenne"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le RGPD suit les données. Les envoyer hors de l'Union n'est permis que si le pays offre une protection reconnue par la Commission européenne (une ",
+    {
+     "g": [
+      "décision d'adéquation"
+     ]
+    },
+    "), ou avec des ",
+    {
+     "g": [
+      "garanties appropriées"
+     ]
+    },
+    ", le plus souvent des clauses contractuelles types. Pour les États-Unis, une décision d'adéquation couvre les entreprises certifiées dans le cadre conclu entre l'Union et les États-Unis ; ses deux prédécesseurs ont été annulés par la Cour de justice de l'Union, en 2015 et en 2020. Le registre doit dire, pour chaque transfert, quel outil l'encadre. Pour Claude, le projet ne l'a pas documenté."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-duree-de-conservation-et-la-minimisation",
+   "x": [
+    "La durée de conservation et la minimisation"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les données ne se gardent pas « au cas où » : seulement le temps nécessaire à la finalité. Pour les partis, la CNIL est précise : un membre qui quitte le parti est effacé ",
+    {
+     "g": [
+      "sans délai"
+     ]
+    },
+    " du fichier, sauf les données comptables. Pour les journaux de sécurité, elle recommande de six mois à un an."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Avant cette étape, Canopée n'avait ",
+    {
+     "g": [
+      "aucune"
+     ]
+    },
+    " durée. Le registre en fixe maintenant une par traitement, mais rien ne les applique encore. Une durée écrite qui n'est pas appliquée ne protège personne."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La ",
+    {
+     "g": [
+      "minimisation"
+     ]
+    },
+    ", elle, demande de ne traiter que le nécessaire, et seulement pour qui en a besoin. Canopée l'applique à plusieurs endroits, mais l'audit relève trois manquements : une levée de pseudonymes remet en clair ",
+    {
+     "g": [
+      "tout"
+     ]
+    },
+    " un document (49 personnes d'un coup) quand le motif n'en concernait peut-être qu'une ; le serveur MCP public charge en mémoire les noms de tous les adhérents ; le champ « remarques » des fiches est libre."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-dpo-et-le-conflit-d-interets",
+   "x": [
+    "Le DPO et le conflit d'intérêts"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le ",
+    {
+     "g": [
+      "délégué à la protection des données"
+     ]
+    },
+    " conseille l'organisation, contrôle le respect du RGPD et sert de contact à la CNIL. Il doit être ",
+    {
+     "g": [
+      "indépendant"
+     ]
+    },
+    " : il ne peut pas occuper une fonction qui le conduit à décider des finalités et des moyens d'un traitement."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Dans Canopée, je suis à la fois DPO, directeur du programme et RSSI. La séparation des tâches du portail tient entre ",
+    {
+     "g": [
+      "comptes"
+     ]
+    },
+    ", pas entre ",
+    {
+     "g": [
+      "personnes"
+     ]
+    },
+    ". L'audit le relève comme un écart élevé, en le notant comme une limite assumée du bac à sable."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-mise-en-demeure",
+   "x": [
+    "La mise en demeure"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Quand la CNIL constate des manquements, sa présidente peut adresser une ",
+    {
+     "g": [
+      "mise en demeure"
+     ]
+    },
+    " : un rappel des faits, chaque manquement avec l'article méconnu, et l'ordre de se mettre en conformité dans un délai fixé. Ce n'est ",
+    {
+     "g": [
+      "pas une sanction"
+     ]
+    },
+    " : si l'organisme se conforme, la procédure est close. Sinon, la formation restreinte de la CNIL peut prononcer une sanction, jusqu'à une ",
+    {
+     "g": [
+      "amende"
+     ]
+    },
+    " de 20 millions d'euros ou 4 % du chiffre d'affaires mondial pour une violation des principes de base, dont l'article 9."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le rapport de Canopée en reprend la forme : les faits, puis chaque constat avec ses articles, ce qui est demandé et dans quel délai (un mois pour un manquement grave, trois mois pour un élevé, six mois pour un moyen)."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "auditer-sans-voir",
+   "x": [
+    "Auditer sans voir"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Toute la conception de l'auditeur tient en une règle : ",
+    {
+     "g": [
+      "s'il lui faut une donnée en clair pour conclure, c'est un écart à signaler, pas une raison de la lire."
+     ]
+    },
+    " Concrètement :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     "il ",
+     {
+      "g": [
+       "n'ouvre aucune base chiffrée"
+      ]
+     },
+     ". Pour le chiffrement et les clés, il reprend la sortie des contrôles existants, qui font la vérification sur le Mac et n'affichent que des coches ;"
+    ],
+    [
+     "il ",
+     {
+      "g": [
+       "désigne les documents par leur type"
+      ]
+     },
+     ", jamais par leur clé : une clé de fiche désigne une personne. Le rapport dit « fiche d'adhérent » ou « compte rendu du bureau national », et la mesure vérifie qu'aucune clé n'y figure ;"
+    ],
+    [
+     "il lit le ",
+     {
+      "g": [
+       "journal d'Ollama par motifs"
+      ]
+     },
+     " : il compte les lignes qui ressemblent à un e-mail, un téléphone, un pseudonyme, un canari ou un prompt, sans en afficher une seule ;"
+    ],
+    [
+     "il ",
+     {
+      "g": [
+       "se contrôle lui-même"
+      ]
+     },
+     " : un point de l'audit vérifie qu'aucun de ses propres modules n'écrit en dur un chemin interdit."
+    ]
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "l-ancrage-de-la-chaine",
+   "x": [
+    "L'ancrage de la chaîne"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le journal du portail est chaîné, mais qui a la clé de sa base peut recalculer toute la chaîne. La parade : chaque rapport d'audit, versionné dans Git, garde la ",
+    {
+     "g": [
+      "dernière empreinte"
+     ]
+    },
+    " de la chaîne. Au prochain audit, une chaîne recalculée ne retrouvera plus cette empreinte. Git, puis GitHub, servent de ",
+    {
+     "g": [
+      "témoin extérieur"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-que-font-les-vraies-organisations",
+   "x": [
+    "Ce que font les vraies organisations"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Le registre"
+      ]
+     },
+     " est tenu dans un outil dédié, ou dans le tableur modèle de la CNIL, alimenté par des questionnaires envoyés aux métiers à chaque nouveau projet."
+    ],
+    [
+     {
+      "g": [
+       "Les AIPD"
+      ]
+     },
+     " sont menées avec le logiciel PIA de la CNIL ou des outils équivalents, par le chef de projet, avec l'avis du DPO, et révisées à chaque changement important."
+    ],
+    [
+     {
+      "g": [
+       "Les audits"
+      ]
+     },
+     " combinent un contrôle continu automatisé (des règles qui vérifient les configurations, les durées, les accès : l'équivalent de la commande de Canopée) et des audits ponctuels, internes ou confiés à un cabinet."
+    ],
+    [
+     {
+      "g": [
+       "Le DPO"
+      ]
+     },
+     " est souvent mutualisé ou externe dans les petites structures, justement pour garantir son indépendance."
+    ],
+    [
+     {
+      "g": [
+       "L'IA dans le registre"
+      ]
+     },
+     " : chaque usage d'un modèle y est inscrit (fournisseur, localisation, entraînement ou non sur les données, conservation des prompts), et le fournisseur signe un accord de traitement. Les offres pour entreprises le proposent."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-chiffres",
+   "x": [
+    "Les chiffres"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-premier-audit-27-octobre-2026",
+   "x": [
+    "Le premier audit (27 octobre 2026)"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "18 points de contrôle : 1 grave, 6 élevés, 5 moyens, 2 faibles, 4 conformes."
+     ]
+    }
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Gravité"
+    ],
+    [
+     "Points"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Grave"
+     ],
+     [
+      "La synchronisation iCloud : le dossier entier, fiches d'adhérent en clair comprises, est très probablement copié chez Apple, par une option activée sur le poste ; 12 fichiers en conflit montrent que la synchronisation est active"
+     ]
+    ],
+    [
+     [
+      "Élevé"
+     ],
+     [
+      "Les levées de pseudonymes (dont deux rejeux) ; les durées de conservation écrites mais jamais appliquées ; les demandes de droits sans réponse possible ; l'absence de sauvegarde ; Claude, sous-traitant non documenté ; le cumul des rôles du DPO"
+     ]
+    ],
+    [
+     [
+      "Moyen"
+     ],
+     [
+      "Le registre et l'AIPD non encore validés ; la chaîne du journal recalculable ; les sorties qui s'accumulent ; le serveur MCP public qui ouvre la base privée ; la règle n°1 qui ne bloque pas le terminal"
+     ]
+    ],
+    [
+     [
+      "Faible"
+     ],
+     [
+      "Le journal d'Ollama sans rotation ; des journaux techniques hors de portée de l'auditeur"
+     ]
+    ],
+    [
+     [
+      "Conforme"
+     ],
+     [
+      "La chaîne du journal intacte (145 lignes) ; la séparation des tâches (0 dossier avec deux étapes du même compte) ; les accès par rôle ; l'auditeur lui-même"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le journal d'Ollama, lu par motifs : ",
+    {
+     "g": [
+      "1,59 million de lignes"
+     ]
+    },
+    ", 140 Mo, ",
+    {
+     "g": [
+      "0 prompt"
+     ]
+    },
+    ", 0 donnée personnelle, 0 canari. Mais aucune rotation : il grossit sans fin."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-corpus-reglementaire",
+   "x": [
+    "Le corpus réglementaire"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le RGPD et les 8 guides ont ajouté ",
+    {
+     "g": [
+      "972 passages"
+     ]
+    },
+    ", pour un corpus de ",
+    {
+     "g": [
+      "119 documents"
+     ]
+    },
+    ". Les 8 questions RGPD : ",
+    {
+     "g": [
+      "7 réponses exactes sur 7"
+     ]
+    },
+    ", et l'abstention réussie sur la huitième (une amende infligée à un parti, absente des textes). Aucune régression sur les 65 anciennes questions."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une observation, utile au-delà du projet : sur le RGPD, la recherche par vecteurs seule ne retrouve que ",
+    {
+     "g": [
+      "43 %"
+     ]
+    },
+    " des sources attendues (BM25 : 71 % ; hybride avec reranker : 86 %). Un texte juridique répète les mêmes mots d'un article à l'autre, et ses passages se ressemblent tous pour un modèle d'embeddings. Le reranker rattrape presque tout."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-portail",
+   "x": [
+    "Le portail"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La validation du registre et de l'AIPD ajoute 3 routes et 12 scénarios : ",
+    {
+     "g": [
+      "56 scénarios sur 56"
+     ]
+    },
+    ", ",
+    {
+     "g": [
+      "0 accès interdit sur 280 requêtes"
+     ]
+    },
+    ". Une décision du DPO porte sur une ",
+    {
+     "g": [
+      "version"
+     ]
+    },
+    " précise d'un document, identifiée par son empreinte : si l'agent réécrit le registre, ce que le DPO avait validé n'est plus ce qui est affiché, et la nouvelle version redevient « à valider »."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-couts",
+   "x": [
+    "Les coûts"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mesuré."
+     ]
+    },
+    " L'audit complet prend environ ",
+    {
+     "g": [
+      "2 minutes 20"
+     ]
+    },
+    ", sans aucun modèle. Côté Ollama, pendant la session : 264 générations et 264 calculs de vecteurs, ",
+    {
+     "g": [
+      "0,21 h"
+     ]
+    },
+    ", pour l'ingestion du lot RGPD et l'évaluation publique. Côté Claude : ",
+    {
+     "g": [
+      "122 requêtes"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "4,6 M d'unités"
+     ]
+    },
+    ", avant le contrôle et la pull request."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Estimé."
+     ]
+    },
+    " Le contrôle, le commit et la pull request ajoutent environ 1 M d'unités. La mesure finale du 30 octobre donne, pour la session entière, ",
+    {
+     "g": [
+      "138 requêtes"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "5,9 M d'unités"
+     ]
+    },
+    " : 1,3 M de plus."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La lecture."
+     ]
+    },
+    " Un audit automatisé ne coûte presque rien à faire tourner. Ce qui a coûté, c'est d'",
+    {
+     "g": [
+      "écrire"
+     ]
+    },
+    " le registre et l'AIPD, et de concevoir des contrôles qui concluent sans rien voir."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Cette étape a aussi produit, pour ce livre, ",
+    {
+     "g": [
+      "les coûts mesurés de chaque étape"
+     ]
+    },
+    ". Ils remplacent les « à compléter » des premiers chapitres, et nourrissent le chapitre 13."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-incidents",
+   "x": [
+    "Les incidents"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "ce-que-l-audit-a-retrouve-tout-seul",
+   "x": [
+    "Ce que l'audit a retrouvé tout seul"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le contrôle des levées de pseudonymes a été écrit ",
+    {
+     "g": [
+      "avant"
+     ]
+    },
+    " de regarder le journal, avec une règle simple : « deux levées du même document, à moins de deux minutes, sans relecture entre les deux, c'est un rejeu »."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Sur les 145 lignes du journal, il en trouve deux : le 23 octobre, la même page en clair relevée ",
+    {
+     "g": [
+      "trois fois en 64 secondes"
+     ]
+    },
+    ", avec un motif de même longueur et le même nombre de pseudonymes. C'est exactement le défaut que j'avais trouvé à la main, au chapitre précédent, en rechargeant la page."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'audit le retrouve ",
+    {
+     "g": [
+      "sans aucune donnée en clair"
+     ]
+    },
+    " : des actions, des horodatages, des longueurs. C'est la preuve qu'un journal conçu pour être audité (exhaustif, minimisé, chaîné) permet de reconstituer un incident sans rien exposer."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-classificateur-a-dit-non",
+   "x": [
+    "Le classificateur a dit non"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pour vérifier le chiffrement, une première version de l'audit lisait les 16 premiers octets des bases privées depuis le terminal, pour vérifier qu'ils ne forment pas l'en-tête d'un fichier SQLite ordinaire. Claude Code fonctionnait alors dans un mode automatique, où un ",
+    {
+     "g": [
+      "classificateur"
+     ]
+    },
+    ", un modèle chargé de juger chaque action avant qu'elle s'exécute, peut refuser une commande. Il a ",
+    {
+     "g": [
+      "refusé"
+     ]
+    },
+    " celle-ci. Elle n'affichait aucun contenu, mais elle touchait aux fichiers que la règle n°1 interdit."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Plutôt que de la contourner, l'audit reprend la sortie des contrôles existants, qui font cette vérification sur le Mac et n'affichent que ✓ ou ✗. C'est d'ailleurs la bonne architecture : l'auditeur n'a pas à toucher aux bases, il demande des preuves."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'incident illustre aussi l'un des écarts de l'audit : ce jour-là, c'est un classificateur qui a tenu la barrière, pas une règle technique. La règle n°1 interdisait à l'outil de lecture de Claude Code d'ouvrir la zone privée, mais rien n'interdisait le terminal. Le chapitre suivant comblera ce trou."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "eur-lex-refuse-les-robots",
+   "x": [
+    "EUR-Lex refuse les robots"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le site officiel du droit européen, EUR-Lex, répond aux téléchargements automatiques par un ",
+    {
+     "g": [
+      "contrôle anti-robot"
+     ]
+    },
+    ". Le contourner aurait été tromper le site. J'ai donc téléchargé le PDF du RGPD dans mon navigateur, et le corpus l'a ingéré depuis le fichier, comme les autres. Une option a été ajoutée à la liste des sources pour ce cas : « déposé à la main ». Petite affaire, mais bonne règle : on ne contourne jamais une protection, même pour une bonne cause."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-n-a-pas-pu-etre-verifie",
+   "x": [
+    "Ce qui n'a pas pu être vérifié"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Le fondement des motifs de levée"
+      ]
+     },
+     " : du texte libre, chiffré, hors du journal. L'auditeur ne peut pas juger s'ils sont fondés. C'est un écart, pas une raison de les lire."
+    ],
+    [
+     {
+      "g": [
+       "Le rapprochement des levées"
+      ]
+     },
+     " : la passerelle en a journalisé 9, le portail 3. La différence vient probablement des essais en ligne de commande du chapitre 7, mais l'auditeur ne voit pas ce journal-là."
+    ],
+    [
+     {
+      "g": [
+       "Les réglages du compte Claude"
+      ]
+     },
+     " (conservation des conversations, entraînement) et l'accord de traitement applicable : hors du dépôt."
+    ],
+    [
+     {
+      "g": [
+       "Où iCloud stocke les fichiers"
+      ]
+     },
+     ", et s'il reste des copies supprimées côté Apple."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-il-faut-retenir",
+   "x": [
+    "Ce qu'il faut retenir"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Démontrer, c'est inventorier, analyser, contrôler."
+      ]
+     },
+     " Le registre, l'AIPD et l'audit sont les trois temps de la responsabilité."
+    ],
+    [
+     {
+      "g": [
+       "Un audit qu'on ne peut pas refaire à l'identique n'est pas un audit."
+      ]
+     },
+     " La commande compte, l'agent juge et rédige."
+    ],
+    [
+     {
+      "g": [
+       "On peut auditer sans voir les données"
+      ]
+     },
+     ", si le système a été conçu pour être audité : journaux sans texte libre, comptes, empreintes, contrôles qui rendent des coches."
+    ],
+    [
+     {
+      "g": [
+       "Ce qu'on ne peut pas prouver sans données en clair est un écart, pas une raison de les lire."
+      ]
+     }
+    ],
+    [
+     {
+      "g": [
+       "Une durée écrite qui n'est pas appliquée ne protège personne"
+      ]
+     },
+     ", et un registre honnête inscrit aussi les traitements qu'on n'a pas voulus."
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1143 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "chapitre-2-le-corpus-public-repondre-en-citant-ses-sources",
+   "x": [
+    "Chapitre 2. Le corpus public : répondre en citant ses sources"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Étape 2 du projet · 22 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-probleme",
+   "x": [
+    "Le problème"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un modèle de langage ne connaît que ce qu'il a vu pendant son entraînement. Et quand il ne sait pas, il ne dit pas « je ne sais pas » : il invente une réponse plausible. Pour un usage personnel, c'est agaçant. Pour un parti politique qui prépare un programme, c'est inacceptable. Un chiffre faux sur la pollution de l'air ou la taxe carbone, repris dans un discours, devient un argument pour l'adversaire."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le problème de cette étape est donc simple à énoncer : ",
+    {
+     "g": [
+      "faire répondre une IA à partir de documents vérifiables, et l'obliger à dire d'où vient chaque phrase."
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le cahier des charges le dit en une ligne : ",
+    {
+     "i": [
+      "une réponse sans source citée est une réponse invalide."
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-on-a-construit",
+   "x": [
+    "Ce qu'on a construit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une ",
+    {
+     "g": [
+      "recherche documentaire avec citations obligatoires"
+     ]
+    },
+    ", sur des études réelles et publiques :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "92 documents"
+      ]
+     },
+     " téléchargés depuis quatre sources ;"
+    ],
+    [
+     "découpés en ",
+     {
+      "g": [
+       "2 191 passages"
+      ]
+     },
+     ", chacun avec ses informations obligatoires (source, date, auteurs, niveau de preuve) ;"
+    ],
+    [
+     "rangés dans ",
+     {
+      "g": [
+       "un seul fichier"
+      ]
+     },
+     " de base de données, qui contient à la fois le texte, l'index des mots et l'index du sens ;"
+    ],
+    [
+     "interrogeables en une commande, avec une réponse rédigée ",
+     {
+      "g": [
+       "sur le Mac"
+      ]
+     },
+     " par un modèle local, dont chaque phrase cite sa source."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Aucune question ni aucun document ne part dans le cloud pendant la recherche."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une question ressemble à ceci :"
+   ]
+  },
+  {
+   "t": "code",
+   "langue": "bash",
+   "texte": ".venv/bin/python -m corpus demander \"Les pistes cyclables font-elles augmenter l'usage du vélo ?\""
+  },
+  {
+   "t": "p",
+   "x": [
+    "Et la réponse obtenue ce jour-là tenait en quatre phrases, chacune suivie de sa référence : deux études menées à Glasgow et une étude suisse sur les vélos-cargos, avec la page citée."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-sources",
+   "x": [
+    "Les sources"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|---|",
+   "entete": [
+    [
+     "Source"
+    ],
+    [
+     "Documents"
+    ],
+    [
+     "Ce qui est indexé"
+    ],
+    [
+     "Pourquoi"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "g": [
+        "OpenAlex"
+       ]
+      },
+      ", catalogue mondial et ouvert de la recherche"
+     ],
+     [
+      "66"
+     ],
+     [
+      "Titre et résumé"
+     ],
+     [
+      "Dix thèmes d'un programme écologiste (biodiversité, chaleur urbaine, vélo, rénovation, taxe carbone, pollution de l'air, sécheresse…), articles en accès libre, parus depuis 2015 et cités plus de 30 fois"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "HAL"
+       ]
+      },
+      ", l'archive ouverte de la recherche française"
+     ],
+     [
+      "24"
+     ],
+     [
+      "Texte intégral"
+     ],
+     [
+      "Des textes en français, en entier"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "ADEME"
+       ]
+      }
+     ],
+     [
+      "1"
+     ],
+     [
+      "Texte intégral"
+     ],
+     [
+      "La prospective ",
+      {
+       "i": [
+        "Transition(s) 2050"
+       ]
+      },
+      ", un rapport institutionnel français de référence"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "GIEC"
+       ]
+      }
+     ],
+     [
+      "1"
+     ],
+     [
+      "Texte intégral"
+     ],
+     [
+      "Le rapport spécial sur 1,5 °C, résumé pour les décideurs, en français"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce qui est conservé dans le code, c'est ",
+    {
+     "g": [
+      "la recette"
+     ]
+    },
+    " : le programme qui sait retélécharger tout cela. Les 68 Mo de documents restent hors de Git, comme le veut la règle posée au chapitre 1."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-choix-techniques",
+   "x": [
+    "Les choix techniques"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Trois choix méritent d'être expliqués, parce qu'ils reviennent tout au long du livre."
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Une seule base de données, SQLite, pour tout."
+      ]
+     },
+     " Le texte, l'index des mots et l'index du sens sont dans le même fichier. Pas deux systèmes à synchroniser. En entreprise, l'équivalent est PostgreSQL avec son extension vectorielle : le même modèle, une base classique qui sait aussi chercher par le sens."
+    ],
+    [
+     {
+      "g": [
+       "Le moins de dépendances possible."
+      ]
+     },
+     " Deux bibliothèques seulement ont été ajoutées, avec accord : l'une pour l'index du sens, l'autre pour lire les PDF. Pour parler au moteur local et aux catalogues en ligne, la bibliothèque standard de Python suffit. Chaque dépendance en moins, c'est une surface d'attaque en moins."
+    ],
+    [
+     {
+      "g": [
+       "Un modèle de langage comme « reranker »."
+      ]
+     },
+     " Le reranker spécialisé prévu au départ aurait demandé environ 1 Go de dépendances supplémentaires. À la place, un modèle de langage local note chaque passage. C'est plus lent, mais ça fonctionne, et le cahier des charges a été mis à jour."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-notions",
+   "x": [
+    "Les notions"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-rag-un-examen-documents-autorises",
+   "x": [
+    "Le RAG : un examen « documents autorisés »"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "RAG veut dire ",
+    {
+     "i": [
+      "Retrieval-Augmented Generation"
+     ]
+    },
+    ", la génération augmentée par la recherche. L'idée change la question posée au modèle. On ne lui demande plus « que sais-tu sur les pistes cyclables ? », mais « voici cinq extraits, réponds à partir d'eux seulement »."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Cela se fait en deux temps :"
+   ]
+  },
+  {
+   "t": "ol",
+   "debut": 1,
+   "items": [
+    [
+     {
+      "g": [
+       "la recherche"
+      ]
+     },
+     " : trouver les bons passages dans les documents. C'est le cœur du travail. Si la recherche rate, le meilleur modèle du monde répondra à côté ;"
+    ],
+    [
+     {
+      "g": [
+       "la rédaction"
+      ]
+     },
+     " : le modèle rédige à partir de ces passages, et les cite."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est l'équivalent d'un examen « documents autorisés » : on juge la réponse sur sa fidélité aux documents, pas sur la mémoire de l'élève."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-decoupage",
+   "x": [
+    "Le découpage"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "On ne donne pas un rapport de 60 pages au modèle : on le coupe en ",
+    {
+     "g": [
+      "passages"
+     ]
+    },
+    " d'environ 1 500 caractères, soit 250 à 300 mots."
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Trop gros"
+      ]
+     },
+     ", un passage mélange plusieurs sujets : il est moins bien retrouvé, et il encombre le modèle."
+    ],
+    [
+     {
+      "g": [
+       "Trop petit"
+      ]
+     },
+     ", il perd son contexte : « cette mesure »… laquelle ?"
+    ],
+    [
+     {
+      "g": [
+       "Le chevauchement"
+      ]
+     },
+     " : chaque passage reprend les 250 derniers caractères du précédent, pour qu'une idée coupée en deux reste lisible quelque part."
+    ],
+    [
+     {
+      "g": [
+       "On coupe en fin de phrase"
+      ]
+     },
+     " quand c'est possible, et ",
+     {
+      "g": [
+       "on garde le numéro de page"
+      ]
+     },
+     ", pour que la citation puisse dire « p. 12 »."
+    ]
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-metadonnees-obligatoires",
+   "x": [
+    "Les métadonnées obligatoires"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Chaque document porte sa fiche d'identité : source, date, auteurs, ",
+    {
+     "g": [
+      "niveau de preuve"
+     ]
+    },
+    " (méta-analyse, étude revue par les pairs, rapport institutionnel…) et ",
+    {
+     "g": [
+      "niveau de sensibilité"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ici, la base elle-même fait respecter une règle : elle ",
+    {
+     "g": [
+      "refuse"
+     ]
+    },
+    " tout document dont la sensibilité n'est pas « public ». Une erreur de rangement échoue donc bruyamment, au lieu de mélanger en silence le public et le privé. C'est une idée qu'on retrouvera souvent : rendre l'erreur ",
+    {
+     "g": [
+      "impossible"
+     ]
+    },
+    ", pas seulement interdite."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le niveau de preuve est attribué par une règle simple, et assumée comme approximative : « méta-analyse » ou « revue systématique » dans le titre donne une méta-analyse ; le GIEC, l'ADEME et les rapports de HAL sont des rapports institutionnels ; le reste est une étude revue par les pairs. Résultat : 77 études revues par les pairs, 10 rapports institutionnels, 5 méta-analyses."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "deux-facons-de-chercher",
+   "x": [
+    "Deux façons de chercher"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Par les mots : BM25."
+     ]
+    },
+    " C'est l'algorithme des moteurs de recherche classiques. Il donne un score à chaque passage selon les mots de la question qu'il contient, en donnant plus de poids aux mots ",
+    {
+     "g": [
+      "rares"
+     ]
+    },
+    " : « sécheresse » compte plus que « effet ». Sa force : les termes exacts, les sigles, les noms propres. Sa faiblesse : aucun synonyme, aucune traduction. Une question en français ne trouve pas un résumé en anglais."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Par le sens : les embeddings."
+     ]
+    },
+    " Un embedding transforme un texte en une liste de nombres (1 024 nombres pour le modèle utilisé ici, bge-m3), placée de sorte que ",
+    {
+     "g": [
+      "deux textes de même sens soient proches"
+     ]
+    },
+    ", même sans mot commun. « Pistes cyclables » et « cycling infrastructure » tombent au même endroit. Sa force : le sens, les synonymes, les autres langues. Sa faiblesse : les termes exacts. Un sigle ou un chiffre précis se perd dans le flou du sens."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-recherche-hybride",
+   "x": [
+    "La recherche hybride"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les deux méthodes ratent des choses différentes. On lance donc les deux, 30 candidats chacune, puis on ",
+    {
+     "g": [
+      "fusionne"
+     ]
+    },
+    " les deux listes."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "On ne peut pas additionner leurs scores : ils ne sont pas sur la même échelle. La fusion utilisée, dite ",
+    {
+     "g": [
+      "par rangs réciproques"
+     ]
+    },
+    " (",
+    {
+     "i": [
+      "Reciprocal Rank Fusion"
+     ]
+    },
+    "), ne regarde que le ",
+    {
+     "g": [
+      "classement"
+     ]
+    },
+    " de chaque passage dans chaque liste :"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "score = 1 / (60 + rang dans la recherche par mots) + 1 / (60 + rang dans la recherche par le sens)"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un passage bien classé par les deux méthodes remonte en tête. Un passage trouvé par une seule reste dans la course."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-reranking-l-entonnoir",
+   "x": [
+    "Le reranking : l'entonnoir"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les deux recherches sont rapides parce qu'elles ne lisent jamais la question et le passage ",
+    {
+     "g": [
+      "ensemble"
+     ]
+    },
+    " : chaque texte est indexé à l'avance, seul. Un ",
+    {
+     "g": [
+      "reranker"
+     ]
+    },
+    " lit les deux côte à côte et juge si le passage répond vraiment. C'est beaucoup plus précis, et beaucoup plus lent. On ne l'applique donc qu'aux ",
+    {
+     "g": [
+      "15 meilleurs candidats"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ici, le modèle local note chaque passage de 0 à 10. Seuls les passages notés 5 ou plus vont au rédacteur, cinq au maximum. Et si aucun n'atteint 5, le système répond que les documents ne permettent pas de répondre, ",
+    {
+     "g": [
+      "sans même appeler le rédacteur"
+     ]
+    },
+    ". C'est la meilleure protection contre l'invention : on ne demande pas d'écrire à un modèle qui n'a rien à citer."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est l'entonnoir classique : ",
+    {
+     "g": [
+      "beaucoup de candidats peu coûteux, puis peu de candidats coûteux."
+     ]
+    }
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Le chemin d'une question : deux recherches, la fusion, le reranker, la rédaction citée et le contrôle",
+   "src": "rag.svg"
+  },
+  {
+   "t": "h3",
+   "id": "les-citations-obligatoires-appliquees-deux-fois",
+   "x": [
+    "Les citations obligatoires, appliquées deux fois"
+   ]
+  },
+  {
+   "t": "ol",
+   "debut": 1,
+   "items": [
+    [
+     {
+      "g": [
+       "Dans la consigne"
+      ]
+     },
+     " : chaque phrase se termine par sa référence, ",
+     {
+      "c": "[1]"
+     },
+     ", ",
+     {
+      "c": "[2]"
+     },
+     "… Si le modèle ne trouve pas la réponse, il doit écrire une formule convenue, ",
+     {
+      "c": "AUCUNE SOURCE"
+     },
+     "."
+    ],
+    [
+     {
+      "g": [
+       "Dans le code, après coup"
+      ]
+     },
+     " : un contrôle vérifie que la réponse cite au moins un extrait, que chaque numéro existe et qu'aucune phrase n'est sans citation. Sinon, le modèle a une seconde chance. Si elle échoue aussi, la réponse est affichée, marquée ",
+     {
+      "g": [
+       "invalide"
+      ]
+     },
+     "."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une limite, dite tout de suite : ce contrôle porte sur la ",
+    {
+     "g": [
+      "forme"
+     ]
+    },
+    ". Il vérifie qu'une source est citée, pas que la source dit vraiment ce que la phrase affirme. C'est tout l'objet du chapitre suivant."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-documents-sont-des-donnees-pas-des-consignes",
+   "x": [
+    "Les documents sont des données, pas des consignes"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un passage peut contenir une phrase du type « ignore les instructions précédentes ». C'est l'",
+    {
+     "g": [
+      "injection de prompt indirecte"
+     ]
+    },
+    " : une consigne cachée dans un document que le système lit. Deux protections sont posées dès maintenant : les extraits sont encadrés par des délimiteurs, et la consigne dit que leur contenu est une donnée, jamais un ordre."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La documentation le dit franchement : c'est une protection ",
+    {
+     "g": [
+      "faible"
+     ]
+    },
+    ". Elle sera mise à l'épreuve plus tard, avec des documents piégés fabriqués exprès."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "effacer-c-est-effacer-partout",
+   "x": [
+    "Effacer, c'est effacer partout"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "HAL contenait deux dépôts du même article, et la recherche remontait deux fois le même passage. Le téléchargement écarte désormais les doublons, et l'indexation retire de la base tout document qui n'est plus dans la liste."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Mais les index de recherche de SQLite sont des tables particulières, qui ne suivent pas les liens entre tables : supprimer un document ne supprime pas automatiquement ses entrées dans les index. Il faut les vider à la main, dans la même opération. C'est une répétition, en petit, du ",
+    {
+     "g": [
+      "droit à l'effacement"
+     ]
+    },
+    " du RGPD : un document n'est vraiment supprimé que lorsqu'il a disparu ",
+    {
+     "g": [
+      "de tous les index"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-que-font-les-vraies-organisations",
+   "x": [
+    "Ce que font les vraies organisations"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Le même entonnoir, en plus gros."
+      ]
+     },
+     " Recherche hybride, puis reranker, puis rédaction : c'est l'architecture standard des assistants documentaires d'entreprise (Elastic, Vespa, Azure AI Search, ou PostgreSQL avec un reranker). Notre version tient dans un fichier, mais les étapes sont les mêmes."
+    ],
+    [
+     {
+      "g": [
+       "Un vrai reranker dédié."
+      ]
+     },
+     " Un modèle spécialisé est ",
+     {
+      "g": [
+       "cent fois plus rapide"
+      ]
+     },
+     " qu'un modèle de langage pour la même tâche. Notre choix est un compromis de bac à sable."
+    ],
+    [
+     {
+      "g": [
+       "Un pipeline d'ingestion soigné"
+      ]
+     },
+     " : extraction des tableaux et des colonnes, détection de la langue, dédoublonnage, découpage par section. Beaucoup d'équipes y passent plus de temps que sur tout le reste."
+    ],
+    [
+     {
+      "g": [
+       "Des citations cliquables"
+      ]
+     },
+     ", qui ouvrent le document à la bonne page et surlignent le passage."
+    ],
+    [
+     {
+      "g": [
+       "Une mesure, pas une impression."
+      ]
+     },
+     " Sans jeu d'évaluation, on ne sait pas si un réglage améliore ou dégrade la recherche. C'est le chapitre suivant."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-chiffres",
+   "x": [
+    "Les chiffres"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mesuré :"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [],
+    [
+     "Résultat"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Documents"
+     ],
+     [
+      "92 (66 OpenAlex, 24 HAL, 1 ADEME, 1 GIEC), 68 Mo sur le disque"
+     ]
+    ],
+    [
+     [
+      "Passages"
+     ],
+     [
+      "2 191, autant de vecteurs ; aucun vecteur orphelin"
+     ]
+    ],
+    [
+     [
+      "Base de données"
+     ],
+     [
+      "18 Mo, construite en environ 4 min 30 (en partie avec l'ancien moteur local, voir plus bas)"
+     ]
+    ],
+    [
+     [
+      "Réindexation sans changement"
+     ],
+     [
+      "0 s : rien n'est refait"
+     ]
+    ],
+    [
+     [
+      "Doublons retirés"
+     ],
+     [
+      "2, avec leurs passages et leurs entrées dans les deux index"
+     ]
+    ],
+    [
+     [
+      "Temps de réponse"
+     ],
+     [
+      "50 à 90 s par question, dont l'essentiel pour le reranking des 15 candidats (environ 4 s par passage)"
+     ]
+    ],
+    [
+     [
+      "Modèle d'embeddings (bge-m3)"
+     ],
+     [
+      "1,2 Go"
+     ]
+    ],
+    [
+     [
+      "Modèle de rédaction et de reranking (Qwen 3.5 9B)"
+     ],
+     [
+      "7,6 Go sur le disque, et non 6,6 Go comme annoncé sur la page du modèle"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Quatre questions de contrôle ont été posées : les pistes cyclables (4 phrases citées), les risques à 1,5 °C par rapport à 2 °C (5 phrases citées, toutes tirées du résumé du GIEC), l'acceptabilité de la taxe carbone (5 phrases citées), et une question hors sujet sur le football. À celle-ci, le système a répondu que les sources ne permettaient pas de répondre, sans appeler le rédacteur."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Les coûts."
+     ]
+    },
+    " Côté Claude, la session de cette étape a demandé ",
+    {
+     "g": [
+      "74 requêtes"
+     ]
+    },
+    ", pour ",
+    {
+     "g": [
+      "1,8 M d'unités"
+     ]
+    },
+    " d'usage effectif (mesuré ; l'unité est expliquée au chapitre 13). Côté modèles locaux, le journal d'Ollama ne commence qu'en cours d'étape, quand la version native d'Ollama a été installée (le 22 octobre à 14 h 07) : la partie antérieure, avec l'ancienne installation, n'a laissé aucune trace mesurable. Sur la fin de l'étape, le journal compte ",
+    {
+     "g": [
+      "65 générations"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "223 calculs de vecteurs"
+     ]
+    },
+    ", soit ",
+    {
+     "g": [
+      "9 minutes"
+     ]
+    },
+    " de calcul (0,15 h, mesuré). C'est un minimum : l'indexation complète du corpus a demandé davantage."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Ce qui n'a pas pu être vérifié"
+     ]
+    },
+    " à cette étape : la fidélité des réponses au fond (une seule phrase, sur le GIEC, a été relue et confirmée), la qualité de la recherche en chiffres, l'extraction des PDF au-delà des passages remontés, et la résistance à une injection de prompt, faute de document piégé."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-surprises-de-l-etape",
+   "x": [
+    "Les surprises de l'étape"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Cette étape n'a pas eu d'incident grave, mais deux surprises instructives."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-articles-les-plus-cites-ne-sont-pas-les-plus-pertinents",
+   "x": [
+    "Les articles les plus cités ne sont pas les plus pertinents"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le premier téléchargement depuis OpenAlex triait les résultats ",
+    {
+     "g": [
+      "par nombre de citations"
+     ]
+    },
+    ". Le résultat semblait logique : prendre les études les plus reconnues. Il a ramené des articles sur le cancer, l'Internet des objets ou les maladies cardiaques. Ils sont très cités, mais leur seul lien avec la recherche était un mot."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le tri par ",
+    {
+     "g": [
+      "pertinence"
+     ]
+    },
+    ", avec un seuil minimal de citations, a réglé le problème. La leçon est la première de tout projet de ce genre : ",
+    {
+     "g": [
+      "la qualité du corpus compte plus que celle du modèle."
+     ]
+    },
+    " Un excellent modèle qui cherche dans de mauvais documents donne de mauvaises réponses, avec de belles citations."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-moteur-local-tournait-en-mode-degrade",
+   "x": [
+    "Le moteur local tournait en mode dégradé"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pour installer le modèle Qwen 3.5, il a fallu mettre à jour Ollama, le logiciel qui fait tourner les modèles sur le Mac. En cherchant pourquoi la mise à jour était nécessaire, on a trouvé mieux qu'une version trop ancienne."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'Ollama en place avait été installé dans sa version pour les ",
+    {
+     "g": [
+      "anciens processeurs Intel"
+     ]
+    },
+    ". Il tournait sous ",
+    {
+     "g": [
+      "Rosetta"
+     ]
+    },
+    ", la couche qui traduit à la volée les programmes Intel pour les puces Apple. Conséquence : il était ",
+    {
+     "g": [
+      "privé du processeur graphique"
+     ]
+    },
+    " du Mac, celui qui fait l'essentiel du calcul en IA."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Il a été remplacé par une version plus récente, ",
+    {
+     "g": [
+      "native"
+     ]
+    },
+    " pour les puces Apple, en conservant les modèles déjà téléchargés. Toutes les réponses mesurées l'ont été avec la version native. L'indexation, elle, avait commencé avec l'ancienne : ses 4 min 30 sont sans doute pessimistes."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La leçon est pratique : sur un Mac, la colonne « Type » du Moniteur d'activité dit si un programme tourne en natif (« Apple ») ou traduit (« Intel »). Pour un moteur d'IA locale, la différence est énorme, et rien ne la signale par défaut."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "une-troisieme-plus-petite",
+   "x": [
+    "Une troisième, plus petite"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le premier essai du reranker imposait au modèle de répondre dans un format structuré. Ollama l'a refusé pour ce modèle. Le code lit donc simplement un nombre dans la réponse, et si le nombre manque, la note vaut 0. En cas de doute, on écarte le passage. C'est un petit choix, mais il illustre un principe qu'on retrouvera : ",
+    {
+     "g": [
+      "quand un contrôle ne sait pas, il refuse."
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-il-faut-retenir",
+   "x": [
+    "Ce qu'il faut retenir"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Le RAG change la question posée au modèle"
+      ]
+     },
+     " : non plus « que sais-tu ? », mais « réponds à partir de ces extraits, et cite-les »."
+    ],
+    [
+     {
+      "g": [
+       "La recherche est le cœur du système"
+      ]
+     },
+     ", pas la rédaction. Deux méthodes complémentaires (les mots et le sens), puis un juge plus lent sur les meilleurs candidats."
+    ],
+    [
+     {
+      "g": [
+       "Ne pas appeler le rédacteur quand il n'y a rien à citer"
+      ]
+     },
+     " est la meilleure protection contre l'invention."
+    ],
+    [
+     {
+      "g": [
+       "Une citation présente n'est pas une citation juste."
+      ]
+     },
+     " Le contrôle de forme ne suffit pas ; il faudra mesurer le fond."
+    ],
+    [
+     {
+      "g": [
+       "La qualité du corpus compte plus que celle du modèle."
+      ]
+     }
+    ],
+    [
+     {
+      "g": [
+       "Vérifier l'outil autant que le résultat"
+      ]
+     },
+     " : un moteur qui tourne en mode dégradé ne le dit pas."
+    ]
+   ]
+  }
+ ]
+}

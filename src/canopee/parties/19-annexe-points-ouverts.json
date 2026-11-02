@@ -1,0 +1,604 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "annexe-e-ce-qui-reste-ouvert",
+   "x": [
+    "Annexe E. Ce qui reste ouvert"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Annexes · la liste consolidée des points ouverts de chaque étape"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Chaque étape du projet a laissé sa liste de ce qui restait à faire. Cette annexe les réunit, et retire ce que les étapes suivantes ont réglé. Elle décrit l'état du projet à la fin du livre, à partir de sa documentation, et ne constate rien de plus récent."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le chapitre de chaque point est indiqué entre parenthèses ; « doc. de l'étape » signale un point qui n'apparaît que dans la documentation de l'étape, et pas dans le livre."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "decide-reste-a-faire",
+   "x": [
+    "Décidé, reste à faire"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "La purge réelle."
+      ]
+     },
+     " Décidée le 30 octobre. Elle n'efface que trois anciens exports d'audit. Le dépôt ne contient encore que le rapport de simulation. (Chap. 12)"
+    ],
+    [
+     {
+      "g": [
+       "La première sauvegarde chiffrée"
+      ]
+     },
+     ", sur un disque externe chiffré, avec les clés rangées ailleurs. (Chap. 11 et 12)"
+    ],
+    [
+     {
+      "g": [
+       "La notification de la violation iCloud."
+      ]
+     },
+     " Ma décision est de notifier, avec les motifs du retard. Mycélium étant fictif, rien n'est envoyé à la vraie CNIL. (Chap. 12)"
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "en-attente-de-mon-accord",
+   "x": [
+    "En attente de mon accord"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "La rotation du journal d'Ollama"
+      ]
+     },
+     " : préparée, à installer avec les droits d'administrateur. (Chap. 11)"
+    ],
+    [
+     {
+      "g": [
+       "L'ancrage hebdomadaire du journal"
+      ]
+     },
+     " : préparé, c'est une tâche programmée. (Chap. 11)"
+    ],
+    [
+     {
+      "g": [
+       "La tâche programmée du veilleur"
+      ]
+     },
+     " : proposée, pas installée. (Doc. de l'étape 7)"
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-dernier-audit",
+   "x": [
+    "Le dernier audit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le rapport du 29 octobre laisse quinze écarts, sur vingt points de contrôle."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Gravité"
+    ],
+    [
+     "Écarts"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Grave"
+     ],
+     [
+      "La synchronisation iCloud, laissée en place par décision, et documentée"
+     ]
+    ],
+    [
+     [
+      "Élevé"
+     ],
+     [
+      "Les clés et les sauvegardes ; Claude, sous-traitant aux États-Unis, dont le projet n'a ni vérifié ni documenté le contrat ; le cumul des rôles de DPO, de directeur du programme et de RSSI"
+     ]
+    ],
+    [
+     [
+      "Moyen"
+     ],
+     [
+      "Le registre et l'AIPD, pas encore validés par le DPO à cette date ; le journal du portail, que peut recalculer qui détient sa clé, tant qu'il n'est pas ancré ; les durées de conservation, écrites mais pas encore appliquées ; la ré-identification ; le registre des violations, dont la décision était alors à prendre"
+     ]
+    ],
+    [
+     [
+      "Faible"
+     ],
+     [
+      "Les levées de pseudonymes ; les demandes de droits ; les sorties qui s'accumulent ; le journal d'Ollama ; la règle n°1 et le terminal ; les journaux techniques"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ces constats datent du 29 octobre : mes décisions du 30 octobre ne sont pas passées par un nouvel audit."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "securite-et-donnees",
+   "x": [
+    "Sécurité et données"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Les fichiers sources en clair"
+      ]
+     },
+     " de la zone privée, très probablement copiés par iCloud. C'est eux qui font la gravité de la violation : les chiffrer serait la mesure suivante. (Chap. 6 et 12)"
+    ],
+    [
+     {
+      "g": [
+       "Le second regard sur les motifs de levée"
+      ]
+     },
+     ", par le RSSI, sans le texte : pas construit. (Chap. 12)"
+    ],
+    [
+     {
+      "g": [
+       "La recoupe du journal chaîné du portail"
+      ]
+     },
+     ", pour le purger à un an : à écrire avant octobre 2027. (Chap. 12)"
+    ],
+    [
+     {
+      "g": [
+       "Le fichier des adhérents"
+      ]
+     },
+     " n'a ni statut « ancien adhérent » ni date de dernier contact : deux règles de conservation restent inapplicables. (Chap. 12)"
+    ],
+    [
+     {
+      "g": [
+       "La rotation des clés"
+      ]
+     },
+     ", et ce qu'on fait alors des sauvegardes et des sorties déjà parties. (Doc. des étapes 5 et 6)"
+    ],
+    [
+     {
+      "g": [
+       "Les empreintes des questions"
+      ]
+     },
+     " dans les journaux des étapes 5 et 6 : calculées sans sel à ces étapes ; rien ne dit qu'elles aient été salées depuis. (Doc. des étapes 5 et 6)"
+    ],
+    [
+     {
+      "g": [
+       "Un second facteur d'authentification"
+      ]
+     },
+     " pour le portail. (Doc. de l'étape 8)"
+    ],
+    [
+     {
+      "g": [
+       "Les clés en mémoire"
+      ]
+     },
+     " dans le processus du portail, comme pour tout serveur. (Doc. de l'étape 8)"
+    ],
+    [
+     {
+      "g": [
+       "Le gardien et les quasi-identifiants"
+      ]
+     },
+     " : il ne voit que les formes fixes. (Chap. 8)"
+    ],
+    [
+     {
+      "g": [
+       "Une règle ",
+       {
+        "c": "deny"
+       },
+       " sur les sorties pseudonymisées"
+      ]
+     },
+     " : l'agent ",
+     {
+      "c": "canopee-cnil"
+     },
+     " a pour consigne de ne pas les lire, mais aucune règle ne l'en empêche avec son outil de lecture. (Doc. de l'étape 9)"
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "qualite-de-la-recherche-et-du-corpus",
+   "x": [
+    "Qualité de la recherche et du corpus"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "La fusion des deux recherches"
+      ]
+     },
+     " relègue parfois un passage que les vecteurs trouvent en tête. À mesurer avant de changer. (Chap. 3)"
+    ],
+    [
+     {
+      "g": [
+       "BM25 sur un corpus qui grossit"
+      ]
+     },
+     " : retirer les mots devenus trop fréquents, ou lui donner moins de poids. (Chap. 5)"
+    ],
+    [
+     {
+      "g": [
+       "Le découpage des textes juridiques"
+      ]
+     },
+     " : les vecteurs seuls retrouvent mal le RGPD (43 %). Un découpage par article aiderait probablement. (Chap. 10, doc. de l'étape 9)"
+    ],
+    [
+     {
+      "g": [
+       "Les passages illisibles et les PDF mal extraits"
+      ]
+     },
+     " : à repérer automatiquement, et à réextraire. (Chap. 5 et 8)"
+    ],
+    [
+     {
+      "g": [
+       "Une question climat, sur l'eau et les débits d'étiage"
+      ]
+     },
+     ", où Gemma répond à côté alors que la source est là. (Chap. 5)"
+    ],
+    [
+     {
+      "g": [
+       "Les refus mal formés"
+      ]
+     },
+     ", qu'un modèle écrit à sa façon et que le système ne reconnaît pas comme des abstentions. (Chap. 3)"
+    ],
+    [
+     {
+      "g": [
+       "Le reranking"
+      ]
+     },
+     ", étape la plus lente du système ; un reranker dédié demanderait une dépendance lourde. (Chap. 2 et 3)"
+    ],
+    [
+     {
+      "g": [
+       "Dé-archiver une version"
+      ]
+     },
+     " qui s'avérerait fausse n'est pas automatisé. (Chap. 5)"
+    ],
+    [
+     {
+      "g": [
+       "Les sources écartées"
+      ]
+     },
+     " : le rapport complet du Citepa dépasse le plafond de 15 Mo, et le site de Santé publique France bloque les téléchargements automatiques. (Doc. de l'étape 4 b)"
+    ],
+    [
+     {
+      "g": [
+       "Les sources citées en double"
+      ]
+     },
+     " dans la liste d'une réponse, et la clé d'API d'OpenAlex à prévoir pour un veilleur quotidien. (Doc. de l'étape 2)"
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "mesures-et-evaluation",
+   "x": [
+    "Mesures et évaluation"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Une vraie calibration humaine du juge"
+      ]
+     },
+     ", sur une vingtaine de jugements : la relecture a été faite par Claude Code. (Chap. 3)"
+    ],
+    [
+     {
+      "g": [
+       "L'évaluation dans la chaîne de travail"
+      ]
+     },
+     " : elle reste lancée à la main. (Chap. 3)"
+    ],
+    [
+     {
+      "g": [
+       "Des questions plus difficiles sur le privé"
+      ]
+     },
+     " : synthèses, questions sans réponse dans le périmètre autorisé, quasi-identifiants. (Chap. 6)"
+    ],
+    [
+     {
+      "g": [
+       "D'autres tournures de quasi-identifiants"
+      ]
+     },
+     ", et une vérité de terrain plus riche. (Chap. 7)"
+    ],
+    [
+     {
+      "g": [
+       "Les prénoms ambigus"
+      ]
+     },
+     " : 6 personnes sur 1 990 ont reçu deux codes. (Chap. 7)"
+    ],
+    [
+     {
+      "g": [
+       "Les 65 éléments ajoutés en fin de texte"
+      ]
+     },
+     " par le code, plus faciles à repérer qu'une phrase fondue dans la prose. (Chap. 4)"
+    ],
+    [
+     {
+      "g": [
+       "Les fausses alertes du vérificateur"
+      ]
+     },
+     " (13 %), à recalibrer, par exemple sur les arbitrages humains du portail. (Doc. des étapes 7 et 8)"
+    ],
+    [
+     {
+      "g": [
+       "La pertinence des sources"
+      ]
+     },
+     " : le vérificateur voit si une phrase est fidèle à sa source, pas si c'est la bonne source. (Chap. 8)"
+    ],
+    [
+     {
+      "g": [
+       "Un registre du budget de confidentialité différentielle"
+      ]
+     },
+     " : chaque publication en consomme. (Doc. de l'étape 6)"
+    ],
+    [
+     {
+      "g": [
+       "Des tests dans un vrai navigateur"
+      ]
+     },
+     ", qui auraient vu le bug de l'en-tête ",
+     {
+      "c": "Origin"
+     },
+     ". Ils demanderaient une dépendance. (Doc. de l'étape 8)"
+    ],
+    [
+     {
+      "g": [
+       "Les trois agents cloud dans une vraie session"
+      ]
+     },
+     " de Claude Code, et un vrai passage du veilleur. (Chap. 8)"
+    ],
+    [
+     {
+      "g": [
+       "Une vraie intégration depuis la file du veilleur"
+      ]
+     },
+     ", essayée seulement sur le jeu de test. (Chap. 9)"
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "relectures-humaines",
+   "x": [
+    "Relectures humaines"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Un échantillon de textes générés et de sorties pseudonymisées"
+      ]
+     },
+     ", relu par moi : la documentation de ces étapes le demande, sans trace écrite que ce soit fait. (Doc. des étapes 4 et 6)"
+    ],
+    [
+     {
+      "g": [
+       "Mon parcours sur la base complète de Mycélium"
+      ]
+     },
+     ", inventée elle aussi, pour la validation du registre et de l'AIPD, puis pour les exercices. (Doc. des étapes 9 et 11)"
+    ],
+    [
+     {
+      "g": [
+       "Les citations de l'analyse de l'incident"
+      ]
+     },
+     ", à repasser par l'outil qui vérifie une citation mot pour mot. (Chap. 12)"
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-portail",
+   "x": [
+    "Le portail"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Le renvoi au rédacteur"
+      ]
+     },
+     " marque un dossier « à corriger », mais ne relance pas l'agent. (Doc. de l'étape 8)"
+    ],
+    [
+     {
+      "g": [
+       "Le navigateur Safari et le lecteur d'écran"
+      ]
+     },
+     " : pas essayés. (Chap. 9)"
+    ],
+    [
+     {
+      "g": [
+       "Le mode sombre"
+      ]
+     },
+     " et mes retours sur le design. (Doc. de l'étape 8)"
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "hors-du-code",
+   "x": [
+    "Hors du code"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Le contrat de sous-traitance et l'outil de transfert"
+      ]
+     },
+     " pour Claude, ou le choix de le réserver au public. (Chap. 10)"
+    ],
+    [
+     {
+      "g": [
+       "Les réglages du compte Claude"
+      ]
+     },
+     " : conservation des conversations, entraînement. (Chap. 10)"
+    ],
+    [
+     {
+      "g": [
+       "Les mentions d'information des personnes et la preuve horodatée du consentement"
+      ]
+     },
+     " : hors du périmètre technique. (Doc. de l'étape 9)"
+    ],
+    [
+     {
+      "g": [
+       "Le cumul des rôles"
+      ]
+     },
+     " : la limite assumée d'un bac à sable tenu par une seule personne. (Chap. 10 et conclusion)"
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-ne-pourra-pas-etre-verifie",
+   "x": [
+    "Ce qui ne pourra pas être vérifié"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Certains points ne sont pas des tâches à faire : ils sont invérifiables en l'état, parce qu'ils se passent hors de la machine ou demanderaient de lire ce qu'on s'interdit de lire. La conclusion les rassemble : ce que fait iCloud des fichiers, les personnes inventées par Gemma, la qualité de la prose fictive."
+   ]
+  }
+ ]
+}

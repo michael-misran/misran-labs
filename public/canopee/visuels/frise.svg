@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 498" width="720" height="498" role="img" aria-labelledby="titre desc">
+<title id="titre">Huit jours, onze étapes</title>
+<desc id="desc">Frise chronologique des étapes de Canopée : 12 étapes (dont l&#x27;étape 4 b, hors numérotation) réparties sur 5 journées de travail, du 22 au 29 octobre 2026, avec une pause du 24 au 26.</desc>
+<style>
+text{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;font-size:12.5px}
+.titre{font-size:17px;font-weight:650}.gras{font-weight:600}.petit{font-size:11.5px}.moyen{font-size:13.5px}.chiffre{font-variant-numeric:tabular-nums}
+.fond{fill:#fcfcfb}.texte{fill:#0b0b0b}.secondaire{fill:#52514e}.discret{fill:#7d7c77}.trait{stroke:#d9d8d3}.f-trait{fill:#d9d8d3}.carte{fill:#f3f2ef}.s-texte{stroke:#52514e}.f-fond{fill:#fcfcfb}.s-fond{stroke:#fcfcfb}.f-cloud{fill:#2a78d6}.s-cloud{stroke:#2a78d6}.t-cloud{fill:#e7eff7}.f-local{fill:#eb6834}.s-local{stroke:#eb6834}.t-local{fill:#faede7}.f-public{fill:#1baf7a}.s-public{stroke:#1baf7a}.t-public{fill:#e6f4ee}.f-controle{fill:#6250d6}.s-controle{stroke:#6250d6}.t-controle{fill:#edebf7}.f-neutre{fill:#7d7c77}.s-neutre{stroke:#7d7c77}.t-neutre{fill:#efefee}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#e4f3e3}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#fcf5e4}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#faf0eb}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#f8e9e8}.f-grave{fill:#8e1f2c}.s-grave{stroke:#8e1f2c}.t-grave{fill:#f1e6e6}.f-r0{fill:#86b6ef}.s-r0{stroke:#86b6ef}.f-r1{fill:#2a78d6}.s-r1{stroke:#2a78d6}.f-r2{fill:#104281}.s-r2{stroke:#104281}.e-conforme{fill:#ffffff}.e-faible{fill:#0b0b0b}.e-moyen{fill:#0b0b0b}.e-eleve{fill:#ffffff}.e-grave{fill:#ffffff}
+@media (prefers-color-scheme:dark){.fond{fill:#1a1a19}.texte{fill:#f0efec}.secondaire{fill:#c3c2b7}.discret{fill:#94938b}.trait{stroke:#3a3a37}.f-trait{fill:#3a3a37}.carte{fill:#242423}.s-texte{stroke:#c3c2b7}.f-fond{fill:#1a1a19}.s-fond{stroke:#1a1a19}.f-cloud{fill:#3987e5}.s-cloud{stroke:#3987e5}.t-cloud{fill:#203042}.f-local{fill:#d95926}.s-local{stroke:#d95926}.t-local{fill:#40271c}.f-public{fill:#199e70}.s-public{stroke:#199e70}.t-public{fill:#1a342a}.f-controle{fill:#9085e9}.s-controle{stroke:#9085e9}.t-controle{fill:#322f43}.f-neutre{fill:#94938b}.s-neutre{stroke:#94938b}.t-neutre{fill:#323230}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#173516}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#473819}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#442f26}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#3e2120}.f-grave{fill:#b8323f}.s-grave{stroke:#b8323f}.t-grave{fill:#3a1f21}.f-r0{fill:#184f95}.s-r0{stroke:#184f95}.f-r1{fill:#3987e5}.s-r1{stroke:#3987e5}.f-r2{fill:#9ec5f4}.s-r2{stroke:#9ec5f4}}
+</style>
+<defs></defs>
+<rect class="fond" width="720" height="498" rx="10"/>
+<text class="texte titre" x="24" y="34">Huit jours, onze étapes</text>
+<text class="secondaire" x="24" y="55">Du 22 au 29 octobre 2026 · chaque carte donne l&#x27;étape du projet et le chapitre du livre</text>
+<text class="discret petit" x="297.2" y="150.0" text-anchor="middle">pause</text>
+<text class="discret petit" x="297.2" y="165.0" text-anchor="middle">24-26</text>
+<text class="texte gras" x="24.0" y="92.0" text-anchor="start">22 octobre</text>
+<line class="s-controle" x1="24.0" y1="100.0" x2="139.6" y2="100.0" stroke-width="2"/>
+<rect class="carte s-neutre" x="24.0" y="114.0" width="115.6" height="60.0" rx="8" stroke-width="0.75"/>
+<text class="f-controle petit gras" x="34.0" y="133.0" text-anchor="start">Étape 1</text>
+<text class="texte" x="34.0" y="150.0" text-anchor="start">Le socle</text>
+<text class="discret petit" x="129.6" y="133.0" text-anchor="end">ch. 1</text>
+<rect class="carte s-neutre" x="24.0" y="184.0" width="115.6" height="60.0" rx="8" stroke-width="0.75"/>
+<text class="f-controle petit gras" x="34.0" y="203.0" text-anchor="start">Étape 2</text>
+<text class="texte" x="34.0" y="220.0" text-anchor="start">Le corpus</text>
+<text class="texte" x="34.0" y="235.0" text-anchor="start">public</text>
+<text class="discret petit" x="129.6" y="203.0" text-anchor="end">ch. 2</text>
+<rect class="carte s-neutre" x="24.0" y="254.0" width="115.6" height="60.0" rx="8" stroke-width="0.75"/>
+<text class="f-controle petit gras" x="34.0" y="273.0" text-anchor="start">Étape 3</text>
+<text class="texte" x="34.0" y="290.0" text-anchor="start">L&#x27;évaluation</text>
+<text class="discret petit" x="129.6" y="273.0" text-anchor="end">ch. 3</text>
+<rect class="carte s-neutre" x="24.0" y="324.0" width="115.6" height="60.0" rx="8" stroke-width="0.75"/>
+<text class="f-controle petit gras" x="34.0" y="343.0" text-anchor="start">Étape 4</text>
+<text class="texte" x="34.0" y="360.0" text-anchor="start">Les données</text>
+<text class="texte" x="34.0" y="375.0" text-anchor="start">fictives</text>
+<text class="discret petit" x="129.6" y="343.0" text-anchor="end">ch. 4</text>
+<text class="texte gras" x="149.6" y="92.0" text-anchor="start">23 octobre</text>
+<line class="s-controle" x1="149.6" y1="100.0" x2="265.2" y2="100.0" stroke-width="2"/>
+<rect class="carte s-neutre" x="149.6" y="114.0" width="115.6" height="60.0" rx="8" stroke-width="0.75"/>
+<text class="f-controle petit gras" x="159.6" y="133.0" text-anchor="start">Étape 4 b</text>
+<text class="texte" x="159.6" y="150.0" text-anchor="start">Faire grandir</text>
+<text class="texte" x="159.6" y="165.0" text-anchor="start">le corpus</text>
+<text class="discret petit" x="255.2" y="133.0" text-anchor="end">ch. 5</text>
+<rect class="carte s-neutre" x="149.6" y="184.0" width="115.6" height="60.0" rx="8" stroke-width="0.75"/>
+<text class="f-controle petit gras" x="159.6" y="203.0" text-anchor="start">Étape 5</text>
+<text class="texte" x="159.6" y="220.0" text-anchor="start">Le corpus privé</text>
+<text class="discret petit" x="255.2" y="203.0" text-anchor="end">ch. 6</text>
+<rect class="carte s-neutre" x="149.6" y="254.0" width="115.6" height="60.0" rx="8" stroke-width="0.75"/>
+<text class="f-controle petit gras" x="159.6" y="273.0" text-anchor="start">Étape 6</text>
+<text class="texte" x="159.6" y="290.0" text-anchor="start">La passerelle</text>
+<text class="texte" x="159.6" y="305.0" text-anchor="start">d&#x27;anonymisation</text>
+<text class="discret petit" x="255.2" y="273.0" text-anchor="end">ch. 7</text>
+<rect class="carte s-neutre" x="149.6" y="324.0" width="115.6" height="60.0" rx="8" stroke-width="0.75"/>
+<text class="f-controle petit gras" x="159.6" y="343.0" text-anchor="start">Étape 7</text>
+<text class="texte" x="159.6" y="360.0" text-anchor="start">Les agents</text>
+<text class="texte" x="159.6" y="375.0" text-anchor="start">métier</text>
+<text class="discret petit" x="255.2" y="343.0" text-anchor="end">ch. 8</text>
+<rect class="carte s-neutre" x="149.6" y="394.0" width="115.6" height="60.0" rx="8" stroke-width="0.75"/>
+<text class="f-controle petit gras" x="159.6" y="413.0" text-anchor="start">Étape 8</text>
+<text class="texte" x="159.6" y="430.0" text-anchor="start">Le portail</text>
+<text class="texte" x="159.6" y="445.0" text-anchor="start">interne</text>
+<text class="discret petit" x="255.2" y="413.0" text-anchor="end">ch. 9</text>
+<text class="texte gras" x="329.2" y="92.0" text-anchor="start">27 octobre</text>
+<line class="s-controle" x1="329.2" y1="100.0" x2="444.8" y2="100.0" stroke-width="2"/>
+<rect class="carte s-neutre" x="329.2" y="114.0" width="115.6" height="60.0" rx="8" stroke-width="0.75"/>
+<text class="f-controle petit gras" x="339.2" y="133.0" text-anchor="start">Étape 9</text>
+<text class="texte" x="339.2" y="150.0" text-anchor="start">L&#x27;agent CNIL</text>
+<text class="discret petit" x="434.8" y="133.0" text-anchor="end">ch. 10</text>
+<text class="texte gras" x="454.8" y="92.0" text-anchor="start">28 octobre</text>
+<line class="s-controle" x1="454.8" y1="100.0" x2="570.4" y2="100.0" stroke-width="2"/>
+<rect class="carte s-neutre" x="454.8" y="114.0" width="115.6" height="60.0" rx="8" stroke-width="0.75"/>
+<text class="f-controle petit gras" x="464.8" y="133.0" text-anchor="start">Étape 10</text>
+<text class="texte" x="464.8" y="150.0" text-anchor="start">La red team</text>
+<text class="discret petit" x="560.4" y="133.0" text-anchor="end">ch. 11</text>
+<text class="texte gras" x="580.4" y="92.0" text-anchor="start">29 octobre</text>
+<line class="s-controle" x1="580.4" y1="100.0" x2="696.0" y2="100.0" stroke-width="2"/>
+<rect class="carte s-neutre" x="580.4" y="114.0" width="115.6" height="60.0" rx="8" stroke-width="0.75"/>
+<text class="f-controle petit gras" x="590.4" y="133.0" text-anchor="start">Étape 11</text>
+<text class="texte" x="590.4" y="150.0" text-anchor="start">Les exercices</text>
+<text class="discret petit" x="686.0" y="133.0" text-anchor="end">ch. 12</text>
+<text class="discret petit" x="24" y="484">Source : l&#x27;en-tête de chaque chapitre de docs/livre/ · généré par outils/schemas.py</text>
+</svg>

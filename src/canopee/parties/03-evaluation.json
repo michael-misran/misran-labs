@@ -1,0 +1,1735 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "chapitre-3-l-evaluation-mesurer-au-lieu-d-impressionner",
+   "x": [
+    "Chapitre 3. L'évaluation : mesurer au lieu d'impressionner"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Étape 3 du projet · 22 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-probleme",
+   "x": [
+    "Le problème"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "À la fin du chapitre précédent, le système répondait juste à quatre questions. C'est encourageant, et c'est exactement le piège dans lequel tombent la plupart des projets d'IA : on essaie quelques questions, les réponses ont l'air bonnes, on en conclut que ça marche."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Quatre questions ne disent rien. Elles ne disent pas si une réponse bien citée est ",
+    {
+     "g": [
+      "fidèle"
+     ]
+    },
+    " à sa source. Elles ne disent pas si un réglage améliore ou dégrade la recherche. Elles ne disent pas quel modèle local choisir. Et elles ne disent pas ce qui se passe quand la réponse n'est ",
+    {
+     "g": [
+      "pas"
+     ]
+    },
+    " dans les documents."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le problème de cette étape : ",
+    {
+     "g": [
+      "remplacer l'impression par une mesure"
+     ]
+    },
+    ", relançable à chaque changement."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-on-a-construit",
+   "x": [
+    "Ce qu'on a construit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Trois choses :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "un jeu de 55 questions"
+      ]
+     },
+     " sur les 92 études réelles, chacune avec sa réponse attendue et la ",
+     {
+      "g": [
+       "citation exacte"
+      ]
+     },
+     " qui la prouve ;"
+    ],
+    [
+     {
+      "g": [
+       "un script relançable"
+      ]
+     },
+     ", qui mesure la recherche et les réponses et écrit un ",
+     {
+      "g": [
+       "rapport daté"
+      ]
+     },
+     " ;"
+    ],
+    [
+     {
+      "g": [
+       "un verdict chiffré"
+      ]
+     },
+     " sur le modèle local de référence, entre trois candidats : Qwen 3.5 9B, Gemma 4 et Mistral 7B."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Tout tourne sur le Mac : ni les questions ni les réponses ne partent dans le cloud."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-jeu-de-questions",
+   "x": [
+    "Le jeu de questions"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Type"
+    ],
+    [
+     "Nombre"
+    ],
+    [
+     "Ce qu'il teste"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Chiffre"
+     ],
+     [
+      "25"
+     ],
+     [
+      "Un nombre précis, contrôlé automatiquement dans la réponse"
+     ]
+    ],
+    [
+     [
+      "Factuelle"
+     ],
+     [
+      "13"
+     ],
+     [
+      "Une information tirée d'une seule source"
+     ]
+    ],
+    [
+     [
+      "Comparaison"
+     ],
+     [
+      "6"
+     ],
+     [
+      "Deux valeurs à mettre en regard, par exemple 1,5 °C contre 2 °C"
+     ]
+    ],
+    [
+     [
+      "Multi-sources"
+     ],
+     [
+      "4"
+     ],
+     [
+      "Une réponse qui s'appuie sur deux ou trois études"
+     ]
+    ],
+    [
+     [
+      "Sans réponse"
+     ],
+     [
+      "4"
+     ],
+     [
+      "Un sujet absent des documents : le nucléaire EPR2, la semaine de quatre jours, les adhérents de Mycélium"
+     ]
+    ],
+    [
+     [
+      "Sans réponse « proche »"
+     ],
+     [
+      "3"
+     ],
+     [
+      "Le sujet est là, pas l'information : le corpus parle de la taxe carbone italienne, mais pas de son montant"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les questions sont en français. 27 ont leur réponse dans un résumé ",
+    {
+     "g": [
+      "en anglais"
+     ]
+    },
+    ", 21 dans un texte ",
+    {
+     "g": [
+      "en français"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La question sur les adhérents de Mycélium est un piège volontaire. C'est une donnée privée : la zone publique ne la contient pas, et le système doit le dire."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Le jeu se vérifie lui-même."
+     ]
+    },
+    " Chaque question porte la citation exacte qui justifie sa réponse attendue, et un contrôle vérifie, en une seconde et sans modèle, que cette citation existe mot pour mot dans le document et à la page annoncés. Une contre-épreuve le confirme : une citation altérée, une mauvaise page et un document inexistant produisent bien trois erreurs."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-choix-qui-comptent",
+   "x": [
+    "Les choix qui comptent"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Les mêmes passages pour tous les modèles qui rédigent."
+      ]
+     },
+     " Pour comparer la rédaction, il faut figer la recherche. Sinon, on ne sait pas si un écart vient du modèle ou des passages qu'il a reçus."
+    ],
+    [
+     {
+      "g": [
+       "Un juge local, d'une autre famille que le modèle jugé."
+      ]
+     },
+     " Aucun coût de service en ligne, et pas de juge qui se note lui-même."
+    ],
+    [
+     {
+      "g": [
+       "La fidélité jugée phrase par phrase"
+      ]
+     },
+     ", chaque phrase face aux seuls extraits qu'elle cite."
+    ],
+    [
+     {
+      "g": [
+       "Un cache des réponses."
+      ]
+     },
+     " Une même requête, envoyée au modèle avec le même réglage, donne la même réponse : on ne recalcule que ce qui a changé. Changer une consigne ou un modèle invalide automatiquement les anciennes réponses."
+    ],
+    [
+     {
+      "g": [
+       "Aucune dépendance nouvelle."
+      ]
+     },
+     " Les outils dédiés du marché auraient demandé des dizaines de bibliothèques et, souvent, une clé de service en ligne."
+    ],
+    [
+     {
+      "g": [
+       "Les rapports sont versionnés, pas les réponses."
+      ]
+     },
+     " Le rapport, qui ne contient que des chiffres et des identifiants de questions, entre dans Git : c'est l'historique de la qualité. Les réponses rédigées n'y entrent pas : elles sont volumineuses, recalculables, et, plus tard, certaines porteront sur le privé. Autant prendre la bonne habitude dès maintenant."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-notions",
+   "x": [
+    "Les notions"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-jeu-d-evaluation",
+   "x": [
+    "Le jeu d'évaluation"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est un ",
+    {
+     "g": [
+      "examen corrigé à l'avance"
+     ]
+    },
+    ". Chaque question a sa réponse attendue et la source qui la justifie. On le fait passer au système à chaque changement : un réglage, un modèle, une consigne. Trois règles :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "il ressemble aux vraies questions"
+      ]
+     },
+     " : en français, sur les thèmes du programme, avec des chiffres, des comparaisons et des pièges ;"
+    ],
+    [
+     {
+      "g": [
+       "il est stable"
+      ]
+     },
+     " : si on change le jeu, on ne peut plus comparer deux rapports ;"
+    ],
+    [
+     {
+      "g": [
+       "il est vérifié"
+      ]
+     },
+     " : une réponse attendue fausse fausse toute la mesure."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "C'est le même principe qu'un test de non-régression visuelle en design : une capture de référence, et une alerte quand l'écran change sans qu'on l'ait voulu."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-rappel-5",
+   "x": [
+    "Le rappel@5"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La recherche renvoie une liste classée de passages. Le ",
+    {
+     "g": [
+      "rappel@5"
+     ]
+    },
+    " répond à une question : ",
+    {
+     "i": [
+      "parmi les sources attendues, combien sont dans les 5 premiers résultats ?"
+     ]
+    },
+    " On regarde les 5 premiers parce que ce sont les seuls que lit le modèle qui rédige."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le rapport donne aussi un ",
+    {
+     "g": [
+      "plafond"
+     ]
+    },
+    " : le rappel sur les 15 candidats donnés au reranker. Le reranker ne fait que réordonner ces 15 passages ; il ne peut pas remonter un passage qui n'y est pas. Si le plafond est bas, c'est la recherche qu'il faut améliorer, pas le reranker."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "On compare ",
+    {
+     "g": [
+      "six configurations"
+     ]
+    },
+    " : recherche par mots seule, par le sens seule, hybride, chacune avec et sans reranker. C'est la seule façon de savoir ce que chaque brique apporte vraiment."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-fidelite-n-est-pas-l-exactitude",
+   "x": [
+    "La fidélité n'est pas l'exactitude"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le contrôle du chapitre 2 vérifiait la ",
+    {
+     "g": [
+      "forme"
+     ]
+    },
+    " : chaque phrase a une citation. La ",
+    {
+     "g": [
+      "fidélité"
+     ]
+    },
+    " mesure le ",
+    {
+     "g": [
+      "fond"
+     ]
+    },
+    " : ",
+    {
+     "i": [
+      "chaque phrase est-elle soutenue par l'extrait qu'elle cite ?"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Fidélité et exactitude sont deux choses différentes, et la différence est importante :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "fidèle mais inexacte"
+      ]
+     },
+     " : la réponse dit fidèlement ce que disent les extraits, mais ce ne sont pas les bons extraits. C'est un problème de recherche ;"
+    ],
+    [
+     {
+      "g": [
+       "exacte mais infidèle"
+      ]
+     },
+     " : la réponse est juste, mais le modèle l'a tirée de sa mémoire, pas des extraits. C'est dangereux, car la prochaine fois sa mémoire sera fausse, et rien ne le signalera."
+    ]
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-modele-juge-et-ses-biais",
+   "x": [
+    "Le modèle juge, et ses biais"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Personne ne relit à la main 165 réponses à chaque changement. On demande donc à un modèle de juger : ",
+    {
+     "i": [
+      "cette phrase est-elle soutenue par cet extrait ? OUI ou NON."
+     ]
+    },
+    " C'est le « LLM juge », une pratique très répandue. Mais un juge a des biais connus :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "l'auto-préférence"
+      ]
+     },
+     " : un modèle juge plus favorablement ses propres textes, ou ceux de sa famille ;"
+    ],
+    [
+     {
+      "g": [
+       "la complaisance"
+      ]
+     },
+     " : un juge a tendance à dire OUI à une phrase plausible et bien tournée ;"
+    ],
+    [
+     {
+      "g": [
+       "la sensibilité à la consigne"
+      ]
+     },
+     " : changer un mot de la consigne du juge peut changer ses verdicts ;"
+    ],
+    [
+     {
+      "g": [
+       "la longueur"
+      ]
+     },
+     " : les juges préfèrent souvent les réponses longues."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les parades : un juge d'une autre famille, des questions fermées (OUI ou NON plutôt qu'une note sur 10), un jugement phrase par phrase, une consigne figée dans le code. Et surtout ",
+    {
+     "g": [
+      "une vérification humaine d'un échantillon"
+     ]
+    },
+    ", pour mesurer à quel point le juge est fiable."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Quand c'est possible, on préfère d'ailleurs un contrôle ",
+    {
+     "g": [
+      "sans modèle"
+     ]
+    },
+    " : la présence d'un chiffre attendu dans la réponse se vérifie par le code, sans biais."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "l-abstention",
+   "x": [
+    "L'abstention"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un système honnête dit « je ne sais pas » quand les documents ne contiennent pas la réponse. On mesure deux taux, qui tirent en sens contraire :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "les bonnes abstentions"
+      ]
+     },
+     " : sur les 7 questions sans réponse, combien de fois le système a renoncé ;"
+    ],
+    [
+     {
+      "g": [
+       "les fausses abstentions"
+      ]
+     },
+     " : sur les 48 questions qui ont une réponse, combien de fois il a renoncé à tort."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un système qui s'abstient toujours aurait 100 % de bonnes abstentions… et 100 % de fausses. On ne peut pas regarder l'un sans l'autre. Mais pour un parti politique, inventer un chiffre est bien plus grave que de ne pas répondre : on préfère un système prudent."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-regression-et-le-bruit",
+   "x": [
+    "La régression, et le bruit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une ",
+    {
+     "g": [
+      "régression"
+     ]
+    },
+    ", c'est une amélioration à un endroit qui dégrade un autre endroit sans qu'on le voie. On change le découpage pour mieux trouver les chiffres du GIEC, et les résumés anglais sont moins bien trouvés. Le rapport compare donc chaque indicateur au rapport précédent, et signale toute baisse de ",
+    {
+     "g": [
+      "5 points ou plus"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Attention au bruit : avec 48 questions, une question représente environ 2 points de rappel. Un écart de 2 ou 4 points peut venir du hasard d'une ou deux questions. Il faut regarder ",
+    {
+     "g": [
+      "quelles"
+     ]
+    },
+    " questions ont changé, pas seulement le total."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "quantification-moteurs-et-memoire",
+   "x": [
+    "Quantification, moteurs et mémoire"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ces trois notions sont celles de l'incident de l'étape. Elles sont expliquées plus bas, avec lui."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-que-font-les-vraies-organisations",
+   "x": [
+    "Ce que font les vraies organisations"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Un jeu d'évaluation construit avec les métiers."
+      ]
+     },
+     " Les experts écrivent les questions, souvent à partir de vraies questions d'utilisateurs, puis chaque erreur trouvée en production devient une question de plus."
+    ],
+    [
+     {
+      "g": [
+       "L'évaluation dans l'intégration continue."
+      ]
+     },
+     " Chaque modification du code ou d'une consigne relance l'évaluation, et une baisse bloque la fusion, comme un test qui échoue. Dans Canopée, la relance reste manuelle : c'est un point ouvert."
+    ],
+    [
+     {
+      "g": [
+       "Des outils dédiés"
+      ]
+     },
+     ", comme Ragas, DeepEval, TruLens, promptfoo, LangSmith ou Braintrust. Ils calculent les mêmes indicateurs et gardent l'historique. Le script de Canopée en est une version minimale."
+    ],
+    [
+     {
+      "g": [
+       "Un juge plus fort que le modèle évalué"
+      ]
+     },
+     ", souvent un grand modèle dans le cloud. Ici, Claude aurait pu juger le corpus public, puisqu'il est public. On est resté en local pour garder un seul circuit, valable plus tard pour le privé."
+    ],
+    [
+     {
+      "g": [
+       "Une calibration humaine du juge."
+      ]
+     },
+     " On fait annoter quelques centaines de réponses par des humains, et on mesure l'accord du juge avec eux. Un juge en dessous d'environ 80 % d'accord n'est pas utilisé seul."
+    ],
+    [
+     {
+      "g": [
+       "L'empreinte mémoire comme critère de choix"
+      ]
+     },
+     ", au même titre que la qualité, souvent avant elle. Un modèle un peu meilleur mais deux fois plus gourmand perd souvent."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-chiffres",
+   "x": [
+    "Les chiffres"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-resultat-en-une-minute",
+   "x": [
+    "Le résultat, en une minute"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Ce qu'on mesure"
+    ],
+    [
+     "Résultat (configuration retenue)"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Rappel@5 de la recherche"
+     ],
+     [
+      {
+       "g": [
+        "96 %"
+       ]
+      },
+      " avec la recherche hybride et le reranker ; 86 % sans reranker ; 59 % avec la recherche par mots seule"
+     ]
+    ],
+    [
+     [
+      "Taux de citation"
+     ],
+     [
+      {
+       "g": [
+        "96 %"
+       ]
+      },
+      " des réponses citent un extrait à chaque phrase"
+     ]
+    ],
+    [
+     [
+      "Fidélité"
+     ],
+     [
+      {
+       "g": [
+        "94 %"
+       ]
+      },
+      " des phrases sont soutenues par l'extrait qu'elles citent, selon le juge"
+     ]
+    ],
+    [
+     [
+      "Bonnes abstentions"
+     ],
+     [
+      {
+       "g": [
+        "100 %"
+       ]
+      },
+      " : 7 questions sans réponse sur 7"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Les indicateurs de l'évaluation à trois dates, avant et après l'agrandissement du corpus",
+   "src": "evaluation-evolution.svg"
+  },
+  {
+   "t": "h3",
+   "id": "le-choix-du-modele-local",
+   "x": [
+    "Le choix du modèle local"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le cahier des charges avait choisi Qwen 3.5 9B sur la foi de comparatifs qui ne testaient pas le français. On l'a confronté à Gemma 4 et à Mistral 7B, sur le même jeu, le même jour, sur le même Mac."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Comme reranker"
+     ]
+    },
+    " (48 questions) :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Modèle"
+    ],
+    [
+     "Rappel@5"
+    ],
+    [
+     "Secondes par passage"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Qwen 3.5 9B"
+     ],
+     [
+      "97 %"
+     ],
+     [
+      "2,6"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Gemma 4"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "96 %"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "1,2"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Mistral 7B"
+     ],
+     [
+      "94 %"
+     ],
+     [
+      "2,2"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un point d'écart, c'est une demi-question : Qwen et Gemma font jeu égal. Mais Gemma va ",
+    {
+     "g": [
+      "deux fois plus vite"
+     ]
+    },
+    ", et le reranking est l'étape la plus lente du système."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Comme rédacteur"
+     ]
+    },
+    " (mêmes passages pour tous, 55 questions) :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|---|---|---|---|",
+   "entete": [
+    [
+     "Modèle"
+    ],
+    [
+     "Bonnes abstentions"
+    ],
+    [
+     "Taux de citation"
+    ],
+    [
+     "Fidélité (juge Qwen / juge Gemma)"
+    ],
+    [
+     "Chiffres exacts"
+    ],
+    [
+     "Secondes par réponse"
+    ],
+    [
+     "Mémoire annoncée"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Qwen 3.5 9B"
+     ],
+     [
+      "71 %"
+     ],
+     [
+      "82 %"
+     ],
+     [
+      "84 % / 83 %"
+     ],
+     [
+      "96 %"
+     ],
+     [
+      "10,9"
+     ],
+     [
+      "5,6 Go"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Gemma 4"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "100 %"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "96 %"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "94 % / 95 %"
+       ]
+      }
+     ],
+     [
+      "96 %"
+     ],
+     [
+      {
+       "g": [
+        "6,7"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "3,3 Go"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Mistral 7B"
+     ],
+     [
+      "57 %"
+     ],
+     [
+      "74 %"
+     ],
+     [
+      "72 % / 69 %"
+     ],
+     [
+      "81 %"
+     ],
+     [
+      "7,3"
+     ],
+     [
+      "5,1 Go"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La lecture."
+     ]
+    },
+    " Gemma 4 est le plus fidèle, et les deux juges, de familles différentes, donnent le même classement : ce n'est pas un effet d'auto-préférence. Il s'abstient le mieux. Sur l'exactitude, Qwen et Gemma se valent. La différence est dans la ",
+    {
+     "g": [
+      "discipline"
+     ]
+    },
+    " : citer chaque phrase, ne rien ajouter, s'abstenir proprement. Qwen a eu besoin d'une seconde chance 9 fois, Gemma 2 fois."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une précision sur la mémoire : Gemma 4 « e4b » est un petit modèle, « 4 milliards de paramètres effectifs ». Une partie de ses poids n'a pas besoin d'être chargée dans la mémoire du processeur graphique. D'où un fichier de 9,6 Go pour 3,3 Go annoncés en mémoire."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Le verdict : Gemma 4 devient le modèle local de référence"
+     ]
+    },
+    ", pour la rédaction comme pour le reranking. Deux conséquences sont décidées en même temps : le ",
+    {
+     "g": [
+      "juge"
+     ]
+    },
+    " reste Qwen, pour ne jamais noter son propre modèle ; et la future ",
+    {
+     "g": [
+      "équipe d'attaque"
+     ]
+    },
+    " utilisera Qwen, pour être d'une autre famille que les défenseurs."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-fiabilite-du-juge",
+   "x": [
+    "La fiabilité du juge"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "25 phrases ont été relues contre leurs extraits : 12 où les deux juges divergeaient, 13 où ils étaient d'accord. Le juge Qwen rejoint la relecture ",
+    {
+     "g": [
+      "20 fois sur 25"
+     ]
+    },
+    ", le juge Gemma 16 fois. Rapporté à l'ensemble (les deux juges sont d'accord sur 93 % des 405 phrases citées), la fiabilité est estimée à environ ",
+    {
+     "g": [
+      "90 %"
+     ]
+    },
+    " pour Qwen et ",
+    {
+     "g": [
+      "88 %"
+     ]
+    },
+    " pour Gemma."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les erreurs typiques sont parlantes : Qwen refuse parfois un chiffre pourtant exact ; Gemma a laissé passer « 5 000 à 8 000 €/m² » au lieu de 500 à 800 ; et les deux ont accepté une phrase qui confondait « construire une piste cyclable » et « l'utiliser »."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-couts",
+   "x": [
+    "Les coûts"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mesuré."
+     ]
+    },
+    " Côté Claude, la session de cette étape a demandé ",
+    {
+     "g": [
+      "154 requêtes"
+     ]
+    },
+    ", pour ",
+    {
+     "g": [
+      "7,2 M d'unités"
+     ]
+    },
+    " d'usage effectif : la deuxième plus chère de toutes les sessions mesurées jusqu'à la mission climat, derrière la session de pilotage. La cause : à chaque requête, le modèle relit tout l'historique de la session, et cette session a été longue (48,3 M de tokens relus en cache, pour 121 k de sortie)."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Côté modèles locaux, la campagne complète (3 rédacteurs, 2 juges, 3 rerankers) a duré ",
+    {
+     "g": [
+      "98 minutes"
+     ]
+    },
+    ", et l'évaluation par défaut qui a suivi ",
+    {
+     "g": [
+      "34 minutes"
+     ]
+    },
+    ". Sur toute la durée de la session de l'étape, le journal d'Ollama compte ",
+    {
+     "g": [
+      "6 392 générations"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "585 calculs de vecteurs"
+     ]
+    },
+    ", soit ",
+    {
+     "g": [
+      "4 h 35"
+     ]
+    },
+    " de calcul sur le Mac (4,58 h, mesuré). C'est l'étape qui a fait le plus travailler les modèles locaux de tout le projet, à peu près la moitié du calcul local cumulé des étapes 1 à 9."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "À l'usage"
+     ]
+    },
+    ", une évaluation complète prend environ 1 h sans cache, et quelques minutes quand peu de choses ont changé."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "l-incident-le-mac-a-sature",
+   "x": [
+    "L'incident : le Mac a saturé"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "ce-qui-s-est-passe",
+   "x": [
+    "Ce qui s'est passé"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La première campagne d'évaluation a ",
+    {
+     "g": [
+      "figé le Mac"
+     ]
+    },
+    ". Plus rien ne répondait, et il a fallu tout couper."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le diagnostic : la variante de Qwen installée au chapitre précédent, la variante par défaut, au format dit ",
+    {
+     "g": [
+      "nvfp4"
+     ]
+    },
+    ", occupait ",
+    {
+     "g": [
+      "16 Go"
+     ]
+    },
+    " une fois chargée. Sur un Mac de 16 Go, dont environ 11 Go seulement sont utilisables par les modèles. La mémoire d'échange sur le disque montait à ",
+    {
+     "g": [
+      "17,2 Go sur 18,4 Go"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-notions-derriere-l-incident",
+   "x": [
+    "Les notions derrière l'incident"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La quantification."
+     ]
+    },
+    " Un modèle de 9,7 milliards de paramètres stocke chaque paramètre sous forme de nombre. En pleine précision, il pèserait environ 19 Go : trop pour ce Mac. La ",
+    {
+     "g": [
+      "quantification"
+     ]
+    },
+    " arrondit ces nombres sur moins de bits, comme on compresse une photo en JPEG : on perd un peu de finesse, on gagne beaucoup de place. Un même modèle existe donc en plusieurs ",
+    {
+     "g": [
+      "variantes"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|---|",
+   "entete": [
+    [
+     "Variante"
+    ],
+    [
+     "Bits par paramètre"
+    ],
+    [
+     "Taille du fichier"
+    ],
+    [
+     "Moteur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "c": "bf16"
+      }
+     ],
+     [
+      "16"
+     ],
+     [
+      "19 Go"
+     ],
+     [
+      "llama.cpp"
+     ]
+    ],
+    [
+     [
+      {
+       "c": "q8_0"
+      }
+     ],
+     [
+      "8"
+     ],
+     [
+      "10 Go"
+     ],
+     [
+      "llama.cpp"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        {
+         "c": "q4_K_M"
+        }
+       ]
+      }
+     ],
+     [
+      "environ 4,5"
+     ],
+     [
+      "6,6 Go"
+     ],
+     [
+      {
+       "g": [
+        "llama.cpp"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      {
+       "c": "nvfp4"
+      },
+      " (par défaut sur Mac)"
+     ],
+     [
+      "4"
+     ],
+     [
+      "7,2 à 7,6 Go"
+     ],
+     [
+      {
+       "g": [
+        "MLX"
+       ]
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Deux moteurs."
+     ]
+    },
+    " Ollama ne calcule pas lui-même : il délègue à un moteur. ",
+    {
+     "g": [
+      "llama.cpp"
+     ]
+    },
+    " est le moteur historique, très économe. ",
+    {
+     "g": [
+      "MLX"
+     ]
+    },
+    " est la bibliothèque d'Apple pour ses puces, utilisée depuis peu par Ollama pour certains formats. Elle peut être plus rapide, mais sa gestion de la mémoire diffère."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le point essentiel : ",
+    {
+     "g": [
+      "à taille de fichier presque égale (7,6 Go contre 6,6 Go), les deux variantes occupaient 16 Go et 4,8 Go en mémoire."
+     ]
+    },
+    " La cause exacte de cet écart n'a pas été établie. On a constaté le chiffre, pas son mécanisme. La leçon tient quand même : la mémoire réelle d'un modèle se ",
+    {
+     "g": [
+      "mesure"
+     ]
+    },
+    ", elle ne se déduit pas de la taille de son fichier."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La mémoire unifiée et le swap."
+     ]
+    },
+    " Sur un Mac à puce Apple, le processeur et le processeur graphique partagent ",
+    {
+     "g": [
+      "la même mémoire"
+     ]
+    },
+    ". C'est un atout pour l'IA locale : pas besoin d'une carte graphique avec sa propre mémoire. Mais tout se partage : le système, le navigateur, l'assistant de programmation, et le modèle. Quand la demande dépasse la mémoire physique, macOS écrit une partie de la mémoire sur le disque : c'est le ",
+    {
+     "g": [
+      "swap"
+     ]
+    },
+    ". Le disque est des milliers de fois plus lent que la mémoire. Au-delà d'un certain seuil, la machine passe son temps à déplacer des données et ne répond plus. C'est exactement ce qui est arrivé."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-premiere-correction",
+   "x": [
+    "La première correction"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Qwen est passé à la variante ",
+    {
+     "g": [
+      "q4_K_M"
+     ]
+    },
+    ", qui occupe ",
+    {
+     "g": [
+      "4,8 Go"
+     ]
+    },
+    " selon Ollama. L'ancienne variante a été supprimée. Le script d'évaluation ne garde plus qu'",
+    {
+     "g": [
+      "un seul gros modèle en mémoire"
+     ]
+    },
+    " : il décharge les autres avant chaque phase, et un modèle inutilisé quitte la mémoire au bout d'une minute."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "deuxieme-temps-la-memoire-qui-grossit",
+   "x": [
+    "Deuxième temps : la mémoire qui grossit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ce n'était pas fini. Même avec la nouvelle variante, la campagne relancée a fait remonter le swap à ",
+    {
+     "g": [
+      "18 Go en vingt minutes"
+     ]
+    },
+    ", alors qu'Ollama affichait toujours 4,8 Go."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un autre outil, ",
+    {
+     "c": "top"
+    },
+    ", qui liste les programmes et leur mémoire, a montré le vrai coupable : le processus du moteur de Qwen pesait ",
+    {
+     "g": [
+      "10 Go après 60 requêtes"
+     ]
+    },
+    ". Il grossissait d'environ ",
+    {
+     "g": [
+      "150 Mo par requête"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'explication la plus probable se lit dans le journal d'Ollama, qui contenait des milliers de lignes « point de reprise créé », de 50 Mo chacune. Qwen 3.5 est un modèle ",
+    {
+     "g": [
+      "hybride"
+     ]
+    },
+    " : une partie de ses couches garde un état interne qu'on ne peut pas tronquer. Pour réutiliser le début d'une requête dans la suivante, le moteur en conserve des copies. Sur des milliers de requêtes toutes différentes, comme dans une évaluation, ces copies s'accumulent."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La parade ne touche qu'au code de Canopée : l'évaluation ",
+    {
+     "g": [
+      "décharge le modèle toutes les 10 requêtes"
+     ]
+    },
+    ". Le déchargement vide tout ce que le moteur a accumulé ; le rechargement ne coûte que quelques secondes. Mesuré sur 40 requêtes : la mémoire du moteur oscille entre 0 et 2 Go, et le swap reste stable. Pendant la campagne complète qui a suivi, le swap est passé de 7,6 Go au départ à ",
+    {
+     "g": [
+      "9,5 Go au maximum"
+     ]
+    },
+    ", contre 18 Go avant les corrections."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Enfin, la mémoire occupée et le swap sont désormais ",
+    {
+     "g": [
+      "mesurés et inscrits dans chaque rapport"
+     ]
+    },
+    ". L'empreinte mémoire est devenue un critère de choix du modèle, au même titre que la qualité et la vitesse."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "La mémoire occupée par chaque modèle local, face aux 16 Go du Mac",
+   "src": "memoire.svg"
+  },
+  {
+   "t": "h3",
+   "id": "ce-que-l-incident-apprend",
+   "x": [
+    "Ce que l'incident apprend"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "En IA locale, la ressource rare n'est pas l'argent, c'est la mémoire."
+      ]
+     },
+     " Un modèle qui ne tient pas fait swapper la machine, et tout s'effondre."
+    ],
+    [
+     {
+      "g": [
+       "Il faut mesurer avec plusieurs instruments."
+      ]
+     },
+     " Ollama disait 4,8 Go ; ",
+     {
+      "c": "top"
+     },
+     " disait 10 Go. Les deux avaient raison, ils ne mesuraient pas la même chose."
+    ],
+    [
+     {
+      "g": [
+       "On peut corriger sans tout comprendre"
+      ]
+     },
+     ", à condition de le dire. Les causes des deux problèmes de mémoire sont des explications plausibles, appuyées sur le journal, mais pas démontrées. La documentation le dit noir sur blanc."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "une-autre-surprise-le-modele-qui-invente",
+   "x": [
+    "Une autre surprise : le modèle qui invente"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "En relisant une à une les réponses aux questions sans réponse, deux cas d'échec très différents sont apparus :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "un refus mal formé."
+      ]
+     },
+     " Qwen écrit « les extraits ne mentionnent pas de parti nommé Mycélium », au lieu de la formule convenue. Le fond est honnête, mais le système ne reconnaît pas l'abstention et affiche une réponse ;"
+    ],
+    [
+     {
+      "g": [
+       "une vraie invention."
+      ]
+     },
+     " À la question sur le montant de la taxe carbone italienne, Mistral attribue à l'Italie la trajectoire ",
+     {
+      "g": [
+       "française"
+      ]
+     },
+     " de la taxe carbone, qu'il a trouvée dans un autre extrait. C'est exactement l'erreur qu'un parti ne peut pas se permettre : un chiffre réel, une source réelle, et un pays faux."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-n-a-pas-pu-etre-verifie",
+   "x": [
+    "Ce qui n'a pas pu être vérifié"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La documentation de l'étape tient une liste honnête de ses propres limites :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "la relecture « humaine » du juge a été faite par Claude Code"
+      ]
+     },
+     ", qui est lui aussi un modèle. C'est mieux que rien, mais ce n'est pas la référence humaine des vraies organisations. Une relecture d'une vingtaine de jugements par un humain reste à faire ;"
+    ],
+    [
+     {
+      "g": [
+       "le juge d'exactitude n'a pas été calibré"
+      ]
+     },
+     ", et ses scores semblent généreux. La mesure des chiffres exacts, faite sans modèle, est plus fiable ;"
+    ],
+    [
+     {
+      "g": [
+       "une seule exécution"
+      ]
+     },
+     ", sur un seul Mac, avec 55 questions. Les écarts de quelques points sont dans le bruit ; les écarts de 10 points et plus, sur la fidélité, l'abstention et le taux de citation, ne le sont pas."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Un défaut de la recherche a aussi été trouvé : pour une question, le bon résumé en anglais était ",
+    {
+     "g": [
+      "premier"
+     ]
+    },
+    " pour la recherche par le sens, absent de la recherche par mots, et la fusion le reléguait au 19e rang, hors des 15 candidats du reranker. Sur ce corpus, la recherche par le sens seule avec reranker (99 %) faisait mieux que l'hybride (97 %). Ce point est resté ouvert, à mesurer avant de changer quoi que ce soit."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-il-faut-retenir",
+   "x": [
+    "Ce qu'il faut retenir"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Sans jeu d'évaluation, on ne sait pas."
+      ]
+     },
+     " On croit savoir. Un examen corrigé, vérifié et stable est la première chose à construire après un prototype."
+    ],
+    [
+     {
+      "g": [
+       "Une citation n'est pas une preuve."
+      ]
+     },
+     " La fidélité se mesure phrase par phrase, contre l'extrait cité."
+    ],
+    [
+     {
+      "g": [
+       "Un juge automatique se calibre."
+      ]
+     },
+     " Il a des biais connus ; on les réduit, et on mesure ce qui reste contre une relecture."
+    ],
+    [
+     {
+      "g": [
+       "Le meilleur modèle n'est pas le plus gros."
+      ]
+     },
+     " Gemma 4, plus petit, plus rapide et plus léger, l'emporte par sa discipline : citer, ne rien ajouter, s'abstenir."
+    ],
+    [
+     {
+      "g": [
+       "La mémoire décide."
+      ]
+     },
+     " Elle se mesure, avec plusieurs outils, et elle devient un critère de choix au même titre que la qualité."
+    ]
+   ]
+  }
+ ]
+}

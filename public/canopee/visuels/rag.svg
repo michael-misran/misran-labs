@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 546" width="720" height="546" role="img" aria-labelledby="titre desc">
+<title id="titre">Le chemin d&#x27;une question</title>
+<desc id="desc">Une question est cherchée de deux façons, par les mots (BM25) et par le sens (vecteurs bge-m3), 30 candidats chacune ; les deux listes sont fusionnées par rangs réciproques ; les 15 meilleurs sont notés par Gemma 4 ; au plus 5 passages notés 5 ou plus vont au rédacteur, dont chaque phrase cite sa source, puis un contrôle vérifie les citations. Sans passage noté 5, le système s&#x27;abstient sans appeler le rédacteur.</desc>
+<style>
+text{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;font-size:12.5px}
+.titre{font-size:17px;font-weight:650}.gras{font-weight:600}.petit{font-size:11.5px}.moyen{font-size:13.5px}.chiffre{font-variant-numeric:tabular-nums}
+.fond{fill:#fcfcfb}.texte{fill:#0b0b0b}.secondaire{fill:#52514e}.discret{fill:#7d7c77}.trait{stroke:#d9d8d3}.f-trait{fill:#d9d8d3}.carte{fill:#f3f2ef}.s-texte{stroke:#52514e}.f-fond{fill:#fcfcfb}.s-fond{stroke:#fcfcfb}.f-cloud{fill:#2a78d6}.s-cloud{stroke:#2a78d6}.t-cloud{fill:#e7eff7}.f-local{fill:#eb6834}.s-local{stroke:#eb6834}.t-local{fill:#faede7}.f-public{fill:#1baf7a}.s-public{stroke:#1baf7a}.t-public{fill:#e6f4ee}.f-controle{fill:#6250d6}.s-controle{stroke:#6250d6}.t-controle{fill:#edebf7}.f-neutre{fill:#7d7c77}.s-neutre{stroke:#7d7c77}.t-neutre{fill:#efefee}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#e4f3e3}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#fcf5e4}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#faf0eb}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#f8e9e8}.f-grave{fill:#8e1f2c}.s-grave{stroke:#8e1f2c}.t-grave{fill:#f1e6e6}.f-r0{fill:#86b6ef}.s-r0{stroke:#86b6ef}.f-r1{fill:#2a78d6}.s-r1{stroke:#2a78d6}.f-r2{fill:#104281}.s-r2{stroke:#104281}.e-conforme{fill:#ffffff}.e-faible{fill:#0b0b0b}.e-moyen{fill:#0b0b0b}.e-eleve{fill:#ffffff}.e-grave{fill:#ffffff}
+@media (prefers-color-scheme:dark){.fond{fill:#1a1a19}.texte{fill:#f0efec}.secondaire{fill:#c3c2b7}.discret{fill:#94938b}.trait{stroke:#3a3a37}.f-trait{fill:#3a3a37}.carte{fill:#242423}.s-texte{stroke:#c3c2b7}.f-fond{fill:#1a1a19}.s-fond{stroke:#1a1a19}.f-cloud{fill:#3987e5}.s-cloud{stroke:#3987e5}.t-cloud{fill:#203042}.f-local{fill:#d95926}.s-local{stroke:#d95926}.t-local{fill:#40271c}.f-public{fill:#199e70}.s-public{stroke:#199e70}.t-public{fill:#1a342a}.f-controle{fill:#9085e9}.s-controle{stroke:#9085e9}.t-controle{fill:#322f43}.f-neutre{fill:#94938b}.s-neutre{stroke:#94938b}.t-neutre{fill:#323230}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#173516}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#473819}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#442f26}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#3e2120}.f-grave{fill:#b8323f}.s-grave{stroke:#b8323f}.t-grave{fill:#3a1f21}.f-r0{fill:#184f95}.s-r0{stroke:#184f95}.f-r1{fill:#3987e5}.s-r1{stroke:#3987e5}.f-r2{fill:#9ec5f4}.s-r2{stroke:#9ec5f4}}
+</style>
+<defs><marker id="m-neutre" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="f-neutre" d="M0,1 L9,5 L0,9 z"/></marker></defs>
+<rect class="fond" width="720" height="546" rx="10"/>
+<text class="texte titre" x="24" y="34">Le chemin d&#x27;une question</text>
+<text class="secondaire" x="24" y="55">La recherche avec citations obligatoires : beaucoup de candidats peu coûteux, puis peu de candidats coûteux</text>
+<path class="t-public s-public" stroke-width="1.25" d="M29.0,96.0 L45.0,176.0 L61.0,266.0 L74.0,356.0 L84.0,446.0 L124.0,446.0 L134.0,356.0 L147.0,266.0 L163.0,176.0 L179.0,96.0 Z"/>
+<text class="texte chiffre gras" x="104.0" y="114.0" text-anchor="middle" style="font-size:14px">5 272</text>
+<text class="secondaire petit" x="104.0" y="129.0" text-anchor="middle" style="font-size:10.5px">passages dans public.db</text>
+<text class="texte chiffre gras" x="104.0" y="194.0" text-anchor="middle" style="font-size:14px">2 × 30</text>
+<text class="secondaire petit" x="104.0" y="209.0" text-anchor="middle" style="font-size:10.5px">candidats</text>
+<text class="texte chiffre gras" x="104.0" y="284.0" text-anchor="middle" style="font-size:14px">15</text>
+<text class="secondaire petit" x="104.0" y="299.0" text-anchor="middle" style="font-size:10.5px">après la fusion</text>
+<text class="texte chiffre gras" x="104.0" y="374.0" text-anchor="middle" style="font-size:14px">≤ 5</text>
+<text class="secondaire petit" x="104.0" y="389.0" text-anchor="middle" style="font-size:10.5px">notés 5 ou plus</text>
+<text class="texte chiffre gras" x="104.0" y="464.0" text-anchor="middle" style="font-size:14px">1</text>
+<text class="secondaire petit" x="104.0" y="479.0" text-anchor="middle" style="font-size:10.5px">réponse</text>
+<rect class="t-neutre s-neutre" x="196.0" y="82.0" width="500.0" height="44.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="446.0" y="100.2" text-anchor="middle" style="font-size:13px">La question</text>
+<text class="secondaire" x="446.0" y="117.2" text-anchor="middle" style="font-size:11.5px">« Les pistes cyclables font-elles augmenter l&#x27;usage du vélo ? »</text>
+<rect class="t-public s-public" x="196.0" y="150.0" width="244.0" height="64.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="318.0" y="170.5" text-anchor="middle" style="font-size:13px">Par les mots : BM25</text>
+<text class="secondaire" x="318.0" y="187.5" text-anchor="middle" style="font-size:11.5px">termes exacts, sigles, noms propres ·</text>
+<text class="secondaire" x="318.0" y="203.0" text-anchor="middle" style="font-size:11.5px">30 candidats</text>
+<rect class="t-public s-public" x="452.0" y="150.0" width="244.0" height="64.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="574.0" y="170.5" text-anchor="middle" style="font-size:13px">Par le sens : bge-m3</text>
+<text class="secondaire" x="574.0" y="187.5" text-anchor="middle" style="font-size:11.5px">synonymes, autres langues · 30</text>
+<text class="secondaire" x="574.0" y="203.0" text-anchor="middle" style="font-size:11.5px">candidats</text>
+<rect class="t-public s-public" x="196.0" y="240.0" width="500.0" height="58.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="446.0" y="257.5" text-anchor="middle" style="font-size:13px">Fusion par rangs réciproques (RRF)</text>
+<text class="secondaire" x="446.0" y="274.5" text-anchor="middle" style="font-size:11.5px">score = 1 / (60 + rang par les mots) + 1 / (60 + rang par le sens) → les 15</text>
+<text class="secondaire" x="446.0" y="290.0" text-anchor="middle" style="font-size:11.5px">meilleurs</text>
+<rect class="t-local s-local" x="196.0" y="324.0" width="304.0" height="78.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="348.0" y="351.5" text-anchor="middle" style="font-size:13px">Reranker : Gemma 4 note de 0 à 10</text>
+<text class="secondaire" x="348.0" y="368.5" text-anchor="middle" style="font-size:11.5px">lit la question et le passage ensemble ; garde</text>
+<text class="secondaire" x="348.0" y="384.0" text-anchor="middle" style="font-size:11.5px">ceux notés 5 ou plus, 5 au plus</text>
+<rect class="t-neutre s-neutre" x="512.0" y="324.0" width="184.0" height="78.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="604.0" y="343.7" text-anchor="middle" style="font-size:13px">Aucun passage noté 5</text>
+<text class="secondaire" x="604.0" y="360.7" text-anchor="middle" style="font-size:11.5px">« Les documents ne</text>
+<text class="secondaire" x="604.0" y="376.2" text-anchor="middle" style="font-size:11.5px">permettent pas de</text>
+<text class="secondaire" x="604.0" y="391.8" text-anchor="middle" style="font-size:11.5px">répondre », sans rédacteur</text>
+<rect class="t-local s-local" x="196.0" y="426.0" width="304.0" height="58.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="348.0" y="443.5" text-anchor="middle" style="font-size:13px">Rédacteur : Gemma 4</text>
+<text class="secondaire" x="348.0" y="460.5" text-anchor="middle" style="font-size:11.5px">à partir des seuls extraits ; chaque phrase</text>
+<text class="secondaire" x="348.0" y="476.0" text-anchor="middle" style="font-size:11.5px">finit par [1], [2]…</text>
+<rect class="t-controle s-controle" x="512.0" y="426.0" width="184.0" height="58.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="604.0" y="443.5" text-anchor="middle" style="font-size:13px">Contrôle des citations</text>
+<text class="secondaire" x="604.0" y="460.5" text-anchor="middle" style="font-size:11.5px">code : sinon une seconde</text>
+<text class="secondaire" x="604.0" y="476.0" text-anchor="middle" style="font-size:11.5px">chance, puis « invalide »</text>
+<path class="s-neutre" d="M446.0,128.0 L446.0,138.0 L318.0,138.0 L318.0,148.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-neutre)"/>
+<path class="s-neutre" d="M446.0,138.0 L574.0,138.0 L574.0,148.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-neutre)"/>
+<path class="s-neutre" d="M318.0,216.0 L318.0,238.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-neutre)"/>
+<path class="s-neutre" d="M574.0,216.0 L574.0,238.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-neutre)"/>
+<path class="s-neutre" d="M348.0,300.0 L348.0,322.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-neutre)"/>
+<path class="s-neutre" d="M500.0,363.0 L510.0,363.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-neutre)"/>
+<path class="s-neutre" d="M348.0,404.0 L348.0,424.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-neutre)"/>
+<path class="s-neutre" d="M500.0,455.0 L510.0,455.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-neutre)"/>
+<text class="secondaire" x="196.0" y="512.0" text-anchor="start">Tout se passe sur le Mac : ni la question ni les documents ne partent dans le cloud.</text>
+<text class="discret petit" x="24" y="532">Source : corpus/config.py, docs/etapes/02-corpus-public.md · généré par outils/schemas.py</text>
+</svg>

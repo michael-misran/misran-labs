@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 718" width="720" height="718" role="img" aria-labelledby="titre desc">
+<title id="titre">La passerelle d&#x27;anonymisation</title>
+<desc id="desc">Le pipeline de canopee-passerelle en quatre temps : détecter en trois couches (expressions régulières, reconnaissance des noms, dictionnaire), transformer (code cohérent, masquage, généralisation, quasi-identifiants), contrôler (garde de sortie, gardien), puis sortir vers Claude et ré-identifier la réponse sur le Mac selon le rôle. Le fichier des adhérents suit un autre chemin : extraction k-anonyme et statistiques bruitées.</desc>
+<style>
+text{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;font-size:12.5px}
+.titre{font-size:17px;font-weight:650}.gras{font-weight:600}.petit{font-size:11.5px}.moyen{font-size:13.5px}.chiffre{font-variant-numeric:tabular-nums}
+.fond{fill:#fcfcfb}.texte{fill:#0b0b0b}.secondaire{fill:#52514e}.discret{fill:#7d7c77}.trait{stroke:#d9d8d3}.f-trait{fill:#d9d8d3}.carte{fill:#f3f2ef}.s-texte{stroke:#52514e}.f-fond{fill:#fcfcfb}.s-fond{stroke:#fcfcfb}.f-cloud{fill:#2a78d6}.s-cloud{stroke:#2a78d6}.t-cloud{fill:#e7eff7}.f-local{fill:#eb6834}.s-local{stroke:#eb6834}.t-local{fill:#faede7}.f-public{fill:#1baf7a}.s-public{stroke:#1baf7a}.t-public{fill:#e6f4ee}.f-controle{fill:#6250d6}.s-controle{stroke:#6250d6}.t-controle{fill:#edebf7}.f-neutre{fill:#7d7c77}.s-neutre{stroke:#7d7c77}.t-neutre{fill:#efefee}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#e4f3e3}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#fcf5e4}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#faf0eb}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#f8e9e8}.f-grave{fill:#8e1f2c}.s-grave{stroke:#8e1f2c}.t-grave{fill:#f1e6e6}.f-r0{fill:#86b6ef}.s-r0{stroke:#86b6ef}.f-r1{fill:#2a78d6}.s-r1{stroke:#2a78d6}.f-r2{fill:#104281}.s-r2{stroke:#104281}.e-conforme{fill:#ffffff}.e-faible{fill:#0b0b0b}.e-moyen{fill:#0b0b0b}.e-eleve{fill:#ffffff}.e-grave{fill:#ffffff}
+@media (prefers-color-scheme:dark){.fond{fill:#1a1a19}.texte{fill:#f0efec}.secondaire{fill:#c3c2b7}.discret{fill:#94938b}.trait{stroke:#3a3a37}.f-trait{fill:#3a3a37}.carte{fill:#242423}.s-texte{stroke:#c3c2b7}.f-fond{fill:#1a1a19}.s-fond{stroke:#1a1a19}.f-cloud{fill:#3987e5}.s-cloud{stroke:#3987e5}.t-cloud{fill:#203042}.f-local{fill:#d95926}.s-local{stroke:#d95926}.t-local{fill:#40271c}.f-public{fill:#199e70}.s-public{stroke:#199e70}.t-public{fill:#1a342a}.f-controle{fill:#9085e9}.s-controle{stroke:#9085e9}.t-controle{fill:#322f43}.f-neutre{fill:#94938b}.s-neutre{stroke:#94938b}.t-neutre{fill:#323230}.f-conforme{fill:#0ca30c}.s-conforme{stroke:#0ca30c}.t-conforme{fill:#173516}.f-faible{fill:#fab219}.s-faible{stroke:#fab219}.t-faible{fill:#473819}.f-moyen{fill:#ec835a}.s-moyen{stroke:#ec835a}.t-moyen{fill:#442f26}.f-eleve{fill:#d03b3b}.s-eleve{stroke:#d03b3b}.t-eleve{fill:#3e2120}.f-grave{fill:#b8323f}.s-grave{stroke:#b8323f}.t-grave{fill:#3a1f21}.f-r0{fill:#184f95}.s-r0{stroke:#184f95}.f-r1{fill:#3987e5}.s-r1{stroke:#3987e5}.f-r2{fill:#9ec5f4}.s-r2{stroke:#9ec5f4}}
+</style>
+<defs><marker id="m-controle" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="f-controle" d="M0,1 L9,5 L0,9 z"/></marker><marker id="m-local" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="f-local" d="M0,1 L9,5 L0,9 z"/></marker></defs>
+<rect class="fond" width="720" height="718" rx="10"/>
+<text class="texte titre" x="24" y="34">La passerelle d&#x27;anonymisation</text>
+<text class="secondaire" x="24" y="55">Ce qui arrive à un document interne avant de partir vers le cloud, et à la réponse qui revient</text>
+<line class="s-controle" x1="33.0" y1="112.0" x2="33.0" y2="483.0" stroke-width="2"/>
+<circle class="f-controle" cx="33.0" cy="108.0" r="9"/>
+<text class="f-fond gras" x="33.0" y="112.0" text-anchor="middle" style="font-size:11px">→</text>
+<text class="texte gras" x="50.0" y="112.0" text-anchor="start">Entrée</text>
+<circle class="f-controle" cx="33.0" cy="194.0" r="9"/>
+<text class="f-fond gras" x="33.0" y="198.0" text-anchor="middle" style="font-size:11px">1</text>
+<text class="texte gras" x="50.0" y="198.0" text-anchor="start">Détecter</text>
+<line class="trait" x1="24.0" y1="148.0" x2="696.0" y2="148.0" stroke-width="1"/>
+<circle class="f-controle" cx="33.0" cy="302.0" r="9"/>
+<text class="f-fond gras" x="33.0" y="306.0" text-anchor="middle" style="font-size:11px">2</text>
+<text class="texte gras" x="50.0" y="306.0" text-anchor="start">Transformer</text>
+<line class="trait" x1="24.0" y1="248.0" x2="696.0" y2="248.0" stroke-width="1"/>
+<circle class="f-controle" cx="33.0" cy="401.0" r="9"/>
+<text class="f-fond gras" x="33.0" y="405.0" text-anchor="middle" style="font-size:11px">3</text>
+<text class="texte gras" x="50.0" y="405.0" text-anchor="start">Contrôler</text>
+<line class="trait" x1="24.0" y1="364.0" x2="696.0" y2="364.0" stroke-width="1"/>
+<circle class="f-controle" cx="33.0" cy="483.0" r="9"/>
+<text class="f-fond gras" x="33.0" y="487.0" text-anchor="middle" style="font-size:11px">4</text>
+<text class="texte gras" x="50.0" y="487.0" text-anchor="start">Sortir</text>
+<line class="trait" x1="24.0" y1="446.0" x2="696.0" y2="446.0" stroke-width="1"/>
+<rect class="t-local s-local" x="156.0" y="84.0" width="540.0" height="56.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="426.0" y="100.5" text-anchor="middle" style="font-size:13px">Un document de prive.db, de niveau interne</text>
+<text class="secondaire" x="426.0" y="117.5" text-anchor="middle" style="font-size:11.5px">Les documents confidentiels et sensibles ne sortent jamais : la passerelle les refuse</text>
+<text class="secondaire" x="426.0" y="133.0" text-anchor="middle" style="font-size:11.5px">d&#x27;emblée.</text>
+<rect class="t-controle s-controle" x="156.0" y="160.0" width="172.0" height="76.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="242.0" y="178.7" text-anchor="middle" style="font-size:13px">Expressions régulières</text>
+<text class="secondaire" x="242.0" y="195.7" text-anchor="middle" style="font-size:11.5px">ce qui a une forme :</text>
+<text class="secondaire" x="242.0" y="211.2" text-anchor="middle" style="font-size:11.5px">100 % des e-mails,</text>
+<text class="secondaire" x="242.0" y="226.8" text-anchor="middle" style="font-size:11.5px">téléphones, NIR, IBAN</text>
+<rect class="t-controle s-controle" x="340.0" y="160.0" width="172.0" height="76.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="426.0" y="186.5" text-anchor="middle" style="font-size:13px">Reconnaissance des noms</text>
+<text class="secondaire" x="426.0" y="203.5" text-anchor="middle" style="font-size:11.5px">spaCy : 87 % des</text>
+<text class="secondaire" x="426.0" y="219.0" text-anchor="middle" style="font-size:11.5px">personnes, même inconnues</text>
+<rect class="t-controle s-controle" x="524.0" y="160.0" width="172.0" height="76.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="610.0" y="178.7" text-anchor="middle" style="font-size:13px">Dictionnaire</text>
+<text class="secondaire" x="610.0" y="195.7" text-anchor="middle" style="font-size:11.5px">les personnes connues :</text>
+<text class="secondaire" x="610.0" y="211.2" text-anchor="middle" style="font-size:11.5px">99,9 %, variantes</text>
+<text class="secondaire" x="610.0" y="226.8" text-anchor="middle" style="font-size:11.5px">comprises</text>
+<rect class="t-controle s-controle" x="156.0" y="260.0" width="126.0" height="92.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="219.0" y="286.7" text-anchor="middle" style="font-size:13px">Code cohérent</text>
+<text class="secondaire" x="219.0" y="303.7" text-anchor="middle" style="font-size:11.5px">[PERSONNE_017],</text>
+<text class="secondaire" x="219.0" y="319.2" text-anchor="middle" style="font-size:11.5px">le même partout,</text>
+<text class="secondaire" x="219.0" y="334.8" text-anchor="middle" style="font-size:11.5px">tiré au hasard</text>
+<rect class="t-controle s-controle" x="294.0" y="260.0" width="126.0" height="92.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="357.0" y="286.7" text-anchor="middle" style="font-size:13px">Masquage</text>
+<text class="secondaire" x="357.0" y="303.7" text-anchor="middle" style="font-size:11.5px">e-mail,</text>
+<text class="secondaire" x="357.0" y="319.2" text-anchor="middle" style="font-size:11.5px">téléphone, IBAN :</text>
+<text class="secondaire" x="357.0" y="334.8" text-anchor="middle" style="font-size:11.5px">retirés</text>
+<rect class="t-controle s-controle" x="432.0" y="260.0" width="126.0" height="92.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="495.0" y="278.9" text-anchor="middle" style="font-size:13px">Généralisation</text>
+<text class="secondaire" x="495.0" y="295.9" text-anchor="middle" style="font-size:11.5px">âge en tranche,</text>
+<text class="secondaire" x="495.0" y="311.5" text-anchor="middle" style="font-size:11.5px">lieu au</text>
+<text class="secondaire" x="495.0" y="327.0" text-anchor="middle" style="font-size:11.5px">département ou à</text>
+<text class="secondaire" x="495.0" y="342.5" text-anchor="middle" style="font-size:11.5px">la région</text>
+<rect class="t-controle s-controle" x="570.0" y="260.0" width="126.0" height="92.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="633.0" y="278.9" text-anchor="middle" style="font-size:13px">Quasi-identifiants</text>
+<text class="secondaire" x="633.0" y="295.9" text-anchor="middle" style="font-size:11.5px">« le seul</text>
+<text class="secondaire" x="633.0" y="311.5" text-anchor="middle" style="font-size:11.5px">vitrier » devient</text>
+<text class="secondaire" x="633.0" y="327.0" text-anchor="middle" style="font-size:11.5px">« un·e adhérent·e</text>
+<text class="secondaire" x="633.0" y="342.5" text-anchor="middle" style="font-size:11.5px">en [Région] »</text>
+<rect class="t-controle s-controle" x="156.0" y="376.0" width="264.0" height="58.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="288.0" y="393.5" text-anchor="middle" style="font-size:13px">Garde de sortie</text>
+<text class="secondaire" x="288.0" y="410.5" text-anchor="middle" style="font-size:11.5px">refuse un texte où resterait une</text>
+<text class="secondaire" x="288.0" y="426.0" text-anchor="middle" style="font-size:11.5px">coordonnée ou un nom connu</text>
+<rect class="t-controle s-controle" x="432.0" y="376.0" width="264.0" height="58.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="564.0" y="393.5" text-anchor="middle" style="font-size:13px">Gardien</text>
+<text class="secondaire" x="564.0" y="410.5" text-anchor="middle" style="font-size:11.5px">règle codée : canaris, fiches, niveaux,</text>
+<text class="secondaire" x="564.0" y="426.0" text-anchor="middle" style="font-size:11.5px">citations</text>
+<rect class="t-cloud s-cloud" x="156.0" y="458.0" width="264.0" height="58.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="288.0" y="475.5" text-anchor="middle" style="font-size:13px">Claude, dans le cloud</text>
+<text class="secondaire" x="288.0" y="492.5" text-anchor="middle" style="font-size:11.5px">lit la boîte d&#x27;envoi, rédige, dépose sa</text>
+<text class="secondaire" x="288.0" y="508.0" text-anchor="middle" style="font-size:11.5px">réponse</text>
+<rect class="t-controle s-controle" x="432.0" y="458.0" width="264.0" height="58.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="564.0" y="475.5" text-anchor="middle" style="font-size:13px">Ré-identification locale</text>
+<text class="secondaire" x="564.0" y="492.5" text-anchor="middle" style="font-size:11.5px">selon le rôle ; le DPO avec un motif ;</text>
+<text class="secondaire" x="564.0" y="508.0" text-anchor="middle" style="font-size:11.5px">le RSSI jamais</text>
+<path class="s-controle" d="M420.0,487.0 L432.0,487.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-controle)"/>
+<rect class="t-local s-local" x="156.0" y="548.0" width="540.0" height="54.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="426.0" y="563.5" text-anchor="middle" style="font-size:13px">Table de correspondance : correspondance.db</text>
+<text class="secondaire" x="426.0" y="580.5" text-anchor="middle" style="font-size:11.5px">Code → personne, chiffrée avec sa propre clé : voler la base ne suffit pas à lever les</text>
+<text class="secondaire" x="426.0" y="596.0" text-anchor="middle" style="font-size:11.5px">codes.</text>
+<path class="s-local" d="M564.0,546.0 L564.0,518.0" fill="none" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m-local)" stroke-dasharray="5 4"/>
+<text class="secondaire s-fond" x="556.0" y="536.0" text-anchor="end" style="font-size:10.5px" stroke-width="4" paint-order="stroke" stroke-linejoin="round">lue seulement ici, sur le Mac</text>
+<line class="trait" x1="24.0" y1="614.0" x2="696.0" y2="614.0" stroke-width="1"/>
+<text class="texte gras" x="24.0" y="640.0" text-anchor="start">Le fichier</text>
+<text class="texte gras" x="24.0" y="656.0" text-anchor="start">des adhérents</text>
+<text class="secondaire" x="24.0" y="676.0" text-anchor="start" style="font-size:10.5px">ne sort jamais en entier</text>
+<rect class="t-public s-public" x="156.0" y="626.0" width="264.0" height="58.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="288.0" y="643.5" text-anchor="middle" style="font-size:13px">Extraction k-anonyme</text>
+<text class="secondaire" x="288.0" y="660.5" text-anchor="middle" style="font-size:11.5px">27 réglages essayés ; retenu : k minimal</text>
+<text class="secondaire" x="288.0" y="676.0" text-anchor="middle" style="font-size:11.5px">de 6, aucune fiche retirée</text>
+<rect class="t-public s-public" x="432.0" y="626.0" width="264.0" height="58.0" rx="8" stroke-width="1.25"/>
+<text class="texte gras" x="564.0" y="643.5" text-anchor="middle" style="font-size:13px">Statistiques bruitées</text>
+<text class="secondaire" x="564.0" y="660.5" text-anchor="middle" style="font-size:11.5px">confidentialité différentielle, ε = 1</text>
+<text class="secondaire" x="564.0" y="676.0" text-anchor="middle" style="font-size:11.5px">pour trois histogrammes</text>
+<text class="discret petit" x="24" y="704">Source : docs/etapes/06-passerelle.md et evaluation/resultats-passerelle/ · généré par outils/schemas.py</text>
+</svg>

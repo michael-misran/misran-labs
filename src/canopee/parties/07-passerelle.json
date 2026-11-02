@@ -1,0 +1,1448 @@
+{
+ "blocs": [
+  {
+   "t": "h1",
+   "id": "chapitre-7-la-passerelle-d-anonymisation",
+   "x": [
+    "Chapitre 7. La passerelle d'anonymisation"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Étape 6 du projet · 23 octobre 2026"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "le-probleme",
+   "x": [
+    "Le problème"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Jusqu'ici, la règle n°1 était simple : rien de privé ne part vers le cloud. Mais elle a un coût. Les modèles locaux sont plus lents et moins fins que Claude pour résumer un compte rendu, rédiger une note ou raisonner sur un dossier. Une organisation voudra tôt ou tard confier au cloud une partie de ses documents internes."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La question de cette étape : ",
+    {
+     "g": [
+      "comment laisser l'IA du cloud travailler sur des documents internes sans qu'elle sache de qui ils parlent ?"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La réponse s'appelle une ",
+    {
+     "g": [
+      "passerelle"
+     ]
+    },
+    ". C'est un passage obligé, placé entre la zone privée et tout modèle du cloud. Elle repère les données personnelles, les remplace, refuse ce qui ne doit pas sortir, et remet en clair la réponse au retour, sur la machine, pour qui en a le droit."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-on-a-construit",
+   "x": [
+    "Ce qu'on a construit"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La passerelle de Canopée, ",
+    {
+     "c": "canopee-passerelle"
+    },
+    " :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "détecte"
+      ]
+     },
+     " les données personnelles, en trois couches : des expressions régulières, un modèle de reconnaissance des noms, et le dictionnaire des personnes connues ;"
+    ],
+    [
+     {
+      "g": [
+       "transforme"
+      ]
+     },
+     " : un code cohérent pour chaque personne (",
+     {
+      "c": "[PERSONNE_017]"
+     },
+     ", dans les exemples de ce livre), le masquage des coordonnées, la ",
+     {
+      "g": [
+       "généralisation"
+      ]
+     },
+     " de l'âge, du lieu, de la profession et des quasi-identifiants ;"
+    ],
+    [
+     {
+      "g": [
+       "refuse"
+      ]
+     },
+     " ce qui n'a pas le droit de sortir : tout document « confidentiel » ou « sensible », et toute sortie où il resterait une coordonnée en clair ;"
+    ],
+    [
+     {
+      "g": [
+       "ré-identifie"
+      ]
+     },
+     " la réponse du cloud, sur le Mac, et seulement pour un rôle qui a le droit de voir la personne ;"
+    ],
+    [
+     "tient une ",
+     {
+      "g": [
+       "table de correspondance"
+      ]
+     },
+     " (code → personne) chiffrée, avec ",
+     {
+      "g": [
+       "sa propre clé"
+      ]
+     },
+     ", et un ",
+     {
+      "g": [
+       "journal"
+      ]
+     },
+     " qui ne contient aucune valeur."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pour le fichier des adhérents, elle produit en plus une ",
+    {
+     "g": [
+      "extraction k-anonyme"
+     ]
+    },
+    " et des ",
+    {
+     "g": [
+      "statistiques bruitées"
+     ]
+    },
+    ". Et le rôle DPO, refusé par défaut au chapitre précédent, accède enfin au corpus, mais pseudonymisé."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux bibliothèques ont été ajoutées, avec mon accord : ",
+    {
+     "g": [
+      "Presidio"
+     ]
+    },
+    ", l'outil open source de Microsoft qui sert de référence pour ce travail, et ",
+    {
+     "g": [
+      "spaCy"
+     ]
+    },
+    ", une bibliothèque d'analyse de la langue, avec son modèle français de taille moyenne."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Le pipeline de la passerelle : détecter, transformer, contrôler, sortir et ré-identifier",
+   "src": "passerelle.svg"
+  },
+  {
+   "t": "h2",
+   "id": "les-notions",
+   "x": [
+    "Les notions"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "anonymiser-ou-pseudonymiser",
+   "x": [
+    "Anonymiser ou pseudonymiser"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Deux mots qu'on confond, et que le RGPD distingue nettement :"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "pseudonymiser"
+      ]
+     },
+     ", c'est remplacer ce qui identifie directement une personne par un code, ",
+     {
+      "g": [
+       "en gardant le moyen de revenir en arrière"
+      ]
+     },
+     " (la table de correspondance). Les données restent des données personnelles, et le RGPD s'applique entièrement ;"
+    ],
+    [
+     {
+      "g": [
+       "anonymiser"
+      ]
+     },
+     ", c'est rendre la ré-identification ",
+     {
+      "g": [
+       "impossible"
+      ]
+     },
+     ", pour quiconque, par tout moyen raisonnable, et de façon irréversible. Des données vraiment anonymes sortent du RGPD."
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La CNIL, après l'avis des autorités européennes de 2014, juge une anonymisation sur ",
+    {
+     "g": [
+      "trois critères"
+     ]
+    },
+    " :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Critère"
+    ],
+    [
+     "La question"
+    ],
+    [
+     "Dans Canopée"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "L'",
+      {
+       "g": [
+        "individualisation"
+       ]
+      }
+     ],
+     [
+      "Peut-on isoler une personne ?"
+     ],
+     [
+      "Dans le fichier brut, oui, pour plus de la moitié des personnes. Dans l'extraction k-anonyme, non"
+     ]
+    ],
+    [
+     [
+      "La ",
+      {
+       "g": [
+        "corrélation"
+       ]
+      }
+     ],
+     [
+      "Peut-on relier deux jeux qui concernent la même personne ?"
+     ],
+     [
+      "Dans les sorties pseudonymisées, oui, et c'est voulu : le même code revient partout"
+     ]
+    ],
+    [
+     [
+      "L'",
+      {
+       "g": [
+        "inférence"
+       ]
+      }
+     ],
+     [
+      "Peut-on déduire une information sur une personne ?"
+     ],
+     [
+      "Les statistiques bruitées bornent justement ce qu'on peut déduire"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Ce que fait la passerelle, c'est donc de la pseudonymisation."
+     ]
+    },
+    " Elle réduit le risque, elle ne le supprime pas. Ce qui part vers le cloud reste une donnée personnelle, d'où toutes les autres précautions."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-trois-couches-de-detection",
+   "x": [
+    "Les trois couches de détection"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Aucune technique ne suffit seule. Chacune voit ce que les autres ne voient pas :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|---|",
+   "entete": [
+    [
+     "Couche"
+    ],
+    [
+     "Ce qu'elle voit"
+    ],
+    [
+     "Ce qu'elle ne voit pas"
+    ],
+    [
+     "Mesurée seule, sur les personnes"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "g": [
+        "Expressions régulières"
+       ]
+      },
+      " (des motifs de texte)"
+     ],
+     [
+      "Ce qui a une forme : e-mail, téléphone, numéro de sécurité sociale, IBAN, code postal, date de naissance"
+     ],
+     [
+      "Un nom, qui n'a pas de forme"
+     ],
+     [
+      "0 % des personnes, 100 % des coordonnées"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Reconnaissance d'entités nommées"
+       ]
+      },
+      " (spaCy)"
+     ],
+     [
+      "Un nom qu'aucune liste ne connaît, inventé au détour d'une phrase"
+     ],
+     [
+      "Elle se trompe : un mot en début de ligne, un auteur cité"
+     ],
+     [
+      {
+       "g": [
+        "87 %"
+       ]
+      },
+      " des personnes"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Dictionnaire"
+       ]
+      },
+      " des personnes connues"
+     ],
+     [
+      "Toutes les personnes du fichier, avec leurs variantes et leurs doublons"
+     ],
+     [
+      "Une personne qui n'est pas dans le fichier"
+     ],
+     [
+      {
+       "g": [
+        "99,9 %"
+       ]
+      },
+      " des personnes"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ensemble, les trois couches trouvent ",
+    {
+     "g": [
+      "99,96 %"
+     ]
+    },
+    " des mentions de personnes."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les expressions régulières de Canopée ont été écrites ",
+    {
+     "g": [
+      "indépendamment du générateur"
+     ]
+    },
+    ". Un numéro de sécurité sociale est signalé quelle que soit sa clé de contrôle : le chapitre 4 avait prévenu que tous les numéros de Mycélium ont une clé fausse."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "La part des personnes trouvées par chaque couche de détection, puis par les trois ensemble",
+   "src": "passerelle-couches.svg"
+  },
+  {
+   "t": "h3",
+   "id": "le-code-coherent",
+   "x": [
+    "Le code cohérent"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Une personne devient ",
+    {
+     "c": "[PERSONNE_017]"
+    },
+    ", et ",
+    {
+     "g": [
+      "reste"
+     ]
+    },
+    " ",
+    {
+     "c": "[PERSONNE_017]"
+    },
+    " dans tout le corpus et d'une requête à l'autre : le code est attribué une fois pour toutes, et rangé dans la table de correspondance. Les codes sont tirés au hasard : un numéro d'ordre trahirait l'ordre du fichier."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "L'avantage : le cloud peut raisonner (« [PERSONNE_017] a proposé un calendrier, [PERSONNE_042] s'y est opposé »), et sa réponse se ré-identifie. Un masquage uniforme (",
+    {
+     "c": "[NOM]"
+    },
+    " partout) rendrait un compte rendu incompréhensible."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le risque : tout ce que le cloud apprend sur un code, d'un document à l'autre, ",
+    {
+     "g": [
+      "s'accumule"
+     ]
+    },
+    ". C'est le critère de corrélation. D'où deux limites voulues : seuls les documents « interne » sortent, et les quasi-identifiants ne reçoivent pas le code de la personne."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-generalisation-selon-le-risque",
+   "x": [
+    "La généralisation, selon le risque"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Généraliser, c'est remplacer une valeur précise par une catégorie qui désigne plus de monde : un âge devient une tranche (« 40-49 ans »), une profession une catégorie (« santé et social »), une commune un département ou une région."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "« Selon le risque », parce qu'un lieu ne désigne personne en soi : il le fait quand il y a peu de monde. Une fédération d'une vingtaine d'adhérents n'a rien à voir avec une fédération de plus de 160. La règle : un département de moins de ",
+    {
+     "g": [
+      "50 personnes connues"
+     ]
+    },
+    " est remplacé par sa ",
+    {
+     "g": [
+      "région"
+     ]
+    },
+    ", les autres restent au département. Douze départements sur trente sont concernés."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-quasi-identifiants-generaliser-en-entier",
+   "x": [
+    "Les quasi-identifiants : généraliser en entier"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Rappel du chapitre 4 : « le seul vitrier d'une petite fédération » (exemple inventé) ne contient aucun nom, et désigne pourtant une personne. Le traitement retenu : ",
+    {
+     "g": [
+      "généraliser le quasi-identifiant en entier"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|",
+   "entete": [
+    [
+     "Forme (exemples inventés)"
+    ],
+    [
+     "Devient"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "« le responsable communication de la fédération d'un département »"
+     ],
+     [
+      "« un·e responsable local·e en [Région] »"
+     ]
+    ],
+    [
+     [
+      "« le seul vitrier de la fédération »"
+     ],
+     [
+      "« un·e adhérent·e en [Région] »"
+     ]
+    ],
+    [
+     [
+      "« une fleuriste de 37 ans de telle section »"
+     ],
+     [
+      "« un·e adhérent·e ([artisanat, commerce et agriculture], [30-39 ans]) en [Région] »"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "On aurait pu écrire « [PERSONNE_017] sort d'une longue hospitalisation » : la phrase garderait son sens, mais l'information de santé s'attacherait au code, et le cloud la relierait à tout ce qu'il sait déjà de lui. Généraliser ",
+    {
+     "g": [
+      "casse ce lien"
+     ]
+    },
+    ". On perd un peu de sens (« qui ? »), et c'est le prix à payer."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "le-k-anonymat-et-son-compromis",
+   "x": [
+    "Le k-anonymat, et son compromis"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pour le fichier des adhérents, on ne pseudonymise pas : on fabrique une ",
+    {
+     "g": [
+      "extraction k-anonyme"
+     ]
+    },
+    ". La passerelle essaie les 27 combinaisons de généralisation (trois niveaux pour l'âge, le lieu et la profession), retire au plus 5 % de fiches trop isolées, et garde celle qui perd le moins d'information."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le résultat est instructif. À perte égale, trois solutions se valaient : garder le département et supprimer la profession ; garder une catégorie de profession mais renoncer au lieu, et retirer 33 fiches ; garder la région, supprimer la profession, et retirer 46 fiches. La passerelle préfère ne retirer personne : âge en trois tranches, département, profession supprimée."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Avec 2 000 personnes, 30 départements et plus de 100 professions, ",
+    {
+     "g": [
+      "on ne peut pas tout garder"
+     ]
+    },
+    ". Si l'analyse porte sur les métiers, il faut un autre réglage : c'est une décision métier, pas technique. Sur un petit fichier, la protection se paie cher en information."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "La part des adhérents isolés selon ce qu'on partage : fichier brut, fiches pseudonymisées, extraction k-anonyme",
+   "src": "reidentification.svg"
+  },
+  {
+   "t": "h3",
+   "id": "la-confidentialite-differentielle",
+   "x": [
+    "La confidentialité différentielle"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pour une ",
+    {
+     "g": [
+      "statistique publiée"
+     ]
+    },
+    " (combien d'adhérents par fédération ?), il existe un outil plus solide : la ",
+    {
+     "g": [
+      "confidentialité différentielle"
+     ]
+    },
+    ". L'idée : publier le résultat avec un ",
+    {
+     "g": [
+      "bruit aléatoire"
+     ]
+    },
+    " calibré, pour qu'on ne puisse pas savoir si une personne donnée est dans le fichier. Le paramètre ",
+    {
+     "g": [
+      "ε"
+     ]
+    },
+    " (epsilon), qu'on appelle le ",
+    {
+     "g": [
+      "budget"
+     ]
+    },
+    ", mesure la fuite maximale : plus il est petit, plus le bruit est fort."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Ici, ε = 1, partagé entre trois histogrammes, soit un bruit d'environ ± 3 par case. Sur une fédération de plus de 160 adhérents, ± 3 ne change rien. Sur une tranche d'âge très rare, qui ne compte qu'une poignée de personnes, le bruit noie l'information : on ne peut plus dire si une personne donnée est là. C'est exactement le but. Le bureau du recensement américain, Apple et Google utilisent ce mécanisme."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "rappel-contre-precision",
+   "x": [
+    "Rappel contre précision"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [],
+    [
+     "Ce qu'il mesure"
+    ],
+    [
+     "Ce que coûte une erreur"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "g": [
+        "Rappel"
+       ]
+      }
+     ],
+     [
+      "Sur toutes les données personnelles, combien ont été transformées ?"
+     ],
+     [
+      "Une donnée ",
+      {
+       "g": [
+        "oubliée"
+       ]
+      },
+      " part dans le cloud : une fuite irréversible"
+     ]
+    ],
+    [
+     [
+      {
+       "g": [
+        "Précision"
+       ]
+      }
+     ],
+     [
+      "Sur toutes les transformations, combien portaient vraiment sur une donnée personnelle ?"
+     ],
+     [
+      "Un mot masqué pour rien : un texte un peu moins lisible"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les deux erreurs n'ont pas le même prix. D'où les objectifs du cahier des charges : ",
+    {
+     "g": [
+      "98 %"
+     ]
+    },
+    " de rappel, seulement 90 % de précision. Mais une précision trop basse a aussi un coût : une passerelle illisible est contournée, les utilisateurs copient le texte à la main dans le cloud."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-verite-de-terrain-generee",
+   "x": [
+    "La vérité de terrain générée"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Pour mesurer une détection, il faut un ",
+    {
+     "g": [
+      "corrigé"
+     ]
+    },
+    " : la liste exacte des données personnelles de chaque document, au caractère près. D'ordinaire, des humains annotent un échantillon. Ici, c'est impossible (personne ne lit les documents), et inutile : ",
+    {
+     "g": [
+      "le générateur sait ce qu'il a posé"
+     ]
+    },
+    ". Il écrit, pour chacun des 2 595 documents, la position de chaque nom, chaque coordonnée, chaque adresse, chaque quasi-identifiant : ",
+    {
+     "g": [
+      "20 138 données annotées"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La limite, honnêtement : une vérité générée ne connaît que ce que le générateur a posé. Elle ignore les personnes que Gemma aurait inventées, les tournures que Gemma aurait reformulées, et ce qu'aucun des deux n'a prévu."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "une-cle-par-usage",
+   "x": [
+    "Une clé par usage"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La base privée et la table de correspondance sont chiffrées avec ",
+    {
+     "g": [
+      "deux clés différentes"
+     ]
+    },
+    ". Qui vole la base et sa clé a les documents, mais ne peut pas lever les codes déjà partis dans le cloud. Qui vole la table et sa clé a la liste code → nom, mais aucun document. Il faut les deux. C'est la séparation exigée par le RGPD : les informations qui permettent de lever la pseudonymisation sont ",
+    {
+     "g": [
+      "conservées séparément"
+     ]
+    },
+    "."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "qui-a-le-droit-de-re-identifier",
+   "x": [
+    "Qui a le droit de ré-identifier ?"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Chaque code garde sa ",
+    {
+     "g": [
+      "provenance"
+     ]
+    },
+    " : les documents où il a été attribué. Un rôle ne lève un code que s'il a le droit de lire au moins un de ces documents. Un code vu seulement dans le fichier des adhérents ne se lève pas pour le pôle programme ; un code vu dans un compte rendu de Paris ne se lève pas pour un adhérent d'une autre fédération. Le DPO lève tout, ",
+    {
+     "g": [
+      "mais seulement avec un motif écrit"
+     ]
+    },
+    ", journalisé. Le RSSI ne lève jamais rien."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-que-font-les-vraies-organisations",
+   "x": [
+    "Ce que font les vraies organisations"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Les passerelles d'IA"
+      ]
+     },
+     " (",
+     {
+      "i": [
+       "AI gateways"
+      ]
+     },
+     ") : les grandes entreprises ne laissent pas leurs employés parler directement aux modèles du cloud. Les requêtes passent par un service central qui authentifie, journalise et masque les données sensibles. Beaucoup s'appuient sur Presidio."
+    ],
+    [
+     {
+      "g": [
+       "La prévention des fuites"
+      ]
+     },
+     " (",
+     {
+      "i": [
+       "DLP"
+      ]
+     },
+     ") : des règles qui inspectent ce qui sort et bloquent un numéro de carte ou un fichier client."
+    ],
+    [
+     {
+      "g": [
+       "La tokenisation"
+      ]
+     },
+     ", dans la banque : le numéro de carte est remplacé par un jeton, et le coffre de correspondance est isolé, avec ses propres clés."
+    ],
+    [
+     {
+      "g": [
+       "La pseudonymisation dans la santé"
+      ]
+     },
+     " : les entrepôts de données de santé reçoivent des données pseudonymisées par un tiers de confiance, qui seul garde la table."
+    ],
+    [
+     {
+      "g": [
+       "La confidentialité différentielle"
+      ]
+     },
+     " pour les statistiques publiées : le recensement américain depuis 2020, Apple, Google."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "les-chiffres",
+   "x": [
+    "Les chiffres"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Mesure"
+    ],
+    [
+     "Objectif"
+    ],
+    [
+     "Résultat"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      "Canaris dans une sortie pseudonymisée"
+     ],
+     [
+      "0"
+     ],
+     [
+      {
+       "g": [
+        "0 sur 20"
+       ]
+      },
+      ", sur les 2 595 documents"
+     ]
+    ],
+    [
+     [
+      "Rappel de la détection"
+     ],
+     [
+      "≥ 98 %"
+     ],
+     [
+      {
+       "g": [
+        "99,98 %"
+       ]
+      },
+      " (20 138 données annotées)"
+     ]
+    ],
+    [
+     [
+      "Précision"
+     ],
+     [
+      "≥ 90 %"
+     ],
+     [
+      {
+       "g": [
+        "99,47 %"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Résidus après pseudonymisation (coordonnée, numéro, nom complet connu)"
+     ],
+     [
+      "0"
+     ],
+     [
+      {
+       "g": [
+        "0"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Cohérence des codes d'une exécution à l'autre"
+     ],
+     [
+      "identique"
+     ],
+     [
+      {
+       "g": [
+        "61 sorties sur 61"
+       ]
+      }
+     ]
+    ],
+    [
+     [
+      "Rôle DPO : 71 questions, 3 301 passages"
+     ],
+     [
+      "que du pseudonymisé"
+     ],
+     [
+      {
+       "g": [
+        "0"
+       ]
+      },
+      " canari, ",
+      {
+       "g": [
+        "0"
+       ]
+      },
+      " nom complet, ",
+      {
+       "g": [
+        "0"
+       ]
+      },
+      " résidu"
+     ]
+    ],
+    [
+     [
+      "Temps"
+     ],
+     [
+      "—"
+     ],
+     [
+      "moins de ",
+      {
+       "g": [
+        "40 ms"
+       ]
+      },
+      " par document, sur le processeur"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La ré-identification, mesurée"
+     ]
+    },
+    " (part des personnes seules sur le triplet tranche d'âge, lieu, profession) :"
+   ]
+  },
+  {
+   "t": "table",
+   "sep": "|---|---|---|",
+   "entete": [
+    [
+     "Fichier brut"
+    ],
+    [
+     "Fiches pseudonymisées"
+    ],
+    [
+     "Extraction k-anonyme"
+    ]
+   ],
+   "lignes": [
+    [
+     [
+      {
+       "g": [
+        "54,8 %"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "18,6 %"
+       ]
+      }
+     ],
+     [
+      {
+       "g": [
+        "0 %"
+       ]
+      },
+      " (k minimal de 6)"
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Les fiches pseudonymisées gardent donc 18,6 % de personnes uniques : c'est pourquoi elles ne sortent ",
+    {
+     "g": [
+      "jamais"
+     ]
+    },
+    " vers le cloud, même pseudonymisées. Pour un tableau, on utilise l'extraction k-anonyme. Le chapitre 12 ramènera ce chiffre à zéro."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Le choix du modèle, mesure à l'appui."
+     ]
+    },
+    " Le modèle français moyen de spaCy fait aussi bien que le grand (même rappel, même zéro canari, précision de 99,47 % contre 99,53 %), avec ",
+    {
+     "g": [
+      "deux fois moins de mémoire"
+     ]
+    },
+    " (0,6 Go contre 1,2 Go) et 46 Mo sur le disque contre 572. Le dictionnaire faisant l'essentiel, le gros modèle n'apporte rien ici."
+   ]
+  },
+  {
+   "t": "fig",
+   "alt": "Rappel et précision de la passerelle, type de donnée par type de donnée",
+   "src": "passerelle-detection.svg"
+  },
+  {
+   "t": "h3",
+   "id": "les-couts",
+   "x": [
+    "Les coûts"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "Mesuré."
+     ]
+    },
+    " Côté Ollama, presque rien : ",
+    {
+     "g": [
+      "3 661 calculs de vecteurs"
+     ]
+    },
+    " pour reconstruire la base privée, ",
+    {
+     "g": [
+      "0,05 h"
+     ]
+    },
+    ". spaCy et Presidio tournent sur le processeur : environ 100 s par évaluation complète des 2 595 documents, environ 12 minutes en tout. Côté Claude, la photo par étape donne ",
+    {
+     "g": [
+      "96 requêtes"
+     ]
+    },
+    " et ",
+    {
+     "g": [
+      "4,5 M d'unités"
+     ]
+    },
+    ". La session a été coupée une fois par la limite d'usage de l'abonnement, puis reprise."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    {
+     "g": [
+      "La lecture."
+     ]
+    },
+    " Une passerelle ne coûte presque rien à faire tourner. Le coût est dans sa ",
+    {
+     "g": [
+      "mise au point"
+     ]
+    },
+    ", et ici dans la mise au point ",
+    {
+     "g": [
+      "sans lire les données"
+     ]
+    },
+    " : chaque fausse alerte a dû être diagnostiquée par sa forme, jamais par son contenu."
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "l-incident-une-seule-lecture",
+   "x": [
+    "L'incident : une seule lecture"
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "les-fausses-alertes-diagnostiquees-sans-lire",
+   "x": [
+    "Les fausses alertes, diagnostiquées sans lire"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Au premier essai, spaCy a pris pour des personnes ",
+    {
+     "g": [
+      "379"
+     ]
+    },
+    " noms d'auteurs d'études réelles, cités dans les notes et les mesures du programme. Il prenait aussi pour des personnes des mots isolés en début de ligne, comme « Organiser » ou « Responsable ». Ces erreurs ont été corrigées sans rien lire : les auteurs, qui sont des personnes publiques présentes dans le corpus public, sont laissés en clair ; un mot seul n'est gardé comme personne que s'il est un prénom ou un nom courant. Et le dictionnaire, lui, continue de s'appliquer partout : le rappel ne bouge pas."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "la-demonstration",
+   "x": [
+    "La démonstration"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Avec mon accord, Claude Code a lu ",
+    {
+     "g": [
+      "un seul"
+     ]
+    },
+    " document pseudonymisé : le compte rendu « interne » d'une réunion d'une très petite fédération. Même pseudonymisé, ce document reste une donnée de Mycélium : il n'est pas reproduit ici. Voici, ",
+    {
+     "g": [
+      "inventé pour ce livre"
+     ]
+    },
+    ", à quoi ressemble ce que voit le cloud :"
+   ]
+  },
+  {
+   "t": "cite",
+   "blocs": [
+    {
+     "t": "p",
+     "x": [
+      "Compte rendu — Fédération de [Région]"
+     ]
+    },
+    {
+     "t": "p",
+     "x": [
+      "Auteur : [PERSONNE_017] (élue, section de [Région]). Participants : [PERSONNE_017], [PERSONNE_042], [PERSONNE_105]…"
+     ]
+    },
+    {
+     "t": "p",
+     "x": [
+      "[…] Un·e responsable local·e en [Région] propose de décaler la réunion de rentrée. [PERSONNE_042] se charge de prévenir la section, joignable au [TÉLÉPHONE]. […]"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Le cloud peut travailler (résumer, dire qui fait quoi) sans savoir qui sont ces personnes. Puis, sur le Mac, la ré-identification pour le pôle programme a levé tous les codes ; pour un adhérent d'une autre fédération, aucun."
+   ]
+  },
+  {
+   "t": "h3",
+   "id": "ce-que-la-lecture-a-trouve",
+   "x": [
+    "Ce que la lecture a trouvé"
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Toutes les mesures étaient excellentes. La lecture d'",
+    {
+     "g": [
+      "un seul"
+     ]
+    },
+    " document a pourtant trouvé un défaut qu'aucune ne voyait."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Dans la première version, l'en-tête donnait, après la fonction de la personne qui l'a rédigé, le ",
+    {
+     "g": [
+      "nom de sa commune, en clair"
+     ]
+    },
+    ". Ce nom avait été écrit ",
+    {
+     "g": [
+      "en minuscules"
+     ]
+    },
+    " par l'ingestion du chapitre 6, et la règle des lieux cherchait une majuscule. Avec la fonction, c'est un quasi-identifiant, dans un très petit département. Aucune mesure ne l'avait vu, parce que la vérité de terrain n'annotait pas les lieux."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "Correction : après « section de » ou « fédération de », le lieu est cherché sans tenir compte de la casse. Et une mesure a été ajoutée : les noms de lieux des petits départements restés en clair, cherchés eux aussi sans tenir compte de la casse. Résultat : ",
+    {
+     "g": [
+      "0"
+     ]
+    },
+    ". Les codes de la seconde version étaient les mêmes que ceux de la première : la cohérence d'une exécution à l'autre, vue en vrai."
+   ]
+  },
+  {
+   "t": "p",
+   "x": [
+    "La leçon est classique, et elle reviendra dans tout le livre : ",
+    {
+     "g": [
+      "les métriques ne mesurent que ce qu'on a pensé à annoter."
+     ]
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qui-n-a-pas-pu-etre-verifie",
+   "x": [
+    "Ce qui n'a pas pu être vérifié"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Les tournures imprévues."
+      ]
+     },
+     " Les quasi-identifiants sont reconnus par trois formes de phrase. « Notre camarade qui tient la caisse » ne serait reconnu ni par la passerelle ni par la vérité de terrain. Le 100 % est celui des formes connues."
+    ],
+    [
+     {
+      "g": [
+       "Les personnes inventées par Gemma."
+      ]
+     },
+     " spaCy a signalé 97 personnes absentes de la vérité, dont 26 portent des prénoms ou des noms de la liste de Faker. Ce sont sans doute des personnes que Gemma a ajoutées au chapitre 4, malgré la consigne. Elles sont masquées, mais on ne peut pas les confirmer sans lire."
+    ],
+    [
+     {
+      "g": [
+       "Les prénoms ambigus."
+      ]
+     },
+     " Quand deux personnes nommées dans le même document partagent un prénom, le prénom seul est attribué à l'une des deux : 6 personnes sur 1 990 ont reçu deux codes."
+    ],
+    [
+     {
+      "g": [
+       "La résistance à un recoupement"
+      ]
+     },
+     " avec des informations publiques : ce sera le travail de l'équipe d'attaque."
+    ]
+   ]
+  },
+  {
+   "t": "h2",
+   "id": "ce-qu-il-faut-retenir",
+   "x": [
+    "Ce qu'il faut retenir"
+   ]
+  },
+  {
+   "t": "ul",
+   "items": [
+    [
+     {
+      "g": [
+       "Pseudonymiser n'est pas anonymiser."
+      ]
+     },
+     " Ce qui part vers le cloud reste une donnée personnelle ; la passerelle réduit le risque, elle ne l'efface pas."
+    ],
+    [
+     {
+      "g": [
+       "Aucune couche de détection ne suffit seule."
+      ]
+     },
+     " Les motifs voient les formes, le modèle voit les noms inconnus, le dictionnaire voit les personnes connues."
+    ],
+    [
+     {
+      "g": [
+       "On privilégie le rappel"
+      ]
+     },
+     " : un mot masqué pour rien coûte de la lisibilité, une donnée oubliée coûte une fuite."
+    ],
+    [
+     {
+      "g": [
+       "Généraliser casse le lien"
+      ]
+     },
+     " entre une information sensible et une personne ; un code, lui, l'accumule."
+    ],
+    [
+     {
+      "g": [
+       "Les métriques ne mesurent que ce qu'on a pensé à annoter."
+      ]
+     },
+     " Une seule lecture humaine, autorisée, d'un seul document, a trouvé ce que vingt mille annotations ne voyaient pas."
+    ]
+   ]
+  }
+ ]
+}

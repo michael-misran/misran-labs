@@ -1,0 +1,922 @@
+[
+ {
+  "fichier": "00-introduction",
+  "slug": "introduction",
+  "etiquette": "Introduction",
+  "titre": "Un parti qui n'existe pas, des données traitées comme vraies",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "la-question-de-depart",
+    "x": "La question de départ"
+   },
+   {
+    "id": "le-terrain-d-essai-canopee",
+    "x": "Le terrain d'essai : Canopée"
+   },
+   {
+    "id": "mycelium-un-parti-qui-n-existe-pas",
+    "x": "Mycélium, un parti qui n'existe pas"
+   },
+   {
+    "id": "la-regle-n-1",
+    "x": "La règle n°1"
+   },
+   {
+    "id": "deux-sortes-d-ia-celle-du-cloud-et-celle-du-mac",
+    "x": "Deux sortes d'IA : celle du cloud et celle du Mac"
+   },
+   {
+    "id": "ce-qui-distingue-ce-livre-la-transparence",
+    "x": "Ce qui distingue ce livre : la transparence"
+   },
+   {
+    "id": "les-incidents-racontes-en-entier",
+    "x": "Les incidents, racontés en entier"
+   },
+   {
+    "id": "qui-decide-de-quoi",
+    "x": "Qui décide de quoi"
+   },
+   {
+    "id": "comment-lire-ce-livre",
+    "x": "Comment lire ce livre"
+   }
+  ]
+ },
+ {
+  "fichier": "01-socle",
+  "slug": "socle",
+  "etiquette": "Chapitre 1",
+  "titre": "Le socle : protéger avant de construire",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "le-probleme",
+    "x": "Le problème"
+   },
+   {
+    "id": "ce-qu-on-a-construit",
+    "x": "Ce qu'on a construit"
+   },
+   {
+    "id": "les-notions",
+    "x": "Les notions"
+   },
+   {
+    "id": "ce-que-font-les-vraies-organisations",
+    "x": "Ce que font les vraies organisations"
+   },
+   {
+    "id": "les-chiffres",
+    "x": "Les chiffres"
+   },
+   {
+    "id": "l-incident-la-barriere-qui-ne-tenait-pas",
+    "x": "L'incident : la barrière qui ne tenait pas"
+   },
+   {
+    "id": "ce-qu-il-faut-retenir",
+    "x": "Ce qu'il faut retenir"
+   }
+  ]
+ },
+ {
+  "fichier": "02-corpus-public",
+  "slug": "corpus-public",
+  "etiquette": "Chapitre 2",
+  "titre": "Le corpus public : répondre en citant ses sources",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "le-probleme",
+    "x": "Le problème"
+   },
+   {
+    "id": "ce-qu-on-a-construit",
+    "x": "Ce qu'on a construit"
+   },
+   {
+    "id": "les-notions",
+    "x": "Les notions"
+   },
+   {
+    "id": "ce-que-font-les-vraies-organisations",
+    "x": "Ce que font les vraies organisations"
+   },
+   {
+    "id": "les-chiffres",
+    "x": "Les chiffres"
+   },
+   {
+    "id": "les-surprises-de-l-etape",
+    "x": "Les surprises de l'étape"
+   },
+   {
+    "id": "ce-qu-il-faut-retenir",
+    "x": "Ce qu'il faut retenir"
+   }
+  ]
+ },
+ {
+  "fichier": "03-evaluation",
+  "slug": "evaluation",
+  "etiquette": "Chapitre 3",
+  "titre": "L'évaluation : mesurer au lieu d'impressionner",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "le-probleme",
+    "x": "Le problème"
+   },
+   {
+    "id": "ce-qu-on-a-construit",
+    "x": "Ce qu'on a construit"
+   },
+   {
+    "id": "les-notions",
+    "x": "Les notions"
+   },
+   {
+    "id": "ce-que-font-les-vraies-organisations",
+    "x": "Ce que font les vraies organisations"
+   },
+   {
+    "id": "les-chiffres",
+    "x": "Les chiffres"
+   },
+   {
+    "id": "l-incident-le-mac-a-sature",
+    "x": "L'incident : le Mac a saturé"
+   },
+   {
+    "id": "une-autre-surprise-le-modele-qui-invente",
+    "x": "Une autre surprise : le modèle qui invente"
+   },
+   {
+    "id": "ce-qui-n-a-pas-pu-etre-verifie",
+    "x": "Ce qui n'a pas pu être vérifié"
+   },
+   {
+    "id": "ce-qu-il-faut-retenir",
+    "x": "Ce qu'il faut retenir"
+   }
+  ]
+ },
+ {
+  "fichier": "04-donnees-fictives",
+  "slug": "donnees-fictives",
+  "etiquette": "Chapitre 4",
+  "titre": "Les données fictives : fabriquer des données qu'on ne lira jamais",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "le-probleme",
+    "x": "Le problème"
+   },
+   {
+    "id": "ce-qu-on-a-construit",
+    "x": "Ce qu'on a construit"
+   },
+   {
+    "id": "les-notions",
+    "x": "Les notions"
+   },
+   {
+    "id": "ce-que-font-les-vraies-organisations",
+    "x": "Ce que font les vraies organisations"
+   },
+   {
+    "id": "les-chiffres",
+    "x": "Les chiffres"
+   },
+   {
+    "id": "les-surprises",
+    "x": "Les surprises"
+   },
+   {
+    "id": "ce-qui-n-a-pas-pu-etre-verifie",
+    "x": "Ce qui n'a pas pu être vérifié"
+   },
+   {
+    "id": "ce-qu-il-faut-retenir",
+    "x": "Ce qu'il faut retenir"
+   }
+  ]
+ },
+ {
+  "fichier": "05-corpus-climat",
+  "slug": "corpus-climat",
+  "etiquette": "Chapitre 5",
+  "titre": "Faire grandir le corpus",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "le-probleme",
+    "x": "Le problème"
+   },
+   {
+    "id": "ce-qu-on-a-construit",
+    "x": "Ce qu'on a construit"
+   },
+   {
+    "id": "les-notions",
+    "x": "Les notions"
+   },
+   {
+    "id": "ce-que-font-les-vraies-organisations",
+    "x": "Ce que font les vraies organisations"
+   },
+   {
+    "id": "les-chiffres",
+    "x": "Les chiffres"
+   },
+   {
+    "id": "l-incident-les-donnees-partaient-dans-icloud",
+    "x": "L'incident : les données partaient dans iCloud"
+   },
+   {
+    "id": "ce-qui-n-a-pas-pu-etre-verifie-et-ce-qui-reste-ouvert",
+    "x": "Ce qui n'a pas pu être vérifié, et ce qui reste ouvert"
+   },
+   {
+    "id": "ce-qu-il-faut-retenir",
+    "x": "Ce qu'il faut retenir"
+   }
+  ]
+ },
+ {
+  "fichier": "06-corpus-prive",
+  "slug": "corpus-prive",
+  "etiquette": "Chapitre 6",
+  "titre": "Le corpus privé : chiffrer et cloisonner",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "le-probleme",
+    "x": "Le problème"
+   },
+   {
+    "id": "ce-qu-on-a-construit",
+    "x": "Ce qu'on a construit"
+   },
+   {
+    "id": "les-notions",
+    "x": "Les notions"
+   },
+   {
+    "id": "ce-que-font-les-vraies-organisations",
+    "x": "Ce que font les vraies organisations"
+   },
+   {
+    "id": "les-chiffres",
+    "x": "Les chiffres"
+   },
+   {
+    "id": "les-surprises",
+    "x": "Les surprises"
+   },
+   {
+    "id": "ce-qui-n-a-pas-pu-etre-verifie",
+    "x": "Ce qui n'a pas pu être vérifié"
+   },
+   {
+    "id": "ce-qu-il-faut-retenir",
+    "x": "Ce qu'il faut retenir"
+   }
+  ]
+ },
+ {
+  "fichier": "07-passerelle",
+  "slug": "passerelle",
+  "etiquette": "Chapitre 7",
+  "titre": "La passerelle d'anonymisation",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "le-probleme",
+    "x": "Le problème"
+   },
+   {
+    "id": "ce-qu-on-a-construit",
+    "x": "Ce qu'on a construit"
+   },
+   {
+    "id": "les-notions",
+    "x": "Les notions"
+   },
+   {
+    "id": "ce-que-font-les-vraies-organisations",
+    "x": "Ce que font les vraies organisations"
+   },
+   {
+    "id": "les-chiffres",
+    "x": "Les chiffres"
+   },
+   {
+    "id": "l-incident-une-seule-lecture",
+    "x": "L'incident : une seule lecture"
+   },
+   {
+    "id": "ce-qui-n-a-pas-pu-etre-verifie",
+    "x": "Ce qui n'a pas pu être vérifié"
+   },
+   {
+    "id": "ce-qu-il-faut-retenir",
+    "x": "Ce qu'il faut retenir"
+   }
+  ]
+ },
+ {
+  "fichier": "08-agents",
+  "slug": "agents",
+  "etiquette": "Chapitre 8",
+  "titre": "Les agents métier",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "le-probleme",
+    "x": "Le problème"
+   },
+   {
+    "id": "ce-qu-on-a-construit",
+    "x": "Ce qu'on a construit"
+   },
+   {
+    "id": "les-notions",
+    "x": "Les notions"
+   },
+   {
+    "id": "ce-que-font-les-vraies-organisations",
+    "x": "Ce que font les vraies organisations"
+   },
+   {
+    "id": "les-chiffres",
+    "x": "Les chiffres"
+   },
+   {
+    "id": "les-surprises",
+    "x": "Les surprises"
+   },
+   {
+    "id": "ce-qui-n-a-pas-pu-etre-verifie",
+    "x": "Ce qui n'a pas pu être vérifié"
+   },
+   {
+    "id": "ce-qu-il-faut-retenir",
+    "x": "Ce qu'il faut retenir"
+   }
+  ]
+ },
+ {
+  "fichier": "09-portail",
+  "slug": "portail",
+  "etiquette": "Chapitre 9",
+  "titre": "Le portail interne",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "le-probleme",
+    "x": "Le problème"
+   },
+   {
+    "id": "ce-qu-on-a-construit",
+    "x": "Ce qu'on a construit"
+   },
+   {
+    "id": "les-notions",
+    "x": "Les notions"
+   },
+   {
+    "id": "ce-que-font-les-vraies-organisations",
+    "x": "Ce que font les vraies organisations"
+   },
+   {
+    "id": "les-chiffres",
+    "x": "Les chiffres"
+   },
+   {
+    "id": "les-incidents-ce-que-le-premier-clic-a-trouve",
+    "x": "Les incidents : ce que le premier clic a trouvé"
+   },
+   {
+    "id": "ce-qui-n-a-pas-pu-etre-verifie",
+    "x": "Ce qui n'a pas pu être vérifié"
+   },
+   {
+    "id": "ce-qu-il-faut-retenir",
+    "x": "Ce qu'il faut retenir"
+   }
+  ]
+ },
+ {
+  "fichier": "10-cnil",
+  "slug": "cnil",
+  "etiquette": "Chapitre 10",
+  "titre": "L'agent CNIL : auditer sans voir",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "le-probleme",
+    "x": "Le problème"
+   },
+   {
+    "id": "ce-qu-on-a-construit",
+    "x": "Ce qu'on a construit"
+   },
+   {
+    "id": "les-notions",
+    "x": "Les notions"
+   },
+   {
+    "id": "ce-que-font-les-vraies-organisations",
+    "x": "Ce que font les vraies organisations"
+   },
+   {
+    "id": "les-chiffres",
+    "x": "Les chiffres"
+   },
+   {
+    "id": "les-incidents",
+    "x": "Les incidents"
+   },
+   {
+    "id": "ce-qui-n-a-pas-pu-etre-verifie",
+    "x": "Ce qui n'a pas pu être vérifié"
+   },
+   {
+    "id": "ce-qu-il-faut-retenir",
+    "x": "Ce qu'il faut retenir"
+   }
+  ]
+ },
+ {
+  "fichier": "11-red-team",
+  "slug": "red-team",
+  "etiquette": "Chapitre 11",
+  "titre": "La red team : attaquer son propre système",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "le-probleme",
+    "x": "Le problème"
+   },
+   {
+    "id": "ce-qu-on-a-construit",
+    "x": "Ce qu'on a construit"
+   },
+   {
+    "id": "les-six-attaques",
+    "x": "Les six attaques"
+   },
+   {
+    "id": "les-notions",
+    "x": "Les notions"
+   },
+   {
+    "id": "ce-que-font-les-vraies-organisations",
+    "x": "Ce que font les vraies organisations"
+   },
+   {
+    "id": "les-chiffres",
+    "x": "Les chiffres"
+   },
+   {
+    "id": "les-incidents",
+    "x": "Les incidents"
+   },
+   {
+    "id": "ce-qui-reste-ouvert",
+    "x": "Ce qui reste ouvert"
+   },
+   {
+    "id": "ce-qu-il-faut-retenir",
+    "x": "Ce qu'il faut retenir"
+   }
+  ]
+ },
+ {
+  "fichier": "12-exercices",
+  "slug": "exercices",
+  "etiquette": "Chapitre 12",
+  "titre": "Les exercices : jouer la crise avant qu'elle arrive",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "le-probleme",
+    "x": "Le problème"
+   },
+   {
+    "id": "ce-qu-on-a-construit",
+    "x": "Ce qu'on a construit"
+   },
+   {
+    "id": "les-six-exercices",
+    "x": "Les six exercices"
+   },
+   {
+    "id": "les-ecarts-corriges-en-chemin",
+    "x": "Les écarts corrigés en chemin"
+   },
+   {
+    "id": "la-surprise-le-cache-oublie",
+    "x": "La surprise : le cache oublié"
+   },
+   {
+    "id": "ce-que-font-les-vraies-organisations",
+    "x": "Ce que font les vraies organisations"
+   },
+   {
+    "id": "les-chiffres",
+    "x": "Les chiffres"
+   },
+   {
+    "id": "ce-qui-reste-ouvert",
+    "x": "Ce qui reste ouvert"
+   },
+   {
+    "id": "ce-qu-il-faut-retenir",
+    "x": "Ce qu'il faut retenir"
+   }
+  ]
+ },
+ {
+  "fichier": "13-couts",
+  "slug": "couts",
+  "etiquette": "Chapitre 13",
+  "titre": "Ce que coûte vraiment l'IA",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "le-probleme",
+    "x": "Le problème"
+   },
+   {
+    "id": "la-methode",
+    "x": "La méthode"
+   },
+   {
+    "id": "les-chiffres",
+    "x": "Les chiffres"
+   },
+   {
+    "id": "local-ou-cloud-le-tableau",
+    "x": "Local ou cloud : le tableau"
+   },
+   {
+    "id": "l-hypothese-et-si-claude-avait-fait-le-travail-d-ollama",
+    "x": "L'hypothèse : et si Claude avait fait le travail d'Ollama ?"
+   },
+   {
+    "id": "la-memoire-ressource-rare",
+    "x": "La mémoire, ressource rare"
+   },
+   {
+    "id": "ou-investir",
+    "x": "Où investir ?"
+   },
+   {
+    "id": "les-lecons-etape-par-etape",
+    "x": "Les leçons, étape par étape"
+   },
+   {
+    "id": "ce-qui-n-a-pas-pu-etre-mesure",
+    "x": "Ce qui n'a pas pu être mesuré"
+   },
+   {
+    "id": "ce-qu-il-faut-retenir",
+    "x": "Ce qu'il faut retenir"
+   }
+  ]
+ },
+ {
+  "fichier": "14-conclusion",
+  "slug": "conclusion",
+  "etiquette": "Conclusion",
+  "titre": "Ce que l'IA voit, ce qu'elle ne voit pas",
+  "annexe": false,
+  "intertitres": [
+   {
+    "id": "huit-jours-onze-etapes",
+    "x": "Huit jours, onze étapes"
+   },
+   {
+    "id": "ce-que-le-projet-a-appris",
+    "x": "Ce que le projet a appris"
+   },
+   {
+    "id": "le-fil-rouge-on-ne-voit-pas-tout-ce-qu-on-mesure",
+    "x": "Le fil rouge : on ne voit pas tout ce qu'on mesure"
+   },
+   {
+    "id": "ce-qui-n-a-pas-pu-etre-verifie",
+    "x": "Ce qui n'a pas pu être vérifié"
+   },
+   {
+    "id": "ce-qui-reste-ouvert",
+    "x": "Ce qui reste ouvert"
+   },
+   {
+    "id": "ce-qui-se-transpose-dans-une-vraie-organisation",
+    "x": "Ce qui se transpose dans une vraie organisation"
+   },
+   {
+    "id": "le-dernier-mot-sur-les-couts",
+    "x": "Le dernier mot sur les coûts"
+   }
+  ]
+ },
+ {
+  "fichier": "15-annexe-glossaire",
+  "slug": "annexe-glossaire",
+  "etiquette": "Annexe A",
+  "titre": "Glossaire",
+  "annexe": true,
+  "intertitres": [
+   {
+    "id": "a",
+    "x": "A"
+   },
+   {
+    "id": "b",
+    "x": "B"
+   },
+   {
+    "id": "c",
+    "x": "C"
+   },
+   {
+    "id": "d",
+    "x": "D"
+   },
+   {
+    "id": "e",
+    "x": "E"
+   },
+   {
+    "id": "f",
+    "x": "F"
+   },
+   {
+    "id": "g",
+    "x": "G"
+   },
+   {
+    "id": "h",
+    "x": "H"
+   },
+   {
+    "id": "i",
+    "x": "I"
+   },
+   {
+    "id": "j",
+    "x": "J"
+   },
+   {
+    "id": "k",
+    "x": "K"
+   },
+   {
+    "id": "l",
+    "x": "L"
+   },
+   {
+    "id": "m",
+    "x": "M"
+   },
+   {
+    "id": "n",
+    "x": "N"
+   },
+   {
+    "id": "o",
+    "x": "O"
+   },
+   {
+    "id": "p",
+    "x": "P"
+   },
+   {
+    "id": "q",
+    "x": "Q"
+   },
+   {
+    "id": "r",
+    "x": "R"
+   },
+   {
+    "id": "s",
+    "x": "S"
+   },
+   {
+    "id": "t",
+    "x": "T"
+   },
+   {
+    "id": "u",
+    "x": "U"
+   },
+   {
+    "id": "v",
+    "x": "V"
+   },
+   {
+    "id": "w",
+    "x": "W"
+   }
+  ]
+ },
+ {
+  "fichier": "16-annexe-chiffres",
+  "slug": "annexe-chiffres",
+  "etiquette": "Annexe B",
+  "titre": "Les chiffres clés",
+  "annexe": true,
+  "intertitres": [
+   {
+    "id": "les-couts-etape-par-etape",
+    "x": "Les coûts, étape par étape"
+   },
+   {
+    "id": "etape-1-le-socle-chapitre-1",
+    "x": "Étape 1. Le socle (chapitre 1)"
+   },
+   {
+    "id": "etape-2-le-corpus-public-chapitre-2",
+    "x": "Étape 2. Le corpus public (chapitre 2)"
+   },
+   {
+    "id": "etape-3-l-evaluation-chapitre-3",
+    "x": "Étape 3. L'évaluation (chapitre 3)"
+   },
+   {
+    "id": "etape-4-les-donnees-fictives-chapitre-4",
+    "x": "Étape 4. Les données fictives (chapitre 4)"
+   },
+   {
+    "id": "etape-4-b-faire-grandir-le-corpus-chapitre-5",
+    "x": "Étape 4 b. Faire grandir le corpus (chapitre 5)"
+   },
+   {
+    "id": "etape-5-le-corpus-prive-chapitre-6",
+    "x": "Étape 5. Le corpus privé (chapitre 6)"
+   },
+   {
+    "id": "etape-6-la-passerelle-chapitre-7",
+    "x": "Étape 6. La passerelle (chapitre 7)"
+   },
+   {
+    "id": "etape-7-les-agents-metier-chapitre-8",
+    "x": "Étape 7. Les agents métier (chapitre 8)"
+   },
+   {
+    "id": "etape-8-le-portail-chapitre-9",
+    "x": "Étape 8. Le portail (chapitre 9)"
+   },
+   {
+    "id": "etape-9-l-agent-cnil-chapitre-10",
+    "x": "Étape 9. L'agent CNIL (chapitre 10)"
+   },
+   {
+    "id": "etape-10-la-red-team-chapitre-11",
+    "x": "Étape 10. La red team (chapitre 11)"
+   },
+   {
+    "id": "etape-11-les-exercices-chapitre-12",
+    "x": "Étape 11. Les exercices (chapitre 12)"
+   },
+   {
+    "id": "les-ecarts-entre-sources",
+    "x": "Les écarts entre sources"
+   }
+  ]
+ },
+ {
+  "fichier": "17-annexe-methode",
+  "slug": "annexe-methode",
+  "etiquette": "Annexe C",
+  "titre": "La méthode de mesure des coûts",
+  "annexe": true,
+  "intertitres": [
+   {
+    "id": "la-regle",
+    "x": "La règle"
+   },
+   {
+    "id": "claude-les-quatre-compteurs",
+    "x": "Claude : les quatre compteurs"
+   },
+   {
+    "id": "ollama-les-lignes-du-journal",
+    "x": "Ollama : les lignes du journal"
+   },
+   {
+    "id": "rattacher-les-couts-aux-etapes",
+    "x": "Rattacher les coûts aux étapes"
+   },
+   {
+    "id": "les-hypotheses-des-estimations",
+    "x": "Les hypothèses des estimations"
+   },
+   {
+    "id": "pourquoi-les-mesures-changent",
+    "x": "Pourquoi les mesures changent"
+   },
+   {
+    "id": "ce-qui-n-a-pas-pu-etre-mesure",
+    "x": "Ce qui n'a pas pu être mesuré"
+   },
+   {
+    "id": "refaire-la-mesure",
+    "x": "Refaire la mesure"
+   }
+  ]
+ },
+ {
+  "fichier": "18-annexe-chronologie",
+  "slug": "annexe-chronologie",
+  "etiquette": "Annexe D",
+  "titre": "Chronologie",
+  "annexe": true,
+  "intertitres": [
+   {
+    "id": "le-22-octobre-les-fondations",
+    "x": "Le 22 octobre : les fondations"
+   },
+   {
+    "id": "le-23-octobre-le-prive-les-agents-le-portail",
+    "x": "Le 23 octobre : le privé, les agents, le portail"
+   },
+   {
+    "id": "du-24-au-26-octobre-la-pause-puis-le-plan-du-livre",
+    "x": "Du 24 au 26 octobre : la pause, puis le plan du livre"
+   },
+   {
+    "id": "du-27-au-29-octobre-controler-et-attaquer",
+    "x": "Du 27 au 29 octobre : contrôler et attaquer"
+   },
+   {
+    "id": "le-30-octobre-le-livre-et-le-bilan",
+    "x": "Le 30 octobre : le livre et le bilan"
+   },
+   {
+    "id": "le-2-novembre-les-annexes",
+    "x": "Le 2 novembre : les annexes"
+   },
+   {
+    "id": "en-resume",
+    "x": "En résumé"
+   }
+  ]
+ },
+ {
+  "fichier": "19-annexe-points-ouverts",
+  "slug": "annexe-points-ouverts",
+  "etiquette": "Annexe E",
+  "titre": "Ce qui reste ouvert",
+  "annexe": true,
+  "intertitres": [
+   {
+    "id": "decide-reste-a-faire",
+    "x": "Décidé, reste à faire"
+   },
+   {
+    "id": "en-attente-de-mon-accord",
+    "x": "En attente de mon accord"
+   },
+   {
+    "id": "le-dernier-audit",
+    "x": "Le dernier audit"
+   },
+   {
+    "id": "securite-et-donnees",
+    "x": "Sécurité et données"
+   },
+   {
+    "id": "qualite-de-la-recherche-et-du-corpus",
+    "x": "Qualité de la recherche et du corpus"
+   },
+   {
+    "id": "mesures-et-evaluation",
+    "x": "Mesures et évaluation"
+   },
+   {
+    "id": "relectures-humaines",
+    "x": "Relectures humaines"
+   },
+   {
+    "id": "le-portail",
+    "x": "Le portail"
+   },
+   {
+    "id": "hors-du-code",
+    "x": "Hors du code"
+   },
+   {
+    "id": "ce-qui-ne-pourra-pas-etre-verifie",
+    "x": "Ce qui ne pourra pas être vérifié"
+   }
+  ]
+ }
+]
