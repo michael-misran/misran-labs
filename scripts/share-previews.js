@@ -59,6 +59,11 @@ const SAVIEZ_FIXED = {
   description: 'Chaque semaine, quelques choses vraies, insolites ou pas, à ressortir au dîner.',
   image: 'og-image.png',
 }
+const CANOPEE_FIXED = {
+  title: 'Canopée. Huit jours pour faire travailler l’IA sur des données privées · 1977 Éditions',
+  description: 'Huit jours pour faire travailler l’IA sur des données privées, mesures et incidents compris. Le livre de 1977 Éditions, à lire en ligne.',
+  image: 'og-image.png',
+}
 // La librairie L'Entre Deux Pages : depuis que l'accueil est la rue, elle a sa propre adresse
 const LIBRAIRIE_FIXED = {
   title: "L'Entre Deux Pages — la librairie de 1977 Éditions",
@@ -192,6 +197,21 @@ function readValidJson(filePath, requiredFields) {
     }
   }
   return data
+}
+
+// Le livre Canopée : sa page d'ouverture et une page par partie (src/canopee/sommaire.json)
+export function collectCanopee(rootDir) {
+  const sommaire = JSON.parse(fs.readFileSync(path.join(rootDir, 'src/canopee/sommaire.json'), 'utf8'))
+  return [
+    { path: '/canopee', ...CANOPEE_FIXED, type: 'book' },
+    ...sommaire.map((p) => ({
+      path: `/canopee/${p.slug}`,
+      title: `${p.etiquette}. ${p.titre} · Canopée · 1977 Éditions`,
+      description: CANOPEE_FIXED.description,
+      image: CANOPEE_FIXED.image,
+      type: 'article',
+    })),
+  ]
 }
 
 // Numéros du Zine (src/zine/numeros/NN.json) : une page d'aperçu par
@@ -440,6 +460,7 @@ export function sharePreviewsPlugin() {
         { path: '/lab', title: LAB_FIXED.title, description: LAB_FIXED.description, image: LAB_FIXED.image, type: 'website' },
         ...PAGES_MAGAZINE.map((p) => ({ path: p, title: MAGAZINE_FIXED.title, description: MAGAZINE_FIXED.description, image: MAGAZINE_FIXED.image, type: 'website' })),
         { path: '/librairie', title: LIBRAIRIE_FIXED.title, description: LIBRAIRIE_FIXED.description, image: LIBRAIRIE_FIXED.image, type: 'website' },
+        ...collectCanopee(rootDir),
         { path: '/jeux', title: JEUX_FIXED.title, description: JEUX_FIXED.description, image: JEUX_FIXED.image, type: 'website' },
         ...saviezPages,
         ...collectZineNumeros(rootDir),
