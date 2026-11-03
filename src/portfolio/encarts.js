@@ -58,12 +58,6 @@ export const ENCARTS = {
     legende: { fr: 'Une mission autonome en cours dans Claude Code', en: 'An autonomous mission running in Claude Code' },
     consigne: 'Capture d’une session Claude Code ou du dossier missions/ (SPEC, PLAN, RAPPORT). Vérifier qu’aucun secret n’apparaît.',
   },
-  'ia-figma-mcp': {
-    image: null,
-    ratio: '16 / 10',
-    legende: { fr: 'Figma MCP : de la maquette au code, et retour', en: 'Figma MCP: from mockup to code and back' },
-    consigne: 'Avant / après : une maquette Figma et l’écran généré à côté, ou une capture de l’agent qui lit la maquette.',
-  },
   'agents-mission': {
     image: null,
     legende: { fr: 'Le rapport d’une mission menée de nuit', en: 'The report of an overnight mission' },

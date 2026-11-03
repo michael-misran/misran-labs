@@ -293,7 +293,6 @@ function pagesDuLivre(lang, atelier) {
     () => (
       <Page folio={11} tete={`${ROMAINS[2]} · ${lt(LT.ch3, lang)}`} classe="pf-preuves">
         {E('ia-session')}
-        {E('ia-figma-mcp')}
       </Page>
     ),
 
