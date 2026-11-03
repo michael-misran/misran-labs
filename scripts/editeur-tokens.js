@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
-// Éditeur de tokens, côté serveur de dev : le panneau du site (src/editeur/)
+// Éditeur de tokens, côté serveur de dev : le panneau du site (src/editeur/, /?tokens)
 // lit src/styles/tokens.css et y réécrit les valeurs modifiées à l'écran.
 // Ne tourne qu'avec `npm run dev` (configureServer n'existe pas au build) :
 // rien de tout ça n'arrive en production.

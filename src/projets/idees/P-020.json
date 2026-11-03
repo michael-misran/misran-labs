@@ -19,5 +19,13 @@
   },
   "type": "amelioration",
   "taille": "moyenne",
-  "statut": "proposee"
+  "statut": "en-cours",
+  "decision": {
+    "date": "2026-11-03",
+    "note": {
+      "fr": "Michael a demandé de construire l'idée : un panneau ouvert par ?tokens sur n'importe quelle page, qui modifie les tokens en direct et copie les valeurs à coller dans tokens.css.",
+      "en": "Michael asked for the idea to be built: a panel opened with ?tokens on any page, which edits the tokens live and copies the values to paste into tokens.css."
+    }
+  },
+  "mission": "p020-editeur-tokens"
 }
