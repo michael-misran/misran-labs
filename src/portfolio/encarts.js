@@ -53,13 +53,13 @@ export const ENCARTS = {
     consigne: 'Arbre de décision « nouveau composant », extrait du fichier Figma « workflow », logo du client retiré.',
   },
   'ia-session': {
-    image: null,
+    image: '/portfolio/ia-session.jpg',
     ratio: '16 / 10',
     legende: { fr: 'Une mission autonome en cours dans Claude Code', en: 'An autonomous mission running in Claude Code' },
     consigne: 'Capture d’une session Claude Code ou du dossier missions/ (SPEC, PLAN, RAPPORT). Vérifier qu’aucun secret n’apparaît.',
   },
   'agents-mission': {
-    image: null,
+    image: '/portfolio/agents-mission.jpg',
     legende: { fr: 'Le rapport d’une mission menée de nuit', en: 'The report of an overnight mission' },
     consigne: 'Capture d’un RAPPORT.md de mission ou de la pull request ouverte par la routine (liste des étapes, modèle par étape). Vérifier qu’aucun secret n’apparaît.',
   },
@@ -75,19 +75,19 @@ export const ENCARTS = {
     consigne: 'Un parcours utilisateur, un wireframe annoté ou une photo de session de test.',
   },
   'lab-site': {
-    image: null,
+    image: '/portfolio/lab-site.jpg',
     ratio: '16 / 10',
     legende: { fr: 'Misran Labs, le magazine', en: 'Misran Labs, the magazine' },
     consigne: 'Capture de la couverture du magazine ou de la bibliothèque (ce site).',
   },
   'lab-audit': {
-    image: null,
+    image: '/portfolio/lab-audit.jpg',
     ratio: '16 / 10',
     legende: { fr: 'L’outil d’audit de tokens', en: 'The token audit tool' },
     consigne: 'Capture du rapport d’audit (/lab/audit-tokens) avec un jeu de tokens d’exemple.',
   },
   'lab-jeu': {
-    image: null,
+    image: '/portfolio/lab-jeu.jpg',
     ratio: '16 / 10',
     legende: { fr: 'The Lost Cauldron (Godot)', en: 'The Lost Cauldron (Godot)' },
     consigne: 'Capture du jeu en action, ou d’une planche de personnages.',
