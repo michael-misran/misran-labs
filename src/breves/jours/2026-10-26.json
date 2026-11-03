@@ -4,7 +4,7 @@
     {
       "rubrique": "ia",
       "titre": {
-        "fr": "Claude Duet : les garde-fous d'un agent qui ne voit pas vos mots de passe",
+        "fr": "Claude Duet : les garde-fous d’un agent qui ne voit pas vos mots de passe",
         "en": "Claude Duet: the safeguards of an agent that never sees your passwords"
       },
       "resume": {
@@ -18,11 +18,11 @@
     {
       "rubrique": "tech",
       "titre": {
-        "fr": "Figma : les code layers en bêta, gratuits jusqu'au 4 novembre",
+        "fr": "Figma : les code layers en bêta, gratuits jusqu’au 4 novembre",
         "en": "Figma: code layers in beta, free until November 4"
       },
       "resume": {
-        "fr": "Figma a ouvert le 23 octobre en bêta des couches de code posées à côté des maquettes, pour bâtir des prototypes interactifs. L'outil consomme des crédits d'IA ; sur les offres payantes, créer et modifier est gratuit jusqu'au 4 novembre 2026.",
+        "fr": "Figma a ouvert le 23 octobre en bêta des couches de code posées à côté des maquettes, pour bâtir des prototypes interactifs. L’outil consomme des crédits d’IA ; sur les offres payantes, créer et modifier est gratuit jusqu’au 4 novembre 2026.",
         "en": "On October 23, Figma opened code layers in beta: layers of code placed beside designs, to build interactive prototypes. The tool uses AI credits; on paid plans, creating and editing is free through November 4, 2026."
       },
       "sources": [
@@ -36,7 +36,7 @@
         "en": "Copilot now counts what Claude Code and Codex do too"
       },
       "resume": {
-        "fr": "Depuis le 23 octobre, l'API de métriques d'usage de GitHub Copilot ajoute un détail par client : OpenCode, Claude Code, Codex et d'autres. Une requête est un appel de modèle, pas un prompt, et l'étiquette du client reste une estimation.",
+        "fr": "Depuis le 23 octobre, l’API de métriques d’usage de GitHub Copilot ajoute un détail par client : OpenCode, Claude Code, Codex et d’autres. Une requête est un appel de modèle, pas un prompt, et l’étiquette du client reste une estimation.",
         "en": "Since October 23, GitHub Copilot's usage metrics API adds a per-client breakdown: OpenCode, Claude Code, Codex and others. A request is a model call, not a prompt, and the client label is a best-effort estimate."
       },
       "sources": [
@@ -47,7 +47,7 @@
   "mot": {
     "terme": "Sommet",
     "definition": {
-      "fr": "En 3D, point où se rejoignent les arêtes d'un polygone. Plus un objet compte de sommets, plus la machine doit en calculer à chaque image : d'où le choix de formes simples sur les consoles anciennes.",
+      "fr": "En 3D, point où se rejoignent les arêtes d’un polygone. Plus un objet compte de sommets, plus la machine doit en calculer à chaque image : d’où le choix de formes simples sur les consoles anciennes.",
       "en": "In 3D, a point where the edges of a polygon meet. The more vertices an object has, the more the machine must compute each frame: hence the simple shapes on old consoles."
     }
   },

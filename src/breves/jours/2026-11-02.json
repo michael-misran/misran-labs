@@ -5,7 +5,7 @@
       "rubrique": "ia",
       "titre": { "fr": "ChatGPT pourra mettre fin à une conversation fixée sur la violence", "en": "ChatGPT will be able to end chats fixated on violence" },
       "resume": {
-        "fr": "OpenAI annonce que ChatGPT pourra couper automatiquement un échange où quelqu'un se fixe sur la violence, et suspendre temporairement un compte en cas de répétition. Les limites se durcissent aussi pour les moins de 18 ans. OpenAI promet un premier rapport de sécurité début 2027 et un déploiement dans les prochaines semaines.",
+        "fr": "OpenAI annonce que ChatGPT pourra couper automatiquement un échange où quelqu’un se fixe sur la violence, et suspendre temporairement un compte en cas de répétition. Les limites se durcissent aussi pour les moins de 18 ans. OpenAI promet un premier rapport de sécurité début 2027 et un déploiement dans les prochaines semaines.",
         "en": "OpenAI says ChatGPT will be able to automatically end a chat where someone fixates on violence, and temporarily pause an account if it keeps happening. Limits also tighten for users under 18. OpenAI promises a first safety report in early 2027 and a rollout in the next few weeks."
       },
       "sources": [
@@ -14,9 +14,9 @@
     },
     {
       "rubrique": "tech",
-      "titre": { "fr": "Node.js 26 passe en support long, jusqu'à fin avril 2029", "en": "Node.js 26 goes long-term support, through end of April 2029" },
+      "titre": { "fr": "Node.js 26 passe en support long, jusqu’à fin avril 2029", "en": "Node.js 26 goes long-term support, through end of April 2029" },
       "resume": {
-        "fr": "La version 26.13.0 fait entrer la branche 26 en LTS, sous le nom de code « Lithium ». Les mises à jour courent jusqu'à fin avril 2029. Depuis Node.js 25, les binaires Linux officiels dépendent de libatomic, à installer peut-être à part selon la distribution.",
+        "fr": "La version 26.13.0 fait entrer la branche 26 en LTS, sous le nom de code « Lithium ». Les mises à jour courent jusqu’à fin avril 2029. Depuis Node.js 25, les binaires Linux officiels dépendent de libatomic, à installer peut-être à part selon la distribution.",
         "en": "Version 26.13.0 moves the 26 branch into LTS, codename “Lithium”. Updates run through the end of April 2029. Since Node.js 25, the official Linux binaries depend on libatomic, which may need installing separately depending on the distribution."
       },
       "sources": [
@@ -38,14 +38,14 @@
   "mot": {
     "terme": "Agentivité excessive",
     "definition": {
-      "fr": "Situation où un agent d'IA dispose de plus de capacités, de droits ou d'autonomie que sa tâche n'en exige. Le risque se règle à la conception : on retire les outils inutiles.",
+      "fr": "Situation où un agent d’IA dispose de plus de capacités, de droits ou d’autonomie que sa tâche n’en exige. Le risque se règle à la conception : on retire les outils inutiles.",
       "en": "A situation where an AI agent has more capabilities, rights or autonomy than its task requires. The risk is fixed at design time: remove the unneeded tools."
     }
   },
   "chiffre": {
     "valeur": "200+",
     "texte": {
-      "fr": "signalements aux forces de l'ordre par OpenAI au troisième trimestre 2026, selon l'entreprise.",
+      "fr": "signalements aux forces de l’ordre par OpenAI au troisième trimestre 2026, selon l’entreprise.",
       "en": "law-enforcement referrals by OpenAI in the third quarter of 2026, according to the company."
     }
   }

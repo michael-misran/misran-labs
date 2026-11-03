@@ -117,7 +117,7 @@
     ]
   },
   "page4": {
-    "mot": { "terme": "Mode collapse", "nature": "n.", "definition": "In generative AI, a model's tendency to produce ever more similar answers, at the expense of diversity. NN/g does not precisely explain why synthetic answers concentrate this way (p. 2)." },
+    "mot": { "terme": "Mode collapse", "nature": "n.", "definition": "In generative AI, a model's tendency to produce ever more similar answers, at the expense of diversity. NN/g does not precisely explain why synthetic answers concentrate this way (p. 3)." },
     "chiffre": { "valeur": "91%", "texte": "of Spotify's revenue in the second quarter of 2026 came from Premium subscriptions." },
     "bonus": { "type": "citation", "texte": "“Good design is honest.”", "auteur": "Dieter Rams (Vitsœ)" },
     "enigme": { "question": "I give everyone who asks me the same answer, and barely change its form. What am I?", "reponse": "a panel of synthetic users" }

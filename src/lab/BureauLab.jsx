@@ -22,16 +22,16 @@ const MACHINE = "var(--font-machine)"
 
 const COPY = {
   fr: {
-    description: 'Le bureau du Lab, la nuit : un classeur de dossiers, un tableau en liège avec les idées, une machine à écrire et un ordinateur.',
+    description: 'Le bureau du Lab, la nuit : un classeur de dossiers, un tableau en liège avec les idées, une machine à écrire et un ordinateur.',
     accueilOnglet: 'DOSSIERS DU LAB',
     accueilTitre: 'Le bureau du Lab',
     accueilTexte: 'Un journal de bord honnête, pas un catalogue lissé. Les dossiers sont rangés dans le classeur, les idées du dimanche épinglées au tableau.',
     tiroir: (k) => `TIROIR ${k}`,
     tiroirTitre: (a, b) => (a === b ? `Dossier ${a}` : `Dossiers ${a} à ${b}`),
-    tiroirTexte: 'Les dossiers rangés dans ce tiroir :',
+    tiroirTexte: 'Les dossiers rangés dans ce tiroir :',
     archives: 'ARCHIVES',
     archivesTitre: 'Idées classées',
-    archivesTexte: 'Les idées réalisées ou arrêtées, sorties du tableau :',
+    archivesTexte: 'Les idées réalisées ou arrêtées, sorties du tableau :',
     vide: 'VIDE',
     ideeOnglet: (id) => `IDÉE ${id}`,
     ouvrirFiche: 'OUVRIR LA FICHE ▶',

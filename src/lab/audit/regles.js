@@ -34,7 +34,7 @@ const r1 = {
             emplacement: t.emplacement,
             fr: avecRepli
               ? `« ${t.nom} » référence « ${ref} », défini nulle part, mais une valeur de secours évite la panne.`
-              : `« ${t.nom} » référence « ${ref} », qui n'est défini dans aucun des fichiers fournis.`,
+              : `« ${t.nom} » référence « ${ref} », qui n’est défini dans aucun des fichiers fournis.`,
             en: avecRepli
               ? `"${t.nom}" references "${ref}", which is defined nowhere, but a fallback value avoids a failure.`
               : `"${t.nom}" references "${ref}", which is not defined in any of the provided files.`,
@@ -75,7 +75,7 @@ const r2 = {
                 tokens: canon,
                 fichier: premier?.fichier ?? null,
                 emplacement: premier?.emplacement ?? null,
-                fr: `Référence circulaire : ${boucle}. Aucune de ces valeurs ne peut être résolue.`,
+                fr: `Référence circulaire\u00a0: ${boucle}. Aucune de ces valeurs ne peut être résolue.`,
                 en: `Circular reference: ${boucle}. None of these values can be resolved.`,
               })
             )
@@ -118,7 +118,7 @@ const r3 = {
           gravite: 'avertissement',
           fichier: d.fichier,
           emplacement: d.ligne,
-          fr: `« ${d.propriete}: ${d.valeur} » (${d.selecteur}) porte une valeur en dur : ${liste}. À remplacer par un token.`,
+          fr: `« ${d.propriete}: ${d.valeur} » (${d.selecteur}) porte une valeur en dur\u00a0: ${liste}. À remplacer par un token.`,
           en: `"${d.propriete}: ${d.valeur}" (${d.selecteur}) carries a hard-coded value: ${liste}. Replace it with a token.`,
         })
       )
@@ -151,7 +151,7 @@ const r4 = {
           tokens: noms,
           fichier: membres[0].fichier,
           emplacement: membres[0].emplacement,
-          fr: `${noms.length} tokens portent la même valeur « ${valeur} » : ${liste}. L'un pourrait être l'alias de l'autre.`,
+          fr: `${noms.length} tokens portent la même valeur « ${valeur} » : ${liste}. L’un pourrait être l’alias de l’autre.`,
           en: `${noms.length} tokens carry the same value "${valeur}": ${liste}. One could be an alias of the other.`,
         })
       )
@@ -194,7 +194,7 @@ const r5 = {
             tokens: [...nomsA, ...nomsB],
             fichier: a.tokens[0].fichier,
             emplacement: a.tokens[0].emplacement,
-            fr: `Couleurs quasi identiques : ${nomsA.join(', ')} (${a.tokens[0].valeur}) et ${nomsB.join(', ')} (${b.tokens[0].valeur}). Une différence imperceptible est souvent un oubli d'harmonisation.`,
+            fr: `Couleurs quasi identiques\u00a0: ${nomsA.join(', ')} (${a.tokens[0].valeur}) et ${nomsB.join(', ')} (${b.tokens[0].valeur}). Une différence imperceptible est souvent un oubli d’harmonisation.`,
             en: `Nearly identical colors: ${nomsA.join(', ')} (${a.tokens[0].valeur}) and ${nomsB.join(', ')} (${b.tokens[0].valeur}). An imperceptible difference is often a missed harmonisation.`,
           })
         )
@@ -219,7 +219,7 @@ const r6 = {
           tokens: [nom],
           fichier: premier.fichier,
           emplacement: premier.emplacement,
-          fr: `« ${nom} » n'est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers) : à vérifier avant de le supprimer.`,
+          fr: `« ${nom} » n’est référencé nulle part dans les fichiers fournis. Il peut être utilisé ailleurs (code, autres fichiers)\u00a0: à vérifier avant de le supprimer.`,
           en: `"${nom}" is not referenced anywhere in the provided files. It may be used elsewhere (code, other files): check before removing it.`,
         })
       )
@@ -273,7 +273,7 @@ const r7 = {
           tokens: chaine,
           fichier: premier?.fichier ?? null,
           emplacement: premier?.emplacement ?? null,
-          fr: `Chaîne d'alias de ${p} références : ${chaine.join(' → ')}. Au-delà de ${MAX_CHAINE}, la valeur finale devient difficile à retrouver.`,
+          fr: `Chaîne d’alias de ${p} références\u00a0: ${chaine.join(' → ')}. Au-delà de ${MAX_CHAINE}, la valeur finale devient difficile à retrouver.`,
           en: `Alias chain of ${p} references: ${chaine.join(' → ')}. Beyond ${MAX_CHAINE}, the final value becomes hard to trace.`,
         })
       )
@@ -296,7 +296,7 @@ const r8 = {
           tokens: [t.nom],
           fichier: t.fichier,
           emplacement: t.emplacement,
-          fr: `« ${t.nom} » n'a pas de type (ni propre, ni hérité de son groupe). Les outils ne peuvent pas savoir s'il s'agit d'une couleur, d'une dimension, etc.`,
+          fr: `« ${t.nom} » n’a pas de type (ni propre, ni hérité de son groupe). Les outils ne peuvent pas savoir s’il s’agit d’une couleur, d’une dimension, etc.`,
           en: `"${t.nom}" has no type (neither its own nor inherited from its group). Tools cannot tell whether it is a color, a dimension, etc.`,
         })
       )

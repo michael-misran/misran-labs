@@ -4,11 +4,11 @@
     {
       "rubrique": "ia",
       "titre": {
-        "fr": "PyTorch 2.15 : jusqu'à 6,5 fois plus vite sur Mac",
+        "fr": "PyTorch 2.15 : jusqu’à 6,5 fois plus vite sur Mac",
         "en": "PyTorch 2.15: up to 6.5 times faster on Mac"
       },
       "resume": {
-        "fr": "Hugging Face détaille le moteur MPS de PyTorch 2.15 pour les Mac Apple silicon : les tenseurs FP8 occupent deux fois moins de mémoire que le BF16, et les modèles à mélange d'experts décodent 5 à 6,5 fois plus vite qu'en 2.14. La version reste candidate et demande macOS 15.",
+        "fr": "Hugging Face détaille le moteur MPS de PyTorch 2.15 pour les Mac Apple silicon : les tenseurs FP8 occupent deux fois moins de mémoire que le BF16, et les modèles à mélange d’experts décodent 5 à 6,5 fois plus vite qu’en 2.14. La version reste candidate et demande macOS 15.",
         "en": "Hugging Face details the MPS engine in PyTorch 2.15 for Apple silicon Macs: FP8 tensors take half the memory of BF16, and mixture-of-experts models decode 5 to 6.5 times faster than in 2.14. The release is still a candidate and requires macOS 15."
       },
       "sources": [
@@ -22,7 +22,7 @@
         "en": "A GitHub firewall for npm"
       },
       "resume": {
-        "fr": "Annoncé le 20 octobre en préversion publique : un pare-feu qui inspecte les téléchargements entre les agents de code et les registres de paquets. Il est réservé à GitHub Enterprise Cloud et ne gère que npm pour l'instant.",
+        "fr": "Annoncé le 20 octobre en préversion publique : un pare-feu qui inspecte les téléchargements entre les agents de code et les registres de paquets. Il est réservé à GitHub Enterprise Cloud et ne gère que npm pour l’instant.",
         "en": "Announced on October 20 in public preview: a firewall that inspects downloads between coding agents and package registries. It is limited to GitHub Enterprise Cloud and only supports npm for now."
       },
       "sources": [
@@ -33,7 +33,7 @@
   "mot": {
     "terme": "Mode collapse",
     "definition": {
-      "fr": "En IA générative, tendance d'un modèle à produire des réponses de plus en plus semblables, au détriment de la diversité. NN/g n'explique pas précisément pourquoi les réponses synthétiques se concentrent ainsi.",
+      "fr": "En IA générative, tendance d’un modèle à produire des réponses de plus en plus semblables, au détriment de la diversité. NN/g n’explique pas précisément pourquoi les réponses synthétiques se concentrent ainsi.",
       "en": "In generative AI, a model's tendency to produce ever more similar answers, at the expense of diversity. NN/g does not precisely explain why synthetic answers concentrate this way."
     }
   },

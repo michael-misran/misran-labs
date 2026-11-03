@@ -27,7 +27,7 @@ function dessinerBonbons(bonbons) {
 export default {
   id: 'bocal',
   nom: { fr: 'Bocal', en: 'Jar' },
-  question: { fr: 'Combien de bonbons dans le bocal ?', en: 'How many candies are in the jar?' },
+  question: { fr: 'Combien de bonbons dans le bocal ?', en: 'How many candies are in the jar?' },
   unite: { fr: 'bonbons', en: 'candies' },
   generer(rng) {
     const { valeur, bonbons } = genererBocal(rng)

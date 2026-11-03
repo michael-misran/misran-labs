@@ -4,7 +4,7 @@
     {
       "rubrique": "ia",
       "titre": {
-        "fr": "OpenAI : les migrations COBOL réussies passent de 5 % à 87 %",
+        "fr": "OpenAI : les migrations COBOL réussies passent de 5 % à 87 %",
         "en": "OpenAI: successful COBOL migrations go from 5% to 87%"
       },
       "resume": {
@@ -32,11 +32,11 @@
     {
       "rubrique": "tech",
       "titre": {
-        "fr": "Copilot : les politiques de modèles se gèrent par API",
+        "fr": "Copilot : les politiques de modèles se gèrent par API",
         "en": "Copilot: model policies can now be managed by API"
       },
       "resume": {
-        "fr": "Annoncée le 19 octobre, l'API REST des politiques de modèles Copilot est en disponibilité générale pour les entreprises, leurs équipes, leurs applications et les organisations. Une politique d'entreprise peut déléguer le choix des modèles.",
+        "fr": "Annoncée le 19 octobre, l’API REST des politiques de modèles Copilot est en disponibilité générale pour les entreprises, leurs équipes, leurs applications et les organisations. Une politique d’entreprise peut déléguer le choix des modèles.",
         "en": "Announced on October 19, the Copilot model policies REST API is generally available for enterprises, their teams, their apps and organizations. An enterprise policy can delegate model choice."
       },
       "sources": [
@@ -47,7 +47,7 @@
   "mot": {
     "terme": "Opt-in",
     "definition": {
-      "fr": "Principe selon lequel on ne peut contacter une personne qu'après son accord préalable, par opposition à l'opt-out, où l'on contacte tant qu'elle ne s'y oppose pas. Pour le démarchage téléphonique des particuliers, la France est passée à l'opt-in le 11 août 2026.",
+      "fr": "Principe selon lequel on ne peut contacter une personne qu’après son accord préalable, par opposition à l’opt-out, où l’on contacte tant qu’elle ne s’y oppose pas. Pour le démarchage téléphonique des particuliers, la France est passée à l’opt-in le 11 août 2026.",
       "en": "The principle that a person can only be contacted after giving prior consent, as opposed to opt-out, where you contact them until they object. For phone cold-calling of consumers, France moved to opt-in on August 11, 2026."
     }
   },

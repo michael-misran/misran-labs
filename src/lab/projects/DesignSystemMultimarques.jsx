@@ -182,11 +182,11 @@ const CONTENT = {
     tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
 
     planNote:
-      "La grille des 5 étapes de la démarche scientifique s’applique à mes projets, pas à mon parcours : sur deux ans de poste, elle serait reconstituée après coup, donc plus belle que la réalité. Cette page suit un autre plan — contexte, problème, ce que j’ai construit, résultats.",
+      "La grille des 5 étapes de la démarche scientifique s’applique à mes projets, pas à mon parcours : sur deux ans de poste, elle serait reconstituée après coup, donc plus belle que la réalité. Cette page suit un autre plan — contexte, problème, ce que j’ai construit, résultats.",
 
     contextTitle: 'Contexte',
     context:
-      "Plusieurs produits, plusieurs marques, une seule équipe design. Chaque produit avançait à son propre rythme avec ses propres écrans, et la cohérence de marque se rattrapait après coup — au moment où elle coûte le plus cher. Ma mission sur ces deux ans : faire exister un design system commun qui serve tous les produits sans bloquer aucun d’entre eux, et le relier au code pour qu’une décision de design ne soit plus retranscrite à la main par un développeur.",
+      "Plusieurs produits, plusieurs marques, une seule équipe design. Chaque produit avançait à son propre rythme avec ses propres écrans, et la cohérence de marque se rattrapait après coup — au moment où elle coûte le plus cher. Ma mission sur ces deux ans : faire exister un design system commun qui serve tous les produits sans bloquer aucun d’entre eux, et le relier au code pour qu’une décision de design ne soit plus retranscrite à la main par un développeur.",
     contextScope:
       "Le run produit se faisait sur des parcours réglementés — onboarding et collecte de pièces justificatives pour une banque privée, vérification d’identité, outils métiers internes. Des formulaires longs, des contraintes de conformité, des états d’erreur qui comptent autant que le chemin nominal. C’est ce terrain qui a produit la méthode décrite dans la page Workflow.",
     contextConfidentiality:
@@ -200,19 +200,19 @@ const CONTENT = {
       "Décliner une marque revenait à réécrire des écrans, pas à changer des valeurs — ce qui rendait toute nouvelle marque coûteuse et donc repoussée.",
     ],
     problemCause:
-      "La cause commune : aucune décision de design n’existait à un seul endroit. Elle était prise dans une maquette, recopiée dans une autre, puis retapée dans du code. Trois copies, trois occasions de divergence. La question à résoudre n’était donc pas « comment mieux documenter », mais « comment faire en sorte qu’une décision soit prise une seule fois, nommée une seule fois, et consommée à l’identique partout ».",
+      "La cause commune : aucune décision de design n’existait à un seul endroit. Elle était prise dans une maquette, recopiée dans une autre, puis retapée dans du code. Trois copies, trois occasions de divergence. La question à résoudre n’était donc pas « comment mieux documenter », mais « comment faire en sorte qu’une décision soit prise une seule fois, nommée une seule fois, et consommée à l’identique partout ».",
 
     builtTitle: 'Ce que j’ai construit',
     builtIntro:
       "Trois chantiers menés en parallèle, jamais en séquence — parce que mener le design system après le run revient à ne jamais le mener. Chacun a son onglet.",
     builtItems: [
-      "Une architecture de tokens en trois tiers avec chaîne d’alias obligatoire : aucun token ne porte une valeur brute s’il existe un niveau au-dessus de lui. C’est cette contrainte qui rend la marque blanche possible sans fork.",
-      "Un pipeline design-to-code construit avec la Lead Tech : les tokens partent de Figma, sont versionnés et revus en pull request dans le dépôt, puis transformés automatiquement en variables CSS. L’étape de retranscription manuelle disparaît au lieu d’être mieux documentée.",
-      "Une documentation de gouvernance : convention de nommage, checklist imposée pour ajouter un composant, règles d’arbitrage entre le besoin d’un produit et la cohérence du système. C’est la partie la moins visible du travail et la plus déterminante sur la durée.",
+      "Une architecture de tokens en trois tiers avec chaîne d’alias obligatoire : aucun token ne porte une valeur brute s’il existe un niveau au-dessus de lui. C’est cette contrainte qui rend la marque blanche possible sans fork.",
+      "Un pipeline design-to-code construit avec la Lead Tech : les tokens partent de Figma, sont versionnés et revus en pull request dans le dépôt, puis transformés automatiquement en variables CSS. L’étape de retranscription manuelle disparaît au lieu d’être mieux documentée.",
+      "Une documentation de gouvernance : convention de nommage, checklist imposée pour ajouter un composant, règles d’arbitrage entre le besoin d’un produit et la cohérence du système. C’est la partie la moins visible du travail et la plus déterminante sur la durée.",
     ],
     builtIntlTitle: 'La contrainte qui a façonné le reste',
     builtIntl:
-      "Les décisions ne se prenaient pas dans une seule pièce : PO, PM et Tech Leads répartis sur l’Europe, l’Amérique et l’Inde. Une maquette non annotée dans un autre fuseau horaire coûte un cycle de 24 h à chaque question. Ça impose d’écrire les arbitrages au lieu de les expliquer — et c’est en grande partie pour ça que la gouvernance est devenue un livrable à part entière plutôt qu’une habitude d’équipe.",
+      "Les décisions ne se prenaient pas dans une seule pièce : PO, PM et Tech Leads répartis sur l’Europe, l’Amérique et l’Inde. Une maquette non annotée dans un autre fuseau horaire coûte un cycle de 24 h à chaque question. Ça impose d’écrire les arbitrages au lieu de les expliquer — et c’est en grande partie pour ça que la gouvernance est devenue un livrable à part entière plutôt qu’une habitude d’équipe.",
 
     lessonsTitle: 'Ce que je referais autrement',
     lessons: [
@@ -223,7 +223,7 @@ const CONTENT = {
 
     tokensTitle: 'Architecture des tokens',
     tokensIntro:
-      "Trois niveaux, une règle : un token ne référence jamais une valeur brute s’il existe un niveau au-dessus de lui. C’est cette contrainte — plus que la palette elle-même — qui permet de changer une marque sans toucher aux écrans.",
+      "Trois niveaux, une règle : un token ne référence jamais une valeur brute s’il existe un niveau au-dessus de lui. C’est cette contrainte — plus que la palette elle-même — qui permet de changer une marque sans toucher aux écrans.",
     tokensTiersTitle: 'Les trois tiers',
     tokensTiersColumns: ['Tier', 'Ce qu’il porte', 'Exemple'],
     tokensTiersRows: [
@@ -234,7 +234,7 @@ const CONTENT = {
 
     tokensAnatomyTitle: 'Anatomie d’un nom',
     tokensAnatomyIntro:
-      "Un nom de token est un identifiant technique : c’est par lui que l’outil rattache le token à l’élément dans Figma. S’il est mal formé, le rattachement casse. D’où une formule unique, lue de gauche à droite, chaque segment rétrécissant la portée de la décision.",
+      "Un nom de token est un identifiant technique : c’est par lui que l’outil rattache le token à l’élément dans Figma. S’il est mal formé, le rattachement casse. D’où une formule unique, lue de gauche à droite, chaque segment rétrécissant la portée de la décision.",
     tokensAnatomySegments: [
       { value: 'ds', role: 'namespace' },
       { value: 'component', role: 'tier' },
@@ -245,11 +245,11 @@ const CONTENT = {
       { value: 'hover', role: 'état' },
     ],
     tokensAnatomyNote:
-      "Tous les segments ne sont pas obligatoires : un token d’espacement ou de typographie n’a ni rôle de couleur ni état. On n’utilise que ce qui rend l’intention non ambiguë.",
+      "Tous les segments ne sont pas obligatoires : un token d’espacement ou de typographie n’a ni rôle de couleur ni état. On n’utilise que ce qui rend l’intention non ambiguë.",
 
     tokensChainTitle: 'La chaîne de résolution',
     tokensChainIntro:
-      "Exemple réel : la couleur de fond d’un bouton primaire au survol. Quatre maillons, un seul endroit où la valeur existe vraiment.",
+      "Exemple réel : la couleur de fond d’un bouton primaire au survol. Quatre maillons, un seul endroit où la valeur existe vraiment.",
     tokensChainFlow: [
       { label: 'Primitive', sublabel: 'ds.primitive.color.blue.800 — seule occurrence de la valeur brute' },
       { label: 'Semantic', sublabel: 'ds.semantic.color.primary.hover — alias du primitive, porte le rôle' },
@@ -257,7 +257,7 @@ const CONTENT = {
       { label: 'Variable CSS', sublabel: '--ds-component-button-primary-contained-bg-hover — ce que consomme le produit' },
     ],
     tokensChainNote:
-      "Conséquence concrète : une marque se décline en surchargeant le niveau primitive, ou en activant un autre jeu de tokens. Aucun écran, aucun composant, aucune feuille de style n’est réécrit.",
+      "Conséquence concrète : une marque se décline en surchargeant le niveau primitive, ou en activant un autre jeu de tokens. Aucun écran, aucun composant, aucune feuille de style n’est réécrit.",
 
     tokensCategoriesTitle: 'Les catégories couvertes',
     tokensCategoriesColumns: ['Catégorie', 'Ce qu’elle couvre', 'Exemple sémantique'],
@@ -270,29 +270,29 @@ const CONTENT = {
     ],
     tokensScalesTitle: 'Les échelles de base',
     tokensScales: [
-      "Dimensions : une échelle unique de 4 à 48 px par pas de 4, nommée 2xs → 7xl. Aucune valeur intermédiaire ne peut être inventée dans une maquette.",
-      "Points de rupture : xs 0 · sm 600 · md 900 · lg 1200 · xl 1536 — les mêmes côté Figma et côté code.",
-      "Thèmes : clair et sombre sont deux jeux de tokens aux noms identiques. Jamais de suffixe -light ou -dark dans un nom ; c’est le jeu actif qui résout la valeur.",
-      "Rôles de couleur : primary, error, success, warning, inherit (neutre), text, border. Le rôle décrit l’intention, jamais la teinte.",
-      "États, toujours en dernier segment : default, hover, pressed, focus, disabled. Le focus est toujours un anneau visible — exigence WCAG.",
+      "Dimensions : une échelle unique de 4 à 48 px par pas de 4, nommée 2xs → 7xl. Aucune valeur intermédiaire ne peut être inventée dans une maquette.",
+      "Points de rupture : xs 0 · sm 600 · md 900 · lg 1200 · xl 1536 — les mêmes côté Figma et côté code.",
+      "Thèmes : clair et sombre sont deux jeux de tokens aux noms identiques. Jamais de suffixe -light ou -dark dans un nom ; c’est le jeu actif qui résout la valeur.",
+      "Rôles de couleur : primary, error, success, warning, inherit (neutre), text, border. Le rôle décrit l’intention, jamais la teinte.",
+      "États, toujours en dernier segment : default, hover, pressed, focus, disabled. Le focus est toujours un anneau visible — exigence WCAG.",
     ],
     tokensVisual: 'La chaîne d’alias telle qu’elle apparaît dans Figma, et un extrait des trois niveaux de tokens',
     tokensVisualFile: 'src/assets/case-studies/design-system/tokens-tiers.png',
 
     pipelineTitle: 'Pipeline design-to-code',
     pipelineIntro:
-      "Le point de départ : un développeur qui retranscrit une valeur à la main est une source de dérive garantie. L’objectif était donc de supprimer l’étape de retranscription, pas de mieux la documenter. Construit avec la Lead Tech.",
+      "Le point de départ : un développeur qui retranscrit une valeur à la main est une source de dérive garantie. L’objectif était donc de supprimer l’étape de retranscription, pas de mieux la documenter. Construit avec la Lead Tech.",
     pipelineFlow: [
       { label: 'Figma', sublabel: 'Variables et composants. Les propriétés de composant portent exactement le nom utilisé par les tokens' },
       { label: 'Tokens Studio', sublabel: 'Rattachement des tokens aux éléments, jeux clair / sombre aux noms identiques' },
       { label: 'Dépôt GitHub', sublabel: 'Les tokens sont versionnés et revus en pull request, comme du code' },
       { label: 'Style Dictionary', sublabel: 'Transformation automatique en variables CSS, et autres formats si besoin' },
-      { label: 'Produits', sublabel: 'Chaque produit consomme les mêmes variables ; une marque est une surcharge, pas un fork' },
+      { label: 'Produits', sublabel: 'Chaque produit consomme les mêmes variables ; une marque est une surcharge, pas un fork' },
     ],
     pipelineRulesTitle: 'Les règles qui font tenir le pipeline',
     pipelineRules: [
       "Le nom du token reprend mot pour mot le nom de la propriété Figma. Si la propriété s’appelle contained, le token dit contained — pas filled. Pas de couche de traduction, donc rien à maintenir entre les deux mondes.",
-      "Séparateur : le point, jamais le tiret. Le point crée des groupes manipulables en masse dans l’outil ; le tiret produit une liste plate.",
+      "Séparateur : le point, jamais le tiret. Le point crée des groupes manipulables en masse dans l’outil ; le tiret produit une liste plate.",
       "Minuscules, chiffres et points uniquement. Tout autre caractère casse la transformation.",
       "Un token qui manque est signalé comme un manque. On n’approxime jamais avec le primitive le plus proche, et on ne crée pas de valeur ponctuelle.",
     ],
@@ -302,12 +302,12 @@ const CONTENT = {
     governanceTitle: 'Gouvernance',
     governanceIntro:
       "Un design system sans règle d’entrée devient une bibliothèque de composants orphelins en six mois. La partie la moins visible du travail — et la plus déterminante — a été de décider qui peut ajouter quoi, et à quelle condition.",
-    governanceChecklistTitle: 'Ajouter un composant : l’ordre est imposé',
+    governanceChecklistTitle: 'Ajouter un composant : l’ordre est imposé',
     governanceChecklist: [
       "1. Vérifier qu’un token sémantique ne couvre pas déjà la décision. La plupart des choix de couleur, d’espacement et de typographie d’un nouveau composant doivent réutiliser l’existant, pas créer du neuf.",
       "2. Si le composant s’écarte réellement de l’intention du sémantique, créer un token composant qui référence ce sémantique — et dont le nom colle à la propriété Figma.",
       "3. Si aucun sémantique ne couvre la décision, créer d’abord le sémantique. On ne saute jamais le tier.",
-      "4. Si aucun primitive ne porte la valeur, créer d’abord le primitive. La chaîne doit toujours résoudre : composant → sémantique → primitive → valeur.",
+      "4. Si aucun primitive ne porte la valeur, créer d’abord le primitive. La chaîne doit toujours résoudre : composant → sémantique → primitive → valeur.",
     ],
     governanceArbitrationTitle: 'Arbitrage run / unification',
     governanceArbitration: [
@@ -316,39 +316,39 @@ const CONTENT = {
       "Si la dérogation est nécessaire, elle est documentée comme une dette, avec une date de revue. Ce qui n’est pas écrit devient la norme silencieuse du produit.",
       "Séparation stricte entre le token de marque, surchargeable, et le token structurel, non négociable. C’est la ligne qui rend la marque blanche gouvernable.",
     ],
-    governanceVisual: 'La documentation de gouvernance : convention de nommage, checklist d’ajout, process de mise à jour',
+    governanceVisual: 'La documentation de gouvernance : convention de nommage, checklist d’ajout, process de mise à jour',
     governanceVisualFile: 'src/assets/case-studies/design-system/governance-doc.png',
 
     resultsTitle: 'Résultats',
     resultsIntro:
-      "La règle du Lab s’applique aussi ici : ce qui est vérifié est présenté comme vérifié, ce qui ne l’est pas ne devient pas une affirmation.",
+      "La règle du Lab s’applique aussi ici : ce qui est vérifié est présenté comme vérifié, ce qui ne l’est pas ne devient pas une affirmation.",
     resultsVerifiedTitle: 'Vérifié',
     resultsVerified: [
-      "La chaîne d’alias résout de bout en bout : une valeur modifiée au niveau primitive atteint la variable CSS consommée en production sans intervention manuelle.",
+      "La chaîne d’alias résout de bout en bout : une valeur modifiée au niveau primitive atteint la variable CSS consommée en production sans intervention manuelle.",
       "Les deux thèmes partagent des noms de tokens identiques — changer de thème ne demande aucune modification de nom ni de composant.",
-      "Les tokens sont versionnés et revus en pull request : une évolution du design system laisse une trace consultable, au même titre qu’un changement de code.",
+      "Les tokens sont versionnés et revus en pull request : une évolution du design system laisse une trace consultable, au même titre qu’un changement de code.",
       "La convention de nommage est écrite et applicable par quelqu’un d’autre que son auteur. C’est ce qui la distingue d’une habitude personnelle — et ce qui fait qu’elle survit à un départ.",
-      "Décliner une marque ne demande plus de réécrire des écrans : la surcharge se fait au niveau des valeurs.",
+      "Décliner une marque ne demande plus de réécrire des écrans : la surcharge se fait au niveau des valeurs.",
     ],
     resultsNoNumbersTitle: 'Pourquoi il n’y a pas de chiffres ici',
     resultsNoNumbers:
       "Les indicateurs qui compteraient — taux d’adoption par produit, gain de temps sur le handoff, taux de retouche après développement, délai de déclinaison d’une marque — vivent dans les outils de l’entreprise. Je n’y ai plus accès depuis mon départ, et je n’avais pas mis la mesure en place assez tôt pour en avoir gardé une trace. Les estimer aujourd’hui produirait exactement le genre de chiffre qui ne résiste pas à une question en entretien.",
     resultsNoNumbersLesson:
-      "C’est la leçon la plus utile que je retire de ce poste, et elle est visible ailleurs sur ce site : la page Workflow définit ses indicateurs de succès avant de commencer, précisément pour ne plus avoir à les reconstituer à la fin. Sur le prochain système que je mettrai en place, la mesure fera partie de la première itération, pas de la dernière.",
+      "C’est la leçon la plus utile que je retire de ce poste, et elle est visible ailleurs sur ce site : la page Workflow définit ses indicateurs de succès avant de commencer, précisément pour ne plus avoir à les reconstituer à la fin. Sur le prochain système que je mettrai en place, la mesure fera partie de la première itération, pas de la dernière.",
 
     devTodoDecisionsTitle: 'DÉCISIONS PRISES — NE PAS RÉINTRODUIRE',
     devTodoDecisions: [
-      "Confidentialité : préfixe de tokens neutre « ds. », aucun nom de design system interne, de librairie de composants ni de client sur la page. Tenu aussi dans les commentaires du fichier.",
-      "Forme : pas de grille des 5 étapes sur cette page — elle serait reconstituée après coup. Plan retenu : contexte, problème, ce que j’ai construit, résultats. La note en haut de la Vue d’ensemble l’assume explicitement.",
-      "Chiffres : aucun accès aux métriques depuis le départ de l’entreprise. L’onglet Résultats le dit et en tire une leçon, plutôt que de laisser un trou ou d’estimer.",
-      "Sources du contenu : les trois fichiers de tokens et le guide de nommage conservés dans mes archives du poste, plus la page CV. Rien d’autre.",
-      "À vérifier une fois : la couverture de process (phases) dans projects.js est une estimation prudente, et les dates viennent de la page CV.",
+      "Confidentialité : préfixe de tokens neutre « ds. », aucun nom de design system interne, de librairie de composants ni de client sur la page. Tenu aussi dans les commentaires du fichier.",
+      "Forme : pas de grille des 5 étapes sur cette page — elle serait reconstituée après coup. Plan retenu : contexte, problème, ce que j’ai construit, résultats. La note en haut de la Vue d’ensemble l’assume explicitement.",
+      "Chiffres : aucun accès aux métriques depuis le départ de l’entreprise. L’onglet Résultats le dit et en tire une leçon, plutôt que de laisser un trou ou d’estimer.",
+      "Sources du contenu : les trois fichiers de tokens et le guide de nommage conservés dans mes archives du poste, plus la page CV. Rien d’autre.",
+      "À vérifier une fois : la couverture de process (phases) dans projects.js est une estimation prudente, et les dates viennent de la page CV.",
     ],
     devTodoVisualsTitle: 'VISUELS — LE POINT LE PLUS IMPORTANT',
     devTodoVisuals: [
       "Trois emplacements sont réservés (onglets Tokens, Pipeline, Gouvernance) et n’apparaissent qu’en dev.",
       "Dépose les fichiers dans src/assets/case-studies/design-system/ aux noms indiqués, puis remplace le VisualSlot par une balise img.",
-      "Le plus convaincant, dans l’ordre : la chaîne d’alias visible dans Figma, une pull request de synchronisation des tokens, le même composant sous deux marques, un avant / après d’écran.",
+      "Le plus convaincant, dans l’ordre : la chaîne d’alias visible dans Figma, une pull request de synchronisation des tokens, le même composant sous deux marques, un avant / après d’écran.",
       "Tes exports d’écrans dans tes archives du poste sont utilisables à condition de remplacer les données, les logos et tout élément nominatif.",
       "Sans visuel, cette page reste du texte — et c’est le seul point de l’analyse qu’aucune réécriture ne peut régler.",
     ],

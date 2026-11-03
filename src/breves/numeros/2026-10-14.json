@@ -14,7 +14,7 @@
         "realisateur": "Rob Savage",
         "genre": "Épouvante-horreur",
         "duree": "1 h 34",
-        "texte": "La petite Bela vit chez elle avec une entité malveillante qui ressemble étrangement à sa mère. Avec Jessica Chastain ; interdit aux moins de 12 ans.",
+        "texte": "La petite Bela vit chez elle avec une entité malveillante qui ressemble étrangement à sa mère. Avec Jessica Chastain ; interdit aux moins de 12 ans.",
         "affiche": "2026-10-14-5.jpg",
         "horreur": true
       },
@@ -31,7 +31,7 @@
         "realisateur": "Kitao Sakurai",
         "genre": "Action, arts martiaux",
         "duree": "2 h 00",
-        "texte": "En 1993, Ryu et Ken sont rappelés dans l'arène : Chun-Li les recrute pour le tournoi des World Warriors.",
+        "texte": "En 1993, Ryu et Ken sont rappelés dans l’arène : Chun-Li les recrute pour le tournoi des World Warriors.",
         "affiche": "2026-10-14-2.jpg"
       },
       {
@@ -58,16 +58,16 @@
         "type": "modele",
         "rubrique": "Le modèle économique",
         "court": "Modèle",
-        "titre": "Arlo : la caméra paie le loyer, l'abonnement fait le profit",
-        "chapo": "Au deuxième trimestre 2026, 59,7 % du chiffre d'affaires de ce fabricant de caméras venait des abonnements.",
+        "titre": "Arlo : la caméra paie le loyer, l’abonnement fait le profit",
+        "chapo": "Au deuxième trimestre 2026, 59,7 % du chiffre d’affaires de ce fabricant de caméras venait des abonnements.",
         "paragraphes": [
-          "Arlo vend des caméras de surveillance connectées, mais l'essentiel de son revenu n'est plus le matériel. Dans son communiqué du 6 août 2026 (trimestre clos le 28 juin), l'entreprise annonce 155,9 millions de dollars de chiffre d'affaires, dont 93,0 millions en abonnements et services et 62,9 millions en produits.",
-          "La clé est la marge : 81,1 % de marge brute (GAAP) sur les abonnements, contre 48,2 % pour l'ensemble. L'entreprise compte 6,3 millions de comptes payants (+23,2 %) et un revenu récurrent annualisé (ARR) de 365 millions (+15,6 %).",
-          "Le mécanisme rappelle celui du rasoir et des lames : l'appareil installe le client, le service revient chaque mois."
+          "Arlo vend des caméras de surveillance connectées, mais l’essentiel de son revenu n’est plus le matériel. Dans son communiqué du 6 août 2026 (trimestre clos le 28 juin), l’entreprise annonce 155,9 millions de dollars de chiffre d’affaires, dont 93,0 millions en abonnements et services et 62,9 millions en produits.",
+          "La clé est la marge : 81,1 % de marge brute (GAAP) sur les abonnements, contre 48,2 % pour l’ensemble. L’entreprise compte 6,3 millions de comptes payants (+23,2 %) et un revenu récurrent annualisé (ARR) de 365 millions (+15,6 %).",
+          "Le mécanisme rappelle celui du rasoir et des lames : l’appareil installe le client, le service revient chaque mois."
         ],
         "encadre": {
           "titre": "À retenir",
-          "texte": "Un produit physique peut ouvrir l'accès à un service récurrent : ce qui compte, c'est ce que rapporte un compte payant dans la durée.",
+          "texte": "Un produit physique peut ouvrir l’accès à un service récurrent : ce qui compte, c’est ce que rapporte un compte payant dans la durée.",
           "plein": true
         },
         "sources": [
@@ -76,17 +76,17 @@
       },
       {
         "type": "irritant",
-        "rubrique": "L'irritant du jour",
+        "rubrique": "L’irritant du jour",
         "court": "Irritant",
         "titre": "Chercher sur un site et ne rien trouver",
         "chapo": "Selon Baymard, 56 % des sites e-commerce répondent mal à ce que les gens viennent chercher.",
         "paragraphes": [
-          "Dans un article du 2 octobre 2026, l'institut Baymard rappelle que 56 % des sites ne soutiennent pas correctement les besoins de recherche des utilisateurs. Ses conseils : un vrai champ avec bouton visible, des suggestions de mots-clés (pas seulement de produits), la requête conservée sur la page de résultats.",
-          "Pour quelques centaines de produits, un champ qui se déplie à l'icône peut suffire ; pour un catalogue de 10 000 références, une barre toujours visible avec suggestions se justifie."
+          "Dans un article du 2 octobre 2026, l’institut Baymard rappelle que 56 % des sites ne soutiennent pas correctement les besoins de recherche des utilisateurs. Ses conseils : un vrai champ avec bouton visible, des suggestions de mots-clés (pas seulement de produits), la requête conservée sur la page de résultats.",
+          "Pour quelques centaines de produits, un champ qui se déplie à l’icône peut suffire ; pour un catalogue de 10 000 références, une barre toujours visible avec suggestions se justifie."
         ],
         "encadre": {
           "titre": "Piste de business",
-          "texte": "Un audit de recherche interne pour boutiques indépendantes : on teste 50 requêtes réelles (fautes, synonymes, références), on rend un rapport illustré des échecs et un correctif. Concurrence : Baymard réalise déjà des audits UX ; l'angle est le petit marchand, au forfait.",
+          "texte": "Un audit de recherche interne pour boutiques indépendantes : on teste 50 requêtes réelles (fautes, synonymes, références), on rend un rapport illustré des échecs et un correctif. Concurrence : Baymard réalise déjà des audits UX ; l’angle est le petit marchand, au forfait.",
           "plein": true
         },
         "sources": [
@@ -103,14 +103,14 @@
         "rubrique": "Design & UX",
         "court": "Design",
         "titre": "Un comparateur de produits, 16 millions de dollars annoncés",
-        "chapo": "Une marque de vêtements attribue ce gain à un seul outil : comparer des articles dans la liste.",
+        "chapo": "Une marque de vêtements attribue ce gain à un seul outil : comparer des articles dans la liste.",
         "paragraphes": [
-          "Le 7 octobre 2026, Baymard a publié le témoignage d'une marque de vêtements premium, aux gammes techniques, qui dit avoir gagné 16 millions de dollars de revenu sur son site et son application. Le changement : un outil de comparaison de produits sur les pages de listing, recommandé par un audit UX (guideline n° 495).",
-          "Prudence : le chiffre est déclaré par le client, sans période ni méthode pour isoler l'effet de l'outil, et le texte est publié par une entreprise qui vend ces audits. Le titre parle d'un « seul » conseil, alors que le texte évoque un audit complet du site."
+          "Le 7 octobre 2026, Baymard a publié le témoignage d’une marque de vêtements premium, aux gammes techniques, qui dit avoir gagné 16 millions de dollars de revenu sur son site et son application. Le changement : un outil de comparaison de produits sur les pages de listing, recommandé par un audit UX (guideline n° 495).",
+          "Prudence : le chiffre est déclaré par le client, sans période ni méthode pour isoler l’effet de l’outil, et le texte est publié par une entreprise qui vend ces audits. Le titre parle d’un « seul » conseil, alors que le texte évoque un audit complet du site."
         ],
         "encadre": {
           "titre": "À essayer",
-          "texte": "Prenez deux produits proches de votre boutique : si un inconnu ouvre trois onglets pour choisir, la comparaison manque.",
+          "texte": "Prenez deux produits proches de votre boutique : si un inconnu ouvre trois onglets pour choisir, la comparaison manque.",
           "plein": true
         },
         "sources": [
@@ -121,16 +121,16 @@
         "type": "tech",
         "rubrique": "La tech",
         "court": "Tech",
-        "titre": "LFM2.5-24B-A2B : un agent local qui n'active que 2 milliards de paramètres",
+        "titre": "LFM2.5-24B-A2B : un agent local qui n’active que 2 milliards de paramètres",
         "chapo": "Liquid AI publie un modèle ouvert pensé pour tourner sur un portable.",
         "paragraphes": [
-          "Le 13 octobre, Liquid AI a publié LFM2.5-24B-A2B sur Hugging Face. Le modèle compte 24 milliards de paramètres mais n'en active que 2 milliards à chaque mot produit (architecture « mélange d'experts »). Il raisonne avant de répondre et accepte 131 000 tokens de contexte.",
-          "Vitesses annoncées : 184 tokens par seconde sur un Apple M5 Max, 114 sur un Ryzen AI Max+ 395. À AutomationBench, il affiche 27,69 contre 8,72 pour le meilleur concurrent cité.",
-          "Mais il est en retrait sur le code : 51,0 à SWE-Bench Verified contre 66,2 pour un concurrent. La licence n'est pas précisée : à vérifier avant tout usage commercial."
+          "Le 13 octobre, Liquid AI a publié LFM2.5-24B-A2B sur Hugging Face. Le modèle compte 24 milliards de paramètres mais n’en active que 2 milliards à chaque mot produit (architecture « mélange d’experts »). Il raisonne avant de répondre et accepte 131 000 tokens de contexte.",
+          "Vitesses annoncées : 184 tokens par seconde sur un Apple M5 Max, 114 sur un Ryzen AI Max+ 395. À AutomationBench, il affiche 27,69 contre 8,72 pour le meilleur concurrent cité.",
+          "Mais il est en retrait sur le code : 51,0 à SWE-Bench Verified contre 66,2 pour un concurrent. La licence n’est pas précisée : à vérifier avant tout usage commercial."
         ],
         "encadre": {
-          "titre": "L'œil du business",
-          "texte": "Un agent qui tourne sur la machine du client évite l'envoi de données vers un cloud : un argument pour les métiers sensibles (santé, droit, comptabilité).",
+          "titre": "L’œil du business",
+          "texte": "Un agent qui tourne sur la machine du client évite l’envoi de données vers un cloud : un argument pour les métiers sensibles (santé, droit, comptabilité).",
           "plein": true
         },
         "sources": [
@@ -144,7 +144,7 @@
         "taille": "petit",
         "titre": "GitHub bloque par défaut les clés Anthropic",
         "paragraphes": [
-          "Annoncé le 13 octobre : GitHub bloque au push, par défaut, les clés Anthropic, même sur les dépôts publics gratuits. Détecteurs ajoutés aussi pour Salesforce et Cloudsmith."
+          "Annoncé le 13 octobre : GitHub bloque au push, par défaut, les clés Anthropic, même sur les dépôts publics gratuits. Détecteurs ajoutés aussi pour Salesforce et Cloudsmith."
         ],
         "sources": [
           "https://github.blog/changelog/2026-10-13-secret-scanning-blocks-anthropic-keys-by-default-adds-salesforce"
@@ -156,7 +156,7 @@
     "mot": {
       "terme": "ARR",
       "nature": "n. m.",
-      "definition": "Sigle de l'anglais <i>annual recurring revenue</i> : revenu récurrent annualisé, c'est-à-dire ce que rapporteraient sur un an les abonnements en cours. Chez Arlo, il atteint 365 millions de dollars (p. 2)."
+      "definition": "Sigle de l’anglais <i>annual recurring revenue</i> : revenu récurrent annualisé, c’est-à-dire ce que rapporteraient sur un an les abonnements en cours. Chez Arlo, il atteint 365 millions de dollars (p. 2)."
     },
     "chiffre": {
       "valeur": "56 %",
@@ -164,12 +164,12 @@
     },
     "bonus": {
       "type": "citation",
-      "texte": "« Good design is as little design as possible. »",
+      "texte": "« Good design is as little design as possible. »",
       "auteur": "Dieter Rams (Vitsœ)"
     },
     "enigme": {
-      "question": "Vendue une fois, je ne rapporte que renouvelée chaque mois. Qui suis-je ?",
-      "reponse": "l'offre d'abonnement"
+      "question": "Vendue une fois, je ne rapporte que renouvelée chaque mois. Qui suis-je ?",
+      "reponse": "l’offre d’abonnement"
     }
   },
   "sources": [

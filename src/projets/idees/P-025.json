@@ -6,11 +6,11 @@
     "en": "Try Figma's code layers on the Lab's design system"
   },
   "resume": {
-    "fr": "Figma propose en bêta publique gratuite, jusqu'au 4 novembre, des « code layers » qui rapprochent la maquette du code : une occasion à coût nul de les tester sur le design system du Lab avant la fin de la gratuité.",
+    "fr": "Figma propose en bêta publique gratuite, jusqu’au 4 novembre, des « code layers » qui rapprochent la maquette du code : une occasion à coût nul de les tester sur le design system du Lab avant la fin de la gratuité.",
     "en": "Figma offers a free public beta, until November 4, of \"code layers\" that bring the design closer to code: a zero-cost chance to test them on the Lab's design system before the free window closes."
   },
   "probleme": {
-    "fr": "Le va-et-vient entre Figma et le code repose aujourd'hui sur les tokens et des copies manuelles ; personne n'a encore vérifié si un pont plus direct entre la maquette et le code tiendrait ses promesses sur un vrai design system, et la fenêtre de test gratuite se referme bientôt.",
+    "fr": "Le va-et-vient entre Figma et le code repose aujourd’hui sur les tokens et des copies manuelles ; personne n’a encore vérifié si un pont plus direct entre la maquette et le code tiendrait ses promesses sur un vrai design system, et la fenêtre de test gratuite se referme bientôt.",
     "en": "Going back and forth between Figma and code today relies on tokens and manual copying; nobody has checked yet whether a more direct bridge between design and code would hold up on a real design system, and the free test window closes soon."
   },
   "idee": {

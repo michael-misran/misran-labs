@@ -97,7 +97,7 @@ export const PROJECTS = [
     icon: '◈',
     title: { fr: 'Workflow', en: 'Workflow' },
     summary: {
-      fr: 'Le run produit-spécifique et l\'unification transverse (design system, marque blanche), en parallèle.',
+      fr: 'Le run produit-spécifique et l’unification transverse (design system, marque blanche), en parallèle.',
       en: 'Product-specific run and cross-product unification (design system, white label), in parallel.',
     },
     status: 'READY',
@@ -156,9 +156,9 @@ export const PROJECTS = [
   {
     slug: 'utilisation-ia',
     icon: '◧',
-    title: { fr: "Utilisation de l'IA", en: 'How I use AI' },
+    title: { fr: "Utilisation de l’IA", en: 'How I use AI' },
     summary: {
-      fr: "Comment j'ai mis en place des missions autonomes que Claude mène seul, du brief à la pull request.",
+      fr: "Comment j’ai mis en place des missions autonomes que Claude mène seul, du brief à la pull request.",
       en: 'How I set up autonomous missions that Claude runs on its own, from brief to pull request.',
     },
     status: 'READY',
@@ -176,7 +176,7 @@ export const PROJECTS = [
     icon: '◎',
     title: { fr: 'Audit de design system', en: 'Design system audit' },
     summary: {
-      fr: 'Colle ou dépose tes tokens (CSS, JSON W3C, Tokens Studio) : rapport chiffré des incohérences, dans ton navigateur.',
+      fr: 'Colle ou dépose tes tokens (CSS, JSON W3C, Tokens Studio) : rapport chiffré des incohérences, dans ton navigateur.',
       en: 'Paste or drop your tokens (CSS, W3C JSON, Tokens Studio): a numbers-based report of inconsistencies, right in your browser.',
     },
     status: 'READY',
@@ -194,7 +194,7 @@ export const PROJECTS = [
     icon: '⚙',
     title: { fr: 'La salle des machines', en: 'The engine room' },
     summary: {
-      fr: 'La carte du système : sessions, routines, agents et mods, qui appelle qui et avec quel modèle.',
+      fr: 'La carte du système : sessions, routines, agents et mods, qui appelle qui et avec quel modèle.',
       en: 'The system map: sessions, routines, agents and mods, who calls whom and with which model.',
     },
     status: 'READY',

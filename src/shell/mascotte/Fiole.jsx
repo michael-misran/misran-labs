@@ -21,11 +21,11 @@ const SHAKE_DURATION = 900
 const BOOM_DURATION = 450
 const SUIE_DURATION = 3200
 const PHRASE_SURCHAUFFE = { fr: 'Ça chauffe…', en: 'Heating up…' }
-const PHRASE_BOUM = { fr: 'BOUM !', en: 'BOOM!' }
+const PHRASE_BOUM = { fr: 'BOUM !', en: 'BOOM!' }
 
 const ARIA_LABELS = {
   fiole: { fr: 'Fiole, la mascotte du Lab', en: 'Flask, the Lab mascot' },
-  alambic: { fr: "L'Alambic, la mascotte de la maison", en: 'The Alembic, the house mascot' },
+  alambic: { fr: "L’Alambic, la mascotte de la maison", en: 'The Alembic, the house mascot' },
   toxique: { fr: 'Fiole toxique', en: 'Toxic flask' },
 }
 

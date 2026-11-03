@@ -4,7 +4,7 @@ import { useLanguage } from '../shell/LanguageContext'
 const CONTENT = {
   fr: {
     title: 'The Lost Cauldron — V0.1 (personnage placeholder)',
-    note: "Première version jouable : boucle de run complète (secteur Religion), mais avec le sprite hobbit générique en attendant Marcus. Déplacement WASD/flèches, combat automatique. Le chargement peut prendre quelques secondes (moteur de jeu ~38 Mo).",
+    note: "Première version jouable : boucle de run complète (secteur Religion), mais avec le sprite hobbit générique en attendant Marcus. Déplacement WASD/flèches, combat automatique. Le chargement peut prendre quelques secondes (moteur de jeu ~38 Mo).",
     back: '← Retour au projet',
   },
   en: {

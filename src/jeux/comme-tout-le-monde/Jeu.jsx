@@ -69,7 +69,7 @@ export default function Jeu({ jeu, date }) {
     }
 
     if (trouvees.includes(index)) {
-      setMessage(lang === 'fr' ? 'Déjà trouvée !' : 'Already found!')
+      setMessage(lang === 'fr' ? 'Déjà trouvée !' : 'Already found!')
       return
     }
 
@@ -77,7 +77,7 @@ export default function Jeu({ jeu, date }) {
     setTrouvees(nouvellesTrouvees)
     const reponse = question.reponses[index]
     setMessage(
-      lang === 'fr' ? `Trouvé : ${reponse.fr[0]} (${reponse.pct} %)` : `Found: ${reponse.en[0]} (${reponse.pct}%)`,
+      lang === 'fr' ? `Trouvé\u00a0: ${reponse.fr[0]} (${reponse.pct} %)` : `Found: ${reponse.en[0]} (${reponse.pct}%)`,
     )
     finaliserSiNecessaire(nouvellesTrouvees, croix)
   }
@@ -167,7 +167,7 @@ export default function Jeu({ jeu, date }) {
         <div style={{ marginTop: 'var(--space-md)' }}>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--muted)', textAlign: 'center', fontStyle: 'italic' }}>
             {lang === 'fr'
-              ? 'Pourcentages indicatifs : ils seront remplacés par les vraies réponses des joueurs.'
+              ? 'Pourcentages indicatifs : ils seront remplacés par les vraies réponses des joueurs.'
               : 'Indicative percentages: they will be replaced by real players’ answers.'}
           </p>
           <ResultatPartage score={score} jours={jours} texte={texteAPartager} />

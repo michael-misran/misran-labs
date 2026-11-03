@@ -50,7 +50,7 @@ export function tailleLabel(taille, lang) {
 export const PROJ_TEXT = {
   fr: {
     noteDeService: 'NOTE DE SERVICE',
-    clearancePublic: 'CLASSEMENT : public',
+    clearancePublic: 'CLASSEMENT : public',
     home: {
       fileNo: 'RUBRIQUE — PROJETS',
       mastheadCenter: 'ARCHIVE DU LAB //// REGISTRE DES IDÉES',
@@ -63,7 +63,7 @@ export const PROJ_TEXT = {
       cadenceValue: 'Chaque semaine',
       decisionLabel: 'DÉCISION',
       decisionValue: 'Michael, sur proposition d’une routine Claude',
-      concept: "Chaque semaine, une routine Claude propose des idées de fonctionnalités, d'améliorations et de projets — y compris des projets qui peuvent rapporter de l'argent. Chaque idée porte un numéro qui n'est jamais réutilisé, même arrêtée : les idées arrêtées restent visibles pour ne pas être reproposées. Le modèle économique de chaque idée n'est pas publié.",
+      concept: "Chaque semaine, une routine Claude propose des idées de fonctionnalités, d’améliorations et de projets — y compris des projets qui peuvent rapporter de l’argent. Chaque idée porte un numéro qui n’est jamais réutilisé, même arrêtée : les idées arrêtées restent visibles pour ne pas être reproposées. Le modèle économique de chaque idée n’est pas publié.",
       filterLabel: 'FILTRER PAR STATUT',
       showAll: 'Tout afficher',
       resultLabel: (shown, total) => `${shown} idée${shown === 1 ? '' : 's'} affichée${shown === 1 ? '' : 's'} sur ${total}`,

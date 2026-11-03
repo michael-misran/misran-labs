@@ -62,7 +62,7 @@ const TOKEN_GROUPS = [
   },
   {
     // Palette d'avant la refonte kiosque : sert encore à la mascotte Fiole et au bloc inversé [data-invert].
-    category: { fr: 'Couleurs — primitives (ancienne palette corail : Fiole, bloc inversé)', en: 'Colors — primitives (former coral palette: Fiole, inverted block)' },
+    category: { fr: 'Couleurs — primitives (ancienne palette corail : Fiole, bloc inversé)', en: 'Colors — primitives (former coral palette: Fiole, inverted block)' },
     rows: [
       { name: '--primitive-cream-50', tier: 'primitive', type: 'color', pointsTo: null },
       { name: '--primitive-cream-100', tier: 'primitive', type: 'color', pointsTo: null },
@@ -304,8 +304,8 @@ const CONTENT = {
     docId: 'ID DOSSIER — ML-ARCHIVE-007',
     clearance: 'NIVEAU DE LECTURE — PUBLIC',
     tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
-    intro: "Trois niveaux, une règle : un token ne porte jamais une valeur brute s'il existe un niveau au-dessus de lui. Filtre par niveau pour isoler les primitives, les rôles sémantiques, ou les tokens propres à un seul composant.",
-    concept: "1977 Éditions est une maison d'édition : chaque rubrique (Oracle, Zine, Jeux, Lab) est un titre avec sa propre couleur et sa propre police — un univers par titre, sur le même papier et la même encre. Les valeurs ci-dessous sont lues en direct dans le navigateur : si tokens.css change, cette page change avec, sans qu'on ait à la retoucher.",
+    intro: "Trois niveaux, une règle : un token ne porte jamais une valeur brute s’il existe un niveau au-dessus de lui. Filtre par niveau pour isoler les primitives, les rôles sémantiques, ou les tokens propres à un seul composant.",
+    concept: "1977 Éditions est une maison d’édition : chaque rubrique (Oracle, Zine, Jeux, Lab) est un titre avec sa propre couleur et sa propre police — un univers par titre, sur le même papier et la même encre. Les valeurs ci-dessous sont lues en direct dans le navigateur : si tokens.css change, cette page change avec, sans qu’on ait à la retoucher.",
     filterLabel: 'FILTRER PAR NIVEAU',
     tierLabels: { primitive: 'Primitive', semantic: 'Semantic', component: 'Component' },
     columns: { name: 'Token', tier: 'Niveau', type: 'Type', pointsTo: 'Pointe vers', value: 'Valeur', preview: 'Aperçu', status: 'Statut' },

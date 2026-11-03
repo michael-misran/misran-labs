@@ -17,7 +17,7 @@ const isImage = (v) => typeof v === 'string' && v.startsWith('/saviez-vous/')
 
 // Encadré « titre + liste bilingue » (fiche technique, légende du démontage)
 function validationErrorEncadre(e, nom) {
-  if (e == null || typeof e !== 'object') return `"${nom}" n'est pas un objet`
+  if (e == null || typeof e !== 'object') return `"${nom}" n’est pas un objet`
   if (!isBilingual(e.titre)) return `"${nom}.titre" doit avoir un texte "fr" et "en" non vides`
   const liste = nom === 'fiche' ? e.lignes : e.items
   const cle = nom === 'fiche' ? 'lignes' : 'items'
@@ -52,7 +52,7 @@ function validationError(data, filename) {
     }
   }
   if (data.sources !== undefined && (!Array.isArray(data.sources) || !data.sources.every((s) => typeof s === 'string' && s.startsWith('https://')))) {
-    return '"sources", si présent, doit être une liste d\'adresses https://…'
+    return '"sources", si présent, doit être une liste d’adresses https://…'
   }
   return null
 }

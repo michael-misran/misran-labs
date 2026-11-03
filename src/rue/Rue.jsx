@@ -60,12 +60,12 @@ function saisonDuJour(date = new Date()) {
 const ENTREES = [
   {
     id: 'moi', to: '/portfolio', porte: [27.5, 78],
-    titre: { fr: 'Qui suis-je ?', en: 'Who am I?' },
+    titre: { fr: 'Qui suis-je ?', en: 'Who am I?' },
     sous: { fr: 'Parcours · CV · Portfolio', en: 'Background · CV · Portfolio' },
   },
   {
     id: 'livres', to: '/librairie', porte: [22.1, 65],
-    titre: { fr: "L'Entre Deux Pages", en: "L'Entre Deux Pages" },
+    titre: { fr: "L’Entre Deux Pages", en: "L'Entre Deux Pages" },
     sous: { fr: 'Librairie · romans', en: 'Bookshop · novels' },
   },
   {
@@ -76,8 +76,8 @@ const ENTREES = [
 ]
 
 const T = {
-  bulle: { fr: "Salut, c'est Michael !", en: "Hi, I'm Michael!" },
-  glisse: { fr: "← Glissez vers l'arcade →", en: '← Swipe to the arcade →' },
+  bulle: { fr: "Salut, c’est Michael !", en: "Hi, I'm Michael!" },
+  glisse: { fr: "← Glissez vers l’arcade →", en: '← Swipe to the arcade →' },
   saisons: {
     halloween: { fr: 'Halloween', en: 'Halloween' },
     noel: { fr: 'Noël', en: 'Christmas' },
@@ -86,7 +86,7 @@ const T = {
   ardoiseMur: { fr: ['Nouveau', 'roman'], en: ['New', 'novel'] },
   ardoisePied: { fr: ['Démo', 'jouable', '→'], en: ['Playable', 'demo', '→'] },
   alt: {
-    fr: 'Une rue au crépuscule : une librairie rouge à gauche, une boutique de jeux vidéo en briques à droite, et Michael qui lit sur les marches de la librairie',
+    fr: 'Une rue au crépuscule : une librairie rouge à gauche, une boutique de jeux vidéo en briques à droite, et Michael qui lit sur les marches de la librairie',
     en: 'A street at dusk: a red bookshop on the left, a brick video game shop on the right, and Michael reading on the bookshop steps',
   },
 }

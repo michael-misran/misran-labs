@@ -15,7 +15,7 @@ export const KIOSQUE_TEXT = {
       // Le "G" et le "L" (index impairs) sont mis en --titre-gazette (D4).
       titre: ['La ', 'G', 'azette du ', 'L', 'ab'],
       editionLabel: 'Édition du matin',
-      prixLabel: 'Prix : un café',
+      prixLabel: 'Prix : un café',
       kickerPrefix: 'À la une',
       lireLabel: 'Lire l’Oracle du jour →',
       toutesLabel: 'Toutes les éditions',
@@ -26,7 +26,7 @@ export const KIOSQUE_TEXT = {
       zine: {
         tetiereNom: ['Misran', 'Zine'],
         tetiereNumero: '#1',
-        bientot: 'Bientôt !',
+        bientot: 'Bientôt !',
         legendeNom: 'Le Zine',
         legendeRythme: 'bientôt · mensuel',
         legendeRythmeAvecNumero: 'mensuel',
@@ -41,9 +41,9 @@ export const KIOSQUE_TEXT = {
       lab: {
         onglet: 'ML-LAB',
         etiquetteTitre: 'DOSSIERS DU LAB',
-        agent: 'AGENT : M. MISRAN',
-        classement: 'CLASSEMENT : ouvert au public',
-        piecesLabel: 'PIÈCES : ',
+        agent: 'AGENT : M. MISRAN',
+        classement: 'CLASSEMENT : ouvert au public',
+        piecesLabel: 'PIÈCES : ',
         tamponBarre: 'CONFIDENTIEL',
         tamponBas: 'DÉCLASSIFIÉ',
         legendeNom: 'Le Lab',

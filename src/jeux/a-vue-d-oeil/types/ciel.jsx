@@ -17,7 +17,7 @@ function dessinerCiel(etoiles) {
 export default {
   id: 'ciel',
   nom: { fr: 'Ciel étoilé', en: 'Starry sky' },
-  question: { fr: 'Combien d’étoiles dans le ciel ?', en: 'How many stars are in the sky?' },
+  question: { fr: 'Combien d’étoiles dans le ciel ?', en: 'How many stars are in the sky?' },
   unite: { fr: 'étoiles', en: 'stars' },
   generer(rng) {
     const { valeur, etoiles } = genererCiel(rng)

@@ -5,11 +5,11 @@ const pluriel = (n, mot) => `${n} ${mot}${n > 1 ? 's' : ''}`
 
 const FR = {
   privacy:
-    "Les fichiers collés ou déposés ne quittent jamais ton navigateur. Le mode GitHub lit des fichiers publics directement depuis GitHub, sans compte, et n'envoie rien d'autre que l'adresse du dépôt. Aucune autre requête n'est faite.",
+    "Les fichiers collés ou déposés ne quittent jamais ton navigateur. Le mode GitHub lit des fichiers publics directement depuis GitHub, sans compte, et n’envoie rien d’autre que l’adresse du dépôt. Aucune autre requête n’est faite.",
 
   gh: {
     title: 'DEPUIS GITHUB',
-    help: 'Dépôt public seulement. Formes acceptées : https://github.com/proprietaire/depot, proprietaire/depot, ou une adresse /tree/branche/dossier (une branche dont le nom contient « / » n’est pas gérée).',
+    help: 'Dépôt public seulement. Formes acceptées : https://github.com/proprietaire/depot, proprietaire/depot, ou une adresse /tree/branche/dossier (une branche dont le nom contient « / » n’est pas gérée).',
     addressLabel: 'ADRESSE DU DÉPÔT PUBLIC',
     placeholder: 'https://github.com/proprietaire/depot',
     explore: 'Explorer',
@@ -23,16 +23,16 @@ const FR = {
     tokensFound: (n, total) =>
       total > n ? `${pluriel(n, 'fichier')} affichés sur ${total} : les 20 premiers, par ordre alphabétique.` : pluriel(n, 'fichier') + ' à analyser.',
     noTokens:
-      'Aucun fichier de tokens repéré (fichiers .json dont le chemin contient « token », ou .css / .scss nommés token, variables, theme ou vars). Tu peux quand même mesurer la couverture du code.',
-    sample: (n, total) => `Échantillon de code : ${pluriel(n, 'fichier')} sur ${total} éligible${total > 1 ? 's' : ''}.`,
-    noCode: 'Aucun fichier de code trouvé : la couverture ne pourra pas être mesurée.',
+      'Aucun fichier de tokens repéré (fichiers .json dont le chemin contient « token », ou .css / .scss nommés token, variables, theme ou vars). Tu peux quand même mesurer la couverture du code.',
+    sample: (n, total) => `Échantillon de code\u00a0: ${pluriel(n, 'fichier')} sur ${total} éligible${total > 1 ? 's' : ''}.`,
+    noCode: 'Aucun fichier de code trouvé : la couverture ne pourra pas être mesurée.',
     analyze: 'Analyser ce dépôt',
     progress: (faits, total) => `${faits} / ${total} fichiers`,
     // Texte d'un avertissement rattaché au fichier (la page affiche déjà son nom devant).
     unreadable: (detail) => `fichier non lu (${detail.replace(/\.$/, '')}).`,
-    nothingToRead: 'Rien à analyser : coche au moins un fichier de tokens, ou choisis un dépôt qui contient du code.',
+    nothingToRead: 'Rien à analyser : coche au moins un fichier de tokens, ou choisis un dépôt qui contient du code.',
     noTokensRepo:
-      "Aucun fichier de tokens n'a été lu dans ce dépôt : il n'y a pas de tokens à auditer. La couverture du code est mesurée ci-dessous.",
+      "Aucun fichier de tokens n’a été lu dans ce dépôt : il n’y a pas de tokens à auditer. La couverture du code est mesurée ci-dessous.",
   },
 
   cov: {
@@ -45,14 +45,14 @@ const FR = {
     usagesNote: 'var(--nom)',
     hard: 'VALEURS EN DUR',
     hardNote: 'couleurs et px littéraux',
-    noValues: "Aucune valeur de style repérée dans l'échantillon : la couverture ne peut pas être calculée.",
+    noValues: "Aucune valeur de style repérée dans l’échantillon : la couverture ne peut pas être calculée.",
     methodTitle: "COMMENT C'EST MESURÉ",
     method:
-      "Un usage de token est un var(--nom). Une valeur en dur est une couleur littérale (#hex, rgb(), hsl()) ou une longueur en px autre que 0 et 1px, hors d'un var(…) et hors commentaires. Dans les fichiers JavaScript, TypeScript, Vue et Svelte, seules les chaînes de caractères et les blocs <style> sont lus ; dans les fichiers CSS, seules les valeurs de déclarations. C'est une estimation sur un échantillon d'au plus 60 fichiers, pas une mesure exacte : elle ne voit pas les tokens utilisés sous une autre forme (classes utilitaires, thèmes JavaScript, unités rem ou em).",
+      "Un usage de token est un var(--nom). Une valeur en dur est une couleur littérale (#hex, rgb(), hsl()) ou une longueur en px autre que 0 et 1px, hors d’un var(…) et hors commentaires. Dans les fichiers JavaScript, TypeScript, Vue et Svelte, seules les chaînes de caractères et les blocs <style> sont lus ; dans les fichiers CSS, seules les valeurs de déclarations. C’est une estimation sur un échantillon d’au plus 60 fichiers, pas une mesure exacte : elle ne voit pas les tokens utilisés sous une autre forme (classes utilitaires, thèmes JavaScript, unités rem ou em).",
     byFileTitle: 'FICHIERS AVEC LE PLUS DE VALEURS EN DUR',
     repeatedTitle: 'VALEURS EN DUR LES PLUS RÉPÉTÉES',
     alreadyTitle: 'VALEURS QUI ONT DÉJÀ UN TOKEN',
-    alreadyHint: "Ces valeurs en dur sont identiques à la valeur d'un token existant : elles pourraient l'utiliser.",
+    alreadyHint: "Ces valeurs en dur sont identiques à la valeur d’un token existant : elles pourraient l’utiliser.",
     empty: 'Aucune.',
     times: (n) => `× ${n}`,
     inFiles: (n) => pluriel(n, 'fichier'),
@@ -69,13 +69,13 @@ const FR = {
   grille: {
     title: 'GRILLE D’ÉVALUATION',
     intro:
-      'Sept axes notés de 0 à 3 par des règles fixes, sans IA. Chaque note est justifiée critère par critère ; tu peux l’ajuster à la main : c’est ton jugement qui compte.',
+      'Sept axes notés de 0 à 3 par des règles fixes, sans IA. Chaque note est justifiée critère par critère ; tu peux l’ajuster à la main : c’est ton jugement qui compte.',
     average: (m, n) => `${m} / 3 — ${n} axe${n > 1 ? 's' : ''} évalué${n > 1 ? 's' : ''} sur 7`,
     noAverage: 'Aucun axe évalué sur 7',
     notRated: 'non évalué',
     scoreOf: (n) => `${n} / 3`,
     adjustedTag: 'ajustée',
-    computedNote: (t) => `calculée : ${t}`,
+    computedNote: (t) => `calculée\u00a0: ${t}`,
     adjust: 'Ajuster',
     adjustTitle: 'AJUSTER LA NOTE',
     noteLabel: 'Note',
@@ -93,7 +93,7 @@ const FR = {
     matrixTitle: 'MATRICE IMPACT × EFFORT',
     matrixIntro:
       'Les constats regroupés en sujets, classés selon leur impact et l’effort pour les traiter (table fixe, sans IA).',
-    noSubjects: 'Aucun sujet à prioriser : rien à corriger selon les règles de l’outil.',
+    noSubjects: 'Aucun sujet à prioriser : rien à corriger selon les règles de l’outil.',
     emptyQuadrant: 'Aucun sujet.',
     impact: 'impact',
     effort: 'effort',
@@ -117,9 +117,9 @@ const FR = {
     findingsTitle: (n) => `${n} premiers constats, par gravité`,
     methodTitle: 'Méthode',
     method: [
-      'Les tokens sont lus tels quels (CSS, JSON DTCG ou Tokens Studio) et confrontés à huit règles fixes ; aucune IA n’intervient.',
-      'Sept axes sont notés de 0 à 3 selon des critères vérifiables ; l’auditeur peut ajuster chaque note et la commenter.',
-      'Les sujets sont classés par impact et effort selon une table fixe ; la parité Figma ↔ code reste à évaluer à la main.',
+      'Les tokens sont lus tels quels (CSS, JSON DTCG ou Tokens Studio) et confrontés à huit règles fixes ; aucune IA n’intervient.',
+      'Sept axes sont notés de 0 à 3 selon des critères vérifiables ; l’auditeur peut ajuster chaque note et la commenter.',
+      'Les sujets sont classés par impact et effort selon une table fixe ; la parité Figma ↔ code reste à évaluer à la main.',
     ],
     footer: 'Réalisé avec l’outil d’audit de misran-labs',
   },

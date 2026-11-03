@@ -2,7 +2,7 @@
   {
     "id": "vacances-oubli",
     "question": {
-      "fr": "Qu'est-ce qu'on oublie toujours en partant en vacances ?",
+      "fr": "Qu’est-ce qu’on oublie toujours en partant en vacances ?",
       "en": "What do people always forget when going on holiday?"
     },
     "reponses": [
@@ -17,7 +17,7 @@
   {
     "id": "plage-apporter",
     "question": {
-      "fr": "Qu'est-ce qu'on emporte le plus souvent à la plage ?",
+      "fr": "Qu’est-ce qu’on emporte le plus souvent à la plage ?",
       "en": "What do people most often bring to the beach?"
     },
     "reponses": [
@@ -33,7 +33,7 @@
   {
     "id": "animal-compagnie-prefere",
     "question": {
-      "fr": "Quel animal de compagnie les gens préfèrent-ils avoir chez eux ?",
+      "fr": "Quel animal de compagnie les gens préfèrent-ils avoir chez eux ?",
       "en": "What pet do people prefer to have at home?"
     },
     "reponses": [
@@ -49,7 +49,7 @@
   {
     "id": "matin-habitude",
     "question": {
-      "fr": "Qu'est-ce qu'on fait en premier en se réveillant le matin ?",
+      "fr": "Qu’est-ce qu’on fait en premier en se réveillant le matin ?",
       "en": "What do people do first thing when they wake up?"
     },
     "reponses": [
@@ -64,7 +64,7 @@
   {
     "id": "frigo-toujours",
     "question": {
-      "fr": "Qu'est-ce qu'il y a toujours dans un frigo ?",
+      "fr": "Qu’est-ce qu’il y a toujours dans un frigo ?",
       "en": "What is always in a fridge?"
     },
     "reponses": [
@@ -80,7 +80,7 @@
   {
     "id": "enfance-jeu-cour",
     "question": {
-      "fr": "À quoi jouait-on le plus dans la cour de récré, enfant ?",
+      "fr": "À quoi jouait-on le plus dans la cour de récré, enfant ?",
       "en": "What did kids play most in the schoolyard?"
     },
     "reponses": [
@@ -95,7 +95,7 @@
   {
     "id": "pizza-garniture",
     "question": {
-      "fr": "Quelle garniture de pizza est la plus demandée ?",
+      "fr": "Quelle garniture de pizza est la plus demandée ?",
       "en": "What pizza topping is the most requested?"
     },
     "reponses": [
@@ -111,7 +111,7 @@
   {
     "id": "bureau-objet",
     "question": {
-      "fr": "Qu'est-ce qu'on trouve toujours sur un bureau de travail ?",
+      "fr": "Qu’est-ce qu’on trouve toujours sur un bureau de travail ?",
       "en": "What's always on a work desk?"
     },
     "reponses": [
@@ -126,7 +126,7 @@
   {
     "id": "animal-zoo-prefere",
     "question": {
-      "fr": "Quel animal les enfants préfèrent-ils voir au zoo ?",
+      "fr": "Quel animal les enfants préfèrent-ils voir au zoo ?",
       "en": "What animal do kids most want to see at the zoo?"
     },
     "reponses": [
@@ -142,7 +142,7 @@
   {
     "id": "nuit-impossible-dormir",
     "question": {
-      "fr": "Qu'est-ce qui empêche le plus de dormir la nuit ?",
+      "fr": "Qu’est-ce qui empêche le plus de dormir la nuit ?",
       "en": "What keeps people up at night the most?"
     },
     "reponses": [
@@ -157,7 +157,7 @@
   {
     "id": "petit-dejeuner",
     "question": {
-      "fr": "Que mange-t-on le plus souvent au petit-déjeuner ?",
+      "fr": "Que mange-t-on le plus souvent au petit-déjeuner ?",
       "en": "What do people eat most often for breakfast?"
     },
     "reponses": [
@@ -172,7 +172,7 @@
   {
     "id": "cadeau-anniversaire-enfant",
     "question": {
-      "fr": "Quel jouet les enfants demandent-ils le plus pour leur anniversaire ?",
+      "fr": "Quel jouet les enfants demandent-ils le plus pour leur anniversaire ?",
       "en": "What toy do kids ask for most for their birthday?"
     },
     "reponses": [
@@ -188,7 +188,7 @@
   {
     "id": "meteo-plainte",
     "question": {
-      "fr": "De quoi se plaint-on le plus à propos de la météo ?",
+      "fr": "De quoi se plaint-on le plus à propos de la météo ?",
       "en": "What do people complain about most regarding the weather?"
     },
     "reponses": [
@@ -203,7 +203,7 @@
   {
     "id": "maison-piece-preferee",
     "question": {
-      "fr": "Quelle est la pièce préférée des gens dans leur maison ?",
+      "fr": "Quelle est la pièce préférée des gens dans leur maison ?",
       "en": "What's people's favorite room in the house?"
     },
     "reponses": [
@@ -218,7 +218,7 @@
   {
     "id": "vacances-destination-reve",
     "question": {
-      "fr": "Quel type de destination de vacances fait le plus rêver ?",
+      "fr": "Quel type de destination de vacances fait le plus rêver ?",
       "en": "What kind of vacation destination do people dream of most?"
     },
     "reponses": [
@@ -233,7 +233,7 @@
   {
     "id": "legume-deteste",
     "question": {
-      "fr": "Quel légume les enfants détestent-ils le plus ?",
+      "fr": "Quel légume les enfants détestent-ils le plus ?",
       "en": "What vegetable do kids dislike the most?"
     },
     "reponses": [
@@ -248,7 +248,7 @@
   {
     "id": "film-genre-prefere",
     "question": {
-      "fr": "Quel genre de film les gens préfèrent-ils regarder un soir de pluie ?",
+      "fr": "Quel genre de film les gens préfèrent-ils regarder un soir de pluie ?",
       "en": "What movie genre do people prefer to watch on a rainy evening?"
     },
     "reponses": [
@@ -263,7 +263,7 @@
   {
     "id": "transport-quotidien",
     "question": {
-      "fr": "Comment les gens se déplacent-ils le plus pour aller travailler ?",
+      "fr": "Comment les gens se déplacent-ils le plus pour aller travailler ?",
       "en": "How do people get to work most often?"
     },
     "reponses": [
@@ -278,7 +278,7 @@
   {
     "id": "animal-peur",
     "question": {
-      "fr": "Quel animal fait le plus peur aux gens, même tout petit ?",
+      "fr": "Quel animal fait le plus peur aux gens, même tout petit ?",
       "en": "What animal scares people the most, even a tiny one?"
     },
     "reponses": [
@@ -293,7 +293,7 @@
   {
     "id": "placard-jamais-utilise",
     "question": {
-      "fr": "Qu'est-ce qu'on garde dans un placard sans jamais s'en servir ?",
+      "fr": "Qu’est-ce qu’on garde dans un placard sans jamais s’en servir ?",
       "en": "What do people keep in a closet but never use?"
     },
     "reponses": [
@@ -308,7 +308,7 @@
   {
     "id": "weekend-activite",
     "question": {
-      "fr": "Que fait-on le plus souvent un dimanche après-midi ?",
+      "fr": "Que fait-on le plus souvent un dimanche après-midi ?",
       "en": "What do people do most often on a Sunday afternoon?"
     },
     "reponses": [
@@ -323,7 +323,7 @@
   {
     "id": "glace-parfum",
     "question": {
-      "fr": "Quel parfum de glace est le plus demandé ?",
+      "fr": "Quel parfum de glace est le plus demandé ?",
       "en": "What ice cream flavor is the most requested?"
     },
     "reponses": [
@@ -338,7 +338,7 @@
   {
     "id": "instrument-musique-reve",
     "question": {
-      "fr": "Quel instrument de musique les gens aimeraient-ils savoir jouer ?",
+      "fr": "Quel instrument de musique les gens aimeraient-ils savoir jouer ?",
       "en": "What musical instrument would people like to know how to play?"
     },
     "reponses": [
@@ -353,7 +353,7 @@
   {
     "id": "animal-ferme",
     "question": {
-      "fr": "Quel animal de la ferme les enfants aiment-ils le plus dessiner ?",
+      "fr": "Quel animal de la ferme les enfants aiment-ils le plus dessiner ?",
       "en": "What farm animal do kids most like to draw?"
     },
     "reponses": [
@@ -368,7 +368,7 @@
   {
     "id": "objet-perdu-souvent",
     "question": {
-      "fr": "Quel objet du quotidien perd-on le plus souvent ?",
+      "fr": "Quel objet du quotidien perd-on le plus souvent ?",
       "en": "What everyday object do people lose most often?"
     },
     "reponses": [
@@ -383,7 +383,7 @@
   {
     "id": "metier-enfance-reve",
     "question": {
-      "fr": "Quel métier les enfants veulent-ils faire plus tard ?",
+      "fr": "Quel métier les enfants veulent-ils faire plus tard ?",
       "en": "What job do kids want to do when they grow up?"
     },
     "reponses": [
@@ -399,7 +399,7 @@
   {
     "id": "jardin-fleur",
     "question": {
-      "fr": "Quelle fleur voit-on le plus souvent dans les jardins ?",
+      "fr": "Quelle fleur voit-on le plus souvent dans les jardins ?",
       "en": "What flower do people see most often in gardens?"
     },
     "reponses": [
@@ -414,7 +414,7 @@
   {
     "id": "randonnee-collation",
     "question": {
-      "fr": "Qu'est-ce qu'on emporte le plus souvent pour grignoter en randonnée ?",
+      "fr": "Qu’est-ce qu’on emporte le plus souvent pour grignoter en randonnée ?",
       "en": "What snack do people bring most often when hiking?"
     },
     "reponses": [
@@ -429,7 +429,7 @@
   {
     "id": "cuisine-odeur",
     "question": {
-      "fr": "Quelle odeur de cuisine met le plus en appétit ?",
+      "fr": "Quelle odeur de cuisine met le plus en appétit ?",
       "en": "What cooking smell makes people hungriest?"
     },
     "reponses": [
@@ -444,7 +444,7 @@
   {
     "id": "corvee-menage-detestee",
     "question": {
-      "fr": "Quelle tâche ménagère déteste-t-on le plus ?",
+      "fr": "Quelle tâche ménagère déteste-t-on le plus ?",
       "en": "What household chore do people hate the most?"
     },
     "reponses": [

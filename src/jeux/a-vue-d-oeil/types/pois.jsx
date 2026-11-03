@@ -24,7 +24,7 @@ function dessinerPois(cellules) {
 export default {
   id: 'pois',
   nom: { fr: 'Carte à pois', en: 'Dot map' },
-  question: { fr: 'Quel pourcentage de la surface est coloré ?', en: 'What percentage of the area is colored?' },
+  question: { fr: 'Quel pourcentage de la surface est coloré ?', en: 'What percentage of the area is colored?' },
   unite: { fr: '%', en: '%' },
   generer(rng) {
     const { valeur, cellules } = genererPois(rng)

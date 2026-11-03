@@ -10,7 +10,7 @@ export function SchemaEclateAtelier({ lang }) {
   const idees = lang === 'en' ? 'IDEAS' : 'IDÉES'
   const pages = lang === 'en' ? 'PAGES' : 'PAGES'
   return (
-    <svg className="at-eclate" viewBox="0 0 300 220" {...TRAIT} fontFamily="Oswald" aria-label={lang === 'en' ? 'Exploded view of the workshop' : "Vue éclatée de l'atelier"}>
+    <svg className="at-eclate" viewBox="0 0 300 220" {...TRAIT} fontFamily="Oswald" aria-label={lang === 'en' ? 'Exploded view of the workshop' : "Vue éclatée de l’atelier"}>
       <path d="M120 18 L180 18 L165 48 L135 48 Z" />
       <text x="150" y="12" fill="#e9f1f8" stroke="none" fontSize="7" textAnchor="middle" letterSpacing="1.5">{idees}</text>
       <path d="M150 48 L150 62" strokeDasharray="3 3" />
@@ -60,7 +60,7 @@ export function SchemaCircuit({ lang }) {
     { y: 198, h: 22, t: T[5] },
   ]
   return (
-    <svg className="at-fig-plan" viewBox="0 0 220 230" {...TRAIT} fontFamily="Oswald" aria-label={lang === 'en' ? 'Circuit of an idea through the workshop' : "Circuit d'une idée dans l'atelier"}>
+    <svg className="at-fig-plan" viewBox="0 0 220 230" {...TRAIT} fontFamily="Oswald" aria-label={lang === 'en' ? 'Circuit of an idea through the workshop' : "Circuit d’une idée dans l’atelier"}>
       {boites.map((b, i) => (
         <g key={i}>
           <rect x="20" y={b.y} width="180" height={b.h} rx="2" />
@@ -147,11 +147,11 @@ export function SchemaControleur({ lang }) {
 export function SchemaCycleMission({ lang }) {
   const T = lang === 'en'
     ? ['SCOPING (SPEC + PLAN)', 'BRANCH AUTO/<NAME>', 'EXECUTION, STEP BY STEP', 'RAPPORT.MD', 'WRAP-UP: PUSH + PULL REQUEST', 'MERGE (MICHAEL)']
-    : ['CADRAGE (SPEC + PLAN)', 'BRANCHE AUTO/<NOM>', 'EXÉCUTION, ÉTAPE PAR ÉTAPE', 'RAPPORT.MD', 'CLÔTURE : PUSH + PULL REQUEST', 'FUSION (MICHAEL)']
+    : ['CADRAGE (SPEC + PLAN)', 'BRANCHE AUTO/<NOM>', 'EXÉCUTION, ÉTAPE PAR ÉTAPE', 'RAPPORT.MD', 'CLÔTURE : PUSH + PULL REQUEST', 'FUSION (MICHAEL)']
   const suivante = lang === 'en' ? 'NEXT MISSION' : 'MISSION SUIVANTE'
   const boites = [14, 50, 86, 122, 158, 194].map((y, i) => ({ y, h: 22, t: T[i] }))
   return (
-    <svg className="at-fig-plan" viewBox="0 0 220 240" {...TRAIT} fontFamily="Oswald" aria-label={lang === 'en' ? 'The cycle of a mission' : "Le cycle d'une mission"}>
+    <svg className="at-fig-plan" viewBox="0 0 220 240" {...TRAIT} fontFamily="Oswald" aria-label={lang === 'en' ? 'The cycle of a mission' : "Le cycle d’une mission"}>
       {boites.map((b, i) => (
         <g key={i}>
           <rect x="30" y={b.y} width="170" height={b.h} rx="2" />

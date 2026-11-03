@@ -7,7 +7,7 @@ export default {
   couleur: 'violet',
   titre: { fr: 'À vue d’œil', en: 'Eyeball it' },
   accroche: {
-    fr: 'Une image, un coup d’œil, une estimation : où te situes-tu sur la courbe ?',
+    fr: 'Une image, un coup d’œil, une estimation : où te situes-tu sur la courbe ?',
     en: 'One glance, one guess: where do you land on the curve?',
   },
   demo: true,

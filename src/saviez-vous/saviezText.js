@@ -1,7 +1,7 @@
 // Textes fr/en de la rubrique « Le saviez-vous ? ».
 export const SAVIEZ_TEXT = {
   fr: {
-    presente: '1977 Éditions présente : le saviez-vous ?',
+    presente: '1977 Éditions présente : le saviez-vous ?',
     parution: 'Parution du',
     illustrationAttente: 'Planche en préparation à l’atelier',
     sources: 'Sources',
@@ -12,10 +12,10 @@ export const SAVIEZ_TEXT = {
     introuvableTexte: 'Aucune parution ce jour-là.',
     reclamesTitre: 'Réclames',
     reclames: [
-      { to: '/oracle', police: 'var(--font-gothique)', titre: 'L’Oracle du Matin', accroche: 'Tous les matins dès 5 h 30 !', texte: 'Les nouvelles de l’IA, sans le blabla. Lecture garantie avant le café.' },
-      { to: '/jeux', police: 'var(--font-enseigne)', titre: 'Déstockage !', accroche: 'Mini-jeux à 0 €', texte: 'Un nouveau chaque jour, noté sur 100. Quantités illimitées.' },
-      { to: '/lab', police: 'var(--font-machine)', titre: 'Devenez savant fou !', accroche: 'Le Lab vous attend', texte: 'Expériences, maquettes et études. Sans danger*.', note: '*ou presque' },
-      { to: '/suivre', police: 'var(--font-pulp)', titre: 'Ne ratez plus rien', accroche: 'Abonnez-vous !', texte: 'Flux RSS, sans compte à créer, sans spam, sans rien.' },
+      { to: '/oracle', police: 'var(--font-gothique)', titre: 'L’Oracle du Matin', accroche: 'Tous les matins dès 5 h 30 !', texte: 'Les nouvelles de l’IA, sans le blabla. Lecture garantie avant le café.' },
+      { to: '/jeux', police: 'var(--font-enseigne)', titre: 'Déstockage !', accroche: 'Mini-jeux à 0 €', texte: 'Un nouveau chaque jour, noté sur 100. Quantités illimitées.' },
+      { to: '/lab', police: 'var(--font-machine)', titre: 'Devenez savant fou !', accroche: 'Le Lab vous attend', texte: 'Expériences, maquettes et études. Sans danger*.', note: '*ou presque' },
+      { to: '/suivre', police: 'var(--font-pulp)', titre: 'Ne ratez plus rien', accroche: 'Abonnez-vous !', texte: 'Flux RSS, sans compte à créer, sans spam, sans rien.' },
     ],
   },
   en: {

@@ -37,7 +37,7 @@ export const LT = {
 
   // Pages en attente de Michael (feuilleton, Dans la marmite)
   aParaitre: { fr: 'à paraître', en: 'coming soon' },
-  texteDeMichael: { fr: 'Texte de Michael : environ 1 000 à 1 200 mots', en: 'Michael’s text: about 1,000–1,200 words' },
+  texteDeMichael: { fr: 'Texte de Michael : environ 1 000 à 1 200 mots', en: 'Michael’s text: about 1,000–1,200 words' },
   texteDeMichaelCourt: { fr: 'Texte en attente', en: 'Text pending' },
 }
 

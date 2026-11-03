@@ -66,7 +66,7 @@ export function lireFichiers(fichiers) {
       avertissements.push(
         avertissement(
           nom,
-          `Fichier ignoré : la limite de ${LIMITE_CARACTERES} caractères au total est atteinte.`,
+          `Fichier ignoré\u00a0: la limite de ${LIMITE_CARACTERES} caractères au total est atteinte.`,
           `File skipped: the ${LIMITE_CARACTERES}-character total limit has been reached.`
         )
       )
@@ -77,7 +77,7 @@ export function lireFichiers(fichiers) {
       avertissements.push(
         avertissement(
           nom,
-          `Contenu tronqué à ${LIMITE_CARACTERES} caractères au total : la fin du fichier n'est pas analysée.`,
+          `Contenu tronqué à ${LIMITE_CARACTERES} caractères au total\u00a0: la fin du fichier n’est pas analysée.`,
           `Content truncated to ${LIMITE_CARACTERES} characters in total: the end of the file is not analysed.`
         )
       )

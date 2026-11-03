@@ -84,7 +84,7 @@ export function analyse(fichiers, options = {}) {
         avertissements.push(
           avertissement(
             null,
-            `La règle ${regle.id} n'a pas pu s'exécuter : ${e.message}`,
+            `La règle ${regle.id} n’a pas pu s’exécuter\u00a0: ${e.message}`,
             `Rule ${regle.id} could not run: ${e.message}`
           )
         )

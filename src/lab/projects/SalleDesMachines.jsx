@@ -202,12 +202,12 @@ const CONTENT = {
     clearance: 'NIVEAU DE LECTURE — PUBLIC',
     tagline: 'TOUT TOURNE SANS MOI. RIEN NE PART SANS MOI.',
     intro:
-      "Ce site est écrit, relu et publié en grande partie par Claude, pendant que je fais autre chose. Le système a grandi par couches : des sessions où je travaille avec Claude, des routines qui tournent seules à heure fixe, des agents spécialisés qu'elles appellent, et depuis le 14 octobre 2026, des mods qui s'accrochent à Claude Code lui-même. Ce dossier est la carte : qui déclenche quoi, avec quel modèle, et où ça s'arrête.",
-    introRegleLabel: 'La règle qui tient tout :',
+      "Ce site est écrit, relu et publié en grande partie par Claude, pendant que je fais autre chose. Le système a grandi par couches : des sessions où je travaille avec Claude, des routines qui tournent seules à heure fixe, des agents spécialisés qu’elles appellent, et depuis le 14 octobre 2026, des mods qui s’accrochent à Claude Code lui-même. Ce dossier est la carte : qui déclenche quoi, avec quel modèle, et où ça s’arrête.",
+    introRegleLabel: 'La règle qui tient tout :',
     introRegle:
-      "Tout peut tourner sans moi, mais rien n'arrive sur le site sans que je fusionne une pull request. Le site part en production dès que la branche main change : c'est la seule porte, et c'est moi qui ai la clé.",
+      "Tout peut tourner sans moi, mais rien n’arrive sur le site sans que je fusionne une pull request. Le site part en production dès que la branche main change : c’est la seule porte, et c’est moi qui ai la clé.",
 
-    planTitle: "Plan d'ensemble",
+    planTitle: "Plan d’ensemble",
     planIntro: 'Quatre étages. Chacun ne parle qu’à ses voisins.',
     planEtages: [
       {
@@ -265,18 +265,18 @@ const CONTENT = {
           { verbe: 'déclenche', acteurs: [A('Horloge', 'tâche programmée', 'sortie')] },
           { verbe: 'rédige', acteurs: [A('Routine Oracle', 'Sonnet', 'oracle')] },
           { verbe: 'appelle', acteurs: [A('veilleur', 'Haiku · actu IA 72 h, tech 7 j', 'agent'), A('relecteur', 'Sonnet · rouvre chaque source', 'agent')] },
-          { verbe: 'produit', acteurs: [A('PDF FR + EN', 'A4 recto verso', 'sortie'), A('PR auto/breves-<date>', 'numéro complet + brèves', 'sortie'), A('Notification', '« Oracle n° … prêt »', 'sortie')] },
+          { verbe: 'produit', acteurs: [A('PDF FR + EN', 'A4 recto verso', 'sortie'), A('PR auto/breves-<date>', 'numéro complet + brèves', 'sortie'), A('Notification', '« Oracle n° … prêt »', 'sortie')] },
           { verbe: 'valide', acteurs: [A('Je fusionne', 'depuis l’iPhone le plus souvent', 'michael', true)] },
           { verbe: 'publie', acteurs: [A('Vercel', 'page /oracle', 'sortie')] },
         ],
-        note: 'La routine prépare tout dans un dossier à part (un « worktree »), jamais dans mon dossier de travail, pour ne pas changer de branche sous mes pieds. Elle sauvegarde aussi le numéro dans le dépôt privé.',
+        note: 'La routine prépare tout dans un dossier à part (un « worktree »), jamais dans mon dossier de travail, pour ne pas changer de branche sous mes pieds. Elle sauvegarde aussi le numéro dans le dépôt privé.',
       },
       {
         titre: 'Les missions autonomes',
         quand: 'cadrées avec moi, exécutées toutes les 2 h',
         teinte: 'session',
         etapes: [
-          { verbe: 'cadre', acteurs: [A('Moi + session interactive', '/mission : SPEC et PLAN', 'michael', true)] },
+          { verbe: 'cadre', acteurs: [A('Moi + session interactive', '/mission : SPEC et PLAN', 'michael', true)] },
           { verbe: 'range', acteurs: [A('Branche auto/<nom>', 'un dossier missions/<nom>', 'sortie')] },
           { verbe: 'exécute', acteurs: [A('Routine missions', 'Sonnet · étape par étape', 'session')] },
           { verbe: 'délègue selon le PLAN', acteurs: [A('explorateur · verificateur', 'Haiku', 'agent'), A('sous-agent Haiku', 'étapes mécaniques', 'agent'), A('expert', 'Opus · après 2 échecs', 'agent')] },
@@ -295,7 +295,7 @@ const CONTENT = {
           { verbe: 'appelle', acteurs: [A('veilleur', 'Haiku · signaux du marché', 'agent'), A('relecteur', 'Sonnet · chiffres sourcés', 'agent')] },
           { verbe: 'produit', acteurs: [A('Fiches P-NNN', 'publiques, par PR', 'sortie'), A('Notes économiques', 'dépôt privé', 'sortie')] },
           { verbe: 'décide', acteurs: [A('Je garde ou j’arrête', 'dans la tour de contrôle', 'michael', true)] },
-          { verbe: 'suite', acteurs: [A('« On développe P-NNN »', 'devient une mission', 'session')] },
+          { verbe: 'suite', acteurs: [A('« On développe P-NNN »', 'devient une mission', 'session')] },
         ],
       },
       {
@@ -303,8 +303,8 @@ const CONTENT = {
         quand: 'à tout moment',
         teinte: 'carnet',
         etapes: [
-          { verbe: 'j’écris', acteurs: [A('« note : … »', 'dans n’importe quelle session', 'michael', true)] },
-          { verbe: 'range', acteurs: [A('Session en cours', 'répond « Noté. » et reprend', 'session')] },
+          { verbe: 'j’écris', acteurs: [A('« note : … »', 'dans n’importe quelle session', 'michael', true)] },
+          { verbe: 'range', acteurs: [A('Session en cours', 'répond « Noté. » et reprend', 'session')] },
           { verbe: 'stocke', acteurs: [A('Boîte du carnet', 'dépôt privé, jamais publié', 'sortie')] },
           { verbe: 'trie', acteurs: [A('Routine idées', 'le dimanche', 'idees')] },
           { verbe: 'oriente', acteurs: [A('→ idée P-NNN', '', 'idees'), A('→ sujet du journal', '', 'oracle'), A('→ mission', '', 'session')] },
@@ -322,13 +322,13 @@ const CONTENT = {
           { verbe: 'me résume', acteurs: [A('Claude, dans la tour', 'ce qui est fait, ce qui attend', 'session')] },
           { verbe: 'je regarde', acteurs: [A('/kiosque', 'missions, PR, Oracle du jour', 'michael', true)] },
         ],
-        note: 'Avant ce mod, une session ne savait rien de la fin d’une routine tant que je ne demandais pas. Première idée : que la routine écrive directement à la tour. Refusé : par sécurité, une session lancée par un horaire n’a pas le droit d’écrire à une autre session. D’où la boîte aux lettres, que la tour vient relever elle-même.',
+        note: 'Avant ce mod, une session ne savait rien de la fin d’une routine tant que je ne demandais pas. Première idée : que la routine écrive directement à la tour. Refusé : par sécurité, une session lancée par un horaire n’a pas le droit d’écrire à une autre session. D’où la boîte aux lettres, que la tour vient relever elle-même.',
       },
     ],
 
-    modsTitle: 'Les mods : des programmes dans Claude Code',
+    modsTitle: 'Les mods : des programmes dans Claude Code',
     modsIntro:
-      'Un mod est un petit programme TypeScript qui s’accroche à Claude Code : il voit passer chaque commande, chaque fin de tour, et peut afficher un panneau. Il ne consomme aucun token : c’est du code, pas un modèle. Les quatre mods sont chargés par toutes les sessions de la machine, y compris les routines.',
+      'Un mod est un petit programme TypeScript qui s’accroche à Claude Code : il voit passer chaque commande, chaque fin de tour, et peut afficher un panneau. Il ne consomme aucun token : c’est du code, pas un modèle. Les quatre mods sont chargés par toutes les sessions de la machine, y compris les routines.',
     modOuLabel: 'Où il agit',
     modQuandLabel: 'Quand',
     modFaitLabel: 'Ce qu’il fait',
@@ -339,7 +339,7 @@ const CONTENT = {
         ou: 'Dans chaque session, avant chaque commande du terminal.',
         quand: 'Dès qu’une commande touche git, gh ou vercel.',
         fait:
-          'Bloque le push forcé partout. Dans une routine, bloque aussi : commit hors d’une branche auto/*, push d’autre chose que les branches de l’Oracle et des idées, merge, rebase, fusion de PR, déploiement. Les interdits n’étaient que des consignes écrites ; ils sont maintenant appliqués.',
+          'Bloque le push forcé partout. Dans une routine, bloque aussi : commit hors d’une branche auto/*, push d’autre chose que les branches de l’Oracle et des idées, merge, rebase, fusion de PR, déploiement. Les interdits n’étaient que des consignes écrites ; ils sont maintenant appliqués.',
       },
       {
         nom: 'retour-routine',
@@ -360,7 +360,7 @@ const CONTENT = {
         commande: '/garde-controleur',
         ou: 'Dans chaque session, avant l’ouverture d’une pull request sur misran-labs.',
         quand: 'Dès qu’une session veut ouvrir une PR (sauf les routines de l’Oracle et des idées, auto/breves-* et auto/projets-*).',
-        fait: 'Refuse la PR tant que l’agent controleur n’a pas posé son tampon, OK ou ATTENTION, sur la version exacte de la branche. Seul le controleur peut tamponner : un commit de plus après son passage, et il faut repasser. /garde-controleur liste les derniers tampons.',
+        fait: 'Refuse la PR tant que l’agent controleur n’a pas posé son tampon, OK ou ATTENTION, sur la version exacte de la branche. Seul le controleur peut tamponner : un commit de plus après son passage, et il faut repasser. /garde-controleur liste les derniers tampons.',
       },
     ],
     modsNote: 'Une session reconnaît qu’elle est une routine au premier message envoyé par une tâche programmée, et non par moi.',
@@ -385,23 +385,23 @@ const CONTENT = {
       ['Idées du dimanche', 'Dimanche, 19 h', 'Sonnet', 'Fiches P-NNN par PR, notes privées', 'Je garde ou j’arrête'],
     ],
     modelesNote:
-      'Pourquoi trois modèles : Haiku pour ce qui est mécanique et répétitif (le moins cher), Sonnet pour exécuter et rédiger, Opus pour travailler avec moi et pour les rares blocages. Le coût suit la difficulté.',
+      'Pourquoi trois modèles : Haiku pour ce qui est mécanique et répétitif (le moins cher), Sonnet pour exécuter et rédiger, Opus pour travailler avec moi et pour les rares blocages. Le coût suit la difficulté.',
 
     gardeFousTitle: 'Les garde-fous, en couches',
-    gardeFousIntro: 'Le dépôt est public et main part en production : chaque couche rattrape ce que la précédente laisserait passer.',
+    gardeFousIntro: 'Le dépôt est public et main part en production : chaque couche rattrape ce que la précédente laisserait passer.',
     gardeFous: [
-      ['1. Les consignes', 'CLAUDE.md liste les interdits absolus : jamais de commit sur main par une routine, jamais de --force, rien de personnel dans un commit.'],
+      ['1. Les consignes', 'CLAUDE.md liste les interdits absolus : jamais de commit sur main par une routine, jamais de --force, rien de personnel dans un commit.'],
       ['2. Le mode automatique', 'Un classifieur juge chaque action risquée avant qu’elle parte, avec mes règles en contexte.'],
       ['3. Le mod garde-git', 'Bloque techniquement les commandes interdites, même si les deux couches précédentes les laissent passer.'],
-      ['4. Le controleur et son mod', 'Relit la branche (build, lint, secrets) avant chaque pull request et la tamponne ; le mod garde-controleur refuse la PR sans ce tampon.'],
+      ['4. Le controleur et son mod', 'Relit la branche (build, lint, secrets) avant chaque pull request et la tamponne ; le mod garde-controleur refuse la PR sans ce tampon.'],
       ['5. Moi', 'Je fusionne chaque pull request moi-même. Rien n’arrive sur le site autrement.'],
     ],
 
     limitesTitle: 'Ce qui reste fragile',
     limites: [
-      'Les quatre mods datent du 14 octobre 2026 : les trois premiers ont passé leur premier essai sur une vraie routine, garde-controleur fait ses premières pull requests ; pas encore des semaines d’usage.',
-      'La tour ne relève la boîte que si elle est ouverte sur le Mac ; sinon les résumés attendent dans la boîte.',
-      'Une routine qui demande une autorisation que personne ne donne peut rester bloquée : c’est arrivé, et c’est pour ça que les consignes lui interdisent de poser des questions.',
+      'Les quatre mods datent du 14 octobre 2026 : les trois premiers ont passé leur premier essai sur une vraie routine, garde-controleur fait ses premières pull requests ; pas encore des semaines d’usage.',
+      'La tour ne relève la boîte que si elle est ouverte sur le Mac ; sinon les résumés attendent dans la boîte.',
+      'Une routine qui demande une autorisation que personne ne donne peut rester bloquée : c’est arrivé, et c’est pour ça que les consignes lui interdisent de poser des questions.',
     ],
   },
 
