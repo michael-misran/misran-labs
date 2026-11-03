@@ -29,7 +29,9 @@ const ROMAINS = ['I', 'II', 'III', 'IV', 'V', 'VI']
 function Encart({ id, lang, atelier, grand }) {
   const e = ENCARTS[id]
   const agrandir = useAgrandir()
-  const style = e.ratio ? { aspectRatio: e.ratio } : undefined
+  // `cadrage` : point d'ancrage de l'image recadrée (ex. 'top' pour un écran très haut) ;
+  // `fond` : couleur autour d'une image affichée en entier, prise dans l'image
+  const style = e.ratio || e.cadrage || e.fond ? { aspectRatio: e.ratio, objectPosition: e.cadrage, background: e.fond } : undefined
   return (
     <figure className={`pf-encart${e.ratio ? '' : ' pf-encart-libre'}${grand ? ' pf-encart-grand' : ''}`}>
       {e.image ? (

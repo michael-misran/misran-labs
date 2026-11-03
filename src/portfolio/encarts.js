@@ -8,6 +8,8 @@
 // - ratio : proportion conseillée du visuel (largeur / hauteur) ; sans ratio,
 //   l'encart prend toute la place libre de la page.
 // - entier: true : l'image est affichée en entier, jamais rognée (schémas).
+// - fond (facultatif) : couleur autour d'une image entière, prise dans l'image.
+// - cadrage (facultatif) : point gardé quand l'image est rognée (ex. 'top').
 // - imageHD (facultatif) : version plus grande, montrée dans la visionneuse
 //   quand on clique sur l'image ; sans elle, la visionneuse reprend `image`.
 
@@ -64,14 +66,17 @@ export const ENCARTS = {
     consigne: 'Capture d’un RAPPORT.md de mission ou de la pull request ouverte par la routine (liste des étapes, modèle par étape). Vérifier qu’aucun secret n’apparaît.',
   },
   'iad-ecran': {
-    image: null,
-    legende: { fr: 'Outil de facturation des conseillers (refonte)', en: 'Advisor billing tool (redesign)' },
+    image: '/portfolio/iad-ecran.jpg',
+    cadrage: 'top',
+    legende: { fr: 'Playiad, l’outil des conseillers : revenus, biens, équipe (refonte)', en: 'Playiad, the advisors’ tool: revenue, listings, team (redesign)' },
     consigne: 'La maquette la plus forte des outils métiers IAD (facturation, rémunération ou rapprochement). Données fictives ou floutées : demander l’accord si besoin.',
   },
   'iad-parcours': {
-    image: null,
+    image: '/portfolio/iad-parcours.jpg',
+    entier: true,
+    fond: '#e5ecda',
     ratio: '16 / 9',
-    legende: { fr: 'Parcours utilisateur et tests', en: 'User journey and testing' },
+    legende: { fr: 'Parcours de candidature : du mot de passe à l’arrivée dans le réseau', en: 'Application journey: from password to joining the network' },
     consigne: 'Un parcours utilisateur, un wireframe annoté ou une photo de session de test.',
   },
   'lab-site': {
