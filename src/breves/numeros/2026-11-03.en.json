@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-03",
+  "numero": 35,
+  "essai": false,
+  "langue": "en",
+  "une": {
+    "rubrique": "Front page · AI",
+    "titre": "OpenAI rewrote its monorepo's Git server to keep pace with Codex",
+    "chapo": "Pando takes pushes to different branches in parallel, without changing anyone's Git client.",
+    "paragraphes": [
+      "On November 2, OpenAI described Pando, a new backend for Git repositories that now powers all development in its monorepo. The reason: Codex lets each engineer run far more work in parallel, which means more branches, pushes, merges and clones. Since the end of last year, the existing systems had been struggling: slow fetches and pushes, failed merges, reliability at times below 90%.",
+      "The idea comes down to two choices. Updates to unrelated branches proceed in parallel instead of queuing behind a single coordination point. And the server reuses the same packfiles (Git's compression format) for many clients, instead of building one per client. The price, which the post acknowledges: a reader looking at several branches may see them at different points in time.",
+      "Reported result: median push latency cut by nearly 5x, and nearly a petabyte of Git data served per day. The Git protocol and client are unchanged, so neither engineers nor agents have to change anything.",
+      "For a developer, the lesson is less the product, which you can't install, than the observation: when agents push code in bursts, the Git server becomes the bottleneck. OpenAI also says it wants to contribute its improvements to the Git client upstream."
+    ],
+    "sources": ["https://openai.com/index/scaling-git-at-openai/"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "Today's pet peeve", "court": "Peeve",
+        "titre": "Your iPhone subscription can go up without you saying yes",
+        "chapo": "Below a certain threshold, Apple sends a notice, then renews at the new price.",
+        "paragraphes": [
+          "According to Apple's documentation for developers, a subscription price increase needs the subscriber's consent only if it exceeds 50% of the current price <b>and</b> the difference exceeds about $5 per period ($50 for an annual subscription). In France: €5 and €50. Two other cases: the subscriber has already had an increase in the past 12 months, or lives in Austria, Germany, Poland or South Korea, where consent is always required.",
+          "Everything else goes through as a simple notice: an email and a notification, 27 days before a monthly subscription renews. If you do nothing, the subscription renews at the new price. So €4 going to €7 (+75%) stays under the €5 difference bar: no consent required.",
+          "When consent is required and the subscriber doesn't respond, Apple reminds them about weekly, then the subscription ends at the close of the current cycle."
+        ],
+        "encadre": { "titre": "Business lead", "texte": "A subscription price-hike tracker for consumers: it reads Apple's emails and flags every \"no consent\" increase, with the yearly amount added. Competition: Apple's own messages and existing subscription managers.", "plein": true },
+        "sources": ["https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-pricing-for-auto-renewable-subscriptions/", "https://developer.apple.com/help/app-store-connect/reference/in-app-purchases-and-subscriptions/auto-renewable-subscription-price-increase-thresholds"]
+      },
+      {
+        "type": "etude", "rubrique": "Case study", "court": "Case",
+        "titre": "Maddox, 21: a site sold for $120,000, then an app that isn't moving fast enough",
+        "chapo": "A solo founder who set himself a deadline, and tells the story with his numbers.",
+        "paragraphes": [
+          "Around 16-17, Maddox Schmidlkofer launched an online games site, DuckMath. Early ad revenue was $5 to $10 a day. By the end of summer the site was making about $1,000 a day. Sold for $120,000 in November 2025, after an initial offer of $100,000 and a counteroffer.",
+          "His next project, Tallow, is an app that scans foods and products to detail their ingredients. Work began on May 1, 2026, freemium, with a paid plan of about $40 a year; it was making under $2,000 a month at the time of the interview published October 7. The $4,000-a-month goal, aimed for the end of August, hadn't been reached; the new deadline was October 31.",
+          "Takeaways: a good product isn't enough without distribution, and an app adds friction an ad-funded site doesn't (download, Apple review, less precise conversion tracking). Caveat: figures are self-reported; we don't know whether the October 31 deadline was met."
+        ],
+        "sources": ["https://www.nichepursuits.com/maddox-schmidlkofer/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Dev · Tech",
+    "articles": [
+      {
+        "type": "dev", "rubrique": "Dev tool or tip", "court": "Tool",
+        "titre": "GitHub Actions will block pull_request_target by default on December 2",
+        "chapo": "Two test blackouts on November 9 and 16: a public workflow may stop on those days.",
+        "paragraphes": [
+          "On November 2, GitHub announced that the <i>pull_request_target</i> trigger will be blocked by default in all public repositories starting December 2, unless explicitly allowed by an Actions event policy. The deadline was first set for November 2. Private and internal repositories are not affected, nor is GitHub Enterprise Server.",
+          "The stated reason: this trigger runs in the context of the base repository and can access its secrets, so untrusted code from a fork could compromise the pipeline or steal secrets.",
+          "Two test windows, 4 to 6 p.m. UTC, on <b>November 9 and 16</b>: blocked runs fail with an annotation and don't start. In between, workflows run with warnings. To do before the 9th: open <i>Insights</i> to see which runs would be blocked, then decide whether to let them be blocked or to allow specific workflow files."
+        ],
+        "sources": ["https://github.blog/changelog/2026-11-02-pull_request_target-blocked-by-default-december-2"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech", "court": "Tech",
+        "titre": "Vercel refuses to install npm versions known to be booby-trapped",
+        "paragraphes": [
+          "On November 2, Vercel announced it blocks specific npm package versions on a blocklist for malware or vulnerabilities. The check happens before installation, in supported lockfiles, including when dependencies come back from the build cache, and during download from the public registry.",
+          "It is automatic on all plans, with no setting, for new builds. If a blocked dependency is detected, the deployment fails, naming the package and version, and Vercel tries to invalidate the affected cache. Fix: move to a safe version, update the lockfile, redeploy."
+        ],
+        "encadre": { "titre": "Business angle", "texte": "A build that fails without warning the team is a missed alert: there is a need for messages that explain the fix to people who didn't write the code.", "plein": true },
+        "sources": ["https://vercel.com/changelog/blocking-malicious-npm-packages-before-and-during-installation"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech in brief", "court": "Tech", "taille": "petit",
+        "titre": "Vercel can now be configured in TOML, with comments",
+        "paragraphes": [
+          "Announced November 2: a Vercel project can use a <i>vercel.toml</i> file, with the same properties as <i>vercel.json</i>, a flatter structure and comments. Only one configuration file per project: vercel.toml, vercel.json or vercel.ts."
+        ],
+        "sources": ["https://vercel.com/changelog/projects-can-now-be-configured-with-vercel-toml"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Brownout", "nature": "n.", "definition": "A deliberate, temporary shutdown of a feature that is about to be removed, so users who still depend on it see it break for a few hours and react before the final date." },
+    "chiffre": { "valeur": "$120,000", "texte": "sale price of DuckMath, a games site, in November 2025." },
+    "bonus": { "type": "defi", "texte": "In under 30 minutes: in one of your repos, run <i>grep -rl pull_request_target .github/workflows</i>. If a file shows up, note what it does with the repo's secrets and decide before November 9: block or allow." },
+    "enigme": { "question": "I'm cut off for two hours, twice, to warn you I'll soon disappear. What am I?", "reponse": "a brownout" }
+  },
+  "sources": ["openai.com", "developer.apple.com", "nichepursuits.com", "github.blog", "vercel.com"]
+}
