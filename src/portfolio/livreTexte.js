@@ -183,6 +183,22 @@ export const LT = {
   ],
 
   temoignages: { fr: 'Ce qu’on en dit', en: 'What people say' },
+  // Retours reçus dans l'outil RH (badge « Shining Star »), recopiés sans les photos
+  temoignagesListe: [
+    {
+      nom: 'Tracey Kovell',
+      date: { fr: 'juin 2025', en: 'June 2025' },
+      fr: 'Michael, merci pour le design UX des nouveaux produits et pour le travail fait pour lancer Fusion !',
+      en: 'Michael, thank you for the UX design on the new products and the work you did on getting Fusion up and running!',
+    },
+    {
+      nom: 'Alkhalil Eladlani',
+      date: { fr: 'octobre 2024', en: 'October 2024' },
+      fr: 'Bravo pour le travail que tu as pu faire sur le design système du new KYC.',
+      en: 'Well done on the work you did on the design system for the new KYC.',
+    },
+  ],
+  badge: { fr: 'Badge « Shining Star »', en: '“Shining Star” badge' },
   finTitre: { fr: 'Travaillons ensemble', en: 'Let’s work together' },
   finTexte: {
     fr: 'Je cherche une équipe produit qui veut industrialiser son design sans perdre son âme : design system, DesignOps, IA au service des gens.',

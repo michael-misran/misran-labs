@@ -92,9 +92,4 @@ export const ENCARTS = {
     legende: { fr: 'The Lost Cauldron (Godot)', en: 'The Lost Cauldron (Godot)' },
     consigne: 'Capture du jeu en action, ou d’une planche de personnages.',
   },
-  recommandations: {
-    image: null,
-    legende: { fr: 'Ils ont travaillé avec moi', en: 'People I worked with' },
-    consigne: 'Deux ou trois recommandations LinkedIn (capture ou texte recopié avec le nom et le poste de la personne, avec son accord).',
-  },
 }

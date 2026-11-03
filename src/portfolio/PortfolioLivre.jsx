@@ -390,7 +390,17 @@ function pagesDuLivre(lang, atelier) {
     () => (
       <Page folio={18} tete={lt(LT.temoignages, lang)} classe="pf-preuves">
         <h2 className="pf-titre-page">{lt(LT.temoignages, lang)}</h2>
-        {E('recommandations', true)}
+        <div className="pf-temoignages">
+          {LT.temoignagesListe.map((t) => (
+            <figure key={t.nom} className="pf-temoignage">
+              <blockquote>{lang === 'en' ? `“${lt(t, lang)}”` : `« ${lt(t, lang)} »`}</blockquote>
+              <figcaption>
+                <b>{t.nom}</b>
+                <span>{lt(t.date, lang)} · <span className="pf-badge">★ {lt(LT.badge, lang)}</span></span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </Page>
     ),
 
