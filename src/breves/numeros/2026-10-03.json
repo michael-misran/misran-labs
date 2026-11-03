@@ -32,7 +32,7 @@
       {
         "type": "irritant", "rubrique": "L’irritant du jour", "court": "Irritant",
         "titre": "« Presque juste, mais pas tout à fait »",
-        "chapo": "La première frustration des développeurs avec l’IA n’est pas qu’elle se trompe. C’est qu’elle se trompe presque pas.",
+        "chapo": "La première frustration des développeurs avec l’IA n’est pas qu’elle se trompe. C’est qu’elle ne se trompe presque pas.",
         "paragraphes": [
           "Dans l’enquête 2025 de Stack Overflow, 66 % des développeurs citent comme premier irritant les solutions d’IA « presque justes, mais pas tout à fait ». 45,2 % ajoutent que déboguer du code généré prend plus de temps que de l’écrire. Seuls 3,1 % disent faire très confiance à ses réponses.",
           "Le sujet reste d’actualité : les 28 et 29 septembre, GitHub a ajouté à Copilot Claude Sonnet 5.5 puis GPT-6.1 Sol. Chaque modèle promet moins d’erreurs."
@@ -77,7 +77,7 @@
   "page4": {
     "mot": { "terme": "Taux de conversion", "nature": "n. m.", "definition": "Part des visiteurs d’un site qui accomplissent l’action visée (essai gratuit, achat, inscription). Chez Plausible, il est passé de 2,65 % à 4,80 % de janvier à avril 2026 (p. 2) : presque le double, pour 2 % de visiteurs en plus." },
     "chiffre": { "valeur": "1 156", "texte": "nouveaux abonnés payants gagnés par Plausible en avril 2026, son meilleur mois en sept ans, selon l’équipe (p. 2)." },
-    "bonus": { "type": "citation", "texte": "« Good design is as little design as possible. »", "auteur": "Dieter Rams, 10ᵉ principe du bon design (Vitsœ)" },
+    "bonus": { "type": "citation", "texte": "« Good design is as little design as possible. »", "auteur": "Dieter Rams, 10ᵉ principe du bon design (Vitsœ)" },
     "enigme": { "question": "Plus on m’enlève de choses, plus je rapporte. Je ne fais pas grandir ton trafic, pourtant ton nombre d’inscrits augmente. Qui suis-je ?", "reponse": "une page d’accueil simplifiée (p. 2)" }
   },
   "sources": ["anthropic.com", "plausible.io", "survey.stackoverflow.co", "github.blog", "news-medical.net", "sciencealert.com", "blog.google", "vitsoe.com"]

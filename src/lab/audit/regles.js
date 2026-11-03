@@ -296,7 +296,7 @@ const r8 = {
           tokens: [t.nom],
           fichier: t.fichier,
           emplacement: t.emplacement,
-          fr: `« ${t.nom} » n'a pas de type (ni propre, ni hérité de son groupe). Les outils ne peuvent pas savoir s'il s'agit d'une couleur, d'une dimension, etc.`,
+          fr: `« ${t.nom} » n’a pas de type (ni propre, ni hérité de son groupe). Les outils ne peuvent pas savoir s’il s’agit d’une couleur, d’une dimension, etc.`,
           en: `"${t.nom}" has no type (neither its own nor inherited from its group). Tools cannot tell whether it is a color, a dimension, etc.`,
         })
       )

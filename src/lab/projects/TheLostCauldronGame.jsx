@@ -294,7 +294,7 @@ const CONTENT = {
       "Échap pour quitter — nécessaire en plein écran, pas de barre de fenêtre",
     ],
     archPatternTitle: 'Entités 100% en code, pas de scènes .tscn par objet',
-    archPattern: "Une seule scène réelle (Main.tscn, un nœud vide avec script). Le joueur, les ennemis, les projectiles, les orbes d'XP, le spawner de vagues et l'UI sont tous instanciés au runtime via `MonScript.new()` — cette astuce GDScript crée un objet du type que le script étend (ex: CharacterBody2D), script attaché, sans jamais passer par l'éditeur de scène. Visuels construits en code (Polygon2D, cercles générés) puis, une fois le pack de sprites intégré, par AnimatedSprite2D. Choix délibéré : ça évite d'avoir à faire écrire ou relire des fichiers .tscn à la main par l'assistant IA, une source d'erreurs de syntaxe silencieuses.",
+    archPattern: "Une seule scène réelle (Main.tscn, un nœud vide avec script). Le joueur, les ennemis, les projectiles, les orbes d’XP, le spawner de vagues et l’UI sont tous instanciés au runtime via `MonScript.new()` — cette astuce GDScript crée un objet du type que le script étend (ex: CharacterBody2D), script attaché, sans jamais passer par l’éditeur de scène. Visuels construits en code (Polygon2D, cercles générés) puis, une fois le pack de sprites intégré, par AnimatedSprite2D. Choix délibéré : ça évite d’avoir à faire écrire ou relire des fichiers .tscn à la main par l’assistant IA, une source d’erreurs de syntaxe silencieuses.",
     archStructureTitle: 'Structure de dossiers',
     archStructure: [
       '09_jeu/scenes/ — uniquement Main.tscn',
@@ -305,7 +305,7 @@ const CONTENT = {
     archAssetTitle: 'Pipeline sprites (Aseprite → Godot)',
     archAsset: "Statut : Marcus (le joueur) est le premier vrai sprite du roman intégré, au format JSON d’export Aseprite (feuille + tags). Les 3 ennemis restent pour l’instant des packs achetés (Tiny RPG Character Asset Pack), le temps que d’autres sprites soient fournis — ils seront remplacés secteur par secteur au même rythme que Marcus. Deux mécanismes de chargement coexistent dans SpriteSheetLoader.gd selon le format livré : lecture directe d’un JSON Aseprite (cas de Marcus, régions découpées dynamiquement) ou découpage d’une feuille en bandes horizontales de largeur fixe (cas des ennemis, un fichier par animation). Export brut fait en ligne de commande via le binaire Aseprite plutôt qu’à la main dans l’éditeur — voir l’onglet Bugs pour le script Lua nécessaire au cas du calque Background.",
     archVerifTitle: 'Méthode de vérification',
-    archVerif: "Pas d'accès à un enregistreur d'écran système dans cet environnement (permissions manquantes). Vérification faite en lançant Godot en mode fenêtré/headless piloté par script, en forçant des états de jeu précis (ex: direction de déplacement figée), et en sauvegardant une image directement depuis la texture du viewport (`get_viewport().get_texture().get_image().save_png()`) — donc un vrai rendu du moteur, pas une capture d'écran système. Complété par des runs headless de plusieurs centaines de frames pour détecter les erreurs de script sans interface.",
+    archVerif: "Pas d’accès à un enregistreur d’écran système dans cet environnement (permissions manquantes). Vérification faite en lançant Godot en mode fenêtré/headless piloté par script, en forçant des états de jeu précis (ex: direction de déplacement figée), et en sauvegardant une image directement depuis la texture du viewport (`get_viewport().get_texture().get_image().save_png()`) — donc un vrai rendu du moteur, pas une capture d’écran système. Complété par des runs headless de plusieurs centaines de frames pour détecter les erreurs de script sans interface.",
 
     specsTitle: 'Spécifications fonctionnelles',
     specsIntro: "Secteur pilote : Religion (Bélial). Ce qui est jouable aujourd’hui.",
@@ -412,11 +412,11 @@ const CONTENT = {
       {
         title: "Erreurs de compilation GDScript sur le pattern 100% procédural",
         symptomLabel: 'SYMPTÔME',
-        symptom: "Erreurs de compilation type « type inferred from Variant » et « function not found » au premier lancement du projet, bloquant l'exécution.",
+        symptom: "Erreurs de compilation type « type inferred from Variant » et « function not found » au premier lancement du projet, bloquant l’exécution.",
         causeLabel: 'CAUSE',
-        cause: "Le vérificateur de types statique de Godot 4 ne peut pas résoudre les méthodes personnalisées sur un objet créé dynamiquement via `Script.new()` sans class_name — et le registre global des class_name ne s'était pas construit de façon fiable au tout premier lancement du projet (avant toute ouverture dans l'éditeur).",
+        cause: "Le vérificateur de types statique de Godot 4 ne peut pas résoudre les méthodes personnalisées sur un objet créé dynamiquement via `Script.new()` sans class_name — et le registre global des class_name ne s’était pas construit de façon fiable au tout premier lancement du projet (avant toute ouverture dans l’éditeur).",
         fixLabel: 'RÉSOLUTION',
-        fix: "Typage explicite `Variant` pour toute variable portant un script personnalisé nécessitant un appel de méthode dynamique, et `const MonScript := preload(\"res://...\")` pour accéder aux enums/constantes d'un script sans dépendre du registre de classes global.",
+        fix: "Typage explicite `Variant` pour toute variable portant un script personnalisé nécessitant un appel de méthode dynamique, et `const MonScript := preload(\"res://...\")` pour accéder aux enums/constantes d’un script sans dépendre du registre de classes global.",
         severity: 'minor',
       },
       {
@@ -424,7 +424,7 @@ const CONTENT = {
         symptomLabel: 'SYMPTÔME',
         symptom: "« Animation 'idle' doesn’t exist » — le personnage ne s’affichait plus du tout une fois le jeu exporté en HTML5 et ouvert dans le navigateur, alors que tout fonctionnait sans erreur en mode développement (édition et tests headless).",
         causeLabel: 'CAUSE',
-        cause: "Le chargeur de sprites scannait un dossier de fichiers au runtime via DirAccess.list_dir_begin() pour trouver les frames individuelles. Cette énumération de dossier ne fonctionne pas de façon fiable une fois le projet empaqueté dans un .pck exporté — même avec le filtre d'export réglé pour inclure toutes les ressources —, alors qu'elle marche parfaitement sur le système de fichiers réel en développement. Un bug invisible en local, qui ne se révèle qu'à l'export.",
+        cause: "Le chargeur de sprites scannait un dossier de fichiers au runtime via DirAccess.list_dir_begin() pour trouver les frames individuelles. Cette énumération de dossier ne fonctionne pas de façon fiable une fois le projet empaqueté dans un .pck exporté — même avec le filtre d’export réglé pour inclure toutes les ressources —, alors qu’elle marche parfaitement sur le système de fichiers réel en développement. Un bug invisible en local, qui ne se révèle qu’à l’export.",
         fixLabel: 'RÉSOLUTION',
         fix: "Remplacement du scan de dossier par un chargement direct : le nombre de frames par animation est connu à l’avance et codé en dur, chaque frame est chargée par son chemin exact (`load(\"res://…Idle1.png\")`) plutôt que découverte dynamiquement. Un chemin connu se charge toujours correctement dans un .pck, contrairement à une énumération de répertoire. Revérifié après export : plus d’erreur, animations chargées.",
         severity: 'major',
@@ -448,7 +448,7 @@ const CONTENT = {
         title: 'V0 — secteur pilote jouable',
         summary: 'Architecture Godot 100% code, boucle de jeu complète sur le secteur Religion.',
         what: "Godot 4 + GDScript choisi comme moteur. Toutes les entités (joueur, ennemis, projectiles, orbes d’XP, vagues, interface) construites en code plutôt qu’en scènes éditées à la main — pour rester rapide à faire évoluer avec l’assistant IA. Secteur Religion (Bélial) choisi comme pilote car le mieux documenté dans le lore.",
-        decision: "Pas de fichiers .tscn par entité : tout instancié dynamiquement via `Script.new()`. Ce choix a permis d'itérer vite mais a aussi causé le bug d'export le plus sérieux de la session (voir onglet Bugs) — un compromis assumé.",
+        decision: "Pas de fichiers .tscn par entité : tout instancié dynamiquement via `Script.new()`. Ce choix a permis d’itérer vite mais a aussi causé le bug d’export le plus sérieux de la session (voir onglet Bugs) — un compromis assumé.",
       },
       {
         date: '27/08/2026',
@@ -538,7 +538,7 @@ const CONTENT = {
         statusColor: 'var(--warning)',
         items: [
           "Option A — boss de fin de run (Vautrin) : donne un vrai climax à la victoire, actuellement juste un minuteur qui tombe à zéro",
-          "Option B — deuxième secteur (ex: Finance/Mammon) : prouve que le twist « un secteur = une identité » tient sur plusieurs déclinaisons",
+          "Option B — deuxième secteur (ex. : Finance/Mammon) : prouve que le twist « un secteur = une identité » tient sur plusieurs déclinaisons",
           "Option C — hub meta-progression (le pub The Lost Cauldron, déjà modélisé en 3D) : entre les runs, avant d’avoir plusieurs secteurs à débloquer",
           "Option D — vrai set de tuiles/décor (en attente que l’auteur en trouve un sur itch.io) pour remplacer les placeholders du décor de niveau",
         ],

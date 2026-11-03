@@ -25,9 +25,9 @@
     },
     {
       "rubrique": "tech",
-      "titre": { "fr": "npm : moins de jetons à longue durée", "en": "npm: fewer long-lived tokens" },
+      "titre": { "fr": "npm : moins de jetons à longue durée", "en": "npm: fewer long-lived tokens" },
       "resume": {
-        "fr": "Depuis le 30 septembre, la publication de confiance npm depuis GitHub peut gérer les dist-tags avec des identifiants OIDC de courte durée, sans jeton permanent. L'option « Allow npm dist-tag » est désactivée par défaut.",
+        "fr": "Depuis le 30 septembre, la publication de confiance npm depuis GitHub peut gérer les dist-tags avec des identifiants OIDC de courte durée, sans jeton permanent. L’option « Allow npm dist-tag » est désactivée par défaut.",
         "en": "Since September 30, npm trusted publishing from GitHub can manage dist-tags with short-lived OIDC credentials, with no permanent token. The \"Allow npm dist-tag\" option is off by default."
       },
       "sources": [

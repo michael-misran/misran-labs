@@ -82,9 +82,9 @@
       },
       {
         "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
-        "titre": "npm : moins de jetons à longue durée",
+        "titre": "npm : moins de jetons à longue durée",
         "paragraphes": [
-          "Depuis le 30 septembre, la publication « de confiance » npm depuis GitHub peut aussi gérer les <i>dist-tags</i> avec des identifiants OIDC de courte durée, sans jeton permanent. L'option « Allow npm dist-tag » est désactivée par défaut : à activer dans les réglages du paquet."
+          "Depuis le 30 septembre, la publication « de confiance » npm depuis GitHub peut aussi gérer les <i>dist-tags</i> avec des identifiants OIDC de courte durée, sans jeton permanent. L’option « Allow npm dist-tag » est désactivée par défaut : à activer dans les réglages du paquet."
         ],
         "sources": [
           "https://github.blog/changelog/2026-09-30-opt-in-dist-tag-permissions-for-npm-trusted-publishing"

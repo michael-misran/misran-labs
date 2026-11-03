@@ -116,7 +116,7 @@
     ]
   },
   "page4": {
-    "mot": { "terme": "Mode collapse", "nature": "n. m.", "definition": "En IA générative, tendance d’un modèle à produire des réponses de plus en plus semblables, au détriment de la diversité. NN/g n’explique pas précisément pourquoi les réponses synthétiques se concentrent ainsi (p. 2)." },
+    "mot": { "terme": "Mode collapse", "nature": "n. m.", "definition": "En IA générative, tendance d’un modèle à produire des réponses de plus en plus semblables, au détriment de la diversité. NN/g n’explique pas précisément pourquoi les réponses synthétiques se concentrent ainsi (p. 3)." },
     "chiffre": { "valeur": "91 %", "texte": "des revenus de Spotify au deuxième trimestre 2026 viennent des abonnements Premium." },
     "bonus": { "type": "citation", "texte": "« Good design is honest. »", "auteur": "Dieter Rams (Vitsœ)" },
     "enigme": { "question": "Je répète la même réponse à tous ceux qui m’interrogent, et j’en change à peine la forme. Qui suis-je ?", "reponse": "un panel d’utilisateurs synthétiques" }

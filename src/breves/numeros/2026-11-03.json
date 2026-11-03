@@ -58,9 +58,9 @@
       },
       {
         "type": "tech", "rubrique": "La tech", "court": "Tech",
-        "titre": "Vercel refuse d'installer les versions npm connues pour être piégées",
+        "titre": "Vercel refuse d’installer les versions npm connues pour être piégées",
         "paragraphes": [
-          "Le 2 novembre, Vercel a annoncé qu'il bloque des versions précises de paquets npm figurant sur une liste de blocage pour malware ou faille. Le contrôle a lieu avant l'installation, dans les lockfiles pris en charge, y compris quand les dépendances reviennent du cache de build, et pendant le téléchargement depuis le registre public.",
+          "Le 2 novembre, Vercel a annoncé qu’il bloque des versions précises de paquets npm figurant sur une liste de blocage pour malware ou faille. Le contrôle a lieu avant l’installation, dans les lockfiles pris en charge, y compris quand les dépendances reviennent du cache de build, et pendant le téléchargement depuis le registre public.",
           "C’est automatique sur tous les plans, sans réglage, pour les nouveaux builds. Si une dépendance bloquée est détectée, le déploiement échoue en nommant le paquet et la version, et Vercel tente d’invalider le cache concerné. Correction : passer à une version sûre, mettre à jour le lockfile, redéployer."
         ],
         "encadre": { "titre": "L’œil du business", "texte": "Un build qui échoue sans prévenir l’équipe est une alerte ratée : il y a un besoin de messages qui expliquent la correction à qui n’a pas écrit le code.", "plein": true },

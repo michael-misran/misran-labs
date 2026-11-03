@@ -61,7 +61,7 @@
         "type": "tech", "rubrique": "La tech", "court": "Tech",
         "titre": "TypeScript 7.1 en bêta : de 1,2 à 1,9 fois plus rapide que la 7.0",
         "paragraphes": [
-          "La bêta annoncée le 20 octobre ajoute la cible <i>--target es2026</i>, des attributs d'import dans les déclarations de modules ambiants (on type un fichier selon son attribut, et non son extension) et les imports de source pour WebAssembly. Des « content mappers » vérifient les types de fichiers Vue, Svelte ou Astro, avec le drapeau <i>--runExternalCode</i>.",
+          "La bêta annoncée le 20 octobre ajoute la cible <i>--target es2026</i>, des attributs d’import dans les déclarations de modules ambiants (on type un fichier selon son attribut, et non son extension) et les imports de source pour WebAssembly. Des « content mappers » vérifient les types de fichiers Vue, Svelte ou Astro, avec le drapeau <i>--runExternalCode</i>.",
           "Sur cinq projets testés, en vérification seule avec quatre threads, la compilation gagne de 1,2 fois (bluesky, vscode) à 1,9 fois (mui-docs) par rapport à la 7.0, et la mémoire baisse de 15,8 % à 49,6 %. Attention : des contrôles plus stricts sur les paramètres de type distributifs peuvent produire de nouvelles erreurs. Une version candidate est prévue dans environ un mois."
         ],
         "encadre": { "titre": "L’œil du business", "texte": "Les « content mappers » ouvrent la vérification de types aux formats maison : un terrain pour qui publie des plugins pour un framework de niche.", "plein": true },

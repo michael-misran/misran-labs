@@ -79,7 +79,7 @@
   "page4": {
     "mot": { "terme": "Opt-in", "nature": "n. m.", "definition": "Principe selon lequel on ne peut contacter une personne qu’après son accord préalable, par opposition à l’opt-out, où l’on contacte tant qu’elle ne s’y oppose pas. Pour le démarchage téléphonique des particuliers, la France est passée à l’opt-in le 11 août 2026." },
     "chiffre": { "valeur": "87,4 %", "texte": "de réussite pour GPT‑6 Astra sur 20 langages (26,8 % avant)." },
-    "bonus": { "type": "defi", "texte": "En moins de 30 minutes : cherchez dans vos dépôts les workflows de CI qui clonent un dépôt public en HTTPS, par exemple avec <i>grep -rn \"git clone https\" .github</i>. Lesquels le font sans jeton ?" },
+    "bonus": { "type": "defi", "texte": "En moins de 30 minutes : cherchez dans vos dépôts les workflows de CI qui clonent un dépôt public en HTTPS, par exemple avec <i>grep -rn \"git clone https\" .github</i>. Lesquels le font sans jeton ?" },
     "enigme": { "question": "Je suis une promesse que l’on doit pouvoir montrer pendant trois ans ; sans moi, le téléphone doit rester muet, et je peux être retiré d’un simple mot. Qui suis-je ?", "reponse": "le consentement" }
   },
   "sources": ["openai.com", "blogdumoderateur.com", "nichepursuits.com", "nodejs.org", "github.blog"]

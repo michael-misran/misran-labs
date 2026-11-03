@@ -24,7 +24,7 @@ const FR = {
       total > n ? `${pluriel(n, 'fichier')} affichés sur ${total} : les 20 premiers, par ordre alphabétique.` : pluriel(n, 'fichier') + ' à analyser.',
     noTokens:
       'Aucun fichier de tokens repéré (fichiers .json dont le chemin contient « token », ou .css / .scss nommés token, variables, theme ou vars). Tu peux quand même mesurer la couverture du code.',
-    sample: (n, total) => `Échantillon de code : ${pluriel(n, 'fichier')} sur ${total} éligible${total > 1 ? 's' : ''}.`,
+    sample: (n, total) => `Échantillon de code\u00a0: ${pluriel(n, 'fichier')} sur ${total} éligible${total > 1 ? 's' : ''}.`,
     noCode: 'Aucun fichier de code trouvé : la couverture ne pourra pas être mesurée.',
     analyze: 'Analyser ce dépôt',
     progress: (faits, total) => `${faits} / ${total} fichiers`,
@@ -48,7 +48,7 @@ const FR = {
     noValues: "Aucune valeur de style repérée dans l’échantillon : la couverture ne peut pas être calculée.",
     methodTitle: "COMMENT C'EST MESURÉ",
     method:
-      "Un usage de token est un var(--nom). Une valeur en dur est une couleur littérale (#hex, rgb(), hsl()) ou une longueur en px autre que 0 et 1px, hors d'un var(…) et hors commentaires. Dans les fichiers JavaScript, TypeScript, Vue et Svelte, seules les chaînes de caractères et les blocs <style> sont lus ; dans les fichiers CSS, seules les valeurs de déclarations. C'est une estimation sur un échantillon d'au plus 60 fichiers, pas une mesure exacte : elle ne voit pas les tokens utilisés sous une autre forme (classes utilitaires, thèmes JavaScript, unités rem ou em).",
+      "Un usage de token est un var(--nom). Une valeur en dur est une couleur littérale (#hex, rgb(), hsl()) ou une longueur en px autre que 0 et 1px, hors d’un var(…) et hors commentaires. Dans les fichiers JavaScript, TypeScript, Vue et Svelte, seules les chaînes de caractères et les blocs <style> sont lus ; dans les fichiers CSS, seules les valeurs de déclarations. C’est une estimation sur un échantillon d’au plus 60 fichiers, pas une mesure exacte : elle ne voit pas les tokens utilisés sous une autre forme (classes utilitaires, thèmes JavaScript, unités rem ou em).",
     byFileTitle: 'FICHIERS AVEC LE PLUS DE VALEURS EN DUR',
     repeatedTitle: 'VALEURS EN DUR LES PLUS RÉPÉTÉES',
     alreadyTitle: 'VALEURS QUI ONT DÉJÀ UN TOKEN',
@@ -75,7 +75,7 @@ const FR = {
     notRated: 'non évalué',
     scoreOf: (n) => `${n} / 3`,
     adjustedTag: 'ajustée',
-    computedNote: (t) => `calculée : ${t}`,
+    computedNote: (t) => `calculée\u00a0: ${t}`,
     adjust: 'Ajuster',
     adjustTitle: 'AJUSTER LA NOTE',
     noteLabel: 'Note',

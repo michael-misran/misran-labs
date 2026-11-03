@@ -388,7 +388,7 @@ const CONTENT = {
     setupTreeLabel: 'Créé dans le projet :',
     setupIncidentsLabel: 'Incidents de mise en place (instructifs) :',
     setupIncidents: [
-      'npm run lint restait bloqué indéfiniment sur deux jeux minifiés de 315 Ko dans public/games → dossier exclu du lint. Sans ça, toute session autonome se serait figée. Lint : 6 erreurs préexistantes, hors mission.',
+      'npm run lint restait bloqué indéfiniment sur deux jeux minifiés de 315 Ko dans public/games → dossier exclu du lint. Sans ça, toute session autonome se serait figée. Lint : 6 erreurs préexistantes, hors mission.',
       "Garde-fous de Claude Code : la création du fichier de permissions et de la tâche programmée, lancées de sa propre initiative, ont été bloquées (« auto-modification ») → j’ai créé le fichier moi-même ; la tâche a été créée après ma demande explicite.",
       "Tâche programmée « missions autonomes » : toutes les 2 h à la 15e minute ; chaque exécution repart de zéro et lit les fichiers de la mission.",
       "Premier passage : les demandes d’autorisation n’offraient que « Autoriser une fois » / « Refuser »."
@@ -412,7 +412,7 @@ const CONTENT = {
       'Contrôle avant publication : aucun secret ni donnée personnelle dans les changements (dépôt public).',
       "J’ai poussé la branche moi-même (le push est interdit à Claude par les permissions — le garde-fou fonctionne, même quand je le demande).",
       "Prévisualisation Vercel automatique de la branche, que j’ai vérifiée.",
-      'Pull request ouverte par Claude, fusionnée par moi (clic « Merge »), puis git pull.',
+      'Pull request ouverte par Claude, fusionnée par moi (clic « Merge »), puis git pull.',
       'Explication clé pour moi : le code sur GitHub ≠ le site en ligne. Le site est construit à partir de main ; une branche est un brouillon à côté de la version publiée.',
     ],
     gitFlow: [
@@ -422,7 +422,7 @@ const CONTENT = {
       { label: 'Push (Claude)', sublabel: "La branche de mission part sur GitHub à la clôture ; pousser main reste réservé à moi, sur ma demande" },
       { label: 'Prévisualisation Vercel', sublabel: 'Construite automatiquement pour la branche, que je vérifie' },
       { label: 'Pull request (Claude)', sublabel: 'Propose de faire entrer le brouillon dans main' },
-      { label: 'Fusion (moi)', sublabel: 'Clic « Merge », puis git pull' },
+      { label: 'Fusion (moi)', sublabel: 'Clic « Merge », puis git pull' },
       { label: 'Site en ligne', sublabel: 'Construit à partir de main : le brouillon devient la version publiée' },
     ],
 
@@ -642,7 +642,7 @@ const CONTENT = {
       { label: '6 · Rapport', sublabel: 'RAPPORT.md, écrit par la session' },
       { label: '7 · « Clôture les missions »', sublabel: 'Moi, en un mot' },
       { label: '8 · Vérification, push, pull requests', sublabel: 'Claude : navigateur, aucune donnée sensible' },
-      { label: '9 · Fusion (moi)', sublabel: 'Clic « Merge », puis git pull' },
+      { label: '9 · Fusion (moi)', sublabel: 'Clic « Merge », puis git pull' },
     ],
     remainingTitle: 'Ce qui me reste',
     remaining: [

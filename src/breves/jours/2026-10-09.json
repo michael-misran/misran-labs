@@ -46,11 +46,11 @@
     {
       "rubrique": "tech",
       "titre": {
-        "fr": "npm : 48 heures pour valider une publication de confiance",
+        "fr": "npm : 48 heures pour valider une publication de confiance",
         "en": "npm: 48 hours to validate trusted publishing"
       },
       "resume": {
-        "fr": "Depuis le 2 octobre, une configuration de publication de confiance npm non validée expire 48 heures après sa création. Une première publication réussie la valide ; si elle a expiré, on la recrée.",
+        "fr": "Depuis le 2 octobre, une configuration de publication de confiance npm non validée expire 48 heures après sa création. Une première publication réussie la valide ; si elle a expiré, on la recrée.",
         "en": "Since October 2, an unvalidated npm trusted publishing configuration expires 48 hours after creation. A first successful publish validates it; if it expired, recreate it."
       },
       "sources": [

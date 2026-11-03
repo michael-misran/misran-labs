@@ -170,7 +170,7 @@ const CONTENT = {
     ],
     updatesTitle: 'Dernières mises à jour',
     updates: [
-      { date: '25 août 2026', title: 'Bouton icône unifié', desc: "Une seule règle pour tout bouton icône interactif du shell (langue, thème, repli du menu…) : transparent au repos, carré var(--hover-surface) (radius 6px) au survol. src/design-system/IconButton.jsx." },
+      { date: '25 août 2026', title: 'Bouton icône unifié', desc: "Une seule règle pour tout bouton icône interactif du shell (langue, thème, repli du menu…) : transparent au repos, carré var(--hover-surface) (radius 6px) au survol. src/design-system/IconButton.jsx." },
       { date: '21 août 2026', title: 'Structure en onglets', desc: "Vue d’ensemble, Couleurs, Typographies, Espacement — plutôt qu’une seule longue page." },
       { date: '21 août 2026', title: 'Rôles de couleur documentés', desc: "Chaque couleur du Lab associée à ce qu’elle veut dire, pas juste sa valeur hexadécimale." },
       { date: '21 août 2026', title: 'FieldLabel et Tag extraits', desc: "Deux duplications de plus supprimées en creusant l’audit — 15 occurrences pour le seul label de champ." },
@@ -284,7 +284,7 @@ const CONTENT = {
           "Architecture à 3 niveaux : primitive (valeurs brutes, sans signification, ex : --teal-500, --sepia-600, --ink-900) → semantic (rôle, ex : --primary, qui référence la bonne primitive selon le thème) → component (rôle d’un composant précis, ex : --button-bg qui référence le semantic).",
           "Aujourd’hui tokens.css saute l’étape primitive : chaque token va directement du nom sémantique (--primary, --text…) à la valeur hex codée en dur par thème, sans couche de valeurs brutes en dessous.",
           "L’intérêt de la couche component : un bouton pourrait diverger d’un rôle partagé (ex : sa bordure) sans dupliquer une valeur brute ni casser les autres usages de ce même rôle ailleurs dans l’appli.",
-          "Style Dictionary (outil open-source d'Amazon) pourrait générer ces tokens depuis une seule source JSON/YAML vers plusieurs formats — CSS, SCSS, JS, XML Android, Swift iOS. Pas retenu pour l'instant : M.Labs est un seul projet web avec des tokens écrits à la main dans tokens.css — ça ajouterait une dépendance npm et une étape de build pour un problème de synchronisation multi-plateforme qu'on n'a pas.",
+          "Style Dictionary (outil open-source d’Amazon) pourrait générer ces tokens depuis une seule source JSON/YAML vers plusieurs formats — CSS, SCSS, JS, XML Android, Swift iOS. Pas retenu pour l’instant : M.Labs est un seul projet web avec des tokens écrits à la main dans tokens.css — ça ajouterait une dépendance npm et une étape de build pour un problème de synchronisation multi-plateforme qu’on n’a pas.",
         ],
       },
     ],

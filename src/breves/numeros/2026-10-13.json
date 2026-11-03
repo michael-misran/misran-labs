@@ -79,7 +79,7 @@
   "page4": {
     "mot": { "terme": "Committer", "nature": "n. m.", "definition": "Dans Git, personne qui a enregistré un commit, à ne pas confondre avec l’auteur, qui a écrit le changement. Les deux champs sont du texte fourni par le poste de l’expéditeur : rien ne prouve leur exactitude sans vérification supplémentaire." },
     "chiffre": { "valeur": "90 %", "texte": "des ventes de Zigpoll viennent d’une boutique d’applications." },
-    "bonus": { "type": "defi", "texte": "En moins de 30 minutes : ouvrez un de vos dépôts et lancez <i>git log --format='%an | %cn'</i>. Cette commande affiche l'auteur et le committer de chaque commit. Combien de lignes diffèrent, et pourquoi ?" },
+    "bonus": { "type": "defi", "texte": "En moins de 30 minutes : ouvrez un de vos dépôts et lancez <i>git log --format='%an | %cn'</i>. Cette commande affiche l’auteur et le committer de chaque commit. Combien de lignes diffèrent, et pourquoi ?" },
     "enigme": { "question": "Je porte un nom, mais n’importe qui peut m’écrire à sa guise ; j’apparais sur chaque ligne de l’histoire d’un projet sans en prouver la vérité. Qui suis-je ?", "reponse": "le champ « auteur » d’un commit Git" }
   },
   "sources": ["vercel.com", "github.blog", "nichepursuits.com"]

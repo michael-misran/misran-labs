@@ -50,7 +50,7 @@
         "titre": "Dots : un agent qui travaille quand vous ne regardez pas",
         "chapo": "OpenAI a lancé le 29 septembre des agents toujours actifs dans ChatGPT. Voici comment les cadrer.",
         "paragraphes": [
-          "Un Dot reçoit un objectif et le poursuit seul, Il dispose de son propre ordinateur dans le nuage, accède à plus de 4 000 applications par les plugins d’OpenAI, et se joint à vous dans ChatGPT, Slack ou Teams.",
+          "Un Dot reçoit un objectif et le poursuit seul. Il dispose de son propre ordinateur dans le nuage, accède à plus de 4 000 applications par les plugins d’OpenAI, et se joint à vous dans ChatGPT, Slack ou Teams.",
           "OpenAI prévient que les agents peuvent se tromper et que le travail important doit être relu. Les actions qui touchent à un compte ou partagent des données passent par une validation.",
           "Déploiement progressif pour ChatGPT Pro et Business Premium, un agent par abonnement. Les abonnés Pro de l’Espace économique européen, de Suisse et du Royaume-Uni en sont exclus."
         ],

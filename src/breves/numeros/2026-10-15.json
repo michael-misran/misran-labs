@@ -79,7 +79,7 @@
     ]
   },
   "page4": {
-    "mot": { "terme": "Lockfile", "nature": "n. m.", "definition": "Fichier qui fige les versions exactes des dépendances d’un projet, pour que deux exécutions utilisent le même code. GitHub vient d’en lancer un pour ses workflows Actions (p. 2)." },
+    "mot": { "terme": "Lockfile", "nature": "n. m.", "definition": "Fichier qui fige les versions exactes des dépendances d’un projet, pour que deux exécutions utilisent le même code. GitHub vient d’en lancer un pour ses workflows Actions (p. 3)." },
     "chiffre": { "valeur": "22 h 40", "texte": "par jour et par modem, en moyenne, sur Gretel en 1982." },
     "bonus": { "type": "question", "texte": "Quel usage vos utilisateurs détournent-ils déjà dans votre produit ou dans un outil que vous utilisez, et que se passerait-il si vous le rendiez officiel ?" },
     "enigme": { "question": "Je fige ce qui devrait rester pareil, je n’ajoute aucune ligne de code et pourtant le projet s’arrête de changer sans prévenir. Qui suis-je ?", "reponse": "un lockfile" }

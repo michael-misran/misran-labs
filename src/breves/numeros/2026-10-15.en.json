@@ -80,7 +80,7 @@
     ]
   },
   "page4": {
-    "mot": { "terme": "Lockfile", "nature": "n.", "definition": "A file that pins the exact versions of a project's dependencies, so two runs use the same code. GitHub has just launched one for its Actions workflows (p. 2)." },
+    "mot": { "terme": "Lockfile", "nature": "n.", "definition": "A file that pins the exact versions of a project's dependencies, so two runs use the same code. GitHub has just launched one for its Actions workflows (p. 3)." },
     "chiffre": { "valeur": "22 h 40", "texte": "a day per modem, on average, on Gretel in 1982." },
     "bonus": { "type": "question", "texte": "Which feature are your users already hijacking in your product, or in a tool you use, and what would happen if you made it official?" },
     "enigme": { "question": "I freeze what should stay the same, I add no line of code, and yet the project stops changing without warning. What am I?", "reponse": "a lockfile" }

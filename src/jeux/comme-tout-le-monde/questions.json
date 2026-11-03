@@ -56,7 +56,7 @@
       { "pct": 28, "fr": ["regarder son téléphone", "regarder le téléphone"], "en": ["check the phone", "checking the phone"] },
       { "pct": 21, "fr": ["boire un café", "café"], "en": ["drink coffee", "coffee"] },
       { "pct": 16, "fr": ["prendre une douche", "douche"], "en": ["take a shower", "shower"] },
-      { "pct": 12, "fr": ["s’étirer", "étirements"], "en": ["stretch", "stretching"] },
+      { "pct": 12, "fr": ["s'étirer", "étirements"], "en": ["stretch", "stretching"] },
       { "pct": 9, "fr": ["faire son lit", "lit"], "en": ["make the bed", "bed"] },
       { "pct": 6, "fr": ["ouvrir les rideaux", "rideaux"], "en": ["open the curtains", "curtains"] }
     ]
@@ -196,7 +196,7 @@
       { "pct": 21, "fr": ["le froid", "froid"], "en": ["cold"] },
       { "pct": 16, "fr": ["la chaleur", "chaleur"], "en": ["heat"] },
       { "pct": 12, "fr": ["le vent", "vent"], "en": ["wind"] },
-      { "pct": 9, "fr": ["l’humidité", "humidité"], "en": ["humidity"] },
+      { "pct": 9, "fr": ["l'humidité", "humidité"], "en": ["humidity"] },
       { "pct": 6, "fr": ["le brouillard", "brouillard"], "en": ["fog"] }
     ]
   },
@@ -253,10 +253,10 @@
     },
     "reponses": [
       { "pct": 28, "fr": ["comédie"], "en": ["comedy"] },
-      { "pct": 21, "fr": ["film d’horreur", "horreur"], "en": ["horror", "horror movie"] },
-      { "pct": 16, "fr": ["action", "film d’action"], "en": ["action", "action movie"] },
+      { "pct": 21, "fr": ["film d'horreur", "horreur"], "en": ["horror", "horror movie"] },
+      { "pct": 16, "fr": ["action", "film d'action"], "en": ["action", "action movie"] },
       { "pct": 12, "fr": ["romance", "film romantique"], "en": ["romance", "romantic movie"] },
-      { "pct": 9, "fr": ["dessin animé", "film d’animation", "animation"], "en": ["animation", "animated movie"] },
+      { "pct": 9, "fr": ["dessin animé", "film d'animation", "animation"], "en": ["animation", "animated movie"] },
       { "pct": 6, "fr": ["documentaire"], "en": ["documentary"] }
     ]
   },
@@ -449,7 +449,7 @@
     },
     "reponses": [
       { "pct": 28, "fr": ["repasser", "repassage"], "en": ["ironing"] },
-      { "pct": 21, "fr": ["passer l’aspirateur", "aspirateur"], "en": ["vacuuming"] },
+      { "pct": 21, "fr": ["passer l'aspirateur", "aspirateur"], "en": ["vacuuming"] },
       { "pct": 16, "fr": ["faire la vaisselle", "vaisselle"], "en": ["washing dishes", "dishes"] },
       { "pct": 12, "fr": ["nettoyer les vitres", "vitres"], "en": ["cleaning windows", "windows"] },
       { "pct": 9, "fr": ["plier le linge", "linge"], "en": ["folding laundry", "laundry"] },

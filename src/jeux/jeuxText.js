@@ -37,7 +37,7 @@ export const JEUX_TEXT = {
     arcadeTitre: 'MY GAME ROOM',
     joueur1: '1 PLAYER',
     zeroPub: '0 ADS',
-    bravo: 'WELL PLAYED !',
+    bravo: 'WELL PLAYED!',
     inserer: 'INSERT ▶',
     chambreDescription: 'A 1980s bedroom: a shelf of video game cartridges next to a TV.',
   },

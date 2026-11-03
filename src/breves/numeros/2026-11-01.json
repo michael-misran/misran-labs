@@ -87,7 +87,7 @@
         "titre": "Dependabot dit si la faille de votre dépendance vous concerne",
         "paragraphes": [
           "En préversion publique depuis le 28 octobre, l’analyse d’atteignabilité cherche des chemins d’appel entre votre code et les fonctions vulnérables de vos dépendances, et note chaque alerte : <i>Reachable</i>, <i>Potentially reachable</i> (à traiter comme atteignable), <i>Unreachable</i> (priorité plus basse) ou <i>Reachability unavailable</i>. Aucune alerte n’est fermée automatiquement.",
-          "Limites : JavaScript et TypeScript avec un lockfile npm, Yarn ou pnpm ; GitHub Enterprise Cloud ; runners hébergés par GitHub ; désactivée par défaut (Settings > Advanced Security). Gratuit pendant la préversion."
+          "Limites : JavaScript et TypeScript avec un lockfile npm, Yarn ou pnpm ; GitHub Enterprise Cloud ; runners hébergés par GitHub ; désactivée par défaut (Settings > Advanced Security). Gratuit pendant la préversion."
         ],
         "encadre": {
           "titre": "L’œil du business",

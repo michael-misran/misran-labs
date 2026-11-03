@@ -22,7 +22,7 @@
         "en": "A GitHub firewall for npm"
       },
       "resume": {
-        "fr": "Annoncé le 20 octobre en préversion publique : un pare-feu qui inspecte les téléchargements entre les agents de code et les registres de paquets. Il est réservé à GitHub Enterprise Cloud et ne gère que npm pour l'instant.",
+        "fr": "Annoncé le 20 octobre en préversion publique : un pare-feu qui inspecte les téléchargements entre les agents de code et les registres de paquets. Il est réservé à GitHub Enterprise Cloud et ne gère que npm pour l’instant.",
         "en": "Announced on October 20 in public preview: a firewall that inspects downloads between coding agents and package registries. It is limited to GitHub Enterprise Cloud and only supports npm for now."
       },
       "sources": [

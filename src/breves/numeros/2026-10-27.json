@@ -75,7 +75,7 @@
         "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
         "titre": "Vercel Sandbox accepte l’entrée standard",
         "paragraphes": [
-          "Depuis le 26 octobre, on peut envoyer des données à une commande en cours dans un Sandbox, par exemple pour dialoguer avec un serveur MCP en stdio. En TypeScript : <i>writeStdin()</i> et <i>closeStdin()</i> ; en Python : <i>stdin.send()</i> et <i>communicate()</i>."
+          "Depuis le 26 octobre, on peut envoyer des données à une commande en cours dans un Sandbox, par exemple pour dialoguer avec un serveur MCP en stdio. En TypeScript : <i>writeStdin()</i> et <i>closeStdin()</i> ; en Python : <i>stdin.send()</i> et <i>communicate()</i>."
         ],
         "sources": ["https://vercel.com/changelog/vercel-sandbox-commands-now-support-stdin"]
       }

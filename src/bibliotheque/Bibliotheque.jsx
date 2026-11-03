@@ -346,7 +346,7 @@ export default function Bibliotheque() {
       {reglage && (
         <div className="lb-reglage">
           <p>Glissez les poignées sur les coins des livres peints.</p>
-          <button type="button" onClick={copier}>{copie ? 'Copié !' : 'Copier les valeurs'}</button>
+          <button type="button" onClick={copier}>{copie ? 'Copié !' : 'Copier les valeurs'}</button>
           <button type="button" onClick={() => setCoins(PRESENTOIR)}>Réinitialiser</button>
         </div>
       )}

@@ -52,7 +52,7 @@ const FR = {
   noMatch: 'Aucun constat pour ce filtre.',
   copyReport: 'Copier le rapport',
   copied: 'Rapport copié',
-  reportTitle: "Rapport d'audit des tokens",
+  reportTitle: "Rapport d’audit des tokens",
   reportSummary: 'Résumé',
   reportWarnings: 'Messages de lecture',
   rules: {

@@ -44,8 +44,8 @@
         "type": "irritant", "rubrique": "Irritant éclair", "court": "Irritant", "taille": "petit",
         "titre": "Le premier paquet, publié à la main",
         "paragraphes": [
-          "Jusqu'ici, créer un nouveau paquet npm obligeait à une première publication manuelle avant de pouvoir automatiser le reste. Le 2 octobre, npm a levé la contrainte : la première version d'un nouveau paquet passe par une file d'attente où un mainteneur la valide.",
-          "<b>La piste :</b> déjà réglée par npm. Quelle étape « manuelle une fois » bloque encore vos automatismes ?"
+          "Jusqu’ici, créer un nouveau paquet npm obligeait à une première publication manuelle avant de pouvoir automatiser le reste. Le 2 octobre, npm a levé la contrainte : la première version d’un nouveau paquet passe par une file d’attente où un mainteneur la valide.",
+          "<b>La piste :</b> déjà réglée par npm. Quelle étape « manuelle une fois » bloque encore vos automatismes ?"
         ],
         "sources": ["https://github.blog/changelog/2026-10-02-npm-staged-publishing-now-supports-creating-new-packages/"]
       }

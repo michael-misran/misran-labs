@@ -27,7 +27,7 @@
       "rubrique": "tech",
       "titre": { "fr": "Vercel refuse d’installer les versions npm connues pour être piégées", "en": "Vercel refuses to install npm versions known to be booby-trapped" },
       "resume": {
-        "fr": "Vercel bloque des versions précises de paquets npm inscrites sur une liste de malwares ou de failles, avant l'installation et pendant le téléchargement. C'est automatique sur tous les plans. Le déploiement échoue en nommant le paquet et la version à remplacer.",
+        "fr": "Vercel bloque des versions précises de paquets npm inscrites sur une liste de malwares ou de failles, avant l’installation et pendant le téléchargement. C’est automatique sur tous les plans. Le déploiement échoue en nommant le paquet et la version à remplacer.",
         "en": "Vercel blocks specific npm package versions listed for malware or vulnerabilities, before installation and during download. It is automatic on all plans. The deployment fails, naming the package and the version to replace."
       },
       "sources": [

@@ -9,7 +9,7 @@
     "paragraphes": [
       "Anthropic a publié hier une mise à jour de sa politique d’usage, le texte qui fixe ce qu’on peut faire ou non avec Claude. Elle entre en vigueur le 12 novembre 2026. Plusieurs sections sont réécrites, d’autres regroupées : les règles sur les campagnes trompeuses et les réseaux de faux comptes, jusque-là dispersées, forment une section unique.",
       "Le plus concret pour un développeur : la surveillance. Suivre des personnes sans leur consentement est interdit, en temps réel comme sur des données déjà collectées, et Claude ne peut ni décider ni recommander qui enquêter, arrêter ou poursuivre. Le suivi consenti, par exemple contre la fraude, reste permis, tout comme la modération, le journalisme et la recherche juridique.",
-      "Autre nouveauté : les systèmes branchés sur du matériel qui agit physiquement et seul. Un opérateur qualifié doit pouvoir observer l'équipement et l'arrêter, et celui-ci doit rester dans un état sûr si Claude est déconnecté. Les interdictions sur les armes couvrent aussi les logiciels qui les font fonctionner et l'armement de drones.",
+      "Autre nouveauté : les systèmes branchés sur du matériel qui agit physiquement et seul. Un opérateur qualifié doit pouvoir observer l’équipement et l’arrêter, et celui-ci doit rester dans un état sûr si Claude est déconnecté. Les interdictions sur les armes couvrent aussi les logiciels qui les font fonctionner et l’armement de drones.",
       "La page ne détaille pas d’effet propre à l’API : pour les obligations exactes, il faut lire la politique complète avant novembre, surtout si votre produit touche à la surveillance, aux drones ou à la décision sur des personnes."
     ],
     "sources": ["https://www.anthropic.com/news/2026-usage-policy-update"]
@@ -70,7 +70,7 @@
       },
       {
         "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
-        "titre": "npm : 48 heures pour valider",
+        "titre": "npm : 48 heures pour valider",
         "paragraphes": [
           "Depuis le 2 octobre, une configuration de publication de confiance npm non validée expire 48 heures après sa création. Elle devient valide après une première publication réussie. Si elle a expiré, il suffit de la recréer."
         ],
