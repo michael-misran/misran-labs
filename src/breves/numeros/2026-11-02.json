@@ -5,12 +5,12 @@
   "une": {
     "rubrique": "À la une · IA",
     "titre": "ChatGPT pourra couper la conversation de lui-même",
-    "chapo": "OpenAI annonce de nouvelles limites sur la violence : quand un échange tourne à l'obsession, l'assistant pourra y mettre fin.",
+    "chapo": "OpenAI annonce de nouvelles limites sur la violence : quand un échange tourne à l’obsession, l’assistant pourra y mettre fin.",
     "paragraphes": [
-      "Le 30 octobre, OpenAI a publié deux annonces sur la sécurité. La première : un « Community Safety Report », dont le premier numéro paraîtra début 2027 et couvrira le second semestre 2026, puis tous les six mois. OpenAI y indique aussi avoir transmis plus de 200 signalements aux forces de l'ordre au troisième trimestre 2026.",
-      "La seconde touche directement le comportement du produit. Quand une conversation montre qu'une personne se fixe sur la violence, ChatGPT pourra mettre fin automatiquement à l'échange. Si cela arrive à plusieurs reprises, le compte pourra être suspendu temporairement. L'assistant répondra aussi de façon plus prudente après des signaux d'alerte vus dans des échanges récents, et donnera moins de détails sur la reconstitution d'attaques passées, quel que soit l'âge de l'utilisateur.",
+      "Le 30 octobre, OpenAI a publié deux annonces sur la sécurité. La première : un « Community Safety Report », dont le premier numéro paraîtra début 2027 et couvrira le second semestre 2026, puis tous les six mois. OpenAI y indique aussi avoir transmis plus de 200 signalements aux forces de l’ordre au troisième trimestre 2026.",
+      "La seconde touche directement le comportement du produit. Quand une conversation montre qu’une personne se fixe sur la violence, ChatGPT pourra mettre fin automatiquement à l’échange. Si cela arrive à plusieurs reprises, le compte pourra être suspendu temporairement. L’assistant répondra aussi de façon plus prudente après des signaux d’alerte vus dans des échanges récents, et donnera moins de détails sur la reconstitution d’attaques passées, quel que soit l’âge de l’utilisateur.",
       "Pour les moins de 18 ans, les limites sur les armes et les systèmes de sécurité se durcissent, même sans intention violente apparente. Un adulte classé par erreur parmi les mineurs pourra se réidentifier via Persona.",
-      "Pour qui conçoit un produit au-dessus d'un modèle, la leçon est de design : une coupure de conversation est une décision d'interface, avec un message à écrire et un état à gérer. OpenAI précise que ces protections arriveront « dans les prochaines semaines »."
+      "Pour qui conçoit un produit au-dessus d’un modèle, la leçon est de design : une coupure de conversation est une décision d’interface, avec un message à écrire et un état à gérer. OpenAI précise que ces protections arriveront « dans les prochaines semaines »."
     ],
     "sources": ["https://openai.com/index/community-safety-report-and-new-protections-for-teens/"]
   },
@@ -18,25 +18,25 @@
     "section": "Business",
     "articles": [
       {
-        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "type": "irritant", "rubrique": "L’irritant du jour", "court": "Irritant",
         "titre": "La protection contre les fuites de clés ne protège que ce que vous avez activé",
         "chapo": "Le classifieur de GitHub bloque des secrets sans format reconnaissable, mais il est éteint par défaut.",
         "paragraphes": [
-          "Le 28 octobre, GitHub a étendu la « push protection » au-delà des motifs de secrets connus. Un classifieur, mis au point avec Microsoft Applied Sciences, regarde comment une chaîne est utilisée dans le code et peut bloquer un secret sans format identifiable. Premiers résultats : le nombre de pushs où un secret a été arrêté a « plus que doublé ».",
-          "Ce qui agace : aperçu public, désactivé par défaut. Il faut Secret Protection ou Advanced Security, puis cocher « Block AI-detected secrets ». La détection consomme des crédits d'IA, facturés dès l'activation.",
-          "Ce qui n'est pas coché ne protège rien."
+          "Le 28 octobre, GitHub a étendu la « push protection » au-delà des motifs de secrets connus. Un classifieur, mis au point avec Microsoft Applied Sciences, regarde comment une chaîne est utilisée dans le code et peut bloquer un secret sans format identifiable. Premiers résultats : le nombre de pushs où un secret a été arrêté a « plus que doublé ».",
+          "Ce qui agace : aperçu public, désactivé par défaut. Il faut Secret Protection ou Advanced Security, puis cocher « Block AI-detected secrets ». La détection consomme des crédits d’IA, facturés dès l’activation.",
+          "Ce qui n’est pas coché ne protège rien."
         ],
-        "encadre": { "titre": "Piste de business", "texte": "Un état des lieux des réglages de sécurité réellement activés, dépôt par dépôt, pour les petites équipes qui ne regardent jamais leurs paramètres : un tableau « actif / inactif » et un rappel mensuel. Concurrence : GitHub propose déjà des configurations de sécurité personnalisées. L'angle : parler en langage clair à ceux qui n'ont pas d'équipe sécurité.", "plein": true },
+        "encadre": { "titre": "Piste de business", "texte": "Un état des lieux des réglages de sécurité réellement activés, dépôt par dépôt, pour les petites équipes qui ne regardent jamais leurs paramètres : un tableau « actif / inactif » et un rappel mensuel. Concurrence : GitHub propose déjà des configurations de sécurité personnalisées. L’angle : parler en langage clair à ceux qui n’ont pas d’équipe sécurité.", "plein": true },
         "sources": ["https://github.blog/changelog/2026-10-28-push-protection-beyond-predefined-secret-patterns"]
       },
       {
-        "type": "idee", "rubrique": "L'idée de business", "court": "Idée",
-        "titre": "Un relecteur de permissions d'agents pour les dépôts sans licence de sécurité",
-        "chapo": "GitHub scanne les applications d'IA dans les pull requests, avec sa licence Advanced Security.",
+        "type": "idee", "rubrique": "L’idée de business", "court": "Idée",
+        "titre": "Un relecteur de permissions d’agents pour les dépôts sans licence de sécurité",
+        "chapo": "GitHub scanne les applications d’IA dans les pull requests, avec sa licence Advanced Security.",
         "paragraphes": [
-          "Le 28 octobre, GitHub a ouvert en aperçu public un détecteur pour les applications d'IA : injection de prompt indirecte, divulgation d'informations sensibles et « agentivité excessive », quand un agent a plus de droits que sa tâche n'en demande. Il analyse les pull requests et y affiche des alertes. Conditions : github.com, licence Advanced Security. Pour l'ordre de grandeur, Code Security, offre voisine, est affichée à 30 $ par contributeur actif et par mois.",
-          "L'idée : la même relecture pour une toute petite équipe. Qui paie : une agence ou un éditeur de SaaS qui embarque un agent. Prix : un forfait par dépôt. Lancement : une GitHub Action qui liste, dans la pull request, les outils et permissions de l'agent et signale ceux que le code n'utilise jamais.",
-          "Concurrence : SecureAI-Scan, scanner open source (MIT) référencé par l'OWASP. Le terrain n'est pas vide ; l'angle est un rapport lisible, dans la pull request."
+          "Le 28 octobre, GitHub a ouvert en aperçu public un détecteur pour les applications d’IA : injection de prompt indirecte, divulgation d’informations sensibles et « agentivité excessive », quand un agent a plus de droits que sa tâche n’en demande. Il analyse les pull requests et y affiche des alertes. Conditions : github.com, licence Advanced Security. Pour l’ordre de grandeur, Code Security, offre voisine, est affichée à 30 $ par contributeur actif et par mois.",
+          "L’idée : la même relecture pour une toute petite équipe. Qui paie : une agence ou un éditeur de SaaS qui embarque un agent. Prix : un forfait par dépôt. Lancement : une GitHub Action qui liste, dans la pull request, les outils et permissions de l’agent et signale ceux que le code n’utilise jamais.",
+          "Concurrence : SecureAI-Scan, scanner open source (MIT) référencé par l’OWASP. Le terrain n’est pas vide ; l’angle est un rapport lisible, dans la pull request."
         ],
         "jauge": { "cout": 1, "difficulte": 2, "potentiel": 2 },
         "sources": ["https://github.blog/changelog/2026-10-28-code-scanning-for-ai-applications-in-public-preview", "https://github.blog/changelog/2025-03-04-introducing-github-secret-protection-and-github-code-security/", "https://genai.owasp.org/solution/secureai-scan/"]
@@ -47,29 +47,29 @@
     "section": "Rétro · Tech",
     "articles": [
       {
-        "type": "retro", "rubrique": "Rétro · le design d'un jeu", "court": "Rétro",
-        "titre": "Loom, ou le jeu d'aventure sans verbes et sans mort",
-        "chapo": "En 1990, Lucasfilm Games remplace la liste d'actions par quatre notes de musique.",
+        "type": "retro", "rubrique": "Rétro · le design d’un jeu", "court": "Rétro",
+        "titre": "Loom, ou le jeu d’aventure sans verbes et sans mort",
+        "chapo": "En 1990, Lucasfilm Games remplace la liste d’actions par quatre notes de musique.",
         "paragraphes": [
-          "Dirigé par Brian Moriarty, ancien d'Infocom, Loom est le quatrième jeu à utiliser le moteur SCUMM et le premier à abandonner l'interface « verbe plus objet ». À la place, le héros joue des « drafts », des mélodies de quatre notes. Il n'en connaît au départ que trois : do, ré, mi.",
-          "Certains drafts s'inversent : « teindre » devient « décolorer » une fois joué à l'envers. En mode « expert », aucune note n'est affichée et il faut jouer à l'oreille. Autre décision radicale : Bobbin ne peut pas mourir par accident, selon la philosophie de LucasArts que résume Game Developer : jamais d'impasse ni de redémarrage forcé.",
-          "La critique fut partagée (« trop léger » pour Scorpia, prix spécial pour son art du côté de Computer Gaming World), et les ventes n'ont pas justifié de suites (Rogue Leaders). Supprimer des commandes est un choix de produit."
+          "Dirigé par Brian Moriarty, ancien d’Infocom, Loom est le quatrième jeu à utiliser le moteur SCUMM et le premier à abandonner l’interface « verbe plus objet ». À la place, le héros joue des « drafts », des mélodies de quatre notes. Il n’en connaît au départ que trois : do, ré, mi.",
+          "Certains drafts s’inversent : « teindre » devient « décolorer » une fois joué à l’envers. En mode « expert », aucune note n’est affichée et il faut jouer à l’oreille. Autre décision radicale : Bobbin ne peut pas mourir par accident, selon la philosophie de LucasArts que résume Game Developer : jamais d’impasse ni de redémarrage forcé.",
+          "La critique fut partagée (« trop léger » pour Scorpia, prix spécial pour son art du côté de Computer Gaming World), et les ventes n’ont pas justifié de suites (Rogue Leaders). Supprimer des commandes est un choix de produit."
         ],
-        "rappel": { "annee": "1990", "texte": "Loom sort en 1990 chez Lucasfilm Games ; la version EGA seize couleurs date de mai." },
+        "rappel": { "annee": "1990", "texte": "Loom sort en 1990 chez Lucasfilm Games ; la version EGA seize couleurs date de mai." },
         "sources": ["https://en.wikipedia.org/wiki/Loom_(video_game)", "https://www.gamedeveloper.com/audio/video-brian-moriarty-s-classic-postmortem-of-i-loom-i-"]
       },
       {
         "type": "tech", "rubrique": "La tech", "court": "Tech",
-        "titre": "Node.js 26 passe en support long, jusqu'à fin avril 2029",
+        "titre": "Node.js 26 passe en support long, jusqu’à fin avril 2029",
         "paragraphes": [
-          "Le 28 octobre, la version 26.13.0 a fait entrer la branche 26 en LTS, nom de code « Lithium », avec des mises à jour jusqu'à fin avril 2029.",
-          "Piège pour qui vient d'une LTS plus ancienne (24 ou 22) : depuis Node.js 25, les binaires Linux officiels sont liés à libatomic, à installer peut-être à part selon la distribution."
+          "Le 28 octobre, la version 26.13.0 a fait entrer la branche 26 en LTS, nom de code « Lithium », avec des mises à jour jusqu’à fin avril 2029.",
+          "Piège pour qui vient d’une LTS plus ancienne (24 ou 22) : depuis Node.js 25, les binaires Linux officiels sont liés à libatomic, à installer peut-être à part selon la distribution."
         ],
         "sources": ["https://nodejs.org/en/blog/release/v26.13.0"]
       },
       {
         "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
-        "titre": "Vercel : un daemon qui répond mal est redémarré",
+        "titre": "Vercel : un daemon qui répond mal est redémarré",
         "paragraphes": [
           "Depuis le 30 octobre, un daemon peut déclarer une sonde <i>livenessProbe</i> dans vercel.json, par exemple une requête sur <i>/health</i> au port 1234. Si la vérification échoue, Vercel redémarre le conteneur, ce qui rattrape un service vivant mais bloqué."
         ],
@@ -78,10 +78,10 @@
     ]
   },
   "page4": {
-    "mot": { "terme": "Agentivité excessive", "nature": "n. f.", "definition": "Situation où un agent d'IA dispose de plus de capacités, de droits ou d'autonomie que sa tâche n'en exige. Le risque se règle à la conception : on retire les outils inutiles avant d'espérer que l'agent s'en abstienne." },
-    "chiffre": { "valeur": "200+", "texte": "signalements aux forces de l'ordre par OpenAI au troisième trimestre 2026, selon l'entreprise." },
-    "bonus": { "type": "question", "texte": "Quel réglage de sécurité de vos projets est éteint par défaut, et depuis quand n'êtes-vous pas allé voir s'il l'était ? Une réponse honnête est peut-être l'irritant d'une équipe entière." },
-    "enigme": { "question": "Je suis une liste que l'on remet à un agent. Plus je suis longue, plus il peut faire, et plus il peut se tromper ; la meilleure façon de me protéger est de me raccourcir. Qui suis-je ?", "reponse": "la liste des outils et des permissions accordés à l'agent" }
+    "mot": { "terme": "Agentivité excessive", "nature": "n. f.", "definition": "Situation où un agent d’IA dispose de plus de capacités, de droits ou d’autonomie que sa tâche n’en exige. Le risque se règle à la conception : on retire les outils inutiles avant d’espérer que l’agent s’en abstienne." },
+    "chiffre": { "valeur": "200+", "texte": "signalements aux forces de l’ordre par OpenAI au troisième trimestre 2026, selon l’entreprise." },
+    "bonus": { "type": "question", "texte": "Quel réglage de sécurité de vos projets est éteint par défaut, et depuis quand n’êtes-vous pas allé voir s’il l’était ? Une réponse honnête est peut-être l’irritant d’une équipe entière." },
+    "enigme": { "question": "Je suis une liste que l’on remet à un agent. Plus je suis longue, plus il peut faire, et plus il peut se tromper ; la meilleure façon de me protéger est de me raccourcir. Qui suis-je ?", "reponse": "la liste des outils et des permissions accordés à l’agent" }
   },
   "sources": ["openai.com", "github.blog", "nodejs.org", "vercel.com", "wikipedia.org", "gamedeveloper.com", "owasp.org"]
 }

@@ -6,15 +6,15 @@
     "en": "Countdown widgets"
   },
   "resume": {
-    "fr": "Une application de widgets esthétiques pour l'écran d'accueil, qui comptent les jours jusqu'à un événement : vacances, mariage, naissance, retraite.",
+    "fr": "Une application de widgets esthétiques pour l’écran d’accueil, qui comptent les jours jusqu’à un événement : vacances, mariage, naissance, retraite.",
     "en": "An app of beautiful home-screen widgets counting down the days to an event: holidays, wedding, birth, retirement."
   },
   "probleme": {
-    "fr": "Les gens attendent des événements importants et aiment les voir approcher sur leur écran d'accueil, mais la plupart des applications de compte à rebours sont visuellement pauvres.",
+    "fr": "Les gens attendent des événements importants et aiment les voir approcher sur leur écran d’accueil, mais la plupart des applications de compte à rebours sont visuellement pauvres.",
     "en": "People look forward to big events and like to see them approaching on their home screen, but most countdown apps look poor."
   },
   "idee": {
-    "fr": "Une application locale : on crée un événement (date, photo, thème), on choisit un widget, il se met à jour tout seul. La différence se fait sur le design.",
+    "fr": "Une application locale : on crée un événement (date, photo, thème), on choisit un widget, il se met à jour tout seul. La différence se fait sur le design.",
     "en": "A local app: create an event (date, photo, theme), pick a widget, it updates by itself. The difference is in the design."
   },
   "type": "produit",
@@ -23,7 +23,7 @@
   "decision": {
     "date": "2026-09-30",
     "note": {
-      "fr": "Gardée par Michael : on commence par des maquettes web pour valider le design avant l'application iOS.",
+      "fr": "Gardée par Michael : on commence par des maquettes web pour valider le design avant l’application iOS.",
       "en": "Kept by Michael: starting with web mockups to validate the design before the iOS app."
     }
   },

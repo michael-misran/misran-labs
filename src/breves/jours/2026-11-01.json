@@ -3,9 +3,9 @@
   "breves": [
     {
       "rubrique": "ia",
-      "titre": { "fr": "Figma dévoile comment il entraîne son modèle d'édition", "en": "Figma reveals how it trains its editing model" },
+      "titre": { "fr": "Figma dévoile comment il entraîne son modèle d’édition", "en": "Figma reveals how it trains its editing model" },
       "resume": {
-        "fr": "Figma décrit l'entraînement du modèle de son agent d'édition, non publié, post-entraîné sur Qwen 3.8 27B. Il obtient 77,8 % à un test interne, contre 76,9 % pour Sol 6.1. Entre la bêta et la disponibilité générale, l'agent est environ 20 % plus rapide.",
+        "fr": "Figma décrit l’entraînement du modèle de son agent d’édition, non publié, post-entraîné sur Qwen 3.8 27B. Il obtient 77,8 % à un test interne, contre 76,9 % pour Sol 6.1. Entre la bêta et la disponibilité générale, l’agent est environ 20 % plus rapide.",
         "en": "Figma describes how it trained the model behind its editing agent, unreleased and post-trained on Qwen 3.8 27B. It scores 77.8% on an internal test, against 76.9% for Sol 6.1. Between beta and general availability, the agent is about 20% faster."
       },
       "sources": [
@@ -14,9 +14,9 @@
     },
     {
       "rubrique": "tech",
-      "titre": { "fr": "Dependabot note l'atteignabilité de vos alertes", "en": "Dependabot rates the reachability of your alerts" },
+      "titre": { "fr": "Dependabot note l’atteignabilité de vos alertes", "en": "Dependabot rates the reachability of your alerts" },
       "resume": {
-        "fr": "En préversion publique, l'analyse d'atteignabilité cherche si votre code appelle la fonction vulnérable d'une dépendance et classe chaque alerte, sans jamais la fermer. Elle couvre JavaScript et TypeScript sur GitHub Enterprise Cloud, désactivée par défaut, gratuite pendant la préversion.",
+        "fr": "En préversion publique, l’analyse d’atteignabilité cherche si votre code appelle la fonction vulnérable d’une dépendance et classe chaque alerte, sans jamais la fermer. Elle couvre JavaScript et TypeScript sur GitHub Enterprise Cloud, désactivée par défaut, gratuite pendant la préversion.",
         "en": "In public preview, reachability analysis checks whether your code calls a dependency's vulnerable function and rates each alert, without ever closing it. It covers JavaScript and TypeScript on GitHub Enterprise Cloud, off by default and free during the preview."
       },
       "sources": [
@@ -27,7 +27,7 @@
       "rubrique": "tech",
       "titre": { "fr": "Vercel Flags démarre 7 fois plus vite", "en": "Vercel Flags starts 7 times faster" },
       "resume": {
-        "fr": "À froid, l'initialisation du SDK passe de plus de 70 ms à 10 ms (p75, tests internes de Vercel). La lecture d'un flag reste sous 1 ms (p99). Il faut la version 1.5.3 ou plus de <i>@flags-sdk/vercel</i>, puis redéployer.",
+        "fr": "À froid, l’initialisation du SDK passe de plus de 70 ms à 10 ms (p75, tests internes de Vercel). La lecture d’un flag reste sous 1 ms (p99). Il faut la version 1.5.3 ou plus de <i>@flags-sdk/vercel</i>, puis redéployer.",
         "en": "On a cold start, SDK initialization drops from over 70 ms to 10 ms (p75, Vercel's own testing). A flag read stays under 1 ms (p99). You need version 1.5.3 or later of <i>@flags-sdk/vercel</i>, then redeploy."
       },
       "sources": [
@@ -38,14 +38,14 @@
   "mot": {
     "terme": "Atteignabilité",
     "definition": {
-      "fr": "Pour une faille dans une dépendance : le fait que votre code appelle réellement la fonction vulnérable. Une alerte « inatteignable » existe toujours, mais passe après celles qui vous touchent vraiment.",
+      "fr": "Pour une faille dans une dépendance : le fait que votre code appelle réellement la fonction vulnérable. Une alerte « inatteignable » existe toujours, mais passe après celles qui vous touchent vraiment.",
       "en": "For a flaw in a dependency: whether your code actually calls the vulnerable function. An “unreachable” alert still exists, but ranks below those that really affect you."
     }
   },
   "chiffre": {
     "valeur": "11 h",
     "texte": {
-      "fr": "d'exposition d'une extension piégée, le 29 octobre.",
+      "fr": "d’exposition d’une extension piégée, le 29 octobre.",
       "en": "of exposure for a booby-trapped extension, on October 29."
     }
   }

@@ -70,21 +70,21 @@ function axeArchitecture(resultat) {
       critere(
         'peu-avertissements',
         partAvert <= 0.05,
-        `${pct(partAvert)} des tokens portent un avertissement (seuil : 5 % au plus).`,
+        `${pct(partAvert)} des tokens portent un avertissement (seuil\u00a0: 5 % au plus).`,
         `${pct(partAvert)} of tokens carry a warning (threshold: 5% at most).`
       ),
       critere(
         'niveaux-alias',
         alias >= 0.2,
-        `${pct(alias)} des tokens sont des alias (seuil : 20 % au moins) — signe de niveaux primitive → semantic.`,
+        `${pct(alias)} des tokens sont des alias (seuil\u00a0: 20 % au moins) — signe de niveaux primitive → semantic.`,
         `${pct(alias)} of tokens are aliases (threshold: 20% at least) — a sign of primitive → semantic levels.`
       ),
       critere(
         'types-json',
         partTypes === null ? null : partTypes >= 0.9,
         partTypes === null
-          ? 'Aucun token JSON : critère sans objet.'
-          : `${pct(partTypes)} des tokens JSON ont un type (seuil : 90 % au moins).`,
+          ? 'Aucun token JSON : critère sans objet.'
+          : `${pct(partTypes)} des tokens JSON ont un type (seuil\u00a0: 90 % au moins).`,
         partTypes === null
           ? 'No JSON tokens: criterion not applicable.'
           : `${pct(partTypes)} of JSON tokens have a type (threshold: 90% at least).`
@@ -118,7 +118,7 @@ function axeCouverture(couverture) {
       critere(
         'deja-tokenisees',
         doublons < 10,
-        `${doublons} valeur${doublons > 1 ? 's' : ''} en dur ont déjà un token (seuil : moins de 10).`,
+        `${doublons} valeur${doublons > 1 ? 's' : ''} en dur ont déjà un token (seuil\u00a0: moins de 10).`,
         `${doublons} hard-coded value${doublons > 1 ? 's' : ''} already have a token (threshold: fewer than 10).`
       ),
     ],
@@ -154,7 +154,7 @@ function axeAccessibilite(contrastes, fichiersCode) {
       critere(
         'contrastes-90',
         detectees === 0 ? null : reussies / detectees >= 0.9,
-        detectees === 0 ? sansPaire.fr : `${pct(reussies / detectees)} des paires atteignent 4,5:1 (seuil : 90 % au moins).`,
+        detectees === 0 ? sansPaire.fr : `${pct(reussies / detectees)} des paires atteignent 4,5:1 (seuil\u00a0: 90 % au moins).`,
         detectees === 0 ? sansPaire.en : `${pct(reussies / detectees)} of pairs reach 4.5:1 (threshold: 90% at least).`
       ),
       critere(
@@ -224,14 +224,14 @@ function axeComposants(chemins) {
       critere(
         'stories',
         n === 0 ? null : avecStory / n >= 0.5,
-        n === 0 ? aucun.fr : `${avecStory} composant${n > 1 ? 's' : ''} sur ${n} ${avecStory > 1 ? 'ont' : 'a'} une story (seuil : la moitié au moins).`,
+        n === 0 ? aucun.fr : `${avecStory} composant${n > 1 ? 's' : ''} sur ${n} ${avecStory > 1 ? 'ont' : 'a'} une story (seuil\u00a0: la moitié au moins).`,
         n === 0 ? aucun.en : `${avecStory} of ${n} component${n > 1 ? 's' : ''} ${avecStory > 1 ? 'have' : 'has'} a story (threshold: half at least).`,
         n - avecStory
       ),
       critere(
         'tests',
         n === 0 ? null : avecTest / n >= 0.5,
-        n === 0 ? aucun.fr : `${avecTest} composant${n > 1 ? 's' : ''} sur ${n} ${avecTest > 1 ? 'ont' : 'a'} un test (seuil : la moitié au moins).`,
+        n === 0 ? aucun.fr : `${avecTest} composant${n > 1 ? 's' : ''} sur ${n} ${avecTest > 1 ? 'ont' : 'a'} un test (seuil\u00a0: la moitié au moins).`,
         n === 0 ? aucun.en : `${avecTest} of ${n} component${n > 1 ? 's' : ''} ${avecTest > 1 ? 'have' : 'has'} a test (threshold: half at least).`,
         n - avecTest
       ),

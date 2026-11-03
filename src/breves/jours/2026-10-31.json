@@ -8,7 +8,7 @@
         "en": "OpenAI will follow a common robots.txt signal"
       },
       "resume": {
-        "fr": "OpenAI a annoncé le 30 octobre qu'elle respecterait un signal partagé dans robots.txt, pour que les sites disent une fois leur préférence sur l'entraînement des modèles. La mise en œuvre est prévue dans les prochains mois, et les contrôles de robots actuels restent valables.",
+        "fr": "OpenAI a annoncé le 30 octobre qu’elle respecterait un signal partagé dans robots.txt, pour que les sites disent une fois leur préférence sur l’entraînement des modèles. La mise en œuvre est prévue dans les prochains mois, et les contrôles de robots actuels restent valables.",
         "en": "On October 30, OpenAI announced it would honor a shared robots.txt signal, so sites can state their training preference once. Implementation is planned in the coming months, and the current crawler controls remain valid."
       },
       "sources": [
@@ -18,7 +18,7 @@
     {
       "rubrique": "tech",
       "titre": {
-        "fr": "Vercel : Runtime Cache remplace Data Cache",
+        "fr": "Vercel : Runtime Cache remplace Data Cache",
         "en": "Vercel: Runtime Cache replaces Data Cache"
       },
       "resume": {
@@ -32,11 +32,11 @@
     {
       "rubrique": "tech",
       "titre": {
-        "fr": "GitHub Actions : des jobs Linux aussi sur AWS",
+        "fr": "GitHub Actions : des jobs Linux aussi sur AWS",
         "en": "GitHub Actions: Linux jobs on AWS too"
       },
       "resume": {
-        "fr": "Une partie des jobs sur runners Linux standard de 2 et 4 cœurs est répartie entre Azure et AWS. Les adresses IP sortantes changent : une liste d'autorisation limitée à Azure peut bloquer un job.",
+        "fr": "Une partie des jobs sur runners Linux standard de 2 et 4 cœurs est répartie entre Azure et AWS. Les adresses IP sortantes changent : une liste d’autorisation limitée à Azure peut bloquer un job.",
         "en": "Some jobs on standard 2- and 4-core Linux runners are now split between Azure and AWS. Outbound IP addresses change: an allowlist limited to Azure can block a job."
       },
       "sources": [
@@ -45,9 +45,9 @@
     }
   ],
   "mot": {
-    "terme": "Facteur d'approximation",
+    "terme": "Facteur d’approximation",
     "definition": {
-      "fr": "Écart maximal garanti entre le résultat d'un algorithme et la réponse exacte. Une « 2-approximation » ne se trompe jamais de plus du double.",
+      "fr": "Écart maximal garanti entre le résultat d’un algorithme et la réponse exacte. Une « 2-approximation » ne se trompe jamais de plus du double.",
       "en": "The maximum guaranteed gap between an algorithm's result and the exact answer. A “2-approximation” is never off by more than double."
     }
   },

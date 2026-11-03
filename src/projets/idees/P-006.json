@@ -10,11 +10,11 @@
     "en": "An offline mobile app to keep score in Tarot, Belote, Mölkky, Skyjo or Yahtzee, with the scoring rules built in."
   },
   "probleme": {
-    "fr": "Autour d'une table, on compte encore sur papier ou dans une calculatrice. Pour le Tarot en particulier, le calcul (contrats, bouts, primes) est source d'erreurs et de disputes. Les applications existantes sont souvent datées ou chargées de publicité.",
+    "fr": "Autour d’une table, on compte encore sur papier ou dans une calculatrice. Pour le Tarot en particulier, le calcul (contrats, bouts, primes) est source d’erreurs et de disputes. Les applications existantes sont souvent datées ou chargées de publicité.",
     "en": "People around a table still keep score on paper or with a calculator. Tarot scoring in particular (contracts, oudlers, bonuses) causes mistakes and arguments. Existing apps are often dated or full of ads."
   },
   "idee": {
-    "fr": "Une application soignée, entièrement locale : on choisit le jeu, on saisit les joueurs, l'application calcule chaque manche et garde l'historique de la partie. Aucun compte, aucun serveur.",
+    "fr": "Une application soignée, entièrement locale : on choisit le jeu, on saisit les joueurs, l’application calcule chaque manche et garde l’historique de la partie. Aucun compte, aucun serveur.",
     "en": "A polished, fully local app: pick the game, enter the players, the app scores each round and keeps the game history. No account, no server."
   },
   "type": "produit",
@@ -23,7 +23,7 @@
   "decision": {
     "date": "2026-10-13",
     "note": {
-      "fr": "Gardée par Michael : premier essai où Claude mène le projet seul jusqu'à la pull request, avec une maquette à valider avant de coder l'application.",
+      "fr": "Gardée par Michael : premier essai où Claude mène le projet seul jusqu’à la pull request, avec une maquette à valider avant de coder l’application.",
       "en": "Kept by Michael: first trial where Claude runs the project alone up to the pull request, with a mock-up to approve before coding the app."
     }
   },

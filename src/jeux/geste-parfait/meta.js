@@ -7,7 +7,7 @@ export default {
   couleur: 'mandarine',
   titre: { fr: 'Le geste parfait', en: 'The perfect touch' },
   accroche: {
-    fr: 'Un défi d’adresse chaque jour : cercle, chrono, verre ou tour.',
+    fr: 'Un défi d’adresse chaque jour : cercle, chrono, verre ou tour.',
     en: 'One precision challenge a day: circle, timer, glass, or tower.',
   },
   demo: false,

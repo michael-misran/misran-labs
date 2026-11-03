@@ -6,7 +6,7 @@
     "en": "An assistant that prepares job applications"
   },
   "resume": {
-    "fr": "Un outil qui repère des offres d'emploi pertinentes et prépare chaque candidature (CV et lettre adaptés), pour que la personne n'ait plus qu'à relire et envoyer.",
+    "fr": "Un outil qui repère des offres d’emploi pertinentes et prépare chaque candidature (CV et lettre adaptés), pour que la personne n’ait plus qu’à relire et envoyer.",
     "en": "A tool that spots relevant job postings and prepares each application (tailored CV and cover letter), so the person only has to review and send."
   },
   "probleme": {
@@ -14,7 +14,7 @@
     "en": "Job hunting means spotting postings and then filling out, again and again, nearly identical application forms, with a CV and cover letter slightly adapted each time."
   },
   "idee": {
-    "fr": "Un outil qui surveille des offres selon des critères donnés, prépare un CV et une lettre adaptés à chaque offre, puis pré-remplit le formulaire de candidature : la personne garde la main pour relire et valider avant l'envoi.",
+    "fr": "Un outil qui surveille des offres selon des critères donnés, prépare un CV et une lettre adaptés à chaque offre, puis pré-remplit le formulaire de candidature : la personne garde la main pour relire et valider avant l’envoi.",
     "en": "A tool that watches for postings matching given criteria, drafts a CV and cover letter tailored to each one, then pre-fills the application form: the person stays in control, reviewing and approving before anything is sent."
   },
   "type": "outil",

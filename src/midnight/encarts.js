@@ -18,7 +18,7 @@ export const ENCARTS = {
     image: null,
     ratio: '16 / 10',
     legende: { fr: 'Minuit pile, le terminal répond tout seul', en: 'Midnight exactly, the terminal answers on its own' },
-    consigne: 'Un bureau de développeur la nuit, écran qui affiche du code, mais une ligne de terminal écrite par « quelqu’un d’autre ».',
+    consigne: 'Un bureau de développeur la nuit, écran qui affiche du code, mais une ligne de terminal écrite par « quelqu’un d’autre ».',
     promptGemini: 'Illustration pulp techno-horror comic style, dark home office at night lit only by a monitor, terminal window with glowing green text typing itself, developer leaning back startled, eerie cyberpunk mood, grain, 1980s comic ink style',
   },
   'recit-cartouche': {
@@ -32,21 +32,21 @@ export const ENCARTS = {
     image: null,
     ratio: '4 / 3',
     legende: { fr: 'Le casse-croûte du raton', en: 'The raccoon’s midnight snack' },
-    consigne: 'Photo ou illustration façon fiche cuisine des années 1970 : l’assiette finale du casse-croûte de minuit, vue de dessus.',
+    consigne: 'Photo ou illustration façon fiche cuisine des années 1970 : l’assiette finale du casse-croûte de minuit, vue de dessus.',
     promptGemini: 'Retro 1970s cookbook photography style, top-down view of a midnight snack plate on a checkered tablecloth, warm kitchen lighting, slightly kitsch styling, film grain, muted orange and brown tones',
   },
   'feuilleton-cauldron': {
     image: null,
     ratio: '16 / 10',
     legende: { fr: 'The Lost Cauldron — épisode 1', en: 'The Lost Cauldron — episode 1' },
-    consigne: 'Rendu Blender de Michael (pas une image générée) : scène clé de l’épisode 1 du feuilleton.',
+    consigne: 'Rendu Blender de Michael (pas une image générée) : scène clé de l’épisode 1 du feuilleton.',
     promptGemini: null,
   },
   'marmite-avant-apres': {
     image: null,
     ratio: '16 / 9',
     legende: { fr: 'Du croquis au sprite', en: 'From sketch to sprite' },
-    consigne: 'Montage en trois temps : croquis papier → rendu Blender → sprite final dans le jeu.',
+    consigne: 'Montage en trois temps : croquis papier → rendu Blender → sprite final dans le jeu.',
     promptGemini: null,
   },
 }

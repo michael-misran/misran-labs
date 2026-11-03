@@ -209,7 +209,7 @@ const TREE_PROJECT_EN = `misran-labs/
 
 const TREE_GLOBAL_FR = `~/.claude/
 ├── skills/mission/
-│   ├── SKILL.md                   choisit le mode : nouveau projet / installation / lancement / clôture
+│   ├── SKILL.md                   choisit le mode\u00a0: nouveau projet / installation / lancement / clôture
 │   ├── templates/                 CLAUDE-missions.md, settings.json, task-prompt.md,
 │   │                              SPEC, PLAN, PROGRESS, DECISIONS, DELEGATIONS
 │   └── reference/
@@ -229,7 +229,7 @@ const TREE_GLOBAL_EN = `~/.claude/
 
 const CONTENT = {
   fr: {
-    title: "Utilisation de l'IA",
+    title: "Utilisation de l’IA",
     fileNo: 'DOSSIER Nº 008',
     mastheadCenter: 'ARCHIVE DU LAB //// DOSSIER PROJET',
     mastheadRight: '1977 ÉDITIONS',
@@ -240,26 +240,26 @@ const CONTENT = {
     tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
 
     intro:
-      "J'utilisais une IA locale pour économiser mon quota Claude. Je l'ai abandonnée, j'ai compris les vrais leviers du quota, et j'ai mis en place un système où Claude cadre une mission puis la mène seul, du brief jusqu'à la pull request. Cette page raconte cette séquence — et elle a été écrite par ce système lui-même. Depuis, le système fait aussi tourner des routines quotidiennes et hebdomadaires, et a mené la refonte complète du site.",
+      "J’utilisais une IA locale pour économiser mon quota Claude. Je l’ai abandonnée, j’ai compris les vrais leviers du quota, et j’ai mis en place un système où Claude cadre une mission puis la mène seul, du brief jusqu’à la pull request. Cette page raconte cette séquence — et elle a été écrite par ce système lui-même. Depuis, le système fait aussi tourner des routines quotidiennes et hebdomadaires, et a mené la refonte complète du site.",
 
     sequenceTitle: 'La séquence',
     milestones: [
-      { date: '01', label: "Abandon de l'IA locale (Lily, Qwen3-8B)" },
+      { date: '01', label: "Abandon de l’IA locale (Lily, Qwen3-8B)" },
       { date: '02', label: 'Les vrais leviers sur le quota' },
       { date: '03', label: 'Les sous-agents, expliqués' },
-      { date: '04', label: "Objectif : l'autonomie « fondateur »" },
-      { date: '05', label: 'Incident de sécurité : un token en clair, révoqué' },
+      { date: '04', label: "Objectif : l’autonomie « fondateur »" },
+      { date: '05', label: 'Incident de sécurité : un token en clair, révoqué' },
       { date: '06', label: 'Mise en place de la mission test (Opus)' },
-      { date: '07 · 23 H 09 → 23 H 22', label: 'Exécution autonome : 13 min, 7 commits' },
-      { date: '08', label: 'Clôture : push, prévisualisation, PR #1, fusion' },
+      { date: '07 · 23 H 09 → 23 H 22', label: 'Exécution autonome : 13 min, 7 commits' },
+      { date: '08', label: 'Clôture : push, prévisualisation, PR #1, fusion' },
       { date: '09', label: 'Skill global /mission pour tous les projets' },
-      { date: '10', label: 'Mission 3 : schémas en grille, fin des interruptions' },
+      { date: '10', label: 'Mission 3 : schémas en grille, fin des interruptions' },
       { date: '11', label: 'Le Magazine, son test et le relecteur' },
-      { date: '12', label: "La file d'attente de missions" },
+      { date: '12', label: "La file d’attente de missions" },
       { date: '13', label: 'Piloter depuis le téléphone' },
       { date: '14', label: 'Le compromis sur le push de main' },
       { date: '15', label: 'Mise à jour de la page (mission 7)' },
-      { date: '16', label: 'Un deuxième avis : Gemini' },
+      { date: '16', label: 'Un deuxième avis : Gemini' },
       { date: '17', label: 'Économiser les tokens' },
       { date: '18', label: 'Mise à jour de la page (mission 8)' },
       { date: '19', label: "Les idées du dimanche" },
@@ -270,39 +270,39 @@ const CONTENT = {
       { date: '24', label: 'Cette mise à jour (mission 42)' },
     ],
 
-    startTitle: "Point de départ : l'IA locale",
+    startTitle: "Point de départ : l’IA locale",
     startP1:
-      "J'utilisais une IA locale, que j'appelais Lily : un modèle Qwen3-8B, quantifié en 4 bits, servi par LM Studio sur mon Mac, piloté par un petit script Python. L'idée : lui sous-traiter des tâches pour économiser mon quota Claude — un abonnement Pro, avec une limite glissante sur 5 heures.",
+      "J’utilisais une IA locale, que j’appelais Lily : un modèle Qwen3-8B, quantifié en 4 bits, servi par LM Studio sur mon Mac, piloté par un petit script Python. L’idée : lui sous-traiter des tâches pour économiser mon quota Claude — un abonnement Pro, avec une limite glissante sur 5 heures.",
     startP2:
-      "Avec Claude, on a vérifié si ça marchait vraiment : la délégation n'économise du quota que si l'IA locale lit beaucoup et renvoie peu. Or le script recevait le prompt en argument et renvoyait sa réponse dans le terminal — Claude devait tout recopier puis tout relire. Le modèle affichait aussi son raisonnement, et le « coût équivalent » calculé mesurait les tokens de Lily au lieu de ceux qu'elle était censée m'épargner.",
+      "Avec Claude, on a vérifié si ça marchait vraiment : la délégation n’économise du quota que si l’IA locale lit beaucoup et renvoie peu. Or le script recevait le prompt en argument et renvoyait sa réponse dans le terminal — Claude devait tout recopier puis tout relire. Le modèle affichait aussi son raisonnement, et le « coût équivalent » calculé mesurait les tokens de Lily au lieu de ceux qu’elle était censée m’épargner.",
     startP3:
-      "J'ai décidé d'abandonner l'IA locale : la qualité d'un modèle 8B est insuffisante pour le code et le design, le gain de quota était marginal, et ça ajoutait de la complexité.",
+      "J’ai décidé d’abandonner l’IA locale : la qualité d’un modèle 8B est insuffisante pour le code et le design, le gain de quota était marginal, et ça ajoutait de la complexité.",
 
     leversTitle: 'Les vrais leviers sur le quota',
     levers: [
-      'Choisir le modèle selon la tâche : Sonnet par défaut, Opus seulement pour le difficile (architecture, bug coriace), effort de raisonnement réduit pour le simple.',
-      "Contexte court : à chaque message, Claude relit toute la conversation. Une tâche = une session, /clear entre deux sujets, /compact sur les longues sessions.",
-      "Éviter les opérations coûteuses : captures d'écran (préférer la lecture du texte de la page), exploration de gros fichiers sans cible.",
+      'Choisir le modèle selon la tâche : Sonnet par défaut, Opus seulement pour le difficile (architecture, bug coriace), effort de raisonnement réduit pour le simple.',
+      "Contexte court : à chaque message, Claude relit toute la conversation. Une tâche = une session, /clear entre deux sujets, /compact sur les longues sessions.",
+      "Éviter les opérations coûteuses : captures d’écran (préférer la lecture du texte de la page), exploration de gros fichiers sans cible.",
       'Sous-agents pour les explorations larges.',
-      "L'IA locale — abandonnée.",
+      "L’IA locale — abandonnée.",
     ],
 
     subagentsTitle: 'Les sous-agents, expliqués',
     subagentsDef:
-      "Un sous-agent, c'est une autre instance de Claude, lancée pour une tâche précise, avec son propre contexte vierge et ses propres outils. Il ne renvoie qu'un résumé.",
+      "Un sous-agent, c’est une autre instance de Claude, lancée pour une tâche précise, avec son propre contexte vierge et ses propres outils. Il ne renvoie qu’un résumé.",
     subagentsAnalogy:
-      "L'analogie qui m'a aidé : un chef de projet délègue à un stagiaire « va voir comment la navigation est gérée » ; le stagiaire ouvre 30 fichiers, le chef ne lit que le compte rendu.",
-    subagentsProsLabel: 'Apports :',
+      "L’analogie qui m’a aidé : un chef de projet délègue à un stagiaire « va voir comment la navigation est gérée » ; le stagiaire ouvre 30 fichiers, le chef ne lit que le compte rendu.",
+    subagentsProsLabel: 'Apports :',
     subagentsPros: [
       'Contexte principal plus léger — le gain principal.',
-      'Choix d\'un modèle moins cher (Haiku, Sonnet).',
+      'Choix d’un modèle moins cher (Haiku, Sonnet).',
       'Parallélisme.',
     ],
-    subagentsConsLabel: 'Limites :',
+    subagentsConsLabel: 'Limites :',
     subagentsCons: [
       'Ses tokens comptent aussi dans le quota.',
       'Il démarre à froid — il faut lui donner la consigne complète.',
-      'Il faut vérifier ce qu\'il rapporte.',
+      'Il faut vérifier ce qu’il rapporte.',
     ],
     subagentsTableCols: ['', 'IA locale (8B)', 'Sous-agent Haiku/Sonnet'],
     subagentsTableRows: [
@@ -312,139 +312,139 @@ const CONTENT = {
       ['Isolation du contexte', 'Seulement si sortie en fichier', 'Native'],
     ],
 
-    goalTitle: "L'objectif : l'autonomie « fondateur »",
-    goalQuote: "« Considère-moi comme le fondateur d'une boîte. Je délègue tout et je ne vois que le résultat. » Peu importe le temps que ça prend ; intervenir le moins possible ; sans surcoût sur l'abonnement Pro.",
-    blockersLabel: 'Ce qui bloquait :',
+    goalTitle: "L’objectif : l’autonomie « fondateur »",
+    goalQuote: "« Considère-moi comme le fondateur d’une boîte. Je délègue tout et je ne vois que le résultat. » Peu importe le temps que ça prend ; intervenir le moins possible ; sans surcoût sur l’abonnement Pro.",
+    blockersLabel: 'Ce qui bloquait :',
     blockers: [
-      "La règle Git « jamais de commit sans validation » → blocage à chaque commit.",
+      "La règle Git « jamais de commit sans validation » → blocage à chaque commit.",
       'Les demandes de permission — personne pour répondre la nuit.',
       'Le Mac qui se met en veille.',
-      'Les décisions métier : sans spec, Claude bloque ou invente.',
+      'Les décisions métier : sans spec, Claude bloque ou invente.',
     ],
-    responsesLabel: 'Réponses apportées :',
+    responsesLabel: 'Réponses apportées :',
     responses: [
       'Une spec tranchée au départ — le vrai goulot.',
-      'Exception Git : commits libres uniquement sur des branches auto/* ; push, fusion et déploiement restent de mon côté.',
-      "Permissions écrites une fois dans le projet (liste d'autorisations + liste d'interdits).",
-      "Reprise après la limite de quota : l'état du travail est écrit sur le disque (plan coché, fichier de progression, un commit par étape) et une tâche programmée relance le travail toutes les 2 heures.",
+      'Exception Git : commits libres uniquement sur des branches auto/* ; push, fusion et déploiement restent de mon côté.',
+      "Permissions écrites une fois dans le projet (liste d’autorisations + liste d’interdits).",
+      "Reprise après la limite de quota : l’état du travail est écrit sur le disque (plan coché, fichier de progression, un commit par étape) et une tâche programmée relance le travail toutes les 2 heures.",
     ],
     resumeLoop: [
-      { label: '1 · Travail', sublabel: 'Plan coché, PROGRESS.md et un commit après chaque étape : tout est sur le disque' },
-      { label: '2 · Quota épuisé', sublabel: "Limite glissante de 5 heures de l'abonnement Pro" },
-      { label: '3 · Arrêt', sublabel: "La session s'arrête et ne peut pas se relancer seule" },
-      { label: '4 · Relance 2 h plus tard', sublabel: "La tâche programmée repart de zéro ; si rien à faire, elle se met en pause jusqu'à la prochaine mission" },
-      { label: '5 · Lecture de PROGRESS.md', sublabel: 'Avec SPEC.md et PLAN.md seulement : la mémoire entre deux reprises' },
-      { label: '6 · Reprise ↺', sublabel: "Là où le plan coché s'est arrêté, puis retour à l'étape 1" },
+      { label: '1 · Travail', sublabel: 'Plan coché, PROGRESS.md et un commit après chaque étape : tout est sur le disque' },
+      { label: '2 · Quota épuisé', sublabel: "Limite glissante de 5 heures de l’abonnement Pro" },
+      { label: '3 · Arrêt', sublabel: "La session s’arrête et ne peut pas se relancer seule" },
+      { label: '4 · Relance 2 h plus tard', sublabel: "La tâche programmée repart de zéro ; si rien à faire, elle se met en pause jusqu’à la prochaine mission" },
+      { label: '5 · Lecture de PROGRESS.md', sublabel: 'Avec SPEC.md et PLAN.md seulement : la mémoire entre deux reprises' },
+      { label: '6 · Reprise ↺', sublabel: "Là où le plan coché s’est arrêté, puis retour à l’étape 1" },
     ],
-    noCostP: "Sans surcoût sur l'abonnement Pro, tant que l'usage supplémentaire payant n'est pas activé : le travail est juste plus lent (plusieurs fenêtres de quota), et partage le quota du travail quotidien → idéal la nuit.",
+    noCostP: "Sans surcoût sur l’abonnement Pro, tant que l’usage supplémentaire payant n’est pas activé : le travail est juste plus lent (plusieurs fenêtres de quota), et partage le quota du travail quotidien → idéal la nuit.",
 
     cloudTitle: 'Le cloud, expliqué',
-    cloudLead: "Même en local, le « cerveau » — le modèle — tourne toujours sur les serveurs d'Anthropic ; seules les « mains » (fichiers, commandes, navigateur) sont sur mon Mac.",
+    cloudLead: "Même en local, le « cerveau » — le modèle — tourne toujours sur les serveurs d’Anthropic ; seules les « mains » (fichiers, commandes, navigateur) sont sur mon Mac.",
     cloudChart: {
-      brain: { label: 'CERVEAU · LE MODÈLE', sublabel: "Tourne toujours sur les serveurs d'Anthropic, même en local" },
-      local: { label: 'MAINS · MODE LOCAL', sublabel: "Sur le Mac : fichiers, commandes, navigateur. Choix du test : l'app Claude doit rester ouverte." },
-      cloud: { label: 'MAINS · MODE CLOUD', sublabel: 'Ordinateur virtuel temporaire : récupère le projet sur GitHub, travaille, renvoie une branche, puis est détruit. Le Mac peut être éteint.' },
+      brain: { label: 'CERVEAU · LE MODÈLE', sublabel: "Tourne toujours sur les serveurs d’Anthropic, même en local" },
+      local: { label: 'MAINS · MODE LOCAL', sublabel: "Sur le Mac : fichiers, commandes, navigateur. Choix du test : l’app Claude doit rester ouverte." },
+      cloud: { label: 'MAINS · MODE CLOUD', sublabel: 'Ordinateur virtuel temporaire : récupère le projet sur GitHub, travaille, renvoie une branche, puis est détruit. Le Mac peut être éteint.' },
     },
-    cloudImplicationsLabel: 'Implications du mode cloud :',
+    cloudImplicationsLabel: 'Implications du mode cloud :',
     cloudImplications: [
       'GitHub obligatoire.',
       'Fichiers locaux non versionnés et secrets absents.',
       'Internet généralement restreint.',
     ],
-    cloudChoiceP: "Pour le test, j'ai choisi le Mac — plus simple, et je pouvais vérifier dans le navigateur. Contrainte : l'app Claude doit rester ouverte pour que les tâches programmées tournent.",
+    cloudChoiceP: "Pour le test, j’ai choisi le Mac — plus simple, et je pouvais vérifier dans le navigateur. Contrainte : l’app Claude doit rester ouverte pour que les tâches programmées tournent.",
 
-    modelsTitle: "L'organigramme des modèles",
+    modelsTitle: "L’organigramme des modèles",
     modelChart: {
-      top: { label: 'OPUS · ARCHITECTE', sublabel: 'Cadrage, spec, plan : une fois, avec moi' },
-      mid: { label: 'SONNET · CHEF DE PROJET', sublabel: 'Toutes les exécutions programmées ; choisit les sous-agents' },
-      haiku1: { label: 'HAIKU', sublabel: 'explorateur : recherche' },
-      haiku2: { label: 'HAIKU', sublabel: 'verificateur : contrôles dans le navigateur' },
-      expert: { label: 'OPUS', sublabel: 'expert : étape délicate ou 2 échecs' },
-      veilleur: { label: 'HAIKU', sublabel: 'veilleur : veille web pour le Magazine' },
-      relecteur: { label: 'SONNET', sublabel: 'relecteur : vérification factuelle du Magazine' },
+      top: { label: 'OPUS · ARCHITECTE', sublabel: 'Cadrage, spec, plan : une fois, avec moi' },
+      mid: { label: 'SONNET · CHEF DE PROJET', sublabel: 'Toutes les exécutions programmées ; choisit les sous-agents' },
+      haiku1: { label: 'HAIKU', sublabel: 'explorateur : recherche' },
+      haiku2: { label: 'HAIKU', sublabel: 'verificateur : contrôles dans le navigateur' },
+      expert: { label: 'OPUS', sublabel: 'expert : étape délicate ou 2 échecs' },
+      veilleur: { label: 'HAIKU', sublabel: 'veilleur : veille web pour le Magazine' },
+      relecteur: { label: 'SONNET', sublabel: 'relecteur : vérification factuelle du Magazine' },
     },
     modelsTableCols: ['Rôle', 'Modèle', 'Quand'],
     modelsTableRows: [
-      ['Architecte : cadrage, spec, plan', 'Opus', 'Une fois, au lancement, en session avec moi'],
+      ['Architecte : cadrage, spec, plan', 'Opus', 'Une fois, au lancement, en session avec moi'],
       ['Chef de projet / développeur', 'Sonnet', 'Toutes les exécutions programmées'],
-      ['Exécutants : explorateur, verificateur', 'Haiku', 'Recherche dans le code ; contrôles dans le navigateur'],
+      ['Exécutants : explorateur, verificateur', 'Haiku', 'Recherche dans le code ; contrôles dans le navigateur'],
       ['sous-agent Haiku', 'Haiku', 'Étapes mécaniques bien décrites, marquées dans le plan'],
       ['expert', 'Opus', 'Étape délicate marquée dans le plan, ou après 2 échecs'],
       ['veilleur', 'Haiku', 'Veille hebdomadaire pour le Magazine'],
       ['relecteur', 'Sonnet', 'Vérification factuelle avant chaque numéro du Magazine'],
     ],
-    whoChoosesP: "Qui choisit : le modèle de la session d'exécution est fixé une fois (réglage de la tâche programmée) ; le chef de projet Sonnet choisit ensuite les sous-agents. Amélioration ajoutée après le premier test : au cadrage, chaque étape du plan porte son modèle, Sonnet suit l'indication et peut appeler l'expert en plus, jamais en moins.",
+    whoChoosesP: "Qui choisit : le modèle de la session d’exécution est fixé une fois (réglage de la tâche programmée) ; le chef de projet Sonnet choisit ensuite les sous-agents. Amélioration ajoutée après le premier test : au cadrage, chaque étape du plan porte son modèle, Sonnet suit l’indication et peut appeler l’expert en plus, jamais en moins.",
 
     incidentTitle: 'Un incident de sécurité',
     incidentItems: [
-      { label: 'Découverte', text: 'En inspectant le dépôt, Claude a trouvé un token GitHub écrit en clair dans l\'adresse du dépôt distant, dans la configuration Git locale de mon Mac.' },
-      { label: 'Vérification', text: "Il n'était ni sur GitHub ni dans l'historique (89 commits et tous les fichiers du projet contrôlés). Risque résiduel identifié : les journaux de sessions Claude publiés sur le site auraient pu l'exposer." },
-      { label: 'Actions', text: "J'ai révoqué le token ; Claude a nettoyé l'adresse du dépôt ; connexion refaite avec GitHub CLI, identifiants stockés dans le trousseau macOS, plus aucun secret en clair." },
+      { label: 'Découverte', text: 'En inspectant le dépôt, Claude a trouvé un token GitHub écrit en clair dans l’adresse du dépôt distant, dans la configuration Git locale de mon Mac.' },
+      { label: 'Vérification', text: "Il n’était ni sur GitHub ni dans l’historique (89 commits et tous les fichiers du projet contrôlés). Risque résiduel identifié : les journaux de sessions Claude publiés sur le site auraient pu l’exposer." },
+      { label: 'Actions', text: "J’ai révoqué le token ; Claude a nettoyé l’adresse du dépôt ; connexion refaite avec GitHub CLI, identifiants stockés dans le trousseau macOS, plus aucun secret en clair." },
       { label: 'Leçon', text: 'Une session autonome ne doit jamais manipuler de secret en clair.' },
     ],
 
     setupTitle: 'La mise en place',
-    setupP: 'Mission test : « corriger les tokens qui sont en erreur » — les 34 tokens sémantiques qui portaient une valeur brute au lieu de pointer vers une primitive.',
-    setupTreeLabel: 'Créé dans le projet :',
-    setupIncidentsLabel: 'Incidents de mise en place (instructifs) :',
+    setupP: 'Mission test : « corriger les tokens qui sont en erreur » — les 34 tokens sémantiques qui portaient une valeur brute au lieu de pointer vers une primitive.',
+    setupTreeLabel: 'Créé dans le projet :',
+    setupIncidentsLabel: 'Incidents de mise en place (instructifs) :',
     setupIncidents: [
       'npm run lint restait bloqué indéfiniment sur deux jeux minifiés de 315 Ko dans public/games → dossier exclu du lint. Sans ça, toute session autonome se serait figée. Lint : 6 erreurs préexistantes, hors mission.',
-      "Garde-fous de Claude Code : la création du fichier de permissions et de la tâche programmée, lancées de sa propre initiative, ont été bloquées (« auto-modification ») → j'ai créé le fichier moi-même ; la tâche a été créée après ma demande explicite.",
-      "Tâche programmée « missions autonomes » : toutes les 2 h à la 15e minute ; chaque exécution repart de zéro et lit les fichiers de la mission.",
-      "Premier passage : les demandes d'autorisation n'offraient que « Autoriser une fois » / « Refuser »."
+      "Garde-fous de Claude Code : la création du fichier de permissions et de la tâche programmée, lancées de sa propre initiative, ont été bloquées (« auto-modification ») → j’ai créé le fichier moi-même ; la tâche a été créée après ma demande explicite.",
+      "Tâche programmée « missions autonomes » : toutes les 2 h à la 15e minute ; chaque exécution repart de zéro et lit les fichiers de la mission.",
+      "Premier passage : les demandes d’autorisation n’offraient que « Autoriser une fois » / « Refuser »."
     ],
 
-    runTitle: "L'exécution autonome",
+    runTitle: "L’exécution autonome",
     runMetrics: [
-      { label: 'Durée', text: 'Lancée le 26/09/2026 à 23 h 09, terminée à 23 h 22 : 13 minutes, 50 tours, 7 commits (un par étape 2 à 8).' },
-      { label: 'Résultat', text: '34 primitives ajoutées (tailles, polices, texte, couleurs avec transparence, ombre) ; les 34 sémantiques deviennent des alias ; le bloc inversé [data-invert] suit la même règle.' },
-      { label: 'Non-régression visuelle', text: "Valeurs calculées des 86 tokens d'origine relevées avant/après, sur :root et [data-invert] → 0 différence." },
+      { label: 'Durée', text: 'Lancée le 26/09/2026 à 23 h 09, terminée à 23 h 22 : 13 minutes, 50 tours, 7 commits (un par étape 2 à 8).' },
+      { label: 'Résultat', text: '34 primitives ajoutées (tailles, polices, texte, couleurs avec transparence, ombre) ; les 34 sémantiques deviennent des alias ; le bloc inversé [data-invert] suit la même règle.' },
+      { label: 'Non-régression visuelle', text: "Valeurs calculées des 86 tokens d’origine relevées avant/après, sur :root et [data-invert] → 0 différence." },
       { label: 'Page Tokens du Lab', text: '120 tokens, 0 erreur, FR et EN.' },
       { label: 'Décisions', text: '10 décisions prises seule, toutes justifiées dans DECISIONS.md.' },
       { label: 'Sous-agents', text: '0 sous-agent lancé — chaque étape était plus courte à faire directement.' },
-      { label: 'Modèle réellement utilisé', text: "Tout a tourné sur Opus, pas sur Sonnet : le modèle de la tâche programmée n'avait pas été réglé. Point le plus coûteux du test." },
-      { label: 'Limite rencontrée', text: 'Le serveur de développement ne pouvait pas démarrer (autorisation demandée, personne pour répondre). Contournement jugé acceptable : relevé des valeurs via Chrome headless, vérification par rendu serveur React.' },
+      { label: 'Modèle réellement utilisé', text: "Tout a tourné sur Opus, pas sur Sonnet : le modèle de la tâche programmée n’avait pas été réglé. Point le plus coûteux du test." },
+      { label: 'Limite rencontrée', text: 'Le serveur de développement ne pouvait pas démarrer (autorisation demandée, personne pour répondre). Contournement jugé acceptable : relevé des valeurs via Chrome headless, vérification par rendu serveur React.' },
     ],
 
     wrapupTitle: 'La clôture',
     wrapupItems: [
-      "J'ai fait la vérification manquante dans un vrai navigateur : 0 erreur FR/EN, console vide sur la page et sur l'accueil.",
-      'Contrôle avant publication : aucun secret ni donnée personnelle dans les changements (dépôt public).',
-      "J'ai poussé la branche moi-même (le push est interdit à Claude par les permissions — le garde-fou fonctionne, même quand je le demande).",
-      "Prévisualisation Vercel automatique de la branche, que j'ai vérifiée.",
+      "J’ai fait la vérification manquante dans un vrai navigateur : 0 erreur FR/EN, console vide sur la page et sur l’accueil.",
+      'Contrôle avant publication : aucun secret ni donnée personnelle dans les changements (dépôt public).',
+      "J’ai poussé la branche moi-même (le push est interdit à Claude par les permissions — le garde-fou fonctionne, même quand je le demande).",
+      "Prévisualisation Vercel automatique de la branche, que j’ai vérifiée.",
       'Pull request ouverte par Claude, fusionnée par moi (clic « Merge »), puis git pull.',
-      'Explication clé pour moi : le code sur GitHub ≠ le site en ligne. Le site est construit à partir de main ; une branche est un brouillon à côté de la version publiée.',
+      'Explication clé pour moi : le code sur GitHub ≠ le site en ligne. Le site est construit à partir de main ; une branche est un brouillon à côté de la version publiée.',
     ],
     gitFlow: [
-      { label: 'main', sublabel: 'La version publiée : le site en ligne est construit à partir d\'elle' },
+      { label: 'main', sublabel: 'La version publiée : le site en ligne est construit à partir d’elle' },
       { label: 'auto/<nom>', sublabel: 'Un brouillon, à côté de la version publiée' },
       { label: 'Commits (Claude)', sublabel: 'Un par étape, libres sur auto/* uniquement' },
-      { label: 'Push (Claude)', sublabel: "La branche de mission part sur GitHub à la clôture ; pousser main reste réservé à moi, sur ma demande" },
+      { label: 'Push (Claude)', sublabel: "La branche de mission part sur GitHub à la clôture ; pousser main reste réservé à moi, sur ma demande" },
       { label: 'Prévisualisation Vercel', sublabel: 'Construite automatiquement pour la branche, que je vérifie' },
       { label: 'Pull request (Claude)', sublabel: 'Propose de faire entrer le brouillon dans main' },
       { label: 'Fusion (moi)', sublabel: 'Clic « Merge », puis git pull' },
-      { label: 'Site en ligne', sublabel: 'Construit à partir de main : le brouillon devient la version publiée' },
+      { label: 'Site en ligne', sublabel: 'Construit à partir de main : le brouillon devient la version publiée' },
     ],
 
     improvementsTitle: 'Améliorations après le test',
     improvements: [
       'Navigateur intégré autorisé dans les permissions (pour les vérifications de nuit).',
       'Modèle par étape dans le plan.',
-      'Procédures « Lancer une mission » et « Clôturer une mission » écrites dans le CLAUDE.md du projet ; mémoire de Claude mise à jour → une nouvelle session sait refaire tout le circuit.',
+      'Procédures « Lancer une mission » et « Clôturer une mission » écrites dans le CLAUDE.md du projet ; mémoire de Claude mise à jour → une nouvelle session sait refaire tout le circuit.',
       'Skill global /mission, valable pour tous les projets.',
     ],
-    globalTreeLabel: 'Structure du skill global :',
+    globalTreeLabel: 'Structure du skill global :',
 
     thirdMissionTitle: 'La 3ᵉ mission, et la fin des interruptions',
     thirdMissionP1:
-      "Troisième mission, circuits-colonnes : afficher les longs schémas verticaux de cette page sur plusieurs colonnes, sur ordinateur. Au cadrage, Opus a recompté et trouvé trois schémas concernés, pas deux — les trois sont passés en grille. Nouveau mode « serpentin » (1 → 2 → 3, puis 6 ← 5 ← 4…) sur 3 colonnes, inchangé sur mobile : les hauteurs sont divisées par 2,75 à 3,5 (916 → 258 px pour le plus long). Exécutée en 15 minutes, sur Haiku et Sonnet — pas d'Opus, l'architecture était déjà tranchée.",
-    autonomyBlockersLabel: "Ce qui interrompait encore l'exécution :",
+      "Troisième mission, circuits-colonnes : afficher les longs schémas verticaux de cette page sur plusieurs colonnes, sur ordinateur. Au cadrage, Opus a recompté et trouvé trois schémas concernés, pas deux — les trois sont passés en grille. Nouveau mode « serpentin » (1 → 2 → 3, puis 6 ← 5 ← 4…) sur 3 colonnes, inchangé sur mobile : les hauteurs sont divisées par 2,75 à 3,5 (916 → 258 px pour le plus long). Exécutée en 15 minutes, sur Haiku et Sonnet — pas d’Opus, l’architecture était déjà tranchée.",
+    autonomyBlockersLabel: "Ce qui interrompait encore l’exécution :",
     autonomyBlockers: [
       'Le mode de permission par défaut de la routine.',
       "La création de fichiers de code, pas autorisée.",
       "Les commandes composées (&&, boucles), pas reconnues par les autorisations.",
     ],
-    autonomyFixesLabel: 'Corrections :',
+    autonomyFixesLabel: 'Corrections :',
     autonomyFixes: [
       'Routine passée en mode Auto.',
       'Autorisations complétées.',
@@ -452,165 +452,165 @@ const CONTENT = {
       'Arrêter les serveurs lancés avant de terminer.',
       "Seule la session principale commite, avec la signature de chaque modèle ayant travaillé.",
     ],
-    autonomyResultP: "Résultat : la 3ᵉ mission n'a signalé aucune demande d'autorisation.",
+    autonomyResultP: "Résultat : la 3ᵉ mission n’a signalé aucune demande d’autorisation.",
 
     magazineTitle: 'Le Magazine',
     magazineIntro:
-      "Idée : un magazine de veille IA sur le site, alimenté par une routine. Mes décisions : un numéro par semaine, le lundi matin ; publication par pull request, que je relis et fusionne ; angle designers et développeurs ; bilingue FR/EN.",
+      "Idée : un magazine de veille IA sur le site, alimenté par une routine. Mes décisions : un numéro par semaine, le lundi matin ; publication par pull request, que je relis et fusionne ; angle designers et développeurs ; bilingue FR/EN.",
     magazineMissionP:
-      "Quatrième mission : la rubrique /magazine (liste des numéros) et /magazine/<date> (édito, articles, « Pourquoi ça compte », sources). Un numéro = un fichier JSON, validé au chargement — un fichier invalide n'est pas affiché, sans casser la page. Un numéro 0 « Présentation », sans actualité inventée. Modèles : Opus pour la direction visuelle, Sonnet, Haiku.",
-    magazineRoutineLabel: 'La routine du lundi, 7 h 30 :',
+      "Quatrième mission : la rubrique /magazine (liste des numéros) et /magazine/<date> (édito, articles, « Pourquoi ça compte », sources). Un numéro = un fichier JSON, validé au chargement — un fichier invalide n’est pas affiché, sans casser la page. Un numéro 0 « Présentation », sans actualité inventée. Modèles : Opus pour la direction visuelle, Sonnet, Haiku.",
+    magazineRoutineLabel: 'La routine du lundi, 7 h 30 :',
     magazineRoutineSteps: [
       'veilleur (Haiku) collecte les annonces de la semaine sur des sources officielles.',
       'Sonnet sélectionne 3 à 5 sujets, vérifie chaque source, rédige en FR puis EN.',
       'relecteur (Sonnet) vérifie chaque affirmation contre ses sources.',
-      "La routine pousse sa branche et ouvre la pull request — seule exception au « jamais de push » des routines.",
+      "La routine pousse sa branche et ouvre la pull request — seule exception au « jamais de push » des routines.",
     ],
     magazineTestP:
-      "Le test (7 minutes) a produit le numéro 1. En rouvrant les sources une par une, j'ai trouvé trois inexactitudes typiques d'un résumé IA — des chiffres vrais mais mal reliés (une baisse de coût total présentée comme une baisse de prix unitaire, des crédits d'essai attribués au mauvais produit, des benchmarks publics présentés comme des évaluations internes). Corrigées avant publication, et création du relecteur : désormais obligatoire à chaque numéro.",
+      "Le test (7 minutes) a produit le numéro 1. En rouvrant les sources une par une, j’ai trouvé trois inexactitudes typiques d’un résumé IA — des chiffres vrais mais mal reliés (une baisse de coût total présentée comme une baisse de prix unitaire, des crédits d’essai attribués au mauvais produit, des benchmarks publics présentés comme des évaluations internes). Corrigées avant publication, et création du relecteur : désormais obligatoire à chaque numéro.",
 
-    queueTitle: "La file d'attente",
+    queueTitle: "La file d’attente",
     queueP1:
-      "Question : peut-on cadrer plusieurs missions d'avance ? Problème : les fichiers d'une mission n'existent que sur sa branche ; la routine ne regardait que la branche ouverte, une deuxième mission aurait été invisible.",
+      "Question : peut-on cadrer plusieurs missions d’avance ? Problème : les fichiers d’une mission n’existent que sur sa branche ; la routine ne regardait que la branche ouverte, une deuxième mission aurait été invisible.",
     queueP2:
-      "Solution : la routine cherche les missions dans les branches auto/*, prend la plus ancienne sans rapport, puis enchaîne sur la suivante s'il reste du quota. Chaque mission part de main et donne sa propre pull request.",
+      "Solution : la routine cherche les missions dans les branches auto/*, prend la plus ancienne sans rapport, puis enchaîne sur la suivante s’il reste du quota. Chaque mission part de main et donne sa propre pull request.",
     queueP3:
-      "Premier usage : les missions 5 (workflow-grille) et 6 (home-magazine) exécutées à la suite, en une seule fois, en environ 30 minutes.",
+      "Premier usage : les missions 5 (workflow-grille) et 6 (home-magazine) exécutées à la suite, en une seule fois, en environ 30 minutes.",
 
     phoneTitle: 'Piloter depuis le téléphone',
     phoneP1:
-      "Je connaissais déjà Remote Control. J'ai regardé le cloud (le « cerveau » et les « mains » dans un ordinateur d'Anthropic, Mac éteint possible), puis écarté pour l'instant : il aurait fallu recopier le skill dans le dépôt, remplacer les tâches programmées par des routines cloud, et le navigateur de vérification y est limité.",
+      "Je connaissais déjà Remote Control. J’ai regardé le cloud (le « cerveau » et les « mains » dans un ordinateur d’Anthropic, Mac éteint possible), puis écarté pour l’instant : il aurait fallu recopier le skill dans le dépôt, remplacer les tâches programmées par des routines cloud, et le navigateur de vérification y est limité.",
     phoneP2:
-      "La session interactive devient une tour de contrôle : Remote Control activé, je lui écris depuis l'app sur mon téléphone (« lance la routine des missions »), elle démarre la routine, est prévenue à la fin, vérifie et fait la clôture.",
+      "La session interactive devient une tour de contrôle : Remote Control activé, je lui écris depuis l’app sur mon téléphone (« lance la routine des missions »), elle démarre la routine, est prévenue à la fin, vérifie et fait la clôture.",
     phoneFlow: [
-      { label: '1 · Téléphone', sublabel: 'Moi, depuis l\'app Claude : « lance la routine des missions »' },
+      { label: '1 · Téléphone', sublabel: 'Moi, depuis l’app Claude : « lance la routine des missions »' },
       { label: '2 · Tour de contrôle', sublabel: 'La session interactive, avec Remote Control activé' },
-      { label: '3 · Routine', sublabel: "Traite la file d'attente de missions, prévient à la fin" },
+      { label: '3 · Routine', sublabel: "Traite la file d’attente de missions, prévient à la fin" },
       { label: '4 · Vérification (Claude)', sublabel: 'Dans le navigateur, aucune donnée sensible' },
       { label: '5 · Pull requests (Claude)', sublabel: 'Push des branches, ouverture des pull requests' },
-      { label: '6 · Fusion', sublabel: 'Moi, depuis l\'app GitHub sur mon téléphone' },
+      { label: '6 · Fusion', sublabel: 'Moi, depuis l’app GitHub sur mon téléphone' },
     ],
     phoneClosureP:
-      "Depuis le 27/09, « clôture les missions » suffit, au Mac comme au téléphone : Claude trouve les missions terminées, lit leurs rapports, vérifie dans le navigateur, contrôle qu'aucune donnée sensible ne part sur le dépôt public, pousse chaque branche, ouvre les pull requests et résume. Si un point bloque, il ne pousse pas et explique. Je fusionne ; Claude remet le Mac à jour.",
+      "Depuis le 27/09, « clôture les missions » suffit, au Mac comme au téléphone : Claude trouve les missions terminées, lit leurs rapports, vérifie dans le navigateur, contrôle qu’aucune donnée sensible ne part sur le dépôt public, pousse chaque branche, ouvre les pull requests et résume. Si un point bloque, il ne pousse pas et explique. Je fusionne ; Claude remet le Mac à jour.",
 
-    mainPushTitle: 'Le push de main : un compromis',
+    mainPushTitle: 'Le push de main : un compromis',
     mainPushP1:
-      "J'ai proposé de retirer l'interdiction de pousser main (« au pire on rollback sur Vercel »). Claude a rappelé que pousser main met le site en production immédiatement, et que les réglages de permissions valent pour toutes les sessions — y compris les routines de nuit, sans personne pour regarder.",
+      "J’ai proposé de retirer l’interdiction de pousser main (« au pire on rollback sur Vercel »). Claude a rappelé que pousser main met le site en production immédiatement, et que les réglages de permissions valent pour toutes les sessions — y compris les routines de nuit, sans personne pour regarder.",
     mainPushP2:
-      "Compromis retenu : Claude peut pousser main uniquement dans une session où je suis présent, sur ma demande explicite ; les routines et missions autonomes, jamais. Forcer un push et fusionner restent interdits à tous, dans tous les cas.",
+      "Compromis retenu : Claude peut pousser main uniquement dans une session où je suis présent, sur ma demande explicite ; les routines et missions autonomes, jamais. Forcer un push et fusionner restent interdits à tous, dans tous les cas.",
     mainPushP3:
-      "Détail notable : avant ce compromis, alors que je venais de dire « vas-y », Claude a refusé de contourner le verrou en écrivant la commande autrement — un garde-fou n'a de valeur que s'il n'est pas contourné.",
+      "Détail notable : avant ce compromis, alors que je venais de dire « vas-y », Claude a refusé de contourner le verrou en écrivant la commande autrement — un garde-fou n’a de valeur que s’il n’est pas contourné.",
 
-    geminiTitle: 'Un deuxième avis : Gemini',
+    geminiTitle: 'Un deuxième avis : Gemini',
     geminiIntroP:
-      "Je réfléchissais à l'idée P-003 : un kit de missions autonomes, réutilisable pour d'autres projets. J'ai demandé à Claude s'il pouvait interroger Gemini, puisqu'il sait naviguer.",
+      "Je réfléchissais à l’idée P-003 : un kit de missions autonomes, réutilisable pour d’autres projets. J’ai demandé à Claude s’il pouvait interroger Gemini, puisqu’il sait naviguer.",
     geminiHowP:
-      "Oui, avec « Claude in Chrome » : l'extension qui pilote mon vrai Chrome, où je suis déjà connecté à Gemini. Il ne se connecte jamais à ma place — il ne tape aucun mot de passe. Avant le test, il m'a annoncé quatre limites :",
+      "Oui, avec « Claude in Chrome » : l’extension qui pilote mon vrai Chrome, où je suis déjà connecté à Gemini. Il ne se connecte jamais à ma place — il ne tape aucun mot de passe. Avant le test, il m’a annoncé quatre limites :",
     geminiLimits: [
-      "Uniquement quand je suis là : les tâches programmées n'ont pas de navigateur.",
-      "Fragile : il passe par la page, pas par une API ; si la page change, ça casse.",
-      "Confidentialité : tout ce qui est envoyé part chez Google. Il n'envoie pas mes notes privées sans mon accord.",
-      "Les conditions d'utilisation de Google n'aiment pas l'automatisation : ponctuel, oui ; à grande échelle, non.",
+      "Uniquement quand je suis là : les tâches programmées n’ont pas de navigateur.",
+      "Fragile : il passe par la page, pas par une API ; si la page change, ça casse.",
+      "Confidentialité : tout ce qui est envoyé part chez Google. Il n’envoie pas mes notes privées sans mon accord.",
+      "Les conditions d’utilisation de Google n’aiment pas l’automatisation : ponctuel, oui ; à grande échelle, non.",
     ],
     geminiTryP:
-      "Premier essai : échec, l'extension n'était pas connectée. Claude m'a donné les étapes (installer l'extension, s'y connecter avec le même compte), sans chercher de contournement. Deuxième essai, une fois connecté : réussi.",
+      "Premier essai : échec, l’extension n’était pas connectée. Claude m’a donné les étapes (installer l’extension, s’y connecter avec le même compte), sans chercher de contournement. Deuxième essai, une fois connecté : réussi.",
     geminiQuestionP:
-      "La question était générale, sans aucune donnée privée : comment les développeurs solo organisent-ils aujourd'hui leurs agents de code autonomes — suivi, garde-fous, délégation entre modèles ? Gemini a répondu par cinq pratiques. Je les résume avec mes mots et je les compare à mon système.",
+      "La question était générale, sans aucune donnée privée : comment les développeurs solo organisent-ils aujourd’hui leurs agents de code autonomes — suivi, garde-fous, délégation entre modèles ? Gemini a répondu par cinq pratiques. Je les résume avec mes mots et je les compare à mon système.",
     geminiTableCols: ['Pratique citée par Gemini', 'Dans mon système'],
     geminiTableRows: [
-      ["Des copies de travail Git séparées, pour faire tourner plusieurs agents sans qu'ils se gênent", 'Oui : des branches auto/* séparées de main'],
-      ['Répartir les modèles : un gros modèle conçoit, des modèles rapides ou locaux exécutent le répétitif', 'Oui : Opus cadre, Sonnet exécute, Haiku fait les tâches simples'],
-      ["Un fichier de règles qui sert de contrat à l'agent", 'Oui : CLAUDE.md et les permissions du projet'],
-      ['Des agents dans le terminal qui commitent chaque étape et savent annuler un changement raté', 'Oui : un commit par étape'],
-      ['Une validation humaine avant chaque écriture', "À la fin, par pull request : c'est le principe de l'autonomie « fondateur »"],
+      ["Des copies de travail Git séparées, pour faire tourner plusieurs agents sans qu’ils se gênent", 'Oui : des branches auto/* séparées de main'],
+      ['Répartir les modèles : un gros modèle conçoit, des modèles rapides ou locaux exécutent le répétitif', 'Oui : Opus cadre, Sonnet exécute, Haiku fait les tâches simples'],
+      ["Un fichier de règles qui sert de contrat à l’agent", 'Oui : CLAUDE.md et les permissions du projet'],
+      ['Des agents dans le terminal qui commitent chaque étape et savent annuler un changement raté', 'Oui : un commit par étape'],
+      ['Une validation humaine avant chaque écriture', "À la fin, par pull request : c’est le principe de l’autonomie « fondateur »"],
     ],
-    geminiConclusionLabel: "Ce que j'en retiens :",
+    geminiConclusionLabel: "Ce que j’en retiens :",
     geminiConclusion: [
-      "Mon système coche déjà quatre pratiques sur cinq. La validation humaine, chez moi, se fait à la fin plutôt qu'à chaque écriture.",
-      "Gemini a aussi avancé un chiffre sur la part des dépôts qui utilisent un fichier de règles. Il n'était pas sourcé : je ne l'ai pas vérifié, donc je ne le reprends pas.",
-      "Sa réponse semblait adaptée à mon historique Gemini : un avis utile, pas une source neutre.",
-      "Pour P-003, c'est un signal encourageant : le système existe déjà, il s'agirait de l'extraire.",
-      "Piloter Gemini dans le navigateur coûte des tokens Claude (attendre, lire la page), pour une réponse d'environ une minute, Gemini ayant fait sa propre recherche web. C'est un deuxième avis, pas une économie.",
+      "Mon système coche déjà quatre pratiques sur cinq. La validation humaine, chez moi, se fait à la fin plutôt qu’à chaque écriture.",
+      "Gemini a aussi avancé un chiffre sur la part des dépôts qui utilisent un fichier de règles. Il n’était pas sourcé : je ne l’ai pas vérifié, donc je ne le reprends pas.",
+      "Sa réponse semblait adaptée à mon historique Gemini : un avis utile, pas une source neutre.",
+      "Pour P-003, c’est un signal encourageant : le système existe déjà, il s’agirait de l’extraire.",
+      "Piloter Gemini dans le navigateur coûte des tokens Claude (attendre, lire la page), pour une réponse d’environ une minute, Gemini ayant fait sa propre recherche web. C’est un deuxième avis, pas une économie.",
     ],
 
     tokensTitle: 'Économiser les tokens',
     tokensIntroP:
-      "Ma demande : diminuer au maximum le coût en tokens du système, en restant aussi efficace. Claude a relevé quatre postes, par ordre d'impact.",
+      "Ma demande : diminuer au maximum le coût en tokens du système, en restant aussi efficace. Claude a relevé quatre postes, par ordre d’impact.",
     tokensTableCols: ['Poste', 'Avant', 'Après'],
     tokensTableRows: [
       [
         'Tâche programmée',
-        'Elle tournait toutes les 2 heures, soit 12 fois par jour, même sans mission à faire : chaque lancement chargeait tout le contexte pour répondre « Aucune mission active ».',
-        'Elle se met en pause toute seule quand la file de missions est vide ; la session de cadrage la réactive quand une mission est prête.',
+        'Elle tournait toutes les 2 heures, soit 12 fois par jour, même sans mission à faire : chaque lancement chargeait tout le contexte pour répondre « Aucune mission active ».',
+        'Elle se met en pause toute seule quand la file de missions est vide ; la session de cadrage la réactive quand une mission est prête.',
       ],
       [
         'CLAUDE.md',
-        "Environ 10 Ko, chargé à chaque session (missions, Magazine, idées, conversations), dont la moitié ne sert que pendant une mission. Les routines le relisaient une deuxième fois, alors qu'il est déjà chargé automatiquement.",
-        "3 Ko : les procédures vont dans missions/README.md, lu seulement quand on travaille sur une mission. Les interdits de sécurité restent dans CLAUDE.md. Les routines ne le relisent plus.",
+        "Environ 10 Ko, chargé à chaque session (missions, Magazine, idées, conversations), dont la moitié ne sert que pendant une mission. Les routines le relisaient une deuxième fois, alors qu’il est déjà chargé automatiquement.",
+        "3 Ko : les procédures vont dans missions/README.md, lu seulement quand on travaille sur une mission. Les interdits de sécurité restent dans CLAUDE.md. Les routines ne le relisent plus.",
       ],
       [
-        "Reprise d'une mission",
+        "Reprise d’une mission",
         'Relecture de tous les fichiers de la mission, y compris les journaux DECISIONS et DELEGATIONS, qui grossissent à chaque étape.',
-        'SPEC, PLAN et PROGRESS seulement ; on ajoute des lignes aux journaux sans les relire.',
+        'SPEC, PLAN et PROGRESS seulement ; on ajoute des lignes aux journaux sans les relire.',
       ],
       [
         'Build et lint',
-        'Confiés à un sous-agent : il démarre à froid et relit le contexte, pour une seule commande.',
-        "Lancés directement par la session principale. Le verificateur (Haiku) ne sert plus qu'au navigateur. Nouveau choix au cadrage : « sous-agent (Haiku) » pour les étapes mécaniques bien décrites.",
+        'Confiés à un sous-agent : il démarre à froid et relit le contexte, pour une seule commande.',
+        "Lancés directement par la session principale. Le verificateur (Haiku) ne sert plus qu’au navigateur. Nouveau choix au cadrage : « sous-agent (Haiku) » pour les étapes mécaniques bien décrites.",
       ],
     ],
     tokensBugP:
-      "Au passage, un bug corrigé : la tâche des missions aurait pris les branches de la routine des idées (auto/projets-*) pour des missions. Elle les ignore maintenant. Les mêmes règles ont été reportées dans le skill global /mission, pour les futurs projets.",
-    tokensRejectedLabel: "Ce qui n'a pas été retenu :",
+      "Au passage, un bug corrigé : la tâche des missions aurait pris les branches de la routine des idées (auto/projets-*) pour des missions. Elle les ignore maintenant. Les mêmes règles ont été reportées dans le skill global /mission, pour les futurs projets.",
+    tokensRejectedLabel: "Ce qui n’a pas été retenu :",
     tokensRejected: [
-      "Gemini dans le navigateur : plus cher qu'il ne fait gagner (voir la section précédente).",
-      "L'IA locale (Lily) : déjà écartée, gain marginal.",
+      "Gemini dans le navigateur : plus cher qu’il ne fait gagner (voir la section précédente).",
+      "L’IA locale (Lily) : déjà écartée, gain marginal.",
     ],
     tokensRemainingP:
-      "Il me reste une recommandation à appliquer : couper, pour ce projet, les connecteurs inutiles (messagerie, agenda, stockage, tableaux blancs, design), dont la liste occupe du contexte à chaque session.",
+      "Il me reste une recommandation à appliquer : couper, pour ce projet, les connecteurs inutiles (messagerie, agenda, stockage, tableaux blancs, design), dont la liste occupe du contexte à chaque session.",
     tokensLightpandaP:
-      "Un outil de plus (05/10) : Lightpanda, un navigateur sans affichage pour les agents, testé sur les 4 sources du dernier numéro du Magazine. Résultat : il ne fait pas économiser de tokens ici — l'outil de lecture habituel (WebFetch) renvoie un résumé, alors que Lightpanda renvoie la page entière — mais il lit ce que WebFetch ne peut pas lire : un site refusait WebFetch (erreur 403), Lightpanda a récupéré l'article complet. Décision : WebFetch d'abord, Lightpanda en secours pour le veilleur et le relecteur du Magazine, avec une taille de page plafonnée. Gratuit et open source, il tourne sur le Mac, télémétrie coupée.",
+      "Un outil de plus (05/10) : Lightpanda, un navigateur sans affichage pour les agents, testé sur les 4 sources du dernier numéro du Magazine. Résultat : il ne fait pas économiser de tokens ici — l’outil de lecture habituel (WebFetch) renvoie un résumé, alors que Lightpanda renvoie la page entière — mais il lit ce que WebFetch ne peut pas lire : un site refusait WebFetch (erreur 403), Lightpanda a récupéré l’article complet. Décision : WebFetch d’abord, Lightpanda en secours pour le veilleur et le relecteur du Magazine, avec une taille de page plafonnée. Gratuit et open source, il tourne sur le Mac, télémétrie coupée.",
     tokensPublishP:
-      "Pour la première fois, une amélioration du système lui-même passe par une pull request, hors mission, que je fusionne. Cette page est mise à jour par la mission 8, utilisation-ia-economie : la première cadrée selon ces nouvelles règles (étapes mécaniques prévues pour Haiku, build et lint sans sous-agent).",
+      "Pour la première fois, une amélioration du système lui-même passe par une pull request, hors mission, que je fusionne. Cette page est mise à jour par la mission 8, utilisation-ia-economie : la première cadrée selon ces nouvelles règles (étapes mécaniques prévues pour Haiku, build et lint sans sous-agent).",
 
     routinesTitle: 'Trois routines de plus',
     routinesIntroP:
-      "Avant, deux tâches programmées : les missions (toutes les 2 h) et le Magazine (le lundi à 7 h 30). Depuis, trois de plus.",
+      "Avant, deux tâches programmées : les missions (toutes les 2 h) et le Magazine (le lundi à 7 h 30). Depuis, trois de plus.",
     routinesItems: [
       {
         label: 'Les idées du dimanche',
-        text: "Depuis le 27/09, chaque dimanche à 19 h, une routine propose des idées de projets numérotées P-NNN pour la rubrique /projets : une fiche publique sur le site et une note économique privée, rangée hors du dépôt public. Elle pousse sa branche auto/projets-<date> et ouvre la pull request ; je trie en une phrase (« garde 2, arrête 4 parce que… ») dans la session tour de contrôle, qui met les fiches à jour avec mes mots. « On développe P-NNN » fait passer la fiche « en cours » et cadre une mission. Depuis le 01/10, chaque idée a un modèle de revenu, un canal de distribution et un critère d'arrêt.",
+        text: "Depuis le 27/09, chaque dimanche à 19 h, une routine propose des idées de projets numérotées P-NNN pour la rubrique /projets : une fiche publique sur le site et une note économique privée, rangée hors du dépôt public. Elle pousse sa branche auto/projets-<date> et ouvre la pull request ; je trie en une phrase (« garde 2, arrête 4 parce que… ») dans la session tour de contrôle, qui met les fiches à jour avec mes mots. « On développe P-NNN » fait passer la fiche « en cours » et cadre une mission. Depuis le 01/10, chaque idée a un modèle de revenu, un canal de distribution et un critère d’arrêt.",
       },
       {
         label: 'L’Oracle du Matin',
-        text: "Depuis le 29/09 (page /oracle depuis le 30/09), chaque matin à 5 h 30, une routine rédige un journal à imprimer pour moi, dans le style d'un vieux journal — je préfère le papier. Elle en extrait la partie publique (la une IA, les articles tech, le mot et le chiffre du jour) pour la page /oracle, sur une branche auto/breves-<date>, et ouvre la pull request. Elle travaille dans une copie de travail séparée du dépôt (un worktree Git), pour ne jamais toucher à mon dossier de travail. Depuis le 01/10, elle m'envoie une notification avec le lien de la pull request.",
+        text: "Depuis le 29/09 (page /oracle depuis le 30/09), chaque matin à 5 h 30, une routine rédige un journal à imprimer pour moi, dans le style d’un vieux journal — je préfère le papier. Elle en extrait la partie publique (la une IA, les articles tech, le mot et le chiffre du jour) pour la page /oracle, sur une branche auto/breves-<date>, et ouvre la pull request. Elle travaille dans une copie de travail séparée du dépôt (un worktree Git), pour ne jamais toucher à mon dossier de travail. Depuis le 01/10, elle m’envoie une notification avec le lien de la pull request.",
       },
       {
         label: 'Le carnet',
-        text: "Depuis le 29/09, quand j'écris « note : … » dans n'importe quelle session, Claude range la note telle quelle dans un carnet privé, répond « Noté. » et reprend le fil. La routine du dimanche trie le carnet : idée de projet, sujet pour le journal, mission, ou à garder.",
+        text: "Depuis le 29/09, quand j’écris « note : … » dans n’importe quelle session, Claude range la note telle quelle dans un carnet privé, répond « Noté. » et reprend le fil. La routine du dimanche trie le carnet : idée de projet, sujet pour le journal, mission, ou à garder.",
       },
     ],
-    routinesTableCols: ['Routine', 'Quand', "Ce qu'elle produit", 'Ce que je fais'],
+    routinesTableCols: ['Routine', 'Quand', "Ce qu’elle produit", 'Ce que je fais'],
     routinesTableRows: [
       ['Missions', 'Toutes les 2 h, en pause si la file est vide', 'Avance les missions cadrées, ouvre leurs pull requests', 'Je fusionne'],
       ['Magazine', 'Lundi 7 h 30', 'Un numéro de veille IA, par pull request', 'Je fusionne'],
       ['Idées', 'Dimanche 19 h', 'Des fiches de projet P-NNN, par pull request', 'Je trie, je fusionne'],
-      ['Oracle du Matin', 'Chaque jour 5 h 30', 'Un journal à imprimer et la page /oracle, par pull request', "J'imprime, je fusionne"],
+      ['Oracle du Matin', 'Chaque jour 5 h 30', 'Un journal à imprimer et la page /oracle, par pull request', "J’imprime, je fusionne"],
     ],
 
     kiosqueTitle: 'La refonte kiosque',
     kiosqueCadenceP:
-      "La cadence : du 27/09 au 01/10, une trentaine de missions, souvent petites (une mascotte en pixel art, une vraie page 404, des flux RSS et la page /suivre, trois jeux quotidiens dans /jeux, des audits du design system). La file d'attente les enchaîne ; je clôture par lots depuis la tour de contrôle.",
+      "La cadence : du 27/09 au 01/10, une trentaine de missions, souvent petites (une mascotte en pixel art, une vraie page 404, des flux RSS et la page /suivre, trois jeux quotidiens dans /jeux, des audits du design system). La file d’attente les enchaîne ; je clôture par lots depuis la tour de contrôle.",
     kiosqueDirectionP:
-      "La direction artistique (03/10) : Claude produit des maquettes HTML et des planches de polices ; je réagis (« j'adore », « trop propre ») et je choisis. Résultat : un concept de maison d'édition, cinq titres (l’Oracle du Matin, le Magazine, le Zine, les Jeux, le Lab), chacun sa couleur et sa police, uniquement des polices gratuites.",
+      "La direction artistique (03/10) : Claude produit des maquettes HTML et des planches de polices ; je réagis (« j’adore », « trop propre ») et je choisis. Résultat : un concept de maison d’édition, cinq titres (l’Oracle du Matin, le Magazine, le Zine, les Jeux, le Lab), chacun sa couleur et sa police, uniquement des polices gratuites.",
     kiosqueBranchP:
-      "La refonte elle-même (03 et 04/10) : dix missions (kiosque-maison, kiosque-une, gazette-web, magazine-web, jeux-arcade, lab-dossiers, idees-cv, zine, kiosque-annexes, kiosque-finitions). Choix : tout mettre en ligne d'un seul coup. Une branche d'intégration refonte-kiosque ; chaque mission en part et sa pull request la vise ; une pull request finale l'envoie sur main. En ligne le 04/10. Cette page elle-même a changé d'habit : le Lab est devenu un dossier confidentiel tapé à la machine.",
-    kiosqueLearnedLabel: "Ce que la refonte m'a appris :",
+      "La refonte elle-même (03 et 04/10) : dix missions (kiosque-maison, kiosque-une, gazette-web, magazine-web, jeux-arcade, lab-dossiers, idees-cv, zine, kiosque-annexes, kiosque-finitions). Choix : tout mettre en ligne d’un seul coup. Une branche d’intégration refonte-kiosque ; chaque mission en part et sa pull request la vise ; une pull request finale l’envoie sur main. En ligne le 04/10. Cette page elle-même a changé d’habit : le Lab est devenu un dossier confidentiel tapé à la machine.",
+    kiosqueLearnedLabel: "Ce que la refonte m’a appris :",
     kiosqueLearned: [
-      "Vérifier une mission telle qu'elle sera une fois fusionnée, sans rien fusionner : Git sait calculer le résultat à part, et Claude l'ouvre dans une copie de travail temporaire.",
-      "Cette copie temporaire doit être supprimée à la fin : oubliée, elle a fait remonter des centaines de fausses erreurs de lint et bloqué la routine (dossier de travail plus « propre »).",
-      "À chaque clôture, il a fallu des retouches visuelles (lignes qui tombent à côté du texte, un signe absent d'une police, éléments qui se chevauchent). Le rapport du vérificateur ne suffit pas : Claude regarde lui-même avant de proposer la fusion.",
-      "Certaines commandes restent interdites à Claude (fusionner, supprimer une branche distante) : il me les donne, une par bloc, et je les lance.",
+      "Vérifier une mission telle qu’elle sera une fois fusionnée, sans rien fusionner : Git sait calculer le résultat à part, et Claude l’ouvre dans une copie de travail temporaire.",
+      "Cette copie temporaire doit être supprimée à la fin : oubliée, elle a fait remonter des centaines de fausses erreurs de lint et bloqué la routine (dossier de travail plus « propre »).",
+      "À chaque clôture, il a fallu des retouches visuelles (lignes qui tombent à côté du texte, un signe absent d’une police, éléments qui se chevauchent). Le rapport du vérificateur ne suffit pas : Claude regarde lui-même avant de proposer la fusion.",
+      "Certaines commandes restent interdites à Claude (fusionner, supprimer une branche distante) : il me les donne, une par bloc, et je les lance.",
     ],
 
     statsTitle: 'Bilan chiffré',
@@ -630,18 +630,18 @@ const CONTENT = {
       ['42. cette mise à jour', '—', 'voir DELEGATIONS.md de la mission'],
     ],
     statsNoteP:
-      "Plus quatre routines : le Magazine (lundi 7 h 30), les idées du dimanche (19 h), l’Oracle du Matin (chaque jour 5 h 30), et les missions elles-mêmes (toutes les 2 h, en pause si la file est vide). Tendance : de moins en moins d'interventions de moi, et Opus réservé aux étapes qui en ont besoin — cadrage, direction visuelle.",
+      "Plus quatre routines : le Magazine (lundi 7 h 30), les idées du dimanche (19 h), l’Oracle du Matin (chaque jour 5 h 30), et les missions elles-mêmes (toutes les 2 h, en pause si la file est vide). Tendance : de moins en moins d’interventions de moi, et Opus réservé aux étapes qui en ont besoin — cadrage, direction visuelle.",
 
     finalLoopTitle: 'Le circuit final',
     finalFlow: [
-      { label: '1 · Brief', sublabel: 'Moi : « mission : … »' },
-      { label: '2 · Cadrage (Opus)', sublabel: 'Spec tranchée + plan, avec un modèle par étape ; réactive la tâche programmée' },
+      { label: '1 · Brief', sublabel: 'Moi : « mission : … »' },
+      { label: '2 · Cadrage (Opus)', sublabel: 'Spec tranchée + plan, avec un modèle par étape ; réactive la tâche programmée' },
       { label: '3 · Branche auto/<nom>', sublabel: 'Commits libres uniquement sur les branches auto/*' },
-      { label: '4 · Tâche programmée (Sonnet)', sublabel: "Gère la file d'attente ; reprend après chaque coupure de quota ; se met en pause quand la file est vide" },
-      { label: '5 · Étapes + commits', sublabel: 'Un commit par étape ; délègue à Haiku ou Opus selon le plan' },
+      { label: '4 · Tâche programmée (Sonnet)', sublabel: "Gère la file d’attente ; reprend après chaque coupure de quota ; se met en pause quand la file est vide" },
+      { label: '5 · Étapes + commits', sublabel: 'Un commit par étape ; délègue à Haiku ou Opus selon le plan' },
       { label: '6 · Rapport', sublabel: 'RAPPORT.md, écrit par la session' },
-      { label: '7 · « Clôture les missions »', sublabel: 'Moi, en un mot' },
-      { label: '8 · Vérification, push, pull requests', sublabel: 'Claude : navigateur, aucune donnée sensible' },
+      { label: '7 · « Clôture les missions »', sublabel: 'Moi, en un mot' },
+      { label: '8 · Vérification, push, pull requests', sublabel: 'Claude : navigateur, aucune donnée sensible' },
       { label: '9 · Fusion (moi)', sublabel: 'Clic « Merge », puis git pull' },
     ],
     remainingTitle: 'Ce qui me reste',
@@ -656,7 +656,7 @@ const CONTENT = {
     ],
 
     metaTitle: 'Mise en abyme',
-    metaP: "Cette page a été écrite par la deuxième mission du système, à partir du contenu que j'ai fourni. Elle est désormais entretenue par le système lui-même : cette mise à jour en est la 42ᵉ mission, cadrée puis exécutée sans moi, du brief jusqu'à la pull request. Le dossier missions/ du dépôt en garde la trace, mission par mission (spec, plan, décisions, délégations, rapport).",
+    metaP: "Cette page a été écrite par la deuxième mission du système, à partir du contenu que j’ai fourni. Elle est désormais entretenue par le système lui-même : cette mise à jour en est la 42ᵉ mission, cadrée puis exécutée sans moi, du brief jusqu’à la pull request. Le dossier missions/ du dépôt en garde la trace, mission par mission (spec, plan, décisions, délégations, rapport).",
 
     treeProject: TREE_PROJECT_FR,
     treeGlobal: TREE_GLOBAL_FR,

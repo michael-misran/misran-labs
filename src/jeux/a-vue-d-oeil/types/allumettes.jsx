@@ -25,7 +25,7 @@ function dessinerAllumettes(allumettes) {
 export default {
   id: 'allumettes',
   nom: { fr: 'Allumettes', en: 'Matchsticks' },
-  question: { fr: 'Combien d’allumettes en vrac ?', en: 'How many scattered matchsticks?' },
+  question: { fr: 'Combien d’allumettes en vrac ?', en: 'How many scattered matchsticks?' },
   unite: { fr: 'allumettes', en: 'matchsticks' },
   generer(rng) {
     const { valeur, allumettes } = genererAllumettes(rng)

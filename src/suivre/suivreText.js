@@ -35,7 +35,7 @@ export const SUIVRE_TEXT = {
   fr: {
     kicker: 'Bulletin à découper',
     title: 'Bulletin d’abonnement',
-    intro: 'Aucun compte à créer : cochez un flux ou suivez un réseau, et les nouveautés viennent à vous.',
+    intro: 'Aucun compte à créer : cochez un flux ou suivez un réseau, et les nouveautés viennent à vous.',
     decouper: 'Découper ici',
     feedsHelp: 'Collez l’adresse dans votre lecteur (Feedly, NetNewsWire, Inoreader…).',
     copyLabel: 'Copier',

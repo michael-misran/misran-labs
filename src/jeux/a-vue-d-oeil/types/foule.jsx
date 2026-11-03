@@ -17,7 +17,7 @@ function dessinerFoule(tetes) {
 export default {
   id: 'foule',
   nom: { fr: 'Foule vue de haut', en: 'Crowd from above' },
-  question: { fr: 'Combien de personnes dans la foule ?', en: 'How many people are in the crowd?' },
+  question: { fr: 'Combien de personnes dans la foule ?', en: 'How many people are in the crowd?' },
   unite: { fr: 'personnes', en: 'people' },
   generer(rng) {
     const { valeur, tetes } = genererFoule(rng)

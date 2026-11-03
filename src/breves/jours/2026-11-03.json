@@ -5,7 +5,7 @@
       "rubrique": "ia",
       "titre": { "fr": "OpenAI réécrit le serveur Git de son monorepo", "en": "OpenAI rewrites the Git server behind its monorepo" },
       "resume": {
-        "fr": "OpenAI présente Pando, un backend Git où les pushs sur des branches différentes avancent en parallèle, sans changer le client Git. La latence médiane des pushs a été divisée par près de 5, et près d'un pétaoctet de données Git est servi par jour. La cause : le rythme de travail que permet Codex.",
+        "fr": "OpenAI présente Pando, un backend Git où les pushs sur des branches différentes avancent en parallèle, sans changer le client Git. La latence médiane des pushs a été divisée par près de 5, et près d’un pétaoctet de données Git est servi par jour. La cause : le rythme de travail que permet Codex.",
         "en": "OpenAI presents Pando, a Git backend where pushes to different branches proceed in parallel, with no change to the Git client. Median push latency fell by nearly 5x, and nearly a petabyte of Git data is served per day. The cause: the pace of work Codex makes possible."
       },
       "sources": [
@@ -16,7 +16,7 @@
       "rubrique": "tech",
       "titre": { "fr": "GitHub Actions bloquera pull_request_target par défaut le 2 décembre", "en": "GitHub Actions will block pull_request_target by default on December 2" },
       "resume": {
-        "fr": "Dans les dépôts publics, le déclencheur <i>pull_request_target</i> sera bloqué par défaut à partir du 2 décembre, sauf autorisation explicite. Deux coupures de test sont prévues les 9 et 16 novembre, de 16 h à 18 h UTC ; l'onglet Insights montre déjà quelles exécutions seraient bloquées.",
+        "fr": "Dans les dépôts publics, le déclencheur <i>pull_request_target</i> sera bloqué par défaut à partir du 2 décembre, sauf autorisation explicite. Deux coupures de test sont prévues les 9 et 16 novembre, de 16 h à 18 h UTC ; l’onglet Insights montre déjà quelles exécutions seraient bloquées.",
         "en": "In public repositories, the <i>pull_request_target</i> trigger will be blocked by default starting December 2, unless explicitly allowed. Two test brownouts are planned on November 9 and 16, from 4 to 6 p.m. UTC; the Insights tab already shows which runs would be blocked."
       },
       "sources": [

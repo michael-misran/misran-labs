@@ -19,10 +19,10 @@ const TREE_LEVELS_FR = `~/                             ← dossier personnel
 
 const TREE_LEVEL1_FR = `~/.claude/                          ← la boîte à outils de Claude
 ├── skills/
-│   └── mission/                    ← le skill /mission (c'est lui, le « kit » de P-003)
-│       ├── SKILL.md                ← le mode d'emploi que Claude lit quand on tape /mission
+│   └── mission/                    ← le skill /mission (c’est lui, le «\u00a0kit\u00a0» de P-003)
+│       ├── SKILL.md                ← le mode d’emploi que Claude lit quand on tape /mission
 │       ├── reference/
-│       │   ├── nouveau-projet.md   ← démarrer un projet à partir d'une idée
+│       │   ├── nouveau-projet.md   ← démarrer un projet à partir d’une idée
 │       │   └── cloture.md          ← terminer une mission (vérifier, envoyer sur GitHub, fusionner)
 │       └── templates/              ← les modèles copiés dans chaque projet
 │           ├── CLAUDE-missions.md  ← règles des missions (branches auto/*, jamais main…)
@@ -39,19 +39,19 @@ const TREE_LEVEL2_FR = `Documents/Projets/
 ├── CLAUDE.md                       ← règles générales (français, pas de commit sans accord…)
 │
 └── misran-labs/
-    ├── CLAUDE.md                   ← règles du projet + section « Missions autonomes » (installée par /mission)
+    ├── CLAUDE.md                   ← règles du projet + section «\u00a0Missions autonomes\u00a0» (installée par /mission)
     ├── .claude/
     │   ├── settings.json           ← permissions du projet (copiées depuis templates/)
     │   ├── launch.json             ← comment lancer le site pour le prévisualiser
     │   └── agents/                 ← agents propres à ce projet
     │       ├── veilleur.md         ← (veille pour l’Oracle du Matin et les idées)
     │       ├── relecteur.md        ← (vérification des chiffres)
-    │       └── expert / explorateur / verificateur.md  ← copies locales, prioritaires sur celles de l'ordinateur
+    │       └── expert / explorateur / verificateur.md  ← copies locales, prioritaires sur celles de l’ordinateur
     │
     └── missions/                   ← une mission = un dossier
         ├── README.md               ← procédures des missions
         └── magazine/               ← exemple de mission
-            ├── SPEC.md             ← ce qu'il faut faire, et comment savoir que c'est réussi
+            ├── SPEC.md             ← ce qu’il faut faire, et comment savoir que c’est réussi
             ├── PLAN.md             ← les étapes, chacune avec le modèle qui la fait
             ├── PROGRESS.md         ← où en est la mission (mis à jour pendant le travail)
             ├── DECISIONS.md        ← les choix faits sans Michael, avec la raison
@@ -60,10 +60,10 @@ const TREE_LEVEL2_FR = `Documents/Projets/
 
 const TREE_LEVEL3_FR = `GitHub (en ligne)
 ├── main                  ← la version officielle, mise en ligne par Vercel. Michael seul décide.
-└── auto/magazine         ← la branche de travail d'une mission. Claude y travaille librement.
+└── auto/magazine         ← la branche de travail d’une mission. Claude y travaille librement.
 
 Claude → Scheduled
-└── misran-labs-missions  ← la tâche programmée : se réveille toutes les 2 h et avance la mission en cours`
+└── misran-labs-missions  ← la tâche programmée\u00a0: se réveille toutes les 2 h et avance la mission en cours`
 
 const TREE_LEVELS_EN = `~/                             ← home folder
 ├── .claude/                   ← level 1 (hidden folder, shared across all projects)
@@ -136,38 +136,38 @@ export const FONCT_TEXT = {
         id: 'pourquoi',
         title: 'Pourquoi cette page',
         blocks: [
-          { type: 'p', text: 'En lisant l’idée P-003 (un kit de missions autonomes réutilisable), Michael a voulu comprendre comment les pièces du système s’emboîtent : ce qui est commun à tous ses projets, ce qui vit dans chaque projet, et ce qui se passe quand il dit « on développe P-NNN ».' },
+          { type: 'p', text: 'En lisant l’idée P-003 (un kit de missions autonomes réutilisable), Michael a voulu comprendre comment les pièces du système s’emboîtent : ce qui est commun à tous ses projets, ce qui vit dans chaque projet, et ce qui se passe quand il dit « on développe P-NNN ».' },
         ],
       },
       {
         id: 'niveaux',
         title: 'Trois niveaux',
         blocks: [
-          { type: 'p', text: 'Du plus général au plus précis :' },
+          { type: 'p', text: 'Du plus général au plus précis :' },
           {
             type: 'levels',
             items: [
               { title: 'L’ordinateur', text: 'La boîte à outils de Claude, commune à tous les projets (`~/.claude/`).' },
               { title: 'Un projet', text: 'Un dossier dans `Documents/Projets/` avec ses règles et ses missions.' },
-              { title: 'Hors des fichiers', text: 'GitHub (les branches) et la tâche programmée (dans l’application Claude, rubrique « Scheduled »).' },
+              { title: 'Hors des fichiers', text: 'GitHub (les branches) et la tâche programmée (dans l’application Claude, rubrique « Scheduled »).' },
             ],
           },
-          { type: 'p', text: '`~` n’est pas la racine du disque : c’est le dossier personnel de l’utilisateur. `Documents/` est aussi dedans.' },
+          { type: 'p', text: '`~` n’est pas la racine du disque : c’est le dossier personnel de l’utilisateur. `Documents/` est aussi dedans.' },
           { type: 'tree', text: TREE_LEVELS_FR },
         ],
       },
       {
         id: 'niveau-1',
-        title: 'Niveau 1 : l’ordinateur',
+        title: 'Niveau 1 : l’ordinateur',
         blocks: [
           { type: 'p', text: 'La boîte à outils de Claude, commune à tous les projets.' },
           { type: 'tree', text: TREE_LEVEL1_FR },
-          { type: 'p', text: 'Le skill `/mission` sait installer le système dans un projet neuf ou existant : `CLAUDE.md`, permissions, tâche programmée `<projet>-missions`, puis cadrage de la première mission. Les sous-agents sont globaux : rien à copier.' },
+          { type: 'p', text: 'Le skill `/mission` sait installer le système dans un projet neuf ou existant : `CLAUDE.md`, permissions, tâche programmée `<projet>-missions`, puis cadrage de la première mission. Les sous-agents sont globaux : rien à copier.' },
         ],
       },
       {
         id: 'niveau-2',
-        title: 'Niveau 2 : un projet',
+        title: 'Niveau 2 : un projet',
         blocks: [
           { type: 'p', text: 'L’exemple ci-dessous est ce projet, misran-labs.' },
           { type: 'tree', text: TREE_LEVEL2_FR },
@@ -175,9 +175,9 @@ export const FONCT_TEXT = {
       },
       {
         id: 'niveau-3',
-        title: 'Niveau 3 : hors des fichiers',
+        title: 'Niveau 3 : hors des fichiers',
         blocks: [
-          { type: 'p', text: 'Ces deux pièces ne sont pas dans un dossier de l’ordinateur : l’une est en ligne, l’autre dans l’application Claude.' },
+          { type: 'p', text: 'Ces deux pièces ne sont pas dans un dossier de l’ordinateur : l’une est en ligne, l’autre dans l’application Claude.' },
           { type: 'tree', text: TREE_LEVEL3_FR },
         ],
       },
@@ -185,15 +185,15 @@ export const FONCT_TEXT = {
         id: 'circuit',
         title: 'Comment tout s’emboîte',
         blocks: [
-          { type: 'p', text: 'Cinq étapes, de la commande à la fusion :' },
+          { type: 'p', text: 'Cinq étapes, de la commande à la fusion :' },
           {
             type: 'flow',
             steps: [
               { label: '1 · /mission', sublabel: 'Michael tape /mission dans un projet. Claude lit ~/.claude/skills/mission/.' },
-              { label: '2 · Installation', sublabel: 'Première fois dans ce projet : Claude copie les modèles de templates/ pour créer le CLAUDE.md, le settings.json et la tâche programmée.' },
+              { label: '2 · Installation', sublabel: 'Première fois dans ce projet : Claude copie les modèles de templates/ pour créer le CLAUDE.md, le settings.json et la tâche programmée.' },
               { label: '3 · Cadrage', sublabel: 'Claude crée missions/<nom>/ avec la SPEC et le PLAN, sur une branche auto/<nom>.' },
               { label: '4 · La nuit', sublabel: 'La tâche programmée suit le PLAN, fait appel aux agents et tient à jour PROGRESS et DECISIONS.' },
-              { label: '5 · Le rapport', sublabel: 'À la fin : Michael lit le RAPPORT, puis fusionne vers main si ça lui convient.' },
+              { label: '5 · Le rapport', sublabel: 'À la fin : Michael lit le RAPPORT, puis fusionne vers main si ça lui convient.' },
             ],
           },
         ],
@@ -202,7 +202,7 @@ export const FONCT_TEXT = {
         id: 'nouveau-projet',
         title: 'Créer un nouveau projet',
         blocks: [
-          { type: 'p', text: 'On ne donne pas de chemin : on ouvre la session dans le dossier.' },
+          { type: 'p', text: 'On ne donne pas de chemin : on ouvre la session dans le dossier.' },
           {
             type: 'list',
             items: [
@@ -211,30 +211,30 @@ export const FONCT_TEXT = {
               'Taper `/mission` et décrire l’idée. Claude crée tout le reste.',
             ],
           },
-          { type: 'p', text: 'Si `/mission` est lancé depuis `Projets/`, Claude s’arrête et demande d’ouvrir la session dans le bon dossier : le `CLAUDE.md` et la mémoire d’un projet ne se chargent que depuis son propre dossier.' },
-          { type: 'p', text: 'Ce que Michael fait lui-même : accepter la création du dépôt GitHub (public ou privé), accepter le premier commit, et dans « Scheduled » passer la tâche sur Sonnet et en mode Auto.' },
+          { type: 'p', text: 'Si `/mission` est lancé depuis `Projets/`, Claude s’arrête et demande d’ouvrir la session dans le bon dossier : le `CLAUDE.md` et la mémoire d’un projet ne se chargent que depuis son propre dossier.' },
+          { type: 'p', text: 'Ce que Michael fait lui-même : accepter la création du dépôt GitHub (public ou privé), accepter le premier commit, et dans « Scheduled » passer la tâche sur Sonnet et en mode Auto.' },
         ],
       },
       {
         id: 'on-developpe',
         title: 'Quand on développe P-NNN',
         blocks: [
-          { type: 'p', text: 'Quand Michael dit « on développe P-NNN », il y a deux cas :' },
+          { type: 'p', text: 'Quand Michael dit « on développe P-NNN », il y a deux cas :' },
           {
             type: 'cases',
             items: [
               {
                 title: 'L’idée ajoute quelque chose au site',
-                text: 'Une page, par exemple : la mission se fait directement dans misran-labs, sans nouveau dossier.',
+                text: 'Une page, par exemple : la mission se fait directement dans misran-labs, sans nouveau dossier.',
               },
               {
                 title: 'L’idée produit un dépôt à part',
-                text: 'Exemple : P-003, un kit publié séparément.',
+                text: 'Exemple : P-003, un kit publié séparément.',
                 list: [
-                  'Dans une session misran-labs, Michael dit « on développe P-003 ». Claude passe la fiche en `en-cours` avec le nom de la mission.',
+                  'Dans une session misran-labs, Michael dit « on développe P-003 ». Claude passe la fiche en `en-cours` avec le nom de la mission.',
                   'Claude crée lui-même le dossier dans `Documents/Projets/` (ex. `kit-missions`) — accord de Michael du 2026-09-28.',
-                  'Claude demande l’accord de Michael pour commiter la fiche ; elle n’apparaît sur le site qu’une fois poussée sur `main`.',
-                  'Michael ouvre une nouvelle session dans le nouveau dossier et tape `/mission` : une session ne peut pas en ouvrir une autre dans un autre dossier.',
+                  'Claude demande l’accord de Michael pour commiter la fiche ; elle n’apparaît sur le site qu’une fois poussée sur `main`.',
+                  'Michael ouvre une nouvelle session dans le nouveau dossier et tape `/mission` : une session ne peut pas en ouvrir une autre dans un autre dossier.',
                   'Cadrage ensemble (contenu, public ou privé), puis la tâche programmée développe la nuit.',
                 ],
               },
@@ -244,9 +244,9 @@ export const FONCT_TEXT = {
       },
       {
         id: 'p-003',
-        title: 'Et P-003 dans tout ça ?',
+        title: 'Et P-003 dans tout ça ?',
         blocks: [
-          { type: 'p', text: 'Pour Michael, le kit existe déjà : c’est le skill `/mission` du niveau 1. P-003 n’a d’intérêt que pour d’autres développeurs : il s’agirait surtout de publier ce skill en retirant ce qui est personnel (prénom, règles Git propres à Michael, chemins).' },
+          { type: 'p', text: 'Pour Michael, le kit existe déjà : c’est le skill `/mission` du niveau 1. P-003 n’a d’intérêt que pour d’autres développeurs : il s’agirait surtout de publier ce skill en retirant ce qui est personnel (prénom, règles Git propres à Michael, chemins).' },
         ],
       },
     ],

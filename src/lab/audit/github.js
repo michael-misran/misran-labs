@@ -133,7 +133,7 @@ export function filtrerCandidatsLus(fichiers) {
       avertissements.push(
         avertissement(
           f.nom,
-          `« ${f.nom} » ne contient aucune propriété personnalisée (--nom) : écarté.`,
+          `« ${f.nom} » ne contient aucune propriété personnalisée (--nom)\u00a0: écarté.`,
           `"${f.nom}" contains no custom property (--name): skipped.`
         )
       )
@@ -252,7 +252,7 @@ export async function explorerDepot(adresse, fetchFn) {
     avertissements.push(
       avertissement(
         null,
-        'Dépôt très volumineux : GitHub a tronqué la liste des fichiers. L’analyse porte sur ce qui a été reçu.',
+        'Dépôt très volumineux : GitHub a tronqué la liste des fichiers. L’analyse porte sur ce qui a été reçu.',
         'Very large repository: GitHub truncated the file list. The analysis covers what was received.'
       )
     )

@@ -89,7 +89,7 @@ function LigneToken({ t, valeur, calc, type, modifie, options, onChange, onRemet
             className="et-pastille"
             value={hex ?? '#000000'}
             disabled={!hex}
-            title={hex ? 'Choisir une couleur' : 'Couleur avec transparence : modifiez le texte'}
+            title={hex ? 'Choisir une couleur' : 'Couleur avec transparence : modifiez le texte'}
             onChange={(e) => onChange(e.target.value)}
           />
         )}

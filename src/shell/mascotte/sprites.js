@@ -47,7 +47,7 @@ export const SPRITES = {
       11: '.kcccccccccccck.'
     },
     phrases: {
-      fr: ['Blop !', 'Expérience en cours…', 'Attention, ça mousse', 'Tu as lu l’Oracle ?', 'Formule secrète : café'],
+      fr: ['Blop !', 'Expérience en cours…', 'Attention, ça mousse', 'Tu as lu l’Oracle ?', 'Formule secrète : café'],
       en: ['Blop!', 'Experiment in progress…', 'Careful, it fizzes', 'Read today\'s Briefs?', 'Secret formula: coffee']
     }
   },
@@ -101,7 +101,7 @@ export const SPRITES = {
       [[13, 11, '.'], [3, 14, '.'], [5, 14, '.'], [7, 14, '.'], [4, 14, 'o'], [6, 14, 'o'], [2, 15, '.'], [8, 15, '.']]
     ],
     phrases: {
-      fr: ['Blop !', 'Distillation en cours…', 'Goutte à goutte', 'Tu as lu l’Oracle ?', 'Cuvée maison'],
+      fr: ['Blop !', 'Distillation en cours…', 'Goutte à goutte', 'Tu as lu l’Oracle ?', 'Cuvée maison'],
       en: ['Blop!', 'Distilling…', 'Drop by drop', 'Read today\'s Briefs?', 'House vintage']
     }
   },
@@ -185,11 +185,11 @@ export const SPRITES = {
       12: '.kccwoowwoowcck.'
     },
     secret: {
-      fr: 'Tu l\'as bien cherché ☠',
+      fr: 'Tu l’as bien cherché ☠',
       en: 'You asked for it ☠'
     },
     phrases: {
-      fr: ['Ne pas boire.', 'Toxique… mais sympa', 'Danger : curiosité', 'Qui a secoué la fiole ?', 'Poison maison'],
+      fr: ['Ne pas boire.', 'Toxique… mais sympa', 'Danger : curiosité', 'Qui a secoué la fiole ?', 'Poison maison'],
       en: ['Do not drink.', 'Toxic… but friendly', 'Danger: curiosity', 'Who shook the flask?', 'Homemade poison']
     }
   }
