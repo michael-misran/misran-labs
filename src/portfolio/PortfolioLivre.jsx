@@ -4,6 +4,8 @@ import { useLanguage } from '../shell/LanguageContext'
 import { CV } from '../modules/cvDonnees'
 import { ENCARTS } from './encarts'
 import { LT, lt } from './livreTexte'
+import Visionneuse from './Visionneuse'
+import { AgrandirContexte, serieDe, useAgrandir } from './agrandir'
 import './portfolio.css'
 
 // Le portfolio de Michael, pour les recruteurs : un livre relié rangé dans la
@@ -11,7 +13,8 @@ import './portfolio.css'
 // on tourne les pages avec les flèches, le clavier, un clic sur la page ou un
 // glissé du doigt. Sur téléphone, les pages s'empilent. Impression : une page
 // A5 par page du livre.
-// Les emplacements d'images (« encarts ») se remplissent dans encarts.js.
+// Les emplacements d'images (« encarts ») se remplissent dans encarts.js ;
+// un clic sur une image l'ouvre en grand dans la visionneuse.
 
 const mouvementReduit = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
@@ -25,11 +28,20 @@ const ROMAINS = ['I', 'II', 'III', 'IV', 'V', 'VI']
 // Emplacement d'image ou de maquette
 function Encart({ id, lang, atelier, grand }) {
   const e = ENCARTS[id]
+  const agrandir = useAgrandir()
   const style = e.ratio ? { aspectRatio: e.ratio } : undefined
   return (
     <figure className={`pf-encart${e.ratio ? '' : ' pf-encart-libre'}${grand ? ' pf-encart-grand' : ''}`}>
       {e.image ? (
-        <img className={`pf-encart-image${e.entier ? ' pf-encart-entier' : ''}`} src={e.image} alt={lt(e.legende, lang)} style={style} />
+        <button
+          type="button"
+          className="pf-agrandir"
+          data-agrandir={id}
+          onClick={(ev) => agrandir?.(id, ev.currentTarget)}
+          aria-label={`${lt(LT.agrandir, lang)} : ${lt(e.legende, lang)}`}
+        >
+          <img className={`pf-encart-image${e.entier ? ' pf-encart-entier' : ''}`} src={e.image} alt={lt(e.legende, lang)} style={style} />
+        </button>
       ) : (
         <div className="pf-encart-cadre" style={style}>
           <span className="pf-repere pf-repere-hg" aria-hidden="true" />
@@ -431,6 +443,12 @@ export default function PortfolioLivre() {
   })
   // Page en train de tourner : { vers, sens }
   const [tour, setTour] = useState(null)
+  // Image agrandie : { serie, index, retour } (retour = bouton à refocaliser)
+  const [vue, setVue] = useState(null)
+  const ouvrirImage = (id, retour) => {
+    const serie = serieDe(id)
+    setVue({ serie, index: Math.max(serie.indexOf(id), 0), retour })
+  }
 
   useEffect(() => {
     document.title = `${lt(LT.surTitre, lang)} · Michael Misran`
@@ -453,12 +471,13 @@ export default function PortfolioLivre() {
   // Clavier
   useEffect(() => {
     const surTouche = (e) => {
+      if (vue) return
       if (e.key === 'ArrowRight') aller(planche + 1)
       if (e.key === 'ArrowLeft') aller(planche - 1)
     }
     window.addEventListener('keydown', surTouche)
     return () => window.removeEventListener('keydown', surTouche)
-  }, [aller, planche])
+  }, [aller, planche, vue])
 
   // Glisser du doigt
   const [x0, setX0] = useState(null)
@@ -489,7 +508,23 @@ export default function PortfolioLivre() {
   }
   const ferme = planche === 0 && !tour
 
+  // Les zones de clic recouvrent le bord des pages : si une image est
+  // dessous, le clic l'agrandit au lieu de tourner la page
+  const imageSous = (e) => {
+    if (tour) return null
+    return document.elementsFromPoint(e.clientX, e.clientY).find((el) => el.dataset?.agrandir) ?? null
+  }
+  const zone = (pas) => ({
+    onClick: (e) => {
+      const image = imageSous(e)
+      if (image) image.click()
+      else aller(planche + pas)
+    },
+    onPointerMove: (e) => e.currentTarget.classList.toggle('pf-zone-loupe', !!imageSous(e)),
+  })
+
   return (
+    <AgrandirContexte.Provider value={ouvrirImage}>
     <div className="pf-table">
       <nav className="pf-bandeau no-print">
         <Link to="/" className="pf-retour">← {lt(LT.bibliotheque, lang)}</Link>
@@ -518,8 +553,8 @@ export default function PortfolioLivre() {
           </div>
         )}
         {/* Clic sur une page : on la tourne */}
-        {planche > 0 && <button type="button" className="pf-zone pf-zone-gauche" aria-label={lt(LT.precedente, lang)} onClick={() => aller(planche - 1)} />}
-        {planche < derniere && <button type="button" className="pf-zone pf-zone-droite" aria-label={planche === 0 ? lt(LT.ouvrir, lang) : lt(LT.suivante, lang)} onClick={() => aller(planche + 1)} />}
+        {planche > 0 && <button type="button" className="pf-zone pf-zone-gauche" aria-label={lt(LT.precedente, lang)} {...zone(-1)} />}
+        {planche < derniere && <button type="button" className="pf-zone pf-zone-droite" aria-label={planche === 0 ? lt(LT.ouvrir, lang) : lt(LT.suivante, lang)} {...zone(1)} />}
       </div>
 
       <div className="pf-commandes no-print">
@@ -545,6 +580,18 @@ export default function PortfolioLivre() {
           <div key={i} className="pf-pile-page">{page()}</div>
         ))}
       </div>
+
+      {vue && (
+        <Visionneuse
+          serie={vue.serie}
+          index={vue.index}
+          lang={lang}
+          retour={vue.retour}
+          onChange={(index) => setVue((v) => ({ ...v, index }))}
+          onClose={() => setVue(null)}
+        />
+      )}
     </div>
+    </AgrandirContexte.Provider>
   )
 }

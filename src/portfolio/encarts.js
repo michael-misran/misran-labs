@@ -8,6 +8,8 @@
 // - ratio : proportion conseillée du visuel (largeur / hauteur) ; sans ratio,
 //   l'encart prend toute la place libre de la page.
 // - entier: true : l'image est affichée en entier, jamais rognée (schémas).
+// - imageHD (facultatif) : version plus grande, montrée dans la visionneuse
+//   quand on clique sur l'image ; sans elle, la visionneuse reprend `image`.
 
 export const ENCARTS = {
   portrait: {

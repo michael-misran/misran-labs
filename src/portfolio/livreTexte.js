@@ -15,6 +15,11 @@ export const LT = {
   imprimer: { fr: 'Imprimer / PDF', en: 'Print / PDF' },
   ouvrir: { fr: 'Ouvrir le livre', en: 'Open the book' },
   aAjouter: { fr: 'À ajouter', en: 'To add' },
+  // Visionneuse d'images
+  agrandir: { fr: 'Agrandir l’image', en: 'Enlarge image' },
+  fermer: { fr: 'Fermer', en: 'Close' },
+  imagePrecedente: { fr: 'Image précédente', en: 'Previous image' },
+  imageSuivante: { fr: 'Image suivante', en: 'Next image' },
 
   // Page de garde
   gardeTitre: { fr: 'Avant de commencer', en: 'Before you start' },

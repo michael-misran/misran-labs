@@ -325,3 +325,75 @@ body:has(.pf-table) { margin: 0; }
   .pf-org-agents { grid-template-columns: 1fr 1fr; }
   .pf-encart-souple .pf-encart-cadre { flex: none; aspect-ratio: 16 / 10; }
 }
+
+/* ---------- Images cliquables ---------- */
+.pf-agrandir {
+  display: flex; flex-direction: column; width: 100%; padding: 0; border: 0; background: none;
+  cursor: zoom-in; font: inherit; color: inherit;
+}
+.pf-agrandir:focus-visible { outline: 2px solid var(--pf-or); outline-offset: 2px; }
+.pf-preuves .pf-agrandir { flex: 1; min-height: 0; }
+.pf-pile .pf-preuves .pf-agrandir { flex: none; }
+/* Zone de clic posée sur une image : la loupe remplace la flèche */
+.pf-zone.pf-zone-loupe { cursor: zoom-in; }
+
+/* ---------- Visionneuse plein écran ---------- */
+.pf-vis {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-items: center;
+  padding: var(--space-xl) calc(var(--space-xl) * 2);
+  background: rgba(12, 12, 12, .92);
+  outline: none;
+  animation: pf-vis-fondu .22s ease-out;
+}
+.pf-vis-scene {
+  margin: 0; max-width: 100%; max-height: 100%; min-height: 0;
+  display: flex; flex-direction: column; align-items: center; gap: var(--space-sm);
+}
+.pf-vis-image {
+  display: block; min-height: 0;
+  max-width: 100%; max-height: calc(100dvh - var(--space-xl) * 2 - 48px);
+  width: auto; height: auto; object-fit: contain;
+  background: #fff; box-shadow: 0 20px 60px rgba(0, 0, 0, .6);
+  animation: pf-vis-ouverture .26s cubic-bezier(.2, .7, .2, 1);
+}
+.pf-vis-legende {
+  display: flex; align-items: baseline; gap: var(--space-sm); text-align: center;
+  font: italic 17px/1.3 var(--font-chapo); color: #e9e2d3;
+}
+.pf-vis-compteur { font: 500 12px/1 var(--font-etiquette); font-style: normal; letter-spacing: .12em; color: var(--pf-or); }
+
+.pf-vis-fermer, .pf-vis-fleche {
+  position: absolute; display: grid; place-items: center;
+  width: 44px; height: 44px; padding: 0; border-radius: var(--radius-pill);
+  border: 1px solid #8d8678; background: rgba(20, 20, 20, .6); color: #e9e2d3;
+  font: 26px/1 var(--font-chapo); cursor: pointer;
+}
+.pf-vis-fermer:hover, .pf-vis-fleche:hover { background: var(--pf-or); border-color: var(--pf-or); color: var(--pf-toile-fonce); }
+.pf-vis-fermer:focus-visible, .pf-vis-fleche:focus-visible { outline: 2px solid var(--pf-or); outline-offset: 3px; }
+.pf-vis-fermer { top: var(--space-md); right: var(--space-md); }
+.pf-vis-fleche { top: 50%; transform: translateY(-50%); }
+.pf-vis-precedente { left: var(--space-md); }
+.pf-vis-suivante { right: var(--space-md); }
+
+@keyframes pf-vis-fondu { from { opacity: 0; } }
+@keyframes pf-vis-ouverture { from { opacity: 0; transform: scale(.94); } }
+
+/* Téléphone : l'image prend toute la largeur, les flèches passent en bas */
+@media (max-width: 760px) {
+  .pf-vis { padding: 64px var(--space-md) 88px; }
+  .pf-vis-image { max-height: calc(100dvh - 64px - 88px - 48px); }
+  .pf-vis-legende { font-size: 15px; flex-direction: column; align-items: center; gap: var(--space-2xs); }
+  .pf-vis-fleche { top: auto; bottom: var(--space-lg); transform: none; }
+  .pf-vis-precedente { left: calc(50% - 56px); }
+  .pf-vis-suivante { right: calc(50% - 56px); }
+}
+
+/* Mouvement réduit : ouverture sans animation */
+@media (prefers-reduced-motion: reduce) {
+  .pf-vis, .pf-vis-image { animation: none; }
+}
+
+@media print {
+  .pf-vis { display: none; }
+}
