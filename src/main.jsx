@@ -4,8 +4,11 @@ import { BrowserRouter } from 'react-router-dom'
 import './styles/tokens.css'
 import App from './App.jsx'
 
-// Éditeur de tokens : en dev seulement (/?tokens ou Ctrl+Alt+T) ; absent du build de production
-const EditeurTokens = import.meta.env.DEV ? lazy(() => import('./editeur/EditeurTokens.jsx')) : null
+// Éditeur de tokens (idée P-020) : ajouter ?tokens à n'importe quelle adresse.
+// Sans ce paramètre, son fichier n'est jamais téléchargé (import dynamique) :
+// le site normal ne s'alourdit pas et rien ne change à l'écran.
+const avecTokens = new URLSearchParams(window.location.search).has('tokens')
+const EditeurTokens = avecTokens ? lazy(() => import('./editeur/EditeurTokens.jsx')) : null
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

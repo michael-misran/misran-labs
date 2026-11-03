@@ -306,6 +306,7 @@ const CONTENT = {
     tagline: 'LE DESIGN EST UNE INTENTION. LES DÉTAILS SONT TOUT.',
     intro: "Trois niveaux, une règle : un token ne porte jamais une valeur brute s'il existe un niveau au-dessus de lui. Filtre par niveau pour isoler les primitives, les rôles sémantiques, ou les tokens propres à un seul composant.",
     concept: "1977 Éditions est une maison d'édition : chaque rubrique (Oracle, Zine, Jeux, Lab) est un titre avec sa propre couleur et sa propre police — un univers par titre, sur le même papier et la même encre. Les valeurs ci-dessous sont lues en direct dans le navigateur : si tokens.css change, cette page change avec, sans qu'on ait à la retoucher.",
+    editeur: ['Pour essayer d’autres valeurs sur la vraie page, ajoutez ', ' à n’importe quelle adresse du site : un panneau modifie les rôles sémantiques en direct, garde les réglages dans le navigateur et copie les lignes à coller dans tokens.css. ', 'Ouvrir cette page avec l’éditeur →'],
     filterLabel: 'FILTRER PAR NIVEAU',
     tierLabels: { primitive: 'Primitive', semantic: 'Semantic', component: 'Component' },
     columns: { name: 'Token', tier: 'Niveau', type: 'Type', pointsTo: 'Pointe vers', value: 'Valeur', preview: 'Aperçu', status: 'Statut' },
@@ -328,6 +329,7 @@ const CONTENT = {
     tagline: 'DESIGN IS INTENT. DETAILS ARE EVERYTHING.',
     intro: "Three tiers, one rule: a token never carries a raw value if a tier exists above it. Filter by tier to isolate primitives, semantic roles, or tokens scoped to a single component.",
     concept: "1977 Éditions is a publishing house: each section (Oracle, Zine, Jeux, Lab) is a masthead with its own color and its own font — one world per masthead, on the same paper and ink. The values below are read live in the browser: if tokens.css changes, this page changes with it, with nothing to touch here.",
+    editeur: ['To try other values on the real page, add ', ' to any address on the site: a panel edits the semantic roles live, keeps the settings in the browser and copies the lines to paste into tokens.css. ', 'Open this page with the editor →'],
     filterLabel: 'FILTER BY TIER',
     tierLabels: { primitive: 'Primitive', semantic: 'Semantic', component: 'Component' },
     columns: { name: 'Token', tier: 'Tier', type: 'Type', pointsTo: 'Points to', value: 'Value', preview: 'Preview', status: 'Status' },
@@ -511,6 +513,12 @@ export default function LabTokens({ project }) {
       </p>
       <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--prose)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 var(--space-md-plus)' }}>
         {c.concept}
+      </p>
+      {/* Éditeur de tokens en direct (/?tokens, src/editeur/EditeurTokens.jsx) : un vrai
+          rechargement de la page, puisque le panneau n'est chargé qu'au démarrage */}
+      <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: 'var(--prose)', lineHeight: 1.6, maxWidth: '70ch', margin: '0 0 var(--space-md-plus)' }}>
+        {c.editeur[0]}<code style={{ fontFamily: 'var(--font-mono)', fontSize: 13 }}>?tokens</code>{c.editeur[1]}
+        <a href="?tokens" style={{ color: 'var(--primary)', fontWeight: 600 }}>{c.editeur[2]}</a>
       </p>
 
       <div style={{ marginBottom: 'var(--space-xs)' }}>
