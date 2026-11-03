@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-03",
+  "numero": 35,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · IA",
+    "titre": "OpenAI a réécrit le serveur Git de son monorepo pour tenir le rythme de Codex",
+    "chapo": "Pando accepte les pushs sur des branches différentes en parallèle, sans changer le client Git de personne.",
+    "paragraphes": [
+      "Le 2 novembre, OpenAI a décrit Pando, un nouveau backend pour dépôts Git qui alimente désormais tout le développement de son monorepo. La raison : Codex permet à chaque ingénieur de mener bien plus de travaux en parallèle, donc plus de branches, de pushs, de fusions et de clones. Depuis la fin de l'an dernier, les systèmes en place peinaient : fetchs et pushs lents, fusions en échec, fiabilité parfois sous 90 %.",
+      "Le principe tient en deux choix. Les mises à jour de branches sans rapport avancent en parallèle au lieu de faire la queue derrière un point de coordination unique. Et le serveur réutilise les mêmes fichiers de paquets (le format de compression de Git) pour de nombreux clients, au lieu d'en fabriquer un par client. Le prix à payer, que le billet assume : un lecteur qui regarde plusieurs branches peut les voir à des instants différents.",
+      "Résultat annoncé : une latence médiane des pushs divisée par près de 5, et près d'un pétaoctet de données Git servi par jour. Le protocole et le client Git restent inchangés, si bien que les ingénieurs comme les agents n'ont rien à modifier.",
+      "Pour un développeur, la leçon est moins le produit, que l'on ne peut pas installer, que le constat : quand des agents poussent du code en rafale, c'est le serveur Git qui devient le goulot. OpenAI dit aussi vouloir proposer ses améliorations du client Git à la version officielle."
+    ],
+    "sources": ["https://openai.com/index/scaling-git-at-openai/"]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "irritant", "rubrique": "L'irritant du jour", "court": "Irritant",
+        "titre": "Votre abonnement iPhone peut augmenter sans que vous disiez oui",
+        "chapo": "Sous un certain seuil, Apple prévient par message, puis renouvelle au nouveau prix.",
+        "paragraphes": [
+          "Selon la documentation qu'Apple destine aux développeurs, la hausse d'un abonnement ne demande l'accord de l'abonné que si elle dépasse 50 % du prix actuel <b>et</b> que la différence dépasse environ 5 $ par période (50 $ pour un abonnement annuel). En France : 5 € et 50 €. Deux autres cas : l'abonné a déjà subi une hausse dans les 12 derniers mois, ou il vit en Autriche, en Allemagne, en Pologne ou en Corée du Sud, où l'accord est toujours exigé.",
+          "Tout le reste passe en simple information : un e-mail et une notification, 27 jours avant le renouvellement d'un abonnement mensuel. Si vous ne faites rien, l'abonnement se renouvelle au nouveau prix. Ainsi, 4 € qui passent à 7 € (+75 %) restent sous la barre des 5 € de différence : aucun accord requis.",
+          "Quand l'accord est requis et que l'abonné ne répond pas, Apple relance environ chaque semaine, puis l'abonnement s'arrête à la fin du cycle en cours."
+        ],
+        "encadre": { "titre": "Piste de business", "texte": "Un suivi des hausses d'abonnements pour les particuliers : il lit les e-mails d'Apple et signale chaque hausse « sans accord », avec la somme annuelle en plus. Concurrence : les messages d'Apple et les gestionnaires d'abonnements existants.", "plein": true },
+        "sources": ["https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-pricing-for-auto-renewable-subscriptions/", "https://developer.apple.com/help/app-store-connect/reference/in-app-purchases-and-subscriptions/auto-renewable-subscription-price-increase-thresholds"]
+      },
+      {
+        "type": "etude", "rubrique": "L'étude de cas", "court": "Étude",
+        "titre": "Maddox, 21 ans : un site vendu 120 000 $, puis une appli qui n'avance pas assez vite",
+        "chapo": "Un fondateur solo qui s'est fixé une date limite, et qui la raconte avec ses chiffres.",
+        "paragraphes": [
+          "Vers 16-17 ans, Maddox Schmidlkofer lance un site de jeux en ligne, DuckMath. Les premiers revenus publicitaires sont de 5 à 10 $ par jour. À la fin de l'été, le site rapporte environ 1 000 $ par jour. Vendu 120 000 $ en novembre 2025, après une offre initiale de 100 000 $ et une contre-proposition.",
+          "Son projet suivant, Tallow, est une appli qui scanne aliments et produits pour détailler leurs ingrédients. Démarrée le 1ᵉʳ mai 2026, en freemium, avec un plan payant d'environ 40 $ par an, elle rapportait moins de 2 000 $ par mois au moment de l'entretien publié le 7 octobre. L'objectif de 4 000 $ par mois, visé pour la fin août, n'était pas atteint ; la nouvelle échéance était le 31 octobre.",
+          "À retenir : un bon produit ne suffit pas sans distribution, et une appli ajoute des frictions qu'un site financé par la pub n'a pas (téléchargement, validation par Apple, mesure moins fine des conversions). Réserve : chiffres déclarés par le fondateur ; on ignore si l'échéance du 31 octobre a été tenue."
+        ],
+        "sources": ["https://www.nichepursuits.com/maddox-schmidlkofer/"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Dev · Tech",
+    "articles": [
+      {
+        "type": "dev", "rubrique": "Outil ou astuce dev", "court": "Outil",
+        "titre": "GitHub Actions bloquera pull_request_target par défaut le 2 décembre",
+        "chapo": "Deux coupures de test les 9 et 16 novembre : un workflow public peut s'arrêter ce jour-là.",
+        "paragraphes": [
+          "Le 2 novembre, GitHub a annoncé que le déclencheur <i>pull_request_target</i> sera bloqué par défaut dans tous les dépôts publics à partir du 2 décembre, sauf autorisation explicite par une politique d'événements Actions. L'échéance était d'abord fixée au 2 novembre. Les dépôts privés et internes ne sont pas concernés, ni GitHub Enterprise Server.",
+          "La raison donnée : ce déclencheur s'exécute dans le contexte du dépôt de base et peut accéder à ses secrets, donc du code non fiable venu d'un fork peut compromettre la chaîne de livraison ou voler des secrets.",
+          "Deux fenêtres de test, de 16 h à 18 h UTC, les <b>9 et 16 novembre</b> : les exécutions bloquées échouent avec une annotation et ne démarrent pas. Entre les deux, les workflows tournent avec des avertissements. À faire avant le 9 : ouvrir <i>Insights</i> pour voir quelles exécutions seraient bloquées, puis décider de laisser bloquer ou d'autoriser des fichiers de workflow précis."
+        ],
+        "sources": ["https://github.blog/changelog/2026-11-02-pull_request_target-blocked-by-default-december-2"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Vercel refuse d'installer les versions npm connues pour être piégées",
+        "paragraphes": [
+          "Le 2 novembre, Vercel a annoncé qu'il bloque des versions précises de paquets npm figurant sur une liste de blocage pour malware ou faille. Le contrôle a lieu avant l'installation, dans les lockfiles pris en charge, y compris quand les dépendances reviennent du cache de build, et pendant le téléchargement depuis le registre public.",
+          "C'est automatique sur tous les plans, sans réglage, pour les nouveaux builds. Si une dépendance bloquée est détectée, le déploiement échoue en nommant le paquet et la version, et Vercel tente d'invalider le cache concerné. Correction : passer à une version sûre, mettre à jour le lockfile, redéployer."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Un build qui échoue sans prévenir l'équipe est une alerte ratée : il y a un besoin de messages qui expliquent la correction à qui n'a pas écrit le code.", "plein": true },
+        "sources": ["https://vercel.com/changelog/blocking-malicious-npm-packages-before-and-during-installation"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Vercel se configure aussi en TOML, avec des commentaires",
+        "paragraphes": [
+          "Annoncé le 2 novembre : un projet Vercel peut utiliser un fichier <i>vercel.toml</i>, avec les mêmes propriétés que <i>vercel.json</i>, une structure plus plate et des commentaires. Un seul fichier de configuration par projet : vercel.toml, vercel.json ou vercel.ts."
+        ],
+        "sources": ["https://vercel.com/changelog/projects-can-now-be-configured-with-vercel-toml"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "Brownout", "nature": "n. m.", "definition": "Coupure volontaire et temporaire d'une fonction qu'on va supprimer, pour que les utilisateurs encore dépendants la voient casser quelques heures et réagissent avant la date définitive." },
+    "chiffre": { "valeur": "120 000 $", "texte": "prix de vente de DuckMath, un site de jeux, en novembre 2025." },
+    "bonus": { "type": "defi", "texte": "En moins de 30 minutes : dans un de vos dépôts, lancez <i>grep -rl pull_request_target .github/workflows</i>. Si un fichier apparaît, notez ce qu'il fait avec les secrets du dépôt et décidez avant le 9 novembre : bloquer ou autoriser." },
+    "enigme": { "question": "On me coupe deux heures, deux fois, pour vous avertir que je disparaîtrai bientôt. Qui suis-je ?", "reponse": "un brownout" }
+  },
+  "sources": ["openai.com", "developer.apple.com", "nichepursuits.com", "github.blog", "vercel.com"]
+}
