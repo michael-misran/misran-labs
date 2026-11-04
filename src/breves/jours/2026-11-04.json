@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-04",
+  "breves": [
+    {
+      "rubrique": "ia",
+      "titre": { "fr": "Gemini 2.5 : Google redirigera les requêtes vers Gemini 3.8 Flash le 1ᵉʳ décembre", "en": "Gemini 2.5: Google will redirect requests to Gemini 3.8 Flash on December 1" },
+      "resume": {
+        "fr": "Google AI Studio déclare Gemini 2.5 Pro et 2.5 Flash dépréciés. Le 1ᵉʳ décembre, <i>gemini-2.5-pro</i> sera redirigé vers <i>gemini-3.8-flash</i> et <i>gemini-2.5-flash</i> vers <i>gemini-3.5-flash-lite</i>. Le code change aussi : <i>thinking_level</i> remplace <i>thinking_budget</i>.",
+        "en": "Google AI Studio declares Gemini 2.5 Pro and 2.5 Flash deprecated. On December 1, <i>gemini-2.5-pro</i> will be redirected to <i>gemini-3.8-flash</i> and <i>gemini-2.5-flash</i> to <i>gemini-3.5-flash-lite</i>. The code changes too: <i>thinking_level</i> replaces <i>thinking_budget</i>."
+      },
+      "sources": [
+        { "titre": "Google AI Studio", "url": "https://aistudio.google.com/docs/changelog" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Dependabot met à jour vos paquets d’agents", "en": "Dependabot updates your agent packages" },
+      "resume": {
+        "fr": "Depuis le 3 novembre, Dependabot ouvre des pull requests pour les dépendances git de <i>apm.yml</i> et régénère <i>apm.lock.yaml</i>. Seules les mises à jour de version sont couvertes, pas celles de sécurité.",
+        "en": "Since November 3, Dependabot opens pull requests for the git dependencies in <i>apm.yml</i> and regenerates <i>apm.lock.yaml</i>. Only version updates are covered, not security updates."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-11-03-dependabot-version-updates-support-agent-package-manager" }
+      ]
+    },
+    {
+      "rubrique": "tech",
+      "titre": { "fr": "Copilot arrive dans JetBrains Air", "en": "Copilot arrives in JetBrains Air" },
+      "resume": {
+        "fr": "Copilot devient l’un des agents d’Air, l'environnement de JetBrains pour agents de code. Les tâches tournent en local ou dans le cloud, ce dernier exigeant une organisation Air Teams.",
+        "en": "Copilot becomes one of the agents in Air, JetBrains' environment for coding agents. Tasks run locally or in the cloud, which requires an Air Teams organization."
+      },
+      "sources": [
+        { "titre": "GitHub", "url": "https://github.blog/changelog/2026-11-03-github-copilot-is-now-available-in-jetbrains-air" }
+      ]
+    }
+  ],
+  "mot": {
+    "terme": "EBITDA",
+    "definition": {
+      "fr": "Résultat avant intérêts, impôts, dépréciations et amortissements : un indicateur de rentabilité qui laisse de côté ces coûts. Chez Peacock, il est passé de −217 à +261 millions de dollars.",
+      "en": "Earnings before interest, taxes, depreciation and amortization: a profitability measure that leaves those costs out. At Peacock, it went from −$217 million to +$261 million."
+    }
+  },
+  "chiffre": {
+    "valeur": "48 M",
+    "texte": {
+      "fr": "d’abonnés payants chez Peacock.",
+      "en": "paid subscribers at Peacock."
+    }
+  }
+}
