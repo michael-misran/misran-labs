@@ -1,0 +1,118 @@
+{
+  "date": "2026-11-04",
+  "numero": 36,
+  "essai": false,
+  "une": {
+    "rubrique": "À la une · Cinéma",
+    "titre": "Un thriller, un monstre",
+    "chapo": "Quatre sorties du mercredi 4 novembre, de l'île de Pâques au tribunal de Bobigny.",
+    "paragraphes": [],
+    "films": [
+      {
+        "titre": "Wild Horse Nine",
+        "realisateur": "Martin McDonagh",
+        "genre": "Thriller",
+        "duree": "1 h 58",
+        "texte": "Peu avant le coup d'État chilien de 1973, deux agents de la CIA sont envoyés à l'île de Pâques. Avec Sam Rockwell et John Malkovich.",
+        "affiche": "2026-11-04-1.jpg"
+      },
+      {
+        "titre": "Godzilla Minus Zero",
+        "realisateur": "Takashi Yamazaki",
+        "genre": "Science-fiction",
+        "duree": "2 h 15",
+        "texte": "Deux ans après la guerre et l'attaque de Godzilla, le Japon se reconstruit. Quand la paix s'installe, une nouvelle menace surgit. Interdit aux moins de 12 ans.",
+        "affiche": "2026-11-04-2.jpg"
+      },
+      {
+        "titre": "L'Affaire Marie-Claire",
+        "realisateur": "Lauriane Escaffre, Yvo Muller",
+        "genre": "Historique, judiciaire, thriller",
+        "duree": "1 h 42",
+        "texte": "Novembre 1972, tribunal de Bobigny : Marie-Claire, 16 ans, est jugée pour avoir avorté. Son avocate, Gisèle Halimi, choisit de contester la loi elle-même.",
+        "affiche": "2026-11-04-3.jpg"
+      },
+      {
+        "titre": "Louve, une vie dans les Alpes",
+        "realisateur": "Baptiste Deturche, Corentin Esmieu",
+        "genre": "Documentaire",
+        "duree": "1 h 10",
+        "texte": "Dans les Hautes-Alpes, où les loups sont revenus après plusieurs décennies, le film suit une louve et sa meute, dans leur vie privée.",
+        "affiche": "2026-11-04-4.jpg"
+      }
+    ],
+    "sources": [
+      "https://www.allocine.fr/film/sorties-semaine/",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=298024.html",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000014492.html",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=323550.html",
+      "https://www.allocine.fr/film/fichefilm_gen_cfilm=1000051742.html"
+    ]
+  },
+  "page2": {
+    "section": "Business",
+    "articles": [
+      {
+        "type": "modele", "rubrique": "Un modèle économique expliqué", "court": "Modèle",
+        "titre": "Peacock : 48 millions d'abonnés, et un deuxième trimestre de suite dans le vert",
+        "chapo": "Le service de streaming de Comcast est passé d'une perte de 217 millions de dollars à un bénéfice de 261 millions en un an.",
+        "paragraphes": [
+          "Le 22 octobre, Comcast a publié ses résultats du troisième trimestre 2026. Peacock y affiche 1,8 milliard de dollars de revenus, contre 1,4 milliard un an plus tôt, et 48 millions d'abonnés payants, en hausse de 17 %. Son EBITDA ajusté (voir le mot du jour) est de 261 millions de dollars, contre une perte de 217 millions un an auparavant : un écart de 478 millions. C'est, précise le communiqué, le deuxième trimestre rentable d'affilée.",
+          "Le modèle mêle deux sources : l'abonnement et la publicité. Comcast ne les sépare pas pour Peacock seul, mais le communiqué donne des indices au niveau du pôle Média. Les revenus de distribution aux États-Unis y progressent de 22,4 %, à 2,069 milliards, surtout grâce à Peacock, avec des tarifs moyens plus élevés et plus d'abonnés. La publicité américaine gagne 14,6 %, à 1,783 milliard ; sans les 224 millions de la Coupe du monde de la FIFA, elle est stable, à 1,560 milliard, la hausse de Peacock étant compensée par la baisse des chaînes classiques.",
+          "Autrement dit, la rentabilité vient de deux leviers : plus d'abonnés, et des abonnés qui paient plus cher. Précaution : les chiffres de revenus sont arrondis dans le communiqué, et l'EBITDA laisse de côté des coûts réels comme les amortissements."
+        ],
+        "encadre": { "titre": "Ce qu'on en retient", "texte": "Un service qui perdait de l'argent a basculé en gagnant à la fois sur le nombre d'abonnés et sur le prix moyen. Pour un produit par abonnement, relever les tarifs compte autant que recruter.", "plein": true },
+        "sources": ["https://www.sec.gov/Archives/edgar/data/0001166691/000162828026066783/ex991-9302026.htm"]
+      }
+    ]
+  },
+  "page3": {
+    "section": "Design · IA · Tech",
+    "articles": [
+      {
+        "type": "design", "rubrique": "Design & UX", "court": "Design",
+        "titre": "Quand l'utilisateur est un agent : NN/g parle désormais d'« experience design »",
+        "chapo": "Un article du 30 octobre défend que l'expérience ne s'arrête plus à la personne devant l'écran.",
+        "paragraphes": [
+          "Raluca Budiu (Nielsen Norman Group) rappelle que la discipline a déjà grandi une fois : dans les années 2010, les parcours multicanaux ont imposé les cartes de parcours client et les <i>service blueprints</i>. Mais l'humain restait l'utilisateur. Avec l'IA, un agent peut réserver un vol, résilier un abonnement ou déposer une réclamation à sa place, et devient l'utilisateur immédiat.",
+          "Elle distingue trois terrains : les humains face aux produits (avec de nouvelles questions : quand l'agent demande-t-il confirmation, que retient-il, comment annuler ses actions), les agents face aux produits (une « expérience agent » qui privilégie le code, les données structurées et les API plutôt que la hiérarchie visuelle), et les deux ensemble. C'est aux relais que tout se joue : dans son exemple, l'utilisateur ne peut pas se servir de son gestionnaire de mots de passe dans le navigateur intégré de l'agent.",
+          "Le critère reste humain : on juge si la personne atteint son objectif, et ses intérêts et son bien-être priment sur la réussite de l'agent. L'article ne contient aucun chiffre : c'est une position, pas une étude."
+        ],
+        "encadre": { "titre": "L'œil du business", "texte": "Rendre un service lisible pour les agents (API propres, données structurées, reprise en main facile) devient un argument de vente, et un métier de conseil possible.", "plein": true },
+        "sources": ["https://www.nngroup.com/articles/ux-vs-experience-design/"]
+      },
+      {
+        "type": "tech", "rubrique": "La tech", "court": "Tech",
+        "titre": "Gemini 2.5 : Google redirigera les requêtes vers Gemini 3.8 Flash le 1ᵉʳ décembre",
+        "paragraphes": [
+          "Dans le journal des modifications de Google AI Studio, une entrée du 2 novembre déclare Gemini 2.5 Pro et 2.5 Flash dépréciés : ils ne sont plus sélectionnables dans AI Studio. À partir du 1ᵉʳ décembre 2026, les requêtes à <i>gemini-2.5-pro</i> seront redirigées vers <i>gemini-3.8-flash</i>, et celles à <i>gemini-2.5-flash</i> vers <i>gemini-3.5-flash-lite</i>, facturées au tarif du nouveau modèle.",
+          "Google conseille de changer le nom du modèle avant cette date. La migration touche aussi le code : <i>thinking_level</i> remplace <i>thinking_budget</i>, la validation de <i>thought_signature</i> et des appels de fonctions change, certains paramètres d'échantillonnage et les tours de modèle pré-remplis disparaissent. Attention : la même page affirmait le 18 septembre que ces modèles étaient « servis jusqu'à nouvel ordre ». Vérifiez la page des dépréciations."
+        ],
+        "sources": ["https://aistudio.google.com/docs/changelog"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Dependabot met à jour vos paquets d'agents",
+        "paragraphes": [
+          "Depuis le 3 novembre, Dependabot ouvre des pull requests pour les dépendances git de <i>apm.yml</i> et régénère <i>apm.lock.yaml</i> s'il existe. Seules les mises à jour de version sont couvertes, pas celles de sécurité. Il suffit d'ajouter une entrée <i>apm</i> dans <i>dependabot.yml</i>, avec le dossier et le rythme voulus."
+        ],
+        "sources": ["https://github.blog/changelog/2026-11-03-dependabot-version-updates-support-agent-package-manager"]
+      },
+      {
+        "type": "tech", "rubrique": "Tech éclair", "court": "Tech", "taille": "petit",
+        "titre": "Copilot arrive dans JetBrains Air",
+        "paragraphes": [
+          "Annoncé le 3 novembre : Copilot devient un agent d'Air, l'environnement de JetBrains pour agents de code. Tâches en local ou dans le cloud (organisation Air Teams requise)."
+        ],
+        "sources": ["https://github.blog/changelog/2026-11-03-github-copilot-is-now-available-in-jetbrains-air"]
+      }
+    ]
+  },
+  "page4": {
+    "mot": { "terme": "EBITDA", "nature": "n. m.", "definition": "Résultat avant intérêts, impôts, dépréciations et amortissements : un indicateur de rentabilité qui laisse de côté ces coûts. Chez Peacock, il est passé de −217 à +261 millions de dollars (p. 2)." },
+    "chiffre": { "valeur": "48 M", "texte": "d'abonnés payants chez Peacock." },
+    "bonus": { "type": "citation", "texte": "« Good design is honest. »", "auteur": "Dieter Rams (Vitsœ)" },
+    "enigme": { "question": "Je compte ce qu'une activité gagne avant d'en retirer certains coûts. Qui suis-je ?", "reponse": "l'EBITDA" }
+  },
+  "sources": ["allocine.fr", "sec.gov", "nngroup.com", "aistudio.google.com", "github.blog", "vitsoe.com"]
+}
