@@ -50,9 +50,11 @@ Pour chaque idée, noter mentalement (grille, sur 5) : adéquation avec les comp
 6. `git checkout main`.
 
 **Notes privées** (sauvegarde dans le dépôt privé, jamais dans misran-labs) :
-1. `git -C src/private add projets`
-2. `git -C src/private commit -m "Notes privées <date>: P-NNN à P-NNN"`
-3. `git -C src/private push`
+1. `git -C src/private checkout -b auto/notes-<date du jour>` ; si la branche existe déjà (deuxième passage le même jour) : `git -C src/private checkout auto/notes-<date du jour>`. Les modifications non commitées situées hors de `projets/` et `carnet/` (ex. `job/`, écrit par la routine des candidatures) suivent la branche sans être ajoutées ni modifiées.
+2. `git -C src/private add projets carnet` (notes privées et carnet trié, uniquement)
+3. `git -C src/private commit -m "Notes privées <date>: P-NNN à P-NNN"`
+4. `git -C src/private checkout main`
+5. **Ne pas pousser** (décision de Michael du 2026-11-04 : `src/private` suit le circuit branches et PR). Indiquer dans le résumé final : « Notes privées commitées sur `auto/notes-<date>` dans `src/private`, en attente de ton accord pour l'envoi et la PR. »
 Si le dossier `src/private` n'est pas un dépôt Git (sauvegarde pas encore installée), le signaler dans le résumé final et continuer.
 
 **Ne jamais fusionner.** Michael fusionne, puis décide des statuts en écrivant à la session tour de contrôle.
