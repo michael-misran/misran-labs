@@ -16,7 +16,7 @@ Travail délégué, exécuté sans Michael par la tâche programmée `misran-lab
 
 Interdits absolus, valables dans toute session :
 - Commits libres sur `auto/*` seulement (exception validée le 2026-09-26). Jamais de commit sur `main`, de merge, de rebase de `main`, de déploiement ni de `--force` par une mission ou une routine.
-- **Push de `main` (compromis validé par Michael le 2026-09-27)** : autorisé **uniquement** dans une session interactive où Michael est présent, sur sa demande explicite pour ce push-là (pousser `main` met le site en production via Vercel). **Jamais** dans une routine ou une session de mission autonome. Jamais de `--force`.
+- **Push de `main` : interdit à tous**, y compris en session interactive (décision de Michael du 2026-11-04, qui remplace le compromis du 2026-09-27 ; alignement sur le CLAUDE.md global et les hooks Git de Jarvis). `main` ne change que par la fusion d'une pull request, faite par Michael sur GitHub (ce qui met le site en production via Vercel). Jamais de `--force`.
 - Clôture (push d'une branche de mission + pull request) : seulement en session interactive avec Michael, jamais dans une routine.
 - Le dépôt est **public** : aucun secret ni donnée personnelle dans un commit.
 
@@ -31,5 +31,6 @@ Version web quotidienne de L’Oracle du Matin, le journal du matin (ex-Gazette 
 
 ## Projets
 Idées numérotées P-NNN (`/projets`), une fiche publique JSON par idée dans `src/projets/idees/` (format : `src/projets/FORMAT.md`) et une note privée par idée dans `src/private/projets/` (hors Git de misran-labs, sauvegardée dans le dépôt privé). Procédure de la routine du dimanche 19 h : `src/projets/PROPOSITIONS.md`.
-**Exception Git validée par Michael le 2026-09-27** : la routine des idées pousse sa branche `auto/projets-<date>`, ouvre la pull request et sauvegarde les notes privées dans leur dépôt privé (`git -C src/private push`). Jamais `main`. Fusionner reste à Michael.
+**Exception Git validée par Michael le 2026-09-27** : la routine des idées pousse sa branche `auto/projets-<date>` et ouvre la pull request. Jamais `main`. Fusionner reste à Michael.
+**Notes privées (décision du 2026-11-04)** : `src/private` suit le même circuit que les autres dépôts (branches et PR). La routine commite les notes privées et le carnet sur une branche `auto/notes-<date>` de `src/private`, **sans la pousser** ; l'envoi et la pull request se font sur accord de Michael.
 **Décisions de Michael** (« garde 2, arrête 4 parce que… ») : prises dans la session tour de contrôle, qui met à jour `statut` et `decision` des fiches ; « on développe P-NNN » → passer la fiche en `en-cours` avec le nom de la mission, et cadrer la mission (`missions/README.md`).
