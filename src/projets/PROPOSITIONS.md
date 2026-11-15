@@ -57,7 +57,7 @@ Pour chaque idée, noter mentalement (grille, sur 5) : adéquation avec les comp
 5. **Ne pas pousser** (décision de Michael du 2026-11-04 : `src/private` suit le circuit branches et PR). Indiquer dans le résumé final : « Notes privées commitées sur `auto/notes-<date>` dans `src/private`, en attente de ton accord pour l'envoi et la PR. »
 Si le dossier `src/private` n'est pas un dépôt Git (sauvegarde pas encore installée), le signaler dans le résumé final et continuer.
 
-**Ne jamais fusionner.** Michael fusionne, puis décide des statuts en écrivant à la session tour de contrôle.
+**Ne jamais fusionner.** Michael fusionne, puis décide des statuts dans une session interactive.
 
 ## 7. Commandes shell
 Une commande simple par appel (pas de `&&`, `;`, boucle, `$(…)`, heredoc).
@@ -65,5 +65,5 @@ Une commande simple par appel (pas de `&&`, `;`, boucle, `$(…)`, heredoc).
 ## 8. Pages de documentation (après la publication)
 1. `node scripts/verifier-pages-doc.mjs` : le script dit si la page « Utilisation de l'IA » et la page des tokens sont à jour. Il ne modifie rien.
 2. Si la page « Utilisation de l'IA » est en retard mais qu'une branche `auto/utilisation-ia*` sans `RAPPORT.md` existe (`git for-each-ref --format='%(refname:short)' refs/heads/auto/`), la mise à jour est déjà en cours : le noter, ne rien signaler de plus.
-3. Sinon, si une page est en retard : ajouter au résumé final la liste donnée par le script, et envoyer une notification (PushNotification) : « Page(s) en retard : <noms>. Réponds « mets à jour » en tour de contrôle. »
+3. Sinon, si une page est en retard : ajouter au résumé final la liste donnée par le script, en terminant par : « Page(s) en retard : <noms>. Pour les mettre à jour, demande-le dans une session interactive. » (une routine n'atteint pas le téléphone : pas de notification)
 4. Ne jamais mettre à jour ces pages ni cadrer de mission dans cette routine : le tri entre public et privé se fait en session, avec Michael.

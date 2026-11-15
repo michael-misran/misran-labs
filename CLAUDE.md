@@ -30,4 +30,4 @@ Version web quotidienne de L’Oracle du Matin, le journal du matin (ex-Gazette 
 ## Projets
 Idées numérotées P-NNN (`/projets`), une fiche publique JSON par idée dans `src/projets/idees/` (format : `src/projets/FORMAT.md`) et une note privée par idée dans `src/private/projets/` (hors Git de misran-labs, sauvegardée dans le dépôt privé). Procédure de la routine du dimanche 19 h : `src/projets/PROPOSITIONS.md`.
 `src/private` est un dépôt privé à part, avec le même circuit (branches et PR).
-**Décisions de Michael** (« garde 2, arrête 4 parce que… ») : prises dans la session tour de contrôle, qui met à jour `statut` et `decision` des fiches ; « on développe P-NNN » → passer la fiche en `en-cours` avec le nom de la mission, et cadrer la mission (`missions/README.md`).
+**Décisions de Michael** (« garde 2, arrête 4 parce que… ») : prises en session interactive, qui met à jour `statut` et `decision` des fiches ; « on développe P-NNN » → passer la fiche en `en-cours` avec le nom de la mission, et cadrer la mission (`missions/README.md`).

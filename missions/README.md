@@ -25,12 +25,12 @@ Quand Michael donne un brief (« mission : … ») :
 ## Clôturer une mission (session interactive avec Michael)
 **Règle par défaut (validée par Michael le 2026-09-27)** : quand Michael dit « clôture les missions » (ou qu'une mission est terminée), Claude fait toute la clôture d'un coup, sur Mac comme depuis le téléphone ; Michael n'a plus qu'à fusionner.
 
-**Jamais dans une session de routine** (tâche programmée « missions autonomes », Gazette ou idées), même si Michael y écrit « clôture » : ces sessions n'ont pas accès au navigateur, donc pas de vérification complète. Y répondre seulement : « Pour clôturer, passe par la session tour de contrôle (celle où Remote Control est activé) » — sans pousser ni ouvrir de pull request. (Exception : la routine du Magazine publie son propre numéro, voir « Magazine » dans `CLAUDE.md`.)
+**Jamais dans une session de routine** (tâche programmée « missions autonomes », Gazette ou idées), même si Michael y écrit « clôture » : ces sessions n'ont pas accès au navigateur, donc pas de vérification complète. Y répondre seulement : « Pour clôturer, ouvre une session interactive sur misran-labs et tape /mission » — sans pousser ni ouvrir de pull request.
 1. Trouver les missions terminées : branches `auto/*` (hors `auto/projets-20*` et `auto/breves-20*`, branches datées des routines) dont `missions/<nom>/RAPPORT.md` existe.
 2. Pour chacune : lire `RAPPORT.md`, `DECISIONS.md`, `DELEGATIONS.md` ; vérifier soi-même dans le navigateur (passer sur la branche, preview « dev », puis arrêter le serveur et revenir sur `main`) ; lancer le sous-agent `controleur` sur `auto/<nom>` (lint, build, secrets et données personnelles — le dépôt est **public** —, fichiers qui ne doivent pas partir, cohérence avec la SPEC) : `BLOQUANT` → ne pas pousser, `ATTENTION` → regarder chaque point avant de pousser.
 3. Si tout est bon : pousser la branche (`git push -u origin auto/<nom>`, jamais `main`) et ouvrir la pull request (`gh pr create`, résumé du RAPPORT + modèles utilisés). Si un point bloque : ne pas pousser cette mission, l'expliquer à Michael.
 4. Résumer à Michael, court : par mission, le résultat, les modèles réellement utilisés, le lien de la PR. Le lien de prévisualisation Vercel est dans le commentaire Vercel de la PR (ou `gh pr checks <n>`).
-5. Michael fusionne (fusion interdite à Claude). Quand il le dit : `git checkout main`, `git pull`, `git fetch --prune`, puis supprimer les branches locales fusionnées (`git branch -d auto/<nom>`).
+5. Michael fusionne, ou Claude en mode autonomie (`gh pr merge <n> --squash --delete-branch`, jamais dans une routine). Une fois la PR fusionnée : `git checkout main`, `git pull`, `git fetch --prune`, puis supprimer les branches locales fusionnées (`git branch -d auto/<nom>`).
 
 Michael n'est pas à l'aise avec Git/GitHub : expliquer chaque étape simplement, commande à lancer dans son propre bloc.
 
