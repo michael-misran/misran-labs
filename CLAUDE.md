@@ -16,7 +16,7 @@ Travail délégué, exécuté sans Michael par la tâche programmée `misran-lab
 
 Interdits absolus, valables dans toute session :
 - Commits libres sur `auto/*` seulement (exception validée le 2026-09-26). Jamais de commit sur `main`, de merge, de rebase de `main`, de déploiement ni de `--force` par une mission ou une routine.
-- **Push de `main` : interdit à tous**, y compris en session interactive (décision de Michael du 2026-11-04, qui remplace le compromis du 2026-09-27 ; alignement sur le CLAUDE.md global et les hooks Git de Jarvis). `main` ne change que par la fusion d'une pull request, faite par Michael sur GitHub (ce qui met le site en production via Vercel). Jamais de `--force`.
+- **Push de `main` : interdit à tous**, y compris en session interactive (décision de Michael du 2026-11-04, qui remplace le compromis du 2026-09-27 ; alignement sur le CLAUDE.md global et les hooks Git de Jarvis). `main` ne change que par la fusion d'une pull request sur GitHub (ce qui met le site en production via Vercel) : faite par Michael, ou par Claude en mode autonomie (règle du CLAUDE.md global, décision du 2026-11-15 ; jamais dans une routine). Jamais de `--force`.
 - Clôture (push d'une branche de mission + pull request) : seulement en session interactive avec Michael, jamais dans une routine.
 - Le dépôt est **public** : aucun secret ni donnée personnelle dans un commit.
 
