@@ -65,21 +65,21 @@ Le travail doit pouvoir s'interrompre à tout moment (limite de quota) : fichier
 - **Commits** : seule la session principale commite. Les sous-agents ne commitent jamais. Le commit d'une étape porte une ligne `Co-Authored-By` par modèle ayant travaillé dessus (ex. `Claude Haiku 4.5` pour une étape déléguée au verificateur).
 
 ## Répartition des modèles (économie de tokens)
-Session principale : Sonnet (exécution du plan). Sous-agents autorisés sans demander, dans `.claude/agents/` :
+Session principale : Sonnet (exécution du plan). Sous-agents autorisés sans demander (globaux dans `~/.claude/agents/`, ou intégrés à Claude Code) :
 
 | Agent | Modèle | Quand |
 |---|---|---|
-| `explorateur` | Haiku | Recherche large dans le code, inventaires (« où est utilisé X ? »). Pour un seul `grep`, le faire soi-même. |
+| `Explore` (intégré) | — | Recherche large dans le code, inventaires (« où est utilisé X ? »). Pour un seul `grep`, le faire soi-même. |
 | `verificateur` | Haiku | Contrôle des pages dans le navigateur, snapshots de valeurs. **Pas pour `npm run build` / `npm run lint`** : la session principale les lance elle-même. |
 | `controleur` | Haiku | À la clôture, avant chaque push et pull request : contrôle de la branche (voir « Clôturer une mission »). Ne modifie rien. |
-| `expert` | Opus | Uniquement après 2 échecs sur un même problème, ou décision d'architecture non couverte par la SPEC. Rare. |
+| `general-purpose` (intégré, lancé avec `model: opus`) | Opus | Uniquement après 2 échecs sur un même problème, ou décision d'architecture non couverte par la SPEC. Rare. |
 
 Chaque sous-agent démarre à froid et relit le contexte : ne déléguer que ce qui coûte plus cher à faire soi-même (plusieurs lectures, navigateur). Chaque délégation est consignée dans `DELEGATIONS.md`.
 
 **Modèle par étape.** Au cadrage, chaque étape du `PLAN.md` se termine par `→ <agent> (<modèle>)`, selon sa difficulté :
 - `sous-agent (Haiku)` pour les étapes mécaniques et bien spécifiées : renommage, remplacement de valeurs listées, ajout d'un fichier de données selon un format existant, mise à jour de documentation. La session Sonnet lance un agent `general-purpose` avec `model: haiku`, en lui passant l'étape exacte et les fichiers concernés, puis relit le diff avant de commiter.
 - `session principale (Sonnet)` pour l'implémentation courante.
-- `verificateur (Haiku)` pour les contrôles dans le navigateur ; `explorateur (Haiku)` pour les inventaires larges.
-- `expert (Opus)` pour une étape d'architecture délicate ou à fort risque.
+- `verificateur (Haiku)` pour les contrôles dans le navigateur ; `Explore` pour les inventaires larges.
+- `general-purpose (Opus)` pour une étape d'architecture délicate ou à fort risque.
 
-La session d'exécution suit cette indication ; elle peut appeler `expert` en plus si une étape bloque, jamais en moins (une étape marquée `expert` n'est pas faite par Sonnet seul). Tout écart est noté dans `DECISIONS.md`.
+La session d'exécution suit cette indication ; elle peut appeler `general-purpose` sur Opus en plus si une étape bloque, jamais en moins (une étape marquée Opus n'est pas faite par Sonnet seul). Tout écart est noté dans `DECISIONS.md`.
