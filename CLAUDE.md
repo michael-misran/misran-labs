@@ -17,7 +17,7 @@ Travail délégué, exécuté sans Michael par la tâche programmée `misran-lab
 - Session interactive : circuit et autonomie du CLAUDE.md global. Tout changement de `main` passe par une PR, et sa fusion met le site en production (Vercel).
 - Routines et missions : jamais de fusion, de commit sur `main`, de rebase, de `--force` ni de déploiement. Elles peuvent seulement :
   - mission : commiter sur `auto/<nom>`, sans pousser (la clôture se fait en session interactive) ;
-  - journal : pousser `auto/breves-<date>` (préparée dans le worktree `.worktrees/breves`) et ouvrir la PR ;
+  - journal : pousser `auto/breves-<date>` (préparée dans le worktree `.worktrees/breves`, jamais dans le dossier de travail) et ouvrir la PR ;
   - idées : pousser `auto/projets-<date>` et ouvrir la PR ;
   - notes privées : commiter sur `auto/notes-<date>` de `src/private`, sans pousser.
 
@@ -29,5 +29,5 @@ Version web quotidienne de L’Oracle du Matin, le journal du matin (ex-Gazette 
 
 ## Projets
 Idées numérotées P-NNN (`/projets`), une fiche publique JSON par idée dans `src/projets/idees/` (format : `src/projets/FORMAT.md`) et une note privée par idée dans `src/private/projets/` (hors Git de misran-labs, sauvegardée dans le dépôt privé). Procédure de la routine du dimanche 19 h : `src/projets/PROPOSITIONS.md`.
-`src/private` est un dépôt à part (michael-misran/misran-labs-prive), avec le même circuit (branches et PR).
+`src/private` est un dépôt privé à part, avec le même circuit (branches et PR).
 **Décisions de Michael** (« garde 2, arrête 4 parce que… ») : prises dans la session tour de contrôle, qui met à jour `statut` et `decision` des fiches ; « on développe P-NNN » → passer la fiche en `en-cours` avec le nom de la mission, et cadrer la mission (`missions/README.md`).
