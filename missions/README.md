@@ -30,7 +30,7 @@ Quand Michael donne un brief (« mission : … ») :
 2. Pour chacune : lire `RAPPORT.md`, `DECISIONS.md`, `DELEGATIONS.md` ; vérifier soi-même dans le navigateur (passer sur la branche, preview « dev », puis arrêter le serveur et revenir sur `main`) ; lancer le sous-agent `controleur` sur `auto/<nom>` (lint, build, secrets et données personnelles — le dépôt est **public** —, fichiers qui ne doivent pas partir, cohérence avec la SPEC) : `BLOQUANT` → ne pas pousser, `ATTENTION` → regarder chaque point avant de pousser.
 3. Si tout est bon : pousser la branche (`git push -u origin auto/<nom>`, jamais `main`) et ouvrir la pull request (`gh pr create`, résumé du RAPPORT + modèles utilisés). Si un point bloque : ne pas pousser cette mission, l'expliquer à Michael.
 4. Résumer à Michael, court : par mission, le résultat, les modèles réellement utilisés, le lien de la PR. Le lien de prévisualisation Vercel est dans le commentaire Vercel de la PR (ou `gh pr checks <n>`).
-5. Michael fusionne (fusion interdite à Claude). Quand il le dit : `git checkout main`, `git pull`, `git fetch --prune`, puis supprimer les branches locales fusionnées (`git branch -d auto/<nom>`).
+5. Michael fusionne, ou Claude en mode autonomie (`gh pr merge <n> --squash --delete-branch`, jamais dans une routine). Une fois la PR fusionnée : `git checkout main`, `git pull`, `git fetch --prune`, puis supprimer les branches locales fusionnées (`git branch -d auto/<nom>`).
 
 Michael n'est pas à l'aise avec Git/GitHub : expliquer chaque étape simplement, commande à lancer dans son propre bloc.
 
